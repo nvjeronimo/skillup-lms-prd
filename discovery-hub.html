@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp LMS Discovery Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-card: #f4f5f7;
+  --bg-card-hover: #eef0f4;
+  --bg-active: #edf0ff;
+  --bg-dropdown: #ffffff;
+  --text-primary: #111218;
+  --text-secondary: #5a5d65;
+  --text-tertiary: #8a8d95;
+  --text-nav: #5a5d65;
+  --text-nav-active: #0338b8;
+  --border: #e2e4e8;
+  --border-light: #eef0f2;
+  --accent: #0338b8;
+  --accent-light: #d9e0ff;
+  --accent-bg: #f0f2ff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --tag-prd: #0338b8;
+  --tag-arch: #7c3aed;
+  --tag-ds: #0891b2;
+  --tag-figma: #a259ff;
+  --tag-research: #059669;
+  --tag-doc: #6b7280;
+  --radius: 10px;
+  --topbar-height: 52px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  height: 100vh;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Topbar ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbar-height); z-index: 100;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 24px; gap: 0;
+}
+.topbar-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 14px; color: var(--text-primary);
+  white-space: nowrap; letter-spacing: -0.3px; cursor: pointer;
+  padding-right: 20px; border-right: 1px solid var(--border); margin-right: 4px;
+}
+.topbar-brand:hover { color: var(--accent); }
+.topbar-brand svg { flex-shrink: 0; }
+
+/* ── Megamenu Nav ── */
+.mega-nav {
+  display: flex; align-items: center; gap: 0; height: 100%;
+}
+.mega-nav-item {
+  position: relative; height: 100%; display: flex; align-items: center;
+}
+.mega-nav-trigger {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0 14px; height: 100%;
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--text-nav); background: none; border: none;
+  cursor: pointer; transition: color 0.12s; white-space: nowrap;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.mega-nav-trigger:hover,
+.mega-nav-item:hover .mega-nav-trigger,
+.mega-nav-trigger.active {
+  color: var(--text-nav-active);
+  border-bottom-color: var(--accent);
+}
+.mega-nav-trigger svg { opacity: 0.4; transition: transform 0.2s; }
+.mega-nav-item:hover .mega-nav-trigger svg { opacity: 0.7; transform: rotate(180deg); }
+
+/* Dropdown */
+.mega-dropdown {
+  position: absolute; top: 100%; left: 0;
+  min-width: 280px; background: var(--bg-dropdown);
+  border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--shadow-lg); padding: 8px;
+  display: none; z-index: 200;
+  animation: dropIn 0.15s ease;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mega-nav-item:hover .mega-dropdown { display: block; }
+.mega-dropdown-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  cursor: pointer; transition: background 0.1s;
+  text-decoration: none; color: inherit;
+}
+.mega-dropdown-item:hover { background: var(--bg-card); }
+.mega-dropdown-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.mega-dropdown-icon.prd { background: #dde4ff; color: var(--tag-prd); }
+.mega-dropdown-icon.arch { background: #ede5ff; color: var(--tag-arch); }
+.mega-dropdown-icon.ds { background: #d5f0f7; color: var(--tag-ds); }
+.mega-dropdown-icon.figma { background: #f0e5ff; color: var(--tag-figma); }
+.mega-dropdown-icon.research { background: #d1f5e8; color: var(--tag-research); }
+.mega-dropdown-icon.doc { background: #e5e7eb; color: var(--tag-doc); }
+.mega-dropdown-text { flex: 1; min-width: 0; }
+.mega-dropdown-title {
+  font-size: 12.5px; font-weight: 600; color: var(--text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mega-dropdown-desc {
+  font-size: 10.5px; color: var(--text-tertiary); margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mega-dropdown-badge {
+  font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text-tertiary);
+  text-transform: uppercase; flex-shrink: 0;
+}
+.mega-dropdown-divider {
+  height: 1px; background: var(--border-light); margin: 4px 8px;
+}
+.mega-dropdown-label {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text-tertiary); padding: 8px 12px 4px;
+}
+
+.topbar-spacer { flex: 1; }
+.topbar-search {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  cursor: pointer; transition: all 0.15s; min-width: 180px;
+}
+.topbar-search:hover { border-color: var(--accent); }
+.topbar-search svg { color: var(--text-tertiary); flex-shrink: 0; }
+.topbar-search span { color: var(--text-tertiary); font-size: 11px; font-family: 'Montserrat', sans-serif; }
+.topbar-search kbd {
+  font-family: 'Montserrat', sans-serif; font-size: 10px;
+  padding: 1px 5px; border: 1px solid var(--border); border-radius: 4px;
+  color: var(--text-tertiary); background: var(--bg); margin-left: auto;
+}
+.topbar-btn {
+  width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; color: var(--text-secondary); transition: all 0.15s;
+  margin-left: 4px;
+}
+.topbar-btn:hover { background: var(--bg-card); color: var(--text-primary); }
+
+/* ── Search Overlay ── */
+.search-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 300;
+  display: none; align-items: flex-start; justify-content: center; padding-top: 100px;
+  backdrop-filter: blur(2px);
+}
+.search-overlay.active { display: flex; }
+.search-modal {
+  width: 520px; max-height: 440px; background: var(--bg); border-radius: 14px;
+  box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.search-input-wrap {
+  display: flex; align-items: center; padding: 14px 16px; gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.search-input-wrap svg { color: var(--text-tertiary); flex-shrink: 0; }
+.search-input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-primary);
+}
+.search-input::placeholder { color: var(--text-tertiary); }
+.search-results { overflow-y: auto; flex: 1; padding: 8px; }
+.search-result {
+  padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.1s;
+}
+.search-result:hover { background: var(--accent-bg); }
+.search-result-cat {
+  font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+.search-result-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.search-result-desc { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+.search-empty {
+  padding: 32px; text-align: center; color: var(--text-tertiary); font-size: 13px;
+}
+
+/* ── Content Area (full width, no sidebar) ── */
+.content-area {
+  position: fixed;
+  top: var(--topbar-height);
+  left: 0; right: 0; bottom: 0;
+  background: var(--bg);
+}
+.content-iframe {
+  width: 100%; height: 100%; border: none; display: block;
+}
+
+/* ── Home Page ── */
+.home-page {
+  width: 100%; height: 100%; overflow-y: auto;
+  padding: 48px 64px 80px; max-width: 1200px; margin: 0 auto;
+}
+.home-header { margin-bottom: 40px; }
+.home-title {
+  font-size: 32px; font-weight: 800; letter-spacing: -1px;
+  color: var(--text-primary); margin-bottom: 10px; line-height: 1.15;
+}
+.home-subtitle {
+  font-size: 14px; color: var(--text-secondary); font-weight: 500;
+  max-width: 600px; line-height: 1.7;
+}
+.home-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px; margin: 28px 0 44px;
+}
+.home-stat {
+  background: var(--bg-card); border-radius: var(--radius); padding: 16px 18px;
+  border: 1px solid var(--border);
+}
+.home-stat-value {
+  font-size: 26px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+.home-stat-label {
+  font-size: 10px; color: var(--text-tertiary); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px;
+}
+.home-section-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 14px;
+  margin-top: 8px;
+}
+.home-cards {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px; margin-bottom: 40px;
+}
+.home-card {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: 20px 22px; border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.15s; position: relative; overflow: hidden;
+}
+.home-card:hover {
+  border-color: var(--accent); background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md); transform: translateY(-1px);
+}
+.home-card-cat {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.8px; margin-bottom: 6px; display: inline-block;
+  padding: 2px 8px; border-radius: 4px;
+}
+.home-card-cat[data-cat="prd"] { background: #dde4ff; color: var(--tag-prd); }
+.home-card-cat[data-cat="arch"] { background: #ede5ff; color: var(--tag-arch); }
+.home-card-cat[data-cat="ds"] { background: #d5f0f7; color: var(--tag-ds); }
+.home-card-cat[data-cat="figma"] { background: #f0e5ff; color: var(--tag-figma); }
+.home-card-cat[data-cat="research"] { background: #d1f5e8; color: var(--tag-research); }
+.home-card-cat[data-cat="doc"] { background: #e5e7eb; color: var(--tag-doc); }
+.home-card-title {
+  font-size: 15px; font-weight: 700; color: var(--text-primary);
+  margin-bottom: 4px; letter-spacing: -0.2px;
+}
+.home-card-desc {
+  font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+}
+.home-card-meta {
+  display: flex; align-items: center; gap: 12px; margin-top: 12px;
+  font-size: 10px; color: var(--text-tertiary);
+}
+.home-card-meta span { display: flex; align-items: center; gap: 3px; }
+.home-card-ext {
+  position: absolute; top: 18px; right: 18px;
+  font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+.home-card-ext.figma-ext { background: #f0e5ff; color: var(--tag-figma); border-color: #ddd0f0; }
+
+/* ── External link icon ── */
+.ext-icon { opacity: 0.4; flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .mega-nav { display: none; }
+  .home-page { padding: 32px 20px 60px; }
+  .home-cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Topbar with Megamenu -->
+<header class="topbar">
+  <div class="topbar-brand" onclick="navigateTo('home', 'Discovery Hub')">
+    <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#0338b8"/><path d="M6 14V8l4 3-4 3z" fill="#fff"/><path d="M10 14V8l4 3-4 3z" fill="#fff" opacity=".5"/></svg>
+    Discovery Hub
+  </div>
+
+  <nav class="mega-nav">
+    <!-- Requirements -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-reqs">
+        Requirements
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <div class="mega-dropdown-label">HTML Documents</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('PRD-Courses-Programs-Phase1.html', 'PRD: Courses & Programs')">
+          <div class="mega-dropdown-icon prd">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Courses & Programs PRD</div>
+            <div class="mega-dropdown-desc">18 sections, delivery modes, VILT, progress</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Linked Documents</div>
+        <div class="mega-dropdown-item" onclick="downloadFile('FRD-Cohort Management.docx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">FRD: Cohort Management</div>
+            <div class="mega-dropdown-desc">Scheduling, enrollment, capacity rules</div>
+          </div>
+          <span class="mega-dropdown-badge">docx</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Mobile App Requirements</div>
+            <div class="mega-dropdown-desc">Phase 1, native features, offline support</div>
+          </div>
+          <span class="mega-dropdown-badge">docx</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Learner Dashboard Spec</div>
+            <div class="mega-dropdown-desc">Widgets, data sources, personalization</div>
+          </div>
+          <span class="mega-dropdown-badge">docx</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-arch">
+        Architecture
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <div class="mega-dropdown-item" onclick="navigateTo('VILT-Architecture-Flowchart.html', 'VILT Architecture')">
+          <div class="mega-dropdown-icon arch">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Architecture</div>
+            <div class="mega-dropdown-desc">Delivery modes, tagging, bubble-up logic</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('live-sessions-flow-architecture.html', 'Live Sessions Flow')">
+          <div class="mega-dropdown-icon arch">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Live Sessions Flow</div>
+            <div class="mega-dropdown-desc">Scheduling, join, recording, attendance</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('SkillUp-LMS-MindMap.html', 'LMS Mind Map')">
+          <div class="mega-dropdown-icon arch">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">LMS Mind Map</div>
+            <div class="mega-dropdown-desc">Full feature space and relationships</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-design">
+        Design
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown" style="min-width: 320px">
+        <div class="mega-dropdown-label">Design System</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('index.html', 'Design System')">
+          <div class="mega-dropdown-icon ds">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Tokens & Components</div>
+            <div class="mega-dropdown-desc">Colors, typography, spacing, patterns</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Figma Files</div>
+        <a class="mega-dropdown-item" href="https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1" target="_blank" rel="noopener">
+          <div class="mega-dropdown-icon figma">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M12 8.5h3.5a3.5 3.5 0 1 1 0 7H12v-7z"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Diagrams</div>
+            <div class="mega-dropdown-desc">LMS Learner Flow Diagram (FigJam board)</div>
+          </div>
+          <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a class="mega-dropdown-item" href="https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase" target="_blank" rel="noopener">
+          <div class="mega-dropdown-icon figma">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M12 8.5h3.5a3.5 3.5 0 1 1 0 7H12v-7z"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Design (V4)</div>
+            <div class="mega-dropdown-desc">Learner Platform Experience Discovery</div>
+          </div>
+          <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Research -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-research">
+        Research
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <div class="mega-dropdown-item" onclick="navigateTo('V4-UX-Audit-Report.html', 'V4 UX Audit')">
+          <div class="mega-dropdown-icon research">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">V4 UX Audit Report</div>
+            <div class="mega-dropdown-desc">Norman/Nielsen heuristic evaluation</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Meeting Transcript (Apr 10)</div>
+            <div class="mega-dropdown-desc">VILT discovery, delivery modes, calendar</div>
+          </div>
+          <span class="mega-dropdown-badge">txt</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('US Program-courses List (1).xlsx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Programs/Courses List</div>
+            <div class="mega-dropdown-desc">US program and course inventory</div>
+          </div>
+          <span class="mega-dropdown-badge">xlsx</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="topbar-spacer"></div>
+  <div class="topbar-search" onclick="openSearch()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search...</span>
+    <kbd>&#8984;K</kbd>
+  </div>
+</header>
+
+<!-- Search -->
+<div class="search-overlay" id="search-overlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="search-input" id="search-input" type="text" placeholder="Search all documents..." autocomplete="off">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Type to search across all documents</div>
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content-area" id="content-area">
+  <div class="home-page" id="home-page">
+    <div class="home-header">
+      <div class="home-title">SkillUp LMS<br>Discovery Hub</div>
+      <div class="home-subtitle">
+        Central repository for all product discovery artifacts: requirements, architecture, design system, and research for the SkillUp Learner Platform.
+      </div>
+    </div>
+
+    <div class="home-stats">
+      <div class="home-stat">
+        <div class="home-stat-value">18</div>
+        <div class="home-stat-label">PRD Sections</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">3</div>
+        <div class="home-stat-label">Architecture Docs</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">2</div>
+        <div class="home-stat-label">Figma Files</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">9</div>
+        <div class="home-stat-label">Open Decisions</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">4</div>
+        <div class="home-stat-label">Learning Flows</div>
+      </div>
+    </div>
+
+    <div class="home-section-title">Product Requirements</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('PRD-Courses-Programs-Phase1.html', 'PRD: Courses & Programs')">
+        <div class="home-card-cat" data-cat="prd">PRD</div>
+        <div class="home-card-title">Courses & Programs PRD</div>
+        <div class="home-card-desc">Complete product requirements for the learner platform. 18 sections covering content hierarchy, delivery modes, VILT, progress tracking, and assessments.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
+          <span>18 sections</span>
+          <span>Draft</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="downloadFile('FRD-Cohort Management.docx')">
+        <div class="home-card-cat" data-cat="prd">FRD</div>
+        <div class="home-card-title">Cohort Management</div>
+        <div class="home-card-desc">Functional requirements for cohort-based learning. Scheduling, enrollment, capacity rules, and instructor assignment.</div>
+        <div class="home-card-meta"><span>Apr 9, 2026</span></div>
+        <div class="home-card-ext">DOCX</div>
+      </div>
+      <div class="home-card" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
+        <div class="home-card-cat" data-cat="prd">Mobile</div>
+        <div class="home-card-title">Mobile App Requirements</div>
+        <div class="home-card-desc">Phase 1 mobile app requirements. Native features, offline support, and responsive behavior specs.</div>
+        <div class="home-card-meta"><span>Apr 9, 2026</span></div>
+        <div class="home-card-ext">DOCX</div>
+      </div>
+      <div class="home-card" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
+        <div class="home-card-cat" data-cat="prd">Spec</div>
+        <div class="home-card-title">Learner Dashboard</div>
+        <div class="home-card-desc">Dashboard specification for the learner home screen. Widget layout, data sources, and personalization logic.</div>
+        <div class="home-card-meta"><span>Jan 29, 2026</span></div>
+        <div class="home-card-ext">DOCX</div>
+      </div>
+    </div>
+
+    <div class="home-section-title">Architecture</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('VILT-Architecture-Flowchart.html', 'VILT Architecture')">
+        <div class="home-card-cat" data-cat="arch">Architecture</div>
+        <div class="home-card-title">VILT Architecture Flowchart</div>
+        <div class="home-card-desc">Visual diagram of the VILT delivery architecture: content hierarchy, delivery mode tagging, bubble-up logic, and learner view.</div>
+        <div class="home-card-meta"><span>Apr 10, 2026</span></div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('live-sessions-flow-architecture.html', 'Live Sessions Flow')">
+        <div class="home-card-cat" data-cat="arch">Architecture</div>
+        <div class="home-card-title">Live Sessions Flow</div>
+        <div class="home-card-desc">End-to-end flow for live/virtual sessions. Scheduling, join mechanics, recording, and attendance tracking.</div>
+        <div class="home-card-meta"><span>Apr 9, 2026</span></div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('SkillUp-LMS-MindMap.html', 'LMS Mind Map')">
+        <div class="home-card-cat" data-cat="arch">Mind Map</div>
+        <div class="home-card-title">LMS Mind Map</div>
+        <div class="home-card-desc">High-level visual map of the entire LMS feature space. Modules, relationships, and priority groupings.</div>
+        <div class="home-card-meta"><span>Mar 27, 2026</span></div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+    </div>
+
+    <div class="home-section-title">Design</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('index.html', 'Design System')">
+        <div class="home-card-cat" data-cat="ds">Design System</div>
+        <div class="home-card-title">Tokens & Components</div>
+        <div class="home-card-desc">Color tokens, typography (Montserrat/Playfair), spacing scale, component patterns, and interaction specs.</div>
+        <div class="home-card-meta"><span>Apr 8, 2026</span></div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="window.open('https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1','_blank')">
+        <div class="home-card-cat" data-cat="figma">Figma</div>
+        <div class="home-card-title">Diagrams</div>
+        <div class="home-card-desc">LMS Learner Flow Diagram. FigJam board with user flows, system connections, and decision trees.</div>
+        <div class="home-card-meta"><span>FigJam Board</span><span>Opens in Figma</span></div>
+        <div class="home-card-ext figma-ext">Figma</div>
+      </div>
+      <div class="home-card" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase','_blank')">
+        <div class="home-card-cat" data-cat="figma">Figma</div>
+        <div class="home-card-title">Design (V4)</div>
+        <div class="home-card-desc">Learner Platform Experience Discovery. Latest wireframes and prototypes in New Flow V4.</div>
+        <div class="home-card-meta"><span>Design File</span><span>Opens in Figma</span></div>
+        <div class="home-card-ext figma-ext">Figma</div>
+      </div>
+    </div>
+
+    <div class="home-section-title">Research & Discovery</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('V4-UX-Audit-Report.html', 'V4 UX Audit')">
+        <div class="home-card-cat" data-cat="research">Audit</div>
+        <div class="home-card-title">V4 UX Audit Report</div>
+        <div class="home-card-desc">Norman/Nielsen heuristic evaluation of V4 wireframes. Severity scores, findings, and prioritized fixes.</div>
+        <div class="home-card-meta"><span>Apr 7, 2026</span></div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+        <div class="home-card-cat" data-cat="research">Transcript</div>
+        <div class="home-card-title">Meeting Transcript (Apr 10)</div>
+        <div class="home-card-desc">Full transcript of the VILT/Live Sessions discovery meeting. Delivery modes, tagging, calendar, content categories.</div>
+        <div class="home-card-meta"><span>Apr 10, 2026</span><span>316 lines</span></div>
+        <div class="home-card-ext">TXT</div>
+      </div>
+    </div>
+  </div>
+
+  <iframe class="content-iframe" id="content-iframe" style="display:none"></iframe>
+</div>
+
+<script>
+// ── Navigation ──
+const homePage = document.getElementById('home-page');
+const iframe = document.getElementById('content-iframe');
+let currentPage = 'home';
+
+function navigateTo(page, title) {
+  // Update active trigger
+  document.querySelectorAll('.mega-nav-trigger').forEach(t => t.classList.remove('active'));
+
+  if (page === 'home') {
+    homePage.style.display = '';
+    iframe.style.display = 'none';
+    iframe.src = '';
+  } else {
+    homePage.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = page;
+    // Highlight parent nav trigger
+    const catMap = {
+      'PRD': 'nav-reqs', 'FRD': 'nav-reqs',
+      'VILT': 'nav-arch', 'live': 'nav-arch', 'MindMap': 'nav-arch',
+      'index': 'nav-design',
+      'UX-Audit': 'nav-research', 'Transcript': 'nav-research'
+    };
+    for (const [key, navId] of Object.entries(catMap)) {
+      if (page.includes(key)) {
+        const el = document.getElementById(navId);
+        if (el) el.classList.add('active');
+        break;
+      }
+    }
+  }
+  currentPage = page;
+}
+
+function downloadFile(filename) {
+  const link = document.createElement('a');
+  link.href = filename;
+  link.download = filename;
+  link.click();
+}
+
+
+// ── Search ──
+const searchData = [
+  { cat: 'PRD', color: 'prd', title: 'Courses & Programs PRD', desc: 'Product requirements, content hierarchy, VILT, progress, assessments', page: 'PRD-Courses-Programs-Phase1.html' },
+  { cat: 'FRD', color: 'prd', title: 'Cohort Management', desc: 'Cohort scheduling, enrollment, capacity, instructor assignment', file: 'FRD-Cohort Management.docx' },
+  { cat: 'Spec', color: 'prd', title: 'Mobile App Requirements', desc: 'Native mobile, offline support, responsive behavior', file: 'Mobile App Requirements Phase-1.docx' },
+  { cat: 'Spec', color: 'prd', title: 'Learner Dashboard', desc: 'Dashboard widgets, data sources, personalization', file: 'SkillUp Learner (LMS) Dashboard.docx' },
+  { cat: 'Architecture', color: 'arch', title: 'VILT Architecture', desc: 'Delivery modes, tagging flow, bubble-up logic, learner view', page: 'VILT-Architecture-Flowchart.html' },
+  { cat: 'Architecture', color: 'arch', title: 'Live Sessions Flow', desc: 'Scheduling, join mechanics, recording, attendance', page: 'live-sessions-flow-architecture.html' },
+  { cat: 'Architecture', color: 'arch', title: 'LMS Mind Map', desc: 'Feature space, modules, relationships, priorities', page: 'SkillUp-LMS-MindMap.html' },
+  { cat: 'Design System', color: 'ds', title: 'Tokens & Components', desc: 'Colors, typography, spacing, component patterns', page: 'index.html' },
+  { cat: 'Figma', color: 'figma', title: 'Diagrams (FigJam)', desc: 'LMS Learner Flow Diagram board', url: 'https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1' },
+  { cat: 'Figma', color: 'figma', title: 'Design V4', desc: 'Learner Platform Experience Discovery wireframes', url: 'https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase' },
+  { cat: 'Audit', color: 'research', title: 'V4 UX Audit Report', desc: 'Norman/Nielsen heuristic evaluation, severity scores', page: 'V4-UX-Audit-Report.html' },
+  { cat: 'Transcript', color: 'research', title: 'Meeting Transcript (Apr 10)', desc: 'VILT discovery meeting, delivery modes, tagging, calendar', file: 'LMS-Walkthrough-Questions-Transcript-20260410.txt' },
+];
+
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('active');
+  searchInput.value = '';
+  searchInput.focus();
+  renderSearchResults('');
+}
+function closeSearch() {
+  document.getElementById('search-overlay').classList.remove('active');
+}
+
+searchInput.addEventListener('input', () => renderSearchResults(searchInput.value));
+
+function renderSearchResults(query) {
+  if (!query.trim()) {
+    searchResults.innerHTML = '<div class="search-empty">Type to search across all documents</div>';
+    return;
+  }
+  const q = query.toLowerCase();
+  const matches = searchData.filter(d =>
+    d.title.toLowerCase().includes(q) ||
+    d.desc.toLowerCase().includes(q) ||
+    d.cat.toLowerCase().includes(q)
+  );
+  if (!matches.length) {
+    searchResults.innerHTML = '<div class="search-empty">No results found</div>';
+    return;
+  }
+  searchResults.innerHTML = matches.map(d => {
+    let action;
+    if (d.page) action = `navigateTo('${d.page}', '${d.title}')`;
+    else if (d.url) action = `window.open('${d.url}','_blank')`;
+    else action = `downloadFile('${d.file}')`;
+    return `
+    <div class="search-result" onclick="${action};closeSearch()">
+      <div class="search-result-cat" style="color:var(--tag-${d.color})">${d.cat}</div>
+      <div class="search-result-title">${hl(d.title, q)}</div>
+      <div class="search-result-desc">${hl(d.desc, q)}</div>
+    </div>`;
+  }).join('');
+}
+
+function hl(text, q) {
+  if (!q) return text;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  return text.replace(re, '<mark style="background:var(--accent-light);color:inherit;border-radius:2px;padding:0 1px">$1</mark>');
+}
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+});
+</script>
+</body>
+</html>

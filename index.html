@@ -1,1224 +1,2572 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillUp LMS: Courses & Programs PRD</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>SkillUp LMS Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,200..700;1,9..40,200..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   SKILLUP LMS DESIGN SYSTEM - Living Document
+   Version: 1.3 | April 2026 | Light Mode
+   ============================================================ */
+
 :root {
-  --bg: #ffffff;
-  --bg-sidebar: #f8f9fb;
-  --bg-card: #f4f5f7;
-  --bg-code: #f0f1f3;
-  --bg-search: #ffffff;
-  --bg-table-header: #f4f5f7;
-  --bg-table-row-alt: #fafbfc;
-  --bg-badge: #e8ebf0;
-  --bg-highlight: #fffde7;
-  --text-primary: #111218;
-  --text-secondary: #5a5d65;
-  --text-tertiary: #8a8d95;
-  --text-nav: #5a5d65;
-  --text-nav-active: #111218;
-  --border: #e2e4e8;
-  --border-light: #eef0f2;
-  --accent: #0338b8;
-  --accent-light: #d9e0ff;
-  --accent-bg: #f0f2ff;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
-  --progress-bar: #0338b8;
-  --tag-flexible-bg: #d9e0ff; --tag-flexible-text: #00146E;
-  --tag-vilt-bg: #d6eeff; --tag-vilt-text: #0836B6;
-  --tag-blended-bg: #e8d9ff; --tag-blended-text: #2D0072;
-  --tag-course-bg: #e5e5ea; --tag-course-text: #666;
-  --tag-program-bg: #d9e4ff; --tag-program-text: #234db3;
-  --tag-tm-bg: #c2851c; --tag-tm-text: #fff;
-  --status-progress-bg: #d9e0ff; --status-progress-text: #0238b8;
-  --status-notstarted-bg: #ededed; --status-notstarted-text: #525252;
-  --status-completed-bg: #d3eadd; --status-completed-text: #126434;
-  --status-failed-bg: #f7d5d2; --status-failed-text: #aa1e14;
-  --status-locked-bg: #6e6e6e; --status-locked-text: #fcfcfc;
-  --status-risk-bg: #faebd1; --status-risk-text: #824600;
-  --scrollbar-track: #f0f1f3;
-  --scrollbar-thumb: #c8cad0;
+  /* --- Neutral Palette --- */
+  --neutral-950: #0D0D0D;
+  --neutral-900: #171717;
+  --neutral-800: #262626;
+  --neutral-700: #404040;
+  --neutral-600: #525252;
+  --neutral-500: #737373;
+  --neutral-400: #A3A3A3;
+  --neutral-300: #E5E5E5;
+  --neutral-200: #F5F5F5;
+  --neutral-100: #FAFAFA;
+  --neutral-50: #FFFFFF;
+
+  /* --- Brand --- */
+  --brand-dark: #080C28;
+  --brand-navy: #333A5A;
+
+  /* --- Accent --- */
+  --accent-blue: #005FFF;
+  --accent-blue-light: #3E89FF;
+  --accent-blue-alice: #E9F2FF;
+  --accent-blue-ice: #F7FBFF;
+  --accent-green: #20E070;
+  --accent-green-dark: #00746B;
+  --accent-red: #FF3742;
+  --accent-orange: #E45F18;
+
+  /* --- Tints --- */
+  --tint-purple: #772CBB;
+  --tint-magenta: #931FAA;
+  --tint-plum: #943170;
+  --tint-crimson: #A9202A;
+  --tint-burnt: #B33600;
+
+  /* --- White Opacity --- */
+  --white-5: rgba(255,255,255,0.05);
+  --white-10: rgba(255,255,255,0.1);
+  --white-20: rgba(255,255,255,0.2);
+  --white-30: rgba(255,255,255,0.3);
+  --white-50: rgba(255,255,255,0.5);
+  --white-70: rgba(255,255,255,0.7);
+  --white-80: rgba(255,255,255,0.8);
+  --white-90: rgba(255,255,255,0.9);
+
+  /* --- Black Opacity --- */
+  --black-5: rgba(0,0,0,0.05);
+  --black-10: rgba(0,0,0,0.1);
+  --black-15: rgba(0,0,0,0.15);
+  --black-20: rgba(0,0,0,0.2);
+  --black-50: rgba(0,0,0,0.5);
+  --black-60: rgba(0,0,0,0.6);
+
+  /* --- Extended Accent Palette (from authenticated pages) --- */
+  --accent-green-lightning: #B0FB50;
+  --accent-green-lightning-text: #CDFF92;
+  --accent-blue-link: #026AFA;
+  --accent-blue-border: #71AEFF;
+  --accent-highlight: #FBF4DD;
+  --gradient-start: #FCFCFC;
+  --gradient-end: #F7F7F7;
+
+  /* --- Content Accent Palette (course category tints) --- */
+  --cat-green: #A7D067;
+  --cat-green-light: #F7FCEE;
+  --cat-blue: #7BB5DD;
+  --cat-blue-light: #F0F8FD;
+  --cat-gold: #E8C073;
+  --cat-gold-light: #FCF8EF;
+  --cat-coral: #E18484;
+  --cat-coral-light: #FCF2F2;
+  --cat-indigo: #8C93E5;
+
+  /* --- Spacing --- */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+  --space-xxl: 64px;
+  --space-xxxl: 72px;
+
+  /* --- Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-default: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0px 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0px 5px 14px rgba(0,0,0,0.05), 0px 2px 6px rgba(0,0,0,0.05);
+  --shadow-lg: 0px 24px 40px rgba(0,0,0,0.03), 0px 8px 24px rgba(0,0,0,0.05);
+
+  /* --- Borders --- */
+  --border-default: 1px solid rgba(0,0,0,0.1);
+  --border-strong: 1px solid #171717;
+  --border-subtle: 1px solid #E5E5E5;
+  --border-focus: 2px solid #3E89FF;
+  --border-dark: 1px solid rgba(255,255,255,0.2);
+
+  /* --- Layout --- */
+  --max-content: 1152px;
+  --max-card: 808px;
+  --max-sidebar: 384px;
+
+  /* --- Fonts --- */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* --- Font Weights (canonical) --- */
+  --weight-light: 200;
+  --weight-regular: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
 }
-[data-theme="dark"] {
-  --bg: #0f1117;
-  --bg-sidebar: #161820;
-  --bg-card: #1c1e28;
-  --bg-code: #1c1e28;
-  --bg-search: #1c1e28;
-  --bg-table-header: #1c1e28;
-  --bg-table-row-alt: #14161e;
-  --bg-badge: #2a2d38;
-  --bg-highlight: #2a2510;
-  --text-primary: #e8e9ed;
-  --text-secondary: #9a9da5;
-  --text-tertiary: #6a6d75;
-  --text-nav: #8a8d95;
-  --text-nav-active: #e8e9ed;
-  --border: #2a2d38;
-  --border-light: #22242e;
-  --accent: #6b8adb;
-  --accent-light: #1e2a48;
-  --accent-bg: #161c30;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-  --shadow-md: 0 2px 8px rgba(0,0,0,0.3);
-  --progress-bar: #6b8adb;
-  --scrollbar-track: #1c1e28;
-  --scrollbar-thumb: #3a3d48;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
 body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--bg);
-  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--neutral-900);
+  background: var(--neutral-50);
+}
+
+::selection {
+  background: var(--accent-blue);
+  color: white;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+
+.ds-container {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* ============================================================
+   HERO / COVER
+   ============================================================ */
+
+.ds-hero {
+  background: var(--brand-dark);
+  padding: 80px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ds-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -300px;
+  right: 100px;
+  width: 800px;
+  height: 800px;
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ds-hero__badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: var(--white-10);
+  color: var(--white-50);
+  margin-bottom: var(--space-md);
+}
+
+.ds-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: white;
+  margin-bottom: var(--space-sm);
+}
+
+.ds-hero__sub {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--white-50);
+  margin-bottom: var(--space-xl);
+}
+
+.ds-hero__stats {
+  display: flex;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.ds-stat {
+  text-align: left;
+}
+
+.ds-stat__num {
+  font-family: var(--font-ui);
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  display: block;
+  line-height: 1.2;
+}
+
+.ds-stat__label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--white-30);
+}
+
+/* ============================================================
+   SIDEBAR NAV
+   ============================================================ */
+
+.ds-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-xxl);
+  padding-top: var(--space-xxl);
+  padding-bottom: 120px;
+}
+
+.ds-sidebar {
+  position: sticky;
+  top: var(--space-lg);
+  align-self: start;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.ds-sidebar__title {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--neutral-400);
+  margin-bottom: var(--space-sm);
+}
+
+.ds-sidebar a {
+  display: block;
+  font-family: var(--font-sans);
   font-size: 14px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
-
-/* Progress bar */
-#reading-progress {
-  position: fixed; top: 0; left: 0; width: 0%; height: 3px;
-  background: var(--progress-bar); z-index: 1001; transition: width 0.1s;
+  font-weight: 400;
+  color: var(--neutral-500);
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.15s;
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+  margin-left: -12px;
 }
 
-/* Top bar */
-.topbar {
-  position: fixed; top: 3px; left: 0; right: 0; height: 56px; z-index: 1000;
-  background: var(--bg); border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; padding: 0 24px; gap: 16px;
-}
-.topbar-brand {
-  font-weight: 700; font-size: 15px; color: var(--text-primary);
-  white-space: nowrap; display: flex; align-items: center; gap: 8px;
-}
-.topbar-brand svg { flex-shrink: 0; }
-.topbar-meta {
-  font-size: 11px; color: var(--text-tertiary); font-weight: 500;
-  display: flex; gap: 16px; align-items: center; margin-left: auto; white-space: nowrap;
-}
-.topbar-meta span { display: flex; align-items: center; gap: 4px; }
-.topbar-controls { display: flex; gap: 4px; align-items: center; }
-.topbar-btn {
-  width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 6px;
-  background: var(--bg); cursor: pointer; display: flex; align-items: center;
-  justify-content: center; color: var(--text-secondary); transition: all 0.15s;
-}
-.topbar-btn:hover { background: var(--bg-card); color: var(--text-primary); }
-
-/* Search */
-.search-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2000;
-  display: none; align-items: flex-start; justify-content: center; padding-top: 120px;
-  backdrop-filter: blur(2px);
-}
-.search-overlay.active { display: flex; }
-.search-modal {
-  width: 560px; max-height: 480px; background: var(--bg); border-radius: 12px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.15); border: 1px solid var(--border);
-  overflow: hidden; display: flex; flex-direction: column;
-}
-.search-input-wrap {
-  display: flex; align-items: center; padding: 14px 16px; gap: 10px;
-  border-bottom: 1px solid var(--border);
-}
-.search-input-wrap svg { color: var(--text-tertiary); flex-shrink: 0; }
-.search-input {
-  flex: 1; border: none; outline: none; background: transparent;
-  font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-primary);
-}
-.search-input::placeholder { color: var(--text-tertiary); }
-.search-kbd {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 6px;
-  border: 1px solid var(--border); border-radius: 4px; color: var(--text-tertiary);
-  background: var(--bg-card);
-}
-.search-results {
-  overflow-y: auto; flex: 1; padding: 8px;
-}
-.search-result {
-  padding: 10px 12px; border-radius: 6px; cursor: pointer; transition: background 0.1s;
-}
-.search-result:hover, .search-result.active { background: var(--accent-bg); }
-.search-result-section {
-  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-  color: var(--accent); margin-bottom: 2px;
-}
-.search-result-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
-.search-result-excerpt {
-  font-size: 12px; color: var(--text-secondary); margin-top: 2px;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.search-result mark {
-  background: var(--bg-highlight); color: inherit; border-radius: 2px; padding: 0 1px;
-}
-.search-empty {
-  padding: 32px; text-align: center; color: var(--text-tertiary); font-size: 13px;
-}
-.search-footer {
-  padding: 8px 16px; border-top: 1px solid var(--border); display: flex;
-  gap: 12px; font-size: 11px; color: var(--text-tertiary);
-}
-.search-footer span { display: flex; align-items: center; gap: 4px; }
-
-/* Sidebar */
-.sidebar {
-  position: fixed; top: 59px; left: 0; bottom: 0; width: 280px;
-  background: var(--bg-sidebar); border-right: 1px solid var(--border);
-  overflow-y: auto; padding: 16px 0; z-index: 100;
-}
-.sidebar-section { padding: 0 12px; margin-bottom: 4px; }
-.sidebar-label {
-  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
-  color: var(--text-tertiary); padding: 8px 12px 6px; user-select: none;
-}
-.nav-item {
-  display: block; padding: 5px 12px; border-radius: 6px; font-size: 12.5px;
-  color: var(--text-nav); text-decoration: none; transition: all 0.12s;
-  font-weight: 500; line-height: 1.5; cursor: pointer;
-}
-.nav-item:hover { color: var(--text-nav-active); background: var(--bg-card); }
-.nav-item.active {
-  color: var(--accent); background: var(--accent-bg); font-weight: 600;
-}
-.nav-item.sub { padding-left: 24px; font-size: 11.5px; font-weight: 400; }
-.nav-group { margin-bottom: 2px; }
-.nav-group-toggle {
-  display: flex; align-items: center; gap: 4px; padding: 5px 12px;
-  border-radius: 6px; font-size: 12.5px; color: var(--text-nav);
-  font-weight: 600; cursor: pointer; user-select: none; transition: all 0.12s;
-  border: none; background: none; width: 100%; text-align: left;
-  font-family: 'Montserrat', sans-serif;
-}
-.nav-group-toggle:hover { color: var(--text-nav-active); background: var(--bg-card); }
-.nav-group-toggle svg {
-  transition: transform 0.2s; flex-shrink: 0;
-}
-.nav-group.collapsed .nav-group-toggle svg { transform: rotate(-90deg); }
-.nav-group.collapsed .nav-children { display: none; }
-
-/* Main content */
-.main {
-  margin-left: 280px; padding: 80px 48px 120px; max-width: 920px;
+.ds-sidebar a:hover,
+.ds-sidebar a.active {
+  color: var(--neutral-900);
+  border-left-color: var(--neutral-900);
+  font-weight: 500;
 }
 
-/* Typography */
-h1 {
-  font-size: 28px; font-weight: 700; letter-spacing: -0.5px;
-  margin-bottom: 8px; line-height: 1.25;
-}
-.doc-subtitle {
-  font-size: 15px; color: var(--text-secondary); font-weight: 500; margin-bottom: 8px;
-}
-.doc-meta {
-  display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px;
-  color: var(--text-tertiary); margin-bottom: 32px; padding-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-}
-.doc-meta-item { display: flex; align-items: center; gap: 4px; }
-.doc-meta-item strong { color: var(--text-secondary); font-weight: 600; }
-
-h2 {
-  font-size: 20px; font-weight: 700; margin-top: 56px; margin-bottom: 16px;
-  padding-top: 24px; border-top: 1px solid var(--border); letter-spacing: -0.3px;
-  scroll-margin-top: 80px;
-}
-h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
-h3 {
-  font-size: 15px; font-weight: 700; margin-top: 32px; margin-bottom: 10px;
-  color: var(--text-primary); scroll-margin-top: 80px;
-}
-h4 {
-  font-size: 13px; font-weight: 700; margin-top: 24px; margin-bottom: 8px;
-  color: var(--text-primary); scroll-margin-top: 80px;
-}
-p { margin-bottom: 12px; color: var(--text-secondary); }
-strong { color: var(--text-primary); font-weight: 600; }
-
-/* Lists */
-ul, ol { margin-bottom: 12px; padding-left: 20px; }
-li { margin-bottom: 4px; color: var(--text-secondary); }
-li strong { color: var(--text-primary); }
-
-/* Tables */
-.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; border: 1px solid var(--border); }
-table {
-  width: 100%; border-collapse: collapse; font-size: 12.5px;
-}
-thead { background: var(--bg-table-header); }
-th {
-  text-align: left; padding: 10px 14px; font-weight: 600; font-size: 11px;
-  text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-tertiary);
-  border-bottom: 1px solid var(--border);
-}
-td {
-  padding: 9px 14px; border-bottom: 1px solid var(--border-light);
-  color: var(--text-secondary); vertical-align: top;
-}
-tr:last-child td { border-bottom: none; }
-tbody tr:nth-child(even) { background: var(--bg-table-row-alt); }
-
-/* Code blocks */
-code {
-  font-family: 'JetBrains Mono', monospace; font-size: 12px;
-  background: var(--bg-code); padding: 2px 6px; border-radius: 4px;
-  color: var(--accent);
-}
-pre {
-  background: var(--bg-code); border-radius: 8px; padding: 16px 20px;
-  overflow-x: auto; margin: 16px 0; border: 1px solid var(--border);
-}
-pre code { background: none; padding: 0; font-size: 12px; color: var(--text-secondary); }
-
-/* Badges */
-.badge {
-  display: inline-block; padding: 2px 10px; border-radius: 100px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.3px; vertical-align: middle;
-}
-.badge-flexible { background: var(--tag-flexible-bg); color: var(--tag-flexible-text); }
-.badge-vilt { background: var(--tag-vilt-bg); color: var(--tag-vilt-text); }
-.badge-blended { background: var(--tag-blended-bg); color: var(--tag-blended-text); }
-.badge-course { background: var(--tag-course-bg); color: var(--tag-course-text); }
-.badge-program { background: var(--tag-program-bg); color: var(--tag-program-text); }
-.badge-tm { background: var(--tag-tm-bg); color: var(--tag-tm-text); }
-.badge-progress { background: var(--status-progress-bg); color: var(--status-progress-text); }
-.badge-notstarted { background: var(--status-notstarted-bg); color: var(--status-notstarted-text); }
-.badge-completed { background: var(--status-completed-bg); color: var(--status-completed-text); }
-.badge-failed { background: var(--status-failed-bg); color: var(--status-failed-text); }
-.badge-locked { background: var(--status-locked-bg); color: var(--status-locked-text); }
-.badge-risk { background: var(--status-risk-bg); color: var(--status-risk-text); }
-.badge-draft { background: #faebd1; color: #824600; }
-
-/* Callouts */
-.callout {
-  padding: 14px 18px; border-radius: 8px; margin: 16px 0;
-  font-size: 13px; line-height: 1.6; display: flex; gap: 10px;
-}
-.callout svg { flex-shrink: 0; margin-top: 2px; }
-.callout-info { background: var(--accent-bg); border: 1px solid var(--accent-light); }
-.callout-warn { background: #fef9ed; border: 1px solid #f5e6c0; }
-[data-theme="dark"] .callout-warn { background: #2a2510; border-color: #3a3520; }
-.callout-rule { background: var(--bg-card); border: 1px solid var(--border); }
-
-/* Collapsible sections */
-details { margin: 12px 0; }
-details summary {
-  cursor: pointer; font-weight: 600; font-size: 13px; padding: 10px 14px;
-  background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border);
-  list-style: none; display: flex; align-items: center; gap: 8px;
-  user-select: none; transition: background 0.12s;
-}
-details summary:hover { background: var(--bg-table-header); }
-details summary::before {
-  content: ''; display: inline-block; width: 0; height: 0;
-  border-left: 5px solid var(--text-tertiary); border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent; transition: transform 0.2s; flex-shrink: 0;
-}
-details[open] summary::before { transform: rotate(90deg); }
-details .details-content { padding: 16px 18px; }
-
-/* Color swatches */
-.swatch-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
-.swatch {
-  display: flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px;
-  border-radius: 6px; border: 1px solid var(--border); font-size: 11px;
-  font-family: 'JetBrains Mono', monospace; background: var(--bg);
-}
-.swatch-color {
-  width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0;
-  border: 1px solid rgba(0,0,0,0.08);
+.ds-sidebar__group {
+  margin-bottom: var(--space-md);
 }
 
-/* Section counter badge */
-.section-count {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 22px; height: 22px; border-radius: 6px; background: var(--bg-badge);
-  font-size: 11px; font-weight: 700; color: var(--text-secondary);
-  margin-right: 6px; vertical-align: middle;
+/* ============================================================
+   SECTION
+   ============================================================ */
+
+.ds-section {
+  margin-bottom: var(--space-xxxl);
+  scroll-margin-top: var(--space-lg);
 }
 
-/* Stats row */
-.stats-row {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px; margin: 16px 0;
+.ds-section__label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--neutral-400);
+  margin-bottom: var(--space-xs);
 }
-.stat-card {
-  background: var(--bg-card); border-radius: 8px; padding: 14px 16px;
-  border: 1px solid var(--border);
-}
-.stat-value { font-size: 22px; font-weight: 700; color: var(--text-primary); }
-.stat-label { font-size: 11px; color: var(--text-tertiary); font-weight: 500; margin-top: 2px; }
 
-/* Back to top */
-#back-to-top {
-  position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px;
-  border-radius: 10px; background: var(--text-primary); color: var(--bg);
-  border: none; cursor: pointer; display: none; align-items: center;
-  justify-content: center; box-shadow: var(--shadow-md); z-index: 500;
+.ds-section__title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-xs);
+}
+
+.ds-section__desc {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-lg);
+  max-width: 640px;
+}
+
+.ds-divider {
+  border: none;
+  border-top: var(--border-subtle);
+  margin: var(--space-xl) 0;
+}
+
+/* ============================================================
+   COLOR SWATCHES
+   ============================================================ */
+
+.ds-color-group {
+  margin-bottom: var(--space-lg);
+}
+
+.ds-color-group__label {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: var(--space-sm);
+}
+
+.ds-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ds-swatch {
+  width: 80px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.ds-swatch:hover {
+  transform: translateY(-2px);
+}
+
+.ds-swatch__color {
+  width: 80px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.ds-swatch__color.light-border {
+  box-shadow: inset 0 0 0 1px var(--neutral-300);
+}
+
+.ds-swatch__name {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--neutral-600);
+  line-height: 1.3;
+}
+
+.ds-swatch__hex {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--neutral-400);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Copy feedback */
+.ds-swatch__color::after {
+  content: 'Copied';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  opacity: 0;
   transition: opacity 0.2s;
-}
-#back-to-top.visible { display: flex; }
-
-/* Anchor links */
-.anchor-link {
-  opacity: 0; color: var(--accent); text-decoration: none; margin-left: 6px;
-  font-size: 0.85em; transition: opacity 0.15s;
-}
-h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
-
-/* Decision table */
-.decision-open { color: var(--status-risk-text); font-weight: 600; }
-.decision-done { color: var(--status-completed-text); font-weight: 600; }
-
-/* Print */
-@media print {
-  .sidebar, .topbar, #reading-progress, #back-to-top, .search-overlay,
-  .topbar-controls, .anchor-link { display: none !important; }
-  .main { margin-left: 0; padding: 20px; max-width: 100%; }
-  h2 { break-before: page; }
-  body { font-size: 11px; }
+  pointer-events: none;
 }
 
-/* Responsive */
+.ds-swatch__color.copied::after {
+  opacity: 1;
+}
+
+/* Dark swatch row */
+.ds-swatches--dark {
+  background: var(--brand-dark);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+}
+
+.ds-swatches--dark .ds-swatch__name,
+.ds-swatches--dark .ds-swatch__hex {
+  color: var(--white-50);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+.ds-type-sample {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: var(--border-subtle);
+}
+
+.ds-type-sample:last-child {
+  border-bottom: none;
+}
+
+.ds-type-meta {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--neutral-500);
+  line-height: 1.4;
+}
+
+.ds-type-meta strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: 2px;
+}
+
+.ds-type-specimen {
+  color: var(--neutral-900);
+}
+
+/* Token badge */
+.ds-token {
+  display: inline-block;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  background: var(--neutral-200);
+  color: var(--neutral-700);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ds-token:hover {
+  background: var(--neutral-300);
+}
+
+/* ============================================================
+   SPACING
+   ============================================================ */
+
+.ds-space-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 0;
+}
+
+.ds-space-bar {
+  height: 24px;
+  background: var(--accent-blue);
+  border-radius: 3px;
+  opacity: 0.15;
+  transition: opacity 0.15s;
+}
+
+.ds-space-row:hover .ds-space-bar {
+  opacity: 0.35;
+}
+
+.ds-space-label {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--neutral-700);
+  min-width: 60px;
+}
+
+.ds-space-value {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--neutral-500);
+  min-width: 40px;
+}
+
+/* ============================================================
+   RADIUS
+   ============================================================ */
+
+.ds-radius-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.ds-radius-item {
+  text-align: center;
+}
+
+.ds-radius-box {
+  width: 72px;
+  height: 72px;
+  background: var(--neutral-200);
+  border: var(--border-subtle);
+  margin-bottom: 8px;
+}
+
+.ds-radius-label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neutral-700);
+}
+
+.ds-radius-val {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--neutral-400);
+}
+
+/* ============================================================
+   ELEVATION
+   ============================================================ */
+
+.ds-shadow-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.ds-shadow-item {
+  text-align: center;
+}
+
+.ds-shadow-box {
+  width: 120px;
+  height: 80px;
+  background: white;
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.ds-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn--primary {
+  height: 48px;
+  padding: 0 24px;
+  background: var(--neutral-950);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+}
+.btn--primary:hover { background: var(--neutral-800); }
+
+.btn--secondary {
+  height: 44px;
+  padding: 0 20px;
+  background: var(--black-5);
+  color: var(--neutral-900);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: var(--radius-default);
+  border: var(--border-default);
+}
+.btn--secondary:hover { background: var(--black-10); }
+
+.btn--ghost {
+  height: 44px;
+  padding: 0 16px;
+  background: transparent;
+  color: var(--neutral-900);
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 0;
+}
+.btn--ghost:hover { color: var(--neutral-600); }
+
+.btn--filter-active {
+  height: 36px;
+  padding: 0 16px;
+  background: var(--neutral-900);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+}
+
+.btn--filter-inactive {
+  height: 36px;
+  padding: 0 16px;
+  background: white;
+  color: var(--neutral-900);
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: var(--radius-full);
+  border: var(--border-subtle);
+}
+.btn--filter-inactive:hover { background: var(--neutral-200); }
+
+.btn--icon {
+  width: 48px;
+  height: 48px;
+  background: var(--neutral-950);
+  color: white;
+  font-size: 18px;
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.ds-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.card {
+  background: white;
+  border: var(--border-subtle);
+  padding: 20px 24px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-sm);
+}
+
+.card__instructor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.card__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--neutral-300);
+}
+
+.card__name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-600);
+}
+
+.card__rank {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--neutral-300);
+  margin-left: auto;
+  line-height: 1;
+}
+
+/* Enrollment Card */
+.card--enrollment {
+  border-radius: var(--radius-lg);
+  border: var(--border-default);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-md);
+  max-width: 384px;
+}
+
+.card--enrollment .card__price {
+  font-family: var(--font-ui);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-md);
+}
+
+.card--enrollment .card__price span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--neutral-500);
+}
+
+.card--enrollment .card__label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-sm);
+}
+
+/* Category card on dark */
+.card--category {
+  background: var(--white-5);
+  border: var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.card--category .card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.card--category .card__title {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.card--category .card__sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--white-50);
+}
+
+.ds-dark-panel {
+  background: var(--brand-dark);
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-lg);
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.ds-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: flex-start;
+  margin-bottom: var(--space-lg);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group__label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neutral-600);
+}
+
+.input {
+  font-family: var(--font-sans);
+  height: 44px;
+  padding: 0 16px;
+  border: var(--border-subtle);
+  border-radius: var(--radius-default);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--neutral-900);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 280px;
+}
+
+.input::placeholder { color: var(--neutral-500); }
+.input:focus { border: var(--border-focus); }
+
+.input--search {
+  border-radius: var(--radius-full);
+  background: var(--white-10);
+  border: none;
+  color: white;
+  font-size: 14px;
+  width: 260px;
+}
+.input--search::placeholder { color: var(--white-50); }
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.ds-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.badge--on-demand {
+  color: var(--accent-green-dark);
+  background: rgba(32,224,112,0.08);
+}
+
+.badge--live {
+  color: var(--accent-orange);
+  background: rgba(228,95,24,0.08);
+}
+
+.badge--live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-orange);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.badge--category {
+  color: white;
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+}
+
+/* ============================================================
+   BORDERS & TOKENS TABLE
+   ============================================================ */
+
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-bottom: var(--space-lg);
+}
+
+.ds-table th {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--neutral-400);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--neutral-300);
+}
+
+.ds-table td {
+  padding: 10px 12px;
+  border-bottom: var(--border-subtle);
+  vertical-align: middle;
+}
+
+.ds-table code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  background: var(--neutral-200);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--neutral-700);
+}
+
+.ds-table .border-preview {
+  width: 80px;
+  height: 1px;
+}
+
+/* ============================================================
+   LAYOUT PATTERNS
+   ============================================================ */
+
+.ds-layout-diagram {
+  background: var(--neutral-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--neutral-600);
+}
+
+.ds-grid-demo {
+  display: grid;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.ds-grid-demo__item {
+  background: var(--accent-blue);
+  opacity: 0.1;
+  border-radius: var(--radius-md);
+  height: 48px;
+}
+
+/* ============================================================
+   INTERACTION STATES
+   ============================================================ */
+
+.ds-state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-sm);
+}
+
+.ds-state-card {
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--neutral-100);
+}
+
+.ds-state-card__label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: 8px;
+}
+
+.ds-state-card__desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--neutral-600);
+}
+
+/* ============================================================
+   DASHBOARD TABS (authenticated /me page)
+   ============================================================ */
+
+.ds-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--neutral-300);
+  margin-bottom: 24px;
+}
+
+.ds-tab {
+  display: inline-block;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--neutral-500);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.ds-tab:hover { color: var(--neutral-900); }
+
+.ds-tab.active {
+  color: var(--neutral-900);
+  border-bottom-color: var(--neutral-900);
+  font-weight: 600;
+}
+
+/* ============================================================
+   LIGHTNING LESSON CARD
+   ============================================================ */
+
+.ll-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: var(--border-default);
+  border-radius: var(--radius-xl);
+  background: white;
+  max-width: 340px;
+}
+
+.ll-card__accent {
+  width: 24px;
+  height: 6px;
+  background: var(--accent-green-lightning);
+  border-radius: 3px;
+}
+
+.ll-card__title {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--neutral-900);
+}
+
+.ll-card__meta {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--neutral-500);
+}
+
+.ll-card__instructor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ll-card__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--neutral-300);
+}
+
+.ll-card__name {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--neutral-700);
+}
+
+.ll-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 36px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-900);
+  background: white;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ll-card__cta:hover { background: var(--neutral-200); }
+
+/* ============================================================
+   COURSE LISTING CARD (Grid variant from /courses)
+   ============================================================ */
+
+.clc {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  padding: 16px;
+  border: var(--border-default);
+  border-radius: var(--radius-xl);
+  background: white;
+  max-width: 500px;
+  transition: box-shadow 0.2s;
+}
+
+.clc:hover { box-shadow: var(--shadow-md); }
+
+.clc__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.clc__title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  color: var(--brand-dark);
+}
+
+.clc__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--neutral-700);
+  margin-top: 6px;
+}
+
+.clc__star { color: #F59E0B; }
+
+.clc__meta {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--neutral-600);
+  margin-top: 4px;
+}
+
+.clc__price {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-900);
+}
+
+/* ============================================================
+   CATEGORY NAV CARD (Dark, from /courses hero)
+   ============================================================ */
+
+.cat-nav-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--brand-dark);
+  border: 2px solid var(--accent-blue-border);
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.cat-nav-card:hover { border-color: var(--accent-blue-light); }
+
+.cat-nav-card__label-sm {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+}
+
+.cat-nav-card__label-lg {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: white;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.ds-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  border: 1px dashed var(--neutral-300);
+  border-radius: var(--radius-xl);
+  background: var(--neutral-100);
+}
+
+.ds-empty-state__text {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--neutral-500);
+  margin-bottom: 16px;
+}
+
+.ds-empty-state__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent-blue);
+  background: var(--accent-blue-alice);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ds-empty-state__cta:hover { background: #D9E8FF; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.ds-navbar-demo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  height: 64px;
+  background: white;
+  border: var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.ds-navbar-demo__logo {
+  width: 28px;
+  height: 28px;
+  background: var(--brand-dark);
+  border-radius: 6px;
+}
+
+.ds-navbar-demo__search {
+  flex: 1;
+  max-width: 280px;
+  height: 36px;
+  padding: 0 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--neutral-700);
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-full);
+}
+
+.ds-navbar-demo__link {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-900);
+  text-decoration: none;
+}
+
+.ds-navbar-demo__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--neutral-300);
+  margin-left: auto;
+}
+
+/* ============================================================
+   ERROR / 404 STATE
+   ============================================================ */
+
+.ds-error-state {
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.ds-error-state__emoji {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.ds-error-state__title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--neutral-900);
+  margin-bottom: 8px;
+}
+
+.ds-error-state__text {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--neutral-500);
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   HERO BANNER (Lightning Lessons dark header)
+   ============================================================ */
+
+.ds-ll-hero {
+  background: var(--brand-dark);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ds-ll-hero__badge {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 28px;
+  color: white;
+}
+
+.ds-ll-hero__title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 36px;
+  color: var(--neutral-900);
+  margin-top: 16px;
+}
+
+.ds-ll-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-100);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin-top: 8px;
+  width: fit-content;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.ds-footer-demo {
+  background: var(--brand-dark);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.ds-footer-demo__heading {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.ds-footer-demo__link {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--white-70);
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CHANGELOG
+   ============================================================ */
+
+.ds-changelog-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: var(--border-subtle);
+}
+
+.ds-changelog-item:last-child { border-bottom: none; }
+
+.ds-changelog-date {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neutral-500);
+}
+
+.ds-changelog-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--neutral-700);
+}
+
+.ds-changelog-tag {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+
+.ds-changelog-tag--new { background: rgba(32,224,112,0.12); color: var(--accent-green-dark); }
+.ds-changelog-tag--update { background: var(--accent-blue-alice); color: var(--accent-blue); }
+.ds-changelog-tag--fix { background: rgba(255,55,66,0.08); color: var(--accent-red); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
 @media (max-width: 900px) {
-  .sidebar { display: none; }
-  .main { margin-left: 0; padding: 70px 20px 80px; }
+  .ds-layout {
+    grid-template-columns: 1fr;
+  }
+  .ds-sidebar {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-lg);
+    border-bottom: var(--border-subtle);
+    margin-bottom: var(--space-lg);
+  }
+  .ds-sidebar__group { margin-bottom: 0; }
+  .ds-sidebar a { border-left: none; padding-left: 0; }
 }
 </style>
 </head>
 <body>
 
-<div id="reading-progress"></div>
-
-<header class="topbar">
-  <div class="topbar-brand">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#0338b8"/><path d="M6 14V8l4 3-4 3z" fill="#fff"/><path d="M10 14V8l4 3-4 3z" fill="#fff" opacity=".5"/></svg>
-    SkillUp LMS PRD
-  </div>
-  <div class="topbar-meta">
-    <span><strong>Owner:</strong> Nelson Jeronimo</span>
-    <span><strong>Updated:</strong> Apr 9, 2026</span>
-    <span><span class="badge badge-draft">Draft</span></span>
-  </div>
-  <div class="topbar-controls">
-    <button class="topbar-btn" onclick="openSearch()" title="Search (Cmd+K)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    </button>
-    <button class="topbar-btn" onclick="toggleTheme()" title="Toggle dark mode" id="theme-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <button class="topbar-btn" onclick="window.print()" title="Print / Export PDF">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    </button>
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="ds-hero">
+  <div class="ds-container">
+    <div class="ds-hero__badge">Living Document v1.3</div>
+    <h1 class="ds-hero__title">SkillUp LMS Design System</h1>
+    <p class="ds-hero__sub">Extracted from Maven | Light mode only | Last updated: <span id="last-updated"></span></p>
+    <div class="ds-hero__stats">
+      <div class="ds-stat"><span class="ds-stat__num">35+</span><span class="ds-stat__label">Color Tokens</span></div>
+      <div class="ds-stat"><span class="ds-stat__num">17</span><span class="ds-stat__label">Type Styles</span></div>
+      <div class="ds-stat"><span class="ds-stat__num">14</span><span class="ds-stat__label">Spacing Tokens</span></div>
+      <div class="ds-stat"><span class="ds-stat__num">6</span><span class="ds-stat__label">Radius Tokens</span></div>
+      <div class="ds-stat"><span class="ds-stat__num">3</span><span class="ds-stat__label">Shadows</span></div>
+      <div class="ds-stat"><span class="ds-stat__num">20+</span><span class="ds-stat__label">Components</span></div>
+      <div class="ds-stat"><span class="ds-stat__num">45</span><span class="ds-stat__label">Icons</span></div>
+    </div>
   </div>
 </header>
 
-<!-- Search overlay -->
-<div class="search-overlay" id="search-overlay" onclick="if(event.target===this)closeSearch()">
-  <div class="search-modal">
-    <div class="search-input-wrap">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input class="search-input" id="search-input" type="text" placeholder="Search sections, requirements, specs..." autocomplete="off">
-      <span class="search-kbd">ESC</span>
-    </div>
-    <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search across all 17 sections</div>
-    </div>
-  </div>
-</div>
+<!-- ============================================================
+     MAIN LAYOUT
+     ============================================================ -->
+<div class="ds-container">
+  <div class="ds-layout">
 
-<!-- Sidebar -->
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-section">
-    <div class="sidebar-label">Document</div>
-    <a class="nav-item" href="#top">Overview</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Product</div>
-    <div class="nav-group" data-group="s1">
-      <button class="nav-group-toggle" onclick="toggleNavGroup(this)">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2l4 4-4 4z"/></svg>
-        1. Product Overview
-      </button>
-      <div class="nav-children">
-        <a class="nav-item sub" href="#s1-1">What This Is</a>
-        <a class="nav-item sub" href="#s1-2">Problem Statement</a>
-        <a class="nav-item sub" href="#s1-3">Design Goals</a>
-        <a class="nav-item sub" href="#s1-4">Target User</a>
-        <a class="nav-item sub" href="#s1-5">Visual Direction</a>
+    <!-- SIDEBAR NAV -->
+    <nav class="ds-sidebar">
+      <div class="ds-sidebar__group">
+        <div class="ds-sidebar__title">Foundation</div>
+        <a href="#colors">Colors</a>
+        <a href="#typography">Typography</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#radius">Border Radius</a>
+        <a href="#elevation">Elevation</a>
+        <a href="#borders">Borders</a>
       </div>
-    </div>
-    <div class="nav-group" data-group="s2">
-      <button class="nav-group-toggle" onclick="toggleNavGroup(this)">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2l4 4-4 4z"/></svg>
-        2. Content Architecture
-      </button>
-      <div class="nav-children">
-        <a class="nav-item sub" href="#s2-1">Content Hierarchy</a>
-        <a class="nav-item sub" href="#s2-2">Content Types</a>
-        <a class="nav-item sub" href="#s2-3">Delivery Methods</a>
-        <a class="nav-item sub" href="#s2-4">Enrollment Lifecycle</a>
+      <div class="ds-sidebar__group">
+        <div class="ds-sidebar__title">Components</div>
+        <a href="#buttons">Buttons</a>
+        <a href="#cards">Cards</a>
+        <a href="#inputs">Inputs</a>
+        <a href="#badges">Badges</a>
+        <a href="#tabs">Tabs</a>
+        <a href="#navbar">Navbar</a>
       </div>
-    </div>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Screens</div>
-    <div class="nav-group" data-group="s3">
-      <button class="nav-group-toggle" onclick="toggleNavGroup(this)">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2l4 4-4 4z"/></svg>
-        3. Screen Requirements
-      </button>
-      <div class="nav-children">
-        <a class="nav-item sub" href="#s3-1">My Learning List</a>
-        <a class="nav-item sub" href="#s3-2">Detail Pages (shared)</a>
-        <a class="nav-item sub" href="#s3-3">TechMaster (Blended)</a>
-        <a class="nav-item sub" href="#s3-4">Data Analytics (Flexible)</a>
-        <a class="nav-item sub" href="#s3-5">Cloud Engineering (VILT)</a>
-        <a class="nav-item sub" href="#s3-6">Cybersecurity (Not Started)</a>
+      <div class="ds-sidebar__group">
+        <div class="ds-sidebar__title">Authenticated</div>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#lightning">Lightning Lessons</a>
+        <a href="#course-listing">Course Listing</a>
+        <a href="#course-detail">Course Detail</a>
+        <a href="#empty-error">Empty / Error</a>
+        <a href="#footer">Footer</a>
       </div>
-    </div>
-    <a class="nav-item" href="#s4">4. Shared Tab Requirements</a>
-    <a class="nav-item" href="#s5">5. Dashboard (Home)</a>
-    <a class="nav-item" href="#s6">6. Immersive Player</a>
-    <a class="nav-item" href="#s7">7. Gamification / Weekly Goals</a>
-    <a class="nav-item" href="#s8">8. Live Sessions Flow</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Specs</div>
-    <a class="nav-item" href="#s9">9. Design System</a>
-    <a class="nav-item" href="#s10">10. UX Audit Findings</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Gaps & Decisions</div>
-    <a class="nav-item" href="#s11">11. Missing Scenarios</a>
-    <a class="nav-item" href="#s12">12. Edge Cases</a>
-    <a class="nav-item" href="#s13">13. Open Decisions</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Extended</div>
-    <a class="nav-item" href="#s14">14. Competitive Research</a>
-    <a class="nav-item" href="#s15">15. Cohort Management</a>
-    <a class="nav-item" href="#s16">16. Mobile App (Phase 2)</a>
-    <a class="nav-item" href="#s17">17. Figma Reference</a>
-  </div>
-</nav>
+      <div class="ds-sidebar__group">
+        <div class="ds-sidebar__title">Patterns</div>
+        <a href="#layout">Layout</a>
+        <a href="#states">Interaction States</a>
+        <a href="#motion">Motion</a>
+        <a href="#icons">Iconography</a>
+      </div>
+      <div class="ds-sidebar__group">
+        <div class="ds-sidebar__title">Meta</div>
+        <a href="#responsive">Responsive</a>
+        <a href="#changelog">Changelog</a>
+        <a href="#notes">Notes</a>
+      </div>
+    </nav>
 
-<!-- Main content -->
-<main class="main" id="top">
+    <!-- CONTENT -->
+    <main>
 
-<h1>SkillUp LMS: Courses and Programs PRD</h1>
-<div class="doc-subtitle">Learner Platform Experience, Phase 1</div>
-<div class="doc-meta">
-  <span class="doc-meta-item"><strong>Owner:</strong> Nelson Jeronimo</span>
-  <span class="doc-meta-item"><strong>Updated:</strong> April 9, 2026</span>
-  <span class="doc-meta-item"><strong>Status:</strong> <span class="badge badge-draft">Draft, Living Document</span></span>
-  <span class="doc-meta-item"><strong>Figma:</strong> <code>Wz2TCYFVr0hD8tJNiLajLt</code></span>
+      <!-- ==================== COLORS ==================== -->
+      <section id="colors" class="ds-section">
+        <div class="ds-section__label">Foundation</div>
+        <h2 class="ds-section__title">Colors</h2>
+        <p class="ds-section__desc">The palette is anchored by a neutral gray scale, a deep navy brand color, and selective accent colors. Click any swatch to copy its hex value.</p>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Neutral</div>
+          <div class="ds-swatches" id="neutral-swatches"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Brand</div>
+          <div class="ds-swatches" id="brand-swatches"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Accent</div>
+          <div class="ds-swatches" id="accent-swatches"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Tint (Feature Cards)</div>
+          <div class="ds-swatches" id="tint-swatches"></div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">White Opacity (on dark surfaces)</div>
+          <div class="ds-swatches ds-swatches--dark" id="white-opacity-swatches"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Black Opacity (on light surfaces)</div>
+          <div class="ds-swatches" id="black-opacity-swatches"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Extended Accents (from authenticated pages)</div>
+          <div class="ds-swatches" id="extended-accent-swatches"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Content Accent Palette (course categories)</div>
+          <div class="ds-swatches" id="content-accent-swatches"></div>
+        </div>
+      </section>
+
+      <!-- ==================== TYPOGRAPHY ==================== -->
+      <section id="typography" class="ds-section">
+        <div class="ds-section__label">Foundation</div>
+        <h2 class="ds-section__title">Typography</h2>
+        <p class="ds-section__desc">Editorial feel: a serif display face for headlines, a clean sans for body and UI. Based on proprietary Bureau Sans/Serif. This system substitutes DM Serif Display + DM Sans (open source).</p>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Font Stack</div>
+          <table class="ds-table">
+            <thead><tr><th>Token</th><th>Family</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td><code>--font-serif</code></td><td>DM Serif Display (sub for Bureau Serif)</td><td>Headlines, hero text, section titles</td></tr>
+              <tr><td><code>--font-sans</code></td><td>DM Sans (sub for Bureau Sans)</td><td>Body, UI, buttons, labels, navigation</td></tr>
+              <tr><td><code>--font-ui</code></td><td>Plus Jakarta Sans (sub for Graphik)</td><td>Small UI labels, badges, metadata</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Type Scale</div>
+          <div id="type-scale"></div>
+        </div>
+
+        <div class="ds-color-group">
+          <div class="ds-color-group__label">Weight Scale</div>
+          <table class="ds-table">
+            <thead><tr><th>Name</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td>Light</td><td><code>200</code></td><td>Display headlines only</td></tr>
+              <tr><td>Book</td><td><code>300</code></td><td>Body text, serif headings</td></tr>
+              <tr><td>Regular</td><td><code>400</code></td><td>Default / inherited</td></tr>
+              <tr><td>Medium</td><td><code>500</code></td><td>Links, labels, emphasized text</td></tr>
+              <tr><td>Semi Bold</td><td><code>600</code></td><td>Button labels, strong headings</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== SPACING ==================== -->
+      <section id="spacing" class="ds-section">
+        <div class="ds-section__label">Foundation</div>
+        <h2 class="ds-section__title">Spacing</h2>
+        <p class="ds-section__desc">Base unit: 8px. All spacing values derive from this unit.</p>
+        <div id="spacing-scale"></div>
+
+        <hr class="ds-divider">
+        <div class="ds-color-group__label">Layout Widths</div>
+        <table class="ds-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><code>--max-content</code></td><td>1152px</td><td>Main content container</td></tr>
+            <tr><td><code>--max-card</code></td><td>808px</td><td>Content column (detail pages)</td></tr>
+            <tr><td><code>--max-sidebar</code></td><td>384px</td><td>Enrollment sidebar</td></tr>
+            <tr><td><code>--max-cta</code></td><td>400px</td><td>CTA sections</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== RADIUS ==================== -->
+      <section id="radius" class="ds-section">
+        <div class="ds-section__label">Foundation</div>
+        <h2 class="ds-section__title">Border Radius</h2>
+        <p class="ds-section__desc">From sharp to fully rounded.</p>
+        <div class="ds-radius-grid" id="radius-grid"></div>
+      </section>
+
+      <!-- ==================== ELEVATION ==================== -->
+      <section id="elevation" class="ds-section">
+        <div class="ds-section__label">Foundation</div>
+        <h2 class="ds-section__title">Elevation</h2>
+        <p class="ds-section__desc">Three shadow levels. Light and restrained. Used on cards and modals, not on flat UI.</p>
+        <div class="ds-shadow-grid">
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-box" style="box-shadow: var(--shadow-sm);"></div>
+            <div class="ds-radius-label">SM</div>
+            <div class="ds-radius-val">Inputs, subtle lift</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-box" style="box-shadow: var(--shadow-md);"></div>
+            <div class="ds-radius-label">MD</div>
+            <div class="ds-radius-val">Cards, dropdowns</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-box" style="box-shadow: var(--shadow-lg);"></div>
+            <div class="ds-radius-label">LG</div>
+            <div class="ds-radius-val">Modals, enrollment card</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== BORDERS ==================== -->
+      <section id="borders" class="ds-section">
+        <div class="ds-section__label">Foundation</div>
+        <h2 class="ds-section__title">Borders</h2>
+        <table class="ds-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Preview</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><code>--border-default</code></td><td>1px solid rgba(0,0,0,0.1)</td><td><div class="border-preview" style="border-bottom: 1px solid rgba(0,0,0,0.1);"></div></td><td>Card borders, dividers</td></tr>
+            <tr><td><code>--border-strong</code></td><td>1px solid #171717</td><td><div class="border-preview" style="border-bottom: 1px solid #171717;"></div></td><td>Active states, selected items</td></tr>
+            <tr><td><code>--border-subtle</code></td><td>1px solid #E5E5E5</td><td><div class="border-preview" style="border-bottom: 1px solid #E5E5E5;"></div></td><td>Table rows, section dividers</td></tr>
+            <tr><td><code>--border-focus</code></td><td>2px solid #3E89FF</td><td><div class="border-preview" style="border-bottom: 2px solid #3E89FF;"></div></td><td>Input focus ring</td></tr>
+            <tr><td><code>--border-dark</code></td><td>1px solid rgba(255,255,255,0.2)</td><td><div class="border-preview" style="background: #080C28; border-bottom: 1px solid rgba(255,255,255,0.2); height: 20px; border-radius: 3px;"></div></td><td>Borders on dark surfaces</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== BUTTONS ==================== -->
+      <section id="buttons" class="ds-section">
+        <div class="ds-section__label">Components</div>
+        <h2 class="ds-section__title">Buttons</h2>
+        <p class="ds-section__desc">Six button variants. Primary is always dark. Filter buttons use pill shapes.</p>
+
+        <div class="ds-color-group__label">Variants</div>
+        <div class="ds-btn-row">
+          <button class="btn btn--primary">Enroll</button>
+          <button class="btn btn--secondary">View Syllabus</button>
+          <button class="btn btn--ghost">Show more</button>
+        </div>
+        <div class="ds-btn-row">
+          <button class="btn btn--filter-active">Trending</button>
+          <button class="btn btn--filter-inactive">New on SkillUp</button>
+          <button class="btn btn--filter-inactive">Best selling</button>
+        </div>
+        <div class="ds-btn-row">
+          <button class="btn btn--icon" aria-label="Submit">&#8594;</button>
+          <span style="font-size: 13px; color: var(--neutral-500);">Icon button (email submit)</span>
+        </div>
+
+        <hr class="ds-divider">
+        <table class="ds-table">
+          <thead><tr><th>Variant</th><th>Background</th><th>Text</th><th>Border</th><th>Radius</th><th>Height</th></tr></thead>
+          <tbody>
+            <tr><td>Primary</td><td><code>#0D0D0D</code></td><td>White</td><td>None</td><td>12px</td><td>48px</td></tr>
+            <tr><td>Secondary</td><td><code>black 5%</code></td><td>#171717</td><td>black 10%</td><td>10px</td><td>44px</td></tr>
+            <tr><td>Ghost</td><td>Transparent</td><td>#171717</td><td>None</td><td>0</td><td>44px</td></tr>
+            <tr><td>Filter Active</td><td><code>#171717</code></td><td>White</td><td>None</td><td>Full</td><td>36px</td></tr>
+            <tr><td>Filter Inactive</td><td>White</td><td>#171717</td><td>#E5E5E5</td><td>Full</td><td>36px</td></tr>
+            <tr><td>Icon</td><td><code>#0D0D0D</code></td><td>White</td><td>None</td><td>12px</td><td>48x48</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== CARDS ==================== -->
+      <section id="cards" class="ds-section">
+        <div class="ds-section__label">Components</div>
+        <h2 class="ds-section__title">Cards</h2>
+        <p class="ds-section__desc">Course listing cards, enrollment sidebar, and category cards on dark surfaces.</p>
+
+        <div class="ds-color-group__label">Course Listing Card</div>
+        <div class="ds-card-grid">
+          <div class="card">
+            <div class="card__title">World-class Product Sense in Practice</div>
+            <div class="card__instructor">
+              <div class="card__avatar"></div>
+              <span class="card__name">Shreyas Doshi</span>
+              <span class="card__rank">1</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__title">AI Product Management Certification</div>
+            <div class="card__instructor">
+              <div class="card__avatar"></div>
+              <div class="card__avatar" style="margin-left: -12px;"></div>
+              <span class="card__name">Rohan Varma and Henry Shi</span>
+              <span class="card__rank">2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-color-group__label">Enrollment Sidebar Card</div>
+        <div class="card card--enrollment" style="margin-bottom: 32px;">
+          <div class="card__price">$3,000 <span>USD</span></div>
+          <div class="card__label">Next Cohorts</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; cursor: pointer;">
+              <input type="radio" name="cohort" checked style="accent-color: var(--neutral-900); width: 16px; height: 16px;"> May 2 &mdash; 10, 2026
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; cursor: pointer; color: var(--neutral-600);">
+              <input type="radio" name="cohort" style="accent-color: var(--neutral-900); width: 16px; height: 16px;"> June 13 &mdash; 20, 2026
+            </label>
+          </div>
+          <button class="btn btn--primary" style="width: 100%;">Enroll</button>
+        </div>
+
+        <div class="ds-color-group__label">Category Card (Dark Surface)</div>
+        <div class="ds-dark-panel">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="card--category">
+              <div class="card__icon">&#128203;</div>
+              <div><div class="card__title">Cohort-based courses</div><div class="card__sub">Guided programs to get real results</div></div>
+            </div>
+            <div class="card--category">
+              <div class="card__icon">&#9889;</div>
+              <div><div class="card__title">Free Lightning Lessons</div><div class="card__sub">Interactive sessions to explore new topics</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== INPUTS ==================== -->
+      <section id="inputs" class="ds-section">
+        <div class="ds-section__label">Components</div>
+        <h2 class="ds-section__title">Inputs</h2>
+        <p class="ds-section__desc">Text inputs, search bars, and email capture fields.</p>
+
+        <div class="ds-input-row">
+          <div class="input-group">
+            <div class="input-group__label">Text Input (Default)</div>
+            <input type="text" class="input" placeholder="your@email.com">
+          </div>
+          <div class="input-group">
+            <div class="input-group__label">Text Input (Focused)</div>
+            <input type="text" class="input" placeholder="Focused state" style="border: var(--border-focus);">
+          </div>
+        </div>
+
+        <div class="ds-color-group__label">Search Input (Dark Surface)</div>
+        <div class="ds-dark-panel" style="display: flex; align-items: center; gap: 16px; padding: 24px;">
+          <input type="text" class="input input--search" placeholder="What do you want to learn?">
+        </div>
+      </section>
+
+      <!-- ==================== BADGES ==================== -->
+      <section id="badges" class="ds-section">
+        <div class="ds-section__label">Components</div>
+        <h2 class="ds-section__title">Badges</h2>
+
+        <div class="ds-color-group__label">Status Badges</div>
+        <div class="ds-badge-row">
+          <span class="badge badge--on-demand">&#9654; On Demand</span>
+          <span class="badge badge--live">Live on Fri, Apr 17 at 5:00 PM</span>
+        </div>
+
+        <div class="ds-color-group__label">Category Badges</div>
+        <div class="ds-badge-row">
+          <span class="badge badge--category" style="background: var(--tint-purple);">AI</span>
+          <span class="badge badge--category" style="background: var(--tint-magenta);">Product</span>
+          <span class="badge badge--category" style="background: var(--accent-green-dark);">Engineering</span>
+          <span class="badge badge--category" style="background: var(--tint-burnt);">Marketing</span>
+          <span class="badge badge--category" style="background: var(--tint-plum);">Design</span>
+          <span class="badge badge--category" style="background: var(--brand-navy);">Leadership</span>
+        </div>
+      </section>
+
+      <!-- ==================== TABS ==================== -->
+      <section id="tabs" class="ds-section">
+        <div class="ds-section__label">Components</div>
+        <h2 class="ds-section__title">Tabs</h2>
+        <p class="ds-section__desc">Underline tabs used in the dashboard to switch between content views. Active state uses a 2px bottom border.</p>
+
+        <div class="ds-color-group__label">Dashboard Tabs</div>
+        <div class="ds-tabs">
+          <a class="ds-tab active">Courses</a>
+          <a class="ds-tab">Lightning Lessons</a>
+        </div>
+
+        <hr class="ds-divider">
+        <table class="ds-table">
+          <thead><tr><th>State</th><th>Text Color</th><th>Border</th><th>Font Weight</th><th>Size</th></tr></thead>
+          <tbody>
+            <tr><td>Active</td><td><code>#171717</code></td><td>2px solid #171717</td><td>600</td><td>16px</td></tr>
+            <tr><td>Inactive</td><td><code>#737373</code></td><td>None</td><td>500</td><td>16px</td></tr>
+            <tr><td>Hover</td><td><code>#171717</code></td><td>None</td><td>500</td><td>16px</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== NAVBAR ==================== -->
+      <section id="navbar" class="ds-section">
+        <div class="ds-section__label">Components</div>
+        <h2 class="ds-section__title">Navbar</h2>
+        <p class="ds-section__desc">Top navigation bar. 64px height, white background, subtle bottom border. Contains logo, search, links, and avatar.</p>
+
+        <div class="ds-color-group__label">Authenticated Navbar</div>
+        <div class="ds-navbar-demo">
+          <div class="ds-navbar-demo__logo"></div>
+          <input type="text" class="ds-navbar-demo__search" placeholder="What do you want to learn?" disabled>
+          <a class="ds-navbar-demo__link">Apply to teach</a>
+          <div class="ds-navbar-demo__avatar"></div>
+        </div>
+
+        <hr class="ds-divider">
+        <table class="ds-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Height</td><td><code>64px</code></td></tr>
+            <tr><td>Background</td><td>White</td></tr>
+            <tr><td>Border Bottom</td><td><code>1px solid rgba(0,0,0,0.08)</code></td></tr>
+            <tr><td>Search Font</td><td>Bureau Sans / DM Sans, 14px, weight 300</td></tr>
+            <tr><td>Link Font</td><td>Bureau Sans / DM Sans, 14px, weight 500</td></tr>
+            <tr><td>Avatar</td><td>32px circle</td></tr>
+            <tr><td>Position</td><td>Sticky, top: 0, z-index: 50</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== DASHBOARD ==================== -->
+      <section id="dashboard" class="ds-section">
+        <div class="ds-section__label">Authenticated</div>
+        <h2 class="ds-section__title">Dashboard (/me)</h2>
+        <p class="ds-section__desc">The learner dashboard. Greeting, tab navigation between Courses and Lightning Lessons, enrolled course cards, and empty states.</p>
+
+        <div class="ds-color-group__label">Page Structure</div>
+        <table class="ds-table">
+          <thead><tr><th>Element</th><th>Font</th><th>Size</th><th>Weight</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Welcome heading</td><td>Bureau Serif / DM Serif</td><td>40px</td><td>300</td><td>line-height 44px, color #171717</td></tr>
+            <tr><td>Section title "My courses"</td><td>Bureau Serif / DM Serif</td><td>24px</td><td>300</td><td>line-height 28px</td></tr>
+            <tr><td>Section subtitle</td><td>Bureau Sans / DM Sans</td><td>16px</td><td>300</td><td>color #525252</td></tr>
+            <tr><td>Tab: Courses / Lightning Lessons</td><td>Bureau Sans / DM Sans</td><td>16px</td><td>500-600</td><td>Underline tab pattern</td></tr>
+          </tbody>
+        </table>
+
+        <div class="ds-color-group__label">Empty State (No Courses)</div>
+        <div class="ds-empty-state">
+          <div class="ds-empty-state__text">You haven't enrolled in any courses yet.</div>
+          <button class="ds-empty-state__cta">Explore courses</button>
+        </div>
+      </section>
+
+      <!-- ==================== LIGHTNING LESSONS ==================== -->
+      <section id="lightning" class="ds-section">
+        <div class="ds-section__label">Authenticated</div>
+        <h2 class="ds-section__title">Lightning Lessons</h2>
+        <p class="ds-section__desc">Free, live interactive sessions. Cards use a distinctive lime-green accent (#B0FB50). The detail page has a dark navy hero banner.</p>
+
+        <div class="ds-color-group__label">Lightning Lesson Cards</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px;">
+          <div class="ll-card">
+            <div class="ll-card__accent"></div>
+            <div class="ll-card__title">Advocating for UX Quality in Orgs That Value Speed</div>
+            <div class="ll-card__meta">Signed up Mar 2, 2026</div>
+            <div class="ll-card__instructor">
+              <div class="ll-card__avatar"></div>
+              <span class="ll-card__name">Catt Small</span>
+            </div>
+            <button class="ll-card__cta">Event info</button>
+          </div>
+          <div class="ll-card">
+            <div class="ll-card__accent"></div>
+            <div class="ll-card__title">AI-Powered Designer 2026: Essential Skills to Stay Relevant</div>
+            <div class="ll-card__meta">Signed up Mar 2, 2026</div>
+            <div class="ll-card__instructor">
+              <div class="ll-card__avatar"></div>
+              <div class="ll-card__avatar" style="margin-left: -16px;"></div>
+              <span class="ll-card__name">E. Trofimov, A. Pokidyshev</span>
+            </div>
+            <button class="ll-card__cta">Watch recording</button>
+          </div>
+        </div>
+
+        <div class="ds-color-group__label">Lightning Lesson Detail Hero</div>
+        <div class="ds-ll-hero">
+          <div class="ds-ll-hero__badge">Lightning Lessons</div>
+          <div style="color: rgba(205,255,146,1); font-size: 14px; font-weight: 500;">Free event</div>
+          <div class="ds-ll-hero__cta">Watch recording</div>
+        </div>
+
+        <hr class="ds-divider">
+        <table class="ds-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td>Lightning Green</td><td><code>#B0FB50</code></td><td>Card accent bar, category indicator</td></tr>
+            <tr><td>Lightning Green Text</td><td><code>#CDFF92</code></td><td>Text on dark hero (SVG icon color)</td></tr>
+            <tr><td>Card border</td><td><code>1px solid rgba(0,0,0,0.1)</code></td><td>Card container</td></tr>
+            <tr><td>Card radius</td><td><code>16px</code></td><td>Card container</td></tr>
+            <tr><td>CTA height</td><td><code>36px</code></td><td>Event info / Watch recording button</td></tr>
+            <tr><td>Hero bg</td><td><code>#080C28</code></td><td>Detail page dark banner</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== COURSE LISTING ==================== -->
+      <section id="course-listing" class="ds-section">
+        <div class="ds-section__label">Authenticated</div>
+        <h2 class="ds-section__title">Course Listing</h2>
+        <p class="ds-section__desc">Grid layout on /courses pages. Cards use a grid with icon + content. Category nav uses dark navy cards with blue borders.</p>
+
+        <div class="ds-color-group__label">Course Card (Grid Layout)</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px;">
+          <div class="clc">
+            <div class="clc__icon">&#129302;</div>
+            <div>
+              <div class="clc__title">AI Evals For Engineers and PMs</div>
+              <div class="clc__rating"><span class="clc__star">&#9733;</span> 4.7 (320 reviews)</div>
+              <div class="clc__meta">Next cohort: May 2</div>
+              <div class="clc__price">$500 USD</div>
+            </div>
+          </div>
+          <div class="clc">
+            <div class="clc__icon">&#128200;</div>
+            <div>
+              <div class="clc__title">Product Sense in Practice</div>
+              <div class="clc__rating"><span class="clc__star">&#9733;</span> 4.9 (1,240 reviews)</div>
+              <div class="clc__meta">Next cohort: June 13</div>
+              <div class="clc__price">$3,000 USD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-color-group__label">Category Nav Card (Dark)</div>
+        <div class="ds-dark-panel" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 24px;">
+          <div class="cat-nav-card">
+            <div><div class="cat-nav-card__label-sm">All courses in</div><div class="cat-nav-card__label-lg">AI</div></div>
+          </div>
+          <div class="cat-nav-card">
+            <div><div class="cat-nav-card__label-sm">All courses in</div><div class="cat-nav-card__label-lg">Product</div></div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+        <table class="ds-table">
+          <thead><tr><th>Element</th><th>Font</th><th>Size/Weight</th><th>Color</th></tr></thead>
+          <tbody>
+            <tr><td>Course title</td><td>Bureau Serif / DM Serif</td><td>20px / 300</td><td>#080C28</td></tr>
+            <tr><td>Rating</td><td>Bureau Sans / DM Sans</td><td>14px / 300</td><td>#404040</td></tr>
+            <tr><td>Meta text</td><td>Bureau Sans / DM Sans</td><td>14px / 300</td><td>#525252</td></tr>
+            <tr><td>Price</td><td>Bureau Sans / DM Sans</td><td>14px / 500</td><td>#171717</td></tr>
+            <tr><td>Star color</td><td>-</td><td>-</td><td>#F59E0B (amber)</td></tr>
+            <tr><td>Card padding</td><td colspan="3"><code>16px</code>, radius 16px, border 1px solid rgba(0,0,0,0.1)</td></tr>
+            <tr><td>Cat nav border</td><td colspan="3"><code>2px solid #71AEFF</code>, bg #080C28, radius 12px</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== COURSE DETAIL ==================== -->
+      <section id="course-detail" class="ds-section">
+        <div class="ds-section__label">Authenticated</div>
+        <h2 class="ds-section__title">Course Detail Page</h2>
+        <p class="ds-section__desc">Full course landing page. Huge serif title, instructor section, syllabus, sticky enrollment sidebar, reviews, and footer.</p>
+
+        <table class="ds-table">
+          <thead><tr><th>Element</th><th>Font</th><th>Size/Weight</th><th>Color</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Course Title (H1)</td><td>Bureau Serif</td><td>56px / 200</td><td>#080C28</td><td>line-height 60px, letter-spacing -2.24px</td></tr>
+            <tr><td>Instructor Name (H2)</td><td>Bureau Serif</td><td>24px / 300</td><td>#171717</td><td>line-height 28px</td></tr>
+            <tr><td>Section Heading (H2)</td><td>Bureau Serif</td><td>24px / 300</td><td>#171717</td><td>"What you'll learn", "Course syllabus"</td></tr>
+            <tr><td>Body / List Items</td><td>Bureau Sans</td><td>18px / 300</td><td>#171717</td><td>line-height 28px</td></tr>
+            <tr><td>Syllabus Sub-items</td><td>Bureau Sans</td><td>16px / 300</td><td>#171717</td><td>line-height 24px, left-padding 8px</td></tr>
+            <tr><td>Price</td><td>Bureau Serif</td><td>40px / 200</td><td>#171717</td><td>Enrollment sidebar</td></tr>
+            <tr><td>Enrollment CTA</td><td colspan="4">Full-width primary button inside sticky sidebar card</td></tr>
+          </tbody>
+        </table>
+
+        <div class="ds-color-group__label">Sticky Enrollment Sidebar</div>
+        <table class="ds-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Position</td><td><code>sticky</code>, top 24px</td></tr>
+            <tr><td>Background</td><td>White</td></tr>
+            <tr><td>Border</td><td><code>1px solid rgba(0,0,0,0.1)</code></td></tr>
+            <tr><td>Border Radius</td><td><code>16px</code></td></tr>
+            <tr><td>Shadow</td><td><code>0px 4px 12px rgba(0,0,0,0.06)</code></td></tr>
+            <tr><td>Padding</td><td><code>24px</code></td></tr>
+            <tr><td>Width</td><td><code>384px</code> max</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== EMPTY / ERROR STATES ==================== -->
+      <section id="empty-error" class="ds-section">
+        <div class="ds-section__label">Authenticated</div>
+        <h2 class="ds-section__title">Empty and Error States</h2>
+        <p class="ds-section__desc">Patterns for empty content areas and the 404 error page.</p>
+
+        <div class="ds-color-group__label">Empty State</div>
+        <div class="ds-empty-state" style="max-width: 500px;">
+          <div class="ds-empty-state__text">You haven't enrolled in any courses yet.</div>
+          <button class="ds-empty-state__cta">Explore courses</button>
+        </div>
+
+        <div class="ds-color-group__label">404 Error Page</div>
+        <div class="ds-error-state" style="border: var(--border-default); border-radius: var(--radius-lg); max-width: 500px;">
+          <div class="ds-error-state__emoji">Hmm...</div>
+          <div class="ds-error-state__title">We probably shouldn't be here</div>
+          <div class="ds-error-state__text">We can't seem to find the page you're looking for.</div>
+          <button class="btn btn--primary">Go home</button>
+        </div>
+      </section>
+
+      <!-- ==================== FOOTER ==================== -->
+      <section id="footer" class="ds-section">
+        <div class="ds-section__label">Authenticated</div>
+        <h2 class="ds-section__title">Footer</h2>
+        <p class="ds-section__desc">Dark navy footer with 4-column link layout.</p>
+
+        <div class="ds-footer-demo">
+          <div>
+            <div class="ds-footer-demo__heading">Learn</div>
+            <a class="ds-footer-demo__link">Courses</a>
+            <a class="ds-footer-demo__link">Lightning Lessons</a>
+            <a class="ds-footer-demo__link">Workshops</a>
+          </div>
+          <div>
+            <div class="ds-footer-demo__heading">Teach</div>
+            <a class="ds-footer-demo__link">Apply to teach</a>
+            <a class="ds-footer-demo__link">Instructor resources</a>
+          </div>
+          <div>
+            <div class="ds-footer-demo__heading">Company</div>
+            <a class="ds-footer-demo__link">About</a>
+            <a class="ds-footer-demo__link">Blog</a>
+            <a class="ds-footer-demo__link">Careers</a>
+          </div>
+          <div>
+            <div class="ds-footer-demo__heading">Support</div>
+            <a class="ds-footer-demo__link">Help Center</a>
+            <a class="ds-footer-demo__link">Terms</a>
+            <a class="ds-footer-demo__link">Privacy</a>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+        <table class="ds-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td><code>#080C28</code></td></tr>
+            <tr><td>Heading</td><td>14px, weight 600, white</td></tr>
+            <tr><td>Links</td><td>13px, weight 300, rgba(255,255,255,0.7)</td></tr>
+            <tr><td>Layout</td><td>4-column grid, 24px gap</td></tr>
+            <tr><td>Padding</td><td>64px vertical, 48px horizontal</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== LAYOUT ==================== -->
+      <section id="layout" class="ds-section">
+        <div class="ds-section__label">Patterns</div>
+        <h2 class="ds-section__title">Layout</h2>
+        <p class="ds-section__desc">Max content width 1152px, 8px grid, two primary page structures.</p>
+
+        <div class="ds-color-group__label">Listing Page (2-col grid)</div>
+        <div class="ds-layout-diagram">
+          <div style="background: var(--brand-dark); color: var(--white-50); padding: 16px; border-radius: 8px 8px 0 0; text-align: center;">Dark Hero (full-width, serif title)</div>
+          <div style="display: flex; gap: 8px; padding: 12px 0;">
+            <div style="background: var(--neutral-900); color: white; padding: 6px 14px; border-radius: 999px; font-size: 12px;">Trending</div>
+            <div style="border: 1px solid var(--neutral-300); padding: 6px 14px; border-radius: 999px; font-size: 12px;">New</div>
+            <div style="border: 1px solid var(--neutral-300); padding: 6px 14px; border-radius: 999px; font-size: 12px;">Best selling</div>
+            <div style="margin-left: auto; font-size: 12px;">All Categories &#9662;</div>
+          </div>
+          <div class="ds-grid-demo" style="grid-template-columns: 1fr 1fr;">
+            <div class="ds-grid-demo__item"></div>
+            <div class="ds-grid-demo__item"></div>
+            <div class="ds-grid-demo__item"></div>
+            <div class="ds-grid-demo__item"></div>
+          </div>
+        </div>
+
+        <div class="ds-color-group__label">Course Detail Page (sidebar layout)</div>
+        <div class="ds-layout-diagram">
+          <div style="font-size: 11px; margin-bottom: 8px; color: var(--neutral-400);">Breadcrumb: All courses > Category</div>
+          <div style="display: grid; grid-template-columns: 65% 35%; gap: 16px;">
+            <div>
+              <div style="background: var(--neutral-300); height: 32px; border-radius: 4px; margin-bottom: 8px; width: 80%;"></div>
+              <div style="background: var(--neutral-300); height: 12px; border-radius: 3px; margin-bottom: 6px; width: 60%;"></div>
+              <div style="background: var(--neutral-300); height: 12px; border-radius: 3px; width: 40%;"></div>
+              <div style="margin-top: 16px; font-size: 11px; color: var(--neutral-400);">Tabs: Overview | Instructor | Syllabus | Schedule | FAQs</div>
+            </div>
+            <div style="background: white; border: 1px solid var(--neutral-300); border-radius: 12px; padding: 12px; box-shadow: var(--shadow-lg);">
+              <div style="font-size: 11px; font-weight: 600;">Enrollment Card (sticky)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== INTERACTION STATES ==================== -->
+      <section id="states" class="ds-section">
+        <div class="ds-section__label">Patterns</div>
+        <h2 class="ds-section__title">Interaction States</h2>
+        <div class="ds-state-grid">
+          <div class="ds-state-card"><div class="ds-state-card__label">Hover (button)</div><div class="ds-state-card__desc">Slight opacity change or background darken</div></div>
+          <div class="ds-state-card"><div class="ds-state-card__label">Hover (card)</div><div class="ds-state-card__desc">shadow-md appears, subtle lift</div></div>
+          <div class="ds-state-card"><div class="ds-state-card__label">Active (filter)</div><div class="ds-state-card__desc">Background inverts dark, text white</div></div>
+          <div class="ds-state-card"><div class="ds-state-card__label">Focus (input)</div><div class="ds-state-card__desc">Blue ring, 2px solid #3E89FF</div></div>
+          <div class="ds-state-card"><div class="ds-state-card__label">Disabled</div><div class="ds-state-card__desc">Opacity ~0.4, cursor not-allowed</div></div>
+          <div class="ds-state-card"><div class="ds-state-card__label">Active nav</div><div class="ds-state-card__desc">Green underline on dark, black on light</div></div>
+        </div>
+      </section>
+
+      <!-- ==================== MOTION ==================== -->
+      <section id="motion" class="ds-section">
+        <div class="ds-section__label">Patterns</div>
+        <h2 class="ds-section__title">Motion</h2>
+        <table class="ds-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Hover transitions</td><td><code>200-300ms ease</code></td></tr>
+            <tr><td>Scroll behavior</td><td><code>smooth</code> (anchor nav)</td></tr>
+            <tr><td>Lazy-load content</td><td>Subtle fade-in</td></tr>
+            <tr><td>Page transitions</td><td>None observed</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== ICONS ==================== -->
+      <section id="icons" class="ds-section">
+        <div class="ds-section__label">Patterns</div>
+        <h2 class="ds-section__title">Iconography</h2>
+        <p class="ds-section__desc">45 SVG icons extracted from the original platform. Available as individual files in <code>maven-icons/</code> and as a combined sprite sheet (<code>maven-sprite.svg</code>). UI icons use a 24x24 viewBox with 1.5-2px stroke. Feature icons use a 48x48 viewBox with filled paths.</p>
+
+        <table class="ds-table" style="margin-bottom:24px;">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>UI icon viewBox</td><td><code>0 0 24 24</code></td></tr>
+            <tr><td>Feature icon viewBox</td><td><code>0 0 48 48</code></td></tr>
+            <tr><td>UI icon style</td><td>Line icons, 1.5-2px stroke, <code>#0D0D0D</code> or <code>currentColor</code></td></tr>
+            <tr><td>Feature icon style</td><td>Filled paths, <code>#404040</code> fill, some with <code>#FAFAFA</code> stroke</td></tr>
+            <tr><td>Logo viewBox</td><td><code>0 0 138 32</code> (uses <code>currentColor</code>)</td></tr>
+            <tr><td>Sizes used</td><td>16px, 20px, 24px (UI), 48px (features)</td></tr>
+            <tr><td>Sprite sheet</td><td><code>maven-icons/maven-sprite.svg</code> (45 symbols)</td></tr>
+            <tr><td>Emoji icons</td><td>Used on homepage category cards (not extracted)</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="font-size:16px;font-weight:600;margin:32px 0 16px;color:var(--neutral-900);">UI Icons (34)</h3>
+        <div id="icon-grid-ui" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:16px;margin-bottom:32px;"></div>
+
+        <h3 style="font-size:16px;font-weight:600;margin:32px 0 16px;color:var(--neutral-900);">Feature Icons (10)</h3>
+        <div id="icon-grid-feature" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;margin-bottom:32px;"></div>
+
+        <h3 style="font-size:16px;font-weight:600;margin:32px 0 16px;color:var(--neutral-900);">Logo</h3>
+        <div id="icon-grid-logo" style="display:flex;gap:24px;margin-bottom:16px;"></div>
+      </section>
+
+      <!-- ==================== RESPONSIVE ==================== -->
+      <section id="responsive" class="ds-section">
+        <div class="ds-section__label">Meta</div>
+        <h2 class="ds-section__title">Responsive Breakpoints</h2>
+        <table class="ds-table">
+          <thead><tr><th>Breakpoint</th><th>Width</th><th>Behavior</th></tr></thead>
+          <tbody>
+            <tr><td>Mobile</td><td><code>&lt; 640px</code></td><td>Single column, stacked cards, hamburger nav</td></tr>
+            <tr><td>Tablet</td><td><code>640-1024px</code></td><td>2-column grid starts, sidebar collapses</td></tr>
+            <tr><td>Desktop</td><td><code>1024-1152px</code></td><td>Full layout, sticky sidebar</td></tr>
+            <tr><td>Wide</td><td><code>&gt; 1152px</code></td><td>Content centered, max-width 1152px</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== CHANGELOG ==================== -->
+      <section id="changelog" class="ds-section">
+        <div class="ds-section__label">Meta</div>
+        <h2 class="ds-section__title">Changelog</h2>
+        <p class="ds-section__desc">Track all updates to this design system as it evolves.</p>
+
+        <div class="ds-changelog-item">
+          <div class="ds-changelog-date">Apr 8, 2026</div>
+          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--update">Update</span> v1.3: Rebranded from Maven to SkillUp LMS Design System. Replaced all name references, hero, badge, title. Uploaded official SkillUp logo SVGs (default, dark, light). Logo section now uses proper dark/light variants.</div>
+        </div>
+        <div class="ds-changelog-item">
+          <div class="ds-changelog-date">Apr 8, 2026</div>
+          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> v1.2: Added Icons KPI counter (45) to hero stats. Updated changelog and version badge.</div>
+        </div>
+        <div class="ds-changelog-item">
+          <div class="ds-changelog-date">Apr 8, 2026</div>
+          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> Authenticated pages extracted. Added: Dashboard, Lightning Lesson cards, Course Listing grid, Course Detail specs, Tabs, Navbar, Footer, Empty/Error states, Category Nav cards. 9 new color tokens. Font weight scale added.</div>
+        </div>
+        <div class="ds-changelog-item">
+          <div class="ds-changelog-date">Apr 8, 2026</div>
+          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> Icon catalog: 45 SVGs extracted (34 UI icons, 10 feature icons, 1 logo). Individual files in maven-icons/ folder plus combined sprite sheet (maven-sprite.svg). Visual catalog added to Iconography section.</div>
+        </div>
+        <div class="ds-changelog-item">
+          <div class="ds-changelog-date">Apr 8, 2026</div>
+          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--update">Update</span> Extended color palette with Lightning Green (#B0FB50), content accent palette (5 tints with light variants), gradient tokens, and amber star rating color.</div>
+        </div>
+        <div class="ds-changelog-item">
+          <div class="ds-changelog-date">Apr 7, 2026</div>
+          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> Initial extraction from the original platform. 26 colors, 17 type styles, spacing/radius/shadow tokens, 9 components documented.</div>
+        </div>
+      </section>
+
+      <!-- ==================== NOTES ==================== -->
+      <section id="notes" class="ds-section">
+        <div class="ds-section__label">Meta</div>
+        <h2 class="ds-section__title">Notes</h2>
+        <div style="max-width: 640px; font-size: 15px; line-height: 1.7; color: var(--neutral-700);">
+          <p style="margin-bottom: 16px;">The original platform uses proprietary webfonts (Bureau Sans, Bureau Serif, Graphik). This document uses open-source alternatives: DM Serif Display, DM Sans, and Plus Jakarta Sans. Swap when licensed.</p>
+          <p style="margin-bottom: 16px;">The deep navy (#080C28) is not pure black. That 8-12-40 RGB value gives the dark surfaces a refined, editorial quality that pure black lacks.</p>
+          <p style="margin-bottom: 16px;">The design language is editorial. Lightweight serif headings paired with clean sans-serif body. Very low visual noise. Generous whitespace. Restrained color.</p>
+          <p>Dashboard and authenticated pages have been captured via Chrome extension. Six additional font faces found: Bureau Sans, Bureau Serif, Graphik, Domaine, Sentient, Tickerbit, Zen Dots. Bureau Sans/Serif are the primary pair. The rest appear in marketing or specialized contexts.</p>
+          <p style="margin-top: 16px;">The original platform uses 778 CSS custom properties total (574 resolved at :root). This document captures the design-relevant subset. The full variable dump is available on request.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
 </div>
 
-<div class="stats-row">
-  <div class="stat-card"><div class="stat-value">33</div><div class="stat-label">Screens wireframed</div></div>
-  <div class="stat-card"><div class="stat-value">4</div><div class="stat-label">Flows covered</div></div>
-  <div class="stat-card"><div class="stat-value">8</div><div class="stat-label">Open decisions</div></div>
-  <div class="stat-card"><div class="stat-value">15</div><div class="stat-label">Missing scenarios</div></div>
-</div>
-
-<!-- ===== SECTION 1 ===== -->
-<h2 id="s1"><span class="section-count">1</span>Product Overview<a class="anchor-link" href="#s1">#</a></h2>
-
-<h3 id="s1-1">1.1 What This Is</h3>
-<p>SkillUp LMS is a corporate learning platform where employees enroll in courses and programs to develop professional skills. This PRD covers the learner-facing experience for browsing, tracking, and completing learning content.</p>
-<p>The platform supports three content structures (<span class="badge badge-course">Course</span> <span class="badge badge-program">Program</span> <span class="badge badge-tm">TechMaster</span>) across three delivery methods (<span class="badge badge-flexible">Flexible Learning</span> <span class="badge badge-vilt">Online Live Classes</span> <span class="badge badge-blended">Flexible + Online Live Classes</span>). Learners move through enrollment states from Not Started through In Progress to Completed, with live session attendance, assessments, projects, and certifications along the way.</p>
-
-<h3 id="s1-2">1.2 Problem Statement</h3>
-<p>The current platform was built as a technical LMS focused on administration, cohorts, and certification logic. Learners experience it as an admin panel, not a learning tool.</p>
-<ol>
-  <li>No clear answer to "What should I do next?" across any page</li>
-  <li>Progress shown as raw percentages and tables (back-office language, not motivation)</li>
-  <li>Certificate eligibility displayed as rejection ("You are not eligible") with no path forward</li>
-  <li>Course structure is a flat accordion list with no visual hierarchy</li>
-  <li>Dates page shows admin timestamps, not learning pace</li>
-  <li>Zero emotional feedback. The platform never acknowledges effort or progress</li>
-  <li>Navigation exposes internal system logic ("View in Studio", "Stack") that means nothing to learners</li>
-  <li>No distinction between programmes and courses for new users</li>
-</ol>
-
-<h3 id="s1-3">1.3 Design Goals</h3>
-<ol>
-  <li>Make the next action impossible to miss</li>
-  <li>Show progress as motivation, not raw data</li>
-  <li>Reduce anxiety around certification</li>
-  <li>Keep the interface simple, calm, and outcome-focused</li>
-  <li>Optimize for desktop first (1440px), mobile planned for Phase 2</li>
-  <li>Dense professional aesthetic: high information density, monochromatic base, color reserved for status and actions</li>
-</ol>
-
-<h3 id="s1-4">1.4 Target User</h3>
-<p>Adult learner, employed, enrolled in at least one programme. Goal-oriented and time-constrained. Wants clarity, reassurance, and momentum. Not interested in gamified or playful UI. Expects a professional tool that respects their time.</p>
-
-<h3 id="s1-5">1.5 Visual Direction</h3>
-<p>Bloomberg Terminal meets Linear meets Jira. Dense professional. Every pixel earns its place.</p>
-<ul>
-  <li>High information density with compact vertical rhythm</li>
-  <li>Clear hierarchy through weight and size contrast, not decoration</li>
-  <li>Monochromatic base (grays, near-blacks, whites) with color reserved for status and actions</li>
-  <li>Tables and lists over cards where possible</li>
-  <li>Subtle borders over shadows. One level of elevation max</li>
-  <li>Data-forward: KPIs, percentages, counts, and dates prominent and scannable</li>
-</ul>
-
-<!-- ===== SECTION 2 ===== -->
-<h2 id="s2"><span class="section-count">2</span>Content Architecture<a class="anchor-link" href="#s2">#</a></h2>
-
-<h3 id="s2-1">2.1 Content Hierarchy</h3>
-<pre><code>My Learning (list of all enrolled items)
-  > Program (collection of courses)
-    > Course (within a program)
-      > Module
-        > Lesson
-  > Standalone Course (not part of a program)
-    > Module
-      > Lesson</code></pre>
-
-<h3 id="s2-2">2.2 Content Types</h3>
-<div class="table-wrap"><table>
-  <thead><tr><th>Type</th><th>Icon</th><th>Badge</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Course</strong></td><td>Gray page</td><td><span class="badge badge-course">COURSE</span></td><td>Single-subject learning container. Has modules and lessons.</td></tr>
-    <tr><td><strong>Program</strong></td><td>Blue stacked pages</td><td><span class="badge badge-program">PROGRAM</span></td><td>Multi-course container. Includes courses, capstone project, and optionally internship/external placement.</td></tr>
-    <tr><td><strong>TechMaster</strong></td><td>Gold circle with star</td><td><span class="badge badge-tm">TECHMASTER</span></td><td>Premium multi-course program. Includes mentoring, live sessions, capstone, and certification.</td></tr>
-  </tbody>
-</table></div>
-
-<h3 id="s2-3">2.3 Delivery Methods</h3>
-<div class="table-wrap"><table>
-  <thead><tr><th>Method</th><th>Badge</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Flexible Learning</strong></td><td><span class="badge badge-flexible">Flexible Learning</span></td><td>Self-paced modules. No live sessions. No schedule dependency.</td></tr>
-    <tr><td><strong>Online Live Classes (VILT)</strong></td><td><span class="badge badge-vilt">Online Live Classes</span></td><td>All content is instructor-led live sessions. Schedule-dependent. Recordings available post-session.</td></tr>
-    <tr><td><strong>Flexible + Online Live Classes (Blended)</strong></td><td><span class="badge badge-blended">Flexible + Online Live Classes</span></td><td>Mix of self-paced modules and live sessions.</td></tr>
-  </tbody>
-</table></div>
-<p>Badge spec: Montserrat SemiBold 10px, cornerRadius 100px (pill), padding 8px horizontal / 3px vertical. Implemented as a reusable <code>CourseTypeBadge</code> component set with 3 variants.</p>
-
-<h3 id="s2-4">2.4 Enrollment Lifecycle</h3>
-<div class="table-wrap"><table>
-  <thead><tr><th>State</th><th>Badge</th><th>Description</th><th>Visual Treatment</th></tr></thead>
-  <tbody>
-    <tr><td>Not Started</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Enrolled but no activity</td><td>Gray badge only. No progress bar. No 0%. No empty track.</td></tr>
-    <tr><td>In Progress</td><td><span class="badge badge-progress">In Progress</span></td><td>Active learning</td><td>Blue progress bar + percentage.</td></tr>
-    <tr><td>Behind Schedule</td><td><span class="badge badge-progress">In Progress</span></td><td>In Progress sub-state</td><td>Blue left border on My Learning card. "Behind schedule. Due: [date]".</td></tr>
-    <tr><td>Certificate at Risk</td><td><span class="badge badge-risk">At Risk</span></td><td>Missed required sessions</td><td>Warning text + recovery action.</td></tr>
-    <tr><td>Completed</td><td><span class="badge badge-completed">Completed</span></td><td>All content finished</td><td>Gray badge on My Learning list. Green on inner screens.</td></tr>
-    <tr><td>Access Expired</td><td><span class="badge badge-notstarted">Access Expired</span></td><td>Enrollment window closed</td><td>Gray badge, gray left border, card at 70% opacity.</td></tr>
-    <tr><td>Locked</td><td><span class="badge badge-locked">Locked</span></td><td>Prerequisites not met</td><td>Lock icon. "Complete [prerequisite] to unlock".</td></tr>
-  </tbody>
-</table></div>
-<div class="callout callout-rule">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-  <div><strong>Business rule:</strong> Not Started items show ONLY the gray badge. No progress bar, no percentage, no empty track. This eliminates visual noise with zero informational value.</div>
-</div>
-
-<!-- ===== SECTION 3 ===== -->
-<h2 id="s3"><span class="section-count">3</span>Screen Requirements<a class="anchor-link" href="#s3">#</a></h2>
-
-<h3 id="s3-1">3.1 My Learning List</h3>
-<p><strong>Purpose:</strong> The learner's home base. All enrolled courses and programs in a scannable list with filtering and status at a glance.</p>
-<p><strong>URL pattern:</strong> <code>/my-learning</code></p>
-
-<h4>Screen structure (top to bottom):</h4>
-<ol>
-  <li>Global nav bar (fixed, 64px, bg #f8f9fa)</li>
-  <li>Session alert banners (conditional, max 2)</li>
-  <li>Page header with title, subtitle, and filter system</li>
-  <li>Course/program card list (8 cards)</li>
-  <li>Footer</li>
-</ol>
-
-<details><summary>Session Alert Banners (specs)</summary><div class="details-content">
-<p><strong>Live session banner:</strong> bg #f0f2ff, brand blue dot (8px), "You have a live session now: [Session Name] . Started [X] min ago", dark filled "Join Now" button (bg #212121, white text, cornerRadius 6).</p>
-<p><strong>Upcoming session banner:</strong> bg #f7f7fa, gray dot (6px), "Upcoming: [Session Name] . Starts in [X] min", outlined "Join Live" button (white bg, 1px border #cccfd4, cornerRadius 6).</p>
-<p>Specs: full-width, padding 10px vertical / 88px horizontal, Montserrat 12px, itemSpacing 12.</p>
-<div class="callout callout-rule"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div><strong>Rules:</strong> Show max 2 banners (1 live + 1 upcoming). Live takes priority. Only for In Progress programs with live sessions.</div></div>
-</div></details>
-
-<details><summary>Page Header and Filters</summary><div class="details-content">
-<ul>
-  <li>Title: "My Learning" (Montserrat Bold 22px)</li>
-  <li>Subtitle: "Continue where you left off" (Regular 14px, #666)</li>
-  <li>Row 1 filter (type): All, Courses, Programs (pill toggle, 14px)</li>
-  <li>Row 2 filter (status): All, In Progress, Not Started, Completed, Expired (pill toggle, 15px)</li>
-  <li>Below filters: "YOUR COURSES & PROGRAMS" uppercase label + "Filters" button (opens sidebar)</li>
-</ul>
-</div></details>
-
-<details><summary>Course/Program Cards (8 cards, full data)</summary><div class="details-content">
-<p>Each card: horizontal row, bg #f0f0f0, cornerRadius 8px. Left thumbnail, content area (title, partner, delivery badge, status badge, progress), right CTA, left accent border for special states.</p>
-<div class="table-wrap"><table>
-  <thead><tr><th>#</th><th>Title</th><th>Type</th><th>Status</th><th>CTA</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>AI in Healthcare</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start Learning</td></tr>
-    <tr><td>2</td><td>Data Analytics Fundamentals</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-progress">62% In Progress</span></td><td>Continue Learning</td></tr>
-    <tr><td>3</td><td>AI Ethics & Governance</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-progress">28% Behind Schedule</span></td><td>Continue Learning</td></tr>
-    <tr><td>4</td><td>AI TechMaster Program</td><td><span class="badge badge-blended">Blended</span></td><td><span class="badge badge-progress">28% In Progress</span></td><td>Continue Learning</td></tr>
-    <tr><td>5</td><td>Cloud Engineering Bootcamp</td><td><span class="badge badge-vilt">VILT</span></td><td><span class="badge badge-progress">62% In Progress</span></td><td>Continue Learning</td></tr>
-    <tr><td>6</td><td>Cybersecurity Foundations</td><td><span class="badge badge-vilt">VILT</span></td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start Learning</td></tr>
-    <tr><td>7</td><td>Python for Data Science</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-completed">Completed</span></td><td>Review</td></tr>
-    <tr><td>8</td><td>Cloud Architecture Essentials</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-notstarted">Expired</span></td><td>disabled</td></tr>
-  </tbody>
-</table></div>
-<div class="callout callout-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><strong>Color rule:</strong> My Learning card badges use neutral grays ONLY (no green for Completed, no red for Expired). This rule applies ONLY to this screen. All other screens use semantic colors freely.</div></div>
-</div></details>
-
-<h3 id="s3-2">3.2 Course/Program Detail Pages (shared structure)</h3>
-<p>Every detail page follows this exact top-to-bottom order:</p>
-<ol>
-  <li>Global nav bar</li>
-  <li>Live session banner (conditional)</li>
-  <li>Breadcrumb</li>
-  <li>Program affiliation banner (conditional, Course type only)</li>
-  <li>PD header block (thumbnail + type label + title + badges + partner + progress bar + KPIs)</li>
-  <li>Tab bar</li>
-  <li>Tab content area</li>
-  <li>Mentoring CTA section (PD and About tabs of Program/TechMaster ONLY)</li>
-  <li>Footer (every screen, no exceptions)</li>
-</ol>
-
-<details><summary>Live Session Banner Rules</summary><div class="details-content">
-<div class="table-wrap"><table>
-  <thead><tr><th>Flow</th><th>Type</th><th>Status</th><th>Show Banner?</th></tr></thead>
-  <tbody>
-    <tr><td>TechMaster</td><td>Blended</td><td>In Progress</td><td>Yes, all screens</td></tr>
-    <tr><td>Cloud Engineering</td><td>VILT</td><td>In Progress</td><td>Yes, all screens</td></tr>
-    <tr><td>Data Analytics</td><td>Flexible</td><td>In Progress</td><td>No (no live sessions)</td></tr>
-    <tr><td>Cybersecurity</td><td>VILT</td><td>Not Started</td><td>No (no active sessions)</td></tr>
-  </tbody>
-</table></div>
-</div></details>
-
-<details><summary>Tab Bar Configuration per Type</summary><div class="details-content">
-<p><strong>TechMaster (Blended):</strong> Courses, Live Classes, All Recordings, Mentors, Assessments, Projects, Progress, Certificates, About</p>
-<p><strong>Course (Flexible):</strong> Modules, Assessments, Projects, Progress, Certificates, Course Q&A, About</p>
-<p><strong>Program (VILT):</strong> Live Sessions, Recordings, Assessments, Mentors, Projects, Progress, Certificates, About</p>
-</div></details>
-
-<details><summary>KPI Cards per Flow</summary><div class="details-content">
-<div class="table-wrap"><table>
-  <thead><tr><th>KPI</th><th>TechMaster</th><th>Data Analytics</th><th>Cloud Engineering</th><th>Cybersecurity</th></tr></thead>
-  <tbody>
-    <tr><td>Total Hours</td><td>120h</td><td>20h</td><td>20h</td><td>24h</td></tr>
-    <tr><td>Avg/Week</td><td>3.2h</td><td>3.2h</td><td>3.2h</td><td>6h</td></tr>
-    <tr><td>Progress</td><td>4/16 Courses</td><td>5/8 Modules</td><td>0/18 Sessions</td><td>0/12 Scheduled</td></tr>
-    <tr><td>Est. Completion</td><td>Jun 15, 2026</td><td>May 10, 2026</td><td>Apr 30</td><td>Apr 30</td></tr>
-  </tbody>
-</table></div>
-</div></details>
-
-<h3 id="s3-3">3.3 Flow 1: AI TechMaster Program <span class="badge badge-tm">TECHMASTER</span> <span class="badge badge-blended">Blended</span></h3>
-<p>9 screens. Premium program with all features: live sessions, mentoring, 4 courses. Status: In Progress, 28%. Partner: SkillUp . IBM . Google Cloud.</p>
-<details><summary>Courses Tab (4 courses)</summary><div class="details-content">
-<ol>
-  <li><strong>Course 1: Python Basics</strong> - Completed (100%), green checkmark</li>
-  <li><strong>Course 2: Data Analytics Fundamentals</strong> - In Progress (62%), blue progress bar</li>
-  <li><strong>Course 3: Deep Learning</strong> - Not Started, gray badge only</li>
-  <li><strong>Course 4: Capstone Project</strong> - Locked, "Complete Course 3 to unlock"</li>
-</ol>
-</div></details>
-<details><summary>Live Classes / Button Pattern (Nelson redesign Apr 7)</summary><div class="details-content">
-<div class="table-wrap"><table>
-  <thead><tr><th>State</th><th>Style</th><th>Spec</th></tr></thead>
-  <tbody>
-    <tr><td>Join Live</td><td>Black bg, white text, green emoji dot</td><td>rgb(0,0,0), cornerRadius 6</td></tr>
-    <tr><td>Starting Soon</td><td>Dark bg, white text</td><td>rgb(33,33,33)</td></tr>
-    <tr><td>Watch Recording</td><td>White bg, dark border, dark text</td><td>border rgb(51,51,51)</td></tr>
-    <tr><td>Saving Recording...</td><td>Gray bg, gray text</td><td>rgb(232,232,232)</td></tr>
-    <tr><td>Upcoming</td><td>Gray bg, dark text</td><td>rgb(232,232,232)</td></tr>
-    <tr><td>Rescheduled</td><td>Amber bg, dark text</td><td>rgb(244,213,129)</td></tr>
-  </tbody>
-</table></div>
-</div></details>
-
-<h3 id="s3-4">3.4 Flow 2: Data Analytics Fundamentals <span class="badge badge-course">COURSE</span> <span class="badge badge-flexible">Flexible</span></h3>
-<p>7 screens. Standalone course without live sessions or mentoring. In Progress, 62%. Partner: IBM. Belongs to TechMaster (conditional affiliation banner).</p>
-<details><summary>Modules Tab (8 modules)</summary><div class="details-content">
-<ol>
-  <li><strong>Module 1: Introduction to Data Analytics</strong> - Completed (100%)</li>
-  <li><strong>Module 2: Statistical Foundations</strong> - Completed (100%)</li>
-  <li><strong>Module 3: Data Visualization with Python</strong> - In Progress (67%)</li>
-  <li><strong>Module 4: SQL for Data Analysis</strong> - In Progress (27%)</li>
-  <li><strong>Module 5: Machine Learning Basics</strong> - Not Started, gray badge only</li>
-  <li><strong>Module 6: Real-World Case Studies</strong> - Not Started, gray badge only</li>
-  <li><strong>Module 7: Advanced Analytics</strong> - Locked, "Complete Module 6 to unlock"</li>
-  <li><strong>Module 8: Final Assessment</strong> - Locked, "Complete Module 7 to unlock"</li>
-</ol>
-</div></details>
-<details><summary>Course Q&A Tab (Course types only)</summary><div class="details-content">
-<p>Header: title + subtitle + "[N] modules in this course" link + "+ Ask a Question" CTA (bg #3385d9).</p>
-<p>Filter row: module pills (All active, 9 pills total, wrapping layout).</p>
-<p>Thread cards: status badge (ANSWERED green / UNANSWERED gray), module badge, vote count, question title, preview, author, reply count. Best Answer section with green tint bg.</p>
-</div></details>
-
-<h3 id="s3-5">3.5 Flow 3: Cloud Engineering Bootcamp <span class="badge badge-program">PROGRAM</span> <span class="badge badge-vilt">VILT</span></h3>
-<p>8 screens. Fully instructor-led program. In Progress, 62%. Partner: SkillUp . IBM . Google Cloud. 6 courses. Live Sessions as default tab.</p>
-
-<h3 id="s3-6">3.6 Flow 4: Cybersecurity Foundations <span class="badge badge-program">PROGRAM</span> <span class="badge badge-vilt">VILT</span> <span class="badge badge-notstarted">Not Started</span></h3>
-<p>8 screens. Zero-state experience. Partner: SkillUp . Cisco. 4 courses. All content in Not Started state.</p>
-<div class="callout callout-rule"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div><strong>Not Started rules:</strong> No progress bar on header. All modules gray badge. All certs "Not Eligible". KPI says "Sessions scheduled" not "completed". No live session banner. Empty buttons hidden (visible: false).</div></div>
-
-<!-- ===== SECTION 4 ===== -->
-<h2 id="s4"><span class="section-count">4</span>Shared Tab Requirements<a class="anchor-link" href="#s4">#</a></h2>
-<p>These tabs appear across multiple flows with consistent behavior.</p>
-<details><summary>Assessments</summary><div class="details-content"><p>Two groups per flow. Shows: title, type (Quiz/Exam/Practical), status badge, score, attempts remaining, state-dependent CTA. DA has 8 assessments total.</p></div></details>
-<details><summary>Projects</summary><div class="details-content"><p>Status tracking: Not Started, In Progress, Submitted, Under Review (<span class="badge badge-risk">Under Review</span>), Approved, Revision Needed. DA has 2 projects.</p></div></details>
-<details><summary>Progress</summary><div class="details-content"><p>Overall completion %, per-module/course breakdown, time spent analytics, Weekly Learning Activity chart (all 4 flows). VILT programs use "Live Sessions" category label.</p></div></details>
-<details><summary>Certificates</summary><div class="details-content"><p>States: Not Eligible ("View certificate requirements"), Eligible Not Claimed, Earned (download), At Risk (recovery text), Expired. Certificate preview thumbnails replicated across flows.</p></div></details>
-<details><summary>About</summary><div class="details-content"><p>Compact layout: "ABOUT THIS [TYPE]" header (blue #3385d9), stats bar, description, metadata grid (4 cols: Effort, Level, Delivery, Code), skills tags, instructor cards, CTAs.</p></div></details>
-<details><summary>Mentoring CTA</summary><div class="details-content"><p>ONLY on PD + About of Program/TechMaster types. Never inner tabs, never Course types. Layout: gray bg #f7f7f8, left text + right mentor cards with "Book Session" CTA.</p></div></details>
-
-<!-- ===== SECTION 5 ===== -->
-<h2 id="s5"><span class="section-count">5</span>Dashboard (Home)<a class="anchor-link" href="#s5">#</a></h2>
-<p>Separate Home screen (not My Learning List). Three layout versions explored. Nelson to select.</p>
-<div class="table-wrap"><table>
-  <thead><tr><th>Version</th><th>Layout</th><th>Key Feature</th></tr></thead>
-  <tbody>
-    <tr><td><strong>A</strong></td><td>Classic Vertical</td><td>Nav, greeting+stats, live banner, Continue Learning cards, Upcoming Sessions, course grid</td></tr>
-    <tr><td><strong>B</strong></td><td>Widget Grid</td><td>4 KPI stat cards, 2-column widgets (Continue Learning + Activity | Schedule + Weekly Goal)</td></tr>
-    <tr><td><strong>C</strong></td><td>Sidebar + Feed</td><td>Left sidebar (greeting, stats, weekly goal, schedule), main feed (live banner, courses)</td></tr>
-  </tbody>
-</table></div>
-<p>All versions must include: prominent "Your Next Action" card, overall completion %, module counts, pending tasks, certificate progress card, upcoming session awareness.</p>
-
-<!-- ===== SECTION 6 ===== -->
-<h2 id="s6"><span class="section-count">6</span>Immersive Lesson Player<a class="anchor-link" href="#s6">#</a></h2>
-<p>Full-screen lesson consumption (video, text, code). Three versions, 1440px, light mode only.</p>
-<div class="table-wrap"><table>
-  <thead><tr><th>Version</th><th>Layout</th></tr></thead>
-  <tbody>
-    <tr><td><strong>A</strong></td><td>Right Sidebar Journey: video left, course journey sidebar right</td></tr>
-    <tr><td><strong>B</strong></td><td>Top Nav Compact: centered content, type pills in nav, lesson dots</td></tr>
-    <tr><td><strong>D</strong></td><td>Left Sidebar Navigation: dark sidebar with lesson list, light main area</td></tr>
-  </tbody>
-</table></div>
-
-<!-- ===== SECTION 7 ===== -->
-<h2 id="s7"><span class="section-count">7</span>Gamification and Weekly Goals<a class="anchor-link" href="#s7">#</a></h2>
-<p>Lightweight motivation based on learning hours (not XP). Self-comparison, not leaderboards. Corporate-appropriate.</p>
-<div class="callout callout-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><strong>Key rule:</strong> Weekly goals are per-course (1:1), NOT global/aggregate. Widget does NOT belong on My Learning List (rejected). Lives on individual course Progress and Modules tabs.</div></div>
-
-<details><summary>Widget States</summary><div class="details-content">
-<p>Empty/0%, In Progress (53%), Almost There (85%: "5.1h / 6h . Almost there! 0.9h to go"), Goal Reached (100%). Shows day-of-week dots, daily breakdown bars, streak indicator.</p>
-</div></details>
-<details><summary>Streak and Badges</summary><div class="details-content">
-<p><strong>Streak milestones:</strong> 3, 4, 8, 12 weeks.</p>
-<p><strong>Progress badges:</strong> First Steps, Halfway There, Assessment Ace, Full Attendance, Capstone Complete.</p>
-<p><strong>Consistency badges:</strong> Week Warrior, Month Master, Quarter Champion.</p>
-</div></details>
-<details><summary>Micro-celebrations</summary><div class="details-content">
-<p>Triggered contextually: Module Complete, Halfway Milestone, Weekly Goal Hit, Assessment Passed. Light toast notifications, non-blocking.</p>
-</div></details>
-
-<!-- ===== SECTION 8 ===== -->
-<h2 id="s8"><span class="section-count">8</span>Live Sessions Flow<a class="anchor-link" href="#s8">#</a></h2>
-<div class="table-wrap"><table>
-  <thead><tr><th>State</th><th>Visual</th><th>CTA</th></tr></thead>
-  <tbody>
-    <tr><td>Upcoming</td><td>Gray, future date</td><td>"Upcoming" (passive)</td></tr>
-    <tr><td>Starting Soon</td><td>Countdown timer</td><td>"Starting Soon" (dark)</td></tr>
-    <tr><td>Live Now</td><td>Active indicator</td><td>"Join Live" (black + green dot)</td></tr>
-    <tr><td>Ended, Processing</td><td>Gray/disabled</td><td>"Saving Recording..." (gray)</td></tr>
-    <tr><td>Ended, Attended</td><td>Green indicator</td><td>"Review Recording" (outlined)</td></tr>
-    <tr><td>Ended, Missed</td><td>Red indicator</td><td>"Watch Recording" (outlined)</td></tr>
-    <tr><td>Cancelled</td><td>Strikethrough/badge</td><td>none</td></tr>
-    <tr><td>Rescheduled</td><td>Amber badge</td><td>"Rescheduled" (amber)</td></tr>
-  </tbody>
-</table></div>
-
-<!-- ===== SECTION 9 ===== -->
-<h2 id="s9"><span class="section-count">9</span>Design System Specification<a class="anchor-link" href="#s9">#</a></h2>
-
-<h3>Typography</h3>
-<p>Primary: <strong>Montserrat</strong> (all UI). Accent: <strong>Playfair Display</strong> (editorial only). Never use Inter.</p>
-<div class="table-wrap"><table>
-  <thead><tr><th>Element</th><th>Weight</th><th>Size</th><th>Color</th></tr></thead>
-  <tbody>
-    <tr><td>PD title</td><td>Bold</td><td>26px</td><td>#000</td></tr>
-    <tr><td>Page title</td><td>Bold</td><td>22px</td><td>#111</td></tr>
-    <tr><td>Section heading</td><td>SemiBold</td><td>20px</td><td>#212121</td></tr>
-    <tr><td>Card title</td><td>SemiBold</td><td>15-17px</td><td>#111</td></tr>
-    <tr><td>Body text</td><td>Regular</td><td>14-15px</td><td>#404040</td></tr>
-    <tr><td>Small label</td><td>Regular</td><td>12-13px</td><td>#888</td></tr>
-    <tr><td>Badge text</td><td>SemiBold</td><td>11px</td><td>varies</td></tr>
-    <tr><td>KPI value</td><td>Bold</td><td>24px</td><td>#111</td></tr>
-  </tbody>
-</table></div>
-
-<h3>Color System</h3>
-<p>Status badges, CTA hierarchy, and surface tokens. All badges use cornerRadius 100px (pill). All buttons use 6-8px.</p>
-<div class="swatch-row">
-  <div class="swatch"><div class="swatch-color" style="background:#0338b8"></div>#0338b8 Accent</div>
-  <div class="swatch"><div class="swatch-color" style="background:#212121"></div>#212121 Primary CTA</div>
-  <div class="swatch"><div class="swatch-color" style="background:#219654"></div>#219654 Urgent CTA</div>
-  <div class="swatch"><div class="swatch-color" style="background:#3385d9"></div>#3385d9 Brand CTA</div>
-  <div class="swatch"><div class="swatch-color" style="background:#f7f7fa"></div>#f7f7fa KPI bg</div>
-  <div class="swatch"><div class="swatch-color" style="background:#f0f0f0"></div>#f0f0f0 Card bg</div>
-</div>
-
-<h3>Layout Constants</h3>
-<div class="table-wrap"><table>
-  <thead><tr><th>Property</th><th>Value</th></tr></thead>
-  <tbody>
-    <tr><td>Frame width</td><td>1440px</td></tr>
-    <tr><td>Page padding</td><td>80px horizontal</td></tr>
-    <tr><td>Nav height</td><td>64px</td></tr>
-    <tr><td>Card cornerRadius</td><td>8px</td></tr>
-    <tr><td>Badge cornerRadius</td><td>100px (pill)</td></tr>
-    <tr><td>Button cornerRadius</td><td>6-8px</td></tr>
-    <tr><td>Progress bar (card)</td><td>4px height</td></tr>
-    <tr><td>Progress bar (PD header)</td><td>6px height</td></tr>
-  </tbody>
-</table></div>
-
-<h3>Components</h3>
-<div class="table-wrap"><table>
-  <thead><tr><th>Component</th><th>Variants</th><th>Figma Node</th></tr></thead>
-  <tbody>
-    <tr><td>CourseTypeBadge</td><td>Flexible Learning, Online Live Classes, Flexible + Online Live Classes</td><td><code>1008:295</code></td></tr>
-    <tr><td>SessionBanner</td><td>Live (blue bg, dark CTA), Upcoming (gray bg, outlined CTA)</td><td><code>1050:407</code></td></tr>
-  </tbody>
-</table></div>
-
-<h3>Footer (every screen)</h3>
-<p>Full-width, bg #f7fafa, top border 1px #e0e5e8. Left: copyright. Right: Privacy Policy, Help Center, Contact Support. Padding 132px horizontal, 32px bottom. Parent screen paddingBottom: 0.</p>
-
-<h3>Icon Library</h3>
-<p>Untitled UI (<code>untitledui.com/free-icons</code>). Stroke icons, uniform weight, rounded caps/joins.</p>
-
-<!-- ===== SECTION 10 ===== -->
-<h2 id="s10"><span class="section-count">10</span>UX Audit Findings<a class="anchor-link" href="#s10">#</a></h2>
-<p>Audit completed April 7, 2026. Norman Score: <strong>94/140</strong> (Good). Grid Score: <strong>18/30</strong> (Needs Work).</p>
-
-<h3>Critical (fix before handoff)</h3>
-<ol>
-  <li><strong>Color neutralization incomplete.</strong> 96 red/green violations across 31 screens. Nelson clarified: red/green IS allowed for semantic use (danger, success, live). PM rule was about My Learning badge prominence only.</li>
-  <li><strong>"Flexible Flexible Learning" text bug.</strong> 8 TechMaster screens. Partially fixed.</li>
-  <li><strong>Modal/Filter Sidebar outdated.</strong> Nelson manually fixed Apr 7.</li>
-</ol>
-
-<h3>Major (next sprint)</h3>
-<ol>
-  <li>No empty/error/loading states defined</li>
-  <li>"Join Live" had 3 styles (standardized by Nelson Apr 7)</li>
-  <li>Calendar red/green dots (accessibility: 8% of male users)</li>
-  <li>Mentors tab green-tinted backgrounds</li>
-  <li>No back nav beyond breadcrumb</li>
-  <li>"Certificate at risk" colored icon</li>
-  <li>Q&A badges use red/green</li>
-</ol>
-
-<h3>Minor (backlog)</h3>
-<p>Type scale uses non-standard sizes (11, 13, 15, 17, 22px). Spacing not on consistent grid. KPI cards lack hierarchy. SessionBanner green dot should be brand blue.</p>
-
-<!-- ===== SECTION 11 ===== -->
-<h2 id="s11"><span class="section-count">11</span>Missing Scenarios<a class="anchor-link" href="#s11">#</a></h2>
-<p>These need new wireframes before development.</p>
-
-<h3>High Priority</h3>
-<ol>
-  <li><strong>Completed state</strong> - No flow shows a fully completed program/course</li>
-  <li><strong>Failed/Expired state</strong> - No full screen for failed or expired access</li>
-  <li><strong>Empty states</strong> - First-time user, no results, no sessions, no recordings</li>
-  <li><strong>Loading states</strong> - Skeleton screens, spinners, progressive loading</li>
-  <li><strong>Error states</strong> - Network failure, session expired, recording failed</li>
-</ol>
-
-<h3>Medium Priority</h3>
-<ol start="6">
-  <li>Search/filter results state</li>
-  <li>Notification center</li>
-  <li>Enrollment/onboarding flow</li>
-  <li>Settings/preferences</li>
-  <li>Recording failed state</li>
-  <li>Session cancelled/rescheduled states</li>
-</ol>
-
-<h3>Low Priority</h3>
-<ol start="12">
-  <li>Mobile responsive (Phase 2)</li>
-  <li>Offline/download</li>
-  <li>Re-enrollment</li>
-  <li>Cohort/team context</li>
-</ol>
-
-<!-- ===== SECTION 12 ===== -->
-<h2 id="s12"><span class="section-count">12</span>Edge Cases and Business Rules<a class="anchor-link" href="#s12">#</a></h2>
-<ul>
-  <li><strong>Multiple live sessions at same time:</strong> No conflict detection. Need indicator + priority suggestion.</li>
-  <li><strong>Mandatory vs Optional:</strong> No visual differentiation. Need compliance badge, deadline indicator.</li>
-  <li><strong>Course archived while enrolled:</strong> No design for access, grace period, frozen content notice.</li>
-  <li><strong>Instructor changed mid-course:</strong> No notification design.</li>
-  <li><strong>Timezone:</strong> "(GMT)" suffix on session times. Full handling deferred.</li>
-  <li><strong>Accessibility:</strong> Calendar screen reader, keyboard nav for cards, focus management in filters, red/green blindness (~8% male users).</li>
-  <li><strong>Syllabus button destination:</strong> Undefined (modal, PDF, or new page).</li>
-</ul>
-
-<!-- ===== SECTION 13 ===== -->
-<h2 id="s13"><span class="section-count">13</span>Open Decisions<a class="anchor-link" href="#s13">#</a></h2>
-<div class="table-wrap"><table>
-  <thead><tr><th>#</th><th>Decision</th><th>Options</th><th>Status</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>Dashboard layout</td><td>Version A (Classic), B (Widget), C (Sidebar)</td><td><span class="decision-open">Nelson to decide</span></td></tr>
-    <tr><td>2</td><td>Immersive Player layout</td><td>Version A (Right), B (Top), D (Left)</td><td><span class="decision-open">Nelson to decide</span></td></tr>
-    <tr><td>3</td><td>Weekly Goal placement</td><td>Modules tab, Progress tab, or both</td><td><span class="decision-open">Nelson to decide</span></td></tr>
-    <tr><td>4</td><td>Program weekly goal logic</td><td>Aggregate vs per-course (recommended)</td><td><span class="decision-open">Nelson to decide</span></td></tr>
-    <tr><td>5</td><td>"Est. Completion" on Not Started</td><td>Show "Target Date" or hide</td><td><span class="decision-open">Design decision</span></td></tr>
-    <tr><td>6</td><td>Syllabus button destination</td><td>Modal, PDF, or new page</td><td><span class="decision-open">Design decision</span></td></tr>
-    <tr><td>7</td><td>Color neutralization scope</td><td>My Learning only vs all screens</td><td><span class="decision-done">Clarified: My Learning only</span></td></tr>
-    <tr><td>8</td><td>Gamification in production screens</td><td>Currently moodboard only</td><td><span class="decision-open">Pending Nelson approval</span></td></tr>
-  </tbody>
-</table></div>
-
-<!-- ===== SECTION 14 ===== -->
-<h2 id="s14"><span class="section-count">14</span>Competitive Research<a class="anchor-link" href="#s14">#</a></h2>
-<p>Dashboard research from 11 platforms: LinkedIn Learning, Coursera, Duolingo, Degreed, TalentLMS, 360Learning, iSpring, Udemy, Skillsoft/Percipio.</p>
-<p>Key takeaways: learning hours as primary metric (LinkedIn, Duolingo), self-comparison streaks (Duolingo, LinkedIn), dense professional over playful (Degreed, Skillsoft), widget dashboards with clear next action (Simplilearn, Coursera).</p>
-
-<!-- ===== SECTION 15 ===== -->
-<h2 id="s15"><span class="section-count">15</span>Cohort Management Requirements<a class="anchor-link" href="#s15">#</a></h2>
-<p>Source: FRD-Cohort Management (V2 Draft, Mar 13, 2026). Authors: Harpreet Kaur, Rupali, Govind, Simran, Roop.</p>
-
-<h3>Problem</h3>
-<p>Currently manages cohorts by duplicating the entire program instance per cohort. Creates content duplication, complex updates, inconsistent experience, high admin effort. Goal: single reusable program structure with multiple concurrent cohorts.</p>
-
-<details><summary>Learner Workflow (9 steps)</summary><div class="details-content">
-<ol>
-  <li><strong>Enrollment:</strong> System assigns learner to cohort based on availability/preference</li>
-  <li><strong>Cohort-specific access:</strong> Modules, sessions, discussions, projects all scoped to cohort</li>
-  <li><strong>Release logic:</strong> Courses unlock based on cohort schedule (e.g., 3 days before Session 1)</li>
-  <li><strong>Live session attendance:</strong> Scheduled session, link provided, attendance recorded</li>
-  <li><strong>Self-paced learning:</strong> Access released content, complete quizzes, track progress</li>
-  <li><strong>Project/lab submission:</strong> File upload, link, or form. Feedback and resubmission.</li>
-  <li><strong>Progress tracking:</strong> Three dimensions (academic, cohort, completion eligibility)</li>
-  <li><strong>Completion:</strong> Evaluated on scores, project completion, attendance</li>
-  <li><strong>Certification:</strong> Certificate of Completion OR Participation. Admin/instructor releases.</li>
-</ol>
-</div></details>
-
-<details><summary>Multi-Dimensional Progress Model</summary><div class="details-content">
-<p><strong>Academic Progress:</strong> % courses completed, quiz/assessment completion, scores.</p>
-<p><strong>Cohort Progress:</strong> % sessions attended, % labs/projects submitted, milestones.</p>
-<p><strong>Completion Eligibility:</strong> % mandatory criteria fulfilled for certification.</p>
-<p>Configurable weighted model. Only released components count. At-risk conditions: low progress by mid-program, missed consecutive sessions, overdue submissions.</p>
-</div></details>
-
-<details><summary>Admin Workflow: 18-Step Cohort Lifecycle</summary><div class="details-content">
-<ol>
-  <li>Create program (once)</li><li>Define completion criteria</li><li>Create cohort</li><li>Add learners</li>
-  <li>Assign instructor</li><li>Create session calendar</li><li>Map sessions to modules</li><li>Add session links</li>
-  <li>Configure release rules</li><li>Assign labs/projects</li><li>Configure notifications</li><li>Start cohort</li>
-  <li>Monitor progress</li><li>Track attendance</li><li>Review submissions</li><li>Mark completion</li>
-  <li>Release certificates</li><li>Archive cohort</li>
-</ol>
-</div></details>
-
-<details><summary>Projects and Labs (detailed spec)</summary><div class="details-content">
-<p>Structure: title, description, type (Individual/Group), category (Mandatory/Optional), difficulty, linked module, release date, deadline, grace period.</p>
-<p>Submission: file upload, external links, form. Multiple submissions, version tracking.</p>
-<p>Evaluation: instructor/mentor review, rubric-based scoring, weighted criteria, inline comments.</p>
-<p>Deadlines: hard vs soft, grace periods, late submission rules (configurable at cohort level).</p>
-</div></details>
-
-<details><summary>Instructor Permissions</summary><div class="details-content">
-<div class="table-wrap"><table>
-  <thead><tr><th>Action</th><th>Permission</th></tr></thead>
-  <tbody>
-    <tr><td>View learner progress</td><td>Yes</td></tr>
-    <tr><td>Mark/validate attendance</td><td>Yes</td></tr>
-    <tr><td>Update session link</td><td>Controlled (audit log)</td></tr>
-    <tr><td>Grade projects</td><td>Yes</td></tr>
-    <tr><td>Recommend certification</td><td>Yes</td></tr>
-    <tr><td>Approve certification</td><td>No</td></tr>
-    <tr><td>Modify cohort structure</td><td>No</td></tr>
-  </tbody>
-</table></div>
-</div></details>
-
-<div class="callout callout-warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><strong>Wireframe impact:</strong> The cohort model introduces 8 items V4 wireframes need to accommodate: cohort identity in header, time-based release gates (distinct from prerequisite locks), multi-dimensional progress KPIs, attendance as completion criterion, project submission UI, certificate type distinction (Completion vs Participation), cohort-scoped discussions, time-based content availability states.</div></div>
-
-<!-- ===== SECTION 16 ===== -->
-<h2 id="s16"><span class="section-count">16</span>Mobile App Requirements (Phase 2)<a class="anchor-link" href="#s16">#</a></h2>
-<p>Source: Mobile App Requirements (Sep 23, 2025). Author: Nilesh Dabhi.</p>
-
-<h3>Phase 1 Scope (11 features)</h3>
-<ol>
-  <li>Authentication (login/sign-up)</li>
-  <li>Dashboard with enrolled programs</li>
-  <li>Course/program module access</li>
-  <li>Live session attendance (Zoom integration)</li>
-  <li>Calendar view with upcoming sessions</li>
-  <li>Session recording playback</li>
-  <li>Discussion board participation</li>
-  <li>Assessments/quizzes</li>
-  <li>Progress tracking</li>
-  <li>Certificate viewing and sharing</li>
-  <li>Push notifications</li>
-</ol>
-
-<h3>Out of Scope</h3>
-<p>Full website parity, instructor/admin features, payment gateway, community beyond discussions.</p>
-
-<h3>Desktop-to-Mobile Adaptation Notes</h3>
-<ul>
-  <li>Navigation: tab bar to bottom nav or drawer</li>
-  <li>Cards: single-column layout</li>
-  <li>Live session join: highest priority action on mobile</li>
-  <li>Persistent back button required</li>
-  <li>Filter sidebar becomes bottom sheet or full-screen overlay</li>
-</ul>
-
-<!-- ===== SECTION 17 ===== -->
-<h2 id="s17"><span class="section-count">17</span>Figma Reference<a class="anchor-link" href="#s17">#</a></h2>
-<p><strong>File key:</strong> <code>Wz2TCYFVr0hD8tJNiLajLt</code></p>
-<p><strong>Active section:</strong> V4 (node <code>590:4662</code>). Archive: V3 (node <code>407:4307</code>).</p>
-<p>33 screens across 4 flows + My Learning List + Filter Modal + Gamification + Dashboard (3 versions) + Immersive Player (3 versions).</p>
-<div class="table-wrap"><table>
-  <thead><tr><th>Row</th><th>Y Position</th><th>Content</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>y:520</td><td>TechMaster (9 screens)</td></tr>
-    <tr><td>2</td><td>y:2311</td><td>Data Analytics (7 screens)</td></tr>
-    <tr><td>3</td><td>y:4269</td><td>Cloud Engineering (8 screens)</td></tr>
-    <tr><td>4</td><td>y:6100</td><td>Cybersecurity (8 screens)</td></tr>
-    <tr><td>5</td><td>y:8600</td><td>Gamification & Weekly Goals</td></tr>
-  </tbody>
-</table></div>
-
-<p style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-tertiary);">
-  <strong>Document History:</strong> Apr 9, 2026 - Initial PRD compiled from all discovery materials, wireframes, audits, session notes, FRD-Cohort Management, and Mobile App Requirements.
-</p>
-
-</main>
-
-<button id="back-to-top" onclick="window.scrollTo({top:0})">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
+<!-- ============================================================
+     JAVASCRIPT - Dynamic rendering
+     ============================================================ -->
 <script>
-// Search data - built from section content
-const sections = [];
-document.querySelectorAll('h2, h3, h4').forEach(el => {
-  const id = el.id || el.closest('[id]')?.id || '';
-  const parent = el.tagName === 'H2' ? '' : el.closest('h2')?.textContent?.replace('#','') || '';
-  const content = [];
-  let node = el.nextElementSibling;
-  while (node && !['H2','H3','H4'].includes(node.tagName)) {
-    content.push(node.textContent);
-    node = node.nextElementSibling;
-  }
-  sections.push({
-    id: id || el.parentElement?.id || '',
-    title: el.textContent.replace('#','').trim(),
-    section: parent,
-    content: content.join(' ').substring(0, 500),
-    el: el
+// ---- LAST UPDATED TIMESTAMP ----
+// This updates automatically each time the file is modified and re-saved.
+// To update: change the date string below.
+const LAST_UPDATED = '2026-04-08T17:00:00';
+const lastUpdatedEl = document.getElementById('last-updated');
+if (lastUpdatedEl) {
+  const d = new Date(LAST_UPDATED);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  lastUpdatedEl.textContent = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()} at ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+}
+
+// ---- COLOR SWATCHES (generated from data) ----
+const colorGroups = {
+  'neutral-swatches': [
+    { name: '950', hex: '#0D0D0D' }, { name: '900', hex: '#171717' }, { name: '800', hex: '#262626' },
+    { name: '700', hex: '#404040' }, { name: '600', hex: '#525252' }, { name: '500', hex: '#737373' },
+    { name: '400', hex: '#A3A3A3' }, { name: '300', hex: '#E5E5E5', light: true },
+    { name: '200', hex: '#F5F5F5', light: true }, { name: '100', hex: '#FAFAFA', light: true },
+    { name: '50', hex: '#FFFFFF', light: true },
+  ],
+  'brand-swatches': [
+    { name: 'Dark', hex: '#080C28' }, { name: 'Navy', hex: '#333A5A' },
+  ],
+  'accent-swatches': [
+    { name: 'Blue', hex: '#005FFF' }, { name: 'Blue Light', hex: '#3E89FF' },
+    { name: 'Blue Alice', hex: '#E9F2FF', light: true }, { name: 'Blue Ice', hex: '#F7FBFF', light: true },
+    { name: 'Green', hex: '#20E070' }, { name: 'Green Dark', hex: '#00746B' },
+    { name: 'Red', hex: '#FF3742' }, { name: 'Orange', hex: '#E45F18' },
+  ],
+  'tint-swatches': [
+    { name: 'Purple', hex: '#772CBB' }, { name: 'Magenta', hex: '#931FAA' },
+    { name: 'Plum', hex: '#943170' }, { name: 'Crimson', hex: '#A9202A' }, { name: 'Burnt', hex: '#B33600' },
+  ],
+  'white-opacity-swatches': [
+    { name: 'White 5%', hex: 'rgba(255,255,255,0.05)', display: '5%' },
+    { name: 'White 10%', hex: 'rgba(255,255,255,0.1)', display: '10%' },
+    { name: 'White 20%', hex: 'rgba(255,255,255,0.2)', display: '20%' },
+    { name: 'White 30%', hex: 'rgba(255,255,255,0.3)', display: '30%' },
+    { name: 'White 50%', hex: 'rgba(255,255,255,0.5)', display: '50%' },
+    { name: 'White 70%', hex: 'rgba(255,255,255,0.7)', display: '70%' },
+    { name: 'White 90%', hex: 'rgba(255,255,255,0.9)', display: '90%' },
+  ],
+  'black-opacity-swatches': [
+    { name: 'Black 5%', hex: 'rgba(0,0,0,0.05)', display: '5%', light: true },
+    { name: 'Black 10%', hex: 'rgba(0,0,0,0.1)', display: '10%', light: true },
+    { name: 'Black 20%', hex: 'rgba(0,0,0,0.2)', display: '20%' },
+    { name: 'Black 50%', hex: 'rgba(0,0,0,0.5)', display: '50%' },
+    { name: 'Black 60%', hex: 'rgba(0,0,0,0.6)', display: '60%' },
+  ],
+};
+
+// Extended accent swatches (add to color section if container exists)
+const extendedColors = {
+  'extended-accent-swatches': [
+    { name: 'Lightning', hex: '#B0FB50' },
+    { name: 'LL Text', hex: '#CDFF92' },
+    { name: 'Blue Link', hex: '#026AFA' },
+    { name: 'Blue Border', hex: '#71AEFF' },
+    { name: 'Highlight', hex: '#FBF4DD', light: true },
+    { name: 'Star', hex: '#F59E0B' },
+  ],
+  'content-accent-swatches': [
+    { name: 'Green', hex: '#A7D067' }, { name: 'Green Lt', hex: '#F7FCEE', light: true },
+    { name: 'Blue', hex: '#7BB5DD' }, { name: 'Blue Lt', hex: '#F0F8FD', light: true },
+    { name: 'Gold', hex: '#E8C073' }, { name: 'Gold Lt', hex: '#FCF8EF', light: true },
+    { name: 'Coral', hex: '#E18484' }, { name: 'Coral Lt', hex: '#FCF2F2', light: true },
+    { name: 'Indigo', hex: '#8C93E5' },
+  ],
+};
+
+Object.entries(extendedColors).forEach(([containerId, swatches]) => {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  swatches.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'ds-swatch';
+    div.innerHTML = `
+      <div class="ds-swatch__color ${s.light ? 'light-border' : ''}" style="background: ${s.hex};" data-hex="${s.hex}"></div>
+      <div class="ds-swatch__name">${s.name}</div>
+      <div class="ds-swatch__hex">${s.hex}</div>
+    `;
+    div.querySelector('.ds-swatch__color').addEventListener('click', function() {
+      navigator.clipboard.writeText(s.hex).then(() => {
+        this.classList.add('copied');
+        setTimeout(() => this.classList.remove('copied'), 800);
+      });
+    });
+    container.appendChild(div);
   });
 });
 
-function openSearch() {
-  document.getElementById('search-overlay').classList.add('active');
-  document.getElementById('search-input').focus();
-  document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search across all 17 sections</div>';
-}
-function closeSearch() {
-  document.getElementById('search-overlay').classList.remove('active');
-}
-
-document.getElementById('search-input').addEventListener('input', function(e) {
-  const q = e.target.value.toLowerCase().trim();
-  const results = document.getElementById('search-results');
-  if (!q) {
-    results.innerHTML = '<div class="search-empty">Type to search across all 17 sections</div>';
-    return;
-  }
-  const matches = sections.filter(s =>
-    s.title.toLowerCase().includes(q) || s.content.toLowerCase().includes(q)
-  ).slice(0, 12);
-
-  if (!matches.length) {
-    results.innerHTML = '<div class="search-empty">No results for "' + q + '"</div>';
-    return;
-  }
-  results.innerHTML = matches.map(m => {
-    const excerpt = m.content.substring(0, 120);
-    const highlighted = excerpt.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>');
-    return '<div class="search-result" onclick="goTo(\'' + m.id + '\')">' +
-      (m.section ? '<div class="search-result-section">' + m.section + '</div>' : '') +
-      '<div class="search-result-title">' + m.title.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>') + '</div>' +
-      '<div class="search-result-excerpt">' + highlighted + '</div></div>';
-  }).join('');
+Object.entries(colorGroups).forEach(([containerId, swatches]) => {
+  const container = document.getElementById(containerId);
+  swatches.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'ds-swatch';
+    div.innerHTML = `
+      <div class="ds-swatch__color ${s.light ? 'light-border' : ''}" style="background: ${s.hex};" data-hex="${s.display || s.hex}"></div>
+      <div class="ds-swatch__name">${s.name}</div>
+      <div class="ds-swatch__hex">${s.display || s.hex}</div>
+    `;
+    div.querySelector('.ds-swatch__color').addEventListener('click', function() {
+      navigator.clipboard.writeText(s.display || s.hex).then(() => {
+        this.classList.add('copied');
+        setTimeout(() => this.classList.remove('copied'), 800);
+      });
+    });
+    container.appendChild(div);
+  });
 });
 
-function goTo(id) {
-  closeSearch();
-  if (id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
+// ---- TYPE SCALE ----
+const typeScale = [
+  { name: 'Display XL', size: 56, weight: 200, lh: 60, ls: -2.24, font: 'serif', sample: 'Display XL' },
+  { name: 'Display L', size: 40, weight: 300, lh: 44, ls: -1.6, font: 'serif', sample: 'Display L' },
+  { name: 'Heading H1', size: 32, weight: 300, lh: 36, ls: -1.28, font: 'serif', sample: 'Heading H1' },
+  { name: 'Heading H2', size: 24, weight: 300, lh: 28, ls: -0.96, font: 'serif', sample: 'Heading H2' },
+  { name: 'Heading H3', size: 22, weight: 500, lh: 28, ls: 0, font: 'sans', sample: 'Heading H3' },
+  { name: 'Body L', size: 18, weight: 300, lh: 28, ls: 0, font: 'sans', sample: 'Body L Regular - Long-form body text for readability.' },
+  { name: 'Body L Medium', size: 18, weight: 500, lh: 24, ls: -0.36, font: 'sans', sample: 'Body L Medium - Emphasized paragraphs.' },
+  { name: 'Body M', size: 16, weight: 300, lh: 24, ls: 0, font: 'sans', sample: 'Body M Regular - Default body, paragraphs.' },
+  { name: 'Body M Medium', size: 16, weight: 500, lh: 20, ls: -0.32, font: 'sans', sample: 'Body M Medium - Navigation links, buttons.' },
+  { name: 'Body M Semi', size: 16, weight: 600, lh: 20, ls: 0, font: 'sans', sample: 'Body M Semi Bold - Button labels, card titles.' },
+  { name: 'Caption L', size: 14, weight: 500, lh: 18, ls: -0.28, font: 'sans', sample: 'Caption L Medium - Secondary text, metadata.' },
+  { name: 'Caption S', size: 14, weight: 500, lh: 16, ls: 0.56, font: 'sans', sample: 'CAPTION S UPPERCASE' },
+  { name: 'Small', size: 12, weight: 500, lh: 16, ls: 0.48, font: 'ui', sample: 'SMALL DEFAULT - BADGES, TAGS' },
+  { name: 'Micro', size: 10, weight: 500, lh: 14, ls: 0.25, font: 'ui', sample: 'MICRO DEFAULT - TINY LABELS' },
+];
 
-// Keyboard shortcuts
-document.addEventListener('keydown', function(e) {
-  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
-  if (e.key === 'Escape') closeSearch();
-  if (e.key === 'Enter' && document.getElementById('search-overlay').classList.contains('active')) {
-    const first = document.querySelector('.search-result');
-    if (first) first.click();
-  }
+const fontMap = { serif: 'var(--font-serif)', sans: 'var(--font-sans)', ui: 'var(--font-ui)' };
+
+const typeContainer = document.getElementById('type-scale');
+typeScale.forEach(t => {
+  const row = document.createElement('div');
+  row.className = 'ds-type-sample';
+  row.innerHTML = `
+    <div class="ds-type-meta">
+      <strong>${t.name}</strong>
+      ${t.size}/${t.lh} &middot; ${t.weight} &middot; ${t.ls}px
+    </div>
+    <div class="ds-type-specimen" style="font-family: ${fontMap[t.font]}; font-size: ${t.size}px; font-weight: ${t.weight}; line-height: ${t.lh}px; letter-spacing: ${t.ls}px;">
+      ${t.sample}
+    </div>
+  `;
+  typeContainer.appendChild(row);
 });
 
-// Theme toggle
-function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-  localStorage.setItem('prd-theme', html.getAttribute('data-theme'));
-}
-const saved = localStorage.getItem('prd-theme');
-if (saved) document.documentElement.setAttribute('data-theme', saved);
+// ---- SPACING SCALE ----
+const spacings = [
+  { name: 'xxs', value: 4 }, { name: 'xs', value: 8 }, { name: 'sm', value: 16 },
+  { name: 'md', value: 24 }, { name: 'lg', value: 32 }, { name: 'xl', value: 40 },
+  { name: 'xxl', value: 64 }, { name: 'xxxl', value: 72 },
+];
 
-// Reading progress
-window.addEventListener('scroll', function() {
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
-  document.getElementById('reading-progress').style.width = pct + '%';
-  const btn = document.getElementById('back-to-top');
-  btn.classList.toggle('visible', window.scrollY > 400);
+const spacingContainer = document.getElementById('spacing-scale');
+spacings.forEach(s => {
+  const row = document.createElement('div');
+  row.className = 'ds-space-row';
+  row.innerHTML = `
+    <div class="ds-space-label">${s.name}</div>
+    <div class="ds-space-value">${s.value}px</div>
+    <div class="ds-space-bar" style="width: ${Math.min(s.value * 2.5, 400)}px;"></div>
+  `;
+  spacingContainer.appendChild(row);
 });
 
-// Sidebar active tracking
-const navItems = document.querySelectorAll('.nav-item[href], .nav-group-toggle');
-const headings = document.querySelectorAll('h2[id], h3[id]');
-const observer = new IntersectionObserver(entries => {
+// ---- RADIUS GRID ----
+const radii = [
+  { name: 'sm', value: 4 }, { name: 'md', value: 8 }, { name: 'default', value: 10 },
+  { name: 'lg', value: 12 }, { name: 'xl', value: 16 }, { name: 'full', value: 9999 },
+];
+
+const radiusContainer = document.getElementById('radius-grid');
+radii.forEach(r => {
+  const item = document.createElement('div');
+  item.className = 'ds-radius-item';
+  item.innerHTML = `
+    <div class="ds-radius-box" style="border-radius: ${r.value === 9999 ? '50%' : r.value + 'px'};"></div>
+    <div class="ds-radius-label">${r.name}</div>
+    <div class="ds-radius-val">${r.value === 9999 ? '9999px' : r.value + 'px'}</div>
+  `;
+  radiusContainer.appendChild(item);
+});
+
+// ---- SIDEBAR ACTIVE STATE ----
+const sections = document.querySelectorAll('.ds-section');
+const navLinks = document.querySelectorAll('.ds-sidebar a');
+
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      document.querySelectorAll('.nav-item.active').forEach(n => n.classList.remove('active'));
-      const id = entry.target.id;
-      const link = document.querySelector('.nav-item[href="#' + id + '"]');
-      if (link) link.classList.add('active');
+      navLinks.forEach(link => link.classList.remove('active'));
+      const active = document.querySelector(`.ds-sidebar a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
     }
   });
-}, { rootMargin: '-80px 0px -70% 0px' });
-headings.forEach(h => observer.observe(h));
+}, { rootMargin: '-20% 0px -70% 0px' });
 
-// Nav group toggle
-function toggleNavGroup(btn) {
-  btn.closest('.nav-group').classList.toggle('collapsed');
+sections.forEach(s => observer.observe(s));
+
+// === Icon Catalog ===
+const uiIcons = [
+  'arrow-right','bell','bookmark','calendar','check','chevron-down','chevron-right',
+  'clock','close','copy','document','download','external-link','eye','filter','globe',
+  'heart','info','lightning-bookmark','linkedin','mail','menu-hamburger','minus','play',
+  'plus','search','settings','share','star','star-half','twitter-x','user','users','video'
+];
+const featureIcons = [
+  'feature-assignments','feature-certificate','feature-community','feature-homework',
+  'feature-launch','feature-live-session','feature-qa','feature-reader',
+  'feature-recording','feature-tools'
+];
+
+function renderIconGrid(containerId, names, size) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  names.forEach(name => {
+    const card = document.createElement('div');
+    card.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 8px;border:1px solid var(--neutral-200);border-radius:8px;background:var(--white);';
+    const img = document.createElement('img');
+    img.src = 'maven-icons/' + name + '.svg';
+    img.alt = name;
+    img.style.cssText = 'width:' + size + 'px;height:' + size + 'px;';
+    const label = document.createElement('span');
+    label.style.cssText = 'font-size:11px;color:var(--neutral-500);text-align:center;word-break:break-all;line-height:1.3;';
+    label.textContent = name;
+    card.appendChild(img);
+    card.appendChild(label);
+    el.appendChild(card);
+  });
+}
+
+renderIconGrid('icon-grid-ui', uiIcons, 24);
+renderIconGrid('icon-grid-feature', featureIcons, 48);
+
+// Logo
+const logoEl = document.getElementById('icon-grid-logo');
+if (logoEl) {
+  ['white','var(--neutral-900)'].forEach((bg, i) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:24px 32px;border-radius:8px;background:' + bg + ';border:1px solid var(--neutral-200);';
+    const img = document.createElement('img');
+    img.src = i === 0 ? 'skillup-logo-dark.svg' : 'skillup-logo-light.svg';
+    img.alt = 'SkillUp logo';
+    img.style.cssText = 'height:32px;';
+    wrap.appendChild(img);
+    logoEl.appendChild(wrap);
+  });
 }
 </script>
 </body>

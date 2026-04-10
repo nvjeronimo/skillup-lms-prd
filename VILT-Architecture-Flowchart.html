@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Sessions Architecture - SkillUp LMS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #0f1117;
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+  }
+
+  .diagram-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Section headers */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 16px;
+    padding-left: 4px;
+  }
+
+  /* ─── PRINCIPLE BOX ─── */
+  .principle {
+    background: linear-gradient(135deg, #1a1d2e 0%, #151825 100%);
+    border: 1px solid #2a2d3e;
+    border-radius: 12px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .principle .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #252840;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .principle h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .principle p {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.5;
+  }
+
+  /* ─── FLOW SECTIONS ─── */
+  .flow-section {
+    position: relative;
+  }
+
+  /* ─── HIERARCHY ROW ─── */
+  .hierarchy-row {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .h-card {
+    flex: 1;
+    min-width: 200px;
+    background: #161822;
+    border: 1px solid #2a2d3e;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .h-card .level-badge {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  .h-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .h-card .desc {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  .h-card .contains {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .h-card .contains span {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #1e2030;
+    border: 1px solid #2a2d3e;
+    color: #aaa;
+  }
+
+  /* Arrow connector between cards */
+  .arrow-right {
+    display: flex;
+    align-items: center;
+    color: #444;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* ─── DELIVERY MODE SECTION ─── */
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .mode-card {
+    background: #161822;
+    border: 1px solid #2a2d3e;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .mode-card .mode-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .mode-card.self-paced .mode-icon { background: #162a1e; }
+  .mode-card.vilt .mode-icon { background: #2a1616; }
+  .mode-card.blended .mode-icon { background: #2a2416; }
+
+  .mode-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .mode-card .mode-desc {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.4;
+  }
+
+  .mode-card .mode-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .mode-card.self-paced .mode-tag { background: #162a1e; color: #4ade80; }
+  .mode-card.vilt .mode-tag { background: #2a1616; color: #f87171; }
+  .mode-card.blended .mode-tag { background: #2a2416; color: #fbbf24; }
+
+  /* ─── TAGGING FLOW ─── */
+  .tagging-flow {
+    background: #161822;
+    border: 1px solid #2a2d3e;
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .tag-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tag-step {
+    flex: 1;
+    min-width: 160px;
+    max-width: 220px;
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+  }
+
+  .tag-step .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #252840;
+    border: 2px solid #3b3f5c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #8b8fd4;
+    margin: 0 auto 10px;
+  }
+
+  .tag-step h5 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .tag-step p {
+    font-size: 10px;
+    color: #888;
+    line-height: 1.4;
+  }
+
+  .step-arrow {
+    display: flex;
+    align-items: center;
+    padding-top: 6px;
+    color: #3b3f5c;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ─── BUBBLE UP SECTION ─── */
+  .bubble-section {
+    background: #161822;
+    border: 1px solid #2a2d3e;
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .bubble-examples {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .bubble-example {
+    flex: 1;
+    min-width: 280px;
+    background: #1a1d2e;
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .bubble-example .example-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .bubble-example:nth-child(1) .example-label { color: #4ade80; }
+  .bubble-example:nth-child(2) .example-label { color: #fbbf24; }
+  .bubble-example:nth-child(3) .example-label { color: #f87171; }
+
+  .lesson-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .lesson-chip {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .chip-sp { background: #162a1e; color: #4ade80; border: 1px solid #1e3a28; }
+  .chip-vilt { background: #2a1616; color: #f87171; border: 1px solid #3a1e1e; }
+
+  .result-line {
+    font-size: 11px;
+    color: #ccc;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #2a2d3e;
+  }
+
+  .result-line span {
+    font-weight: 600;
+  }
+
+  /* ─── LEARNER VIEW ─── */
+  .learner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .learner-card {
+    background: #161822;
+    border: 1px solid #2a2d3e;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .learner-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .learner-card h4 .lc-icon {
+    font-size: 16px;
+  }
+
+  .learner-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .learner-card ul li {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.5;
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .learner-card ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #3b3f5c;
+  }
+
+  /* ─── RULES / CONSTRAINTS ─── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .rule-card {
+    background: #161822;
+    border: 1px solid #2a2d3e;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .rule-card .rule-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .rule-card h5 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .rule-card p {
+    font-size: 10px;
+    color: #888;
+    line-height: 1.4;
+  }
+
+  /* ─── FOOTER ─── */
+  .diagram-footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 10px;
+    color: #555;
+  }
+
+  @media (max-width: 700px) {
+    .hierarchy-row { flex-direction: column; }
+    .arrow-right { transform: rotate(90deg); justify-content: center; }
+    .delivery-grid { grid-template-columns: 1fr; }
+    .learner-grid { grid-template-columns: 1fr; }
+    .tag-steps { flex-direction: column; align-items: center; }
+    .step-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Live Sessions (VILT) Architecture</h1>
+  <p>SkillUp LMS  /  Based on meeting April 10, 2026  /  Harpreet, Govind, Navdeep, Rupali, Nelson</p>
+</div>
+
+<div class="diagram-container">
+
+  <!-- CORE PRINCIPLE -->
+  <div class="flow-section">
+    <div class="section-label">Core Principle</div>
+    <div class="principle">
+      <div class="icon">&#x2261;</div>
+      <div>
+        <h3>Separate Course Structure from Delivery Method</h3>
+        <p>A course is a package of content. VILT is not a course type. It is a mode of delivery. The course structure (Program > Course > Module > Lesson) stays the same regardless of how it is delivered.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT HIERARCHY -->
+  <div class="flow-section">
+    <div class="section-label">Content Hierarchy (unchanged by delivery mode)</div>
+    <div class="hierarchy-row">
+      <div class="h-card">
+        <div class="level-badge">Level 1</div>
+        <h4>Program</h4>
+        <div class="desc">Collection of courses. e.g. TechMaster AIML (16 courses)</div>
+        <div class="contains">
+          <span>Courses</span>
+          <span>Start/End dates</span>
+        </div>
+      </div>
+      <div class="arrow-right">&#x25B6;</div>
+      <div class="h-card">
+        <div class="level-badge">Level 2</div>
+        <h4>Course</h4>
+        <div class="desc">Single subject. e.g. AI Fundamentals. Has its own delivery mode.</div>
+        <div class="contains">
+          <span>Modules</span>
+          <span>Quizzes</span>
+          <span>Projects</span>
+        </div>
+      </div>
+      <div class="arrow-right">&#x25B6;</div>
+      <div class="h-card">
+        <div class="level-badge">Level 3</div>
+        <h4>Module</h4>
+        <div class="desc">Topic cluster. Can be entirely VILT, entirely self-paced, or mixed.</div>
+        <div class="contains">
+          <span>Lessons</span>
+          <span>Assessments</span>
+        </div>
+      </div>
+      <div class="arrow-right">&#x25B6;</div>
+      <div class="h-card">
+        <div class="level-badge">Level 4</div>
+        <h4>Lesson</h4>
+        <div class="desc">Atomic content unit. Where delivery mode is tagged. ~40 content types.</div>
+        <div class="contains">
+          <span>Video</span>
+          <span>Reading</span>
+          <span>Lab</span>
+          <span>Live session</span>
+          <span>Quiz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELIVERY MODES -->
+  <div class="flow-section">
+    <div class="section-label">Three Modes of Delivery</div>
+    <div class="delivery-grid">
+      <div class="mode-card self-paced">
+        <div class="mode-icon">&#x1F4D6;</div>
+        <h4>Self-Paced</h4>
+        <div class="mode-desc">No instructor. No deadlines. Learner consumes content on their own schedule. Videos, readings, quizzes, labs.</div>
+        <div class="mode-tag">No timeline pressure</div>
+      </div>
+      <div class="mode-card vilt">
+        <div class="mode-icon">&#x1F3A4;</div>
+        <h4>VILT (Instructor-Led)</h4>
+        <div class="mode-desc">Heavily instructor-driven. Still includes quizzes, projects, reading material. Think university: lectures + homework.</div>
+        <div class="mode-tag">Date + Time + Presenter required</div>
+      </div>
+      <div class="mode-card blended">
+        <div class="mode-icon">&#x1F504;</div>
+        <h4>Blended</h4>
+        <div class="mode-desc">Mix of self-paced and live sessions. Most common model. Weekday self-study, weekend VILT sessions.</div>
+        <div class="mode-tag">Start/End dates visible</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN TAGGING FLOW -->
+  <div class="flow-section">
+    <div class="section-label">Admin Tagging Flow</div>
+    <div class="tagging-flow">
+      <div class="tag-steps">
+        <div class="tag-step">
+          <div class="step-num">1</div>
+          <h5>Create Course</h5>
+          <p>Define title, description, structure (modules, lessons)</p>
+        </div>
+        <div class="step-arrow">&#x25B6;</div>
+        <div class="tag-step">
+          <div class="step-num">2</div>
+          <h5>Tag Delivery Mode</h5>
+          <p>At lesson, module, or course level: self-paced, VILT, or blended</p>
+        </div>
+        <div class="step-arrow">&#x25B6;</div>
+        <div class="tag-step">
+          <div class="step-num">3</div>
+          <h5>If VILT: Add Session Details</h5>
+          <p>System forces: date, time, presenter name, meeting link</p>
+        </div>
+        <div class="step-arrow">&#x25B6;</div>
+        <div class="tag-step">
+          <div class="step-num">4</div>
+          <h5>Mode Bubbles Up</h5>
+          <p>Parent levels auto-derive their mode from children (cumulative)</p>
+        </div>
+        <div class="step-arrow">&#x25B6;</div>
+        <div class="tag-step">
+          <div class="step-num">5</div>
+          <h5>Learner View Updates</h5>
+          <p>Visual indicators, calendar populated, nudges configured</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUBBLE UP LOGIC -->
+  <div class="flow-section">
+    <div class="section-label">Delivery Mode Bubble-Up Logic</div>
+    <div class="bubble-section">
+      <div class="bubble-examples">
+        <div class="bubble-example">
+          <div class="example-label">Example A: Self-Paced Module</div>
+          <div class="lesson-row">
+            <span class="lesson-chip chip-sp">Lesson 1: SP</span>
+            <span class="lesson-chip chip-sp">Lesson 2: SP</span>
+            <span class="lesson-chip chip-sp">Lesson 3: SP</span>
+          </div>
+          <div class="result-line">Module shows as <span style="color:#4ade80;">Self-Paced</span>. No calendar entries. No deadlines.</div>
+        </div>
+        <div class="bubble-example">
+          <div class="example-label">Example B: Blended Module</div>
+          <div class="lesson-row">
+            <span class="lesson-chip chip-sp">Lesson 1: SP</span>
+            <span class="lesson-chip chip-sp">Lesson 2: SP</span>
+            <span class="lesson-chip chip-vilt">Lesson 3: VILT</span>
+            <span class="lesson-chip chip-vilt">Lesson 4: VILT</span>
+          </div>
+          <div class="result-line">Module shows as <span style="color:#fbbf24;">Blended</span>. Calendar entries for L3 and L4. Start/end dates visible.</div>
+        </div>
+        <div class="bubble-example">
+          <div class="example-label">Example C: VILT Module</div>
+          <div class="lesson-row">
+            <span class="lesson-chip chip-vilt">Lesson 1: VILT</span>
+            <span class="lesson-chip chip-vilt">Lesson 2: VILT</span>
+            <span class="lesson-chip chip-vilt">Lesson 3: VILT</span>
+          </div>
+          <div class="result-line">Module shows as <span style="color:#f87171;">VILT</span>. All lessons on calendar. Still has quizzes, projects, readings.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNER VIEW -->
+  <div class="flow-section">
+    <div class="section-label">Learner View</div>
+    <div class="learner-grid">
+      <div class="learner-card">
+        <h4><span class="lc-icon">&#x1F4CB;</span> Course Structure (Linear View)</h4>
+        <ul>
+          <li>All modules and lessons listed in order</li>
+          <li>Visual indicator per item: badge, icon, or color showing delivery mode</li>
+          <li>VILT items show date/time of session inline</li>
+          <li>Completed VILT shows "Done" status</li>
+          <li>If recording available, show recording link</li>
+        </ul>
+      </div>
+      <div class="learner-card">
+        <h4><span class="lc-icon">&#x1F4C5;</span> Calendar Tab (Course-Level)</h4>
+        <ul>
+          <li>Tab alongside course structure</li>
+          <li>Shows only live sessions for this specific course</li>
+          <li>Session topic, date, time, presenter</li>
+          <li>Correlates with course structure</li>
+        </ul>
+      </div>
+      <div class="learner-card">
+        <h4><span class="lc-icon">&#x1F30D;</span> Global Calendar</h4>
+        <ul>
+          <li>Across all enrolled courses and programs</li>
+          <li>Aggregated view of all upcoming live sessions</li>
+          <li>Learner sees full schedule at a glance</li>
+        </ul>
+      </div>
+      <div class="learner-card">
+        <h4><span class="lc-icon">&#x1F514;</span> Nudges and Reminders</h4>
+        <ul>
+          <li>"Session on Module 3 in 3 days. Complete Modules 1 and 2."</li>
+          <li>Upcoming session topics and recommended pre-reading</li>
+          <li>No blocking: learner can still attend even if behind on self-paced</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY RULES -->
+  <div class="flow-section">
+    <div class="section-label">Key Rules</div>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-icon">&#x1F6AB;</div>
+        <div>
+          <h5>No Duplicate Courses</h5>
+          <p>Never create separate VILT and self-paced versions of the same course. One course, one instance.</p>
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">&#x1F513;</div>
+        <div>
+          <h5>No Locking VILT Behind Prerequisites</h5>
+          <p>Learner can attend a live session even if they haven't finished prior self-paced modules. Nudge, don't block.</p>
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">&#x1F393;</div>
+        <div>
+          <h5>"Pure VILT" Still Has Supporting Content</h5>
+          <p>Even instructor-led courses have quizzes, projects, readings. Like university: lectures + homework. Not "blended" for having a textbook.</p>
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">&#x23F0;</div>
+        <div>
+          <h5>VILT = Time-Bound, Self-Paced = Open</h5>
+          <p>Self-paced shows no deadlines. Any VILT component adds start/end dates and schedule pressure to the learner view.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="diagram-footer">
+  SkillUp LMS Discovery / Live Sessions Architecture / April 2026
+</div>
+
+</body>
+</html>

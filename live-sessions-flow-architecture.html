@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option C (Hybrid) — Live Sessions Flow Architecture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #F8F9FB; color: #121212; line-height: 1.5; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px; }
+
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  h2 { font-size: 16px; font-weight: 700; margin: 0; }
+  .subtitle { font-size: 13px; color: #737373; margin-bottom: 24px; }
+
+  /* Tab navigation */
+  .tab-nav { display: flex; gap: 4px; background: #fff; padding: 4px; border-radius: 10px; border: 1px solid #E5E5EA; width: fit-content; margin-bottom: 28px; flex-wrap: wrap; }
+  .tab-btn { padding: 8px 16px; border-radius: 8px; border: none; font-size: 12px; font-weight: 400; background: transparent; color: #737373; cursor: pointer; transition: all 0.15s; }
+  .tab-btn.active { font-weight: 600; background: #fff; color: #121212; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .tab-btn:hover { color: #121212; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Section title with number */
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; margin-top: 36px; }
+  .section-num { width: 28px; height: 28px; border-radius: 14px; background: #0338B8; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .section-desc { font-size: 12px; color: #737373; margin-bottom: 16px; }
+
+  /* Flow layout */
+  .flow-row { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .flow-col { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .flow-col.stretch { align-items: stretch; }
+
+  /* Arrow */
+  .arrow { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 0; }
+  .arrow-line { width: 2px; height: 24px; background: #AEAEB2; }
+  .arrow-head { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #AEAEB2; }
+  .arrow-label { font-size: 9px; color: #737373; font-style: italic; }
+
+  /* Box */
+  .box { background: #fff; border: 1.5px solid #E5E5EA; border-radius: 8px; padding: 12px 16px; min-width: 200px; }
+  .box.highlight { border-color: #0338B8; box-shadow: 0 0 0 3px rgba(3,56,184,0.08); }
+  .box.session { background: #F0F2FF; }
+  .box-accent { font-size: 9px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; color: #0338B8; }
+  .box-title { font-size: 13px; font-weight: 600; }
+  .box-subtitle { font-size: 11px; color: #737373; margin-top: 2px; }
+  .box-content { margin-top: 8px; }
+
+  /* Note */
+  .note { font-size: 11px; padding: 8px 12px; border-radius: 6px; margin-top: 8px; max-width: 480px; }
+  .note.info { background: #F0F2FF; color: #0338B8; }
+  .note.success { background: #E8F5E9; color: #2D6A2E; }
+  .note.warn { background: #FFF8E1; color: #8B6914; }
+
+  /* Badge */
+  .badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+  .badge-blue { background: #F0F2FF; color: #0338B8; }
+  .badge-green { background: #E8F5E9; color: #2D6A2E; }
+  .badge-gray { background: #E8EBF0; color: #404045; }
+  .badge-dark { background: #212121; color: #fff; }
+  .badge-blue-solid { background: #D9E4FF; color: #234DB3; }
+
+  /* Course row */
+  .course-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid #E5E5EA; border-radius: 8px; background: #fff; }
+  .course-title { font-size: 12px; font-weight: 600; }
+  .course-sub { font-size: 10px; color: #737373; margin-top: 1px; }
+  .course-right { display: flex; align-items: center; gap: 6px; }
+  .progress-bar { width: 48px; height: 3px; background: #E8EBF0; border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 3px; background: #0338B8; border-radius: 2px; }
+  .progress-pct { font-size: 10px; color: #737373; }
+
+  /* Checkpoint */
+  .checkpoint { display: flex; align-items: center; gap: 8px; padding: 6px 0 6px 24px; font-size: 11px; color: #737373; }
+  .checkpoint-line { width: 1px; height: 16px; background: #D9E4FF; }
+  .checkpoint-dot { width: 6px; height: 6px; border-radius: 3px; flex-shrink: 0; }
+  .checkpoint-dot.green { background: #33C45E; }
+  .checkpoint-dot.blue { background: #0338B8; }
+  .checkpoint-dot.gray { background: #AEAEB2; }
+  .checkpoint-name { font-weight: 500; color: #121212; }
+  .checkpoint-module { color: #0338B8; font-size: 10px; }
+  .checkpoint-sep { color: #AEAEB2; }
+
+  /* Module row (mini) */
+  .module-row { font-size: 11px; padding: 6px 8px; background: #fff; border: 1px solid #E5E5EA; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+
+  /* Tab bar (mini) */
+  .mini-tabs { display: flex; gap: 0; border-bottom: 1px solid #E5E5EA; margin-bottom: 12px; overflow-x: auto; }
+  .mini-tab { padding: 8px 12px; font-size: 10px; color: #737373; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .mini-tab.active { font-weight: 600; color: #121212; border-bottom-color: #121212; }
+
+  /* Sidebar (immersive) - LIGHT MODE */
+  .sidebar { background: #fff; border-radius: 8px; padding: 12px; width: 280px; border: 1px solid #E5E5EA; }
+  .sidebar-label { font-size: 10px; color: #737373; margin-bottom: 8px; font-weight: 600; }
+  .sidebar-divider { height: 1px; background: #E5E5EA; margin: 6px 0; }
+  .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 6px; }
+  .sidebar-item.active { background: #F0F2FF; }
+  .sidebar-item .dot { width: 8px; height: 8px; border-radius: 4px; flex-shrink: 0; }
+  .sidebar-item .dot.completed { background: #33C45E; }
+  .sidebar-item .dot.current { background: #0338B8; }
+  .sidebar-item .dot.upcoming { background: #AEAEB2; }
+  .sidebar-item .dot.session { background: #0338B8; }
+  .sidebar-item .item-title { font-size: 11px; flex: 1; }
+  .sidebar-item .item-title.bold { font-weight: 600; }
+  .sidebar-item .item-title.session-title { color: #0338B8; }
+  .sidebar-item .item-meta { font-size: 9px; color: #737373; }
+  .sidebar-item .done-label { font-size: 9px; color: #33C45E; }
+
+  .session-card-dashed { border: 1px dashed #D9E4FF; border-radius: 6px; padding: 8px 12px; }
+  .session-card-live { background: #F0F2FF; border: 1.5px solid #D9E4FF; border-radius: 6px; padding: 8px 12px; margin: 2px 0; }
+  .session-card-done { background: #E8F5E9; border: 1px dashed rgba(51,196,94,0.4); border-radius: 6px; padding: 8px 12px; margin: 2px 0; }
+  .session-card-title { font-size: 11px; font-weight: 600; color: #0338B8; }
+  .session-card-meta { font-size: 9px; color: #737373; margin-top: 3px; }
+  .session-card-btn { margin-top: 6px; padding: 5px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-align: center; cursor: pointer; border: none; }
+  .btn-dark { background: #212121; color: #fff; }
+  .btn-outline { background: transparent; border: 1px solid #E5E5EA; color: #121212; }
+
+  /* Table */
+  .data-table { font-size: 10px; border-collapse: collapse; width: 100%; }
+  .data-table th { text-align: left; padding: 4px 8px; color: #737373; font-weight: 600; border-bottom: 1px solid #E5E5EA; }
+  .data-table td { padding: 6px 8px; border-bottom: 1px solid #E5E5EA; vertical-align: top; }
+  .data-table td.blue { color: #0338B8; }
+  .data-table td.bold { font-weight: 600; }
+
+  /* Comparison table */
+  .compare-table { font-size: 11px; border-collapse: collapse; width: 100%; }
+  .compare-table th { text-align: left; padding: 6px 8px; color: #737373; font-weight: 600; border-bottom: 2px solid #E5E5EA; }
+  .compare-table td { padding: 8px; border-bottom: 1px solid #E5E5EA; vertical-align: top; }
+
+  /* Checkpoint anatomy enlarged */
+  .checkpoint-enlarged { display: flex; align-items: center; gap: 12px; padding: 12px 16px 12px 32px; font-size: 13px; }
+  .checkpoint-connector { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .connector-line { width: 1px; height: 12px; background: #D9E4FF; }
+  .connector-dot { width: 8px; height: 8px; border-radius: 4px; background: #0338B8; }
+
+  .anatomy-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid #E5E5EA; }
+  .anatomy-label { font-size: 10px; font-weight: 600; color: #0338B8; }
+  .anatomy-desc { font-size: 9px; color: #737373; margin-top: 2px; }
+
+  /* Module ref patterns */
+  .ref-patterns { display: flex; flex-direction: column; gap: 6px; }
+  .ref-row { display: flex; align-items: center; gap: 12px; font-size: 11px; }
+  .ref-context { color: #737373; font-size: 10px; }
+
+  /* Main content area mockup */
+  .main-content { background: #fff; border: 1px solid #E5E5EA; border-radius: 8px; padding: 20px; max-width: 600px; }
+  .join-area { background: #F0F2FF; padding: 16px; border-radius: 8px; text-align: center; }
+  .join-platform { font-size: 14px; font-weight: 600; color: #0338B8; margin-top: 4px; }
+  .join-btn { margin-top: 12px; padding: 10px 24px; border-radius: 6px; background: #212121; color: #fff; font-size: 13px; font-weight: 600; display: inline-block; cursor: pointer; border: none; }
+
+  .gap-sm { height: 4px; }
+  .gap-md { height: 12px; }
+  .gap-lg { height: 24px; }
+
+  @media (max-width: 768px) {
+    .container { padding: 16px; }
+    .flow-row { flex-direction: column; }
+    .sidebar { width: 100%; }
+    .anatomy-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <h1>Option C (Hybrid) — Full Flow Architecture</h1>
+  <div class="subtitle">
+    Live session placement across all enrollment scenarios and views.<br>
+    Three layers: Urgency (banners), Sequence (inline checkpoints), Management (Live Sessions tab).
+  </div>
+
+  <!-- Tab navigation -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('all')">Full Architecture</button>
+    <button class="tab-btn" onclick="showTab('program')">Flow 1: Program</button>
+    <button class="tab-btn" onclick="showTab('course')">Flow 2: Single Course</button>
+    <button class="tab-btn" onclick="showTab('immersive')">Flow 3: Immersive View</button>
+    <button class="tab-btn" onclick="showTab('checkpoint')">Checkpoint Anatomy</button>
+  </div>
+
+  <!-- ========== FLOW 1: PROGRAM ========== -->
+  <div id="tab-all" class="tab-content active">
+
+  <div id="section-program">
+    <div class="section-title">
+      <div class="section-num">1</div>
+      <h2>Program Enrollment (Blended: TechMaster)</h2>
+    </div>
+    <div class="section-desc">Learner is enrolled in a Program that contains 4 courses + 5 live sessions. Sessions are pedagogically placed between specific courses and tied to modules.</div>
+
+    <div class="flow-row">
+      <div class="flow-col">
+        <div class="box" style="max-width:500px">
+          <div class="box-title">My Learning List</div>
+          <div class="box-subtitle">All enrolled courses and programs</div>
+          <div class="box-content" style="font-size:10px;color:#737373">
+            Slim notification banners at top:<br>
+            "LIVE: Session 2 — Data Workshop . Join Now"<br>
+            "Upcoming: Session 3 — Starts in 16 min"
+          </div>
+          <div class="note info">Layer 1: URGENCY — banners surface time-sensitive sessions regardless of which course the learner is viewing.</div>
+        </div>
+        <div class="arrow">
+          <div class="arrow-line"></div>
+          <div class="arrow-label">clicks program card</div>
+          <div class="arrow-head"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-row">
+      <div class="flow-col stretch">
+        <div class="box highlight" style="max-width:560px">
+          <div class="box-title">Program PD — Courses Tab</div>
+          <div class="box-subtitle">TechMaster Program</div>
+          <div class="box-content" style="display:flex;flex-direction:column;gap:6px">
+
+            <div class="course-row">
+              <div><div class="course-title">Course 1 — Python Basics</div><div class="course-sub">Module 3 . Lab 2</div></div>
+              <div class="course-right"><span class="badge badge-gray">Completed</span></div>
+            </div>
+            <div class="checkpoint">
+              <div class="checkpoint-line"></div>
+              <div class="checkpoint-dot green"></div>
+              <span class="checkpoint-name">Session 1 — Python Q&A</span>
+              <span class="checkpoint-sep">.</span>
+              <span class="checkpoint-module">After Module 3</span>
+              <span class="checkpoint-sep">.</span>
+              <span>Feb 12</span>
+              <span class="badge badge-green">Completed</span>
+            </div>
+
+            <div class="course-row">
+              <div><div class="course-title">Course 2 — Data Analytics</div><div class="course-sub">Module 2 . Lesson 8</div></div>
+              <div class="course-right">
+                <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
+                <span class="progress-pct">62%</span>
+                <span class="badge badge-blue-solid">In Progress</span>
+              </div>
+            </div>
+            <div class="checkpoint">
+              <div class="checkpoint-line"></div>
+              <div class="checkpoint-dot blue"></div>
+              <span class="checkpoint-name">Session 2 — Data Workshop</span>
+              <span class="checkpoint-sep">.</span>
+              <span class="checkpoint-module">After Module 4</span>
+              <span class="checkpoint-sep">.</span>
+              <span>Feb 19</span>
+              <span class="badge badge-dark">Starting Soon</span>
+            </div>
+            <div class="checkpoint">
+              <div class="checkpoint-line"></div>
+              <div class="checkpoint-dot gray"></div>
+              <span class="checkpoint-name">Session 3 — Midterm Review</span>
+              <span class="checkpoint-sep">.</span>
+              <span class="checkpoint-module">Covers Courses 1-2</span>
+              <span class="checkpoint-sep">.</span>
+              <span>Feb 26</span>
+              <span class="badge badge-blue">Scheduled</span>
+            </div>
+
+            <div class="course-row">
+              <div><div class="course-title">Course 3 — Deep Learning</div><div class="course-sub">Start with: Module 1</div></div>
+              <div class="course-right"><span class="badge badge-gray">Not Started</span></div>
+            </div>
+            <div class="checkpoint">
+              <div class="checkpoint-line"></div>
+              <div class="checkpoint-dot gray"></div>
+              <span class="checkpoint-name">Session 4 — DL Lab</span>
+              <span class="checkpoint-sep">.</span>
+              <span class="checkpoint-module">After Module 2</span>
+              <span class="checkpoint-sep">.</span>
+              <span>Mar 5</span>
+              <span class="badge badge-blue">Scheduled</span>
+            </div>
+
+            <div class="course-row">
+              <div><div class="course-title">Course 4 — Capstone Project</div><div class="course-sub">Complete all courses first</div></div>
+              <div class="course-right"><span class="badge badge-gray" style="color:#8C8F94">Locked</span></div>
+            </div>
+            <div class="checkpoint">
+              <div class="checkpoint-line"></div>
+              <div class="checkpoint-dot gray"></div>
+              <span class="checkpoint-name">Session 5 — Final Presentations</span>
+              <span class="checkpoint-sep">.</span>
+              <span class="checkpoint-module">After Capstone</span>
+              <span class="checkpoint-sep">.</span>
+              <span>Mar 19</span>
+              <span class="badge badge-blue">Scheduled</span>
+            </div>
+          </div>
+          <div class="note success">Layer 2: SEQUENCE — checkpoints show WHERE each session fits. Module reference tells WHY it's placed there.</div>
+        </div>
+      </div>
+
+      <div class="flow-col stretch">
+        <div class="gap-lg"></div>
+        <div class="box session" style="max-width:340px">
+          <div class="box-accent">LIVE SESSION</div>
+          <div class="box-title">Program PD — Live Sessions Tab</div>
+          <div class="box-subtitle">Full session management</div>
+          <div class="box-content" style="font-size:10px;color:#737373;line-height:1.6">
+            Full session cards with:<br>
+            - Session name, date/time, duration<br>
+            - Parent course + module reference<br>
+            - Status (Live Now, Starting Soon, Upcoming, Completed)<br>
+            - CTA (Join Live, Watch Recording, Upcoming)<br>
+            - Instructor name<br>
+            - Filter: All / Upcoming / Past
+          </div>
+          <div class="note info">Layer 3: MANAGEMENT — all sessions in one view for scheduling, recordings, and catch-up.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:24px;margin-top:8px">
+      <div class="flow-col stretch">
+        <div class="arrow">
+          <div class="arrow-line"></div>
+          <div class="arrow-label">clicks course row</div>
+          <div class="arrow-head"></div>
+        </div>
+        <div class="box" style="max-width:560px">
+          <div class="box-title">Course PD — Modules Tab</div>
+          <div class="box-subtitle">Course 2: Data Analytics (within TechMaster)</div>
+          <div class="box-content">
+            <div style="font-size:10px;color:#0338B8;font-weight:600;margin-bottom:6px">
+              Info banner: "Part of AI TechMaster Program . Course 2 of 4 . View Program"
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div class="module-row">Module 1 — Intro to Data Analytics <span class="badge badge-green">Completed</span></div>
+              <div class="module-row">Module 2 — Statistical Methods <span class="badge badge-blue">In Progress</span></div>
+              <div class="module-row">Module 3 — Data Visualization <span class="badge badge-gray" style="color:#8C8F94">Not Started</span></div>
+              <div class="module-row">Module 4 — Predictive Models <span class="badge badge-gray" style="color:#8C8F94">Not Started</span></div>
+              <div class="checkpoint">
+                <div class="checkpoint-line"></div>
+                <div class="checkpoint-dot blue"></div>
+                <span class="checkpoint-name">Session 2 — Data Workshop</span>
+                <span class="checkpoint-sep">.</span>
+                <span class="checkpoint-module">After Module 4</span>
+                <span class="checkpoint-sep">.</span>
+                <span>Feb 19, 2pm</span>
+                <span class="badge badge-dark">Starting Soon</span>
+              </div>
+              <div class="module-row">Module 5 — Final Project <span class="badge badge-gray" style="color:#8C8F94">Locked</span></div>
+            </div>
+          </div>
+          <div class="note info">Same checkpoint pattern at module level. Session sits exactly where it belongs in the sequence — after Module 4, before Module 5.</div>
+        </div>
+        <div class="arrow">
+          <div class="arrow-line"></div>
+          <div class="arrow-label">clicks module or 'Continue Learning'</div>
+          <div class="arrow-head"></div>
+        </div>
+        <div class="box" style="max-width:560px;background:#FAFAFA">
+          <div class="box-title">Immersive Player</div>
+          <div class="box-subtitle">Module 2, Lesson 8</div>
+          <div style="font-size:10px;color:#737373;margin-top:4px">See Flow 3 for session behavior inside Immersive View</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FLOW 2: SINGLE COURSE ========== -->
+  <div id="section-course">
+    <div class="section-title">
+      <div class="section-num">2</div>
+      <h2>Single Course Enrollment (VILT or Blended Course)</h2>
+    </div>
+    <div class="section-desc">Learner enrolled directly in a standalone course (not via a program). The course has both self-paced modules and live sessions.</div>
+
+    <div class="flow-row">
+      <div class="flow-col">
+        <div class="box" style="max-width:400px">
+          <div class="box-title">My Learning List</div>
+          <div class="box-subtitle">Course card shows next session info</div>
+          <div class="box-content" style="font-size:10px;color:#737373">
+            Course card subtitle example:<br>
+            "Module 2 . Lesson 3 . Next live: Feb 19"
+          </div>
+          <div class="note info">For standalone courses, the card itself hints at upcoming sessions. Slim banners still work for urgency.</div>
+        </div>
+        <div class="arrow">
+          <div class="arrow-line"></div>
+          <div class="arrow-label">clicks course card</div>
+          <div class="arrow-head"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-row">
+      <div class="flow-col stretch">
+        <div class="box highlight" style="max-width:560px">
+          <div class="box-title">Course PD — Modules Tab</div>
+          <div class="box-subtitle">Data Analytics Fundamentals (standalone)</div>
+          <div class="box-content">
+            <div class="mini-tabs">
+              <div class="mini-tab active">Modules</div>
+              <div class="mini-tab">Online Live Sessions</div>
+              <div class="mini-tab">Recordings</div>
+              <div class="mini-tab">Assessments</div>
+              <div class="mini-tab">Projects</div>
+              <div class="mini-tab">Progress</div>
+              <div class="mini-tab">Certificates</div>
+              <div class="mini-tab">Q&A</div>
+              <div class="mini-tab">About</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div class="module-row">Module 1 — Intro to Data Analytics <span class="badge badge-green">Completed</span></div>
+              <div class="module-row">Module 2 — Statistical Methods <span class="badge badge-blue">In Progress</span></div>
+              <div class="checkpoint">
+                <div class="checkpoint-line"></div>
+                <div class="checkpoint-dot green"></div>
+                <span class="checkpoint-name">Session 1 — Stats Deep Dive</span>
+                <span class="checkpoint-sep">.</span>
+                <span class="checkpoint-module">After Module 2</span>
+                <span class="checkpoint-sep">.</span>
+                <span>Feb 15</span>
+                <span class="badge badge-green">Completed</span>
+              </div>
+              <div class="module-row">Module 3 — Data Visualization <span class="badge badge-gray" style="color:#8C8F94">Not Started</span></div>
+              <div class="module-row">Module 4 — Predictive Models <span class="badge badge-gray" style="color:#8C8F94">Not Started</span></div>
+              <div class="checkpoint">
+                <div class="checkpoint-line"></div>
+                <div class="checkpoint-dot gray"></div>
+                <span class="checkpoint-name">Session 2 — Hands-on Workshop</span>
+                <span class="checkpoint-sep">.</span>
+                <span class="checkpoint-module">After Module 4</span>
+                <span class="checkpoint-sep">.</span>
+                <span>Feb 22</span>
+                <span class="badge badge-blue">Upcoming</span>
+              </div>
+              <div class="module-row">Module 5 — Final Project <span class="badge badge-gray" style="color:#8C8F94">Locked</span></div>
+            </div>
+          </div>
+          <div class="note info">For standalone courses, checkpoints appear on the Modules tab (not Courses tab, since there's no program). The "Online Live Sessions" tab also exists for management.</div>
+        </div>
+      </div>
+
+      <div class="flow-col stretch">
+        <div class="gap-lg"></div>
+        <div class="gap-lg"></div>
+        <div class="box" style="max-width:440px">
+          <div class="box-title">Key Difference vs. Program</div>
+          <div class="box-subtitle">Structural comparison</div>
+          <div class="box-content">
+            <table class="compare-table">
+              <thead>
+                <tr><th>Aspect</th><th>Program</th><th>Course</th></tr>
+              </thead>
+              <tbody>
+                <tr><td style="font-weight:600">Checkpoint location</td><td>Courses tab (between courses) + Modules tab (within course)</td><td>Modules tab only</td></tr>
+                <tr><td style="font-weight:600">Live Sessions tab</td><td>On Program PD</td><td>On Course PD</td></tr>
+                <tr><td style="font-weight:600">Session scope</td><td>Can span multiple courses</td><td>Scoped to this course only</td></tr>
+                <tr><td style="font-weight:600">Module reference</td><td>"After Module 4" or "Covers Courses 1-2"</td><td>"After Module 2" always</td></tr>
+                <tr><td style="font-weight:600">Immersive behavior</td><td>Same</td><td>Same</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FLOW 3: IMMERSIVE VIEW ========== -->
+  <div id="section-immersive">
+    <div class="section-title">
+      <div class="section-num">3</div>
+      <h2>Immersive View — Live Session as Lesson Item</h2>
+    </div>
+    <div class="section-desc">When a live session is tied to a specific point in the module sequence, it appears as a special item in the Immersive Player sidebar. Three states depending on timing.</div>
+
+    <div class="flow-row">
+      <!-- STATE A: Before -->
+      <div class="flow-col stretch">
+        <div style="font-size:12px;font-weight:700;margin-bottom:8px">State A: Before Session</div>
+        <div class="sidebar">
+          <div class="sidebar-label">COURSE JOURNEY</div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 1: Intro</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 2: Core Concepts</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item active"><div class="dot current"></div><div class="item-title bold">Lesson 3: Practice</div></div>
+          <div class="sidebar-item"><div class="dot upcoming"></div><div class="item-title">Quiz: Module Check</div></div>
+          <div class="sidebar-divider"></div>
+          <div class="session-card-dashed">
+            <div style="display:flex;align-items:center;gap:6px">
+              <div class="dot session" style="width:8px;height:8px;border-radius:4px;background:#0338B8"></div>
+              <span class="session-card-title">Session 2 — Data Workshop</span>
+            </div>
+            <div class="session-card-meta">Live Session</div>
+          </div>
+          <div style="padding:6px 12px;font-size:9px;color:#737373">Feb 19, 2:00 PM . 60 min . Scheduled</div>
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-item"><div class="dot upcoming"></div><div class="item-title">Lesson 4: Advanced Topics</div></div>
+        </div>
+        <div class="note info">Session appears as a distinct item with dashed border. Learner can see it coming but can't interact yet. Shows date/time.</div>
+      </div>
+
+      <!-- STATE B: Live now -->
+      <div class="flow-col stretch">
+        <div style="font-size:12px;font-weight:700;margin-bottom:8px">State B: Session is LIVE</div>
+        <div class="sidebar">
+          <div class="sidebar-label">COURSE JOURNEY</div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 1: Intro</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 2: Core Concepts</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 3: Practice</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Quiz: Module Check</div><span class="done-label">Done</span></div>
+          <div class="sidebar-divider"></div>
+          <div class="session-card-live">
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="width:8px;height:8px;border-radius:4px;background:#33C45E"></div>
+              <span class="session-card-title">Session 2 — Data Workshop</span>
+            </div>
+            <div class="session-card-meta">LIVE NOW . 23 min elapsed . 37 min remaining</div>
+            <button class="session-card-btn btn-dark">Join Live Session</button>
+          </div>
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-item"><div class="dot upcoming"></div><div class="item-title">Lesson 4: Advanced Topics</div></div>
+        </div>
+        <div class="note warn">Session expands with LIVE indicator, elapsed time, and prominent "Join Live" CTA. This is the most critical state — must not be missed.</div>
+      </div>
+
+      <!-- STATE C: Completed -->
+      <div class="flow-col stretch">
+        <div style="font-size:12px;font-weight:700;margin-bottom:8px">State C: After Session</div>
+        <div class="sidebar">
+          <div class="sidebar-label">COURSE JOURNEY</div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 1: Intro</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 2: Core Concepts</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Lesson 3: Practice</div><span class="done-label">Done</span></div>
+          <div class="sidebar-item"><div class="dot completed"></div><div class="item-title">Quiz: Module Check</div><span class="done-label">Done</span></div>
+          <div class="sidebar-divider"></div>
+          <div class="session-card-done">
+            <div style="display:flex;align-items:center;gap:6px;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:6px">
+                <div style="width:8px;height:8px;border-radius:4px;background:#33C45E"></div>
+                <span class="session-card-title">Session 2 — Data Workshop</span>
+              </div>
+              <span style="font-size:9px;color:#2D6A2E">Done</span>
+            </div>
+            <div class="session-card-meta">Completed Feb 19 . 58 min</div>
+            <button class="session-card-btn btn-outline">Watch Recording</button>
+          </div>
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-item active"><div class="dot current"></div><div class="item-title bold">Lesson 4: Advanced Topics</div></div>
+        </div>
+        <div class="note success">Session becomes a recording link. Learner can rewatch. Progress moves to the next lesson automatically after the session.</div>
+      </div>
+    </div>
+
+    <div class="gap-lg"></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">Main Content Area (when session item is selected):</div>
+    <div class="main-content">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:15px;font-weight:600">Session 2 — Data Workshop</div>
+          <div style="font-size:11px;color:#737373;margin-top:2px">Course 2: Data Analytics . After Module 4 . Instructor: Dr. Elena Chen</div>
+        </div>
+        <span class="badge badge-dark">LIVE NOW</span>
+      </div>
+      <div class="gap-md"></div>
+      <div class="join-area">
+        <div style="font-size:12px;color:#737373">Session is happening on</div>
+        <div class="join-platform">Zoom / External Platform</div>
+        <button class="join-btn">Join Live Session</button>
+      </div>
+      <div class="gap-md"></div>
+      <div style="font-size:11px;color:#737373">When session is completed, this area shows the recording player + transcript + resources shared during the session.</div>
+    </div>
+  </div>
+
+  <!-- ========== CHECKPOINT ANATOMY ========== -->
+  <div id="section-checkpoint">
+    <div class="section-title">
+      <div class="section-num">4</div>
+      <h2>Checkpoint Anatomy — Module Reference</h2>
+    </div>
+    <div class="section-desc">Checkpoints need a module reference line so the learner knows exactly why the session is placed there. Here's the updated anatomy.</div>
+
+    <div class="box" style="max-width:700px;border-radius:12px;padding:24px">
+      <div style="font-size:10px;font-weight:600;color:#737373;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px">Checkpoint Components (enlarged for clarity)</div>
+
+      <div class="checkpoint-enlarged">
+        <div class="checkpoint-connector">
+          <div class="connector-line"></div>
+          <div class="connector-dot"></div>
+          <div class="connector-line"></div>
+        </div>
+        <div style="flex:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span style="font-weight:600">Session 2 — Data Workshop</span>
+          <span style="color:#AEAEB2">.</span>
+          <span style="color:#0338B8;font-size:11px;font-weight:500">After Module 4: Predictive Models</span>
+          <span style="color:#AEAEB2">.</span>
+          <span style="color:#737373">Feb 19, 2:00 PM</span>
+          <span class="badge badge-dark">Starting Soon</span>
+        </div>
+      </div>
+
+      <div class="anatomy-grid">
+        <div><div class="anatomy-label">Connector line</div><div class="anatomy-desc">Visual link to course/module above and below</div></div>
+        <div><div class="anatomy-label">Status dot</div><div class="anatomy-desc">Green (done), Blue (active/soon), Gray (future)</div></div>
+        <div><div class="anatomy-label">Session name</div><div class="anatomy-desc">What the session is called</div></div>
+        <div><div class="anatomy-label">Module reference</div><div class="anatomy-desc">WHERE in the sequence and WHY it's here</div></div>
+        <div><div class="anatomy-label">Date + Status</div><div class="anatomy-desc">WHEN and current state</div></div>
+      </div>
+
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid #E5E5EA">
+        <div style="font-size:10px;font-weight:600;color:#737373;text-transform:uppercase;margin-bottom:8px">Module Reference Patterns</div>
+        <div class="ref-patterns">
+          <div class="ref-row"><span class="badge badge-blue">After Module 4: Predictive Models</span> <span class="ref-context">Session follows a specific module</span></div>
+          <div class="ref-row"><span class="badge badge-blue">Covers Courses 1-2</span> <span class="ref-context">Program-level session spanning multiple courses</span></div>
+          <div class="ref-row"><span class="badge badge-blue">After Module 3 . Before Final Project</span> <span class="ref-context">Session between two specific points</span></div>
+          <div class="ref-row"><span class="badge badge-blue">Kickoff Session</span> <span class="ref-context">Session before any module content</span></div>
+          <div class="ref-row"><span class="badge badge-blue">After Capstone Submission</span> <span class="ref-context">Final wrap-up session</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-lg"></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">Placement Rules (for admin/course creator)</div>
+    <div class="box" style="max-width:700px">
+      <table class="compare-table">
+        <thead>
+          <tr><th>If the session...</th><th>Checkpoint appears...</th><th>Module reference shows...</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Follows a specific module in a course</td><td>Below that module row</td><td style="color:#0338B8">"After Module X: [Name]"</td></tr>
+          <tr><td>Spans multiple courses (program-level)</td><td>Below the last related course row</td><td style="color:#0338B8">"Covers Courses X-Y"</td></tr>
+          <tr><td>Is a kickoff before any content</td><td>Above Course 1 row</td><td style="color:#0338B8">"Kickoff Session"</td></tr>
+          <tr><td>Is a final wrap-up</td><td>Below the last course row</td><td style="color:#0338B8">"After [Last Course/Module]"</td></tr>
+          <tr><td>Has no defined sequence position</td><td>Chronological by date in the list</td><td style="color:#0338B8">Date only, no module ref</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="gap-md"></div>
+    <div class="note warn" style="max-width:700px">
+      <strong>Open question from meeting: Progress calculation for blended programs.</strong><br>
+      If a program is 4 courses + 5 live sessions, do sessions count toward overall progress?
+      Options: (A) Sessions count as completion items. (B) Sessions are parallel and don't affect the progress bar.
+      (C) Attendance is tracked separately as a KPI (current V4 shows "2/5 Live lessons attended").
+      Recommendation: Option C — keep progress tied to self-paced content, track attendance as a separate KPI.
+    </div>
+  </div>
+
+  </div><!-- end tab-all -->
+
+  <!-- Individual tab views (cloned sections) -->
+  <div id="tab-program" class="tab-content"></div>
+  <div id="tab-course" class="tab-content"></div>
+  <div id="tab-immersive" class="tab-content"></div>
+  <div id="tab-checkpoint" class="tab-content"></div>
+</div>
+
+<script>
+function showTab(tabId) {
+  // Update buttons
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+
+  if (tabId === 'all') {
+    document.getElementById('tab-all').classList.add('active');
+    // Show all sections
+    document.querySelectorAll('#tab-all > div').forEach(s => s.style.display = '');
+  } else {
+    document.getElementById('tab-all').classList.add('active');
+    // Hide all sections, show only the selected one
+    const sectionMap = {
+      'program': 'section-program',
+      'course': 'section-course',
+      'immersive': 'section-immersive',
+      'checkpoint': 'section-checkpoint'
+    };
+    document.querySelectorAll('#tab-all > div').forEach(s => {
+      s.style.display = s.id === sectionMap[tabId] ? '' : 'none';
+    });
+  }
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

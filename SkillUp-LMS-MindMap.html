@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp LMS - Mind Map Discovery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface2: #242424;
+    --border: #333;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --accent: #3b82f6;
+    --green: #22c55e;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --purple: #a855f7;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px;
+  }
+
+  header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot-exists { background: var(--green); }
+  .dot-gap { background: var(--red); }
+  .dot-question { background: var(--amber); }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+  }
+
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .tab-count {
+    display: inline-block;
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 6px;
+  }
+
+  .tab.active .tab-count {
+    background: rgba(59,130,246,0.15);
+    color: var(--accent);
+  }
+
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .tree { padding-left: 0; }
+
+  .tree-node {
+    margin-bottom: 4px;
+  }
+
+  .node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .node-header:hover {
+    background: var(--surface);
+  }
+
+  .node-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .node-toggle.expanded { transform: rotate(90deg); }
+  .node-toggle.leaf { visibility: hidden; }
+
+  .node-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .node-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-gap {
+    background: rgba(239,68,68,0.12);
+    color: var(--red);
+  }
+
+  .badge-question {
+    background: rgba(245,158,11,0.12);
+    color: var(--amber);
+  }
+
+  .badge-v2 {
+    background: rgba(34,197,94,0.1);
+    color: var(--green);
+  }
+
+  .node-children {
+    padding-left: 28px;
+    border-left: 1px solid var(--border);
+    margin-left: 22px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .node-children.collapsed {
+    max-height: 0 !important;
+  }
+
+  /* Level-specific styling */
+  .level-0 > .node-header .node-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .level-1 > .node-header .node-label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .level-2 > .node-header .node-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ccc;
+  }
+
+  .level-3 > .node-header .node-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+
+  /* Matrix table */
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+
+  .matrix th, .matrix td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .matrix th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--surface);
+  }
+
+  .matrix td { background: var(--surface2); }
+  .matrix tr:hover td { background: #2a2a2a; }
+
+  .matrix .cell-exists { color: var(--green); }
+  .matrix .cell-gap { color: var(--red); font-style: italic; }
+  .matrix .cell-question { color: var(--amber); }
+
+  .matrix .type-col {
+    font-weight: 600;
+    color: var(--text);
+    background: var(--surface) !important;
+    white-space: nowrap;
+  }
+
+  /* Summary cards */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .summary-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .priority-high { color: var(--red); }
+  .priority-med { color: var(--amber); }
+  .priority-low { color: var(--text-dim); }
+
+  .summary-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    flex: 1;
+  }
+
+  .stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .stat-green { color: var(--green); }
+  .stat-red { color: var(--red); }
+  .stat-amber { color: var(--amber); }
+  .stat-purple { color: var(--purple); }
+
+  .search-bar {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 10px 16px 10px 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-bar input:focus { border-color: var(--accent); }
+
+  .search-bar svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+  }
+
+  .highlight { background: rgba(59,130,246,0.25); border-radius: 2px; }
+
+  @media (max-width: 768px) {
+    body { padding: 16px; }
+    .stats-row { flex-direction: column; gap: 12px; }
+    .summary-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SkillUp LMS Discovery</h1>
+  <p>Full discovery map: V2 wireframes + identified gaps + hypothetical scenarios</p>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot dot-exists"></div> Wireframed (V2)</div>
+    <div class="legend-item"><div class="legend-dot dot-gap"></div> Gap (not covered)</div>
+    <div class="legend-item"><div class="legend-dot dot-question"></div> Open decision</div>
+  </div>
+</header>
+
+<div class="search-bar">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <input type="text" id="searchInput" placeholder="Search nodes, states, CTAs..." />
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-tab="overview">Overview</button>
+  <button class="tab" data-tab="content-types">Content Types</button>
+  <button class="tab" data-tab="lifecycle">Enrollment Lifecycle</button>
+  <button class="tab" data-tab="ctas">CTA States</button>
+  <button class="tab" data-tab="sessions">Live Sessions</button>
+  <button class="tab" data-tab="views">Page Views</button>
+  <button class="tab" data-tab="filters">Filters</button>
+  <button class="tab" data-tab="matrix">Matrix</button>
+  <button class="tab" data-tab="gaps">Gaps<span class="tab-count">14</span></button>
+</div>
+
+<div class="content" id="content">
+
+  <!-- OVERVIEW -->
+  <div class="section active" id="sec-overview">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-number stat-green">4</div><div class="stat-label">Course types</div></div>
+      <div class="stat-card"><div class="stat-number stat-purple">3</div><div class="stat-label">Program types</div></div>
+      <div class="stat-card"><div class="stat-number stat-amber">6</div><div class="stat-label">Enrollment states</div></div>
+      <div class="stat-card"><div class="stat-number stat-red">14</div><div class="stat-label">Identified gaps</div></div>
+    </div>
+    <div id="tree-overview"></div>
+  </div>
+
+  <!-- CONTENT TYPES -->
+  <div class="section" id="sec-content-types">
+    <div id="tree-content-types"></div>
+  </div>
+
+  <!-- LIFECYCLE -->
+  <div class="section" id="sec-lifecycle">
+    <div id="tree-lifecycle"></div>
+  </div>
+
+  <!-- CTA STATES -->
+  <div class="section" id="sec-ctas">
+    <div id="tree-ctas"></div>
+  </div>
+
+  <!-- LIVE SESSIONS -->
+  <div class="section" id="sec-sessions">
+    <div id="tree-sessions"></div>
+  </div>
+
+  <!-- PAGE VIEWS -->
+  <div class="section" id="sec-views">
+    <div id="tree-views"></div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="section" id="sec-filters">
+    <div id="tree-filters"></div>
+  </div>
+
+  <!-- MATRIX -->
+  <div class="section" id="sec-matrix">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:8px;">Matrix: Type x State x CTA</h2>
+    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Each cell shows the primary CTA. Red cells need a design decision.</p>
+    <table class="matrix">
+      <thead>
+        <tr><th>Type</th><th>Not Started</th><th>In Progress</th><th>Completed</th><th>Expired</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="type-col">Flexible</td><td class="cell-exists">Start</td><td class="cell-exists">Continue Learning</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+        <tr><td class="type-col">Self-Paced</td><td class="cell-exists">Start</td><td class="cell-exists">Continue Learning</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+        <tr><td class="type-col">VILT</td><td class="cell-exists">View Schedule</td><td class="cell-exists">Join Live / View Recording</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+        <tr><td class="type-col">Hybrid</td><td class="cell-question">Start? / View Schedule?</td><td class="cell-exists">Join Live / Continue Learning</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+        <tr><td class="type-col">Program (Flexible)</td><td class="cell-exists">Start</td><td class="cell-exists">Continue Learning</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+        <tr><td class="type-col">Program (Hybrid)</td><td class="cell-question">Start?</td><td class="cell-exists">Join Live + Continue Module</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+        <tr><td class="type-col">Program (VILT)</td><td class="cell-exists">View Schedule</td><td class="cell-exists">Join Live / View Schedule</td><td class="cell-gap">GAP</td><td class="cell-gap">GAP</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GAPS -->
+  <div class="section" id="sec-gaps">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;">Identified Gaps</h2>
+    <div class="summary-grid">
+      <div class="summary-card"><h3 class="priority-high">1. "Completed" States</h3><p>No CTA defined for finished courses/programs. Missing: Review, View Certificate, Retake.</p></div>
+      <div class="summary-card"><h3 class="priority-high">2. Empty States</h3><p>Zero wireframes for empty states: first-time user, no results, no sessions, no recordings.</p></div>
+      <div class="summary-card"><h3 class="priority-high">3. Sub-tabs Not Wireframed</h3><p>Assessments, Projects, Progress and Certificates exist in program nav but are not designed.</p></div>
+      <div class="summary-card"><h3 class="priority-high">4. Live Now vs Starting Soon</h3><p>No clear distinction between a session that already started and one about to start.</p></div>
+      <div class="summary-card"><h3 class="priority-high">5. Global Calendar</h3><p>Tab exists but wireframe is incomplete for cross-course view with conflict detection.</p></div>
+      <div class="summary-card"><h3 class="priority-med">6. Recording Failed</h3><p>No error state for when recording processing fails.</p></div>
+      <div class="summary-card"><h3 class="priority-med">7. Session Cancelled/Rescheduled</h3><p>No wireframe for when instructor cancels or reschedules a session.</p></div>
+      <div class="summary-card"><h3 class="priority-med">8. Expired/Overdue</h3><p>No state for courses with expired deadlines or closed enrollment windows.</p></div>
+      <div class="summary-card"><h3 class="priority-med">9. Mandatory vs Optional</h3><p>No visual differentiation between mandatory (compliance) and optional courses.</p></div>
+      <div class="summary-card"><h3 class="priority-med">10. Conflict Detection</h3><p>No visual indicator for when two live sessions overlap.</p></div>
+      <div class="summary-card"><h3 class="priority-low">11. Offline/Download</h3><p>Offline access to self-paced content. Download recordings.</p></div>
+      <div class="summary-card"><h3 class="priority-low">12. Re-enrollment</h3><p>Retaking a completed course. Progress reset vs additive?</p></div>
+      <div class="summary-card"><h3 class="priority-low">13. Cohort Context</h3><p>Group learning with shared timeline and progress visibility.</p></div>
+      <div class="summary-card"><h3 class="priority-low">14. Notifications</h3><p>Alert system: session starting, recording available, certificate, deadline, cancellations.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Tree data
+const data = {
+  "content-types": [
+    { label: "Standalone Course", badge: "v2", children: [
+      { label: "Flexible", badge: "v2", children: [
+        { label: "Self-paced modules" },
+        { label: "No live sessions" },
+        { label: "No schedule dependency" }
+      ]},
+      { label: "Self-Paced", badge: "v2", children: [
+        { label: "Fixed curriculum order" },
+        { label: "No live sessions" },
+        { label: "Deadline optional" }
+      ]},
+      { label: "VILT (Virtual Instructor-Led)", badge: "v2", children: [
+        { label: "All content is live sessions" },
+        { label: "Schedule dependent" },
+        { label: "Recordings post-session" }
+      ]}
+    ]},
+    { label: "Program", badge: "v2", children: [
+      { label: "Program Types", children: [
+        { label: "Flexible Program", badge: "v2", children: [{ label: "All courses are self-paced" }] },
+        { label: "Hybrid Program", badge: "v2", children: [
+          { label: "Mix of flexible + live" },
+          { label: "Has both self-paced modules AND live sessions" }
+        ]},
+        { label: "VILT Program", badge: "v2", children: [{ label: "All courses are instructor-led" }] }
+      ]},
+      { label: "Program Components", children: [
+        { label: "Multiple courses" },
+        { label: "Capstone Project" },
+        { label: "Internship / External Placement" }
+      ]},
+      { label: "Program Sub-tabs", badge: "v2", children: [
+        { label: "Flexible Learning", badge: "v2" },
+        { label: "Live Classes", badge: "v2" },
+        { label: "Assessments", badge: "gap" },
+        { label: "Projects", badge: "gap" },
+        { label: "Progress", badge: "gap" },
+        { label: "Certificates", badge: "gap" }
+      ]}
+    ]}
+  ],
+  "lifecycle": [
+    { label: "Not Enrolled", badge: "gap", children: [
+      { label: "Discovery phase" },
+      { label: "Browse catalog" },
+      { label: "Not present in My Learning wireframes", badge: "gap" }
+    ]},
+    { label: "Not Started", badge: "v2", children: [
+      { label: "Enrolled but no activity" },
+      { label: 'Shows "Start with: Module X"' }
+    ]},
+    { label: "In Progress", badge: "v2", children: [
+      { label: "Has progress percentage" },
+      { label: 'Shows "Next: Module X - Lesson Y"' },
+      { label: "Sub-states", children: [
+        { label: "On Track", badge: "v2" },
+        { label: "Behind Schedule", badge: "gap" },
+        { label: "Certificate at Risk", badge: "v2", children: [{ label: "Missed required sessions" }] },
+        { label: "Paused / On Hold", badge: "gap" }
+      ]}
+    ]},
+    { label: "Completed", badge: "gap", children: [
+      { label: "All content finished" },
+      { label: "Sub-states", children: [
+        { label: "Certificate Earned", badge: "gap" },
+        { label: "Certificate Not Earned", badge: "gap" },
+        { label: "With Distinction", badge: "gap" }
+      ]}
+    ]},
+    { label: "Expired / Overdue", badge: "gap", children: [
+      { label: "Enrollment window closed" },
+      { label: "Compliance deadline missed" }
+    ]},
+    { label: "Withdrawn / Dropped", badge: "gap", children: [
+      { label: "Learner or admin removed" }
+    ]}
+  ],
+  "ctas": [
+    { label: "Flexible / Self-Paced Course", children: [
+      { label: "Not Started", badge: "v2", children: [
+        { label: 'CTA: "Start"', badge: "v2" },
+        { label: 'Secondary: "Start with: Module 1"' }
+      ]},
+      { label: "In Progress", badge: "v2", children: [
+        { label: 'CTA: "Continue Learning"', badge: "v2" },
+        { label: 'Secondary: "Next: Module X - Lesson Y"' }
+      ]},
+      { label: "Completed", badge: "gap", children: [
+        { label: 'CTA: "Review"', badge: "gap" },
+        { label: 'CTA: "View Certificate"', badge: "gap" },
+        { label: 'CTA: "Retake"', badge: "gap" }
+      ]}
+    ]},
+    { label: "VILT Course", children: [
+      { label: "Not Started", badge: "v2", children: [
+        { label: 'CTA: "View Schedule"', badge: "v2" },
+        { label: 'Secondary: "Next session: [Date]"' }
+      ]},
+      { label: "In Progress - No Session Soon", children: [
+        { label: 'CTA: "View Schedule"', badge: "v2" },
+        { label: 'CTA: "View Recordings"', badge: "gap" }
+      ]},
+      { label: "In Progress - Session Imminent", badge: "v2", children: [
+        { label: 'CTA: "Join Live" with green dot', badge: "v2" },
+        { label: 'Secondary: "Starts in X min"' },
+        { label: "Warning triangle icon" }
+      ]},
+      { label: "In Progress - Session Live Now", badge: "gap", children: [
+        { label: 'CTA: "Join Live" primary urgent', badge: "gap" },
+        { label: "Pulsing indicator", badge: "gap" }
+      ]},
+      { label: "Completed", badge: "gap", children: [
+        { label: 'CTA: "View Recordings"', badge: "gap" },
+        { label: 'CTA: "View Certificate"', badge: "gap" }
+      ]}
+    ]},
+    { label: "Hybrid Program", children: [
+      { label: "Not Started", badge: "question", children: [
+        { label: 'CTA: "Start" or "View Schedule"?', badge: "question" }
+      ]},
+      { label: "In Progress - Self-paced Focus", badge: "v2", children: [
+        { label: 'CTA: "Continue Learning"', badge: "v2" },
+        { label: 'Secondary: "or Continue Module X"' }
+      ]},
+      { label: "In Progress - Live Imminent", badge: "v2", children: [
+        { label: 'CTA: "Join Live" primary', badge: "v2" },
+        { label: 'Secondary: "or Continue Module X"' }
+      ]},
+      { label: "In Progress - Between Sessions", children: [
+        { label: 'CTA: "Continue Learning"' }
+      ]},
+      { label: "Completed", badge: "gap", children: [
+        { label: 'CTA: "View Certificate"', badge: "gap" }
+      ]}
+    ]}
+  ],
+  "sessions": [
+    { label: "Upcoming", badge: "v2", children: [
+      { label: "Future date" },
+      { label: "Grey dot on calendar" },
+      { label: "No CTA on session card" }
+    ]},
+    { label: "Starting Soon", badge: "v2", children: [
+      { label: "Today, within time window" },
+      { label: "Green border on card" },
+      { label: 'CTA: "Join Live"' },
+      { label: 'Shows countdown "Starts in X min"' }
+    ]},
+    { label: "Live Now", badge: "gap", children: [
+      { label: "Session currently active" },
+      { label: 'CTA: "Join Live" urgent styling' },
+      { label: "Duration indicator", badge: "gap" }
+    ]},
+    { label: "Ended - Recording Processing", badge: "v2", children: [
+      { label: 'CTA: "Saving Recording..." (disabled)' },
+      { label: '"Recording will be available in 30 min"' }
+    ]},
+    { label: "Ended - Attended", badge: "v2", children: [
+      { label: "Green dot indicator" },
+      { label: 'CTA: "View Recording"' }
+    ]},
+    { label: "Ended - Missed", badge: "v2", children: [
+      { label: "Red dot indicator" },
+      { label: 'CTA: "View Recording"' },
+      { label: '"You missed this live session"' }
+    ]},
+    { label: "Recording Failed", badge: "gap", children: [
+      { label: "Processing error state" },
+      { label: "Contact support message" }
+    ]},
+    { label: "Cancelled by Instructor", badge: "gap", children: [
+      { label: "Visual strikethrough or badge" },
+      { label: "Notification to learner" }
+    ]},
+    { label: "Rescheduled", badge: "gap", children: [
+      { label: "New date shown" },
+      { label: "Original date struck through" }
+    ]}
+  ],
+  "views": [
+    { label: "Overview Tab", badge: "v2", children: [
+      { label: "Default landing page" },
+      { label: "All courses and programs in list" },
+      { label: "Collapsed program cards" },
+      { label: "Expanded program with sub-tabs" }
+    ]},
+    { label: "Global Live Classes Calendar", badge: "gap", children: [
+      { label: "All live sessions across all courses" },
+      { label: "Monthly/weekly view" },
+      { label: "Cross-course conflict detection", badge: "gap" }
+    ]},
+    { label: "Per-Program Views", children: [
+      { label: "Flexible Learning tab", badge: "v2", children: [
+        { label: "Module list with progress" },
+        { label: "Course content structure" }
+      ]},
+      { label: "Live Classes tab", badge: "v2", children: [
+        { label: "List View", badge: "v2", children: [
+          { label: "Session cards chronological" },
+          { label: 'Week grouping "Week X"' },
+          { label: "Session count per week" }
+        ]},
+        { label: "All Recordings", badge: "v2", children: [
+          { label: "Search/filter bar" },
+          { label: "Available - Watched" },
+          { label: "Available - Missed" },
+          { label: "Processing" },
+          { label: "Upcoming placeholder" }
+        ]},
+        { label: "Calendar View", badge: "v2", children: [
+          { label: "Monthly calendar grid" },
+          { label: "Session dots color-coded" },
+          { label: "Selected day detail panel" },
+          { label: "Legend: Attended/Missed/Upcoming/Today" },
+          { label: "Progress panel below" },
+          { label: "Certificate at risk warning" }
+        ]}
+      ]},
+      { label: "Assessments tab", badge: "gap", children: [
+        { label: "Not Attempted" },
+        { label: "In Progress" },
+        { label: "Submitted - Awaiting Grade" },
+        { label: "Passed" },
+        { label: "Failed" },
+        { label: "Retake Available" }
+      ]},
+      { label: "Projects tab", badge: "gap", children: [
+        { label: "Not Started" },
+        { label: "In Progress" },
+        { label: "Submitted" },
+        { label: "Under Review" },
+        { label: "Approved" },
+        { label: "Revision Needed" }
+      ]},
+      { label: "Progress tab", badge: "gap", children: [
+        { label: "Overall percentage" },
+        { label: "Per-module breakdown" },
+        { label: "Time spent analytics" },
+        { label: "Milestones" }
+      ]},
+      { label: "Certificates tab", badge: "gap", children: [
+        { label: "Not Eligible Yet" },
+        { label: "Eligible - Not Claimed" },
+        { label: "Earned" },
+        { label: "Expired" },
+        { label: "At Risk" }
+      ]}
+    ]},
+    { label: "Empty States", badge: "gap", children: [
+      { label: "No courses enrolled", badge: "gap" },
+      { label: "No results for active filters", badge: "gap" },
+      { label: "No live sessions scheduled", badge: "gap" },
+      { label: "No recordings available yet", badge: "gap" },
+      { label: "No upcoming sessions", badge: "gap" }
+    ]}
+  ],
+  "filters": [
+    { label: "Status Filter", badge: "v2", children: [
+      { label: "All (with count)", badge: "v2" },
+      { label: "In Progress (with count)", badge: "v2" },
+      { label: "Not Started (with count)", badge: "v2" },
+      { label: "Completed (with count)", badge: "v2" },
+      { label: "Expired", badge: "gap" },
+      { label: "Paused", badge: "gap" },
+      { label: "Overdue", badge: "gap" }
+    ]},
+    { label: "Course Type Filter", badge: "v2", children: [
+      { label: "Flexible (with count)", badge: "v2" },
+      { label: "Self-Paced (with count)", badge: "v2" },
+      { label: "VILT (with count)", badge: "v2" },
+      { label: "Hybrid (with count)", badge: "v2" }
+    ]},
+    { label: "Live Sessions Filter", badge: "v2", children: [
+      { label: "Has live sessions", badge: "v2" },
+      { label: "Has upcoming session", badge: "v2" },
+      { label: "Has missed session", badge: "v2" },
+      { label: "Has live session today", badge: "gap" },
+      { label: "Has recording available", badge: "gap" }
+    ]},
+    { label: "Sort Options", badge: "v2", children: [
+      { label: "Last accessed", badge: "v2" },
+      { label: "Alphabetical A to Z", badge: "v2" },
+      { label: "Progress (low to high)", badge: "v2" },
+      { label: "Next live session", badge: "v2" },
+      { label: "Due date", badge: "gap" },
+      { label: "Enrollment date", badge: "gap" }
+    ]},
+    { label: "Content Scope", badge: "v2", children: [
+      { label: "All", badge: "v2" },
+      { label: "Courses only", badge: "v2" },
+      { label: "Programs only", badge: "v2" }
+    ]}
+  ]
+};
+
+// Overview = top-level nodes from all sections
+data["overview"] = [
+  { label: "Content Types", badge: "v2", children: [
+    { label: "4 Course types: Flexible, Self-Paced, VILT, Hybrid" },
+    { label: "3 Program types: Flexible, Hybrid, VILT" },
+    { label: "Program components: Courses, Capstone, Internship" }
+  ]},
+  { label: "Enrollment Lifecycle", children: [
+    { label: "6 states: Not Enrolled, Not Started, In Progress, Completed, Expired, Withdrawn" },
+    { label: "In Progress sub-states: On Track, Behind Schedule, Certificate at Risk, Paused" }
+  ]},
+  { label: "CTA States", children: [
+    { label: "Varies by: Course type x Enrollment state x Session proximity" },
+    { label: "Primary CTAs: Start, Continue Learning, Join Live, View Schedule, View Recording" },
+    { label: "Secondary CTAs: module context, countdown, recording status" }
+  ]},
+  { label: "Live Session States", children: [
+    { label: "9 states from Upcoming to Rescheduled" },
+    { label: "3 GAPs: Live Now, Recording Failed, Cancelled/Rescheduled" }
+  ]},
+  { label: "Page Views", children: [
+    { label: "Overview + Global Calendar + Per-Program sub-tabs" },
+    { label: "4 sub-tabs not wireframed: Assessments, Projects, Progress, Certificates" },
+    { label: "5 empty states not wireframed" }
+  ]},
+  { label: "Filters & Sorting", badge: "v2", children: [
+    { label: "4 filter groups + 5 sort options" },
+    { label: "Missing: Expired/Paused/Overdue status, Due date sort" }
+  ]},
+  { label: "Edge Cases", badge: "gap", children: [
+    { label: "Schedule conflicts, Mandatory courses, Re-enrollment" },
+    { label: "Course archived, Timezone handling, Notifications" }
+  ]}
+];
+
+// Render tree
+function renderTree(container, nodes, level = 0) {
+  nodes.forEach(node => {
+    const hasChildren = node.children && node.children.length > 0;
+    const el = document.createElement('div');
+    el.className = `tree-node level-${level}`;
+
+    const header = document.createElement('div');
+    header.className = 'node-header';
+
+    const toggle = document.createElement('span');
+    toggle.className = `node-toggle ${hasChildren ? (level < 1 ? 'expanded' : '') : 'leaf'}`;
+    toggle.textContent = '\u25B6';
+
+    const label = document.createElement('span');
+    label.className = 'node-label';
+    label.textContent = node.label;
+
+    header.appendChild(toggle);
+    header.appendChild(label);
+
+    if (node.badge) {
+      const badge = document.createElement('span');
+      badge.className = `node-badge badge-${node.badge}`;
+      badge.textContent = node.badge === 'v2' ? 'V2' : node.badge === 'gap' ? 'GAP' : 'QUESTION';
+      header.appendChild(badge);
+    }
+
+    el.appendChild(header);
+
+    if (hasChildren) {
+      const childContainer = document.createElement('div');
+      childContainer.className = `node-children ${level >= 1 ? 'collapsed' : ''}`;
+      renderTree(childContainer, node.children, level + 1);
+
+      // Measure and set max-height for animation
+      if (level < 1) {
+        toggle.classList.add('expanded');
+        setTimeout(() => { childContainer.style.maxHeight = childContainer.scrollHeight + 'px'; }, 10);
+      }
+
+      header.addEventListener('click', () => {
+        const isCollapsed = childContainer.classList.contains('collapsed');
+        if (isCollapsed) {
+          childContainer.classList.remove('collapsed');
+          childContainer.style.maxHeight = childContainer.scrollHeight + 'px';
+          toggle.classList.add('expanded');
+        } else {
+          childContainer.style.maxHeight = childContainer.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            childContainer.classList.add('collapsed');
+            toggle.classList.remove('expanded');
+          });
+        }
+      });
+
+      el.appendChild(childContainer);
+    }
+
+    container.appendChild(el);
+  });
+}
+
+// Init trees
+Object.keys(data).forEach(key => {
+  const container = document.getElementById(`tree-${key}`);
+  if (container) renderTree(container, data[key]);
+});
+
+// Tabs
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(`sec-${tab.dataset.tab}`).classList.add('active');
+  });
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('input', function(e) {
+  const q = e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.node-label').forEach(label => {
+    label.innerHTML = label.textContent;
+    if (q && label.textContent.toLowerCase().includes(q)) {
+      const idx = label.textContent.toLowerCase().indexOf(q);
+      const original = label.textContent.substring(idx, idx + q.length);
+      label.innerHTML = label.textContent.substring(0, idx) +
+        '<span class="highlight">' + original + '</span>' +
+        label.textContent.substring(idx + q.length);
+
+      // Expand parents
+      let parent = label.closest('.node-children');
+      while (parent) {
+        parent.classList.remove('collapsed');
+        parent.style.maxHeight = parent.scrollHeight + 'px';
+        const prevToggle = parent.previousElementSibling?.querySelector('.node-toggle');
+        if (prevToggle) prevToggle.classList.add('expanded');
+        parent = parent.parentElement?.closest('.node-children');
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

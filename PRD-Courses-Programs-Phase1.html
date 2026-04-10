@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp LMS: Courses & Programs PRD</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-sidebar: #f8f9fb;
+  --bg-card: #f4f5f7;
+  --bg-code: #f0f1f3;
+  --bg-search: #ffffff;
+  --bg-table-header: #f4f5f7;
+  --bg-table-row-alt: #fafbfc;
+  --bg-badge: #e8ebf0;
+  --bg-highlight: #fffde7;
+  --text-primary: #111218;
+  --text-secondary: #5a5d65;
+  --text-tertiary: #8a8d95;
+  --text-nav: #5a5d65;
+  --text-nav-active: #111218;
+  --border: #e2e4e8;
+  --border-light: #eef0f2;
+  --accent: #0338b8;
+  --accent-light: #d9e0ff;
+  --accent-bg: #f0f2ff;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --progress-bar: #0338b8;
+  --tag-flexible-bg: #d9e0ff; --tag-flexible-text: #00146E;
+  --tag-vilt-bg: #d6eeff; --tag-vilt-text: #0836B6;
+  --tag-blended-bg: #e8d9ff; --tag-blended-text: #2D0072;
+  --tag-course-bg: #e5e5ea; --tag-course-text: #666;
+  --tag-program-bg: #d9e4ff; --tag-program-text: #234db3;
+  --tag-tm-bg: #c2851c; --tag-tm-text: #fff;
+  --status-progress-bg: #d9e0ff; --status-progress-text: #0238b8;
+  --status-notstarted-bg: #ededed; --status-notstarted-text: #525252;
+  --status-completed-bg: #d3eadd; --status-completed-text: #126434;
+  --status-failed-bg: #f7d5d2; --status-failed-text: #aa1e14;
+  --status-locked-bg: #6e6e6e; --status-locked-text: #fcfcfc;
+  --status-risk-bg: #faebd1; --status-risk-text: #824600;
+  --scrollbar-track: #f0f1f3;
+  --scrollbar-thumb: #c8cad0;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+/* Progress bar */
+#reading-progress {
+  position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+  background: var(--progress-bar); z-index: 1001; transition: width 0.1s;
+}
+
+/* Top bar */
+.topbar {
+  position: fixed; top: 3px; left: 0; right: 0; height: 56px; z-index: 1000;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 24px; gap: 16px;
+}
+.topbar-brand {
+  font-weight: 700; font-size: 15px; color: var(--text-primary);
+  white-space: nowrap; display: flex; align-items: center; gap: 8px;
+}
+.topbar-brand svg { flex-shrink: 0; }
+.topbar-meta {
+  font-size: 11px; color: var(--text-tertiary); font-weight: 500;
+  display: flex; gap: 16px; align-items: center; margin-left: auto; white-space: nowrap;
+}
+.topbar-meta span { display: flex; align-items: center; gap: 4px; }
+.topbar-controls { display: flex; gap: 4px; align-items: center; }
+.topbar-btn {
+  width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; color: var(--text-secondary); transition: all 0.15s;
+}
+.topbar-btn:hover { background: var(--bg-card); color: var(--text-primary); }
+
+/* Search */
+.search-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2000;
+  display: none; align-items: flex-start; justify-content: center; padding-top: 120px;
+  backdrop-filter: blur(2px);
+}
+.search-overlay.active { display: flex; }
+.search-modal {
+  width: 560px; max-height: 480px; background: var(--bg); border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.15); border: 1px solid var(--border);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.search-input-wrap {
+  display: flex; align-items: center; padding: 14px 16px; gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.search-input-wrap svg { color: var(--text-tertiary); flex-shrink: 0; }
+.search-input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-primary);
+}
+.search-input::placeholder { color: var(--text-tertiary); }
+.search-kbd {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 6px;
+  border: 1px solid var(--border); border-radius: 4px; color: var(--text-tertiary);
+  background: var(--bg-card);
+}
+.search-results {
+  overflow-y: auto; flex: 1; padding: 8px;
+}
+.search-result {
+  padding: 10px 12px; border-radius: 6px; cursor: pointer; transition: background 0.1s;
+}
+.search-result:hover, .search-result.active { background: var(--accent-bg); }
+.search-result-section {
+  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--accent); margin-bottom: 2px;
+}
+.search-result-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.search-result-excerpt {
+  font-size: 12px; color: var(--text-secondary); margin-top: 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.search-result mark {
+  background: var(--bg-highlight); color: inherit; border-radius: 2px; padding: 0 1px;
+}
+.search-empty {
+  padding: 32px; text-align: center; color: var(--text-tertiary); font-size: 13px;
+}
+.search-footer {
+  padding: 8px 16px; border-top: 1px solid var(--border); display: flex;
+  gap: 12px; font-size: 11px; color: var(--text-tertiary);
+}
+.search-footer span { display: flex; align-items: center; gap: 4px; }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; top: 59px; left: 0; bottom: 0; width: 280px;
+  background: var(--bg-sidebar); border-right: 1px solid var(--border);
+  overflow-y: auto; padding: 16px 0; z-index: 100;
+}
+.sidebar-section { padding: 0 12px; margin-bottom: 4px; }
+.sidebar-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--text-tertiary); padding: 8px 12px 6px; user-select: none;
+}
+.nav-item {
+  display: block; padding: 5px 12px; border-radius: 6px; font-size: 12.5px;
+  color: var(--text-nav); text-decoration: none; transition: all 0.12s;
+  font-weight: 500; line-height: 1.5; cursor: pointer;
+}
+.nav-item:hover { color: var(--text-nav-active); background: var(--bg-card); }
+.nav-item.active {
+  color: var(--accent); background: var(--accent-bg); font-weight: 600;
+}
+.nav-item.sub { padding-left: 24px; font-size: 11.5px; font-weight: 400; }
+.nav-group { margin-bottom: 2px; }
+.nav-group-toggle {
+  display: flex; align-items: center; gap: 4px; padding: 5px 12px;
+  border-radius: 6px; font-size: 12.5px; color: var(--text-nav);
+  font-weight: 600; cursor: pointer; user-select: none; transition: all 0.12s;
+  border: none; background: none; width: 100%; text-align: left;
+  font-family: 'Montserrat', sans-serif;
+}
+.nav-group-toggle:hover { color: var(--text-nav-active); background: var(--bg-card); }
+.nav-group-toggle svg {
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.nav-group.collapsed .nav-group-toggle svg { transform: rotate(-90deg); }
+.nav-group.collapsed .nav-children { display: none; }
+
+/* Main content */
+.main {
+  margin-left: 280px; padding: 80px 48px 120px; max-width: 920px;
+}
+
+/* Typography */
+h1 {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 8px; line-height: 1.25;
+}
+.doc-subtitle {
+  font-size: 15px; color: var(--text-secondary); font-weight: 500; margin-bottom: 8px;
+}
+.doc-meta {
+  display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px;
+  color: var(--text-tertiary); margin-bottom: 32px; padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.doc-meta-item { display: flex; align-items: center; gap: 4px; }
+.doc-meta-item strong { color: var(--text-secondary); font-weight: 600; }
+
+h2 {
+  font-size: 20px; font-weight: 700; margin-top: 56px; margin-bottom: 16px;
+  padding-top: 24px; border-top: 1px solid var(--border); letter-spacing: -0.3px;
+  scroll-margin-top: 80px;
+}
+h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+h3 {
+  font-size: 15px; font-weight: 700; margin-top: 32px; margin-bottom: 10px;
+  color: var(--text-primary); scroll-margin-top: 80px;
+}
+h4 {
+  font-size: 13px; font-weight: 700; margin-top: 24px; margin-bottom: 8px;
+  color: var(--text-primary); scroll-margin-top: 80px;
+}
+p { margin-bottom: 12px; color: var(--text-secondary); }
+strong { color: var(--text-primary); font-weight: 600; }
+
+/* Lists */
+ul, ol { margin-bottom: 12px; padding-left: 20px; }
+li { margin-bottom: 4px; color: var(--text-secondary); }
+li strong { color: var(--text-primary); }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; border: 1px solid var(--border); }
+table {
+  width: 100%; border-collapse: collapse; font-size: 12.5px;
+}
+thead { background: var(--bg-table-header); }
+th {
+  text-align: left; padding: 10px 14px; font-weight: 600; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 9px 14px; border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary); vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--bg-table-row-alt); }
+
+/* Code blocks */
+code {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  background: var(--bg-code); padding: 2px 6px; border-radius: 4px;
+  color: var(--accent);
+}
+pre {
+  background: var(--bg-code); border-radius: 8px; padding: 16px 20px;
+  overflow-x: auto; margin: 16px 0; border: 1px solid var(--border);
+}
+pre code { background: none; padding: 0; font-size: 12px; color: var(--text-secondary); }
+
+/* Badges */
+.badge {
+  display: inline-block; padding: 2px 10px; border-radius: 100px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.3px; vertical-align: middle;
+}
+.badge-flexible { background: var(--tag-flexible-bg); color: var(--tag-flexible-text); }
+.badge-vilt { background: var(--tag-vilt-bg); color: var(--tag-vilt-text); }
+.badge-blended { background: var(--tag-blended-bg); color: var(--tag-blended-text); }
+.badge-course { background: var(--tag-course-bg); color: var(--tag-course-text); }
+.badge-program { background: var(--tag-program-bg); color: var(--tag-program-text); }
+.badge-tm { background: var(--tag-tm-bg); color: var(--tag-tm-text); }
+.badge-progress { background: var(--status-progress-bg); color: var(--status-progress-text); }
+.badge-notstarted { background: var(--status-notstarted-bg); color: var(--status-notstarted-text); }
+.badge-completed { background: var(--status-completed-bg); color: var(--status-completed-text); }
+.badge-failed { background: var(--status-failed-bg); color: var(--status-failed-text); }
+.badge-locked { background: var(--status-locked-bg); color: var(--status-locked-text); }
+.badge-risk { background: var(--status-risk-bg); color: var(--status-risk-text); }
+.badge-draft { background: #faebd1; color: #824600; }
+
+/* Callouts */
+.callout {
+  padding: 14px 18px; border-radius: 8px; margin: 16px 0;
+  font-size: 13px; line-height: 1.6; display: flex; gap: 10px;
+}
+.callout svg { flex-shrink: 0; margin-top: 2px; }
+.callout-info { background: var(--accent-bg); border: 1px solid var(--accent-light); }
+.callout-warn { background: #fef9ed; border: 1px solid #f5e6c0; }
+.callout-rule { background: var(--bg-card); border: 1px solid var(--border); }
+
+/* Collapsible sections */
+details { margin: 12px 0; }
+details summary {
+  cursor: pointer; font-weight: 600; font-size: 13px; padding: 10px 14px;
+  background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border);
+  list-style: none; display: flex; align-items: center; gap: 8px;
+  user-select: none; transition: background 0.12s;
+}
+details summary:hover { background: var(--bg-table-header); }
+details summary::before {
+  content: ''; display: inline-block; width: 0; height: 0;
+  border-left: 5px solid var(--text-tertiary); border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent; transition: transform 0.2s; flex-shrink: 0;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details .details-content { padding: 16px 18px; }
+
+/* Color swatches */
+.swatch-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.swatch {
+  display: flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px;
+  border-radius: 6px; border: 1px solid var(--border); font-size: 11px;
+  font-family: 'JetBrains Mono', monospace; background: var(--bg);
+}
+.swatch-color {
+  width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Section counter badge */
+.section-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 6px; background: var(--bg-badge);
+  font-size: 11px; font-weight: 700; color: var(--text-secondary);
+  margin-right: 6px; vertical-align: middle;
+}
+
+/* Stats row */
+.stats-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px; margin: 16px 0;
+}
+.stat-card {
+  background: var(--bg-card); border-radius: 8px; padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.stat-value { font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.stat-label { font-size: 11px; color: var(--text-tertiary); font-weight: 500; margin-top: 2px; }
+
+/* Back to top */
+#back-to-top {
+  position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px;
+  border-radius: 10px; background: var(--text-primary); color: var(--bg);
+  border: none; cursor: pointer; display: none; align-items: center;
+  justify-content: center; box-shadow: var(--shadow-md); z-index: 500;
+  transition: opacity 0.2s;
+}
+#back-to-top.visible { display: flex; }
+
+/* Anchor links */
+.anchor-link {
+  opacity: 0; color: var(--accent); text-decoration: none; margin-left: 6px;
+  font-size: 0.85em; transition: opacity 0.15s;
+}
+h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
+
+/* Decision table */
+.decision-open { color: var(--status-risk-text); font-weight: 600; }
+.decision-done { color: var(--status-completed-text); font-weight: 600; }
+
+/* Print */
+@media print {
+  .sidebar, .topbar, #reading-progress, #back-to-top, .search-overlay,
+  .topbar-controls, .anchor-link { display: none !important; }
+  .main { margin-left: 0; padding: 20px; max-width: 100%; }
+  h2 { break-before: page; }
+  body { font-size: 11px; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 70px 20px 80px; }
+}
+</style>
+</head>
+<body>
+
+<div id="reading-progress"></div>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#0338b8"/><path d="M6 14V8l4 3-4 3z" fill="#fff"/><path d="M10 14V8l4 3-4 3z" fill="#fff" opacity=".5"/></svg>
+    SkillUp LMS PRD
+  </div>
+  <div class="topbar-meta">
+    <span><strong>Owner:</strong> Nelson Jeronimo</span>
+    <span><strong>Updated:</strong> Apr 9, 2026</span>
+    <span><span class="badge badge-draft">Draft</span></span>
+  </div>
+  <div class="topbar-controls">
+    <button class="topbar-btn" onclick="openSearch()" title="Search (Cmd+K)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    </button>
+    <button class="topbar-btn" onclick="window.print()" title="Print / Export PDF">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Search overlay -->
+<div class="search-overlay" id="search-overlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="search-input" id="search-input" type="text" placeholder="Search sections, requirements, specs..." autocomplete="off">
+      <span class="search-kbd">ESC</span>
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Type to search across all 18 sections</div>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Document</div>
+    <a class="nav-item" href="#top">Overview</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Product</div>
+    <div class="nav-group" data-group="s1">
+      <button class="nav-group-toggle" onclick="toggleNavGroup(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2l4 4-4 4z"/></svg>
+        1. Product Overview
+      </button>
+      <div class="nav-children">
+        <a class="nav-item sub" href="#s1-1">What This Is</a>
+        <a class="nav-item sub" href="#s1-2">Problem Statement</a>
+        <a class="nav-item sub" href="#s1-3">Design Goals</a>
+        <a class="nav-item sub" href="#s1-4">Target User</a>
+        <a class="nav-item sub" href="#s1-5">Visual Direction</a>
+      </div>
+    </div>
+    <div class="nav-group" data-group="s2">
+      <button class="nav-group-toggle" onclick="toggleNavGroup(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2l4 4-4 4z"/></svg>
+        2. Content Architecture
+      </button>
+      <div class="nav-children">
+        <a class="nav-item sub" href="#s2-1">Content Hierarchy</a>
+        <a class="nav-item sub" href="#s2-2">Content Types</a>
+        <a class="nav-item sub" href="#s2-3">Delivery Methods</a>
+        <a class="nav-item sub" href="#s2-4">Enrollment Lifecycle</a>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Screens</div>
+    <div class="nav-group" data-group="s3">
+      <button class="nav-group-toggle" onclick="toggleNavGroup(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2l4 4-4 4z"/></svg>
+        3. Screen Requirements
+      </button>
+      <div class="nav-children">
+        <a class="nav-item sub" href="#s3-1">My Learning List</a>
+        <a class="nav-item sub" href="#s3-2">Detail Pages (shared)</a>
+        <a class="nav-item sub" href="#s3-3">TechMaster (Blended)</a>
+        <a class="nav-item sub" href="#s3-4">Data Analytics (Flexible)</a>
+        <a class="nav-item sub" href="#s3-5">Cloud Engineering (VILT)</a>
+        <a class="nav-item sub" href="#s3-6">Cybersecurity (Not Started)</a>
+      </div>
+    </div>
+    <a class="nav-item" href="#s4">4. Shared Tab Requirements</a>
+    <a class="nav-item" href="#s5">5. Dashboard (Home)</a>
+    <a class="nav-item" href="#s6">6. Immersive Player</a>
+    <a class="nav-item" href="#s7">7. Gamification / Weekly Goals</a>
+    <div class="nav-group">
+      <a class="nav-item" href="#s8">8. Live Sessions (VILT)</a>
+      <div class="nav-children">
+        <a class="nav-item sub" href="#s8-1">Delivery Mode Tagging</a>
+        <a class="nav-item sub" href="#s8-2">Bubble-Up Logic</a>
+        <a class="nav-item sub" href="#s8-3">Learner View</a>
+        <a class="nav-item sub" href="#s8-4">Session States</a>
+        <a class="nav-item sub" href="#s8-5">Business Rules</a>
+        <a class="nav-item sub" href="#s8-6">TechMaster Example</a>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Specs</div>
+    <a class="nav-item" href="#s9">9. Design System</a>
+    <a class="nav-item" href="#s10">10. UX Audit Findings</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Gaps & Decisions</div>
+    <a class="nav-item" href="#s11">11. Missing Scenarios</a>
+    <a class="nav-item" href="#s12">12. Edge Cases</a>
+    <a class="nav-item" href="#s13">13. Open Decisions</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Extended</div>
+    <a class="nav-item" href="#s14">14. Competitive Research</a>
+    <a class="nav-item" href="#s15">15. Cohort Management</a>
+    <a class="nav-item" href="#s16">16. Mobile App (Phase 2)</a>
+    <a class="nav-item" href="#s17">17. Figma Reference</a>
+    <a class="nav-item" href="#s18">18. Supporting Artifacts</a>
+  </div>
+</nav>
+
+<!-- Main content -->
+<main class="main" id="top">
+
+<h1>SkillUp LMS: Courses and Programs PRD</h1>
+<div class="doc-subtitle">Learner Platform Experience, Phase 1</div>
+<div class="doc-meta">
+  <span class="doc-meta-item"><strong>Owner:</strong> Nelson Jeronimo</span>
+  <span class="doc-meta-item"><strong>Updated:</strong> April 10, 2026</span>
+  <span class="doc-meta-item"><strong>Status:</strong> <span class="badge badge-draft">Draft, Living Document</span></span>
+  <span class="doc-meta-item"><strong>Figma:</strong> <code>Wz2TCYFVr0hD8tJNiLajLt</code></span>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-value">33</div><div class="stat-label">Screens wireframed</div></div>
+  <div class="stat-card"><div class="stat-value">4</div><div class="stat-label">Flows covered</div></div>
+  <div class="stat-card"><div class="stat-value">9</div><div class="stat-label">Open decisions</div></div>
+  <div class="stat-card"><div class="stat-value">15</div><div class="stat-label">Missing scenarios</div></div>
+</div>
+
+<!-- ===== SECTION 1 ===== -->
+<h2 id="s1"><span class="section-count">1</span>Product Overview<a class="anchor-link" href="#s1">#</a></h2>
+
+<h3 id="s1-1">1.1 What This Is</h3>
+<p>SkillUp LMS is a corporate learning platform where employees enroll in courses and programs to develop professional skills. This PRD covers the learner-facing experience for browsing, tracking, and completing learning content.</p>
+<p>The platform supports three content structures (<span class="badge badge-course">Course</span> <span class="badge badge-program">Program</span> <span class="badge badge-tm">TechMaster</span>) across three delivery methods (<span class="badge badge-flexible">Flexible Learning</span> <span class="badge badge-vilt">Online Live Classes</span> <span class="badge badge-blended">Flexible + Online Live Classes</span>). Learners move through enrollment states from Not Started through In Progress to Completed, with live session attendance, assessments, projects, and certifications along the way.</p>
+
+<h3 id="s1-2">1.2 Problem Statement</h3>
+<p>The current platform was built as a technical LMS focused on administration, cohorts, and certification logic. Learners experience it as an admin panel, not a learning tool.</p>
+<ol>
+  <li>No clear answer to "What should I do next?" across any page</li>
+  <li>Progress shown as raw percentages and tables (back-office language, not motivation)</li>
+  <li>Certificate eligibility displayed as rejection ("You are not eligible") with no path forward</li>
+  <li>Course structure is a flat accordion list with no visual hierarchy</li>
+  <li>Dates page shows admin timestamps, not learning pace</li>
+  <li>Zero emotional feedback. The platform never acknowledges effort or progress</li>
+  <li>Navigation exposes internal system logic ("View in Studio", "Stack") that means nothing to learners</li>
+  <li>No distinction between programmes and courses for new users</li>
+</ol>
+
+<h3 id="s1-3">1.3 Design Goals</h3>
+<ol>
+  <li>Make the next action impossible to miss</li>
+  <li>Show progress as motivation, not raw data</li>
+  <li>Reduce anxiety around certification</li>
+  <li>Keep the interface simple, calm, and outcome-focused</li>
+  <li>Optimize for desktop first (1440px), mobile planned for Phase 2</li>
+  <li>Dense professional aesthetic: high information density, monochromatic base, color reserved for status and actions</li>
+</ol>
+
+<h3 id="s1-4">1.4 Target User</h3>
+<p>Adult learner, employed, enrolled in at least one programme. Goal-oriented and time-constrained. Wants clarity, reassurance, and momentum. Not interested in gamified or playful UI. Expects a professional tool that respects their time.</p>
+
+<h3 id="s1-5">1.5 Visual Direction</h3>
+<p>Bloomberg Terminal meets Linear meets Jira. Dense professional. Every pixel earns its place.</p>
+<ul>
+  <li>High information density with compact vertical rhythm</li>
+  <li>Clear hierarchy through weight and size contrast, not decoration</li>
+  <li>Monochromatic base (grays, near-blacks, whites) with color reserved for status and actions</li>
+  <li>Tables and lists over cards where possible</li>
+  <li>Subtle borders over shadows. One level of elevation max</li>
+  <li>Data-forward: KPIs, percentages, counts, and dates prominent and scannable</li>
+</ul>
+
+<!-- ===== SECTION 2 ===== -->
+<h2 id="s2"><span class="section-count">2</span>Content Architecture<a class="anchor-link" href="#s2">#</a></h2>
+
+<h3 id="s2-1">2.1 Content Hierarchy</h3>
+<pre><code>My Learning (list of all enrolled items)
+  > Program (collection of courses)
+    > Course (within a program)
+      > Module
+        > Lesson
+  > Standalone Course (not part of a program)
+    > Module
+      > Lesson</code></pre>
+
+<h3 id="s2-2">2.2 Content Types</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Type</th><th>Icon</th><th>Badge</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Course</strong></td><td>Gray page</td><td><span class="badge badge-course">COURSE</span></td><td>Single-subject learning container. Has modules and lessons.</td></tr>
+    <tr><td><strong>Program</strong></td><td>Blue stacked pages</td><td><span class="badge badge-program">PROGRAM</span></td><td>Multi-course container. Includes courses, capstone project, and optionally internship/external placement.</td></tr>
+    <tr><td><strong>TechMaster</strong></td><td>Gold circle with star</td><td><span class="badge badge-tm">TECHMASTER</span></td><td>Premium multi-course program. Includes mentoring, live sessions, capstone, and certification.</td></tr>
+  </tbody>
+</table></div>
+
+<h3 id="s2-3">2.3 Delivery Methods (Mode of Delivery)</h3>
+
+<div class="callout callout-rule">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+  <div><strong>Core principle:</strong> Course structure and delivery method are separate concerns. A course is a package of content (title, modules, lessons, quizzes, projects). VILT is not a course type. It is a mode of delivery. The same course structure applies regardless of how it is delivered. Never create separate VILT and self-paced instances of the same course.</div>
+</div>
+
+<p><strong>How delivery mode works:</strong> The mode of delivery is tagged at any level of the content hierarchy: lesson, module, or course. The tag determines whether content is consumed independently by the learner or delivered live by an instructor. Modes bubble up: if all lessons in a module are VILT, the module displays as VILT. If some are self-paced and some VILT, the module displays as Blended.</p>
+
+<div class="table-wrap"><table>
+  <thead><tr><th>Method</th><th>Badge</th><th>What It Means</th><th>Learner Experience</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Self-Paced</strong></td><td><span class="badge badge-flexible">Flexible Learning</span></td><td>No instructor involvement. Learner consumes content on their own schedule.</td><td>No deadlines. No calendar entries. No timeline pressure. Can take as long as needed.</td></tr>
+    <tr><td><strong>VILT (Instructor-Led)</strong></td><td><span class="badge badge-vilt">Online Live Classes</span></td><td>Heavily instructor-driven delivery. Still includes quizzes, projects, reading material. Think university: lectures + homework.</td><td>Schedule-dependent. Start/end dates visible. Calendar entries with date, time, presenter. Recordings after session. Nudges for upcoming sessions.</td></tr>
+    <tr><td><strong>Blended</strong></td><td><span class="badge badge-blended">Flexible + Online Live Classes</span></td><td>Mix of self-paced and live sessions within the same course or module.</td><td>Start/end dates visible. Self-paced content available anytime. Live sessions on schedule. Calendar shows only the VILT portions.</td></tr>
+  </tbody>
+</table></div>
+
+<p><strong>Tagging rules:</strong></p>
+<ul>
+  <li>Delivery mode is tagged on the <strong>admin side</strong> during course creation, at lesson, module, or course level.</li>
+  <li>If VILT or Blended is selected, the system requires: session date, time, presenter name, and meeting link.</li>
+  <li>Mode bubbles up automatically. If all lessons in a module are VILT, the module shows VILT. Mixed = Blended. All self-paced = Self-Paced.</li>
+  <li>There is no such thing as "pure VILT" with zero supporting content. Even fully instructor-led courses have quizzes, assessments, and reading material.</li>
+</ul>
+
+<p><strong>No prerequisite locking for VILT:</strong> A learner who hasn't finished modules 1 and 2 can still attend the live session for module 3. The system sends a nudge ("Your session on X is in 3 days. You haven't completed the prerequisite modules.") but does not block attendance.</p>
+
+<p>Badge spec: Montserrat SemiBold 10px, cornerRadius 100px (pill), padding 8px horizontal / 3px vertical. Implemented as a reusable <code>CourseTypeBadge</code> component set with 3 variants.</p>
+
+<h3 id="s2-4">2.4 Enrollment Lifecycle</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>State</th><th>Badge</th><th>Description</th><th>Visual Treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Not Started</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Enrolled but no activity</td><td>Gray badge only. No progress bar. No 0%. No empty track.</td></tr>
+    <tr><td>In Progress</td><td><span class="badge badge-progress">In Progress</span></td><td>Active learning</td><td>Blue progress bar + percentage.</td></tr>
+    <tr><td>Behind Schedule</td><td><span class="badge badge-progress">In Progress</span></td><td>In Progress sub-state</td><td>Blue left border on My Learning card. "Behind schedule. Due: [date]".</td></tr>
+    <tr><td>Certificate at Risk</td><td><span class="badge badge-risk">At Risk</span></td><td>Missed required sessions</td><td>Warning text + recovery action.</td></tr>
+    <tr><td>Completed</td><td><span class="badge badge-completed">Completed</span></td><td>All content finished</td><td>Gray badge on My Learning list. Green on inner screens.</td></tr>
+    <tr><td>Access Expired</td><td><span class="badge badge-notstarted">Access Expired</span></td><td>Enrollment window closed</td><td>Gray badge, gray left border, card at 70% opacity.</td></tr>
+    <tr><td>Locked</td><td><span class="badge badge-locked">Locked</span></td><td>Prerequisites not met</td><td>Lock icon. "Complete [prerequisite] to unlock".</td></tr>
+  </tbody>
+</table></div>
+<div class="callout callout-rule">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+  <div><strong>Business rule:</strong> Not Started items show ONLY the gray badge. No progress bar, no percentage, no empty track. This eliminates visual noise with zero informational value.</div>
+</div>
+
+<!-- ===== SECTION 3 ===== -->
+<h2 id="s3"><span class="section-count">3</span>Screen Requirements<a class="anchor-link" href="#s3">#</a></h2>
+
+<h3 id="s3-1">3.1 My Learning List</h3>
+<p><strong>Purpose:</strong> The learner's home base. All enrolled courses and programs in a scannable list with filtering and status at a glance.</p>
+<p><strong>URL pattern:</strong> <code>/my-learning</code></p>
+
+<h4>Screen structure (top to bottom):</h4>
+<ol>
+  <li>Global nav bar (fixed, 64px, bg #f8f9fa)</li>
+  <li>Session alert banners (conditional, max 2)</li>
+  <li>Page header with title, subtitle, and filter system</li>
+  <li>Course/program card list (8 cards)</li>
+  <li>Footer</li>
+</ol>
+
+<details><summary>Session Alert Banners (specs)</summary><div class="details-content">
+<p><strong>Live session banner:</strong> bg #f0f2ff, brand blue dot (8px), "You have a live session now: [Session Name] . Started [X] min ago", dark filled "Join Now" button (bg #212121, white text, cornerRadius 6).</p>
+<p><strong>Upcoming session banner:</strong> bg #f7f7fa, gray dot (6px), "Upcoming: [Session Name] . Starts in [X] min", outlined "Join Live" button (white bg, 1px border #cccfd4, cornerRadius 6).</p>
+<p>Specs: full-width, padding 10px vertical / 88px horizontal, Montserrat 12px, itemSpacing 12.</p>
+<div class="callout callout-rule"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div><strong>Rules:</strong> Show max 2 banners (1 live + 1 upcoming). Live takes priority. Only for In Progress programs with live sessions.</div></div>
+</div></details>
+
+<details><summary>Page Header and Filters</summary><div class="details-content">
+<ul>
+  <li>Title: "My Learning" (Montserrat Bold 22px)</li>
+  <li>Subtitle: "Continue where you left off" (Regular 14px, #666)</li>
+  <li>Row 1 filter (type): All, Courses, Programs (pill toggle, 14px)</li>
+  <li>Row 2 filter (status): All, In Progress, Not Started, Completed, Expired (pill toggle, 15px)</li>
+  <li>Below filters: "YOUR COURSES & PROGRAMS" uppercase label + "Filters" button (opens sidebar)</li>
+</ul>
+</div></details>
+
+<details><summary>Course/Program Cards (8 cards, full data)</summary><div class="details-content">
+<p>Each card: horizontal row, bg #f0f0f0, cornerRadius 8px. Left thumbnail, content area (title, partner, delivery badge, status badge, progress), right CTA, left accent border for special states.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>#</th><th>Title</th><th>Type</th><th>Status</th><th>CTA</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>AI in Healthcare</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start Learning</td></tr>
+    <tr><td>2</td><td>Data Analytics Fundamentals</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-progress">62% In Progress</span></td><td>Continue Learning</td></tr>
+    <tr><td>3</td><td>AI Ethics & Governance</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-progress">28% Behind Schedule</span></td><td>Continue Learning</td></tr>
+    <tr><td>4</td><td>AI TechMaster Program</td><td><span class="badge badge-blended">Blended</span></td><td><span class="badge badge-progress">28% In Progress</span></td><td>Continue Learning</td></tr>
+    <tr><td>5</td><td>Cloud Engineering Bootcamp</td><td><span class="badge badge-vilt">VILT</span></td><td><span class="badge badge-progress">62% In Progress</span></td><td>Continue Learning</td></tr>
+    <tr><td>6</td><td>Cybersecurity Foundations</td><td><span class="badge badge-vilt">VILT</span></td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start Learning</td></tr>
+    <tr><td>7</td><td>Python for Data Science</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-completed">Completed</span></td><td>Review</td></tr>
+    <tr><td>8</td><td>Cloud Architecture Essentials</td><td><span class="badge badge-flexible">Flexible</span></td><td><span class="badge badge-notstarted">Expired</span></td><td>disabled</td></tr>
+  </tbody>
+</table></div>
+<div class="callout callout-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><strong>Color rule:</strong> My Learning card badges use neutral grays ONLY (no green for Completed, no red for Expired). This rule applies ONLY to this screen. All other screens use semantic colors freely.</div></div>
+</div></details>
+
+<h3 id="s3-2">3.2 Course/Program Detail Pages (shared structure)</h3>
+<p>Every detail page follows this exact top-to-bottom order:</p>
+<ol>
+  <li>Global nav bar</li>
+  <li>Live session banner (conditional)</li>
+  <li>Breadcrumb</li>
+  <li>Program affiliation banner (conditional, Course type only)</li>
+  <li>PD header block (thumbnail + type label + title + badges + partner + progress bar + KPIs)</li>
+  <li>Tab bar</li>
+  <li>Tab content area</li>
+  <li>Mentoring CTA section (PD and About tabs of Program/TechMaster ONLY)</li>
+  <li>Footer (every screen, no exceptions)</li>
+</ol>
+
+<details><summary>Live Session Banner Rules</summary><div class="details-content">
+<div class="table-wrap"><table>
+  <thead><tr><th>Flow</th><th>Type</th><th>Status</th><th>Show Banner?</th></tr></thead>
+  <tbody>
+    <tr><td>TechMaster</td><td>Blended</td><td>In Progress</td><td>Yes, all screens</td></tr>
+    <tr><td>Cloud Engineering</td><td>VILT</td><td>In Progress</td><td>Yes, all screens</td></tr>
+    <tr><td>Data Analytics</td><td>Flexible</td><td>In Progress</td><td>No (no live sessions)</td></tr>
+    <tr><td>Cybersecurity</td><td>VILT</td><td>Not Started</td><td>No (no active sessions)</td></tr>
+  </tbody>
+</table></div>
+</div></details>
+
+<details><summary>Tab Bar Configuration per Type</summary><div class="details-content">
+<p><strong>TechMaster (Blended):</strong> Courses, Live Classes, All Recordings, Mentors, Assessments, Projects, Progress, Certificates, About</p>
+<p><strong>Course (Flexible):</strong> Modules, Assessments, Projects, Progress, Certificates, Course Q&A, About</p>
+<p><strong>Program (VILT):</strong> Live Sessions, Recordings, Assessments, Mentors, Projects, Progress, Certificates, About</p>
+</div></details>
+
+<details><summary>KPI Cards per Flow</summary><div class="details-content">
+<div class="table-wrap"><table>
+  <thead><tr><th>KPI</th><th>TechMaster</th><th>Data Analytics</th><th>Cloud Engineering</th><th>Cybersecurity</th></tr></thead>
+  <tbody>
+    <tr><td>Total Hours</td><td>120h</td><td>20h</td><td>20h</td><td>24h</td></tr>
+    <tr><td>Avg/Week</td><td>3.2h</td><td>3.2h</td><td>3.2h</td><td>6h</td></tr>
+    <tr><td>Progress</td><td>4/16 Courses</td><td>5/8 Modules</td><td>0/18 Sessions</td><td>0/12 Scheduled</td></tr>
+    <tr><td>Est. Completion</td><td>Jun 15, 2026</td><td>May 10, 2026</td><td>Apr 30</td><td>Apr 30</td></tr>
+  </tbody>
+</table></div>
+</div></details>
+
+<h3 id="s3-3">3.3 Flow 1: AI TechMaster Program <span class="badge badge-tm">TECHMASTER</span> <span class="badge badge-blended">Blended</span></h3>
+<p>9 screens. Premium program with all features: live sessions, mentoring, 4 courses. Status: In Progress, 28%. Partner: SkillUp . IBM . Google Cloud.</p>
+<details><summary>Courses Tab (4 courses)</summary><div class="details-content">
+<ol>
+  <li><strong>Course 1: Python Basics</strong> - Completed (100%), green checkmark</li>
+  <li><strong>Course 2: Data Analytics Fundamentals</strong> - In Progress (62%), blue progress bar</li>
+  <li><strong>Course 3: Deep Learning</strong> - Not Started, gray badge only</li>
+  <li><strong>Course 4: Capstone Project</strong> - Locked, "Complete Course 3 to unlock"</li>
+</ol>
+</div></details>
+<details><summary>Live Classes / Button Pattern (Nelson redesign Apr 7)</summary><div class="details-content">
+<div class="table-wrap"><table>
+  <thead><tr><th>State</th><th>Style</th><th>Spec</th></tr></thead>
+  <tbody>
+    <tr><td>Join Live</td><td>Black bg, white text, green emoji dot</td><td>rgb(0,0,0), cornerRadius 6</td></tr>
+    <tr><td>Starting Soon</td><td>Dark bg, white text</td><td>rgb(33,33,33)</td></tr>
+    <tr><td>Watch Recording</td><td>White bg, dark border, dark text</td><td>border rgb(51,51,51)</td></tr>
+    <tr><td>Saving Recording...</td><td>Gray bg, gray text</td><td>rgb(232,232,232)</td></tr>
+    <tr><td>Upcoming</td><td>Gray bg, dark text</td><td>rgb(232,232,232)</td></tr>
+    <tr><td>Rescheduled</td><td>Amber bg, dark text</td><td>rgb(244,213,129)</td></tr>
+  </tbody>
+</table></div>
+</div></details>
+
+<h3 id="s3-4">3.4 Flow 2: Data Analytics Fundamentals <span class="badge badge-course">COURSE</span> <span class="badge badge-flexible">Flexible</span></h3>
+<p>7 screens. Standalone course without live sessions or mentoring. In Progress, 62%. Partner: IBM. Belongs to TechMaster (conditional affiliation banner).</p>
+<details><summary>Modules Tab (8 modules)</summary><div class="details-content">
+<ol>
+  <li><strong>Module 1: Introduction to Data Analytics</strong> - Completed (100%)</li>
+  <li><strong>Module 2: Statistical Foundations</strong> - Completed (100%)</li>
+  <li><strong>Module 3: Data Visualization with Python</strong> - In Progress (67%)</li>
+  <li><strong>Module 4: SQL for Data Analysis</strong> - In Progress (27%)</li>
+  <li><strong>Module 5: Machine Learning Basics</strong> - Not Started, gray badge only</li>
+  <li><strong>Module 6: Real-World Case Studies</strong> - Not Started, gray badge only</li>
+  <li><strong>Module 7: Advanced Analytics</strong> - Locked, "Complete Module 6 to unlock"</li>
+  <li><strong>Module 8: Final Assessment</strong> - Locked, "Complete Module 7 to unlock"</li>
+</ol>
+</div></details>
+<details><summary>Course Q&A Tab (Course types only)</summary><div class="details-content">
+<p>Header: title + subtitle + "[N] modules in this course" link + "+ Ask a Question" CTA (bg #3385d9).</p>
+<p>Filter row: module pills (All active, 9 pills total, wrapping layout).</p>
+<p>Thread cards: status badge (ANSWERED green / UNANSWERED gray), module badge, vote count, question title, preview, author, reply count. Best Answer section with green tint bg.</p>
+</div></details>
+
+<h3 id="s3-5">3.5 Flow 3: Cloud Engineering Bootcamp <span class="badge badge-program">PROGRAM</span> <span class="badge badge-vilt">VILT</span></h3>
+<p>8 screens. Fully instructor-led program. In Progress, 62%. Partner: SkillUp . IBM . Google Cloud. 6 courses. Live Sessions as default tab.</p>
+
+<h3 id="s3-6">3.6 Flow 4: Cybersecurity Foundations <span class="badge badge-program">PROGRAM</span> <span class="badge badge-vilt">VILT</span> <span class="badge badge-notstarted">Not Started</span></h3>
+<p>8 screens. Zero-state experience. Partner: SkillUp . Cisco. 4 courses. All content in Not Started state.</p>
+<div class="callout callout-rule"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div><strong>Not Started rules:</strong> No progress bar on header. All modules gray badge. All certs "Not Eligible". KPI says "Sessions scheduled" not "completed". No live session banner. Empty buttons hidden (visible: false).</div></div>
+
+<!-- ===== SECTION 4 ===== -->
+<h2 id="s4"><span class="section-count">4</span>Shared Tab Requirements<a class="anchor-link" href="#s4">#</a></h2>
+<p>These tabs appear across multiple flows with consistent behavior.</p>
+<details><summary>Assessments</summary><div class="details-content"><p>Two groups per flow. Shows: title, type (Quiz/Exam/Practical), status badge, score, attempts remaining, state-dependent CTA. DA has 8 assessments total.</p></div></details>
+<details><summary>Projects</summary><div class="details-content"><p>Status tracking: Not Started, In Progress, Submitted, Under Review (<span class="badge badge-risk">Under Review</span>), Approved, Revision Needed. DA has 2 projects.</p></div></details>
+<details><summary>Progress</summary><div class="details-content"><p>Overall completion %, per-module/course breakdown, time spent analytics, Weekly Learning Activity chart (all 4 flows). VILT programs use "Live Sessions" category label.</p></div></details>
+<details><summary>Certificates</summary><div class="details-content"><p>States: Not Eligible ("View certificate requirements"), Eligible Not Claimed, Earned (download), At Risk (recovery text), Expired. Certificate preview thumbnails replicated across flows.</p></div></details>
+<details><summary>About</summary><div class="details-content"><p>Compact layout: "ABOUT THIS [TYPE]" header (blue #3385d9), stats bar, description, metadata grid (4 cols: Effort, Level, Delivery, Code), skills tags, instructor cards, CTAs.</p></div></details>
+<details><summary>Mentoring CTA</summary><div class="details-content"><p>ONLY on PD + About of Program/TechMaster types. Never inner tabs, never Course types. Layout: gray bg #f7f7f8, left text + right mentor cards with "Book Session" CTA.</p></div></details>
+
+<!-- ===== SECTION 5 ===== -->
+<h2 id="s5"><span class="section-count">5</span>Dashboard (Home)<a class="anchor-link" href="#s5">#</a></h2>
+<p>Separate Home screen (not My Learning List). Three layout versions explored. Nelson to select.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Version</th><th>Layout</th><th>Key Feature</th></tr></thead>
+  <tbody>
+    <tr><td><strong>A</strong></td><td>Classic Vertical</td><td>Nav, greeting+stats, live banner, Continue Learning cards, Upcoming Sessions, course grid</td></tr>
+    <tr><td><strong>B</strong></td><td>Widget Grid</td><td>4 KPI stat cards, 2-column widgets (Continue Learning + Activity | Schedule + Weekly Goal)</td></tr>
+    <tr><td><strong>C</strong></td><td>Sidebar + Feed</td><td>Left sidebar (greeting, stats, weekly goal, schedule), main feed (live banner, courses)</td></tr>
+  </tbody>
+</table></div>
+<p>All versions must include: prominent "Your Next Action" card, overall completion %, module counts, pending tasks, certificate progress card, upcoming session awareness.</p>
+
+<!-- ===== SECTION 6 ===== -->
+<h2 id="s6"><span class="section-count">6</span>Immersive Lesson Player<a class="anchor-link" href="#s6">#</a></h2>
+<p>Full-screen lesson consumption (video, text, code). Three versions, 1440px, light mode only.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Version</th><th>Layout</th></tr></thead>
+  <tbody>
+    <tr><td><strong>A</strong></td><td>Right Sidebar Journey: video left, course journey sidebar right</td></tr>
+    <tr><td><strong>B</strong></td><td>Top Nav Compact: centered content, type pills in nav, lesson dots</td></tr>
+    <tr><td><strong>D</strong></td><td>Left Sidebar Navigation: dark sidebar with lesson list, light main area</td></tr>
+  </tbody>
+</table></div>
+
+<!-- ===== SECTION 7 ===== -->
+<h2 id="s7"><span class="section-count">7</span>Gamification and Weekly Goals<a class="anchor-link" href="#s7">#</a></h2>
+<p>Lightweight motivation based on learning hours (not XP). Self-comparison, not leaderboards. Corporate-appropriate.</p>
+<div class="callout callout-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><strong>Key rule:</strong> Weekly goals are per-course (1:1), NOT global/aggregate. Widget does NOT belong on My Learning List (rejected). Lives on individual course Progress and Modules tabs.</div></div>
+
+<details><summary>Widget States</summary><div class="details-content">
+<p>Empty/0%, In Progress (53%), Almost There (85%: "5.1h / 6h . Almost there! 0.9h to go"), Goal Reached (100%). Shows day-of-week dots, daily breakdown bars, streak indicator.</p>
+</div></details>
+<details><summary>Streak and Badges</summary><div class="details-content">
+<p><strong>Streak milestones:</strong> 3, 4, 8, 12 weeks.</p>
+<p><strong>Progress badges:</strong> First Steps, Halfway There, Assessment Ace, Full Attendance, Capstone Complete.</p>
+<p><strong>Consistency badges:</strong> Week Warrior, Month Master, Quarter Champion.</p>
+</div></details>
+<details><summary>Micro-celebrations</summary><div class="details-content">
+<p>Triggered contextually: Module Complete, Halfway Milestone, Weekly Goal Hit, Assessment Passed. Light toast notifications, non-blocking.</p>
+</div></details>
+
+<!-- ===== SECTION 8 ===== -->
+<h2 id="s8"><span class="section-count">8</span>Live Sessions (VILT) Architecture<a class="anchor-link" href="#s8">#</a></h2>
+<p>Source: Discovery meeting April 10, 2026 (Harpreet Kaur, Govind Sharma, Navdeep Malhotra, Rupali Amit Mahale, Nelson Jeronimo). Full architecture diagram: <code>VILT-Architecture-Flowchart.html</code></p>
+
+<h3 id="s8-1">8.1 How Delivery Mode Is Applied</h3>
+<p>The admin creates a course with its full structure (modules, lessons, quizzes, projects). Separately, they tag the <strong>mode of delivery</strong> at any level:</p>
+<ol>
+  <li><strong>At lesson level:</strong> Lesson 1 is self-paced, Lesson 2 is an industry expert session (VILT). This is the most granular tagging.</li>
+  <li><strong>At module level:</strong> The entire module is delivered by an instructor. All lessons within inherit the VILT tag.</li>
+  <li><strong>At course level:</strong> The entire course is instructor-led. All modules and lessons inherit.</li>
+</ol>
+<p>When a lesson or module is tagged as VILT, the system requires: <strong>session date, time, presenter name, and meeting link</strong>. Without these, the VILT tag cannot be saved.</p>
+
+<h3 id="s8-2">8.2 Bubble-Up Logic</h3>
+<p>The delivery mode displayed at parent levels is derived automatically from children:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Scenario</th><th>Lessons</th><th>Module Displays As</th></tr></thead>
+  <tbody>
+    <tr><td>All self-paced</td><td>L1: SP, L2: SP, L3: SP</td><td><span class="badge badge-flexible">Flexible Learning</span></td></tr>
+    <tr><td>Mixed</td><td>L1: SP, L2: SP, L3: VILT, L4: VILT</td><td><span class="badge badge-blended">Flexible + Online Live Classes</span></td></tr>
+    <tr><td>All instructor-led</td><td>L1: VILT, L2: VILT, L3: VILT</td><td><span class="badge badge-vilt">Online Live Classes</span></td></tr>
+  </tbody>
+</table></div>
+<p>The same logic applies at course level (derived from modules) and program level (derived from courses).</p>
+
+<h3 id="s8-3">8.3 How the Learner Sees It</h3>
+
+<h4>In the Course Structure (Linear View)</h4>
+<ul>
+  <li>All modules and lessons are listed in order, exactly as self-paced courses are today.</li>
+  <li>Each item shows a visual indicator (badge, icon, or color) for its delivery mode: self-paced vs. live.</li>
+  <li>VILT items show the <strong>session date and time inline</strong> next to the lesson/module title.</li>
+  <li>Completed VILT sessions show a "Done" status. If a recording is available, show a "Watch Recording" link.</li>
+</ul>
+
+<h4>Calendar Tab (Course Level)</h4>
+<ul>
+  <li>A tab alongside the course structure (next to Modules, About, etc.).</li>
+  <li>Shows <strong>only the live sessions for this specific course</strong>.</li>
+  <li>Each entry: session topic, date, time, presenter, meeting link.</li>
+  <li>Correlates directly with the VILT items in the course structure view.</li>
+</ul>
+
+<h4>Global Calendar</h4>
+<ul>
+  <li>Accessible from the learner dashboard or My Learning.</li>
+  <li>Aggregates all live sessions across all enrolled courses and programs.</li>
+  <li>The learner sees their full schedule at a glance: "Tuesday: AI session. Thursday: Cybersecurity session."</li>
+</ul>
+
+<h4>Nudges and Reminders</h4>
+<ul>
+  <li>Upcoming session reminder: "Your session on [topic] is in 3 days."</li>
+  <li>Prerequisite nudge: "You haven't completed Modules 1 and 2. Your upcoming session covers these topics. Please review before attending."</li>
+  <li>No blocking: the learner can still attend the session even if behind on self-paced work.</li>
+</ul>
+
+<h3 id="s8-4">8.4 Session States</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>State</th><th>Visual</th><th>CTA</th></tr></thead>
+  <tbody>
+    <tr><td>Upcoming</td><td>Gray, future date + time + presenter</td><td>"Upcoming" (passive)</td></tr>
+    <tr><td>Starting Soon</td><td>Countdown timer</td><td>"Starting Soon" (dark)</td></tr>
+    <tr><td>Live Now</td><td>Active indicator</td><td>"Join Live" (black + green dot)</td></tr>
+    <tr><td>Ended, Processing</td><td>Gray/disabled</td><td>"Saving Recording..." (gray)</td></tr>
+    <tr><td>Ended, Attended</td><td>Green indicator</td><td>"Review Recording" (outlined)</td></tr>
+    <tr><td>Ended, Missed</td><td>Red indicator</td><td>"Watch Recording" (outlined)</td></tr>
+    <tr><td>Cancelled</td><td>Strikethrough/badge</td><td>none</td></tr>
+    <tr><td>Rescheduled</td><td>Amber badge</td><td>"Rescheduled" (amber)</td></tr>
+  </tbody>
+</table></div>
+
+<h3 id="s8-5">8.5 Business Rules</h3>
+<ul>
+  <li><strong>One course, one instance.</strong> Never create separate VILT and self-paced versions of the same course. This was a concrete problem: learners were going to two different places for the same content.</li>
+  <li><strong>"Pure VILT" still has supporting content.</strong> Even a fully instructor-led course includes quizzes, projects, and reading material. That doesn't make it "blended." Think university lectures: the professor teaches, but students still have textbooks and assignments.</li>
+  <li><strong>Self-paced = no timeline pressure.</strong> No deadlines, no schedule. The learner can take as long as they need.</li>
+  <li><strong>VILT = time-bound.</strong> Any VILT component adds start/end dates, schedule pressure, and calendar entries to the learner view.</li>
+  <li><strong>Content types at lesson level.</strong> Approximately 40 content/interaction types are available (video, reading, quiz, lab, drag-and-drop, jigsaw, etc.). The delivery mode is independent of the content type.</li>
+</ul>
+
+<h3 id="s8-6">8.6 TechMaster AIML Example (Real Case)</h3>
+<p>TechMaster AIML has 16 self-paced courses. For the first course (AI Fundamentals, 1-month duration):</p>
+<ul>
+  <li>Self-paced modules available Monday through Friday: 4 modules with lessons, reading material, labs.</li>
+  <li>8 VILT sessions on weekends: each summarizes self-paced content + covers advanced topics not in the LMS.</li>
+  <li>This is a <strong>Blended</strong> course. The module structure stays the same. The VILT sessions appear in the course structure with dates/times and in the course-level calendar tab.</li>
+  <li>The learner sees: "Module 1 (Self-Paced) > Module 2 (Self-Paced) > Session 1: AI Lifecycle Overview (Sat, Apr 12, 10:00 AM) > Module 3 (Self-Paced) > Session 2: Ethical AI Governance (Sat, Apr 19, 10:00 AM)"</li>
+</ul>
+
+<!-- ===== SECTION 9 ===== -->
+<h2 id="s9"><span class="section-count">9</span>Design System Specification<a class="anchor-link" href="#s9">#</a></h2>
+
+<h3>Typography</h3>
+<p>Primary: <strong>Montserrat</strong> (all UI). Accent: <strong>Playfair Display</strong> (editorial only). Never use Inter.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Element</th><th>Weight</th><th>Size</th><th>Color</th></tr></thead>
+  <tbody>
+    <tr><td>PD title</td><td>Bold</td><td>26px</td><td>#000</td></tr>
+    <tr><td>Page title</td><td>Bold</td><td>22px</td><td>#111</td></tr>
+    <tr><td>Section heading</td><td>SemiBold</td><td>20px</td><td>#212121</td></tr>
+    <tr><td>Card title</td><td>SemiBold</td><td>15-17px</td><td>#111</td></tr>
+    <tr><td>Body text</td><td>Regular</td><td>14-15px</td><td>#404040</td></tr>
+    <tr><td>Small label</td><td>Regular</td><td>12-13px</td><td>#888</td></tr>
+    <tr><td>Badge text</td><td>SemiBold</td><td>11px</td><td>varies</td></tr>
+    <tr><td>KPI value</td><td>Bold</td><td>24px</td><td>#111</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Color System</h3>
+<p>Status badges, CTA hierarchy, and surface tokens. All badges use cornerRadius 100px (pill). All buttons use 6-8px.</p>
+<div class="swatch-row">
+  <div class="swatch"><div class="swatch-color" style="background:#0338b8"></div>#0338b8 Accent</div>
+  <div class="swatch"><div class="swatch-color" style="background:#212121"></div>#212121 Primary CTA</div>
+  <div class="swatch"><div class="swatch-color" style="background:#219654"></div>#219654 Urgent CTA</div>
+  <div class="swatch"><div class="swatch-color" style="background:#3385d9"></div>#3385d9 Brand CTA</div>
+  <div class="swatch"><div class="swatch-color" style="background:#f7f7fa"></div>#f7f7fa KPI bg</div>
+  <div class="swatch"><div class="swatch-color" style="background:#f0f0f0"></div>#f0f0f0 Card bg</div>
+</div>
+
+<h3>Layout Constants</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Frame width</td><td>1440px</td></tr>
+    <tr><td>Page padding</td><td>80px horizontal</td></tr>
+    <tr><td>Nav height</td><td>64px</td></tr>
+    <tr><td>Card cornerRadius</td><td>8px</td></tr>
+    <tr><td>Badge cornerRadius</td><td>100px (pill)</td></tr>
+    <tr><td>Button cornerRadius</td><td>6-8px</td></tr>
+    <tr><td>Progress bar (card)</td><td>4px height</td></tr>
+    <tr><td>Progress bar (PD header)</td><td>6px height</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Components</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Component</th><th>Variants</th><th>Figma Node</th></tr></thead>
+  <tbody>
+    <tr><td>CourseTypeBadge</td><td>Flexible Learning, Online Live Classes, Flexible + Online Live Classes</td><td><code>1008:295</code></td></tr>
+    <tr><td>SessionBanner</td><td>Live (blue bg, dark CTA), Upcoming (gray bg, outlined CTA)</td><td><code>1050:407</code></td></tr>
+  </tbody>
+</table></div>
+
+<h3>Footer (every screen)</h3>
+<p>Full-width, bg #f7fafa, top border 1px #e0e5e8. Left: copyright. Right: Privacy Policy, Help Center, Contact Support. Padding 132px horizontal, 32px bottom. Parent screen paddingBottom: 0.</p>
+
+<h3>Icon Library</h3>
+<p>Untitled UI (<code>untitledui.com/free-icons</code>). Stroke icons, uniform weight, rounded caps/joins.</p>
+
+<!-- ===== SECTION 10 ===== -->
+<h2 id="s10"><span class="section-count">10</span>UX Audit Findings<a class="anchor-link" href="#s10">#</a></h2>
+<p>Audit completed April 7, 2026. Norman Score: <strong>94/140</strong> (Good). Grid Score: <strong>18/30</strong> (Needs Work).</p>
+
+<h3>Critical (fix before handoff)</h3>
+<ol>
+  <li><strong>Color neutralization incomplete.</strong> 96 red/green violations across 31 screens. Nelson clarified: red/green IS allowed for semantic use (danger, success, live). PM rule was about My Learning badge prominence only.</li>
+  <li><strong>"Flexible Flexible Learning" text bug.</strong> 8 TechMaster screens. Partially fixed.</li>
+  <li><strong>Modal/Filter Sidebar outdated.</strong> Nelson manually fixed Apr 7.</li>
+</ol>
+
+<h3>Major (next sprint)</h3>
+<ol>
+  <li>No empty/error/loading states defined</li>
+  <li>"Join Live" had 3 styles (standardized by Nelson Apr 7)</li>
+  <li>Calendar red/green dots (accessibility: 8% of male users)</li>
+  <li>Mentors tab green-tinted backgrounds</li>
+  <li>No back nav beyond breadcrumb</li>
+  <li>"Certificate at risk" colored icon</li>
+  <li>Q&A badges use red/green</li>
+</ol>
+
+<h3>Minor (backlog)</h3>
+<p>Type scale uses non-standard sizes (11, 13, 15, 17, 22px). Spacing not on consistent grid. KPI cards lack hierarchy. SessionBanner green dot should be brand blue.</p>
+
+<!-- ===== SECTION 11 ===== -->
+<h2 id="s11"><span class="section-count">11</span>Missing Scenarios<a class="anchor-link" href="#s11">#</a></h2>
+<p>These need new wireframes before development.</p>
+
+<h3>High Priority</h3>
+<ol>
+  <li><strong>Completed state</strong> - No flow shows a fully completed program/course</li>
+  <li><strong>Failed/Expired state</strong> - No full screen for failed or expired access</li>
+  <li><strong>Empty states</strong> - First-time user, no results, no sessions, no recordings</li>
+  <li><strong>Loading states</strong> - Skeleton screens, spinners, progressive loading</li>
+  <li><strong>Error states</strong> - Network failure, session expired, recording failed</li>
+</ol>
+
+<h3>Medium Priority</h3>
+<ol start="6">
+  <li>Search/filter results state</li>
+  <li>Notification center</li>
+  <li>Enrollment/onboarding flow</li>
+  <li>Settings/preferences</li>
+  <li>Recording failed state</li>
+  <li>Session cancelled/rescheduled states</li>
+</ol>
+
+<h3>Low Priority</h3>
+<ol start="12">
+  <li>Mobile responsive (Phase 2)</li>
+  <li>Offline/download</li>
+  <li>Re-enrollment</li>
+  <li>Cohort/team context</li>
+</ol>
+
+<!-- ===== SECTION 12 ===== -->
+<h2 id="s12"><span class="section-count">12</span>Edge Cases and Business Rules<a class="anchor-link" href="#s12">#</a></h2>
+<ul>
+  <li><strong>Multiple live sessions at same time:</strong> No conflict detection. Need indicator + priority suggestion.</li>
+  <li><strong>Mandatory vs Optional:</strong> No visual differentiation. Need compliance badge, deadline indicator.</li>
+  <li><strong>Course archived while enrolled:</strong> No design for access, grace period, frozen content notice.</li>
+  <li><strong>Instructor changed mid-course:</strong> No notification design.</li>
+  <li><strong>Timezone:</strong> "(GMT)" suffix on session times. Full handling deferred.</li>
+  <li><strong>Accessibility:</strong> Calendar screen reader, keyboard nav for cards, focus management in filters, red/green blindness (~8% male users).</li>
+  <li><strong>Syllabus button destination:</strong> Undefined (modal, PDF, or new page).</li>
+</ul>
+
+<!-- ===== SECTION 13 ===== -->
+<h2 id="s13"><span class="section-count">13</span>Open Decisions<a class="anchor-link" href="#s13">#</a></h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>#</th><th>Decision</th><th>Options</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Dashboard layout</td><td>Version A (Classic), B (Widget), C (Sidebar)</td><td><span class="decision-open">Nelson to decide</span></td></tr>
+    <tr><td>2</td><td>Immersive Player layout</td><td>Version A (Right), B (Top), D (Left)</td><td><span class="decision-open">Nelson to decide</span></td></tr>
+    <tr><td>3</td><td>Weekly Goal placement</td><td>Modules tab, Progress tab, or both</td><td><span class="decision-open">Nelson to decide</span></td></tr>
+    <tr><td>4</td><td>Program weekly goal logic</td><td>Aggregate vs per-course (recommended)</td><td><span class="decision-open">Nelson to decide</span></td></tr>
+    <tr><td>5</td><td>"Est. Completion" on Not Started</td><td>Show "Target Date" or hide</td><td><span class="decision-open">Design decision</span></td></tr>
+    <tr><td>6</td><td>Syllabus button destination</td><td>Modal, PDF, or new page</td><td><span class="decision-open">Design decision</span></td></tr>
+    <tr><td>7</td><td>Color neutralization scope</td><td>My Learning only vs all screens</td><td><span class="decision-done">Clarified: My Learning only</span></td></tr>
+    <tr><td>8</td><td>Gamification in production screens</td><td>Currently moodboard only</td><td><span class="decision-open">Pending Nelson approval</span></td></tr>
+    <tr><td>9</td><td>VILT architecture: structure vs delivery</td><td>Separate (agreed) vs mixed in content tree</td><td><span class="decision-done">Resolved Apr 10: separate concerns. Mode is tagged, structure unchanged.</span></td></tr>
+    <tr><td>10</td><td>Calendar scope</td><td>Global only, course-level only, or both</td><td><span class="decision-done">Resolved Apr 10: both. Course tab + global view.</span></td></tr>
+    <tr><td>11</td><td>VILT prerequisite enforcement</td><td>Block attendance if behind, or nudge only</td><td><span class="decision-done">Resolved Apr 10: nudge only. No blocking.</span></td></tr>
+    <tr><td>12</td><td>Delivery mode tagging level</td><td>Course only, module only, or any level</td><td><span class="decision-done">Resolved Apr 10: any level (lesson, module, course). Bubbles up.</span></td></tr>
+    <tr><td>13</td><td>Visual differentiation of VILT vs self-paced in course structure</td><td>Badge, icon, color, or combination</td><td><span class="decision-open">Nelson to decide</span></td></tr>
+  </tbody>
+</table></div>
+
+<!-- ===== SECTION 14 ===== -->
+<h2 id="s14"><span class="section-count">14</span>Competitive Research<a class="anchor-link" href="#s14">#</a></h2>
+<p>Dashboard research from 11 platforms: LinkedIn Learning, Coursera, Duolingo, Degreed, TalentLMS, 360Learning, iSpring, Udemy, Skillsoft/Percipio.</p>
+<p>Key takeaways: learning hours as primary metric (LinkedIn, Duolingo), self-comparison streaks (Duolingo, LinkedIn), dense professional over playful (Degreed, Skillsoft), widget dashboards with clear next action (Simplilearn, Coursera).</p>
+
+<!-- ===== SECTION 15 ===== -->
+<h2 id="s15"><span class="section-count">15</span>Cohort Management Requirements<a class="anchor-link" href="#s15">#</a></h2>
+<p>Source: FRD-Cohort Management (V2 Draft, Mar 13, 2026). Authors: Harpreet Kaur, Rupali, Govind, Simran, Roop.</p>
+
+<h3>Problem</h3>
+<p>Currently manages cohorts by duplicating the entire program instance per cohort. Creates content duplication, complex updates, inconsistent experience, high admin effort. Goal: single reusable program structure with multiple concurrent cohorts.</p>
+
+<details><summary>Learner Workflow (9 steps)</summary><div class="details-content">
+<ol>
+  <li><strong>Enrollment:</strong> System assigns learner to cohort based on availability/preference</li>
+  <li><strong>Cohort-specific access:</strong> Modules, sessions, discussions, projects all scoped to cohort</li>
+  <li><strong>Release logic:</strong> Courses unlock based on cohort schedule (e.g., 3 days before Session 1)</li>
+  <li><strong>Live session attendance:</strong> Scheduled session, link provided, attendance recorded</li>
+  <li><strong>Self-paced learning:</strong> Access released content, complete quizzes, track progress</li>
+  <li><strong>Project/lab submission:</strong> File upload, link, or form. Feedback and resubmission.</li>
+  <li><strong>Progress tracking:</strong> Three dimensions (academic, cohort, completion eligibility)</li>
+  <li><strong>Completion:</strong> Evaluated on scores, project completion, attendance</li>
+  <li><strong>Certification:</strong> Certificate of Completion OR Participation. Admin/instructor releases.</li>
+</ol>
+</div></details>
+
+<details><summary>Multi-Dimensional Progress Model</summary><div class="details-content">
+<p><strong>Academic Progress:</strong> % courses completed, quiz/assessment completion, scores.</p>
+<p><strong>Cohort Progress:</strong> % sessions attended, % labs/projects submitted, milestones.</p>
+<p><strong>Completion Eligibility:</strong> % mandatory criteria fulfilled for certification.</p>
+<p>Configurable weighted model. Only released components count. At-risk conditions: low progress by mid-program, missed consecutive sessions, overdue submissions.</p>
+</div></details>
+
+<details><summary>Admin Workflow: 18-Step Cohort Lifecycle</summary><div class="details-content">
+<ol>
+  <li>Create program (once)</li><li>Define completion criteria</li><li>Create cohort</li><li>Add learners</li>
+  <li>Assign instructor</li><li>Create session calendar</li><li>Map sessions to modules</li><li>Add session links</li>
+  <li>Configure release rules</li><li>Assign labs/projects</li><li>Configure notifications</li><li>Start cohort</li>
+  <li>Monitor progress</li><li>Track attendance</li><li>Review submissions</li><li>Mark completion</li>
+  <li>Release certificates</li><li>Archive cohort</li>
+</ol>
+</div></details>
+
+<details><summary>Projects and Labs (detailed spec)</summary><div class="details-content">
+<p>Structure: title, description, type (Individual/Group), category (Mandatory/Optional), difficulty, linked module, release date, deadline, grace period.</p>
+<p>Submission: file upload, external links, form. Multiple submissions, version tracking.</p>
+<p>Evaluation: instructor/mentor review, rubric-based scoring, weighted criteria, inline comments.</p>
+<p>Deadlines: hard vs soft, grace periods, late submission rules (configurable at cohort level).</p>
+</div></details>
+
+<details><summary>Instructor Permissions</summary><div class="details-content">
+<div class="table-wrap"><table>
+  <thead><tr><th>Action</th><th>Permission</th></tr></thead>
+  <tbody>
+    <tr><td>View learner progress</td><td>Yes</td></tr>
+    <tr><td>Mark/validate attendance</td><td>Yes</td></tr>
+    <tr><td>Update session link</td><td>Controlled (audit log)</td></tr>
+    <tr><td>Grade projects</td><td>Yes</td></tr>
+    <tr><td>Recommend certification</td><td>Yes</td></tr>
+    <tr><td>Approve certification</td><td>No</td></tr>
+    <tr><td>Modify cohort structure</td><td>No</td></tr>
+  </tbody>
+</table></div>
+</div></details>
+
+<div class="callout callout-warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><strong>Wireframe impact:</strong> The cohort model introduces 8 items V4 wireframes need to accommodate: cohort identity in header, time-based release gates (distinct from prerequisite locks), multi-dimensional progress KPIs, attendance as completion criterion, project submission UI, certificate type distinction (Completion vs Participation), cohort-scoped discussions, time-based content availability states.</div></div>
+
+<!-- ===== SECTION 16 ===== -->
+<h2 id="s16"><span class="section-count">16</span>Mobile App Requirements (Phase 2)<a class="anchor-link" href="#s16">#</a></h2>
+<p>Source: Mobile App Requirements (Sep 23, 2025). Author: Nilesh Dabhi.</p>
+
+<h3>Phase 1 Scope (11 features)</h3>
+<ol>
+  <li>Authentication (login/sign-up)</li>
+  <li>Dashboard with enrolled programs</li>
+  <li>Course/program module access</li>
+  <li>Live session attendance (Zoom integration)</li>
+  <li>Calendar view with upcoming sessions</li>
+  <li>Session recording playback</li>
+  <li>Discussion board participation</li>
+  <li>Assessments/quizzes</li>
+  <li>Progress tracking</li>
+  <li>Certificate viewing and sharing</li>
+  <li>Push notifications</li>
+</ol>
+
+<h3>Out of Scope</h3>
+<p>Full website parity, instructor/admin features, payment gateway, community beyond discussions.</p>
+
+<h3>Desktop-to-Mobile Adaptation Notes</h3>
+<ul>
+  <li>Navigation: tab bar to bottom nav or drawer</li>
+  <li>Cards: single-column layout</li>
+  <li>Live session join: highest priority action on mobile</li>
+  <li>Persistent back button required</li>
+  <li>Filter sidebar becomes bottom sheet or full-screen overlay</li>
+</ul>
+
+<!-- ===== SECTION 17 ===== -->
+<h2 id="s17"><span class="section-count">17</span>Figma Reference<a class="anchor-link" href="#s17">#</a></h2>
+<p><strong>File key:</strong> <code>Wz2TCYFVr0hD8tJNiLajLt</code></p>
+<p><strong>Active section:</strong> V4 (node <code>590:4662</code>). Archive: V3 (node <code>407:4307</code>).</p>
+<p>33 screens across 4 flows + My Learning List + Filter Modal + Gamification + Dashboard (3 versions) + Immersive Player (3 versions).</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Row</th><th>Y Position</th><th>Content</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>y:520</td><td>TechMaster (9 screens)</td></tr>
+    <tr><td>2</td><td>y:2311</td><td>Data Analytics (7 screens)</td></tr>
+    <tr><td>3</td><td>y:4269</td><td>Cloud Engineering (8 screens)</td></tr>
+    <tr><td>4</td><td>y:6100</td><td>Cybersecurity (8 screens)</td></tr>
+    <tr><td>5</td><td>y:8600</td><td>Gamification & Weekly Goals</td></tr>
+  </tbody>
+</table></div>
+
+<!-- ===== SECTION 18 ===== -->
+<h2 id="s18"><span class="section-count">18</span>Supporting Artifacts<a class="anchor-link" href="#s18">#</a></h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Artifact</th><th>File</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>VILT Architecture Flowchart</td><td><code>VILT-Architecture-Flowchart.html</code></td><td>Visual diagram of the Live Sessions architecture: content hierarchy, delivery modes, bubble-up logic, admin tagging flow, learner views, calendar structure, and business rules. Based on Apr 10 discovery meeting.</td></tr>
+    <tr><td>Meeting Transcript (Apr 10)</td><td><code>LMS-Walkthrough-Questions-Transcript-20260410.txt</code></td><td>Full transcript of the LMS Walkthrough and Questions meeting. 36 minutes. Participants: Harpreet, Govind, Navdeep, Rupali, Nelson.</td></tr>
+    <tr><td>Official Transcript (Apr 10)</td><td><code>LMS Walkthrough and questions.docx</code></td><td>Microsoft Teams auto-generated transcript of the same meeting (official .docx version).</td></tr>
+    <tr><td>V4 Wireframes</td><td>Figma: <code>Wz2TCYFVr0hD8tJNiLajLt</code></td><td>33 screens across 4 flows. Section 17 for details.</td></tr>
+  </tbody>
+</table></div>
+
+<p style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-tertiary);">
+  <strong>Document History:</strong><br>
+  Apr 10, 2026 - Major update: VILT architecture (Section 8) expanded from discovery meeting. Delivery Methods (2.3) rewritten with core principle, tagging rules, bubble-up logic. 4 open decisions resolved. Supporting artifacts section added.<br>
+  Apr 9, 2026 - Initial PRD compiled from all discovery materials, wireframes, audits, session notes, FRD-Cohort Management, and Mobile App Requirements.
+</p>
+
+</main>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// Search data - built from section content
+const sections = [];
+document.querySelectorAll('h2, h3, h4').forEach(el => {
+  const id = el.id || el.closest('[id]')?.id || '';
+  const parent = el.tagName === 'H2' ? '' : el.closest('h2')?.textContent?.replace('#','') || '';
+  const content = [];
+  let node = el.nextElementSibling;
+  while (node && !['H2','H3','H4'].includes(node.tagName)) {
+    content.push(node.textContent);
+    node = node.nextElementSibling;
+  }
+  sections.push({
+    id: id || el.parentElement?.id || '',
+    title: el.textContent.replace('#','').trim(),
+    section: parent,
+    content: content.join(' ').substring(0, 500),
+    el: el
+  });
+});
+
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('active');
+  document.getElementById('search-input').focus();
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search across all 18 sections</div>';
+}
+function closeSearch() {
+  document.getElementById('search-overlay').classList.remove('active');
+}
+
+document.getElementById('search-input').addEventListener('input', function(e) {
+  const q = e.target.value.toLowerCase().trim();
+  const results = document.getElementById('search-results');
+  if (!q) {
+    results.innerHTML = '<div class="search-empty">Type to search across all 18 sections</div>';
+    return;
+  }
+  const matches = sections.filter(s =>
+    s.title.toLowerCase().includes(q) || s.content.toLowerCase().includes(q)
+  ).slice(0, 12);
+
+  if (!matches.length) {
+    results.innerHTML = '<div class="search-empty">No results for "' + q + '"</div>';
+    return;
+  }
+  results.innerHTML = matches.map(m => {
+    const excerpt = m.content.substring(0, 120);
+    const highlighted = excerpt.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>');
+    return '<div class="search-result" onclick="goTo(\'' + m.id + '\')">' +
+      (m.section ? '<div class="search-result-section">' + m.section + '</div>' : '') +
+      '<div class="search-result-title">' + m.title.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>') + '</div>' +
+      '<div class="search-result-excerpt">' + highlighted + '</div></div>';
+  }).join('');
+});
+
+function goTo(id) {
+  closeSearch();
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+  if (e.key === 'Enter' && document.getElementById('search-overlay').classList.contains('active')) {
+    const first = document.querySelector('.search-result');
+    if (first) first.click();
+  }
+});
+
+
+// Reading progress
+window.addEventListener('scroll', function() {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+  document.getElementById('reading-progress').style.width = pct + '%';
+  const btn = document.getElementById('back-to-top');
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Sidebar active tracking
+const navItems = document.querySelectorAll('.nav-item[href], .nav-group-toggle');
+const headings = document.querySelectorAll('h2[id], h3[id]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.nav-item.active').forEach(n => n.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector('.nav-item[href="#' + id + '"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-80px 0px -70% 0px' });
+headings.forEach(h => observer.observe(h));
+
+// Nav group toggle
+function toggleNavGroup(btn) {
+  btn.closest('.nav-group').classList.toggle('collapsed');
+}
+</script>
+</body>
+</html>

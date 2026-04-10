@@ -1,0 +1,186 @@
+Meeting: LMS Walkthrough and Questions
+Date: April 10, 2026
+Duration: 35:59
+Participants: Harpreet Kaur, Govind Sharma, Rupali Amit Mahale, Navdeep Malhotra, Nelson Jeronimo
+
+--- TRANSCRIPT ---
+
+Note: This transcript was extracted from the SharePoint Stream recording via DOM scraping of the virtual-scrolling transcript panel. Some entries may have minor formatting artifacts from the extraction process. Timestamps are approximate based on the auto-generated Microsoft Teams transcription.
+
+[0:03] Govind Sharma: Maybe it is a possibility or may not be as well.
+[0:08] Harpreet Kaur: So it could be that module one is like class and therefore you go ahead and.
+[0:15] Govind Sharma: Oh, so you mean to say you are saying that complete module as a live class? Yeah, I mean we can design that way as well, but not necessary because most of the time multiple modules comprises with a live class and then there are sometimes it is possible if the module is larger and require personal attention then.
+[0:34] Govind Sharma: There is a live class for module as well.
+[0:38] Harpreet Kaur: No, but how is it structured from a course perspective? It's a, if it's a VILT, let's say.
+[0:44] Govind Sharma: You're saying that course is VILT.
+[0:46] Harpreet Kaur: Yeah.
+[0:49] Govind Sharma: only reality. But then there should be some modules, I mean modules should be added or not added because you can add as a reference material.
+[0:50] Rupali Amit Mahale: OK, so I will, let me give an example. Right.
+[1:10] Govind Sharma: for AIML.
+[1:30] Harpreet Kaur: But can we share the screen? Because I'm recording.
+[1:31] Rupali Amit Mahale: OK. Yes, I will. So while I share screen, let me give you a brief about the kind of the type of discussions we want to have for the next 30 minutes.
+[2:13] Rupali Amit Mahale: Let's say consider an example of TechMaster. So TechMaster AIML has 16 self-paced courses. For example, first course is artificial intelligence fundamentals. So within that, let's say the duration is one month for that particular course. So in one month we'll have eight every weekend we'll have.
+[2:20] Harpreet Kaur: Hmm.
+[2:33] Rupali Amit Mahale: VRT sessions, so there will be 8 sessions, and usually what we ask the learners is that Monday to Friday you have the self-paced content to consume, and on your on your VRT sessions we'll spend some time on, you know, summarizing what you learned in self-paced, and then we'll go deeper into each topic and then we cover additional topics which are not part of the LMS. So the ask is from the product side, what I wanted to have on the LMS is each course will have the title, the VILT sessions title, the topics, and may, if possible, the schedule also of the upcoming sessions so that the learners are always aware of what are they going to learn in their next session, VIT session. Although Srishti team, they do send out the emails that this is going to be taught in your class, but then I wanted that to be available for them on the LMS as well.
+[3:32] Harpreet Kaur: Yeah, that's what my demand is.
+[3:33] Rupali Amit Mahale: So we came across what I was proposing is that the VILT topics are also part of the self-paced module topics with maybe different icons or whatever.
+[4:02] Harpreet Kaur: Right.
+[4:10] Govind Sharma: How is this similar to the Udemy?
+[4:13] Rupali Amit Mahale: On Udemy, it just displays the topics.
+[4:18] Govind Sharma: No, but that 100% VRD will not work.
+[4:23] Govind Sharma: That is what I'm saying. There has to be an option over there because it cannot be a one way all for all. It has to be a customizable option.
+[4:28] Rupali Amit Mahale: That's what my demand is. Yes, so so far, because initially when we did not have self-paced content for AIML, what we used to do is just define the course name and in the dropdown they would see the topics. That's it, no content inside that. Only the session recordings and all the team would put the session recordings. That was the only material available for the learners for pure VILT. Now, what I'm proposing is when they see in the self-paced section, when they see artificial intelligence fundamentals, they would see module one, two, and three, and four. Below that, they should also see VILT topics, which is not possible right now.
+[5:24] Govind Sharma: No, it is there. The scheduler is there. Schedule is there over VILT and everything. We have put it.
+[5:30] Rupali Amit Mahale: Schedule is there, yes, the schedule is there, but I'm talking about the topics being covered in VILT.
+[5:41] Govind Sharma: That is what I'm saying, Rupali. I mean, you cannot mix the self-paced and the instructor-led inside that course unless the self-paced content is about that.
+[6:00] Harpreet Kaur: Yeah.
+[6:02] Govind Sharma: So what I'm saying is...
+[6:08] Rupali Amit Mahale: Yeah, so now with the new programs that we are developing, let's say cybersecurity or AI healthcare or digital marketing, because they are built in-house, we have done that within the course only. When the course will go on the LMS, the learner will be able to see these topics. They have reading material, labs and everything available. That means the self-paced one.
+[7:59] Harpreet Kaur: Yeah.
+[8:21] Rupali Amit Mahale: and the VILT one, it will have the title mentioned that this is a instructor industry expert session, and then the name of the topic that is covered. But when it comes to IBM courses, which we, I mean, the AI, ML, and DA, it is a bundle of IBM courses, there we cannot do like that.
+[8:41] Rupali Amit Mahale: This, because those courses cannot be, I mean, we cannot, you know.
+[8:45] Govind Sharma: No, that also can be part of that way. So you are thinking wrong way, Rupali. It cannot be that way.
+[8:50] Rupali Amit Mahale: We've done this experiment, Govind.
+[8:52] Govind Sharma: No, so what the experiment which I suggested and we have done it, that is the only way we need to do it. And why it is important is you cannot keep multiple courses for one course at multiple places. It doesn't matter whether it's an IBM course or it's a Microsoft course or it's a skill-up course or it's a VIT sessions only because VILT is a delivery pattern. It is not a course itself. Whether you are making the course as available to self-paced or you are making the course as a VILT is one thing. The course has to be a course. It doesn't matter. I mean, if it has the VILT, then it is fine. If it has the self-paced, then it is fine.
+[9:28] Rupali Amit Mahale: Hmm.
+[9:35] Govind Sharma: If it has both, that's also fine. But the important thing is the course has to be a course, and the delivery is a separate. VILT is a delivery. It has nothing to do with the course creation.
+[9:48] Rupali Amit Mahale: Yeah, yeah, okay. Yeah, I got your point, I got your point.
+[10:20] Harpreet Kaur: Hmm.
+[10:38] Govind Sharma: And very simple.
+[10:40] Navdeep Malhotra: Yeah, so.
+[10:42] Navdeep Malhotra: So if I have to add to what Govind was saying, I think we should separate the course structure from a delivery. A course has nothing to do with its delivery. A course is a package of content of a specific topic.
+[10:58] Govind Sharma: Exactly.
+[11:00] Navdeep Malhotra: And it has its own structure. It has title, it has description, it has modules, module has description, it has lessons, and lessons are basically the final level of content.
+[11:15] Govind Sharma: Yeah.
+[11:17] Navdeep Malhotra: Now at a lesson level, you decide what kind of content you want to put in. You have to have reading material, you may have a video, you may have a quiz. Now what we are talking about here, there can also be a live session at a lesson level or at a module level. Let's say the whole module is going to be taught by an instructor. Now that is a delivery method. The course structure remains the same.
+[11:33] Rupali Amit Mahale: Right.
+[11:33] Navdeep Malhotra: But before that lecture, you must have finished these prerequisites or these first few modules.
+[11:42] Navdeep Malhotra: Yeah, I mean. The definition of a course is that this is how the course is supposed to be delivered. Here is a module course, here is a module, inside module, these are the topic list and inside that.
+[12:01] Govind Sharma: that the assessment, quiz, or I mean, a project or anything inside that.
+[12:08] Govind Sharma: Delivery is different, whether we need to bring the instructor, it's a separate. I mean, it is not a course, it is a mode of delivery of that particular course which you have to have the separate. You cannot keep inside that that OK, this is 1 module or this is 1 course as an instructor, as a course. It cannot be. If we don't have self-paced modules, then what you need to do, you just show the content outlines as a course, and then you put it over there, and then beside that, there is a session schedule for that, and then you go to the session schedules, and then you can join through the link which is available and all that.
+[12:30] Harpreet Kaur: So, we...
+[12:45] Harpreet Kaur: Okay, let's start with a very small example, which is a course. And that course has three modules which are self-paced. It has a...
+[12:56] Navdeep Malhotra: Wait, wait, wait.
+[12:58] Navdeep Malhotra: Sorry, sorry. I'll let you finish. Sorry about that.
+[12:58] Harpreet Kaur: Yeah.
+[13:02] Navdeep Malhotra: Let you finish, sorry, sorry.
+[13:04] Harpreet Kaur: No, no, no, I was going into the structuring so that we can start, you know, so...
+[13:06] Navdeep Malhotra: Yes, yes, got it. No, I was just kind of thinking of something else. Please, please proceed.
+[13:11] Harpreet Kaur: I was saying, if we just take an example of a course that has three modules, module one self-paced, module two instructor led, module three self-paced. In this scenario, module two could have been also just, at a module level, having a VILT session.
+[13:27] Govind Sharma: Or, or also a module can have this. So let me, since you're giving the example, I mean at a lesson level also that can happen. So it is not that only at the module level. The lesson can also be a VILT.
+[13:43] Harpreet Kaur: So lesson one is self-paced, lesson 2 is industry expert session.
+[15:23] Navdeep Malhotra: I I.
+[15:31] Harpreet Kaur: Okay, so we are saying that the mode of delivery can change at course, module, lesson, at any level.
+[15:39] Rupali Amit Mahale: Yes.
+[15:41] Harpreet Kaur: So even if it's a program, then also it can, yeah.
+[15:45] Navdeep Malhotra: Sorry to interrupt, but because I believe the module title is a topic. Similarly, lesson title is based on the topic of that content. So these are all topics. Whether you want to deliver that topic by a video, by a reading material, or somebody coming and talking to you is immaterial. That topic is not going to change. It can be at any topic level. The whole module can have three lessons. All 3 lessons will be delivered by somebody delivering a lecture.
+[16:10] Govind Sharma: Right.
+[16:15] Rupali Amit Mahale: Yes.
+[16:23] Govind Sharma: And there is also a lesson as well that how it is to be delivered. There is a mode of self-paced inside that, there is a mode of instructor led inside that.
+[16:48] Govind Sharma: instructor-led or self-paced. If the self-paced content is there, that can be inside the self-paced tab. And if it is an instructor-led session, then it can be inside that. If there is no instructor-led, you can remove the tab, which is a mode of delivery tab.
+[17:08] Govind Sharma: And you can keep only self-paced, because that is the delivery method, whether it's a self-paced or blended or it's a instructor-led, it is a method, not a course.
+[17:23] Harpreet Kaur: Mm.
+[17:28] Harpreet Kaur: Yeah, so what so you for a mode of delivery you could be delivering VILT as a lesson, you could be delivering VILT at a module level, and you could be delivering VILT at a course level.
+[17:39] Govind Sharma: Right.
+[17:40] Rupali Amit Mahale: Yes.
+[17:42] Harpreet Kaur: Which means the mode of delivery should be tagged at a lesson level, at a module level, and at a course level.
+[17:47] Govind Sharma: Yes.
+[18:06] Navdeep Malhotra: It's actually only at a lesson level because it's cumulative.
+[18:15] Harpreet Kaur: True.
+[18:19] Govind Sharma: No, no, it could also be at a module level. We have seen use cases where the entire module is a VLT.
+[18:38] Harpreet Kaur: Yeah, so what Navdeep was saying was if at a lesson, all the lessons are VILT, the entire module becomes VILT.
+[19:07] Govind Sharma: Module level and course level, the instructor-led mode of delivery is automatically applied.
+[19:14] Harpreet Kaur: yeah, that's a bubble up.
+[19:25] Navdeep Malhotra: It.
+[19:27] Govind Sharma: OK, let's go back to your course structure itself first. So, while when you are designing a course in that top, you are writing what you are writing, whether it's a self-paced or it's a VLT or it's a blended.
+[19:44] Govind Sharma: Right, you are saying that, so the course label you are defining that, that okay, my core, the mode of delivery, I be right now we are putting differently, but when now we need to put it as a mode of delivery of that course and we have decided, okay, it is a self-paced or it is a VRLT or it is a blended.
+[20:04] Govind Sharma: If it is defined at the beginning of the course creation only, that it is a self-paced, no, it is a VILT only, or it is a, I mean, mode of delivery is a self-paced or VILT or blended. At that time only, it should be linking your further tabs. If I'm saying that it is a VILT, then it should be reflecting all the VILT sessions available.
+[20:34] Harpreet Kaur: But would it not have a quiz or not have a self-paced or...?
+[20:46] Navdeep Malhotra: I don't think it works like that.
+[20:52] Harpreet Kaur: Yeah, but would it have quiz where it's not?
+[20:54] Govind Sharma: It can have quiz, it can have quiz, it can have project as well inside that because project has to be inside that.
+[20:56] Rupali Amit Mahale: Yes, it does, yes.
+[20:57] Navdeep Malhotra: Yeah.
+[21:00] Harpreet Kaur: Yeah, so then, then what is it? Then, then it is not fully VLT. It will be blended, no?
+[21:06] Navdeep Malhotra: So there is nothing fully VILT. If you're delivering only VILT, your package is not even going to sell because what if after delivering a course you didn't even have a quiz or you didn't have an assessment or didn't have a catch up or didn't have any reading material to provide?
+[21:06] Govind Sharma: Yeah, it is, yes. Yeah, there is nothing fully VILD, yes.
+[21:21] Harpreet Kaur: So then what is the definition of blended and what is the definition of VILT? So then we don't show VILT as a mode of delivery?
+[21:30] Navdeep Malhotra: VILT is instructor-led training.
+[21:39] Navdeep Malhotra: It's heavily instructor-led delivery.
+[21:48] Navdeep Malhotra: It could still have quizzes, assessments, reading materials. Think of a university. You go to university, somebody gives you a lecture, but you still have a textbook. You still have a project.
+[22:09] Govind Sharma: Exactly.
+[22:11] Navdeep Malhotra: You still have assignments. That doesn't make university hybrid. University is instructor-led.
+[22:17] Navdeep Malhotra: So think of it as instructor-led course is VILT. Nobody is going to come and give you the lectures, help you, that's self-paced.
+[22:49] Navdeep Malhotra: So from a concept, instructor-led course is an instructor-led course. From a concept, no instructor, it's a self-paced course. I mean, like, okay, there'll be nobody to guide you, nobody giving lectures. You should have to do it yourself. But it also has the same structure. It has title, modules, lessons, topics, quiz, everything.
+[23:09] Govind Sharma: Right.
+[23:15] Navdeep Malhotra: So in all respect, a course is going to look like a course. Whether it is going to, it is a VILT, that means it's heavily instructor led, or it is totally self-paced, that means instructor is totally missing, or the third option is blended. Blended means that sometimes the professor will come and talk to you. Most of the times you do your self-paced.
+[23:35] Navdeep Malhotra: So I think that, but looking like, of course, everything looks the same. Course structure remains the same. What we need to just figure out is how to visually differentiate and show the learner what's instructor-led and what's self-paced.
+[24:13] Harpreet Kaur: Yeah, and how is it showing the flow? And again, I am thinking about a linear flow over here for any course delivery. Now this is the first thing, this is the second, the textbook style. But yeah, self-paced, even if let's say module 3 is VILT session and we have module 4 and 5, we might not have unlocked module 4 and 5 and the learner does, we can't stop him to consume that content before they come for a VILT session.
+[24:53] Govind Sharma: And you cannot, I mean, restrict them as well to attend VLT session if they have not completed the self-paced.
+[24:59] Harpreet Kaur: Yeah.
+[25:00] Govind Sharma: Right, because otherwise what will happen is that they will not be if it is inside that only then they will not be able to attend the VLT session as well because it will not be unlocked.
+[25:09] Harpreet Kaur: Yeah, true.
+[25:10] Navdeep Malhotra: And as an offering to the user, I mean, it's an instructor-led course, the instructor's going to come and deliver the session, and if I'm stuck in module one, I shouldn't be penalized for the instructor-led session happening in module three.
+[25:25] Harpreet Kaur: Right.
+[25:26] Navdeep Malhotra: I should be able to attend the session and catch up.
+[25:28] Govind Sharma: Correct.
+[25:31] Navdeep Malhotra: In a university, if you miss your assignment, you miss. The professor is not going to wait for you to submit the assignment. They're going to teach.
+[25:44] Harpreet Kaur: True. All right.
+[25:47] Navdeep Malhotra: But there could be a visual indicator or even a nudge that boss, you've not done module one and two, and your session is upcoming in three days. You should finish it.
+[25:54] Harpreet Kaur: Yeah, that could be a reminder.
+[25:58] Harpreet Kaur: Like session 3 is coming up, make sure you've done module 1 and 2.
+[26:04] Navdeep Malhotra: You haven't completed this. Your upcoming session is on these topics. Please make sure you're familiar with these readings.
+[26:10] Harpreet Kaur: Yeah.
+[26:12] Govind Sharma: That is what the core VILT is. I mean, the pure VILT is basically where you have no content, nothing. Our instructor goes, delivers the session and finishes it. That's it. That's a core VILT which is only having instructor delivery into it.
+[26:51] Harpreet Kaur: Yeah, so basically, from a structural point of view, right now what we were doing is we had online live session, which is the calendar for just live session. Then we had recordings. Nelson, if you zoom in as a separate tag. Now what we are thinking loud over here, we can still have the structure of the course in a blended format that this is lesson, this is module, this is everything in one go. And we can have another tab which says calendar view of your live session. And that live session could have a, you know, saying you had a course live on this date, you had a module live on this date, you had a session live on this date, and that can be the calendar.
+[27:27] Navdeep Malhotra: Yeah.
+[27:29] Govind Sharma: Yeah.
+[28:06] Navdeep Malhotra: And I think what you should also do is, while I'm looking at a course structure, that course structure is the linear view. It has all modules, all lessons. Now next to that there could be a calendar view, or it's a tab.
+[28:17] Harpreet Kaur: Mm.
+[28:41] Navdeep Malhotra: that calendar is populated with only the instances or the events of this course. If you pick that calendar and say you go out of that course and you want to see your calendar as a user, in your calendar you might be doing 3, 4, 5 courses and you can see all the schedules, events of all them. So it's a calendar view of all your events, but...
+[28:58] Harpreet Kaur: For everything over there, yeah.
+[29:02] Navdeep Malhotra: In the course next to the course structure, the tab next to it, it shows that calendar events for that course. That makes, I think, makes sense because you can correlate.
+[29:14] Harpreet Kaur: Yeah, so what you're saying is, and that's another discussion that we were contemplating, whether to keep calendar at a global view or at a course or a program view. So you just answered that question that we can keep calendar at a global view.
+[29:28] Navdeep Malhotra: Both, both, I mean, it makes sense both ways. You can show the focused one to show only my live sessions.
+[29:35] Harpreet Kaur: All of them in one, yeah.
+[29:47] Navdeep Malhotra: When I go into my calendar, I see all my live sessions from all my programs. But when I zoom into a course, I only see events of this course.
+[29:53] Harpreet Kaur: Yeah, true.
+[29:55] Govind Sharma: Sure.
+[30:00] Navdeep Malhotra: And you can show, you know, it's a nice visual indicator. You can show topics of that session, date, time, who is presenting, blah, blah.
+[30:09] Harpreet Kaur: Yeah.
+[30:12] Navdeep Malhotra: That becomes the calendar of the course.
+[30:14] Harpreet Kaur: Yeah.
+[30:18] Govind Sharma: Right.
+[30:20] Harpreet Kaur: Right, that's where it's going to go.
+[30:24] Harpreet Kaur: So Nelson, from, I think we, one design principle that we need to take away from this conversation is that it's the mode of delivery that we need to be highlighting. And if the mode of delivery is having any of the VILT mode of delivery, it can sit as a course level or a module level or even at a lesson level.
+[30:56] Harpreet Kaur: And that needs to be highlighted or depicted in the visual way, Nelson, in a very easy way to anyone to figure out that this is a live session versus this is a self-paced session. So wherever that, even the blended would come, no. So if module is having like Rupali was saying, a module could have 6 lessons and two of them are self-paced and one of, you know, or rest of the four are VIT, then at a module level, you'll still show blended.
+[31:34] Harpreet Kaur: So we'll have to think through all those kind of thing and how we are showing calendar.
+[31:38] Navdeep Malhotra: Yeah, so I just like to add to that. So if you see the structure of any course, you should be able to see all the modules, lessons. In the structure itself, you should be able to identify at a glance, which module is blended, which lessons are self-paced, which lessons are VILT. So that should be right there. Whatever visual you use, badge, icon, color.
+[32:02] Harpreet Kaur: Mm.
+[32:10] Navdeep Malhotra: It should be right in the structure. Like a lesson that is VILT, you should also show when is it. When is this VILT happening?
+[32:23] Harpreet Kaur: Great.
+[32:25] Govind Sharma: Right.
+[32:27] Navdeep Malhotra: And if it's done, it should show done. And if a recording is available, it should show recording.
+[32:33] Harpreet Kaur: Yeah. Anything, any live is going to be within a date and a time, yes.
+[32:38] Govind Sharma: And this way, whether the course is blended or whether the course is VILT, it doesn't make sense. It doesn't really matter to me whether I see blended or no. I mean, I know that there are some lectures in it and I should be aware when are they.
+[33:28] Harpreet Kaur: Yeah, however, there is the difference of if it's a self-paced, it will not show you a deadline or a timeline or anything. But if it is a blended or a VLT session, it'll have your start date and end date of that program as well. That's very important.
+[33:42] Navdeep Malhotra: And that's important. And that we should make very clearly to the user that, boss, this is not a self-paced. You can't take three years to finish it. There is some lecture that you have done. If you miss it, you'll miss it.
+[33:56] Harpreet Kaur: Okay, right. So from just one more thing, when I am uploading the content, I say I'm uploading this course and this course has these many lessons, these many modules. And when I'm uploading the lesson or a module, I have the ability to tag whether it's a self-paced or instructor-led.
+[34:16] Navdeep Malhotra: Yeah.
+[34:17] Harpreet Kaur: That is important. The tagging should happen on the admin side and it should reflect on the learner side.
+[34:24] Govind Sharma: On the admin side, correct.
+[34:28] Navdeep Malhotra: Yeah, so on the admin side, basically you're defining. You're creating a course. You define a module. You define a lesson. And at any level, you should be able to toggle the mode of delivery.
+[34:41] Harpreet Kaur: Beautiful.
+[34:42] Navdeep Malhotra: And if you, let's say you select VILT or blended, the system should force you to put a date, time, presenter, meeting link.
+[34:52] Harpreet Kaur: Session.
+[34:54] Navdeep Malhotra: Yeah, session details.
+[35:01] Harpreet Kaur: No, great. This was helpful.
+[35:05] Harpreet Kaur: Anything else anyone wants to add which is not covered? I know Govind drifted away to another meeting.
+[35:12] Govind Sharma: No, not at all. I was there.
+[35:20] Harpreet Kaur: Right. All right, so we've got everything. Yeah, it was a very interesting discussion. It solved quite a lot of things in our head. Now we need to put that together as an architecture.
+[35:31] Govind Sharma: Right.
+[35:33] Govind Sharma: And feel free to entangle anytime.
+[35:37] Harpreet Kaur: Yeah, we will. There are so many pieces too and we'll get you all together again.
+[35:45] Harpreet Kaur: All right. Thank you. Thanks, guys. Bye.
+[35:45] Govind Sharma: Okay, okay, bye.
+[35:48] Navdeep Malhotra: Bye bye. Thank you.
