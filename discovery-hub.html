@@ -294,6 +294,39 @@ body {
 }
 .home-card-ext.figma-ext { background: #f0e5ff; color: var(--tag-figma); border-color: #ddd0f0; }
 
+/* ── Compact external cards ── */
+.home-cards-compact {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px;
+}
+.home-card-sm {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px; cursor: pointer;
+  transition: all 0.15s; font-size: 12px; text-decoration: none;
+}
+.home-card-sm:hover {
+  border-color: var(--accent); background: var(--bg-card-hover);
+  box-shadow: var(--shadow-sm);
+}
+.home-card-sm .sm-badge {
+  font-size: 8px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.6px; padding: 2px 6px; border-radius: 3px;
+  flex-shrink: 0;
+}
+.home-card-sm .sm-badge[data-cat="prd"] { background: #dde4ff; color: var(--tag-prd); }
+.home-card-sm .sm-badge[data-cat="figma"] { background: #f0e5ff; color: var(--tag-figma); }
+.home-card-sm .sm-badge[data-cat="research"] { background: #d1f5e8; color: var(--tag-research); }
+.home-card-sm .sm-title {
+  font-weight: 600; color: var(--text-primary); white-space: nowrap;
+}
+.home-card-sm .sm-type {
+  font-size: 9px; font-weight: 600; color: var(--text-tertiary);
+  text-transform: uppercase; letter-spacing: 0.4px; flex-shrink: 0;
+}
+.home-card-sm .sm-ext-icon {
+  flex-shrink: 0; color: var(--text-tertiary); opacity: 0.5;
+}
+
 /* ── External link icon ── */
 .ext-icon { opacity: 0.4; flex-shrink: 0; }
 
@@ -461,6 +494,15 @@ body {
             <div class="mega-dropdown-desc">Norman/Nielsen heuristic evaluation</div>
           </div>
         </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('Meeting-Summary-20260410.html', 'VILT Meeting Summary')">
+          <div class="mega-dropdown-icon research">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Meeting Summary</div>
+            <div class="mega-dropdown-desc">Key decisions from Apr 10 discovery session</div>
+          </div>
+        </div>
         <div class="mega-dropdown-item" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
           <div class="mega-dropdown-icon doc">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -552,26 +594,25 @@ body {
         </div>
         <div class="home-card-ext">HTML</div>
       </div>
-      <div class="home-card" onclick="downloadFile('FRD-Cohort Management.docx')">
-        <div class="home-card-cat" data-cat="prd">FRD</div>
-        <div class="home-card-title">Cohort Management</div>
-        <div class="home-card-desc">Functional requirements for cohort-based learning. Scheduling, enrollment, capacity rules, and instructor assignment.</div>
-        <div class="home-card-meta"><span>Apr 9, 2026</span></div>
-        <div class="home-card-ext">DOCX</div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="downloadFile('FRD-Cohort Management.docx')">
+        <span class="sm-badge" data-cat="prd">FRD</span>
+        <span class="sm-title">Cohort Management</span>
+        <span class="sm-type">DOCX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
-      <div class="home-card" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
-        <div class="home-card-cat" data-cat="prd">Mobile</div>
-        <div class="home-card-title">Mobile App Requirements</div>
-        <div class="home-card-desc">Phase 1 mobile app requirements. Native features, offline support, and responsive behavior specs.</div>
-        <div class="home-card-meta"><span>Apr 9, 2026</span></div>
-        <div class="home-card-ext">DOCX</div>
+      <div class="home-card-sm" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
+        <span class="sm-badge" data-cat="prd">Mobile</span>
+        <span class="sm-title">Mobile App Requirements</span>
+        <span class="sm-type">DOCX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
-      <div class="home-card" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
-        <div class="home-card-cat" data-cat="prd">Spec</div>
-        <div class="home-card-title">Learner Dashboard</div>
-        <div class="home-card-desc">Dashboard specification for the learner home screen. Widget layout, data sources, and personalization logic.</div>
-        <div class="home-card-meta"><span>Jan 29, 2026</span></div>
-        <div class="home-card-ext">DOCX</div>
+      <div class="home-card-sm" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
+        <span class="sm-badge" data-cat="prd">Spec</span>
+        <span class="sm-title">Learner Dashboard</span>
+        <span class="sm-type">DOCX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
     </div>
 
@@ -609,19 +650,19 @@ body {
         <div class="home-card-meta"><span>Apr 8, 2026</span></div>
         <div class="home-card-ext">HTML</div>
       </div>
-      <div class="home-card" onclick="window.open('https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1','_blank')">
-        <div class="home-card-cat" data-cat="figma">Figma</div>
-        <div class="home-card-title">Diagrams</div>
-        <div class="home-card-desc">LMS Learner Flow Diagram. FigJam board with user flows, system connections, and decision trees.</div>
-        <div class="home-card-meta"><span>FigJam Board</span><span>Opens in Figma</span></div>
-        <div class="home-card-ext figma-ext">Figma</div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="window.open('https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1','_blank')">
+        <span class="sm-badge" data-cat="figma">Figma</span>
+        <span class="sm-title">Diagrams</span>
+        <span class="sm-type">FigJam</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
-      <div class="home-card" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase','_blank')">
-        <div class="home-card-cat" data-cat="figma">Figma</div>
-        <div class="home-card-title">Design (V4)</div>
-        <div class="home-card-desc">Learner Platform Experience Discovery. Latest wireframes and prototypes in New Flow V4.</div>
-        <div class="home-card-meta"><span>Design File</span><span>Opens in Figma</span></div>
-        <div class="home-card-ext figma-ext">Figma</div>
+      <div class="home-card-sm" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase','_blank')">
+        <span class="sm-badge" data-cat="figma">Figma</span>
+        <span class="sm-title">Design (V4)</span>
+        <span class="sm-type">Design File</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
     </div>
 
@@ -634,12 +675,20 @@ body {
         <div class="home-card-meta"><span>Apr 7, 2026</span></div>
         <div class="home-card-ext">HTML</div>
       </div>
-      <div class="home-card" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
-        <div class="home-card-cat" data-cat="research">Transcript</div>
-        <div class="home-card-title">Meeting Transcript (Apr 10)</div>
-        <div class="home-card-desc">Full transcript of the VILT/Live Sessions discovery meeting. Delivery modes, tagging, calendar, content categories.</div>
-        <div class="home-card-meta"><span>Apr 10, 2026</span><span>316 lines</span></div>
-        <div class="home-card-ext">TXT</div>
+      <div class="home-card" onclick="navigateTo('Meeting-Summary-20260410.html', 'VILT Meeting Summary')">
+        <div class="home-card-cat" data-cat="research">Summary</div>
+        <div class="home-card-title">VILT Discovery Meeting Summary</div>
+        <div class="home-card-desc">Core principle, 6 key decisions, impact on PRD, and next steps from the Apr 10 VILT architecture session.</div>
+        <div class="home-card-meta"><span>Apr 10, 2026</span></div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+        <span class="sm-badge" data-cat="research">Transcript</span>
+        <span class="sm-title">Meeting Transcript (Apr 10)</span>
+        <span class="sm-type">TXT</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
     </div>
   </div>
@@ -670,7 +719,7 @@ function navigateTo(page, title) {
       'PRD': 'nav-reqs', 'FRD': 'nav-reqs',
       'VILT': 'nav-arch', 'live': 'nav-arch', 'MindMap': 'nav-arch',
       'index': 'nav-design',
-      'UX-Audit': 'nav-research', 'Transcript': 'nav-research'
+      'UX-Audit': 'nav-research', 'Meeting-Summary': 'nav-research', 'Transcript': 'nav-research'
     };
     for (const [key, navId] of Object.entries(catMap)) {
       if (page.includes(key)) {
@@ -704,6 +753,7 @@ const searchData = [
   { cat: 'Figma', color: 'figma', title: 'Diagrams (FigJam)', desc: 'LMS Learner Flow Diagram board', url: 'https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1' },
   { cat: 'Figma', color: 'figma', title: 'Design V4', desc: 'Learner Platform Experience Discovery wireframes', url: 'https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase' },
   { cat: 'Audit', color: 'research', title: 'V4 UX Audit Report', desc: 'Norman/Nielsen heuristic evaluation, severity scores', page: 'V4-UX-Audit-Report.html' },
+  { cat: 'Summary', color: 'research', title: 'VILT Discovery Meeting Summary', desc: 'Core principle, key decisions, delivery mode tagging, calendar architecture', page: 'Meeting-Summary-20260410.html' },
   { cat: 'Transcript', color: 'research', title: 'Meeting Transcript (Apr 10)', desc: 'VILT discovery meeting, delivery modes, tagging, calendar', file: 'LMS-Walkthrough-Questions-Transcript-20260410.txt' },
 ];
 

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Summary: VILT Architecture Discovery (Apr 10, 2026)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-card: #f4f5f7;
+  --text-primary: #111218;
+  --text-secondary: #5a5d65;
+  --text-tertiary: #8a8d95;
+  --border: #e2e4e8;
+  --accent: #0338b8;
+  --accent-light: #d9e0ff;
+  --accent-bg: #f0f2ff;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --green: #059669;
+  --green-bg: #d1f5e8;
+  --amber: #b45309;
+  --amber-bg: #fef3c7;
+  --purple: #7c3aed;
+  --purple-bg: #ede5ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+}
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 32px;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 36px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); }
+.meta-value { font-weight: 600; color: var(--text-primary); }
+
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent-light);
+  letter-spacing: -0.3px;
+}
+h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+p { margin-bottom: 12px; color: var(--text-secondary); }
+
+.decision-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+}
+.decision-card.resolved { border-left-color: var(--green); }
+.decision-card.open { border-left-color: var(--amber); }
+.decision-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.decision-label.resolved { background: var(--green-bg); color: var(--green); }
+.decision-label.open { background: var(--amber-bg); color: var(--amber); }
+.decision-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.decision-body {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.quote-block {
+  border-left: 3px solid var(--purple);
+  padding: 12px 16px;
+  margin: 16px 0;
+  background: var(--purple-bg);
+  border-radius: 0 6px 6px 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.quote-block .speaker {
+  font-weight: 700;
+  color: var(--purple);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.impact-item {
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.impact-item .label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+.impact-item .value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.next-steps {
+  margin-top: 16px;
+}
+.next-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.next-step:last-child { border-bottom: none; }
+.step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+</style>
+</head>
+<body>
+
+<h1>VILT Architecture Discovery</h1>
+<p class="subtitle">Meeting summary and key decisions from the LMS walkthrough session</p>
+
+<div class="meta-row">
+  <div class="meta-item">
+    <span class="meta-label">Date</span>
+    <span class="meta-value">April 10, 2026</span>
+  </div>
+  <div class="meta-item">
+    <span class="meta-label">Duration</span>
+    <span class="meta-value">36 minutes</span>
+  </div>
+  <div class="meta-item">
+    <span class="meta-label">Participants</span>
+    <span class="meta-value">Harpreet Kaur, Govind Sharma, Rupali Amit Mahale, Navdeep Malhotra, Nelson Jeronimo</span>
+  </div>
+  <div class="meta-item">
+    <span class="meta-label">Triggered by</span>
+    <span class="meta-value">Rupali's request to show VILT topics alongside self-paced content in the LMS</span>
+  </div>
+</div>
+
+<h2>Context</h2>
+<p>Rupali raised a concrete problem: TechMaster AIML has 16 self-paced courses with weekly VILT sessions, but learners can't see VILT topics inside the LMS course structure. The sessions, topics, and schedule only exist in emails from the Srishti team. She wanted VILT topics displayed as part of the course alongside self-paced modules.</p>
+<p>Govind pushed back on the initial proposal. The team had previously burned themselves creating separate VILT and self-paced instances of the same course. Learners ended up going to two different places for the same content. This led to the core architectural principle that emerged from the meeting.</p>
+
+<h2>Core Principle</h2>
+<div class="decision-card resolved">
+  <span class="decision-label resolved">Resolved</span>
+  <div class="decision-title">Course structure and delivery method are separate concerns</div>
+  <div class="decision-body">VILT is a mode of delivery, not a course type. A course is a package of content on a specific topic. It has title, modules, lessons, quizzes, projects. Whether that content is delivered by an instructor, consumed self-paced, or both is a separate axis. Never create separate VILT and self-paced instances of the same course.</div>
+</div>
+
+<div class="quote-block">
+  <div class="speaker">Govind Sharma</div>
+  "The course has to be a course. The delivery is separate. VILT is a delivery. It has nothing to do with course creation."
+</div>
+
+<h2>Key Decisions</h2>
+
+<div class="decision-card resolved">
+  <span class="decision-label resolved">Resolved</span>
+  <div class="decision-title">Delivery mode tagging at lesson, module, or course level</div>
+  <div class="decision-body">Admin tags each lesson or module as self-paced, VILT, or blended when creating the course. If VILT is tagged, the system requires date, time, presenter, and meeting link. The tag is set on the admin side and reflected on the learner side.</div>
+</div>
+
+<div class="decision-card resolved">
+  <span class="decision-label resolved">Resolved</span>
+  <div class="decision-title">Delivery mode bubbles up automatically</div>
+  <div class="decision-body">If all lessons in a module are VILT, the module shows as VILT. If mixed, it shows as Blended. If all self-paced, it shows as Self-Paced. Same logic applies from module to course level. No manual tagging needed at parent levels.</div>
+</div>
+
+<div class="decision-card resolved">
+  <span class="decision-label resolved">Resolved</span>
+  <div class="decision-title">"Pure VILT" still includes quizzes, projects, and readings</div>
+  <div class="decision-body">Navdeep used the university analogy: you attend lectures, but you still have textbooks, assignments, and projects. A VILT course is heavily instructor-led, but it doesn't mean zero self-paced content. This distinction matters for UI: don't treat VILT as a stripped-down course.</div>
+</div>
+
+<div class="decision-card resolved">
+  <span class="decision-label resolved">Resolved</span>
+  <div class="decision-title">No prerequisite locking for VILT sessions</div>
+  <div class="decision-body">Learners should not be blocked from attending a VILT session even if they haven't completed prior modules. The system should nudge ("You haven't completed Module 1 and 2. Your session on Module 3 topics is in 3 days.") but never block. University model: the professor doesn't wait for you.</div>
+</div>
+
+<div class="decision-card resolved">
+  <span class="decision-label resolved">Resolved</span>
+  <div class="decision-title">Calendar at two levels: course tab + global view</div>
+  <div class="decision-body">Inside a course, a calendar tab shows only that course's VILT sessions with topics, date, time, presenter. At the global level (My Learning), a calendar aggregates all VILT sessions across all enrolled programs. Both views needed.</div>
+</div>
+
+<div class="decision-card open">
+  <span class="decision-label open">Open</span>
+  <div class="decision-title">Visual differentiation of delivery modes</div>
+  <div class="decision-body">The team agreed learners need to identify at a glance which modules/lessons are VILT vs self-paced. Options discussed: badge, icon, color coding. No specific solution chosen. Navdeep suggested VILT lessons should also show the scheduled date/time inline.</div>
+</div>
+
+<h2>Impact on Product</h2>
+
+<div class="impact-grid">
+  <div class="impact-item">
+    <div class="label">PRD Sections Updated</div>
+    <div class="value">Section 2.3 (Delivery Methods) rewritten. Section 8 expanded to 6 subsections covering full VILT architecture.</div>
+  </div>
+  <div class="impact-item">
+    <div class="label">Decisions Resolved</div>
+    <div class="value">4 previously open decisions closed. 1 new open decision added (visual differentiation).</div>
+  </div>
+  <div class="impact-item">
+    <div class="label">Architecture Artifacts</div>
+    <div class="value">VILT Architecture Flowchart created. Live Sessions Flow updated.</div>
+  </div>
+  <div class="impact-item">
+    <div class="label">Design Implications</div>
+    <div class="value">Course detail screens need delivery mode badges. Calendar component needed at two scopes. Nudge/reminder pattern for prerequisite gaps.</div>
+  </div>
+</div>
+
+<h2>Next Steps</h2>
+
+<div class="next-steps">
+  <div class="next-step">
+    <span class="step-num">1</span>
+    <span>Define the visual language for delivery mode differentiation (badge vs icon vs color). Decide per-component: course card, module row, lesson row, calendar event.</span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">2</span>
+    <span>Design the course-level calendar tab showing VILT sessions with topic, date, time, presenter, and meeting link.</span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">3</span>
+    <span>Design the global calendar view aggregating all enrolled VILT sessions across programs.</span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">4</span>
+    <span>Define the nudge/reminder UX for learners who haven't completed prerequisites before an upcoming VILT session.</span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">5</span>
+    <span>Validate the bubble-up logic with edge cases: single VILT lesson in an otherwise self-paced module, recording-only sessions, rescheduled sessions.</span>
+  </div>
+</div>
+
+</body>
+</html>
