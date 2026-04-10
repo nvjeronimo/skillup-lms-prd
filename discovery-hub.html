@@ -25,11 +25,11 @@
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-  --tag-prd: #0338b8;
-  --tag-arch: #7c3aed;
-  --tag-ds: #0891b2;
+  --tag-problem: #059669;
+  --tag-solution: #0338b8;
+  --tag-build: #0891b2;
   --tag-figma: #a259ff;
-  --tag-research: #059669;
+  --tag-tools: #d97706;
   --tag-doc: #6b7280;
   --radius: 10px;
   --topbar-height: 52px;
@@ -116,11 +116,11 @@ body {
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.mega-dropdown-icon.prd { background: #dde4ff; color: var(--tag-prd); }
-.mega-dropdown-icon.arch { background: #ede5ff; color: var(--tag-arch); }
-.mega-dropdown-icon.ds { background: #d5f0f7; color: var(--tag-ds); }
+.mega-dropdown-icon.problem { background: #d1f5e8; color: var(--tag-problem); }
+.mega-dropdown-icon.solution { background: #dde4ff; color: var(--tag-solution); }
+.mega-dropdown-icon.build { background: #d5f0f7; color: var(--tag-build); }
 .mega-dropdown-icon.figma { background: #f0e5ff; color: var(--tag-figma); }
-.mega-dropdown-icon.research { background: #d1f5e8; color: var(--tag-research); }
+.mega-dropdown-icon.tools { background: #fef3c7; color: var(--tag-tools); }
 .mega-dropdown-icon.doc { background: #e5e7eb; color: var(--tag-doc); }
 .mega-dropdown-text { flex: 1; min-width: 0; }
 .mega-dropdown-title {
@@ -159,13 +159,6 @@ body {
   padding: 1px 5px; border: 1px solid var(--border); border-radius: 4px;
   color: var(--text-tertiary); background: var(--bg); margin-left: auto;
 }
-.topbar-btn {
-  width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 8px;
-  background: var(--bg); cursor: pointer; display: flex; align-items: center;
-  justify-content: center; color: var(--text-secondary); transition: all 0.15s;
-  margin-left: 4px;
-}
-.topbar-btn:hover { background: var(--bg-card); color: var(--text-primary); }
 
 /* ── Search Overlay ── */
 .search-overlay {
@@ -204,7 +197,7 @@ body {
   padding: 32px; text-align: center; color: var(--text-tertiary); font-size: 13px;
 }
 
-/* ── Content Area (full width, no sidebar) ── */
+/* ── Content Area ── */
 .content-area {
   position: fixed;
   top: var(--topbar-height);
@@ -250,9 +243,13 @@ body {
   letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 14px;
   margin-top: 8px;
 }
+.home-section-desc {
+  font-size: 12px; color: var(--text-secondary); margin: -8px 0 16px;
+  font-weight: 500;
+}
 .home-cards {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 14px; margin-bottom: 40px;
+  gap: 14px; margin-bottom: 14px;
 }
 .home-card {
   background: var(--bg-card); border-radius: var(--radius);
@@ -268,11 +265,11 @@ body {
   letter-spacing: 0.8px; margin-bottom: 6px; display: inline-block;
   padding: 2px 8px; border-radius: 4px;
 }
-.home-card-cat[data-cat="prd"] { background: #dde4ff; color: var(--tag-prd); }
-.home-card-cat[data-cat="arch"] { background: #ede5ff; color: var(--tag-arch); }
-.home-card-cat[data-cat="ds"] { background: #d5f0f7; color: var(--tag-ds); }
+.home-card-cat[data-cat="problem"] { background: #d1f5e8; color: var(--tag-problem); }
+.home-card-cat[data-cat="solution"] { background: #dde4ff; color: var(--tag-solution); }
+.home-card-cat[data-cat="build"] { background: #d5f0f7; color: var(--tag-build); }
 .home-card-cat[data-cat="figma"] { background: #f0e5ff; color: var(--tag-figma); }
-.home-card-cat[data-cat="research"] { background: #d1f5e8; color: var(--tag-research); }
+.home-card-cat[data-cat="tools"] { background: #fef3c7; color: var(--tag-tools); }
 .home-card-cat[data-cat="doc"] { background: #e5e7eb; color: var(--tag-doc); }
 .home-card-title {
   font-size: 15px; font-weight: 700; color: var(--text-primary);
@@ -292,7 +289,6 @@ body {
   background: var(--bg); border: 1px solid var(--border); color: var(--text-tertiary);
   text-transform: uppercase;
 }
-.home-card-ext.figma-ext { background: #f0e5ff; color: var(--tag-figma); border-color: #ddd0f0; }
 
 /* ── Compact external cards ── */
 .home-cards-compact {
@@ -313,11 +309,16 @@ body {
   letter-spacing: 0.6px; padding: 2px 6px; border-radius: 3px;
   flex-shrink: 0;
 }
-.home-card-sm .sm-badge[data-cat="prd"] { background: #dde4ff; color: var(--tag-prd); }
+.home-card-sm .sm-badge[data-cat="problem"] { background: #d1f5e8; color: var(--tag-problem); }
+.home-card-sm .sm-badge[data-cat="solution"] { background: #dde4ff; color: var(--tag-solution); }
+.home-card-sm .sm-badge[data-cat="build"] { background: #d5f0f7; color: var(--tag-build); }
 .home-card-sm .sm-badge[data-cat="figma"] { background: #f0e5ff; color: var(--tag-figma); }
-.home-card-sm .sm-badge[data-cat="research"] { background: #d1f5e8; color: var(--tag-research); }
+.home-card-sm .sm-badge[data-cat="tools"] { background: #fef3c7; color: var(--tag-tools); }
 .home-card-sm .sm-title {
   font-weight: 600; color: var(--text-primary); white-space: nowrap;
+}
+.home-card-sm .sm-date {
+  font-size: 9px; font-weight: 500; color: var(--text-tertiary); white-space: nowrap;
 }
 .home-card-sm .sm-type {
   font-size: 9px; font-weight: 600; color: var(--text-tertiary);
@@ -347,32 +348,122 @@ body {
   </div>
 
   <nav class="mega-nav">
-    <!-- Requirements -->
+    <!-- Problem Space -->
     <div class="mega-nav-item">
-      <button class="mega-nav-trigger" id="nav-reqs">
-        Requirements
+      <button class="mega-nav-trigger" id="nav-problem">
+        Problem Space
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mega-dropdown">
-        <div class="mega-dropdown-label">HTML Documents</div>
+        <div class="mega-dropdown-label">Research & Analysis</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('Meeting-Summary-20260410.html', 'VILT Meeting Summary')">
+          <div class="mega-dropdown-icon problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Meeting Summary</div>
+            <div class="mega-dropdown-desc">Apr 10 - Key decisions from discovery session</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('V4-UX-Audit-Report.html', 'V4 UX Audit')">
+          <div class="mega-dropdown-icon problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">V4 UX Audit Report</div>
+            <div class="mega-dropdown-desc">Apr 7 - Norman/Nielsen heuristic evaluation</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('SkillUp-LMS-MindMap.html', 'LMS Mind Map')">
+          <div class="mega-dropdown-icon problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">LMS Mind Map</div>
+            <div class="mega-dropdown-desc">Mar 27 - Full feature space and relationships</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Source Documents</div>
+        <div class="mega-dropdown-item" onclick="downloadFile('VILT-Integration-Design-Document.pdf')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Integration Design Doc</div>
+            <div class="mega-dropdown-desc">VILT architecture and integration specs</div>
+          </div>
+          <span class="mega-dropdown-badge">pdf</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Meeting Transcript (Apr 10)</div>
+            <div class="mega-dropdown-desc">VILT discovery, delivery modes, calendar</div>
+          </div>
+          <span class="mega-dropdown-badge">txt</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('US Program-courses List (1).xlsx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Programs/Courses List</div>
+            <div class="mega-dropdown-desc">US program and course inventory</div>
+          </div>
+          <span class="mega-dropdown-badge">xlsx</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-solution">
+        Solution
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <div class="mega-dropdown-label">Requirements</div>
         <div class="mega-dropdown-item" onclick="navigateTo('PRD-Courses-Programs-Phase1.html', 'PRD: Courses & Programs')">
-          <div class="mega-dropdown-icon prd">
+          <div class="mega-dropdown-icon solution">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           </div>
           <div class="mega-dropdown-text">
             <div class="mega-dropdown-title">Courses & Programs PRD</div>
-            <div class="mega-dropdown-desc">18 sections, delivery modes, VILT, progress</div>
+            <div class="mega-dropdown-desc">Apr 10 - 18 sections, delivery modes, VILT, progress</div>
           </div>
         </div>
         <div class="mega-dropdown-divider"></div>
-        <div class="mega-dropdown-label">Linked Documents</div>
+        <div class="mega-dropdown-label">Architecture</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('VILT-Architecture-Flowchart.html', 'VILT Architecture')">
+          <div class="mega-dropdown-icon solution">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Architecture</div>
+            <div class="mega-dropdown-desc">Apr 10 - Delivery modes, tagging, bubble-up logic</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('live-sessions-flow-architecture.html', 'Live Sessions Flow')">
+          <div class="mega-dropdown-icon solution">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Live Sessions Flow</div>
+            <div class="mega-dropdown-desc">Apr 9 - Scheduling, join, recording, attendance</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Linked Specs</div>
         <div class="mega-dropdown-item" onclick="downloadFile('FRD-Cohort Management.docx')">
           <div class="mega-dropdown-icon doc">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <div class="mega-dropdown-text">
             <div class="mega-dropdown-title">FRD: Cohort Management</div>
-            <div class="mega-dropdown-desc">Scheduling, enrollment, capacity rules</div>
+            <div class="mega-dropdown-desc">Apr 9 - Scheduling, enrollment, capacity rules</div>
           </div>
           <span class="mega-dropdown-badge">docx</span>
         </div>
@@ -382,7 +473,7 @@ body {
           </div>
           <div class="mega-dropdown-text">
             <div class="mega-dropdown-title">Mobile App Requirements</div>
-            <div class="mega-dropdown-desc">Phase 1, native features, offline support</div>
+            <div class="mega-dropdown-desc">Apr 9 - Phase 1, native features, offline support</div>
           </div>
           <span class="mega-dropdown-badge">docx</span>
         </div>
@@ -392,65 +483,28 @@ body {
           </div>
           <div class="mega-dropdown-text">
             <div class="mega-dropdown-title">Learner Dashboard Spec</div>
-            <div class="mega-dropdown-desc">Widgets, data sources, personalization</div>
+            <div class="mega-dropdown-desc">Jan 29 - Widgets, data sources, personalization</div>
           </div>
           <span class="mega-dropdown-badge">docx</span>
         </div>
       </div>
     </div>
 
-    <!-- Architecture -->
+    <!-- Build -->
     <div class="mega-nav-item">
-      <button class="mega-nav-trigger" id="nav-arch">
-        Architecture
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="mega-dropdown">
-        <div class="mega-dropdown-item" onclick="navigateTo('VILT-Architecture-Flowchart.html', 'VILT Architecture')">
-          <div class="mega-dropdown-icon arch">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">VILT Architecture</div>
-            <div class="mega-dropdown-desc">Delivery modes, tagging, bubble-up logic</div>
-          </div>
-        </div>
-        <div class="mega-dropdown-item" onclick="navigateTo('live-sessions-flow-architecture.html', 'Live Sessions Flow')">
-          <div class="mega-dropdown-icon arch">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">Live Sessions Flow</div>
-            <div class="mega-dropdown-desc">Scheduling, join, recording, attendance</div>
-          </div>
-        </div>
-        <div class="mega-dropdown-item" onclick="navigateTo('SkillUp-LMS-MindMap.html', 'LMS Mind Map')">
-          <div class="mega-dropdown-icon arch">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
-          </div>
-          <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">LMS Mind Map</div>
-            <div class="mega-dropdown-desc">Full feature space and relationships</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Design -->
-    <div class="mega-nav-item">
-      <button class="mega-nav-trigger" id="nav-design">
-        Design
+      <button class="mega-nav-trigger" id="nav-build">
+        Build
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mega-dropdown" style="min-width: 320px">
         <div class="mega-dropdown-label">Design System</div>
         <div class="mega-dropdown-item" onclick="navigateTo('index.html', 'Design System')">
-          <div class="mega-dropdown-icon ds">
+          <div class="mega-dropdown-icon build">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           </div>
           <div class="mega-dropdown-text">
             <div class="mega-dropdown-title">Tokens & Components</div>
-            <div class="mega-dropdown-desc">Colors, typography, spacing, patterns</div>
+            <div class="mega-dropdown-desc">Apr 8 - Colors, typography, spacing, patterns</div>
           </div>
         </div>
         <div class="mega-dropdown-divider"></div>
@@ -478,51 +532,23 @@ body {
       </div>
     </div>
 
-    <!-- Research -->
+    <!-- Tools -->
     <div class="mega-nav-item">
-      <button class="mega-nav-trigger" id="nav-research">
-        Research
+      <button class="mega-nav-trigger" id="nav-tools">
+        Tools
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="mega-dropdown">
-        <div class="mega-dropdown-item" onclick="navigateTo('V4-UX-Audit-Report.html', 'V4 UX Audit')">
-          <div class="mega-dropdown-icon research">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <a class="mega-dropdown-item" href="https://fernando-drab.vercel.app/" target="_blank" rel="noopener">
+          <div class="mega-dropdown-icon tools">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">V4 UX Audit Report</div>
-            <div class="mega-dropdown-desc">Norman/Nielsen heuristic evaluation</div>
+            <div class="mega-dropdown-title">AI Prompt Engineering</div>
+            <div class="mega-dropdown-desc">Prompt generator for AI workflows</div>
           </div>
-        </div>
-        <div class="mega-dropdown-item" onclick="navigateTo('Meeting-Summary-20260410.html', 'VILT Meeting Summary')">
-          <div class="mega-dropdown-icon research">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">VILT Meeting Summary</div>
-            <div class="mega-dropdown-desc">Key decisions from Apr 10 discovery session</div>
-          </div>
-        </div>
-        <div class="mega-dropdown-item" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
-          <div class="mega-dropdown-icon doc">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          </div>
-          <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">Meeting Transcript (Apr 10)</div>
-            <div class="mega-dropdown-desc">VILT discovery, delivery modes, calendar</div>
-          </div>
-          <span class="mega-dropdown-badge">txt</span>
-        </div>
-        <div class="mega-dropdown-item" onclick="downloadFile('US Program-courses List (1).xlsx')">
-          <div class="mega-dropdown-icon doc">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          </div>
-          <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">Programs/Courses List</div>
-            <div class="mega-dropdown-desc">US program and course inventory</div>
-          </div>
-          <span class="mega-dropdown-badge">xlsx</span>
-        </div>
+          <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
     </div>
   </nav>
@@ -554,26 +580,26 @@ body {
     <div class="home-header">
       <div class="home-title">SkillUp LMS<br>Discovery Hub</div>
       <div class="home-subtitle">
-        Central repository for all product discovery artifacts: requirements, architecture, design system, and research for the SkillUp Learner Platform.
+        Central repository for all product discovery artifacts: research, requirements, architecture, design system, and prototypes for the SkillUp Learner Platform.
       </div>
     </div>
 
     <div class="home-stats">
       <div class="home-stat">
+        <div class="home-stat-value">16</div>
+        <div class="home-stat-label">Total Artifacts</div>
+      </div>
+      <div class="home-stat">
         <div class="home-stat-value">18</div>
         <div class="home-stat-label">PRD Sections</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">3</div>
-        <div class="home-stat-label">Architecture Docs</div>
+        <div class="home-stat-value">6</div>
+        <div class="home-stat-label">Decisions Resolved</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">2</div>
-        <div class="home-stat-label">Figma Files</div>
-      </div>
-      <div class="home-stat">
-        <div class="home-stat-value">9</div>
-        <div class="home-stat-label">Open Decisions</div>
+        <div class="home-stat-value">1</div>
+        <div class="home-stat-label">Open Decision</div>
       </div>
       <div class="home-stat">
         <div class="home-stat-value">4</div>
@@ -581,10 +607,69 @@ body {
       </div>
     </div>
 
-    <div class="home-section-title">Product Requirements</div>
+    <!-- ═══ PROBLEM SPACE ═══ -->
+    <div class="home-section-title">Problem Space</div>
+    <div class="home-section-desc">Research, audits, and discovery sessions that define the problem we are solving.</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('Meeting-Summary-20260410.html', 'VILT Meeting Summary')">
+        <div class="home-card-cat" data-cat="problem">Meeting Summary</div>
+        <div class="home-card-title">VILT Discovery Meeting</div>
+        <div class="home-card-desc">Core principle (course structure vs delivery method are separate concerns), 6 key decisions, impact on PRD, and next steps.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
+          <span>6 decisions</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('V4-UX-Audit-Report.html', 'V4 UX Audit')">
+        <div class="home-card-cat" data-cat="problem">Audit</div>
+        <div class="home-card-title">V4 UX Audit Report</div>
+        <div class="home-card-desc">Norman/Nielsen heuristic evaluation of V4 wireframes. Severity scores, findings, and prioritized fixes across 33 screens.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 7, 2026</span>
+          <span>33 screens</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('SkillUp-LMS-MindMap.html', 'LMS Mind Map')">
+        <div class="home-card-cat" data-cat="problem">Discovery</div>
+        <div class="home-card-title">LMS Mind Map</div>
+        <div class="home-card-desc">High-level visual map of the entire LMS feature space. Modules, relationships, and priority groupings.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Mar 27, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="downloadFile('VILT-Integration-Design-Document.pdf')">
+        <span class="sm-badge" data-cat="problem">PDF</span>
+        <span class="sm-title">VILT Integration Design Doc</span>
+        <span class="sm-date">Apr 10</span>
+        <span class="sm-type">PDF</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+        <span class="sm-badge" data-cat="problem">Transcript</span>
+        <span class="sm-title">Meeting Transcript</span>
+        <span class="sm-date">Apr 10</span>
+        <span class="sm-type">TXT</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('US Program-courses List (1).xlsx')">
+        <span class="sm-badge" data-cat="problem">Data</span>
+        <span class="sm-title">Programs/Courses List</span>
+        <span class="sm-type">XLSX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+    </div>
+
+    <!-- ═══ SOLUTION SPACE ═══ -->
+    <div class="home-section-title">Solution Space</div>
+    <div class="home-section-desc">Product requirements, architecture decisions, and specification documents.</div>
     <div class="home-cards">
       <div class="home-card" onclick="navigateTo('PRD-Courses-Programs-Phase1.html', 'PRD: Courses & Programs')">
-        <div class="home-card-cat" data-cat="prd">PRD</div>
+        <div class="home-card-cat" data-cat="solution">PRD</div>
         <div class="home-card-title">Courses & Programs PRD</div>
         <div class="home-card-desc">Complete product requirements for the learner platform. 18 sections covering content hierarchy, delivery modes, VILT, progress tracking, and assessments.</div>
         <div class="home-card-meta">
@@ -594,60 +679,60 @@ body {
         </div>
         <div class="home-card-ext">HTML</div>
       </div>
+      <div class="home-card" onclick="navigateTo('VILT-Architecture-Flowchart.html', 'VILT Architecture')">
+        <div class="home-card-cat" data-cat="solution">Architecture</div>
+        <div class="home-card-title">VILT Architecture Flowchart</div>
+        <div class="home-card-desc">Visual diagram of the VILT delivery architecture: content hierarchy, delivery mode tagging, bubble-up logic, and learner view.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('live-sessions-flow-architecture.html', 'Live Sessions Flow')">
+        <div class="home-card-cat" data-cat="solution">Architecture</div>
+        <div class="home-card-title">Live Sessions Flow</div>
+        <div class="home-card-desc">End-to-end flow for live/virtual sessions. Scheduling, join mechanics, recording, and attendance tracking.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 9, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
     </div>
     <div class="home-cards-compact">
       <div class="home-card-sm" onclick="downloadFile('FRD-Cohort Management.docx')">
-        <span class="sm-badge" data-cat="prd">FRD</span>
+        <span class="sm-badge" data-cat="solution">FRD</span>
         <span class="sm-title">Cohort Management</span>
+        <span class="sm-date">Apr 9</span>
         <span class="sm-type">DOCX</span>
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
       <div class="home-card-sm" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
-        <span class="sm-badge" data-cat="prd">Mobile</span>
+        <span class="sm-badge" data-cat="solution">Mobile</span>
         <span class="sm-title">Mobile App Requirements</span>
+        <span class="sm-date">Apr 9</span>
         <span class="sm-type">DOCX</span>
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
       <div class="home-card-sm" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
-        <span class="sm-badge" data-cat="prd">Spec</span>
+        <span class="sm-badge" data-cat="solution">Spec</span>
         <span class="sm-title">Learner Dashboard</span>
+        <span class="sm-date">Jan 29</span>
         <span class="sm-type">DOCX</span>
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
     </div>
 
-    <div class="home-section-title">Architecture</div>
-    <div class="home-cards">
-      <div class="home-card" onclick="navigateTo('VILT-Architecture-Flowchart.html', 'VILT Architecture')">
-        <div class="home-card-cat" data-cat="arch">Architecture</div>
-        <div class="home-card-title">VILT Architecture Flowchart</div>
-        <div class="home-card-desc">Visual diagram of the VILT delivery architecture: content hierarchy, delivery mode tagging, bubble-up logic, and learner view.</div>
-        <div class="home-card-meta"><span>Apr 10, 2026</span></div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('live-sessions-flow-architecture.html', 'Live Sessions Flow')">
-        <div class="home-card-cat" data-cat="arch">Architecture</div>
-        <div class="home-card-title">Live Sessions Flow</div>
-        <div class="home-card-desc">End-to-end flow for live/virtual sessions. Scheduling, join mechanics, recording, and attendance tracking.</div>
-        <div class="home-card-meta"><span>Apr 9, 2026</span></div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('SkillUp-LMS-MindMap.html', 'LMS Mind Map')">
-        <div class="home-card-cat" data-cat="arch">Mind Map</div>
-        <div class="home-card-title">LMS Mind Map</div>
-        <div class="home-card-desc">High-level visual map of the entire LMS feature space. Modules, relationships, and priority groupings.</div>
-        <div class="home-card-meta"><span>Mar 27, 2026</span></div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-    </div>
-
-    <div class="home-section-title">Design</div>
+    <!-- ═══ BUILD ═══ -->
+    <div class="home-section-title">Build</div>
+    <div class="home-section-desc">Design system, wireframes, and visual prototypes ready for implementation.</div>
     <div class="home-cards">
       <div class="home-card" onclick="navigateTo('index.html', 'Design System')">
-        <div class="home-card-cat" data-cat="ds">Design System</div>
+        <div class="home-card-cat" data-cat="build">Design System</div>
         <div class="home-card-title">Tokens & Components</div>
         <div class="home-card-desc">Color tokens, typography (Montserrat/Playfair), spacing scale, component patterns, and interaction specs.</div>
-        <div class="home-card-meta"><span>Apr 8, 2026</span></div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 8, 2026</span>
+        </div>
         <div class="home-card-ext">HTML</div>
       </div>
     </div>
@@ -665,32 +750,6 @@ body {
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
     </div>
-
-    <div class="home-section-title">Research & Discovery</div>
-    <div class="home-cards">
-      <div class="home-card" onclick="navigateTo('V4-UX-Audit-Report.html', 'V4 UX Audit')">
-        <div class="home-card-cat" data-cat="research">Audit</div>
-        <div class="home-card-title">V4 UX Audit Report</div>
-        <div class="home-card-desc">Norman/Nielsen heuristic evaluation of V4 wireframes. Severity scores, findings, and prioritized fixes.</div>
-        <div class="home-card-meta"><span>Apr 7, 2026</span></div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('Meeting-Summary-20260410.html', 'VILT Meeting Summary')">
-        <div class="home-card-cat" data-cat="research">Summary</div>
-        <div class="home-card-title">VILT Discovery Meeting Summary</div>
-        <div class="home-card-desc">Core principle, 6 key decisions, impact on PRD, and next steps from the Apr 10 VILT architecture session.</div>
-        <div class="home-card-meta"><span>Apr 10, 2026</span></div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-    </div>
-    <div class="home-cards-compact">
-      <div class="home-card-sm" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
-        <span class="sm-badge" data-cat="research">Transcript</span>
-        <span class="sm-title">Meeting Transcript (Apr 10)</span>
-        <span class="sm-type">TXT</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-    </div>
   </div>
 
   <iframe class="content-iframe" id="content-iframe" style="display:none"></iframe>
@@ -703,7 +762,6 @@ const iframe = document.getElementById('content-iframe');
 let currentPage = 'home';
 
 function navigateTo(page, title) {
-  // Update active trigger
   document.querySelectorAll('.mega-nav-trigger').forEach(t => t.classList.remove('active'));
 
   if (page === 'home') {
@@ -714,12 +772,10 @@ function navigateTo(page, title) {
     homePage.style.display = 'none';
     iframe.style.display = 'block';
     iframe.src = page;
-    // Highlight parent nav trigger
     const catMap = {
-      'PRD': 'nav-reqs', 'FRD': 'nav-reqs',
-      'VILT': 'nav-arch', 'live': 'nav-arch', 'MindMap': 'nav-arch',
-      'index': 'nav-design',
-      'UX-Audit': 'nav-research', 'Meeting-Summary': 'nav-research', 'Transcript': 'nav-research'
+      'Meeting-Summary': 'nav-problem', 'UX-Audit': 'nav-problem', 'MindMap': 'nav-problem',
+      'PRD': 'nav-solution', 'FRD': 'nav-solution', 'VILT': 'nav-solution', 'live': 'nav-solution',
+      'index': 'nav-build'
     };
     for (const [key, navId] of Object.entries(catMap)) {
       if (page.includes(key)) {
@@ -742,19 +798,26 @@ function downloadFile(filename) {
 
 // ── Search ──
 const searchData = [
-  { cat: 'PRD', color: 'prd', title: 'Courses & Programs PRD', desc: 'Product requirements, content hierarchy, VILT, progress, assessments', page: 'PRD-Courses-Programs-Phase1.html' },
-  { cat: 'FRD', color: 'prd', title: 'Cohort Management', desc: 'Cohort scheduling, enrollment, capacity, instructor assignment', file: 'FRD-Cohort Management.docx' },
-  { cat: 'Spec', color: 'prd', title: 'Mobile App Requirements', desc: 'Native mobile, offline support, responsive behavior', file: 'Mobile App Requirements Phase-1.docx' },
-  { cat: 'Spec', color: 'prd', title: 'Learner Dashboard', desc: 'Dashboard widgets, data sources, personalization', file: 'SkillUp Learner (LMS) Dashboard.docx' },
-  { cat: 'Architecture', color: 'arch', title: 'VILT Architecture', desc: 'Delivery modes, tagging flow, bubble-up logic, learner view', page: 'VILT-Architecture-Flowchart.html' },
-  { cat: 'Architecture', color: 'arch', title: 'Live Sessions Flow', desc: 'Scheduling, join mechanics, recording, attendance', page: 'live-sessions-flow-architecture.html' },
-  { cat: 'Architecture', color: 'arch', title: 'LMS Mind Map', desc: 'Feature space, modules, relationships, priorities', page: 'SkillUp-LMS-MindMap.html' },
-  { cat: 'Design System', color: 'ds', title: 'Tokens & Components', desc: 'Colors, typography, spacing, component patterns', page: 'index.html' },
+  // Problem Space
+  { cat: 'Meeting Summary', color: 'problem', title: 'VILT Discovery Meeting', desc: 'Core principle, key decisions, delivery mode tagging, calendar architecture', page: 'Meeting-Summary-20260410.html', date: 'Apr 10' },
+  { cat: 'Audit', color: 'problem', title: 'V4 UX Audit Report', desc: 'Norman/Nielsen heuristic evaluation, severity scores, 33 screens', page: 'V4-UX-Audit-Report.html', date: 'Apr 7' },
+  { cat: 'Discovery', color: 'problem', title: 'LMS Mind Map', desc: 'Feature space, modules, relationships, priorities', page: 'SkillUp-LMS-MindMap.html', date: 'Mar 27' },
+  { cat: 'PDF', color: 'problem', title: 'VILT Integration Design Doc', desc: 'VILT architecture and integration specifications', file: 'VILT-Integration-Design-Document.pdf', date: 'Apr 10' },
+  { cat: 'Transcript', color: 'problem', title: 'Meeting Transcript (Apr 10)', desc: 'VILT discovery meeting, delivery modes, tagging, calendar', file: 'LMS-Walkthrough-Questions-Transcript-20260410.txt', date: 'Apr 10' },
+  { cat: 'Data', color: 'problem', title: 'Programs/Courses List', desc: 'US program and course inventory', file: 'US Program-courses List (1).xlsx' },
+  // Solution Space
+  { cat: 'PRD', color: 'solution', title: 'Courses & Programs PRD', desc: 'Product requirements, content hierarchy, VILT, progress, assessments', page: 'PRD-Courses-Programs-Phase1.html', date: 'Apr 10' },
+  { cat: 'Architecture', color: 'solution', title: 'VILT Architecture', desc: 'Delivery modes, tagging flow, bubble-up logic, learner view', page: 'VILT-Architecture-Flowchart.html', date: 'Apr 10' },
+  { cat: 'Architecture', color: 'solution', title: 'Live Sessions Flow', desc: 'Scheduling, join mechanics, recording, attendance', page: 'live-sessions-flow-architecture.html', date: 'Apr 9' },
+  { cat: 'FRD', color: 'solution', title: 'Cohort Management', desc: 'Cohort scheduling, enrollment, capacity, instructor assignment', file: 'FRD-Cohort Management.docx', date: 'Apr 9' },
+  { cat: 'Spec', color: 'solution', title: 'Mobile App Requirements', desc: 'Native mobile, offline support, responsive behavior', file: 'Mobile App Requirements Phase-1.docx', date: 'Apr 9' },
+  { cat: 'Spec', color: 'solution', title: 'Learner Dashboard', desc: 'Dashboard widgets, data sources, personalization', file: 'SkillUp Learner (LMS) Dashboard.docx', date: 'Jan 29' },
+  // Build
+  { cat: 'Design System', color: 'build', title: 'Tokens & Components', desc: 'Colors, typography, spacing, component patterns', page: 'index.html', date: 'Apr 8' },
   { cat: 'Figma', color: 'figma', title: 'Diagrams (FigJam)', desc: 'LMS Learner Flow Diagram board', url: 'https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1' },
   { cat: 'Figma', color: 'figma', title: 'Design V4', desc: 'Learner Platform Experience Discovery wireframes', url: 'https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase' },
-  { cat: 'Audit', color: 'research', title: 'V4 UX Audit Report', desc: 'Norman/Nielsen heuristic evaluation, severity scores', page: 'V4-UX-Audit-Report.html' },
-  { cat: 'Summary', color: 'research', title: 'VILT Discovery Meeting Summary', desc: 'Core principle, key decisions, delivery mode tagging, calendar architecture', page: 'Meeting-Summary-20260410.html' },
-  { cat: 'Transcript', color: 'research', title: 'Meeting Transcript (Apr 10)', desc: 'VILT discovery meeting, delivery modes, tagging, calendar', file: 'LMS-Walkthrough-Questions-Transcript-20260410.txt' },
+  // Tools
+  { cat: 'Tool', color: 'tools', title: 'AI Prompt Engineering', desc: 'Prompt generator for AI workflows', url: 'https://fernando-drab.vercel.app/' },
 ];
 
 const searchInput = document.getElementById('search-input');
@@ -794,19 +857,17 @@ function renderSearchResults(query) {
     else action = `downloadFile('${d.file}')`;
     return `
     <div class="search-result" onclick="${action};closeSearch()">
-      <div class="search-result-cat" style="color:var(--tag-${d.color})">${d.cat}</div>
+      <div class="search-result-cat" style="color:var(--tag-${d.color})">${d.cat}${d.date ? ' <span style="opacity:0.6;font-weight:500">' + d.date + '</span>' : ''}</div>
       <div class="search-result-title">${hl(d.title, q)}</div>
       <div class="search-result-desc">${hl(d.desc, q)}</div>
     </div>`;
   }).join('');
 }
-
 function hl(text, q) {
   if (!q) return text;
   const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
   return text.replace(re, '<mark style="background:var(--accent-light);color:inherit;border-radius:2px;padding:0 1px">$1</mark>');
 }
-
 document.addEventListener('keydown', e => {
   if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
   if (e.key === 'Escape') closeSearch();
