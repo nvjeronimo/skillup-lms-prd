@@ -761,17 +761,36 @@ const homePage = document.getElementById('home-page');
 const iframe = document.getElementById('content-iframe');
 let currentPage = 'home';
 
-function navigateTo(page, title) {
+// Friendly slug map: filename -> short slug
+const slugMap = {
+  'PRD-Courses-Programs-Phase1.html': 'prd',
+  'VILT-Architecture-Flowchart.html': 'vilt-architecture',
+  'live-sessions-flow-architecture.html': 'live-sessions',
+  'SkillUp-LMS-MindMap.html': 'mind-map',
+  'index.html': 'design-system',
+  'V4-UX-Audit-Report.html': 'ux-audit',
+  'Meeting-Summary-20260410.html': 'meeting-summary',
+};
+// Reverse map: slug -> filename
+const fileMap = {};
+for (const [file, slug] of Object.entries(slugMap)) fileMap[slug] = file;
+
+function navigateTo(page, title, skipHistory) {
   document.querySelectorAll('.mega-nav-trigger').forEach(t => t.classList.remove('active'));
 
   if (page === 'home') {
     homePage.style.display = '';
     iframe.style.display = 'none';
     iframe.src = '';
+    if (!skipHistory) history.pushState({ page }, '', window.location.pathname);
+    document.title = 'SkillUp LMS Discovery Hub';
   } else {
     homePage.style.display = 'none';
     iframe.style.display = 'block';
     iframe.src = page;
+    const slug = slugMap[page] || page.replace('.html','');
+    if (!skipHistory) history.pushState({ page }, '', '?doc=' + slug);
+    document.title = (title || slug) + ' - Discovery Hub';
     const catMap = {
       'Meeting-Summary': 'nav-problem', 'UX-Audit': 'nav-problem', 'MindMap': 'nav-problem',
       'PRD': 'nav-solution', 'FRD': 'nav-solution', 'VILT': 'nav-solution', 'live': 'nav-solution',
@@ -787,6 +806,24 @@ function navigateTo(page, title) {
   }
   currentPage = page;
 }
+
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.page) {
+    navigateTo(e.state.page, '', true);
+  } else {
+    navigateTo('home', '', true);
+  }
+});
+
+// Load from URL on page load
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const doc = params.get('doc');
+  if (doc && fileMap[doc]) {
+    navigateTo(fileMap[doc], '', true);
+  }
+})();
 
 function downloadFile(filename) {
   const link = document.createElement('a');

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" fill="none">
+  <rect width="32" height="32" x="4" y="4" rx="6" fill="#4d7fff"/>
+  <path d="M14 24V16l6 4-6 4z" fill="#fff"/>
+  <path d="M20 24V16l6 4-6 4z" fill="#fff" opacity=".5"/>
+  <text x="44" y="28" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" fill="#ffffff" letter-spacing="-0.5">SkillUp</text>
+  <text x="146" y="28" font-family="Montserrat, sans-serif" font-weight="500" font-size="14" fill="#a0b4ff">LMS</text>
+</svg>
