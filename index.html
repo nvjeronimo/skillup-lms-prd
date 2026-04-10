@@ -3,3180 +3,917 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillUp LMS Design System</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,200..700;1,9..40,200..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>SkillUp LMS Discovery Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   SKILLUP LMS DESIGN SYSTEM - Living Document
-   Version: 1.4 | April 2026 | Light Mode
-   ============================================================ */
-
 :root {
-  /* --- Neutral Palette --- */
-  --neutral-950: #0D0D0D;
-  --neutral-900: #171717;
-  --neutral-800: #262626;
-  --neutral-700: #404040;
-  --neutral-600: #525252;
-  --neutral-500: #737373;
-  --neutral-400: #A3A3A3;
-  --neutral-300: #E5E5E5;
-  --neutral-200: #F5F5F5;
-  --neutral-100: #FAFAFA;
-  --neutral-50: #FFFFFF;
-
-  /* --- Brand --- */
-  --brand-dark: #080C28;
-  --brand-navy: #333A5A;
-
-  /* --- Accent --- */
-  --accent-blue: #005FFF;
-  --accent-blue-light: #3E89FF;
-  --accent-blue-alice: #E9F2FF;
-  --accent-blue-ice: #F7FBFF;
-  --accent-green: #20E070;
-  --accent-green-dark: #00746B;
-  --accent-red: #FF3742;
-  --accent-orange: #E45F18;
-
-  /* --- Tints --- */
-  --tint-purple: #772CBB;
-  --tint-magenta: #931FAA;
-  --tint-plum: #943170;
-  --tint-crimson: #A9202A;
-  --tint-burnt: #B33600;
-
-  /* --- White Opacity --- */
-  --white-5: rgba(255,255,255,0.05);
-  --white-10: rgba(255,255,255,0.1);
-  --white-20: rgba(255,255,255,0.2);
-  --white-30: rgba(255,255,255,0.3);
-  --white-50: rgba(255,255,255,0.5);
-  --white-70: rgba(255,255,255,0.7);
-  --white-80: rgba(255,255,255,0.8);
-  --white-90: rgba(255,255,255,0.9);
-
-  /* --- Black Opacity --- */
-  --black-5: rgba(0,0,0,0.05);
-  --black-10: rgba(0,0,0,0.1);
-  --black-15: rgba(0,0,0,0.15);
-  --black-20: rgba(0,0,0,0.2);
-  --black-50: rgba(0,0,0,0.5);
-  --black-60: rgba(0,0,0,0.6);
-
-  /* --- Extended Accent Palette (from authenticated pages) --- */
-  --accent-green-lightning: #B0FB50;
-  --accent-green-lightning-text: #CDFF92;
-  --accent-blue-link: #026AFA;
-  --accent-blue-border: #71AEFF;
-  --accent-highlight: #FBF4DD;
-  --gradient-start: #FCFCFC;
-  --gradient-end: #F7F7F7;
-
-  /* --- Content Accent Palette (course category tints) --- */
-  --cat-green: #A7D067;
-  --cat-green-light: #F7FCEE;
-  --cat-blue: #7BB5DD;
-  --cat-blue-light: #F0F8FD;
-  --cat-gold: #E8C073;
-  --cat-gold-light: #FCF8EF;
-  --cat-coral: #E18484;
-  --cat-coral-light: #FCF2F2;
-  --cat-indigo: #8C93E5;
-
-  /* --- Spacing --- */
-  --space-xxs: 4px;
-  --space-xs: 8px;
-  --space-sm: 16px;
-  --space-md: 24px;
-  --space-lg: 32px;
-  --space-xl: 40px;
-  --space-xxl: 64px;
-  --space-xxxl: 72px;
-
-  /* --- Radius --- */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-default: 10px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-full: 9999px;
-
-  /* --- Shadows --- */
-  --shadow-sm: 0px 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0px 5px 14px rgba(0,0,0,0.05), 0px 2px 6px rgba(0,0,0,0.05);
-  --shadow-lg: 0px 24px 40px rgba(0,0,0,0.03), 0px 8px 24px rgba(0,0,0,0.05);
-
-  /* --- Borders --- */
-  --border-default: 1px solid rgba(0,0,0,0.1);
-  --border-strong: 1px solid #171717;
-  --border-subtle: 1px solid #E5E5E5;
-  --border-focus: 2px solid #3E89FF;
-  --border-dark: 1px solid rgba(255,255,255,0.2);
-
-  /* --- Layout --- */
-  --max-content: 1152px;
-  --max-card: 808px;
-  --max-sidebar: 384px;
-
-  /* --- Fonts --- */
-  --font-serif: 'DM Serif Display', Georgia, serif;
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* --- Font Weights (canonical) --- */
-  --weight-light: 200;
-  --weight-regular: 300;
-  --weight-normal: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-  --weight-bold: 700;
-  --weight-black: 900;
+  --bg: #ffffff;
+  --bg-card: #f4f5f7;
+  --bg-card-hover: #eef0f4;
+  --bg-active: #edf0ff;
+  --bg-dropdown: #ffffff;
+  --text-primary: #111218;
+  --text-secondary: #5a5d65;
+  --text-tertiary: #8a8d95;
+  --text-nav: #5a5d65;
+  --text-nav-active: #0338b8;
+  --border: #e2e4e8;
+  --border-light: #eef0f2;
+  --accent: #0338b8;
+  --accent-light: #d9e0ff;
+  --accent-bg: #f0f2ff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --tag-problem: #059669;
+  --tag-solution: #0338b8;
+  --tag-build: #0891b2;
+  --tag-figma: #a259ff;
+  --tag-tools: #d97706;
+  --tag-doc: #6b7280;
+  --radius: 10px;
+  --topbar-height: 52px;
 }
-
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--neutral-900);
-  background: var(--neutral-50);
-}
-
-::selection {
-  background: var(--accent-blue);
-  color: white;
-}
-
-/* ============================================================
-   LAYOUT
-   ============================================================ */
-
-.ds-container {
-  max-width: var(--max-content);
-  margin: 0 auto;
-  padding: 0 var(--space-xl);
-}
-
-/* ============================================================
-   HERO / COVER
-   ============================================================ */
-
-.ds-hero {
-  background: var(--brand-dark);
-  padding: 80px 0 64px;
-  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   overflow: hidden;
-}
-
-.ds-hero::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  right: -100px;
-  width: 600px;
-  height: 600px;
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.ds-hero::after {
-  content: '';
-  position: absolute;
-  bottom: -300px;
-  right: 100px;
-  width: 800px;
-  height: 800px;
-  border: 1px solid rgba(255,255,255,0.03);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.ds-hero__badge {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  padding: 6px 16px;
-  border-radius: var(--radius-full);
-  background: var(--white-10);
-  color: var(--white-50);
-  margin-bottom: var(--space-md);
-}
-
-.ds-hero__title {
-  font-family: var(--font-serif);
-  font-size: clamp(40px, 6vw, 64px);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: white;
-  margin-bottom: var(--space-sm);
-}
-
-.ds-hero__sub {
-  font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--white-50);
-  margin-bottom: var(--space-xl);
-}
-
-.ds-hero__stats {
-  display: flex;
-  gap: var(--space-xl);
-  flex-wrap: wrap;
-}
-
-.ds-stat {
-  text-align: left;
-}
-
-.ds-stat__num {
-  font-family: var(--font-ui);
-  font-size: 28px;
-  font-weight: 600;
-  color: white;
-  display: block;
-  line-height: 1.2;
-}
-
-.ds-stat__label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--white-30);
-}
-
-/* ============================================================
-   SIDEBAR NAV
-   ============================================================ */
-
-.ds-layout {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: var(--space-xxl);
-  padding-top: var(--space-xxl);
-  padding-bottom: 120px;
-}
-
-.ds-sidebar {
-  position: sticky;
-  top: var(--space-lg);
-  align-self: start;
-  max-height: calc(100vh - 64px);
-  overflow-y: auto;
-}
-
-.ds-sidebar__title {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--neutral-400);
-  margin-bottom: var(--space-sm);
-}
-
-.ds-sidebar a {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--neutral-500);
-  text-decoration: none;
-  padding: 6px 0;
-  transition: color 0.15s;
-  border-left: 2px solid transparent;
-  padding-left: 12px;
-  margin-left: -12px;
-}
-
-.ds-sidebar a:hover,
-.ds-sidebar a.active {
-  color: var(--neutral-900);
-  border-left-color: var(--neutral-900);
-  font-weight: 500;
-}
-
-.ds-sidebar__group {
-  margin-bottom: var(--space-md);
-}
-
-/* ============================================================
-   SECTION
-   ============================================================ */
-
-.ds-section {
-  margin-bottom: var(--space-xxxl);
-  scroll-margin-top: var(--space-lg);
-}
-
-.ds-section__label {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--neutral-400);
-  margin-bottom: var(--space-xs);
-}
-
-.ds-section__title {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--neutral-900);
-  margin-bottom: var(--space-xs);
-}
-
-.ds-section__desc {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--neutral-600);
-  margin-bottom: var(--space-lg);
-  max-width: 640px;
-}
-
-.ds-divider {
-  border: none;
-  border-top: var(--border-subtle);
-  margin: var(--space-xl) 0;
-}
-
-/* ============================================================
-   COLOR SWATCHES
-   ============================================================ */
-
-.ds-color-group {
-  margin-bottom: var(--space-lg);
-}
-
-.ds-color-group__label {
-  font-family: var(--font-ui);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--neutral-700);
-  margin-bottom: var(--space-sm);
-}
-
-.ds-swatches {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.ds-swatch {
-  width: 80px;
-  cursor: pointer;
-  transition: transform 0.15s;
-}
-
-.ds-swatch:hover {
-  transform: translateY(-2px);
-}
-
-.ds-swatch__color {
-  width: 80px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  margin-bottom: 6px;
-  position: relative;
-}
-
-.ds-swatch__color.light-border {
-  box-shadow: inset 0 0 0 1px var(--neutral-300);
-}
-
-.ds-swatch__name {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--neutral-600);
-  line-height: 1.3;
-}
-
-.ds-swatch__hex {
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 400;
-  color: var(--neutral-400);
-  font-variant-numeric: tabular-nums;
-}
-
-/* Copy feedback */
-.ds-swatch__color::after {
-  content: 'Copied';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  opacity: 0;
-  transition: opacity 0.2s;
-  pointer-events: none;
-}
-
-.ds-swatch__color.copied::after {
-  opacity: 1;
-}
-
-/* Dark swatch row */
-.ds-swatches--dark {
-  background: var(--brand-dark);
-  padding: 16px;
-  border-radius: var(--radius-lg);
-}
-
-.ds-swatches--dark .ds-swatch__name,
-.ds-swatches--dark .ds-swatch__hex {
-  color: var(--white-50);
-}
-
-/* ============================================================
-   TYPOGRAPHY
-   ============================================================ */
-
-.ds-type-sample {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  align-items: baseline;
-  padding: 16px 0;
-  border-bottom: var(--border-subtle);
-}
-
-.ds-type-sample:last-child {
-  border-bottom: none;
-}
-
-.ds-type-meta {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  color: var(--neutral-500);
-  line-height: 1.4;
-}
-
-.ds-type-meta strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--neutral-700);
-  margin-bottom: 2px;
-}
-
-.ds-type-specimen {
-  color: var(--neutral-900);
-}
-
-/* Token badge */
-.ds-token {
-  display: inline-block;
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 11px;
-  background: var(--neutral-200);
-  color: var(--neutral-700);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  vertical-align: middle;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.ds-token:hover {
-  background: var(--neutral-300);
-}
-
-/* ============================================================
-   SPACING
-   ============================================================ */
-
-.ds-space-row {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 8px 0;
-}
-
-.ds-space-bar {
-  height: 24px;
-  background: var(--accent-blue);
-  border-radius: 3px;
-  opacity: 0.15;
-  transition: opacity 0.15s;
-}
-
-.ds-space-row:hover .ds-space-bar {
-  opacity: 0.35;
-}
-
-.ds-space-label {
-  font-family: var(--font-ui);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--neutral-700);
-  min-width: 60px;
-}
-
-.ds-space-value {
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
-  color: var(--neutral-500);
-  min-width: 40px;
-}
-
-/* ============================================================
-   RADIUS
-   ============================================================ */
-
-.ds-radius-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-}
-
-.ds-radius-item {
-  text-align: center;
-}
-
-.ds-radius-box {
-  width: 72px;
-  height: 72px;
-  background: var(--neutral-200);
-  border: var(--border-subtle);
-  margin-bottom: 8px;
-}
-
-.ds-radius-label {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--neutral-700);
-}
-
-.ds-radius-val {
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 11px;
-  color: var(--neutral-400);
-}
-
-/* ============================================================
-   ELEVATION
-   ============================================================ */
-
-.ds-shadow-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
-}
-
-.ds-shadow-item {
-  text-align: center;
-}
-
-.ds-shadow-box {
-  width: 120px;
-  height: 80px;
-  background: white;
-  border-radius: var(--radius-lg);
-  margin-bottom: 12px;
-}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-
-.ds-btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  align-items: center;
-  margin-bottom: var(--space-md);
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none;
-  outline: none;
-  text-decoration: none;
-}
-
-.btn--primary {
-  height: 48px;
-  padding: 0 24px;
-  background: var(--neutral-950);
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: var(--radius-lg);
-}
-.btn--primary:hover { background: var(--neutral-800); }
-
-.btn--secondary {
-  height: 44px;
-  padding: 0 20px;
-  background: var(--black-5);
-  color: var(--neutral-900);
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: var(--radius-default);
-  border: var(--border-default);
-}
-.btn--secondary:hover { background: var(--black-10); }
-
-.btn--ghost {
-  height: 44px;
-  padding: 0 16px;
-  background: transparent;
-  color: var(--neutral-900);
-  font-size: 16px;
-  font-weight: 300;
-  border-radius: 0;
-}
-.btn--ghost:hover { color: var(--neutral-600); }
-
-.btn--filter-active {
-  height: 36px;
-  padding: 0 16px;
-  background: var(--neutral-900);
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: var(--radius-full);
-}
-
-.btn--filter-inactive {
-  height: 36px;
-  padding: 0 16px;
-  background: white;
-  color: var(--neutral-900);
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: var(--radius-full);
-  border: var(--border-subtle);
-}
-.btn--filter-inactive:hover { background: var(--neutral-200); }
-
-.btn--icon {
-  width: 48px;
-  height: 48px;
-  background: var(--neutral-950);
-  color: white;
-  font-size: 18px;
-  border-radius: var(--radius-lg);
-}
-
-/* ============================================================
-   CARDS
-   ============================================================ */
-
-.ds-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.card {
-  background: white;
-  border: var(--border-subtle);
-  padding: 20px 24px;
-  transition: box-shadow 0.2s;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.card__title {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--neutral-900);
-  margin-bottom: var(--space-sm);
-}
-
-.card__instructor {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.card__avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  background: var(--neutral-300);
-}
-
-.card__name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-600);
-}
-
-.card__rank {
-  font-family: var(--font-serif);
-  font-size: 48px;
-  font-weight: 400;
-  color: var(--neutral-300);
-  margin-left: auto;
-  line-height: 1;
-}
-
-/* Enrollment Card */
-.card--enrollment {
-  border-radius: var(--radius-lg);
-  border: var(--border-default);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-md);
-  max-width: 384px;
-}
-
-.card--enrollment .card__price {
-  font-family: var(--font-ui);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--neutral-900);
-  margin-bottom: var(--space-md);
-}
-
-.card--enrollment .card__price span {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--neutral-500);
-}
-
-.card--enrollment .card__label {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.48px;
-  text-transform: uppercase;
-  color: var(--neutral-600);
-  margin-bottom: var(--space-sm);
-}
-
-/* Category card on dark */
-.card--category {
-  background: var(--white-5);
-  border: var(--border-dark);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.card--category .card__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  background: rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
+  height: 100vh;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Topbar ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbar-height); z-index: 100;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 24px; gap: 0;
+}
+.topbar-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 14px; color: var(--text-primary);
+  white-space: nowrap; letter-spacing: -0.3px; cursor: pointer;
+  padding-right: 20px; border-right: 1px solid var(--border); margin-right: 4px;
+}
+.topbar-brand:hover { color: var(--accent); }
+.topbar-brand svg { flex-shrink: 0; }
+
+/* ── Megamenu Nav ── */
+.mega-nav {
+  display: flex; align-items: center; gap: 0; height: 100%;
+}
+.mega-nav-item {
+  position: relative; height: 100%; display: flex; align-items: center;
+}
+.mega-nav-trigger {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0 14px; height: 100%;
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--text-nav); background: none; border: none;
+  cursor: pointer; transition: color 0.12s; white-space: nowrap;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.mega-nav-trigger:hover,
+.mega-nav-item:hover .mega-nav-trigger,
+.mega-nav-trigger.active {
+  color: var(--text-nav-active);
+  border-bottom-color: var(--accent);
+}
+.mega-nav-trigger svg { opacity: 0.4; transition: transform 0.2s; }
+.mega-nav-item:hover .mega-nav-trigger svg { opacity: 0.7; transform: rotate(180deg); }
+
+/* Dropdown */
+.mega-dropdown {
+  position: absolute; top: 100%; left: 0;
+  min-width: 280px; background: var(--bg-dropdown);
+  border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--shadow-lg); padding: 8px;
+  display: none; z-index: 200;
+  animation: dropIn 0.15s ease;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mega-nav-item:hover .mega-dropdown { display: block; }
+.mega-dropdown-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  cursor: pointer; transition: background 0.1s;
+  text-decoration: none; color: inherit;
+}
+.mega-dropdown-item:hover { background: var(--bg-card); }
+.mega-dropdown-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
+.mega-dropdown-icon.problem { background: #d1f5e8; color: var(--tag-problem); }
+.mega-dropdown-icon.solution { background: #dde4ff; color: var(--tag-solution); }
+.mega-dropdown-icon.build { background: #d5f0f7; color: var(--tag-build); }
+.mega-dropdown-icon.figma { background: #f0e5ff; color: var(--tag-figma); }
+.mega-dropdown-icon.tools { background: #fef3c7; color: var(--tag-tools); }
+.mega-dropdown-icon.doc { background: #e5e7eb; color: var(--tag-doc); }
+.mega-dropdown-text { flex: 1; min-width: 0; }
+.mega-dropdown-title {
+  font-size: 12.5px; font-weight: 600; color: var(--text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mega-dropdown-desc {
+  font-size: 10.5px; color: var(--text-tertiary); margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mega-dropdown-badge {
+  font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text-tertiary);
+  text-transform: uppercase; flex-shrink: 0;
+}
+.mega-dropdown-divider {
+  height: 1px; background: var(--border-light); margin: 4px 8px;
+}
+.mega-dropdown-label {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text-tertiary); padding: 8px 12px 4px;
+}
 
-.card--category .card__title {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 500;
-  color: white;
+.topbar-spacer { flex: 1; }
+.topbar-search {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  cursor: pointer; transition: all 0.15s; min-width: 180px;
+}
+.topbar-search:hover { border-color: var(--accent); }
+.topbar-search svg { color: var(--text-tertiary); flex-shrink: 0; }
+.topbar-search span { color: var(--text-tertiary); font-size: 11px; font-family: 'Montserrat', sans-serif; }
+.topbar-search kbd {
+  font-family: 'Montserrat', sans-serif; font-size: 10px;
+  padding: 1px 5px; border: 1px solid var(--border); border-radius: 4px;
+  color: var(--text-tertiary); background: var(--bg); margin-left: auto;
+}
+
+/* ── Search Overlay ── */
+.search-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 300;
+  display: none; align-items: flex-start; justify-content: center; padding-top: 100px;
+  backdrop-filter: blur(2px);
+}
+.search-overlay.active { display: flex; }
+.search-modal {
+  width: 520px; max-height: 440px; background: var(--bg); border-radius: 14px;
+  box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.search-input-wrap {
+  display: flex; align-items: center; padding: 14px 16px; gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.search-input-wrap svg { color: var(--text-tertiary); flex-shrink: 0; }
+.search-input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-primary);
+}
+.search-input::placeholder { color: var(--text-tertiary); }
+.search-results { overflow-y: auto; flex: 1; padding: 8px; }
+.search-result {
+  padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.1s;
+}
+.search-result:hover { background: var(--accent-bg); }
+.search-result-cat {
+  font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
   margin-bottom: 2px;
 }
-
-.card--category .card__sub {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--white-50);
-}
-
-.ds-dark-panel {
-  background: var(--brand-dark);
-  padding: var(--space-lg);
-  border-radius: var(--radius-xl);
-  margin-bottom: var(--space-lg);
-}
-
-/* ============================================================
-   INPUTS
-   ============================================================ */
-
-.ds-input-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  align-items: flex-start;
-  margin-bottom: var(--space-lg);
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.input-group__label {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--neutral-600);
-}
-
-.input {
-  font-family: var(--font-sans);
-  height: 44px;
-  padding: 0 16px;
-  border: var(--border-subtle);
-  border-radius: var(--radius-default);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--neutral-900);
-  background: white;
-  outline: none;
-  transition: border-color 0.15s;
-  width: 280px;
-}
-
-.input::placeholder { color: var(--neutral-500); }
-.input:focus { border: var(--border-focus); }
-
-.input--search {
-  border-radius: var(--radius-full);
-  background: var(--white-10);
-  border: none;
-  color: white;
-  font-size: 14px;
-  width: 260px;
-}
-.input--search::placeholder { color: var(--white-50); }
-
-/* ============================================================
-   BADGES
-   ============================================================ */
-
-.ds-badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  align-items: center;
-  margin-bottom: var(--space-md);
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.48px;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-}
-
-.badge--on-demand {
-  color: var(--accent-green-dark);
-  background: rgba(32,224,112,0.08);
-}
-
-.badge--live {
-  color: var(--accent-orange);
-  background: rgba(228,95,24,0.08);
-}
-
-.badge--live::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-orange);
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.badge--category {
-  color: white;
-  border-radius: var(--radius-full);
-  padding: 4px 12px;
-}
-
-/* ============================================================
-   BORDERS & TOKENS TABLE
-   ============================================================ */
-
-.ds-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  margin-bottom: var(--space-lg);
-}
-
-.ds-table th {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--neutral-400);
-  text-align: left;
-  padding: 8px 12px;
-  border-bottom: 2px solid var(--neutral-300);
-}
-
-.ds-table td {
-  padding: 10px 12px;
-  border-bottom: var(--border-subtle);
-  vertical-align: middle;
-}
-
-.ds-table code {
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
-  background: var(--neutral-200);
-  padding: 2px 6px;
-  border-radius: 3px;
-  color: var(--neutral-700);
-}
-
-.ds-table .border-preview {
-  width: 80px;
-  height: 1px;
-}
-
-/* ============================================================
-   LAYOUT PATTERNS
-   ============================================================ */
-
-.ds-layout-diagram {
-  background: var(--neutral-200);
-  border-radius: var(--radius-lg);
-  padding: var(--space-md);
-  margin-bottom: var(--space-md);
-  font-family: var(--font-ui);
-  font-size: 12px;
-  color: var(--neutral-600);
-}
-
-.ds-grid-demo {
-  display: grid;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
-}
-
-.ds-grid-demo__item {
-  background: var(--accent-blue);
-  opacity: 0.1;
-  border-radius: var(--radius-md);
-  height: 48px;
-}
-
-/* ============================================================
-   INTERACTION STATES (v1.4 - live interactive demos)
-   ============================================================ */
-
-.ds-state-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-sm);
-}
-
-.ds-state-card {
-  padding: var(--space-sm);
-  border-radius: var(--radius-md);
-  background: var(--neutral-100);
-  text-align: center;
-}
-
-.ds-state-card__label {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--neutral-700);
-  margin-bottom: 12px;
-}
-
-.ds-state-card__desc {
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--neutral-500);
-  margin-top: 10px;
-  font-family: 'SF Mono', 'Fira Code', monospace;
-}
-
-/* ============================================================
-   BUTTON STATES (v1.4)
-   ============================================================ */
-
-.btn--primary:focus-visible {
-  outline: 2px solid var(--accent-blue-light);
-  outline-offset: 2px;
-}
-
-.btn--primary:active {
-  transform: scale(0.97);
-}
-
-.btn--primary.btn--disabled,
-.btn--secondary.btn--disabled,
-.btn--ghost.btn--disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.btn--loading {
-  position: relative;
-  color: transparent !important;
-  pointer-events: none;
-}
-
-.btn--loading::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: btn-spin 0.6s linear infinite;
-}
-
-@keyframes btn-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ============================================================
-   INPUT STATES (v1.4)
-   ============================================================ */
-
-.input--error {
-  border: 2px solid var(--accent-red) !important;
-}
-
-.input--success {
-  border: 2px solid var(--accent-green) !important;
-}
-
-.input--disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  background: var(--neutral-200);
-}
-
-.input-hint {
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 4px;
-}
-
-.input-hint--error { color: var(--accent-red); }
-.input-hint--success { color: var(--accent-green-dark); }
-
-/* ============================================================
-   CODE BLOCKS (v1.4)
-   ============================================================ */
-
-.ds-code-block {
-  position: relative;
-  background: var(--neutral-900);
-  border-radius: var(--radius-md);
-  padding: 16px 20px;
-  margin: 16px 0 24px;
-  overflow-x: auto;
-}
-
-.ds-code-block pre {
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--neutral-300);
-  white-space: pre;
-  margin: 0;
-}
-
-.ds-code-block .code-keyword { color: var(--accent-blue-light); }
-.ds-code-block .code-value { color: var(--accent-green-lightning); }
-.ds-code-block .code-prop { color: var(--white-70); }
-.ds-code-block .code-comment { color: var(--neutral-600); font-style: italic; }
-
-.ds-code-copy {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: var(--white-10);
-  border: none;
-  color: var(--white-50);
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-
-.ds-code-copy:hover { background: var(--white-20); color: white; }
-.ds-code-copy.copied { background: var(--accent-green-dark); color: white; }
-
-/* ============================================================
-   MOTION PLAYGROUND (v1.4)
-   ============================================================ */
-
-.ds-motion-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-md);
-}
-
-.ds-motion-card {
-  padding: 20px;
-  border: var(--border-subtle);
-  border-radius: var(--radius-lg);
-  text-align: center;
-  cursor: pointer;
-}
-
-.ds-motion-box {
-  width: 48px;
-  height: 48px;
-  background: var(--neutral-950);
-  border-radius: var(--radius-md);
-  margin: 0 auto 12px;
-}
-
-.ds-motion-card:hover .ds-motion-box--hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.ds-motion-box--hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.ds-motion-box--ease-out {
-  transition: transform 0.3s ease-out, border-radius 0.3s ease-out;
-}
-
-.ds-motion-card:hover .ds-motion-box--ease-out {
-  transform: scale(1.15);
-  border-radius: 50%;
-}
-
-.ds-motion-box--spring {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.ds-motion-card:hover .ds-motion-box--spring {
-  transform: rotate(45deg) scale(1.1);
-}
-
-.ds-motion-box--fade {
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-
-.ds-motion-card:hover .ds-motion-box--fade {
-  opacity: 0.2;
-}
-
-/* ============================================================
-   TOKEN COPY (v1.4 - clickable tokens everywhere)
-   ============================================================ */
-
-.ds-token-copy {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
-  background: var(--neutral-200);
-  color: var(--neutral-700);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: background 0.15s;
-  position: relative;
-  border: none;
-}
-
-.ds-token-copy:hover { background: var(--neutral-300); }
-
-.ds-token-copy.copied {
-  background: var(--accent-green-dark);
-  color: white;
-}
-
-/* ============================================================
-   COLLAPSIBLE SPEC TABLES (v1.4)
-   ============================================================ */
-
-.ds-spec-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--neutral-500);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px 0;
-  transition: color 0.15s;
-}
-
-.ds-spec-toggle:hover { color: var(--neutral-700); }
-
-.ds-spec-toggle::before {
-  content: '\25B6';
-  font-size: 8px;
-  transition: transform 0.2s;
-}
-
-.ds-spec-toggle.open::before {
-  transform: rotate(90deg);
-}
-
-.ds-spec-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.ds-spec-content.open {
-  max-height: 600px;
-}
-
-/* ============================================================
-   COURSE DETAIL PREVIEW (v1.4)
-   ============================================================ */
-
-.ds-course-detail-preview {
-  background: white;
-  border: var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.ds-cdp-breadcrumb {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--neutral-500);
-  padding: 16px 24px 0;
-}
-
-.ds-cdp-breadcrumb a {
-  color: var(--accent-blue-link);
-  text-decoration: none;
-}
-
-.ds-cdp-body {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 32px;
-  padding: 24px;
-}
-
-.ds-cdp-title {
-  font-family: var(--font-serif);
-  font-size: 28px;
-  font-weight: 300;
-  line-height: 1.2;
-  color: var(--brand-dark);
-  margin-bottom: 8px;
-}
-
-.ds-cdp-subtitle {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--neutral-600);
-  margin-bottom: 16px;
-}
-
-.ds-cdp-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 1px solid var(--neutral-300);
-  margin-top: 16px;
-}
-
-.ds-cdp-tabs span {
-  padding: 10px 14px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-500);
-  border-bottom: 2px solid transparent;
-}
-
-.ds-cdp-tabs span:first-child {
-  color: var(--neutral-900);
-  border-bottom-color: var(--neutral-900);
-  font-weight: 600;
-}
-
-.ds-cdp-enroll {
-  border: var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-lg);
-  height: fit-content;
-  position: sticky;
-  top: 16px;
-}
-
-.ds-cdp-price {
-  font-family: var(--font-ui);
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--neutral-900);
-  margin-bottom: 16px;
-}
-
-.ds-cdp-price small {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--neutral-500);
-}
-
-/* ============================================================
-   DASHBOARD TABS (authenticated /me page)
-   ============================================================ */
-
-.ds-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 1px solid var(--neutral-300);
-  margin-bottom: 24px;
-}
-
-.ds-tab {
-  display: inline-block;
-  padding: 12px 16px;
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--neutral-500);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.ds-tab:hover { color: var(--neutral-900); }
-
-.ds-tab.active {
-  color: var(--neutral-900);
-  border-bottom-color: var(--neutral-900);
-  font-weight: 600;
-}
-
-/* ============================================================
-   LIGHTNING LESSON CARD
-   ============================================================ */
-
-.ll-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px;
-  border: var(--border-default);
-  border-radius: var(--radius-xl);
-  background: white;
-  max-width: 340px;
-}
-
-.ll-card__accent {
-  width: 24px;
-  height: 6px;
-  background: var(--accent-green-lightning);
-  border-radius: 3px;
-}
-
-.ll-card__title {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 22px;
-  color: var(--neutral-900);
-}
-
-.ll-card__meta {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--neutral-500);
-}
-
-.ll-card__instructor {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.ll-card__avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--neutral-300);
-}
-
-.ll-card__name {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--neutral-700);
-}
-
-.ll-card__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  height: 36px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-900);
-  background: white;
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.ll-card__cta:hover { background: var(--neutral-200); }
-
-/* ============================================================
-   COURSE LISTING CARD (Grid variant from /courses)
-   ============================================================ */
-
-.clc {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 16px;
-  padding: 16px;
-  border: var(--border-default);
-  border-radius: var(--radius-xl);
-  background: white;
-  max-width: 500px;
-  transition: box-shadow 0.2s;
-}
-
-.clc:hover { box-shadow: var(--shadow-md); }
-
-.clc__icon {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-md);
-  background: var(--neutral-200);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-
-.clc__title {
-  font-family: var(--font-serif);
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 24px;
-  color: var(--brand-dark);
-}
-
-.clc__rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--neutral-700);
-  margin-top: 6px;
-}
-
-.clc__star { color: #F59E0B; }
-
-.clc__meta {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--neutral-600);
-  margin-top: 4px;
-}
-
-.clc__price {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-900);
-}
-
-/* ============================================================
-   CATEGORY NAV CARD (Dark, from /courses hero)
-   ============================================================ */
-
-.cat-nav-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 24px;
-  border-radius: var(--radius-lg);
-  background: var(--brand-dark);
-  border: 2px solid var(--accent-blue-border);
-  color: white;
-  cursor: pointer;
-  transition: border-color 0.15s;
-}
-
-.cat-nav-card:hover { border-color: var(--accent-blue-light); }
-
-.cat-nav-card__label-sm {
-  font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 300;
-  color: white;
-}
-
-.cat-nav-card__label-lg {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 300;
-  color: white;
-}
-
-/* ============================================================
-   EMPTY STATE
-   ============================================================ */
-
-.ds-empty-state {
-  text-align: center;
-  padding: 48px 24px;
-  border: 1px dashed var(--neutral-300);
-  border-radius: var(--radius-xl);
-  background: var(--neutral-100);
-}
-
-.ds-empty-state__text {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--neutral-500);
-  margin-bottom: 16px;
-}
-
-.ds-empty-state__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 20px;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--accent-blue);
-  background: var(--accent-blue-alice);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.ds-empty-state__cta:hover { background: #D9E8FF; }
-
-/* ============================================================
-   NAVBAR
-   ============================================================ */
-
-.ds-navbar-demo {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 0 24px;
-  height: 64px;
-  background: white;
-  border: var(--border-default);
-  border-radius: var(--radius-lg);
-}
-
-.ds-navbar-demo__logo {
-  width: 28px;
-  height: 28px;
-  background: var(--brand-dark);
-  border-radius: 6px;
-}
-
-.ds-navbar-demo__search {
-  flex: 1;
-  max-width: 280px;
-  height: 36px;
-  padding: 0 12px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--neutral-700);
-  background: var(--neutral-100);
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--radius-full);
-}
-
-.ds-navbar-demo__link {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-900);
-  text-decoration: none;
-}
-
-.ds-navbar-demo__avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--neutral-300);
-  margin-left: auto;
-}
-
-/* ============================================================
-   ERROR / 404 STATE
-   ============================================================ */
-
-.ds-error-state {
-  text-align: center;
-  padding: 64px 24px;
-}
-
-.ds-error-state__emoji {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.ds-error-state__title {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 300;
-  color: var(--neutral-900);
-  margin-bottom: 8px;
-}
-
-.ds-error-state__text {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--neutral-500);
-  margin-bottom: 24px;
-}
-
-/* ============================================================
-   HERO BANNER (Lightning Lessons dark header)
-   ============================================================ */
-
-.ds-ll-hero {
-  background: var(--brand-dark);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.ds-ll-hero__badge {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 28px;
-  color: white;
-}
-
-.ds-ll-hero__title {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 300;
-  line-height: 36px;
-  color: var(--neutral-900);
-  margin-top: 16px;
-}
-
-.ds-ll-hero__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 20px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-100);
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: var(--radius-md);
-  cursor: pointer;
+.search-result-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.search-result-desc { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+.search-empty {
+  padding: 32px; text-align: center; color: var(--text-tertiary); font-size: 13px;
+}
+
+/* ── Content Area ── */
+.content-area {
+  position: fixed;
+  top: var(--topbar-height);
+  left: 0; right: 0; bottom: 0;
+  background: var(--bg);
+}
+.content-iframe {
+  width: 100%; height: 100%; border: none; display: block;
+}
+
+/* ── Home Page ── */
+.home-page {
+  width: 100%; height: 100%; overflow-y: auto;
+  padding: 48px 64px 80px; max-width: 1200px; margin: 0 auto;
+}
+.home-header { margin-bottom: 40px; }
+.home-title {
+  font-size: 32px; font-weight: 800; letter-spacing: -1px;
+  color: var(--text-primary); margin-bottom: 10px; line-height: 1.15;
+}
+.home-subtitle {
+  font-size: 14px; color: var(--text-secondary); font-weight: 500;
+  max-width: 600px; line-height: 1.7;
+}
+.home-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px; margin: 28px 0 44px;
+}
+.home-stat {
+  background: var(--bg-card); border-radius: var(--radius); padding: 16px 18px;
+  border: 1px solid var(--border);
+}
+.home-stat-value {
+  font-size: 26px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+.home-stat-label {
+  font-size: 10px; color: var(--text-tertiary); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px;
+}
+.home-section-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 14px;
   margin-top: 8px;
-  width: fit-content;
 }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-
-.ds-footer-demo {
-  background: var(--brand-dark);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.ds-footer-demo__heading {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 12px;
-}
-
-.ds-footer-demo__link {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--white-70);
-  text-decoration: none;
-  margin-bottom: 8px;
-}
-
-/* ============================================================
-   CHANGELOG
-   ============================================================ */
-
-.ds-changelog-item {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: var(--space-sm);
-  padding: var(--space-sm) 0;
-  border-bottom: var(--border-subtle);
-}
-
-.ds-changelog-item:last-child { border-bottom: none; }
-
-.ds-changelog-date {
-  font-family: var(--font-ui);
-  font-size: 12px;
+.home-section-desc {
+  font-size: 12px; color: var(--text-secondary); margin: -8px 0 16px;
   font-weight: 500;
-  color: var(--neutral-500);
 }
-
-.ds-changelog-text {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--neutral-700);
+.home-cards {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px; margin-bottom: 14px;
 }
-
-.ds-changelog-tag {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
+.home-card {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: 20px 22px; border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.15s; position: relative; overflow: hidden;
+}
+.home-card:hover {
+  border-color: var(--accent); background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md); transform: translateY(-1px);
+}
+.home-card-cat {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.8px; margin-bottom: 6px; display: inline-block;
+  padding: 2px 8px; border-radius: 4px;
+}
+.home-card-cat[data-cat="problem"] { background: #d1f5e8; color: var(--tag-problem); }
+.home-card-cat[data-cat="solution"] { background: #dde4ff; color: var(--tag-solution); }
+.home-card-cat[data-cat="build"] { background: #d5f0f7; color: var(--tag-build); }
+.home-card-cat[data-cat="figma"] { background: #f0e5ff; color: var(--tag-figma); }
+.home-card-cat[data-cat="tools"] { background: #fef3c7; color: var(--tag-tools); }
+.home-card-cat[data-cat="doc"] { background: #e5e7eb; color: var(--tag-doc); }
+.home-card-title {
+  font-size: 15px; font-weight: 700; color: var(--text-primary);
+  margin-bottom: 4px; letter-spacing: -0.2px;
+}
+.home-card-desc {
+  font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+}
+.home-card-meta {
+  display: flex; align-items: center; gap: 12px; margin-top: 12px;
+  font-size: 10px; color: var(--text-tertiary);
+}
+.home-card-meta span { display: flex; align-items: center; gap: 3px; }
+.home-card-ext {
+  position: absolute; top: 18px; right: 18px;
+  font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text-tertiary);
   text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 3px;
-  margin-right: 6px;
 }
 
-.ds-changelog-tag--new { background: rgba(32,224,112,0.12); color: var(--accent-green-dark); }
-.ds-changelog-tag--update { background: var(--accent-blue-alice); color: var(--accent-blue); }
-.ds-changelog-tag--fix { background: rgba(255,55,66,0.08); color: var(--accent-red); }
+/* ── Compact external cards ── */
+.home-cards-compact {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px;
+}
+.home-card-sm {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px; cursor: pointer;
+  transition: all 0.15s; font-size: 12px; text-decoration: none;
+}
+.home-card-sm:hover {
+  border-color: var(--accent); background: var(--bg-card-hover);
+  box-shadow: var(--shadow-sm);
+}
+.home-card-sm .sm-badge {
+  font-size: 8px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.6px; padding: 2px 6px; border-radius: 3px;
+  flex-shrink: 0;
+}
+.home-card-sm .sm-badge[data-cat="problem"] { background: #d1f5e8; color: var(--tag-problem); }
+.home-card-sm .sm-badge[data-cat="solution"] { background: #dde4ff; color: var(--tag-solution); }
+.home-card-sm .sm-badge[data-cat="build"] { background: #d5f0f7; color: var(--tag-build); }
+.home-card-sm .sm-badge[data-cat="figma"] { background: #f0e5ff; color: var(--tag-figma); }
+.home-card-sm .sm-badge[data-cat="tools"] { background: #fef3c7; color: var(--tag-tools); }
+.home-card-sm .sm-title {
+  font-weight: 600; color: var(--text-primary); white-space: nowrap;
+}
+.home-card-sm .sm-date {
+  font-size: 9px; font-weight: 500; color: var(--text-tertiary); white-space: nowrap;
+}
+.home-card-sm .sm-type {
+  font-size: 9px; font-weight: 600; color: var(--text-tertiary);
+  text-transform: uppercase; letter-spacing: 0.4px; flex-shrink: 0;
+}
+.home-card-sm .sm-ext-icon {
+  flex-shrink: 0; color: var(--text-tertiary); opacity: 0.5;
+}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* ── External link icon ── */
+.ext-icon { opacity: 0.4; flex-shrink: 0; }
 
 @media (max-width: 900px) {
-  .ds-layout {
-    grid-template-columns: 1fr;
-  }
-  .ds-sidebar {
-    position: static;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    padding-bottom: var(--space-lg);
-    border-bottom: var(--border-subtle);
-    margin-bottom: var(--space-lg);
-  }
-  .ds-sidebar__group { margin-bottom: 0; }
-  .ds-sidebar a { border-left: none; padding-left: 0; }
+  .mega-nav { display: none; }
+  .home-page { padding: 32px 20px 60px; }
+  .home-cards { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-<header class="ds-hero">
-  <div class="ds-container">
-    <div class="ds-hero__badge">Living Document v1.4</div>
-    <h1 class="ds-hero__title">SkillUp LMS Design System</h1>
-    <p class="ds-hero__sub">Extracted from Maven | Light mode only | Last updated: <span id="last-updated"></span></p>
-    <div class="ds-hero__stats">
-      <div class="ds-stat"><span class="ds-stat__num">35+</span><span class="ds-stat__label">Color Tokens</span></div>
-      <div class="ds-stat"><span class="ds-stat__num">17</span><span class="ds-stat__label">Type Styles</span></div>
-      <div class="ds-stat"><span class="ds-stat__num">14</span><span class="ds-stat__label">Spacing Tokens</span></div>
-      <div class="ds-stat"><span class="ds-stat__num">6</span><span class="ds-stat__label">Radius Tokens</span></div>
-      <div class="ds-stat"><span class="ds-stat__num">3</span><span class="ds-stat__label">Shadows</span></div>
-      <div class="ds-stat"><span class="ds-stat__num">20+</span><span class="ds-stat__label">Components</span></div>
-      <div class="ds-stat"><span class="ds-stat__num">45</span><span class="ds-stat__label">Icons</span></div>
+<!-- Topbar with Megamenu -->
+<header class="topbar">
+  <div class="topbar-brand" onclick="navigateTo('home', 'Discovery Hub')">
+    <svg width="22" height="22" viewBox="25 22 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M86.0005 144.669C114.719 144.669 138 121.388 138 92.6684C138 63.9501 114.719 40.6689 86.0005 40.6689C57.2812 40.6689 34 63.9501 34 92.6684C34 121.388 57.2812 144.669 86.0005 144.669" fill="#51BFFC"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M123.906 27.6147C125.281 28.4801 125.996 30.0914 125.715 31.6917L112.634 106.196C112.374 107.675 111.308 108.884 109.873 109.326C108.438 109.769 106.876 109.37 105.828 108.295L85.5005 87.4178L58.6125 79.1868C57.1575 78.7414 56.0812 77.509 55.8357 76.0073C55.5902 74.5056 56.2181 72.9946 57.4555 72.1091L119.448 27.7471C120.769 26.8016 122.531 26.7492 123.906 27.6147ZM68.6917 73.9058L88.8222 80.0682C89.4651 80.265 90.0481 80.6207 90.5172 81.1025L106.106 97.1126L116.143 39.9493L68.6917 73.9058Z" fill="#044150"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M72.9806 86.6278C74.2967 87.6343 74.5478 89.5171 73.5413 90.8332L58.7543 110.17C57.7479 111.486 55.865 111.737 54.5489 110.731C53.2328 109.725 52.9817 107.842 53.9882 106.526L68.7752 87.1886C69.7816 85.8724 71.6645 85.6214 72.9806 86.6278ZM79.701 98.6054C81.0555 99.5596 81.38 101.431 80.4258 102.786L61.6678 129.413C60.7136 130.767 58.842 131.092 57.4875 130.137C56.133 129.183 55.8085 127.312 56.7627 125.957L75.5207 99.3302C76.4749 97.9757 78.3465 97.6512 79.701 98.6054ZM94.0543 100.185C95.4296 101.109 95.7954 102.973 94.8714 104.348L80.1054 126.325C79.1814 127.7 77.3174 128.066 75.9422 127.142C74.5669 126.218 74.2011 124.354 75.1251 122.979L89.8911 101.002C90.8151 99.6265 92.6791 99.2607 94.0543 100.185Z" fill="#044150"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M86.5136 83.6308L121.776 31.5688L60.3516 76.0478L86.5136 83.6308" fill="#044150"/>
+    </svg>
+    SkillUp LMS
+  </div>
+
+  <nav class="mega-nav">
+    <!-- Problem Space -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-problem">
+        Problem Space
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <div class="mega-dropdown-label">Research & Analysis</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('meeting-summary/', 'VILT Meeting Summary')">
+          <div class="mega-dropdown-icon problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Meeting Summary</div>
+            <div class="mega-dropdown-desc">Apr 10 - Key decisions from discovery session</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('ux-audit/', 'V4 UX Audit')">
+          <div class="mega-dropdown-icon problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">V4 UX Audit Report</div>
+            <div class="mega-dropdown-desc">Apr 7 - Norman/Nielsen heuristic evaluation</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('mind-map/', 'LMS Mind Map')">
+          <div class="mega-dropdown-icon problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">LMS Mind Map</div>
+            <div class="mega-dropdown-desc">Mar 27 - Full feature space and relationships</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Source Documents</div>
+        <div class="mega-dropdown-item" onclick="downloadFile('VILT-Integration-Design-Document.pdf')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Integration Design Doc</div>
+            <div class="mega-dropdown-desc">VILT architecture and integration specs</div>
+          </div>
+          <span class="mega-dropdown-badge">pdf</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Meeting Transcript (Apr 10)</div>
+            <div class="mega-dropdown-desc">VILT discovery, delivery modes, calendar</div>
+          </div>
+          <span class="mega-dropdown-badge">txt</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('US Program-courses List (1).xlsx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Programs/Courses List</div>
+            <div class="mega-dropdown-desc">US program and course inventory</div>
+          </div>
+          <span class="mega-dropdown-badge">xlsx</span>
+        </div>
+      </div>
     </div>
+
+    <!-- Solution -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-solution">
+        Solution
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <div class="mega-dropdown-label">Requirements</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('prd/', 'PRD: Courses &amp; Programs')">
+          <div class="mega-dropdown-icon solution">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Courses & Programs PRD</div>
+            <div class="mega-dropdown-desc">Apr 10 - 18 sections, delivery modes, VILT, progress</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Architecture</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('vilt-architecture/', 'VILT Architecture')">
+          <div class="mega-dropdown-icon solution">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">VILT Architecture</div>
+            <div class="mega-dropdown-desc">Apr 10 - Delivery modes, tagging, bubble-up logic</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-item" onclick="navigateTo('live-sessions/', 'Live Sessions Flow')">
+          <div class="mega-dropdown-icon solution">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Live Sessions Flow</div>
+            <div class="mega-dropdown-desc">Apr 9 - Scheduling, join, recording, attendance</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Linked Specs</div>
+        <div class="mega-dropdown-item" onclick="downloadFile('FRD-Cohort Management.docx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">FRD: Cohort Management</div>
+            <div class="mega-dropdown-desc">Apr 9 - Scheduling, enrollment, capacity rules</div>
+          </div>
+          <span class="mega-dropdown-badge">docx</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Mobile App Requirements</div>
+            <div class="mega-dropdown-desc">Apr 9 - Phase 1, native features, offline support</div>
+          </div>
+          <span class="mega-dropdown-badge">docx</span>
+        </div>
+        <div class="mega-dropdown-item" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
+          <div class="mega-dropdown-icon doc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Learner Dashboard Spec</div>
+            <div class="mega-dropdown-desc">Jan 29 - Widgets, data sources, personalization</div>
+          </div>
+          <span class="mega-dropdown-badge">docx</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Build -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-build">
+        Build
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown" style="min-width: 320px">
+        <div class="mega-dropdown-label">Design System</div>
+        <div class="mega-dropdown-item" onclick="navigateTo('design-system/', 'Design System')">
+          <div class="mega-dropdown-icon build">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Tokens & Components</div>
+            <div class="mega-dropdown-desc">Apr 8 - Colors, typography, spacing, patterns</div>
+          </div>
+        </div>
+        <div class="mega-dropdown-divider"></div>
+        <div class="mega-dropdown-label">Figma Files</div>
+        <a class="mega-dropdown-item" href="https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1" target="_blank" rel="noopener">
+          <div class="mega-dropdown-icon figma">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M12 8.5h3.5a3.5 3.5 0 1 1 0 7H12v-7z"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Diagrams</div>
+            <div class="mega-dropdown-desc">LMS Learner Flow Diagram (FigJam board)</div>
+          </div>
+          <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a class="mega-dropdown-item" href="https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase" target="_blank" rel="noopener">
+          <div class="mega-dropdown-icon figma">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M12 8.5h3.5a3.5 3.5 0 1 1 0 7H12v-7z"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">Design (V4)</div>
+            <div class="mega-dropdown-desc">Learner Platform Experience Discovery</div>
+          </div>
+          <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="mega-nav-item">
+      <button class="mega-nav-trigger" id="nav-tools">
+        Tools
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega-dropdown">
+        <a class="mega-dropdown-item" href="https://fernando-drab.vercel.app/" target="_blank" rel="noopener">
+          <div class="mega-dropdown-icon tools">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="mega-dropdown-text">
+            <div class="mega-dropdown-title">AI Prompt Engineering</div>
+            <div class="mega-dropdown-desc">Prompt generator for AI workflows</div>
+          </div>
+          <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="topbar-spacer"></div>
+  <div class="topbar-search" onclick="openSearch()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search...</span>
+    <kbd>&#8984;K</kbd>
   </div>
 </header>
 
-<!-- ============================================================
-     MAIN LAYOUT
-     ============================================================ -->
-<div class="ds-container">
-  <div class="ds-layout">
-
-    <!-- SIDEBAR NAV -->
-    <nav class="ds-sidebar">
-      <div class="ds-sidebar__group">
-        <div class="ds-sidebar__title">Foundation</div>
-        <a href="#colors">Colors</a>
-        <a href="#typography">Typography</a>
-        <a href="#spacing">Spacing</a>
-        <a href="#radius">Border Radius</a>
-        <a href="#elevation">Elevation</a>
-        <a href="#borders">Borders</a>
-      </div>
-      <div class="ds-sidebar__group">
-        <div class="ds-sidebar__title">Components</div>
-        <a href="#buttons">Buttons</a>
-        <a href="#cards">Cards</a>
-        <a href="#inputs">Inputs</a>
-        <a href="#badges">Badges</a>
-        <a href="#tabs">Tabs</a>
-        <a href="#navbar">Navbar</a>
-      </div>
-      <div class="ds-sidebar__group">
-        <div class="ds-sidebar__title">Authenticated</div>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#lightning">Lightning Lessons</a>
-        <a href="#course-listing">Course Listing</a>
-        <a href="#course-detail">Course Detail</a>
-        <a href="#empty-error">Empty / Error</a>
-        <a href="#footer">Footer</a>
-      </div>
-      <div class="ds-sidebar__group">
-        <div class="ds-sidebar__title">Patterns</div>
-        <a href="#layout">Layout</a>
-        <a href="#states">Interaction States</a>
-        <a href="#motion">Motion</a>
-        <a href="#icons">Iconography</a>
-      </div>
-      <div class="ds-sidebar__group">
-        <div class="ds-sidebar__title">Meta</div>
-        <a href="#responsive">Responsive</a>
-        <a href="#changelog">Changelog</a>
-        <a href="#usage">Usage Guidelines</a>
-      </div>
-    </nav>
-
-    <!-- CONTENT -->
-    <main>
-
-      <!-- ==================== COLORS ==================== -->
-      <section id="colors" class="ds-section">
-        <div class="ds-section__label">Foundation</div>
-        <h2 class="ds-section__title">Colors</h2>
-        <p class="ds-section__desc">The palette is anchored by a neutral gray scale, a deep navy brand color, and selective accent colors. Click any swatch to copy its hex value.</p>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Neutral</div>
-          <div class="ds-swatches" id="neutral-swatches"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Brand</div>
-          <div class="ds-swatches" id="brand-swatches"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Accent</div>
-          <div class="ds-swatches" id="accent-swatches"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Tint (Feature Cards)</div>
-          <div class="ds-swatches" id="tint-swatches"></div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">White Opacity (on dark surfaces)</div>
-          <div class="ds-swatches ds-swatches--dark" id="white-opacity-swatches"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Black Opacity (on light surfaces)</div>
-          <div class="ds-swatches" id="black-opacity-swatches"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Extended Accents (from authenticated pages)</div>
-          <div class="ds-swatches" id="extended-accent-swatches"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Content Accent Palette (course categories)</div>
-          <div class="ds-swatches" id="content-accent-swatches"></div>
-        </div>
-      </section>
-
-      <!-- ==================== TYPOGRAPHY ==================== -->
-      <section id="typography" class="ds-section">
-        <div class="ds-section__label">Foundation</div>
-        <h2 class="ds-section__title">Typography</h2>
-        <p class="ds-section__desc">Editorial feel: a serif display face for headlines, a clean sans for body and UI. Based on proprietary Bureau Sans/Serif. This system substitutes DM Serif Display + DM Sans (open source).</p>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Font Stack</div>
-          <table class="ds-table">
-            <thead><tr><th>Token</th><th>Family</th><th>Role</th></tr></thead>
-            <tbody>
-              <tr><td><code>--font-serif</code></td><td>DM Serif Display (sub for Bureau Serif)</td><td>Headlines, hero text, section titles</td></tr>
-              <tr><td><code>--font-sans</code></td><td>DM Sans (sub for Bureau Sans)</td><td>Body, UI, buttons, labels, navigation</td></tr>
-              <tr><td><code>--font-ui</code></td><td>Plus Jakarta Sans (sub for Graphik)</td><td>Small UI labels, badges, metadata</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Type Scale</div>
-          <div id="type-scale"></div>
-        </div>
-
-        <div class="ds-color-group">
-          <div class="ds-color-group__label">Weight Scale</div>
-          <table class="ds-table">
-            <thead><tr><th>Name</th><th>Value</th><th>Usage</th></tr></thead>
-            <tbody>
-              <tr><td>Light</td><td><code>200</code></td><td>Display headlines only</td></tr>
-              <tr><td>Book</td><td><code>300</code></td><td>Body text, serif headings</td></tr>
-              <tr><td>Regular</td><td><code>400</code></td><td>Default / inherited</td></tr>
-              <tr><td>Medium</td><td><code>500</code></td><td>Links, labels, emphasized text</td></tr>
-              <tr><td>Semi Bold</td><td><code>600</code></td><td>Button labels, strong headings</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- ==================== SPACING ==================== -->
-      <section id="spacing" class="ds-section">
-        <div class="ds-section__label">Foundation</div>
-        <h2 class="ds-section__title">Spacing</h2>
-        <p class="ds-section__desc">Base unit: 8px. All spacing values derive from this unit.</p>
-        <div id="spacing-scale"></div>
-
-        <hr class="ds-divider">
-        <div class="ds-color-group__label">Layout Widths</div>
-        <table class="ds-table">
-          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
-          <tbody>
-            <tr><td><code>--max-content</code></td><td>1152px</td><td>Main content container</td></tr>
-            <tr><td><code>--max-card</code></td><td>808px</td><td>Content column (detail pages)</td></tr>
-            <tr><td><code>--max-sidebar</code></td><td>384px</td><td>Enrollment sidebar</td></tr>
-            <tr><td><code>--max-cta</code></td><td>400px</td><td>CTA sections</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== RADIUS ==================== -->
-      <section id="radius" class="ds-section">
-        <div class="ds-section__label">Foundation</div>
-        <h2 class="ds-section__title">Border Radius</h2>
-        <p class="ds-section__desc">From sharp to fully rounded.</p>
-        <div class="ds-radius-grid" id="radius-grid"></div>
-      </section>
-
-      <!-- ==================== ELEVATION ==================== -->
-      <section id="elevation" class="ds-section">
-        <div class="ds-section__label">Foundation</div>
-        <h2 class="ds-section__title">Elevation</h2>
-        <p class="ds-section__desc">Three shadow levels. Light and restrained. Used on cards and modals, not on flat UI.</p>
-        <div class="ds-shadow-grid">
-          <div class="ds-shadow-item">
-            <div class="ds-shadow-box" style="box-shadow: var(--shadow-sm);"></div>
-            <div class="ds-radius-label">SM</div>
-            <div class="ds-radius-val">Inputs, subtle lift</div>
-          </div>
-          <div class="ds-shadow-item">
-            <div class="ds-shadow-box" style="box-shadow: var(--shadow-md);"></div>
-            <div class="ds-radius-label">MD</div>
-            <div class="ds-radius-val">Cards, dropdowns</div>
-          </div>
-          <div class="ds-shadow-item">
-            <div class="ds-shadow-box" style="box-shadow: var(--shadow-lg);"></div>
-            <div class="ds-radius-label">LG</div>
-            <div class="ds-radius-val">Modals, enrollment card</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== BORDERS ==================== -->
-      <section id="borders" class="ds-section">
-        <div class="ds-section__label">Foundation</div>
-        <h2 class="ds-section__title">Borders</h2>
-        <table class="ds-table">
-          <thead><tr><th>Token</th><th>Value</th><th>Preview</th><th>Usage</th></tr></thead>
-          <tbody>
-            <tr><td><code>--border-default</code></td><td>1px solid rgba(0,0,0,0.1)</td><td><div class="border-preview" style="border-bottom: 1px solid rgba(0,0,0,0.1);"></div></td><td>Card borders, dividers</td></tr>
-            <tr><td><code>--border-strong</code></td><td>1px solid #171717</td><td><div class="border-preview" style="border-bottom: 1px solid #171717;"></div></td><td>Active states, selected items</td></tr>
-            <tr><td><code>--border-subtle</code></td><td>1px solid #E5E5E5</td><td><div class="border-preview" style="border-bottom: 1px solid #E5E5E5;"></div></td><td>Table rows, section dividers</td></tr>
-            <tr><td><code>--border-focus</code></td><td>2px solid #3E89FF</td><td><div class="border-preview" style="border-bottom: 2px solid #3E89FF;"></div></td><td>Input focus ring</td></tr>
-            <tr><td><code>--border-dark</code></td><td>1px solid rgba(255,255,255,0.2)</td><td><div class="border-preview" style="background: #080C28; border-bottom: 1px solid rgba(255,255,255,0.2); height: 20px; border-radius: 3px;"></div></td><td>Borders on dark surfaces</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== BUTTONS ==================== -->
-      <section id="buttons" class="ds-section">
-        <div class="ds-section__label">Components</div>
-        <h2 class="ds-section__title">Buttons</h2>
-        <p class="ds-section__desc">Six button variants. Primary is always dark. Filter buttons use pill shapes. Hover over each to see transitions.</p>
-
-        <div class="ds-color-group__label">Variants</div>
-        <div class="ds-btn-row">
-          <button class="btn btn--primary">Enroll</button>
-          <button class="btn btn--secondary">View Syllabus</button>
-          <button class="btn btn--ghost">Show more</button>
-        </div>
-        <div class="ds-btn-row">
-          <button class="btn btn--filter-active">Trending</button>
-          <button class="btn btn--filter-inactive">New on SkillUp</button>
-          <button class="btn btn--filter-inactive">Best selling</button>
-        </div>
-        <div class="ds-btn-row">
-          <button class="btn btn--icon" aria-label="Submit">&#8594;</button>
-          <span style="font-size: 13px; color: var(--neutral-500);">Icon button (email submit)</span>
-        </div>
-
-        <div class="ds-color-group__label">States (Primary)</div>
-        <div class="ds-btn-row">
-          <div style="text-align:center">
-            <button class="btn btn--primary">Default</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Default</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--primary" style="background:var(--neutral-800);">Hover</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Hover</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--primary" style="outline:2px solid var(--accent-blue-light);outline-offset:2px;">Focus</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Focus</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--primary" style="transform:scale(0.97);">Active</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Active</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--primary btn--disabled">Disabled</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Disabled</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--primary btn--loading">Loading</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Loading</div>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">States (Secondary)</div>
-        <div class="ds-btn-row">
-          <div style="text-align:center">
-            <button class="btn btn--secondary">Default</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Default</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--secondary" style="background:var(--black-10);">Hover</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Hover</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--secondary" style="outline:2px solid var(--accent-blue-light);outline-offset:2px;">Focus</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Focus</div>
-          </div>
-          <div style="text-align:center">
-            <button class="btn btn--secondary btn--disabled">Disabled</button>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:6px;">Disabled</div>
-          </div>
-        </div>
-
-        <div class="ds-code-block">
-          <button class="ds-code-copy" onclick="copyCode(this)">Copy</button>
-          <pre><span class="code-comment">/* Primary button */</span>
-<span class="code-prop">height:</span> <span class="code-value">48px</span>;
-<span class="code-prop">background:</span> <span class="code-value">var(--neutral-950)</span>;
-<span class="code-prop">color:</span> <span class="code-value">white</span>;
-<span class="code-prop">border-radius:</span> <span class="code-value">var(--radius-lg)</span>; <span class="code-comment">/* 12px */</span>
-<span class="code-prop">font-weight:</span> <span class="code-value">500</span>;
-<span class="code-prop">transition:</span> <span class="code-value">all 0.2s ease</span>;
-
-<span class="code-comment">/* Hover */</span>
-<span class="code-prop">background:</span> <span class="code-value">var(--neutral-800)</span>;
-
-<span class="code-comment">/* Focus */</span>
-<span class="code-prop">outline:</span> <span class="code-value">2px solid var(--accent-blue-light)</span>;
-<span class="code-prop">outline-offset:</span> <span class="code-value">2px</span>;
-
-<span class="code-comment">/* Disabled */</span>
-<span class="code-prop">opacity:</span> <span class="code-value">0.4</span>;
-<span class="code-prop">pointer-events:</span> <span class="code-value">none</span>;</pre>
-        </div>
-
-        <button class="ds-spec-toggle" onclick="toggleSpec(this)">Spec Table</button>
-        <div class="ds-spec-content">
-        <table class="ds-table">
-          <thead><tr><th>Variant</th><th>Background</th><th>Text</th><th>Border</th><th>Radius</th><th>Height</th></tr></thead>
-          <tbody>
-            <tr><td>Primary</td><td><button class="ds-token-copy" onclick="copyToken(this,'#0D0D0D')">#0D0D0D</button></td><td>White</td><td>None</td><td>12px</td><td>48px</td></tr>
-            <tr><td>Secondary</td><td><button class="ds-token-copy" onclick="copyToken(this,'rgba(0,0,0,0.05)')">black 5%</button></td><td>#171717</td><td>black 10%</td><td>10px</td><td>44px</td></tr>
-            <tr><td>Ghost</td><td>Transparent</td><td>#171717</td><td>None</td><td>0</td><td>44px</td></tr>
-            <tr><td>Filter Active</td><td><button class="ds-token-copy" onclick="copyToken(this,'#171717')">#171717</button></td><td>White</td><td>None</td><td>Full</td><td>36px</td></tr>
-            <tr><td>Filter Inactive</td><td>White</td><td>#171717</td><td>#E5E5E5</td><td>Full</td><td>36px</td></tr>
-            <tr><td>Icon</td><td><button class="ds-token-copy" onclick="copyToken(this,'#0D0D0D')">#0D0D0D</button></td><td>White</td><td>None</td><td>12px</td><td>48x48</td></tr>
-          </tbody>
-        </table>
-        </div>
-      </section>
-
-      <!-- ==================== CARDS ==================== -->
-      <section id="cards" class="ds-section">
-        <div class="ds-section__label">Components</div>
-        <h2 class="ds-section__title">Cards</h2>
-        <p class="ds-section__desc">Course listing cards, enrollment sidebar, and category cards on dark surfaces.</p>
-
-        <div class="ds-color-group__label">Course Listing Card</div>
-        <div class="ds-card-grid">
-          <div class="card">
-            <div class="card__title">World-class Product Sense in Practice</div>
-            <div class="card__instructor">
-              <div class="card__avatar"></div>
-              <span class="card__name">Shreyas Doshi</span>
-              <span class="card__rank">1</span>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card__title">AI Product Management Certification</div>
-            <div class="card__instructor">
-              <div class="card__avatar"></div>
-              <div class="card__avatar" style="margin-left: -12px;"></div>
-              <span class="card__name">Rohan Varma and Henry Shi</span>
-              <span class="card__rank">2</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">Enrollment Sidebar Card</div>
-        <div class="card card--enrollment" style="margin-bottom: 32px;">
-          <div class="card__price">$3,000 <span>USD</span></div>
-          <div class="card__label">Next Cohorts</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
-            <label style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; cursor: pointer;">
-              <input type="radio" name="cohort" checked style="accent-color: var(--neutral-900); width: 16px; height: 16px;"> May 2 &mdash; 10, 2026
-            </label>
-            <label style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; cursor: pointer; color: var(--neutral-600);">
-              <input type="radio" name="cohort" style="accent-color: var(--neutral-900); width: 16px; height: 16px;"> June 13 &mdash; 20, 2026
-            </label>
-          </div>
-          <button class="btn btn--primary" style="width: 100%;">Enroll</button>
-        </div>
-
-        <div class="ds-color-group__label">Category Card (Dark Surface)</div>
-        <div class="ds-dark-panel">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div class="card--category">
-              <div class="card__icon">&#128203;</div>
-              <div><div class="card__title">Cohort-based courses</div><div class="card__sub">Guided programs to get real results</div></div>
-            </div>
-            <div class="card--category">
-              <div class="card__icon">&#9889;</div>
-              <div><div class="card__title">Free Lightning Lessons</div><div class="card__sub">Interactive sessions to explore new topics</div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== INPUTS ==================== -->
-      <section id="inputs" class="ds-section">
-        <div class="ds-section__label">Components</div>
-        <h2 class="ds-section__title">Inputs</h2>
-        <p class="ds-section__desc">Text inputs, search bars, and email capture fields. All states shown below. Try typing in the live inputs.</p>
-
-        <div class="ds-color-group__label">All States</div>
-        <div class="ds-input-row">
-          <div class="input-group">
-            <div class="input-group__label">Default</div>
-            <input type="text" class="input" placeholder="your@email.com">
-          </div>
-          <div class="input-group">
-            <div class="input-group__label">Focused</div>
-            <input type="text" class="input" placeholder="Click to focus" style="border: var(--border-focus);">
-          </div>
-          <div class="input-group">
-            <div class="input-group__label">Filled</div>
-            <input type="text" class="input" value="nelson@skillup.com">
-          </div>
-          <div class="input-group">
-            <div class="input-group__label">Error</div>
-            <input type="text" class="input input--error" value="not-an-email">
-            <div class="input-hint input-hint--error">Please enter a valid email address</div>
-          </div>
-          <div class="input-group">
-            <div class="input-group__label">Success</div>
-            <input type="text" class="input input--success" value="nelson@skillup.com">
-            <div class="input-hint input-hint--success">Email verified</div>
-          </div>
-          <div class="input-group">
-            <div class="input-group__label">Disabled</div>
-            <input type="text" class="input input--disabled" placeholder="Not available" disabled>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">Search Input (Dark Surface)</div>
-        <div class="ds-dark-panel" style="display: flex; align-items: center; gap: 16px; padding: 24px;">
-          <input type="text" class="input input--search" placeholder="What do you want to learn?">
-        </div>
-
-        <div class="ds-code-block">
-          <button class="ds-code-copy" onclick="copyCode(this)">Copy</button>
-          <pre><span class="code-comment">/* Input base */</span>
-<span class="code-prop">height:</span> <span class="code-value">44px</span>;
-<span class="code-prop">border:</span> <span class="code-value">1px solid #E5E5E5</span>;
-<span class="code-prop">border-radius:</span> <span class="code-value">var(--radius-default)</span>; <span class="code-comment">/* 10px */</span>
-<span class="code-prop">font-size:</span> <span class="code-value">16px</span>;
-<span class="code-prop">font-weight:</span> <span class="code-value">300</span>;
-
-<span class="code-comment">/* Focus */</span>  <span class="code-prop">border:</span> <span class="code-value">2px solid #3E89FF</span>;
-<span class="code-comment">/* Error */</span>  <span class="code-prop">border:</span> <span class="code-value">2px solid #FF3742</span>;
-<span class="code-comment">/* Success */</span> <span class="code-prop">border:</span> <span class="code-value">2px solid #20E070</span>;
-<span class="code-comment">/* Disabled */</span> <span class="code-prop">opacity:</span> <span class="code-value">0.4</span>;</pre>
-        </div>
-      </section>
-
-      <!-- ==================== BADGES ==================== -->
-      <section id="badges" class="ds-section">
-        <div class="ds-section__label">Components</div>
-        <h2 class="ds-section__title">Badges</h2>
-
-        <div class="ds-color-group__label">Status Badges</div>
-        <div class="ds-badge-row">
-          <span class="badge badge--on-demand">&#9654; On Demand</span>
-          <span class="badge badge--live">Live on Fri, Apr 17 at 5:00 PM</span>
-        </div>
-
-        <div class="ds-color-group__label">Category Badges</div>
-        <div class="ds-badge-row">
-          <span class="badge badge--category" style="background: var(--tint-purple);">AI</span>
-          <span class="badge badge--category" style="background: var(--tint-magenta);">Product</span>
-          <span class="badge badge--category" style="background: var(--accent-green-dark);">Engineering</span>
-          <span class="badge badge--category" style="background: var(--tint-burnt);">Marketing</span>
-          <span class="badge badge--category" style="background: var(--tint-plum);">Design</span>
-          <span class="badge badge--category" style="background: var(--brand-navy);">Leadership</span>
-        </div>
-      </section>
-
-      <!-- ==================== TABS ==================== -->
-      <section id="tabs" class="ds-section">
-        <div class="ds-section__label">Components</div>
-        <h2 class="ds-section__title">Tabs</h2>
-        <p class="ds-section__desc">Underline tabs used in the dashboard to switch between content views. Click to switch. Active state uses a 2px bottom border.</p>
-
-        <div class="ds-color-group__label">Dashboard Tabs (interactive)</div>
-        <div class="ds-tabs" id="demo-tabs">
-          <a class="ds-tab active" onclick="switchTab(this, 'tab-courses')">Courses</a>
-          <a class="ds-tab" onclick="switchTab(this, 'tab-lightning')">Lightning Lessons</a>
-          <a class="ds-tab" onclick="switchTab(this, 'tab-workshops')">Workshops</a>
-        </div>
-        <div id="tab-courses" class="ds-tab-panel" style="padding: 20px 0;">
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <div style="background:var(--neutral-100);border:var(--border-subtle);border-radius:var(--radius-lg);padding:16px 20px;width:280px;">
-              <div style="font-family:var(--font-serif);font-size:16px;margin-bottom:8px;">Product Sense in Practice</div>
-              <div style="font-size:13px;color:var(--neutral-500);">Progress: 64%</div>
-              <div style="height:4px;background:var(--neutral-300);border-radius:2px;margin-top:8px;"><div style="height:4px;background:var(--accent-blue);border-radius:2px;width:64%;"></div></div>
-            </div>
-            <div style="background:var(--neutral-100);border:var(--border-subtle);border-radius:var(--radius-lg);padding:16px 20px;width:280px;">
-              <div style="font-family:var(--font-serif);font-size:16px;margin-bottom:8px;">AI Evals for Engineers</div>
-              <div style="font-size:13px;color:var(--neutral-500);">Progress: 12%</div>
-              <div style="height:4px;background:var(--neutral-300);border-radius:2px;margin-top:8px;"><div style="height:4px;background:var(--accent-blue);border-radius:2px;width:12%;"></div></div>
-            </div>
-          </div>
-        </div>
-        <div id="tab-lightning" class="ds-tab-panel" style="padding: 20px 0; display:none;">
-          <div style="display:flex;gap:12px;">
-            <span class="badge badge--live">Live on Fri, Apr 17 at 5:00 PM</span>
-          </div>
-          <div style="font-size:14px;color:var(--neutral-600);margin-top:12px;">Upcoming: Advocating for UX Quality in Orgs That Value Speed</div>
-        </div>
-        <div id="tab-workshops" class="ds-tab-panel" style="padding: 20px 0; display:none;">
-          <div class="ds-empty-state" style="max-width:400px;">
-            <div class="ds-empty-state__text">No workshops available right now.</div>
-            <button class="ds-empty-state__cta">Browse upcoming</button>
-          </div>
-        </div>
-
-        <button class="ds-spec-toggle" onclick="toggleSpec(this)">Spec Table</button>
-        <div class="ds-spec-content">
-        <table class="ds-table">
-          <thead><tr><th>State</th><th>Text Color</th><th>Border</th><th>Font Weight</th><th>Size</th></tr></thead>
-          <tbody>
-            <tr><td>Active</td><td><button class="ds-token-copy" onclick="copyToken(this,'#171717')">#171717</button></td><td>2px solid #171717</td><td>600</td><td>16px</td></tr>
-            <tr><td>Inactive</td><td><button class="ds-token-copy" onclick="copyToken(this,'#737373')">#737373</button></td><td>None</td><td>500</td><td>16px</td></tr>
-            <tr><td>Hover</td><td><button class="ds-token-copy" onclick="copyToken(this,'#171717')">#171717</button></td><td>None</td><td>500</td><td>16px</td></tr>
-          </tbody>
-        </table>
-        </div>
-      </section>
-
-      <!-- ==================== NAVBAR ==================== -->
-      <section id="navbar" class="ds-section">
-        <div class="ds-section__label">Components</div>
-        <h2 class="ds-section__title">Navbar</h2>
-        <p class="ds-section__desc">Top navigation bar. 64px height, white background, subtle bottom border. Contains logo, search, links, and avatar.</p>
-
-        <div class="ds-color-group__label">Authenticated Navbar</div>
-        <div class="ds-navbar-demo">
-          <div class="ds-navbar-demo__logo"></div>
-          <input type="text" class="ds-navbar-demo__search" placeholder="What do you want to learn?" disabled>
-          <a class="ds-navbar-demo__link">Apply to teach</a>
-          <div class="ds-navbar-demo__avatar"></div>
-        </div>
-
-        <hr class="ds-divider">
-        <table class="ds-table">
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Height</td><td><code>64px</code></td></tr>
-            <tr><td>Background</td><td>White</td></tr>
-            <tr><td>Border Bottom</td><td><code>1px solid rgba(0,0,0,0.08)</code></td></tr>
-            <tr><td>Search Font</td><td>Bureau Sans / DM Sans, 14px, weight 300</td></tr>
-            <tr><td>Link Font</td><td>Bureau Sans / DM Sans, 14px, weight 500</td></tr>
-            <tr><td>Avatar</td><td>32px circle</td></tr>
-            <tr><td>Position</td><td>Sticky, top: 0, z-index: 50</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== DASHBOARD ==================== -->
-      <section id="dashboard" class="ds-section">
-        <div class="ds-section__label">Authenticated</div>
-        <h2 class="ds-section__title">Dashboard (/me)</h2>
-        <p class="ds-section__desc">The learner dashboard. Greeting, tab navigation between Courses and Lightning Lessons, enrolled course cards, and empty states.</p>
-
-        <div class="ds-color-group__label">Page Structure</div>
-        <table class="ds-table">
-          <thead><tr><th>Element</th><th>Font</th><th>Size</th><th>Weight</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Welcome heading</td><td>Bureau Serif / DM Serif</td><td>40px</td><td>300</td><td>line-height 44px, color #171717</td></tr>
-            <tr><td>Section title "My courses"</td><td>Bureau Serif / DM Serif</td><td>24px</td><td>300</td><td>line-height 28px</td></tr>
-            <tr><td>Section subtitle</td><td>Bureau Sans / DM Sans</td><td>16px</td><td>300</td><td>color #525252</td></tr>
-            <tr><td>Tab: Courses / Lightning Lessons</td><td>Bureau Sans / DM Sans</td><td>16px</td><td>500-600</td><td>Underline tab pattern</td></tr>
-          </tbody>
-        </table>
-
-        <div class="ds-color-group__label">Empty State (No Courses)</div>
-        <div class="ds-empty-state">
-          <div class="ds-empty-state__text">You haven't enrolled in any courses yet.</div>
-          <button class="ds-empty-state__cta">Explore courses</button>
-        </div>
-      </section>
-
-      <!-- ==================== LIGHTNING LESSONS ==================== -->
-      <section id="lightning" class="ds-section">
-        <div class="ds-section__label">Authenticated</div>
-        <h2 class="ds-section__title">Lightning Lessons</h2>
-        <p class="ds-section__desc">Free, live interactive sessions. Cards use a distinctive lime-green accent (#B0FB50). The detail page has a dark navy hero banner.</p>
-
-        <div class="ds-color-group__label">Lightning Lesson Cards</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px;">
-          <div class="ll-card">
-            <div class="ll-card__accent"></div>
-            <div class="ll-card__title">Advocating for UX Quality in Orgs That Value Speed</div>
-            <div class="ll-card__meta">Signed up Mar 2, 2026</div>
-            <div class="ll-card__instructor">
-              <div class="ll-card__avatar"></div>
-              <span class="ll-card__name">Catt Small</span>
-            </div>
-            <button class="ll-card__cta">Event info</button>
-          </div>
-          <div class="ll-card">
-            <div class="ll-card__accent"></div>
-            <div class="ll-card__title">AI-Powered Designer 2026: Essential Skills to Stay Relevant</div>
-            <div class="ll-card__meta">Signed up Mar 2, 2026</div>
-            <div class="ll-card__instructor">
-              <div class="ll-card__avatar"></div>
-              <div class="ll-card__avatar" style="margin-left: -16px;"></div>
-              <span class="ll-card__name">E. Trofimov, A. Pokidyshev</span>
-            </div>
-            <button class="ll-card__cta">Watch recording</button>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">Lightning Lesson Detail Hero</div>
-        <div class="ds-ll-hero">
-          <div class="ds-ll-hero__badge">Lightning Lessons</div>
-          <div style="color: rgba(205,255,146,1); font-size: 14px; font-weight: 500;">Free event</div>
-          <div class="ds-ll-hero__cta">Watch recording</div>
-        </div>
-
-        <hr class="ds-divider">
-        <table class="ds-table">
-          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
-          <tbody>
-            <tr><td>Lightning Green</td><td><code>#B0FB50</code></td><td>Card accent bar, category indicator</td></tr>
-            <tr><td>Lightning Green Text</td><td><code>#CDFF92</code></td><td>Text on dark hero (SVG icon color)</td></tr>
-            <tr><td>Card border</td><td><code>1px solid rgba(0,0,0,0.1)</code></td><td>Card container</td></tr>
-            <tr><td>Card radius</td><td><code>16px</code></td><td>Card container</td></tr>
-            <tr><td>CTA height</td><td><code>36px</code></td><td>Event info / Watch recording button</td></tr>
-            <tr><td>Hero bg</td><td><code>#080C28</code></td><td>Detail page dark banner</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== COURSE LISTING ==================== -->
-      <section id="course-listing" class="ds-section">
-        <div class="ds-section__label">Authenticated</div>
-        <h2 class="ds-section__title">Course Listing</h2>
-        <p class="ds-section__desc">Grid layout on /courses pages. Cards use a grid with icon + content. Category nav uses dark navy cards with blue borders.</p>
-
-        <div class="ds-color-group__label">Course Card (Grid Layout)</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px;">
-          <div class="clc">
-            <div class="clc__icon">&#129302;</div>
-            <div>
-              <div class="clc__title">AI Evals For Engineers and PMs</div>
-              <div class="clc__rating"><span class="clc__star">&#9733;</span> 4.7 (320 reviews)</div>
-              <div class="clc__meta">Next cohort: May 2</div>
-              <div class="clc__price">$500 USD</div>
-            </div>
-          </div>
-          <div class="clc">
-            <div class="clc__icon">&#128200;</div>
-            <div>
-              <div class="clc__title">Product Sense in Practice</div>
-              <div class="clc__rating"><span class="clc__star">&#9733;</span> 4.9 (1,240 reviews)</div>
-              <div class="clc__meta">Next cohort: June 13</div>
-              <div class="clc__price">$3,000 USD</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">Category Nav Card (Dark)</div>
-        <div class="ds-dark-panel" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 24px;">
-          <div class="cat-nav-card">
-            <div><div class="cat-nav-card__label-sm">All courses in</div><div class="cat-nav-card__label-lg">AI</div></div>
-          </div>
-          <div class="cat-nav-card">
-            <div><div class="cat-nav-card__label-sm">All courses in</div><div class="cat-nav-card__label-lg">Product</div></div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-        <table class="ds-table">
-          <thead><tr><th>Element</th><th>Font</th><th>Size/Weight</th><th>Color</th></tr></thead>
-          <tbody>
-            <tr><td>Course title</td><td>Bureau Serif / DM Serif</td><td>20px / 300</td><td>#080C28</td></tr>
-            <tr><td>Rating</td><td>Bureau Sans / DM Sans</td><td>14px / 300</td><td>#404040</td></tr>
-            <tr><td>Meta text</td><td>Bureau Sans / DM Sans</td><td>14px / 300</td><td>#525252</td></tr>
-            <tr><td>Price</td><td>Bureau Sans / DM Sans</td><td>14px / 500</td><td>#171717</td></tr>
-            <tr><td>Star color</td><td>-</td><td>-</td><td>#F59E0B (amber)</td></tr>
-            <tr><td>Card padding</td><td colspan="3"><code>16px</code>, radius 16px, border 1px solid rgba(0,0,0,0.1)</td></tr>
-            <tr><td>Cat nav border</td><td colspan="3"><code>2px solid #71AEFF</code>, bg #080C28, radius 12px</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== COURSE DETAIL ==================== -->
-      <section id="course-detail" class="ds-section">
-        <div class="ds-section__label">Authenticated</div>
-        <h2 class="ds-section__title">Course Detail Page</h2>
-        <p class="ds-section__desc">Sidebar layout with sticky enrollment card. Breadcrumb navigation, tabbed content, and instructor details.</p>
-
-        <div class="ds-color-group__label">Mini Preview</div>
-        <div class="ds-course-detail-preview" style="margin-bottom:24px;">
-          <div class="ds-cdp-breadcrumb">
-            <a>All courses</a> &rsaquo; <a>Product Management</a> &rsaquo; Product Sense in Practice
-          </div>
-          <div class="ds-cdp-body">
-            <div>
-              <div class="ds-cdp-title">World-class Product Sense in Practice</div>
-              <div class="ds-cdp-subtitle">Learn the frameworks top PMs use to make better product decisions, faster.</div>
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-                <div class="card__avatar" style="width:28px;height:28px;"></div>
-                <span style="font-size:14px;font-weight:500;color:var(--neutral-700);">Shreyas Doshi</span>
-                <span style="font-size:13px;color:var(--neutral-500);margin-left:8px;">&#9733; 4.9 (1,240 reviews)</span>
-              </div>
-              <div class="ds-cdp-tabs">
-                <span>Overview</span>
-                <span>Instructor</span>
-                <span>Syllabus</span>
-                <span>Schedule</span>
-                <span>FAQs</span>
-              </div>
-              <div style="padding:16px 0;font-size:14px;color:var(--neutral-600);line-height:1.7;">
-                This course covers building product intuition through structured analysis. Learn to evaluate tradeoffs, prioritize features, and make confident decisions under uncertainty.
-              </div>
-            </div>
-            <div class="ds-cdp-enroll">
-              <div class="ds-cdp-price">$3,000 <small>USD</small></div>
-              <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.48px;color:var(--neutral-600);margin-bottom:12px;">Next Cohorts</div>
-              <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:8px;">
-                <input type="radio" name="cdp-cohort" checked style="accent-color:var(--neutral-900);width:16px;height:16px;"> May 2 &mdash; 10, 2026
-              </label>
-              <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;cursor:pointer;color:var(--neutral-600);margin-bottom:16px;">
-                <input type="radio" name="cdp-cohort" style="accent-color:var(--neutral-900);width:16px;height:16px;"> June 13 &mdash; 20, 2026
-              </label>
-              <button class="btn btn--primary" style="width:100%;">Enroll</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">Page Structure</div>
-        <p class="ds-section__desc">Full course landing page. Huge serif title, instructor section, syllabus, sticky enrollment sidebar, reviews, and footer.</p>
-
-        <table class="ds-table">
-          <thead><tr><th>Element</th><th>Font</th><th>Size/Weight</th><th>Color</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Course Title (H1)</td><td>Bureau Serif</td><td>56px / 200</td><td>#080C28</td><td>line-height 60px, letter-spacing -2.24px</td></tr>
-            <tr><td>Instructor Name (H2)</td><td>Bureau Serif</td><td>24px / 300</td><td>#171717</td><td>line-height 28px</td></tr>
-            <tr><td>Section Heading (H2)</td><td>Bureau Serif</td><td>24px / 300</td><td>#171717</td><td>"What you'll learn", "Course syllabus"</td></tr>
-            <tr><td>Body / List Items</td><td>Bureau Sans</td><td>18px / 300</td><td>#171717</td><td>line-height 28px</td></tr>
-            <tr><td>Syllabus Sub-items</td><td>Bureau Sans</td><td>16px / 300</td><td>#171717</td><td>line-height 24px, left-padding 8px</td></tr>
-            <tr><td>Price</td><td>Bureau Serif</td><td>40px / 200</td><td>#171717</td><td>Enrollment sidebar</td></tr>
-            <tr><td>Enrollment CTA</td><td colspan="4">Full-width primary button inside sticky sidebar card</td></tr>
-          </tbody>
-        </table>
-
-        <div class="ds-color-group__label">Sticky Enrollment Sidebar</div>
-        <table class="ds-table">
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Position</td><td><code>sticky</code>, top 24px</td></tr>
-            <tr><td>Background</td><td>White</td></tr>
-            <tr><td>Border</td><td><code>1px solid rgba(0,0,0,0.1)</code></td></tr>
-            <tr><td>Border Radius</td><td><code>16px</code></td></tr>
-            <tr><td>Shadow</td><td><code>0px 4px 12px rgba(0,0,0,0.06)</code></td></tr>
-            <tr><td>Padding</td><td><code>24px</code></td></tr>
-            <tr><td>Width</td><td><code>384px</code> max</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== EMPTY / ERROR STATES ==================== -->
-      <section id="empty-error" class="ds-section">
-        <div class="ds-section__label">Authenticated</div>
-        <h2 class="ds-section__title">Empty and Error States</h2>
-        <p class="ds-section__desc">Patterns for empty content areas and the 404 error page.</p>
-
-        <div class="ds-color-group__label">Empty State</div>
-        <div class="ds-empty-state" style="max-width: 500px;">
-          <div class="ds-empty-state__text">You haven't enrolled in any courses yet.</div>
-          <button class="ds-empty-state__cta">Explore courses</button>
-        </div>
-
-        <div class="ds-color-group__label">404 Error Page</div>
-        <div class="ds-error-state" style="border: var(--border-default); border-radius: var(--radius-lg); max-width: 500px;">
-          <div class="ds-error-state__emoji">Hmm...</div>
-          <div class="ds-error-state__title">We probably shouldn't be here</div>
-          <div class="ds-error-state__text">We can't seem to find the page you're looking for.</div>
-          <button class="btn btn--primary">Go home</button>
-        </div>
-      </section>
-
-      <!-- ==================== FOOTER ==================== -->
-      <section id="footer" class="ds-section">
-        <div class="ds-section__label">Authenticated</div>
-        <h2 class="ds-section__title">Footer</h2>
-        <p class="ds-section__desc">Dark navy footer with 4-column link layout.</p>
-
-        <div class="ds-footer-demo">
-          <div>
-            <div class="ds-footer-demo__heading">Learn</div>
-            <a class="ds-footer-demo__link">Courses</a>
-            <a class="ds-footer-demo__link">Lightning Lessons</a>
-            <a class="ds-footer-demo__link">Workshops</a>
-          </div>
-          <div>
-            <div class="ds-footer-demo__heading">Teach</div>
-            <a class="ds-footer-demo__link">Apply to teach</a>
-            <a class="ds-footer-demo__link">Instructor resources</a>
-          </div>
-          <div>
-            <div class="ds-footer-demo__heading">Company</div>
-            <a class="ds-footer-demo__link">About</a>
-            <a class="ds-footer-demo__link">Blog</a>
-            <a class="ds-footer-demo__link">Careers</a>
-          </div>
-          <div>
-            <div class="ds-footer-demo__heading">Support</div>
-            <a class="ds-footer-demo__link">Help Center</a>
-            <a class="ds-footer-demo__link">Terms</a>
-            <a class="ds-footer-demo__link">Privacy</a>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-        <table class="ds-table">
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Background</td><td><code>#080C28</code></td></tr>
-            <tr><td>Heading</td><td>14px, weight 600, white</td></tr>
-            <tr><td>Links</td><td>13px, weight 300, rgba(255,255,255,0.7)</td></tr>
-            <tr><td>Layout</td><td>4-column grid, 24px gap</td></tr>
-            <tr><td>Padding</td><td>64px vertical, 48px horizontal</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== LAYOUT ==================== -->
-      <section id="layout" class="ds-section">
-        <div class="ds-section__label">Patterns</div>
-        <h2 class="ds-section__title">Layout</h2>
-        <p class="ds-section__desc">Max content width 1152px, 8px grid, two primary page structures.</p>
-
-        <div class="ds-color-group__label">Listing Page (2-col grid)</div>
-        <div class="ds-layout-diagram">
-          <div style="background: var(--brand-dark); color: var(--white-50); padding: 16px; border-radius: 8px 8px 0 0; text-align: center;">Dark Hero (full-width, serif title)</div>
-          <div style="display: flex; gap: 8px; padding: 12px 0;">
-            <div style="background: var(--neutral-900); color: white; padding: 6px 14px; border-radius: 999px; font-size: 12px;">Trending</div>
-            <div style="border: 1px solid var(--neutral-300); padding: 6px 14px; border-radius: 999px; font-size: 12px;">New</div>
-            <div style="border: 1px solid var(--neutral-300); padding: 6px 14px; border-radius: 999px; font-size: 12px;">Best selling</div>
-            <div style="margin-left: auto; font-size: 12px;">All Categories &#9662;</div>
-          </div>
-          <div class="ds-grid-demo" style="grid-template-columns: 1fr 1fr;">
-            <div class="ds-grid-demo__item"></div>
-            <div class="ds-grid-demo__item"></div>
-            <div class="ds-grid-demo__item"></div>
-            <div class="ds-grid-demo__item"></div>
-          </div>
-        </div>
-
-        <div class="ds-color-group__label">Course Detail Page (sidebar layout)</div>
-        <div class="ds-layout-diagram">
-          <div style="font-size: 11px; margin-bottom: 8px; color: var(--neutral-400);">Breadcrumb: All courses > Category</div>
-          <div style="display: grid; grid-template-columns: 65% 35%; gap: 16px;">
-            <div>
-              <div style="background: var(--neutral-300); height: 32px; border-radius: 4px; margin-bottom: 8px; width: 80%;"></div>
-              <div style="background: var(--neutral-300); height: 12px; border-radius: 3px; margin-bottom: 6px; width: 60%;"></div>
-              <div style="background: var(--neutral-300); height: 12px; border-radius: 3px; width: 40%;"></div>
-              <div style="margin-top: 16px; font-size: 11px; color: var(--neutral-400);">Tabs: Overview | Instructor | Syllabus | Schedule | FAQs</div>
-            </div>
-            <div style="background: white; border: 1px solid var(--neutral-300); border-radius: 12px; padding: 12px; box-shadow: var(--shadow-lg);">
-              <div style="font-size: 11px; font-weight: 600;">Enrollment Card (sticky)</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== INTERACTION STATES ==================== -->
-      <section id="states" class="ds-section">
-        <div class="ds-section__label">Patterns</div>
-        <h2 class="ds-section__title">Interaction States</h2>
-        <p class="ds-section__desc">Hover over each card to see the state in action.</p>
-        <div class="ds-state-grid">
-          <div class="ds-state-card">
-            <div class="ds-state-card__label">Hover (button)</div>
-            <button class="btn btn--primary" style="font-size:14px;height:40px;padding:0 18px;">Hover me</button>
-            <div class="ds-state-card__desc">background: var(--neutral-800)</div>
-          </div>
-          <div class="ds-state-card">
-            <div class="ds-state-card__label">Hover (card)</div>
-            <div class="card" style="padding:14px 18px;cursor:pointer;border-radius:var(--radius-lg);">
-              <div style="font-family:var(--font-serif);font-size:14px;">Course Card</div>
-              <div style="font-size:12px;color:var(--neutral-500);margin-top:4px;">Hover for shadow</div>
-            </div>
-            <div class="ds-state-card__desc">box-shadow: var(--shadow-md)</div>
-          </div>
-          <div class="ds-state-card">
-            <div class="ds-state-card__label">Active (filter)</div>
-            <div style="display:flex;gap:8px;justify-content:center;">
-              <button class="btn btn--filter-active" style="font-size:12px;height:30px;padding:0 12px;" onclick="this.classList.toggle('btn--filter-active');this.classList.toggle('btn--filter-inactive');">Toggle</button>
-              <button class="btn btn--filter-inactive" style="font-size:12px;height:30px;padding:0 12px;" onclick="this.classList.toggle('btn--filter-active');this.classList.toggle('btn--filter-inactive');">Click me</button>
-            </div>
-            <div class="ds-state-card__desc">bg inverts, text swaps</div>
-          </div>
-          <div class="ds-state-card">
-            <div class="ds-state-card__label">Focus (input)</div>
-            <input type="text" class="input" placeholder="Click to focus" style="width:160px;height:36px;font-size:13px;">
-            <div class="ds-state-card__desc">border: 2px solid #3E89FF</div>
-          </div>
-          <div class="ds-state-card">
-            <div class="ds-state-card__label">Disabled</div>
-            <button class="btn btn--primary btn--disabled" style="font-size:14px;height:40px;padding:0 18px;">Disabled</button>
-            <div class="ds-state-card__desc">opacity: 0.4</div>
-          </div>
-          <div class="ds-state-card">
-            <div class="ds-state-card__label">Loading</div>
-            <button class="btn btn--primary btn--loading" style="font-size:14px;height:40px;padding:0 18px;width:100px;">Loading</button>
-            <div class="ds-state-card__desc">spinner + pointer-events: none</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== MOTION ==================== -->
-      <section id="motion" class="ds-section">
-        <div class="ds-section__label">Patterns</div>
-        <h2 class="ds-section__title">Motion</h2>
-        <p class="ds-section__desc">Hover each card to see the easing in action. The system uses restrained motion to avoid distraction.</p>
-
-        <div class="ds-motion-grid">
-          <div class="ds-motion-card">
-            <div class="ds-motion-box ds-motion-box--hover"></div>
-            <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;color:var(--neutral-700);">Lift</div>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:4px;font-family:'SF Mono','Fira Code',monospace;">200ms ease</div>
-            <div style="font-size:12px;color:var(--neutral-600);margin-top:6px;">Cards, buttons hover</div>
-          </div>
-          <div class="ds-motion-card">
-            <div class="ds-motion-box ds-motion-box--ease-out"></div>
-            <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;color:var(--neutral-700);">Scale</div>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:4px;font-family:'SF Mono','Fira Code',monospace;">300ms ease-out</div>
-            <div style="font-size:12px;color:var(--neutral-600);margin-top:6px;">Expand, emphasis</div>
-          </div>
-          <div class="ds-motion-card">
-            <div class="ds-motion-box ds-motion-box--spring"></div>
-            <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;color:var(--neutral-700);">Spring</div>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:4px;font-family:'SF Mono','Fira Code',monospace;">400ms cubic-bezier</div>
-            <div style="font-size:12px;color:var(--neutral-600);margin-top:6px;">Playful interactions</div>
-          </div>
-          <div class="ds-motion-card">
-            <div class="ds-motion-box ds-motion-box--fade"></div>
-            <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;color:var(--neutral-700);">Fade</div>
-            <div style="font-size:11px;color:var(--neutral-500);margin-top:4px;font-family:'SF Mono','Fira Code',monospace;">300ms ease</div>
-            <div style="font-size:12px;color:var(--neutral-600);margin-top:6px;">Lazy-load, enter/exit</div>
-          </div>
-        </div>
-
-        <div class="ds-code-block">
-          <button class="ds-code-copy" onclick="copyCode(this)">Copy</button>
-          <pre><span class="code-comment">/* Standard hover */</span>
-<span class="code-prop">transition:</span> <span class="code-value">all 0.2s ease</span>;
-
-<span class="code-comment">/* Scale / emphasis */</span>
-<span class="code-prop">transition:</span> <span class="code-value">transform 0.3s ease-out</span>;
-
-<span class="code-comment">/* Spring bounce */</span>
-<span class="code-prop">transition:</span> <span class="code-value">transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)</span>;
-
-<span class="code-comment">/* Smooth scroll */</span>
-<span class="code-prop">scroll-behavior:</span> <span class="code-value">smooth</span>;</pre>
-        </div>
-      </section>
-
-      <!-- ==================== ICONS ==================== -->
-      <section id="icons" class="ds-section">
-        <div class="ds-section__label">Patterns</div>
-        <h2 class="ds-section__title">Iconography</h2>
-        <p class="ds-section__desc">45 SVG icons extracted from the original platform. Available as individual files in <code>maven-icons/</code> and as a combined sprite sheet (<code>maven-sprite.svg</code>). UI icons use a 24x24 viewBox with 1.5-2px stroke. Feature icons use a 48x48 viewBox with filled paths.</p>
-
-        <table class="ds-table" style="margin-bottom:24px;">
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>UI icon viewBox</td><td><code>0 0 24 24</code></td></tr>
-            <tr><td>Feature icon viewBox</td><td><code>0 0 48 48</code></td></tr>
-            <tr><td>UI icon style</td><td>Line icons, 1.5-2px stroke, <code>#0D0D0D</code> or <code>currentColor</code></td></tr>
-            <tr><td>Feature icon style</td><td>Filled paths, <code>#404040</code> fill, some with <code>#FAFAFA</code> stroke</td></tr>
-            <tr><td>Logo viewBox</td><td><code>0 0 138 32</code> (uses <code>currentColor</code>)</td></tr>
-            <tr><td>Sizes used</td><td>16px, 20px, 24px (UI), 48px (features)</td></tr>
-            <tr><td>Sprite sheet</td><td><code>maven-icons/maven-sprite.svg</code> (45 symbols)</td></tr>
-            <tr><td>Emoji icons</td><td>Used on homepage category cards (not extracted)</td></tr>
-          </tbody>
-        </table>
-
-        <h3 style="font-size:16px;font-weight:600;margin:32px 0 16px;color:var(--neutral-900);">UI Icons (34)</h3>
-        <div id="icon-grid-ui" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:16px;margin-bottom:32px;"></div>
-
-        <h3 style="font-size:16px;font-weight:600;margin:32px 0 16px;color:var(--neutral-900);">Feature Icons (10)</h3>
-        <div id="icon-grid-feature" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;margin-bottom:32px;"></div>
-
-        <h3 style="font-size:16px;font-weight:600;margin:32px 0 16px;color:var(--neutral-900);">Logo</h3>
-        <div id="icon-grid-logo" style="display:flex;gap:24px;margin-bottom:16px;"></div>
-      </section>
-
-      <!-- ==================== RESPONSIVE ==================== -->
-      <section id="responsive" class="ds-section">
-        <div class="ds-section__label">Meta</div>
-        <h2 class="ds-section__title">Responsive Breakpoints</h2>
-        <table class="ds-table">
-          <thead><tr><th>Breakpoint</th><th>Width</th><th>Behavior</th></tr></thead>
-          <tbody>
-            <tr><td>Mobile</td><td><code>&lt; 640px</code></td><td>Single column, stacked cards, hamburger nav</td></tr>
-            <tr><td>Tablet</td><td><code>640-1024px</code></td><td>2-column grid starts, sidebar collapses</td></tr>
-            <tr><td>Desktop</td><td><code>1024-1152px</code></td><td>Full layout, sticky sidebar</td></tr>
-            <tr><td>Wide</td><td><code>&gt; 1152px</code></td><td>Content centered, max-width 1152px</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ==================== CHANGELOG ==================== -->
-      <section id="changelog" class="ds-section">
-        <div class="ds-section__label">Meta</div>
-        <h2 class="ds-section__title">Changelog</h2>
-        <p class="ds-section__desc">Track all updates to this design system as it evolves.</p>
-
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 10, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> v1.4: Interactive component states. Buttons now show default/hover/focus/active/disabled/loading. Inputs show error/success/disabled/filled. Tabs are clickable with content panels. Motion playground with live easing demos. Code snippet blocks with copy buttons. Click-to-copy on all token values. Collapsible spec tables. Course Detail page mini preview. Interaction States section rebuilt with live elements. Notes replaced with Usage Guidelines.</div>
-        </div>
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 8, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--update">Update</span> v1.3: Rebranded from Maven to SkillUp LMS Design System. Replaced all name references, hero, badge, title. Uploaded official SkillUp logo SVGs (default, dark, light). Logo section now uses proper dark/light variants.</div>
-        </div>
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 8, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> v1.2: Added Icons KPI counter (45) to hero stats. Updated changelog and version badge.</div>
-        </div>
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 8, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> Authenticated pages extracted. Added: Dashboard, Lightning Lesson cards, Course Listing grid, Course Detail specs, Tabs, Navbar, Footer, Empty/Error states, Category Nav cards. 9 new color tokens. Font weight scale added.</div>
-        </div>
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 8, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> Icon catalog: 45 SVGs extracted (34 UI icons, 10 feature icons, 1 logo). Individual files in maven-icons/ folder plus combined sprite sheet (maven-sprite.svg). Visual catalog added to Iconography section.</div>
-        </div>
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 8, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--update">Update</span> Extended color palette with Lightning Green (#B0FB50), content accent palette (5 tints with light variants), gradient tokens, and amber star rating color.</div>
-        </div>
-        <div class="ds-changelog-item">
-          <div class="ds-changelog-date">Apr 7, 2026</div>
-          <div class="ds-changelog-text"><span class="ds-changelog-tag ds-changelog-tag--new">New</span> Initial extraction from the original platform. 26 colors, 17 type styles, spacing/radius/shadow tokens, 9 components documented.</div>
-        </div>
-      </section>
-
-      <!-- ==================== NOTES ==================== -->
-      <section id="usage" class="ds-section">
-        <div class="ds-section__label">Meta</div>
-        <h2 class="ds-section__title">Usage Guidelines</h2>
-        <div style="max-width: 640px; font-size: 15px; line-height: 1.7; color: var(--neutral-700);">
-
-          <div class="ds-color-group__label">Typography</div>
-          <p style="margin-bottom: 12px;">Use DM Serif Display for headings only. Never for body text. DM Sans handles everything else: paragraphs, buttons, labels, navigation. Plus Jakarta Sans is reserved for small UI elements like badges, captions, and metadata.</p>
-          <p style="margin-bottom: 16px;">The production platform uses proprietary Bureau Sans/Serif and Graphik. The fonts in this DS are open-source equivalents. Swap when you have the licensed files.</p>
-
-          <div class="ds-color-group__label">Color</div>
-          <p style="margin-bottom: 12px;">Brand dark (#080C28) is not pure black. That specific RGB (8, 12, 40) gives dark surfaces an editorial quality. Use it for heroes, footers, and dark panels. Never use #000000.</p>
-          <p style="margin-bottom: 12px;">Accent blue (#005FFF) is for interactive elements only: links, focus rings, primary actions on light backgrounds. Don't use it for decoration or large surfaces.</p>
-          <p style="margin-bottom: 16px;">Category tint colors (purple, magenta, plum, crimson, burnt) are for badge backgrounds and feature card gradients. Each maps to a content category. Don't mix them.</p>
-
-          <div class="ds-color-group__label">Spacing</div>
-          <p style="margin-bottom: 16px;">8px base grid. All spacing derives from it. Use the token names (--space-xs, --space-sm, etc.) not raw pixel values. Padding inside cards: 20-24px. Gaps between cards: 16-24px. Section spacing: 64-72px.</p>
-
-          <div class="ds-color-group__label">Components</div>
-          <p style="margin-bottom: 12px;">Primary buttons are always dark (#0D0D0D). One per section. Don't stack two primary buttons side by side. Use secondary or ghost for the second action.</p>
-          <p style="margin-bottom: 12px;">Cards never have rounded corners greater than 16px. Course listing cards use border-radius: 16px. Enrollment cards use 12px. Inputs use 10px. Keep the hierarchy consistent.</p>
-          <p style="margin-bottom: 16px;">Elevation: shadow-sm for inputs and subtle elements. shadow-md for cards on hover and dropdowns. shadow-lg for modals and the enrollment sidebar only.</p>
-
-          <div class="ds-color-group__label">States</div>
-          <p style="margin-bottom: 12px;">Every interactive element needs four states: default, hover, focus, disabled. Inputs also need error and success. Focus rings are always blue (#3E89FF), 2px solid, 2px offset.</p>
-          <p style="margin-bottom: 16px;">Disabled elements use opacity: 0.4 with pointer-events: none. Don't change the color. Don't hide them. Show them grayed out so users understand what's available.</p>
-
-          <div class="ds-color-group__label">Motion</div>
-          <p>Keep it restrained. Hover transitions: 200ms ease. Scale/expand: 300ms ease-out. No page transitions. No scroll-triggered animations beyond the sidebar active state. The design language is editorial, not playful.</p>
-        </div>
-      </section>
-
-    </main>
+<!-- Search -->
+<div class="search-overlay" id="search-overlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="search-input" id="search-input" type="text" placeholder="Search all documents..." autocomplete="off">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Type to search across all documents</div>
+    </div>
   </div>
 </div>
 
-<!-- ============================================================
-     JAVASCRIPT - Dynamic rendering
-     ============================================================ -->
+<!-- Content -->
+<div class="content-area" id="content-area">
+  <div class="home-page" id="home-page">
+    <div class="home-header">
+      <div class="home-title">SkillUp LMS<br>Discovery Hub</div>
+      <div class="home-subtitle">
+        Central repository for all product discovery artifacts: research, requirements, architecture, design system, and prototypes for the SkillUp Learner Platform.
+      </div>
+    </div>
+
+    <div class="home-stats">
+      <div class="home-stat">
+        <div class="home-stat-value">16</div>
+        <div class="home-stat-label">Total Artifacts</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">18</div>
+        <div class="home-stat-label">PRD Sections</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">6</div>
+        <div class="home-stat-label">Decisions Resolved</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">1</div>
+        <div class="home-stat-label">Open Decision</div>
+      </div>
+      <div class="home-stat">
+        <div class="home-stat-value">4</div>
+        <div class="home-stat-label">Learning Flows</div>
+      </div>
+    </div>
+
+    <!-- ═══ PROBLEM SPACE ═══ -->
+    <div class="home-section-title">Problem Space</div>
+    <div class="home-section-desc">Research, audits, and discovery sessions that define the problem we are solving.</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('meeting-summary/', 'VILT Meeting Summary')">
+        <div class="home-card-cat" data-cat="problem">Meeting Summary</div>
+        <div class="home-card-title">VILT Discovery Meeting</div>
+        <div class="home-card-desc">Core principle (course structure vs delivery method are separate concerns), 6 key decisions, impact on PRD, and next steps.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
+          <span>6 decisions</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('ux-audit/', 'V4 UX Audit')">
+        <div class="home-card-cat" data-cat="problem">Audit</div>
+        <div class="home-card-title">V4 UX Audit Report</div>
+        <div class="home-card-desc">Norman/Nielsen heuristic evaluation of V4 wireframes. Severity scores, findings, and prioritized fixes across 33 screens.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 7, 2026</span>
+          <span>33 screens</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('mind-map/', 'LMS Mind Map')">
+        <div class="home-card-cat" data-cat="problem">Discovery</div>
+        <div class="home-card-title">LMS Mind Map</div>
+        <div class="home-card-desc">High-level visual map of the entire LMS feature space. Modules, relationships, and priority groupings.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Mar 27, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="downloadFile('VILT-Integration-Design-Document.pdf')">
+        <span class="sm-badge" data-cat="problem">PDF</span>
+        <span class="sm-title">VILT Integration Design Doc</span>
+        <span class="sm-date">Apr 10</span>
+        <span class="sm-type">PDF</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
+        <span class="sm-badge" data-cat="problem">Transcript</span>
+        <span class="sm-title">Meeting Transcript</span>
+        <span class="sm-date">Apr 10</span>
+        <span class="sm-type">TXT</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('US Program-courses List (1).xlsx')">
+        <span class="sm-badge" data-cat="problem">Data</span>
+        <span class="sm-title">Programs/Courses List</span>
+        <span class="sm-type">XLSX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+    </div>
+
+    <!-- ═══ SOLUTION SPACE ═══ -->
+    <div class="home-section-title">Solution Space</div>
+    <div class="home-section-desc">Product requirements, architecture decisions, and specification documents.</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('prd/', 'PRD: Courses &amp; Programs')">
+        <div class="home-card-cat" data-cat="solution">PRD</div>
+        <div class="home-card-title">Courses & Programs PRD</div>
+        <div class="home-card-desc">Complete product requirements for the learner platform. 18 sections covering content hierarchy, delivery modes, VILT, progress tracking, and assessments.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
+          <span>18 sections</span>
+          <span>Draft</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('vilt-architecture/', 'VILT Architecture')">
+        <div class="home-card-cat" data-cat="solution">Architecture</div>
+        <div class="home-card-title">VILT Architecture Flowchart</div>
+        <div class="home-card-desc">Visual diagram of the VILT delivery architecture: content hierarchy, delivery mode tagging, bubble-up logic, and learner view.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+      <div class="home-card" onclick="navigateTo('live-sessions/', 'Live Sessions Flow')">
+        <div class="home-card-cat" data-cat="solution">Architecture</div>
+        <div class="home-card-title">Live Sessions Flow</div>
+        <div class="home-card-desc">End-to-end flow for live/virtual sessions. Scheduling, join mechanics, recording, and attendance tracking.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 9, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="downloadFile('FRD-Cohort Management.docx')">
+        <span class="sm-badge" data-cat="solution">FRD</span>
+        <span class="sm-title">Cohort Management</span>
+        <span class="sm-date">Apr 9</span>
+        <span class="sm-type">DOCX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
+        <span class="sm-badge" data-cat="solution">Mobile</span>
+        <span class="sm-title">Mobile App Requirements</span>
+        <span class="sm-date">Apr 9</span>
+        <span class="sm-type">DOCX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
+        <span class="sm-badge" data-cat="solution">Spec</span>
+        <span class="sm-title">Learner Dashboard</span>
+        <span class="sm-date">Jan 29</span>
+        <span class="sm-type">DOCX</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+    </div>
+
+    <!-- ═══ BUILD ═══ -->
+    <div class="home-section-title">Build</div>
+    <div class="home-section-desc">Design system, wireframes, and visual prototypes ready for implementation.</div>
+    <div class="home-cards">
+      <div class="home-card" onclick="navigateTo('design-system/', 'Design System')">
+        <div class="home-card-cat" data-cat="build">Design System</div>
+        <div class="home-card-title">Tokens & Components</div>
+        <div class="home-card-desc">Color tokens, typography (Montserrat/Playfair), spacing scale, component patterns, and interaction specs.</div>
+        <div class="home-card-meta">
+          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 8, 2026</span>
+        </div>
+        <div class="home-card-ext">HTML</div>
+      </div>
+    </div>
+    <div class="home-cards-compact">
+      <div class="home-card-sm" onclick="window.open('https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1','_blank')">
+        <span class="sm-badge" data-cat="figma">Figma</span>
+        <span class="sm-title">Diagrams</span>
+        <span class="sm-type">FigJam</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase','_blank')">
+        <span class="sm-badge" data-cat="figma">Figma</span>
+        <span class="sm-title">Design (V4)</span>
+        <span class="sm-type">Design File</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <iframe class="content-iframe" id="content-iframe" style="display:none"></iframe>
+</div>
+
 <script>
-// ---- LAST UPDATED TIMESTAMP ----
-// This updates automatically each time the file is modified and re-saved.
-// To update: change the date string below.
-const LAST_UPDATED = '2026-04-10T14:00:00';
-const lastUpdatedEl = document.getElementById('last-updated');
-if (lastUpdatedEl) {
-  const d = new Date(LAST_UPDATED);
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  lastUpdatedEl.textContent = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()} at ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
-}
+// ── Navigation ──
+const homePage = document.getElementById('home-page');
+const iframe = document.getElementById('content-iframe');
+let currentPage = 'home';
 
-// ---- COLOR SWATCHES (generated from data) ----
-const colorGroups = {
-  'neutral-swatches': [
-    { name: '950', hex: '#0D0D0D' }, { name: '900', hex: '#171717' }, { name: '800', hex: '#262626' },
-    { name: '700', hex: '#404040' }, { name: '600', hex: '#525252' }, { name: '500', hex: '#737373' },
-    { name: '400', hex: '#A3A3A3' }, { name: '300', hex: '#E5E5E5', light: true },
-    { name: '200', hex: '#F5F5F5', light: true }, { name: '100', hex: '#FAFAFA', light: true },
-    { name: '50', hex: '#FFFFFF', light: true },
-  ],
-  'brand-swatches': [
-    { name: 'Dark', hex: '#080C28' }, { name: 'Navy', hex: '#333A5A' },
-  ],
-  'accent-swatches': [
-    { name: 'Blue', hex: '#005FFF' }, { name: 'Blue Light', hex: '#3E89FF' },
-    { name: 'Blue Alice', hex: '#E9F2FF', light: true }, { name: 'Blue Ice', hex: '#F7FBFF', light: true },
-    { name: 'Green', hex: '#20E070' }, { name: 'Green Dark', hex: '#00746B' },
-    { name: 'Red', hex: '#FF3742' }, { name: 'Orange', hex: '#E45F18' },
-  ],
-  'tint-swatches': [
-    { name: 'Purple', hex: '#772CBB' }, { name: 'Magenta', hex: '#931FAA' },
-    { name: 'Plum', hex: '#943170' }, { name: 'Crimson', hex: '#A9202A' }, { name: 'Burnt', hex: '#B33600' },
-  ],
-  'white-opacity-swatches': [
-    { name: 'White 5%', hex: 'rgba(255,255,255,0.05)', display: '5%' },
-    { name: 'White 10%', hex: 'rgba(255,255,255,0.1)', display: '10%' },
-    { name: 'White 20%', hex: 'rgba(255,255,255,0.2)', display: '20%' },
-    { name: 'White 30%', hex: 'rgba(255,255,255,0.3)', display: '30%' },
-    { name: 'White 50%', hex: 'rgba(255,255,255,0.5)', display: '50%' },
-    { name: 'White 70%', hex: 'rgba(255,255,255,0.7)', display: '70%' },
-    { name: 'White 90%', hex: 'rgba(255,255,255,0.9)', display: '90%' },
-  ],
-  'black-opacity-swatches': [
-    { name: 'Black 5%', hex: 'rgba(0,0,0,0.05)', display: '5%', light: true },
-    { name: 'Black 10%', hex: 'rgba(0,0,0,0.1)', display: '10%', light: true },
-    { name: 'Black 20%', hex: 'rgba(0,0,0,0.2)', display: '20%' },
-    { name: 'Black 50%', hex: 'rgba(0,0,0,0.5)', display: '50%' },
-    { name: 'Black 60%', hex: 'rgba(0,0,0,0.6)', display: '60%' },
-  ],
+// Friendly slug map: filename -> short slug
+const slugMap = {
+  'prd/': 'prd',
+  'vilt-architecture/': 'vilt-architecture',
+  'live-sessions/': 'live-sessions',
+  'mind-map/': 'mind-map',
+  'design-system/': 'design-system',
+  'ux-audit/': 'ux-audit',
+  'meeting-summary/': 'meeting-summary',
 };
+// Reverse map: slug -> folder path
+const fileMap = {};
+for (const [file, slug] of Object.entries(slugMap)) fileMap[slug] = file;
 
-// Extended accent swatches (add to color section if container exists)
-const extendedColors = {
-  'extended-accent-swatches': [
-    { name: 'Lightning', hex: '#B0FB50' },
-    { name: 'LL Text', hex: '#CDFF92' },
-    { name: 'Blue Link', hex: '#026AFA' },
-    { name: 'Blue Border', hex: '#71AEFF' },
-    { name: 'Highlight', hex: '#FBF4DD', light: true },
-    { name: 'Star', hex: '#F59E0B' },
-  ],
-  'content-accent-swatches': [
-    { name: 'Green', hex: '#A7D067' }, { name: 'Green Lt', hex: '#F7FCEE', light: true },
-    { name: 'Blue', hex: '#7BB5DD' }, { name: 'Blue Lt', hex: '#F0F8FD', light: true },
-    { name: 'Gold', hex: '#E8C073' }, { name: 'Gold Lt', hex: '#FCF8EF', light: true },
-    { name: 'Coral', hex: '#E18484' }, { name: 'Coral Lt', hex: '#FCF2F2', light: true },
-    { name: 'Indigo', hex: '#8C93E5' },
-  ],
-};
+function navigateTo(page, title, skipHistory) {
+  document.querySelectorAll('.mega-nav-trigger').forEach(t => t.classList.remove('active'));
 
-Object.entries(extendedColors).forEach(([containerId, swatches]) => {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  swatches.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'ds-swatch';
-    div.innerHTML = `
-      <div class="ds-swatch__color ${s.light ? 'light-border' : ''}" style="background: ${s.hex};" data-hex="${s.hex}"></div>
-      <div class="ds-swatch__name">${s.name}</div>
-      <div class="ds-swatch__hex">${s.hex}</div>
-    `;
-    div.querySelector('.ds-swatch__color').addEventListener('click', function() {
-      navigator.clipboard.writeText(s.hex).then(() => {
-        this.classList.add('copied');
-        setTimeout(() => this.classList.remove('copied'), 800);
-      });
-    });
-    container.appendChild(div);
-  });
-});
-
-Object.entries(colorGroups).forEach(([containerId, swatches]) => {
-  const container = document.getElementById(containerId);
-  swatches.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'ds-swatch';
-    div.innerHTML = `
-      <div class="ds-swatch__color ${s.light ? 'light-border' : ''}" style="background: ${s.hex};" data-hex="${s.display || s.hex}"></div>
-      <div class="ds-swatch__name">${s.name}</div>
-      <div class="ds-swatch__hex">${s.display || s.hex}</div>
-    `;
-    div.querySelector('.ds-swatch__color').addEventListener('click', function() {
-      navigator.clipboard.writeText(s.display || s.hex).then(() => {
-        this.classList.add('copied');
-        setTimeout(() => this.classList.remove('copied'), 800);
-      });
-    });
-    container.appendChild(div);
-  });
-});
-
-// ---- TYPE SCALE ----
-const typeScale = [
-  { name: 'Display XL', size: 56, weight: 200, lh: 60, ls: -2.24, font: 'serif', sample: 'Display XL' },
-  { name: 'Display L', size: 40, weight: 300, lh: 44, ls: -1.6, font: 'serif', sample: 'Display L' },
-  { name: 'Heading H1', size: 32, weight: 300, lh: 36, ls: -1.28, font: 'serif', sample: 'Heading H1' },
-  { name: 'Heading H2', size: 24, weight: 300, lh: 28, ls: -0.96, font: 'serif', sample: 'Heading H2' },
-  { name: 'Heading H3', size: 22, weight: 500, lh: 28, ls: 0, font: 'sans', sample: 'Heading H3' },
-  { name: 'Body L', size: 18, weight: 300, lh: 28, ls: 0, font: 'sans', sample: 'Body L Regular - Long-form body text for readability.' },
-  { name: 'Body L Medium', size: 18, weight: 500, lh: 24, ls: -0.36, font: 'sans', sample: 'Body L Medium - Emphasized paragraphs.' },
-  { name: 'Body M', size: 16, weight: 300, lh: 24, ls: 0, font: 'sans', sample: 'Body M Regular - Default body, paragraphs.' },
-  { name: 'Body M Medium', size: 16, weight: 500, lh: 20, ls: -0.32, font: 'sans', sample: 'Body M Medium - Navigation links, buttons.' },
-  { name: 'Body M Semi', size: 16, weight: 600, lh: 20, ls: 0, font: 'sans', sample: 'Body M Semi Bold - Button labels, card titles.' },
-  { name: 'Caption L', size: 14, weight: 500, lh: 18, ls: -0.28, font: 'sans', sample: 'Caption L Medium - Secondary text, metadata.' },
-  { name: 'Caption S', size: 14, weight: 500, lh: 16, ls: 0.56, font: 'sans', sample: 'CAPTION S UPPERCASE' },
-  { name: 'Small', size: 12, weight: 500, lh: 16, ls: 0.48, font: 'ui', sample: 'SMALL DEFAULT - BADGES, TAGS' },
-  { name: 'Micro', size: 10, weight: 500, lh: 14, ls: 0.25, font: 'ui', sample: 'MICRO DEFAULT - TINY LABELS' },
-];
-
-const fontMap = { serif: 'var(--font-serif)', sans: 'var(--font-sans)', ui: 'var(--font-ui)' };
-
-const typeContainer = document.getElementById('type-scale');
-typeScale.forEach(t => {
-  const row = document.createElement('div');
-  row.className = 'ds-type-sample';
-  row.innerHTML = `
-    <div class="ds-type-meta">
-      <strong>${t.name}</strong>
-      ${t.size}/${t.lh} &middot; ${t.weight} &middot; ${t.ls}px
-    </div>
-    <div class="ds-type-specimen" style="font-family: ${fontMap[t.font]}; font-size: ${t.size}px; font-weight: ${t.weight}; line-height: ${t.lh}px; letter-spacing: ${t.ls}px;">
-      ${t.sample}
-    </div>
-  `;
-  typeContainer.appendChild(row);
-});
-
-// ---- SPACING SCALE ----
-const spacings = [
-  { name: 'xxs', value: 4 }, { name: 'xs', value: 8 }, { name: 'sm', value: 16 },
-  { name: 'md', value: 24 }, { name: 'lg', value: 32 }, { name: 'xl', value: 40 },
-  { name: 'xxl', value: 64 }, { name: 'xxxl', value: 72 },
-];
-
-const spacingContainer = document.getElementById('spacing-scale');
-spacings.forEach(s => {
-  const row = document.createElement('div');
-  row.className = 'ds-space-row';
-  row.innerHTML = `
-    <div class="ds-space-label">${s.name}</div>
-    <div class="ds-space-value">${s.value}px</div>
-    <div class="ds-space-bar" style="width: ${Math.min(s.value * 2.5, 400)}px;"></div>
-  `;
-  spacingContainer.appendChild(row);
-});
-
-// ---- RADIUS GRID ----
-const radii = [
-  { name: 'sm', value: 4 }, { name: 'md', value: 8 }, { name: 'default', value: 10 },
-  { name: 'lg', value: 12 }, { name: 'xl', value: 16 }, { name: 'full', value: 9999 },
-];
-
-const radiusContainer = document.getElementById('radius-grid');
-radii.forEach(r => {
-  const item = document.createElement('div');
-  item.className = 'ds-radius-item';
-  item.innerHTML = `
-    <div class="ds-radius-box" style="border-radius: ${r.value === 9999 ? '50%' : r.value + 'px'};"></div>
-    <div class="ds-radius-label">${r.name}</div>
-    <div class="ds-radius-val">${r.value === 9999 ? '9999px' : r.value + 'px'}</div>
-  `;
-  radiusContainer.appendChild(item);
-});
-
-// ---- SIDEBAR ACTIVE STATE ----
-const sections = document.querySelectorAll('.ds-section');
-const navLinks = document.querySelectorAll('.ds-sidebar a');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => link.classList.remove('active'));
-      const active = document.querySelector(`.ds-sidebar a[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
+  if (page === 'home') {
+    homePage.style.display = '';
+    iframe.style.display = 'none';
+    iframe.src = '';
+    if (!skipHistory) history.pushState({ page }, '', window.location.pathname);
+    document.title = 'SkillUp LMS Discovery Hub';
+  } else {
+    homePage.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = page;
+    const slug = slugMap[page] || page.replace('.html','');
+    if (!skipHistory) history.pushState({ page }, '', '?doc=' + slug);
+    document.title = (title || slug) + ' - Discovery Hub';
+    const catMap = {
+      'meeting-summary': 'nav-problem', 'ux-audit': 'nav-problem', 'mind-map': 'nav-problem',
+      'prd': 'nav-solution', 'vilt-architecture': 'nav-solution', 'live-sessions': 'nav-solution',
+      'design-system': 'nav-build'
+    };
+    for (const [key, navId] of Object.entries(catMap)) {
+      if (page.includes(key)) {
+        const el = document.getElementById(navId);
+        if (el) el.classList.add('active');
+        break;
+      }
     }
-  });
-}, { rootMargin: '-20% 0px -70% 0px' });
-
-sections.forEach(s => observer.observe(s));
-
-// === Icon Catalog ===
-const uiIcons = [
-  'arrow-right','bell','bookmark','calendar','check','chevron-down','chevron-right',
-  'clock','close','copy','document','download','external-link','eye','filter','globe',
-  'heart','info','lightning-bookmark','linkedin','mail','menu-hamburger','minus','play',
-  'plus','search','settings','share','star','star-half','twitter-x','user','users','video'
-];
-const featureIcons = [
-  'feature-assignments','feature-certificate','feature-community','feature-homework',
-  'feature-launch','feature-live-session','feature-qa','feature-reader',
-  'feature-recording','feature-tools'
-];
-
-function renderIconGrid(containerId, names, size) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  names.forEach(name => {
-    const card = document.createElement('div');
-    card.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 8px;border:1px solid var(--neutral-200);border-radius:8px;background:var(--white);';
-    const img = document.createElement('img');
-    img.src = 'maven-icons/' + name + '.svg';
-    img.alt = name;
-    img.style.cssText = 'width:' + size + 'px;height:' + size + 'px;';
-    const label = document.createElement('span');
-    label.style.cssText = 'font-size:11px;color:var(--neutral-500);text-align:center;word-break:break-all;line-height:1.3;';
-    label.textContent = name;
-    card.appendChild(img);
-    card.appendChild(label);
-    el.appendChild(card);
-  });
+  }
+  currentPage = page;
 }
 
-renderIconGrid('icon-grid-ui', uiIcons, 24);
-renderIconGrid('icon-grid-feature', featureIcons, 48);
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.page) {
+    navigateTo(e.state.page, '', true);
+  } else {
+    navigateTo('home', '', true);
+  }
+});
 
-// Logo
-const logoEl = document.getElementById('icon-grid-logo');
-if (logoEl) {
-  ['white','var(--neutral-900)'].forEach((bg, i) => {
-    const wrap = document.createElement('div');
-    wrap.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:24px 32px;border-radius:8px;background:' + bg + ';border:1px solid var(--neutral-200);';
-    const img = document.createElement('img');
-    img.src = i === 0 ? 'skillup-logo-dark.svg' : 'skillup-logo-light.svg';
-    img.alt = 'SkillUp logo';
-    img.style.cssText = 'height:32px;';
-    wrap.appendChild(img);
-    logoEl.appendChild(wrap);
-  });
+// Load from URL on page load
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const doc = params.get('doc');
+  if (doc && fileMap[doc]) {
+    navigateTo(fileMap[doc], '', true);
+  }
+})();
+
+function downloadFile(filename) {
+  const link = document.createElement('a');
+  link.href = filename;
+  link.download = filename;
+  link.click();
 }
+
+
+// ── Search ──
+const searchData = [
+  // Problem Space
+  { cat: 'Meeting Summary', color: 'problem', title: 'VILT Discovery Meeting', desc: 'Core principle, key decisions, delivery mode tagging, calendar architecture', page: 'meeting-summary/', date: 'Apr 10' },
+  { cat: 'Audit', color: 'problem', title: 'V4 UX Audit Report', desc: 'Norman/Nielsen heuristic evaluation, severity scores, 33 screens', page: 'ux-audit/', date: 'Apr 7' },
+  { cat: 'Discovery', color: 'problem', title: 'LMS Mind Map', desc: 'Feature space, modules, relationships, priorities', page: 'mind-map/', date: 'Mar 27' },
+  { cat: 'PDF', color: 'problem', title: 'VILT Integration Design Doc', desc: 'VILT architecture and integration specifications', file: 'VILT-Integration-Design-Document.pdf', date: 'Apr 10' },
+  { cat: 'Transcript', color: 'problem', title: 'Meeting Transcript (Apr 10)', desc: 'VILT discovery meeting, delivery modes, tagging, calendar', file: 'LMS-Walkthrough-Questions-Transcript-20260410.txt', date: 'Apr 10' },
+  { cat: 'Data', color: 'problem', title: 'Programs/Courses List', desc: 'US program and course inventory', file: 'US Program-courses List (1).xlsx' },
+  // Solution Space
+  { cat: 'PRD', color: 'solution', title: 'Courses & Programs PRD', desc: 'Product requirements, content hierarchy, VILT, progress, assessments', page: 'prd/', date: 'Apr 10' },
+  { cat: 'Architecture', color: 'solution', title: 'VILT Architecture', desc: 'Delivery modes, tagging flow, bubble-up logic, learner view', page: 'vilt-architecture/', date: 'Apr 10' },
+  { cat: 'Architecture', color: 'solution', title: 'Live Sessions Flow', desc: 'Scheduling, join mechanics, recording, attendance', page: 'live-sessions/', date: 'Apr 9' },
+  { cat: 'FRD', color: 'solution', title: 'Cohort Management', desc: 'Cohort scheduling, enrollment, capacity, instructor assignment', file: 'FRD-Cohort Management.docx', date: 'Apr 9' },
+  { cat: 'Spec', color: 'solution', title: 'Mobile App Requirements', desc: 'Native mobile, offline support, responsive behavior', file: 'Mobile App Requirements Phase-1.docx', date: 'Apr 9' },
+  { cat: 'Spec', color: 'solution', title: 'Learner Dashboard', desc: 'Dashboard widgets, data sources, personalization', file: 'SkillUp Learner (LMS) Dashboard.docx', date: 'Jan 29' },
+  // Build
+  { cat: 'Design System', color: 'build', title: 'Tokens & Components', desc: 'Colors, typography, spacing, component patterns', page: 'design-system/', date: 'Apr 8' },
+  { cat: 'Figma', color: 'figma', title: 'Diagrams (FigJam)', desc: 'LMS Learner Flow Diagram board', url: 'https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1' },
+  { cat: 'Figma', color: 'figma', title: 'Design V4', desc: 'Learner Platform Experience Discovery wireframes', url: 'https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase' },
+  // Tools
+  { cat: 'Tool', color: 'tools', title: 'AI Prompt Engineering', desc: 'Prompt generator for AI workflows', url: 'https://fernando-drab.vercel.app/' },
+];
+
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('active');
+  searchInput.value = '';
+  searchInput.focus();
+  renderSearchResults('');
+}
+function closeSearch() {
+  document.getElementById('search-overlay').classList.remove('active');
+}
+
+searchInput.addEventListener('input', () => renderSearchResults(searchInput.value));
+
+function renderSearchResults(query) {
+  if (!query.trim()) {
+    searchResults.innerHTML = '<div class="search-empty">Type to search across all documents</div>';
+    return;
+  }
+  const q = query.toLowerCase();
+  const matches = searchData.filter(d =>
+    d.title.toLowerCase().includes(q) ||
+    d.desc.toLowerCase().includes(q) ||
+    d.cat.toLowerCase().includes(q)
+  );
+  if (!matches.length) {
+    searchResults.innerHTML = '<div class="search-empty">No results found</div>';
+    return;
+  }
+  searchResults.innerHTML = matches.map(d => {
+    let action;
+    if (d.page) action = `navigateTo('${d.page}', '${d.title}')`;
+    else if (d.url) action = `window.open('${d.url}','_blank')`;
+    else action = `downloadFile('${d.file}')`;
+    return `
+    <div class="search-result" onclick="${action};closeSearch()">
+      <div class="search-result-cat" style="color:var(--tag-${d.color})">${d.cat}${d.date ? ' <span style="opacity:0.6;font-weight:500">' + d.date + '</span>' : ''}</div>
+      <div class="search-result-title">${hl(d.title, q)}</div>
+      <div class="search-result-desc">${hl(d.desc, q)}</div>
+    </div>`;
+  }).join('');
+}
+function hl(text, q) {
+  if (!q) return text;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  return text.replace(re, '<mark style="background:var(--accent-light);color:inherit;border-radius:2px;padding:0 1px">$1</mark>');
+}
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+});
 </script>
 </body>
 </html>
