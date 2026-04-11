@@ -1,0 +1,6 @@
+# Working files (not deployed to hub)
+_workspace/
+
+# System
+.DS_Store
+.playwright-mcp/
