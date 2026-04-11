@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V4 UX Audit Report - SkillUp LMS</title>
+<title>V4 UX Audit Report v2 - SkillUp LMS</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +37,6 @@
     padding: 40px 24px;
   }
 
-  /* Header */
   .report-header {
     background: var(--bg-white);
     border: 1px solid var(--border);
@@ -49,8 +48,19 @@
   .report-header h1 {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     color: var(--text-primary);
+  }
+
+  .report-header .version-badge {
+    display: inline-block;
+    background: var(--brand-badge);
+    color: var(--brand-blue);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
   }
 
   .report-header .subtitle {
@@ -84,7 +94,6 @@
     font-size: 13px;
   }
 
-  /* Score cards */
   .score-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -126,7 +135,13 @@
     margin-top: 4px;
   }
 
-  /* Status summary */
+  .score-card .score-delta {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    margin-top: 4px;
+  }
+
   .status-summary {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -161,7 +176,6 @@
     margin-top: 4px;
   }
 
-  /* Section */
   .section {
     background: var(--bg-white);
     border: 1px solid var(--border);
@@ -178,7 +192,13 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* Norman table */
+  .section .section-intro {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
   .norman-table {
     width: 100%;
     border-collapse: collapse;
@@ -207,7 +227,6 @@
     border-bottom: none;
   }
 
-  /* Severity badge */
   .badge {
     display: inline-block;
     padding: 2px 8px;
@@ -223,13 +242,19 @@
   .badge.resolved { background: rgb(220, 240, 225); color: rgb(18, 100, 52); }
   .badge.dismissed { background: var(--gray-badge); color: var(--text-muted); }
   .badge.open { background: var(--brand-badge); color: var(--brand-blue); }
+  .badge.new { background: rgb(255, 235, 200); color: rgb(150, 90, 0); }
 
   .score-num {
     font-weight: 600;
     font-variant-numeric: tabular-nums;
   }
 
-  /* Finding card */
+  .delta-up {
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
   .finding {
     padding: 20px 0;
     border-bottom: 1px solid var(--border);
@@ -242,6 +267,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    flex-wrap: wrap;
   }
 
   .finding-id {
@@ -286,7 +312,11 @@
     border-left: 3px solid var(--brand-blue);
   }
 
-  /* Strengths */
+  .strikethrough {
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+
   .strength-list {
     list-style: none;
   }
@@ -310,7 +340,6 @@
     font-size: 12px;
   }
 
-  /* Grid table */
   .grid-table {
     width: 100%;
     border-collapse: collapse;
@@ -334,34 +363,30 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .resolution-note {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    margin-left: 6px;
-    padding: 1px 6px;
-    border-radius: 4px;
+  .trend-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
   }
 
-  .resolution-note.fixed {
-    background: rgb(220, 240, 225);
-    color: rgb(18, 100, 52);
-  }
-
-  .resolution-note.wont-fix {
-    background: var(--gray-badge);
+  .trend-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--text-muted);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
   }
 
-  .resolution-note.manual {
-    background: rgb(255, 235, 200);
-    color: rgb(150, 90, 0);
+  .trend-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
   }
 
-  .strikethrough {
-    text-decoration: line-through;
-    color: var(--text-muted);
-  }
+  .trend-table tr:last-child td { border-bottom: none; }
 
   @media (max-width: 600px) {
     .score-row { grid-template-columns: 1fr; }
@@ -377,24 +402,25 @@
 
   <!-- Header -->
   <div class="report-header">
+    <div class="version-badge">v2 - April 11, 2026</div>
     <h1>SkillUp LMS V4 Wireframes</h1>
     <div class="subtitle">UX Audit Report: Norman/Nielsen Principles + Grid System Analysis</div>
     <div class="meta-grid">
       <div class="meta-item">
         <div class="label">Scope</div>
-        <div class="value">33 screens, 4 flows</div>
+        <div class="value">33 screens, 4 flows + Dashboard + Immersive Player</div>
       </div>
       <div class="meta-item">
-        <div class="label">Date</div>
+        <div class="label">v1 Date</div>
         <div class="value">April 7, 2026</div>
       </div>
       <div class="meta-item">
-        <div class="label">Framework</div>
-        <div class="value">Norman + Nielsen + Grid</div>
+        <div class="label">v2 Date</div>
+        <div class="value">April 11, 2026</div>
       </div>
       <div class="meta-item">
         <div class="label">Status</div>
-        <div class="value">Grid + UX fixes applied</div>
+        <div class="value">Targeted fixes still required</div>
       </div>
     </div>
   </div>
@@ -403,34 +429,58 @@
   <div class="score-row">
     <div class="score-card">
       <div class="score-label">Norman/Nielsen Score</div>
-      <div class="score-value">94 <span>/ 140</span></div>
+      <div class="score-value">101 <span>/ 140</span></div>
       <div class="score-desc">Good. Targeted fixes required.</div>
+      <div class="score-delta">+7 from v1 (94/140)</div>
     </div>
     <div class="score-card">
       <div class="score-label">Grid Compliance</div>
       <div class="score-value">28 <span>/ 30</span></div>
-      <div class="score-desc">Excellent. 99% on 4pt grid after fixes.</div>
+      <div class="score-desc">Excellent. 99% on 4pt grid after Apr 7 fixes.</div>
     </div>
   </div>
 
   <!-- Status summary -->
   <div class="status-summary">
     <div class="status-pill">
-      <div class="count total">17</div>
+      <div class="count total">23</div>
       <div class="pill-label">Total findings</div>
     </div>
     <div class="status-pill">
-      <div class="count resolved">9</div>
+      <div class="count resolved">12</div>
       <div class="pill-label">Resolved</div>
     </div>
     <div class="status-pill">
-      <div class="count open">5</div>
+      <div class="count open">8</div>
       <div class="pill-label">Open</div>
     </div>
     <div class="status-pill">
       <div class="count dismissed">3</div>
       <div class="pill-label">Dismissed</div>
     </div>
+  </div>
+
+  <!-- Score Trend -->
+  <div class="section">
+    <h2>Score Trend (v1 to v2)</h2>
+    <table class="trend-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>v1 (Apr 7)</th>
+          <th>v2 (Apr 11)</th>
+          <th>Delta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Norman Score</td><td class="score-num">94/140</td><td class="score-num">101/140</td><td class="delta-up">+7</td></tr>
+        <tr><td>Grid Score</td><td class="score-num">28/30</td><td class="score-num">28/30</td><td>0</td></tr>
+        <tr><td>Critical Issues</td><td>3</td><td>3 (1 resolved, 2 new)</td><td>0</td></tr>
+        <tr><td>Major Issues</td><td>8</td><td>7 (2 resolved, 2 new)</td><td>-1</td></tr>
+        <tr><td>Minor Issues</td><td>6</td><td>7 (1 resolved, 2 new)</td><td>+1</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 12px;">Improvement came from button standardization (Nelson), text fixes, Modal update, empty state pattern, and unlock conditions. Remaining gap: cloning artifacts in CE/Cyber flows and recordings error treatment.</p>
   </div>
 
   <!-- Norman Table -->
@@ -441,37 +491,38 @@
         <tr>
           <th>#</th>
           <th>Principle</th>
-          <th>Severity</th>
-          <th>Score</th>
+          <th>v1</th>
+          <th>v2</th>
+          <th>Delta</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>Affordances and Signifiers</td><td><span class="badge minor">Minor</span></td><td class="score-num">8/10</td></tr>
-        <tr><td>2</td><td>Feedback and Responsiveness</td><td><span class="badge major">Major</span></td><td class="score-num">6/10</td></tr>
-        <tr><td>3</td><td>Conceptual Model Alignment</td><td><span class="badge pass">Pass</span></td><td class="score-num">9/10</td></tr>
-        <tr><td>4</td><td>Mapping</td><td><span class="badge pass">Pass</span></td><td class="score-num">9/10</td></tr>
-        <tr><td>5</td><td>Constraints</td><td><span class="badge major">Major</span></td><td class="score-num">5/10</td></tr>
-        <tr><td>6</td><td>Visibility of System Status</td><td><span class="badge major">Major</span></td><td class="score-num">6/10</td></tr>
-        <tr><td>7</td><td>Match System / Real World</td><td><span class="badge minor">Minor</span></td><td class="score-num">7/10</td></tr>
-        <tr><td>8</td><td>User Control and Freedom</td><td><span class="badge major">Major</span></td><td class="score-num">5/10</td></tr>
-        <tr><td>9</td><td>Consistency and Standards</td><td><span class="badge major">Major</span></td><td class="score-num">5/10</td></tr>
-        <tr><td>10</td><td>Error Prevention</td><td><span class="badge major">Major</span></td><td class="score-num">6/10</td></tr>
-        <tr><td>11</td><td>Recognition Over Recall</td><td><span class="badge pass">Pass</span></td><td class="score-num">9/10</td></tr>
-        <tr><td>12</td><td>Flexibility and Efficiency</td><td><span class="badge minor">Minor</span></td><td class="score-num">7/10</td></tr>
-        <tr><td>13</td><td>Aesthetic and Minimalist Design</td><td><span class="badge minor">Minor</span></td><td class="score-num">7/10</td></tr>
-        <tr><td>14</td><td>Emotional Design</td><td><span class="badge minor">Minor</span></td><td class="score-num">7/10</td></tr>
+        <tr><td>1</td><td>Affordances and Signifiers</td><td class="score-num">8/10</td><td class="score-num">8/10</td><td>=</td></tr>
+        <tr><td>2</td><td>Feedback and Responsiveness</td><td class="score-num">6/10</td><td class="score-num">7/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>3</td><td>Conceptual Model Alignment</td><td class="score-num">9/10</td><td class="score-num">9/10</td><td>=</td></tr>
+        <tr><td>4</td><td>Mapping</td><td class="score-num">9/10</td><td class="score-num">9/10</td><td>=</td></tr>
+        <tr><td>5</td><td>Constraints</td><td class="score-num">5/10</td><td class="score-num">6/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>6</td><td>Visibility of System Status</td><td class="score-num">6/10</td><td class="score-num">7/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>7</td><td>Match System / Real World</td><td class="score-num">7/10</td><td class="score-num">8/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>8</td><td>User Control and Freedom</td><td class="score-num">5/10</td><td class="score-num">6/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>9</td><td>Consistency and Standards</td><td class="score-num">5/10</td><td class="score-num">5/10</td><td>=</td></tr>
+        <tr><td>10</td><td>Error Prevention</td><td class="score-num">6/10</td><td class="score-num">7/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>11</td><td>Recognition Over Recall</td><td class="score-num">9/10</td><td class="score-num">9/10</td><td>=</td></tr>
+        <tr><td>12</td><td>Flexibility and Efficiency</td><td class="score-num">7/10</td><td class="score-num">7/10</td><td>=</td></tr>
+        <tr><td>13</td><td>Aesthetic and Minimalist Design</td><td class="score-num">7/10</td><td class="score-num">8/10</td><td class="delta-up">+1</td></tr>
+        <tr><td>14</td><td>Emotional Design</td><td class="score-num">7/10</td><td class="score-num">7/10</td><td>=</td></tr>
       </tbody>
     </table>
   </div>
 
   <!-- Grid Compliance -->
   <div class="section">
-    <h2>Grid Compliance</h2>
+    <h2>Grid Compliance (unchanged from v1 post-fix)</h2>
     <table class="grid-table">
       <thead>
         <tr>
           <th>Category</th>
-          <th>Violations</th>
+          <th>Status</th>
           <th>Score</th>
         </tr>
       </thead>
@@ -493,23 +544,13 @@
         </tr>
       </tbody>
     </table>
-    <p style="font-size: 12px; color: var(--text-muted);">Grid base: 4pt system applied. 3,086 spacing and typography values snapped to grid. 99% compliance achieved.</p>
+    <p style="font-size: 12px; color: var(--text-muted);">Grid base: 4pt system applied Apr 7. 3,086 spacing and typography values snapped to grid. 99% compliance achieved. No regression in v2.</p>
   </div>
 
   <!-- Findings: Resolved -->
   <div class="section">
-    <h2>Resolved Findings</h2>
-
-    <div class="finding">
-      <div class="finding-header">
-        <span class="finding-id">C1</span>
-        <span class="badge dismissed">Dismissed</span>
-        <span class="finding-title"><span class="strikethrough">Incomplete Color Neutralization (96 red/green)</span></span>
-      </div>
-      <div class="finding-body">
-        <p>Red/green is acceptable for semantic contexts: red for danger/missed, green for success/live, yellow/orange for risk. The PM rule was specifically about My Learning card status badges being too prominent, not a blanket ban. No action needed.</p>
-      </div>
-    </div>
+    <h2>Resolved Findings (12)</h2>
+    <p class="section-intro">Issues fixed between v1 and v2 audits, or resolved during the v1 fix session.</p>
 
     <div class="finding">
       <div class="finding-header">
@@ -518,18 +559,18 @@
         <span class="finding-title">"Flexible Flexible Learning" duplicate text bug</span>
       </div>
       <div class="finding-body">
-        <p>8 TechMaster screens displayed "Flexible Flexible Learning" instead of "Flexible Learning" in progress card section headers. Fixed programmatically across all 8 nodes.</p>
+        <p>8 TechMaster screens displayed "Flexible Flexible Learning". Fixed programmatically across all 8 nodes on Apr 7.</p>
       </div>
     </div>
 
     <div class="finding">
       <div class="finding-header">
         <span class="finding-id">C3</span>
-        <span class="badge resolved">Fixed manually</span>
+        <span class="badge resolved">Partially fixed</span>
         <span class="finding-title">Modal/Filter Sidebar outdated</span>
       </div>
       <div class="finding-body">
-        <p>The Modal/Filter Sidebar was frozen in a pre-V4 state with old badge names, red "Blocked" pill, and old alert blocks. Fixed manually by Nelson.</p>
+        <p>Nelson manually fixed on Apr 7: course type labels now match V4 taxonomy ("Flexible Learning", "Online Live Classes", "Flexible + Online Live Classes"). Checkboxes and sort options updated. "Blocked" red pill remains open (see M7).</p>
       </div>
     </div>
 
@@ -537,10 +578,21 @@
       <div class="finding-header">
         <span class="finding-id">M2</span>
         <span class="badge resolved">Fixed</span>
-        <span class="finding-title">"Starting Soon" button fill inconsistency</span>
+        <span class="finding-title">"Join Live" button inconsistency</span>
       </div>
       <div class="finding-body">
-        <p>"Starting Soon" buttons used pure black rgb(0,0,0) while rest of CTA system uses rgb(33,33,33). Standardized to match. "Join Live" green buttons are fine per semantic color rule.</p>
+        <p>Nelson redesigned all session buttons on Apr 7: black "Join Live" with green emoji dot, dark gray "Starting Soon" (rgb 33,33,33), outlined "Watch/Review Recording", gray "Upcoming", amber "Rescheduled". Consistent system now in place on TM flow.</p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M2b</span>
+        <span class="badge resolved">Fixed</span>
+        <span class="finding-title">CE "Join Live" replicated to match TM pattern</span>
+      </div>
+      <div class="finding-body">
+        <p>CE/Page Details "Join Live" updated from old green to black with emoji pattern, matching Nelson's TM redesign.</p>
       </div>
     </div>
 
@@ -551,7 +603,18 @@
         <span class="finding-title">Locked modules missing unlock conditions</span>
       </div>
       <div class="finding-body">
-        <p>Module 7 and 8 on DA / Page Details now show what the learner needs to do: "Complete Module 6 to unlock" and "Complete Module 7 to unlock". Other flows already had this text.</p>
+        <p>DA/Page Details Modules 7 and 8 now show "Complete Module 6 to unlock" and "Complete Module 7 to unlock". Fixed Apr 7.</p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M1a</span>
+        <span class="badge resolved">Partially fixed</span>
+        <span class="finding-title">Cyber/Recordings empty state added</span>
+      </div>
+      <div class="finding-body">
+        <p>Cyber/Recordings (578:5032) now has a proper empty state: "No recordings available" with helpful text and Scheduled Sessions section showing upcoming sessions. Good model for other screens. Other tabs still lack empty states.</p>
       </div>
     </div>
 
@@ -562,36 +625,19 @@
         <span class="finding-title">Grid compliance: spacing + typography snapped to 4pt grid</span>
       </div>
       <div class="finding-body">
-        <p>3,086 values fixed across all V4 screens. Spacing snapped: 3->4, 5->4, 6->8, 7->8, 10->12, 14->16, 19->20, 21->20, 22->24, 26->24, 50->48. Typography consolidated: 11->12px, 13->12px. Component-level fixes (CourseTypeBadge, SessionBanner) auto-propagated to all instances. Grid compliance went from 18/30 to 28/30 (99%).</p>
+        <p>3,086 values fixed across all V4 screens Apr 7. Spacing snapped: 3->4, 5->4, 6->8, 7->8, 10->12, 14->16, 19->20, 21->20, 22->24, 26->24, 50->48. Typography consolidated: 11->12px, 13->12px. Component-level fixes auto-propagated. Grid: 18/30 to 28/30.</p>
       </div>
     </div>
 
+    <!-- v1 dismissed -->
     <div class="finding">
       <div class="finding-header">
-        <span class="finding-id">M2b</span>
-        <span class="badge resolved">Fixed</span>
-        <span class="finding-title">CE "Join Live" button replicated to match TM pattern</span>
+        <span class="finding-id">C1</span>
+        <span class="badge dismissed">Dismissed</span>
+        <span class="finding-title"><span class="strikethrough">Color neutralization (red/green on inner screens)</span></span>
       </div>
       <div class="finding-body">
-        <p>CE / Page Details "Join Live" button updated from green rgb(33,150,84) to black with emoji pattern ("🟢 Join Live"), matching Nelson's redesigned TM / Live Classes buttons. Cyber has no live sessions (Not Started), so no changes needed.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Findings: Open -->
-  <div class="section">
-    <h2>Open Findings</h2>
-
-    <div class="finding">
-      <div class="finding-header">
-        <span class="finding-id">M1</span>
-        <span class="badge major">Major</span>
-        <span class="finding-title">No empty states, error states, or loading states defined</span>
-      </div>
-      <div class="finding-body">
-        <p>Across all 33 screens, there are no wireframes for empty states, loading states (skeletons), error states, or zero-data chart states. These are the states users encounter most when things go wrong. Without them, developers will improvise.</p>
-        <p class="where">Affects: all flows, all tabs</p>
-        <div class="rec">Create a "States Reference" section with 1 empty state pattern, 1 loading skeleton, 1 error state, 1 connection-lost pattern.</div>
+        <p>PM rule clarified Apr 7: red/green IS acceptable for semantic contexts (danger/success/live/risk). The neutralization rule applies specifically to My Learning card status badges, which are fixed. No action needed on inner screens.</p>
       </div>
     </div>
 
@@ -602,19 +648,165 @@
         <span class="finding-title"><span class="strikethrough">Calendar widget red/green dots</span></span>
       </div>
       <div class="finding-body">
-        <p>Red for missed sessions and green for attended is semantic and appropriate per updated color rule. No action needed.</p>
+        <p>Red for missed sessions and green for attended is semantic usage. Acceptable per PM color rule. No action needed.</p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M6</span>
+        <span class="badge dismissed">Dismissed</span>
+        <span class="finding-title"><span class="strikethrough">"Certificate at risk" warning icon color</span></span>
+      </div>
+      <div class="finding-body">
+        <p>Yellow/amber for "risk" context is semantic usage. Acceptable per PM color rule.</p>
       </div>
     </div>
 
     <div class="finding">
       <div class="finding-header">
         <span class="finding-id">M4</span>
-        <span class="badge open">Open</span>
+        <span class="badge resolved">Accepted</span>
         <span class="finding-title">Mentors tab green-tinted backgrounds</span>
       </div>
       <div class="finding-body">
-        <p>The Mentors tab uses rgb(235,250,235) (light green) as row background for "Confirmed" and "Attended" badges. With the updated color rule (green = success is fine), this is potentially acceptable. Worth reviewing if it feels too heavy visually.</p>
-        <p class="where">TM / Mentors (557:461), CE / Mentors (578:6012)</p>
+        <p>"Confirmed" and "Attended" badges using green tint is semantic (success context). Acceptable per PM rule. Mentor rating text in green is a style choice, low priority.</p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">m6</span>
+        <span class="badge resolved">Accepted</span>
+        <span class="finding-title">SessionBanner Live status-dot green</span>
+      </div>
+      <div class="finding-body">
+        <p>Green dot for "live" is semantic. Acceptable. Could be brand blue for extra consistency, but not required.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Findings: Open -->
+  <div class="section">
+    <h2>Open Findings (8)</h2>
+    <p class="section-intro">Active issues requiring attention. Includes carried items from v1 and new findings from v2 audit.</p>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">C4</span>
+        <span class="badge critical">Critical</span>
+        <span class="badge new">New in v2</span>
+        <span class="finding-title">Cybersecurity "Flexible Learning" label on pure VILT program</span>
+      </div>
+      <div class="finding-body">
+        <p>Cybersecurity Foundations is a pure VILT program (Online Live Classes only). But the progress breakdown on all 8 Cyber screens shows "Flexible Learning - 0%" alongside "Online Live Sessions - 0%". This is a cloning artifact from the TechMaster (Blended) template. It tells the learner they have self-paced content to complete when they don't.</p>
+        <p class="where">All 8 Cybersecurity screens (header area). Check CE flow for same issue.</p>
+        <div class="rec">Remove "Flexible Learning" progress line from all Cybersecurity screens. Show only "Online Live Sessions - 0%".</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">C5</span>
+        <span class="badge critical">Critical</span>
+        <span class="badge new">New in v2</span>
+        <span class="finding-title">CE certificate thumbnail says "AI TechMaster Program"</span>
+      </div>
+      <div class="finding-body">
+        <p>The certificate preview thumbnail on CE/Certificates (569:3539) reads "AI TechMaster Program" instead of "Cloud Engineering Bootcamp". Cloning artifact not updated when CE flow was created from TM template.</p>
+        <p class="where">CE / Certificates (569:3539)</p>
+        <div class="rec">Update certificate preview text to "Cloud Engineering Bootcamp". Check Cyber certificates for same issue.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M1</span>
+        <span class="badge major">Major</span>
+        <span class="finding-title">Empty/error/loading states still mostly undefined</span>
+      </div>
+      <div class="finding-body">
+        <p>Cyber/Recordings empty state is a good model. But empty states for Assessments, Projects, Certificates, Mentors, Course Q&A are still missing. No loading skeletons or error states defined anywhere. Developers will improvise without these.</p>
+        <div class="rec">Create 3 reference patterns using Cyber/Recordings as model: (1) empty list state, (2) loading skeleton, (3) error with retry.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M7</span>
+        <span class="badge major">Major</span>
+        <span class="finding-title">"Blocked" status pill still red in Filter Modal</span>
+      </div>
+      <div class="finding-body">
+        <p>Filter sidebar (523:2893) "Blocked" pill still has red background. While red for "blocked" could be semantic, it's the most visually aggressive element in the sidebar and inconsistent with the otherwise neutral filter UI.</p>
+        <p class="where">Modal / Filter Sidebar (523:2893)</p>
+        <div class="rec">Change to neutral dark gray bg #646469 with white text.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M8</span>
+        <span class="badge major">Major</span>
+        <span class="finding-title">Q&A "UNANSWERED" could use neutral treatment</span>
+      </div>
+      <div class="finding-body">
+        <p>"ANSWERED" green is fine (success). "UNANSWERED" is currently gray which is acceptable. The visual weight between the two creates adequate distinction. Minor: consider brand blue for UNANSWERED to draw attention to questions needing answers.</p>
+        <p class="where">DA / Course Q&A (557:766)</p>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M9</span>
+        <span class="badge major">Major</span>
+        <span class="badge new">New in v2</span>
+        <span class="finding-title">Recordings error card uses heavy red treatment</span>
+      </div>
+      <div class="finding-body">
+        <p>TM/Recordings shows a "Recording failed" card with full-width red/pink background, red X icon, red error text, and red "Report Issue" button. While red for errors is semantic, the combined treatment is the heaviest red usage in the entire wireframe set. Four different red elements on one card row. Also "1 session missing" text in red at top right.</p>
+        <p class="where">TM / Recordings (523:3856) - Session 5 "Reinforcement Learning" card</p>
+        <div class="rec">Reduce red density: keep red text OR red bg, not both. "Report Issue" button could be outlined instead of red-filled. "1 session missing" could use dark text with a subtle icon instead of red text.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">M10</span>
+        <span class="badge major">Major</span>
+        <span class="badge new">New in v2</span>
+        <span class="finding-title">CE "Starting Soon" button appears green-tinted</span>
+      </div>
+      <div class="finding-body">
+        <p>On CE/Live Sessions (523:4289), the "Starting Soon" button appears to use a green-tinted fill rather than the standardized dark gray rgb(33,33,33) from Nelson's redesign. The TM version is correct. This suggests the CE flow wasn't fully updated.</p>
+        <p class="where">CE / Live Sessions PD (523:4289)</p>
+        <div class="rec">Apply the same dark gray button treatment from TM/Live Sessions.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">m7</span>
+        <span class="badge minor">Minor</span>
+        <span class="badge new">New in v2</span>
+        <span class="finding-title">DA tab "Flexible Learning" vs "Modules" naming</span>
+      </div>
+      <div class="finding-body">
+        <p>DA/PD first tab now reads "Flexible Learning" instead of "Modules". Aligns with delivery type taxonomy but is less descriptive. A learner looking for their module list may not intuit that "Flexible Learning" = their self-paced modules.</p>
+        <div class="rec">Verify this is intentional. If delivery-type tab names are the convention, it's consistent.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-id">m8</span>
+        <span class="badge minor">Minor</span>
+        <span class="badge new">New in v2</span>
+        <span class="finding-title">DA affiliation banner "Course 3 of 5" should be "Course 2 of 4"</span>
+      </div>
+      <div class="finding-body">
+        <p>DA/PD (523:4070) shows "Part of AI TechMaster Program - Course 3 of 5". TechMaster has 4 courses (Python Basics, Data Analytics, Deep Learning, Capstone). Data Analytics is Course 2. Should read "Course 2 of 4".</p>
+        <div class="rec">Quick text fix.</div>
       </div>
     </div>
 
@@ -625,45 +817,7 @@
         <span class="finding-title">No explicit back navigation on course detail pages</span>
       </div>
       <div class="finding-body">
-        <p>Course detail pages rely solely on breadcrumbs for back navigation. The back arrow icon at far left of breadcrumb is small (12px). Acceptable for desktop, but flag for mobile design phase.</p>
-        <p class="where">All 4 flows, all detail pages</p>
-        <div class="rec">Ensure a persistent back button for mobile. Consider larger tap target for the back arrow on desktop.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="finding-header">
-        <span class="finding-id">M6</span>
-        <span class="badge open">Open</span>
-        <span class="finding-title">"Certificate at risk" warning icon color</span>
-      </div>
-      <div class="finding-body">
-        <p>The warning triangle icon uses yellow/amber color. Per updated rule, yellow/orange for "risk" context is acceptable. Worth confirming this is the intended behavior.</p>
-        <p class="where">TM / Live Classes sidebar, CE / Page Details sidebar</p>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="finding-header">
-        <span class="finding-id">M8</span>
-        <span class="badge open">Open</span>
-        <span class="finding-title">Q&A badges use color for ANSWERED / UNANSWERED</span>
-      </div>
-      <div class="finding-body">
-        <p>Course Q&A uses green badges for "ANSWERED" and red/orange for "UNANSWERED". Green for answered = success context is fine. Red for unanswered is questionable: it's not a danger/error, just a state.</p>
-        <p class="where">DA / Course Q&A (557:766)</p>
-        <div class="rec">Consider: brand blue for UNANSWERED (neutral attention-draw), green for ANSWERED (success). Red doesn't fit the "danger" semantic here.</div>
-      </div>
-    </div>
-
-    <div class="finding">
-      <div class="finding-header">
-        <span class="finding-id">m1+m2</span>
-        <span class="badge resolved">Fixed</span>
-        <span class="finding-title"><span class="strikethrough">Inconsistent font sizes + spacing grid</span></span>
-      </div>
-      <div class="finding-body">
-        <p>Resolved. 3,086 values snapped to 4pt grid. See Resolved Findings for details.</p>
+        <p>Detail pages rely solely on breadcrumbs. Back arrow icon is small (12px). Acceptable for desktop, flag for mobile.</p>
       </div>
     </div>
 
@@ -674,7 +828,7 @@
         <span class="finding-title">KPI stat cards lack visual hierarchy</span>
       </div>
       <div class="finding-body">
-        <p>5 KPI cards at top of every detail page look identical. "Est. Completion: Apr 30" is more actionable than "20h Total Time" but both get equal weight. Consider emphasizing the primary metric.</p>
+        <p>5 KPI cards at top of every detail page look identical. Consider emphasizing the primary metric (progress % or Est. Completion).</p>
       </div>
     </div>
 
@@ -685,20 +839,47 @@
         <span class="finding-title">Footer content is minimal</span>
       </div>
       <div class="finding-body">
-        <p>Footer could serve as secondary navigation for support, accessibility settings, or language. Low priority, consider for final design.</p>
+        <p>Could serve as secondary navigation for support, accessibility, language. Low priority.</p>
       </div>
     </div>
+  </div>
 
-    <div class="finding">
-      <div class="finding-header">
-        <span class="finding-id">m6</span>
-        <span class="badge open">Open</span>
-        <span class="finding-title">SessionBanner Live status-dot is green</span>
-      </div>
-      <div class="finding-body">
-        <p>The SessionBanner Live variant uses a green status-dot. Per updated rule, green for "live" is acceptable. The dot could also be brand blue to match the "LIVE" text. Minor consistency preference.</p>
-      </div>
-    </div>
+  <!-- Priority Action Plan -->
+  <div class="section">
+    <h2>Priority Action Plan</h2>
+
+    <table class="norman-table">
+      <thead>
+        <tr>
+          <th>Priority</th>
+          <th>Issues</th>
+          <th>Effort</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge critical">Critical</span></td>
+          <td>C4 Cyber "Flexible Learning" label, C5 CE cert thumbnail</td>
+          <td>30 min (text fixes)</td>
+        </tr>
+        <tr>
+          <td><span class="badge major">Major</span></td>
+          <td>M7 Blocked pill, M9 Recordings red density, M10 CE Starting Soon button</td>
+          <td>1-2 hours (manual fixes)</td>
+        </tr>
+        <tr>
+          <td><span class="badge major">Major</span></td>
+          <td>M1 Empty/error/loading state patterns</td>
+          <td>3-4 hours (design work)</td>
+        </tr>
+        <tr>
+          <td><span class="badge minor">Minor</span></td>
+          <td>m7 Tab naming, m8 Affiliation count, m3 KPI hierarchy, m5 Footer, M5 Back nav, M8 Q&A</td>
+          <td>Backlog / design system phase</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 12px;">Total estimated to clear Critical + Major: 5-7 hours</p>
   </div>
 
   <!-- What's Working Well -->
@@ -710,28 +891,40 @@
         <span>All 4 flows follow the same structure: nav, session banner, breadcrumb, hero header with KPIs, tab navigation, content, footer.</span>
       </li>
       <li>
-        <strong>CourseTypeBadge component system</strong>
-        <span>3-variant component set with distinct colors per delivery type. Propagates cleanly across all screens.</span>
+        <strong>Nelson's button redesign</strong>
+        <span>New session button system (black "Join Live" with green emoji, dark "Starting Soon", outlined "Watch/Review") is clear and consistent across TM flow.</span>
       </li>
       <li>
-        <strong>SessionBanner redesign (Option 1b)</strong>
+        <strong>CourseTypeBadge component system</strong>
+        <span>3-variant component set with distinct colors per delivery type. Propagates cleanly across 81 instances.</span>
+      </li>
+      <li>
+        <strong>SessionBanner (Option 1b)</strong>
         <span>Slim notification banners inform without dominating. Good component variant architecture.</span>
       </li>
       <li>
         <strong>Program affiliation banner</strong>
-        <span>Clean, contextual, correctly conditional. Breadcrumb integration with "View Program" link adds utility.</span>
+        <span>Clean conditional banner on DA/PD showing program context with "View Program" link.</span>
       </li>
       <li>
-        <strong>Tab navigation ordering</strong>
-        <span>Consistent tab order per delivery type (Flexible vs VILT) reduces cognitive load.</span>
+        <strong>Cyber Recordings empty state</strong>
+        <span>Good reusable model: icon + message + helpful context + related content. Should be replicated to other tabs.</span>
+      </li>
+      <li>
+        <strong>Badge standardization</strong>
+        <span>279+ badges at cornerRadius 100px with WCAG AA contrast. Structural work held up across both audits.</span>
+      </li>
+      <li>
+        <strong>Grid compliance</strong>
+        <span>3,086 values snapped to 4pt grid. 99% compliance. No regression from v1 to v2.</span>
       </li>
       <li>
         <strong>Auto-layout usage</strong>
-        <span>Most screens use proper auto-layout with HUG/FILL sizing. Will translate well to responsive code.</span>
+        <span>Most screens use HUG/FILL sizing. Will translate well to responsive code.</span>
       </li>
       <li>
-        <strong>Breadcrumb navigation</strong>
-        <span>Clear location awareness across all detail pages.</span>
+        <strong>New exploration areas</strong>
+        <span>3 Dashboard versions and 3 Immersive Player versions provide stakeholder review material.</span>
       </li>
     </ul>
   </div>
