@@ -1,0 +1,11 @@
+# Working files (not deployed to hub)
+_workspace/
+
+# Storybook — source folder is local-only; built output goes to /storybook/ during deploy
+v7-storybook/node_modules/
+v7-storybook/dist/
+v7-storybook/storybook-static/
+
+# System
+.DS_Store
+.playwright-mcp/
