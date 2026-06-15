@@ -1,0 +1,1 @@
+.v7-bm{background:transparent;border:0;color:var(--text3);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;opacity:.6;transition:color .15s,opacity .15s;padding:0}.v7-bm:hover{color:var(--text);opacity:1}.v7-bm--saved{color:var(--accent);opacity:1}.v7-bm:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}

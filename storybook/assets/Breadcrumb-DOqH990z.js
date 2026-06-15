@@ -1,0 +1,10 @@
+import{j as e}from"./jsx-runtime-Cf8x2fCZ.js";function d({course:s,module:n,active:r,onCourseClick:i,onModuleClick:o,showCourse:t,showModule:a,className:u=""}){const c=["v7-bc",t===!1&&"v7-bc--no-course",a===!1&&"v7-bc--no-module",u].filter(Boolean).join(" ");return e.jsxs("nav",{className:c,"aria-label":"Breadcrumb",children:[e.jsx("button",{type:"button",className:"v7-bc__crumb v7-bc__crumb--link v7-bc__course",onClick:i,children:s}),e.jsx("span",{className:"v7-bc__sep","aria-hidden":!0,children:"/"}),e.jsx("button",{type:"button",className:"v7-bc__crumb v7-bc__crumb--link v7-bc__module",onClick:o,children:n}),e.jsx("span",{className:"v7-bc__sep v7-bc__sep--module","aria-hidden":!0,children:"/"}),e.jsx("span",{className:"v7-bc__crumb v7-bc__crumb--active",title:r,"aria-current":"page",children:r})]})}d.__docgenInfo={description:`Breadcrumb — 3-tier responsive truncation.
+
+Default behavior (driven by viewport width):
+ - ≥960px : Course / Module / Unit (Unit truncates with ellipsis)
+ - 640–960px : Module / Unit
+ - ≤640px : Unit only
+
+Pass \`showCourse\` / \`showModule\` props to override responsive behavior
+(used by Storybook variants and topbar \`Show Course Crumb\` / \`Show Module Crumb\`
+boolean props on the Figma component).`,methods:[],displayName:"Breadcrumb",props:{course:{required:!0,tsType:{name:"string"},description:""},module:{required:!0,tsType:{name:"string"},description:""},active:{required:!0,tsType:{name:"string"},description:""},onCourseClick:{required:!1,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},onModuleClick:{required:!1,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},showCourse:{required:!1,tsType:{name:"boolean"},description:"Show / hide ancestor crumbs explicitly (useful for stories at fixed widths)."},showModule:{required:!1,tsType:{name:"boolean"},description:""},className:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:'""',computed:!1}}}};export{d as B};
