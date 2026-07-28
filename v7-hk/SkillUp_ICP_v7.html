@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp Online — Immersive Course Player</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════════
+   TYPE SCALE
+   Rule: Montserrat owns UI + below 28px
+         Playfair Display owns marketing/display ≥ 28px
+         Outfit owns the small-caps label/numeric tier
+   Sizes: multiples of 4, with 14px as the single exception
+   ─────────────────────────────────────────────────────
+   text-xs   : 10px  Montserrat 500   badges, tags
+   text-sm   : 12px  Montserrat 400   captions, helper
+   text-base : 14px  Montserrat 400   body (exception)
+   text-md   : 16px  Montserrat 500   card titles, nav
+   text-lg   : 20px  Montserrat 600   section headings
+   text-xl   : 24px  Montserrat 600   page headings
+   text-2xl  : 28px  Playfair 600     marketing section
+   text-3xl  : 32px  Playfair 700     marketing H2
+   text-4xl  : 40px  Playfair 700     marketing H1
+   text-5xl  : 48px  Playfair 700     hero
+   label-sm  : 11px  Outfit 400/500   eyebrows, MODULE labels, timestamps
+   label-base: 13px  Outfit 500       counters, score denom, stat numbers
+   Tabular figures (font-variant-numeric: tabular-nums) are
+   applied to numeric label contexts for digit alignment.
+   ════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Type */
+  --font-ui:      'Montserrat', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-label:   'Outfit', 'Montserrat', system-ui, sans-serif;
+
+  /* Scale */
+  --text-xs:   10px;
+  --text-sm:   12px;
+  --text-base: 14px;
+  --text-md:   16px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  28px;
+  --text-3xl:  32px;
+  --text-4xl:  40px;
+  --text-5xl:  48px;
+  --label-sm:  11px;
+  --label-base: 13px;
+
+  /* Spacing (8pt grid) */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;
+  --sp-4: 16px;  --sp-5: 20px;  --sp-6: 24px;
+  --sp-8: 32px;  --sp-10: 40px; --sp-12: 48px;
+
+  /* Radius */
+  --r-sm: 6px;   --r-md: 10px;  --r-lg: 14px;  --r-full: 9999px;
+
+  /* Layout */
+  --sidebar-w: 256px;
+  --ai-w:      272px;
+  --topbar-h:  52px;
+
+  /* Transition */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:  0.22s;
+}
+
+/* ── TABULAR FIGURES ──────────────────────────────────
+   Numeric label contexts use Outfit's OpenType tabular
+   figures so digits stay aligned as values change
+   (timestamps tick, counters increment, scores update).
+   Letters stay proportional — only digits are affected.
+   ───────────────────────────────────────────────────── */
+.prog-label,
+.unit-meta,
+.seek-time,
+.spd-btn,
+.ts,
+.note-ts,
+.dl-size,
+.disc-meta,
+.step-dot,
+.q-num,
+.res-denom,
+.stat-n,
+.foot-count {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ════════════════════════════════════════════════════════
+   SKILLUP ONLINE BRAND PALETTE
+   ─────────────────────────────────────────────────────
+   Extracted from brand assets:
+     Brand Navy  : #1B3D4F  (logo wordmark "Skill")
+     Brand Teal  : #0F5C74  (mid teal)
+     Brand Cyan  : #0096C7  (logo "Up" + brandmark — PRIMARY ACCENT)
+     Brand Sky   : #00B4D8  (accent hover)
+     Brand Light : #CAF0F8  (accent dim on dark / #E8F4F8 on light)
+
+   Dark surfaces walk from near-black → brand navy
+   so every panel carries a subtle brand warmth.
+   ════════════════════════════════════════════════════════ */
+
+/* ── DARK THEME (default) ── */
+:root, [data-theme="dark"] {
+  --bg:          #090D12;
+  --bg2:         #0D1520;
+  --bg3:         #121D2C;
+  --bg4:         #172434;
+  --surface:     #1B3D4F;
+  --surface2:    #224D62;
+  --border:      rgba(255,255,255,0.07);
+  --border2:     rgba(255,255,255,0.15);
+  --text:        #E8F0F5;
+  --text2:       #7D9BAD;
+  --text3:       #5E8A9E;   /* FIX: was #3D5A6A (3.1:1 fail) → now 4.6:1 AA pass */
+  --accent:      #0096C7;
+  --accent2:     #007DAA;
+  --accent-dim:  rgba(0,150,199,0.13);
+  --accent-glow: rgba(0,150,199,0.28);
+  --amber:       #F5A623;
+  --amber-dim:   rgba(245,166,35,0.14);
+  --blue:        #48CAE4;
+  --blue-dim:    rgba(72,202,228,0.12);
+  --red:         #E24B4A;
+  --red-dim:     rgba(226,75,74,0.12);
+  --success:     #27A96E;
+  --success-dim: rgba(39,169,110,0.12);
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.5);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.55);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.65);
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg:          #F0F6F9;
+  --bg2:         #FFFFFF;
+  --bg3:         #F5FAFB;
+  --bg4:         #E8F4F8;
+  --surface:     #D5EBF2;
+  --surface2:    #B8D8E6;
+  --border:      rgba(27,61,79,0.09);
+  --border2:     rgba(27,61,79,0.18);
+  --text:        #1B3D4F;
+  --text2:       #2E5468;   /* FIX: was #3B6070 (5.9:1) → now 7.1:1 AAA on white */
+  --text3:       #4A7A90;   /* FIX: was #7DA4B5 (2.8:1 fail) → now 4.6:1 AA pass */
+  --accent:      #005A82;   /* FIX: was #0079A8 — darkened for sidebar active row (4.7:1 on dim bg) */
+  --accent2:     #004268;
+  --accent-dim:  rgba(0,90,130,0.10);
+  --accent-glow: rgba(0,90,130,0.20);
+  --amber:       #C97C10;
+  --amber-dim:   rgba(201,124,16,0.11);
+  --blue:        #0F5C74;
+  --blue-dim:    rgba(15,92,116,0.10);
+  --red:         #C23B3A;
+  --red-dim:     rgba(194,59,58,0.10);
+  --success:     #0A7656;
+  --success-dim: rgba(10,118,86,0.10);
+  --shadow-sm:   0 1px 3px rgba(27,61,79,0.10);
+  --shadow-md:   0 4px 16px rgba(27,61,79,0.12);
+  --shadow-lg:   0 8px 32px rgba(27,61,79,0.15);
+}
+
+/* ── BASE ── */
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+/* ── LAYOUT GRID ── */
+.app {
+  display: grid;
+  grid-template-rows: var(--topbar-h) 1fr;
+  grid-template-columns: var(--sidebar-w) 1fr var(--ai-w);
+  height: 100vh;
+  transition: grid-template-columns 0.32s var(--ease);
+}
+.app.sidebar-collapsed { grid-template-columns: 52px 1fr var(--ai-w); }
+.app.ai-collapsed      { grid-template-columns: var(--sidebar-w) 1fr 0px; }
+.app.sidebar-collapsed.ai-collapsed { grid-template-columns: 52px 1fr 0px; }
+
+/* ════════════════════════════════════════
+   TOPBAR
+   ════════════════════════════════════════ */
+.topbar {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  gap: 0;
+  height: var(--topbar-h);
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--dur) var(--ease);
+}
+
+/* Topbar left cluster: sidebar toggle + brand, sits where the sidebar lives */
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding-right: var(--sp-5);
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Sidebar toggle in the topbar — primary control for opening/closing the sidebar.
+   On desktop it collapses the inline sidebar; on mobile it slides the drawer in/out. */
+.sb-toggle {
+  width: 36px; height: 36px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  flex-shrink: 0;
+  padding: 0;
+}
+.sb-toggle:hover { background: var(--surface); color: var(--text); }
+.sb-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sb-toggle .sb-icon { display: block; transition: transform var(--dur) var(--ease); }
+/* Icon state is driven by aria-expanded — same source of truth as a screen reader uses.
+   "true"  = sidebar is currently visible (default orientation)
+   "false" = sidebar is currently hidden (rotate 180deg to suggest "click to open") */
+.sb-toggle[aria-expanded="false"] .sb-icon { transform: rotate(180deg); }
+.sb-toggle[aria-expanded="false"] { color: var(--text3); }
+
+/* On mobile (≤480px), hide full logo and show brandmark only */
+@media (max-width: 480px) {
+  #brandFull { display: none !important; }
+  #brandMark { display: flex !important; }
+}
+
+.topbar-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sp-5);
+  min-width: 0; /* critical — allows flex child to shrink below content size */
+  overflow: hidden;
+}
+
+/* ── BREADCRUMB TRUNCATION SYSTEM ──
+   Rule: The breadcrumb is a flex row. Parent ancestors (course, module)
+   are fixed-width and flex-shrink. The active leaf (unit name) takes
+   remaining space and truncates with ellipsis.
+
+   Viewport tiers:
+   ≥ 960px  : Course / Module / Unit name (all three visible, unit truncates)
+   640–960px: Module / Unit name (course label hidden to save space)
+   < 640px  : Unit name only (collapsed to single crumb, no ancestors)
+   ──────────────────────────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ancestor crumbs (course name, module name) — fixed, don't shrink past their text */
+.crumb {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  font-weight: 400;
+  color: var(--text3);
+  white-space: nowrap;
+  flex-shrink: 0; /* ancestors never shrink — they hide at breakpoints instead */
+}
+.crumb.link { color: var(--text2); cursor: pointer; transition: color 0.15s; }
+.crumb.link:hover { color: var(--text); }
+
+/* Active crumb (unit name) — this one DOES shrink and truncates with ellipsis */
+.crumb.active {
+  color: var(--text);
+  font-weight: 600;
+  font-size: var(--text-sm); /* 12px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;   /* allowed to shrink */
+  min-width: 40px;  /* always show at least a few chars */
+  max-width: 320px; /* cap at desktop so it doesn't eat the whole bar */
+}
+
+/* Separator — never shrinks, hides with its sibling */
+.crumb-sep {
+  color: var(--text3);
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+}
+
+/* Tooltip on active crumb so full name is accessible when truncated */
+.crumb.active[title] { cursor: default; }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding-left: var(--sp-4);
+  border-left: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* Progress */
+.prog-wrap { display: flex; align-items: center; gap: var(--sp-2); }
+.prog-label { font-family: var(--font-label); font-size: var(--label-sm); color: var(--text3); white-space: nowrap; }
+.prog-track { width: 88px; height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 2px; transition: width 0.5s var(--ease); }
+
+/* Icon buttons */
+.icon-btn {
+  width: 32px; height: 32px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.icon-btn:hover { background: var(--surface); border-color: var(--border2); color: var(--text); }
+.icon-btn.on { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+/* Theme toggle pill */
+.theme-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-full);
+  padding: 3px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.theme-pill:hover { border-color: var(--accent); }
+.theme-opt {
+  width: 26px; height: 26px;
+  border-radius: var(--r-full);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  font-size: 13px;
+}
+.theme-opt.active { background: var(--bg2); box-shadow: var(--shadow-sm); }
+
+.avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);   /* 10px */
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+
+/* ════════════════════════════════════════
+   SIDEBAR
+   ════════════════════════════════════════ */
+.sidebar {
+  grid-column: 1; grid-row: 2;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.sidebar-head {
+  padding: var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebar-course-eyebrow {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 400;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--sp-1);
+  transition: opacity 0.2s;
+}
+.sidebar-course-name {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  transition: opacity 0.2s;
+}
+.app.sidebar-collapsed .sidebar-course-eyebrow,
+.app.sidebar-collapsed .sidebar-course-name { opacity: 0; pointer-events: none; }
+
+.sidebar-scroll {
+  flex: 1; overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface2) transparent;
+  padding: var(--sp-2) 0;
+}
+.sidebar-scroll::-webkit-scrollbar { width: 3px; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+.module-header {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 500;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: var(--sp-3) var(--sp-4) var(--sp-1);
+  transition: opacity 0.2s;
+}
+.app.sidebar-collapsed .module-header { opacity: 0; }
+
+.unit-row {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  cursor: pointer;
+  transition: background 0.12s;
+  position: relative;
+  overflow: hidden;
+  min-height: 36px;
+}
+.unit-row::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.2s var(--ease);
+  border-radius: 0 2px 2px 0;
+}
+.unit-row:hover { background: rgba(128,128,128,0.05); }
+.unit-row.active { background: var(--accent-dim); }
+.unit-row.active::before { transform: scaleY(1); }
+
+.unit-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.2s;
+}
+.unit-check.done  { background: var(--success); border-color: var(--success); box-shadow: 0 0 6px var(--success-dim); }
+.unit-check.now   { border-color: var(--accent); }
+.unit-check.now .now-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.check-v { width: 8px; height: 6px; border-left: 1.5px solid #000; border-bottom: 1.5px solid #000; transform: rotate(-45deg) translate(0.5px,-1px); }
+
+.unit-info { flex: 1; min-width: 0; transition: opacity 0.2s; }
+.app.sidebar-collapsed .unit-info { opacity: 0; }
+
+.unit-name {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  font-weight: 400;
+  color: var(--text2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  line-height: 1.35;
+}
+.unit-row.active .unit-name { color: var(--accent); font-weight: 600; }
+
+.unit-meta {
+  display: flex; align-items: center; gap: 4px;
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3);
+  margin-top: 1px;
+}
+.u-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.u-dot.video { background: var(--blue); }
+.u-dot.quiz  { background: var(--amber); }
+
+.unit-bm {
+  opacity: 0; color: var(--accent); flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.unit-row.bookmarked .unit-bm { opacity: 1; }
+
+/* ════════════════════════════════════════
+   CONTENT AREA
+   ════════════════════════════════════════ */
+.content {
+  grid-column: 2; grid-row: 2;
+  display: flex; flex-direction: column;
+  overflow: hidden; background: var(--bg); min-width: 0;
+  transition: background var(--dur) var(--ease);
+}
+
+/* ─── VIDEO PLAYER ─── */
+.player-wrap { position: relative; background: #000; flex-shrink: 0; }
+
+.player-stage {
+  width: 100%; aspect-ratio: 16/9; max-height: 52vh;
+  background: #000;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+.player-gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 28% 48%, rgba(61,214,140,0.07) 0%, transparent 68%),
+    radial-gradient(ellipse 38% 55% at 72% 38%, rgba(91,156,246,0.05) 0%, transparent 68%),
+    linear-gradient(175deg, #090c11 0%, #040507 100%);
+}
+.player-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.player-center {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: var(--sp-4);
+}
+
+.play-btn {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(255,255,255,0.065);
+  border: 1.5px solid rgba(255,255,255,0.14);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s var(--ease);
+  backdrop-filter: blur(8px);
+}
+.play-btn:hover { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 28px var(--accent-glow); transform: scale(1.07); }
+.play-btn:hover .play-icon path { fill: #000; }
+.play-btn.playing { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+.play-btn.playing .play-icon { display: none; }
+.play-btn.playing::after {
+  content: '';
+  width: 18px; height: 18px; background: #000;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='4' width='4' height='16'/%3E%3Crect x='14' y='4' width='4' height='16'/%3E%3C/svg%3E") no-repeat center;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='4' width='4' height='16'/%3E%3Crect x='14' y='4' width='4' height='16'/%3E%3C/svg%3E") no-repeat center;
+}
+
+.video-label {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: rgba(255,255,255,0.36);
+  background: rgba(0,0,0,0.36);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-sm);
+  padding: 4px 10px;
+  letter-spacing: 0.02em;
+}
+
+.cc-bar {
+  position: absolute; bottom: 58px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  padding: 5px 14px; border-radius: var(--r-sm);
+  max-width: 80%; text-align: center;
+  pointer-events: none; transition: opacity 0.28s;
+  z-index: 5;
+}
+.cc-bar.hidden { opacity: 0; }
+
+.ctrl-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: var(--sp-3) var(--sp-4);
+  background: linear-gradient(to top, rgba(0,0,0,0.88), transparent);
+  display: flex; flex-direction: column; gap: var(--sp-2); z-index: 10;
+}
+
+.seek-row { display: flex; align-items: center; gap: var(--sp-3); }
+.seek-track {
+  flex: 1; height: 4px; background: rgba(255,255,255,0.14);
+  border-radius: 2px; cursor: pointer; position: relative;
+  transition: height 0.15s;
+}
+.seek-track:hover { height: 6px; }
+.seek-filled {
+  height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 2px; position: relative; transition: width 0.28s linear;
+}
+.seek-thumb {
+  position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+  width: 12px; height: 12px; border-radius: 50%; background: #fff;
+  box-shadow: 0 0 8px var(--accent-glow);
+  opacity: 0; transition: opacity 0.15s;
+}
+.seek-track:hover .seek-thumb { opacity: 1; }
+.seek-time {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+}
+
+.btn-row { display: flex; align-items: center; gap: var(--sp-2); }
+.vc {
+  background: transparent; border: none;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: var(--r-sm);
+  transition: all 0.15s; flex-shrink: 0;
+}
+.vc:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.vc.on { color: var(--accent); }
+
+.spd-btn {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 500;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-sm); color: rgba(255,255,255,0.65);
+  padding: 3px 8px; cursor: pointer; transition: all 0.15s;
+}
+.spd-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.flex1 { flex: 1; }
+
+/* ─── BOTTOM PANEL (tabs + content) ─── */
+.bottom { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+
+.tab-strip {
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2); padding: 0 var(--sp-1);
+  flex-shrink: 0;
+  transition: background var(--dur) var(--ease);
+}
+.tab {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  font-weight: 500;
+  padding: 11px var(--sp-4);
+  color: var(--text3); cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s; white-space: nowrap;
+  display: flex; align-items: center; gap: 5px;
+}
+.tab:hover { color: var(--text2); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-pip { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.55; }
+
+.panels { flex: 1; display: flex; overflow: hidden; min-height: 0; }
+.gone { display: none !important; }
+
+/* Transcript */
+.transcript-pane {
+  flex: 1; padding: var(--sp-4) var(--sp-5);
+  overflow-y: auto; scrollbar-width: thin;
+  scrollbar-color: var(--surface2) transparent;
+  display: flex; flex-direction: column; gap: 5px; min-width: 0;
+}
+.transcript-pane::-webkit-scrollbar { width: 3px; }
+.transcript-pane::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+.tl {
+  display: flex; gap: var(--sp-3); align-items: flex-start;
+  padding: 6px var(--sp-3); border-radius: var(--r-sm);
+  cursor: pointer; transition: all 0.13s;
+  border: 1px solid transparent;
+}
+.tl:hover { background: var(--surface); }
+.tl.active { background: var(--accent-dim); border-color: rgba(61,214,140,0.18); }
+[data-theme="light"] .tl.active { border-color: rgba(14,155,110,0.18); }
+
+.ts {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3); min-width: 36px; flex-shrink: 0; margin-top: 2px;
+}
+.tl.active .ts { color: var(--accent); font-weight: 500; }
+
+.tt {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  color: var(--text2); line-height: 1.65;
+}
+.tl.active .tt { color: var(--text); font-weight: 500; }
+.tl.past { opacity: 0.42; }
+
+/* Notes panel */
+.notes-pane {
+  width: 216px; flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex; flex-direction: column;
+  padding: var(--sp-3); gap: var(--sp-2);
+  overflow-y: auto;
+  transition: background var(--dur) var(--ease);
+}
+.notes-pane::-webkit-scrollbar { width: 3px; }
+.notes-pane::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+.pane-label {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 500;
+  color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 0 2px;
+}
+
+.note-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-3); cursor: pointer;
+  transition: border-color 0.15s;
+}
+.note-card:hover { border-color: var(--border2); }
+.note-ts {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--accent); margin-bottom: 3px; font-weight: 500;
+}
+.note-body {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  color: var(--text2); line-height: 1.5;
+}
+
+.note-add {
+  border: 1px dashed var(--border2);
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-3);
+  display: flex; align-items: center; gap: 6px;
+  cursor: text; transition: border-color 0.15s;
+}
+.note-add:hover { border-color: var(--accent); }
+.note-add span {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm); color: var(--text3);
+}
+
+/* Downloads pane */
+.dl-pane {
+  flex: 1; padding: var(--sp-5);
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  overflow-y: auto;
+}
+.dl-item {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--r-md); cursor: pointer; transition: all 0.15s;
+}
+.dl-item:hover { border-color: var(--accent); background: var(--accent-dim); }
+.dl-icon {
+  width: 36px; height: 36px; border-radius: var(--r-sm);
+  background: var(--surface); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; font-size: 16px;
+}
+.dl-name {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  font-weight: 500; color: var(--text);
+}
+.dl-size {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3);
+}
+
+/* Discussion pane */
+.disc-pane {
+  flex: 1; padding: var(--sp-5);
+  overflow-y: auto; display: flex; flex-direction: column; gap: var(--sp-4);
+}
+.disc-row { display: flex; gap: var(--sp-3); }
+.disc-av {
+  width: 30px; height: 30px; border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);   /* 10px */
+  font-weight: 700; color: #fff;
+}
+.disc-bubble {
+  flex: 1; background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px 8px 8px 2px; padding: var(--sp-3) var(--sp-3);
+}
+.disc-meta {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3); margin-bottom: 4px;
+}
+.disc-text {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  color: var(--text2); line-height: 1.6;
+}
+
+/* ════════════════════════════════════════
+   QUIZ PANEL
+   ════════════════════════════════════════ */
+.quiz-view {
+  flex: 1; overflow-y: auto; scrollbar-width: thin;
+  scrollbar-color: var(--surface2) transparent;
+  padding: var(--sp-6) var(--sp-8);
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--bg);
+  transition: background var(--dur) var(--ease);
+}
+.quiz-view::-webkit-scrollbar { width: 3px; }
+.quiz-view::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+/* Start screen */
+.quiz-start {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  gap: var(--sp-4); padding: var(--sp-8) var(--sp-5);
+  max-width: 480px; margin: 0 auto;
+}
+.quiz-start-icon {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: var(--amber-dim);
+  border: 2px solid rgba(245,166,35,0.28);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+}
+/* Quiz start title: Playfair — it's a moment, editorial weight */
+.quiz-start h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);  /* 32px — crosses display threshold */
+  font-weight: 700;
+  color: var(--text); line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.quiz-start p {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  color: var(--text2); max-width: 320px; line-height: 1.7;
+}
+.quiz-pills { display: flex; gap: var(--sp-2); flex-wrap: wrap; justify-content: center; }
+.quiz-pill {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-full); padding: 4px 12px; color: var(--text2);
+}
+
+/* Questions */
+.quiz-hd { margin-bottom: var(--sp-6); }
+.quiz-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--amber); background: var(--amber-dim);
+  border: 1px solid rgba(245,166,35,0.22);
+  border-radius: var(--r-full); padding: 3px 10px;
+  margin-bottom: var(--sp-3);
+}
+.blink { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); animation: blink 1.8s ease-in-out infinite; }
+
+/* Quiz main heading: Playfair Display at 28px — crosses display threshold */
+.quiz-hd-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);  /* 28px */
+  font-weight: 600;
+  color: var(--text); margin-bottom: var(--sp-1); letter-spacing: -0.01em;
+}
+.quiz-hd-desc {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  color: var(--text2); line-height: 1.6;
+}
+
+/* Step dots */
+.step-row { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+.step-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 500;
+  border: 1.5px solid var(--border2);
+  color: var(--text3); background: var(--bg2);
+  transition: all 0.22s; flex-shrink: 0; cursor: default;
+}
+.step-dot.current { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.step-dot.done { background: var(--accent); border-color: var(--accent); color: #000; }
+.step-dot.wrong { background: var(--red); border-color: var(--red); color: #fff; }
+.step-dot.done::after  { content: '✓'; font-size: 11px; }
+.step-dot.wrong::after { content: '✕'; font-size: 11px; }
+.step-dot.done span, .step-dot.wrong span { display: none; }
+.step-line { flex: 1; height: 2px; background: var(--border); border-radius: 1px; }
+.step-line.done { background: var(--accent); }
+
+/* Question card */
+.q-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: var(--sp-5) var(--sp-6);
+  margin-bottom: var(--sp-4);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.q-num {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: var(--sp-2);
+}
+.q-text {
+  font-family: var(--font-ui);
+  font-size: var(--text-lg);   /* 20px */
+  font-weight: 600;
+  color: var(--text); line-height: 1.55;
+}
+
+.options { display: flex; flex-direction: column; gap: var(--sp-2); margin-top: var(--sp-5); }
+
+.opt {
+  display: flex; align-items: flex-start; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-sm); border: 1.5px solid var(--border);
+  background: var(--bg3); cursor: pointer; transition: all 0.14s; position: relative;
+}
+.opt:hover:not(.locked) { border-color: var(--border2); background: var(--surface); }
+.opt.selected:not(.revealed) { border-color: var(--accent); background: var(--accent-dim); }
+.opt.correct { border-color: var(--success); background: var(--success-dim); }
+.opt.wrong   { border-color: var(--red);     background: var(--red-dim); }
+.opt.locked  { cursor: default; }
+
+.opt-key {
+  width: 24px; height: 24px; border-radius: var(--r-sm);
+  background: var(--surface); border: 1.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 500; color: var(--text3);
+  flex-shrink: 0; transition: all 0.14s;
+}
+.opt.selected:not(.revealed) .opt-key { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.opt.correct .opt-key { background: var(--success); border-color: var(--success); color: #fff; }
+.opt.wrong   .opt-key { background: var(--red);     border-color: var(--red);     color: #fff; }
+
+.opt-txt {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  color: var(--text2); line-height: 1.55; padding-top: 2px;
+}
+.opt.selected:not(.revealed) .opt-txt { color: var(--text); }
+.opt.correct .opt-txt { color: var(--text); font-weight: 500; }
+
+.expl {
+  display: none;
+  border-radius: var(--r-sm); padding: var(--sp-3) var(--sp-4);
+  margin-top: var(--sp-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  line-height: 1.65; color: var(--text2);
+}
+.expl.show { display: block; }
+.expl.c { background: var(--success-dim); border: 1px solid rgba(39,169,110,0.22); }
+.expl.w { background: var(--red-dim); border: 1px solid rgba(226,75,74,0.22); }
+.expl strong { color: var(--success); }
+
+.quiz-actions {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-top: var(--sp-2);
+}
+
+.q-btn {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-5); border-radius: var(--r-sm);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  font-weight: 600; cursor: pointer;
+  transition: all 0.15s; border: 1.5px solid transparent;
+  letter-spacing: 0.01em;
+}
+.q-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.q-btn.primary:hover { background: var(--accent2); border-color: var(--accent2); box-shadow: 0 4px 16px var(--accent-glow); }
+.q-btn.primary:disabled { opacity: 0.38; cursor: not-allowed; box-shadow: none; }
+.q-btn.ghost { background: transparent; color: var(--text2); border-color: var(--border2); }
+.q-btn.ghost:hover { background: var(--surface); color: var(--text); }
+
+/* Results */
+.quiz-results {
+  display: none; flex-direction: column; align-items: center;
+  text-align: center; padding: var(--sp-5) 0 var(--sp-10); gap: 0;
+  max-width: 440px; margin: 0 auto;
+}
+.quiz-results.show { display: flex; }
+
+.res-ring {
+  width: 116px; height: 116px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; position: relative; margin-bottom: var(--sp-5);
+}
+.res-ring svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: var(--surface2); stroke-width: 6; }
+.ring-fg { fill: none; stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset 1.1s cubic-bezier(0.4,0,0.2,1); }
+
+/* Score: Playfair — this is a display moment, editorial number */
+.res-score {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);  /* 40px — way above display threshold */
+  font-weight: 700; color: var(--text); line-height: 1; position: relative; z-index: 1;
+}
+.res-denom {
+  font-family: var(--font-label);
+  font-size: var(--label-base);  /* 13px */
+  color: var(--text3); position: relative; z-index: 1; margin-top: 2px;
+}
+
+/* Results title: Playfair Display */
+.res-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);  /* 32px */
+  font-weight: 700;
+  color: var(--text); margin-bottom: var(--sp-2); letter-spacing: -0.01em;
+}
+.res-sub {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  color: var(--text2); max-width: 340px; line-height: 1.65; margin-bottom: var(--sp-6);
+}
+
+.res-stats { display: flex; gap: var(--sp-3); margin-bottom: var(--sp-6); }
+.res-stat {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: var(--sp-4) var(--sp-6);
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+/* Stat numbers: Outfit with tabular figures — technical data */
+.stat-n {
+  font-family: var(--font-label);
+  font-size: var(--text-2xl);  /* 28px */
+  font-weight: 500;
+}
+.stat-n.c { color: var(--accent); }
+.stat-n.w { color: var(--red); }
+.stat-l {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);   /* 10px */
+  font-weight: 600;
+  color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em;
+}
+.res-btns { display: flex; gap: var(--sp-3); }
+
+/* ── FOOTER NAV ── */
+.foot-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--sp-3) var(--sp-5);
+  border-top: 1px solid var(--border); background: var(--bg2); flex-shrink: 0;
+  transition: background var(--dur) var(--ease);
+}
+.fn-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: var(--sp-2) var(--sp-4); border-radius: var(--r-sm);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  font-weight: 500; cursor: pointer;
+  transition: all 0.15s; border: 1px solid var(--border); color: var(--text2); background: transparent;
+}
+.fn-btn:hover { border-color: var(--border2); color: var(--text); background: var(--surface); }
+.fn-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.fn-btn.primary:hover { background: var(--accent2); border-color: var(--accent2); box-shadow: 0 0 14px var(--accent-glow); }
+
+.foot-center { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.foot-count {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3);
+}
+.foot-name {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  color: var(--text2); max-width: 200px; text-align: center;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ════════════════════════════════════════
+   AI PANEL
+   ════════════════════════════════════════ */
+.ai-panel {
+  grid-column: 3; grid-row: 2;
+  background: var(--bg2); border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; overflow: hidden;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), opacity 0.28s;
+}
+.app.ai-collapsed .ai-panel { width: 0; overflow: hidden; opacity: 0; }
+
+.ai-hd {
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: var(--sp-2); flex-shrink: 0;
+}
+.ai-live { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); animation: blink 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.35} }
+.ai-title {
+  font-family: var(--font-ui);
+  font-size: var(--text-md);   /* 16px */
+  font-weight: 600; color: var(--text);
+}
+.ai-badge {
+  margin-left: auto;
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  background: var(--accent-dim); color: var(--accent);
+  border: 1px solid rgba(61,214,140,0.2); border-radius: var(--r-full);
+  padding: 2px 8px;
+}
+
+.ai-body {
+  flex: 1; overflow-y: auto; padding: var(--sp-4);
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  scrollbar-width: thin; scrollbar-color: var(--surface2) transparent;
+}
+.ai-body::-webkit-scrollbar { width: 3px; }
+.ai-body::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+.ai-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: var(--sp-3) var(--sp-3);
+  transition: border-color 0.15s, background var(--dur) var(--ease);
+}
+.ai-card:hover { border-color: var(--border2); }
+
+.ai-card-ttl {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text3); margin-bottom: var(--sp-2);
+  display: flex; align-items: center; gap: 5px;
+}
+.ai-pip { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+.ai-takeaway {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  color: var(--text2); line-height: 1.65;
+  display: flex; gap: 6px; padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ai-takeaway:last-child { border-bottom: none; padding-bottom: 0; }
+.ai-takeaway::before { content: '→'; color: var(--accent); flex-shrink: 0; font-size: 11px; margin-top: 3px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  padding: 5px 10px; border-radius: var(--r-full);
+  border: 1px solid var(--border2); color: var(--text2);
+  cursor: pointer; background: var(--bg4); transition: all 0.15s; line-height: 1.3;
+}
+.chip:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+.rel-link {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: 6px 0; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: all 0.14s;
+}
+.rel-link:last-child { border-bottom: none; }
+.rel-link:hover .rel-name { color: var(--accent); }
+.rel-ico {
+  width: 26px; height: 26px; border-radius: var(--r-sm);
+  background: var(--blue-dim); border: 1px solid rgba(91,156,246,0.14);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.rel-name {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  color: var(--text2); line-height: 1.4; transition: color 0.14s;
+}
+.rel-meta {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);   /* 11px */
+  color: var(--text3);
+}
+
+.chat-thread {
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  max-height: 172px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--surface2) transparent;
+}
+.chat-thread::-webkit-scrollbar { width: 3px; }
+.chat-thread::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+.msg {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  line-height: 1.6; padding: var(--sp-2) var(--sp-3); border-radius: 7px;
+}
+.msg.user { background: var(--surface); color: var(--text); border-radius: 7px 7px 2px 7px; align-self: flex-end; max-width: 90%; }
+.msg.bot  { background: var(--accent-dim); border: 1px solid rgba(61,214,140,0.13); color: var(--text2); border-radius: 7px 7px 7px 2px; max-width: 97%; }
+[data-theme="light"] .msg.bot { border-color: rgba(14,155,110,0.16); }
+
+.typing { display: flex; gap: 4px; align-items: center; padding: var(--sp-3); background: var(--accent-dim); border: 1px solid rgba(61,214,140,0.13); border-radius: 7px; width: fit-content; }
+.typing-d { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: tdot 1.2s ease-in-out infinite; }
+.typing-d:nth-child(2) { animation-delay: 0.2s; }
+.typing-d:nth-child(3) { animation-delay: 0.4s; }
+@keyframes tdot { 0%,60%,100%{opacity:0.3;transform:translateY(0)} 30%{opacity:1;transform:translateY(-3px)} }
+
+.ai-inp-row { padding: var(--sp-3) var(--sp-4); border-top: 1px solid var(--border); display: flex; gap: var(--sp-2); align-items: flex-end; flex-shrink: 0; }
+.ai-inp {
+  flex: 1; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--r-sm); color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  padding: var(--sp-2) var(--sp-3); resize: none;
+  min-height: 36px; max-height: 80px; line-height: 1.5; outline: none;
+  transition: border-color 0.15s, background var(--dur) var(--ease);
+}
+.ai-inp::placeholder { color: var(--text3); }
+.ai-inp:focus { border-color: var(--accent); }
+.ai-send {
+  width: 32px; height: 32px; border-radius: var(--r-sm);
+  background: var(--accent); border: none; color: #000;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.15s;
+}
+.ai-send:hover { background: var(--accent2); box-shadow: 0 0 12px var(--accent-glow); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════
+
+   BREADCRUMB TIERS (matching the rule above):
+   ≥ 960px  : all three crumbs visible (course / module / unit)
+   640–959px: course crumb hidden — module + unit visible
+   < 640px  : only unit name visible (ancestors + separators hidden)
+
+   SIDEBAR STRATEGY:
+   ≥ 960px  : sidebar in grid, collapsible
+   < 960px  : sidebar removed from grid, becomes a slide-over drawer
+              triggered by the hamburger button
+   ════════════════════════════════════════ */
+
+/* ── 1100px: shrink AI panel ── */
+@media (max-width: 1100px) {
+  :root { --ai-w: 240px; }
+}
+
+/* ── 960px: hide AI panel, keep sidebar in grid ── */
+@media (max-width: 960px) {
+  .app { grid-template-columns: var(--sidebar-w) 1fr; }
+  .ai-panel { display: none; }
+  .prog-wrap { display: none; }
+  #aiToggle { display: none; }
+
+  /* Breadcrumb: hide course-level ancestor at this width */
+  .crumb-course, .crumb-sep-course { display: none; }
+}
+
+/* ── 768px: sidebar becomes drawer, not grid column ── */
+@media (max-width: 768px) {
+  /* Grid becomes single column — sidebar is no longer in flow */
+  .app { grid-template-columns: 1fr; }
+
+  /* Sidebar lifts out of grid into a fixed overlay drawer */
+  .sidebar {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    box-shadow: none;
+  }
+  /* When drawer is open */
+  .sidebar.drawer-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 32px rgba(0,0,0,0.4);
+  }
+
+  /* Backdrop overlay behind the drawer */
+  .drawer-backdrop {
+    display: block !important;
+  }
+
+  /* Content fills full width */
+  .content { grid-column: 1; }
+
+  /* Notes pane hidden on narrow — full-width Notes tab handles it */
+  .notes-pane { display: none; }
+
+  /* Slightly taller player */
+  .player-stage { max-height: 46vw; }
+
+  /* Breadcrumb: module crumb also hidden */
+  .crumb-module, .crumb-sep-module { display: none; }
+
+  /* Brand name visible, crumbs narrowed */
+  .crumb.active { max-width: 160px; }
+}
+
+/* ── 480px: phone — minimal topbar ── */
+@media (max-width: 480px) {
+  :root { --topbar-h: 48px; }
+
+  /* Brand name hidden — logo mark only */
+  .brand-name { display: none; }
+  .brand { padding-right: var(--sp-3); }
+
+  /* Active crumb only — all ancestors hidden */
+  .crumb:not(.active), .crumb-sep { display: none; }
+
+  /* Give the unit name maximum room */
+  .crumb.active {
+    max-width: calc(100vw - 180px); /* account for brand mark + right buttons */
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  /* Footer — hide unit name, keep count + buttons */
+  .foot-name { display: none; }
+
+  /* Player fills more vertical space on phone */
+  .player-stage { max-height: 56vw; }
+
+  /* Footer nav compact */
+  .foot-nav { padding: var(--sp-2) var(--sp-3); }
+  .fn-btn { padding: var(--sp-2) var(--sp-3); font-size: var(--text-sm); }
+}
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed; bottom: 72px; left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--surface2); border: 1px solid var(--border2);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);   /* 12px */
+  padding: var(--sp-2) var(--sp-4); border-radius: var(--r-full);
+  opacity: 0; transition: all 0.28s; pointer-events: none;
+  z-index: 500; white-space: nowrap; box-shadow: var(--shadow-md);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ─── SCROLLBARS ─── */
+* { scrollbar-width: thin; scrollbar-color: var(--surface2) transparent; }
+</style>
+  <link rel="stylesheet" href="../LMS-HANDOFF/tokens/colors.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- Drawer backdrop (mobile only) -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeSidebarDrawer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:199;backdrop-filter:blur(2px);"></div>
+
+  <!-- ══ TOPBAR ══ -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <!-- Primary sidebar toggle — sits at the leftmost edge, adjacent to the sidebar it controls.
+           Works at all breakpoints: collapses inline sidebar on desktop, slides drawer on mobile. -->
+      <button class="sb-toggle" id="sbToggle" type="button" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="true" title="Toggle sidebar" onclick="toggleSidebar()">
+        <svg class="sb-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <!-- Panel-with-active-side glyph: rectangle outline, left column filled to indicate sidebar -->
+          <rect x="2" y="3" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="2" y="3" width="5" height="12" rx="1.5" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <div class="brand">
+      <!-- Full logo: visible on desktop (≥480px) -->
+      <a href="#" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0;height:28px;" id="brandFull">
+        <!-- Dark theme: white monotone -->
+        <span id="logoLight" style="display:block;height:28px;line-height:0;">
+<svg width="233" height="53" viewBox="0 0 233 53" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:auto;display:block;"><g clip-path="url(#lL0)"><path d="M25.9794 5.36755C30.0024 5.36757 33.7885 6.38153 37.0966 8.16736L35.6005 10.2523C32.7207 8.75583 29.449 7.90956 25.9794 7.90955C14.4391 7.90955 5.08411 17.2643 5.08386 28.8041C5.08386 40.3445 14.439 49.7006 25.9794 49.7006C37.5193 49.7005 46.8749 40.3445 46.8749 28.8041C46.8747 22.2814 43.8849 16.4571 39.202 12.6254L39.6903 9.79626C45.5816 14.0532 49.4157 20.9804 49.4159 28.8041C49.4159 41.7483 38.9231 52.2415 25.9794 52.2416C13.0351 52.2416 2.54187 41.7483 2.54187 28.8041C2.54212 15.8605 13.0353 5.36755 25.9794 5.36755Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M41.9005 1.10769C42.483 1.47433 42.7859 2.15693 42.6669 2.83489L37.1252 34.3977C37.0152 35.0243 36.5635 35.5365 35.9556 35.7239C35.3477 35.9114 34.686 35.7426 34.2421 35.2868L25.6304 26.4426L14.2396 22.9557C13.6232 22.767 13.1673 22.2449 13.0633 21.6087C12.9593 20.9725 13.2252 20.3324 13.7495 19.9573L40.0117 1.16379C40.5715 0.763223 41.3179 0.741051 41.9005 1.10769ZM18.5095 20.7184L27.0376 23.329C27.31 23.4124 27.5569 23.5631 27.7557 23.7672L34.3599 30.5497L38.6117 6.33313L18.5095 20.7184Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.3265 26.108C20.8841 26.5343 20.9904 27.332 20.5641 27.8896L14.2997 36.0815C13.8733 36.639 13.0757 36.7454 12.5181 36.319C11.9606 35.8926 11.8542 35.095 12.2806 34.5374L18.5449 26.3455C18.9713 25.788 19.7689 25.6816 20.3265 26.108ZM23.1735 31.1821C23.7474 31.5864 23.8848 32.3792 23.4806 32.9531L15.534 44.2333C15.1297 44.8071 14.3369 44.9446 13.763 44.5403C13.1892 44.1361 13.0518 43.3432 13.456 42.7694L21.4026 31.4892C21.8068 30.9154 22.5997 30.7779 23.1735 31.1821ZM29.2542 31.8512C29.8368 32.2427 29.9918 33.0323 29.6003 33.6149L23.3449 42.9252C22.9534 43.5079 22.1638 43.6628 21.5811 43.2714C20.9985 42.8799 20.8436 42.0903 21.235 41.5077L27.4905 32.1974C27.8819 31.6147 28.6716 31.4598 29.2542 31.8512Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M26.0596 24.8383L40.9979 2.78284L14.9763 21.6259L26.0596 24.8383" fill="white"/></g><g clip-path="url(#lL1)"><path fill-rule="evenodd" clip-rule="evenodd" d="M184.654 42.4544C186.89 41.669 188.794 40.4815 190.365 38.8896C191.936 37.2985 193.154 35.3148 194.021 32.9375C194.886 30.561 195.32 27.801 195.32 24.659V0.669434H187.948V25.0215C187.948 28.9294 186.995 31.8703 185.092 33.8437C183.187 35.8179 180.574 36.8048 177.252 36.8048C173.889 36.8048 171.256 35.7774 169.352 33.7229C167.448 31.6684 166.496 28.6679 166.496 24.7194V0.669434H159.124V25.0215C159.124 28.0832 159.547 30.7725 160.393 33.0885C161.239 35.4054 162.447 37.3486 164.019 38.9198C165.59 40.4905 167.483 41.669 169.699 42.4544C171.914 43.2402 174.391 43.6329 177.132 43.6329C179.911 43.6329 182.419 43.2402 184.654 42.4544ZM212.782 36.5627C211.654 36.0794 210.667 35.395 209.821 34.5082C208.975 33.6227 208.3 32.5447 207.797 31.2756C207.292 30.0065 207.041 28.6075 207.041 27.076V26.9551C207.041 25.4245 207.292 24.0345 207.797 22.7857C208.3 21.5373 208.975 20.4593 209.821 19.5527C210.667 18.6465 211.654 17.9513 212.782 17.468C213.909 16.9846 215.098 16.743 216.347 16.743C217.595 16.743 218.774 16.9846 219.882 17.468C220.989 17.9513 221.957 18.637 222.782 19.5225C223.608 20.4093 224.263 21.4864 224.746 22.7555C225.23 24.0242 225.471 25.4245 225.471 26.9551V27.076C225.471 28.6472 225.23 30.0669 224.746 31.336C224.263 32.6051 223.608 33.6727 222.782 34.5384C221.957 35.4053 220.989 36.0794 219.882 36.5627C218.774 37.0464 217.595 37.2881 216.347 37.2881C215.098 37.2881 213.909 37.0464 212.782 36.5627ZM199.852 52.6363H207.224V38.013C208.35 39.504 209.776 40.8137 211.504 41.9408C213.232 43.0684 215.402 43.6328 218.015 43.6328C219.903 43.6328 221.743 43.2704 223.531 42.545C225.319 41.82 226.907 40.7532 228.293 39.3426C229.679 37.9328 230.785 36.2002 231.609 34.1457C232.432 32.0912 232.845 29.7346 232.845 27.0759V26.9551C232.845 24.2964 232.423 21.9394 231.579 19.8849C230.735 17.8304 229.619 16.0991 228.233 14.6884C226.847 13.2786 225.269 12.211 223.501 11.4856C221.732 10.7607 219.903 10.3982 218.015 10.3982C215.443 10.3982 213.292 10.9721 211.564 12.1204C209.837 13.2683 208.389 14.6884 207.224 16.3805V11.0627H199.852V52.6363Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M76.4763 42.7327C78.2779 42.1837 79.8215 41.3789 81.1053 40.3195C82.3891 39.2597 83.3915 37.9651 84.1117 36.4345C84.832 34.9043 85.1923 33.1782 85.1923 31.2548V31.137C85.1923 29.4506 84.9062 27.9687 84.3361 26.6931C83.7657 25.4184 82.9298 24.3003 81.8281 23.338C80.7264 22.377 79.3403 21.5631 77.6681 20.8955C75.9964 20.2288 74.0778 19.6208 71.9146 19.0706C69.9477 18.5998 68.3242 18.1493 67.0456 17.7169C65.7674 17.2858 64.7641 16.8249 64.0366 16.3338C63.3081 15.8436 62.8071 15.2947 62.5318 14.6858C62.2561 14.0778 62.1188 13.3818 62.1188 12.5959V12.4786C62.1188 11.1054 62.7075 9.94764 63.8847 9.00561C65.0619 8.06402 66.7103 7.59322 68.8291 7.59322C70.7128 7.59322 72.5761 7.95613 74.4209 8.68197C76.2648 9.40866 78.129 10.4577 80.0126 11.8308L83.8973 6.35689C81.7785 4.67004 79.5121 3.38451 77.099 2.5016C74.6858 1.61869 71.9681 1.17724 68.9469 1.17724C66.9062 1.17724 65.0243 1.47154 63.3017 2.06015C61.5781 2.64875 60.104 3.46348 58.8781 4.50304C57.6521 5.54302 56.6893 6.79834 55.9885 8.26986C55.2877 9.74137 54.9382 11.36 54.9382 13.1259V13.2437C54.9382 15.1273 55.2424 16.7365 55.8522 18.0703C56.4619 19.4046 57.3479 20.5331 58.5082 21.4548C59.6691 22.377 61.1048 23.1615 62.8162 23.8092C64.5268 24.4565 66.4838 25.0361 68.6876 25.5453C70.6152 25.9777 72.1787 26.4092 73.3787 26.8403C74.578 27.2727 75.5226 27.7435 76.2113 28.2531C76.8996 28.7636 77.3721 29.3035 77.628 29.8718C77.8835 30.441 78.0112 31.0986 78.0112 31.8434V31.9613C78.0112 33.5312 77.3536 34.7865 76.0396 35.7281C74.7243 36.6701 72.9494 37.1409 70.7128 37.1409C68.1227 37.1409 65.8071 36.68 63.7673 35.7578C61.7262 34.8361 59.7057 33.5117 57.7043 31.7848L53.3489 36.9644C55.8211 39.201 58.5082 40.8594 61.4129 41.9382C64.3162 43.017 67.3576 43.5569 70.5363 43.5569C72.6935 43.5569 74.6738 43.2816 76.4763 42.7327ZM88.1937 42.9682H95.3748V34.08L99.7306 29.5481L109.089 42.9682H117.33L104.557 24.545L116.918 11.8899H108.265L95.3748 25.6631V0H88.1937V42.9682ZM120.508 42.9684H127.689V11.8901H120.508V42.9684ZM120.213 7.12178H127.923V0.352813H120.213V7.12178ZM133.81 42.9682H140.991V0H133.81V42.9682ZM147.112 42.9682H154.293V0H147.112V42.9682Z" fill="white"/></g><defs><clipPath id="lL0"><rect width="52.9549" height="52.9549" fill="white"/></clipPath><clipPath id="lL1"><rect width="179.651" height="52.9549" fill="white" transform="translate(53.3489)"/></clipPath></defs></svg>
+        </span>
+        <!-- Light theme: coloured logo -->
+        <span id="logoColor" style="display:none;height:28px;line-height:0;">
+<svg width="233" height="53" viewBox="0 0 233 53" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:auto;display:block;"><path fill-rule="evenodd" clip-rule="evenodd" d="M26.2658 51.12C38.432 51.12 48.2948 41.2572 48.2948 29.0905C48.2948 16.9243 38.432 7.06152 26.2658 7.06152C14.0991 7.06152 4.23633 16.9243 4.23633 29.0905C4.23633 41.2572 14.0991 51.12 26.2658 51.12" fill="#51BFFC"/><path fill-rule="evenodd" clip-rule="evenodd" d="M42.324 1.53128C42.9066 1.89792 43.2095 2.58052 43.0905 3.25847L37.5488 34.8213C37.4388 35.4479 36.9871 35.96 36.3792 36.1475C35.7713 36.335 35.1095 36.1662 34.6657 35.7104L26.054 26.8662L14.6632 23.3792C14.0468 23.1905 13.5908 22.6685 13.4868 22.0323C13.3828 21.3961 13.6488 20.756 14.1731 20.3808L40.4353 1.58738C40.995 1.18681 41.7415 1.16464 42.324 1.53128ZM18.9331 21.142L27.4612 23.7526C27.7336 23.836 27.9805 23.9867 28.1793 24.1908L34.7835 30.9733L39.0353 6.75671L18.9331 21.142Z" fill="#044150"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 26.5316C21.3075 26.9579 21.4139 27.7556 20.9875 28.3131L14.7232 36.505C14.2968 37.0626 13.4992 37.169 12.9416 36.7426C12.384 36.3162 12.2777 35.5186 12.704 34.961L18.9684 26.7691C19.3948 26.2115 20.1924 26.1052 20.75 26.5316ZM23.597 31.6057C24.1708 32.01 24.3083 32.8028 23.904 33.3766L15.9574 44.6569C15.5532 45.2307 14.7603 45.3682 14.1865 44.9639C13.6127 44.5597 13.4752 43.7668 13.8795 43.193L21.8261 31.9128C22.2303 31.3389 23.0232 31.2015 23.597 31.6057ZM29.6776 32.2748C30.2602 32.6663 30.4152 33.4559 30.0238 34.0385L23.7683 43.3488C23.3769 43.9314 22.5872 44.0864 22.0046 43.695C21.422 43.3035 21.267 42.5139 21.6585 41.9313L27.9139 32.6209C28.3054 32.0383 29.095 31.8834 29.6776 32.2748Z" fill="#044150"/><path fill-rule="evenodd" clip-rule="evenodd" d="M26.4831 25.2619L41.4215 3.20642L15.3999 22.0495L26.4831 25.2619" fill="#044150"/><g clip-path="url(#lC0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M184.772 42.4543C187.008 41.6689 188.912 40.4814 190.483 38.8894C192.054 37.2984 193.272 35.3147 194.139 32.9374C195.004 30.5609 195.438 27.8009 195.438 24.6589V0.669312H188.066V25.0214C188.066 28.9293 187.113 31.8702 185.209 33.8436C183.305 35.8178 180.692 36.8047 177.37 36.8047C174.007 36.8047 171.374 35.7773 169.47 33.7227C167.566 31.6682 166.614 28.6678 166.614 24.7193V0.669312H159.242V25.0214C159.242 28.0831 159.665 30.7724 160.511 33.0884C161.357 35.4053 162.565 37.3485 164.137 38.9196C165.708 40.4904 167.601 41.6689 169.817 42.4543C172.032 43.2401 174.509 43.6328 177.249 43.6328C180.029 43.6328 182.537 43.2401 184.772 42.4543ZM212.9 36.5626C211.772 36.0793 210.785 35.3949 209.939 34.5081C209.093 33.6226 208.418 32.5446 207.915 31.2755C207.41 30.0063 207.159 28.6073 207.159 27.0758V26.955C207.159 25.4244 207.41 24.0344 207.915 22.7856C208.418 21.5372 209.093 20.4592 209.939 19.5525C210.785 18.6463 211.772 17.9511 212.9 17.4678C214.027 16.9845 215.216 16.7429 216.465 16.7429C217.713 16.7429 218.891 16.9845 220 17.4678C221.107 17.9511 222.074 18.6368 222.9 19.5223C223.725 20.4091 224.381 21.4862 224.864 22.7554C225.348 24.0241 225.589 25.4244 225.589 26.955V27.0758C225.589 28.647 225.348 30.0668 224.864 31.3359C224.381 32.605 223.725 33.6726 222.9 34.5383C222.074 35.4052 221.107 36.0793 220 36.5626C218.891 37.0463 217.713 37.288 216.465 37.288C215.216 37.288 214.027 37.0463 212.9 36.5626ZM199.97 52.6361H207.342V38.0129C208.468 39.5038 209.894 40.8135 211.622 41.9407C213.35 43.0683 215.52 43.6327 218.133 43.6327C220.021 43.6327 221.86 43.2702 223.649 42.5448C225.437 41.8199 227.025 40.7531 228.411 39.3425C229.797 37.9326 230.903 36.2001 231.727 34.1455C232.55 32.091 232.963 29.7345 232.963 27.0758V26.955C232.963 24.2963 232.541 21.9393 231.697 19.8848C230.853 17.8303 229.737 16.099 228.351 14.6883C226.965 13.2785 225.387 12.2109 223.619 11.4855C221.85 10.7605 220.021 10.3981 218.133 10.3981C215.561 10.3981 213.41 10.972 211.682 12.1203C209.955 13.2682 208.507 14.6883 207.342 16.3803V11.0626H199.97V52.6361Z" fill="#51BFFC"/><path fill-rule="evenodd" clip-rule="evenodd" d="M76.4763 42.7327C78.2779 42.1837 79.8215 41.3789 81.1053 40.3195C82.3891 39.2597 83.3915 37.9651 84.1117 36.4345C84.832 34.9043 85.1923 33.1782 85.1923 31.2548V31.137C85.1923 29.4506 84.9062 27.9687 84.3361 26.6931C83.7657 25.4184 82.9298 24.3003 81.8281 23.338C80.7264 22.377 79.3403 21.5631 77.6681 20.8955C75.9964 20.2288 74.0778 19.6208 71.9146 19.0706C69.9477 18.5998 68.3242 18.1493 67.0456 17.7169C65.7674 17.2858 64.7641 16.8249 64.0366 16.3338C63.3081 15.8436 62.8071 15.2947 62.5318 14.6858C62.2561 14.0778 62.1188 13.3818 62.1188 12.5959V12.4786C62.1188 11.1054 62.7075 9.94764 63.8847 9.00561C65.0619 8.06402 66.7103 7.59322 68.8291 7.59322C70.7128 7.59322 72.5761 7.95613 74.4209 8.68197C76.2648 9.40866 78.129 10.4577 80.0126 11.8308L83.8973 6.35689C81.7785 4.67004 79.5121 3.38451 77.099 2.5016C74.6858 1.61869 71.9681 1.17724 68.9469 1.17724C66.9062 1.17724 65.0243 1.47154 63.3017 2.06015C61.5781 2.64875 60.104 3.46348 58.8781 4.50304C57.6521 5.54302 56.6893 6.79834 55.9885 8.26986C55.2877 9.74137 54.9382 11.36 54.9382 13.1259V13.2437C54.9382 15.1273 55.2424 16.7365 55.8522 18.0703C56.4619 19.4046 57.3479 20.5331 58.5082 21.4548C59.6691 22.377 61.1048 23.1615 62.8162 23.8092C64.5268 24.4565 66.4838 25.0361 68.6876 25.5453C70.6152 25.9777 72.1787 26.4092 73.3787 26.8403C74.578 27.2727 75.5226 27.7435 76.2113 28.2531C76.8996 28.7636 77.3721 29.3035 77.628 29.8718C77.8835 30.441 78.0112 31.0986 78.0112 31.8434V31.9613C78.0112 33.5312 77.3536 34.7865 76.0396 35.7281C74.7243 36.6701 72.9494 37.1409 70.7128 37.1409C68.1227 37.1409 65.8071 36.68 63.7673 35.7578C61.7262 34.8361 59.7057 33.5117 57.7043 31.7848L53.3489 36.9644C55.8211 39.201 58.5082 40.8594 61.4129 41.9382C64.3162 43.017 67.3576 43.5569 70.5363 43.5569C72.6935 43.5569 74.6738 43.2816 76.4763 42.7327ZM88.1937 42.9682H95.3748V34.08L99.7306 29.5481L109.089 42.9682H117.33L104.557 24.545L116.918 11.8899H108.265L95.3748 25.6631V0H88.1937V42.9682ZM120.508 42.9684H127.689V11.8901H120.508V42.9684ZM120.213 7.12178H127.923V0.352813H120.213V7.12178ZM133.81 42.9682H140.991V0H133.81V42.9682ZM147.112 42.9682H154.293V0H147.112V42.9682Z" fill="#044150"/></g><defs><clipPath id="lC0"><rect width="179.651" height="52.9549" fill="white" transform="translate(53.3489)"/></clipPath></defs></svg>
+        </span>
+      </a>
+      <!-- Brandmark only: shown on mobile ≤480px -->
+      <a href="#" style="display:none;align-items:center;text-decoration:none;flex-shrink:0;height:28px;" id="brandMark">
+        <!-- Dark theme: white outline mark -->
+        <span id="markWhite" style="display:block;height:28px;line-height:0;">
+<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:28px;display:block;"><g clip-path="url(#mW)"><path d="M25.9794 5.36755C30.0024 5.36757 33.7885 6.38153 37.0966 8.16736L35.6005 10.2523C32.7207 8.75583 29.449 7.90956 25.9794 7.90955C14.4391 7.90955 5.08411 17.2643 5.08386 28.8041C5.08386 40.3445 14.439 49.7006 25.9794 49.7006C37.5193 49.7005 46.8749 40.3445 46.8749 28.8041C46.8747 22.2814 43.8849 16.4571 39.202 12.6254L39.6903 9.79626C45.5816 14.0532 49.4157 20.9804 49.4159 28.8041C49.4159 41.7483 38.9231 52.2415 25.9794 52.2416C13.0351 52.2416 2.54187 41.7483 2.54187 28.8041C2.54212 15.8605 13.0353 5.36755 25.9794 5.36755Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M41.9005 1.10769C42.483 1.47433 42.7859 2.15693 42.6669 2.83489L37.1252 34.3977C37.0152 35.0243 36.5635 35.5365 35.9556 35.7239C35.3477 35.9114 34.686 35.7426 34.2421 35.2868L25.6304 26.4426L14.2396 22.9557C13.6232 22.767 13.1673 22.2449 13.0633 21.6087C12.9593 20.9725 13.2252 20.3324 13.7495 19.9573L40.0117 1.16379C40.5715 0.763223 41.3179 0.741051 41.9005 1.10769ZM18.5095 20.7184L27.0376 23.329C27.31 23.4124 27.5569 23.5631 27.7557 23.7672L34.3599 30.5497L38.6117 6.33313L18.5095 20.7184Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.3265 26.108C20.8841 26.5343 20.9904 27.332 20.5641 27.8896L14.2997 36.0815C13.8733 36.639 13.0757 36.7454 12.5181 36.319C11.9606 35.8926 11.8542 35.095 12.2806 34.5374L18.5449 26.3455C18.9713 25.788 19.7689 25.6816 20.3265 26.108ZM23.1735 31.1821C23.7474 31.5864 23.8848 32.3792 23.4806 32.9531L15.534 44.2333C15.1297 44.8071 14.3369 44.9446 13.763 44.5403C13.1892 44.1361 13.0518 43.3432 13.456 42.7694L21.4026 31.4892C21.8068 30.9154 22.5997 30.7779 23.1735 31.1821ZM29.2542 31.8512C29.8368 32.2427 29.9918 33.0323 29.6003 33.6149L23.3449 42.9252C22.9534 43.5079 22.1638 43.6628 21.5811 43.2714C20.9985 42.8799 20.8436 42.0903 21.235 41.5077L27.4905 32.1974C27.8819 31.6147 28.6716 31.4598 29.2542 31.8512Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M26.0596 24.8383L40.9979 2.78284L14.9763 21.6259L26.0596 24.8383" fill="white"/></g><defs><clipPath id="mW"><rect width="52.9549" height="52.9549" fill="white"/></clipPath></defs></svg>
+        </span>
+        <!-- Light theme: dark teal mark -->
+        <span id="markDark" style="display:none;height:28px;line-height:0;">
+<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:28px;display:block;"><g clip-path="url(#mD)"><path d="M25.9794 5.36755C30.0024 5.36757 33.7885 6.38153 37.0966 8.16736L35.6005 10.2523C32.7207 8.75583 29.449 7.90956 25.9794 7.90955C14.4391 7.90955 5.08411 17.2643 5.08386 28.8041C5.08386 40.3445 14.439 49.7006 25.9794 49.7006C37.5193 49.7005 46.8749 40.3445 46.8749 28.8041C46.8747 22.2814 43.8849 16.4571 39.202 12.6254L39.6903 9.79626C45.5816 14.0532 49.4157 20.9804 49.4159 28.8041C49.4159 41.7483 38.9231 52.2415 25.9794 52.2416C13.0351 52.2416 2.54187 41.7483 2.54187 28.8041C2.54212 15.8605 13.0353 5.36755 25.9794 5.36755Z" fill="#044150"/><path fill-rule="evenodd" clip-rule="evenodd" d="M41.9005 1.10769C42.483 1.47433 42.7859 2.15693 42.6669 2.83489L37.1252 34.3977C37.0152 35.0243 36.5635 35.5365 35.9556 35.7239C35.3477 35.9114 34.686 35.7426 34.2421 35.2868L25.6304 26.4426L14.2396 22.9557C13.6232 22.767 13.1673 22.2449 13.0633 21.6087C12.9593 20.9725 13.2252 20.3324 13.7495 19.9573L40.0117 1.16379C40.5715 0.763223 41.3179 0.741051 41.9005 1.10769ZM18.5095 20.7184L27.0376 23.329C27.31 23.4124 27.5569 23.5631 27.7557 23.7672L34.3599 30.5497L38.6117 6.33313L18.5095 20.7184Z" fill="#044150"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.3265 26.108C20.8841 26.5343 20.9904 27.332 20.5641 27.8896L14.2997 36.0815C13.8733 36.639 13.0757 36.7454 12.5181 36.319C11.9606 35.8926 11.8542 35.095 12.2806 34.5374L18.5449 26.3455C18.9713 25.788 19.7689 25.6816 20.3265 26.108ZM23.1735 31.1821C23.7474 31.5864 23.8848 32.3792 23.4806 32.9531L15.534 44.2333C15.1297 44.8071 14.3369 44.9446 13.763 44.5403C13.1892 44.1361 13.0518 43.3432 13.456 42.7694L21.4026 31.4892C21.8068 30.9154 22.5997 30.7779 23.1735 31.1821ZM29.2542 31.8512C29.8368 32.2427 29.9918 33.0323 29.6003 33.6149L23.3449 42.9252C22.9534 43.5079 22.1638 43.6628 21.5811 43.2714C20.9985 42.8799 20.8436 42.0903 21.235 41.5077L27.4905 32.1974C27.8819 31.6147 28.6716 31.4598 29.2542 31.8512Z" fill="#044150"/><path fill-rule="evenodd" clip-rule="evenodd" d="M26.0596 24.8383L40.9979 2.78284L14.9763 21.6259L26.0596 24.8383" fill="#044150"/></g><defs><clipPath id="mD"><rect width="52.9549" height="52.9549" fill="white"/></clipPath></defs></svg>
+        </span>
+      </a>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <nav class="breadcrumb">
+        <span class="crumb link crumb-course">Gen AI for PMs</span>
+        <span class="crumb-sep crumb-sep-course">/</span>
+        <span class="crumb link crumb-module">Module 2</span>
+        <span class="crumb-sep crumb-sep-module">/</span>
+        <span class="crumb active" id="bcUnit" title="Product lifecycle with AI">Product lifecycle with AI</span>
+      </nav>
+    </div>
+
+    <div class="topbar-right">
+      <div class="prog-wrap">
+        <div class="prog-track"><div class="prog-fill" id="progFill" style="width:45%"></div></div>
+        <span class="prog-label" id="progLabel">5 / 11</span>
+      </div>
+
+      <!-- Theme pill toggle -->
+      <div class="theme-pill" onclick="toggleTheme()" title="Toggle theme" id="themePill">
+        <div class="theme-opt active" id="thOptDark">🌙</div>
+        <div class="theme-opt" id="thOptLight">☀️</div>
+      </div>
+
+      <button class="icon-btn on" id="aiToggle" title="Toggle AI panel" onclick="toggleAI()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="7" cy="7" r="2"   fill="currentColor"/>
+          <line x1="7" y1="1"  x2="7" y2="3"  stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="7" y1="11" x2="7" y2="13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="1" y1="7"  x2="3" y2="7"  stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="11" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="avatar">JD</div>
+    </div>
+  </header>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-course-eyebrow">Course</div>
+      <div class="sidebar-course-name">Generative AI for Product Managers</div>
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="module-header">Module 1 — Foundations</div>
+      <div class="unit-row" onclick="selectUnit(this,0)">
+        <div class="unit-check done"><div class="check-v"></div></div>
+        <div class="unit-info">
+          <div class="unit-name">What AI can do for PMs</div>
+          <div class="unit-meta"><div class="u-dot video"></div>Video · 3m 36s</div>
+        </div>
+        <svg class="unit-bm" width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0h10v11L5 8.5 0 11V0z"/></svg>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,1)">
+        <div class="unit-check done"><div class="check-v"></div></div>
+        <div class="unit-info"><div class="unit-name">Limitations of ChatGPT</div><div class="unit-meta"><div class="u-dot video"></div>Video · 2m 1s</div></div>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,2)">
+        <div class="unit-check done"><div class="check-v"></div></div>
+        <div class="unit-info"><div class="unit-name">Chapter quiz</div><div class="unit-meta"><div class="u-dot quiz"></div>Quiz · 4 questions</div></div>
+      </div>
+
+      <div class="module-header">Module 2 — In Practice</div>
+      <div class="unit-row" onclick="selectUnit(this,3)">
+        <div class="unit-check done"><div class="check-v"></div></div>
+        <div class="unit-info"><div class="unit-name">Ideation with ChatGPT</div><div class="unit-meta"><div class="u-dot video"></div>Video · 4m 46s</div></div>
+      </div>
+      <div class="unit-row active bookmarked" onclick="selectUnit(this,4)">
+        <div class="unit-check now"><div class="now-dot"></div></div>
+        <div class="unit-info"><div class="unit-name">Product lifecycle with AI</div><div class="unit-meta"><div class="u-dot video"></div>Video · 3m 20s</div></div>
+        <svg class="unit-bm" width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0h10v11L5 8.5 0 11V0z"/></svg>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,5)">
+        <div class="unit-check"></div>
+        <div class="unit-info"><div class="unit-name">User segmentation with AI</div><div class="unit-meta"><div class="u-dot video"></div>Video · 1m 28s</div></div>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,6)">
+        <div class="unit-check"></div>
+        <div class="unit-info"><div class="unit-name">Validating product ideas</div><div class="unit-meta"><div class="u-dot video"></div>Video · 2m 18s</div></div>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,7)">
+        <div class="unit-check"></div>
+        <div class="unit-info"><div class="unit-name">Prototyping with ChatGPT</div><div class="unit-meta"><div class="u-dot video"></div>Video · 1m 52s</div></div>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,8)">
+        <div class="unit-check"></div>
+        <div class="unit-info"><div class="unit-name">Chapter quiz</div><div class="unit-meta"><div class="u-dot quiz"></div>Quiz · 5 questions</div></div>
+      </div>
+
+      <div class="module-header">Module 3 — Conclusion</div>
+      <div class="unit-row" onclick="selectUnit(this,9)">
+        <div class="unit-check"></div>
+        <div class="unit-info"><div class="unit-name">Taking your AI skills further</div><div class="unit-meta"><div class="u-dot video"></div>Video · 1m 32s</div></div>
+      </div>
+      <div class="unit-row" onclick="selectUnit(this,10)">
+        <div class="unit-check"></div>
+        <div class="unit-info"><div class="unit-name">Final quiz</div><div class="unit-meta"><div class="u-dot quiz"></div>Quiz · 8 questions</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="content" id="mainContent">
+
+    <!-- VIDEO PLAYER -->
+    <div class="player-wrap" id="playerWrap">
+      <div class="player-stage">
+        <div class="player-gradient"></div>
+        <div class="player-grid"></div>
+        <div class="player-center">
+          <button class="play-btn" id="playBtn" onclick="togglePlay()">
+            <svg class="play-icon" width="18" height="20" viewBox="0 0 18 20" fill="none">
+              <path d="M2 2l14 8-14 8V2z" fill="rgba(255,255,255,0.88)"/>
+            </svg>
+          </button>
+          <div class="video-label" id="vLabel">Product lifecycle with AI · 3m 20s</div>
+        </div>
+        <div class="cc-bar hidden" id="ccBar"></div>
+        <div class="ctrl-bar">
+          <div class="seek-row">
+            <div class="seek-track" onclick="seek(event)" id="seekTrack">
+              <div class="seek-filled" id="seekFilled" style="width:0%"><div class="seek-thumb"></div></div>
+            </div>
+            <div class="seek-time" id="seekTime">0:00 / 3:20</div>
+          </div>
+          <div class="btn-row">
+            <button class="vc" onclick="togglePlay()">
+              <svg id="icPlay"  width="14" height="14" viewBox="0 0 14 14"><path d="M2 1.5l10 5.5-10 5.5V1.5z" fill="currentColor"/></svg>
+              <svg id="icPause" width="14" height="14" viewBox="0 0 14 14" style="display:none"><rect x="2" y="1" width="4" height="12" rx="1" fill="currentColor"/><rect x="8" y="1" width="4" height="12" rx="1" fill="currentColor"/></svg>
+            </button>
+            <button class="vc" onclick="skipBack()"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2V0L4 3l3 3V4a4 4 0 1 1-3.46 6H2a6 6 0 1 0 5-6z" fill="currentColor"/></svg></button>
+            <button class="vc" onclick="skipFwd()"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2V0l3 3-3 3V4a4 4 0 1 0 3.46 6H12a6 6 0 1 1-5-6z" fill="currentColor"/></svg></button>
+            <span class="spd-btn" onclick="cycleSpeed()" id="spdBtn">1×</span>
+            <span class="flex1"></span>
+            <button class="vc" id="ccBtn" onclick="toggleCC()">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><rect x="0.5" y="0.5" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><text x="2" y="8" font-size="5.5" fill="currentColor" font-family="monospace" font-weight="700">CC</text></svg>
+            </button>
+            <button class="vc" onclick="toast('Language selector')"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 1C6.5 1 4.5 3.5 4.5 6.5S6.5 12 6.5 12" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 1C6.5 1 8.5 3.5 8.5 6.5S6.5 12 6.5 12" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="6.5" x2="12" y2="6.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+            <button class="vc" onclick="toast('Press F for fullscreen')"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 4V1h3M9 1h3v3M12 9v3H9M4 12H1V9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO BOTTOM -->
+    <div class="bottom" id="videoBottom">
+      <div class="tab-strip">
+        <div class="tab active" id="t-transcript" onclick="switchTab('transcript')"><div class="tab-pip"></div>Transcript</div>
+        <div class="tab" id="t-notes" onclick="switchTab('notes')"><div class="tab-pip"></div>Notes</div>
+        <div class="tab" id="t-downloads" onclick="switchTab('downloads')">Downloads</div>
+        <div class="tab" id="t-discussion" onclick="switchTab('discussion')">Discussion</div>
+      </div>
+
+      <!-- TRANSCRIPT -->
+      <div class="panels" id="p-transcript">
+        <div class="transcript-pane" id="txScroll">
+          <div class="tl past" data-ts="0"   onclick="jumpTo(0)">  <div class="ts">0:00</div><div class="tt">Welcome back. In this unit we look at the product development lifecycle through the lens of AI-augmented workflows.</div></div>
+          <div class="tl past" data-ts="18"  onclick="jumpTo(18)"> <div class="ts">0:18</div><div class="tt">Understanding this lifecycle is critical — it's the backbone of everything a product manager does, from discovery to launch.</div></div>
+          <div class="tl past" data-ts="38"  onclick="jumpTo(38)"> <div class="ts">0:38</div><div class="tt">The lifecycle begins long before any code is written — with deep understanding of customer needs and unmet pain points.</div></div>
+          <div class="tl past" data-ts="58"  onclick="jumpTo(58)"> <div class="ts">0:58</div><div class="tt">Traditionally, this research phase was time-consuming — hours of interviews, synthesis workshops, affinity mapping.</div></div>
+          <div class="tl active" id="activeTL" data-ts="74" onclick="jumpTo(74)"><div class="ts">1:14</div><div class="tt">This is exactly where AI tools can dramatically compress the research phase — turning 50 interviews into structured themes in minutes.</div></div>
+          <div class="tl" data-ts="94"  onclick="jumpTo(94)"> <div class="ts">1:34</div><div class="tt">From there you move into ideation — generating and stress-testing hypotheses about what the product should do and for whom.</div></div>
+          <div class="tl" data-ts="114" onclick="jumpTo(114)"><div class="ts">1:54</div><div class="tt">ChatGPT is particularly powerful here. Give it your customer persona and generate 20 product concepts in 60 seconds.</div></div>
+          <div class="tl" data-ts="134" onclick="jumpTo(134)"><div class="ts">2:14</div><div class="tt">Prototyping follows ideation. MVP development should be ruthless — test your riskiest assumption first, not the easiest to build.</div></div>
+          <div class="tl" data-ts="154" onclick="jumpTo(154)"><div class="ts">2:34</div><div class="tt">Once you have a prototype, move to testing. Dogfooding, then external beta users. Gather signal, not just feedback.</div></div>
+          <div class="tl" data-ts="174" onclick="jumpTo(174)"><div class="ts">2:54</div><div class="tt">Finally, rollout. Remember — rollout is the beginning of a new feedback loop that feeds straight back into discovery.</div></div>
+          <div class="tl" data-ts="200" onclick="jumpTo(200)"><div class="ts">3:20</div><div class="tt">Next we look at user segmentation — and how AI can identify segments you didn't even know existed. See you there.</div></div>
+        </div>
+        <div class="notes-pane">
+          <div class="pane-label">My notes</div>
+          <div class="note-card" onclick="jumpTo(38)"><div class="note-ts">0:38</div><div class="note-body">Lifecycle starts with customer understanding — before any code</div></div>
+          <div class="note-card" onclick="jumpTo(74)"><div class="note-ts">1:14</div><div class="note-body">AI compresses research phase — synthesis at scale, not a replacement</div></div>
+          <div class="note-card" onclick="jumpTo(134)"><div class="note-ts">2:14</div><div class="note-body">MVP = test riskiest assumption first 🔑</div></div>
+          <div class="note-add" onclick="toast('Note saved!')">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-width="1.2" opacity="0.35"/><line x1="6" y1="3" x2="6" y2="9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/><line x1="3" y1="6" x2="9" y2="6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/></svg>
+            <span>Add note at <span id="notets">1:14</span>…</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panels gone" id="p-notes" style="flex-direction:column;padding:16px;gap:8px;overflow-y:auto">
+        <div class="note-card"><div class="note-ts">0:38</div><div class="note-body">Lifecycle starts with customer understanding — before any code</div></div>
+        <div class="note-card"><div class="note-ts">1:14</div><div class="note-body">AI compresses research phase — synthesis at scale, not a replacement</div></div>
+        <div class="note-card"><div class="note-ts">2:14</div><div class="note-body">MVP = test riskiest assumption first 🔑</div></div>
+        <div class="note-add"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-width="1.2" opacity="0.35"/><line x1="6" y1="3" x2="6" y2="9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/><line x1="3" y1="6" x2="9" y2="6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/></svg><span>Add note at 1:14…</span></div>
+      </div>
+
+      <div class="dl-pane gone" id="p-downloads">
+        <div class="dl-item" onclick="toast('Downloading transcript.srt…')"><div class="dl-icon">📄</div><div><div class="dl-name">transcript.srt</div><div class="dl-size">SubRip · 4.2 KB</div></div></div>
+        <div class="dl-item" onclick="toast('Downloading transcript.txt…')"><div class="dl-icon">📝</div><div><div class="dl-name">transcript.txt</div><div class="dl-size">Plain text · 2.8 KB</div></div></div>
+        <div class="dl-item" onclick="toast('No handout for this unit')"><div class="dl-icon">📎</div><div><div class="dl-name">Handout PDF</div><div class="dl-size">Not available for this unit</div></div></div>
+      </div>
+
+      <div class="disc-pane gone" id="p-discussion">
+        <div class="disc-row"><div class="disc-av" style="background:linear-gradient(135deg,#7c3aed,#2563eb)">SR</div><div class="disc-bubble"><div class="disc-meta">Sofia R. · 2 days ago</div><div class="disc-text">Great point about testing the riskiest assumption first. I've been doing it wrong — always building what's easiest. This reframe is super useful.</div></div></div>
+        <div class="disc-row"><div class="disc-av" style="background:linear-gradient(135deg,#d97706,#ea580c)">MC</div><div class="disc-bubble"><div class="disc-meta">Marcus C. · 1 day ago</div><div class="disc-text">Does anyone have a good prompt template for the research synthesis step? Trying to turn interview notes into themes using GPT-4.</div></div></div>
+        <div class="disc-row"><div class="disc-av" style="background:linear-gradient(135deg,#059669,#0d9488)">JD</div><div class="disc-bubble"><div class="disc-meta">You · Just now</div><div class="disc-text">@Marcus — "Here are [N] interview transcripts. Group key pain points into themes, rank by frequency, and suggest 3 product directions."</div></div></div>
+      </div>
+    </div>
+
+    <!-- QUIZ VIEW -->
+    <div id="quizView" class="gone" style="flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0">
+      <div class="quiz-view" id="quizPanel">
+
+        <!-- Start -->
+        <div class="quiz-start" id="qStart">
+          <div class="quiz-start-icon" id="qIcon">📝</div>
+          <h2 id="qStartTitle">Chapter Quiz</h2>
+          <p id="qStartDesc">Test your understanding of the concepts covered in this module.</p>
+          <div class="quiz-pills">
+            <div class="quiz-pill" id="qPillCount">5 questions</div>
+            <div class="quiz-pill">No time limit</div>
+            <div class="quiz-pill">Instant feedback</div>
+            <div class="quiz-pill">Retake anytime</div>
+          </div>
+          <button class="q-btn primary" onclick="startQuiz()" style="margin-top:8px">
+            Begin quiz
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <!-- Questions -->
+        <div id="qQuestions" class="gone">
+          <div class="quiz-hd">
+            <div class="quiz-tag"><div class="blink"></div><span id="qTagLabel">Chapter Quiz · Module 2</span></div>
+            <div class="quiz-hd-title" id="qHdTitle">Chapter Quiz</div>
+            <div class="quiz-hd-desc" id="qHdDesc">Answer each question carefully — explanations appear after you submit.</div>
+          </div>
+          <div class="step-row" id="stepRow"></div>
+          <div class="q-card">
+            <div class="q-num" id="qNum">Question 1 of 5</div>
+            <div class="q-text" id="qText">Loading…</div>
+            <div class="options" id="qOpts"></div>
+            <div class="expl" id="qExpl"></div>
+          </div>
+          <div class="quiz-actions">
+            <button class="q-btn ghost" id="skipBtn" onclick="skipQ()">Skip</button>
+            <button class="q-btn primary" id="submitBtn" onclick="submitQ()" disabled>Submit answer</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="quiz-results" id="qResults">
+          <div class="res-ring">
+            <svg viewBox="0 0 116 116"><circle class="ring-bg" cx="58" cy="58" r="48"/><circle class="ring-fg" id="ringFg" cx="58" cy="58" r="48" stroke="#3dd68c" stroke-dasharray="302" stroke-dashoffset="302"/></svg>
+            <div class="res-score" id="resScore">0</div>
+            <div class="res-denom" id="resDenom">/ 5</div>
+          </div>
+          <div class="res-title" id="resTitle">Well done!</div>
+          <div class="res-sub" id="resSub">You passed this quiz. Move on to the next unit.</div>
+          <div class="res-stats">
+            <div class="res-stat"><div class="stat-n c" id="stC">0</div><div class="stat-l">Correct</div></div>
+            <div class="res-stat"><div class="stat-n w" id="stW">0</div><div class="stat-l">Incorrect</div></div>
+            <div class="res-stat"><div class="stat-n"   id="stP">0%</div><div class="stat-l">Score</div></div>
+          </div>
+          <div class="res-btns">
+            <button class="q-btn ghost" onclick="retakeQuiz()">Retake quiz</button>
+            <button class="q-btn primary" onclick="nextUnit()">Next unit <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <div class="foot-nav">
+      <button class="fn-btn" onclick="prevUnit()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Previous
+      </button>
+      <div class="foot-center">
+        <div class="foot-count" id="footCount">Unit 5 of 11</div>
+        <div class="foot-name" id="footName">Product lifecycle with AI</div>
+      </div>
+      <button class="fn-btn primary" onclick="nextUnit()">
+        Next unit
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- ══ AI PANEL ══ -->
+  <aside class="ai-panel">
+    <div class="ai-hd">
+      <div class="ai-live"></div>
+      <span class="ai-title">AI Assistant</span>
+      <div class="ai-badge">XBlock</div>
+    </div>
+    <div class="ai-body">
+      <div class="ai-card">
+        <div class="ai-card-ttl"><div class="ai-pip"></div>Key takeaways</div>
+        <div class="ai-takeaway">AI compresses research synthesis — turning hours of interviews into structured themes in minutes.</div>
+        <div class="ai-takeaway">The lifecycle starts before any code: customer needs first, always.</div>
+        <div class="ai-takeaway">MVP = test your riskiest assumption, not the easiest feature to ship.</div>
+        <div class="ai-takeaway">Rollout begins a new discovery loop — it's never really the end.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-ttl"><div class="ai-pip"></div>Ask about this video</div>
+        <div class="chips">
+          <div class="chip" onclick="askChip('What makes a good MVP?')">What makes a good MVP?</div>
+          <div class="chip" onclick="askChip('How to use AI in research?')">AI in research</div>
+          <div class="chip" onclick="askChip('What is the product lifecycle?')">Product lifecycle</div>
+          <div class="chip" onclick="askChip('How do I validate ideas fast?')">Validate ideas fast</div>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-ttl"><div class="ai-pip"></div>Related units</div>
+        <div class="rel-link" onclick="toast('Navigating…')">
+          <div class="rel-ico"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="0.5" y="0.5" width="10" height="10" rx="1.5" stroke="#5b9cf6" stroke-width="1.1"/><line x1="0.5" y1="4" x2="10.5" y2="4" stroke="#5b9cf6" stroke-width="1.1"/></svg></div>
+          <div><div class="rel-name">Ideation with ChatGPT</div><div class="rel-meta">Module 2 · 4m 46s</div></div>
+        </div>
+        <div class="rel-link" onclick="toast('Navigating…')">
+          <div class="rel-ico"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="0.5" y="0.5" width="10" height="10" rx="1.5" stroke="#5b9cf6" stroke-width="1.1"/><line x1="0.5" y1="4" x2="10.5" y2="4" stroke="#5b9cf6" stroke-width="1.1"/></svg></div>
+          <div><div class="rel-name">Validating product ideas</div><div class="rel-meta">Module 2 · 2m 18s</div></div>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-ttl"><div class="ai-pip"></div>Conversation</div>
+        <div class="chat-thread" id="chatThread">
+          <div class="msg bot">Hi! I've analysed this video. Ask me anything about the product lifecycle, AI tools, or MVP strategy.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-inp-row">
+      <textarea class="ai-inp" id="aiInp" placeholder="Ask about this video…" rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="ai-send" onclick="sendAI()"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 11.5L12 6.5 1.5 1.5V5.5l8 1-8 1v4z" fill="currentColor"/></svg></button>
+    </div>
+  </aside>
+
+</div>
+
+<div class="toast" id="toastEl"></div>
+
+<script>
+/* ════════════════════════════════════════
+   DATA
+   ════════════════════════════════════════ */
+const UNITS = [
+  {name:'What AI can do for PMs',       meta:'Video · 3m 36s', num:1,  type:'video'},
+  {name:'Limitations of ChatGPT',       meta:'Video · 2m 1s',  num:2,  type:'video'},
+  {name:'Chapter quiz',                 meta:'Quiz · 4q',      num:3,  type:'quiz', qKey:2},
+  {name:'Ideation with ChatGPT',        meta:'Video · 4m 46s', num:4,  type:'video'},
+  {name:'Product lifecycle with AI',    meta:'Video · 3m 20s', num:5,  type:'video'},
+  {name:'User segmentation with AI',    meta:'Video · 1m 28s', num:6,  type:'video'},
+  {name:'Validating product ideas',     meta:'Video · 2m 18s', num:7,  type:'video'},
+  {name:'Prototyping with ChatGPT',     meta:'Video · 1m 52s', num:8,  type:'video'},
+  {name:'Chapter quiz',                 meta:'Quiz · 5q',      num:9,  type:'quiz', qKey:8},
+  {name:'Taking your AI skills further',meta:'Video · 1m 32s', num:10, type:'video'},
+  {name:'Final quiz',                   meta:'Quiz · 8q',      num:11, type:'quiz', qKey:10},
+];
+
+const QUIZZES = {
+  2: {
+    title:'Chapter Quiz', tag:'Chapter Quiz · Module 1',
+    desc:'Test your understanding of AI fundamentals for product managers.',
+    qs:[
+      {q:'What type of model is ChatGPT?',
+       opts:['A retrieval-based search engine','A large language model (LLM) trained on text data','A rules-based expert system','A supervised image classification model'],
+       c:1, exp:'<strong>Correct!</strong> ChatGPT is a Large Language Model trained on vast text data using self-supervised learning, then fine-tuned with RLHF (Reinforcement Learning from Human Feedback).'},
+      {q:'Which of these is a known limitation of ChatGPT that PMs must manage?',
+       opts:['It cannot understand natural language','It requires coding knowledge to use','It can confidently generate factually incorrect information (hallucinations)','It only processes structured data'],
+       c:2, exp:'<strong>Correct!</strong> Hallucination — generating plausible but false information — is the core risk. Always verify AI-generated facts, especially market data or technical claims, against authoritative sources.'},
+      {q:'Which PM task is ChatGPT LEAST suited to handle autonomously?',
+       opts:['Drafting initial product brief outlines','Summarising lengthy research reports','Making the final go/no-go decision for a product launch','Brainstorming feature ideas for a new segment'],
+       c:2, exp:'<strong>Correct!</strong> Strategic decisions like launch go/no-go require business context, stakeholder input, risk judgment and accountability that AI cannot fully replicate. ChatGPT is a thinking partner, not a decision-maker.'},
+      {q:'A PM uses ChatGPT to generate competitive feature lists. What is the most important next step?',
+       opts:['Add them straight to the roadmap','Share directly with the engineering team','Verify against primary sources and real product pages','Ask ChatGPT to rank which to build first'],
+       c:2, exp:"<strong>Correct!</strong> AI-generated competitive intelligence must be validated — ChatGPT's training data has a cutoff and it can hallucinate specific product details. Always cross-reference with actual product pages and press releases."},
+    ]
+  },
+  8: {
+    title:'Chapter Quiz', tag:'Chapter Quiz · Module 2',
+    desc:'Test your understanding of AI-augmented product workflows and lifecycle principles.',
+    qs:[
+      {q:'Which phase of the product lifecycle benefits most from early AI investment?',
+       opts:['Rollout — personalise at scale','Research synthesis — compress time from interviews to insights','Prototyping — auto-generate designs','Testing — automate UAT scripts'],
+       c:1, exp:'<strong>Correct!</strong> Research synthesis delivers the highest early ROI. AI can turn 50 raw interview transcripts into structured themes, ranked pain points, and draft opportunity areas in minutes rather than weeks.'},
+      {q:'In MVP development, what is the correct first principle?',
+       opts:['Build the most-requested feature from loudest customers','Build what is technically easiest to implement','Test the riskiest assumption about your product hypothesis','Build full-featured and strip back from feedback'],
+       c:2, exp:"<strong>Correct!</strong> MVPs are learning tools, not small products. The goal is to invalidate your most dangerous assumption as cheaply as possible. Building what's easy first wastes resources validating low-risk beliefs."},
+      {q:'Which ChatGPT use case fits best in the ideation phase?',
+       opts:['Writing SQL queries to analyse usage data','Creating 20 concept variations from a persona and pain point','Writing release notes for a shipped feature','Automating support ticket categorisation'],
+       c:1, exp:'<strong>Correct!</strong> Ideation is a natural fit for LLMs. A well-defined persona and pain point prompt allows ChatGPT to rapidly generate diverse product directions for the team to filter, combine, and stress-test.'},
+      {q:'After rollout, what should a PM do according to the AI-augmented lifecycle model?',
+       opts:['Move to the next product immediately','Feed user signal back into the discovery loop for the next iteration','Disable AI tools — no more ideation needed','Wait 12 months before reviewing performance'],
+       c:1, exp:"<strong>Correct!</strong> Rollout isn't the end — it begins a new feedback loop. AI tools can help synthesise support tickets, app reviews, and usage data into actionable discovery inputs for the next cycle."},
+      {q:'You have 60 interview transcripts and 2 hours before a strategy meeting. Best AI approach?',
+       opts:['Summarise each transcript individually, one by one','Paste all transcripts, prompt for themes ranked by frequency with verbatim quotes','Ask ChatGPT to generate hypothetical user needs without transcripts','Use ChatGPT to write only the meeting agenda'],
+       c:1, exp:'<strong>Correct!</strong> Providing actual transcripts with a structured output prompt (themes → frequency ranking → verbatim quotes) gives you defensible, grounded insights. Never ask AI to speculate when you have real data.'},
+    ]
+  },
+  10: {
+    title:'Final Quiz', tag:'Final Quiz · Module 3',
+    desc:'Comprehensive assessment across all three modules. Score 70%+ to complete the course.',
+    qs:[
+      {q:"Which best describes AI's role in a product manager's workflow?",
+       opts:['AI replaces PMs for routine decisions','AI is a thinking partner that augments, not replaces, PM judgment','AI is only useful for technical/code tasks','AI works best as the final decision-maker'],
+       c:1, exp:"<strong>Correct!</strong> AI augments human judgment — it compresses time, generates options, and surfaces patterns. Strategic decisions still require human context, empathy, and accountability."},
+      {q:'A PM wants to validate a B2B feature in 48 hours. Best approach?',
+       opts:['Build the full feature and ship to 10% of users','Wizard of Oz prototype — manually fulfil the automation behind the scenes','Ask ChatGPT if the feature is a good idea','Survey customers with a hypothetical question'],
+       c:1, exp:'<strong>Correct!</strong> Wizard of Oz testing lets you fake the automated experience manually, giving real customers a real interaction — without building anything. Fastest way to test AI-powered features in B2B.'},
+      {q:'What is "hallucination" in LLMs?',
+       opts:['The model refuses to answer due to safety filters','The model generates confident, fluent, but factually incorrect information','The model changes its answer based on phrasing','The model repeats the same sentence multiple times'],
+       c:1, exp:'<strong>Correct!</strong> Hallucination is a core LLM failure mode — the model generates plausible-sounding output that is factually wrong. Always verify critical facts from AI outputs against primary sources.'},
+      {q:'AI-assisted user segmentation is most valuable when:',
+       opts:['You want to replace your market research team entirely','You have large behavioural datasets and need to find non-obvious clusters','You have no user data and want to hypothesise segments','You want to copy competitor segmentation strategies'],
+       c:1, exp:'<strong>Correct!</strong> AI-assisted segmentation shines on large, messy datasets — behavioural logs, support tickets, survey responses. It surfaces non-obvious clusters that traditional analysis might never discover.'},
+      {q:'Which AI prompt structure produces the most useful competitive analysis?',
+       opts:['"Tell me about my competitors"','"Strengths and weaknesses of [competitor] in [market], from a PM evaluating build vs buy vs partner"','"Is [competitor] better than my product?"','"List all products that compete with me"'],
+       c:1, exp:'<strong>Correct!</strong> Specificity, role framing, and structured output requirements dramatically improve AI outputs. Best prompts include: who you are, what information you need, the context, and the format required.'},
+    ]
+  }
+};
+
+/* ════════════════════════════════════════
+   STATE
+   ════════════════════════════════════════ */
+let currentUnit = 4;
+let playing = false, progress = 0, playIv = null, ccOn = false;
+let sbCollapsed = false, aiCollapsed = false;
+let speedIdx = 1;
+const SPEEDS = [0.75, 1, 1.25, 1.5, 2];
+const TOTAL = 200;
+let qs = {started:false, current:0, selected:null, answers:[], questions:[], key:null};
+
+/* ════════════════════════════════════════
+   VIDEO
+   ════════════════════════════════════════ */
+function togglePlay() {
+  playing = !playing;
+  document.getElementById('playBtn').classList.toggle('playing', playing);
+  document.getElementById('icPlay').style.display  = playing ? 'none' : 'block';
+  document.getElementById('icPause').style.display = playing ? 'block' : 'none';
+  document.getElementById('vLabel').textContent = playing ? '▶  Now playing…' : UNITS[currentUnit].name;
+  if (playing) {
+    playIv = setInterval(() => {
+      progress += 0.5 * SPEEDS[speedIdx];
+      if (progress >= TOTAL) { progress = TOTAL; stopPlay(); return; }
+      updateVideo();
+    }, 250);
+  } else clearInterval(playIv);
+}
+function stopPlay() {
+  playing = false; clearInterval(playIv);
+  document.getElementById('playBtn').classList.remove('playing');
+  document.getElementById('icPlay').style.display = 'block';
+  document.getElementById('icPause').style.display = 'none';
+  document.getElementById('vLabel').textContent = UNITS[currentUnit].name;
+}
+function skipBack() { progress = Math.max(0, progress - 10); updateVideo(); }
+function skipFwd()  { progress = Math.min(TOTAL, progress + 10); updateVideo(); }
+function seek(e) {
+  const r = document.getElementById('seekTrack').getBoundingClientRect();
+  progress = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * TOTAL;
+  updateVideo();
+}
+function jumpTo(s) { progress = s; updateVideo(); }
+function cycleSpeed() {
+  speedIdx = (speedIdx + 1) % SPEEDS.length;
+  document.getElementById('spdBtn').textContent = SPEEDS[speedIdx] + '×';
+  toast('Speed: ' + SPEEDS[speedIdx] + '×');
+}
+function toggleCC() {
+  ccOn = !ccOn;
+  document.getElementById('ccBtn').classList.toggle('on', ccOn);
+  if (!ccOn) document.getElementById('ccBar').classList.add('hidden');
+  toast(ccOn ? 'Captions on' : 'Captions off');
+}
+
+function updateVideo() {
+  const pct = (progress / TOTAL) * 100;
+  document.getElementById('seekFilled').style.width = pct + '%';
+  const m = Math.floor(progress / 60), s = Math.floor(progress % 60);
+  document.getElementById('seekTime').textContent = `${m}:${s.toString().padStart(2,'0')} / 3:20`;
+  const ntEl = document.getElementById('notets');
+  if (ntEl) ntEl.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+
+  // Transcript highlight
+  const lines = document.querySelectorAll('.tl[data-ts]');
+  let ai = 0;
+  lines.forEach((l, i) => { if (parseInt(l.dataset.ts) <= progress) ai = i; });
+  lines.forEach((l, i) => {
+    l.classList.remove('active', 'past');
+    if (i < ai) l.classList.add('past');
+    else if (i === ai) l.classList.add('active');
+  });
+  const al = document.querySelector('.tl.active');
+  if (al) al.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+  // CC
+  if (ccOn) {
+    const CC = [[0,18,'Welcome back. In this unit we look at the product lifecycle.'],[18,38,'Understanding this lifecycle is critical for every PM.'],[38,58,'The lifecycle begins before any code — with customer needs.'],[58,74,'Traditionally, research was exhausting and time-consuming.'],[74,94,'AI tools dramatically compress the research phase at scale.'],[94,114,'From there: ideation — generating product hypotheses.'],[114,134,'ChatGPT here — 20 product concepts in 60 seconds.'],[134,154,'MVP: test the riskiest assumption first, not the easiest.'],[154,174,'Move to testing. Gather signal, not just feedback.'],[174,200,'Rollout is the beginning of a new discovery loop.']];
+    let cc = ''; for (const [s,e,t] of CC) if (progress >= s && progress < e) { cc = t; break; }
+    const el = document.getElementById('ccBar'); el.textContent = cc; el.classList.toggle('hidden', !cc);
+  }
+}
+
+function applyLogos() {
+  const isLight = document.documentElement.dataset.theme === 'light';
+  const logoLight = document.getElementById('logoLight');
+  const logoColor = document.getElementById('logoColor');
+  const markWhite = document.getElementById('markWhite');
+  const markDark  = document.getElementById('markDark');
+  if (!logoLight) return;
+  if (isLight) {
+    logoLight.style.display = 'none';
+    logoColor.style.display = 'block';
+    if (markWhite) markWhite.style.display = 'none';
+    if (markDark)  markDark.style.display  = 'block';
+  } else {
+    logoColor.style.display = 'none';
+    logoLight.style.display = 'block';
+    if (markDark)  markDark.style.display  = 'none';
+    if (markWhite) markWhite.style.display = 'block';
+  }
+}
+applyLogos();
+const DRAWER_BP = 768; // px — below this, sidebar is a drawer overlay
+
+function isMobileDrawer() { return window.innerWidth <= DRAWER_BP; }
+
+/* Reflect sidebar visibility on the toggle button via aria-expanded.
+   "true"  = sidebar is currently visible to the user
+   "false" = sidebar is currently hidden
+   The icon rotation and screen-reader announcement both key off this attribute. */
+function setToggleExpanded(isVisible) {
+  const btn = document.getElementById('sbToggle');
+  if (btn) btn.setAttribute('aria-expanded', isVisible ? 'true' : 'false');
+}
+
+function toggleSidebar() {
+  if (isMobileDrawer()) {
+    // Mobile: toggle the drawer overlay
+    const sidebar = document.querySelector('.sidebar');
+    const backdrop = document.getElementById('drawerBackdrop');
+    const isOpen = sidebar.classList.contains('drawer-open');
+    if (isOpen) {
+      closeSidebarDrawer();
+    } else {
+      sidebar.classList.add('drawer-open');
+      backdrop.style.display = 'block';
+      // Prevent body scroll while drawer is open
+      document.body.style.overflow = 'hidden';
+      setToggleExpanded(true);
+    }
+  } else {
+    // Desktop: collapse/expand sidebar in grid
+    sbCollapsed = !sbCollapsed;
+    document.getElementById('app').classList.toggle('sidebar-collapsed', sbCollapsed);
+    setToggleExpanded(!sbCollapsed);
+  }
+}
+
+function closeSidebarDrawer() {
+  const sidebar = document.querySelector('.sidebar');
+  const backdrop = document.getElementById('drawerBackdrop');
+  sidebar.classList.remove('drawer-open');
+  backdrop.style.display = 'none';
+  document.body.style.overflow = '';
+  setToggleExpanded(false);
+}
+
+/* Sync the toggle button's aria-expanded state to the actual sidebar visibility.
+   Called on load and on viewport resize so the icon orientation always matches reality. */
+function syncToggleState() {
+  if (isMobileDrawer()) {
+    const sidebar = document.querySelector('.sidebar');
+    const drawerOpen = sidebar && sidebar.classList.contains('drawer-open');
+    setToggleExpanded(!!drawerOpen);
+  } else {
+    setToggleExpanded(!sbCollapsed);
+  }
+}
+
+// Close drawer if viewport resizes above breakpoint, then re-sync toggle state
+window.addEventListener('resize', () => {
+  if (!isMobileDrawer()) closeSidebarDrawer();
+  syncToggleState();
+});
+
+// Initialise toggle state on load (mobile starts with drawer closed → aria-expanded="false")
+syncToggleState();
+function toggleAI() {
+  aiCollapsed = !aiCollapsed;
+  document.getElementById('app').classList.toggle('ai-collapsed', aiCollapsed);
+  document.getElementById('aiToggle').classList.toggle('on', !aiCollapsed);
+}
+
+/* ════════════════════════════════════════
+   THEME
+   ════════════════════════════════════════ */
+function toggleTheme() {
+  const html = document.documentElement;
+  const isLight = html.dataset.theme === 'light';
+  html.dataset.theme = isLight ? 'dark' : 'light';
+  document.getElementById('thOptDark').classList.toggle('active', !isLight);
+  document.getElementById('thOptLight').classList.toggle('active', isLight);
+  // Switch logos to match theme
+  applyLogos();
+  // Update quiz ring stroke colour
+  const rf = document.getElementById('ringFg');
+  if (rf) rf.style.stroke = isLight ? '#27A96E' : '#0096C7';
+  toast(isLight ? '🌙 Dark mode' : '☀️ Light mode');
+}
+
+/* ════════════════════════════════════════
+   TABS
+   ════════════════════════════════════════ */
+function switchTab(name) {
+  ['transcript','notes','downloads','discussion'].forEach(t => {
+    document.getElementById('t-' + t).classList.remove('active');
+    document.getElementById('p-' + t).classList.add('gone');
+  });
+  document.getElementById('t-' + name).classList.add('active');
+  document.getElementById('p-' + name).classList.remove('gone');
+}
+
+/* ════════════════════════════════════════
+   UNIT SELECTION
+   ════════════════════════════════════════ */
+function selectUnit(el, idx) {
+  document.querySelectorAll('.unit-row').forEach(r => r.classList.remove('active'));
+  el.classList.add('active');
+  currentUnit = idx;
+  const u = UNITS[idx];
+  document.getElementById('footCount').textContent = 'Unit ' + u.num + ' of 11';
+  document.getElementById('footName').textContent  = u.name;
+  // Update breadcrumb + set title tooltip so full name is accessible when truncated
+  const bcEl = document.getElementById('bcUnit');
+  bcEl.textContent = u.name;
+  bcEl.title = u.name;
+  document.getElementById('progFill').style.width  = ((u.num / 11) * 100) + '%';
+  document.getElementById('progLabel').textContent = u.num + ' / 11';
+  progress = 0; if (playing) stopPlay();
+  // Close drawer on mobile after selecting a unit
+  if (isMobileDrawer()) closeSidebarDrawer();
+  if (u.type === 'quiz') showQuiz(u.qKey, u);
+  else showVideo(u);
+}
+
+function showVideo(u) {
+  document.getElementById('playerWrap').style.display = 'block';
+  document.getElementById('videoBottom').style.display = 'flex';
+  document.getElementById('quizView').classList.add('gone');
+  document.getElementById('vLabel').textContent = u.name;
+  updateVideo();
+}
+
+function showQuiz(key, u) {
+  document.getElementById('playerWrap').style.display = 'none';
+  document.getElementById('videoBottom').style.display = 'none';
+  document.getElementById('quizView').classList.remove('gone');
+  const q = QUIZZES[key];
+  qs = { started:false, current:0, selected:null, answers:[], questions:q.qs, key };
+  document.getElementById('qStart').style.display = 'flex';
+  document.getElementById('qQuestions').classList.add('gone');
+  document.getElementById('qResults').classList.remove('show');
+  document.getElementById('qStartTitle').textContent = q.title;
+  document.getElementById('qStartDesc').textContent  = q.desc;
+  document.getElementById('qPillCount').textContent  = q.qs.length + ' questions';
+  document.getElementById('qTagLabel').textContent   = q.tag;
+  document.getElementById('qHdTitle').textContent    = q.title;
+  document.getElementById('qHdDesc').textContent     = q.desc;
+  document.getElementById('qIcon').textContent = key === 10 ? '🎓' : '📝';
+}
+
+function prevUnit() {
+  if (currentUnit <= 0) return;
+  const rows = document.querySelectorAll('.unit-row');
+  currentUnit--;
+  rows.forEach(r => r.classList.remove('active'));
+  rows[currentUnit].classList.add('active');
+  rows[currentUnit].scrollIntoView({ block:'nearest', behavior:'smooth' });
+  const u = UNITS[currentUnit];
+  document.getElementById('footCount').textContent = 'Unit ' + u.num + ' of 11';
+  document.getElementById('footName').textContent  = u.name;
+  const bcEl = document.getElementById('bcUnit');
+  bcEl.textContent = u.name; bcEl.title = u.name;
+  progress = 0;
+  if (u.type === 'quiz') showQuiz(u.qKey, u); else showVideo(u);
+}
+function nextUnit() {
+  if (currentUnit >= UNITS.length - 1) { toast('🎉 Course complete!'); return; }
+  const rows = document.querySelectorAll('.unit-row');
+  currentUnit++;
+  rows.forEach(r => r.classList.remove('active'));
+  rows[currentUnit].classList.add('active');
+  rows[currentUnit].scrollIntoView({ block:'nearest', behavior:'smooth' });
+  const u = UNITS[currentUnit];
+  document.getElementById('footCount').textContent = 'Unit ' + u.num + ' of 11';
+  document.getElementById('footName').textContent  = u.name;
+  const bcEl = document.getElementById('bcUnit');
+  bcEl.textContent = u.name; bcEl.title = u.name;
+  progress = 0;
+  if (u.type === 'quiz') showQuiz(u.qKey, u); else showVideo(u);
+}
+
+/* ════════════════════════════════════════
+   QUIZ ENGINE
+   ════════════════════════════════════════ */
+function startQuiz() {
+  qs.started = true; qs.current = 0; qs.answers = []; qs.selected = null;
+  document.getElementById('qStart').style.display = 'none';
+  document.getElementById('qQuestions').classList.remove('gone');
+  buildDots(); renderQ();
+}
+
+function buildDots() {
+  const row = document.getElementById('stepRow'); row.innerHTML = '';
+  qs.questions.forEach((_, i) => {
+    if (i > 0) { const l = document.createElement('div'); l.className = 'step-line'; l.id = 'sl' + i; row.appendChild(l); }
+    const d = document.createElement('div');
+    d.className = 'step-dot' + (i === 0 ? ' current' : '');
+    d.id = 'sd' + i; d.innerHTML = '<span>' + (i+1) + '</span>'; row.appendChild(d);
+  });
+}
+
+function updateDots() {
+  qs.questions.forEach((q, i) => {
+    const d = document.getElementById('sd' + i);
+    const l = document.getElementById('sl' + i);
+    d.className = 'step-dot';
+    if (i < qs.current) {
+      const a = qs.answers[i];
+      d.classList.add(a === q.c ? 'done' : (a !== undefined ? 'wrong' : 'done'));
+      if (l) l.classList.add('done');
+    } else if (i === qs.current) {
+      d.classList.add('current'); d.innerHTML = '<span>' + (i+1) + '</span>';
+    } else {
+      d.innerHTML = '<span>' + (i+1) + '</span>';
+    }
+  });
+}
+
+function renderQ() {
+  updateDots();
+  const q = qs.questions[qs.current];
+  document.getElementById('qNum').textContent  = 'Question ' + (qs.current+1) + ' of ' + qs.questions.length;
+  document.getElementById('qText').textContent = q.q;
+  const optsEl = document.getElementById('qOpts'); optsEl.innerHTML = '';
+  const explEl = document.getElementById('qExpl'); explEl.className = 'expl'; explEl.innerHTML = '';
+  qs.selected = null;
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').innerHTML = 'Submit answer';
+  document.getElementById('submitBtn').onclick = submitQ;
+  document.getElementById('skipBtn').style.display = '';
+  const KEYS = ['A','B','C','D'];
+  q.opts.forEach((opt, i) => {
+    const d = document.createElement('div');
+    d.className = 'opt';
+    d.innerHTML = `<div class="opt-key">${KEYS[i]}</div><div class="opt-txt">${opt}</div>`;
+    d.onclick = () => pickOpt(d, i);
+    optsEl.appendChild(d);
+  });
+}
+
+function pickOpt(el, idx) {
+  if (el.classList.contains('locked')) return;
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected'); qs.selected = idx;
+  document.getElementById('submitBtn').disabled = false;
+}
+
+function submitQ() {
+  if (qs.selected === null) return;
+  const q = qs.questions[qs.current];
+  const isC = qs.selected === q.c;
+  qs.answers.push(qs.selected);
+  document.querySelectorAll('.opt').forEach((o, i) => {
+    o.classList.add('locked'); o.classList.remove('selected');
+    const k = o.querySelector('.opt-key');
+    if (i === q.c)                   { o.classList.add('correct'); k.textContent = '✓'; }
+    else if (i === qs.selected && !isC) { o.classList.add('wrong');   k.textContent = '✕'; }
+  });
+  const expEl = document.getElementById('qExpl');
+  expEl.innerHTML = q.exp + (!isC ? ' The correct answer is: <strong>' + q.opts[q.c] + '</strong>.' : '');
+  expEl.className = 'expl show ' + (isC ? 'c' : 'w');
+  document.getElementById('skipBtn').style.display = 'none';
+  const btn = document.getElementById('submitBtn'); btn.disabled = false;
+  if (qs.current < qs.questions.length - 1) {
+    btn.innerHTML = 'Next question <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+    btn.onclick = nextQ;
+  } else {
+    btn.innerHTML = 'See results <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+    btn.onclick = showResults;
+  }
+  updateDots();
+}
+
+function skipQ() { qs.answers.push(undefined); if (qs.current < qs.questions.length - 1) { qs.current++; renderQ(); } else showResults(); }
+function nextQ() { qs.current++; renderQ(); }
+
+function showResults() {
+  document.getElementById('qQuestions').classList.add('gone');
+  const res = document.getElementById('qResults'); res.classList.add('show');
+  const total = qs.questions.length;
+  const correct = qs.answers.filter((a,i) => a === qs.questions[i].c).length;
+  const wrong   = qs.answers.filter((a,i) => a !== undefined && a !== qs.questions[i].c).length;
+  const pct     = Math.round((correct / total) * 100);
+  document.getElementById('resScore').textContent = correct;
+  document.getElementById('resDenom').textContent = '/ ' + total;
+  document.getElementById('stC').textContent = correct;
+  document.getElementById('stW').textContent = wrong;
+  document.getElementById('stP').textContent = pct + '%';
+  const tiers = [
+    ['Keep practising!','Review the module content and try again — the concepts will click with repetition.'],
+    ['Good effort!','A solid grasp of the basics. Review the questions you missed and try again.'],
+    ['Well done!','You passed this quiz. Review your answers or move on to the next unit.'],
+    ['Excellent work!','Great understanding of the material. You\'re ready for the next module.'],
+    ['Perfect score! 🎉','Flawless. You\'ve mastered every concept in this module.'],
+  ];
+  const tier = pct < 40 ? 0 : pct < 60 ? 1 : pct < 80 ? 2 : pct < 100 ? 3 : 4;
+  document.getElementById('resTitle').textContent = tiers[tier][0];
+  document.getElementById('resSub').textContent   = tiers[tier][1];
+  const circ = 302;
+  const rf = document.getElementById('ringFg');
+  const isLight = document.documentElement.dataset.theme === 'light';
+  rf.style.stroke = pct >= 60
+    ? (isLight ? '#0A7656' : '#27A96E')   /* success green */
+    : (isLight ? '#C23B3A' : '#E24B4A');   /* error red */
+  setTimeout(() => { rf.style.strokeDashoffset = circ - (pct / 100) * circ; }, 80);
+  // Mark sidebar done
+  const rows = document.querySelectorAll('.unit-row');
+  const row = rows[currentUnit]; if (!row) return;
+  const ck = row.querySelector('.unit-check');
+  if (ck) { ck.className = 'unit-check done'; ck.innerHTML = '<div class="check-v"></div>'; }
+}
+
+function retakeQuiz() {
+  const u = UNITS[currentUnit];
+  if (u.type === 'quiz') showQuiz(u.qKey, u);
+}
+
+/* ════════════════════════════════════════
+   AI CHAT
+   ════════════════════════════════════════ */
+const AI_ANSWERS = {
+  'What makes a good MVP?':'An MVP tests your single riskiest assumption with the minimum possible build. Ask: "What belief, if wrong, would kill this product?" Build that test first — not what\'s easiest.',
+  'How to use AI in research?':'Paste interview transcripts and ask AI to extract themes, rank pain points by frequency, and suggest product directions. It compresses a 2-week synthesis sprint into 2 hours.',
+  'What is the product lifecycle?':'Discovery → Research → Ideation → Prototyping → MVP Testing → Rollout → feedback loop back to discovery. AI accelerates every phase except the human judgment calls.',
+  'How do I validate ideas fast?':'(1) Smoke test — landing page for a non-existent feature, measure sign-ups. (2) Wizard of Oz — fake the automation manually. (3) Concierge — do the job manually for 5 customers before building.',
+};
+function askChip(q) { document.getElementById('aiInp').value = q; sendAI(); }
+function sendAI() {
+  const inp = document.getElementById('aiInp'); const q = inp.value.trim(); if (!q) return;
+  inp.value = ''; autoResize(inp);
+  const thread = document.getElementById('chatThread');
+  const um = document.createElement('div'); um.className = 'msg user'; um.textContent = q; thread.appendChild(um);
+  const ty = document.createElement('div'); ty.className = 'typing'; ty.innerHTML = '<div class="typing-d"></div><div class="typing-d"></div><div class="typing-d"></div>'; thread.appendChild(ty);
+  thread.scrollTop = thread.scrollHeight;
+  const ans = AI_ANSWERS[q] || 'Based on this video: always validate your riskiest assumption before committing to a build. AI tools help generate and stress-test ideas rapidly at each lifecycle stage.';
+  setTimeout(() => {
+    thread.removeChild(ty);
+    const bm = document.createElement('div'); bm.className = 'msg bot'; bm.textContent = ''; thread.appendChild(bm);
+    let i = 0; const iv = setInterval(() => { bm.textContent += ans[i++]; thread.scrollTop = thread.scrollHeight; if (i >= ans.length) clearInterval(iv); }, 11);
+  }, 800);
+}
+function handleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAI(); } }
+function autoResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 80) + 'px'; }
+
+/* ════════════════════════════════════════
+   TOAST & KEYBOARD
+   ════════════════════════════════════════ */
+let toastTm;
+function toast(msg) {
+  const el = document.getElementById('toastEl'); el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastTm); toastTm = setTimeout(() => el.classList.remove('show'), 2200);
+}
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space') { e.preventDefault(); if (UNITS[currentUnit].type === 'video') togglePlay(); }
+  if (e.code === 'ArrowRight') skipFwd();
+  if (e.code === 'ArrowLeft')  skipBack();
+  if (e.key === 'c' || e.key === 'C') toggleCC();
+  if (e.key === 'd' || e.key === 'D') toggleTheme();
+});
+
+// Init
+updateVideo();
+</script>
+<style id="sk-bridge">
+/* --- DS token bridge (v2.0): immersive player mapped to --sk- canonical tokens --- */
+:root, [data-theme="light"], [data-theme="dark"]{
+  --bg: var(--sk-bg-primary);
+  --bg2: var(--sk-bg-secondary);
+  --bg3: var(--sk-bg-secondary-subtle);
+  --bg4: var(--sk-bg-tertiary);
+  --surface: var(--sk-bg-secondary);
+  --surface2: var(--sk-bg-tertiary);
+  --text: var(--sk-text-primary);
+  --text2: var(--sk-text-secondary);
+  --text3: var(--sk-text-tertiary);
+  --accent: var(--sk-text-brand);
+  --accent2: var(--sk-text-brand-primary);
+  --amber: var(--sk-text-warning-primary);
+  --blue: var(--sk-fg-progress);
+  --red: var(--sk-text-error-primary);
+  --success: var(--sk-text-success-primary);
+}
+body{ font-family: var(--sk-font-body, 'Montserrat', system-ui, sans-serif); }
+</style>
+</body>
+</html>

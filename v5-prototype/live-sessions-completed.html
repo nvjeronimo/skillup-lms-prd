@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Sessions · Completed · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/live-sessions.css" />
+</head>
+<body>
+<div class="page" data-shell data-shell-active="live-sessions">
+  <main>
+
+    <nav style="font-size:12px; color:var(--ink-400); margin-bottom: 16px;">
+      <a href="index.html" style="color:var(--ink-400)">My Learning</a>
+      <span style="margin:0 6px; color:var(--ink-200)">›</span>
+      <a href="program-detail.html" style="color:var(--ink-400)">AI-Driven Digital Marketing Certificate</a>
+      <span style="margin:0 6px; color:var(--ink-200)">›</span>
+      <a href="course-detail.html" style="color:var(--ink-400)">Digital Marketing Fundamentals</a>
+      <span style="margin:0 6px; color:var(--ink-200)">›</span>
+      <span>Live Sessions · Completed</span>
+    </nav>
+
+    <div class="ls-header">
+      <div>
+        <h1 class="ls-title">Live Sessions</h1>
+        <p class="muted">Recordings stay available for 90 days.</p>
+      </div>
+      <button class="btn btn--secondary" style="align-self: flex-end;">↓ Download all recordings</button>
+    </div>
+
+    <div class="ls-kpis">
+      <div class="ls-kpi ls-kpi--accent">
+        <div class="ls-kpi__num">6</div>
+        <div class="ls-kpi__label">Completed</div>
+      </div>
+      <div class="ls-kpi">
+        <div class="ls-kpi__num">6</div>
+        <div class="ls-kpi__label">Attended</div>
+      </div>
+      <div class="ls-kpi">
+        <div class="ls-kpi__num">0</div>
+        <div class="ls-kpi__label">Missed</div>
+      </div>
+      <div class="ls-kpi">
+        <div class="ls-kpi__num">100%</div>
+        <div class="ls-kpi__label">Attendance</div>
+      </div>
+    </div>
+
+    <!-- Course PD tabs -->
+    <div class="tabs">
+      <a class="tab" href="course-detail.html">Modules</a>
+      <a class="tab tab--active" href="live-sessions-completed.html">Live Sessions</a>
+      <a class="tab" href="coming-soon.html?section=Instructors">Instructors</a>
+      <a class="tab" href="coming-soon.html?section=Reviews">Reviews</a>
+      <a class="tab" href="coming-soon.html?section=About">About</a>
+    </div>
+
+    <div class="ls-filters">
+      <a class="ls-chip" href="live-sessions-upcoming.html" style="text-decoration:none; display:inline-flex; align-items:center;">Upcoming (5)</a>
+      <button class="ls-chip ls-chip--active">Completed (6)</button>
+      <button class="ls-chip">Missed (0)</button>
+      <button class="ls-chip">All (13)</button>
+    </div>
+
+    <div class="section-label">RECENTLY COMPLETED</div>
+    <div class="ls-list" id="ls-recent"></div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const data = window.V5_DATA.liveSessionsCompleted;
+    const esc = window.V5.escapeHtml;
+
+    function renderRow(r) {
+      return `
+        <div class="ls-row ls-row--attended">
+          <div class="ls-date">
+            <div class="ls-date__m">${esc(r.date.m)}</div>
+            <div class="ls-date__d">${esc(r.date.d)}</div>
+          </div>
+          <div class="ls-body">
+            <div class="ls-body__title">
+              <span>${esc(r.title)}</span>
+              <span class="ls-completed-badge">✓ ATTENDED</span>
+            </div>
+            <div class="ls-body__path">${esc(r.path)}  ·  ${esc(r.instructor)}</div>
+          </div>
+          <div class="ls-time">${esc(r.time)}</div>
+          <div class="ls-action">
+            <button class="btn btn--secondary">▶ Recording</button>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("ls-recent").innerHTML = data.recent.map(renderRow).join("");
+
+    document.querySelectorAll(".ls-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        if (chip.tagName === 'A') return;
+        document.querySelectorAll(".ls-chip").forEach(c => c.classList.remove("ls-chip--active"));
+        chip.classList.add("ls-chip--active");
+      });
+    });
+  })();
+</script>
+</body>
+</html>

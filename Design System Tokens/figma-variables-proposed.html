@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillUp — Proposed Figma Variables</title>
+<style>
+  :root{--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Montserrat,system-ui,sans-serif}
+  body{margin:0;background:#f3f5fa;font-family:var(--sans);padding:28px;color:#13282f}
+  h1{font-size:18px;font-weight:600;margin:0 0 4px}
+  .sub{color:#677482;font-size:13px;margin:0 0 20px;max-width:920px}
+  .win{background:#1e1e1e;border:1px solid #3a3a3a;border-radius:10px;overflow:hidden;color:#e6e6e6;max-width:920px;margin:0 auto 16px}
+  .winhd{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #3a3a3a;font-size:13px;font-weight:500}
+  .body{display:flex;min-height:300px}
+  .rail{width:222px;border-right:1px solid #3a3a3a;padding:10px 0;font-size:12.5px}
+  .lbl{color:#9aa0a6;padding:6px 14px;font-size:11px;letter-spacing:.04em}
+  .ci{padding:6px 14px;color:#cfcfcf}
+  .ci .n{float:right;color:#777}
+  .ci .m{display:block;color:#7f868d;font-size:10.5px;margin-top:2px}
+  .sel{background:#143240;color:#eaf6ff;border-left:2px solid #26708E}
+  .sel .n{color:#9fd3e6}
+  table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px}
+  th{text-align:left;padding:8px 12px;border-bottom:1px solid #3a3a3a;color:#9aa0a6;font-weight:400}
+  td{padding:7px 12px;border-bottom:1px solid #2a2a2a}
+  .nm{font-family:var(--mono);font-size:11px;color:#e6e6e6}
+  .grp{color:#777}
+  .sw{display:inline-block;width:13px;height:13px;border-radius:3px;border:1px solid rgba(255,255,255,.25);vertical-align:-2px;margin-right:7px}
+  .alias{font-family:var(--mono);font-size:11px;color:#9fd3e6}
+  .note{max-width:920px;margin:0 auto;color:#677482;font-size:12.5px;line-height:1.6}
+  code{font-family:var(--mono);background:#e1e7ec;border-radius:4px;padding:1px 5px}
+</style></head>
+<body>
+<h1>Proposed Figma Variables</h1>
+<p class="sub">Four collections. Brand is its own collection with one mode per brand. Semantic has Light/Dark only. Components bind to semantic — no Component collection. Every value is an alias to another token; raw hex lives only in Primitives.</p>
+
+<div class="win">
+  <div class="winhd">Variables</div>
+  <div class="body">
+    <div class="rail">
+      <div class="lbl">COLLECTIONS</div>
+      <div class="ci">1. Primitives <span class="n">452</span></div>
+      <div class="ci">2. Brand <span class="n">10</span><span class="m">modes: SkillUp · BrandX · …</span></div>
+      <div class="ci sel">3. Semantic · Core <span class="n">60</span><span class="m" style="color:#9fd3e6">modes: Light · Dark</span></div>
+      <div class="ci">4. Scale <span class="n">43</span></div>
+      <div class="ci">5. Typography <span class="n">34</span></div>
+      <div class="lbl" style="padding-top:10px">GROUPS · Semantic</div>
+      <div class="ci">Text <span class="n">10</span></div>
+      <div class="ci">Background <span class="n">11</span></div>
+      <div class="ci">Foreground <span class="n">5</span></div>
+      <div class="ci">Border <span class="n">3</span></div>
+    </div>
+    <div style="flex:1">
+      <table><thead><tr><th style="width:38%">Name</th><th>Light</th><th>Dark</th></tr></thead>
+      <tbody id="sem"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<div class="win">
+  <div class="winhd" style="font-weight:400"><span style="font-weight:500">2. Brand</span> · one mode per brand — each anchor aliases a primitive ramp; switching the mode reskins everything</div>
+  <table><thead><tr><th style="width:30%">Name</th><th>SkillUp</th><th>BrandX</th><th>Partner Y</th></tr></thead>
+  <tbody id="brand"></tbody></table>
+</div>
+
+<p class="note">Brand and scheme are two independent mode axes: a frame picks <code>Brand = SkillUp</code> and <code>Semantic = Light</code> separately. The <code>brand-*</code> semantic tokens alias the Brand collection, so switching a brand mode reskins everything. A new brand is one more mode here (Figma Pro is limited to 10 modes). Each mode exports to a brand JSON for the <code>[data-brand]</code> CSS. No hex in Semantic or Brand — only aliases.</p>
+
+<script>
+const sw=c=>`<span class="sw" style="background:${c}"></span>`;
+const cell=(c,alias)=>`<td>${sw(c)}<span class="alias">${alias}</span></td>`;
+const nm=(n,g)=>`<td class="nm">${g?`<span class="grp">${g}/</span>`:''}${n}</td>`;
+const sem=[
+ ['Text','text-primary','#13282F','ref/deep-teal','#FFFFFF','ref/white'],
+ ['','text-secondary','#606B7A','ref/gray-2','#E1E7EC','ref/gray-5'],
+ ['','text-brand','#26708E','brand/primary','#66A3D6','brand/on-dark'],
+ ['Background','bg-primary','#FFFFFF','ref/white','#212934','ref/grey-1'],
+ ['','bg-brand-solid','#26708E','brand/primary','#3685C6','brand/links'],
+ ['','bg-success-primary','#E4FCED','ref/green-6','#1F7643','ref/green-2'],
+ ['Border','border-brand','#26708E','brand/primary','#66A3D6','brand/on-dark'],
+ ['','border-primary','#B9C4CE','ref/gray-4','#606B7A','ref/gray-2'],
+];
+document.getElementById('sem').innerHTML=sem.map(r=>`<tr>${nm(r[1],r[0])}${cell(r[2],r[3])}${cell(r[4],r[5])}</tr>`).join('');
+const brand=[
+ ['brand/primary','#26708E','ref/blue/teal','#1F7643','ref/green/AB02','#E0556E','ref/rose/600'],
+ ['brand/strong','#044150','ref/blue/deep','#0E5132','ref/green/AB01','#8A2B3D','ref/rose/900'],
+ ['brand/on-dark','#EBF8FF','ref/blue/50','#E4FCED','ref/green/AB06','#FDEAEE','ref/rose/50'],
+ ['brand/links','#3685C6','ref/blue/links','#40C075','ref/green/AB04','#C03B57','ref/rose/500'],
+ ['brand/progress','#0086C9','ref/blue/progress','#40C075','ref/green/AB04','#C03B57','ref/rose/progress'],
+ ['brand/accent','#F9C654','ref/yellow/400','#40C075','ref/green/AB04','#F2B705','ref/amber/400'],
+];
+document.getElementById('brand').innerHTML=brand.map(r=>`<tr>${nm(r[0],'')}${cell(r[1],r[2])}${cell(r[3],r[4])}${cell(r[5],r[6])}</tr>`).join('');
+</script>
+</body></html>

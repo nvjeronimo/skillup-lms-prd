@@ -1,0 +1,116 @@
+/* ============================================================
+   CALM MODE — subtractive layer to reduce cognitive load.
+   Toggled via the "Calm mode" tweak (adds .calm to #app).
+   Everything here HIDES or QUIETS; nothing new is introduced.
+   ============================================================ */
+
+/* 1 — Quiet the display type: smaller headlines, less shout */
+.app.calm .page-h1,
+.app.calm .mp-h1 { font-size: 40px; }
+.app.calm .dash-today-card h2 { font-size: 30px; }
+.app.calm .page-eyebrow,
+.app.calm .mp-eyebrow { opacity: 0; height: 0; margin: 0; overflow: hidden; }
+
+/* 2 — More breathing room */
+.app.calm .wrap { padding-top: 40px; }
+.app.calm .dash-grid,
+.app.calm .dash-row { gap: 40px; }
+.app.calm .mp-block { padding: 48px 0; }
+
+/* 3 — Keep the KPI card + weekday streak; they are the primary read now. */
+
+/* 4 — Trim long lists to the few that matter; reveal on demand later */
+.app.calm .dash-due-list .dash-due-row:nth-child(n+4) { display: none; }
+
+/* 5 — Keep the "Jump somewhere" CTAs available even in calm mode. */
+.app.calm .dash-section-h.calm-hide { display: none; }
+
+/* 6 — Demote noisy pills: keep status meaning, drop the chrome */
+.app.calm .pill.opt { background: transparent; color: var(--ink-4); padding-left: 0; padding-right: 0; }
+
+/* 7 — Soften card borders so the eye isn't gridded */
+.app.calm .card-base,
+.app.calm .dash-due-list,
+.app.calm .cal-event,
+.app.calm .thread { border-color: transparent; }
+.app.calm .thread { border-bottom-color: var(--line); }
+.app.calm .dash-due-list { box-shadow: inset 0 0 0 1px var(--line); }
+
+/* 8 — One filled CTA per view: demote secondary buttons to ghost */
+.app.calm .btn-primary + .btn-ghost,
+.app.calm .pf-cta ~ * { opacity: 0.9; }
+
+/* ============================================================
+   PER-SCREEN CALM RULES — same philosophy on every page:
+   quieter display type · fewer/secondary stats hidden ·
+   decorative noise dropped · softer borders · more air.
+   ============================================================ */
+
+/* Quiet every display headline + hero decoration */
+.app.calm .pd-title,
+.app.calm .cd-cover h1,
+.app.calm .prf-cover .name h1 { font-size: 40px; letter-spacing: -0.02em; }
+.app.calm .section-split h2,
+.app.calm .mp-blk-head h2,
+.app.calm .dash-section-h h3 { font-size: 22px; }
+.app.calm .hero h1 { font-size: 40px; }
+.app.calm .hero .eyebrow { opacity: 0; height: 0; margin: 0; overflow: hidden; }
+.app.calm .hero .lede { font-size: 14px; }
+.app.calm .pd-cover::before, .app.calm .pd-cover::after,
+.app.calm .cd-cover::before, .app.calm .cd-cover::after,
+.app.calm .prf-cover::before, .app.calm .prf-cover::after,
+.app.calm .srv-career-feature::before,
+.app.calm .dash-today-card::before, .app.calm .dash-today-card::after,
+.app.calm .capstone-node::before { opacity: 0.12; }
+
+/* Soften card grids everywhere so nothing shouts for attention */
+.app.calm .row,
+.app.calm .tl-node,
+.app.calm .cd-module,
+.app.calm .mentor-card,
+.app.calm .cert-card,
+.app.calm .srv-svc-item,
+.app.calm .aside-card,
+.app.calm .det-aside-card,
+.app.calm .mp-skill,
+.app.calm .mp-chart-card,
+.app.calm .mp-heatmap,
+.app.calm .mp-timeline,
+.app.calm .mp-upcoming,
+.app.calm .mp-ring-card,
+.app.calm .program-compact { border-color: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+
+/* MY LEARNING — drop duplicated mini-stats, decorative counts, live pulse pills */
+.app.calm .pf-mini-stats { display: none; }
+.app.calm .section-split .sh-count { display: none; }
+.app.calm .cc-next { display: none; }
+
+/* PROGRAM DETAIL — keep the ring; hide the secondary 3-up stat strip + chip clutter */
+.app.calm .pd-progress-stats { display: none; }
+.app.calm .tl-node .tln-sub span + span { display: none; }
+
+/* COURSE DETAIL — hide the 4-up stat strip; the progress block stays */
+.app.calm .cd-stat-strip { display: none; }
+
+/* CALENDAR — drop the colored accent rails + right-column badges */
+.app.calm .cal-event .accent { display: none; }
+.app.calm .cal-event { grid-template-columns: 72px 1fr auto; }
+
+/* DISCUSSION — hide tag chips + trending counts, keep the conversation */
+.app.calm .thread .tags,
+.app.calm .dis-tag-cloud .t .n { display: none; }
+
+/* SERVICES — hide skill chips inside mentor cards */
+.app.calm .mentor-card .skills { display: none; }
+
+/* PROFILE — hide the cover meta-stats (they live on My Progress) */
+.app.calm .prf-cover .meta-stats { display: none; }
+
+/* MY PROGRESS — keep charts; just hide the heatmap footnote stat row */
+.app.calm .mp-heatmap-foot { display: none; }
+
+/* NOTIFICATIONS — collapse anything past the first (unread) group */
+.app.calm .not-row.read { display: none; }
+
+/* Trim other long lists to their most relevant head */
+.app.calm .cer-grid > .cert-card:nth-child(n+3) { display: none; }

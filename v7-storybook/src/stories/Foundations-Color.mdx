@@ -1,0 +1,56 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Color" />
+
+# Color tokens
+
+Each row pairs the dark and light values for the same semantic token. Use the toolbar to switch theme — every component below auto-rebinds via CSS variables.
+
+## Surfaces
+
+| Token        | Dark      | Light     | Use                                     |
+|--------------|-----------|-----------|-----------------------------------------|
+| `--bg`       | `#090D12` | `#F0F6F9` | App canvas                              |
+| `--bg2`      | `#0D1520` | `#FFFFFF` | Topbar, sidebar, AI panel               |
+| `--bg3`      | `#121D2C` | `#F5FAFB` | Cards (notes, AI cards)                 |
+| `--bg4`      | `#172434` | `#E8F4F8` | Tertiary surface                        |
+| `--surface`  | `#1B3D4F` | `#D5EBF2` | Hover wash, button track                |
+| `--surface2` | `#224D62` | `#B8D8E6` | Scrollbar thumb, deeper hover           |
+
+## Text
+
+| Token     | Dark      | Light     | Use                            |
+|-----------|-----------|-----------|--------------------------------|
+| `--text`  | `#E8F0F5` | `#1B3D4F` | Primary copy, active items     |
+| `--text2` | `#7D9BAD` | `#2E5468` | Secondary copy                 |
+| `--text3` | `#5E8A9E` | `#4A7A90` | Tertiary, eyebrows, meta       |
+
+`--text2` and `--text3` were both adjusted from the v6 baseline to clear WCAG AA. Don't darken them further without re-checking.
+
+## Accent (interactive)
+
+| Token            | Dark                       | Light                      |
+|------------------|----------------------------|----------------------------|
+| `--accent`       | `#0096C7`                  | `#005A82`                  |
+| `--accent2`      | `#007DAA`                  | `#004268`                  |
+| `--accent-dim`   | `rgba(0,150,199,0.13)`     | `rgba(0,90,130,0.10)`      |
+| `--accent-glow`  | `rgba(0,150,199,0.28)`     | `rgba(0,90,130,0.20)`      |
+
+Light-mode accent is darkened to `#005A82` to clear 4.5:1 contrast on white. Never use `#0096C7` on white — it fails.
+
+## Semantic
+
+| Token       | Dark      | Light     | Use                                   |
+|-------------|-----------|-----------|---------------------------------------|
+| `--success` | `#27A96E` | `#0A7656` | Completion, correct answers, LIVE NOW |
+| `--amber`   | `#F5A623` | `#C97C10` | Warning, due-soon                     |
+| `--red`     | `#E24B4A` | `#C23B3A` | Wrong answer, error, overdue          |
+| `--blue`    | `#48CAE4` | `#0F5C74` | Info accent (rare)                    |
+
+## Static colors
+
+`--static-white` and `--static-black` keep the same value in both modes. Used for text on cyan / green / red filled backgrounds where contrast must be theme-independent.
+
+## Rule of thumb
+
+**Cyan = interactive. Green = completion or live availability. Red = error.** Don't use cyan on a completion icon, and don't use green on an "Add note" button.

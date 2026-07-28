@@ -1,0 +1,171 @@
+.v7-ai {
+  width: var(--ai-w);
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  transition: background var(--dur) var(--ease);
+}
+.v7-ai__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.v7-ai__live {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
+  animation: v7-ai-blink 2s ease-in-out infinite;
+}
+@keyframes v7-ai-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.v7-ai__title {
+  flex: 1;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+.v7-ai__close {
+  width: 32px; height: 32px;
+  background: transparent;
+  border: 0;
+  color: var(--text2);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.v7-ai__close:hover { background: var(--surface); color: var(--text); }
+
+.v7-ai__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.v7-ai__card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--sp-3);
+}
+.v7-ai__card-title {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: var(--sp-2);
+}
+.v7-ai__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.v7-ai__list li {
+  position: relative;
+  padding-left: 16px;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--text);
+  line-height: 1.5;
+}
+.v7-ai__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.v7-ai__chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.v7-ai__chip {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  background: var(--bg2);
+  color: var(--text2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-full);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease);
+}
+.v7-ai__chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+.v7-ai__related { display: flex; flex-direction: column; gap: 4px; }
+.v7-ai__related-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  padding: 8px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.v7-ai__related-row:hover { background: var(--surface); }
+.v7-ai__related-title {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--text);
+}
+.v7-ai__related-meta {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);
+  color: var(--text3);
+}
+
+.v7-ai__convo { display: flex; flex-direction: column; gap: var(--sp-2); }
+.v7-ai__msg {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: var(--r-md);
+  max-width: 85%;
+}
+.v7-ai__msg--user { background: var(--accent-dim); color: var(--text); align-self: flex-end; }
+.v7-ai__msg--ai { background: var(--bg3); color: var(--text); align-self: flex-start; border: 1px solid var(--border); }
+
+.v7-ai__input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--sp-3);
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+.v7-ai__input-icon {
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--r-sm);
+  background: var(--accent-dim);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.v7-ai__input input {
+  flex: 1;
+  border: 1px solid var(--border2);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  outline: none;
+}
+.v7-ai__input input:focus { border-color: var(--accent); }

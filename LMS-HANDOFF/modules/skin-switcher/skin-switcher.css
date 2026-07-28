@@ -1,0 +1,109 @@
+/* ============================================================================
+   SKO Design System — Skin Switcher (estilos)
+
+   Depende de `tokens/colors.css`. Não declara nenhuma cor própria: tudo sai
+   de `--sk-*`, incluindo o próprio controlo. Se o switcher parecer errado
+   num skin, o problema está no token, não aqui.
+
+   A cor de cada bolinha chega em `--swatch`, escrita pelo JS a partir do
+   valor resolvido de `--sk-bg-brand-solid` para esse skin.
+   ============================================================================ */
+
+.sk-switcher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--sk-font-body, 'Montserrat', system-ui, sans-serif);
+}
+
+/* ---- grupo de skins ---- */
+.sk-switcher__skins {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sk-switcher__swatch {
+  inline-size: 28px;
+  block-size: 28px;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: var(--swatch, var(--sk-bg-brand-solid));
+  /* anel de selecção desenhado com box-shadow: funciona sobre qualquer cor,
+     ao contrário de um ✓ interior, que teria de contrastar com 6 fundos */
+  border: 2px solid var(--sk-bg-primary);
+  box-shadow: 0 0 0 1px var(--sk-border-secondary);
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+
+.sk-switcher__swatch:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 1px var(--sk-border-primary);
+}
+
+.sk-switcher__swatch[aria-checked='true'] {
+  box-shadow: 0 0 0 2px var(--sk-text-primary);
+}
+
+/* Foco visível — WCAG 2.4.7. Nunca remover.
+   :focus-visible só aparece em navegação por teclado. */
+.sk-switcher__swatch:focus-visible,
+.sk-switcher__theme:focus-visible {
+  outline: 2px solid var(--sk-border-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ---- botão de tema ---- */
+.sk-switcher__theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-block-size: 32px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sk-text-secondary);
+  background: var(--sk-bg-secondary);
+  border: 1px solid var(--sk-border-secondary);
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.sk-switcher__theme:hover {
+  color: var(--sk-text-primary);
+  background: var(--sk-bg-tertiary);
+}
+
+.sk-switcher__theme[aria-pressed='true'] {
+  color: var(--sk-text-brand);
+  border-color: var(--sk-border-brand);
+}
+
+/* ---- respeitar preferências do sistema ---- */
+@media (prefers-reduced-motion: reduce) {
+  .sk-switcher__swatch,
+  .sk-switcher__theme {
+    transition: none;
+  }
+  .sk-switcher__swatch:hover {
+    transform: none;
+  }
+}
+
+/* Alvos de toque de 44px em ponteiros grosseiros — WCAG 2.5.8.
+   O disco continua com 28px; a área clicável é que cresce. */
+@media (pointer: coarse) {
+  .sk-switcher__swatch {
+    position: relative;
+  }
+  .sk-switcher__swatch::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+  }
+}

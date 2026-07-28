@@ -1,0 +1,50 @@
+<svg viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d" font-family="Montserrat, system-ui, sans-serif">
+<title id="t">One semantic, re-aliased per mode</title>
+<desc id="d">A semantic role token keeps its name across all four modes; only the primitive it aliases changes. Adding a brand adds primitives and fills one column, the semantic count stays fixed.</desc>
+<style>
+ .bg{fill:#fff}
+ .hd{fill:#13282F;font-size:13px;font-weight:700;letter-spacing:.03em}
+ .sub{fill:#677482;font-size:11px}
+ .tk{fill:#13282F;font-size:12.5px;font-weight:600;font-family:ui-monospace,Menlo,monospace}
+ .al{fill:#677482;font-size:11px;font-family:ui-monospace,Menlo,monospace}
+ .colhd{fill:#13282F;font-size:11.5px;font-weight:600}
+ .band{fill:#26708E;font-size:11px;font-weight:700;letter-spacing:.04em}
+ .cell{fill:#f7f8fa;stroke:#e1e7ec;stroke-width:1}
+ .cap{fill:#677482;font-size:11.5px}
+</style>
+<rect class="bg" x="0" y="0" width="960" height="470"/>
+<text class="hd" x="28" y="34">One name, value swapped per mode</text>
+<text class="sub" x="28" y="52">The semantic role token never changes. Each mode re-aliases it to a different primitive.</text>
+<text class="band" x="210" y="84">SkillUp</text>
+<text class="band" x="590" y="84">BrandX</text>
+<line x1="565" y1="70" x2="565" y2="430" stroke="#cdd6df" stroke-width="1.2" stroke-dasharray="4 4"/>
+<text class="colhd" x="210" y="106">Light</text>
+<text class="colhd" x="400" y="106">Dark</text>
+<text class="colhd" x="590" y="106">Light</text>
+<text class="colhd" x="780" y="106">Dark</text>
+<text class="colhd" x="28" y="106">semantic →</text>
+<line x1="28" y1="116" x2="930" y2="116" stroke="#cdd6df" stroke-width="1"/>
+<text class="tk" x="28" y="156">text-primary</text>
+<g><rect x="190" y="138" width="14" height="14" rx="3" fill="#13282F" stroke="#cdd6df"/><text class="al" x="210" y="150">ref/N00</text></g>
+<g><rect x="380" y="138" width="14" height="14" rx="3" fill="#FFFFFF" stroke="#cdd6df"/><text class="al" x="400" y="150">ref/white</text></g>
+<g><rect x="570" y="138" width="14" height="14" rx="3" fill="#1F7643" stroke="#cdd6df"/><text class="al" x="590" y="150">ref/green-1</text></g>
+<g><rect x="760" y="138" width="14" height="14" rx="3" fill="#A6E3BE" stroke="#cdd6df"/><text class="al" x="780" y="150">ref/green-5</text></g>
+<line x1="28" y1="170" x2="930" y2="170" stroke="#eef1f4" stroke-width="1"/>
+<text class="tk" x="28" y="212">radius-card</text>
+<g><rect x="190" y="192" width="16" height="16" rx="3" fill="none" stroke="#26708E" stroke-width="1.5"/><text class="al" x="214" y="205">radius/8</text></g>
+<g><rect x="380" y="192" width="16" height="16" rx="3" fill="none" stroke="#26708E" stroke-width="1.5"/><text class="al" x="404" y="205">radius/8</text></g>
+<g><rect x="570" y="192" width="16" height="16" rx="8" fill="none" stroke="#1F7643" stroke-width="1.5"/><text class="al" x="594" y="205">radius/full</text></g>
+<g><rect x="760" y="192" width="16" height="16" rx="8" fill="none" stroke="#1F7643" stroke-width="1.5"/><text class="al" x="784" y="205">radius/full</text></g>
+<line x1="28" y1="226" x2="930" y2="226" stroke="#eef1f4" stroke-width="1"/>
+<text class="tk" x="28" y="268">border-width</text>
+<g><rect x="190" y="249" width="16" height="14" fill="none" stroke="#26708E" stroke-width="1"/><text class="al" x="214" y="261">width/1</text></g>
+<g><rect x="380" y="249" width="16" height="14" fill="none" stroke="#26708E" stroke-width="1"/><text class="al" x="404" y="261">width/1</text></g>
+<g><rect x="570" y="249" width="16" height="14" fill="none" stroke="#1F7643" stroke-width="3"/><text class="al" x="594" y="261">width/4</text></g>
+<g><rect x="760" y="249" width="16" height="14" fill="none" stroke="#1F7643" stroke-width="3"/><text class="al" x="784" y="261">width/4</text></g>
+<line x1="28" y1="282" x2="930" y2="282" stroke="#eef1f4" stroke-width="1"/>
+<rect class="cell" x="28" y="312" width="904" height="120" rx="12"/>
+<text class="hd" x="48" y="344">What grows, what stays fixed</text>
+<text class="cap" x="48" y="370">The token names (text-primary, radius-card, border-width) never change, across brands or modes.</text>
+<text class="cap" x="48" y="390">A new brand = add its raw values as primitives + fill one mode column with re-aliases.</text>
+<text class="cap" x="48" y="410">The semantic contract count stays fixed. Hex and raw values live only in Primitives.</text>
+</svg>

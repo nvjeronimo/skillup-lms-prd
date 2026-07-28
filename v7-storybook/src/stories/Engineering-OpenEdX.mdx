@@ -1,0 +1,42 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Engineering/OpenEdX Integration" />
+
+# OpenEdX integration notes
+
+The V7 ICP is designed to live inside `frontend-app-learning` (the OpenEdX Learning MFE) using the **Frontend Plugin Framework** — no fork.
+
+## Three open implementation options for the AI panel
+
+| Option        | Pros                                                                   | Cons                                                                             |
+|---------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| **MFE Plugin** *(leaning)* | Native React inside the MFE. Shares context, theming, auth.        | Tight coupling to MFE upgrades.                                                  |
+| **XBlock**    | Authored once, available anywhere XBlocks render. Standard auth flow.   | Visual integration is harder (iframe boundary).                                  |
+| **iframe**    | Strongest isolation, simplest deploy.                                  | No shared context. Auth & theming must be re-bridged. Not great UX.              |
+
+The current Storybook + prototype label the AI panel as `XBLOCK` because the demo runs against an XBlock for now. That's not the recommendation — when you start integrating, evaluate Plugin first.
+
+## What to wire first
+
+1. **Sidebar outline** — backed by Course outline API. The `Sidebar` component takes a `modules` prop matching the shape of OpenEdX's outline response (with one normalization step).
+2. **VideoPlayer** — replace the visual shell with the existing OpenEdX video XBlock. Keep the `VideoPlayer` chrome (eyebrow, title, controls overlay) on top — only the stage interior is replaced.
+3. **TabStrip + content panes** — Notes and Discussion already exist as MFE features. Mount them inside the tab bodies; don't reimplement.
+4. **AIPanel** — initially mock. Once the integration option is decided, wire the conversation thread to the real backend.
+5. **Quiz** — backed by an XBlock problem block. The state machine here (start → question → revealed → results) maps to the underlying XBlock transitions.
+
+## Theming inside the MFE
+
+V7 tokens are CSS custom properties scoped to `:root` and `[data-theme="light"]`. Apply `data-theme` to the MFE root once on load (read user preference). Components in this Storybook will Just Work inside the MFE if the same root variables are present.
+
+If the MFE uses Paragon (OpenEdX's design system), wrap V7 components in a `data-theme`-providing div and let Paragon's tokens coexist — they don't share names.
+
+## Build & deploy
+
+This Storybook builds static HTML to `../storybook` (sibling of `v7-storybook/`). The hub deploy script copies that folder into the GitHub Pages site at `/storybook/`. Engineering teams can clone the repo and `npm run storybook` to develop locally.
+
+## Known component gaps vs prototype
+
+- Icons use unlabeled SVGs in this Storybook. Production should swap to **Untitled UI** (already planned by design).
+- `Topbar` brand is text-rendered in CSS. Production should mount the real SVG logos (`skillup-logo-dark.svg` / `skillup-logo-light.svg`).
+- Mobile drawer behavior isn't implemented in `Sidebar` — it's currently always inline. Add `position: fixed; transform` for ≤768px in production.
+- VideoPlayer is a visual placeholder; the real OpenEdX video XBlock replaces the stage.

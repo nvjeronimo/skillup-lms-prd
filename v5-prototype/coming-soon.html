@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coming soon · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .cs-wrap {
+      max-width: 640px;
+      margin: 80px auto 0;
+      padding: 48px 32px;
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xs);
+      text-align: center;
+    }
+    .cs-kicker {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      color: var(--warn-amber-dark);
+      background: var(--warn-amber-soft);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 20px;
+    }
+    .cs-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--ink-800);
+      margin: 0 0 12px;
+      letter-spacing: -0.4px;
+      line-height: 1.15;
+    }
+    .cs-section {
+      font-family: var(--font-accent, "Playfair Display"), serif;
+      font-weight: 700;
+      color: var(--brand-blue);
+    }
+    .cs-body {
+      font-size: 15px;
+      color: var(--ink-500);
+      line-height: 1.6;
+      max-width: 440px;
+      margin: 0 auto 28px;
+    }
+    .cs-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cs-meta {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--surface-divider);
+      font-size: 12px;
+      color: var(--ink-400);
+    }
+  </style>
+</head>
+<body>
+<div class="page" data-shell data-shell-active="">
+  <main>
+    <div class="cs-wrap">
+      <div class="cs-kicker">COMING SOON</div>
+      <h1 class="cs-title"><span class="cs-section" id="cs-section">This page</span> is on the roadmap</h1>
+      <p class="cs-body" id="cs-body">
+        We're still building this area. It will ship in a later release of SkillUp.
+        For now, head back to your learning or peek at your calendar.
+      </p>
+      <div class="cs-actions">
+        <a class="btn btn--action" href="index.html">← Back to My Learning</a>
+        <a class="btn btn--secondary" href="my-calendar.html">Open My Calendar</a>
+      </div>
+      <div class="cs-meta">
+        V5 Prototype · Section requested: <strong id="cs-section-meta">—</strong>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get("section") || "This page";
+    const section = raw.replace(/\+/g, " ");
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    document.title = section + " · Coming soon · SkillUp V5";
+    document.getElementById("cs-section").textContent = section;
+    document.getElementById("cs-section-meta").textContent = section;
+
+    // Tailored copy per section where it helps
+    const copy = {
+      "Dashboard": "Your personal at-a-glance view across every enrolled program and course. We're wiring up KPIs, streaks, and weekly goals.",
+      "Community": "Peer threads, course-wide discussions, and direct messages with mentors. Expect a first cut in the next milestone.",
+      "Services": "Career coaching, portfolio reviews, 1:1 mentoring scheduling, and alumni perks. Live experience hub is in active design.",
+      "My Profile": "Edit your profile, learning preferences, bio, and contact details.",
+      "My Certificates": "Certificates you've earned, plus verifiable credential links you can share on LinkedIn.",
+      "My Shortlist": "Courses and programs you're thinking about enrolling in.",
+      "Notifications": "Inline notification center with filters by type (live sessions, assignments, messages, system).",
+      "Suporte": "Chat with support, browse the help center, or file a ticket.",
+      "Settings": "Account, privacy, email preferences, accessibility, and connected accounts.",
+      "Sign out": "You're about to sign out. In the real app this ends the session.",
+    };
+    if (copy[section]) {
+      document.getElementById("cs-body").textContent = copy[section];
+    }
+  })();
+</script>
+</body>
+</html>

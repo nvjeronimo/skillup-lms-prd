@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SKO — Skin Switcher + revisão visual de tokens</title>
+
+<!-- Restauro antes do CSS, para não haver flash do skin/tema errado -->
+<script>
+try {
+  var s = localStorage.getItem('sko.skin'), t = localStorage.getItem('sko.theme');
+  if (s) document.documentElement.setAttribute('data-skin', s);
+  if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+} catch (e) {}
+</script>
+
+<link rel="stylesheet" href="../../tokens/colors.css">
+<link rel="stylesheet" href="skin-switcher.css">
+
+<style>
+  /* Só a demo. Tudo em tokens — nenhum hex nesta página. */
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px;
+    font-family: var(--sk-font-body, 'Montserrat', system-ui, sans-serif);
+    background: var(--sk-bg-primary);
+    color: var(--sk-text-primary);
+    transition: background 150ms ease, color 150ms ease;
+  }
+  header { display: flex; justify-content: space-between; align-items: flex-start;
+           gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .sub { color: var(--sk-text-secondary); font-size: 14px; margin: 0; }
+  h2 { font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+       color: var(--sk-text-tertiary); margin: 32px 0 12px; }
+
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+  .tok { border: 1px solid var(--sk-border-secondary); border-radius: 8px; overflow: hidden;
+         background: var(--sk-bg-secondary); }
+  .tok .chip { height: 52px; border-bottom: 1px solid var(--sk-border-secondary); }
+  .tok .meta { padding: 8px 10px; font-size: 11px; line-height: 1.5; }
+  .tok .name { color: var(--sk-text-secondary); word-break: break-all; }
+  .tok .val  { color: var(--sk-text-tertiary); font-family: ui-monospace, monospace; }
+
+  .surfaces { display: grid; gap: 0; grid-template-columns: repeat(4, 1fr);
+              border: 1px solid var(--sk-border-primary); border-radius: 8px; overflow: hidden; }
+  .surfaces > div { padding: 20px 12px; font-size: 12px; text-align: center; }
+
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn { padding: 10px 18px; border-radius: 8px; font: inherit; font-size: 14px;
+         font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+  .btn-primary { background: var(--sk-bg-brand-solid); color: var(--sk-text-primary-on-brand); }
+  .btn-primary:hover { background: var(--sk-bg-brand-hover); color: var(--sk-text-primary-on-brand-hover); }
+  .btn-secondary { background: var(--sk-bg-primary); color: var(--sk-text-brand);
+                   border-color: var(--sk-border-brand); }
+  .btn-danger { background: var(--sk-bg-error-solid); color: var(--sk-fg-error-on-solid); }
+  .btn:focus-visible { outline: 2px solid var(--sk-border-focus-ring); outline-offset: 2px; }
+
+  .banner { padding: 12px 16px; border-radius: 8px; font-size: 14px; margin-bottom: 8px; }
+  .b-success { background: var(--sk-bg-success-primary); color: var(--sk-text-success-primary); }
+  .b-warning { background: var(--sk-bg-warning-primary); color: var(--sk-text-warning-primary); }
+  .b-error   { background: var(--sk-bg-error-primary);   color: var(--sk-text-error-primary); }
+  .b-brand   { background: var(--sk-bg-brand-section);   color: var(--sk-text-brand-primary); }
+
+  .card { background: var(--sk-bg-tertiary); border: 1px solid var(--sk-border-secondary);
+          border-radius: 10px; padding: 16px; max-width: 420px; }
+  .card p { margin: 0 0 6px; font-size: 14px; }
+  .t1 { color: var(--sk-text-primary); }
+  .t2 { color: var(--sk-text-secondary); }
+  .t3 { color: var(--sk-text-tertiary); }
+  .tb { color: var(--sk-text-brand); }
+  code { font-family: ui-monospace, monospace; font-size: 12px;
+         background: var(--sk-bg-tertiary); padding: 1px 5px; border-radius: 4px; }
+  .note { font-size: 13px; color: var(--sk-text-secondary); max-width: 62ch; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Skin Switcher</h1>
+    <p class="sub">Nenhuma cor está escrita nesta página nem no JS. Tudo vem de <code>tokens/colors.css</code>.</p>
+  </div>
+  <div id="switcher"></div>
+</header>
+
+<p class="note">
+  As bolinhas acima são geradas a partir dos selectores <code>[data-skin="…"]</code> encontrados no
+  CSS, e a cor de cada uma é o valor resolvido de <code>--sk-bg-brand-solid</code> para esse skin no
+  tema activo. Acrescenta um skin ao <code>colors.css</code> e ele aparece aqui sem tocar em código.
+</p>
+
+<h2>Escada de superfícies</h2>
+<div class="surfaces">
+  <div style="background:var(--sk-bg-primary)">bg-primary</div>
+  <div style="background:var(--sk-bg-secondary)">bg-secondary</div>
+  <div style="background:var(--sk-bg-secondary-subtle)">bg-secondary-subtle</div>
+  <div style="background:var(--sk-bg-tertiary)">bg-tertiary</div>
+</div>
+
+<h2>Hierarquia de texto</h2>
+<div class="card">
+  <p class="t1">text-primary — o título de uma lição</p>
+  <p class="t2">text-secondary — a descrição de apoio, mais longa e menos saliente</p>
+  <p class="t3">text-tertiary — metadados, timestamps, legendas</p>
+  <p class="tb">text-brand — uma ligação ou label de marca</p>
+</div>
+
+<h2>Botões</h2>
+<div class="row">
+  <button class="btn btn-primary">Mark as Complete</button>
+  <button class="btn btn-secondary">Guardar</button>
+  <button class="btn btn-danger">Eliminar</button>
+</div>
+
+<h2>Estados</h2>
+<div class="banner b-brand">Marca — secção destacada</div>
+<div class="banner b-success">Sucesso — progresso guardado</div>
+<div class="banner b-warning">Aviso — a sessão expira em 5 minutos</div>
+<div class="banner b-error">Erro — não foi possível guardar</div>
+
+<h2>Todos os tokens</h2>
+<div class="grid" id="tokens"></div>
+
+<script src="skin-switcher.js"></script>
+<script>
+  SkinSwitcher.mount('#switcher');
+
+  /* Grelha de tokens — descoberta a partir do CSS, sem lista escrita à mão.
+     Mesmo princípio da validação de contraste: nunca hardcode o inventário. */
+  function tokenNames() {
+    var names = [];
+    var sheets = Array.prototype.slice.call(document.styleSheets);
+    for (var i = 0; i < sheets.length; i++) {
+      var rules; try { rules = sheets[i].cssRules; } catch (e) { continue; }
+      if (!rules) continue;
+      for (var j = 0; j < rules.length; j++) {
+        var r = rules[j];
+        if (!r.style || r.selectorText !== ':root') continue;
+        for (var k = 0; k < r.style.length; k++) {
+          var p = r.style[k];
+          if (p.indexOf('--sk-') === 0 && names.indexOf(p) === -1) names.push(p);
+        }
+      }
+    }
+    return names.sort();
+  }
+
+  function paintTokens() {
+    var host = document.getElementById('tokens');
+    var cs = getComputedStyle(document.documentElement);
+    host.innerHTML = '';
+    tokenNames().forEach(function (n) {
+      var v = cs.getPropertyValue(n).trim();
+      var el = document.createElement('div');
+      el.className = 'tok';
+      el.innerHTML =
+        '<div class="chip" style="background:' + v + '"></div>' +
+        '<div class="meta"><div class="name">' + n + '</div><div class="val">' + v + '</div></div>';
+      host.appendChild(el);
+    });
+  }
+
+  paintTokens();
+  document.addEventListener('sko:themechange', paintTokens);
+</script>
+</body>
+</html>

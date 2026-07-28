@@ -1,0 +1,10 @@
+.v7-topic-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text2);
+}
+.v7-topic-icon svg { width: 100%; height: 100%; }
+.v7-topic-icon--live { color: var(--success); }
+.v7-topic-icon--recording { color: var(--accent); }

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Sessions · Upcoming · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/live-sessions.css" />
+</head>
+<body>
+<div class="page" data-shell data-shell-active="live-sessions">
+  <main>
+
+    <!-- Breadcrumb / affiliation hint that this lives inside Course 1 -->
+    <nav style="font-size:12px; color:var(--ink-400); margin-bottom: 16px;">
+      <a href="index.html" style="color:var(--ink-400)">My Learning</a>
+      <span style="margin:0 6px; color:var(--ink-200)">›</span>
+      <a href="program-detail.html" style="color:var(--ink-400)">AI-Driven Digital Marketing Certificate</a>
+      <span style="margin:0 6px; color:var(--ink-200)">›</span>
+      <a href="course-detail.html" style="color:var(--ink-400)">Digital Marketing Fundamentals</a>
+      <span style="margin:0 6px; color:var(--ink-200)">›</span>
+      <span>Live Sessions</span>
+    </nav>
+
+    <div class="ls-header">
+      <div>
+        <h1 class="ls-title">Live Sessions</h1>
+        <p class="muted">Every VILT across Course 1. Block your calendar and join when it's on.</p>
+      </div>
+      <button class="btn btn--secondary" style="align-self: flex-end;">📅 Add All to Calendar</button>
+    </div>
+
+    <!-- KPI row -->
+    <div class="ls-kpis">
+      <div class="ls-kpi">
+        <div class="ls-kpi__num">2</div>
+        <div class="ls-kpi__label">Attended</div>
+      </div>
+      <div class="ls-kpi ls-kpi--accent">
+        <div class="ls-kpi__num">2</div>
+        <div class="ls-kpi__label">This week</div>
+      </div>
+      <div class="ls-kpi">
+        <div class="ls-kpi__num">5</div>
+        <div class="ls-kpi__label">Upcoming</div>
+      </div>
+      <div class="ls-kpi">
+        <div class="ls-kpi__num">13</div>
+        <div class="ls-kpi__label">Total in course</div>
+      </div>
+    </div>
+
+    <!-- Course PD tabs (this IS a Course PD tab) -->
+    <div class="tabs">
+      <a class="tab" href="course-detail.html">Modules</a>
+      <a class="tab tab--active" href="live-sessions-upcoming.html">Live Sessions</a>
+      <a class="tab" href="coming-soon.html?section=Instructors">Instructors</a>
+      <a class="tab" href="coming-soon.html?section=Reviews">Reviews</a>
+      <a class="tab" href="coming-soon.html?section=About">About</a>
+    </div>
+
+    <!-- Filter chips -->
+    <div class="ls-filters">
+      <button class="ls-chip ls-chip--active">Upcoming (5)</button>
+      <a class="ls-chip" href="live-sessions-completed.html" style="text-decoration:none; display:inline-flex; align-items:center;">Completed (2)</a>
+      <button class="ls-chip">Missed (0)</button>
+      <button class="ls-chip">All (13)</button>
+    </div>
+
+    <div class="section-label">THIS WEEK</div>
+    <div class="ls-list" id="ls-thisweek"></div>
+
+    <div class="section-label">UPCOMING · NEXT 30 DAYS</div>
+    <div class="ls-list" id="ls-next30"></div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const data = window.V5_DATA.liveSessionsUpcoming;
+    const esc = window.V5.escapeHtml;
+
+    function renderRow(r) {
+      const isLiveToday = r.liveToday;
+      return `
+        <div class="ls-row ${isLiveToday ? 'ls-row--live' : ''}">
+          <div class="ls-date">
+            <div class="ls-date__m">${esc(r.date.m)}</div>
+            <div class="ls-date__d">${esc(r.date.d)}</div>
+          </div>
+          <div class="ls-body">
+            <div class="ls-body__title">
+              <span>${esc(r.title)}</span>
+              ${isLiveToday ? `<span class="badge badge--live-today">LIVE TODAY</span>` : ''}
+            </div>
+            <div class="ls-body__path">${esc(r.path)}  ·  ${esc(r.instructor)}</div>
+          </div>
+          <div class="ls-time">${esc(r.time)}</div>
+          <div class="ls-action">
+            ${isLiveToday
+              ? `<button class="btn btn--live" onclick="window.location='immersive.html'">Join Now →</button>`
+              : `<button class="btn btn--secondary">+ Add to cal</button>`}
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("ls-thisweek").innerHTML = data.thisWeek.map(renderRow).join("");
+    document.getElementById("ls-next30").innerHTML = data.next30.map(renderRow).join("");
+
+    document.querySelectorAll(".ls-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        if (chip.tagName === 'A') return;
+        document.querySelectorAll(".ls-chip").forEach(c => c.classList.remove("ls-chip--active"));
+        chip.classList.add("ls-chip--active");
+      });
+    });
+  })();
+</script>
+</body>
+</html>

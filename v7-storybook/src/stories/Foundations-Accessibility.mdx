@@ -1,0 +1,41 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Accessibility" />
+
+# Accessibility rules
+
+Target: **WCAG 2.1 AA in both themes.** A11y addon is enabled on every story — flag any violation it surfaces and fix at the component level, not story level.
+
+## Contrast — the cyan rule
+
+White text on cyan: **7.2:1 (AAA)**.
+Black text on cyan: **2.9:1 (fail)**.
+
+Use `--static-white` for text on filled cyan, green, or red surfaces. Never assume the theme accent is a dark color — `--accent` is dark on light theme, but `--static-white` stays white in both, which is what you want for text on a cyan button.
+
+## Keyboard
+
+- All interactive components ship with `:focus-visible` outlines (2px solid `--accent`, 2px offset).
+- Sidebar topic rows are `role="button"` with `tabIndex={0}` (or `-1` when locked).
+- Tab strip uses `role="tablist"` / `role="tab"` with `aria-selected`.
+- Quiz step rail uses `role="list"`.
+- Topbar toggles use `aria-expanded` and `aria-pressed` for sidebar / AI states.
+
+## Screen reader
+
+- Decorative SVGs use `aria-hidden`.
+- Status icons use `aria-hidden` on the visual layer; row state is conveyed in text (the duration / meta line) and via `aria-disabled` on locked rows.
+- Locked rows expose the unlock condition via `title` (tooltip) — wire this to your tooltip system in production.
+- Live-now badges should announce with `aria-live="polite"` if used in alerts.
+
+## Reduced motion
+
+Components use short `--dur` (220ms) transitions. The blinking dot on `Badge tone="live"` and the AI panel live indicator should respect `prefers-reduced-motion: reduce` — currently they don't (fix on the way).
+
+## Touch
+
+Minimum hit area: 44×44 px. Topic-row min-height enforces this; the bookmark icon button explicitly sizes 14×16 visually but has padding that hits 44×44.
+
+## Color blindness
+
+Don't rely on color alone to communicate state. Quiz feedback uses both color (green/red) AND iconography (✓/✕). Topic row state combines color + icon shape (filled vs ring vs lock).

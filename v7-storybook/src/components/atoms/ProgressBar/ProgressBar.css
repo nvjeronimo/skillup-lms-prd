@@ -1,0 +1,25 @@
+.v7-prog {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.v7-prog__label {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);
+  font-weight: 500;
+  color: var(--text3);
+  white-space: nowrap;
+}
+.v7-prog__track {
+  width: 88px;
+  height: 4px;
+  background: var(--surface);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.v7-prog__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 2px;
+  transition: width 0.5s var(--ease);
+}

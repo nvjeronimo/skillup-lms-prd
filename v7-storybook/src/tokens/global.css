@@ -1,0 +1,26 @@
+/* Resets + base typography for Storybook canvas */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* Tabular figures for numeric label contexts.
+   Outfit's tabular-nums keeps digits aligned as values change. */
+.num-tabular { font-variant-numeric: tabular-nums; }
+
+/* Storybook canvas — full theme background */
+.sb-show-main, .docs-story, #storybook-root {
+  background: var(--bg);
+  color: var(--text);
+}

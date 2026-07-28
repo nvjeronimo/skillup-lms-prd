@@ -1,0 +1,71 @@
+.v7-qopt {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  width: 100%;
+  text-align: left;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px var(--sp-4);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text);
+}
+.v7-qopt:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+.v7-qopt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.v7-qopt__letter {
+  font-family: var(--font-label);
+  font-size: var(--label-sm);
+  font-weight: 600;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text2);
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.v7-qopt__body { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.v7-qopt__label { font-family: var(--font-ui); font-size: var(--text-base); line-height: 1.45; }
+.v7-qopt__exp {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--text2);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.v7-qopt__mark {
+  font-size: 16px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.v7-qopt__mark--ok { background: var(--success); color: var(--static-white); }
+.v7-qopt__mark--no { background: var(--red); color: var(--static-white); }
+
+/* States */
+.v7-qopt--selected { border-color: var(--accent); background: var(--accent-dim); }
+.v7-qopt--selected .v7-qopt__letter { background: var(--accent); color: var(--static-white); }
+
+.v7-qopt--revealedCorrect,
+.v7-qopt--correct {
+  border-color: var(--success);
+  background: var(--success-dim);
+}
+.v7-qopt--revealedCorrect .v7-qopt__letter,
+.v7-qopt--correct .v7-qopt__letter {
+  background: var(--success); color: var(--static-white);
+}
+
+.v7-qopt--wrong {
+  border-color: var(--red);
+  background: var(--red-dim);
+}
+.v7-qopt--wrong .v7-qopt__letter { background: var(--red); color: var(--static-white); }
+
+.v7-qopt:disabled { cursor: default; }

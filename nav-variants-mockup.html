@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp — Navigation Variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-600:#1570EF; --blue-700:#175CD3; --blue-50:#EFF8FF;
+    --gray-900:#101828; --gray-700:#344054; --gray-600:#475467; --gray-500:#667085;
+    --gray-300:#D0D5DD; --gray-200:#EAECF0; --gray-100:#F2F4F7; --gray-50:#F9FAFB;
+    --green-600:#039855; --green-50:#ECFDF3; --green-700:#027A48;
+    --amber-600:#DC6803; --amber-50:#FFFAEB;
+    --white:#fff;
+    --radius:10px;
+    --shadow:0 1px 3px rgba(16,24,40,.08),0 1px 2px rgba(16,24,40,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Montserrat',sans-serif;background:#F4F5F7;color:var(--gray-900);padding:32px 24px 80px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:24px;font-weight:700;margin-bottom:6px}
+  .sub{color:var(--gray-600);font-size:14px;line-height:1.5;margin-bottom:24px;max-width:760px}
+
+  /* Controls */
+  .controls{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:16px;z-index:20}
+  .ctrl-row{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+  .ctrl-group{display:flex;flex-direction:column;gap:8px}
+  .ctrl-label{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-500)}
+  .seg{display:inline-flex;background:var(--gray-100);border-radius:8px;padding:3px;gap:2px}
+  .seg button{font-family:inherit;font-size:13px;font-weight:600;border:none;background:transparent;color:var(--gray-600);padding:7px 14px;border-radius:6px;cursor:pointer;transition:.15s}
+  .seg button.active{background:var(--white);color:var(--gray-900);box-shadow:var(--shadow)}
+  .toggle{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--gray-700);cursor:pointer;user-select:none}
+  .switch{width:42px;height:24px;border-radius:12px;background:var(--gray-300);position:relative;transition:.2s}
+  .switch.on{background:var(--green-600)}
+  .knob{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+  .switch.on .knob{left:20px}
+  .scenario-note{font-size:12px;color:var(--gray-500);margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-100)}
+  .scenario-note b{color:var(--gray-700)}
+
+  /* Shared content preview */
+  .preview{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow);margin-bottom:28px;display:flex;align-items:center;gap:16px}
+  .ttype{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+  .ttype.video{background:var(--blue-50)} .ttype.reading{background:#F4F3FF} .ttype.quiz{background:var(--amber-50)} .ttype.graded{background:#FFF1F3}
+  .preview h2{font-size:16px;font-weight:600}
+  .preview .meta{font-size:12.5px;color:var(--gray-500);margin-top:2px;display:flex;gap:8px;align-items:center}
+  .pill{font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+  .pill.done{background:var(--green-50);color:var(--green-700)}
+  .pill.todo{background:var(--gray-100);color:var(--gray-600)}
+
+  /* Variant cards */
+  .vcard{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:22px;overflow:visible}
+  .vhead{padding:14px 20px;border-bottom:1px solid var(--gray-100);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .vtag{font-size:12px;font-weight:700;color:var(--white);background:var(--gray-900);width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .vname{font-size:15px;font-weight:700}
+  .vdesc{font-size:12.5px;color:var(--gray-500);line-height:1.4}
+  .vstage{padding:20px}
+
+  /* fake mini player chrome for E (top bar) */
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--gray-50);border:1px solid var(--gray-200);border-bottom:none;border-radius:8px 8px 0 0;font-size:12.5px;color:var(--gray-600)}
+  .crumb{font-weight:600;color:var(--gray-700)}
+  .topnav{display:flex;gap:6px}
+  .content-stub{border:1px solid var(--gray-200);border-radius:8px;padding:22px;background:var(--white);color:var(--gray-400);font-size:13px;text-align:center}
+  .content-stub.attached{border-radius:0 0 8px 8px;border-top:none}
+
+  /* in-content action block (B, D) */
+  .action-block{margin:16px 0 0;padding:18px;border:1px solid var(--gray-200);border-radius:10px;background:var(--gray-50);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .action-block .ab-text{font-size:13px;color:var(--gray-600)} .action-block .ab-text b{color:var(--gray-900);font-weight:600;display:block;font-size:14px;margin-bottom:2px}
+
+  /* Footer */
+  .footer{display:flex;align-items:center;justify-content:space-between;padding:16px 4px 2px;margin-top:18px;border-top:1px solid var(--gray-100)}
+  .footer.no-top{border-top:none;margin-top:8px;padding-top:6px}
+  .center{text-align:center;flex:1}
+  .center .of{font-size:13px;font-weight:600;color:var(--gray-700)}
+  .center .tt{font-size:12px;color:var(--gray-500);margin-top:1px}
+
+  /* Buttons */
+  .btn{font-family:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:10px 18px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;transition:.15s;white-space:nowrap}
+  .btn.primary{background:var(--blue-600);color:#fff}
+  .btn.primary:hover{background:var(--blue-700)}
+  .btn.secondary{background:#fff;color:var(--gray-700);border-color:var(--gray-300)}
+  .btn.secondary:hover{background:var(--gray-50)}
+  .btn.ghost{background:transparent;color:var(--gray-600);padding:10px 10px}
+  .btn.ghost:hover{color:var(--gray-900)}
+  .btn.success{background:var(--green-600);color:#fff}
+  .btn.success:hover{background:var(--green-700)}
+  .btn.disabled{background:var(--gray-100);color:var(--gray-400);cursor:not-allowed;border-color:transparent}
+  .btn.iconly{padding:9px;border-radius:8px}
+  .btn.lg{font-size:15px;padding:12px 22px}
+  .arrow{font-size:15px;line-height:1}
+
+  /* tooltip */
+  .tip{position:relative;display:inline-flex}
+  .tip .tiptext{visibility:hidden;opacity:0;position:absolute;bottom:calc(100% + 8px);right:0;background:var(--gray-900);color:#fff;font-size:11.5px;font-weight:500;padding:7px 10px;border-radius:6px;white-space:nowrap;transition:.15s;pointer-events:none}
+  .tip .tiptext::after{content:"";position:absolute;top:100%;right:18px;border:5px solid transparent;border-top-color:var(--gray-900)}
+  .tip:hover .tiptext{visibility:visible;opacity:1}
+
+  .verdict{font-size:12px;color:var(--gray-500);padding:0 20px 16px;line-height:1.5}
+  .verdict .pro{color:var(--green-700);font-weight:600} .verdict .con{color:var(--amber-600);font-weight:600}
+  .hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Navigation variants — course player footer</h1>
+  <p class="sub">Five ways to handle Previous / Next when a topic needs an action. Pick a topic type and toggle whether the learner has completed it. Every variant re-renders for the same scenario so you can compare behavior, not just looks.</p>
+
+  <div class="controls">
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-label">Topic type</span>
+        <div class="seg" id="segType">
+          <button data-type="video" class="active">Video</button>
+          <button data-type="reading">Reading</button>
+          <button data-type="quiz">Quiz</button>
+          <button data-type="graded">Graded</button>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <span class="ctrl-label">State</span>
+        <label class="toggle" id="doneToggle">
+          <span class="switch"><span class="knob"></span></span>
+          <span id="doneLabel">Not completed</span>
+        </label>
+      </div>
+    </div>
+    <div class="scenario-note" id="scenarioNote"></div>
+  </div>
+
+  <div class="preview">
+    <div class="ttype video" id="pvIcon">▶</div>
+    <div>
+      <h2 id="pvTitle">Introduction to the DMAIC methodology</h2>
+      <div class="meta">
+        <span id="pvMeta">Video · 3m 20s</span>
+        <span class="pill todo" id="pvPill">Not completed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant A -->
+  <div class="vcard">
+    <div class="vhead"><span class="vtag">A</span><span class="vname">Adaptive single CTA</span><span class="vdesc">One right-side button that morphs by type and state. Action and navigation share one slot, one job at a time.</span></div>
+    <div class="vstage" id="stageA"></div>
+    <div class="verdict"><span class="pro">Strength:</span> zero CTA competition, lowest cognitive load. &nbsp; <span class="con">Cost:</span> no way to skip ahead from the footer.</div>
+  </div>
+
+  <!-- Variant B -->
+  <div class="vcard">
+    <div class="vhead"><span class="vtag">B</span><span class="vname">Decoupled hierarchy</span><span class="vdesc">Prev / Next stay persistent but quiet. The real task lives loud in the content area, not the footer.</span></div>
+    <div class="vstage" id="stageB"></div>
+    <div class="verdict"><span class="pro">Strength:</span> always an escape route, minimal logic, lowest build risk. &nbsp; <span class="con">Cost:</span> two zones to scan.</div>
+  </div>
+
+  <!-- Variant C -->
+  <div class="vcard">
+    <div class="vhead"><span class="vtag">C</span><span class="vname">Gated Next</span><span class="vdesc">Next stays visible but disabled until the required action is done. Hover the disabled button for the reason.</span></div>
+    <div class="vstage" id="stageC"></div>
+    <div class="verdict"><span class="pro">Strength:</span> enforces the path. &nbsp; <span class="con">Cost:</span> feels punitive on passive content — only gate what truly needs gating.</div>
+  </div>
+
+  <!-- Variant D -->
+  <div class="vcard">
+    <div class="vhead"><span class="vtag">D</span><span class="vname">Auto-advance on completion</span><span class="vdesc">Action topics have no manual Next. Completing the task reveals Continue. The completion state becomes the navigation.</span></div>
+    <div class="vstage" id="stageD"></div>
+    <div class="verdict"><span class="pro">Strength:</span> strong for assessments, momentum built in. &nbsp; <span class="con">Cost:</span> removes user control — keep Previous visible.</div>
+  </div>
+
+  <!-- Variant E -->
+  <div class="vcard">
+    <div class="vhead"><span class="vtag">E</span><span class="vname">Nav out of the footer</span><span class="vdesc">Prev / Next become arrows in the top bar. The footer is a pure action zone holding only the current task's CTA.</span></div>
+    <div class="vstage" id="stageE"></div>
+    <div class="verdict"><span class="pro">Strength:</span> strongest separation of nav and action. &nbsp; <span class="con">Cost:</span> top arrows are easier to miss.</div>
+  </div>
+</div>
+
+<script>
+const TYPES = {
+  video:   {icon:"▶",  cls:"video",   meta:"Video · 3m 20s",     action:false, verb:"watched"},
+  reading: {icon:"📖", cls:"reading", meta:"Reading · 8 min",    action:false, verb:"read"},
+  quiz:    {icon:"✎",  cls:"quiz",    meta:"Practice quiz · 6 min", action:true,  cta:"Submit answers", verb:"submitted"},
+  graded:  {icon:"🏆", cls:"graded",  meta:"Graded assignment · 20 min", action:true, cta:"Submit assignment", verb:"submitted"}
+};
+let state = {type:"video", done:false};
+
+const arrowL = '<span class="arrow">←</span>', arrowR = '<span class="arrow">→</span>';
+
+function btnPrev(kind="secondary"){
+  if(kind==="ghost") return `<button class="btn ghost">${arrowL} Previous</button>`;
+  if(kind==="iconly") return `<button class="btn secondary iconly">${arrowL}</button>`;
+  return `<button class="btn secondary">${arrowL} Previous</button>`;
+}
+function center(){ return `<div class="center"><div class="of">2 of 9</div><div class="tt">${state.type[0].toUpperCase()+state.type.slice(1)} · DMAIC for process improvement</div></div>`; }
+
+function render(){
+  const t = TYPES[state.type], done = state.done, isAction = t.action;
+
+  // preview
+  pvIcon.className = "ttype "+t.cls; pvIcon.textContent = t.icon;
+  pvMeta.textContent = t.meta;
+  pvPill.className = "pill "+(done?"done":"todo");
+  pvPill.textContent = done?"Completed":"Not completed";
+
+  // scenario note
+  const where = isAction
+    ? (done ? "Action topic, already submitted. The task is done — only navigation matters now."
+            : "Action topic, not yet submitted. This is the crux case: the task CTA must beat the nav.")
+    : (done ? "Passive topic, completed. Pure navigation."
+            : "Passive topic, not completed. Skipping is usually fine here.");
+  scenarioNote.innerHTML = `<b>Scenario:</b> ${where}`;
+
+  // ---- A: adaptive single CTA ----
+  let right;
+  if(isAction && !done) right = `<button class="btn primary">${t.cta}</button>`;
+  else if(state.type==="video" || state.type==="reading") right = `<button class="btn primary">Next topic ${arrowR}</button>`;
+  else right = `<button class="btn primary">Next topic ${arrowR}</button>`;
+  stageA.innerHTML = `<div class="footer no-top">${btnPrev("secondary")}${center()}${right}</div>`;
+
+  // ---- B: decoupled hierarchy ----
+  let bAction = "";
+  if(isAction){
+    bAction = `<div class="action-block">
+      <div class="ab-text"><b>${state.type==="quiz"?"Practice quiz":"Graded assignment"}</b>${done?"Submitted — you can review or move on.":"Answer the questions below, then submit."}</div>
+      ${done?`<span class="pill done">✓ Submitted</span>`:`<button class="btn primary lg">${t.cta}</button>`}
+    </div>`;
+  }
+  stageB.innerHTML = bAction + `<div class="footer">${btnPrev("ghost")}${center()}<button class="btn ghost">Next topic ${arrowR}</button></div>`;
+
+  // ---- C: gated Next ----
+  let cNext;
+  const gated = isAction && !done;
+  if(gated){
+    cNext = `<span class="tip"><button class="btn disabled">Next topic ${arrowR}</button><span class="tiptext">Submit your answers to continue</span></span>`;
+  } else {
+    cNext = `<button class="btn primary">Next topic ${arrowR}</button>`;
+  }
+  let cAction = isAction && !done ? `<div class="action-block"><div class="ab-text"><b>${state.type==="quiz"?"Practice quiz":"Graded assignment"}</b>Submit to unlock the next topic.</div><button class="btn primary lg">${t.cta}</button></div>` : "";
+  stageC.innerHTML = cAction + `<div class="footer">${btnPrev("secondary")}${center()}${cNext}</div>`;
+
+  // ---- D: auto-advance ----
+  let dRight, dAction = "";
+  if(isAction){
+    if(!done){
+      dAction = `<div class="action-block"><div class="ab-text"><b>${state.type==="quiz"?"Practice quiz":"Graded assignment"}</b>Completing this advances you automatically.</div><button class="btn primary lg">${t.cta}</button></div>`;
+      dRight = `<span style="font-size:12.5px;color:var(--gray-400)">Continue appears after you submit</span>`;
+    } else {
+      dRight = `<button class="btn success">Continue ${arrowR}</button>`;
+    }
+  } else {
+    dRight = `<button class="btn primary">Next topic ${arrowR}</button>`;
+  }
+  stageD.innerHTML = dAction + `<div class="footer">${btnPrev("secondary")}${center()}<div style="display:flex;align-items:center">${dRight}</div></div>`;
+
+  // ---- E: nav in top bar, footer = action only ----
+  let eFooterBtn;
+  if(isAction && !done) eFooterBtn = `<button class="btn primary lg">${t.cta}</button>`;
+  else if(isAction && done) eFooterBtn = `<button class="btn primary lg">Continue to next topic ${arrowR}</button>`;
+  else eFooterBtn = `<button class="btn primary lg">Mark complete &amp; continue ${arrowR}</button>`;
+  stageE.innerHTML = `
+    <div class="topbar">
+      <span class="crumb">DMAIC for process improvement · 2 of 9</span>
+      <span class="topnav">${btnPrev("iconly")}<button class="btn secondary iconly">${arrowR}</button></span>
+    </div>
+    <div class="content-stub attached">video / task content area</div>
+    <div class="footer" style="justify-content:flex-end">${eFooterBtn}</div>`;
+}
+
+// wiring
+document.getElementById("segType").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b)return;
+  document.querySelectorAll("#segType button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active"); state.type=b.dataset.type; render();
+});
+document.getElementById("doneToggle").addEventListener("click",()=>{
+  state.done=!state.done;
+  document.querySelector("#doneToggle .switch").classList.toggle("on",state.done);
+  document.getElementById("doneLabel").textContent = state.done?"Completed":"Not completed";
+  render();
+});
+render();
+</script>
+</body>
+</html>

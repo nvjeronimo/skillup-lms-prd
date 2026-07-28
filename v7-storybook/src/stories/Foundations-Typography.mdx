@@ -1,0 +1,48 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+Three-font system. Strict tier rules — don't cross them.
+
+## The three faces
+
+**Montserrat** — UI workhorse. Use for everything ≤ 24px. Weights 400 / 500 / 600.
+
+**Playfair Display** — display moments only. Use for ≥ 28px (quiz titles, results, hero text). Weights 600 / 700. Always with `letter-spacing: -0.01em` to tighten the tracking.
+
+**Outfit** — small-caps label tier. Use for eyebrows, MODULE labels, timestamps, counters, tabular numerics. Replaces JetBrains Mono from v5 — Outfit is shorter, friendlier, and contrasts cleanly with Montserrat without feeling brutalist.
+
+## Type scale (px)
+
+<div style={{ display: "grid", gap: 16 }}>
+  <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, color: "var(--text2)" }}>text-xs · 10 · Mont 500 · badges, tags</div>
+  <div style={{ fontFamily: "var(--font-ui)", fontSize: 12, color: "var(--text2)" }}>text-sm · 12 · Mont 400 · captions, helper</div>
+  <div style={{ fontFamily: "var(--font-ui)", fontSize: 14 }}>text-base · 14 · Mont 400 · body (the only non-multiple-of-4 size)</div>
+  <div style={{ fontFamily: "var(--font-ui)", fontSize: 16, fontWeight: 500 }}>text-md · 16 · Mont 500 · card titles, nav</div>
+  <div style={{ fontFamily: "var(--font-ui)", fontSize: 20, fontWeight: 600 }}>text-lg · 20 · Mont 600 · section headings</div>
+  <div style={{ fontFamily: "var(--font-ui)", fontSize: 24, fontWeight: 600 }}>text-xl · 24 · Mont 600 · page headings</div>
+  <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 600, letterSpacing: "-0.01em" }}>text-2xl · 28 · Playfair 600</div>
+  <div style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, letterSpacing: "-0.01em" }}>text-3xl · 32 · Playfair 700</div>
+  <div style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 700, letterSpacing: "-0.01em" }}>text-4xl · 40 · Playfair 700</div>
+  <div style={{ fontFamily: "var(--font-display)", fontSize: 48, fontWeight: 700, letterSpacing: "-0.01em" }}>text-5xl · 48 · Playfair 700</div>
+</div>
+
+## Label tier
+
+<div style={{ display: "grid", gap: 8, marginTop: 16 }}>
+  <div style={{ fontFamily: "var(--font-label)", fontSize: 11, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)" }}>label-sm · 11 · Outfit 500 · +10% LS</div>
+  <div style={{ fontFamily: "var(--font-label)", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", color: "var(--text3)" }}>label-base · 13 · Outfit 500 · +4% LS · counters, scores</div>
+</div>
+
+## Tabular figures
+
+Numeric label contexts use Outfit's OpenType `tabular-nums` so digits stay aligned as values change (timestamps tick, counters increment, scores update). Add `font-variant-numeric: tabular-nums` or the `.num-tabular` utility class.
+
+## Don't do this
+
+- ❌ Inter (was used in earlier mocks; deprecated in v6).
+- ❌ Playfair under 28px.
+- ❌ Montserrat for tabular timestamps (use Outfit).
+- ❌ All-caps Montserrat for eyebrows (use Outfit).

@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Course 1 · Digital Marketing Fundamentals · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .c-breadcrumb {
+      font-size: 12px;
+      color: var(--ink-400);
+      margin-bottom: 16px;
+    }
+    .c-breadcrumb a { color: var(--ink-400); }
+    .c-breadcrumb a:hover { color: var(--ink-700); }
+    .c-breadcrumb .sep { margin: 0 6px; color: var(--ink-200); }
+
+    .c-affiliation {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brand-blue-pale);
+      border: 1px solid var(--brand-blue-light);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--ink-600);
+    }
+    .c-affiliation__star { color: var(--hero-dark-star); font-size: 14px; }
+    .c-affiliation strong { color: var(--brand-blue-text); font-weight: 600; }
+    .c-affiliation .sep { color: var(--ink-200); }
+    .c-affiliation a {
+      margin-left: auto;
+      color: var(--brand-blue);
+      font-weight: 600;
+    }
+
+    .c-hero { margin-bottom: 20px; }
+    .c-hero__title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink-800);
+      margin: 0 0 8px;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+    }
+    .c-hero__subtitle {
+      font-size: 14px;
+      color: var(--ink-500);
+      line-height: 1.55;
+      max-width: 820px;
+    }
+
+    .c-split {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 860px) { .c-split { grid-template-columns: 1fr; } }
+
+    .c-progress-card {
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 20px 22px;
+    }
+    .c-progress-card__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .c-progress-card__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink-800);
+      margin: 0;
+    }
+    .c-progress-card__pct {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--progress-fill);
+      line-height: 1;
+    }
+    .c-progress-card .progress { height: 6px; margin-bottom: 18px; }
+    .c-progress-card__kpis {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px) { .c-progress-card__kpis { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px) { .c-progress-card__kpis { grid-template-columns: repeat(2, 1fr); } }
+
+    .c-kpi {
+      padding-left: 10px;
+      border-left: 2px solid var(--surface-divider);
+    }
+    .c-kpi--accent { border-left-color: var(--warn-amber); }
+    .c-kpi__label {
+      font-size: 10px; font-weight: 700;
+      color: var(--ink-400);
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+    .c-kpi__value {
+      font-size: 16px; font-weight: 700;
+      color: var(--ink-800);
+      line-height: 1.1;
+    }
+    .c-kpi--accent .c-kpi__value { color: var(--warn-amber-dark); }
+    .c-kpi__sub { font-size: 11px; color: var(--ink-400); margin-top: 1px; }
+
+    .c-continue {
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 18px 20px;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+    .c-continue__kicker {
+      font-size: 10px; font-weight: 700;
+      color: var(--progress-fill);
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+    }
+    .c-continue__title {
+      font-size: 15px; font-weight: 700;
+      color: var(--ink-800);
+      margin: 0 0 4px;
+      line-height: 1.3;
+    }
+    .c-continue__meta {
+      font-size: 12px; color: var(--ink-400);
+      margin-bottom: 16px;
+    }
+    .c-continue .btn { width: 100%; justify-content: center; }
+
+    .c-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--surface-border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .c-tabs::-webkit-scrollbar { display: none; }
+    .c-tab {
+      padding: 14px 22px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-400);
+      border-bottom: 2px solid transparent;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .c-tab:hover { color: var(--ink-700); }
+    .c-tab.active {
+      color: var(--ink-800);
+      font-weight: 600;
+      border-bottom-color: var(--ink-800);
+    }
+
+    .c-module {
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color .15s;
+    }
+    .c-module--active {
+      border-color: var(--progress-fill);
+      box-shadow: 0 0 0 1px var(--progress-fill) inset;
+    }
+    .c-module--locked { background: var(--surface-locked-card); border-style: dashed; }
+    .c-module__head {
+      display: grid;
+      grid-template-columns: 36px 1fr auto auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+    }
+    .c-module__head:hover { background: var(--surface-subtle); }
+    .c-module__num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      background: var(--surface-grey-200);
+      color: var(--ink-500);
+    }
+    .c-module--completed .c-module__num { background: var(--success-fill); color: white; }
+    .c-module--active .c-module__num { background: var(--progress-fill); color: white; }
+    .c-module--available .c-module__num { background: var(--ink-700); color: white; }
+    .c-module--locked .c-module__num { background: var(--surface-divider); color: var(--hero-dark-text-muted); }
+
+    .c-module__title {
+      font-size: 15px; font-weight: 600; color: var(--ink-800);
+      margin: 0 0 2px;
+    }
+    .c-module--locked .c-module__title { color: var(--ink-400); font-weight: 500; }
+    .c-module__meta { font-size: 12px; color: var(--ink-400); }
+
+    .c-module__progress-wrap { display: flex; align-items: center; gap: 10px; }
+    .c-module__progress {
+      width: 100px; height: 4px;
+      background: var(--progress-track);
+      border-radius: 2px; overflow: hidden;
+    }
+    .c-module__progress > div { height: 100%; background: var(--progress-fill); }
+    .c-module__pct {
+      font-size: 12px; font-weight: 700; color: var(--ink-700);
+      min-width: 32px; text-align: right;
+    }
+    .c-module__chevron {
+      font-size: 14px; color: var(--ink-400); width: 16px; text-align: center;
+      transition: transform .2s;
+    }
+    .c-module.open .c-module__chevron { transform: rotate(90deg); }
+
+    /* Accordion: collapse by default, show only when .open */
+    .c-lessons {
+      padding: 0 20px 16px 72px;
+      border-top: 1px solid var(--surface-divider);
+      display: none;
+    }
+    .c-module.open .c-lessons { display: block; }
+
+    .c-lesson-stub {
+      padding: 16px 0 8px;
+      font-size: 13px;
+      color: var(--ink-500);
+      line-height: 1.5;
+    }
+    .c-lesson-stub strong { color: var(--ink-700); font-weight: 600; }
+    .c-lesson {
+      padding: 12px 0 12px 16px;
+      border-left: 2px solid var(--surface-divider);
+      margin-top: 12px;
+    }
+    .c-lesson--completed { border-left-color: var(--success-fill); }
+    .c-lesson--inprogress { border-left-color: var(--progress-fill); }
+    .c-lesson--upcoming { border-left-color: var(--warn-amber); }
+    .c-lesson__head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .c-lesson__num {
+      font-size: 10px; font-weight: 700;
+      color: var(--ink-400);
+      letter-spacing: 0.8px;
+    }
+    .c-lesson__title { font-size: 14px; font-weight: 600; color: var(--ink-800); }
+    .c-lesson__state-badge {
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.4px;
+    }
+    .c-lesson__state-badge--completed { background: var(--success-bg); color: var(--success-dark); }
+    .c-lesson__state-badge--inprogress { background: var(--brand-blue-pale-chip); color: var(--brand-blue-text); }
+    .c-lesson__state-badge--upcoming { background: var(--warn-amber-soft); color: var(--warn-amber-dark); }
+    .c-lesson__meta { font-size: 12px; color: var(--ink-400); margin-bottom: 8px; }
+    .c-topic-list { display: flex; flex-direction: column; gap: 4px; }
+    .c-topic {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 13px;
+      color: var(--ink-600);
+    }
+    .c-topic__check {
+      width: 16px; text-align: center;
+      color: var(--success-fill);
+      font-weight: 700;
+    }
+    .c-topic--current .c-topic__check { color: var(--progress-fill); }
+    .c-topic--upcoming .c-topic__check { color: var(--warn-amber); }
+    .c-topic--pending .c-topic__check { color: var(--ink-200); }
+    .c-topic--current { font-weight: 600; color: var(--ink-800); }
+
+    .c-full-syllabus {
+      text-align: center;
+      padding: 16px 0 8px;
+    }
+    .c-full-syllabus a {
+      color: var(--brand-blue);
+      font-weight: 600;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+<div class="page" data-shell data-shell-active="my-learning">
+  <main>
+    <nav class="c-breadcrumb" id="c-breadcrumb"></nav>
+
+    <div class="c-affiliation" onclick="window.location='program-detail.html'" style="cursor:pointer">
+      <span class="c-affiliation__star">★</span>
+      <span>Part of <strong id="c-aff-program"></strong></span>
+      <span class="sep">·</span>
+      <span id="c-aff-position"></span>
+      <a href="program-detail.html">View Program →</a>
+    </div>
+
+    <div class="c-hero">
+      <h1 class="c-hero__title" id="c-title"></h1>
+      <p class="c-hero__subtitle" id="c-subtitle"></p>
+    </div>
+
+    <div class="c-split">
+      <div class="c-progress-card">
+        <div class="c-progress-card__head">
+          <h3 class="c-progress-card__title">Your progress</h3>
+          <div class="c-progress-card__pct" id="c-pct"></div>
+        </div>
+        <div class="progress"><div class="progress__fill" id="c-pct-bar" style="width:0%"></div></div>
+        <div class="c-progress-card__kpis" id="c-kpis"></div>
+      </div>
+
+      <div class="c-continue" onclick="window.location='immersive.html'" style="cursor:pointer">
+        <div>
+          <div class="c-continue__kicker">CONTINUE WHERE YOU LEFT OFF</div>
+          <h3 class="c-continue__title" id="c-continue-title"></h3>
+          <div class="c-continue__meta" id="c-continue-meta"></div>
+        </div>
+        <button class="btn btn--action">Resume →</button>
+      </div>
+    </div>
+
+    <div class="c-tabs" id="c-tabs"></div>
+
+    <div id="c-modules"></div>
+
+    <div class="c-full-syllabus"><a href="coming-soon.html?section=Full+Syllabus">View Full Syllabus →</a></div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const c = window.V5_DATA.course1;
+    const esc = window.V5.escapeHtml;
+
+    // Breadcrumb
+    document.getElementById("c-breadcrumb").innerHTML = c.breadcrumb
+      .map((x, i, arr) => i === arr.length - 1
+        ? `<span>${esc(x)}</span>`
+        : `<a href="${i === 0 ? 'index.html' : 'program-detail.html'}">${esc(x)}</a><span class="sep">›</span>`)
+      .join("");
+
+    document.getElementById("c-aff-program").textContent = c.affiliation.program;
+    document.getElementById("c-aff-position").textContent = c.affiliation.position;
+
+    document.getElementById("c-title").textContent = c.title;
+    document.getElementById("c-subtitle").textContent = c.subtitle;
+
+    document.getElementById("c-pct").textContent = c.progress.pct + "%";
+    document.getElementById("c-pct-bar").style.width = c.progress.pct + "%";
+    document.getElementById("c-kpis").innerHTML = c.progress.kpis.map(k => `
+      <div class="c-kpi ${k.accent ? 'c-kpi--accent' : ''}">
+        <div class="c-kpi__label">${esc(k.label)}</div>
+        <div class="c-kpi__value">${esc(k.value)}</div>
+        <div class="c-kpi__sub">${esc(k.sub)}</div>
+      </div>
+    `).join("");
+
+    document.getElementById("c-continue-title").textContent = c.continueCard.title;
+    document.getElementById("c-continue-meta").textContent = c.continueCard.meta;
+
+    // Tabs — every tab has a destination
+    const courseTabRoutes = {
+      "Modules": null, // stays on this page
+      "Live Sessions": "live-sessions-upcoming.html",
+      "Instructors": "coming-soon.html?section=Instructors",
+      "Reviews": "coming-soon.html?section=Reviews",
+      "About": "coming-soon.html?section=About",
+    };
+    document.getElementById("c-tabs").innerHTML = c.tabs.map((t, i) => `
+      <button class="c-tab ${i === 0 ? 'active' : ''}" data-tab-label="${esc(t)}">${esc(t)}</button>
+    `).join("");
+    document.querySelectorAll("#c-tabs .c-tab").forEach(b => {
+      b.addEventListener("click", () => {
+        const label = b.dataset.tabLabel;
+        const href = courseTabRoutes[label];
+        if (href) { window.location = href; return; }
+        document.querySelectorAll("#c-tabs .c-tab").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+      });
+    });
+
+    // Modules
+    function renderLesson(l) {
+      const lessonCls = "c-lesson c-lesson--" + l.state;
+      const badgeLabel = l.state === "completed" ? "COMPLETED"
+                      : l.state === "inprogress" ? "IN PROGRESS"
+                      : l.isVilt ? "VILT · UPCOMING" : "UPCOMING";
+      const badgeCls = "c-lesson__state-badge c-lesson__state-badge--" + l.state;
+
+      const topics = l.topics.map(t => {
+        const cls = t.done ? "c-topic--done"
+                   : t.current ? "c-topic--current"
+                   : l.isVilt ? "c-topic--upcoming"
+                   : "c-topic--pending";
+        const mark = t.done ? "✓" : t.current ? "▶" : l.isVilt ? "🎥" : "○";
+        return `<div class="c-topic ${cls}"><span class="c-topic__check">${mark}</span><span>${esc(t.label)}</span></div>`;
+      }).join("");
+
+      return `
+        <div class="${lessonCls}">
+          <div class="c-lesson__head">
+            <span class="c-lesson__num">LESSON ${l.num}</span>
+            <span class="c-lesson__title">${esc(l.title)}</span>
+            <span class="${badgeCls}">${badgeLabel}</span>
+          </div>
+          <div class="c-lesson__meta">${esc(l.meta)}</div>
+          <div class="c-topic-list">${topics}</div>
+        </div>
+      `;
+    }
+
+    document.getElementById("c-modules").innerHTML = c.modules.map(m => {
+      const numDisplay = m.state === "completed" ? "✓" : m.state === "locked" ? "🔒" : m.num;
+      const openCls = m.expanded ? "open" : "";
+
+      let right = "";
+      if (m.state === "completed") {
+        right = `<div class="c-module__progress-wrap"><span style="font-size:11px; font-weight:700; color:var(--success-dark); letter-spacing:0.5px;">COMPLETED</span></div>`;
+      } else if (m.state === "active") {
+        right = `<div class="c-module__progress-wrap">
+                   <div class="c-module__progress"><div style="width:${m.progress}%"></div></div>
+                   <div class="c-module__pct">${m.progress}%</div>
+                 </div>`;
+      } else if (m.state === "available") {
+        right = `<div class="c-module__progress-wrap"><span class="badge badge--notstarted">Available</span></div>`;
+      } else {
+        right = `<div class="c-module__progress-wrap"><span class="badge badge--locked">Locked</span></div>`;
+      }
+
+      // Inner content — lessons if present, otherwise a state-appropriate stub so
+      // every module actually reveals something on expand.
+      let inner;
+      if (m.lessons && m.lessons.length) {
+        inner = m.lessons.map(renderLesson).join("");
+      } else if (m.state === "completed") {
+        inner = `<div class="c-lesson-stub"><strong>Module complete.</strong> Revisit lessons anytime or download the summary notes.</div>`;
+      } else if (m.state === "available") {
+        inner = `<div class="c-lesson-stub"><strong>Available.</strong> Lessons unlock as soon as you start this module.</div>`;
+      } else if (m.state === "locked") {
+        inner = `<div class="c-lesson-stub"><strong>Locked.</strong> Unlocks once Module ${m.num - 1} is complete.</div>`;
+      } else {
+        inner = `<div class="c-lesson-stub">No content preview yet.</div>`;
+      }
+
+      return `
+        <div class="c-module c-module--${m.state} ${openCls}" data-module>
+          <div class="c-module__head" data-module-toggle>
+            <div class="c-module__num">${numDisplay}</div>
+            <div>
+              <div class="c-module__title">${esc(m.title)}</div>
+              <div class="c-module__meta">${esc(m.meta)}</div>
+            </div>
+            ${right}
+            <div class="c-module__chevron">▸</div>
+          </div>
+          <div class="c-lessons">${inner}</div>
+        </div>
+      `;
+    }).join("");
+
+    // Wire module accordions
+    document.querySelectorAll("[data-module-toggle]").forEach(head => {
+      head.addEventListener("click", () => {
+        const mod = head.closest("[data-module]");
+        if (mod) mod.classList.toggle("open");
+      });
+    });
+  })();
+</script>
+</body>
+</html>

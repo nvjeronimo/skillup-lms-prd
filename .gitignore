@@ -12,3 +12,9 @@ v7-storybook/storybook-static/
 
 # token backups (local only)
 LMS-HANDOFF/tokens/*.bak
+
+# Heavy media — local only, never committed (reorg 2026-07-28)
+_media/
+Design System Discovery - Demo Session/
+Coursera LMS immersive course/
+Active Workspace _ Notes _ AI.html

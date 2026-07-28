@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live · Effective Use of Digital Channels · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    body { background: var(--im-bg); color: var(--im-text); }
+    .demo-banner, .nav, .footer { display: none !important; }
+
+    .im-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      min-height: 100vh;
+    }
+    @media (max-width: 1000px) { .im-wrapper { grid-template-columns: 1fr; } }
+
+    /* ===== Main column (left) ===== */
+    .im-main { display: flex; flex-direction: column; min-width: 0; }
+
+    /* Top bar */
+    .im-topbar {
+      background: var(--im-surface);
+      color: white;
+      padding: 10px 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 20px;
+      align-items: center;
+      border-bottom: 1px solid var(--im-border);
+    }
+    .im-topbar__path {
+      font-size: 12px;
+      color: var(--im-text-muted);
+      min-width: 0;
+    }
+    .im-topbar__path strong { color: var(--im-text); font-weight: 500; }
+    .im-topbar__path .sep { margin: 0 6px; color: var(--im-text-sep); }
+
+    .im-topbar__badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--im-live-green);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+    .im-topbar__badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--im-live-green-dot);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    .im-topbar__elapsed {
+      font-size: 12px; color: var(--im-text-muted);
+    }
+
+    .im-stepper {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px;
+      color: var(--im-text-muted);
+    }
+    .im-stepper__dot {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--im-border-strong);
+      color: var(--im-text-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .im-stepper__dot--done { background: var(--im-live-green-dot); color: white; }
+    .im-stepper__dot--current { background: var(--im-accent-blue); color: white; }
+    .im-stepper__line {
+      width: 16px; height: 2px; background: var(--im-border-strong);
+    }
+    .im-stepper__line--done { background: var(--im-live-green-dot); }
+
+    .im-topbar__close {
+      background: transparent; color: var(--im-text-muted); font-size: 18px; line-height: 1;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+    }
+    .im-topbar__close:hover { background: var(--im-border); color: white; }
+
+    /* Lesson info strip */
+    .im-lesson-info {
+      background: var(--im-panel);
+      border-bottom: 1px solid var(--im-border);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+    .im-lesson-info__left {
+      font-size: 13px; color: var(--im-text);
+    }
+    .im-lesson-info__left strong { font-weight: 600; }
+    .im-lesson-info__right { font-size: 12px; color: var(--im-text-muted); }
+
+    /* Video area */
+    .im-video {
+      flex: 1;
+      background: var(--im-video-bg);
+      min-height: 505px;
+      position: relative;
+      padding: 32px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .im-video__instructor {
+      width: 300px; height: 200px;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      border-radius: var(--radius-xl);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 42px; font-weight: 700; color: white;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .im-video__instructor-name {
+      position: absolute;
+      left: 12px; bottom: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+    }
+    .im-video__you {
+      position: absolute;
+      right: 24px; bottom: 24px;
+      width: 120px; height: 80px;
+      background: linear-gradient(135deg, #7c3aed, #6366f1);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .im-video__you-label {
+      position: absolute;
+      left: 6px; bottom: 6px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .im-video__participants {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Meta line */
+    .im-meta {
+      background: var(--im-panel);
+      padding: 12px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      border-top: 1px solid var(--im-border);
+      font-size: 12px;
+      color: var(--im-text-muted);
+    }
+    .im-meta__dot::before { content: '·'; margin-right: 12px; color: var(--im-text-sep); }
+
+    /* Tabs */
+    .im-tabs {
+      background: var(--im-panel);
+      border-bottom: 1px solid var(--im-border);
+      display: flex;
+      padding: 0 20px;
+    }
+    .im-tab {
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--im-text-soft);
+      border-bottom: 2px solid transparent;
+      background: none;
+      cursor: pointer;
+    }
+    .im-tab:hover { color: white; }
+    .im-tab.active {
+      color: white;
+      font-weight: 600;
+      border-bottom-color: var(--im-accent-blue);
+    }
+    .im-tab .count { color: var(--im-text-soft); margin-left: 4px; font-weight: 500; }
+
+    /* Controls */
+    .im-controls {
+      background: var(--im-panel);
+      padding: 16px 20px;
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid var(--im-border);
+    }
+    .im-control-btn {
+      padding: 8px 14px;
+      background: var(--im-surface);
+      color: var(--im-text);
+      border: 1px solid var(--im-border-strong);
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .im-control-btn:hover { background: var(--im-surface-hover); }
+    .im-control-btn--danger {
+      background: rgba(220, 38, 38, 0.15);
+      color: var(--im-danger-soft);
+      border-color: rgba(220, 38, 38, 0.3);
+    }
+
+    /* Recording notice */
+    .im-recording {
+      background: rgba(220, 38, 38, 0.1);
+      padding: 10px 20px;
+      font-size: 12px;
+      color: var(--im-danger-soft);
+      border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .im-recording__dot {
+      width: 8px; height: 8px;
+      background: var(--im-leave-btn);
+      border-radius: 50%;
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+
+    /* Bottom bar with topic stepper */
+    .im-bottom {
+      background: var(--im-panel);
+      padding: 16px 20px;
+      border-top: 1px solid var(--im-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .im-bottom__label { font-size: 12px; color: var(--im-text-muted); }
+    .im-bottom__pills { display: flex; gap: 6px; }
+    .im-pill {
+      padding: 6px 14px;
+      background: var(--im-surface);
+      border: 1px solid var(--im-border-strong);
+      color: var(--im-text-muted);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .im-pill--done { background: rgba(34, 197, 94, 0.15); color: var(--im-live-green); border-color: rgba(34, 197, 94, 0.3); }
+    .im-pill--current { background: rgba(51, 102, 242, 0.2); color: var(--im-accent-blue-soft); border-color: rgba(51, 102, 242, 0.4); font-weight: 700; }
+
+    /* ===== Sidebar (right) ===== */
+    .im-sidebar {
+      background: var(--im-panel);
+      border-left: 1px solid var(--im-border);
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .im-side-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .im-side-head__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+    }
+    .im-side-head__pct {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--im-accent-blue);
+    }
+    .im-side-progress {
+      height: 4px;
+      background: var(--im-surface);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .im-side-progress__fill { height: 100%; background: var(--im-accent-blue); }
+
+    .im-side-lesson {
+      padding: 14px;
+      background: var(--im-panel-2);
+      border: 1px solid var(--im-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .im-side-lesson--current {
+      border-color: var(--im-accent-blue);
+      background: rgba(51, 102, 242, 0.08);
+    }
+    .im-side-lesson__head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .im-side-lesson__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--im-text);
+      flex: 1;
+    }
+    .im-side-lesson__meta {
+      font-size: 11px;
+      color: var(--im-text-soft);
+      margin-bottom: 10px;
+    }
+    .im-side-lesson__chev {
+      color: var(--im-text-soft);
+      font-size: 12px;
+      transition: transform .2s;
+    }
+    .im-side-lesson.open .im-side-lesson__chev { transform: rotate(90deg); }
+    .im-side-lesson__body { display: none; }
+    .im-side-lesson.open .im-side-lesson__body { display: block; }
+    .im-side-lesson__stub {
+      font-size: 12px;
+      color: var(--im-text-muted);
+      line-height: 1.5;
+      padding: 8px 10px;
+      background: var(--im-surface);
+      border-radius: var(--radius-md);
+    }
+    .im-side-lesson__stub strong { color: var(--im-text); font-weight: 600; }
+
+    .im-side-topics { display: flex; flex-direction: column; gap: 6px; }
+    .im-side-topic {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 10px;
+      background: var(--im-surface);
+      border-radius: var(--radius-md);
+      font-size: 12px;
+    }
+    .im-side-topic--done { color: var(--im-live-green); border-left: 2px solid var(--im-live-green-dot); padding-left: 8px; }
+    .im-side-topic--current {
+      background: rgba(51, 102, 242, 0.18);
+      color: var(--im-accent-blue-pale);
+      border-left: 2px solid var(--im-accent-blue);
+      padding-left: 8px;
+      font-weight: 600;
+    }
+    .im-side-topic--pending { color: var(--im-text-soft); border-left: 2px solid var(--im-border-strong); padding-left: 8px; }
+    .im-side-topic__icon { width: 14px; text-align: center; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div class="im-wrapper">
+
+  <!-- ===== Main (video + chrome) ===== -->
+  <div class="im-main">
+
+    <!-- Top bar -->
+    <div class="im-topbar">
+      <div class="im-topbar__path" id="im-path"></div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="im-topbar__badge" id="im-live-badge"></div>
+        <div class="im-topbar__elapsed" id="im-elapsed"></div>
+      </div>
+      <div class="im-stepper" id="im-module-stepper"></div>
+      <button class="im-topbar__close" onclick="window.location='course-detail.html'">✕</button>
+    </div>
+
+    <!-- Lesson info strip -->
+    <div class="im-lesson-info">
+      <div class="im-lesson-info__left">
+        <strong id="im-topic-title"></strong> · <span id="im-duration"></span>
+      </div>
+      <div class="im-lesson-info__right" id="im-lesson-label"></div>
+    </div>
+
+    <!-- Recording notice -->
+    <div class="im-recording">
+      <div class="im-recording__dot"></div>
+      <span id="im-recording-text"></span>
+    </div>
+
+    <!-- Video -->
+    <div class="im-video">
+      <div class="im-video__instructor">
+        DC
+        <div class="im-video__instructor-name" id="im-instructor-label"></div>
+      </div>
+      <div class="im-video__you">
+        YOU
+        <div class="im-video__you-label">You</div>
+      </div>
+      <div class="im-video__participants">
+        <span>👥</span><span id="im-participants"></span>
+      </div>
+    </div>
+
+    <!-- Meta line -->
+    <div class="im-meta" id="im-meta"></div>
+
+    <!-- Tabs -->
+    <div class="im-tabs" id="im-tabs"></div>
+
+    <!-- Controls -->
+    <div class="im-controls" id="im-controls"></div>
+
+    <!-- Bottom bar (VILT stepper) -->
+    <div class="im-bottom">
+      <div class="im-bottom__label" id="im-stepper-label"></div>
+      <div class="im-bottom__pills" id="im-topic-pills"></div>
+      <div class="im-bottom__label" style="color: var(--im-text-soft);">Next: Customer Journey Mapping · May 7</div>
+    </div>
+  </div>
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="im-sidebar" id="im-sidebar"></aside>
+
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const im = window.V5_DATA.immersive;
+    const esc = window.V5.escapeHtml;
+
+    // Top bar path
+    document.getElementById("im-path").innerHTML =
+      `<strong>${esc(im.course)}</strong><span class="sep">›</span>${esc(im.module)}`;
+
+    document.getElementById("im-live-badge").textContent = im.liveBadge.replace("● ", "");
+    document.getElementById("im-elapsed").textContent = im.elapsed;
+
+    // Module stepper
+    document.getElementById("im-module-stepper").innerHTML = im.moduleStepper.map((s, i, arr) => {
+      const dot = `<div class="im-stepper__dot im-stepper__dot--${s.state}">${s.num}</div>`;
+      const line = i < arr.length - 1
+        ? `<div class="im-stepper__line ${s.state === 'done' ? 'im-stepper__line--done' : ''}"></div>`
+        : "";
+      return dot + line;
+    }).join("");
+
+    // Lesson / topic info
+    document.getElementById("im-topic-title").textContent = im.lesson.topicTitle;
+    document.getElementById("im-duration").textContent = im.lesson.duration;
+    document.getElementById("im-lesson-label").textContent = im.lesson.lessonLabel;
+
+    // Recording
+    document.getElementById("im-recording-text").textContent = im.recordingNotice;
+
+    // Video labels
+    document.getElementById("im-instructor-label").textContent = im.instructor;
+    document.getElementById("im-participants").textContent = im.participants;
+
+    // Meta line
+    document.getElementById("im-meta").innerHTML = im.meta.split(" · ")
+      .map((part, i) => i === 0 ? part : `<span class="im-meta__dot">${esc(part)}</span>`)
+      .join("");
+
+    // Tabs
+    document.getElementById("im-tabs").innerHTML = im.tabs.map(t => `
+      <button class="im-tab ${t.active ? 'active' : ''}">
+        ${esc(t.label)} ${t.count ? `<span class="count">(${t.count})</span>` : ''}
+      </button>
+    `).join("");
+    document.querySelectorAll(".im-tab").forEach(b => {
+      b.addEventListener("click", () => {
+        document.querySelectorAll(".im-tab").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+      });
+    });
+
+    // Controls
+    document.getElementById("im-controls").innerHTML = im.controls
+      .map(c => `<button class="im-control-btn ${c.includes('Muted') || c.includes('Off') ? 'im-control-btn--danger' : ''}">${esc(c)}</button>`)
+      .join("") +
+      `<button class="im-control-btn" style="margin-left:auto; background:var(--im-leave-btn); color:white; border-color:var(--im-leave-btn);">Leave Session</button>`;
+
+    // Topic stepper
+    document.getElementById("im-stepper-label").textContent = im.topicStepper.label;
+    document.getElementById("im-topic-pills").innerHTML = im.topicStepper.pills
+      .map((p, i) => `<span class="im-pill im-pill--${p.state}">${i + 1}${p.state === 'done' ? ' ✓' : p.state === 'current' ? ' ● Live' : ''}</span>`)
+      .join("");
+
+    // Sidebar
+    const sb = im.sidebar;
+    const renderSideTopic = (t) => `
+      <div class="im-side-topic im-side-topic--${t.state}">
+        <span class="im-side-topic__icon">${t.state === 'done' ? '✓' : t.state === 'current' ? '▶' : '○'}</span>
+        <span>${esc(t.label)}</span>
+      </div>
+    `;
+    const renderSideLesson = (l) => {
+      const bodyInner = l.topics && l.topics.length
+        ? `<div class="im-side-topics">${l.topics.map(renderSideTopic).join("")}</div>`
+        : l.num === 1
+          ? `<div class="im-side-lesson__stub"><strong>Lesson 1 complete.</strong> Revisit reading materials and the channel selection activity.</div>`
+          : l.num === 2
+            ? `<div class="im-side-lesson__stub"><strong>In progress.</strong> Finish the mapping activity after this live session.</div>`
+            : `<div class="im-side-lesson__stub">No topics available yet.</div>`;
+
+      return `
+        <div class="im-side-lesson ${l.expanded ? 'im-side-lesson--current open' : ''}" data-side-lesson>
+          <div class="im-side-lesson__head" data-side-lesson-toggle>
+            <span class="im-side-lesson__title">${esc(l.title)}</span>
+            <span class="im-side-lesson__chev">▸</span>
+          </div>
+          <div class="im-side-lesson__meta">${esc(l.meta)}</div>
+          <div class="im-side-lesson__body">${bodyInner}</div>
+        </div>
+      `;
+    };
+
+    document.getElementById("im-sidebar").innerHTML = `
+      <div class="im-side-head">
+        <h3 class="im-side-head__title">${esc(sb.moduleTitle)}</h3>
+        <span class="im-side-head__pct">${sb.moduleProgress}%</span>
+      </div>
+      <div class="im-side-progress"><div class="im-side-progress__fill" style="width:${sb.moduleProgress}%"></div></div>
+      ${sb.lessons.map(renderSideLesson).join("")}
+    `;
+
+    // Sidebar lesson accordion
+    document.querySelectorAll("[data-side-lesson-toggle]").forEach(head => {
+      head.addEventListener("click", () => {
+        const wrap = head.closest("[data-side-lesson]");
+        if (wrap) wrap.classList.toggle("open");
+      });
+    });
+  })();
+</script>
+</body>
+</html>

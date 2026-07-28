@@ -1,0 +1,27 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Engineering/Responsive Tiers" />
+
+# Responsive tiers
+
+| Breakpoint | Layout                                                                               |
+|------------|--------------------------------------------------------------------------------------|
+| ≥ 1100 px  | Full three-column: Sidebar 256 / Content / AIPanel 272                               |
+| 960–1100   | Sidebar + Content (AIPanel hideable)                                                 |
+| 768–960    | Sidebar + Content. Topbar hides Course crumb + AI toggle. AIPanel hidden by default. |
+| 480–768    | Sidebar becomes a slide-over drawer. AIPanel hidden.                                 |
+| ≤ 480      | Drawer sidebar. Topbar shows brandmark only + active crumb. No AIPanel.              |
+
+## What hides at each tier
+
+The Topbar and Breadcrumb expose explicit boolean props (`showCourseCrumb`, `showModuleCrumb`, `showWordmark`, `showAIToggle`) that mirror the Figma component variants. Use them with media-query-driven logic in production rather than separate components.
+
+## Sidebar drawer behavior
+
+On ≤ 768 px the sidebar becomes a slide-over drawer. **Use `position: fixed; transform: translateX(-100%)`** for the closed state. Don't use a zero-width grid column — the column collapses but the children still take width and break layout.
+
+This Storybook ships the inline desktop sidebar only. Wire the drawer in the MFE shell.
+
+## Breadcrumb truncation
+
+The active leaf truncates with ellipsis. Ancestors hide at breakpoints rather than ellipsis-truncating, because ellipsizing course names produces useless "Generative…" snippets. Keep the full leaf visible whenever it fits; hide ancestors before truncating the leaf.

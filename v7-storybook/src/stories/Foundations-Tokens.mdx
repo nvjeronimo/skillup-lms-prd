@@ -1,0 +1,53 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Design Tokens" />
+
+# Design Tokens
+
+All tokens are exposed as CSS custom properties (`var(--token-name)`) on `:root` and overridden under `[data-theme="light"]`. The Storybook toolbar's theme switch toggles `data-theme` on `<html>` — the same hook the production app uses.
+
+**Source of truth:** `src/tokens/tokens.css`. TypeScript references in `src/tokens/tokens.ts`.
+
+## Type tokens
+
+| Token            | Value                                          | Use                              |
+|------------------|------------------------------------------------|----------------------------------|
+| `--font-ui`      | Montserrat, system-ui, sans-serif              | All UI ≤ 24px                    |
+| `--font-display` | Playfair Display, Georgia, serif               | Display moments ≥ 28px           |
+| `--font-label`   | Outfit, Montserrat, system-ui, sans-serif      | Small-caps eyebrows + tabular nums |
+
+## Type scale
+
+`text-xs 10` · `text-sm 12` · `text-base 14*` · `text-md 16` · `text-lg 20` · `text-xl 24` · `text-2xl 28` · `text-3xl 32` · `text-4xl 40` · `text-5xl 48`
+
+`label-sm 11` · `label-base 13`
+
+\* 14 px is the **single allowed exception** to the multiples-of-4 rule (UI body workhorse).
+
+## Spacing — 8pt grid
+
+`sp-1 4` · `sp-2 8` · `sp-3 12` · `sp-4 16` · `sp-5 20` · `sp-6 24` · `sp-8 32` · `sp-10 40` · `sp-12 48`
+
+## Radius
+
+`r-sm 6` · `r-md 10` · `r-lg 14` · `r-full 9999`
+
+## Layout
+
+`sidebar-w 256` · `ai-w 272` · `topbar-h 52`
+
+## Motion
+
+`ease cubic-bezier(0.4, 0, 0.2, 1)` · `dur 0.22s`
+
+## Brand primitives (mode-agnostic)
+
+Used as the reference values that semantic tokens compose from. Don't apply directly in components — use the semantic token (e.g. `--accent`) so dark/light switching works.
+
+| Token            | Hex       |
+|------------------|-----------|
+| `--brand-navy`   | `#1B3D4F` |
+| `--brand-teal`   | `#0F5C74` |
+| `--brand-cyan`   | `#0096C7` |
+| `--brand-sky`    | `#51BFFC` |
+| `--brand-light`  | `#CAF0F8` |

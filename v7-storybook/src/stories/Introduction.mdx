@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# SkillUp V7 — Component Library
+
+This Storybook is the engineering reference for the **V7 Immersive Course Player (ICP)** — the post-enrollment learner experience for the SkillUp LMS, designed to live inside `frontend-app-learning` (the OpenEdX Learning MFE) via the Frontend Plugin Framework.
+
+## What this is — and isn't
+
+**This is** a reference implementation. Each component is a faithful translation of the V7 design from the prototype HTML (`v7-hk/SkillUp_ICP_v7.html`) and Figma file (`Wz2TCYFVr0hD8tJNiLajLt`, page V7-HK + V7 Design System). Use it to ground prop shapes, state permutations, accessibility behavior, and visual fidelity.
+
+**This is not** a finalized published library. The dev team should expect to:
+
+- Adapt the file structure to match its own conventions (e.g. moving CSS to CSS Modules, Tailwind, or a CSS-in-JS solution).
+- Replace placeholder icons with the production icon set (Untitled UI, currently planned).
+- Wire components to real data sources and the OpenEdX XBlock player (the `VideoPlayer` here is a visual shell only).
+- Adjust responsive breakpoints based on real device QA.
+
+## How it's organized
+
+- **Foundations** — design tokens, typography, color, spacing, accessibility rules.
+- **Atoms** — single-purpose primitives (Button, Badge, ProgressBar, StatusIcon, TopicTypeIcon, Bookmark, StepDot, ModuleNumberLabel).
+- **Molecules** — small composites (Tab, Breadcrumb, TopicUnitRow, ModuleAccordionHeader, QuizOption, TranscriptLine, NoteCard).
+- **Organisms** — composed regions (Topbar, Sidebar, AIPanel, FooterNav, VideoPlayer, Quiz).
+- **Pages** — full ICP layout with the 8 canonical state variants.
+
+## Key architectural decisions to respect
+
+1. **Built inside `frontend-app-learning` via Plugin Framework.** No MFE fork.
+2. **AI panel** options on the table: XBlock, MFE Plugin (leaning), iFrame.
+3. **Cyan = interactive** / **Green = completion**. Keep these semantically separate. The single exception is "LIVE NOW" — it uses green because it's a positive availability signal, not interaction.
+4. **Mobile sidebar = slide-over drawer**, never zero-width grid column.
+5. **Three-tier breadcrumb truncation:** ≥960 / 640–960 / ≤640.
+6. **WCAG 2.1 AA across both themes.** White on cyan, never black (white = 7.2:1 AAA, black = 2.9:1 fail).
+
+## How to run locally
+
+```bash
+cd v7-storybook
+npm install
+npm run storybook       # dev server at http://localhost:6006
+npm run build-storybook # static build → ../storybook (consumed by hub deploy)
+```
+
+## Related artifacts
+
+- `v7-hk/SkillUp_ICP_v7.html` — the canonical interactive prototype (single file, no build step).
+- `v7-hk/PROJECT_MEMORY.md` — short-form context for designers.
+- Hub > Build > Storybook (this site).
+- Figma file `Wz2TCYFVr0hD8tJNiLajLt`, pages V7-HK and ↳ V7 - Design System.

@@ -1,0 +1,34 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Spacing & Radius" />
+
+# Spacing — 8pt grid
+
+The V7 grid is base-8 with 4px steps allowed (so the `sp-1`–`sp-12` scale is effectively a base-4 superset). Stick to these values for padding, gap, and margin. Off-grid values cause the whole interface to feel imprecise; the grid-audit skill will catch them.
+
+| Token    | Value | Common use                                  |
+|----------|-------|---------------------------------------------|
+| `sp-1`   | 4 px  | Inline gap between icon and label inside a chip |
+| `sp-2`   | 8 px  | Gap inside a row, between siblings          |
+| `sp-3`   | 12 px | Card padding (small), button gap            |
+| `sp-4`   | 16 px | Standard padding (cards, modules)           |
+| `sp-5`   | 20 px | Section gap, generous gutter                |
+| `sp-6`   | 24 px | Page gutters, section padding               |
+| `sp-8`   | 32 px | Hero padding                                |
+| `sp-10`  | 40 px |                                             |
+| `sp-12`  | 48 px | Quiz hero vertical padding                  |
+
+## Accepted exceptions
+
+- 1 px borders.
+- 2 px focus-ring outlines / accent bars on active rows.
+- Icon sizes that don't follow the grid (14, 18, 22) when they need to optically balance against text — common for status icons.
+
+## Radius
+
+| Token     | Value | Use                                       |
+|-----------|-------|-------------------------------------------|
+| `r-sm`    | 6 px  | Buttons, badges, inputs, small cards     |
+| `r-md`    | 10 px | AI cards, quiz options                   |
+| `r-lg`    | 14 px | Hero / display surfaces                  |
+| `r-full`  | 9999  | Pills (theme toggle, chips)              |

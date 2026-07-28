@@ -1,0 +1,86 @@
+<svg viewBox="0 0 940 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d" font-family="Montserrat, system-ui, sans-serif">
+<title id="t">SkillUp token architecture</title>
+<desc id="d">Four collections: Primitives, Brand with modes per brand, Semantic with Light and Dark modes, Scale and Type. Components bind to semantic. Two independent mode axes. Products fan from core; newsletter inlined static.</desc>
+<style>
+  .bg{fill:var(--background,#ffffff)}
+  .box{fill:var(--muted,#f3f5fa);stroke:var(--border,#d7dee4);stroke-width:1.5}
+  .accent{fill:#EBF8FF;stroke:#26708E;stroke-width:1.5}
+  .warn{fill:#FFF9EB;stroke:#AC7720;stroke-width:1.5}
+  .t{fill:var(--foreground,#1f2937);font-size:14.5px;font-weight:600}
+  .s{fill:var(--muted-foreground,#677482);font-size:11px;font-weight:500}
+  .h{fill:var(--foreground,#13282F);font-size:13px;font-weight:700;letter-spacing:.04em}
+  .chip{fill:#ffffff;stroke:#26708E;stroke-width:1}
+  .ct{fill:#26708E;font-size:10px;font-weight:600}
+  .mlbl{fill:#677482;font-size:9.5px;font-weight:600;letter-spacing:.03em}
+  .ln{stroke:#9aa7b2;stroke-width:1.4;fill:none}
+  .lna{stroke:#26708E;stroke-width:1.6;fill:none}
+  .cap{fill:var(--muted-foreground,#677482);font-size:11px}
+</style>
+<rect class="bg" x="0" y="0" width="940" height="600"/>
+<text class="h" x="40" y="40">COLLECTIONS</text>
+<text class="h" x="700" y="40">SCOPE  (build-time)</text>
+
+<!-- 1. Primitives -->
+<rect class="box" x="40" y="72" width="270" height="54" rx="10"/>
+<text class="t" x="58" y="98">1. Primitives</text>
+<text class="s" x="58" y="115">--sk-ref-*  ·  raw palette + scale</text>
+
+<!-- 2. Brand -->
+<rect class="accent" x="40" y="146" width="270" height="86" rx="10"/>
+<text class="t" x="58" y="170">2. Brand</text>
+<text class="s" x="58" y="187">--sk-ref-brand-*  ·  ~10 anchors</text>
+<text class="mlbl" x="58" y="206">MODES</text>
+<rect class="chip" x="104" y="196" width="64" height="18" rx="9"/><text class="ct" x="115" y="208">SkillUp</text>
+<rect class="chip" x="172" y="196" width="68" height="18" rx="9"/><text class="ct" x="184" y="208">BrandX</text>
+<rect class="chip" x="244" y="196" width="60" height="18" rx="9"/><text class="ct" x="251" y="208">Partner…</text>
+
+<!-- 3. Semantic -->
+<rect class="accent" x="40" y="252" width="270" height="72" rx="10"/>
+<text class="t" x="58" y="277">3. Semantic</text>
+<text class="s" x="58" y="294">--sk-text/bg/fg/border-*</text>
+<text class="mlbl" x="58" y="313">MODES</text>
+<rect class="chip" x="104" y="303" width="48" height="18" rx="9"/><text class="ct" x="114" y="315">Light</text>
+<rect class="chip" x="156" y="303" width="46" height="18" rx="9"/><text class="ct" x="166" y="315">Dark</text>
+
+<!-- Components -->
+<rect class="box" x="40" y="344" width="270" height="52" rx="10"/>
+<text class="t" x="58" y="369">Components</text>
+<text class="s" x="58" y="386">Figma + Storybook · bind to semantic</text>
+
+<path class="ln" d="M175 126 L175 146" marker-end="url(#a)"/>
+<path class="ln" d="M175 232 L175 252" marker-end="url(#a)"/>
+<path class="ln" d="M175 324 L175 344" marker-end="url(#a)"/>
+
+<!-- SCOPE fan -->
+<circle cx="656" cy="288" r="6" fill="#26708E"/>
+<text class="cap" x="628" y="277">Core</text>
+<rect class="box" x="740" y="150" width="170" height="48" rx="10"/>
+<text class="t" x="756" y="171">LMS (app)</text>
+<text class="s" x="756" y="187">CSS vars · runtime modes</text>
+<rect class="box" x="740" y="206" width="170" height="48" rx="10"/>
+<text class="t" x="756" y="227">Website / Catalog</text>
+<text class="s" x="756" y="243">skillup.online</text>
+<rect class="box" x="740" y="262" width="170" height="48" rx="10"/>
+<text class="t" x="756" y="283">Landing pages</text>
+<text class="s" x="756" y="299">static · CSS vars</text>
+<rect class="warn" x="740" y="318" width="170" height="48" rx="10"/>
+<text class="t" x="756" y="339">Newsletter</text>
+<text class="s" x="756" y="355">inlined static · no vars</text>
+
+<path class="lna" d="M310 288 L650 288" marker-end="url(#ab)"/>
+<path class="ln" d="M662 285 C 700 230, 710 175, 740 174"/>
+<path class="ln" d="M662 287 C 705 250, 710 232, 740 230"/>
+<path class="ln" d="M664 288 L740 286"/>
+<path class="ln" d="M662 291 C 705 330, 710 342, 740 342"/>
+
+<!-- captions -->
+<text class="cap" x="40" y="438">Two independent mode axes: Brand (SkillUp · Partner…) × Semantic (Light · Dark). They never multiply.</text>
+<text class="cap" x="40" y="458">brand-* tokens alias the Brand collection; neutrals alias Primitives. Figma Pro is limited to 10 modes.</text>
+<text class="cap" x="40" y="478">Pipeline: each Brand mode → brand JSON → Style Dictionary → [data-brand] CSS. Email = inlined static per brand.</text>
+<text class="cap" x="40" y="498">No Component collection. Components bind to Semantic. Greenfield: born on --sk-*.</text>
+
+<defs>
+  <marker id="a" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto"><path d="M1 1 L7 4.5 L1 8" fill="none" stroke="#9aa7b2" stroke-width="1.4"/></marker>
+  <marker id="ab" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto"><path d="M1 1 L7 4.5 L1 8" fill="none" stroke="#26708E" stroke-width="1.6"/></marker>
+</defs>
+</svg>

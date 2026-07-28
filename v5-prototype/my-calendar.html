@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Calendar · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .cal-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .cal-title {
+      font-size: 28px; font-weight: 700; color: var(--ink-800);
+      margin: 0 0 4px; letter-spacing: -0.4px;
+    }
+    .cal-sub { font-size: 13px; color: var(--ink-400); }
+    .cal-legend {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      font-size: 12px; color: var(--ink-500);
+    }
+    .cal-legend__item { display: inline-flex; align-items: center; gap: 6px; }
+    .cal-legend__dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .cal-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 20px 0 28px;
+    }
+    @media (max-width: 740px) { .cal-kpis { grid-template-columns: repeat(2, 1fr); } }
+    .cal-kpi {
+      padding: 14px 16px;
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+    }
+    .cal-kpi--accent { border-color: var(--warn-amber); background: var(--warn-amber-paler); }
+    .cal-kpi__label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 1px; color: var(--ink-400);
+      margin-bottom: 6px;
+    }
+    .cal-kpi__value {
+      font-size: 22px; font-weight: 700; color: var(--ink-800); line-height: 1;
+    }
+    .cal-kpi__sub {
+      font-size: 11px; color: var(--ink-400); margin-top: 3px;
+    }
+
+    /* Month grid */
+    .cal-months {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 860px) { .cal-months { grid-template-columns: 1fr; } }
+
+    .cal-month {
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+    }
+    .cal-month__head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .cal-month__title {
+      font-size: 15px; font-weight: 700; color: var(--ink-800);
+      margin: 0;
+    }
+    .cal-month__nav {
+      display: flex; gap: 6px;
+    }
+    .cal-month__nav button {
+      width: 28px; height: 28px; border-radius: var(--radius-md);
+      background: transparent; color: var(--ink-500);
+      border: 1px solid var(--surface-border);
+      font-weight: 600;
+    }
+    .cal-month__nav button:hover { background: var(--surface-grey-100); }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-grid__weekday {
+      font-size: 10px; font-weight: 700;
+      color: var(--ink-400); letter-spacing: 0.8px;
+      text-align: center;
+      padding: 6px 0 4px;
+    }
+    .cal-cell {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--ink-700); font-weight: 500;
+      background: transparent;
+      cursor: default;
+      transition: background .15s;
+    }
+    .cal-cell:hover { background: var(--surface-subtle); }
+    .cal-cell--other { color: var(--ink-200); }
+    .cal-cell--today {
+      background: var(--progress-fill);
+      color: white;
+      font-weight: 700;
+    }
+    .cal-cell--today:hover { background: var(--brand-blue-dark); }
+    .cal-cell--has-event::after {
+      content: "";
+      position: absolute;
+      bottom: 3px; left: 50%;
+      transform: translateX(-50%);
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--cta-live-bg);
+    }
+    .cal-cell--today.cal-cell--has-event::after { background: white; }
+
+    /* Sessions list (grouped) */
+    .cal-list-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .cal-list-head h2 {
+      font-size: 18px; font-weight: 700; color: var(--ink-800); margin: 0;
+    }
+    .cal-filter-group {
+      display: flex; gap: 6px;
+      padding: 3px;
+      background: var(--surface-grey-100);
+      border-radius: var(--radius-pill);
+    }
+    .cal-filter {
+      padding: 6px 12px;
+      font-size: 12px; font-weight: 500;
+      color: var(--ink-500);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+    }
+    .cal-filter.active {
+      background: white; color: var(--ink-800); font-weight: 600;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .cal-day-group { margin-bottom: 20px; }
+    .cal-day-head {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700;
+      color: var(--ink-400); letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .cal-day-head span:first-child {
+      font-size: 13px; color: var(--ink-700); font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .cal-session {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 14px 18px;
+      margin-bottom: 8px;
+      transition: box-shadow .15s, border-color .15s;
+    }
+    .cal-session:hover { box-shadow: var(--shadow-md); border-color: var(--surface-border-hover); }
+    .cal-session--today {
+      border-color: var(--danger-border-live);
+      background: var(--danger-bg-pale);
+    }
+    .cal-session__date {
+      text-align: center;
+      border-right: 1px solid var(--surface-divider);
+      padding-right: 16px;
+    }
+    .cal-session__m {
+      font-size: 10px; font-weight: 700;
+      color: var(--ink-400); letter-spacing: 1px;
+    }
+    .cal-session__d {
+      font-size: 20px; font-weight: 700; color: var(--ink-800);
+      line-height: 1;
+    }
+    .cal-session--today .cal-session__d { color: var(--cta-live-bg); }
+    .cal-session__body { min-width: 0; }
+    .cal-session__title-row {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 3px;
+    }
+    .cal-session__title {
+      font-size: 14px; font-weight: 600; color: var(--ink-800);
+    }
+    .cal-session__crumb {
+      font-size: 12px; color: var(--ink-500);
+    }
+    .cal-session__source {
+      font-size: 11px; color: var(--brand-blue-text);
+      font-weight: 600;
+      background: var(--brand-blue-light);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .cal-session__source--program {
+      background: var(--warn-amber-caution); color: var(--warn-amber-caution-text);
+    }
+    .cal-session__right {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+    }
+    .cal-session__time {
+      font-size: 12px; color: var(--ink-500); font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<div class="page" data-shell data-shell-active="my-calendar">
+  <main>
+
+    <div class="cal-hero">
+      <div>
+        <h1 class="cal-title">My Calendar</h1>
+        <div class="cal-sub">Every live session, workshop, and milestone across all your enrolled programs and courses.</div>
+      </div>
+      <div class="cal-legend">
+        <span class="cal-legend__item"><span class="cal-legend__dot" style="background: var(--cta-live-bg)"></span> Live session</span>
+        <span class="cal-legend__item"><span class="cal-legend__dot" style="background: var(--progress-fill)"></span> Today</span>
+        <span class="cal-legend__item"><span class="cal-legend__dot" style="background: var(--warn-amber-caution-text)"></span> Program milestone</span>
+      </div>
+    </div>
+
+    <div class="cal-kpis" id="cal-kpis"></div>
+
+    <div class="cal-months" id="cal-months"></div>
+
+    <div class="cal-list-head">
+      <h2>Upcoming sessions</h2>
+      <div class="cal-filter-group" id="cal-filters">
+        <button class="cal-filter active" data-filter="all">All</button>
+        <button class="cal-filter" data-filter="program">Programs</button>
+        <button class="cal-filter" data-filter="course">Single Courses</button>
+      </div>
+    </div>
+
+    <div id="cal-list"></div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const data = window.V5_DATA;
+    const esc = window.V5.escapeHtml;
+
+    // --- Build unified session roster across all enrolled items ---
+    // Each session: { dateISO, m, d, title, crumb, source, sourceType, time, isToday }
+    const TODAY = new Date(2026, 3, 21); // Apr 21, 2026 (monthIndex 3 = April)
+
+    function iso(d) { return d.toISOString().slice(0,10); }
+    function mName(m) { return ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][m]; }
+
+    const sessions = [];
+
+    // AIDM Course 1 VILT topics (from course1 modules)
+    const viltDates = [
+      { date: new Date(2026, 3, 23), title: "Effective Use of Digital Channels", time: "6:00 PM - 6:30 PM EST", instructor: "David Chen" },
+      { date: new Date(2026, 3, 30), title: "Digital Target Audience", time: "6:00 PM - 6:45 PM EST", instructor: "Sarah Chen" },
+      { date: new Date(2026, 4, 7),  title: "Customer Journey Mapping", time: "6:00 PM - 6:30 PM EST", instructor: "David Chen" },
+      { date: new Date(2026, 4, 14), title: "Digital Customer Journey Intervention", time: "6:00 PM - 6:30 PM EST", instructor: "Sarah Chen" },
+    ];
+    viltDates.forEach(v => sessions.push({
+      date: v.date,
+      title: v.title,
+      crumb: "AIDM · Course 1 · Module 2: Customer Journeys · Lesson 3",
+      source: "AIDM Program",
+      sourceType: "program",
+      time: v.time,
+      instructor: v.instructor,
+    }));
+
+    // Feed upcoming Course PD sessions (already AIDM-related in data)
+    (data.liveSessionsUpcoming.thisWeek || []).forEach(s => {
+      const d = parseDate(s.date);
+      sessions.push({
+        date: d, title: s.title, crumb: s.path,
+        source: "AIDM · Course 1", sourceType: "program",
+        time: s.time, instructor: s.instructor,
+      });
+    });
+    (data.liveSessionsUpcoming.next30 || []).forEach(s => {
+      const d = parseDate(s.date);
+      sessions.push({
+        date: d, title: s.title, crumb: s.path,
+        source: "AIDM · Course 1", sourceType: "program",
+        time: s.time, instructor: s.instructor,
+      });
+    });
+
+    // Single courses
+    sessions.push({
+      date: new Date(2026, 2, 28), // MAR 28
+      title: "Research Presentation Workshop",
+      crumb: "UX Research and Design Thinking · Module 2",
+      source: "UX Research", sourceType: "course",
+      time: "3:00 PM - 4:00 PM EST", instructor: "Emily Chen",
+    });
+    sessions.push({
+      date: new Date(2026, 3, 21), // TODAY — PM AI live
+      title: "Agile Coach Q&A",
+      crumb: "Project Management with AI Tools · Module 2",
+      source: "PM with AI", sourceType: "course",
+      time: "6:00 PM - 7:00 PM EST", instructor: "Lisa Patel",
+      isLiveToday: true,
+    });
+    sessions.push({
+      date: new Date(2026, 2, 30), // MAR 30
+      title: "Data Visualization Workshop",
+      crumb: "Business Analytics with Python · Module 1",
+      source: "Business Analytics", sourceType: "course",
+      time: "3:00 PM - 4:00 PM EST", instructor: "David Tan",
+    });
+    sessions.push({
+      date: new Date(2026, 3, 3),  // APR 3
+      title: "Remote Team Leadership Session",
+      crumb: "Leadership in Remote Teams · Module 2",
+      source: "Leadership", sourceType: "course",
+      time: "4:00 PM - 5:00 PM EST", instructor: "James Park",
+    });
+
+    // Program milestones
+    sessions.push({
+      date: new Date(2026, 5, 15),
+      title: "Capstone Project Brief Released",
+      crumb: "Program milestone",
+      source: "AIDM Program", sourceType: "program",
+      time: "All day",
+      isMilestone: true,
+    });
+    sessions.push({
+      date: new Date(2026, 8, 10),
+      title: "Industry Expert Panel",
+      crumb: "Program milestone · Live",
+      source: "AIDM Program", sourceType: "program",
+      time: "TBD",
+      isMilestone: true,
+    });
+
+    function parseDate(obj) {
+      // { m: "APR", d: "23" } → Date
+      const months = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
+      return new Date(2026, months[obj.m], parseInt(obj.d, 10));
+    }
+
+    function sameDay(a, b) {
+      return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+    }
+
+    // Sort chronologically
+    sessions.sort((a, b) => a.date - b.date);
+
+    // --- KPIs ---
+    const upcoming = sessions.filter(s => s.date >= TODAY);
+    const thisWeek = upcoming.filter(s => {
+      const diff = (s.date - TODAY) / (1000 * 60 * 60 * 24);
+      return diff >= 0 && diff <= 7;
+    });
+    const liveToday = upcoming.filter(s => sameDay(s.date, TODAY));
+    const programsCount = new Set(sessions.filter(s => s.sourceType === "program").map(s => s.source)).size;
+    const coursesCount = new Set(sessions.filter(s => s.sourceType === "course").map(s => s.source)).size;
+
+    document.getElementById("cal-kpis").innerHTML = `
+      <div class="cal-kpi cal-kpi--accent">
+        <div class="cal-kpi__label">LIVE TODAY</div>
+        <div class="cal-kpi__value">${liveToday.length}</div>
+        <div class="cal-kpi__sub">${liveToday.length ? liveToday[0].time : "No live sessions"}</div>
+      </div>
+      <div class="cal-kpi">
+        <div class="cal-kpi__label">THIS WEEK</div>
+        <div class="cal-kpi__value">${thisWeek.length}</div>
+        <div class="cal-kpi__sub">Apr 21 - Apr 28</div>
+      </div>
+      <div class="cal-kpi">
+        <div class="cal-kpi__label">UPCOMING</div>
+        <div class="cal-kpi__value">${upcoming.length}</div>
+        <div class="cal-kpi__sub">across your learning</div>
+      </div>
+      <div class="cal-kpi">
+        <div class="cal-kpi__label">ENROLLED</div>
+        <div class="cal-kpi__value">${programsCount + coursesCount}</div>
+        <div class="cal-kpi__sub">${programsCount} program · ${coursesCount} courses</div>
+      </div>
+    `;
+
+    // --- Month grids (April + May 2026) ---
+    function renderMonth(year, monthIdx) {
+      const first = new Date(year, monthIdx, 1);
+      const last = new Date(year, monthIdx + 1, 0);
+      const startWeekday = first.getDay(); // 0=Sun
+      const daysInMonth = last.getDate();
+      const cells = [];
+
+      // Leading blanks
+      for (let i = 0; i < startWeekday; i++) cells.push({ other: true });
+      for (let d = 1; d <= daysInMonth; d++) {
+        const cellDate = new Date(year, monthIdx, d);
+        const hasEvent = sessions.some(s => sameDay(s.date, cellDate));
+        cells.push({ d, isToday: sameDay(cellDate, TODAY), hasEvent });
+      }
+
+      const weekdays = ["S","M","T","W","T","F","S"];
+      const title = first.toLocaleString("en-US", { month: "long", year: "numeric" });
+
+      return `
+        <div class="cal-month">
+          <div class="cal-month__head">
+            <h3 class="cal-month__title">${title}</h3>
+            <div class="cal-month__nav">
+              <button type="button" aria-label="Previous month">‹</button>
+              <button type="button" aria-label="Next month">›</button>
+            </div>
+          </div>
+          <div class="cal-grid">
+            ${weekdays.map(w => `<div class="cal-grid__weekday">${w}</div>`).join("")}
+            ${cells.map(c => {
+              if (c.other) return `<div class="cal-cell cal-cell--other"></div>`;
+              const cls = `cal-cell ${c.isToday ? "cal-cell--today" : ""} ${c.hasEvent ? "cal-cell--has-event" : ""}`;
+              return `<div class="${cls}">${c.d}</div>`;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }
+    document.getElementById("cal-months").innerHTML = renderMonth(2026, 3) + renderMonth(2026, 4);
+
+    // --- List: group by day (upcoming only) ---
+    function renderList(filter) {
+      const shown = upcoming.filter(s => filter === "all" || s.sourceType === filter);
+      if (!shown.length) {
+        document.getElementById("cal-list").innerHTML = `
+          <div class="card card--flat" style="text-align:center; padding:40px;">
+            <div style="font-size:14px; color:var(--ink-400);">No sessions match this filter.</div>
+          </div>`;
+        return;
+      }
+      const groups = new Map();
+      shown.forEach(s => {
+        const k = iso(s.date);
+        if (!groups.has(k)) groups.set(k, []);
+        groups.get(k).push(s);
+      });
+
+      const html = [...groups.entries()].map(([k, list]) => {
+        const first = list[0];
+        const isToday = sameDay(first.date, TODAY);
+        const weekday = first.date.toLocaleString("en-US", { weekday: "long" });
+        const dateLabel = first.date.toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+        const rows = list.map(s => {
+          const srcCls = s.sourceType === "program" ? "cal-session__source--program" : "";
+          const cta = isToday
+            ? `<button class="btn btn--live btn--sm" onclick="window.location='immersive.html'">Join Now →</button>`
+            : `<button class="btn btn--secondary btn--sm">+ Add to cal</button>`;
+          return `
+            <div class="cal-session ${isToday ? 'cal-session--today' : ''}">
+              <div class="cal-session__date">
+                <div class="cal-session__m">${mName(s.date.getMonth())}</div>
+                <div class="cal-session__d">${s.date.getDate()}</div>
+              </div>
+              <div class="cal-session__body">
+                <div class="cal-session__title-row">
+                  <span class="cal-session__title">${esc(s.title)}</span>
+                  <span class="cal-session__source ${srcCls}">${esc(s.source)}</span>
+                  ${isToday ? `<span class="badge badge--live-today">LIVE TODAY</span>` : ''}
+                  ${s.isMilestone ? `<span class="badge badge--upcoming">MILESTONE</span>` : ''}
+                </div>
+                <div class="cal-session__crumb">${esc(s.crumb)}${s.instructor ? ' · ' + esc(s.instructor) : ''}</div>
+              </div>
+              <div class="cal-session__right">
+                <div class="cal-session__time">${esc(s.time)}</div>
+                ${cta}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="cal-day-group">
+            <div class="cal-day-head">
+              <span>${weekday} · ${dateLabel}</span>
+              ${isToday ? '<span class="badge badge--live">TODAY</span>' : ''}
+            </div>
+            ${rows}
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("cal-list").innerHTML = html;
+    }
+
+    renderList("all");
+
+    // Filter wiring
+    document.querySelectorAll("#cal-filters .cal-filter").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#cal-filters .cal-filter").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderList(btn.dataset.filter);
+      });
+    });
+  })();
+</script>
+</body>
+</html>

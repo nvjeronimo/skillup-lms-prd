@@ -1,0 +1,18 @@
+.v7-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.v7-status svg { width: 100%; height: 100%; display: block; }
+
+.v7-status--success { color: var(--success); }
+.v7-status--success svg circle { fill: var(--success); }
+.v7-status--success svg path { stroke: var(--static-white); }
+
+.v7-status--active { color: var(--accent); }
+.v7-status--active svg circle:last-child { fill: var(--accent); }
+
+.v7-status--notStarted { color: var(--text3); }
+
+.v7-status--locked { color: var(--text3); opacity: 0.7; }

@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Learning · SkillUp V5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ===== My Learning page-specific styles ===== */
+
+    /* Live banner — blue variant (not red) to match Figma node 1460:178 */
+    .ml-live-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--brand-blue-pale);
+      border: 1px solid var(--brand-blue-light);
+      border-radius: var(--radius-xl);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .ml-live-banner__dot {
+      width: 10px; height: 10px;
+      background: var(--cta-live-bg);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .ml-live-banner__body { flex: 1; min-width: 0; }
+    .ml-live-banner__title {
+      font-weight: 700; font-size: 13px;
+      color: var(--brand-blue-text);
+      letter-spacing: 0.3px;
+    }
+    .ml-live-banner__title span { font-weight: 600; color: var(--ink-700); }
+    .ml-live-banner__sub {
+      font-size: 13px; color: var(--ink-500); margin-top: 2px;
+    }
+
+    /* Header row: title + KPI pills + scope toggle */
+    .ml-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .ml-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink-800);
+      margin: 0;
+      letter-spacing: -0.4px;
+    }
+    .ml-kpis {
+      display: flex;
+      gap: 12px;
+      flex: 1;
+      justify-content: center;
+      min-width: 300px;
+    }
+    .ml-kpi {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-pill);
+    }
+    .ml-kpi__bar {
+      width: 3px; height: 20px;
+      border-radius: 2px;
+    }
+    .ml-kpi__label {
+      font-size: 12px; color: var(--ink-500); font-weight: 500;
+    }
+    .ml-kpi__value {
+      font-size: 14px; font-weight: 700; color: var(--ink-800);
+    }
+
+    .ml-scope {
+      display: flex;
+      padding: 3px;
+      background: var(--surface-grey-100);
+      border-radius: var(--radius-pill);
+    }
+    .ml-scope button {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-500);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .ml-scope button.active {
+      background: white;
+      color: var(--ink-800);
+      font-weight: 600;
+      box-shadow: var(--shadow-xs);
+    }
+
+    /* Sub-tabs with count */
+    .ml-subtabs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--surface-border);
+      margin-bottom: 24px;
+    }
+    .ml-subtabs__group { display: flex; gap: 0; }
+    .ml-subtab {
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-400);
+      border-bottom: 2px solid transparent;
+      background: none;
+      cursor: pointer;
+      transition: color .15s, border-color .15s;
+    }
+    .ml-subtab:hover { color: var(--ink-700); }
+    .ml-subtab.active {
+      color: var(--ink-800);
+      font-weight: 600;
+      border-bottom-color: var(--ink-800);
+    }
+    .ml-subtab .count {
+      color: var(--ink-300);
+      font-weight: 500;
+      margin-left: 4px;
+    }
+    .ml-subtab.active .count { color: var(--ink-500); }
+    .ml-filters-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      font-size: 13px; font-weight: 500;
+      color: var(--ink-600);
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+    }
+    .ml-filters-btn:hover { background: var(--surface-grey-100); }
+
+    /* ===== AIDM program card (blue 1.5px border) ===== */
+    .ml-program {
+      background: white;
+      border: 1.5px solid var(--progress-fill);
+      border-radius: var(--radius-2xl);
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-brand);
+      transition: box-shadow .15s, transform .15s;
+    }
+    .ml-program:hover { box-shadow: var(--shadow-brand-hover); }
+    .ml-program__head {
+      padding: 24px 28px 20px;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 20px;
+      align-items: center;
+    }
+    .ml-program__chevron {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface-subtle);
+      color: var(--ink-700);
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: transform .2s ease, background .15s;
+      user-select: none;
+    }
+    .ml-program__head:hover .ml-program__chevron { background: var(--brand-blue-pale); }
+    .ml-program--expanded .ml-program__chevron { transform: rotate(90deg); }
+    .ml-program__viewbtn {
+      font-size: 12px; font-weight: 600;
+      color: var(--brand-blue-text);
+      background: transparent;
+      border: 1px solid var(--brand-blue-light);
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s;
+    }
+    .ml-program__viewbtn:hover { background: var(--brand-blue-pale); }
+    .ml-program__body { flex: 1; min-width: 0; }
+    .ml-program__drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .25s ease;
+    }
+    .ml-program--expanded .ml-program__drawer { max-height: 2000px; }
+    .ml-program__typelabel {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ml-program__typelabel .badge--program-type {
+      background: var(--purple-blended-pale);
+      color: var(--purple-blended);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+    .ml-program__typelabel .starts-pill {
+      background: var(--warn-amber-soft);
+      color: var(--warn-amber-dark);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--warn-amber-border);
+    }
+    .ml-program__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink-800);
+      margin: 0 0 6px;
+      line-height: 1.25;
+    }
+    .ml-program__delivery {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand-blue-text);
+      background: var(--brand-blue-light);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      margin-right: 8px;
+    }
+    .ml-program__meta {
+      font-size: 13px;
+      color: var(--ink-400);
+    }
+    .ml-program__progresswrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+      min-width: 200px;
+    }
+    .ml-program__progressnum {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--progress-fill);
+      line-height: 1;
+    }
+    .ml-program__progresscap {
+      font-size: 12px;
+      color: var(--ink-400);
+    }
+    .ml-program__progresswrap .progress {
+      width: 200px;
+      height: 6px;
+    }
+    .ml-program__progresswrap .progress__fill {
+      background: var(--progress-fill);
+    }
+    .ml-program__coursehead {
+      background: var(--surface-subtle);
+      padding: 10px 28px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-400);
+      letter-spacing: 1px;
+      border-top: 1px solid var(--surface-divider);
+      border-bottom: 1px solid var(--surface-divider);
+    }
+    .ml-courses {
+      padding: 6px 16px;
+    }
+    .ml-course-row {
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .ml-course-row:hover { background: var(--surface-subtle); }
+    .ml-course-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 12px;
+      flex-shrink: 0;
+    }
+    .ml-course-num--active { background: var(--progress-fill); color: white; }
+    .ml-course-num--available { background: var(--ink-700); color: white; }
+    .ml-course-num--locked { background: var(--surface-grey-200); color: var(--ink-300); }
+    .ml-course-body { min-width: 0; }
+    .ml-course-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .ml-course-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-700);
+    }
+    .ml-course-row--locked .ml-course-title { color: var(--ink-300); font-weight: 500; }
+    .prep-chip {
+      background: var(--prep-chip-bg);
+      color: var(--prep-chip-text);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.3px;
+    }
+    .ml-course-live-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      background: var(--brand-blue-pale-chip);
+      color: var(--mod-live);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .ml-course-right {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ml-mini-progress {
+      width: 80px; height: 4px;
+      background: var(--progress-track);
+      border-radius: 2px; overflow: hidden;
+    }
+    .ml-mini-progress > div {
+      height: 100%; background: var(--progress-fill);
+    }
+    .ml-course-pct {
+      font-size: 12px; font-weight: 600;
+      color: var(--ink-500);
+      min-width: 34px; text-align: right;
+    }
+    .ml-course-unlock {
+      font-size: 12px;
+      color: var(--ink-400);
+    }
+
+    /* ===== Single course card grid ===== */
+    .ml-singles-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 0 0 16px;
+    }
+    .ml-singles-head h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink-800);
+    }
+    .ml-singles-head__sub {
+      font-size: 13px;
+      color: var(--brand-blue);
+      font-weight: 600;
+    }
+    .ml-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ml-card {
+      background: white;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 0.9fr) auto;
+      gap: 20px;
+      align-items: center;
+      transition: box-shadow .15s, border-color .15s;
+      box-shadow: var(--shadow-xs);
+      cursor: pointer;
+    }
+    .ml-card:hover { box-shadow: var(--shadow-md); border-color: var(--surface-border-hover); }
+    .ml-card__main { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+    .ml-card__toprow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .ml-card__typelabel {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: var(--ink-400);
+    }
+    .ml-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink-800);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .ml-card__delivery-line {
+      display: flex; align-items: center; gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ml-card__delivery {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand-blue-text);
+      background: var(--brand-blue-light);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .ml-card__meta { font-size: 12px; color: var(--ink-400); }
+
+    .ml-card__crumb {
+      padding: 8px 10px;
+      background: var(--surface-subtle);
+      border-radius: var(--radius-md);
+      font-size: 11.5px;
+      color: var(--ink-500);
+      line-height: 1.45;
+      min-width: 0;
+    }
+    .ml-card__crumb strong { color: var(--ink-700); font-weight: 600; display: block; font-size: 12px; }
+
+    .ml-card__nextlive {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      background: var(--brand-blue-pale);
+      border-radius: var(--radius-md);
+      font-size: 11.5px;
+      color: var(--ink-600);
+      border: 1px solid var(--brand-blue-light);
+      min-width: 0;
+    }
+    .ml-card__nextlive--today {
+      background: var(--danger-bg-live);
+      border-color: var(--danger-border-live);
+    }
+    .ml-card__nextlive strong { color: var(--ink-800); font-weight: 600; display: block; font-size: 12px; }
+    .ml-card__nextlive-text { min-width: 0; overflow: hidden; }
+
+    .ml-card__progresscol {
+      display: flex; flex-direction: column; gap: 6px;
+      min-width: 0;
+    }
+    .ml-card__progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: var(--ink-400);
+    }
+    .ml-card__progress-row strong { color: var(--ink-800); font-weight: 700; font-size: 13px; }
+    .ml-card__cta { display: flex; justify-content: flex-end; }
+
+    .ml-card__empty-progress {
+      font-size: 12px;
+      color: var(--ink-400);
+    }
+    @media (max-width: 960px) {
+      .ml-card { grid-template-columns: 1fr; }
+      .ml-card__cta { justify-content: flex-start; }
+    }
+
+    @media (max-width: 840px) {
+      .ml-header { flex-direction: column; align-items: stretch; }
+      .ml-kpis { justify-content: flex-start; flex-wrap: wrap; }
+      .ml-program__head { grid-template-columns: 1fr; }
+      .ml-program__progresswrap { align-items: flex-start; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page" data-shell data-shell-active="my-learning">
+  <main>
+
+    <!-- LIVE NOW banner (blue variant) -->
+    <div class="ml-live-banner" onclick="window.location='immersive.html'" style="cursor: pointer;">
+      <div class="ml-live-banner__dot"></div>
+      <div class="ml-live-banner__body">
+        <div class="ml-live-banner__title">LIVE NOW · <span id="lb-course"></span></div>
+        <div class="ml-live-banner__sub" id="lb-topic"></div>
+      </div>
+      <div style="font-size: 12px; color: var(--ink-500);" id="lb-elapsed"></div>
+      <button class="btn btn--live">Join Now →</button>
+    </div>
+
+    <!-- Header: title + KPI pills + scope toggle -->
+    <div class="ml-header">
+      <h1 class="ml-title">My Learning</h1>
+      <div class="ml-kpis" id="ml-kpis"></div>
+      <div class="ml-scope" id="ml-scope"></div>
+    </div>
+
+    <!-- Sub-tabs -->
+    <div class="ml-subtabs">
+      <div class="ml-subtabs__group" id="ml-subtabs"></div>
+      <button class="ml-filters-btn">▼ Filters</button>
+    </div>
+
+    <!-- AIDM Program card -->
+    <div class="ml-program" id="ml-program"></div>
+
+    <!-- Single courses -->
+    <div class="ml-singles-head">
+      <h2>Single Courses</h2>
+      <a href="coming-soon.html?section=Catalog" class="ml-singles-head__sub">Browse catalog →</a>
+    </div>
+    <div class="ml-cards" id="ml-single-cards"></div>
+  </main>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  (function () {
+    const ml = window.V5_DATA.myLearning;
+    const esc = window.V5.escapeHtml;
+
+    // Live banner
+    document.getElementById("lb-course").textContent = ml.liveBanner.course;
+    document.getElementById("lb-topic").textContent = ml.liveBanner.topic;
+    document.getElementById("lb-elapsed").textContent = ml.liveBanner.elapsed;
+
+    // KPIs
+    document.getElementById("ml-kpis").innerHTML = ml.kpis.map(k => `
+      <div class="ml-kpi">
+        <div class="ml-kpi__bar" style="background:${k.bar}"></div>
+        <span class="ml-kpi__value">${k.value}</span>
+        <span class="ml-kpi__label">${esc(k.label)}</span>
+      </div>
+    `).join("");
+
+    // Scope toggle
+    document.getElementById("ml-scope").innerHTML = ml.scopeFilter
+      .map((s, i) => `<button class="${i === 0 ? 'active' : ''}">${esc(s)}</button>`)
+      .join("");
+    document.querySelectorAll("#ml-scope button").forEach(b => {
+      b.addEventListener("click", () => {
+        document.querySelectorAll("#ml-scope button").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+      });
+    });
+
+    // Sub-tabs
+    document.getElementById("ml-subtabs").innerHTML = ml.subTabs.map(t => `
+      <button class="ml-subtab ${t.active ? 'active' : ''}">
+        ${esc(t.label)} <span class="count">(${t.count})</span>
+      </button>
+    `).join("");
+    document.querySelectorAll("#ml-subtabs .ml-subtab").forEach(b => {
+      b.addEventListener("click", () => {
+        document.querySelectorAll("#ml-subtabs .ml-subtab").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+      });
+    });
+
+    // ===== Program card (AIDM) =====
+    const p = ml.aidmCard;
+    const coursesHtml = p.courses.map(c => {
+      const numCls = c.state === "active" ? "ml-course-num--active"
+                  : c.state === "available" ? "ml-course-num--available"
+                  : "ml-course-num--locked";
+      const numContent = c.state === "locked" ? "🔒" : c.num;
+      const prepChip = c.prep ? `<span class="prep-chip">PREPARATION TRACK</span>` : "";
+      const liveChip = c.live ? `<span class="ml-course-live-chip">${esc(c.live)}</span>` : "";
+
+      const rowCls = c.state === "locked" ? "ml-course-row--locked" : "";
+      let right = "";
+      if (c.state === "active") {
+        right = `
+          <div class="ml-mini-progress"><div style="width:${c.progress}%"></div></div>
+          <div class="ml-course-pct">${c.progress}%</div>
+          <button class="btn btn--action btn--sm" onclick="event.stopPropagation(); window.location='course-detail.html'">Continue →</button>
+        `;
+      } else if (c.state === "available") {
+        right = `<button class="btn btn--secondary btn--sm" onclick="event.stopPropagation();">Start →</button>`;
+      } else {
+        right = `<span class="ml-course-unlock">Unlocks ${esc(c.unlock)}</span>
+                 <button class="btn btn--ghost btn--sm" onclick="event.stopPropagation();">Preview</button>`;
+      }
+
+      return `
+        <div class="ml-course-row ${rowCls}" onclick="window.location='course-detail.html'">
+          <div class="ml-course-num ${numCls}">${numContent}</div>
+          <div class="ml-course-body">
+            <div class="ml-course-line">
+              <span class="ml-course-title">Course ${c.num}: ${esc(c.title)}</span>
+              ${prepChip}
+              ${liveChip}
+            </div>
+          </div>
+          <div class="ml-course-right">${right}</div>
+        </div>
+      `;
+    }).join("");
+
+    const programEl = document.getElementById("ml-program");
+    programEl.classList.add("ml-program--expanded");
+    programEl.innerHTML = `
+      <div class="ml-program__head" role="button" tabindex="0" aria-expanded="true" aria-controls="ml-program-drawer">
+        <div class="ml-program__chevron" aria-hidden="true">›</div>
+        <div class="ml-program__body">
+          <div class="ml-program__typelabel">
+            <span class="badge--program-type">PROGRAM</span>
+            <span class="starts-pill">${esc(p.startsBadge)}</span>
+          </div>
+          <h3 class="ml-program__title">${esc(p.title)}</h3>
+          <div>
+            <span class="ml-program__delivery">${esc(p.delivery)}</span>
+            <span class="ml-program__meta">${esc(p.meta)}</span>
+          </div>
+        </div>
+        <div class="ml-program__progresswrap">
+          <div class="ml-program__progressnum">${p.progressPct}%</div>
+          <div class="progress"><div class="progress__fill" style="width:${p.progressPct}%"></div></div>
+          <div class="ml-program__progresscap">${p.status}</div>
+        </div>
+        <button class="ml-program__viewbtn" type="button" onclick="event.stopPropagation(); window.location='program-detail.html'">View program →</button>
+      </div>
+      <div class="ml-program__drawer" id="ml-program-drawer">
+        <div class="ml-program__coursehead">COURSES · ${p.courses.length}</div>
+        <div class="ml-courses">${coursesHtml}</div>
+      </div>
+    `;
+
+    // Accordion toggle
+    const head = programEl.querySelector(".ml-program__head");
+    const toggle = () => {
+      const open = programEl.classList.toggle("ml-program--expanded");
+      head.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    head.addEventListener("click", (e) => {
+      if (e.target.closest(".ml-program__viewbtn")) return;
+      toggle();
+    });
+    head.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+    });
+
+    // ===== Single course rows =====
+    document.getElementById("ml-single-cards").innerHTML = ml.singleCourses.map(c => {
+      // Neutral status badge (My Learning rule 1: neutral on list cards)
+      const statusKey = (c.status || "").toLowerCase();
+      let statusBadge = "";
+      if (statusKey.includes("complet")) {
+        statusBadge = `<span class="badge badge--ml-completed">${esc(c.status)}</span>`;
+      } else if (statusKey.includes("expir")) {
+        statusBadge = `<span class="badge badge--ml-expired">${esc(c.status)}</span>`;
+      } else if (statusKey.includes("not started")) {
+        statusBadge = `<span class="badge badge--ml-notstarted">${esc(c.status)}</span>`;
+      } else {
+        statusBadge = `<span style="font-size:11px; color:var(--brand-attention); font-weight:600; letter-spacing:0.3px;">${esc(c.status)}</span>`;
+      }
+
+      // Column 1: main (label + title + delivery/meta)
+      const mainCol = `
+        <div class="ml-card__main">
+          <div class="ml-card__toprow">
+            <div class="ml-card__typelabel">SINGLE COURSE</div>
+            ${statusBadge}
+          </div>
+          <h3 class="ml-card__title">${esc(c.title)}</h3>
+          <div class="ml-card__delivery-line">
+            <span class="ml-card__delivery">${esc(c.delivery)}</span>
+            <span class="ml-card__meta">${esc(c.meta)}</span>
+          </div>
+        </div>
+      `;
+
+      // Column 2: crumb (where left off) — or placeholder for not started
+      const crumbCol = c.crumb
+        ? `<div class="ml-card__crumb">
+             <strong>${esc(c.crumb.module)}</strong>
+             ${esc(c.crumb.lesson)}<br>
+             ${esc(c.crumb.topic)}
+           </div>`
+        : `<div class="ml-card__crumb" style="background:transparent; color:var(--ink-400); font-style:italic;">Not started yet</div>`;
+
+      // Column 3: next live OR progress
+      let infoCol = "";
+      if (c.nextLive) {
+        const today = c.nextLive.isLiveToday;
+        infoCol = `
+          <div class="ml-card__nextlive ${today ? 'ml-card__nextlive--today' : ''}">
+            ${today
+              ? `<span class="badge badge--live-today">${esc(c.nextLive.badge)}</span>`
+              : `<span>🎥</span>`}
+            <div class="ml-card__nextlive-text">
+              <strong>${esc(c.nextLive.title)}</strong>
+              <span>${esc(c.nextLive.chip)}</span>
+            </div>
+          </div>
+        `;
+      } else if (c.inlineLive) {
+        infoCol = `<div class="ml-card__nextlive"><span>🎥</span><span>${esc(c.inlineLive)}</span></div>`;
+      } else {
+        infoCol = `<div></div>`;
+      }
+
+      // Column 4 wrapper merges progress + CTA stacked vertically
+      const progressBlock = c.notStarted
+        ? ""
+        : `
+          <div class="ml-card__progress-row">
+            <span>Progress</span>
+            <strong>${c.progress}%</strong>
+          </div>
+          <div class="progress progress--thin"><div class="progress__fill" style="width:${c.progress}%"></div></div>
+        `;
+
+      let ctaLabel, ctaClass;
+      if (c.notStarted) { ctaLabel = "Start Course →"; ctaClass = "btn--action"; }
+      else if (c.nextLive && c.nextLive.isLiveToday) { ctaLabel = "Join Now →"; ctaClass = "btn--live"; }
+      else { ctaLabel = "Continue →"; ctaClass = "btn--action"; }
+
+      const ctaDest = c.nextLive && c.nextLive.isLiveToday ? 'immersive.html' : 'course-detail.html';
+      const actionCol = `
+        <div class="ml-card__progresscol">
+          ${progressBlock}
+          <button class="btn ${ctaClass} btn--sm" onclick="event.stopPropagation(); window.location='${ctaDest}'">${ctaLabel}</button>
+        </div>
+      `;
+
+      return `
+        <div class="ml-card" onclick="window.location='course-detail.html'">
+          ${mainCol}
+          ${crumbCol}
+          ${infoCol}
+          ${actionCol}
+        </div>
+      `;
+    }).join("");
+  })();
+</script>
+</body>
+</html>
