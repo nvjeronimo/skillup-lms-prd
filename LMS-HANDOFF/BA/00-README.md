@@ -32,8 +32,8 @@ These were written for engineering, but BAs can pull from them:
 
 | Asset | Where |
 |---|---|
-| Figma working file | `Wz2TCYFVr0hD8tJNiLajLt` (Learner Platform Experience Discovery fase) |
-| Canonical Figma page | `V7 - UUI Playground - WIP 🟠` |
+| Figma working file | `Wz2TCYFVr0hD8tJNiLajLt` (LMS ICP Phase 1) |
+| Canonical Figma page | `↳ Phase 1 - Video Lesson - Ready for Dev ✅` (`3785-11385`) |
 | Design system | `c7EUDrQwP8si08aPipDSIV` (SKO Design System — Untitled UI) |
 | BA artifacts | This folder |
 | Engineering artifacts | Parent `LMS-HANDOFF/` |

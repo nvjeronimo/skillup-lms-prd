@@ -28,21 +28,21 @@ echo "=== Pre-commit status ==="
 git status --short
 
 # 6. Stage what should be deployed to GitHub Pages
-git add -A index.html
-git add -A LMS-HANDOFF/
-git add -A _history/
+#    (heavy media + _workspace are gitignored, so these adds never pull in binaries)
+git add -A index.html README.md OPEN-ACTIONS.md SYNC-STATE.md SYNC-LOG.md SYNC-PLAYBOOK.md
+git add -A 00-decisions/ 01-ready-for-dev/ 02-content-types/ 03-design-system/
+git add -A 04-research/ 05-source-docs/ 06-v8-complementary/ 90-prototypes/
+git add -A LMS-HANDOFF/ _history/ _archive/ _media/README.md scripts/
 
 # 7. Commit (only if there's something staged)
 if git diff --cached --quiet; then
   echo "Nothing staged — skipping commit."
 else
-  git commit -m "v1.9 token modes: 4 modes wired, WCAG 2.2 AA validated, focus-ring + AC5b added
+  git commit -m "hub sync — $(date +%Y-%m-%d)
 
-- LMS-HANDOFF/tokens/colors.css: 4 mode definitions (Light/Dark x SKO/BrandX) via root data-attrs
-- LMS-HANDOFF/CHANGELOG.md: v1.9 entry covering mode mapping, fixes, new tokens
-- DS file: 3 modes configured (Dark SKO fixes + Light/Dark BrandX from greens) + LMS/Border/border-focus-ring semantic + AC5b_Red5b #E8797B primitive for dark error
-- All 16/16 contrast checks pass per mode (WCAG 2.2 AA)
-- Token validation swatch at DS node 20022:429459 page FOUNDATIONS"
+Deploy the current hub + numbered structure (00-decisions … 06-v8-complementary),
+handoff package, and registers (OPEN-ACTIONS, SYNC-STATE). See LMS-HANDOFF/CHANGELOG.md
+for the version of record (v3.3)."
 fi
 
 # 8. Push to GitHub

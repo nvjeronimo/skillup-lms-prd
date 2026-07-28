@@ -2,9 +2,31 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-07-28 · Repository reorganization (structure, not a DS version)
+
+Folder-level reorg — the DS version of record stays **v3.3**. Made the workspace self-explanatory
+for three audiences (stakeholder / designer / dev):
+
+- **New numbered structure at root:** `00-decisions/` (23 ADRs + INDEX, backboned from Figma
+  `3832-18102`), `01-ready-for-dev/`, `02-content-types/` (wires `topic-types-inventory.md`, splits
+  §7 into owned questions, promotes the 10-point registration rule), `03-design-system/` (rationale +
+  footer-contract; points to the shipped tokens here), `04-research/`, `05-source-docs/`,
+  `06-v8-complementary/` (Track B). `LMS-HANDOFF/` kept as the deployed package (hybrid).
+- **New registers:** root `README.md` (3-audience "start here"), `OPEN-ACTIONS.md`,
+  `_archive/ARCHIVE-LOG.md`.
+- **Heavy media** (456 MB `.mov`, Coursera captures, 7.9 MB HTML) → `_media/` (gitignored) + stubs.
+- **Archived:** `Prework/` (intact — handed to another team), 5 `verify-*.png`, `session-ocr-partial.md`.
+- **Stale fixed:** the "NOT YET PUBLISHED" caveats on v3.0/v3.1/v3.3 (published 2026-07-24); the old
+  Figma slug in README/BA; "132 components" → ≈155 (recount pending); removed the orphan
+  `design-system/maven-icons/` duplicate.
+- **Hub (`index.html`):** audience (Stakeholder/Designer/Dev) + track (A/B) filters, This-Week
+  Decisions · Ready-for-Dev · Open-Actions sections, status legend, hub-stale banner.
+
 ## v3.3 — 2026-07-24 (current) · Accessibility layer + softer decorative borders
 
-> ⚠️ **NOT YET PUBLISHED IN FIGMA.** DS variables changed; publish to reach consumers.
+> ✅ **PUBLISHED IN FIGMA 2026-07-24.** 1052 variables · 18 CVD primitives · verified 1:1 against
+> `tokens/colors.css` (zero divergences). The earlier "DS variables changed, consumers still see
+> v2.0" blocker is **resolved** — the triangle (Figma DS · CSS handoff · prototype) is aligned.
 
 ### Accessibility Standards (see `variable-collections-guide.md`)
 
@@ -28,7 +50,7 @@ dark → `Dark-Neutral/650` (`#2c3d45`). Decorative border, exempt from the 3:1 
 
 ## v3.1 — 2026-07-22 · Prototype sync — attribute, solid tokens, video stage
 
-> ⚠️ **NOT YET PUBLISHED IN FIGMA.** Same caveat as v3.0.
+> ✅ Published as part of the v3.3 library release (2026-07-24).
 
 Aligns the DS with the deployed prototype (`lms-prototype-mu.vercel.app`), which already consumed
 `--sk-*`. A full diff (408 → now 456 comparisons) drove the changes below. See
@@ -71,10 +93,9 @@ dark-hover-darkens bug fixed in v3.0. Three DS tokens are also absent there, inc
 
 ## v3.0 — 2026-07-22 · Skin system, dark surface ladder, primitive-layer cleanup
 
-> ⚠️ **NOT YET PUBLISHED IN FIGMA.** Every change below exists in the DS file
-> (`c7EUDrQwP8si08aPipDSIV`) but the library has not been published, so consumers still see v2.0.
-> The visual changes have also **not been reviewed by a human** — they were validated by contrast
-> maths only. Review the 6 skins side by side before publishing.
+> ✅ **PUBLISHED IN FIGMA 2026-07-24** (as part of the v3.3 library release). Consumers now see
+> v3.x. One residual nuance, non-blocking: the visual changes were validated by contrast maths and
+> published on Nelson's call — a formal human side-by-side review of the 6 skins was never run.
 
 Triggered by a review of the DS against dark-theme best practice. What started as a colour audit
 surfaced structural problems: the skins were hand-picked values with no rule, and the primitive
@@ -178,7 +199,7 @@ Consolidation of the DS tokens following the Design System Discovery and the V7 
 ### Changes
 - **Namespace migrated `--lms-*` → `--sk-*`** across `tokens/colors.css` and `tokens/typography.css`. One system namespace for all brands (never per-brand prefixes). The `sk` is the SkillUp Design *System*, not the brand.
 - **Typography fixed to Montserrat** (body + display). The previous Inter primary was stale; Inter is not used.
-- **Model documented** (see `../Design System Tokens/`): brand × scheme combined colour modes (live v1.9); a separate Breakpoints axis (Desktop/Tablet/Mobile) for size/space/radius; font-size uses Option B (chaining) for brand × breakpoint; radius/border vary by brand via role tokens that re-alias per mode; hex only in Primitives.
+- **Model documented** (see `../03-design-system/rationale/`): brand × scheme combined colour modes (live v1.9); a separate Breakpoints axis (Desktop/Tablet/Mobile) for size/space/radius; font-size uses Option B (chaining) for brand × breakpoint; radius/border vary by brand via role tokens that re-alias per mode; hex only in Primitives.
 - **New component:** Input field gains a `Search` type (14 derivations) + reusable `Keyboard key` component with a togglable `Shortcut` property (DS file).
 
 ### Unchanged

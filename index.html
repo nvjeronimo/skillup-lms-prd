@@ -630,18 +630,187 @@ body {
         <div class="home-stat-label">PRD Sections</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">10</div>
-        <div class="home-stat-label">Decisions Resolved</div>
+        <div class="home-stat-value">23</div>
+        <div class="home-stat-label">Decisions Logged</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">4</div>
-        <div class="home-stat-label">Open Decisions</div>
+        <div class="home-stat-value">14</div>
+        <div class="home-stat-label">Open Actions</div>
       </div>
       <div class="home-stat">
         <div class="home-stat-value">4</div>
         <div class="home-stat-label">Learning Flows</div>
       </div>
     </div>
+
+    <!-- ═══ REORG 2026-07-28 · decisions · ready-for-dev · open-actions (audience + track filters) ═══ -->
+    <style>
+      .sk-banner{margin:18px 0;padding:14px 18px;border-radius:var(--radius,10px);border:1px solid var(--border);background:var(--bg-card);font-size:14px;line-height:1.55;color:var(--text-secondary)}
+      .sk-banner b{color:var(--accent)}
+      .sk-controls{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between;margin:22px 0 8px}
+      .sk-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--text-tertiary)}
+      .sk-legend span{white-space:nowrap}
+      .sk-filters{display:flex;flex-wrap:wrap;gap:20px}
+      .sk-fgroup{display:flex;gap:6px;align-items:center}
+      .sk-fgroup .sk-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;opacity:.55;margin-right:2px}
+      .sk-btn{cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:999px;padding:4px 13px;font-size:12.5px;transition:.15s}
+      .sk-btn:hover{border-color:var(--accent)}
+      .sk-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+      .sk-card-meta{margin-top:10px;font-size:11px;letter-spacing:.03em;color:var(--text-tertiary)}
+      .sk-card.sk-hidden{display:none}
+      .sk-empty{font-size:13px;color:var(--text-tertiary);padding:10px 2px;display:none}
+    </style>
+
+    <div class="sk-banner">
+      ⚠️ <b>The deployed hub is 3 versions behind the record</b> (deployed v1.8 · record v3.3). A redeploy is pending — see <a href="https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md" target="_blank" rel="noopener">OPEN-ACTIONS</a> #3. The Design System <b>v3.3 is published in Figma</b> (2026-07-24): 1052 variables, 18 CVD primitives, verified 1:1 against <code>colors.css</code>.
+    </div>
+
+    <div class="sk-controls">
+      <div class="sk-legend">
+        <span>✅ Ready</span><span>🟠 WIP</span><span>⚪ Not started</span><span>⚠️ Outdated</span>
+        <span style="opacity:.7">· Track <b>A</b> = Phase 1 · <b>B</b> = V8 Complementary</span>
+      </div>
+      <div class="sk-filters">
+        <div class="sk-fgroup"><span class="sk-lbl">Audience</span>
+          <button class="sk-btn active" data-aud="all" onclick="skAud(this,'all')">All</button>
+          <button class="sk-btn" data-aud="stakeholder" onclick="skAud(this,'stakeholder')">Stakeholder</button>
+          <button class="sk-btn" data-aud="designer" onclick="skAud(this,'designer')">Designer</button>
+          <button class="sk-btn" data-aud="dev" onclick="skAud(this,'dev')">Dev</button>
+        </div>
+        <div class="sk-fgroup"><span class="sk-lbl">Track</span>
+          <button class="sk-btn active" data-trk="all" onclick="skTrk(this,'all')">All</button>
+          <button class="sk-btn" data-trk="A" onclick="skTrk(this,'A')">Phase 1 (A)</button>
+          <button class="sk-btn" data-trk="B" onclick="skTrk(this,'B')">V8 (B)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- This week's decisions -->
+    <div class="home-section-title">This Week's Decisions</div>
+    <div class="home-section-desc">Recent decisions — the full log is in <a href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/00-decisions" target="_blank" rel="noopener">00-decisions/</a> (23 records, filterable INDEX).</div>
+    <div class="home-cards" id="sk-decisions">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/014-ds-v3-skin-system.md','_blank')">
+        <div class="home-card-cat" data-cat="build">Decision · ✅ DS v3.3</div>
+        <div class="home-card-title">Skin system → 6 skins, published</div>
+        <div class="home-card-desc">12-step OKLCH ramps, 0 raw hex, dark surface ladder. Breaking: <code>data-brand</code> → <code>data-skin</code>. Published in Figma 2026-07-24.</div>
+        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/016-accessibility-layer-cvd-textscale.md','_blank')">
+        <div class="home-card-cat" data-cat="build">Decision · ✅</div>
+        <div class="home-card-title">Accessibility layer — CVD + text scale</div>
+        <div class="home-card-desc">Colourblind-safe states (<code>data-vision="cvd"</code>, Okabe-Ito, ΔE≥18) + A/A+/A++ text scale. Orthogonal to skin & theme. Shipped in v3.3.</div>
+        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/019-one-media-player-many-contexts.md','_blank')">
+        <div class="home-card-cat" data-cat="build">Decision · ✅</div>
+        <div class="home-card-title">One media player, many contexts</div>
+        <div class="home-card-desc">VILT Recording + video units reuse the same VideoPlayer as the Video topic. Live stays a plain stream — no scrubber. (Prototype PR#10)</div>
+        <div class="sk-card-meta">Track A · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/023-scorm-ora-hard-limits.md','_blank')">
+        <div class="home-card-cat" data-cat="build">Decision · ✅ edX</div>
+        <div class="home-card-title">SCORM + ORA hard limits (sourced)</div>
+        <div class="home-card-desc">SCORM 1/unit · 1–15 MB · not mobile-ready. ORA: multiple-per-unit cause submission errors (corrected). Validated vs docs.openedx.org.</div>
+        <div class="sk-card-meta">Track A · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/018-status-chips-background-tokens.md','_blank')">
+        <div class="home-card-cat" data-cat="build">Decision · ✅</div>
+        <div class="home-card-title">Status chips use background tokens</div>
+        <div class="home-card-desc">Never foreground tokens. Fixes the Completion Status dark-mode white-blob bug at master-component level; propagates to every Topic Row.</div>
+        <div class="sk-card-meta">Track A · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/02-content-types','_blank')">
+        <div class="home-card-cat" data-cat="solution">Milestone · 🟠 review</div>
+        <div class="home-card-title">Topic Content Types → Ready for Review</div>
+        <div class="home-card-desc">Unified Discovery + DS Build page (Figma 4692-444), 15 sections, end-to-end flows, buildability matrix. In review — not Ready-for-Dev.</div>
+        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+      </div>
+    </div>
+
+    <!-- Ready for Dev -->
+    <div class="home-section-title">Ready for Dev</div>
+    <div class="home-section-desc">Phase 1 screens signed off — index at <a href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/01-ready-for-dev" target="_blank" rel="noopener">01-ready-for-dev/</a>.</div>
+    <div class="home-cards" id="sk-rfd">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3785-11385','_blank')">
+        <div class="home-card-cat" data-cat="figma">Ready for Dev · ✅</div>
+        <div class="home-card-title">Phase 1 — Video Lesson</div>
+        <div class="home-card-desc">Transcript · Notes · Downloads · Player states · Note Editor. 15 cards D/T/M. Figma 3785-11385.</div>
+        <div class="sk-card-meta">Track A · D/T/M · all audiences</div>
+      </div>
+      <div class="home-card sk-card" data-aud="dev stakeholder" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3832-18102','_blank')">
+        <div class="home-card-cat" data-cat="figma">Ready for Dev · ✅</div>
+        <div class="home-card-title">Diagram Flows + Business Logic</div>
+        <div class="home-card-desc">Navigation flow + 42 business rules + 10 key decisions + 24 doc links. Backbone of the decision log. Figma 3832-18102.</div>
+        <div class="sk-card-meta">Track A · dev · stakeholder</div>
+      </div>
+      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/01-ready-for-dev','_blank')">
+        <div class="home-card-cat" data-cat="figma">Ready for Dev · ✅</div>
+        <div class="home-card-title">Overlay Panels — Notifications + Saved</div>
+        <div class="home-card-desc">Right-overlay panels from the Topbar. Spec ready; Figma node-id pending (OPEN-ACTIONS #5).</div>
+        <div class="sk-card-meta">Track A · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/01-ready-for-dev','_blank')">
+        <div class="home-card-cat" data-cat="figma">🟠 WIP — Phase 3</div>
+        <div class="home-card-title">Completion + Certificate</div>
+        <div class="home-card-desc">Course Complete Modal + Certificate D/T/M. Phase 1 baseline; Phase 3 WIP. Not Ready-for-Dev. Node-id pending.</div>
+        <div class="sk-card-meta">Track A · stakeholder</div>
+      </div>
+    </div>
+
+    <!-- Open actions -->
+    <div class="home-section-title">Open Actions</div>
+    <div class="home-section-desc">What's blocked and on whom — full register at <a href="https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md" target="_blank" rel="noopener">OPEN-ACTIONS.md</a>.</div>
+    <div class="home-cards" id="sk-actions">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+        <div class="home-card-cat" data-cat="problem">🟠 Open · Nelson</div>
+        <div class="home-card-title">Publish the hub (3 versions behind)</div>
+        <div class="home-card-desc">Deployed v1.8 vs record v3.3. Run <code>_deploy.sh</code> when ready.</div>
+        <div class="sk-card-meta">Track A · all audiences</div>
+      </div>
+      <div class="home-card sk-card" data-aud="dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+        <div class="home-card-cat" data-cat="problem">🔴 Blocked · Rashid</div>
+        <div class="home-card-title">Export SKOAIH01 course (OLX)</div>
+        <div class="home-card-desc">Last platform-vs-config unknown (Q9/Q13): do our units stack multiple components / >1 graded block?</div>
+        <div class="sk-card-meta">Track A · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="designer stakeholder" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+        <div class="home-card-cat" data-cat="problem">🔴 Gap</div>
+        <div class="home-card-title">VILT design — biggest gap</div>
+        <div class="home-card-desc">19% of topics, nothing designed yet. Recording chrome partly covered by the shared VideoPlayer decision.</div>
+        <div class="sk-card-meta">Track A · designer · stakeholder</div>
+      </div>
+      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+        <div class="home-card-cat" data-cat="problem">🟠 Open · Nelson</div>
+        <div class="home-card-title">Recount LMS components (132 + 23)</div>
+        <div class="home-card-desc">≈155 after the +23 of 2026-07-22 (domains F/D/L). Itemise in components-inventory.</div>
+        <div class="sk-card-meta">Track A · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="designer" data-track="B" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/06-v8-complementary','_blank')">
+        <div class="home-card-cat" data-cat="tools">🟠 WIP · Track B</div>
+        <div class="home-card-title">V8 Complementary Pages</div>
+        <div class="home-card-desc">Separate SkillUp-Brand stream, migrating raw frames → DS instances. Not part of Phase 1 handoff. Figma 4340-322.</div>
+        <div class="sk-card-meta">Track B · designer</div>
+      </div>
+    </div>
+    <div class="sk-empty" id="sk-empty">No items match this audience + track combination.</div>
+
+    <script>
+      window.skState = { aud: 'all', trk: 'all' };
+      function skApply(){
+        var a = window.skState.aud, t = window.skState.trk, shown = 0;
+        document.querySelectorAll('.sk-card').forEach(function(c){
+          var auds = (c.getAttribute('data-aud')||'').split(' ');
+          var trk = c.getAttribute('data-track')||'';
+          var okA = (a==='all') || auds.indexOf(a)>-1;
+          var okT = (t==='all') || trk===t;
+          if(okA && okT){ c.classList.remove('sk-hidden'); shown++; }
+          else c.classList.add('sk-hidden');
+        });
+        document.getElementById('sk-empty').style.display = shown ? 'none' : 'block';
+      }
+      function skAud(btn,v){ window.skState.aud=v; document.querySelectorAll('[data-aud]').forEach(function(b){ if(b.tagName==='BUTTON') b.classList.remove('active'); }); btn.classList.add('active'); skApply(); }
+      function skTrk(btn,v){ window.skState.trk=v; document.querySelectorAll('[data-trk]').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); skApply(); }
+    </script>
 
     <!-- ═══ PROBLEM SPACE ═══ -->
     <div class="home-section-title">Problem Space</div>

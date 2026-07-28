@@ -2,6 +2,11 @@
 
 **Updated 2026-06-15**: All 132 LMS Extension Components migrated to DS file.
 
+> ⚠️ **Count stale (as of 2026-07-28).** This doc itemises the 132 baseline. **23 components were
+> added 2026-07-22** (domains **F · Assessments**, **D · Live/VILT**, new domain **L**) for the Topic
+> Content Types build → **≈155 total**. Those 23 are not yet itemised below. Exact recount + itemisation
+> is an open action — see `../OPEN-ACTIONS.md`.
+
 - **DS location**: file `c7EUDrQwP8si08aPipDSIV`, page `❖ LMS COMPONENTS ✅` (`1030:33572`)
 - **Working file backup**: local copies remain on `Wz2TCYFVr0hD8tJNiLajLt` Playground page for reference
 - **Engineer access**: components are remote-published — pull via Figma library subscription

@@ -4,10 +4,11 @@ Legacy markdown docs from V3 / V4 / V5 iterations of the LMS discovery work. Kep
 
 For current source of truth see:
 
-- **Active handoff package**: `../LMS-HANDOFF/` (v1.8 — 2026-06-15)
+- **Active handoff package**: `../LMS-HANDOFF/` (v3.3 — 2026-07-24, published in Figma)
 - **Discovery Hub**: `../index.html`
+- **Decision log**: `../00-decisions/` (why each thing was decided)
 - **PRD (current)**: `../prd/`
-- **Design system**: `../design-system/` (SKO UUI tokens)
+- **Design system**: `../03-design-system/` + `../design-system/` (SKO UUI tokens)
 
 ## Files in this folder
 

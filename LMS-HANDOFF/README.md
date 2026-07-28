@@ -2,10 +2,10 @@
 
 Code handoff package for the V7 LMS prototype. Built from the Figma source of truth:
 
-- Working file: `Wz2TCYFVr0hD8tJNiLajLt` (Learner Platform Experience Discovery fase)
-- Design system: `c7EUDrQwP8si08aPipDSIV` (SKO Design System — Untitled UI)
-- Canonical page: `V7 - UUI Playground - WIP 🟠`
-- **LMS Extension Components** (DS-hosted as of 2026-06-15): page `❖ LMS COMPONENTS ✅` (`1030:33572`) — 132 components
+- Working file: `Wz2TCYFVr0hD8tJNiLajLt` (LMS ICP Phase 1)
+- Design system: `c7EUDrQwP8si08aPipDSIV` (SKO Design System — Untitled UI) — **v3.3 published 2026-07-24**
+- **LMS Extension Components** (DS-hosted): page `❖ LMS COMPONENTS ✅` (`1030:33572`) — **≈155 components**
+  (132 baseline + 23 added 2026-07-22, domains F · Assessments / D · Live-VILT / L; exact recount pending — see `../OPEN-ACTIONS.md`)
 
 ## Handoff pages (Phase 1)
 
@@ -77,7 +77,7 @@ lms-prototype/
 | `README.md` | This file — overview |
 | `tokens/colors.css` | All LMS color tokens as CSS custom properties |
 | `tokens/typography.css` | Font families + text style classes |
-| `components-inventory.md` | All 132 LMS Extension Components (DS-hosted): ID, variants, properties, anatomy, tokens |
+| `components-inventory.md` | LMS Extension Components (DS-hosted): ID, variants, properties, anatomy, tokens. **Itemises 132 baseline; ≈155 after the +23 of 2026-07-22 — recount pending** |
 | `screens-spec.md` | The 7 Final Screens to build |
 | `overlay-panels-spec.md` | Notifications + Saved right-overlay panels (triggered from Topbar) |
 | `prototype-flows.md` | Interaction map for the prototype |
