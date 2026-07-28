@@ -83,7 +83,9 @@ lms-prototype/
 | `prototype-flows.md` | Interaction map for the prototype |
 | `data-model.json` | Mock course content shape |
 | `storybook-coverage.md` | Story coverage plan per component |
-| `CHANGELOG.md` | Version notes for the handoff package itself (v1.8 = latest) |
+| `CHANGELOG.md` | Version notes for the handoff package itself (v3.3 = latest) |
+| `variable-collections-guide.md` | The 4 Figma variable collections: what each is for, the skin ramp model, naming rules, how to re-validate contrast |
+| `modules/skin-switcher/` | Drop-in brand-skin + light/dark control. Reads skins and colours from `tokens/colors.css` — no colour is written in the module. `demo.html` doubles as the visual token review page |
 | `edx-parity-audit.md` | Feature audit: our LMS vs edX Learner Guide — covered / partial / missing per area |
 | `feature-deltas.md` | Clear separation: edX baseline / ours-only / edX-only-to-add / edX-only-skipped |
 | `phase1-readiness.md` | Specs for bookmark toast, transcript auto-scroll, a11y checklist, share menu + analytics events |
@@ -92,6 +94,17 @@ lms-prototype/
 ## BA handoff (subfolder)
 
 For the Business Analyst team. Same source material, BA-shaped artifacts.
+
+### Official FRDs from Rashid (Jun 25, 2026)
+
+Final implementation-grade FRDs from BA team for Sprint 109 development kickoff. See `BA/FRDs/00-README.md` for the index.
+
+| File | Module | Status |
+|---|---|---|
+| `BA/FRDs/FRD_ICP_5.3_Video_Lessons.md` | Video player + transcript + completion | Under Review |
+| `BA/FRDs/FRD_CourseOutline_Module_v1.0.md` | Sidebar navigation + resume position | Draft |
+
+Original `.docx` originals at project root.
 
 | File | Purpose |
 |---|---|

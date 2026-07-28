@@ -49,6 +49,7 @@ type LmsState = {
 ### Sidebar
 - **Course Header toggle button** → `setSidebarExpanded(!sidebarExpanded)`
 - **Module Header click** → expand/collapse that module group (local state inside Sidebar or in store)
+- **Auto-collapse on completion** → when a module reaches 100% (every topic in it complete), it **collapses automatically**, moving focus down to the next incomplete module. Manual toggle still wins: if the learner re-opens a completed module, it stays open until they leave it — auto-collapse fires once, on the completion transition, not on every render. Drives the `LMS / Module Header` `State=Collapsed` variant + a "Completed" affordance on the header.
 - **Topic Row click** → `setCurrentTopic(id)` → router push to that topic's URL
 - **Bookmark icon on row** → `toggleBookmark(topicId)`
 - **Mobile**: drawer overlay slides in from left when topbar ☰ is tapped

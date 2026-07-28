@@ -9,3 +9,6 @@ v7-storybook/storybook-static/
 # System
 .DS_Store
 .playwright-mcp/
+
+# token backups (local only)
+LMS-HANDOFF/tokens/*.bak

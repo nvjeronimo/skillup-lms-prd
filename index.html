@@ -342,6 +342,7 @@ body {
   .home-cards { grid-template-columns: 1fr; }
 }
 </style>
+  <link rel="stylesheet" href="LMS-HANDOFF/tokens/colors.css">
 </head>
 <body>
 
@@ -533,13 +534,13 @@ body {
           </div>
           <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
-        <a class="mega-dropdown-item" href="https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase" target="_blank" rel="noopener">
+        <a class="mega-dropdown-item" href="https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1" target="_blank" rel="noopener">
           <div class="mega-dropdown-icon figma">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M12 8.5h3.5a3.5 3.5 0 1 1 0 7H12v-7z"/></svg>
           </div>
           <div class="mega-dropdown-text">
-            <div class="mega-dropdown-title">Design (V4)</div>
-            <div class="mega-dropdown-desc">Learner Platform Experience Discovery</div>
+            <div class="mega-dropdown-title">LMS ICP Phase 1</div>
+            <div class="mega-dropdown-desc">Learner platform — screens & flows (working file)</div>
           </div>
           <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
@@ -621,7 +622,7 @@ body {
 
     <div class="home-stats">
       <div class="home-stat">
-        <div class="home-stat-value">17</div>
+        <div class="home-stat-value">18</div>
         <div class="home-stat-label">Total Artifacts</div>
       </div>
       <div class="home-stat">
@@ -629,12 +630,12 @@ body {
         <div class="home-stat-label">PRD Sections</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">9</div>
+        <div class="home-stat-value">10</div>
         <div class="home-stat-label">Decisions Resolved</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">1</div>
-        <div class="home-stat-label">Open Decision</div>
+        <div class="home-stat-value">4</div>
+        <div class="home-stat-label">Open Decisions</div>
       </div>
       <div class="home-stat">
         <div class="home-stat-value">4</div>
@@ -681,6 +682,13 @@ body {
         <span class="sm-badge" data-cat="problem">PDF</span>
         <span class="sm-title">VILT Integration Design Doc</span>
         <span class="sm-date">Apr 10</span>
+        <span class="sm-type">PDF</span>
+        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </div>
+      <div class="home-card-sm" onclick="downloadFile('ICP Player for Different Video Types.pdf')">
+        <span class="sm-badge" data-cat="problem">Meeting</span>
+        <span class="sm-title">ICP Video Types (Phase 1 scope)</span>
+        <span class="sm-date">Jun 24</span>
         <span class="sm-type">PDF</span>
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
@@ -797,9 +805,9 @@ body {
         <span class="sm-type">FigJam</span>
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
-      <div class="home-card-sm" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase','_blank')">
+      <div class="home-card-sm" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1','_blank')">
         <span class="sm-badge" data-cat="figma">Figma</span>
-        <span class="sm-title">Design (V4)</span>
+        <span class="sm-title">LMS ICP Phase 1</span>
         <span class="sm-type">Design File</span>
         <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
@@ -894,6 +902,7 @@ const searchData = [
   { cat: 'Audit', color: 'problem', title: 'V4 UX Audit Report (v2)', desc: 'Norman/Nielsen audit v2, score 101/140, 5 resolved, 6 new findings', page: 'ux-audit/', date: 'Apr 11' },
   { cat: 'Discovery', color: 'problem', title: 'LMS Mind Map', desc: 'Feature space, modules, relationships, priorities', page: 'mind-map/', date: 'Mar 27' },
   { cat: 'PDF', color: 'problem', title: 'VILT Integration Design Doc', desc: 'VILT architecture and integration specifications', file: 'VILT-Integration-Design-Document.pdf', date: 'Apr 10' },
+  { cat: 'Meeting', color: 'problem', title: 'ICP Video Types (Phase 1 scope)', desc: 'Azure Blob only, YouTube external video, mixed content, SCORM, Studio mapping, mark as complete, completion contract', file: 'ICP Player for Different Video Types.pdf', date: 'Jun 24' },
   { cat: 'Transcript', color: 'problem', title: 'Meeting Transcript (Apr 10)', desc: 'VILT discovery meeting, delivery modes, tagging, calendar', file: 'LMS-Walkthrough-Questions-Transcript-20260410.txt', date: 'Apr 10' },
   { cat: 'Data', color: 'problem', title: 'Programs/Courses List', desc: 'US program and course inventory', file: 'US Program-courses List (1).xlsx' },
   // Solution Space
@@ -908,7 +917,7 @@ const searchData = [
   { cat: 'Storybook', color: 'build', title: 'V7 Component Library', desc: 'React atoms, molecules, organisms, tokens, OpenEdX notes', url: 'storybook/', date: 'May 4' },
   { cat: 'Handoff', color: 'build', title: 'Engineering Handoff Package', desc: '132 LMS Extension Components DS-hosted, 4 Ready-for-Dev pages, tokens, Storybook plan, BA package, business logic + 42 BRs', url: 'https://github.com/nvjeronimo/skillup-lms-prd/tree/main/LMS-HANDOFF', date: 'Jun 15' },
   { cat: 'Figma', color: 'figma', title: 'Diagrams (FigJam)', desc: 'LMS Learner Flow Diagram board', url: 'https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1' },
-  { cat: 'Figma', color: 'figma', title: 'Design V4', desc: 'Learner Platform Experience Discovery wireframes', url: 'https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/Learner-Platform-Experience-Discovery-fase' },
+  { cat: 'Figma', color: 'figma', title: 'LMS ICP Phase 1', desc: 'Learner platform — screens & flows (working file)', url: 'https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1' },
   // Tools
   { cat: 'Tool', color: 'tools', title: 'AI Prompt Engineering', desc: 'Prompt generator for AI workflows', url: 'https://fernando-drab.vercel.app/' },
   { cat: 'Tool', color: 'tools', title: 'UX Deep Audit App', desc: 'Interactive UX evaluation and heuristic review', url: 'https://claude.ai/public/artifacts/346b5383-a4e7-4d3f-a688-585ba8fa821f' },
@@ -968,5 +977,27 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeSearch();
 });
 </script>
+<style id="sk-bridge">
+/* --- DS token bridge (v2.0): map prototype vars to --sk- canonical tokens --- */
+:root, [data-theme="light"], [data-theme="dark"]{
+  --bg: var(--sk-bg-primary);
+  --bg-card: var(--sk-bg-secondary);
+  --bg-card-hover: var(--sk-bg-tertiary);
+  --bg-active: var(--sk-bg-brand-primary);
+  --bg-dropdown: var(--sk-bg-primary);
+  --border: var(--sk-border-primary);
+  --border-light: var(--sk-border-secondary);
+  --text-primary: var(--sk-text-primary);
+  --text-secondary: var(--sk-text-secondary);
+  --text-tertiary: var(--sk-text-tertiary);
+  --text-nav: var(--sk-text-secondary);
+  --text-nav-active: var(--sk-text-brand);
+  --accent: var(--sk-text-brand);
+  --accent-bg: var(--sk-bg-brand-primary);
+  --accent-light: var(--sk-bg-brand-primary);
+  /* tag-* category colours left intentional (decorative, no DS semantic equivalent) */
+}
+body{ font-family: var(--sk-font-body, 'Montserrat', system-ui, sans-serif); }
+</style>
 </body>
 </html>

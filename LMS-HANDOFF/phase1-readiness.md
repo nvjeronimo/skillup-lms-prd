@@ -34,6 +34,80 @@ Warning notes remain on those card descriptions until reflow complete.
 
 ---
 
+## 0. Sticky video on scroll (added 2026-06-26)
+
+On Video topic screens, the video player MUST remain visible at the top of the viewport as the learner scrolls the transcript / notes / downloads tab content. The player docks (sticks) to the top of the main panel and reduces in height — never disappears.
+
+**Demo screen**: Card 7 · transcript-scrolled-desktop on `↳ Phase 1 - Video Lesson - Ready for Dev ✅` page. Wrapper: `ICP-Video-transcript-scrolled-desktop`.
+
+### Behaviour
+
+| State | Trigger | Action |
+|---|---|---|
+| Default | No scroll | Video player at full height (405px desktop), normal position |
+| Scrolled | Tab content scrolled below threshold (~80px) | Video player docks at top, height reduces to compact size, drop shadow appears |
+| Released | Scroll back to top | Video player returns to full height smoothly |
+
+### Compact docked heights per viewport
+
+| Viewport | Default video height | Docked height |
+|---|---|---|
+| Desktop (≥1024px) | 405 | **240** |
+| Tablet (640–1023px) | 315 | **180** |
+| Mobile (<640px) | 211 | **160** |
+
+Width stays full-bleed within the main content panel.
+
+### Visual treatment when docked
+
+- **Position**: `position: sticky; top: 0;` (or equivalent — pinned within the scroll container)
+- **Shadow**: `0 4px 16px rgba(0,0,0,0.18)` to separate from transcript below
+- **Border-radius**: bottom corners only (top corners stay flush with chrome above)
+- **Z-index**: above transcript list, below modals/dialogs/topbar
+- **Animation**: smooth height transition (200ms ease-out) when entering/leaving docked state
+
+### Active line auto-scroll interaction
+
+- The "Sync to Video" button (see below) still operates underneath the docked video
+- Active line highlight remains visible — auto-scroll places the active line ~120px below the docked video's bottom edge to avoid overlap
+- "Sync to Video" button stays centered in its own row below the docked video and above the transcript rows, so the user can re-engage while docked
+
+### "Sync to Video" button (auto-scroll re-engagement)
+
+Appears in a dedicated row between the docked video and the transcript list when the learner has manually scrolled the transcript away from the active line.
+
+- **Component**: `Buttons/Button` (DS) — Size=sm, Hierarchy=Primary, State=Default, Icon only=False
+- **Label**: "Sync to Video"
+- **Trailing icon (dynamic)**: direction depends on where the active line sits relative to the visible transcript viewport:
+  - Active line is **above** viewport (user scrolled DOWN past it) → `chevron-up` — points back UP to catch playback
+  - Active line is **below** viewport (user scrolled UP past it) → `chevron-down` — points DOWN to catch playback
+- **Position**: centered horizontally in the transcript panel, above the transcript rows
+- **Visibility**: hidden by default; appears when user manually scrolls the transcript ≥40px away from the active line
+- **On click**: scrolls transcript back to the active line; re-enables auto-follow; disappears
+- **Auto-dismiss**: also disappears when the next active line change lands within the visible range
+- **A11y**: focusable via keyboard; `aria-label="Sync transcript to current video position"`
+
+Naming rationale: "Sync to Video" is action-oriented (tells the user what will happen) rather than state-oriented ("Following"). Primary hierarchy signals importance — the user needs to notice this to re-engage with auto-scroll. Dynamic chevron direction communicates spatial context — the user immediately understands which way the transcript will jump.
+
+### Edge cases
+
+| Scenario | Expected behaviour |
+|---|---|
+| Player in full-screen | Disable sticky behaviour; full-screen overrides |
+| Player error state | Still dock at top (shows error/retry compact) |
+| Player loading state | Still dock at top (shows loader) |
+| Tab is Notes/Downloads (no transcript) | Still dock — applies to all tab content scrolling |
+| Mobile in landscape | Same dock pattern at 160px |
+
+### Engineering implementation
+
+- Use IntersectionObserver on the video player's bottom edge to detect when it leaves the viewport
+- OR pure CSS `position: sticky` with a height transition on a wrapper class toggle
+- Test against scroll wheel + trackpad + touch swipe to ensure smoothness on all input types
+- Don't break keyboard navigation (Tab order should not skip docked controls)
+
+---
+
 ## 1. Bookmark toast feedback pattern
 
 When a user toggles bookmark via Topic Row icon or Topbar button, show a transient confirmation.

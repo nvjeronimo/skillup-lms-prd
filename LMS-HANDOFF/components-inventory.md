@@ -271,6 +271,30 @@ Inline row below the Video Player on every Video lesson screen. Engineer should 
 
 ### LMS / Daily Goals — `2991:462` — COMPONENT (decide later — exploratory)
 
+### LMS / Sync to Video Button — `20214:1771167` — COMPONENT_SET (2 variants) — added 2026-07-03
+- **Variants**: Direction = Up · Down
+- **Base**: `Buttons/Button` (Size=sm, Hierarchy=Primary, Icon trailing enabled, Label="Sync to Video")
+- **Trailing icon by variant**:
+  - Direction=Up → `chevron-up` (active line above viewport — jump up)
+  - Direction=Down → `chevron-down` (active line below viewport — jump down)
+- **Use**: Auto-scroll re-engagement in the Transcript panel. Appears when learner has manually scrolled the transcript away from the active line (threshold ≥40px). Applies whether the video is docked (sticky) or full-height. Direction dynamic per active-line position.
+- **Behavior** (see `phase1-readiness.md` § 0 for full spec):
+  - Hidden by default
+  - Appears on scroll ≥40px from active line
+  - Click → scrolls transcript to active line + re-enables auto-follow + disappears
+  - Auto-dismiss when next active-line change lands within visible range
+- **A11y**: focusable via keyboard, `aria-label="Sync transcript to current video position"`
+- **Position in layout**: centered horizontally in a dedicated row between the video player (or docked player) and the transcript rows.
+
+### LMS / Mobile Tab Select — `19995:7247` — COMPONENT_SET (2 variants) — added 2026-06-16
+- **Variants**: State = Default (closed) · Open (dropdown panel below)
+- **Properties**: Active label (TEXT, default "Transcript") · Count (TEXT, default "2") · Show count (BOOLEAN, default true)
+- **Use**: Mobile-only (viewport ≤480px) replacement for the horizontal Transcript / Notes / Downloads tab strip. Renders as a Select-styled pill with the active tab name + count badge + chevron. Tap to open the dropdown showing all 3 options.
+- **Anatomy (Default)**: Input frame 320×42, border-brand 1px, radius 8, white bg. Padding 14h/10v. Content row: Active label (Montserrat SemiBold 14px, text-brand-secondary) + Count badge (bg-brand-section pill, text-brand-secondary 12px Medium). Chevron-down icon trailing.
+- **Anatomy (Open)**: Same input row with chevron rotated 180° + 1px divider + dropdown panel below. Panel: white bg, border-brand, radius 8, 6px padding. 3 menu items (Transcript / Notes / Downloads). Active item: bg-brand-section + SemiBold label. Others: regular Medium weight.
+- **Tokens**: bg-brand-section, text-brand-secondary, text-brand-primary, border-brand
+- **A11y**: Tap target ≥44×44 per BR-38 and EC-17. Role=combobox + aria-expanded on the input. Panel items role=option. Esc closes. Selecting an option closes the panel + switches active tab + scrolls to top.
+
 ---
 
 ## I · System Feedback

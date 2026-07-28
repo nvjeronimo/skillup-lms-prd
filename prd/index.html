@@ -366,6 +366,7 @@ h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
   .main { margin-left: 0; padding: 70px 20px 80px; }
 }
 </style>
+  <link rel="stylesheet" href="../LMS-HANDOFF/tokens/colors.css">
 </head>
 <body>
 
@@ -1060,6 +1061,12 @@ h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
     <tr><td>11</td><td>VILT prerequisite enforcement</td><td>Block attendance if behind, or nudge only</td><td><span class="decision-done">Resolved Apr 10: nudge only. No blocking.</span></td></tr>
     <tr><td>12</td><td>Delivery mode tagging level</td><td>Course only, module only, or any level</td><td><span class="decision-done">Resolved Apr 10: any level (lesson, module, course). Bubbles up.</span></td></tr>
     <tr><td>13</td><td>Visual differentiation of VILT vs self-paced in course structure</td><td>Badge, icon, color, or combination</td><td><span class="decision-open">Nelson to decide</span></td></tr>
+    <tr><td>14</td><td>ICP Phase 1 content scope</td><td>Azure Blob video only vs all video types</td><td><span class="decision-done">Resolved Jun 24: Azure Blob-hosted video only. Player controls, speed, transcript, progress tracking all aligned for this type.</span></td></tr>
+    <tr><td>15</td><td>Externally hosted video (YouTube / Vimeo / 3rd-party)</td><td>Native player embed + manual completion vs no support</td><td><span class="decision-open">Backlog / discovery. Auto progress tracking unreliable, transcript differs per platform, likely needs manual "Mark as Complete".</span></td></tr>
+    <tr><td>16</td><td>Mixed / combination content layout (reading + image + HTML + audio + video on one page)</td><td>Standard content type vs bespoke per course</td><td><span class="decision-open">Backlog / discovery. Content-layout problem, needs instructional-design input. Open: internal name, course count, completion tracking.</span></td></tr>
+    <tr><td>17</td><td>SCORM package experience in ICP</td><td>Launch in contained frame (listen to SCORM runtime API) vs hand off full-screen vs out of ICP</td><td><span class="decision-open">Backlog / discovery. Dual-nav risk. Architectural spike required before phasing.</span></td></tr>
+    <tr><td>18</td><td>Completion contract / manual "Mark as Complete"</td><td>Universal manual override vs only-when-untrackable; long-form vs external</td><td><span class="decision-open">Flagged Phase 1 prerequisite: define the abstraction now (every topic has a state, auto where possible, manual fallback always available) even if only Azure is implemented.</span></td></tr>
+    <tr><td>19</td><td>Studio-to-ICP asset & transcript mapping</td><td>One URL field for all sources vs typed fields; transcript authored vs generated</td><td><span class="decision-open">Blocks Phase 1 transcript AC. Studio demo required (contacts: Roop, Simran).</span></td></tr>
   </tbody>
 </table></div>
 
@@ -1186,11 +1193,13 @@ h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
     <tr><td>Meeting Transcript (Apr 10)</td><td><code>LMS-Walkthrough-Questions-Transcript-20260410.txt</code></td><td>Full transcript of the LMS Walkthrough and Questions meeting. 36 minutes. Participants: Harpreet, Govind, Navdeep, Rupali, Nelson.</td></tr>
     <tr><td>Official Transcript (Apr 10)</td><td><code>LMS Walkthrough and questions.docx</code></td><td>Microsoft Teams auto-generated transcript of the same meeting (official .docx version).</td></tr>
     <tr><td>V4 Wireframes</td><td>Figma: <code>Wz2TCYFVr0hD8tJNiLajLt</code></td><td>33 screens across 4 flows. Section 17 for details.</td></tr>
+    <tr><td>ICP Player for Different Video Types (Jun 24)</td><td><code>ICP Player for Different Video Types.pdf</code></td><td>Meeting notes defining Phase 1 video scope (Azure Blob only) and backlog/discovery items: external video, mixed content, SCORM, Studio mapping. Drives decisions 14-19.</td></tr>
   </tbody>
 </table></div>
 
 <p style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-tertiary);">
   <strong>Document History:</strong><br>
+  Jun 24, 2026 - ICP video-type scope added. Section 13 extended with decisions 14-19 (Phase 1 = Azure Blob only; external video, mixed content, SCORM, completion contract, and Studio mapping logged as backlog/discovery). Meeting PDF added to Supporting Artifacts.<br>
   Apr 10, 2026 - Major update: VILT architecture (Section 8) expanded from discovery meeting. Delivery Methods (2.3) rewritten with core principle, tagging rules, bubble-up logic. 4 open decisions resolved. Supporting artifacts section added.<br>
   Apr 9, 2026 - Initial PRD compiled from all discovery materials, wireframes, audits, session notes, FRD-Cohort Management, and Mobile App Requirements.
 </p>
@@ -1305,5 +1314,45 @@ function toggleNavGroup(btn) {
   btn.closest('.nav-group').classList.toggle('collapsed');
 }
 </script>
+<style id="sk-bridge">
+/* --- DS token bridge (v2.0): map prototype vars to --sk- canonical tokens --- */
+:root, [data-theme="light"], [data-theme="dark"]{
+  --bg: var(--sk-bg-primary);
+  --bg-card: var(--sk-bg-secondary);
+  --bg-badge: var(--sk-bg-secondary);
+  --bg-code: var(--sk-bg-secondary-subtle);
+  --bg-sidebar: var(--sk-bg-secondary);
+  --bg-search: var(--sk-bg-primary);
+  --bg-table-header: var(--sk-bg-secondary);
+  --bg-table-row-alt: var(--sk-bg-secondary-subtle);
+  --border: var(--sk-border-primary);
+  --border-light: var(--sk-border-secondary);
+  --text-primary: var(--sk-text-primary);
+  --text-secondary: var(--sk-text-secondary);
+  --text-tertiary: var(--sk-text-tertiary);
+  --text-nav: var(--sk-text-secondary);
+  --text-nav-active: var(--sk-text-primary);
+  --accent: var(--sk-text-brand);
+  --accent-bg: var(--sk-bg-brand-primary);
+  --accent-light: var(--sk-bg-brand-primary);
+  --progress-bar: var(--sk-fg-progress);
+  --scrollbar-thumb: var(--sk-border-primary);
+  --scrollbar-track: var(--sk-bg-secondary);
+  --status-completed-bg: var(--sk-bg-success-primary);
+  --status-completed-text: var(--sk-text-success-primary);
+  --status-failed-bg: var(--sk-bg-error-primary);
+  --status-failed-text: var(--sk-text-error-primary);
+  --status-risk-bg: var(--sk-bg-warning-primary);
+  --status-risk-text: var(--sk-text-warning-primary);
+  --status-progress-bg: var(--sk-bg-brand-primary);
+  --status-progress-text: var(--sk-text-brand);
+  --status-notstarted-bg: var(--sk-bg-secondary);
+  --status-notstarted-text: var(--sk-text-tertiary);
+  --status-locked-bg: var(--sk-text-tertiary);
+  --status-locked-text: var(--sk-fg-white);
+  /* tag-* delivery/category colours left intentional */
+}
+body{ font-family: var(--sk-font-body, 'Montserrat', system-ui, sans-serif); }
+</style>
 </body>
 </html>
