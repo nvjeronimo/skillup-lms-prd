@@ -18,3 +18,10 @@ _media/
 Design System Discovery - Demo Session/
 Coursera LMS immersive course/
 Active Workspace _ Notes _ AI.html
+
+# Meeting recordings and transcripts — local only. This repo is PUBLIC, and a
+# verbatim recording of colleagues is not ours to publish; git history would
+# make it permanent even if deleted later. Keep the source next to the work and
+# publish only the analysis drawn from it (see topic-types-inventory.md §8).
+*.vtt
+*.srt
