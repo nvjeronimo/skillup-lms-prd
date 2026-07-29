@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive — v1.8 Discovery Hub snapshot</title>
+<link rel="stylesheet" href="../LMS-HANDOFF/tokens/colors.css">
+<style>
+  :root{ --bg:var(--sk-bg-primary); --card:var(--sk-bg-secondary); --card-h:var(--sk-bg-tertiary);
+         --bd:var(--sk-border-primary); --tx:var(--sk-text-primary); --tx2:var(--sk-text-secondary);
+         --tx3:var(--sk-text-tertiary); --accent:var(--sk-text-brand); }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--tx);
+       line-height:1.5;padding:40px 28px 80px;max-width:1100px;margin:0 auto}
+  a{color:inherit;text-decoration:none}
+  .note{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;
+        margin:0 0 32px;font-size:14px;color:var(--tx2)}
+  .note b{color:var(--accent)}
+  h1{font-size:26px;margin:0 0 6px}
+  .sub{color:var(--tx3);font-size:14px;margin:0 0 28px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--tx3);
+     margin:34px 0 12px;font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .card{display:block;background:var(--card);border:1px solid var(--bd);border-radius:12px;
+        padding:16px 18px;transition:.15s}
+  .card:hover{background:var(--card-h);border-color:var(--accent)}
+  .cat{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+  .ttl{font-size:15px;font-weight:600;margin-bottom:6px}
+  .desc{font-size:13px;color:var(--tx2)}
+  .meta{font-size:11px;color:var(--tx3);margin-top:10px}
+  .rows{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .row{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bd);
+       border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--tx2)}
+  .row:hover{border-color:var(--accent)}
+  .pill{font-size:10px;font-weight:700;color:var(--accent)}
+  .back{display:inline-block;margin-bottom:22px;font-size:13px;color:var(--accent)}
+</style>
+</head>
+<body>
+  <a class="back" href="../index.html" target="_top">← Back to the current hub</a>
+  <h1>Archive — Discovery Hub v1.8</h1>
+  <p class="sub">Snapshot of the hub as deployed at v1.8, kept for provenance.</p>
+  <div class="note">
+    ⚠️ <b>Historical.</b> This is the old v1.8 discovery-hub view. Nothing here is the current source of
+    truth — for that, go to the <a href="../index.html" target="_top" style="color:var(--accent)">current hub</a>
+    (ICP · LMS · Foundations) and the numbered folders (<code>00-decisions/</code> … <code>06-platform-pages/</code>).
+    Links below point to where each artifact lives now.
+  </div>
+
+  <h2>Problem Space</h2>
+  <div class="grid">
+    <a class="card" href="../meeting-summary/" target="_blank"><div class="cat">Meeting Summary</div><div class="ttl">VILT Discovery Meeting</div><div class="desc">Core principle (course structure vs delivery method are separate concerns), 6 key decisions, impact on PRD.</div><div class="meta">Apr 10, 2026 · 6 decisions</div></a>
+    <a class="card" href="../ux-audit/" target="_blank"><div class="cat">Audit</div><div class="ttl">V4 UX Audit Report (v2)</div><div class="desc">Norman/Nielsen audit v2. Score 101/140 (+7). 5 resolved, 6 new findings across 33 screens.</div><div class="meta">Apr 11, 2026 · 33 screens</div></a>
+    <a class="card" href="../mind-map/" target="_blank"><div class="cat">Discovery</div><div class="ttl">LMS Mind Map</div><div class="desc">High-level visual map of the entire LMS feature space. Modules, relationships, priority groupings.</div><div class="meta">Mar 27, 2026</div></a>
+  </div>
+  <div class="rows">
+    <a class="row" href="../05-source-docs/VILT-Integration-Design-Document.pdf" target="_blank"><span class="pill">PDF</span> VILT Integration Design Doc</a>
+    <a class="row" href="../05-source-docs/ICP Player for Different Video Types.pdf" target="_blank"><span class="pill">PDF</span> ICP Video Types (Phase 1 scope)</a>
+    <a class="row" href="../04-research/LMS-Walkthrough-Questions-Transcript-20260410.txt" target="_blank"><span class="pill">TXT</span> Meeting Transcript (Apr 10)</a>
+    <a class="row" href="../05-source-docs/US Program-courses List (1).xlsx" target="_blank"><span class="pill">XLSX</span> Programs/Courses List</a>
+  </div>
+
+  <h2>Solution Space</h2>
+  <div class="grid">
+    <a class="card" href="../prd/" target="_blank"><div class="cat">PRD</div><div class="ttl">Courses &amp; Programs PRD</div><div class="desc">Product requirements for the learner platform. 18 sections: content hierarchy, delivery modes, VILT, progress, assessments.</div><div class="meta">Apr 10, 2026 · 18 sections · Draft</div></a>
+    <a class="card" href="../vilt-architecture/" target="_blank"><div class="cat">Architecture</div><div class="ttl">VILT Architecture Flowchart</div><div class="desc">Content hierarchy, delivery-mode tagging, bubble-up logic, learner view.</div><div class="meta">Apr 10, 2026</div></a>
+    <a class="card" href="../live-sessions/" target="_blank"><div class="cat">Architecture</div><div class="ttl">Live Sessions Flow</div><div class="desc">End-to-end flow for live/virtual sessions: scheduling, join, recording, attendance.</div><div class="meta">Apr 9, 2026</div></a>
+  </div>
+  <div class="rows">
+    <a class="row" href="../05-source-docs/FRD-Cohort Management.docx" target="_blank"><span class="pill">FRD</span> Cohort Management</a>
+    <a class="row" href="../05-source-docs/Mobile App Requirements Phase-1.docx" target="_blank"><span class="pill">DOCX</span> Mobile App Requirements</a>
+    <a class="row" href="../05-source-docs/SkillUp Learner (LMS) Dashboard.docx" target="_blank"><span class="pill">DOCX</span> Learner Dashboard</a>
+  </div>
+
+  <h2>Build</h2>
+  <div class="grid">
+    <a class="card" href="../design-system/" target="_blank"><div class="cat">Design System</div><div class="ttl">Tokens &amp; Components (discovery)</div><div class="desc">Early color tokens, typography, spacing, patterns. Current DS lives in <code>03-design-system/</code>.</div><div class="meta">Apr 8, 2026</div></a>
+    <a class="card" href="../storybook/" target="_blank"><div class="cat">Storybook</div><div class="ttl">V7 Component Library</div><div class="desc">React component reference for the V7 Immersive Course Player.</div><div class="meta">May 4, 2026</div></a>
+    <a class="card" href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/LMS-HANDOFF" target="_blank"><div class="cat">Handoff</div><div class="ttl">Engineering Handoff Package (v1.8)</div><div class="desc">The v1.8 dev package snapshot. Current handoff is in <code>LMS-HANDOFF/</code> (v3.3).</div><div class="meta">Jun 15, 2026 · v1.8</div></a>
+  </div>
+</body>
+</html>

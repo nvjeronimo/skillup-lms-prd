@@ -4,7 +4,7 @@ title: One media player, many contexts (Live stays scrubber-less)
 date: 2026-07-24
 status: accepted
 audience: [designer, dev]
-track: A
+track: ICP
 phase: 1
 ---
 **Decision** — VILT **Recording** and lesson-level video units reuse the **same `VideoPlayer`** as the Video topic (stage, scrubber, speed, captions, fullscreen). **Live stays a plain stream — no scrubber**, deliberately.

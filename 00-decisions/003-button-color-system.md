@@ -4,7 +4,7 @@ title: Button color system — brand primaries, neutral utilities
 date: unknown
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 > Product decision locked during discovery. Push back NOW if you disagree — mid-build reversal is 10x more expensive.

@@ -14,8 +14,8 @@ Each ADR is written to serve all three at once — read the section that matters
 
 ## How to read
 
-- Start with [`INDEX.md`](INDEX.md) — a sortable table (ID · Title · Track · Phase · Status · Audience · link), plus filters by audience and by theme.
-- **Track A** = LMS ICP Phase 1. **Track B** = V8 Complementary Pages.
+- Start with [`INDEX.md`](INDEX.md) — a sortable table (ID · Title · Track · Phase · Status · Audience · link), plus filters by track and audience.
+- **Tracks:** **ICP** = immersive player & content types · **LMS** = platform pages · **Foundations** = design system / tokens / accessibility (serves both). The project's two big tasks are **ICP** and **LMS**; Foundations underpins both.
 - Status is `accepted`, `proposed` (unresolved — surfaced but not decided), or `superseded-by-NNN`.
 
 ## Two things to confirm

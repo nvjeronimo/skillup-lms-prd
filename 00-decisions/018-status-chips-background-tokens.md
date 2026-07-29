@@ -4,7 +4,7 @@ title: Status chips use background tokens, never foreground tokens
 date: 2026-07-20
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 > Track A. Surfaced during the Track B / V8 migration work.

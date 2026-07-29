@@ -4,7 +4,7 @@ title: Accessibility layer — CVD-safe states + text scale
 date: 2026-07-24
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 **Decision** — Add an accessibility layer orthogonal to skin and theme: colourblind-safe state colours (`data-vision="cvd"`) and a text scale (`--sk-font-scale`, A / A+ / A++ = 100 / 115 / 130%). Shipped in DS v3.3.

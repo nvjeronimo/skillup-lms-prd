@@ -4,7 +4,7 @@ title: File upload UX — both drag-drop and picker
 date: unknown
 status: accepted
 audience: [designer, dev]
-track: A
+track: ICP
 phase: 1
 ---
 > Product decision locked during discovery. Push back NOW if you disagree — mid-build reversal is 10x more expensive.

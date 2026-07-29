@@ -4,7 +4,7 @@ title: 10-point registration rule for a new Topic Content Type
 date: 2026-07-22
 status: accepted
 audience: [designer, dev]
-track: A
+track: ICP
 phase: 1
 ---
 **Decision** — A new Topic Content Type is only "done" when all ten registration entries are defined — not when its screen looks right in isolation.

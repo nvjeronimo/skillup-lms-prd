@@ -4,7 +4,7 @@ title: Unit-renderer architecture; Practice/Graded/Final = subsection metadata
 date: 2026-07-24
 status: accepted
 audience: [dev, designer]
-track: A
+track: ICP
 phase: 1
 ---
 **Decision** — Build a **unit renderer** that stacks N heterogeneous components, not one screen per type. Treat Practice / Graded / Final Exam as **subsection metadata**, served by one problem renderer.

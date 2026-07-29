@@ -4,7 +4,7 @@ title: SCORM + ORA hard limits (edX-sourced)
 date: 2026-07-24
 status: accepted
 audience: [dev]
-track: A
+track: ICP
 phase: 1
 ---
 **Decision** — Treat the SCORM and ORA platform limits as hard constraints on unit composition: **SCORM = max 1 per unit, 1–15 MB, not mobile-ready, community XBlock (not core); ORA = max 1 per unit** (multiple ORA in one unit cause submission errors).

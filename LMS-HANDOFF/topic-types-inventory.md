@@ -137,6 +137,8 @@ Several types share the same player chrome and differ only by badge, copy and co
 
 **So: 8 production types ≈ 5 chrome families + a shared topic shell** (header, badge, duration, footer action, completion, bookmark — see `footer-contract.md`).
 
+**Mark-as-Complete placement (shared shell rule).** The manual *action* button "Mark as complete" renders **only in the footer**, never in the header — a header CTA invites premature completion and duplicates the footer action. Once the topic is completed, the **✓ "Marked as Completed" status badge** may appear in **both** the header and the footer (it is *status*, not an action). This is baked into the DS `LMS / Topic Header`: the top status-badge slot is **off by default** and turns on **only in the completed state**. Automatic-completion types (VILT, ORA, Quiz) never render a manual Mark-as-complete at all — see the VILT completion rule in §3.
+
 **For the current sprint:** the 3 screens in flight (Reading · Quiz · Assessment) cover **3 of the 5 families**, ~34% of topics by volume and 100% of grading. The biggest uncovered gap is **VILT**. Podcast and VILT-Recording are near-free once the media player exists.
 
 ---

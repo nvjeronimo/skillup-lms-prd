@@ -4,7 +4,7 @@ title: "Topic Content Types" terminology + 5-point deliverable
 date: 2026-07-21
 status: accepted
 audience: [designer, dev, stakeholder]
-track: A
+track: ICP
 phase: 1
 ---
 **Decision** — The items displayed at Topic level are called **"Topic Content Types"** (Video, Reading, Podcast, Quiz, Lab, Programming Assignment, Final Project, VILT) even though not all are technically assets. For every type, document five things: 1 Format · 2 Behaviour · 3 States · 4 Completion rules · 5 Assessment logic.

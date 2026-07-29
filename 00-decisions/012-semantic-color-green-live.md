@@ -4,7 +4,7 @@ title: Semantic color — green = LIVE (never brand red)
 date: unknown
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 > Product decision locked during discovery. Push back NOW if you disagree — mid-build reversal is 10x more expensive.

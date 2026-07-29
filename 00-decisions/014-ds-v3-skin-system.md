@@ -4,7 +4,7 @@ title: DS v3.0 skin system — OKLCH ramps, zero raw hex
 date: 2026-07-22
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 **Decision** — DS v3.0 replaces hand-picked skin values with 6 skins (SKO + gold/violet/sky/red/ink), each a 12-step OKLCH ramp generated from 2 brand anchors, with 0 raw hex values (was 42 of 60). **BREAKING:** attribute `data-brand` → `data-skin`; the `data-brand="x"` green demo skin is removed. Also lands: dark surface ladder (resolves `bg-secondary` = `bg-primary`), hover-lightens-in-dark, and a primitive layer that carries values not role names.

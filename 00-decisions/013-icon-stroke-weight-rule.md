@@ -4,7 +4,7 @@ title: Icon stroke weight rule — 1.5px under 24px, 2px at/above
 date: unknown
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 > Product decision locked during discovery. Push back NOW if you disagree — mid-build reversal is 10x more expensive.

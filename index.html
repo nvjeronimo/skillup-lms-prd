@@ -644,20 +644,20 @@ body {
 <div class="content-area" id="content-area">
   <div class="home-page" id="home-page">
     <div class="home-header">
-      <div class="home-title">SkillUp LMS<br>Discovery Hub</div>
+      <div class="home-title">SkillUp LMS PRD<br>Project Encyclopedia</div>
       <div class="home-subtitle">
-        Central repository for all product discovery artifacts: research, requirements, architecture, design system, and prototypes for the SkillUp Learner Platform.
+        The single source of truth for the SkillUp learner platform — two big tracks (<b>ICP</b> · immersive &amp; content types, and <b>LMS</b> · platform pages) on a shared <b>Foundation</b> (Design System, decisions, research). Decisions, specs, and status for stakeholders, designers, and developers.
       </div>
     </div>
 
     <div class="home-stats">
       <div class="home-stat">
-        <div class="home-stat-value">18</div>
-        <div class="home-stat-label">Total Artifacts</div>
+        <div class="home-stat-value">2</div>
+        <div class="home-stat-label">Big Tracks (ICP · LMS)</div>
       </div>
       <div class="home-stat">
-        <div class="home-stat-value">18</div>
-        <div class="home-stat-label">PRD Sections</div>
+        <div class="home-stat-value">v3.3</div>
+        <div class="home-stat-label">Design System</div>
       </div>
       <div class="home-stat">
         <div class="home-stat-value">23</div>
@@ -692,13 +692,13 @@ body {
     </style>
 
     <div class="sk-banner">
-      ⚠️ <b>The deployed hub is 3 versions behind the record</b> (deployed v1.8 · record v3.3). A redeploy is pending — see <a href="https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md" target="_blank" rel="noopener">OPEN-ACTIONS</a> #3. The Design System <b>v3.3 is published in Figma</b> (2026-07-24): 1052 variables, 18 CVD primitives, verified 1:1 against <code>colors.css</code>.
+      📚 <b>Project encyclopedia.</b> Two big tracks — <b>ICP</b> (immersive &amp; content types) and <b>LMS</b> (platform pages) — on a shared <b>Foundation</b> (Design System <b>v3.3</b>, published in Figma 2026-07-24: 1052 variables · 18 CVD primitives · 1:1 vs <code>colors.css</code>). Filter by track and audience. The old v1.8 hub lives in the <a href="#" onclick="navigateTo('archive/','Archive — v1.8 hub');return false;" style="color:var(--accent)">Archive</a>.
     </div>
 
     <div class="sk-controls">
       <div class="sk-legend">
         <span>✅ Ready</span><span>🟠 WIP</span><span>⚪ Not started</span><span>⚠️ Outdated</span>
-        <span style="opacity:.7">· Track <b>A</b> = Phase 1 · <b>B</b> = V8 Complementary</span>
+        <span style="opacity:.7">· <b>ICP</b> = immersive &amp; content types · <b>LMS</b> = platform pages · <b>Foundations</b> = design system</span>
       </div>
       <div class="sk-filters">
         <div class="sk-fgroup"><span class="sk-lbl">Audience</span>
@@ -709,87 +709,154 @@ body {
         </div>
         <div class="sk-fgroup"><span class="sk-lbl">Track</span>
           <button class="sk-btn active" data-trk="all" onclick="skTrk(this,'all')">All</button>
-          <button class="sk-btn" data-trk="A" onclick="skTrk(this,'A')">Phase 1 (A)</button>
-          <button class="sk-btn" data-trk="B" onclick="skTrk(this,'B')">V8 (B)</button>
+          <button class="sk-btn" data-trk="icp" onclick="skTrk(this,'icp')">ICP</button>
+          <button class="sk-btn" data-trk="lms" onclick="skTrk(this,'lms')">LMS</button>
+          <button class="sk-btn" data-trk="foundations" onclick="skTrk(this,'foundations')">Foundations</button>
         </div>
       </div>
     </div>
 
-    <!-- This week's decisions -->
-    <div class="home-section-title">This Week's Decisions</div>
-    <div class="home-section-desc">Recent decisions — the full log is in <a href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/00-decisions" target="_blank" rel="noopener">00-decisions/</a> (23 records, filterable INDEX).</div>
+    <!-- ICP + Foundations decisions -->
+    <div class="home-section-title">Latest Decisions</div>
+    <div class="home-section-desc">Recent decisions — full log (23 records, filterable by track) in <a href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/00-decisions" target="_blank" rel="noopener">00-decisions/</a>.</div>
     <div class="home-cards" id="sk-decisions">
-      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/014-ds-v3-skin-system.md','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/014-ds-v3-skin-system.md','_blank')">
         <div class="home-card-cat" data-cat="build">Decision · ✅ DS v3.3</div>
         <div class="home-card-title">Skin system → 6 skins, published</div>
         <div class="home-card-desc">12-step OKLCH ramps, 0 raw hex, dark surface ladder. Breaking: <code>data-brand</code> → <code>data-skin</code>. Published in Figma 2026-07-24.</div>
-        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+        <div class="sk-card-meta">Foundations · stakeholder · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/016-accessibility-layer-cvd-textscale.md','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/016-accessibility-layer-cvd-textscale.md','_blank')">
         <div class="home-card-cat" data-cat="build">Decision · ✅</div>
         <div class="home-card-title">Accessibility layer — CVD + text scale</div>
         <div class="home-card-desc">Colourblind-safe states (<code>data-vision="cvd"</code>, Okabe-Ito, ΔE≥18) + A/A+/A++ text scale. Orthogonal to skin & theme. Shipped in v3.3.</div>
-        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+        <div class="sk-card-meta">Foundations · stakeholder · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/019-one-media-player-many-contexts.md','_blank')">
+      <div class="home-card sk-card" data-aud="designer dev" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/019-one-media-player-many-contexts.md','_blank')">
         <div class="home-card-cat" data-cat="build">Decision · ✅</div>
         <div class="home-card-title">One media player, many contexts</div>
         <div class="home-card-desc">VILT Recording + video units reuse the same VideoPlayer as the Video topic. Live stays a plain stream — no scrubber. (Prototype PR#10)</div>
-        <div class="sk-card-meta">Track A · designer · dev</div>
+        <div class="sk-card-meta">Track ICP · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/023-scorm-ora-hard-limits.md','_blank')">
+      <div class="home-card sk-card" data-aud="dev" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/023-scorm-ora-hard-limits.md','_blank')">
         <div class="home-card-cat" data-cat="build">Decision · ✅ edX</div>
         <div class="home-card-title">SCORM + ORA hard limits (sourced)</div>
         <div class="home-card-desc">SCORM 1/unit · 1–15 MB · not mobile-ready. ORA: multiple-per-unit cause submission errors (corrected). Validated vs docs.openedx.org.</div>
-        <div class="sk-card-meta">Track A · dev</div>
+        <div class="sk-card-meta">Track ICP · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/018-status-chips-background-tokens.md','_blank')">
+      <div class="home-card sk-card" data-aud="designer dev" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/018-status-chips-background-tokens.md','_blank')">
         <div class="home-card-cat" data-cat="build">Decision · ✅</div>
         <div class="home-card-title">Status chips use background tokens</div>
         <div class="home-card-desc">Never foreground tokens. Fixes the Completion Status dark-mode white-blob bug at master-component level; propagates to every Topic Row.</div>
-        <div class="sk-card-meta">Track A · designer · dev</div>
+        <div class="sk-card-meta">Foundations · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/02-content-types','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/02-content-types','_blank')">
         <div class="home-card-cat" data-cat="solution">Milestone · 🟠 review</div>
         <div class="home-card-title">Topic Content Types → Ready for Review</div>
         <div class="home-card-desc">Unified Discovery + DS Build page (Figma 4692-444), 15 sections, end-to-end flows, buildability matrix. In review — not Ready-for-Dev.</div>
-        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+        <div class="sk-card-meta">Track ICP · stakeholder · designer · dev</div>
       </div>
     </div>
 
-    <!-- Ready for Dev & Ready for Review -->
-    <div class="home-section-title">Ready for Dev &amp; Ready for Review</div>
+    <!-- ICP — Ready for Dev & Ready for Review -->
+    <div class="home-section-title">ICP — Ready for Dev &amp; Ready for Review</div>
     <div class="home-section-desc">✅ Ready for Dev = signed off for build · 🟠 Ready for Review = validated, awaiting sign-off (HK / Navdeep / Rashid). Index at <a href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/01-ready-for-dev" target="_blank" rel="noopener">01-ready-for-dev/</a>.</div>
     <div class="home-cards" id="sk-rfd">
-      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3785-11385','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="icp" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3785-11385','_blank')">
         <div class="home-card-cat" data-cat="figma">Ready for Dev · ✅</div>
         <div class="home-card-title">Phase 1 — Video Lesson</div>
         <div class="home-card-desc">Transcript · Notes · Downloads · Player states · Note Editor. 15 cards D/T/M. Figma 3785-11385.</div>
-        <div class="sk-card-meta">Track A · D/T/M · all audiences</div>
+        <div class="sk-card-meta">Track ICP · D/T/M · all audiences</div>
       </div>
-      <div class="home-card sk-card" data-aud="dev stakeholder" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3832-18102','_blank')">
+      <div class="home-card sk-card" data-aud="dev stakeholder" data-track="icp" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3832-18102','_blank')">
         <div class="home-card-cat" data-cat="figma">Ready for Dev · ✅</div>
         <div class="home-card-title">Diagram Flows + Business Logic</div>
         <div class="home-card-desc">Navigation flow + 42 business rules + 10 key decisions + 24 doc links. Backbone of the decision log. Figma 3832-18102.</div>
-        <div class="sk-card-meta">Track A · dev · stakeholder</div>
+        <div class="sk-card-meta">Track ICP · dev · stakeholder</div>
       </div>
-      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3827-64809','_blank')">
+      <div class="home-card sk-card" data-aud="designer dev" data-track="icp" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3827-64809','_blank')">
         <div class="home-card-cat" data-cat="figma">🟠 Ready for Review</div>
         <div class="home-card-title">Phase 1 — Overlay Panels</div>
         <div class="home-card-desc">Notifications + Saved right-overlay panels from the Topbar. 6 cards D/T/M. Validated, awaiting sign-off. Figma 3827-64809.</div>
-        <div class="sk-card-meta">Track A · designer · dev</div>
+        <div class="sk-card-meta">Track ICP · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4692-444','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="icp" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4692-444','_blank')">
         <div class="home-card-cat" data-cat="figma">🟠 Ready for Review</div>
         <div class="home-card-title">Topic Content Types &amp; Quizzes</div>
         <div class="home-card-desc">Latest discovery + final decisions. 15 sections (01→11 + ZZ), end-to-end flows, buildability matrix. Figma 4692-444 · see 02-content-types/.</div>
-        <div class="sk-card-meta">Track A · stakeholder · designer · dev</div>
+        <div class="sk-card-meta">Track ICP · stakeholder · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="stakeholder" data-track="A" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3830-76219','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder" data-track="icp" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3830-76219','_blank')">
         <div class="home-card-cat" data-cat="figma">🟠 WIP — Phase 3</div>
         <div class="home-card-title">Completion + Certificate</div>
         <div class="home-card-desc">Course Complete Modal + Certificate D/T/M. Phase 1 baseline; Phase 3 WIP. Not Ready-for-Dev. Figma 3830-76219.</div>
-        <div class="sk-card-meta">Track A · stakeholder</div>
+        <div class="sk-card-meta">Track ICP · stakeholder</div>
+      </div>
+    </div>
+
+    <!-- LMS — Platform Pages -->
+    <div class="home-section-title">LMS — Platform Pages 🟠</div>
+    <div class="home-section-desc">The platform <em>around</em> the course — dashboard, my learning, course/program, calendar, live sessions. WIP. Details in <a href="https://github.com/nvjeronimo/skillup-lms-prd/tree/main/06-platform-pages" target="_blank" rel="noopener">06-platform-pages/</a>.</div>
+    <div class="home-cards" id="sk-lms">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="lms" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4340-322','_blank')">
+        <div class="home-card-cat" data-cat="tools">🟠 WIP · Design</div>
+        <div class="home-card-title">V8 Complementary Pages</div>
+        <div class="home-card-desc">First design pass at the platform pages (SkillUp Brand). Migrating raw frames → DS instances. Figma 4340-322.</div>
+        <div class="sk-card-meta">Track LMS · designer · stakeholder</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer" data-track="lms" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/06-platform-pages','_blank')">
+        <div class="home-card-cat" data-cat="tools">🟠 WIP</div>
+        <div class="home-card-title">Dashboard · My Learning</div>
+        <div class="home-card-desc">Learner home + cross-course progress. In discovery — scope + status in 06-platform-pages/.</div>
+        <div class="sk-card-meta">Track LMS · designer · stakeholder</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer" data-track="lms" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/06-platform-pages','_blank')">
+        <div class="home-card-cat" data-cat="tools">🟠 WIP</div>
+        <div class="home-card-title">Course &amp; Program Pages</div>
+        <div class="home-card-desc">Single-course and multi-course program detail — overview, outline, enrol/continue.</div>
+        <div class="sk-card-meta">Track LMS · designer · stakeholder</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="lms" onclick="navigateTo('live-sessions/','Live Sessions Flow')">
+        <div class="home-card-cat" data-cat="tools">⚪ Planned</div>
+        <div class="home-card-title">Calendar &amp; Live Sessions</div>
+        <div class="home-card-desc">Scheduled VILT + deadlines. Flow reference in the Live Sessions page.</div>
+        <div class="sk-card-meta">Track LMS · all audiences</div>
+      </div>
+    </div>
+
+    <!-- Foundations -->
+    <div class="home-section-title">Foundations</div>
+    <div class="home-section-desc">Shared by both tracks — design system, decision log, research, source docs.</div>
+    <div class="home-cards" id="sk-foundations">
+      <div class="home-card sk-card" data-aud="designer dev" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/03-design-system','_blank')">
+        <div class="home-card-cat" data-cat="build">✅ Design System v3.3</div>
+        <div class="home-card-title">Tokens · Skins · Accessibility</div>
+        <div class="home-card-desc">6 skins × light/dark, 540-check AA, CVD + text-scale. Published in Figma. Rationale + shipped tokens.</div>
+        <div class="sk-card-meta">Foundations · designer · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/00-decisions','_blank')">
+        <div class="home-card-cat" data-cat="build">Decision Log</div>
+        <div class="home-card-title">23 Decision Records (ADRs)</div>
+        <div class="home-card-desc">One file per decision — why, source, Figma, edX, dev impact. Filterable by track in INDEX.</div>
+        <div class="sk-card-meta">Foundations · all audiences</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="foundations" onclick="navigateTo('prd/','Courses &amp; Programs PRD')">
+        <div class="home-card-cat" data-cat="solution">PRD</div>
+        <div class="home-card-title">Courses &amp; Programs PRD</div>
+        <div class="home-card-desc">Product requirements — 18 sections: content hierarchy, delivery modes, VILT, progress, assessments.</div>
+        <div class="sk-card-meta">Foundations · all audiences</div>
+      </div>
+      <div class="home-card sk-card" data-aud="stakeholder dev" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/04-research','_blank')">
+        <div class="home-card-cat" data-cat="problem">Research</div>
+        <div class="home-card-title">Personas · Transcripts · Audits</div>
+        <div class="home-card-desc">7 learner personas, discovery transcripts, UX audit, benchmarks.</div>
+        <div class="sk-card-meta">Foundations · stakeholder · dev</div>
+      </div>
+      <div class="home-card sk-card" data-aud="dev stakeholder" data-track="foundations" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/05-source-docs','_blank')">
+        <div class="home-card-cat" data-cat="solution">Source Docs</div>
+        <div class="home-card-title">FRDs · PRDs · BA · Spreadsheets</div>
+        <div class="home-card-desc">Original client/BA inputs — FRDs, mobile requirements, dashboard spec, program/course lists.</div>
+        <div class="sk-card-meta">Foundations · dev · stakeholder</div>
       </div>
     </div>
 
@@ -797,35 +864,35 @@ body {
     <div class="home-section-title">Open Actions</div>
     <div class="home-section-desc">What's blocked and on whom — full register at <a href="https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md" target="_blank" rel="noopener">OPEN-ACTIONS.md</a>.</div>
     <div class="home-cards" id="sk-actions">
-      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+      <div class="home-card sk-card" data-aud="stakeholder designer dev" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
         <div class="home-card-cat" data-cat="problem">🟠 Open · Nelson</div>
         <div class="home-card-title">Publish the hub (3 versions behind)</div>
         <div class="home-card-desc">Deployed v1.8 vs record v3.3. Run <code>_deploy.sh</code> when ready.</div>
-        <div class="sk-card-meta">Track A · all audiences</div>
+        <div class="sk-card-meta">Track ICP · all audiences</div>
       </div>
-      <div class="home-card sk-card" data-aud="dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+      <div class="home-card sk-card" data-aud="dev" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
         <div class="home-card-cat" data-cat="problem">🔴 Blocked · Rashid</div>
         <div class="home-card-title">Export SKOAIH01 course (OLX)</div>
         <div class="home-card-desc">Last platform-vs-config unknown (Q9/Q13): do our units stack multiple components / >1 graded block?</div>
-        <div class="sk-card-meta">Track A · dev</div>
+        <div class="sk-card-meta">Track ICP · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="designer stakeholder" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+      <div class="home-card sk-card" data-aud="designer stakeholder" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
         <div class="home-card-cat" data-cat="problem">🔴 Gap</div>
         <div class="home-card-title">VILT design — biggest gap</div>
         <div class="home-card-desc">19% of topics, nothing designed yet. Recording chrome partly covered by the shared VideoPlayer decision.</div>
-        <div class="sk-card-meta">Track A · designer · stakeholder</div>
+        <div class="sk-card-meta">Track ICP · designer · stakeholder</div>
       </div>
-      <div class="home-card sk-card" data-aud="designer dev" data-track="A" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
+      <div class="home-card sk-card" data-aud="designer dev" data-track="icp" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/blob/main/OPEN-ACTIONS.md','_blank')">
         <div class="home-card-cat" data-cat="problem">🟠 Open · Nelson</div>
         <div class="home-card-title">Recount LMS components (132 + 23)</div>
         <div class="home-card-desc">≈155 after the +23 of 2026-07-22 (domains F/D/L). Itemise in components-inventory.</div>
-        <div class="sk-card-meta">Track A · designer · dev</div>
+        <div class="sk-card-meta">Track ICP · designer · dev</div>
       </div>
-      <div class="home-card sk-card" data-aud="designer" data-track="B" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/06-v8-complementary','_blank')">
-        <div class="home-card-cat" data-cat="tools">🟠 WIP · Track B</div>
+      <div class="home-card sk-card" data-aud="designer" data-track="lms" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/06-platform-pages','_blank')">
+        <div class="home-card-cat" data-cat="tools">🟠 WIP · Track LMS</div>
         <div class="home-card-title">V8 Complementary Pages</div>
         <div class="home-card-desc">Separate SkillUp-Brand stream, migrating raw frames → DS instances. Not part of Phase 1 handoff. Figma 4340-322.</div>
-        <div class="sk-card-meta">Track B · designer</div>
+        <div class="sk-card-meta">Track LMS · designer</div>
       </div>
     </div>
     <div class="sk-empty" id="sk-empty">No items match this audience + track combination.</div>
@@ -848,173 +915,15 @@ body {
       function skTrk(btn,v){ window.skState.trk=v; document.querySelectorAll('[data-trk]').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); skApply(); }
     </script>
 
-    <!-- ═══ PROBLEM SPACE ═══ -->
-    <div class="home-section-title">Problem Space</div>
-    <div class="home-section-desc">Research, audits, and discovery sessions that define the problem we are solving.</div>
+    <!-- Archive (old v1.8 hub) -->
+    <div class="home-section-title">Archive</div>
+    <div class="home-section-desc">The old v1.8 discovery-hub snapshot, kept for provenance.</div>
     <div class="home-cards">
-      <div class="home-card" onclick="navigateTo('meeting-summary/', 'VILT Meeting Summary')">
-        <div class="home-card-cat" data-cat="problem">Meeting Summary</div>
-        <div class="home-card-title">VILT Discovery Meeting</div>
-        <div class="home-card-desc">Core principle (course structure vs delivery method are separate concerns), 6 key decisions, impact on PRD, and next steps.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
-          <span>6 decisions</span>
-        </div>
+      <div class="home-card" onclick="navigateTo('archive/','Archive — v1.8 hub')">
+        <div class="home-card-cat" data-cat="problem">Archive</div>
+        <div class="home-card-title">Discovery Hub v1.8 (snapshot)</div>
+        <div class="home-card-desc">The previous hub view — Problem / Solution / Build discovery cards, with links to where each artifact lives now. Historical; current work is in the sections above.</div>
         <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('ux-audit/', 'V4 UX Audit')">
-        <div class="home-card-cat" data-cat="problem">Audit</div>
-        <div class="home-card-title">V4 UX Audit Report (v2)</div>
-        <div class="home-card-desc">Norman/Nielsen audit v2. Score 101/140 (+7). 5 resolved, 6 new findings, prioritized action plan across 33 screens.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 11, 2026</span>
-          <span>33 screens</span>
-        </div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('mind-map/', 'LMS Mind Map')">
-        <div class="home-card-cat" data-cat="problem">Discovery</div>
-        <div class="home-card-title">LMS Mind Map</div>
-        <div class="home-card-desc">High-level visual map of the entire LMS feature space. Modules, relationships, and priority groupings.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Mar 27, 2026</span>
-        </div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-    </div>
-    <div class="home-cards-compact">
-      <div class="home-card-sm" onclick="downloadFile('VILT-Integration-Design-Document.pdf')">
-        <span class="sm-badge" data-cat="problem">PDF</span>
-        <span class="sm-title">VILT Integration Design Doc</span>
-        <span class="sm-date">Apr 10</span>
-        <span class="sm-type">PDF</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-      <div class="home-card-sm" onclick="downloadFile('ICP Player for Different Video Types.pdf')">
-        <span class="sm-badge" data-cat="problem">Meeting</span>
-        <span class="sm-title">ICP Video Types (Phase 1 scope)</span>
-        <span class="sm-date">Jun 24</span>
-        <span class="sm-type">PDF</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-      <div class="home-card-sm" onclick="downloadFile('LMS-Walkthrough-Questions-Transcript-20260410.txt')">
-        <span class="sm-badge" data-cat="problem">Transcript</span>
-        <span class="sm-title">Meeting Transcript</span>
-        <span class="sm-date">Apr 10</span>
-        <span class="sm-type">TXT</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-      <div class="home-card-sm" onclick="downloadFile('US Program-courses List (1).xlsx')">
-        <span class="sm-badge" data-cat="problem">Data</span>
-        <span class="sm-title">Programs/Courses List</span>
-        <span class="sm-type">XLSX</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-    </div>
-
-    <!-- ═══ SOLUTION SPACE ═══ -->
-    <div class="home-section-title">Solution Space</div>
-    <div class="home-section-desc">Product requirements, architecture decisions, and specification documents.</div>
-    <div class="home-cards">
-      <div class="home-card" onclick="navigateTo('prd/', 'PRD: Courses &amp; Programs')">
-        <div class="home-card-cat" data-cat="solution">PRD</div>
-        <div class="home-card-title">Courses & Programs PRD</div>
-        <div class="home-card-desc">Complete product requirements for the learner platform. 18 sections covering content hierarchy, delivery modes, VILT, progress tracking, and assessments.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
-          <span>18 sections</span>
-          <span>Draft</span>
-        </div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('vilt-architecture/', 'VILT Architecture')">
-        <div class="home-card-cat" data-cat="solution">Architecture</div>
-        <div class="home-card-title">VILT Architecture Flowchart</div>
-        <div class="home-card-desc">Visual diagram of the VILT delivery architecture: content hierarchy, delivery mode tagging, bubble-up logic, and learner view.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 10, 2026</span>
-        </div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="navigateTo('live-sessions/', 'Live Sessions Flow')">
-        <div class="home-card-cat" data-cat="solution">Architecture</div>
-        <div class="home-card-title">Live Sessions Flow</div>
-        <div class="home-card-desc">End-to-end flow for live/virtual sessions. Scheduling, join mechanics, recording, and attendance tracking.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 9, 2026</span>
-        </div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-    </div>
-    <div class="home-cards-compact">
-      <div class="home-card-sm" onclick="downloadFile('FRD-Cohort Management.docx')">
-        <span class="sm-badge" data-cat="solution">FRD</span>
-        <span class="sm-title">Cohort Management</span>
-        <span class="sm-date">Apr 9</span>
-        <span class="sm-type">DOCX</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-      <div class="home-card-sm" onclick="downloadFile('Mobile App Requirements Phase-1.docx')">
-        <span class="sm-badge" data-cat="solution">Mobile</span>
-        <span class="sm-title">Mobile App Requirements</span>
-        <span class="sm-date">Apr 9</span>
-        <span class="sm-type">DOCX</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-      <div class="home-card-sm" onclick="downloadFile('SkillUp Learner (LMS) Dashboard.docx')">
-        <span class="sm-badge" data-cat="solution">Spec</span>
-        <span class="sm-title">Learner Dashboard</span>
-        <span class="sm-date">Jan 29</span>
-        <span class="sm-type">DOCX</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-    </div>
-
-    <!-- ═══ BUILD ═══ -->
-    <div class="home-section-title">Build</div>
-    <div class="home-section-desc">Design system, wireframes, and visual prototypes ready for implementation.</div>
-    <div class="home-cards">
-      <div class="home-card" onclick="navigateTo('design-system/', 'Design System')">
-        <div class="home-card-cat" data-cat="build">Design System</div>
-        <div class="home-card-title">Tokens & Components</div>
-        <div class="home-card-desc">Color tokens, typography (Montserrat/Playfair), spacing scale, component patterns, and interaction specs.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Apr 8, 2026</span>
-        </div>
-        <div class="home-card-ext">HTML</div>
-      </div>
-      <div class="home-card" onclick="window.open('storybook/','_blank')">
-        <div class="home-card-cat" data-cat="build">Storybook</div>
-        <div class="home-card-title">V7 Component Library</div>
-        <div class="home-card-desc">React component reference for the V7 Immersive Course Player. Atoms, molecules, organisms, page templates, design tokens, OpenEdX integration notes.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> May 4, 2026</span>
-        </div>
-        <div class="home-card-ext">React</div>
-      </div>
-      <div class="home-card" onclick="window.open('https://github.com/nvjeronimo/skillup-lms-prd/tree/main/LMS-HANDOFF','_blank')">
-        <div class="home-card-cat" data-cat="build">Handoff</div>
-        <div class="home-card-title">Engineering Handoff Package</div>
-        <div class="home-card-desc">Phase 1 dev package: 132 LMS Extension Components (DS-hosted), 4 Ready-for-Dev pages (Video Lesson / Overlay Panels / Completion / Diagram Flows), tokens, Storybook coverage plan, BA subfolder.</div>
-        <div class="home-card-meta">
-          <span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Jun 15, 2026</span>
-          <span>v1.8</span>
-        </div>
-        <div class="home-card-ext">GitHub</div>
-      </div>
-    </div>
-    <div class="home-cards-compact">
-      <div class="home-card-sm" onclick="window.open('https://www.figma.com/board/v5EiEKpYgXnUwoJs2DghCP/LMS-Learner-Flow-Diagram?node-id=0-1','_blank')">
-        <span class="sm-badge" data-cat="figma">Figma</span>
-        <span class="sm-title">Diagrams</span>
-        <span class="sm-type">FigJam</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-      </div>
-      <div class="home-card-sm" onclick="window.open('https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1','_blank')">
-        <span class="sm-badge" data-cat="figma">Figma</span>
-        <span class="sm-title">LMS ICP Phase 1</span>
-        <span class="sm-type">Design File</span>
-        <svg class="sm-ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </div>
     </div>
   </div>
@@ -1037,6 +946,7 @@ const slugMap = {
   'design-system/': 'design-system',
   'ux-audit/': 'ux-audit',
   'meeting-summary/': 'meeting-summary',
+  'archive/': 'archive',
 };
 // Reverse map: slug -> folder path
 const fileMap = {};

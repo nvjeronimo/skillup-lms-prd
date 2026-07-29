@@ -4,7 +4,7 @@ title: Accessibility architecture — values as primitives, override in CSS
 date: 2026-07-24
 status: accepted
 audience: [designer, dev]
-track: A
+track: Foundations
 phase: 1
 ---
 **Decision** — Accessibility values live as primitives in Figma; the conditional override lives in CSS, not in Figma variable modes.

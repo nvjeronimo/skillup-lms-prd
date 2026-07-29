@@ -4,7 +4,7 @@ title: `approx.` duration prefix only on inexact topic types
 date: unknown
 status: accepted
 audience: [designer, dev]
-track: A
+track: ICP
 phase: 1
 ---
 > Product decision locked during discovery. Push back NOW if you disagree — mid-build reversal is 10x more expensive.

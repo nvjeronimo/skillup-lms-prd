@@ -4,7 +4,7 @@ title: Contrast validation auto-discovers tokens from colors.css
 date: 2026-07-22
 status: accepted
 audience: [dev]
-track: A
+track: Foundations
 phase: 1
 ---
 **Decision** — Contrast validation auto-discovers the token set from `tokens/colors.css` and never runs against a hand-written pair list.

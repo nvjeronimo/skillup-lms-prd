@@ -1,6 +1,7 @@
-# SkillUp LMS Discovery — Start Here
+# SkillUp LMS PRD — Project Encyclopedia · Start Here
 
-The single, current source of truth for the SkillUp Learner Platform (LMS ICP Phase 1). Land here,
+The single, current source of truth for the SkillUp learner platform. This repo is the **encyclopedia
+of the whole project** — its two big tracks (**ICP** + **LMS**) on a shared **Foundation**. Land here,
 pick your door, and within two minutes you should know **what was decided, why, what's Ready for Dev,
 and what's still being built.**
 
@@ -22,20 +23,25 @@ and what's still being built.**
 
 ## The map
 
+**This project = two big tracks on a shared Foundation:**
+- **ICP** — Immersive & Content Types: the experience *inside* a topic (immersive player, Video Lesson, Content Types, Quizzes, VILT).
+- **LMS** — Platform Pages: the platform *around* the course (dashboard, my learning, course/program pages, calendar, live sessions).
+- **Foundations** — Design System, decisions, research: serve both tracks.
+
 | Folder | What's in it | Track |
 |---|---|---|
-| [`00-decisions/`](00-decisions/) | Decision log — one file per decision (ADR), with why + source + Figma + edX + dev impact. `INDEX.md` is filterable. | A |
-| [`01-ready-for-dev/`](01-ready-for-dev/) | Screens signed off for dev (Phase 1), each with its Figma deep link. | A |
-| [`02-content-types/`](02-content-types/) | Topic Content Types (edX parity) — wired to `LMS-HANDOFF/topic-types-inventory.md`. 🟠 in review. | A |
-| [`03-design-system/`](03-design-system/) | Tokens, variables, skins, accessibility, LMS components. Rationale here; shipped artifacts in `LMS-HANDOFF/`. | A |
-| [`04-research/`](04-research/) | Personas, transcripts, audits, benchmarks. | — |
-| [`05-source-docs/`](05-source-docs/) | Original FRDs, PRDs, BA docs, spreadsheets. | — |
-| [`06-v8-complementary/`](06-v8-complementary/) | V8 Complementary Pages (SkillUp Brand). 🟠 WIP — a **separate** stream, not Phase 1. | B |
-| [`LMS-HANDOFF/`](LMS-HANDOFF/) | The deployed handoff package (specs, tokens, BA, quizzes, changelog). | A |
+| [`00-decisions/`](00-decisions/) | Decision log — one file per decision (ADR), with why + source + Figma + edX + dev impact. `INDEX.md` is filterable by track. | all |
+| [`01-ready-for-dev/`](01-ready-for-dev/) | Screens signed off for dev / in review, each with its Figma deep link. | ICP |
+| [`02-content-types/`](02-content-types/) | Topic Content Types (edX parity) — wired to `LMS-HANDOFF/topic-types-inventory.md`. 🟠 in review. | ICP |
+| [`03-design-system/`](03-design-system/) | Tokens, variables, skins, accessibility, LMS components. Rationale here; shipped artifacts in `LMS-HANDOFF/`. | Foundations |
+| [`04-research/`](04-research/) | Personas, transcripts, audits, benchmarks. | Foundations |
+| [`05-source-docs/`](05-source-docs/) | Original FRDs, PRDs, BA docs, spreadsheets. | Foundations |
+| [`06-platform-pages/`](06-platform-pages/) | **LMS track** — Platform Pages (dashboard, my learning, course/program, calendar, live sessions). Current artifact: V8 Complementary Pages. 🟠 WIP. | LMS |
+| [`LMS-HANDOFF/`](LMS-HANDOFF/) | The deployed handoff package (specs, tokens, BA, quizzes, changelog). | ICP + Foundations |
 | [`90-prototypes/`](90-prototypes/) | Prototype explorations + Storybook source. The **live** prototype is a separate repo. | — |
+| [`archive/`](archive/) | The old v1.8 hub snapshot (discovery/problem-space cards), kept out of the main view. | — |
 | [`_history/`](_history/) · [`_archive/`](_archive/ARCHIVE-LOG.md) · [`_media/`](_media/README.md) | Legacy docs · superseded (dated) · heavy binaries (local-only, gitignored). | — |
 
-**Tracks:** **A** = LMS ICP Phase 1 (primary, active) · **B** = V8 Complementary Pages (parallel, WIP).
 **Status legend:** ✅ Ready · 🟠 WIP · ⚪ Not started · ⚠️ Outdated.
 
 ## Keeping it in sync

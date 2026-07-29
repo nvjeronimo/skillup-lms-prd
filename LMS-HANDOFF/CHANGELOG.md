@@ -2,6 +2,22 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-07-29 · Encyclopedia reframe — two tracks (ICP + LMS) + Archive
+
+Reframed the repo/hub as the **project encyclopedia** around the two big tracks:
+
+- **ICP** — Immersive & Content Types (the in-topic experience) · **LMS** — Platform Pages
+  (dashboard, my learning, course/program, calendar, live sessions) · **Foundations** — Design
+  System / decisions / research (serves both).
+- **Track nomenclature retired A/B → ICP / LMS / Foundations** across the decision log (23 ADRs
+  reclassified + INDEX filter-by-track), root README, and hub.
+- **`06-v8-complementary/` → `06-platform-pages/`** — now the LMS-track home; V8 Complementary is
+  its current WIP artifact.
+- **Hub `index.html`** reorganized into ICP · LMS · Foundations · Open Actions · Archive sections;
+  Track filter is now ICP / LMS / Foundations.
+- **Archive** — the old **v1.8** discovery-hub snapshot moved to `archive/index.html` (linked from
+  the hub), so the index shows only the current version.
+
 ## 2026-07-28 · Repository reorganization (structure, not a DS version)
 
 Folder-level reorg — the DS version of record stays **v3.3**. Made the workspace self-explanatory
@@ -11,7 +27,7 @@ for three audiences (stakeholder / designer / dev):
   `3832-18102`), `01-ready-for-dev/`, `02-content-types/` (wires `topic-types-inventory.md`, splits
   §7 into owned questions, promotes the 10-point registration rule), `03-design-system/` (rationale +
   footer-contract; points to the shipped tokens here), `04-research/`, `05-source-docs/`,
-  `06-v8-complementary/` (Track B). `LMS-HANDOFF/` kept as the deployed package (hybrid).
+  `06-platform-pages/` (Track B). `LMS-HANDOFF/` kept as the deployed package (hybrid).
 - **New registers:** root `README.md` (3-audience "start here"), `OPEN-ACTIONS.md`,
   `_archive/ARCHIVE-LOG.md`.
 - **Heavy media** (456 MB `.mov`, Coursera captures, 7.9 MB HTML) → `_media/` (gitignored) + stubs.

@@ -4,7 +4,7 @@ title: Cohort pace signal alongside personal progress
 date: unknown
 status: accepted
 audience: [designer, dev, stakeholder]
-track: A
+track: LMS
 phase: 1
 ---
 > Product decision locked during discovery. Push back NOW if you disagree — mid-build reversal is 10x more expensive.
