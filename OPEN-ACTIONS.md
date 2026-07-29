@@ -11,7 +11,7 @@ Status: 🔴 blocked · 🟠 in progress · ⚪ not started · ✅ done (kept fo
 |---|---|---|---|---|
 | 1 | **Export SKOAIH01 course (Studio → Export → OLX `.tar.gz`)** to validate whether *our* courses actually stack multiple components per unit, and whether any unit stacks >1 graded block. The last platform-vs-config unknown (Q9/Q13). Can't be answered from platform docs. | **Rashid** | 🔴 | `02-content-types/` + `topic-types-inventory.md` §6b/§7 |
 | 2 | **Q9 — enumeration prefix decision:** manual vs automatic numbering of answer options / ORA steps. New content decision surfaced 2026-07-28. | Rupali / Nelson | ⚪ | Topic Content Types build 2026-07-28 |
-| 3 | **Publish the hub** — it is 3 versions behind the record (deployed v1.8 vs record v3.3). Run `_deploy.sh` (do not auto-run; Nelson's call). | **Nelson** | 🟠 | `SYNC-STATE.md` row 3 |
+| ~~3~~ | ~~Publish the hub (3 versions behind)~~ → **DONE 2026-07-29** (`c577192`, reorg + v3.3-aligned). See Closed. | Nelson | ✅ | `SYNC-STATE.md` row 3 |
 | 4 | **Recount LMS components** (132 baseline + 23 added 2026-07-22, domains F/D/L ≈155) and itemise the 23 in `components-inventory.md`; correct `README.md`. | Nelson | 🟠 | `_REORG-PROMPT.md` §B; count banners added 2026-07-28 |
 | ~~5~~ | ~~Node-ids missing for Overlay Panels + Phase 3 Completion~~ → **DONE 2026-07-29** (Overlay Panels `3827-64809`, now **Ready for Review**; Completion `3830-76219`). See Closed. | Nelson | ✅ | `01-ready-for-dev/` |
 | 6 | **Verify no stray `00 · ARCHIVED` section** remains on the Topic Content Types page after Quiz v1→v2 adoption. | Nelson | 🟠 | `_REORG-PROMPT.md` §B build-out |
@@ -40,3 +40,4 @@ Status: 🔴 blocked · 🟠 in progress · ⚪ not started · ✅ done (kept fo
 | ✅ Topic Content Types page promoted to Ready for Review (sections 01→11 + ZZ, validated) | 2026-07-28 | Still *in review*, not Ready-for-Dev |
 | ✅ Quiz v1 local drafts removed, v2 adopted | 2026-07-28 | Largely closes the "delete `00 · ARCHIVED`" action (see #6 to verify) |
 | ✅ Node-ids confirmed: Overlay Panels `3827-64809` (→ Ready for Review), Completion+Certificate `3830-76219` | 2026-07-29 | Wired into `01-ready-for-dev/` + hub. Overlay Panels re-statused Ready-for-Dev → Ready-for-Review. |
+| ✅ Hub published to GitHub Pages (`c577192`) — reorg structure + v3.3-aligned; was 3 versions behind | 2026-07-29 | `_deploy.sh` also hardened (guarded stash-pop) |

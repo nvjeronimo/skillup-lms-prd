@@ -4,13 +4,13 @@
 an environment changes; run the daily ritual in `SYNC-PLAYBOOK.md`. Method lives in the playbook;
 this file is only the current state.
 
-**Last full reconcile:** 2026-07-28
+**Last full reconcile:** 2026-07-29
 
 | # | Environment | Canonical id / URL | Current version / commit | Published? | Verified | Owner |
 |---|---|---|---|---|---|---|
 | 1 | Figma working file | `Wz2TCYFVr0hD8tJNiLajLt` — LMS ICP Phase 1 | Content Types page `4692-444` **Ready for Review** (01→11 + ZZ) | n/a | 2026-07-28 | Nelson |
 | 2 | DS (Figma library) | `c7EUDrQwP8si08aPipDSIV` — SKO Design System | **v3.3** · 1052 variables · 18 CVD primitives | ✅ published 2026-07-24 | 2026-07-28 | Nelson |
-| 3 | Local = Hub repo | `nvjeronimo/skillup-lms-prd` → nvjeronimo.github.io/skillup-lms-prd/ | Record at **v3.3**; ⚠️ **hub last published as v1.8 — 3 versions stale** | ⚠️ stale | 2026-07-28 | Nelson |
+| 3 | Local = Hub repo | `nvjeronimo/skillup-lms-prd` → nvjeronimo.github.io/skillup-lms-prd/ | **v3.3-aligned + reorg structure** (`c577192`) | ✅ published 2026-07-29 | 2026-07-29 | Nelson |
 | 4 | Prototype | `nvjeronimo/skillup-lms-prototype` → lms-prototype-mu.vercel.app | **17 PRs merged** (latest #17 quiz stacked one-scroll flow); DS-parity round #12–#16 on 07-27; 0 open · push 2026-07-27T21:29 | ✅ live on Vercel | 2026-07-28 | Nelson |
 | 5 | Storybook | `v7-storybook/` → built `/storybook/` | **not started** — build last | — | 2026-07-28 | Nelson |
 
@@ -31,7 +31,7 @@ this file is only the current state.
 
 ## Open drift to close (mirror the top of `OPEN-ACTIONS.md`)
 
-1. ⚠️ **Publish the hub** — it is 3 versions behind the record (v1.8 vs v3.3). Run `_deploy.sh`.
+1. ✅ **Hub published** 2026-07-29 (`c577192`) — reorg structure + v3.3-aligned. Was 3 versions behind.
 2. Recount LMS components (132 + 23) → fix `README.md` / `components-inventory.md`.
 3. Verify no stray `00 · ARCHIVED` section after Quiz v1→v2 adoption.
 4. Align progress-ring token name → `fg-success-secondary` in prototype/handoff.
