@@ -140,7 +140,7 @@ Legend: ✅ Covered · 🟡 Partial · ❌ Missing · ⏭️ Out of scope (inten
 
 | edX feature | Our coverage | Notes |
 |---|---|---|
-| Discussion forum (course-level) | ❌ | Not in current screens — we have inline discussion per topic (Discussion Prompt) |
+| Discussion forum (course-level) | ✅ **Decided (Jul 29, 2026)** | Discussion is now a **course-level Discussions space** (Course Hub tab + right-rail panel in the player) + an **optional in-context footer** per topic — same threads, two entry points. **`Discussion Prompt` is deprecated as a topic type.** See `topic-types-inventory.md` → "Discussion — course-level chrome, not a topic type". |
 | Post types: Discussion vs Question | 🟡 | Not differentiated in our design |
 | Reply threads | 🟡 | `LMS / Thread Item` component exists, no reply nesting designed |
 | Upvote / endorse | ❌ | Missing affordances |
@@ -150,7 +150,7 @@ Legend: ✅ Covered · 🟡 Partial · ❌ Missing · ⏭️ Out of scope (inten
 | Following posts | ❌ | Missing |
 | Reported content moderation | ❌ | Admin-only — skip |
 
-**Big gap**: full discussion forum. Our Discussion Prompt is single-topic only. Decide if course-wide discussion needed.
+**~~Big gap~~ → Resolved (Jul 29, 2026):** Discussion is a **course-level Discussions space** (Course Hub tab + a right-rail panel in the player, next to AI Assistant / Saved / Notifications) as the home for all threads, plus an **optional "Discuss this topic" footer** per topic that deep-links into the same course thread. **`Discussion Prompt` is deprecated as a topic type** (0 authored volume); `Thread Item`, the `Discussion` tab state and the `Discussion Prompt` input are reused for the panel/footer. The remaining ❌/🟡 rows above (post types, upvote, sort/search, following) are forum features to scope for the course-level space.
 
 ---
 
@@ -183,10 +183,10 @@ Legend: ✅ Covered · 🟡 Partial · ❌ Missing · ⏭️ Out of scope (inten
 6. **Submission file upload** for Peer-graded Assignment
 7. **Hidden results state** for Quiz / Graded Assignment (post-due reveal)
 8. **Language menu** for multi-language captions
-9. **License / Copyright** display on video
+9. **License / Copyright** display → **validated (29 Jul 2026):** edX shows the *course* license at the bottom of **every** content page + an optional **per-video** license on the player when it differs (not media-specific). Interim: **Video-only**; final scope (course-wide vs media-only vs authored) **pending** — see `topic-types-inventory.md` §5.
 
 ### Low priority (Phase 3 or skip)
-10. Course-wide discussion forum (vs per-topic Discussion Prompt)
+10. ~~Course-wide discussion forum (vs per-topic Discussion Prompt)~~ → **✅ Decided (Jul 29, 2026):** course-level Discussions space + optional in-context footer; `Discussion Prompt` deprecated as a type. See §8.
 11. Proctored exams
 12. Math/scientific problem formatting
 13. Course search

@@ -2,6 +2,75 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-07-29 · Stakeholder workshop — quiz + Course Details decisions applied
+
+Applied the decisions from the ICP workshop with Navdeep and Harpreet (see
+`topic-types-inventory.md` §8 for the full record and the rationale).
+
+Verified line by line against the meeting recording — the AI-generated notes were wrong on two
+points (the prefix decision was stronger than "don't hardcode"; tabs were *not* left undecided).
+
+- **Quiz — prefix functionality removed entirely.** Not just switched off: the `Show prefix` and
+  `Prefix` properties and the prefix layer are deleted from `LMS / Quiz · Option Row`. Navdeep:
+  *"We should not provide any functionality of putting a prefix to them"* — a switch nobody will use
+  is still dev cost. Reason prefixes are wrong at all: they break option randomisation.
+- **Quiz — Disabled state fixed** in the DS (`LMS / Quiz · Option Row`): the row keeps its white
+  surface and full-contrast label, only the checkbox/radio is dimmed. Greying the whole row hurt
+  readability exactly when learners read the feedback.
+- **Quiz — optional metadata rule documented** (duration, attempts, pass mark): render only when the
+  backend supplies them; no placeholders, no dashes, no zeros.
+- **Course Details rebuilt** as `Course Detail — v9 · Self-paced MVP` (Platform Pages V8), with the
+  pre-workshop frame kept alongside as *superseded*. Example course switched to **Six Sigma** to match
+  the ICP. Self-paced only; syllabus runs Module → Lesson → Topic with clickable titles; ticks only
+  (no current-position marker); no syllabus page, no module-level %, no repeated completion dates, no
+  L1/L2/L3 numbering, no course-level resources or assignment deadlines, no cohort/programme cards.
+  Unlock info moved from the module subtitle into a tooltip on the lock, and "Locks" corrected to
+  "Unlocks". Course stats moved out of the hero to sit under Course Info.
+- **⚠︎ Known divergence — tabs.** The workshop decided the tab mechanism stays with Resources and
+  Grade as phase two, and expected Grades + Certificates as tabs. The v9 frame is a single page. Kept
+  deliberately as an MVP simplification, flagged on the frame and to be agreed at the review.
+- **Not yet applied** (decided in the room, absent from the AI notes): drop the per-question circle
+  indicators in favour of "question X of Y" + progress bar; make "View submission" and "See feedback"
+  the same tertiary button; "Review module first" as a secondary button that only appears when the
+  quiz is linked; check/remove the "Submit final" label; **no em dashes in interface copy**; specify
+  the score colour rules (red vs amber for a fail is unresolved).
+- **Licence (CC) scope** — validated against docs.openedx.org: edX shows the *course* licence at the
+  bottom of every content page plus an optional per-video licence on the player. Interim: Video only;
+  final scope pending a product decision.
+
+Open after the workshop: course-unlocking research, the definitive quiz question-type list,
+interface copy rules, DS differentiation of buttons/links/pills/tags, micro-animations, navigation
+strategy, and edX metadata export.
+
+## 2026-07-29 · Quiz layout corrected — a stepper, not a forced scroll
+
+A platform claim this package had been repeating was **wrong**, and the design that followed from it
+is reversed. The spec asserted Open edX forces a single stacked scroll because "a unit stacks
+multiple components". Checked against primary sources (docs.openedx.org, the Open edX glossary,
+`frontend-app-learning` ADR 0002 and its `SequenceNavigation` components), that inference does not
+hold — and it contradicted this package's own definition of Subsection.
+
+- **The subsection *is* the quiz-level container** — grading, timed/proctored config, navigation.
+- **The platform ships a stepper.** `SequenceNavigation` renders one tab per unit plus
+  Previous/Next; the glossary defines the *"unit navigation bar… an icon for each unit in the
+  selected subsection"*; `{current} of {total}` is already computed. **One `problem` per unit yields
+  a question-by-question stepper natively, with no custom code.** Stepper vs. scroll is an
+  **authoring** choice, not a platform limit.
+- **What Open edX genuinely lacks** is narrower: no per-question counter, no quiz-level submit-all,
+  no end-of-quiz review/summary screen. Our shell supplies all three.
+- **Decision — adopt the stepper.** Applied in the prototype: entry header → one question per step
+  (unit navigator + Previous/Next question) → results summary; submit stays per question. Recorded
+  in `topic-types-inventory.md` §8 and `quizzes/04-quiz-experience-spec.md` §1.4-0c/0d.
+- **Competitive comparison added** (`quizzes/02-coursera-quiz-benchmark.md` §7): Coursera is
+  single-scroll, Udemy and LinkedIn are steppers, Canvas and Moodle make it an instructor setting.
+  Coursera's no-navigator minimalism is affordable only because retries are effectively unlimited —
+  **our graded path allows 2 attempts per question**, so that trade does not transfer.
+- **⚠︎ Conflicts with a workshop ruling.** The room decided to drop the per-question circle
+  indicators — decided while the quiz was one scroll and the dots were decoration. In a stepper they
+  become the navigator. Unresolved: to be taken back to Navdeep and Harpreet before the DS follows.
+- **Consequence to plan:** existing quizzes must be **re-authored in Studio**, one question per unit.
+  Content migration to sequence and cost with Rashid.
+
 ## 2026-07-29 · Encyclopedia reframe — two tracks (ICP + LMS) + Archive
 
 Reframed the repo/hub as the **project encyclopedia** around the two big tracks:

@@ -98,6 +98,33 @@ Coursera's umbrella term is "assessments"; auto-graded quizzes are officially ca
 
 ---
 
+---
+
+## 7. Cross-platform comparison — stepper vs. one scroll
+
+*Added Jul 29, 2026. Live re-verification of Coursera (help centre now at `coursera.support`; note the terminology moved from "quiz" to "assignment"), plus first-party docs for each other platform. Coursera help articles carry no visible last-updated date, so "current" = as rendered on 29 Jul 2026.*
+
+| Platform | Layout | Progress indicator | Submit model | Review before submit |
+|---|---|---|---|---|
+| **Coursera** | **Single scroll** | Status header only — no counter, no bar, no map | One quiz-level Submit + honor-code checkbox | **None** |
+| **Udemy** (practice test) | **Stepper** | Progress bar (progress + time remaining) | Deferred batch | **Yes** — flags missed questions + filterable "See all questions" map |
+| **LinkedIn Learning** (chapter quiz) | **Stepper** | Question count at entry | Per question, immediate feedback | None |
+| **Canvas** (New Quizzes) | **Instructor-set** | Question Navigator (answered/unanswered, pinnable) | Autosave + Submit, resumable | Confirm dialog with unanswered count |
+| **Moodle** | **Instructor-set** (`New page` = 1 ⇒ stepper) | Navigation block, flags, locked states | **Two-stage** → summary page → final submit | **Yes — strongest** |
+| **Open edX** | **Author-set** (1 problem/unit ⇒ stepper) | Per-unit tabs + completion checks; **no per-question counter** | **Per problem block** | None |
+
+**Three conclusions that shaped our decision:**
+
+1. **Coursera is the outlier, and deliberately so.** No navigator, no unanswered warning, no flagging. That is affordable because retries are effectively unlimited (`Attempts: 3 every 8 hours`, best-score-counts) — the cost of a mistake is one more attempt. **Do not copy Coursera's layout without also copying its retry economics.** Our graded path does not have them: SKOAIH01 gives **2 attempts per question** on a Graded Quiz worth 60% and a Final Exam worth 40%.
+2. **Presentation and backtracking are two independent axes**, not one "stepper?" decision. Canvas and Moodle expose them as separate settings. Canvas's interaction rule is the cleanest: when backtracking is off, *remove* the navigator rather than disable it.
+3. **Review-before-submit follows from the submit model.** Per-question submit (LinkedIn, Udemy in-course, Open edX) makes a pre-submit review screen structurally impossible; batch submit invites one. Since we keep Open edX's per-question submit, our equivalent is the **post-submit results summary** (F-QZ-013) plus a live outstanding-questions cue — neither of which the platform provides.
+
+Moodle detail worth stealing: it uses a **stepper for answering but collapses to a single scroll for reviewing** — *"the review will show all the questions on a single page to make it easier to navigate."*
+
+Sources: [Coursera — Taking assignments](https://www.coursera.support/s/article/learner-000001563) · [Coursera — Solve problems with assessments](https://www.coursera.support/s/article/learner-000001574) · [Udemy — Taking Practice Tests](https://support.udemy.com/hc/en-us/articles/10985362294551-Taking-Practice-Tests) · [LinkedIn Learning assessments](https://www.linkedin.com/help/learning/answer/a702857/) · [Canvas — New Quizzes student guide](https://community.instructure.com/t5/Student-Guide/How-do-I-take-a-quiz-in-New-Quizzes/ta-p/291) · [Moodle — Using Quiz](https://docs.moodle.org/en/Using_Quiz)
+
+---
+
 ## Explicit gaps in public information
 
 - Question-level UI micro-interactions (submit confirmation, unanswered warnings, in-video overlay anatomy, checkmark styling) not documented publicly.

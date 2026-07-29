@@ -184,3 +184,18 @@ Mutually exclusive. Backdrop click + Esc closes. See `overlay-panels-spec.md` fo
 | Module Header | Click | Expand/collapse module group (animate caret + topic rows visibility). |
 | Course Header expand-collapse | Click | Toggle sidebar Expanded ↔ Collapsed. |
 | Topic Row bookmark icon | Click | Toggle bookmark for that topic. |
+
+---
+
+## Completion (Mark as Complete)
+
+Video **auto-completes at ≥90% watched** whenever the platform can report the learner's watch-%. In that case **no button is shown** — completion is automatic.
+
+The manual **Mark as Complete** action is an **optional fallback**, rendered **only when watch-% can't be tracked**. So for Video the action is optional per topic type, not guaranteed.
+
+Placement follows the shared shell rule:
+- The action button lives in the **footer only** — never in the header.
+- Once complete, a **"✓ Marked as completed" status badge** shows in **both** the header and the footer (status, not an action), and the sidebar topic row flips to its completed (check) state.
+- The button uses the **Primary** hierarchy (DS `Mark as Complete`).
+
+See `topic-types-inventory.md` §5 for the cross-type rule and the "Mark as Completed Behaviour" row on the Figma *Phase 1 – Video Lesson* page.
