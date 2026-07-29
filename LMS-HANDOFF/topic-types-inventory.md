@@ -382,17 +382,43 @@ Decisions taken with the stakeholders, and what changed in Figma as a result. Si
 **Quiz metadata is optional — render only what the backend sends.** Navdeep, 00:30:49: the question count is always present, but the time approximation, the attempts count and the pass mark each appear *only* if the author supplied them — *"either display it or don't display it"*. Harpreet flagged it as a story requirement for Rashid (00:29:13).
 → Documented in Figma on section `04 · Quiz` and here.
 
-### Quiz — decided but NOT yet applied
+### Quiz — from the recording, now applied
 
-These came out of the recording and are not in the AI notes. None is built yet.
+None of these were in the AI notes; all were said in the room, and all are now built.
 
-- **Drop the per-question circle indicators.** Navdeep, 00:54:15: showing "2 of 10" plus a progress bar is right, but a dot per question with its correct/incorrect state *"might be just an overkill"* on a 20-question quiz — *"the purpose is just to show progress"*. Harpreet agreed (00:55:23): *"Those rounded button is not giving me anything extra."*
-- **"View submission" and "See feedback" must be the same button.** Navdeep, 00:45:28: *"they are tertiary buttons. And they should be the same"*; one black and one blue is *"a mistake"* (00:45:55). Primary CTA is Next topic; up to three tertiary actions beside it.
-- **"Review module first" should be a secondary button** (00:30:49) — and it only appears when the quiz is actually linked to a module or lesson; a course-final quiz has no such link, so no button.
-- **"Submit final" is probably wrong copy** (00:25:38) — Nelson to check and, if it means nothing, remove it.
-- **No em dashes anywhere in interface copy** (Harpreet, 00:25:44). The quiz results screen currently breaks this.
+- **"View submission" and "See feedback" are the same button.** Navdeep, 00:45:28: *"they are tertiary buttons. And they should be the same"*; one black and one blue was *"a mistake"* (00:45:55). Both are now `Link color` on the Passed and Failed variants of `LMS / Quiz · Results Summary`, leaving the primary CTA as the only louder element.
+- **"Submit — final" is now just "Submit".** Harpreet, 00:25:38: if it means nothing, drop it — and Nelson could not say why "final" was there (00:25:26). It also carried an em dash.
+- **No em dashes in interface copy** (Harpreet, 00:25:44). Removed from the results heading, the quiz description, the question text, the topic-header descriptions and the inline alerts. Canvas annotations and this documentation are not interface copy and were left alone.
+- **Progress uses the new `Quiz · Progress Bar` variant** — "Question X of Y" plus a bar and a percentage — on all three flows and the canonical page.
+- **The prefix demo column is retired** from `04.2`, now that the property no longer exists.
+- **Verified, no change needed:** "Review module first" was already a secondary button (00:30:49), and radio vs checkbox are already visually literal (00:16:00).
+
+### Quiz paginator — semantics (decided by Nelson, 29 Jul 2026)
+
+The paginator is `LMS / Quiz · Questions Progress`, variant **`Quiz · Progress Bar`**: step label, bar, percentage. It replaces the per-question circles in the prototype.
+
+**The percentage is answered ÷ total, not position ÷ total.** This is the whole point of the choice: going back to review an earlier question moves the step label backwards but must never shrink the bar. Progress is what you have completed, not where the cursor happens to sit. A position-based bar would regress on every review and read as lost work.
+
+The DS placeholder contradicted itself — "Question 2 of 5" with 67% on the label and 70% on the bar, three different numbers in one component. All four instances are now internally consistent, using *answered = position − 1*: the three flow screens read "Question 2 of 5" at 20%, the canonical page reads "Question 6 of 10" at 50%.
+
+**The stock `Progress bar` component was drawing the wrong fill, and is now fixed** (`1085:57382`, 55 variants). The `Label=False` family — the one the paginator uses — mapped its fill linearly from **44 px at 0% to 320 px at 100%** instead of 0 to 320. Every value read high, and the error grew as the percentage fell: 50% drew 57.5%, 20% drew 31.6%, and **0% drew a 13.8% stub of progress for a learner who had answered nothing**. It was not a scaling problem — the instances scale correctly; the master ratios were wrong.
+
+All eleven `Label=False` variants were re-cut to true ratios, and the 0% variant of the four labelled families (which drew a ~2.5% sliver from the rounded cap) now renders empty. All 55 variants verified accurate to within a rounding pixel. The floating-label variants were already correct: they wrap the fill in a frame with the tooltip anchored to its right edge, which is the more robust construction.
+
+### No em dashes — swept across components and screens
+
+Applied Harpreet's rule (00:25:44) beyond the quiz: **85 text nodes across the ICP screens** and **35 across the LMS component library** were rewritten, replacing the em dash with the punctuation the sentence actually needed — a full stop where it joined two sentences, a colon where it introduced, a comma where it was parenthetical, a middot in label pairs such as `DESCRIPTION · REQUIRED FOR EACH FILE`. Nothing was substituted blindly.
+
+Two categories were deliberately left alone, and should stay that way: **canvas annotations** (section titles, panel descriptions, these documentation notes) are not interface copy, and the em dash carries meaning there; and the **Untitled UI stock pages** in the design-system file, which are vendor content we do not ship.
+
+Also cleared in the same pass: the `Results Summary` pending state showed a bare em dash as a placeholder for an unknown score, which broke both this rule and the optional-metadata rule. It now reads **Pending**.
+
+### Quiz — still outstanding
+
+- ~~**The per-question circle indicators are contested.**~~ **Resolved (Jul 29, 2026)** by the `Quiz · Progress Bar` variant. The room had decided to drop them (Navdeep, 00:54:15: a dot per question *"might be just an overkill"* on a 20-question quiz; Harpreet, 00:55:23: *"Those rounded button is not giving me anything extra"*) while the quiz was a single scroll and the dots were decoration. The stepper briefly turned them into the navigator, which reopened it. The new variant delivers exactly the room's ask — question X of Y plus a bar — and the stepper's Previous/Next carries the navigation the dots used to. **Circles are out, in the DS and the prototype. No further ruling needed.**
+- **"Review module first" must disappear** when the quiz is not linked to a module or lesson — a course-final quiz has no such link (00:30:31).
 - **Scoring-state colour rules are unspecified** (00:33:52): when is a score black, when red, when amber? Red vs amber for a fail was left unresolved — Navdeep argued the DS ambers are accessible, Harpreet was not convinced. A submitted-but-ungraded quiz is all black, and the whole screen changes once results are released (00:35:40).
-- **Radio vs checkbox must be visually literal** — a checkbox looks like a checkbox, a radio like a radio (00:16:00).
+- **The `Results Summary` component still carries the em-dash heading as its default.** The instances are overridden and read correctly, but the component lives in the published library and needs the same fix at source, or new instances reintroduce it.
 - **Study Zoho Survey's form patterns** — Harpreet's explicit homework (00:50:07), including its progress treatment and question types.
 - **Delivery caveat** (01:45:42): the quiz ships as **multiple choice only**; true/false and the other types come in a later sprint.
 
@@ -406,7 +432,13 @@ Not a workshop decision: taken the same day, from primary-source research, and *
 → **Consequence to plan:** existing quizzes must be **re-authored in Studio**, splitting each question into its own unit. Sequence and cost this content migration with Rashid; confirm whether it runs per-course or platform-wide.
 → Competitive context (full table in [quizzes/02-coursera-quiz-benchmark.md](quizzes/02-coursera-quiz-benchmark.md) §7): Coursera is single-scroll, Udemy and LinkedIn are steppers, Canvas and Moodle make it an instructor setting. Coursera's no-navigator minimalism is affordable only because retries are effectively unlimited — **our graded path allows just 2 attempts per question**, so that trade does not transfer.
 
-**⚠️ Open conflict — the per-question dots.** The workshop decided to **drop the per-question circle indicators** (Navdeep 00:54:15, Harpreet 00:55:23: *"those rounded buttons are not giving me anything extra"*), keeping "2 of 10" plus a progress bar. That was decided while the quiz was **one scroll**, where the dots were decoration. In a stepper the same dots stop being decoration and become the **navigator** — the only way to jump between questions — so the ruling needs revisiting rather than silently applying or silently ignoring. Navdeep's underlying objection still stands for long quizzes: 20 dots is noise. Open edX itself resolves this by switching to a **dropdown** carrying `{current} of {total}` when the tabs overflow, which is the obvious middle path. → Take back to Navdeep and Harpreet before the DS is updated.
+**✅ The per-question dots — conflict resolved (Jul 29, 2026).** The workshop had decided to **drop the per-question circle indicators** (Navdeep 00:54:15, Harpreet 00:55:23: *"those rounded buttons are not giving me anything extra"*), keeping "2 of 10" plus a progress bar. That was decided while the quiz was **one scroll**, where the dots were decoration. The stepper briefly turned them into the navigator — the only way to jump between questions — which reopened the ruling.
+
+Settled by the new DS variant **`Quiz · Progress Bar`** (`LMS / Quiz · Questions Progress`, node `20464-4849`): step label, bar, percentage. It is precisely what the room asked for, and the stepper's Previous/Next carries the navigation the dots used to. Navdeep's objection holds either way — on a 20-question quiz, 20 dots are noise, and a bar is not. **Circles are out, in the DS and the prototype.**
+
+Two implementation notes carried into the prototype:
+- **The percentage is `answered/total`, not position**, so stepping back to review an earlier question never shrinks the bar.
+- **Free backtracking stays**, so there is no navigator to hide. Were it ever disabled, remove the navigator entirely rather than rendering it disabled (Canvas New Quizzes' rule: don't show a mini-map you can't use).
 
 ### Course Details page — decided
 

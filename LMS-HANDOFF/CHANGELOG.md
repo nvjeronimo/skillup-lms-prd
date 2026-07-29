@@ -29,11 +29,33 @@ points (the prefix decision was stronger than "don't hardcode"; tabs were *not* 
 - **⚠︎ Known divergence — tabs.** The workshop decided the tab mechanism stays with Resources and
   Grade as phase two, and expected Grades + Certificates as tabs. The v9 frame is a single page. Kept
   deliberately as an MVP simplification, flagged on the frame and to be agreed at the review.
-- **Not yet applied** (decided in the room, absent from the AI notes): drop the per-question circle
-  indicators in favour of "question X of Y" + progress bar; make "View submission" and "See feedback"
-  the same tertiary button; "Review module first" as a secondary button that only appears when the
-  quiz is linked; check/remove the "Submit final" label; **no em dashes in interface copy**; specify
-  the score colour rules (red vs amber for a fail is unresolved).
+- **Also applied** (decided in the room, absent from the AI notes): "View submission" and "See
+  feedback" are now the same tertiary button; "Submit — final" is now "Submit"; **em dashes removed
+  from quiz interface copy** (results heading, description, question text, topic headers, inline
+  alerts); the quiz progress now uses the new `Quiz · Progress Bar` variant; the prefix demo column is
+  retired. Verified as already correct: "Review module first" was secondary, radio/checkbox literal.
+- **Em dashes swept from all components and screens** — 85 text nodes across the ICP screens, 35
+  across the LMS component library, each rewritten with the punctuation the sentence needed rather
+  than a blind substitution. Canvas annotations and the Untitled UI stock pages were left alone. The
+  `Results Summary` pending state no longer shows a bare dash for an unknown score; it reads
+  **Pending**.
+- **Quiz paginator semantics recorded:** the percentage is **answered ÷ total, not position**, so
+  reviewing an earlier question never shrinks the bar. The DS placeholder had three different numbers
+  in one component (label 2 of 5, text 67%, bar 70%); all four instances are now consistent.
+- **Stock `Progress bar` component fixed** (`1085:57382`, 55 variants). Its `Label=False` family
+  mapped the fill from 44 px at 0% to 320 px at 100% instead of 0 to 320, so every value read high and
+  the error grew as the percentage fell: 50% drew 57.5%, 20% drew 31.6%, and **0% drew a 13.8% stub**
+  of progress for a learner who had answered nothing. Not a scaling problem — the master ratios were
+  wrong. All 11 variants re-cut, the 0% sliver removed from the four labelled families, all 55
+  verified accurate. Affects every progress bar in the product, not just the quiz.
+- **Per-question circles — resolved.** They were briefly contested: the workshop dropped them, then
+  the stepper decision made them the navigator. The new `Quiz · Progress Bar` variant settles it by
+  delivering exactly what the room asked for (question X of Y plus a bar) while the stepper's
+  Previous/Next carries the navigation the dots used to. The circles are out, in the DS and the
+  prototype. No further ruling needed.
+- **Still outstanding on the quiz:** "Review module first" must hide when the quiz has no linked
+  module; the score colour rules are unspecified (red vs amber for a fail unresolved); and the
+  `Results Summary` component still carries the em-dash heading as its library default.
 - **Licence (CC) scope** — validated against docs.openedx.org: edX shows the *course* licence at the
   bottom of every content page plus an optional per-video licence on the player. Interim: Video only;
   final scope pending a product decision.
@@ -65,9 +87,11 @@ hold — and it contradicted this package's own definition of Subsection.
   single-scroll, Udemy and LinkedIn are steppers, Canvas and Moodle make it an instructor setting.
   Coursera's no-navigator minimalism is affordable only because retries are effectively unlimited —
   **our graded path allows 2 attempts per question**, so that trade does not transfer.
-- **⚠︎ Conflicts with a workshop ruling.** The room decided to drop the per-question circle
-  indicators — decided while the quiz was one scroll and the dots were decoration. In a stepper they
-  become the navigator. Unresolved: to be taken back to Navdeep and Harpreet before the DS follows.
+- **Briefly conflicted with a workshop ruling, now resolved.** The room had decided to drop the
+  per-question circle indicators, while the quiz was one scroll and the dots were decoration. The
+  stepper turned them into the navigator, which reopened the question. The new `Quiz · Progress Bar`
+  variant closes it: the room's ask (question X of Y plus a bar) is what ships, and Previous/Next
+  carries the navigation. Circles out, in both the DS and the prototype.
 - **Consequence to plan:** existing quizzes must be **re-authored in Studio**, one question per unit.
   Content migration to sequence and cost with Rashid.
 
