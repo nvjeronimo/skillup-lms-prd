@@ -23,6 +23,8 @@ this file is only the current state.
 | LMS ICP Phase 1 (working) | `Wz2TCYFVr0hD8tJNiLajLt` | active |
 | ↳ Video Lesson — Ready for Dev ✅ | `Wz2TCYFVr0hD8tJNiLajLt` · `3785-11385` | Ready for Dev |
 | ↳ Diagram Flows + Business Logic ✅ | `Wz2TCYFVr0hD8tJNiLajLt` · `3832-18102` | Ready |
+| ↳ Overlay Panels — Notifications + Saved | `Wz2TCYFVr0hD8tJNiLajLt` · `3827-64809` | 🟠 Ready for Review |
+| ↳ Completion + Certificate (Phase 3) | `Wz2TCYFVr0hD8tJNiLajLt` · `3830-76219` | 🟠 WIP |
 | ↳ Topic Content Types — Discovery + DS Build | `Wz2TCYFVr0hD8tJNiLajLt` · `4692-444` | 🟠→ Ready for Review |
 | ↳ V8 Complementary Pages (SkillUp Brand) | `Wz2TCYFVr0hD8tJNiLajLt` · `4340-322` | 🟠 WIP |
 | FigJam — LMS Learner Flow Diagram | `v5EiEKpYgXnUwoJs2DghCP` | ⚠️ outdated — refresh pending |

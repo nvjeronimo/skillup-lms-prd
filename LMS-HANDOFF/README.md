@@ -11,12 +11,13 @@ Code handoff package for the V7 LMS prototype. Built from the Figma source of tr
 
 Each handoff section lives on its own page under `READY FOR DEV ✅` parent:
 
-| Page | Status | Cards |
-|---|---|---|
-| `↳ Phase 1 - Video Lesson - Ready for Dev ✅` | Ready ✅ | 15 (Desktop / Tablet / Mobile per screen) |
-| `↳ Phase 1 - Overlay Panels - Ready for Dev ✅` | Ready ✅ | 6 (Notifications + Saved × DTM) |
-| `↳ Phase 3 - Completion + Certificate - WIP 🟠` | Phase 1 baseline · Phase 3 WIP 🟠 | 6 (Course Complete Modal + Certificate × DTM) |
-| `↳ Diagram Flows + Business Logic` | Ready ✅ | Navigation flow + 42 BRs + 10 decisions + 24 doc links |
+| Page | Status | Node-id | Cards |
+|---|---|---|---|
+| `↳ Phase 1 - Video Lesson` | Ready for Dev ✅ | [`3785-11385`](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3785-11385) | 15 (Desktop / Tablet / Mobile per screen) |
+| `↳ Diagram Flows + Business Logic` | Ready for Dev ✅ | [`3832-18102`](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3832-18102) | Navigation flow + 42 BRs + 10 decisions + 24 doc links |
+| `↳ Phase 1 - Overlay Panels` | 🟠 Ready for Review | [`3827-64809`](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3827-64809) | 6 (Notifications + Saved × DTM) |
+| `↳ Topic Content Types & Quizzes` | 🟠 Ready for Review | [`4692-444`](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4692-444) | 15 sections (01→11 + ZZ) — latest discovery + final decisions |
+| `↳ Phase 3 - Completion + Certificate` | Phase 1 baseline · Phase 3 WIP 🟠 | [`3830-76219`](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=3830-76219) | 6 (Course Complete Modal + Certificate × DTM) |
 
 **Page conventions** (enforced):
 - Name format: `       ↳ Phase X - Flow Domain - Status [emoji]`
