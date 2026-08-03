@@ -2,6 +2,31 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-03 · Results screen rebuilt, and the retry question settled
+
+- **`LMS / Quiz · Results`** — four variants (Passed, Not passed, Pending, Withheld) on the layout from
+  the prototype, which was better than what the DS had. No per-question circles; no dash standing in
+  for an absent score; and the attempts line now says what it counts — *"1 question still has attempts
+  left"* rather than the ambiguous *"4 attempts · Unlimited retakes"*.
+- **Retry incorrect vs Retake quiz — the assumption was backwards.** Neither exists as an edX feature,
+  but attempts are counted **per problem**, so re-answering only the wrong ones is essentially native;
+  what is missing is a UI that collects them. The *full* retake is the invented one: there is no
+  subsection attempt object, and `reset_problem()` does not refund a spent attempt, so a retake burns
+  one on questions the learner already got right. `Retry incorrect` is therefore the **primary**
+  action and `Retake quiz` the secondary — drawing them the other way round would make the expensive
+  path look like the default.
+- **Answer inputs rebuilt on the DS.** Dropdown now uses the DS `Select`, numerical and text use
+  `Input field`, so focus, disabled and destructive states come from the design system. Dropped the
+  destructive styling on incorrect: it turns the *answer-format hint* red, which implies the format
+  was wrong when the learner may have had the format right and the value wrong.
+- **New Figma section `04.4 · Pass mark — a target, not a gate`** — the Coursera rail reconstructed,
+  what Open edX gives us (nothing), and DO/DON'T copy examples.
+- **"Review lesson first" is buildable.** The vendor's "linking is not possible" applies to content
+  authored inside the problem block. Our shell resolves the parent module from course structure, so
+  the affordance stands — it just must never be authored into feedback.
+- **Open with the vendor:** is Show Reset Button enabled, and what Maximum Attempts are set per
+  problem? Those decide whether a full retake is reachable at all. Recorded in `session-log.md`.
+
 ## 2026-08-03 · Quiz screen matrix — and a pass mark that does not exist
 
 New **`quizzes/06-quiz-screen-matrix.md`**: crosses the platform settings into the finite set of

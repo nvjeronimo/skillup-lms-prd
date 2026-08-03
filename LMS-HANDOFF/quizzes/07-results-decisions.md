@@ -117,6 +117,27 @@ Without that floor, a partial retake can *lower* a grade — which is the trap. 
 
 FlexiQuiz, Tovuti and LearnDash ship similar features; Canvas, Moodle and Blackboard do not.
 
+### Which of the two buttons is the invented one — answered Aug 3, 2026
+
+The question was put as *"is Retry incorrect coherent with edX, or does retry reset the whole quiz?"*. The answer inverts the assumption, and it is worth stating plainly because it changes which button is cheap and which is a fiction.
+
+**Neither "retry incorrect" nor "retake quiz" exists as a feature.** But they are not equally far from the platform:
+
+| | What the platform actually does |
+|---|---|
+| **Retry incorrect** | **Essentially native.** Attempts are counted per problem. A learner who got 3 of 10 wrong still has unspent attempts on exactly those 3, and re-submits them individually. That *is* retrying only the incorrect ones. What is missing is a UI that collects them, not the mechanic. |
+| **Retake quiz** | **The invented one.** There is no subsection attempt object, no "retake" action, and no way to hand back a fresh attempt budget. Resetting means pressing Reset on each problem one at a time — and `reset_problem()` explicitly **does not refund an attempt**. So a "retake" spends one more attempt on every question, and is only reachable if `show_reset_button` is on and every question still has attempts left. |
+
+So the button that looks conventional is the one with no backing, and the button that looks exotic is the one the platform already supports.
+
+Consequences for the design:
+
+- **"Retry incorrect" needs no new state.** It reads per-problem correctness that already exists and sends the learner back to the questions with attempts remaining. It should say how many, and it consumes those questions' attempts — not a quiz-level one, because there is no such thing.
+- **"Retake quiz" must be justified before it is drawn.** If it means "reset every question and answer again", it burns an attempt on questions the learner already got right, which is a strange trade. If it means "start a fresh attempt at the whole quiz", that is the quiz-level model we are synthesising ourselves, and the shell has to enforce it.
+- **The attempts line must stop being ambiguous.** "4 attempts · Unlimited retakes" cannot be read against a platform that counts per question. Say what is counted.
+
+> **What still needs asking of the vendor** — not whether the feature exists, which is settled, but how *their* courses are configured: is **Show Reset Button** enabled, and what **Maximum Attempts** do they set per problem? Those two answers decide whether a full retake is reachable at all in our content.
+
 ### The uncomfortable finding
 
 **Open edX is already natively closer to Brightspace than to Coursera.** Because attempts are counted per problem and each problem submits independently, a learner *can already* re-answer only the ones they got wrong. That is the default behaviour.
@@ -141,6 +162,22 @@ Then resolve the labelling honestly:
 - If we keep a highest-score rule, show **both figures** so a worse retry visibly does not hurt. ⚠︎ This needs our own layer — Open edX keeps the *current* score, not the highest, unless `grading_method` is set to `highest_score`.
 
 ---
+
+---
+
+## What was built (Aug 3, 2026)
+
+`LMS / Quiz · Results` — four variants: Passed, Not passed, Pending, Withheld. Layout adopted from the prototype, which is better than what the DS had: eyebrow, title, verdict pill top-right, a score band, and a footer with context on the left and actions on the right. None of that is forced by edX; it was simply the better arrangement.
+
+Three deliberate departures from the prototype it was copied from:
+
+- **No per-question circles.** They were retired as an interaction we do not need, and nothing here brings them back.
+- **No dash where a score is absent.** Pending and Withheld render no percentage at all. A "—" at 34px is precisely the placeholder our own optional-metadata rule forbids.
+- **The attempts line says what it counts.** "4 attempts · Unlimited retakes" cannot be read against a platform that counts per question. It now reads *"1 question still has attempts left"*, which is a fact the backend can answer.
+
+**Action hierarchy is inverted from the intuitive one, on purpose.** `Retry incorrect` is the primary because it is what the platform does natively; `Retake quiz` is the secondary because it is the one that needs invention. Drawing them the other way round would have made the expensive path look like the default.
+
+> **Open, and blocking `Retake quiz`:** whether a full retake is reachable at all depends on the vendor's configuration, not on design. Question sent to the team — see `../session-log.md`.
 
 ## Summary
 

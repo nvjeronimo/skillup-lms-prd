@@ -133,6 +133,23 @@ Full record, verified line by line against the recording, in **`topic-types-inve
 
 ---
 
+## Open questions with the vendor
+
+### Sent Aug 3, 2026 · quiz reset and attempts configuration
+
+**Why it is being asked.** We established from source that neither "retry only the incorrect questions" nor "retake the whole quiz" exists as an Open edX feature — but they are not equally far from it. Attempts are counted **per problem**, so re-answering only the wrong ones is essentially the platform's native behaviour; what is missing is a UI that collects them. A *full* retake is the invented one: there is no subsection attempt object, and `reset_problem()` explicitly does not refund a spent attempt.
+
+That settles the capability question. What it does not settle is whether a full retake is **reachable in their content**, which depends on two configuration choices only they can answer:
+
+1. Is **Show Reset Button** enabled on quiz problems in their courses?
+2. What **Maximum Attempts** do they set per problem?
+
+If Reset is off, `Retake quiz` cannot be built without backend work, and the design decision makes itself.
+
+**Status:** awaiting reply. Blocks the `Retake quiz` action on `LMS / Quiz · Results`; does not block `Retry incorrect`, which is already built.
+
+---
+
 ## Where the resulting work is tracked
 
 The actions from these sessions live as a **checklist in Figma**, on the ICP page inside section `04 · Quiz — the three types`, named **`Quiz — worklist`**. Four groups: decided and applied, to build, verify in the dev environment, waiting on someone else. Each row is an instance of a local `Worklist checkbox` component, so ticking one is a variant switch in the properties panel rather than a restyle.
