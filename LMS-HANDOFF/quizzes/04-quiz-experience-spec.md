@@ -69,7 +69,7 @@ Defines every component, screen, state and platform contract needed to build the
 ## 3. Functional Requirements
 
 ### F-QZ-001 Quiz Entry Header
-Before the first question, show a context block: quiz title; badge `Practice` / `Graded` / `Final Exam`; question count; attempts policy ("2 attempts per question" / "Unlimited attempts"); weight ("Counts 20% of your final grade" — computed from grading policy) or "Doesn't affect your grade"; pass threshold when graded; estimated time (authored or count×1.5 min); primary CTA **Start quiz** opens step 1 (or **Resume** at the furthest answered question). *(Updated Jul 29, 2026: the quiz is a stepper — one question per step — so the entry header is the first screen rather than a block above a scroll. See §1.4-0c.)*
+Before the first question, show a context block: quiz title; badge `Practice` / `Graded` / `Final Exam`; question count; attempts policy — quiz-level, e.g. "2 attempts" meaning two runs through the whole quiz (§9.3); weight ("Counts 20% of your final grade" — computed from grading policy) or "Doesn't affect your grade"; pass threshold when graded; estimated time (authored or count×1.5 min); primary CTA **Start quiz** opens step 1 (or **Resume** at the furthest answered question). *(Updated Jul 29, 2026: the quiz is a stepper — one question per step — so the entry header is the first screen rather than a block above a scroll. See §1.4-0c.)*
 **BR-1:** data sourced from Course Home/sequence metadata APIs + grading policy; never hard-coded.
 **BR-2:** "Submit is final per question" warning shown for graded quizzes (matches current platform truth).
 **AC:** given a graded quiz of 7 questions with 2 attempts, header shows all five facts; resume state appears when ≥1 question submitted.
@@ -260,13 +260,47 @@ Established in a live Studio walkthrough by Simran Jindal, who authors these cou
 
 **Staff graded points is not ours to design here.** It is an assignment with hand grading, which is the ORA/assignment track.
 
-### 9.3 Attempts — "unlimited" does not exist
+### 9.3 An attempt is one run through the WHOLE quiz
 
-Confirmed: Open edX has **no unlimited-attempts setting**. Authors fake it with a high number (10, 20, 100). If no number is set on a timed exam, the platform defaults to **one attempt**.
+**Corrected Aug 3, 2026 (Nelson).** An attempt is a retake of the **entire quiz**, not a retry of a single answer. "2 attempts" means the learner may sit the quiz twice; it does not mean two tries at each question. This package previously said *"2 attempts per question"* in several places — that was wrong and is corrected throughout.
 
-> **Correction required.** Any screen of ours that says *"Unlimited retakes"* describes a state the platform cannot produce. The UI must render the number the backend returns, and the copy must degrade cleanly when the number is high — "100 attempts" is technically honest but reads as noise. Recommendation: show the remaining count (*"3 of 100 attempts used"* is worse than *"97 attempts left"*), and suppress the count entirely above a threshold rather than inventing the word "unlimited".
+**Where it gets awkward — and it is worse than it first looked.** Two independent source reviews confirm the same negative finding: **there is no per-subsection attempt limit anywhere in core Open edX.**
 
-### 9.4 Linking from a quiz to course content — not possible in authored content
+- `SequenceBlock` has no attempts field. Its complete settings list is `position`, `relative_weeks_due`, `hide_after_due`, `is_entrance_exam`, `is_time_limited`, `default_time_limit_minutes`, `is_proctored_enabled`, `exam_review_rules`, `is_practice_exam`, `is_onboarding_exam`, plus inherited `graded`, `format`, `due`, `show_correctness`.
+- The current Studio subsection Configure modal exposes no attempts control.
+- `Maximum Attempts` is a field on the **problem block** — on each question. Blank means *"infinite attempts are allowed"* in the platform's own help text.
+- Even a **timed exam has no attempt limit** — it has a time limit and a single session. Retakes are staff-initiated: staff clear the attempt.
+- `reset_problem()` is per problem and explicitly **does not refund an attempt**.
+
+So "2 attempts at the whole quiz" is **entirely ours to build and enforce**. The platform will not count it, will not stop a learner exceeding it, and has no field to store it in. Concretely the shell must: set the same per-problem limit on every question, track which run the learner is on, decide what a "run" resets, and block a third run itself.
+
+> If anyone reports having seen a per-quiz attempts setting, it is one of three other things: the prerequisite **Minimum score** gate, staff clearing a timed-exam attempt, or a vendor fork. Not core.
+
+Two consequences for the design:
+
+- **"Attempt 2 of 2 · last attempt" on the question card stays**, but only if it reads as *the second run of the quiz*. It must never be mistaken for a second try at the question in front of the learner. It is quiz-level information repeated on the card for orientation, not something scoped to that question.
+- **"Retry incorrect (N)" is a partial retake, and the platform has no such concept.** Decide explicitly whether it consumes a full quiz attempt. If it does, the label must say so. If it does not, the attempt limit means nothing: a learner can grind the wrong answers indefinitely while the counter still reads "2 attempts" — worse than having no limit, because it looks like a rule.
+
+### 9.4 Attempts — blank means two different things
+
+**Corrected Aug 3, 2026.** An earlier version of this section said Open edX has no unlimited-attempts setting. That was too broad, and it came from over-reading one vendor sentence.
+
+The platform's own documentation (see `01-edx-quiz-capabilities.md` §2) is explicit: **Maximum Attempts is an integer, and empty = unlimited**, with a course-wide advanced setting supplying the default. Simran said in the walkthrough that *"there's no option of unlimited… you can keep it like 10, 20 or maybe 100"* — but she also said *"if there is no number and it's a **timed exam**, then by default it takes one."* Both are true, of different things:
+
+| Context | Maximum Attempts blank means |
+|---|---|
+| Ordinary problem | **unlimited** |
+| Timed / special exam | **one attempt** |
+
+So the design rules are:
+
+- **"Unlimited attempts" is legitimate on a practice quiz** and must never appear on a timed one, where blank silently means a single attempt. Getting this backwards is the dangerous direction: a learner told they have unlimited tries on a one-shot exam.
+- Otherwise render the number the backend returns. Above roughly ten the count stops being a meaningful constraint, so hide the pill rather than printing noise like "100 attempts".
+- Never invent the word "unlimited" for a high number — say what the number is, or say nothing.
+
+> **⚠︎ Still to verify in the dev environment.** Whether *their* Studio actually permits a blank value, or whether their authoring practice forces a number. Simran's phrasing suggests the latter, which would be a house convention rather than a platform limit. Added to the dev-environment checks.
+
+### 9.5 Linking from a quiz to course content — not possible in authored content
 
 Confirmed twice: an author **cannot** put a working link or CTA in a question or in feedback text. The only workaround offered is prose — *"you can go and review module 3"* — with the learner navigating manually via the content outline.
 

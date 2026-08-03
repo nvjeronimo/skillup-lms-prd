@@ -2,6 +2,36 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-03 · Quiz screen matrix — and a pass mark that does not exist
+
+New **`quizzes/06-quiz-screen-matrix.md`**: crosses the platform settings into the finite set of
+learner-reachable screens. 14 question states, 15 quiz states, a 32-screen inventory marked built vs
+to-build, flows per type, and the combinations that cannot happen. **Nine of thirty-two are built** —
+and the gap is not the exotic cases, it is the locked, closed and withheld states, which is where
+learners get stuck and support tickets come from.
+
+Source research against `edx-platform`, `xblocks-contrib`, `frontend-app-authoring`,
+`frontend-lib-special-exams` and `edx-proctoring` on `master`:
+
+- **⚠︎ There is no pass mark at quiz level.** `GRADE_CUTOFFS` is course-wide; a subsection has no
+  passing threshold. Our screens say "Pass mark 70%", "You needed 60% to pass", "Passed" / "Not
+  passed" — **none of it comes from the platform.** Either the per-quiz verdict goes, or the pass mark
+  becomes authored metadata we require from content. Biggest gap between what we drew and what the
+  backend can answer.
+- **⚠︎ `grading_method`** (last / first / highest / average score) renders *"Grading method: Last
+  Score"* to learners and is **absent from the educator docs entirely**. Our "best score kept" copy
+  must match the configured method, not assume it.
+- **A timer forces the whole exam experience** — entry gate, End My Exam, staff-only reset. There is
+  no such thing as "a 10-minute quiz" without inheriting the exam UX.
+- **True/False is not a separate type** — it is single select with two choices. The picker has exactly
+  five: single select, multi-select, dropdown, numerical input, text input.
+- **Hints are paginated** — *"Hint (1 of 3):"* with a Next Hint control. We built a single block.
+- **`max_attempts = 0`** is a survey question: closed from first render, but Save and Reset stay.
+- **Corrected `01-edx-quiz-capabilities.md`**: two Show Answer rows were swapped. `attempted` means
+  "attempted OR past due" (Studio labels it "Attempted or Past Due"); `attempted_no_past_due` is the
+  one labelled "Attempted". Also `answered` means *correct*, not answered, and the default is
+  `finished`.
+
 ## 2026-07-30 · Two vendor sessions — quiz types confirmed, Course Page data requested
 
 New **`session-log.md`** — a record of who said what, when, and how sure they were, with every
@@ -150,7 +180,9 @@ hold — and it contradicted this package's own definition of Subsection.
 - **Competitive comparison added** (`quizzes/02-coursera-quiz-benchmark.md` §7): Coursera is
   single-scroll, Udemy and LinkedIn are steppers, Canvas and Moodle make it an instructor setting.
   Coursera's no-navigator minimalism is affordable only because retries are effectively unlimited —
-  **our graded path allows 2 attempts per question**, so that trade does not transfer.
+  **our graded path allows 2 attempts at the whole quiz**, so that trade does not transfer.
+  *(Corrected 3 Aug 2026 — this line originally read "per question". An attempt is one run through
+  the quiz. See `quizzes/04-quiz-experience-spec.md` §9.3.)*
 - **Briefly conflicted with a workshop ruling, now resolved.** The room had decided to drop the
   per-question circle indicators, while the quiz was one scroll and the dots were decoration. The
   stepper turned them into the navigator, which reopened the question. The new `Quiz · Progress Bar`
