@@ -25,3 +25,8 @@ Active Workspace _ Notes _ AI.html
 # publish only the analysis drawn from it (see topic-types-inventory.md §8).
 *.vtt
 *.srt
+*.mp4
+# Whole meeting folders — the recording, the verbatim transcript (.docx), the
+# AI notes and any screenshot of an internal ticket all name colleagues and
+# carry internal URLs. Same rule, wider net.
+30-07 meetings/

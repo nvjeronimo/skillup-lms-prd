@@ -90,6 +90,7 @@ lms-prototype/
 | `edx-parity-audit.md` | Feature audit: our LMS vs edX Learner Guide — covered / partial / missing per area |
 | `feature-deltas.md` | Clear separation: edX baseline / ours-only / edX-only-to-add / edX-only-skipped |
 | `phase1-readiness.md` | Specs for bookmark toast, transcript auto-scroll, a11y checklist, share menu + analytics events |
+| `session-log.md` | Meetings, vendor demos and research sessions — who said what, when, and how sure they were. Every platform claim tagged CONFIRMED / ASSERTED / CONFLICT / UNVERIFIED. Read before planning against a capability someone mentioned in a call |
 | `BA/` (subfolder) | Business Analyst handoff — see `BA/00-README.md` for index |
 
 ## BA handoff (subfolder)

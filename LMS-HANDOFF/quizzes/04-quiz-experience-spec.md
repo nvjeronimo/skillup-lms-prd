@@ -190,3 +190,88 @@ Shell-level features (F-QZ-001, 012, 013, 015, 018, 019) consume REST APIs (cour
 7. ~~**One unit per quiz, or several?**~~ *(added Jul 20 — **resolved Jul 29, 2026**)* Both are possible; it is an authoring choice (§1.4-0c). SKOAIH01 today stacks all questions in one unit. **Decision: adopt the stepper — one `problem` per unit**, which the platform renders natively via sequence navigation. Consequence: quizzes must be **re-authored in Studio**, splitting each question into its own unit. → open follow-up: sequence and cost that content migration with Rashid, and confirm whether it is done per-course or platform-wide.
 8. **Where does the shell read its state from?** *(added Jul 20)* F-QZ-001/008/015 depend on subsection metadata (graded flag, assignment type, weight, timed config). Confirm these arrive via the courseware/sequence API in the same fetch as the unit, so the shell renders without a second round-trip.
 9. **Option enumeration prefix — manual or automatic?** *(added Jul 24)* Do authors type the A/B/C or 1/2/3 prefix into the option text (manual), or does the player generate it from option order (automatic)? See BR-4. Automatic is cleaner and consistent but must run *after* server-side shuffle and be `aria-hidden`; manual is zero-build but drifts across authors. → product decision.
+
+---
+
+## 8. Navigation between questions — platform research (Jul 30, 2026)
+
+Question asked: *can a course team configure whether a learner may move backwards and forwards between questions before submitting an answer?* Researched against `edx-platform`, `frontend-app-learning`, `frontend-lib-special-exams` and docs.openedx.org.
+
+### 8.1 The answer: no, and it is not configurable at any level
+
+Within a subsection, unit-to-unit navigation is **always free-form** — Previous/Next plus the outline sidebar — with no gate on submission state. There is no per-quiz, per-type, per-course or per-problem setting for it. Confirmed absent from `capa_block.py` (no navigation field), from Course Advanced Settings, and from the subsection Configure dialog.
+
+The near-misses, so nobody re-opens them:
+
+- **`hide_from_toc`** (inheritable, section-level) sets `navigation_disabled`, which hides Previous *only on the first unit* and Next *only on the last* — it stops the learner leaving the subsection, not moving inside it. It also sits behind `ENABLE_HIDE_FROM_TOC_UI = False`, a site-wide operator flag, and does not exist in the new authoring MFE at all.
+- **Timed / proctored exams** (`is_time_limited`, per subsection — genuinely per-quiz) add a timer and an entry gate, then render the ordinary sequence *including its navigation*. No effect on moving between questions.
+- **Subsection prerequisites** gate access to a whole subsection, never to a question.
+- **The unit tab bar** can be hidden, but only through an MFE plugin-slot config for the entire deployment — never per course.
+
+### 8.2 The finding that actually matters: unsubmitted answers are lost
+
+`ProblemBlock.should_show_save_button()` returns **False** when `max_attempts is None` and randomization is not *Always*. There is no autosave, no `beforeunload` guard, and unsubmitted input lives only in the unit's iframe DOM, which is destroyed on navigation.
+
+So on a stock Open edX front end:
+
+| Quiz type | `max_attempts` | Save button | An unsubmitted selection… |
+|---|---|---|---|
+| **Practice** — unlimited retakes | none | **absent** | **is lost** on Next/Previous |
+| **Graded** — 2 attempts | 2 | present | survives, but only after a manual Save click |
+| **Final** — 1 attempt | 1 | present | survives, but only after a manual Save click |
+
+The learner's *position* is remembered (`position`, `Scope.user_state`); only the answer is discarded.
+
+### 8.3 What this means for our design
+
+The stepper we adopted lets learners move between questions freely — which the platform allows, and which we cannot restrict even if we wanted to. The risk is not navigation, it is **silent data loss**: on the practice path there is not even a Save button to click.
+
+**This is ours to solve, not edX's.** We are building a custom shell over the problem blocks (§6, hybrid integration), so the shell holds the unsubmitted selection in client state as the learner moves between questions and calls `problem_check` only on submit. Requirements this adds:
+
+- The shell must retain a selection when the learner navigates away from an unsubmitted question and back. **Do not rely on the platform for this.**
+- Never surface edX's own "Save" affordance — it would be a second, competing save model.
+- If the shell's state is ever lost (reload, session end), the honest behaviour is an empty question, not a stale one. Our "N of M still unanswered" counter must be computed from *submitted* answers so it never over-reports.
+
+**The "should the learner be allowed to go back?" question is therefore a product choice we implement in the shell, not a platform setting we configure.** Freedom to review is the platform default and the accessible behaviour; if the room wants it restricted for Final exams, that is custom work in our shell, and it should be justified against the accessibility cost rather than assumed.
+
+---
+
+## 9. Question types — confirmed by the vendor (Jul 30, 2026)
+
+Established in a live Studio walkthrough by Simran Jindal, who authors these courses. Full session record in `../session-log.md`. This closes the workshop action *"determine all quiz question types supported in the platform"*.
+
+### 9.1 The list
+
+| Type | Cardinality | Vendor usage | Designed? |
+|---|---|---|---|
+| **Multiple choice** | one answer | *"90%"* of all quiz questions | ✅ shipped |
+| **Checkbox** | several answers | second most common | ✅ shipped |
+| **Multiple choice with hints and feedback** | one answer | **being adopted now** | ⚠️ feedback yes, **hints no** |
+| **Checkboxes with hints and feedback** | several answers | as above | ⚠️ same gap |
+| **Dropdown** | one answer, short/numeric | *"used very rarely"* | ❌ not designed |
+| **Numerical input** | typed value | rare | ❌ not designed |
+| **Staff graded points** | n/a | **not a quiz** — file submission graded by hand | covered by ORA/assignment work |
+
+### 9.2 What this changes
+
+**Hints are a real gap.** We designed feedback but not hints. The hint is shown when the learner picks a wrong answer, *before* the explanation. The vendor's reason for adopting them is worth honouring in the design: previously a learner who exhausted their attempts never found out the right answer at all. A hint is the recovery path *inside* an attempt, feedback is the explanation *after* it — they are different moments and should not collapse into one component.
+
+**Dropdown and numerical input are low volume but not zero.** Both are P3: design them once the multiple-choice path ships. Neither needs new interaction thinking — dropdown is a select, numerical input is a text field with server-side validation — but both need the same submitted/correct/incorrect/disabled states as the option row, and numerical input needs an "answer format" hint so learners are not guessing at units or decimal places.
+
+**Staff graded points is not ours to design here.** It is an assignment with hand grading, which is the ORA/assignment track.
+
+### 9.3 Attempts — "unlimited" does not exist
+
+Confirmed: Open edX has **no unlimited-attempts setting**. Authors fake it with a high number (10, 20, 100). If no number is set on a timed exam, the platform defaults to **one attempt**.
+
+> **Correction required.** Any screen of ours that says *"Unlimited retakes"* describes a state the platform cannot produce. The UI must render the number the backend returns, and the copy must degrade cleanly when the number is high — "100 attempts" is technically honest but reads as noise. Recommendation: show the remaining count (*"3 of 100 attempts used"* is worse than *"97 attempts left"*), and suppress the count entirely above a threshold rather than inventing the word "unlimited".
+
+### 9.4 Linking from a quiz to course content — not possible in authored content
+
+Confirmed twice: an author **cannot** put a working link or CTA in a question or in feedback text. The only workaround offered is prose — *"you can go and review module 3"* — with the learner navigating manually via the content outline.
+
+**This does not kill our "Review module first" button.** The limit applies to content authored inside the `problem` block. Our shell renders its own chrome and knows which subsection the quiz belongs to, so it can resolve the parent module itself and link there. The rule that follows:
+
+- The review affordance is **shell-owned**, resolved from course structure. Never authored into feedback text.
+- It therefore only exists when the shell can resolve a parent — consistent with the existing rule that the button hides when the quiz is not linked to a module.
+- Authors must not be asked to write "go and review module 3" into feedback as a substitute; that produces prose that goes stale when content is reordered.

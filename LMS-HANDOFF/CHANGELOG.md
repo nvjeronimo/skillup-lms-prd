@@ -2,6 +2,67 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-07-30 · Two vendor sessions — quiz types confirmed, Course Page data requested
+
+New **`session-log.md`** — a record of who said what, when, and how sure they were, with every
+capability claim tagged CONFIRMED / ASSERTED / CONFLICT / UNVERIFIED. The specs say what we decided;
+this says where it came from.
+
+- **Quiz question types — RESOLVED** (Studio walkthrough with Simran Jindal). Multiple choice (~90%
+  of usage), checkbox, multiple choice / checkboxes **with hints and feedback** (being adopted now),
+  dropdown (rare), numerical input (rare). Staff graded points is an assignment, not a quiz. Closes
+  the workshop's action 4. Detail in `quizzes/04-quiz-experience-spec.md` §9.
+- **Hints are a design gap.** We built feedback but not hints. They are different moments: a hint is
+  the recovery path *inside* an attempt, feedback is the explanation *after* it.
+- **"Unlimited retakes" is not a thing.** Open edX has no unlimited setting; authors set a high
+  number, and an unset timed exam defaults to **one** attempt. Our screens must stop claiming it.
+- **Linking from a quiz to a module is not possible in authored content** — not in questions, not in
+  feedback. This does *not* kill our "Review module first" button: that is shell chrome resolved from
+  course structure, not authored text. Recorded so nobody reads the limit too broadly.
+- **⚠︎ CONFLICT on navigation.** The vendor believes restricting question-skipping "should be
+  possible" but has never done it. Our source research says it is not configurable at any level.
+  Nelson now has dev-environment access — verify before either side plans on it.
+- **Course Page metadata requested** — Jira **SK-11378** (Critical, Sprint 111, information-gathering
+  only, no acceptance criteria). Metadata, API payloads, feature inventory and supporting docs, plus a
+  Studio course-structure export in Excel. Expected Tue/Wed; the developer has two days. The Course
+  Page design stays blocked until at least the metadata section lands.
+
+## 2026-07-30 · Quiz navigation researched — and a data-loss risk found
+
+Asked whether Open edX lets a course team control moving back and forth between questions before
+submitting. Researched against `edx-platform`, `frontend-app-learning`, `frontend-lib-special-exams`
+and docs.openedx.org. Full record in `quizzes/04-quiz-experience-spec.md` §8.
+
+- **No such setting exists, at any granularity.** Navigation inside a subsection is always free-form.
+  `hide_from_toc` only blocks *leaving* the subsection (and is a section-level, operator-gated flag
+  absent from the new authoring MFE); timed/proctored exams add a timer and an entry gate but leave
+  navigation untouched; prerequisites gate whole subsections. Nothing in `capa_block.py`.
+- **The real finding: an unsubmitted answer is silently lost on navigation.** There is no autosave and
+  no unload guard, and `should_show_save_button()` returns False when attempts are unlimited — so on
+  the **practice** path there is not even a Save button. Graded (2 attempts) and Final (1) do get one,
+  but only via a manual click. The learner's *position* is remembered; the answer is not.
+- **Consequence:** this is ours to solve in the shell, not a platform setting to configure. The shell
+  holds unsubmitted selections in client state and calls `problem_check` only on submit; edX's own
+  Save affordance must never be surfaced; and the "still unanswered" counter must be computed from
+  submitted answers so it cannot over-report.
+- **So "can the learner go back?" is a product choice we implement**, not a toggle we switch. Free
+  review is the platform default and the accessible behaviour; restricting it is custom work and
+  should be justified against that cost.
+
+## 2026-07-30 · Quiz progress moved inside the quiz container
+
+- `LMS / Quiz · Question Card` now carries the progress row at the top, behind a **`Show progress`**
+  boolean (default true), so progress sits in the same box as Skip/Submit. The four standalone
+  progress instances above the card (three flows + canonical) were removed to avoid duplication.
+- Rationale: inside the box reads as *within the quiz*, outside as *between topics*. The same rule
+  answers the "navigation is confusing" report — two paginations competing in one visual plane.
+- **Per-question circles marked `_Remove` in the DS.** `LMS / Quiz · Rail Item` → `_Remove · LMS /
+  Quiz · Rail Item`, and the `Questions Progress` variation `Quiz · Progress Rail` → `_Remove ·
+  Progress Rail`. Verified zero instances of either before renaming, so nothing broke. They are
+  marked rather than deleted so a stray reference surfaces loudly; delete once nothing points at them.
+  This closes the question for good: the circles are gone as a progress indicator *and* as a review
+  interaction, not just relocated.
+
 ## 2026-07-29 · Stakeholder workshop — quiz + Course Details decisions applied
 
 Applied the decisions from the ICP workshop with Navdeep and Harpreet (see
@@ -47,7 +108,10 @@ points (the prefix decision was stronger than "don't hardcode"; tabs were *not* 
   the error grew as the percentage fell: 50% drew 57.5%, 20% drew 31.6%, and **0% drew a 13.8% stub**
   of progress for a learner who had answered nothing. Not a scaling problem — the master ratios were
   wrong. All 11 variants re-cut, the 0% sliver removed from the four labelled families, all 55
-  verified accurate. Affects every progress bar in the product, not just the quiz.
+  verified accurate. Affects every progress bar in the product, not just the quiz. The quiz paginator
+  itself uses `Label=Right`, whose ratios were already true — only its 0% sliver needed clearing.
+  Verified after publishing: canonical draws 50.4% on "Question 6 of 10", flows draw 20.1% on
+  "Question 2 of 5".
 - **Per-question circles — resolved.** They were briefly contested: the workshop dropped them, then
   the stepper decision made them the navigator. The new `Quiz · Progress Bar` variant settles it by
   delivering exactly what the room asked for (question X of Y plus a bar) while the stepper's

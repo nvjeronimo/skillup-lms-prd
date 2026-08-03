@@ -44,6 +44,14 @@ and what's still being built.**
 
 **Status legend:** ✅ Ready · 🟠 WIP · ⚪ Not started · ⚠️ Outdated.
 
+## Where decisions came from
+
+The decision log says **what** was decided. [`LMS-HANDOFF/session-log.md`](LMS-HANDOFF/session-log.md)
+says **who said it, when, and how sure they were** — one entry per workshop, vendor demo or research
+session, with every platform claim tagged `CONFIRMED` / `ASSERTED` / `CONFLICT` / `UNVERIFIED`. Read it
+before planning against a capability someone mentioned in a meeting: several turned out to be beliefs
+rather than facts.
+
 ## Keeping it in sync
 
 Five environments must stay aligned (Figma working file · DS library · this hub repo · the prototype
