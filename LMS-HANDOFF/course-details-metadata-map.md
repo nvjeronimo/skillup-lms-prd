@@ -1,0 +1,283 @@
+# Course Details — the metadata, mapped to the design
+
+**Source:** `_media/Course_metadata.xlsx`, delivered 3 Aug 2026 against Jira **SK-11378**. Four sheets:
+Metadata (73 fields), API Information (8 endpoints with real payloads), Feature Inventory (33 features),
+Role-Based Visibility. Sample course: `course-v1:SkillUp+SQL-TMDA+2025_B13` — *TechMaster - SQL*.
+
+**Design audited:** `Course Detail — v9 · Self-paced MVP (workshop 29 Jul)`, node `4975:80196`,
+file [LMS-ICP-Phase-1](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4975-80196).
+
+This document does one thing: it takes **every element on that frame** and names the field behind it.
+Where there is no field, it says so. Everything below is read off the delivered payloads, not inferred
+from stock Open edX.
+
+---
+
+## 1. The five things this settles
+
+**1. The tab list is decided, and it is not the one we expected.**
+`tabs[]` comes from `get_course_tab_list()` and is returned per user. The real response is exactly five:
+
+| tab_id | title |
+|---|---|
+| `courseware` | Course |
+| `progress` | Progress |
+| `dates` | Dates |
+| `discussion` | **Mentorship Q&A** |
+| `instructor` | Instructor |
+
+There is **no Resources tab, no Grades tab and no Certificates tab**. Grades live *inside* Progress
+(`course_grade`, `section_scores`, `grading_policy`); the certificate is a **card** (`cert_data`), not a
+destination. Navdeep expected Grades and Certificates as two tabs (01:32:08) and wanted the list confirmed
+with the edX team — this is that confirmation, and it says no. Harpreet's "certificate tab as a marketing
+asset" (01:31:57) has no platform tab to sit in; it would be something we build.
+
+Our v9 frame is a single page with no tabs, flagged as a divergence to settle at review. **It is now settle-able:**
+the frame is the `courseware` tab, and the bar above it is a five-item list rendered from the array.
+
+**2. `Resume` vs `Start` stops being an open question.**
+`resume_course: {has_visited_course, url}`. False → *Start course*. True → *Resume course*, and `url` is a
+`jump_to` link to the last completed block. Navdeep questioned whether Resume makes sense for a self-paced
+course (01:28:07); the platform answers it with a flag we can render directly.
+
+**3. The unlock tooltip has nothing behind it.**
+Open action 8 asked which unlocking rules the API exposes. The answer is: **a boolean and a block type.**
+`blocks.{id}.accessible` (false = behind an unmet prerequisite) and `type: "lock"`. There is **no unlock
+date, no prerequisite name, no rule description** anywhere in the 73 fields. Our tooltip reads
+*"Unlocks 28 Apr 2026"* — that string cannot be produced from this API.
+
+**4. Durations are a content problem, not a design problem.**
+`effort_time` and `effort_activities` exist as per-block fields. In every payload delivered they are
+**null on every block**. So is `due`. Our syllabus renders "3h 20m" per module, "22 min" per lesson,
+"~ 14 hours" for the course and "12 min left" in the progress card. None of it has data today — not because
+the field is missing, but because nobody authors it in Studio. Navdeep explicitly overruled dropping the
+per-topic times (a 6-minute and a 22-minute video are not the same commitment), so the design is right and
+**the action belongs to the content team**, not to us.
+
+**5. The one real course we were given is not self-paced.**
+`is_self_paced: false`. It also carries a `Session Recordings` chapter whose units are named by date
+(*7th March 2026*, *8th March 2026*…) and a `Session Material` chapter. That is a VILT course. Our MVP frame
+is self-paced only, by Harpreet's ruling (01:22:22) — that ruling stands, but the sample tells us the
+lowest common denominator we picked is not the shape of the catalogue.
+
+---
+
+## 2. The structural finding — our three levels are not their three levels
+
+The ICP model is **Module → Lesson → Topic**. The platform's is **chapter → sequential → vertical**. It is
+tempting to map them one to one. The real course says do not:
+
+```
+chapter    Module 1: Introduction to SQL
+  sequential   About
+  sequential   Lessons
+  sequential   Knowledge Check
+chapter    Module 2: SQL Querying and Optimization
+  sequential   About  ·  Lessons  ·  Knowledge Check
+…
+chapter    Session Recordings
+  sequential   7th March 2026 · 8th March 2026 · 14th March 2026 …
+chapter    Session Material
+  sequential   Material
+```
+
+The middle level is **not a lesson**. It is a fixed three-part bucket — About, Lessons, Knowledge Check —
+repeated identically in every module. The teaching content lives one level further down, in the verticals
+under *Lessons* (*"Data, Datasets, Databases"*, *"Difference Between DBMS and RDBMS"*).
+
+Rendered literally, our accordion would read **Module 1 → Lessons → 15 topics**, with two dead rows above it.
+
+Three ways out, in order of preference:
+
+1. **Collapse the bucket.** Where a module's sequentials are the generic set, skip the middle level and render
+   Module → Topic. The workshop already permits this: *"Module → Topic where a lesson does not exist"* (01:02:14).
+   *About* becomes the module description, *Knowledge Check* becomes a quiz topic.
+2. **Re-author in Studio** so sequentials carry real lesson names. Same class of migration as the quiz stepper
+   — worth raising with Rashid alongside it, since both touch the same content.
+3. Render it literally and accept the dead rows. Not recommended.
+
+This needs a decision before the syllabus can be built against real data.
+
+---
+
+## 3. Two calls, not one
+
+The **Outline API** (`/api/course_home/v1/outline/{course_key}`) returns `course → chapter → sequential`
+and **stops**: every sequential comes back with `"children": []`. There is no topic level in it.
+
+The topic level is in the **Navigation API** (`/api/course_home/v1/navigation/{course_key}`), which returns
+verticals with `complete` and `completion_stat: {completion, completable_children}`. It is cached for an hour
+per user/course.
+
+So a syllabus to topic level — which the workshop decided on (01:00:53) — costs **two API calls**, one of them
+cached. Worth knowing, given Harpreet's concern that every calculated stat costs a backend query (01:08:35).
+
+One catch: in the navigation payload **`lms_web_url` is null on every vertical** (it is populated on
+sequentials). The decision that *all syllabus titles are clickable and deep-link into the immersive
+experience* (01:03:30) therefore needs the topic URL to be **constructed** —
+`/courses/{course_id}/jump_to/{block_id}` — rather than read. That is the same URL shape the API returns for
+sequentials, so it should work, but it is an assumption to verify in the dev environment before it ships.
+
+---
+
+## 4. Element by element
+
+Verdicts: **✅ field exists and is populated** · **◑ derivable** (we compute it from what is returned) ·
+**⚠︎ field exists but is null in every payload** · **✗ no source**.
+
+### Hero
+
+| Element on the frame | Field | Verdict |
+|---|---|---|
+| Breadcrumb *My Learning › Courses* | — | our IA, not API |
+| Breadcrumb leaf | `title` | ✅ |
+| `Course` type badge | — | ✗ our own construct; the API has no course/programme distinction |
+| `SELF-PACED` chip | `is_self_paced` | ✅ — **false** on the sample course |
+| `BY IBM` partner logo | — | ✗ `org` is `"SkillUp"` (the platform's own org key), `number` is `"SQL-TMDA"`. Neither is a partner brand |
+| Course image | — | ✗ no image or media field in any of the 73. Confirms 01:28:54 |
+| Title | `title` | ✅ |
+| *(missing)* | `title_prefix` | ✅ a **custom SkillUp field**, empty on the sample, not in our design |
+| `4 modules · 16 lessons` | count of `type=chapter` / `type=sequential` | ◑ — but see §2: "lessons" is the wrong noun for their sequentials |
+| `~ 14 hours` | — | ✗ no course-level duration; `effort_time` null throughout |
+
+### Progress card
+
+| Element | Field | Verdict |
+|---|---|---|
+| `38%` | `completion_summary` → `complete / (complete + incomplete)` | ◑ **from the Progress API**, a third call. **Not** `course_grade.percent` — that is the grade, a different number |
+| Progress bar | as above | ◑ |
+| `Resume Course` / `Go to last topic` | `resume_course.has_visited_course` + `.url` | ✅ |
+| `6 of 16 lessons` | `complete` flags in the navigation tree | ◑ counts units, not lessons |
+| `12 min left` | — | ✗ `effort_time` null |
+
+### What you'll learn
+
+| Element | Field | Verdict |
+|---|---|---|
+| Heading + paragraph | — | ✗ **not in the delivered metadata.** No `short_description`, `overview` or objectives field on any of the eight endpoints |
+
+The workshop ruled this must be a mapped edX field, with the heading following the field name (01:30:39).
+As delivered, there is no such field to map. Either it is exposed from `CourseOverview` (it exists in the
+data model but is not on these endpoints) or the section is written elsewhere. **Ask.**
+
+### Syllabus
+
+| Element | Field | Verdict |
+|---|---|---|
+| Module title | `blocks.{chapter}.display_name` | ✅ — their names read *"Module 1: Introduction to SQL"* with a colon; ours print *"Module 1 · …"*. Render the field verbatim, do not re-format |
+| Module number circle | index | ◑ |
+| Completion tick | `blocks.{id}.complete` | ✅ |
+| Partial completion | `completion_stat` | ✅ (navigation API) |
+| `4 lessons · 3h 20m` | count ◑ / duration ✗ | ⚠︎ |
+| Lock icon | `accessible: false`, `type: "lock"` | ✅ |
+| `Unlocks 28 Apr 2026` tooltip | — | ✗ **no unlock date or rule is exposed.** See §1.3 |
+| Lesson row title | `blocks.{sequential}.display_name` | ✅ |
+| `3 topics · 22 min` | `completion_stat.completable_children` ◑ / duration ✗ | ⚠︎ |
+| Topic row title | `blocks.{vertical}.display_name` | ✅ navigation API only |
+| Topic type prefix (`Watch ·`, `Read ·`, `Checkpoint ·`) and type badge | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against our ten ICP topic types. In the payloads it returns only `null` (45×) and `"other"` (21×) |
+| Clickable title → immersive | `lms_web_url` on sequentials ✅ / **null on verticals** | ⚠︎ construct `jump_to`; verify |
+| `(N Questions)` on a graded quiz | appended to `display_name` by the platform | ✅ documented, field 24 |
+| Graded/exam label | `description` (*"Homework"*, *"Midterm Exam"*), `special_exam_info` | ✅ null on this course |
+
+The topic-type finding is the one to act on. Our syllabus distinguishes ten content types by badge and verb;
+the outline data distinguishes four, and authors none of them. Either the type comes from somewhere else —
+the block's child XBlock type, which means another call — or the syllabus shows titles without types.
+
+### Mentor card
+
+| Element | Field | Verdict |
+|---|---|---|
+| Name, role, avatar, office hours, *Book session*, *Message* | — | ✗ **nothing.** No mentor, instructor or staff-profile field in any of the 73 |
+
+The `instructor` tab is the **edX instructor dashboard** — enrolment, membership, cohort admin — a staff tool,
+not a learner-facing profile. The one thread worth pulling: their discussion tab is renamed
+**"Mentorship Q&A"**, so *Message* has a plausible destination even with no mentor record. Booking does not.
+The card needs a SkillUp-side source before it can ship.
+
+---
+
+## 5. What the API gives us that the design ignores
+
+Ranked by how strong the case is for putting it on the page.
+
+| # | Feature | Field | Note |
+|---|---|---|---|
+| 1 | **Tab bar** | `tabs[]` | Settles the flagged divergence. Render from the array — it is per-user, so a learner never sees Instructor |
+| 2 | **Welcome message banner** | `welcome_message_html` + `POST dismiss_welcome_message` | The course's latest update, dismissible, top of page. Enrolled and staff only |
+| 3 | **Handouts** | `handouts_html` | Right sidebar, raw HTML. **This is what "course-level resources" actually is** — the thing nobody could define at the workshop (01:19:44). Now defined, by the platform |
+| 4 | **Certificate card** | `cert_data`, `can_view_certificate` | `{cert_status, cert_web_view_url, download_url, certificate_available_date}` |
+| 5 | **Dates widget** | `dates_widget.course_date_blocks[]` + `dates_tab_link` | The workshop sent deadlines to the calendar (01:37:34). The platform ships a sidebar widget *and* a Dates tab. Needs a ruling: ours or theirs |
+| 6 | **Course tools** | `course_tools[]` | The real response contains **Bookmarks**. We have a bookmark decision (`00-decisions/009`) with no entry point on this page |
+| 7 | **Content search** | Feature 33 | Search across course content; opens a popup. Not designed |
+| 8 | **Weekly learning goal** | `course_goals` + `POST save_course_goal` | Flag-gated, off on the sample. Days per week + email reminders |
+| 9 | **State banners** | `has_ended`, `enroll_alert`, `dates_banner_info.missed_deadlines` | Course ended / enrol CTA / missed deadlines |
+| 10 | **Staff affordances** | `studio_access`, `is_staff`, `original_user_is_staff` | *View in Studio*, masquerade. Out of scope for the learner MVP, in scope for the matrix |
+
+**And what we can now defensibly drop.** Every commerce field comes back empty on the real course:
+`verified_mode: null`, `can_show_upgrade_sock: false`, `access_expiration: null`, `offer: null`,
+`course_modes: [{no-id-professional, "Professional Education"}]`. The upgrade sock, discount banner,
+FBE expiration warning and ID-verification status are stock edX consumer-marketplace furniture that SkillUp's
+B2B configuration does not use. **Out of phase 1, with evidence rather than by assumption.**
+
+---
+
+## 6. The scenario matrix, which we now have
+
+Harpreet asked for one per element before development (01:38:58). Sheet 4 supplies the axis: Anonymous /
+Unenrolled · Enrolled (Audit) · Enrolled (Verified) · Staff. The rows that change our page:
+
+| Element | Anonymous / unenrolled | Audit | Verified | Staff |
+|---|---|---|---|---|
+| Outline tree | only if public access is on, **and with no links** | ✅ with links | ✅ | ✅ |
+| Resume button | ✗ | ✅ | ✅ | ✅ |
+| Welcome banner | ✗ | ✅ | ✅ | ✅ |
+| Handouts | only if public access | ✅ | ✅ | ✅ |
+| Dates widget / Dates tab | ✗ (401) | ✅ | ✅ | ✅ |
+| Progress tab | ✗ (401) | ✅ | ✅ | ✅ can view any student |
+| Certificate card | ✗ | ✅ if earned | ✅ if earned | ✅ |
+| Enrolment CTA | ✅ if `can_enroll` | ✗ | ✗ | ✗ |
+| Completion ticks / lock icons | ✗ | ✅ | ✅ | ✅ |
+| View in Studio, masquerade | ✗ | ✗ | ✗ | ✅ |
+
+The **unenrolled state is a real design state we have never drawn**: the full syllabus, rendered, with every
+title dead. Not a disabled style — `lms_web_url` simply comes back null.
+
+---
+
+## 7. Actions
+
+**To the vendor (Nilesh / Rashid), in priority order**
+
+1. **`What you'll learn` has no field.** Which endpoint exposes the course description or objectives? If none
+   does, who writes this section and where does it live?
+2. **Unlock rules are a boolean.** `accessible: false` tells us a block is locked and nothing else. Can the API
+   return the unlock date and the prerequisite, or does the tooltip come out of the design?
+3. **`effort_time` / `effort_activities` are null on every block.** Are they authored anywhere in the
+   catalogue? Every duration on the page depends on it.
+4. **Topic type.** `icon` returns four values and in practice only `other`. How do we tell a video from a
+   reading from a lab in the outline without opening every unit?
+5. **The middle level.** Is *About / Lessons / Knowledge Check* the house structure for every course, or an
+   artefact of this one? Decides §2.
+6. **Mentor.** No field exists. Is there a SkillUp-side service, or is the mentor card unbuildable in phase 1?
+7. **Partner branding and course image.** Confirmed absent. Is there a source outside these endpoints?
+8. **Verify** that `jump_to/{vertical_block_id}` resolves, given `lms_web_url` is null on verticals.
+
+**To the design (us)**
+
+- Settle the tabs divergence with the real list — and tell Navdeep and Harpreet that Grades and Certificates
+  are not tabs.
+- Draw the states the matrix names: unenrolled, course ended, never started (Start vs Resume), no certificate.
+- Decide the syllabus shape against §2 before building anything on top of it.
+- Decide dates: our calendar, their Dates tab, or both.
+- Place the four ignored affordances that have real data — welcome banner, handouts, certificate card,
+  bookmarks — or record why not.
+
+**To the content team (via Rashid)**
+
+- Durations and the *About / Lessons / Knowledge Check* naming are both authoring decisions. They belong in
+  the same conversation as re-authoring quizzes one question per unit.
+
+---
+
+*Written 3 Aug 2026 from the SK-11378 delivery. Every ✅, ⚠︎ and ✗ above was checked against the payloads in
+the workbook, not against stock Open edX behaviour.*

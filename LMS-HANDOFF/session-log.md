@@ -133,6 +133,183 @@ Full record, verified line by line against the recording, in **`topic-types-inve
 
 ---
 
+## 2026-08-03 · Dev-environment verification — AZ-204, Module 1 Knowledge Check
+
+First hands-on look at a real quiz in `apps-dev.skillup.online` (course `SKOAZ204EEP+2024_b1`, 28 modules, archived). Everything below is **observed**, not inferred.
+
+### CONFIRMED — an unsubmitted answer is lost on navigation
+
+The verification that had been open since the navigation research. Method: selected a radio on question 1 without submitting, navigated to the course home, returned to the same unit. **The selection was gone**, and the counter still read *"You have used 0 of 2 attempts"* — so nothing had been submitted and nothing was retained.
+
+This closes it: **the shell must hold unsubmitted state itself.** The platform does not, and on this configuration there is not even a Save button to click.
+
+### CONFIRMED — attempts are per question, in their real content
+
+Each question carries its own *"You have used 0 of 2 attempts"*. The "2 attempts" we had been describing as quiz-level is, in their authored courses, **two attempts on each individual question**. Empirical confirmation of the correction already made to the spec.
+
+### CONFIRMED — the unit renders in a cross-origin iframe
+
+`devcourses.skillup.online/xblock/…` embedded inside `apps-dev.skillup.online`. Page scripts cannot read into it. This is the architecture the audit describes, and it is why the hybrid integration was chosen.
+
+### CONFIRMED — quizzes are authored as one unit with every question stacked
+
+The Module 1 "Knowledge Check (5 Questions)" is a **single unit** containing five independent problem blocks, each with its own display name, its own Submit, its own attempts counter and its own Show answer link. There is no stepper and no quiz-level submit.
+
+This is the concrete cost behind the stepper decision: adopting one question per unit means **re-authoring every existing quiz in Studio**, not changing a setting.
+
+### ⚠︎ CONFLICT — Show answer is available before any attempt
+
+The **Show answer** link is present on a question with zero attempts used. So `showanswer` is configured permissively on this content — a learner can reveal the correct answer without trying.
+
+That directly contradicts the rule we adopted (*hint while attempts remain, reveal only once they are spent*). Either their configuration changes, or our design is describing a behaviour their courses do not have. **Needs raising** — it is a content-configuration decision, not a design one.
+
+### ⚠︎ The whole course is one question type — and it reorders our priorities
+
+Audited **all 48 problem blocks** in the course through the blocks API and the rendered XBlock HTML, not by sampling:
+
+| | Count |
+|---|---|
+| Single select (`choicegroup`) | **48** |
+| Multi select (`checkboxgroup`) | **0** |
+| Dropdown (`optioninput`) | **0** |
+| Numerical / text (`textline`) | **0** |
+| Demand hints | **0** |
+| `<solution>` explanation block | **0** |
+| Per-answer feedback (`choicehint`) | **0** |
+| Maximum Attempts | **2 on every one of the 48** |
+
+Every problem also carries the identical display name, *"Choose the correct option(s)"*.
+
+**This qualifies what the vendor told us on 30 Jul.** Simran said multiple choice was around 90% with checkbox second, and that hints and feedback were "being adopted now". In this course multiple choice is **100%**, checkbox is absent, and there is not a single hint, explanation or per-answer feedback anywhere in 48 questions.
+
+Consequences worth acting on:
+
+- **Our feedback design has no content to render.** The Correct and Incorrect states lean on an explanation block and per-choice feedback that this course does not author. Either the content changes or those surfaces sit empty.
+- **The Hint state we built has nothing to fill it.** It stays in the DS — it is what the platform supports and what the vendor says they are adopting — but it drops down the priority order until a course actually uses one.
+- **Dropdown, numerical and text can wait.** Zero usage here. Keep the components, stop treating them as near-term.
+- **Multi select is the one to protect.** The four row states (Missed, Correctly unselected, Partially correct) are unused in this course but are the states most likely to be got wrong when someone finally authors a checkbox question.
+
+> **Scope of this claim:** one course, audited exhaustively. Repeated across the live catalogue below.
+
+---
+
+## 2026-08-03 · Full catalogue audit — live platform
+
+Repeated the audit on every course the account is enrolled in on `courses.skillup.online`. **215 questions across four courses**, every one fetched and inspected — not sampled.
+
+| Course | Questions | Single select | Multi select | Dropdown | Numerical / text | Hints | Explanation | Per-answer feedback |
+|---|---|---|---|---|---|---|---|---|
+| AZ-204 *(dev)* | 48 | **48** | 0 | 0 | 0 | 0 | 0 | 0 |
+| Foundations of AI in Healthcare · SKOAIH01 | 58 | **58** | 0 | 0 | 0 | 0 | 0 | 0 |
+| Machine Learning for Medical Data · SKOAIH02 | 58 | **58** | 0 | 0 | 0 | 0 | 0 | 0 |
+| AI Technologies in Healthcare · SKOAIH03 | 51 | **51** | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Total** | **215** | **215** | **0** | **0** | **0** | **0** | **0** | **0** |
+
+Two further courses — *Artificial Intelligence Fundamentals* (IBM AI0101EN) and *Prompt Engineering for Everyone* (IBM AI0117EN) — contain **no problem blocks at all**: 79 and 18 units respectively, with no assessment in the LMS.
+
+### This is now conclusive, not indicative
+
+Every question in every course we can see is a **single-select multiple choice**. There is not one checkbox, dropdown, numerical or text input in the catalogue, and not a single hint, explanation or per-answer feedback message.
+
+### What the healthcare courses do have that AZ-204 lacks
+
+The three SkillUp courses are better structured, and they confirm the model we designed to:
+
+- **Real assignment types** — three subsections graded as *Graded Quiz* and one as *Final Exam* in each course. The practice / graded / final split we designed is genuine.
+- **The attempts split matches it exactly.** In each course, **31 questions carry 2 attempts** (the graded and final ones) and the remainder carry **no limit** (the practice ones — 27, 27 and 20). So *unlimited on practice, two on graded* is real authored behaviour, and our entry-header pills are correct.
+- **Questions are named "Question 1…10"** rather than AZ-204's generic *"Choose the correct option(s)"* repeated 48 times.
+- **Composite types exist:** each course has one `openassessment` (the Final Project) and two to six `scorm` blocks — so ORA and Activity are in real use, unlike the exotic question types.
+
+### What this settles, and what it does not
+
+**Settled:** the question-type work is done. Multiple choice is not "90%", it is everything. Dropdown, numerical and text are not near-term; they are hypothetical.
+
+**Not settled, and now more pressing:** our feedback design assumes an explanation block and per-choice feedback that **no course authors**. A learner who answers wrong today gets a red mark and nothing else. That is either a content gap the team intends to close, or a design assumption we should drop — and it is the single most valuable question to put to them.
+
+### Authoring observations worth passing to the content team
+
+- Every problem's display name is the generic **"Choose the correct option(s)"**, rendered as a heading above the actual question. Our design promotes the question itself to heading, which reads better and removes a redundant line.
+- All five questions are **single-select radios**, yet the heading says "option(s)". The plural is misleading where only one answer is possible.
+- Questions are numbered **inside the authored text** ("1.", "2."). The platform does not number them, so any renumbering after a reorder is manual and will drift.
+- **No A/B/C prefixes on the options** — their content already matches the decision we took, which is a good sign for the prefix removal.
+
+---
+
+## 2026-08-03 · SK-11378 delivered — Course Page metadata
+
+The ticket raised with Nilesh on 30 Jul arrived as `_media/Course_metadata.xlsx`: 73 fields, eight endpoints
+with real payloads, 33 features and a role-based visibility matrix. The risk flagged when it was raised — one
+developer, two days, four teams' worth of material, no acceptance criteria — did not materialise. **All four
+sections came back**, and the payloads are from a real course (`SkillUp+SQL-TMDA+2025_B13`), not invented.
+
+Full element-by-element mapping in [course-details-metadata-map.md](course-details-metadata-map.md). What it
+changes:
+
+### CONFIRMED — the tab list, and it is not the one the workshop expected
+
+`tabs[]` returns exactly five: **Course, Progress, Dates, Mentorship Q&A, Instructor**. No Resources tab, no
+Grades tab, **no Certificates tab** — grades are inside Progress, and the certificate is a card (`cert_data`).
+Navdeep wanted the list confirmed with the edX team (01:32:08); this is that confirmation, and it contradicts
+the expectation of Grades and Certificates as two tabs. The v9 frame's flagged "no tabs" divergence can now be
+settled against real data rather than argued.
+
+### CONFIRMED — Resume vs Start
+
+`resume_course: {has_visited_course, url}`. Closes the workshop's open question (01:28:07) with a flag we
+render directly.
+
+### ⚠︎ Three things on the frame have no data behind them
+
+- **The unlock tooltip.** Open action 8 asked which unlocking rules the API exposes. Answer: a boolean
+  (`accessible`) and a block type (`lock`). **No date, no prerequisite, no rule text** in any of the 73 fields.
+  *"Unlocks 28 Apr 2026"* cannot be produced.
+- **"What you'll learn".** The workshop ruled it must be a mapped edX field (01:30:39). **There is no such
+  field** on any of the eight endpoints.
+- **The mentor card.** No mentor, instructor or staff-profile field exists. The `instructor` tab is the edX
+  admin dashboard, not a profile.
+
+Also unsourced, as expected: the course image (confirms 01:28:54) and the partner logo — `org` is `"SkillUp"`,
+not a brand.
+
+### ⚠︎ Every duration on the page is null
+
+`effort_time`, `effort_activities` and `due` are **null on every block in every payload**. The fields exist;
+nobody authors them. Navdeep overruled dropping the per-topic times, so the design stands — but the action
+sits with the content team, alongside the quiz re-authoring.
+
+### ⚠︎ Our three levels are not their three levels
+
+chapter → sequential → vertical is **not** Module → Lesson → Topic. In the real course every module's
+sequentials are the same three buckets — *About*, *Lessons*, *Knowledge Check* — and the teaching content is
+one level below, in the verticals. Rendered literally our accordion reads *Module 1 → Lessons → 15 topics*
+with two dead rows above it. The workshop's own fallback covers it (*Module → Topic where a lesson does not
+exist*, 01:02:14), but it has to be decided before the syllabus is built.
+
+Two further structural notes: the topic level is **not in the Outline API at all** (every sequential returns
+`children: []`) — it needs a second call to the Navigation API, where `lms_web_url` is null on verticals, so
+topic deep-links must be constructed rather than read. And `icon`, the only type signal, has a four-value
+vocabulary against our ten topic types and returns only `other` in practice.
+
+### The sample course is instructor-paced
+
+`is_self_paced: false`, plus `Session Recordings` and `Session Material` chapters. Harpreet's
+self-paced-only ruling for the MVP (01:22:22) stands, but the one real course we have been given is VILT.
+
+### What we can now drop with evidence
+
+`verified_mode: null`, `can_show_upgrade_sock: false`, `access_expiration: null`, `offer: null`. The upgrade
+sock, discount banner, expiration warning and ID-verification status are consumer-marketplace furniture that
+SkillUp's B2B configuration does not use. Out of phase 1 by observation, not assumption.
+
+### What the API offers that we never designed
+
+Welcome message banner (with a dismiss endpoint), **handouts** — which is what "course-level resources"
+actually turns out to be, the thing nobody could define at the workshop (01:19:44) — certificate card, dates
+widget, course tools (**Bookmarks** is in the live response), content search, weekly learning goal, and the
+ended/enrol/missed-deadline banners.
+
+---
+
 ## Open questions with the vendor
 
 ### Sent Aug 3, 2026 · quiz reset and attempts configuration
