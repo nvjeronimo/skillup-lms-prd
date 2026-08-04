@@ -2,6 +2,38 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · Retired components swapped out, and the gate state corrected
+
+**Eight instances of `_Remove · LMS / Quiz · Results Summary` were still live in the ICP** — three in
+section 04, four in 04.3, one in 04.4. Anyone opening those pages was being shown the layout we replaced.
+
+Finding them took a second pass. Searching by component name returns nothing, because an imported instance
+keeps whatever the component was called **at import time** — so in the ICP they are still named
+`LMS / Quiz · Results Summary`, without the `_Remove ·` prefix the DS has since acquired. Matching on the
+component **key** is the only reliable way, and it is worth remembering the next time something is retired.
+
+**The swap was not a drop-in, and a naive one would have been silently wrong.** Two of the four variant
+names changed in the rebuild: `Failed` → `Not passed`, `Pending review` → `Pending`. A straight swap drops
+an unmatched variant to the set default — which is `Passed`. A failure screen would have quietly become a
+pass. Each instance was therefore read, mapped, swapped and verified: all eight kept their meaning. Existing
+captions already read "not passed" and "pending grading", so no copy went stale.
+
+Each instance lost ~190px in the new layout, so sections 04, 04.3 and 04.4 were re-fitted to their content.
+
+Also swept: no stray `_Remove · LMS / Quiz · Rail Item` and no instance parked on the
+`Variation=_Remove · Progress Rail` variant anywhere in either file. The five Rail Items that do exist are
+inside that retired variant itself — its own contents, not usages.
+
+**`Gate · Prerequisite` corrected in 04.3 (D1).** It was presented as a state our learners meet. It is not.
+Simran confirmed nothing is gated, and the source check then showed the feature is fully built and simply
+defaults to off. The label now says so, and an amber correction note explains that the component stays
+because it is *available if the business wants quizzes earned rather than open* — a decision waiting to be
+made, not a screen to design against. The column caption was rewritten to match: of the five blocked states,
+only the timed-exam ones occur in our courses today.
+
+*Noticed in passing, not touched:* sections **04.1 and 04.2 overlap** on the ICP page. It predates this
+work — 04.1 runs to y≈11324 and 04.2 starts at y=10898, in the same column.
+
 ## 2026-08-04 · Two models, side by side — a board built to be decided from
 
 New Figma section on the ICP page, `04.5 · Today vs proposed — two models for the stakeholder call`
