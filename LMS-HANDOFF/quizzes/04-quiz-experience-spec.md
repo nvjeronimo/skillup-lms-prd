@@ -420,7 +420,61 @@ Both `Save draft` and `Skip question` are therefore modelled as **optional** in 
 per quiz; Skip because it has no platform counterpart at all and only becomes meaningful if the stepper is
 ever adopted — a decision that would reshape the whole flow.
 
-### 10.7 The pass mark has a route nobody raised
+### 10.7 The button contract — every action on a question
+
+Written after finding four buttons on `LMS / Quiz · Question Card` that the platform has no counterpart for.
+They arrived honestly: the component was drawn as our *proposal*, and nobody had yet asked which of its
+affordances the backend can actually honour.
+
+**The test applied to each one:** does it exist in the Open edX source, and if so, what does it really do?
+Everything below is read from `capa_block.py` and `seq_block.py` at `master`, not from documentation.
+
+| Button | In the platform? | Mechanism | Decision |
+|---|---|---|---|
+| **Submit** | Yes | `problem_check` → `submit_problem` (line 422). The only place `self.attempts` is incremented (1817) | Always present. The one action that spends an attempt |
+| **Show answer** | Yes | `showanswer`, twelve values, **inheritable**, default `finished` (238, 82) | Keep. Set deliberately per quiz, not per question |
+| **Reset** *("Try again")* | Yes | `problem_reset` → `reset_problem` (2121). `show_reset_button` defaults **off** (270) | Keep. Label must sit beside the attempts count — see §10.5 |
+| **Save** *("Save draft")* | Yes | `problem_save` → `save_problem` (2075). `force_save_button` defaults **off** (267) | **Optional** (`Show save`, off). Real feature, not enabled today |
+| **Hint** *("Next hint")* | Yes | `demandhint` in the problem XML | **Optional** (`Show hint`, off). Zero authored anywhere in our catalogue |
+| **Skip question** | **No** | Zero occurrences of `skip` in `capa_block.py` or `seq_block.py` | **Optional** (`Show skip`, off). Ours. Only meaningful if the stepper is adopted |
+| **Next question** | **No** | Navigation is per *unit* (`goto_position`), and a quiz is one unit | **Unresolved** — still on four variants. See below |
+| **Review lesson** | **No**, inside a problem | Authors cannot link out of problem content; our shell can resolve the parent | **Removed from the card.** Kept in the Entry Header, where it is outside the iframe |
+
+#### 10.7.1 The rule this produced
+
+**A button on a question may only promise what the backend can honour.** Three of the eight failed that test,
+and each failed differently:
+
+- *Skip* and *Next question* promise **navigation that does not exist** — every question is on one page, so
+  there is nowhere to go. They are artefacts of a stepper we deliberately excluded.
+- *Review lesson* promised **precision we cannot deliver** — the link resolves to the module, not to the
+  lesson covering that question, because no question→content mapping is authored.
+- *Save draft* looked like an invention and was not. Removing it on suspicion would have deleted a real
+  feature from the design.
+
+That last one is why the test is "does it exist in the source", not "does it look familiar".
+
+#### 10.7.2 Where the platform hides a button, copy that behaviour
+
+The platform suppresses actions at moments where they would harm the learner, and those rules are worth
+inheriting rather than re-deriving:
+
+- **Reset disappears once the answer is correct** (`is_correct()` → `False`, line 1048). Because reset wipes
+  the score on the spot, offering it there would let a learner destroy a point they had banked.
+- **Reset and Save both disappear once the problem is closed** — `used_all_attempts() or is_past_due()`
+  (1435). An action that can no longer succeed should not be on screen.
+- **Save is hidden when attempts are unlimited and the question is not randomised** (1066). The code's own
+  comment: submitting costs nothing in that case, so a save button is noise.
+
+#### 10.7.3 Still open
+
+**`Next question` remains on four variants** — `Correct`, `Partially correct`, `Answer revealed` and
+`Results withheld`. It is the same defect as `Skip question`, and it is the *primary* action in all four, so
+removing it raises a real question: what replaces it? The redrawn today column answers that for `Correct` —
+**nothing**, because after a right answer on a scrolling page there is no next step to offer. Applying that
+to the other three is the obvious move, but it is a design decision, not a correction, and it is Nelson's.
+
+### 10.8 The pass mark has a route nobody raised
 
 `min_score` in the gating API **is** a per-subsection threshold, evaluated by `get_subsection_grade_percentage(usage_key, user)`. So "the learner must reach 80% on this quiz" is expressible today. What the platform does with it is **open downstream content**, not stamp a verdict on the quiz.
 

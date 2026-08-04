@@ -2,6 +2,43 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · The button contract — one rule, applied to all eight
+
+Written up as `04-quiz-experience-spec.md` §10.7, after four buttons on the question card turned out to have
+no counterpart in the platform. They got there honestly: the component was drawn as our *proposal*, and
+nobody had yet asked which of its affordances the backend can honour.
+
+**The rule: a button on a question may only promise what the backend can honour.** Applied to all eight, it
+kept five and caught three — and each of the three failed differently, which is why a single sweep was worth
+more than fixing them one at a time as they were spotted.
+
+| | Platform? | Outcome |
+|---|---|---|
+| Submit | yes | always present — the only action that spends an attempt |
+| Show answer | yes | keep; set per quiz, inheritable |
+| Reset *("Try again")* | yes, off by default | keep; label must sit beside the attempts count |
+| Save *("Save draft")* | yes, off by default | optional, off |
+| Hint | yes, none authored | optional, off |
+| Skip question | **no** | optional, off — ours, pending the stepper |
+| Next question | **no** | **unresolved, on four variants** |
+| Review lesson | **no**, inside a problem | removed from the card; kept in the entry header |
+
+*Skip* and *Next question* promise **navigation that does not exist** — every question is on one page.
+*Review lesson* promised **precision we cannot deliver**, resolving to the module rather than the lesson.
+And *Save draft* looked like an invention and was not: removing it on suspicion would have deleted a real
+feature from the design. That is why the test is "does it exist in the source", not "does it look familiar".
+
+**A second rule fell out of it: where the platform hides a button, copy that behaviour.** Reset vanishes once
+an answer is correct — because reset wipes the score on the spot, offering it there would let a learner
+destroy a point they had banked. Reset and Save both vanish once the problem is closed. Save is hidden when
+attempts are unlimited and nothing is randomised, because submitting costs nothing in that case. These are
+not quirks to work around; they are the platform protecting the learner, and our shell should do the same.
+
+**Still open:** `Next question` is the *primary* action on `Correct`, `Partially correct`, `Answer revealed`
+and `Results withheld`. Removing it raises the question of what replaces it — the redrawn today column
+answers **nothing** for `Correct`, which is almost certainly right for the other three, but that is a design
+call rather than a correction.
+
 ## 2026-08-04 · Save and Skip made optional, and Reset read properly
 
 Nelson's rule for the two leftover buttons was the right one — *if it is not in edX, it is our add-on, remove
