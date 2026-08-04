@@ -361,7 +361,66 @@ This is the most consequential correction, and it reverses the cost assumption i
 
 *Caveat carried forward:* reading the MFE's redux store from inside a plugin widget — needed for `sequence.unitIds` — is the pattern the app's own slot fallbacks use, but the slot READMEs do not document it as a contract. **UNVERIFIED.**
 
-### 10.5 The pass mark has a route nobody raised
+### 10.5 What Reset actually does — the behaviour behind our "Try again"
+
+Read from `capa_block.py` at `master`. This is the full contract, because the label we put on this button
+depends on it.
+
+**When the button appears** — `should_show_reset_button()`, line 1031, in evaluation order:
+
+1. `is_survey_question = (max_attempts == 0)`
+2. if `closed()` and not a survey question → **False**. `closed()` (line 1435) is `used_all_attempts() or is_past_due()`. So **once the last attempt is spent, Reset disappears.**
+3. if `rerandomize` is `always`/`onreset` **and** the problem is submitted → **True**
+4. if `is_correct()` → **False**
+5. otherwise → the value of `show_reset_button`, which **defaults to `False`**
+
+**What it does** — `reset_problem()`, line 2121:
+
+- refuses if `closed()`: *"You cannot select Reset for a problem that is closed."*
+- refuses if not submitted: *"You must submit an answer before you can select Reset."*
+- re-seeds if randomised — on a shuffled question the learner may get a **different variant**
+- rebuilds the problem and **clears the submitted answer**
+- `set_score(...)` then `publish_grade()` — **the points already earned are removed immediately**
+- **never touches `self.attempts`.** That variable is assigned in exactly one place in the whole 2,481-line file: line 1817, `self.attempts = self.attempts + 1`, inside submit.
+
+**So the honest description is:** *Reset clears your answer and the score it earned, so you can answer again
+using an attempt you still have.* It is free in itself, but the re-answer costs the next attempt, and it is
+unavailable once attempts run out.
+
+**Two consequences for the design:**
+
+- **Reset is hidden after a correct answer, and that is protective, not an oversight.** Because reset wipes
+  the score on the spot, a learner who pressed it on a question they had right would destroy a point they
+  had already banked. Our `Correct` state must therefore never offer it — which is what the redraw of the
+  today column already shows.
+- **The label carries the risk.** "Try again" reads as a free second go. It is only safe next to a visible
+  count of attempts remaining, and it must never suggest the spent attempt comes back. "Reset" is the
+  platform's own word and is accurate but tells the learner nothing about the cost. **Recommendation: keep a
+  human label, and bind it to the attempts statement rather than leaving it standing alone** — which is what
+  the `PROPOSED COPY` note in column B specifies.
+
+### 10.6 Save is a real feature we are not using
+
+`force_save_button` (line 267, Boolean, default `False`), `should_show_save_button()` (line 1052), the
+`problem_save` handler (line 422) and `save_problem()` (line 2075) which sets `lcp.has_saved_answers = True`.
+**Save stores an answer without submitting it and without spending an attempt.**
+
+The display logic is worth reading closely, because it predicts something we can check. Save is deliberately
+hidden when `max_attempts is None` and the problem is not randomised — the code's own comment explains that
+with unlimited attempts and no randomisation, submitting costs nothing, so a save button is pointless. But on
+a **graded** quiz with `max_attempts = 2`, not closed and not yet submitted, the function returns `True`.
+
+**On our graded quizzes the Save button should therefore already be rendering, and in the screenshot of the
+live AZ-204 Knowledge Check it is not.** That is very likely why the 3 Aug test lost an unsubmitted answer on
+navigation. Either their theme suppresses it or the platform version differs — a question for the vendor, not
+an assumption for us.
+
+Both `Save draft` and `Skip question` are therefore modelled as **optional** in `LMS / Quiz · Question Card`
+(`Show save`, `Show skip`, both defaulting off). Save because it is a real feature that may be switched on
+per quiz; Skip because it has no platform counterpart at all and only becomes meaningful if the stepper is
+ever adopted — a decision that would reshape the whole flow.
+
+### 10.7 The pass mark has a route nobody raised
 
 `min_score` in the gating API **is** a per-subsection threshold, evaluated by `get_subsection_grade_percentage(usage_key, user)`. So "the learner must reach 80% on this quiz" is expressible today. What the platform does with it is **open downstream content**, not stamp a verdict on the quiz.
 

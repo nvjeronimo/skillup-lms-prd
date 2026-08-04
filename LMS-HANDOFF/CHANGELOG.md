@@ -2,6 +2,46 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · Save and Skip made optional, and Reset read properly
+
+Nelson's rule for the two leftover buttons was the right one — *if it is not in edX, it is our add-on, remove
+it.* The source answered differently for each, so they are handled differently.
+
+**"Skip question" is ours.** Zero occurrences of `skip` in either `capa_block.py` or `sequence_block.py`.
+There is no concept of skipping a question; navigation is between units.
+
+**"Save draft" is not.** `force_save_button` (line 267), `should_show_save_button()` (1052), the
+`problem_save` handler (422) and `save_problem()` (2075) setting `lcp.has_saved_answers = True`. Save stores
+an answer **without submitting and without spending an attempt**. It is the same category as Reset and
+gating: real, and switched off.
+
+Both are now booleans on the card — `Show save`, `Show skip`, defaulting off. Save because it may be turned
+on per quiz; Skip because it only becomes meaningful if the stepper is ever adopted, and that decision
+reshapes the whole flow.
+
+**A prediction from the source that we can check.** `should_show_save_button()` hides Save when attempts are
+unlimited and the problem is not randomised — the code's own comment explains that submitting costs nothing
+in that case. But on a graded quiz with `max_attempts = 2`, not closed, not submitted, it returns `True`. **So
+Save should already be rendering on our graded quizzes, and in the screenshot it is not.** That is very
+likely why the 3 Aug test lost an unsubmitted answer. Added to the vendor questions.
+
+**Reset documented in full** in `04-quiz-experience-spec.md` §10.5, because the label on our button depends
+on it. It clears the answer *and wipes the score already earned*, re-seeds a randomised question so the
+learner may get a different variant, disappears once the last attempt is spent, and never returns an
+attempt — `self.attempts` is assigned in exactly one place in 2,481 lines, inside submit.
+
+Two things follow. **Hiding Reset after a correct answer is protective, not an oversight** — because the
+score is wiped on the spot, a learner pressing it on a question they had right would destroy a banked point.
+And **the risk sits in the label**: "Try again" reads as a free second go, so it is only safe beside a visible
+count of attempts remaining.
+
+**Column C brought in line.** Three corrections: "Items 1 and 4 need no decision" became "1, 4, 7 and 8" —
+the board has eight pairs now, not six. *Reset never returns a spent attempt* was added to the hard-limits
+list, where it belongs, since no setting changes it. And a card the board was missing — **"Built into the
+platform, switched off in our courses"** — now collects gating, Show answer, inherited attempt caps, the
+Reset button and the Save button in one place. That card is the argument of the whole board in miniature: the
+distance between the two columns is mostly settings, not engineering.
+
 ## 2026-08-04 · Column B reviewed — the alert restyled, and the state that could not state its case
 
 Reviewed in the main components, no detach.
