@@ -2,6 +2,60 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · Column B reviewed — the alert restyled, and the state that could not state its case
+
+Reviewed in the main components, no detach.
+
+**The Incorrect state had no explanation, and could never have had one.** `State=Correct` carried an
+`LMS / Inline Alert`; `State=Incorrect` carried only the hint. So the card was structurally incapable of
+saying *why* an answer was wrong — which is exactly what note B2 proposes as the change with the largest
+learner impact. Column B was failing to demonstrate its own headline argument. The Incorrect variant now
+carries the explanation alert, and a new **`Show explanation`** boolean binds it on `Correct`, `Incorrect`
+and `Answer revealed` — so the design system can also express the 213-of-215 reality by switching it off,
+without anyone having to detach again.
+
+**The alert was restyled after the edX pattern**, on Nelson's observation that theirs reads as subtler. The
+diagnosis: our body copy was painted in the tone colour, which is what made the block shout. edX puts the
+colour in a top rule and an icon, and leaves the text near-black.
+
+| | Before | After |
+|---|---|---|
+| Background | tinted per tone | `bg-secondary`, neutral |
+| Border | 1px all round, tone-200 | **2px top only**, tone colour |
+| Title | Bold, tone colour | SemiBold, `text-primary` |
+| Body | **tone colour** | `text-secondary`, 155% leading |
+
+The component had already anticipated this — a tone-coloured stroke sat hidden beneath the grey one, so the
+change was to swap which is visible. All bindings are to semantic variables; no tokens were broken. Note that
+`Entry Header` and `Lesson Block` also consume this alert and therefore change appearance too.
+
+**Alert titles stopped repeating the verdict.** "CORRECT" and "INCORRECT" both became **"Explanation"**. The
+option row already says, in green or red, whether the learner was right; spending the alert's first line
+repeating it is the same error we removed from the stacked alerts (`07-results-decisions.md` §2). Reviewing
+the rest turned up four more titles still in caps — `LAST ATTEMPT`, `PARTIALLY CORRECT · 1 / 2 POINTS`,
+`EXPLANATION`, `ANSWER SUBMITTED`, `HINT 1 OF 3` — all normalised to sentence case. Two sentence-case titles
+beside four shouting ones would have been worse than either.
+
+**"Review lesson" removed from the question card.** Nelson asked whether it could be implemented; the answer
+splits by placement. Resolving the target is settled — `/api/courses/v2/blocks/?course_id=…&depth=all`
+returns the whole tree and we called it ourselves, authenticated as a learner, during the catalogue audit;
+the MFE already renders breadcrumbs and an outline from the same structure. But it resolves to the **module**,
+not to the lesson covering that question — a per-question mapping nobody authors. So the label promised
+precision we cannot deliver. It also sits inside the cross-origin iframe, making it dependent on integration
+option C. It stays in the Entry Header, where it is outside the iframe and honestly scoped.
+
+*Restored:* the screenshot in column A had been cropped to 1348px by a section resize — its `scaleMode` is
+`CROP`, so it was silently hiding questions 4 and 5 rather than distorting. Back to 760×1784, with
+constraints set so a section resize cannot take it again.
+
+**Two more findings in the card, not yet acted on** — both promise behaviour the platform does not have:
+
+- **`State=Last attempt` offers "Save draft".** There is no draft. We confirmed empirically on 3 Aug that an
+  unsubmitted selection is lost on navigation, with attempts still reading 0 of 2. This is a correctness
+  problem, not a preference.
+- **`State=Unanswered` and `State=Selected` offer "Skip question".** Every question is on one page, so there
+  is nothing to skip to — it would only mean something under the stepper we deliberately excluded.
+
 ## 2026-08-04 · Column A rebuilt against a screenshot of the real page
 
 Nelson put a screenshot of the live quiz — AZ-204, Module 3 Knowledge Check — into column A so the board
