@@ -2,6 +2,43 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · Column A rebuilt against a screenshot of the real page
+
+Nelson put a screenshot of the live quiz — AZ-204, Module 3 Knowledge Check — into column A so the board
+could be checked against reality rather than against our memory of it. It earned its place: three things were
+wrong and two were missing.
+
+**Column A is now detached from the design system**, deliberately and only here. The previous pass stripped
+the wrong affordances out of the DS components, but the components still shaped the page. A faithful redraw
+was the only way to stop the proposal leaking into the column that documents the present. The screenshot sits
+above it as evidence; the redraw is in our type so it compares like-for-like with column B.
+
+**What the screenshot corrected:**
+
+- **The page has a title and a bookmark link, and nothing else.** No entry screen — which confirms the
+  removal made earlier the same day, this time with a picture behind it.
+- **Every question carries "Choose the correct option(s)" as a heading** — the same generic sentence five
+  times on one page. The plural is wrong for a single-select question and quietly implies multi-select might
+  be allowed. We had not drawn this at all.
+- **The question numbers are typed into the question text by the author**, not generated. Reorder the
+  questions or turn on shuffling and the numbers lie. Also not drawn.
+- **"1 point possible (graded)" and "You have used 0 of 2 attempts" are shown per question.** Our note said
+  the learner has no sense of where they are; that is still true of *position*, but they are told points and
+  attempts. The note was too broad and has been narrowed.
+- **Previous and Next sit at the foot of the page** and look like question navigation. They move between
+  units, and the whole quiz is one unit, so they leave it. Worth stating explicitly — a stakeholder reading
+  the screenshot will assume those buttons step through questions.
+- **Reset is absent** because nothing has been submitted yet. The note now says so, rather than leaving its
+  absence looking like an omission in the drawing.
+
+**The defect is visible in the evidence**, so it is marked on the redraw where it happens: questions 1 and 2
+have a selection and Submit is still greyed. Until it is fixed, a learner cannot submit without first
+clicking Show answer — which hands them the answer before they commit to one. That consequence had not been
+spelled out anywhere.
+
+This added an eighth pair: **A8** the page repeats itself and the numbering is hand-typed ↔ **B8** the
+question is the heading, numbering computed by the shell.
+
 ## 2026-08-04 · Column A was quietly showing the proposal — corrected
 
 Nelson caught it: the "how it works today" column had **Next question**, **Next hint**, **Review lesson** and
