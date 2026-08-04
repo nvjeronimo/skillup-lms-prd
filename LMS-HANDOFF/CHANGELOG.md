@@ -31,8 +31,10 @@ because it is *available if the business wants quizzes earned rather than open* 
 made, not a screen to design against. The column caption was rewritten to match: of the five blocked states,
 only the timed-exam ones occur in our courses today.
 
-*Noticed in passing, not touched:* sections **04.1 and 04.2 overlap** on the ICP page. It predates this
-work — 04.1 runs to y≈11324 and 04.2 starts at y=10898, in the same column.
+*Layout tidy:* sections **04.1 and 04.2 were overlapping** — 04.1 ran to y≈11324 while 04.2 started at
+y=10898, in the same column. 04.2 moved to y=11524, left edge kept aligned with 04.1 so the two reference
+sections read as one column, with the same 200px gutter used elsewhere on the page. Full overlap sweep
+across the page afterwards: clean.
 
 ## 2026-08-04 · Two models, side by side — a board built to be decided from
 
