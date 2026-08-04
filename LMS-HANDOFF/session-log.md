@@ -471,6 +471,39 @@ Simran's *"we'll have to get it built up from a dev team"* is right that it does
 
 ## Open questions with the vendor
 
+### Drafted Aug 4, 2026 · five settings, one example course
+
+Follows the source verification above. The message separates what we accepted as a platform limit from what
+we believe is configuration, and asks five settings questions — **each one tied to what it decides for the
+design**, because a question with a visible consequence gets answered and an abstract one does not.
+
+| Ask | What the answer decides |
+|---|---|
+| (a) Can `showanswer` be set per quiz at subsection level? | Two states in the question component |
+| (b) **What is `show_correctness` set to today?** | Whether we design an immediate feedback state at all |
+| (c) Any objection to stating plainly that Reset does not return the attempt? | Copy on the retry action |
+| (d) Is quizzes-open-from-enrolment policy, or never switched on? | Whether `Gate · Prerequisite` is real or out of scope |
+| (e) Is the 2-attempt setting applied per subsection or per problem? | Whether attempts chrome can be quiz-level |
+| **An example course with feedback and explanations** | Whether we can design that surface at all |
+
+**(b) is the one that was nearly missed, and it matters most of the five.** Simran said results do not appear
+after submitting. If she meant that per-question correctness is also absent, that is not the platform —
+`show_correctness` (display name "Show Results") defaults to `always`. Without asking, we would have
+accepted as a limit something that may be one mis-set field, and designed a deferred-feedback flow around it.
+
+**The example course is the highest-value ask in the message** and was promoted out of a trailing line into
+its own section. We have never seen an authored explanation or per-answer feedback, and 213 of 215 audited
+questions have neither — so that surface is currently being designed blind.
+
+**Deliberately left out: `allow_multiple_attempts`.** Our source check established it is a migration
+filename, not a setting. Nobody on their side ever cited it. Pre-emptively refuting a claim that was never
+made reads as point-scoring, costs goodwill and gains nothing. It stays in our documentation, above, in case
+it ever comes up.
+
+**Ownership note.** The results-screen estimate is being raised with Navdeep, so the vendor message carries
+it as *context* rather than as a second request. Asking both risks two estimates on different assumptions,
+or each party assuming the other owns it.
+
 ### Sent Aug 3, 2026 · quiz reset and attempts configuration
 
 **Why it is being asked.** We established from source that neither "retry only the incorrect questions" nor "retake the whole quiz" exists as an Open edX feature — but they are not equally far from it. Attempts are counted **per problem**, so re-answering only the wrong ones is essentially the platform's native behaviour; what is missing is a UI that collects them. A *full* retake is the invented one: there is no subsection attempt object, and `reset_problem()` explicitly does not refund a spent attempt.

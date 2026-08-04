@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · The vendor message, reviewed before sending
+
+Logged in `session-log.md` under *Open questions with the vendor*. Two changes are worth remembering as
+habits rather than as edits to one message.
+
+**A question gets answered when it carries a visible consequence.** Every ask now states what the answer
+decides for the design — which component state, which flow, which screen goes in or out of scope. Abstract
+capability questions get abstract answers.
+
+**One ask was nearly missed, and it was the important one.** Simran said results do not appear after
+submitting. We had accepted that as a platform limit. But if per-question correctness is also absent, that
+is `show_correctness` — display name "Show Results", default `always` — set away from its default. We were
+one unasked question away from designing a deferred-feedback flow around a single mis-set field.
+
+**And one thing was cut.** Our source check found that `allow_multiple_attempts` is a migration filename,
+not a setting. Nobody on their side ever cited it. Refuting a claim that was never made is point-scoring: it
+costs goodwill and gains nothing. It stays in our documentation in case it comes up.
+
+Also settled: the results-screen estimate is being raised with Navdeep, so the vendor message carries it as
+context rather than as a second request — otherwise we get two estimates on different assumptions, or none.
+
 ## 2026-08-04 · Retired components swapped out, and the gate state corrected
 
 **Eight instances of `_Remove · LMS / Quiz · Results Summary` were still live in the ICP** — three in
