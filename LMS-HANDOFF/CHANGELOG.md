@@ -2,6 +2,59 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · Column A was quietly showing the proposal — corrected
+
+Nelson caught it: the "how it works today" column had **Next question**, **Next hint**, **Review lesson** and
+**Skip question** on the question cards. None of those exist today.
+
+**The cause is worth recording, because it will happen again.** Drawing both columns in our design system is
+the right call — it stops the room choosing the prettier column — but the components carry *our proposed
+affordances as their defaults*. Reusing them imports the proposal into the column that is supposed to
+document the present. Swapping a variant is not enough; the chrome has to be stripped deliberately.
+
+What column A now shows, and why each one is defensible:
+
+- **Unanswered → Submit only.** No *Skip question*: every question is on the same page, so there is nothing
+  to skip to.
+- **Correct → no actions at all.** No *Next question* for the same reason, and no Reset —
+  `should_show_reset_button()` returns `False` once the answer is correct.
+- **Incorrect → Show answer + Reset.** *Next hint* is gone: the catalogue audit found zero authored
+  `demandhint` anywhere. *Review lesson* is gone: that is our shell, not the platform. And *Try again* was
+  renamed **Reset**, which is the platform's own name — using our label made a native control look like an
+  invention.
+
+**The entry header went further — it was removed entirely.** There is no quiz entry screen today; the
+learner opens the quiz from the outline and is already answering it. The Entry Header is F-QZ-001 on our
+*build* list, not something that exists. In its place, a dashed absence note: the facts it would carry
+(question count, duration, attempts, weighting) do exist — in the grading policy and on the Progress tab —
+just not where the decision to start is made. Timed exams are the one exception, and do have a native
+instructions screen.
+
+This added a seventh pair to the board: **A7** nothing tells them what they are walking into ↔ **B7** an
+entry screen, tagged ▣ Design.
+
+**Two wordings corrected in column B**, both instances of the same long-standing error — chrome that implies
+a quiz-level attempt when attempts are per question. "2 attempts" became **"2 attempts per question"**, and
+"Once you submit an attempt you cannot change your answers" became **"Once you submit an answer you cannot
+change it."** This closes an item that had been open since the attempts model was corrected.
+
+**And the review action is now justified on the board rather than assumed.** Nelson doubted *Review module
+first* was possible, reasonably — we were told twice that authors cannot link out of a question. The
+distinction is who owns it: that limit applies to content authored inside the problem block, while our shell
+renders its own chrome and can resolve the parent module itself. A note on column B says so, including the
+constraint that authors must never be asked to write "go and review module 3" into feedback as a substitute.
+
+**Counter and stepper are now explicitly separated on the board.** Nelson asked whether pagination is in use
+today — it is not, and column A shows none. But the question exposed a confusion the room would have had:
+column B contains a *counter* ("Question 2 of 5" plus a progress bar), which our shell computes over the
+subsection and which needs no authoring change, while the *stepper* — moving one question at a time — needs
+one question per unit and a re-authored catalogue, and is excluded in column C. Note B1 now says so in as
+many words, because the two look alike and cost nothing alike.
+
+*Not a defect, for the record:* the Entry Header's `Show review action` property was briefly suspected of
+being unwired. It is correctly bound. A text node inside a hidden button still reports `visible: true` — only
+the ancestor is hidden. The detection was wrong, not the component.
+
 ## 2026-08-04 · The vendor message, reviewed before sending
 
 Logged in `session-log.md` under *Open questions with the vendor*. Two changes are worth remembering as
