@@ -2,6 +2,37 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · Two models, side by side — a board built to be decided from
+
+New Figma section on the ICP page, `04.5 · Today vs proposed — two models for the stakeholder call`
+(`5046:116408`), sitting to the right of 04.4. Built so stakeholders can decide, not admire.
+
+**Both columns are drawn in our design system, deliberately.** If the current model were shown as raw edX
+and the proposal in our DS, the room would pick the prettier one for the wrong reason. Drawing both the same
+way isolates the only variables that are actually up for decision: behaviour and content.
+
+**Column A — how it works today.** The configuration behind 213 of the 215 audited questions: all questions
+stacked on one page, no per-question counter, Show answer available before trying, Reset that quietly spends
+an attempt, nothing locked, and nothing at the end. The two dashed *absence* callouts are the point of the
+column — an empty space is hard to see, so it is labelled: nothing appears after a wrong answer, and nothing
+appears after the last question.
+
+**Column B — the proposal.** Six changes, each mapped one-to-one onto the numbered problems in A, and each
+carrying a cost tag so a single line can be struck without rejecting the rest: **▣ Design** (ours, already
+in scope), **⚙ Setting** (one inherited field on the subsection), **✎ Authoring** (the content team writes
+it), **⌥ Build** (frontend plugin). Nothing in this column requires moving a question between units.
+
+**Column C — the cost key, the exclusion, and the ask.** The stepper (one question per unit) is called out
+as *deliberately left out*: it is natively possible and needs no code, but it means re-authoring the whole
+catalogue, which is the restructuring effort we set out to avoid. Also lists what no configuration will ever
+give us, and the four questions the session has to answer. Items 1 and 4 need no decision — they are inside
+the redesign already.
+
+One honest bit of construction: the "1 attempt left · Reset does not give it back" line is shown as a dashed
+**PROPOSED COPY — NOT A COMPONENT YET** callout rather than tucked into the hint alert. An attempts warning
+is not a hint, and dressing it as one would have been the same category error as the destructive-state hint
+we rejected earlier.
+
 ## 2026-08-04 · The vendor's answers, taken back to source
 
 The 4 Aug quiz walkthrough with Simran is logged in `session-log.md`. Six of her answers were then read
