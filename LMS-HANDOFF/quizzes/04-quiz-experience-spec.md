@@ -33,7 +33,7 @@ Defines every component, screen, state and platform contract needed to build the
     - **one `problem` per unit ⇒ a question-by-question stepper, natively, zero custom code**;
     - **N `problem`s in one unit ⇒ a single scrolling page** (how SKOAIH01 is authored today — see [03-current-lms-quiz-audit.md](03-current-lms-quiz-audit.md) §4).
     *Version caveat:* the horizontal unit tab bar was rendered by default through Teak; in Ulmo/Verawood it moved to a plugin slot, replaced by the Course Outline sidebar + Previous/Next. Restoring it is an `env.config.jsx` entry — configuration, not a fork.
-0d. **What Open edX genuinely lacks** *(verified Jul 29, 2026)* — the real gap, and where our shell adds value: **(i)** no per-question counter ("Question 3 of 10" — the native one counts *units*), **(ii)** no quiz-level submit-all, **(iii)** no end-of-quiz review/summary screen. The timed-exam submit dialog is explicit that it ends the *attempt*, not the answers: *"Make sure that you have selected 'Submit' for each problem before you submit your exam."*
+0d. **What Open edX genuinely lacks** *(verified Jul 29, 2026)* — the real gap, and where our shell adds value: **(i)** no per-question counter ("Question 3 of 10" — the native one counts *units*), **(ii)** no quiz-level submit-all, **(iii)** no end-of-quiz review/summary screen. The timed-exam submit dialog is explicit that it ends the *attempt*, not the answers: *"Make sure that you have selected 'Submit' for each problem before you submit your exam."* **Verified in source Aug 4, 2026** — `submitExam()` calls `submitAttempt(attemptId)` only, and `edx_proctoring` contains no reference to `problem_check` or `capa` at all. A timed exam is a timer and a lockout, not an aggregate submit. **(iii) is buildable as a frontend plugin — see §10.4**, which supersedes the assumption that it needs backend work.
 1. **Per-question lifecycle.** *Submission* has no quiz-level container — each problem submits/scores independently (grading *does* roll up at subsection level; see 0c). A "one Submit for the whole quiz" UX would require orchestrating N problem submissions client-side (possible, but each question still grades independently — no cross-question validation).
 2. **Current production config** (SKOAIH01): single-select MCQ only; practice = unlimited attempts; graded = 2 attempts/question; answer-choice shuffling ON; per-choice feedback authored; immediate results; no hints, no partial credit, no due dates; pass mark 70%; Graded Quiz 60% + Final Exam 40%.
 3. **Rendering contract options** (decision needed — see section 6): (A) theme the existing iframe, (B) native re-implementation of the 5 CAPA types against XBlock handlers, (C) hybrid (native CAPA + iframe for SCORM/ORA/everything else). Recommendation: **C**.
@@ -309,3 +309,68 @@ Confirmed twice: an author **cannot** put a working link or CTA in a question or
 - The review affordance is **shell-owned**, resolved from course structure. Never authored into feedback text.
 - It therefore only exists when the shell can resolve a parent — consistent with the existing rule that the button hides when the quiz is not linked to a module.
 - Authors must not be asked to write "go and review module 3" into feedback as a substitute; that produces prose that goes stale when content is reordered.
+
+---
+
+## 10. Platform limit vs. their configuration — source verification (Aug 4, 2026)
+
+The vendor walkthrough of 4 Aug produced a set of answers about what the platform does. Because those answers come from the person who *configures* SkillUp's courses, they are reliable about SkillUp and unreliable as statements about Open edX. Each was taken back to primary source — the `openedx` repositories read at `master` (`edx-platform` @ `feb3e3fd`, `frontend-app-learning` @ `db2134c9`, `edx-proctoring`, `completion`, `xblocks-core`), not documentation summaries.
+
+Full evidence, with file and line citations, is in [session-log.md](../session-log.md) under *2026-08-04 · Source verification of the walkthrough answers*. What follows is what it changes for this spec.
+
+### 10.1 The split
+
+| Claim from the walkthrough | Verdict | Cost to change |
+|---|---|---|
+| No submit for a whole quiz | **Platform limit** — `seq_block.py` has two handlers, neither submits | — |
+| No end-of-quiz score summary | **Platform limit** — zero occurrences of `score` in `seq_block.py` | see 10.4 |
+| No per-quiz pass mark as a verdict | **Platform limit** — `GRADE_CUTOFFS` is course-wide | see 10.5 |
+| Show answer is tied to graded/non-graded | **Their configuration** — `answer_available()` never reads `graded` | one inherited field |
+| Quizzes are all open, nothing is gated | **Their configuration** — `enable_subsection_gating` defaults `False` | one Advanced Setting + authoring |
+| Reset appears after submitting | **Their configuration** — `show_reset_button` defaults `False` | one inherited field |
+| Attempts cannot be restricted quiz-wise | **Half wrong** — `max_attempts` is inheritable; set once on the subsection it covers every question | one inherited field |
+
+### 10.2 Correction to this spec — feedback *is* immediate by default
+
+`show_correctness`, display name **"Show Results"**, is inheritable with default **`"always"`**; the only other values are `never` and `past_due`. So the correct formulation, replacing any looser wording elsewhere in this document:
+
+> **Per-question correctness is shown immediately unless deliberately suppressed. What does not exist is a quiz-level summary.**
+
+Where learners appear to see nothing after submitting, `show_correctness` has been set away from its default on that subsection.
+
+### 10.3 Three rules this settles for our screens
+
+1. **Show answer is not a graded/practice rule — it is a per-quiz choice.** Twelve values exist (`class SHOWANSWER`, `capa_block.py:82`), and the field is inheritable down from course, section or subsection. Our design should stop presenting the split as something the platform imposes and present it as the editorial policy it is. The design recommendation stands (free on practice, attempts-exhausted on graded); the justification changes from "the platform requires it" to "we chose it, and one field per subsection implements it."
+2. **Reset does not refund an attempt.** `self.attempts` is incremented in exactly one place in `capa_block.py` (line 1817, inside submit); `reset_problem()` never touches it. Any copy on `Retry incorrect` must not imply the attempt comes back. This is the highest-risk wording in the whole flow.
+3. **`Gate · Prerequisite` is a real platform feature that is switched off, not an impossibility.** `enable_subsection_gating` + `min_score` (0–100) + `min_completion`, enforced by `descendants_are_gated()` against direct-URL access, with a Studio UI. Keep the component; treat it as *available if the business wants it*, not as a state our learners currently meet.
+
+### 10.4 The results screen is a frontend plugin, not a fork
+
+This is the most consequential correction, and it reverses the cost assumption in F-QZ-013.
+
+**The learner can read their own subsection score.** `GET /api/course_home/progress/{course_id}` — `ProgressTabView`, `permission_classes = (IsAuthenticated,)`, defaulting to the requesting user. Per subsection it returns `num_points_earned`, `num_points_possible`, `percent_graded` and `problem_scores: [{earned, possible}]`. Every subsection-granular route under `/api/grades/v1/` is by contrast staff-gated — including `/subsection/{id}/`, the one that looks obvious and 403s for a learner.
+
+**There is a supported place to render it.** `org.openedx.frontend.learning.sequence_bottom_navigation.v1` receives `courseId`, **`sequenceId`** and `unitId` with `mergeProps: true`, wrapping the Prev/Next area. `sequenceId` is what makes last-unit-in-subsection detection possible. The fallback `sequence_container.v1` sits after all sequence content but exposes only `courseId` and `unitId`.
+
+**Design consequences:**
+
+- **The `Pending` variant of `LMS / Quiz · Results` is required, not defensive.** Scores are recomputed asynchronously off `PROBLEM_WEIGHTED_SCORE_CHANGED` (`grades/tasks.py`), so a fetch immediately after the last submit can legitimately return a stale total.
+- **The screen appears in place, below the question content — it is not a route.** No slot fires on *leaving* a subsection; both render continuously while the learner is on a unit. There is no interstitial to design.
+- **Last-unit detection is ours to build.** The MFE's `isLastUnit` means last of the *course* (`sequence-navigation/hooks.js:45`); `isLastUnitInSequence` stays internal.
+- **Treat the data source as unstable.** `course_home_api/urls.py` declares itself an unversioned BFF that may change between releases, and is gated by the waffle toggle `course_home_mfe_progress_tab_is_active`. The screen must degrade to "see your results on the Progress tab" rather than break.
+
+*Caveat carried forward:* reading the MFE's redux store from inside a plugin widget — needed for `sequence.unitIds` — is the pattern the app's own slot fallbacks use, but the slot READMEs do not document it as a contract. **UNVERIFIED.**
+
+### 10.5 The pass mark has a route nobody raised
+
+`min_score` in the gating API **is** a per-subsection threshold, evaluated by `get_subsection_grade_percentage(usage_key, user)`. So "the learner must reach 80% on this quiz" is expressible today. What the platform does with it is **open downstream content**, not stamp a verdict on the quiz.
+
+Which route applies depends on what the pass mark is *for*:
+
+| Intent | Supported? | Cost |
+|---|---|---|
+| "80% on Quiz 3 before Module 4 opens" | **Yes, today** | Authoring — same lever as 10.3 rule 3 |
+| "Show the learner Passed / Not passed on Quiz 3" | No | Needs the results surface in 10.4 |
+| "Quiz 3 pass/fail drives certification independently of course grade" | No | Custom development |
+
+The first two are the same underlying feature: turning on subsection prerequisites delivers per-quiz thresholds *and* gating in one configuration change. **This does not change the recommendation in [07-results-decisions.md](07-results-decisions.md) §1** — the pass mark stays authored metadata worded as a target, never a gate, and never on practice. It does mean that if the business later wants it to be a gate, the platform is ready and the change is authoring, not engineering.

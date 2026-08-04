@@ -310,6 +310,165 @@ ended/enrol/missed-deadline banners.
 
 ---
 
+## 2026-08-04 · Quiz audit walkthrough with Simran
+
+**Present:** Nelson Jerónimo, Simran Jindal, Mohammad Rashid (left early), Janvi Soni. ~23 min. Recording and transcript in `30-07 meetings/Quiz Audit Walkthrough/`. Verified against the transcript, not the AI notes.
+
+Nelson walked the audit findings question by question. Most of Groups A and B are now answered; Group C is with Simran to test.
+
+### ANSWERED — Reset is enabled, and it is per question
+
+> *"this is question by question. So when we select the option and submit it, and sometimes it's the wrong option… then this reset button appears wherein you can reset and do the second attempt if you have for that specific question. **The whole quiz will not be reset**."* — Simran, 00:02:38
+
+This closes the question we were about to send. **Reset is on, it appears after submitting, and it consumes nothing** — it lets the learner retry that question using an attempt they still have.
+
+**Design consequence, and it is a good one:** *Retry incorrect* is not an invention at all. It is a UI over exactly what Reset already does, question by question. *Retake quiz* remains unbuildable — there is still no way to reset a whole quiz or refund attempts.
+
+### RESOLVED — the Show answer conflict was not a conflict
+
+> *"it's a question-wise functionality… this is enabled when we create any quiz which is **not graded**"* … *"in any quiz which is graded as well, **after the number of attempts that are completed** by the learner and still they have not got the right answer, then the show answer option will appear."* — Simran, 00:04:51 and 00:05:28
+
+So the rule differs by quiz type, and **our design rule was right for the graded path**: reveal only once attempts are spent. On practice quizzes it is deliberately available from the start, which is a defensible pedagogical choice for ungraded self-checks.
+
+What we saw in the AZ-204 audit — Show answer present with zero attempts used — is the *practice* configuration, not a contradiction. **Our design should follow the same split**: free on practice, attempts-exhausted on graded.
+
+### ⚠︎ DEFECT — Submit stays disabled until Show answer is clicked
+
+Nelson demonstrated it live: selecting an option did not enable Submit; the question only became submittable after using Show answer.
+
+> *"That should not have happened… there can be some issue from backend, which we might have to check. **The submit button should work whenever you click any option**."* — Simran, 00:06:30 and 00:08:33
+
+Dev environment (confirmed by Mohammad). Simran has the URL and is investigating.
+
+**We hit this ourselves during the catalogue audit and did not flag it** — the Submit button read as greyed after selecting a radio. Worth remembering as a reason to report oddities rather than assume they are intended.
+
+### CONFIRMED — question types, with the vendor's own number
+
+> *"maybe in **5% of the courses**"* for multi-select; the others *"very rarely used"*, and *"for past few months, **none of these options are in use**."* — Simran, 00:10:04
+
+Consistent with our audit finding of zero across four courses. Nelson's position, stated in the meeting: *"if you just have one, we need to have the component design as well"* — so the variants stay in the DS, they simply stop being near-term.
+
+### CONFIRMED — feedback and explanations are coming, and there is an example
+
+> *"in the old courses you won't find this functionality. But the new courses that are being created and getting live on our platform, we are trying to get this functionality put into place… If it's a quiz of even five questions or two questions, we see if this feedback and explanation come into play."* — Simran, 00:11:22
+
+**Simran is sharing an example course.** That unblocks the biggest open item: we have never seen a real authored feedback or explanation, so we have been designing that surface blind.
+
+### CONFIRMED — why attempts cannot be quiz-level
+
+The causal explanation we had inferred from source, now stated by the person who configures it:
+
+> *"we don't have any functionality wherein you just select the answers and do a **final submission of the complete quiz in one go**, because of which **we cannot restrict the attempts quiz-wise**."* — Simran, 00:12:58
+
+No quiz-level submit, therefore no quiz-level attempts. The only quiz-wide control is the timer: *"the timer starts as and when you click on the start page"*, and the learner must finish every question inside it.
+
+### CONFIRMED — graded vs final, and no gating at all
+
+- **Graded quiz** = module level, after a module. **Final** = the whole course. *"The configuration is same"* — only the scope of knowledge differs.
+- **Nothing is locked.** *"These are all open. Once the learner is enrolled into the course… if they have the knowledge of that course and directly want to open the final quiz, they can."* — 00:14:58
+
+> **This affects a screen we built.** The `Gate · Prerequisite` state assumes quizzes can be locked behind completion. On this platform they are not — quizzes are open from enrolment. Keep the component (the platform supports gating; nobody uses it) but stop treating it as a state our learners will meet.
+
+### ⚠︎ SCOPE — the results screen does not exist, and would be a build
+
+The most consequential outcome. Nelson showed our results design; Simran was unambiguous:
+
+> *"once we submit it, the result is **not showing up on that page**. In order to see what's your score or how many correct answers you have got, you will have to **open the progress tab** of the course."* — 00:19:04
+> *"this is something we don't have that we can show up on our platform. There's something we'll have to **get it built up from a dev team** if there's a possibility."* — 00:21:49
+
+She supports it: *"it's a good add-on… from a learner perspective, there's something they look into after submission, how much correct answer I came up with, how much are wrong."*
+
+**So our entire results screen — score, verdict, retry — is net-new development, not a re-skin.** Today the learner submits and sees nothing; results live on the Progress tab as *"6 out of 7"* per quiz, with weightings (graded 60%, final 40%) rolling into the course grade.
+
+Nelson to take feasibility and cost to Navdeep and the dev team.
+
+### Still open — Group C, with Simran
+
+| Question | Owner |
+|---|---|
+| Does sequence navigation give a working stepper with one question per unit? | Simran — testing, *"we have not tried this functionality"* (00:00:58) |
+| How does Reset behave once sequence navigation is on? | Simran — *"it needs to be tested"* (00:03:56) |
+| Why is Submit disabled until Show answer is clicked? | Simran — has the URL |
+| Share a course with feedback and explanations | Simran |
+| Is an immediate results screen feasible, and what does it cost? | Nelson → Navdeep + dev team |
+
+---
+
+## 2026-08-04 · Source verification of the walkthrough answers
+
+**Why.** Simran answers as the person who configures these courses, which makes her answers reliable about *their* platform and unreliable as a statement of what Open edX can do. Six of her answers were taken back to primary source — the `openedx` repositories at `master`, read directly, not documentation summaries. `edx-platform` @ `feb3e3fd`, `frontend-app-learning` @ `db2134c9`, `edx-proctoring`, `completion`, `xblocks-core`.
+
+The distinction that matters throughout: **"the platform cannot do this" vs "they have not configured it this way."** Three of the six are the first; three are the second.
+
+### CONFIRMED as genuine platform limits
+
+**No quiz-level submit.** `xmodule/seq_block.py` exposes exactly two handlers — `get_completion` and `goto_position`. There is no submit handler. Submission lives only on `capa_block.py`, which routes `problem_check` → `submit_problem`. One problem, one submit.
+
+**And *End My Exam* is not one either** — this is the part worth knowing. It ends the *session*, not the answers. `frontend-lib-special-exams/src/data/thunks.js:367` `submitExam()` calls `submitAttempt(attemptId)` and messages the proctoring worker; nothing else. Grepping all of `edx_proctoring/*.py` for `problem_check|capa|xmodule` returns **zero hits** — the proctoring layer never touches problem state. The platform says so to learners in `ReadyToStartProctoredExamInstructions.jsx:62`: if time expires before ending the exam, only answers already submitted are graded. A timed exam is a timer and a lockout, not an aggregate submit.
+
+**No aggregate score on the subsection.** `seq_block.py` grepped for `score|earned|possible|percent` — **zero occurrences of `score`**. `graded` appears twice, both incidental. The `banner_text` mechanism (lines 341–597) serves three purposes only — prerequisite gating, hidden content, hidden special exams — and is not repurposable.
+
+**No per-quiz pass mark as a verdict.** `course_block.py:1288` — `grade_cutoffs` reads `GRADE_CUTOFFS` from the course grading policy; `lowest_passing_grade` is `min()` of those. One policy per course. No pass-mark field on a subsection or a problem. What we already held is correct.
+
+### ⚠︎ THEIR CONFIGURATION — not platform limits
+
+**Show answer has nothing to do with graded.** `showanswer` is an independent per-problem string with twelve values (`class SHOWANSWER`, `capa_block.py:82`), default `finished`. The deciding function `answer_available()` (~line 1473) branches on `showanswer`, staff status, `is_attempted()`, `is_correct()`, `closed()`, `used_all_attempts()` and `attempts` — **the word `graded` does not appear in it**. `graded` is a separate field declared in `modulestore/inheritance.py:36`.
+
+The behaviour Simran described is two chosen values, and the "graded" one is close to just leaving the default alone (`finished` = `closed() or is_correct()`, and `closed()` = `used_all_attempts() or is_past_due()`).
+
+> **The lever nobody mentioned: `showanswer` is inheritable** (`inheritance.py:88`). It can be set on the course, section or subsection and descends to every problem. "Show answer on these terms for this quiz" is **one field on one subsection**, not 215 per-problem edits.
+
+**Prerequisite gating is fully built and switched off.** `course_block.py:959` — `enable_subsection_gating`, Boolean, **default `False`**, display name *"Enable Subsection Prerequisites"*. The API is `openedx/core/lib/gating/api.py`: `add_prerequisite()`, `set_required_content(..., min_score, min_completion)`, `_validate_min_score()` (integer 0–100), `update_milestone()` testing `grade_percentage >= min_score and completion_percentage >= min_completion`. Enforcement is in `seq_block.py` — `_required_prereq()` (line 649), `_compute_is_prereq_met()`, and `descendants_are_gated()`, which guards `render_xblock` against direct-URL access. So it blocks properly, not cosmetically. The Studio UI exists (subsection Configure modal: `isPrereq`, `prereqUsageKey`, `prereqMinScore`, `prereqMinCompletion`).
+
+**Cost to change: one Advanced Setting plus per-subsection authoring.** No plugin, no development.
+
+**The Reset button is off by default.** `show_reset_button` (`capa_block.py:270`) defaults to **`False`**. `should_show_reset_button()` (line 1031) returns `True` early only when `rerandomize` is `always`/`onreset` **and** the problem is submitted — which is the only branch that keys off "after submitting". Out of the box, no Reset appears. Its presence in their courses is their choice.
+
+> **And Reset does not refund the attempt.** `self.attempts` is assigned in exactly one place in the whole 2,481-line file — line 1817, `self.attempts = self.attempts + 1`, inside submit. `reset_problem()` (line 2121) never touches it. The answer clears; the attempt stays spent. Worth making sure both the vendor and our course teams understand this — it is a predictable source of learner confusion.
+
+**Attempts *can* be limited across a whole quiz, in effect.** `max_attempts` is inheritable (`inheritance.py:145`, per-problem override at `capa_block.py:196`). Set once on the subsection, it applies to every problem in it. That is not "3 attempts at the quiz as a unit" — that genuinely does not exist — but "each question in this quiz, 3 times" is one field they have not used. Caveat in the help text: if the course-wide value is a number, individual problems cannot be set back to unlimited.
+
+### ⚠︎ CORRECTION TO US — per-question results *are* shown by default
+
+`show_correctness` — display name **"Show Results"** — is inheritable (`inheritance.py:102`) with default **`"always"`**, values `always` / `never` / `past_due` only.
+
+The accurate statement is therefore: **per-question feedback is immediate unless suppressed; no quiz-level summary exists.** "Results are not shown after submitting" is too strong. If their learners genuinely see nothing, `show_correctness` is set to `never` or `past_due` on those subsections — again configuration.
+
+### ⚠︎ THE ONE THAT CHANGES THE PLAN — the results screen is a plugin, not a fork
+
+Simran's *"we'll have to get it built up from a dev team"* is right that it does not exist. It overstates what building it costs.
+
+**The learner can read their own subsection score.** `GET /api/course_home/progress/{course_id}` — `ProgressTabView`, `lms/djangoapps/course_home_api/progress/views.py:153`, **`permission_classes = (IsAuthenticated,)`**. Per subsection it returns `block_key`, `num_points_earned`, `num_points_possible`, `percent_graded`, `problem_scores: [{earned, possible}]`, `show_correctness`, `show_grades`. This is the endpoint the Progress tab itself uses (`course-home/data/api.js:139`).
+
+**Contrast with the obvious place to look.** Every subsection-granular route under `/api/grades/v1/` is staff-gated — including `/subsection/{subsection_id}/`, which checks `has_course_author_access` and 403s otherwise. Anyone who checked there would conclude it is impossible. It is not; the BFF endpoint is the way in.
+
+**And there is somewhere to hang it.** `org.openedx.frontend.learning.sequence_bottom_navigation.v1` (`Sequence.jsx:227`) receives `courseId`, **`sequenceId`**, `unitId`, `onClickNext`, `onNavigate`, `onClickPrevious`, with `mergeProps: true` — so a plugin can wrap the Prev/Next area, and `sequenceId` is what makes "am I on the last unit of this subsection?" answerable. The alternative `org.openedx.frontend.learning.sequence_container.v1` (`Sequence.jsx:236`) sits after all sequence content but receives only `courseId` and `unitId`.
+
+**Three honest constraints:**
+
+1. **No slot fires on *leaving* a subsection.** Both render continuously on every unit. Last-unit detection is our logic — and note that the MFE's own `isLastUnit` means *last of the course* (`sequence-navigation/hooks.js:45`); `isLastUnitInSequence` stays internal.
+2. **The endpoint is declared unstable.** `course_home_api/urls.py` states in its own header that it is an unversioned BFF for the learning MFE and may change between Open edX releases. It is also behind the waffle toggle `course_home_mfe_progress_tab_is_active` — 404 if off. And it returns the whole course grade tree to render one subsection.
+3. **Scores are recomputed asynchronously** (`grades/tasks.py`, driven by `PROBLEM_WEIGHTED_SCORE_CHANGED`), so a fetch immediately after submit may read a stale total. **This validates the `Pending` state we already built into `LMS / Quiz · Results`** — it is not a hypothetical.
+
+**Nothing else in the ecosystem does this.** No component in `src/courseware/**` renders a subsection score (grep for `score|grade` hits only course-level celebration copy and a per-unit `graded` boolean). All 186 public repos in the `openedx` org were enumerated: the grade-named ones (`edx-bulk-grades`, `frontend-app-gradebook`, `staff-graded-xblock`) are staff tooling. No community XBlock renders a subsection summary to a learner.
+
+> **Note for the vendor conversation:** `sequence_bottom_navigation.v1` **is not in the repo's slot README** — that README is stale and omits around nine slots that exist in code, including all three `course_exit_*` slots. If anyone says the slot does not exist because it is undocumented, the README is what is wrong.
+
+### Two things a courtesy of omission hides
+
+- **A whole-subsection reset exists, staff-side.** `lms/djangoapps/instructor/enrollment.py:293` — `reset_student_attempts()` recurses into children, so passing a *subsection* key resets every problem beneath it; `delete_module=True` deletes state, `all_students=True` is available. Neither the view nor `StudentAttemptsSerializer` restricts the block type. *(UNVERIFIED: whether the Instructor Dashboard UI accepts a subsection key, or whether this is REST-only. The `enrollment.py` docstring mentions an older safety restriction that no longer appears in the current code path.)*
+- **`allow_multiple_attempts` is not a setting.** Its only occurrence in `edx-proctoring` is the migration filename `0011_allow_multiple_attempts.py`, whose entire content drops a `unique_together` constraint. If it is ever cited as a feature, that citation does not survive contact with the source. What actually grants another exam attempt is staff action — `remove_exam_attempt()`, `reset_practice_exam()` (practice only), `mark_exam_attempt_as_ready_to_resume()` (error recovery only) — and **even a fresh exam attempt does not reset per-problem `attempts` counters**.
+
+### Still unverified
+
+| Question | Why it matters | How to settle it |
+|---|---|---|
+| Does the Instructor Dashboard UI accept a subsection key for reset? | Decides whether staff whole-quiz reset is an operational answer or REST-only | Try it against staging |
+| Does `openedx/edx-exams` introduce an attempt-limit field? | Could change the exam attempts model | Repo returned 404 — may be renamed or archived; needs an authenticated check |
+| Is a plugin widget's access to the MFE redux store a supported contract? | It is how we would read `sequence.unitIds` for last-unit detection | Pattern is used by the app's own slot fallbacks, but the slot READMEs do not document it as a contract |
+
+---
+
 ## Open questions with the vendor
 
 ### Sent Aug 3, 2026 · quiz reset and attempts configuration
@@ -323,7 +482,14 @@ That settles the capability question. What it does not settle is whether a full 
 
 If Reset is off, `Retake quiz` cannot be built without backend work, and the design decision makes itself.
 
-**Status:** awaiting reply. Blocks the `Retake quiz` action on `LMS / Quiz · Results`; does not block `Retry incorrect`, which is already built.
+**Status: ANSWERED 4 Aug 2026** in the audit walkthrough. **Show Reset Button is enabled**, it appears after submitting, and it works **question by question** — it lets the learner retry that one question using an attempt they still have, and never resets the quiz.
+
+So the two buttons resolve like this:
+
+- **`Retry incorrect`** is not an invention. It is a UI over what Reset already does, gathered across the questions the learner got wrong. Cheap, and native.
+- **`Retake quiz`** stays unbuildable. There is no way to reset a whole quiz or refund attempts, and Simran confirmed the reason: with no quiz-level submit, there is no quiz-level anything.
+
+Maximum Attempts is confirmed at 2 per question on graded and final, unlimited on practice — matching the audit.
 
 ---
 

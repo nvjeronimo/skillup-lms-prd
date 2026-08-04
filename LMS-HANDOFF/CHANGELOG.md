@@ -2,6 +2,47 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-04 · The vendor's answers, taken back to source
+
+The 4 Aug quiz walkthrough with Simran is logged in `session-log.md`. Six of her answers were then read
+against the `openedx` repositories at `master` — not documentation summaries — because she answers as the
+person who *configures* SkillUp's courses, which makes her reliable about SkillUp and unreliable as a
+statement of what the platform can do. The split came out three and three.
+
+**Genuinely the platform.** No submit for a whole subsection (`seq_block.py` has two handlers, neither
+submits). No aggregate score on the subsection (`score` appears zero times in that file). No per-quiz pass
+mark as a verdict (`GRADE_CUTOFFS` is course-wide). And — the one worth knowing — **"End My Exam" is not a
+quiz-level submit either**: it ends the session, never touches problem state, and the platform tells
+learners outright that unsubmitted answers will not be graded.
+
+**Their configuration, not the platform.** `showanswer` has twelve values and its deciding function never
+reads `graded` — the graded/non-graded split is an editorial convention, and the field is *inheritable*, so
+it is one setting per subsection rather than 215 edits. `enable_subsection_gating` is fully built, enforced
+against direct-URL access, exposed in Studio, and simply defaults to off. `show_reset_button` defaults to
+off, so Reset appearing at all is a choice they made. And `max_attempts` is inheritable, so "N attempts on
+every question in this quiz" is one field they have not used.
+
+**A correction to us.** `show_correctness` — "Show Results" — defaults to `always`. Per-question feedback
+*is* immediate unless suppressed. What does not exist is a quiz-level summary. Wording in
+`04-quiz-experience-spec.md` tightened accordingly.
+
+**The finding that changes the plan.** The results screen is a **frontend plugin, not a fork**. The learner
+can read their own subsection score from `GET /api/course_home/progress/{course_id}`
+(`permission_classes = (IsAuthenticated,)`), and `sequence_bottom_navigation.v1` receives `sequenceId`, so
+there is a supported place to render it below the questions. Every subsection route under `/api/grades/v1/`
+is staff-gated, which is why this looks impossible from the obvious direction. Three constraints carried
+into the spec: no slot fires on *leaving* a subsection, so last-unit detection is ours; the endpoint is
+declared unstable and toggle-gated, so the screen must degrade to "see the Progress tab"; and scores are
+recomputed asynchronously, which makes the **`Pending` variant of `LMS / Quiz · Results` required rather
+than defensive**.
+
+**Two things worth carrying into the conversation.** Reset does **not** refund an attempt — `self.attempts`
+is incremented in exactly one place in `capa_block.py`, inside submit, and `reset_problem()` never touches
+it; copy on *Retry incorrect* must not imply otherwise. And a whole-subsection reset *does* exist staff-side
+via `reset_student_attempts()`, which recurses into children.
+
+Recorded in `session-log.md` with file and line citations, and in `04-quiz-experience-spec.md` §10.
+
 ## 2026-08-03 · Scope correction — the panel is post-enrolment
 
 **The learner panel never serves an unenrolled course.** Enrolment happens on the site and in the
