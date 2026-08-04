@@ -438,32 +438,34 @@ Recorded as a decision to confirm at the review, not as one already made.
 
 ## 10. Where this lives in Figma
 
-All of it sits in one section of [LMS-ICP-Phase-1](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=5004-116294),
-now named *Course Detail — v9, v10, unenrolled, and the SK-11378 documentation*.
+One section of [LMS-ICP-Phase-1](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=5004-116294),
+compiled into three rows on 3 Aug 2026. **One place per fact:** the panels narrate, the tables hold the
+detail, and neither repeats the other. Three earlier annotation panels were deleted when their content moved
+into the tables.
 
-**Top row — the screens, each with its notes panel beside it**
+**Row 1 — the screens**, under *Course Detail — the screens*
 
-| Frame | Node |
-|---|---|
-| Course Detail — v9 · Self-paced MVP (workshop 29 Jul) | `4975:80196` |
-| Course Detail v9 — workshop decisions applied | `4975:90967` |
-| Course Detail — metadata audit (SK-11378) | `5007:444` |
-| Course Detail — v10 · metadata applied | `5008:444` |
-| Course Detail v10 — what changed | `5015:444` |
-| Course Detail — Unenrolled (signed in, can enrol) | `5016:444` |
-| Unenrolled state — notes | `5018:444` |
-
-**Middle row — the enrolled lifecycle**, under *Enrolled — the lifecycle states the panel actually serves*
-
-| Frame | Node | Turns on |
+| Frame | Node | Note |
 |---|---|---|
-| Never started | `5029:870` | `resume_course.has_visited_course` |
+| SUPERSEDED · Course Detail — v9 (workshop 29 Jul) | `4975:80196` | kept for comparison |
+| v9 — the workshop record | `4975:90967` | trimmed to the rulings in the room's own words; everything else moved to the decisions table |
+| Course Detail — v10 · metadata applied | `5008:444` | the in-progress state |
+| Never started | `5029:870` | `resume_course.has_visited_course: false` |
 | Completed — certificate earned | `5029:1246` | `cert_data.cert_status` |
-| Course ended | `5029:1622` | `has_ended` |
-| Enrolled states — notes | `5032:444` | |
+| Course ended | `5029:1622` | `has_ended: true` |
+| **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 
-**Foot of the section — out of scope**, under *Out of scope — states the learner panel never serves*. Kept as
-the record of a platform state our IA does not reach; **not work to build**.
+**Row 2 — the reference tables**, under *Reference — one place per fact*
+
+| Table | Node | What it holds |
+|---|---|---|
+| Course Detail — element → field | `5019:444` | 36 rows: every element, its field, and a verdict |
+| API surface (8 endpoints) | `5020:444` | Endpoint, when it is called, what it carries, caching, the 401s |
+| Role-based visibility | `5020:493` | Sheet 4 as a matrix, with the scope caveat on the first column |
+| States | `5038:444` | The four states, what each turns on, what changes on screen — plus what is not drawn yet |
+| Decisions and open questions | `5021:444` | What is decided and where it came from; what is open and who owns it; why the certificate is a card |
+
+**Row 3 — out of scope**, under *Out of scope — states the learner panel never serves*
 
 | Frame | Node |
 |---|---|
@@ -471,15 +473,7 @@ the record of a platform state our IA does not reach; **not work to build**.
 | A · public access off | `5023:828` |
 | B · anonymous | `5023:1162` |
 | C · enrolment closed | `5023:1496` |
-
-**Bottom row — the reference tables**, under the heading *Reference — Course Page metadata, SK-11378*
-
-| Table | Node | What it holds |
-|---|---|---|
-| Course Detail — element → field | `5019:444` | 36 rows: every element on the page, its field, and a verdict |
-| API surface (8 endpoints) | `5020:444` | Endpoint, when it is called, what it carries, caching |
-| Role-based visibility | `5020:493` | Sheet 4 as a matrix — the scenario table Harpreet asked for |
-| Decisions and open questions | `5021:444` | What is decided and where it came from; what is open and who owns it |
+| Out of scope — notes | `5018:444` |
 
 Verdict key, used consistently in the tables and in this document:
 **✅** field exists and is populated · **◑** we derive it · **⚠︎** the field exists but is null in every
