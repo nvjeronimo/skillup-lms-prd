@@ -2,6 +2,112 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-03 · Scope correction — the panel is post-enrolment
+
+**The learner panel never serves an unenrolled course.** Enrolment happens on the site and in the
+catalogue; a course reaches this panel only once the learner is enrolled, so `is_enrolled` is always true
+on the Course Detail page. The unenrolled and anonymous states drawn earlier the same day were the wrong
+surface. They are kept in Figma at the foot of the section under *Out of scope — states the learner panel
+never serves*, renamed `OUT OF SCOPE · …`, because they document the boundary — not as work to build.
+
+What it changes, beyond deleting a row of frames from the plan:
+
+- The **anonymous / unenrolled column** of the visibility matrix describes the platform, not us. Only the
+  enrolled and staff columns bind. Noted on the matrix in Figma and in `course-details-metadata-map.md` §6.
+- **`enroll_alert` never renders here.**
+- **The 401s never happen.** Progress and Dates are reachable for every user of this page, so the tab bar
+  always renders in full — which firms up the tab decision rather than weakening it.
+- **`lms_web_url` is always populated**, so syllabus titles are always links. The "not links, not disabled
+  links" nuance is a platform fact, not a state we draw.
+
+**The enrolled lifecycle drawn in their place** — three values, three frames, alongside v10 as the
+in-progress state:
+
+- **Never started** (`resume_course.has_visited_course: false`) — 0%, *Start course*, no eyebrow because
+  there is no last topic to go to, *0 of 42 topics*, nothing ticked, every module marker neutral. Blue
+  reads as *in progress*, and nothing is.
+- **Completed** (`cert_data`) — 100%, every topic ticked, every marker green, the last module unlocked,
+  *Revisit the course*. The certificate card flips to its issued state: course title,
+  `certificate_available_date`, and **View** / **Download** from `cert_web_view_url` and `download_url`.
+  Those two URLs are precisely why the certificate works as a card — they are actions, not a destination.
+- **Course ended** (`has_ended: true`) — progress freezes, *Review the course*, and the update banner
+  becomes an archive notice in the platform's own terms. **Not dismissible**: a dismissible warning about
+  a permanent condition is a warning that disappears. The unlock tooltip goes with it — its date is in the
+  past and it never had a field behind it.
+
+**Mentor card corrected against decision 007.** It read *"Office hours every Tuesday at 11 AM"* with a
+**Book session** button. Decision 007 is accepted and says the opposite — mentoring is unlimited 1:1
+**asynchronous messaging**, not scheduled sessions, one mentor assigned at enrolment — and BR-19 sets the
+copy: *typically responds within 1 day*. The card is now a single **Message** action plus the SLA line, on
+v10 and all three states. v9 keeps the old copy as the record of what the workshop saw. It does not fix the
+card's other problem: there is still no mentor field anywhere in the API.
+
+## 2026-08-03 · Course Page metadata applied — Course Detail v10
+
+SK-11378 landed (`_media/Course_metadata.xlsx`): 73 fields, eight endpoints with real payloads from
+`course-v1:SkillUp+SQL-TMDA+2025_B13`, 33 features, and a role-based visibility matrix. Full
+element-by-element mapping in [course-details-metadata-map.md](course-details-metadata-map.md); the
+delivery is logged in `session-log.md`.
+
+- **`Course Detail — v10 · metadata applied (SK-11378)`** built in Platform Pages V8, alongside v9 and
+  the workshop panel, which are untouched. Two annotation panels added: **metadata audit** (what has
+  data behind it) and **what changed**.
+- **Tabs settled — against the room.** `tabs[]` returns Course, Progress, Dates, **Mentorship Q&A** and
+  Instructor. No Resources tab, no Grades tab, **no Certificates tab** — grades sit inside Progress and
+  the certificate is a card. v10 renders the four a learner receives; Instructor is per-user and staff
+  only. This closes the divergence flagged on v9, and it contradicts what Navdeep expected (01:32:08).
+- **Syllabus collapsed to Module → Topic.** Their `sequential` level is a fixed three-part bucket —
+  *About*, *Lessons*, *Knowledge Check* — repeated in every module, not a lesson. Read literally the
+  accordion would say *Module 1 → Lessons → 15 topics* with two dead rows above it. The workshop's own
+  fallback (*Module → Topic where a lesson does not exist*) covers it. Counts now read in topics.
+- **Three elements added, each backed by a real field:** welcome message banner (`welcome_message_html`,
+  dismissible), certificate card (`cert_data`, drawn not-earned to match 38%), handouts card
+  (`handouts_html`) — which is what "course-level resources" turns out to be, the thing nobody could
+  define at the workshop (01:19:44).
+- **What has no data was kept and flagged, not deleted:** every duration on the page (`effort_time`,
+  `effort_activities` and `due` are null on every block in every payload), the unlock tooltip
+  (`accessible` is a boolean — no date, no prerequisite: that is the answer to open action 8, and it is
+  a negative one), *What you'll learn* (no description or objectives field is exposed), the mentor card
+  (no such record exists), the course image and the IBM logo (`org` returns `"SkillUp"`), and the topic
+  type prefixes (`icon` has four values against our ten and returns only `other`).
+- **Resume vs Start resolved** — `resume_course.has_visited_course`, closing an open workshop question.
+- **Structural notes for dev:** the topic level is **not in the Outline API** (every sequential returns
+  `children: []`) — it needs a second call to the Navigation API, cached one hour — and `lms_web_url` is
+  null on verticals there, so topic deep-links must be constructed as `jump_to/{block_id}`.
+- **Droppable with evidence:** `verified_mode`, `can_show_upgrade_sock`, `access_expiration` and `offer`
+  all return null or false on the real course. Upgrade sock, discount banner and expiration warning are
+  stock edX marketplace furniture this B2B configuration does not use.
+- **Still unbuilt but backed by data:** dates widget, course tools (**Bookmarks** is in the live
+  response), content search, weekly learning goal, and the ended / enrol / missed-deadline banners.
+- **`Course Detail — Unenrolled (signed in, can enrol)`** drawn — the state sheet 4 names and nobody had
+  ever drawn. The titles are **not links**: `lms_web_url` comes back null, so they render as plain text
+  rather than as a disabled interactive style, which is the detail most likely to be built wrong. No
+  ticks, no percentage, no lock. **Course is the only tab** — Progress and Dates answer 401, and a tab
+  that returns an error is worse than a tab that is absent. The progress card becomes an enrolment card
+  from `enroll_alert {can_enroll, extra_text}` and `course_modes[0].name`.
+- **The three branches drawn too**, each turning on one value.
+  **A · public access off** — `course_blocks` comes back empty, so the syllabus is not a locked list, it is
+  nothing; *"4 modules · 42 topics"* goes with it, since those counts are derived from the tree, and the hero
+  statistics line is hidden rather than zeroed; the card drops to *"Self-paced"*, the only shape fact that
+  survives because `is_self_paced` comes from the metadata call. About a third of the enrolled page.
+  **B · anonymous** — `username` null: the Learn and Progress groups and the account chip give way to Sign in
+  and Create an account, the breadcrumb loses *My Learning*, Enrol becomes Sign in with the return path
+  stated, and the mentor's actions go. A and B compound.
+  **C · `can_enroll: false`** — the primary action **disappears rather than being disabled**, and
+  `extra_text` takes its place (*"This course is full."*). A disabled button would invite a click that cannot
+  succeed and would not say why; the sentence does both jobs.
+- **The certificate stays a card, and the reasoning is now written down.** `cert_data` is four fields —
+  a card's worth, not a page's; Certificates already exists as an account-level destination in the left
+  nav, so a course tab duplicates it; and Harpreet's own marketing argument (01:31:57) favours something
+  *seen* over something a click away. It becomes a tab when there is a credential page behind it —
+  preview, share, verification link, name on certificate — which is phase two. To confirm at review.
+- **The whole thing is documented on the canvas.** The section is renamed *Course Detail — v9, v10,
+  unenrolled, and the SK-11378 documentation* and carries four reference tables under
+  *Reference — Course Page metadata, SK-11378*: element → field (36 rows, with a ✅ / ◑ / ⚠︎ / ✗ verdict
+  on each), the eight endpoints with payloads and caching, the role-based visibility matrix, and a
+  decisions-and-open-questions table naming owners. Node IDs listed in
+  [course-details-metadata-map.md](course-details-metadata-map.md) §10.
+
 ## 2026-08-03 · Results screen rebuilt, and the retry question settled
 
 - **`LMS / Quiz · Results`** — four variants (Passed, Not passed, Pending, Withheld) on the layout from

@@ -11,6 +11,29 @@ This document does one thing: it takes **every element on that frame** and names
 Where there is no field, it says so. Everything below is read off the delivered payloads, not inferred
 from stock Open edX.
 
+> ### ⚠︎ Scope, corrected 3 Aug 2026
+>
+> **The learner panel is post-enrolment.** Enrolment happens on the site and in the catalogue; a course
+> reaches this panel only once the learner is enrolled in it. So **`is_enrolled` is always true on this
+> page**, and a whole class of states the platform can produce is unreachable through our information
+> architecture.
+>
+> This corrects a wrong turn in the first pass, which drew the unenrolled and anonymous states as though
+> they were ours. They are kept in Figma, clearly marked out of scope, because they document the boundary
+> — not as work to build.
+>
+> What it changes in reading this document:
+>
+> - The **Anonymous / unenrolled column** of the visibility matrix in §6 describes the platform, not our
+>   surface. Only the enrolled and staff columns bind us.
+> - **`enroll_alert`** never renders here.
+> - **The 401s never happen.** Progress and Dates are reachable for every user of this page, so the tab
+>   bar always renders in full. That firms up the tab decision rather than weakening it.
+> - **`lms_web_url` is always populated**, so syllabus titles are always links. The "not links, not
+>   disabled links" nuance is a platform fact, not a state we render.
+> - The states that **do** matter are the enrolled lifecycle: never started, in progress, completed,
+>   course ended. They are drawn — see §8.
+
 ---
 
 ## 1. The five things this settles
@@ -187,7 +210,11 @@ the block's child XBlock type, which means another call — or the syllabus show
 
 | Element | Field | Verdict |
 |---|---|---|
-| Name, role, avatar, office hours, *Book session*, *Message* | — | ✗ **nothing.** No mentor, instructor or staff-profile field in any of the 73 |
+| Name, role, avatar, SLA line, *Message* | — | ✗ **nothing.** No mentor, instructor or staff-profile field in any of the 73 |
+
+*"Office hours" and the "Book session" button were removed on 3 Aug: they contradicted decision
+[007](../00-decisions/007-mentor-async-messaging.md), which is accepted and says mentoring is async messaging,
+not booked sessions. See §8.*
 
 The `instructor` tab is the **edX instructor dashboard** — enrolment, membership, cohort admin — a staff tool,
 not a learner-facing profile. The one thread worth pulling: their discussion tab is renamed
@@ -224,7 +251,13 @@ B2B configuration does not use. **Out of phase 1, with evidence rather than by a
 ## 6. The scenario matrix, which we now have
 
 Harpreet asked for one per element before development (01:38:58). Sheet 4 supplies the axis: Anonymous /
-Unenrolled · Enrolled (Audit) · Enrolled (Verified) · Staff. The rows that change our page:
+Unenrolled · Enrolled (Audit) · Enrolled (Verified) · Staff.
+
+> **Read the first column as platform behaviour, not as a state of ours.** Per the scope note above, this page
+> is post-enrolment, so the anonymous / unenrolled column never occurs here. It is left in because it explains
+> *why* fields such as `lms_web_url` and `complete` are nullable at all — they are computed per enrolment.
+
+The rows that change our page:
 
 | Element | Anonymous / unenrolled | Audit | Verified | Staff |
 |---|---|---|---|---|
@@ -276,6 +309,181 @@ title dead. Not a disabled style — `lms_web_url` simply comes back null.
 
 - Durations and the *About / Lessons / Knowledge Check* naming are both authoring decisions. They belong in
   the same conversation as re-authoring quizzes one question per unit.
+
+---
+
+---
+
+## 8. The states this page actually has
+
+The lifecycle of an **enrolled** course, which is the only lifecycle this page sees. Three values produce
+four states, and all four are drawn.
+
+| State | Turns on | Node |
+|---|---|---|
+| In progress | the default | `5008:444` (v10) |
+| Never started | `resume_course.has_visited_course: false` | `5029:870` |
+| Completed | `cert_data.cert_status` | `5029:1246` |
+| Course ended | `has_ended: true` | `5029:1622` |
+
+**Never started.** One boolean separates Start from Resume, and it changes more than the button: 0%, no
+eyebrow above the label because there is no last topic to go to, *0 of 42 topics*, nothing ticked, and every
+module marker neutral — blue reads as *in progress*, and nothing is.
+
+**Completed.** 100%, every topic ticked, every module marker green, the last module unlocked. *Resume* becomes
+*Revisit the course* and the eyebrow goes: pointing at a last topic is meaningless once they are all done. The
+certificate card flips to its issued state — course title, `certificate_available_date` as the issue line, and
+**View** and **Download** from `cert_web_view_url` and `download_url`. Those two URLs are the reason the
+certificate can be a card at all: they are actions, not a destination. (See §9.)
+
+**Course ended.** Progress freezes where it stopped, *Resume* becomes *Review the course*, and the update
+banner becomes an archive notice in the platform's own terms — the content stays readable, graded work does
+not. **Deliberately not dismissible:** a dismissible warning about a permanent condition is a warning that
+disappears. The certificate card states that the run closed rather than staying hopeful, and the unlock
+tooltip is removed — its date is in the past, and it never had a field behind it.
+
+**Still to draw:** a module locked behind an unmet prerequisite as its own state, once we know what the API
+can say about *why* it is locked (§7, item 2).
+
+### A correction found while drawing these
+
+The mentor card read *"Office hours every Tuesday at 11 AM"* with a **Book session** button. Decision
+[007](../00-decisions/007-mentor-async-messaging.md) rules the opposite, and is marked *accepted*: mentoring is
+**unlimited 1:1 asynchronous messaging, not scheduled or booked sessions**, with one mentor assigned per
+learner at enrolment. BR-19 even sets the copy — *typically responds within 1 day*.
+
+The card is now a single **Message** action and the SLA line, on v10 and on all three states. v9 keeps the old
+copy, as the record of what the workshop actually saw. This does not change the card's other problem: there is
+still no mentor field anywhere in the API.
+
+---
+
+## 8b. Unenrolled — out of scope, kept as evidence
+
+Sheet 4 names it, and the platform can produce it, but **our panel never serves it**: see the scope note at
+the top. Drawn before that was established, kept in Figma at the foot of the section under *Out of scope —
+states the learner panel never serves*, and recorded here because the boundary is worth knowing.
+
+What the platform does when there is no enrolment:
+
+| | |
+|---|---|
+| **Links** | `lms_web_url` is null on every block. The titles are not *disabled* links — they are **not links**. Plain text, not a greyed-out interactive style. This is the detail most likely to be built wrong. |
+| **Completion** | No ticks, no circles, no percentage. `complete` and `completion_stat` are computed per enrolment. |
+| **Tabs** | Course only. Progress and Dates answer **401** for a user who is not enrolled, so they must not render at all — a tab that returns an error is worse than a tab that is absent. |
+| **Welcome message, dates widget, certificate card** | Enrolled-only in the matrix. |
+| **Handouts** | Enrolled-only unless the course has full public access. Out of this state by default. |
+| **Locks** | `accessible` belongs to the per-user outline. With no enrolment there is no gating to show, so the locked module carries neither lock nor tooltip. |
+| **In place of the progress card** | An enrolment card from `enroll_alert {can_enroll, extra_text}` and `course_modes[0].name` — here *Professional Education*, which is what the real course returns. When `can_enroll` is false, `extra_text` carries the reason (*"Course is full"*) and takes the place of the button. |
+
+### The three branches, also drawn
+
+Each turns on a single value, and the difference between them is not cosmetic — in one of them most of the
+page is not there at all.
+
+**A · Public access off** — `course_blocks` comes back empty. The variant most likely to be forgotten, and the
+one with the longest consequences:
+
+- The syllabus does not render as a locked or greyed list. **There is nothing to render.**
+- *"4 modules · 42 topics"* goes with it. Those counts are derived from the block tree, so the hero statistics
+  line is **hidden, not filled with zeros**.
+- The enrolment card drops to *"Self-paced"* — the only shape fact that survives, because `is_self_paced`
+  comes from the metadata call rather than from the outline.
+
+What is left is a hero, a description and an enrolment card: about a third of the height of the enrolled page.
+Worth showing the room, because it may be the version a first-time visitor actually meets.
+
+**B · Anonymous** — `username` returns null. Everything in the base state, plus the shell:
+
+- The Learn and Progress navigation groups and the account chip go; *Sign in* and *Create an account* replace
+  them.
+- The breadcrumb loses *My Learning* — not a place this visitor has been.
+- *Enrol* becomes *Sign in*, with the return path spelled out.
+- The mentor's *Book session* and *Message* actions go: both need an account.
+
+If public access is also off, B and A compound — hero, description, sign in.
+
+**C · `can_enroll: false`** — one boolean, and the primary action **disappears rather than being disabled**.
+`enroll_alert.extra_text` carries the reason and takes the button's place — *"This course is full."*, which is
+the example the metadata itself gives. A disabled *Enrol* button would invite a click that can never succeed
+and would say nothing about why; the sentence does both jobs. The card hugs its content, so nothing is left
+standing where the button was.
+
+---
+
+## 9. Why the certificate is a card and not a tab
+
+Asked directly, and worth recording rather than leaving to the review.
+
+The platform answer is only half of it: `tabs[]` has no certificates tab, but our shell is not obliged to
+render only the platform's tabs — we could add one and route it ourselves. So the real reasons are these:
+
+- **`cert_data` is four fields** — `cert_status`, `cert_web_view_url`, `download_url`,
+  `certificate_available_date`. That is a card's worth of content. A tab holding one card is a weak tab, and
+  it costs a click to reach something that has nothing else on the page competing with it.
+- **Certificates already exists as a destination**, in the left navigation, at account level — where a learner
+  with certificates from several courses would actually go looking. A course-level tab duplicates it.
+- **Harpreet's own argument points at a card.** She called the certificate important because it doubles as a
+  marketing asset (01:31:57). A marketing asset works by being *seen*; a tab hides it until clicked. The card
+  sits in the right column, above the fold, in every state where the learner has one coming.
+
+**Where a tab does become right:** the moment the certificate needs a page rather than a card — credential
+preview, share to LinkedIn, the public verification link, issue date, the name printed on it. That is real
+work and it is phase two. If the room wants that page, the tab follows it; the tab should not arrive first and
+wait for content.
+
+Recorded as a decision to confirm at the review, not as one already made.
+
+---
+
+## 10. Where this lives in Figma
+
+All of it sits in one section of [LMS-ICP-Phase-1](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=5004-116294),
+now named *Course Detail — v9, v10, unenrolled, and the SK-11378 documentation*.
+
+**Top row — the screens, each with its notes panel beside it**
+
+| Frame | Node |
+|---|---|
+| Course Detail — v9 · Self-paced MVP (workshop 29 Jul) | `4975:80196` |
+| Course Detail v9 — workshop decisions applied | `4975:90967` |
+| Course Detail — metadata audit (SK-11378) | `5007:444` |
+| Course Detail — v10 · metadata applied | `5008:444` |
+| Course Detail v10 — what changed | `5015:444` |
+| Course Detail — Unenrolled (signed in, can enrol) | `5016:444` |
+| Unenrolled state — notes | `5018:444` |
+
+**Middle row — the enrolled lifecycle**, under *Enrolled — the lifecycle states the panel actually serves*
+
+| Frame | Node | Turns on |
+|---|---|---|
+| Never started | `5029:870` | `resume_course.has_visited_course` |
+| Completed — certificate earned | `5029:1246` | `cert_data.cert_status` |
+| Course ended | `5029:1622` | `has_ended` |
+| Enrolled states — notes | `5032:444` | |
+
+**Foot of the section — out of scope**, under *Out of scope — states the learner panel never serves*. Kept as
+the record of a platform state our IA does not reach; **not work to build**.
+
+| Frame | Node |
+|---|---|
+| Unenrolled (platform state, not reachable in the panel) | `5016:444` |
+| A · public access off | `5023:828` |
+| B · anonymous | `5023:1162` |
+| C · enrolment closed | `5023:1496` |
+
+**Bottom row — the reference tables**, under the heading *Reference — Course Page metadata, SK-11378*
+
+| Table | Node | What it holds |
+|---|---|---|
+| Course Detail — element → field | `5019:444` | 36 rows: every element on the page, its field, and a verdict |
+| API surface (8 endpoints) | `5020:444` | Endpoint, when it is called, what it carries, caching |
+| Role-based visibility | `5020:493` | Sheet 4 as a matrix — the scenario table Harpreet asked for |
+| Decisions and open questions | `5021:444` | What is decided and where it came from; what is open and who owns it |
+
+Verdict key, used consistently in the tables and in this document:
+**✅** field exists and is populated · **◑** we derive it · **⚠︎** the field exists but is null in every
+payload · **✗** no source at all.
 
 ---
 
