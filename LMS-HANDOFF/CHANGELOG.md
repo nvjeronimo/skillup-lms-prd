@@ -66,6 +66,43 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · A review page for the quizzes
+
+New Figma page: **`↳ Phase 1 - Quizzes - Ready for Review 🟠`**, in the READY FOR REVIEW group beside the
+other review surfaces.
+
+**The four quiz sections were MOVED, not copied.** We had spent the day removing duplicate catalogues on the
+grounds that two copies always drift; building a review page by copying 04.3 would have recreated that within
+a day. The Topic Content Types page keeps the other content types and quizzes now have their own surface.
+
+**Seven sections, ordered as a narrative rather than an archive:**
+
+| | |
+|---|---|
+| 00 · Start here | The switch, the four costs, what no configuration will give us, how to read the rest |
+| 01 · Mode A vs Mode B | The ten differences *(moved)* |
+| 02 · Canonical flows | **Three types × two modes — six flows** |
+| 03 · Every state | Single and multi select *(moved)* |
+| 04 · Edge cases | Blocked, timed, closed *(new)* |
+| 05 · Pass mark | *(moved)* |
+| 06 · Open questions | Split by who owns the answer *(new)* |
+
+**The new build is the mode-A row of flows**, which did not exist. Each runs Topic Header → *no entry screen*
+→ stacked questions on the mode-A preset → *nothing at the end* → topic navigation, with the absences drawn
+as dashed callouts because an empty space reads as an unfinished drawing rather than a finding.
+
+**And the types differ inside each mode, which the old section flattened.** Practice has unlimited attempts
+and therefore **no Save button** — `should_show_save_button()` hides it deliberately, since submitting costs
+nothing. Graded has two attempts and Save. Final has one. That difference is now visible rather than
+described.
+
+**04 · Edge cases exists because two of its states cost us two days.** We audited a course that had ended and
+read three findings off it that were all artefacts of the closed state. The section leads with that, and with
+the save trap and the two-step retry — the states nobody demos and everybody eventually meets.
+
+Validated: mode A carries no stepper bar anywhere, mode B carries it in every flow, no broken instances, no
+section overlaps.
+
 ## 2026-08-05 · Full validation — the quiz work closes clean
 
 Verified both files after the final publish.
