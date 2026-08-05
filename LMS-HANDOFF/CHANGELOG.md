@@ -2,6 +2,40 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-05 · We had been auditing a course that had ended
+
+Simran moved the AZ-204 end date forward. Re-reading the same problems through `/xblock/{id}` on the open
+course changed three findings at once — and the cause is the same for all three.
+
+| | Screenshot (course ended) | Live (course open) |
+|---|---|---|
+| Submit | disabled | **enabled** |
+| Save | absent | **present** |
+| Show answer | present | **absent** |
+
+**The retraction that matters most: Show answer.** We recorded on 3 Aug that the answer could be revealed
+before any attempt, called it a conflict, and on 4 Aug accepted Simran's explanation that graded and
+non-graded quizzes behave differently. **Neither was right.** Their graded quizzes leave `showanswer` at the
+platform default `finished`, which means `closed() or is_correct()` — and ending the course satisfies
+`closed()`. The ended course had revealed every answer. On the open course, Show answer is not offered at
+all. So the reveal rule in production today is an accident of a default, not a decision by anyone.
+
+**And a question to the vendor withdrawn.** We were about to ask why Save was missing when the source said it
+should render. It was missing because the course was closed. Save is present on every graded question, and
+it stores an answer without spending an attempt — which makes it more useful than we had credited.
+
+**The lesson, recorded plainly because it cost two days of wrong conclusions:** we read behaviour off a
+course that had ended, and the state was legible in the API the whole time. **Check the course is still
+running before treating anything you see in it as normal.**
+
+Column A now shows the open-course state — Save beside Submit, no Show answer — with the callout explaining
+the three differences and why the screenshot above it looks different. Notes A3, A4 and A6 rewritten.
+
+One thing left unverified on purpose: Reset almost certainly appears in their courses because the questions
+are randomised (`should_show_reset_button()` returns true for a randomised problem once submitted), not
+because `show_reset_button` is on. Confirming it would mean submitting an answer and spending one of Nelson's
+two attempts, so it stays inferred.
+
 ## 2026-08-05 · The defect that was not one, and Next question removed
 
 **`Next question` removed** from `Correct`, `Partially correct`, `Answer revealed` and `Results withheld`.

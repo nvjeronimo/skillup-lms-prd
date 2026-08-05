@@ -425,6 +425,57 @@ with no message and no date. That silence is the design gap, not the disabling.
 **And a lesson worth keeping.** We had `closed()` in our notes since 4 Aug and still wrote "defect" on the
 board. Reading a mechanism is not the same as recognising it in the wild.
 
+### ⚠︎ MAJOR CORRECTION — three of our findings were artefacts of an ended course
+
+After Simran moved the AZ-204 end date forward (now `2026-08-31`, verified via
+`/api/enrollment/v1/course/`), the same problems were re-read through `/xblock/{id}`. The buttons actually
+rendered on a graded question, with the course **open**:
+
+```
+save problem-action-btn btn-link btn-small     ← Save
+submit btn-brand                               ← Submit
+btn … notification-btn review-btn sr           ← screen-reader only
+```
+
+Compared with the screenshot taken while the course was **closed**:
+
+| | Screenshot (ended) | Live (open) |
+|---|---|---|
+| Submit | disabled | **enabled** |
+| Save | absent | **present** |
+| Show answer | present | **absent** |
+| Reset | absent | absent — needs a submission first |
+
+**All three differences have the same cause**, and the source predicted every one:
+
+1. **Submit** — `closed()` disables it. Already recorded above.
+2. **Save** — `should_show_save_button()` returns `False` when closed (line 1085). This also **retracts** the
+   question we raised on 4 Aug: we said Save ought to be showing and was not, and proposed asking the vendor.
+   It was not showing because the course had ended. **No vendor question needed.** Save is present, enabled,
+   and stores an answer without spending an attempt.
+3. **Show answer** — `showanswer` is left at the platform default **`finished`**, which is
+   `closed() or is_correct()`. Ending the course satisfied `closed()`, so **every answer was revealed**. On
+   the open course, Show answer is not offered at all before attempts are spent.
+
+> **This supersedes the 3 Aug "CONFLICT — Show answer is available before any attempt" and the 4 Aug
+> resolution of it.** Neither was right. It was not a practice configuration, and it was not a deliberate
+> graded/non-graded split. Their graded quizzes simply sit on the default, and the default happens to reveal
+> everything once a course ends. Simran's account is still correct about the *attempts* path — `closed()` is
+> also true once all attempts are used — but nobody chose this rule.
+
+**A caution worth keeping.** We audited a closed course for two days and drew behavioural conclusions from
+it. The state was legible in the API the whole time; we simply never checked whether the course was still
+running before treating what we saw as normal. **Check the course is open before reading anything from it.**
+
+**Also observed, and it explains Simran's Reset account:** no reset button is rendered on any unsubmitted
+problem, consistent with `show_reset_button` defaulting to off. But `should_show_reset_button()` returns
+`True` for a **randomised** problem once submitted, and answer shuffling is on in their courses. So the Reset
+they see almost certainly comes from randomisation, not from the setting. Not verified — confirming it would
+mean submitting an answer and spending one of Nelson's two attempts.
+
+**Still true and unchanged:** no authored `choicehint` content, no `<solution>` block, one `choicegroup` per
+problem, 2 attempts, single-select throughout.
+
 ### ⚠︎ ASSERTED — one Submit for all questions, by putting them in one bucket
 
 > *"In this we have made use of only **one submit button** by adding all the question in one bucket"*
