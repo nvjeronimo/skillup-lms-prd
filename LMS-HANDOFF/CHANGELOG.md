@@ -66,6 +66,37 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Six quiz sections down to four, and the nav becomes a top bar
+
+**The nav, rebuilt after the wizard pattern Nelson liked.** `Mode=Stepper · B` is no longer a footer — it is
+a **top bar**: back, a progress track, and "Question 4 of 7". `Mode=Stacked · A` stays at the foot, because
+that is where the platform puts it. The bottom of a mode-B screen now carries only the question's own action.
+
+It has a useful side effect: mode A's Previous/Next *leave the quiz*, and moving B's navigation to the top
+means the two modes are distinguishable at a glance rather than by reading labels.
+
+**Four consequences agreed and written into the component description**, because the pattern hides them:
+
+- **Retry does not live in the nav.** If the primary becomes *Next question*, a learner who got it wrong with
+  attempts left has nowhere to click. The card offers *Try again* as a secondary — and with
+  `rerandomize = always` that control must own **two** steps, since a second submit without Reset is refused.
+- **The last question** turns *Next question* into *See results*.
+- **Back means previous question, never "leave the quiz."** Two different actions, two different controls.
+- **None of it applies to a bucket quiz**, where one Submit covers all ten questions and there is no next.
+
+**Sections consolidated, six to four.**
+
+- **04.2 deleted.** Verified subsumed first, not assumed: its four Option Row states all appear among the
+  thirty-four combinations in 04.3.
+- **04.1 archived** rather than left in place. It is reference material and three of its claims are now known
+  to be wrong — no quiz-level submit, results needs backend work, show-answer differs by graded. A wrong
+  reference is worse than none, so it carries a stamp naming each error and where the verified version lives.
+- **04 relabelled `04 · Quiz — the three types, in mode B`.** It was presenting our proposal as *the* quiz
+  flow: it opens on an entry screen and closes on results, and the platform does neither. Duplicating it into
+  six flows would have been the wrong fix — the three types are a **separate axis** from the two modes, and
+  practice, graded and final all exist in A too, just without the bookends.
+- **04.3, 04.4 kept**, both mode-independent, each now pointing at 04.5 as the entry point.
+
 ## 2026-08-05 · One card, both modes — and B is what you get by default
 
 Consolidating the quiz work. `LMS / Quiz · Question Card` now serves **both** modes, so nothing has to be
