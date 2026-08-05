@@ -66,6 +66,34 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Re-adopted the design system in the quiz components
+
+Nelson caught it: I built `LMS / Quiz · Nav` by drawing buttons and a progress track instead of instantiating
+the ones that already exist — and then found the same habit in components built earlier. He replaced the Back
+button with a real `Buttons/Button` himself, which set the pattern.
+
+**Fourteen hand-drawn elements replaced across five components:**
+
+| Component | Was | Now |
+|---|---|---|
+| Nav · Stacked A | two drawn button frames | `Buttons/Button` — Secondary, with leading/trailing chevrons |
+| Nav · Stepper B | a drawn track and fill | `Progress bar`, label off so it does not repeat the counter beside it |
+| Results | `Retry incorrect` ×2, `Next topic` ×2 | `Buttons/Button` Primary |
+| Results | `Retake quiz` ×2 | `Buttons/Button` Secondary |
+| Results | `Passed`, `Not passed`, `Submitted`, `Recorded` | `Badge` — Pill, Success / Warning / Gray |
+| Exam Timer | `End my exam` ×3 | `Buttons/Button` Secondary |
+| Grade Summary | the score pill | `Badge` Pill Error |
+
+Hierarchy was **inferred from the fills rather than guessed**: everything painted `38,112,142` was a primary
+action, white-with-a-stroke was secondary. And the heuristic that found the buttons also flagged four status
+pills — those became **badges, not buttons**, because they are not actions. Worth saying out loud: a sweep
+like this is only safe if it distinguishes what a thing *is* from what it *looks like*.
+
+The clearest sign the habit was real: in `Grade Summary` the hand-drawn pill sat directly beside a sibling
+layer already named `Badge`. Half the header used the component and half did not.
+
+Final sweep across all six touched components: **zero hand-drawn button- or badge-like frames remain.**
+
 ## 2026-08-05 · Column A rebuilt from components — nothing on the board is detached now
 
 The "today" column was hand-drawn since 5 Aug because `LMS / Quiz · Question Card` could not render what the
