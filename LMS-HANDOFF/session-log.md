@@ -394,6 +394,66 @@ Nelson to take feasibility and cost to Navdeep and the dev team.
 
 ---
 
+## 2026-08-05 · Simran's follow-up — three things, and one of them changes a finding
+
+Messages from Simran, 06:30–06:47. Two course links and a resolution.
+
+### RESOLVED — the Submit defect was not a defect
+
+> *"The course end date had passed because of which submit button was showing disabled. I have changed the
+> date to a future date now."* — Simran
+
+**The source agrees exactly, and we had already read the code that explains it without connecting it:**
+
+- `close_date` (`capa_block.py:793`) = `self.due or self.course_end_date`. With no due date on the problem,
+  **the course end date closes submissions.**
+- `is_past_due()` (1429) = now > `close_date`
+- `closed()` (1435) = `used_all_attempts() or is_past_due()`
+- and `closed()` disables Submit, hides Reset (1038) and hides Save (1085)
+
+So the behaviour was correct. **What the platform does not do is say why** — the button simply greys out,
+with no message and no date. That silence is the design gap, not the disabling.
+
+**Two corrections follow, both applied:**
+
+1. The board carried a red `DEFECT` callout claiming a platform bug. It now reads **NOT A DEFECT —
+   RESOLVED**, and explains the real mechanism.
+2. **The screenshot in column A is of an ended course.** A greyed Submit beside "0 of 2 attempts" is the
+   past-due state, not the ordinary one. The evidence caption says so now — otherwise the whole column
+   documents an edge case while claiming to document the norm.
+
+**And a lesson worth keeping.** We had `closed()` in our notes since 4 Aug and still wrote "defect" on the
+board. Reading a mechanism is not the same as recognising it in the wild.
+
+### ⚠︎ ASSERTED — one Submit for all questions, by putting them in one bucket
+
+> *"In this we have made use of only **one submit button** by adding all the question in one bucket"*
+> — Simran, linking `course-v1:SkillUp+SKOAIFP01+2026` (AI-Powered Financial Analysis)
+
+**If this is what it sounds like, it qualifies a claim we have been making.** We have said there is no
+single Submit for a whole quiz — true at the *subsection* level, and verified: `seq_block.py` has no submit
+handler. But a single CAPA `problem` block can contain **several response elements**, which would give one
+Submit, one attempt counter and one score across all of them. That is not a quiz-level submit; it is many
+questions authored as one problem.
+
+**Untested by us.** Needs an audit of the course to confirm the structure and to establish what it costs:
+attempts and score would then apply to the whole bucket rather than per question, and partial credit becomes
+the mechanism that decides what a half-right bucket is worth.
+
+Affects `04-quiz-experience-spec.md` §1.4 fact 0d (ii) and the hard-limits card in board column C.
+
+### CONFIRMED available — a course using explanations
+
+> *"This course we are using the explanation functionality"* — linking `course-v1:SkillUp+SKOADM01EN+2026_v1`
+> (Digital Marketing Fundamentals and the AI Mindset)
+
+This is the example we have been asking for since 4 Aug, and it unblocks the largest item on the board —
+proposal B2, the explanation surface we have been designing without ever having seen one authored.
+
+**Both courses still to be audited.** The browser session was not authenticated at the time of writing.
+
+---
+
 ## 2026-08-04 · Source verification of the walkthrough answers
 
 **Why.** Simran answers as the person who configures these courses, which makes her answers reliable about *their* platform and unreliable as a statement of what Open edX can do. Six of her answers were taken back to primary source — the `openedx` repositories at `master`, read directly, not documentation summaries. `edx-platform` @ `feb3e3fd`, `frontend-app-learning` @ `db2134c9`, `edx-proctoring`, `completion`, `xblocks-core`.

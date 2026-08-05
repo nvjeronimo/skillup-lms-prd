@@ -2,6 +2,35 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-05 · The defect that was not one, and Next question removed
+
+**`Next question` removed** from `Correct`, `Partially correct`, `Answer revealed` and `Results withheld`.
+Nothing replaces it: after a right answer on a page the learner can already see all of, there is no next step
+to offer. The card's footers are now empty in those four states, which is the honest shape.
+
+**The Submit defect was not a defect.** Simran: *"The course end date had passed because of which submit
+button was showing disabled."* The source agrees to the letter — `close_date` is `self.due or
+self.course_end_date` (line 793), and once past it `closed()` is true, which disables Submit and takes Reset
+and Save with it. The behaviour was correct all along.
+
+**What the platform does not do is say why.** The button greys out with no message and no date. *That* is the
+design gap, and it is a better finding than the bug we thought we had: a learner meeting an ended course gets
+a dead control and no explanation.
+
+Two corrections to the board followed. The red `DEFECT` callout now reads **NOT A DEFECT — RESOLVED** and
+explains the mechanism. And the evidence caption now states that **the screenshot is of an ended course** —
+a greyed Submit beside "0 of 2 attempts" is the past-due state, not the ordinary one. Without that line the
+column documents an edge case while claiming to document the norm.
+
+Worth recording plainly: we had `closed()` in our own notes since 4 Aug and still wrote "defect" on the
+board. Reading a mechanism is not the same as recognising it in the wild.
+
+**Two courses to audit**, both from Simran. One reportedly uses *"only one submit button by adding all the
+question in one bucket"* — if that is several response elements inside a single CAPA problem, it qualifies
+our "no single Submit for a whole quiz" claim, which is true of subsections but need not be true of a
+question set authored as one problem. The other uses the explanation functionality, and is the example we
+have been asking for since 4 Aug — it unblocks proposal B2, the largest item on the board.
+
 ## 2026-08-04 · The button contract — one rule, applied to all eight
 
 Written up as `04-quiz-experience-spec.md` §10.7, after four buttons on the question card turned out to have
