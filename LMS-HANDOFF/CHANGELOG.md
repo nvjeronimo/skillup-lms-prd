@@ -66,6 +66,31 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · The design system's own demo was still wrong
+
+Nelson pushed back twice on the same thing, and he was right both times. After fixing the duplication across
+the ICP sections, **the canonical demonstration in the design system still showed it** — the mode B group had
+the nav bar *and* the in-card counter, which is precisely what everything else had just been corrected away
+from. The example that teaches the rule was breaking it.
+
+Three fixes on the showcase:
+
+- **Mode B cards: in-card counter off.** I had set those properties explicitly when building the demo, before
+  the default changed, so they never picked it up.
+- **The nav moved above the cards in the B group.** It is a *top* bar; showing it underneath taught the
+  opposite of what the component is for. In the A group it correctly stays at the foot, because that is where
+  the platform puts it.
+- **Captions rewritten** — B's still claimed "progress and explanation on".
+
+**And five manual visibility overrides found in columns A and B.** Cards in `Answer revealed`,
+`Results withheld` and `Partially correct` had their progress layer **forced visible against the property** —
+so changing the default could never have reached them. Worth knowing as a general hazard: a boolean property
+is only authoritative until someone toggles the layer by hand, and after that the component lies about its
+own state. Reset to follow the property.
+
+*The pattern across today: every time a rule changed, the places that demonstrate the rule were the last to
+be checked and the most misleading when wrong.*
+
 ## 2026-08-05 · Two counters that disagreed — position moves to the top bar
 
 Nelson spotted the old progress element still inside `LMS / Quiz · Question Card`. He was right, and it was
