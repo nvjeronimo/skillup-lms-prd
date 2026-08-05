@@ -11,7 +11,8 @@ verification in §10) · [06-quiz-screen-matrix.md](06-quiz-screen-matrix.md) (e
 [07-results-decisions.md](07-results-decisions.md) (pass mark, alerts, retry) ·
 [../session-log.md](../session-log.md) (where each finding came from).
 
-Figma: ICP page → section **`04.5 · Today vs proposed — two models for the stakeholder call`**.
+Figma: ICP page → section **`04.5 · Quiz — mode A (today) vs mode B (proposed) · in discussion`**.
+Design system: `LMS / Quiz · Question Card` serves both modes — see §9.
 
 ---
 
@@ -33,8 +34,13 @@ see what a settings change buys before anyone commits budget to the parts that a
 **One property, at quiz level: `mode: 'A' | 'B'`.** A quiz is a subsection; the mode belongs to the quiz, not
 to the question, not to the course. Everything below derives from it.
 
-**Default: `A`.** A is what exists today, so an unconfigured quiz behaves as production does. B is opt-in,
-which also means a reviewer who sees B knows someone chose it.
+**Default in the prototype: `A`.** A is what exists today, so an unconfigured quiz behaves as production
+does, and a reviewer who meets B knows someone chose it.
+
+> **The design system defaults the other way, on purpose — and the two are not in conflict.** Drop
+> `LMS / Quiz · Question Card` onto a canvas and it renders **mode B**, because B is what we are designing
+> towards and it should be what you get without thinking. The prototype defaults to A because it is
+> imitating production. One default protects the *comparison*; the other protects the *design work*. See §9.
 
 ---
 
@@ -141,6 +147,57 @@ contradicts them teaches the wrong lesson.
 - **A's Previous/Next must leave the quiz**, because that is what they really do — they move between units,
   and the whole quiz is one unit. It is tempting to make them step through questions in A. Don't: that would
   quietly give A half of B's improvement and flatten the comparison.
+
+---
+
+## 9. The component contract — one card, both modes
+
+`LMS / Quiz · Question Card` in the design system serves **both** modes. There is no separate A component and
+no detaching: the mode is a set of boolean switches on the same card.
+
+**The defaults are mode B.** Drop the component in and it is already the proposal. That is deliberate — B is
+what we are designing towards, so it should be what you get without thinking. Anyone showing A has chosen to.
+
+| Property | **B — default** | **A — how it works today** |
+|---|---|---|
+| `Show progress` | **on** — per-question counter and bar, computed by our shell | off — no per-question position exists today |
+| `Show explanation` | **on** — why the answer is right or wrong | off — 213 of 215 audited questions have none |
+| `Show attempts` | **on** — attempts remaining, beside Submit | **on** — the platform shows this too |
+| `Show platform prompt` | off | **on** — the repeated *"Choose the correct option(s)"* and the points line |
+| `Show save` | off — saving is silent in B | **on** — the platform shows Save on graded questions |
+| `Show hint` | off — zero demand hints authored anywhere in our catalogue | off |
+| `Show skip` | off | off — no platform counterpart; only meaningful if the stepper is adopted |
+
+`Show platform prompt` and `Show attempts` were added on 5 Aug specifically so mode A could be built from
+components rather than drawn by hand. Building the A/B demonstration on the design-system showcase then
+caught two things the table alone would not have: **Save existed only on `Last attempt`**, so mode A could
+not show it before submitting, where the platform actually does; and the **hint *button* ignored
+`Show hint`**, because the property was bound to the hint alert and not to the control. Both fixed. It is
+worth building the comparison rather than describing it — that is the same argument as the prototype, one
+level down. Before that the "today" column on the board had to be detached, because
+the card simply could not render what the real page shows.
+
+### 9.1 What still cannot be expressed by the card alone
+
+Two differences live above the card, not inside it:
+
+- **The entry screen.** B has one; A has none. That is the presence or absence of
+  `LMS / Quiz · Entry Header`, not a switch.
+- **Page structure.** A is one scrolling page with every question stacked; B is a stepper, one question per
+  screen. That is how many cards you place and what wraps them.
+
+### 9.2 Rules the card encodes, and why
+
+These are copied from the platform deliberately — they protect the learner, and a prototype that ignores them
+teaches the wrong lesson:
+
+- **Reset is hidden once an answer is correct.** Reset wipes the score already earned, so offering it on a
+  right answer lets a learner destroy a banked point.
+- **Reset and Save both disappear once the problem is closed** — attempts spent, past due, or past the course
+  end date.
+- **Reset never returns a spent attempt.** Any retry copy must sit beside the attempts count and must never
+  imply otherwise.
+- **Saved is not graded**, and every question submits on its own.
 
 ---
 

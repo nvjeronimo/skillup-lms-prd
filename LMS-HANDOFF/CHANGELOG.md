@@ -66,6 +66,38 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · One card, both modes — and B is what you get by default
+
+Consolidating the quiz work. `LMS / Quiz · Question Card` now serves **both** modes, so nothing has to be
+detached to show how the platform behaves today.
+
+**Two properties added**, because the card previously could not render what the live page shows:
+`Show platform prompt` — the repeated *"Choose the correct option(s)"* and the points line — and
+`Show attempts`, the count beside Submit. Their absence is why the "today" column on the board had to be
+drawn by hand.
+
+**Defaults are now mode B.** Drop the card in and it is already the proposal: progress on, explanation on,
+attempts on, everything else off. B is what we are designing towards, so it should be what you get without
+thinking, and anyone showing A has chosen to. *(`Show hint` flipped to off with this — zero demand hints are
+authored anywhere in the catalogue.)*
+
+Note this defaults the opposite way to the prototype, deliberately: **the prototype defaults to A** because
+it imitates production, while **the component defaults to B** because it is a design tool. One default
+protects the comparison, the other protects the design work. Both are stated in `08-two-modes.md` §2 and §9
+so the difference reads as a decision rather than an inconsistency.
+
+**The recipe lives on the component description**, not only in a document — whoever opens the card in Figma
+sees both switch-lists and the platform rules without leaving the file.
+
+**Building the demonstration caught two real defects** that the table alone had not:
+
+- **Save existed only on `Last attempt`.** Mode A could not show it on an unanswered question, which is
+  exactly where the platform does show it. Added to `Unanswered` and `Selected`.
+- **The hint *button* ignored `Show hint`** — the property was bound to the hint alert, not the control, so
+  the button rendered regardless. Now bound.
+
+That is the same argument as the prototype itself, one level down: build the comparison, do not describe it.
+
 ## 2026-08-05 · The stepper moves into B, and the framing corrected to discovery
 
 Two corrections from Nelson, and the second reverses a call I had made.
