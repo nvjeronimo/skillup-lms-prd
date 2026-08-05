@@ -596,6 +596,47 @@ differs in kind, not just in wording:
 **Sample size, stated honestly:** two questions, one course. Whether the pattern holds across the other eight
 is untested.
 
+### ✅ ALL TEN TESTED — the split is total, 10 out of 10
+
+With permission to test the dev environment fully, every question in SKOADM01EN was submitted and its
+feedback captured. **There are no exceptions.**
+
+| Outcome | Questions | What the authored feedback contains |
+|---|---|---|
+| **Correct** | 1, 3, 6, 8 | A real explanation of the underlying idea |
+| **Incorrect** | 2, 4, 5, 7, 9, 10 | *"Please revisit the “…”"* — a named piece of content, never an explanation |
+
+**The four explanations are genuinely good.** They teach the concept rather than restating the answer — for
+example on click-through versus conversion: *"A high click-through rate indicates that the advertisement is
+attracting interest. A low conversion rate often points to friction in the landing page experience,
+messaging, or registration process."* The authoring capability is real and the writing is competent.
+
+**The six redirects name five distinct pieces of content:**
+
+- *"Introduction to Digital Channels"* — video
+- *"Session 1: Digital Marketing: Concepts, Evolution, and Growth"* — VILT recording
+- *"Session 1: Digital Strategy and Its Components"* — VILT recording *(used twice: Q5 and Q10)*
+- *"Session 2: Effective Use of Digital Channels for Growth"* — VILT recording
+- *"Session 4: Prompt Engineering for Marketing"* — VILT recording
+
+**Every one is a title in quotation marks with no link.** The learner has to read the name, leave the quiz,
+open the outline and find it. And the targets are specific — individual videos and individual VILT sessions,
+not modules.
+
+> **This is the strongest evidence we have for a review affordance, and it also shows why the version we
+> retired was the wrong shape.** We dropped the per-question review action because our shell can only resolve
+> the *parent module*, so the label overpromised. Correct. But the authors are not asking for the module —
+> they are naming an individual video or session, per question, by hand. The demand is precise, already
+> written into the content, and currently served by prose the learner has to act on manually.
+>
+> **What is missing is not the button. It is a machine-resolvable way for an author to say which topic to
+> revisit.** That is a content-model question, and it belongs on the table with the vendor.
+
+**And it reframes proposal B2 entirely.** "Are explanations worth the authoring cost?" is the wrong question,
+because the authoring is already happening. The real one is: **why does the learner who got it wrong receive
+a redirect instead of the explanation, when the learner who got it right receives the explanation?** That is
+an authoring-guidance problem, not a platform problem, and it costs nothing to fix beyond a house rule.
+
 ### ✅ CONFIRMED — randomisation is what produces Reset, and it forces a two-step retry
 
 Submitting a second answer without resetting was refused: *"The state of this problem has changed since you

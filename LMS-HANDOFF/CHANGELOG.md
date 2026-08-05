@@ -2,6 +2,31 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-05 · Explanations exist, and the wrong answers never get one
+
+Tested all ten questions of the course the vendor named as *the* example of the explanation functionality.
+The split is total: **10 out of 10, no exceptions.**
+
+- **Correct answers** (Q1, 3, 6, 8) get a real explanation of the idea. The writing is good — it teaches
+  rather than restating the answer.
+- **Wrong answers** (Q2, 4, 5, 7, 9, 10) get *"Please revisit the “…”"* and the name of a video or VILT
+  recording. Never an explanation.
+
+Six redirects, five distinct targets, every one a title in quotation marks with no link. The learner reads
+the name, leaves the quiz, opens the outline and hunts for it.
+
+**This reframes proposal B2.** "Are explanations worth the authoring cost?" is the wrong question — the
+authoring is already happening, and it is competent. The real question is **why the learner who got it wrong
+receives a redirect while the learner who got it right receives the explanation.** That is authoring
+guidance, not platform capability, and it costs a house rule rather than a project.
+
+**It also reopens the review affordance, in a better shape than the one we retired.** We dropped the
+per-question review action because the shell can only resolve the parent module, so the label overpromised.
+Still true. But the authors are not pointing at modules — they are naming an individual video or session, per
+question, by hand. The demand is precise and already written into the content. What is missing is not a
+button; it is a machine-resolvable way for an author to say which topic to revisit. That belongs on the table
+with the vendor as a content-model question.
+
 ## 2026-08-05 · The quiz-level Submit exists, and it is authoring
 
 Audited the two courses Simran supplied. They use **two different authoring models**, which turns out to be
