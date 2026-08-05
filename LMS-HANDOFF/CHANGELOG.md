@@ -66,6 +66,37 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Two counters that disagreed — position moves to the top bar
+
+Nelson spotted the old progress element still inside `LMS / Quiz · Question Card`. He was right, and it was
+worse than duplication: in section 04 the nav bar said **"Question 4 of 7"** while the card beneath it said
+**"Question 2 of 5"**. Two counters, disagreeing, on the same screen.
+
+The cause is the wizard pattern we adopted an hour earlier: once position lives in the top bar, the in-card
+counter has nothing left to do.
+
+**Resolved at the source.** `Show progress` now defaults to **off** on the card, and both component
+descriptions say why. The in-card counter is not deleted, because it still has one job: **if difference 10
+(the stepper) is struck on cost, mode B stays a single scrolling page — and then a top bar cannot say which
+question the learner is on, so the card is the only place position can live.** The rule written into both
+descriptions is *never both*.
+
+**Instances corrected across the sections**, and section 04's canonical full-page mock gained the bar it was
+missing.
+
+*Two mistakes worth recording, because both were mine and both were caught by verifying rather than by
+assuming:*
+
+- **My first sweep filtered instances by name.** Instance names can be overridden, and the canonical mock's
+  card had been renamed `Quiz · Question Card`, so it slipped through. Filtering by **main component** is the
+  only reliable test.
+- **The second sweep then overreached** and added a nav bar to all fifteen specimens in 04.3. That section is
+  a **state inventory, not a set of screens** — position is not a state, and chrome does not belong on a
+  specimen. Fifteen bars removed.
+
+Final check: 04 has four bars and no card counters; 04.5 has both modes and no card counters; 04.3 has no
+bars; nothing on the page overlaps.
+
 ## 2026-08-05 · The quiz nav adopted across the sections
 
 Nelson took the progress bar's own `Percentage` label and used it for "Question 4 of 7" instead of a separate
