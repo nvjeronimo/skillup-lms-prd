@@ -66,6 +66,31 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Three variants were never bound, and the alerts lose their emoji
+
+**The counter Nelson kept seeing was real, and my earlier check had been wrong.** Three variants of
+`LMS / Quiz · Question Card` — `Partially correct`, `Answer revealed`, `Results withheld` — carried a
+`Questions Progress` layer that was **not bound to `Show progress` at all**. So the property could never
+reach them: not by changing the default, not by setting it on an instance. My alignment pass reported "zero
+changes needed" precisely because it only inspected layers that *had* a binding, and these had none.
+
+All eight variants are now bound and hidden. Worth generalising: when a boolean property appears not to work,
+check that every layer it should govern is actually referenced by it — an unbound layer fails silently and
+looks like a stale default.
+
+**The alerts lost their emoji.** `Gate` and `Exam Timer` were using 🔒 🗓 ⏳ ⏱ 👁 as text. Replaced with
+design-system icons — `lock-01`, `calendar`, `hourglass-01`, `clock-stopwatch`, `clock`, `eye` — coloured to
+the tone.
+
+**And softened, using the language already set on the Inline Alert:** neutral surface, title in
+`text-primary`, body in `text-secondary`, and the tone carried by the icon plus a 2px top rule rather than a
+flooded block. The three informational gates keep a plain 1px border instead, since nothing about them is
+urgent.
+
+One thing deliberately kept loud: **the countdown itself stays in the tone colour** — blue, amber, red. It is
+the element the learner is actually watching, and neutralising it would have been consistency at the cost of
+the only signal that matters at five percent remaining.
+
 ## 2026-08-05 · The design system's own demo was still wrong
 
 Nelson pushed back twice on the same thing, and he was right both times. After fixing the duplication across
