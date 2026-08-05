@@ -183,19 +183,19 @@ the card simply could not render what the real page shows.
 already do — and worse, **two sources of truth that can disagree**: what should the card render if `Mode=A`
 but `Show progress` is on? The booleans stay.
 
-**Yes on the navigation**, which is where stacked and stepper genuinely differ in structure rather than in
-switches. `LMS / Quiz · Nav` was created on 5 Aug for exactly this — it did not exist before, and its absence
-is why the board's navigation had to be hand-drawn:
+**Yes on the stepper bar, and only for mode B.** `LMS / Quiz · Stepper Bar` — Back, progress, question
+counter — lives *inside* the Question Card, governed by its `Show progress` property. On for B, off for A.
+Back means **previous question**; it never leaves the quiz.
 
-| `Mode=Stacked · A` | `Mode=Stepper · B` |
-|---|---|
-| `‹ Previous` and `Next ›` | `‹ Previous question`, an answered count, `Next question ›` |
-| Move between **units**. The quiz is one unit, so **they leave it** | Move between **questions**, natively, no custom code |
-| What the platform renders today | Needs one question per unit — the only difference that changes authoring |
-
-> **The A labels must not be relabelled to imply question stepping.** They say Previous and Next because
-> that is what the platform says, and they leave the quiz because that is what they do. Making them read
-> "Next question" in A would hand A half of B's improvement and flatten the comparison.
+> **Corrected 5 Aug: there is no mode-A variant, and there should not be.** It was originally built with one,
+> on the reasoning that mode A shows Previous/Next at the foot of the page. It does — but **that is navigation
+> between topics and modules.** It leaves the subsection entirely and is not quiz navigation at all. Mode A
+> uses `LMS / Course Progression Button` (`Previous-Topic` / `Next-Topic`), the same control the rest of the
+> course uses.
+>
+> A quiz-branded copy of it would have implied the platform can step through questions, which is exactly the
+> thing it cannot do — and the whole point of difference 10 is that stepping requires re-authoring one
+> question per unit.
 
 ### 9.2 What still cannot be expressed by a component
 

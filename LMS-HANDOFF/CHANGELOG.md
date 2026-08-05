@@ -66,6 +66,26 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · The mode-A nav was never quiz navigation
+
+Nelson caught a real design error, not a tidiness one. I had built `LMS / Quiz · Nav` with two variants, the
+A one being the Previous/Next at the foot of a quiz page. **That is navigation between topics and modules.**
+It leaves the subsection entirely — it is not quiz navigation, and giving it a quiz-branded component implied
+the platform can step through questions, which is the one thing it cannot do without re-authoring.
+
+- **`Mode=Stacked · A` deleted.** The component is now `LMS / Quiz · Stepper Bar`, mode-B only, living inside
+  the Question Card under `Show progress`.
+- **Column A now uses `LMS / Course Progression Button`** — `Previous-Topic` / `Next-Topic` — the control the
+  rest of the course already uses. Its note says plainly what it is and that it leaves the quiz.
+- The DS demo's A group no longer shows a quiz nav at all.
+
+**Applied along with it:** mode B cards carry `Show progress: true` and the standalone bar is gone, since the
+card provides its own. Mode A keeps it off. State specimens in 04.3 stay bare — position is not a state.
+
+*This is the second time today the same instinct went wrong in the same direction:* seeing a control on the
+quiz page and assuming it belongs to the quiz. The first was the review action resolving to a module rather
+than a lesson. Both were caught by asking what the control actually **does**, not where it sits.
+
 ## 2026-08-05 · Validation pass, a broken component set, and the state catalogue moves out of the DS
 
 **A malformed variant name had put `LMS / Quiz · Question Card` into an error state.** One variant was named
