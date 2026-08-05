@@ -66,6 +66,38 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Two states the platform has and we had never drawn
+
+**`State=Saved`.** The platform renders it — `has_saved_answers` and `save_message` are both in the template
+context, and the learner sees *"Your answers have been saved but not graded."* We had no state for it, which
+is why the graded journey had to use a plain `Selected` card for the step where a learner saves and moves on.
+It now carries a warning alert saying what saving actually means: **stored, not graded, scores nothing until
+submitted.** It is the most dangerous state in the quiz precisely because it looks like progress.
+
+**`Show answer action`.** Nelson asked whether mode A has a Show answer CTA. It does — `answer_available()`
+is passed into the template as its own flag, and we saw the button live once a question closed. The component
+had no such control at all, in either mode.
+
+Added as a boolean across seven of the nine states, **default off**, and the description says why it is not
+free-floating: it appears only when `answer_available()` is true, which on our courses means the problem is
+**closed** — attempts spent or past the course end date — **or the answer is already correct**.
+
+> That caveat is the whole point of adding it carefully. *"Show answer is available before any attempt"* is
+> exactly what we recorded on 3 Aug and later had to retract: it was an artefact of auditing a course that
+> had ended. Putting the button on an untouched mode-A question would bake that retracted finding into the
+> design system.
+
+**Left off two states on purpose:** `Answer revealed`, where it has already been pressed, and
+`Results withheld`, where `show_correctness` suppresses the answer along with the score.
+
+In mode B it becomes difference 3 on the board — a deliberate policy per quiz rather than a default nobody
+chose.
+
+*Recorded for next time:* naming the variant `State=Saved, not submitted` put the whole set into an error
+state. **Figma parses commas in a variant name as property separators**, so the comma read as a second,
+malformed property. Same failure class as the missing `State=` prefix earlier — and both present as "nothing
+about this component can be read."
+
 ## 2026-08-05 · Section 02 rebuilt as journeys, not inventories
 
 Nelson's correction: what I had built was **three vertical stacks of components**, not journeys. A stakeholder
