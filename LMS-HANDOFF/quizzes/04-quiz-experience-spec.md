@@ -499,6 +499,52 @@ This is the most consequential correction, and it reverses the cost assumption i
 
 *Caveat carried forward:* reading the MFE's redux store from inside a plugin widget — needed for `sequence.unitIds` — is the pattern the app's own slot fallbacks use, but the slot READMEs do not document it as a contract. **UNVERIFIED.**
 
+### 10.4a ⚠︎ Their MFE is older than the slot names we cited — verified Aug 5, 2026
+
+Inspected the running `frontend-app-learning` bundle on the dev environment. **The plugin-slot framework is
+present, but the slot *names* are the legacy ones.** Not a single `org.openedx.frontend.*` id appears in any
+chunk; `idAliases` is absent too. The build carries fourteen bare ids:
+
+`default_contents` · `read_theme_cookie` · `courseware_verified_certificate_upsell` ·
+`outline_tab_notifications_slot` · `newsletter` · `header_slot` · `notification_tray_slot` ·
+`notification_widget_slot` · **`sequence_container_slot`** · **`next_button_slot`** ·
+`content_iframe_loader_slot` · `gated_unit_content_message_slot` · `unit_title_slot` · `live_tab`
+
+**This places their MFE before the slot-id rename**, i.e. earlier than the release whose documentation §10.4
+cites. Corroborated in the DOM: no unit tab bar renders at all — the page shows the Course Outline sidebar
+plus Previous/Next, which is the arrangement described in the version caveat at §1.4 0c.
+
+**The results-screen plan survives, under a different name.** The slot §10.4 relies on —
+`sequence_bottom_navigation.v1`, valued because it supplies `sequenceId` — has a legacy predecessor in their
+build with the props we need:
+
+```js
+PluginSlot id="next_button_slot" pluginProps:{
+  courseId, disabled, buttonText, nextArrow, nextLink,
+  shouldDisplayNotificationTriggerInSequence,
+  sequenceId, unitId, nextSequenceHandler, handleNavigate, ...
+}
+```
+
+`sequenceId` **and** `unitId` **and** `nextSequenceHandler`. Last-unit-of-subsection detection is therefore
+possible on the version they are running today.
+
+The weaker alternative also exists but is genuinely weaker here:
+
+```js
+PluginSlot id="sequence_container_slot" pluginProps:{ courseId, unitId }
+```
+
+— no `sequenceId`, exactly as the newer `sequence_container.v1` is documented.
+
+> **What to write in any brief or estimate:** target **`next_button_slot`**, not
+> `sequence_bottom_navigation.v1`. Naming the newer id would send their dev team looking for something their
+> build does not contain, and the likely conclusion would be "not possible" rather than "different name".
+
+*Caveat kept honest:* slot ids are string literals and survive minification, so their absence is reliable
+evidence. Component names are mangled, so nothing here should be read as a claim about which React
+components exist — only about which slot ids the build exposes.
+
 ### 10.5 What Reset actually does — the behaviour behind our "Try again"
 
 Read from `capa_block.py` at `master`. This is the full contract, because the label we put on this button
