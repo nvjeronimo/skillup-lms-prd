@@ -66,6 +66,29 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · The quiz nav adopted across the sections
+
+Nelson took the progress bar's own `Percentage` label and used it for "Question 4 of 7" instead of a separate
+text node, and squared the corners. The nav is now entirely made of existing components — `Buttons/Button`
+and `Progress bar`, nothing drawn.
+
+**Swept the sections for navigation that should be using it.** Less than expected, and one finding was that
+nothing needed replacing:
+
+- **04.3, 04.4, 04.5** — clean. The apparent hits in 04.5 were my own annotation prose containing the words
+  "Previous and Next", not controls.
+- **04** carried `LMS / Course Progression Button` in Previous-Topic / Next-Topic / Mark-as-Completed. **Left
+  alone** — that is movement between *topics*, a different thing from moving between questions, and it was
+  right already.
+
+**What 04 was actually missing was the nav entirely.** Its three flows ran `Topic Header → Entry Header →
+Question → Results` with no quiz-level navigation at all. Since the section is now labelled mode B, each flow
+should carry the stepper bar. Added to all three, between the entry screen and the question, which is where
+it belongs — the bar is for moving through questions, so it appears once the learner is in them.
+
+So the request to "swap in the nav" turned out to be an **addition**, not a substitution. Worth noting the
+difference: a sweep that only looks for things to replace would have reported the section clean and moved on.
+
 ## 2026-08-05 · Re-adopted the design system in the quiz components
 
 Nelson caught it: I built `LMS / Quiz · Nav` by drawing buttons and a progress track instead of instantiating
