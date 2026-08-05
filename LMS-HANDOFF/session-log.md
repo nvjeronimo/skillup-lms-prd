@@ -811,6 +811,33 @@ Simran's *"we'll have to get it built up from a dev team"* is right that it does
 
 ## Open questions with the vendor
 
+### Drafted Aug 5, 2026 · which Open edX release are we on?
+
+Prompted by Simran searching for `SequenceNavigation` and finding nothing. She was right to find nothing —
+it is a React component name, not a documentation term — but chasing the answer turned up something we need
+from them directly.
+
+**The evidence we can offer, so this is answerable rather than arguable:**
+
+- Their running `frontend-app-learning` exposes **only legacy bare slot ids** — `sequence_container_slot`,
+  `next_button_slot`, `header_slot`, `unit_title_slot` and ten others. **No `org.openedx.frontend.*` id
+  appears in any chunk**, and `idAliases` is absent. That places the build before the slot-id rename.
+- In the DOM, **no unit tab bar renders**. The page shows the Course Outline sidebar plus Previous/Next.
+
+**Why it matters, in two concrete places:**
+
+1. **The results-screen brief must name the right slot.** We had been citing
+   `sequence_bottom_navigation.v1`. That does not exist in their build; the predecessor `next_button_slot`
+   does, and carries the `sequenceId` we need. Handing their dev team the newer name would return
+   "not possible" when the honest answer is "different name".
+2. **The unit tab bar is a version question, not a capability question.** Through Teak it rendered by
+   default; later it moved into a plugin slot, replaced by the sidebar. If a question-per-unit stepper is
+   ever adopted, whether the learner sees tabs or only Previous/Next depends on which release they run and
+   on one `env.config.jsx` entry.
+
+**Decides:** the slot name in any development brief, and whether the stepper's native presentation is tabs
+or Previous/Next.
+
 ### Drafted Aug 5, 2026 · quiz feedback — the wrong answers, and references that do not resolve
 
 Follows a full test of SKOADM01EN, the course the vendor named as *the* example of the explanation
