@@ -637,6 +637,38 @@ because the authoring is already happening. The real one is: **why does the lear
 a redirect instead of the explanation, when the learner who got it right receives the explanation?** That is
 an authoring-guidance problem, not a platform problem, and it costs nothing to fix beyond a house rule.
 
+### 🚨 AND THE REFERENCES DO NOT RESOLVE — four of five are not in the course
+
+Having captured all six redirects, each named target was matched against the course's own block tree
+(`/api/courses/v2/blocks/?depth=all`). **Not one matches.**
+
+| Referenced in feedback | In the course? |
+|---|---|
+| *"Introduction to Digital Channels"* (video) | **Near miss** — the block is `Video: Introduction to Digital Channels (5:16)` |
+| *"Session 1: Digital Marketing: Concepts, Evolution, and Growth"* | **Not found** |
+| *"Session 1: Digital Strategy and Its Components"* | **Not found** |
+| *"Session 2: Effective Use of Digital Channels for Growth"* | **Not found** |
+| *"Session 4: Prompt Engineering for Marketing"* | **Not found** |
+
+**No block anywhere in the course contains the word "Session".** The course holds 6 videos, none named
+`Session N`; its subsections are `Lesson 1` / `Lesson 2` per module.
+
+*Stated carefully:* VILT sessions are live instructor-led events, so those recordings may well be delivered
+outside this course's content tree — a programme-level surface, or a separate system. What is certain is that
+**a learner who gets the question wrong, reads the instruction and opens the course outline will not find
+what it names.** Four times out of six.
+
+And the one that does exist is off by a prefix and a duration suffix, so even exact string matching against
+the outline would fail on all five.
+
+> **This is precisely the failure mode we predicted.** `04-quiz-experience-spec.md` §9.5: *"Authors must not
+> be asked to write 'go and review module 3' into feedback as a substitute; that produces prose that goes
+> stale when content is reordered."* It has not merely gone stale — most of it never resolved.
+
+**It changes what to ask the vendor.** Not *"can feedback contain a link?"* — we know it cannot. The useful
+questions are now: why does a wrong answer get a pointer instead of the explanation, and is there any way for
+an author to name a topic such that the reference can be checked and resolved rather than typed from memory?
+
 ### ✅ CONFIRMED — randomisation is what produces Reset, and it forces a two-step retry
 
 Submitting a second answer without resetting was refused: *"The state of this problem has changed since you
@@ -778,6 +810,29 @@ Simran's *"we'll have to get it built up from a dev team"* is right that it does
 ---
 
 ## Open questions with the vendor
+
+### Drafted Aug 5, 2026 · quiz feedback — the wrong answers, and references that do not resolve
+
+Follows a full test of SKOADM01EN, the course the vendor named as *the* example of the explanation
+functionality. Two asks, both evidenced, neither about platform capability.
+
+**1 · Why does the learner who got it wrong receive a redirect instead of the explanation?**
+All ten questions tested. Correct answers carry a real explanation of the idea, and the writing is good.
+Wrong answers carry *"Please revisit the “…”"* and a content title — never an explanation. The learner who
+needed it is the one who did not get it. This is authoring guidance, not platform: the field is the same one
+in both cases, and it is already populated.
+
+**2 · Can a topic reference be made resolvable rather than typed?**
+Of the five distinct targets named across six wrong answers, **four do not appear anywhere in the course's
+block tree**, and the fifth is off by a prefix and a duration suffix. No block in the course contains the
+word "Session". So the instruction cannot be followed from the outline, and no string match against course
+structure would rescue it either.
+
+**Decides:** whether we design a review affordance at all, and against what. Our shell can resolve the parent
+module from course structure — but the authors are naming individual videos and sessions, per question,
+which is more precise than the module and is what learners actually need. If there is a way for an author to
+point at a topic by identity rather than by remembered title, the affordance becomes buildable and reliable.
+If not, the honest design is to stop promising it and fix the copy instead.
 
 ### Drafted Aug 4, 2026 · five settings, one example course
 
