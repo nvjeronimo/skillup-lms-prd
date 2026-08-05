@@ -66,6 +66,30 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Column A rebuilt from components — nothing on the board is detached now
+
+The "today" column was hand-drawn since 5 Aug because `LMS / Quiz · Question Card` could not render what the
+real page shows. `Show platform prompt` and `Show attempts` fixed that, so it is now built from the design
+system on a **mode A preset**: platform prompt and Save on, progress and explanation off, navigation set to
+`Stacked · A`.
+
+**Verified after rebuilding, not assumed.** All three cards render the platform prompt with no progress bar
+and no explanation; `Unanswered` shows Save draft, Submit and the attempts line, which is exactly the live
+page; `Correct` offers no actions, because the platform hides Reset once an answer is right; and the
+navigation still reads *Previous* and *Next*, not *Next question*.
+
+That last check is the one that matters. The column now **inherits** from the same component as the proposal,
+which is the point — but it also means a careless default change could quietly make the "today" column
+describe the proposal, which is the exact mistake we made once already. The column caption now says so, in
+the imperative, for whoever edits it next.
+
+**Kept, because they are the finding rather than chrome:** the screenshot as evidence, the two dashed absence
+callouts, and the *NOT A DEFECT — RESOLVED* note explaining that the screenshot is of an ended course.
+
+*Recorded because it cost a step:* the rebuild script cleared the screen before confirming it had captured
+the callouts to preserve, and two of them were deleted. Figma plugin runs are not transactional — collect
+first, verify the collection, then destroy.
+
 ## 2026-08-05 · Six quiz sections down to four, and the nav becomes a top bar
 
 **The nav, rebuilt after the wizard pattern Nelson liked.** `Mode=Stepper · B` is no longer a footer — it is
