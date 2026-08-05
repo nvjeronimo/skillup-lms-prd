@@ -177,16 +177,34 @@ worth building the comparison rather than describing it — that is the same arg
 level down. Before that the "today" column on the board had to be detached, because
 the card simply could not render what the real page shows.
 
-### 9.1 What still cannot be expressed by the card alone
+### 9.1 Where a variant is justified, and where it is not
 
-Two differences live above the card, not inside it:
+**Not on the Question Card.** A `Mode` variant there would mean 16 variants to encode what six booleans
+already do — and worse, **two sources of truth that can disagree**: what should the card render if `Mode=A`
+but `Show progress` is on? The booleans stay.
+
+**Yes on the navigation**, which is where stacked and stepper genuinely differ in structure rather than in
+switches. `LMS / Quiz · Nav` was created on 5 Aug for exactly this — it did not exist before, and its absence
+is why the board's navigation had to be hand-drawn:
+
+| `Mode=Stacked · A` | `Mode=Stepper · B` |
+|---|---|
+| `‹ Previous` and `Next ›` | `‹ Previous question`, an answered count, `Next question ›` |
+| Move between **units**. The quiz is one unit, so **they leave it** | Move between **questions**, natively, no custom code |
+| What the platform renders today | Needs one question per unit — the only difference that changes authoring |
+
+> **The A labels must not be relabelled to imply question stepping.** They say Previous and Next because
+> that is what the platform says, and they leave the quiz because that is what they do. Making them read
+> "Next question" in A would hand A half of B's improvement and flatten the comparison.
+
+### 9.2 What still cannot be expressed by a component
 
 - **The entry screen.** B has one; A has none. That is the presence or absence of
   `LMS / Quiz · Entry Header`, not a switch.
-- **Page structure.** A is one scrolling page with every question stacked; B is a stepper, one question per
-  screen. That is how many cards you place and what wraps them.
+- **How many questions are on the page.** A stacks them all; B shows one. That is how many cards you place,
+  not a property on any of them.
 
-### 9.2 Rules the card encodes, and why
+### 9.3 Rules the card encodes, and why
 
 These are copied from the platform deliberately — they protect the learner, and a prototype that ignores them
 teaches the wrong lesson:
