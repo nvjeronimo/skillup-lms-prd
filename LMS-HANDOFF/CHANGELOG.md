@@ -66,6 +66,34 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Full validation — the quiz work closes clean
+
+Verified both files after the final publish.
+
+**Design system, twelve quiz component sets:** zero raw colours, zero emoji, zero drawn buttons or pills,
+zero malformed variant names, zero sets in error. `LMS / Quiz · Stepper Bar` is mode-B only, present in all
+eight Question Card variants and bound to `Show progress`. Defaults are the mode-B preset.
+
+**ICP, four sections:**
+
+| Section | Mode A | Mode B | Topic navigation |
+|---|---|---|---|
+| 04 · three types, mode B | — | 4 cards, all with the bar | Previous-Topic / Next-Topic |
+| 04.3 · every state | — | 15 specimens, no bar | — |
+| 04.4 · pass mark | — | — | — |
+| 04.5 · A vs B | 3 cards, no bar | 2 cards with the bar | Previous-Topic / Next-Topic |
+
+Zero stray bars, zero broken instances, zero section overlaps.
+
+**One thing worth recording from the validation itself.** I twice reported a "stray" bar that was not stray:
+both times the containing card had been **renamed** — `Quiz · Question Card` in the canonical mock — so a
+name filter missed it and the node then refused to delete because it was nested inside an instance. The error
+message *"Removing this node is not allowed"* was the thing that revealed the real structure.
+
+**The rule, now applied consistently:** identify instances by `getMainComponentAsync()`, never by
+`node.name`. Instance names are overridable and in this file several are. Every check in this pass was
+rewritten that way, which is also how the last three false readings were caught.
+
 ## 2026-08-05 · The mode-A nav was never quiz navigation
 
 Nelson caught a real design error, not a tidiness one. I had built `LMS / Quiz · Nav` with two variants, the
