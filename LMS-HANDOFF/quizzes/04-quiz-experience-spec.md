@@ -33,7 +33,7 @@ Defines every component, screen, state and platform contract needed to build the
     - **one `problem` per unit ⇒ a question-by-question stepper, natively, zero custom code**;
     - **N `problem`s in one unit ⇒ a single scrolling page** (how SKOAIH01 is authored today — see [03-current-lms-quiz-audit.md](03-current-lms-quiz-audit.md) §4).
     *Version caveat:* the horizontal unit tab bar was rendered by default through Teak; in Ulmo/Verawood it moved to a plugin slot, replaced by the Course Outline sidebar + Previous/Next. Restoring it is an `env.config.jsx` entry — configuration, not a fork.
-0d. **What Open edX genuinely lacks** *(verified Jul 29, 2026)* — the real gap, and where our shell adds value: **(i)** no per-question counter ("Question 3 of 10" — the native one counts *units*), **(ii)** no quiz-level submit-all, **(iii)** no end-of-quiz review/summary screen. The timed-exam submit dialog is explicit that it ends the *attempt*, not the answers: *"Make sure that you have selected 'Submit' for each problem before you submit your exam."* **Verified in source Aug 4, 2026** — `submitExam()` calls `submitAttempt(attemptId)` only, and `edx_proctoring` contains no reference to `problem_check` or `capa` at all. A timed exam is a timer and a lockout, not an aggregate submit. **(iii) is buildable as a frontend plugin — see §10.4**, which supersedes the assumption that it needs backend work.
+0d. **What Open edX genuinely lacks** *(verified Jul 29, 2026)* — the real gap, and where our shell adds value: **(i)** no per-question counter ("Question 3 of 10" — the native one counts *units*), **(ii)** no quiz-level submit-all, **(iii)** no end-of-quiz review/summary screen. The timed-exam submit dialog is explicit that it ends the *attempt*, not the answers: *"Make sure that you have selected 'Submit' for each problem before you submit your exam."* **Verified in source Aug 4, 2026** — `submitExam()` calls `submitAttempt(attemptId)` only, and `edx_proctoring` contains no reference to `problem_check` or `capa` at all. A timed exam is a timer and a lockout, not an aggregate submit. **(iii) is buildable as a frontend plugin — see §10.4**, which supersedes the assumption that it needs backend work. **(ii) is CORRECTED Aug 5, 2026:** a subsection has no submit handler, but a single `problem` block may contain many questions, and then it renders one Submit, one attempts counter and one score for the set. Confirmed live on SKOAIFP01, where each quiz is one problem holding ten questions at 3 pooled attempts. Quiz-level submit is an **authoring pattern already in production**, not development — see §11.
 1. **Per-question lifecycle.** *Submission* has no quiz-level container — each problem submits/scores independently (grading *does* roll up at subsection level; see 0c). A "one Submit for the whole quiz" UX would require orchestrating N problem submissions client-side (possible, but each question still grades independently — no cross-question validation).
 2. **Current production config** (SKOAIH01): single-select MCQ only; practice = unlimited attempts; graded = 2 attempts/question; answer-choice shuffling ON; per-choice feedback authored; immediate results; no hints, no partial credit, no due dates; pass mark 70%; Graded Quiz 60% + Final Exam 40%.
 3. **Rendering contract options** (decision needed — see section 6): (A) theme the existing iframe, (B) native re-implementation of the 5 CAPA types against XBlock handlers, (C) hybrid (native CAPA + iframe for SCORM/ORA/everything else). Recommendation: **C**.
@@ -346,6 +346,67 @@ Confirmed twice: an author **cannot** put a working link or CTA in a question or
 - The review affordance is **shell-owned**, resolved from course structure. Never authored into feedback text.
 - It therefore only exists when the shell can resolve a parent — consistent with the existing rule that the button hides when the quiz is not linked to a module.
 - Authors must not be asked to write "go and review module 3" into feedback as a substitute; that produces prose that goes stale when content is reordered.
+
+---
+
+## 11. Two authoring models — and the one that gives a quiz-level Submit
+
+*Added Aug 5, 2026, after auditing two courses the vendor supplied.*
+
+A CAPA `problem` may hold **many response elements**. That single fact produces two very different quizzes,
+both in production on our own platform today, and it settles a question we had been answering wrongly.
+
+| | **Per-question model** | **Bucket model** |
+|---|---|---|
+| Live example | AZ-204, `SKOADM01EN` | `SKOAIFP01` |
+| `problem` blocks per quiz | one per question | **one for the whole quiz** |
+| Submit | one per question | **one for the quiz** |
+| Attempts | per question (2 each) | **pooled (3 for all ten)** |
+| Feedback timing | immediate, question by question | all at once, after the single submit |
+| Reset | one question | the whole set |
+| Score | per question | one score for the set |
+
+### 11.1 What this corrects
+
+We have said since July that Open edX has no quiz-level submit and that our shell would have to orchestrate
+N submissions to fake one. **The first half is true only of the subsection** — `seq_block.py` has no submit
+handler, verified. It is not true of a quiz as a learner meets it. `SKOAIFP01` renders ten question stems,
+one `submit btn-brand`, one Save and *"You have used 0 of 3 attempts"* covering all ten.
+
+**So the quiz-level Submit we assumed needed custom development already exists, and it cost authoring.**
+
+It also answers a question asked on 3 Aug — *are attempts for the whole quiz, or per answer?* The answer at
+the time was "per problem, always". The accurate answer is: **per problem — and a problem can be the whole
+quiz.**
+
+### 11.2 What it costs, in both directions
+
+Neither model is better; they trade different things, and the trade is not adjustable per question.
+
+**Choosing the bucket** buys one Submit, pooled attempts and a single score — the model most people picture
+when they say "quiz". It costs per-question feedback timing (nothing can be revealed until the whole set is
+submitted), per-question attempts, and per-question Reset.
+
+**Choosing per-question** buys immediate feedback and independent retries, which is what makes formative
+practice work. It costs the quiz-level Submit, and it is why attempts cannot be pooled.
+
+### 11.3 Consequences for our two modes
+
+- **Mode A must reproduce whichever model the quiz it is imitating actually uses.** Our reference quizzes so
+  far are per-question, so A stays per-question. If a bucket quiz is ever tested, A must show a single
+  Submit and pooled attempts — anything else would not be faithful.
+- **Mode B is unaffected in structure.** B's improvements are chrome, copy, feedback and a results surface;
+  none of them depends on which authoring model sits underneath.
+- **But the bucket model is a third option worth naming**, because it delivers part of B's value with zero
+  design work — one Submit is a real improvement over ten. It should be on the table in its own right rather
+  than folded into B, since its cost is authoring and its trade-off is losing per-question feedback.
+
+### 11.4 Also observed
+
+- **Multi-select is in use** — the SKOAIFP01 practice quiz contains a checkbox question. The vendor's "about
+  5% of courses" figure holds, but it is no longer zero in anything we have audited.
+- **Practice quizzes have unlimited attempts, no Save and no attempts counter** — exactly what
+  `should_show_save_button()` predicts when `max_attempts is None`. The source and the platform agree.
 
 ---
 

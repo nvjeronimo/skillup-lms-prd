@@ -2,6 +2,45 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-05 · The quiz-level Submit exists, and it is authoring
+
+Audited the two courses Simran supplied. They use **two different authoring models**, which turns out to be
+the choice we have been arguing about for weeks without knowing it had a name.
+
+| | SKOAIFP01 | SKOADM01EN / AZ-204 |
+|---|---|---|
+| `problem` blocks per quiz | **one** | one per question |
+| Questions inside a block | **ten** | one |
+| Submit | **one for the whole quiz** | one per question |
+| Attempts | **3, pooled across all ten** | 2, per question |
+
+**This corrects a claim we have carried since July and had on the board as a hard limit.** "Open edX has no
+quiz-level Submit" is true of the *subsection* — `seq_block.py` has no submit handler, and that stands. It is
+not true of a quiz as a learner meets it. A CAPA `problem` can hold many response elements, and then it
+renders one Submit, one Save, one attempts counter and one score. Verified by reading the block: ten real
+question stems, one `submit btn-brand`, *"You have used 0 of 3 attempts"* covering all of them.
+
+**So the thing we said would need custom development is already in production, and it cost authoring.**
+
+It also answers Nelson's question from 3 Aug — *are attempts for the whole quiz or per answer?* We said per
+answer, always. The accurate answer is **per problem, and a problem can be the whole quiz.**
+
+**The trade-off is real and not adjustable per question.** The bucket buys one Submit, pooled attempts and a
+single score. It costs per-question feedback — nothing can be revealed until the whole set is submitted —
+along with per-question attempts and per-question Reset. Per-question buys immediate feedback and independent
+retries, which is what makes formative practice work, and gives up the single Submit.
+
+Written up as `04-quiz-experience-spec.md` §11, with the consequence for our two modes: **A must reproduce
+whichever model the quiz it imitates actually uses**, and the bucket deserves naming as a third option in its
+own right, since it delivers part of B's value with no design work at all.
+
+Also observed: **multi-select is in use** — the SKOAIFP01 practice quiz has a checkbox question, so it is no
+longer zero in anything we have audited. And practice quizzes show unlimited attempts, no Save and no
+counter, exactly as `should_show_save_button()` predicts.
+
+**Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
+a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
+
 ## 2026-08-05 · The stepper moves into B, and the framing corrected to discovery
 
 Two corrections from Nelson, and the second reverses a call I had made.

@@ -476,6 +476,50 @@ mean submitting an answer and spending one of Nelson's two attempts.
 **Still true and unchanged:** no authored `choicehint` content, no `<solution>` block, one `choicegroup` per
 problem, 2 attempts, single-select throughout.
 
+### ✅ CONFIRMED — one Submit for a whole quiz is real, and it is authoring
+
+Audited both courses on 5 Aug once access was granted. **The two courses use two different authoring models,
+which is exactly the choice we have been arguing about without knowing it had a name.**
+
+| | SKOAIFP01 — *AI-Powered Financial Analysis* | SKOADM01EN — *Digital Marketing* |
+|---|---|---|
+| `problem` blocks in the course | **4** — one per quiz | **10** — one per question |
+| Questions inside a block | **10** | 1 |
+| Submit | **one for the whole quiz** | one per question |
+| Attempts | **3, for all ten questions together** | 2, per question |
+| Save | present on graded, absent on practice | present |
+| Multi-select | **yes**, in the practice quiz | no |
+
+**How it works.** A CAPA `problem` may contain many response elements. Author ten questions inside one
+`<problem>` and the platform renders ten `<legend>` groups, ten radio groups — and **one** Submit, **one**
+Save, **one** attempts counter, one score. Verified by reading the rendered block: ten real question stems,
+one `submit btn-brand`, and *"You have used 0 of 3 attempts"* covering all of them.
+
+> **This corrects a claim we have been making since July and had on the board as a hard limit.** "There is no
+> single Submit for a whole quiz" is true of the *subsection* — `seq_block.py` genuinely has no submit
+> handler, and that part stands. It is **not** true of a quiz as a learner experiences it. The UX we said
+> would need custom development is already in production on a real course, and it cost authoring, not code.
+
+**The trade-off, and it is a real one — you pick one model or the other:**
+
+| | One problem per question | All questions in one problem |
+|---|---|---|
+| Submit | per question | **one for the quiz** |
+| Attempts | per question — 2 each | **pooled — 3 at the whole set** |
+| Feedback timing | immediate, per question | all at once, after the single submit |
+| Reset | affects one question | affects the whole quiz |
+| Score | per question | one score for the set |
+
+Neither is strictly better. Pooled attempts are what most people *think* a quiz does, and what Nelson asked
+about on 3 Aug — *"os attempts é o quiz todo no geral?"*. The answer then was no. The answer now is: **yes, if
+the quiz is authored as one problem.**
+
+**Still open — the explanations.** SKOADM01EN is the course Simran flagged for the explanation functionality,
+but `<solution>` and `choicehint` content is **not sent to the client before submitting**; the rendered block
+carries only an empty `notification-show-answer is-hidden` container. Seeing a real authored explanation
+requires submitting an answer, which spends one of two attempts on Nelson's own record. Not done without
+asking. The practice quizzes in SKOAIFP01 have unlimited attempts and would be a free place to test.
+
 ### ⚠︎ ASSERTED — one Submit for all questions, by putting them in one bucket
 
 > *"In this we have made use of only **one submit button** by adding all the question in one bucket"*
