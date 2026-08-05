@@ -208,19 +208,56 @@ The near-misses, so nobody re-opens them:
 - **Subsection prerequisites** gate access to a whole subsection, never to a question.
 - **The unit tab bar** can be hidden, but only through an MFE plugin-slot config for the entire deployment — never per course.
 
-### 8.2 The finding that actually matters: unsubmitted answers are lost
+### 8.2 The finding that actually matters — corrected Aug 5, 2026
 
-`ProblemBlock.should_show_save_button()` returns **False** when `max_attempts is None` and randomization is not *Always*. There is no autosave, no `beforeunload` guard, and unsubmitted input lives only in the unit's iframe DOM, which is destroyed on navigation.
+> **⚠︎ The original version of this section said unsubmitted answers are simply lost. That was wrong, and
+> the error is worth understanding: it was tested on a course that had already ended, where the Save button
+> is suppressed. On an open course Save is present, and it works.**
 
-So on a stock Open edX front end:
+`should_show_save_button()` returns **False** when `max_attempts is None` and randomization is not *Always*
+— and also whenever the problem is `closed()`, which includes past the **course end date**. That last clause
+is what invalidated the original test.
 
 | Quiz type | `max_attempts` | Save button | An unsubmitted selection… |
 |---|---|---|---|
 | **Practice** — unlimited retakes | none | **absent** | **is lost** on Next/Previous |
-| **Graded** — 2 attempts | 2 | present | survives, but only after a manual Save click |
-| **Final** — 1 attempt | 1 | present | survives, but only after a manual Save click |
+| **Graded** — 2 attempts | 2 | **present** | **persists**, if the learner clicks Save |
+| **Final** — 1 attempt | 1 | **present** | **persists**, if the learner clicks Save |
+| *Any type, course ended* | — | **absent** | is lost — and Submit is dead anyway |
 
-The learner's *position* is remembered (`position`, `Scope.user_state`); only the answer is discarded.
+**Verified live on AZ-204 after the course end date was moved forward:** three questions were saved, then
+re-fetched from the server through `/xblock/{id}`. Each came back with its radio already `checked`, and every
+question still read *"You have used 0 of 2 attempts"*. Saving persists server-side and costs no attempt.
+
+The learner's *position* is remembered (`position`, `Scope.user_state`) independently of any of this.
+
+### 8.2a Saved is not graded — and nothing says so
+
+`save_problem()` (line 2075) sets `lcp.student_answers` and `has_saved_answers = True`, then returns:
+
+> *"Your answers have been saved but not graded. Click 'Submit' to grade them."*
+
+It never calls `publish_grade()`. **A saved answer is worth zero until submitted, and each question must be
+submitted on its own** — `submit_problem` runs against a single block, increments that block's attempt
+counter and publishes that block's grade. Saving four questions and submitting only the fifth grades only the
+fifth.
+
+**Confirmed against the live progress API** with three answers saved and none submitted:
+
+```
+Knowledge Check — earned 0, possible 5, percent 0
+problem_scores: 0/1  0/1  0/1  0/1  0/1
+```
+
+**This is the most dangerous affordance in the quiz, and it is dangerous because it feels like progress.**
+The learner gets a success message, returns later and sees their choice still selected, and has scored
+nothing. The platform warns about this in exactly one place — the timed-exam submit dialog, *"Make sure that
+you have selected 'Submit' for each problem"* — which an ordinary quiz never shows. The only other
+explanation is a screen-reader-only sentence listing the buttons that may follow Submit.
+
+**Design requirement:** wherever a saved-but-unsubmitted answer exists, our shell must say so at the question
+*and* in the quiz-level chrome, in terms of grading rather than storage. "Saved" is the platform's word for
+it and it is the misleading one.
 
 ### 8.3 What this means for our design
 
@@ -228,8 +265,8 @@ The stepper we adopted lets learners move between questions freely — which the
 
 **This is ours to solve, not edX's.** We are building a custom shell over the problem blocks (§6, hybrid integration), so the shell holds the unsubmitted selection in client state as the learner moves between questions and calls `problem_check` only on submit. Requirements this adds:
 
-- The shell must retain a selection when the learner navigates away from an unsubmitted question and back. **Do not rely on the platform for this.**
-- Never surface edX's own "Save" affordance — it would be a second, competing save model.
+- The shell must retain a selection when the learner navigates away from an unsubmitted question and back. On practice quizzes the platform genuinely cannot help — Save is absent there by design, because unlimited attempts make submitting free.
+- **Revised Aug 5, 2026 — do not simply hide edX's Save.** The original text said never to surface it, on the grounds that it would compete with our own model. Now that Save is confirmed working and free of attempt cost, the better route is to *use* it as the persistence mechanism where it exists and never show it as a button: the shell saves silently as the learner moves, and spends its interface budget on the thing that actually matters, which is that **nothing counts until Submit**. A visible "Save" invites the exact misunderstanding described in §8.2a.
 - If the shell's state is ever lost (reload, session end), the honest behaviour is an empty question, not a stale one. Our "N of M still unanswered" counter must be computed from *submitted* answers so it never over-reports.
 
 **The "should the learner be allowed to go back?" question is therefore a product choice we implement in the shell, not a platform setting we configure.** Freedom to review is the platform default and the accessible behaviour; if the room wants it restricted for Final exams, that is custom work in our shell, and it should be justified against the accessibility cost rather than assumed.
