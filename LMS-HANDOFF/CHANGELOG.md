@@ -66,6 +66,40 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Validation pass, a broken component set, and the state catalogue moves out of the DS
+
+**A malformed variant name had put `LMS / Quiz · Question Card` into an error state.** One variant was named
+`Unanswered` instead of `State=Unanswered`, and Figma refuses to read the property definitions of a set whose
+variant names do not follow `Property=Value`. Renamed; the set reads again. Worth knowing as a failure mode:
+the symptom is that *nothing* about the component's properties can be inspected or changed, which looks far
+more alarming than the cause.
+
+**The nav now lives inside the Question Card** — Nelson replaced the old `Questions Progress` with the Nav
+itself and deleted the retired component. That is a cleaner arrangement, and it moves the mode switch onto a
+property already in place: `Show progress` now governs the bar, default on, so mode B carries it and the
+mode-A preset hides it along with everything else.
+
+**Last of the hand-made bits, found by sweeping rather than by looking:** `▲ Pass 70%` in Grade Summary
+became an `alert-triangle` icon on a warning token, and two drawn pills in `Last attempt` — *Draft saved*,
+*Quiz attempt 2 of 2* — became Badges.
+
+**Final DS state, all ten quiz components:** zero raw colours, zero emoji, zero drawn pills or buttons, no
+malformed variant names, no sets in error.
+
+### The state catalogue did not belong in the design system
+
+Nelson asked why `Quiz — every state · single & multi select` was sitting in the DS. It should not have been,
+and it was worse than misplaced: **it duplicated ICP section 04.3 almost exactly** — the same five columns,
+34 specimens there against 35 here.
+
+A catalogue of learner-facing states is **application documentation**; the design system defines components.
+Two copies of the same catalogue in two files guarantees they drift, and the one nobody is looking at becomes
+the one people trust.
+
+The five duplicated columns are removed. What stays is the part that genuinely is component documentation —
+**how to configure the same card for each mode** — and the board is renamed to say so, pointing at 04.3 for
+the states.
+
 ## 2026-08-05 · Every quiz colour now comes from a token
 
 Nelson: *"porque não estás a usar as cores, tokens, standardisação do DS?"* Fair, and it was the same failure
