@@ -520,6 +520,59 @@ carries only an empty `notification-show-answer is-hidden` container. Seeing a r
 requires submitting an answer, which spends one of two attempts on Nelson's own record. Not done without
 asking. The practice quizzes in SKOAIFP01 have unlimited attempts and would be a free place to test.
 
+### ✅ FOUND — the first real authored explanation, and how it renders
+
+Submitted Question 1 of SKOADM01EN. Answered wrongly first, then reset and answered correctly, so the
+question ends **correct** on Nelson's record. Two attempts used of two.
+
+**The explanation exists, and it renders inline, immediately, attached to the question:**
+
+```html
+<span class="message">
+  <div class="feedback-hint-correct">
+    <div class="explanation-title">Answer</div>
+    <span class="hint-label">Correct: </span>
+    <div class="hint-text">The Reach, Act, Convert, and Engage (RACE) framework helps marketers
+      evaluate how visibility, interaction, conversion, and ongoing engagement work together to
+      support business goals.</div>
+  </div>
+</span>
+```
+
+This is the **"Multiple choice with hints and feedback"** type Simran demonstrated on 30 Jul, now seen with
+real content. What matters for the design:
+
+- **It appears on submit, not after attempts run out.** The wrong first attempt also carried an
+  `explanation-title` of "Answer" — the same block with the incorrect variant. *(Inferred for the incorrect
+  case: the title was captured, the body was not, because the state had moved on before it could be read.)*
+- **Structure:** a title ("Answer"), a label ("Correct: " / presumably "Incorrect: "), and the explanation
+  body. Three parts, which maps cleanly onto our alert — title, tone, body.
+- **Position:** directly under the options, above the action buttons. Where our `LMS / Inline Alert` already
+  sits in the Question Card.
+- **`showanswer` returns only the correct choice id** — `["choice_1"]` — and no prose. So the explanation is
+  authored feedback, not the answer reveal. **These are two different features and we should stop conflating
+  them.**
+
+> **This unblocks proposal B2**, which we have been designing blind since the start. The surface exists, the
+> shape matches what we drew, and real copy now exists to draw against.
+
+### ✅ CONFIRMED — randomisation is what produces Reset, and it forces a two-step retry
+
+Submitting a second answer without resetting was refused: *"The state of this problem has changed since you
+loaded this page. Please refresh your page."* Then `problem_reset` succeeded and the resubmit was accepted.
+
+So this course has **`rerandomize = always`**, which explains every Reset observation at once:
+
+- Reset **appears only after submitting** — `should_show_reset_button()` returns true for a randomised
+  problem once submitted, regardless of `show_reset_button` being off. This is exactly Simran's account, and
+  it is not the setting anyone assumed.
+- **Save disappears after submitting** — `needs_reset` short-circuits it.
+- **A retry is two steps, not one:** Reset, then answer, then Submit. A learner who simply picks another
+  option and presses Submit is refused.
+
+**Design consequence:** our retry affordance must own both steps. Offering "Try again" that only clears the
+form would leave the learner on a refusal message they cannot interpret.
+
 ### ✅ TESTED — what the bucket does on submit, and one thing it costs us
 
 Submitted all ten questions of the SKOAIFP01 practice quiz — unlimited attempts, so the test was free —
