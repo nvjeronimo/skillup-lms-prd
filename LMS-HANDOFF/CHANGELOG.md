@@ -66,6 +66,42 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Exhaustive audit — six defects, all from the same two hours
+
+Applied the new `Saved` state to the graded journey in both lanes, then audited every quiz component against
+the behaviours our own documentation records. **Six defects, every one introduced by the additions made in
+the previous two hours** — which is the argument for auditing after a burst of changes rather than trusting
+that each one landed.
+
+| Defect | Cause |
+|---|---|
+| `Saved` had Skip, Save and attempts **unbound** | Cloning a variant does not carry property references |
+| `Partially correct` had **two** Show answer buttons | A timed-out script had partially completed, then the retry added a second |
+| `Answer revealed` offered Show answer | Already pressed; the first pass added it before I decided to skip it |
+| `Results withheld` offered Show answer | `show_correctness` suppresses the answer along with the score |
+| A mode-A card showed the stepper bar | The `Saved` clone carried `Show progress` on |
+| …and the same card again, via a **manual layer override** | Setting the property was not enough — the layer had been forced visible |
+
+**The state catalogue was incomplete too.** `03 · Every state` had fifteen specimens and no `Saved`, so the
+newest and most dangerous state was missing from the page whose whole purpose is completeness. Added as A9,
+with the warning that saving scores zero.
+
+**Final state, verified across the whole review page:**
+
+- 43 question cards · 12 in mode A, **none showing the stepper bar** · 31 in mode B, 16 showing it
+- All nine states in use across the page
+- Zero broken instances, zero section overlaps
+- Zero Show answer buttons on untouched questions — the retracted 3 Aug finding stays retracted
+- Zero Reset offered on a correct answer — the platform's protection is intact
+
+**Design system:** ten quiz component sets, nine card variants, no malformed names, no sets in error, no raw
+colours, no emoji, no hand-drawn buttons or pills, and every documented state present.
+
+*One correction to my own audit:* I first flagged the nine `Answer Input` variants as malformed because their
+names contain commas. Commas are legitimate when they separate **two properties** — `Type=X, State=Y`. The
+real rule is that every comma-separated segment must contain an `=`, which is what broke
+`State=Saved, not submitted`. The check now tests that.
+
 ## 2026-08-05 · Two states the platform has and we had never drawn
 
 **`State=Saved`.** The platform renders it — `has_saved_answers` and `save_message` are both in the template
