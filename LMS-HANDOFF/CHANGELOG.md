@@ -66,6 +66,54 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · The review page carries the journeys and nothing else
+
+**The review page is now one section: the canonical flows.** Everything else — the ten differences, the state
+catalogue, the edge cases, the pass mark, the open questions, the start-here — moved back to Topic Content
+Types, which is where discovery, history and archive belong. A review surface should ask one thing of the
+people looking at it.
+
+**And the journeys are now exhaustive**, organised by *route* rather than as a single happy path. Twenty-two
+routes across the three types:
+
+| Type | Mode B routes | Mode A routes |
+|---|---|---|
+| **Practice** | right first time · wrong then right · asks to see the answer · multi-select partly right | right first time · wrong · the end |
+| **Graded** | right first time · saves and comes back · wrong then right · **wrong twice → answer revealed** · multi-select partial · score not ready | **the Save trap** · wrong · the course ends |
+| **Final** | right · wrong · **score held back + correctness suppressed** · **timed: running → 20% → 5% → expired** | one attempt, no explanation · blocked or closed |
+
+The Graded band is the largest because it is the only type where a learner can be wrong and recover — six
+routes in mode B against Final's four.
+
+**Three defects caught in the pass, all mine, all from the rebuild:**
+
+- A mode-A card was showing the stepper bar again — and again it needed both the property *and* the layer
+  cleared, because the clone had carried a manual override.
+- **Twenty-five local components on the review page.** The `Worklist checkbox` is a local component, not from
+  the design system, and it came along with the worklist frame. Moved out with the rest of the discovery
+  material.
+- `Results withheld` was missing from every journey, so the state that suppresses correctness *and* score was
+  absent from the page whose job is to show all combinations. Added to the Final band with the reason:
+  `show_correctness` hides right and wrong along with the number, so the learner cannot tell which answers
+  landed.
+
+**Final verification, both pages:**
+
+| | Review | Discovery |
+|---|---|---|
+| Question cards | 30 | 22 |
+| Mode A showing the bar | **0** of 10 | **0** of 3 |
+| Mode B showing the bar | 20 of 20 | 4 of 19 *(state specimens stay bare)* |
+| States in use | **all nine** | all nine |
+| Broken instances | 0 | 0 |
+| Local / non-DS components | **0** | 25 — the worklist checkbox, deliberate and now only here |
+| Show answer on untouched | 0 | 0 |
+| Reset on a correct answer | 0 | 0 |
+| Section overlaps | 0 | 0 |
+
+**Design system:** ten quiz component sets, nine card variants, no malformed names, no sets in error, no raw
+colours, no emoji, no hand-drawn buttons or pills, every documented state present.
+
 ## 2026-08-05 · Exhaustive audit — six defects, all from the same two hours
 
 Applied the new `Saved` state to the graded journey in both lanes, then audited every quiz component against
