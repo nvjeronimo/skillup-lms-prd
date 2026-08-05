@@ -66,6 +66,42 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Every quiz colour now comes from a token
+
+Nelson: *"porque não estás a usar as cores, tokens, standardisação do DS?"* Fair, and it was the same failure
+as the hand-drawn buttons — I used the system where it was convenient and improvised where it was not. The
+backgrounds and body text I had bound to variables; the tone colours, the icons, the rules and the countdown
+I had typed in as RGB.
+
+**Audited the whole quiz family rather than only the two components he pointed at**, which is where the real
+answer was: **79 unbound colours across seven components.**
+
+| Component | Raw colours bound |
+|---|---|
+| Results | 30 |
+| Question Card | 31 |
+| Answer Input | 6 |
+| Option Row | 4 |
+| Grade Summary | 4 |
+| Gate | 3 |
+| Nav | 1 |
+
+**Mapped by meaning, not by nearest value.** `#26708e` on a quiz-type eyebrow became
+`text-brand-tertiary`, not "some blue"; `#1f7643` on a pass score became `text-success-primary`; `#8c5908`
+below a pass mark became `text-warning-primary`. Where a colour had no honest semantic home the script was
+written to **abort rather than fall back to a raw value** — a wrong token is harder to find later than an
+unbound colour.
+
+Gate and Exam Timer icons, tone rules and the countdown are now on `fg-brand-primary` /
+`fg-warning-primary` / `fg-error-primary` and the matching text and border tokens, so the escalation is the
+system's, not mine.
+
+**Final sweep across all eleven quiz components: zero unbound fills or strokes.**
+
+The pattern worth naming, because it has now appeared three times today: drawn buttons instead of the button
+component, hardcoded colours instead of tokens, and a demo that contradicted its own rule. Each time the
+system was there and I worked beside it rather than with it.
+
 ## 2026-08-05 · Three variants were never bound, and the alerts lose their emoji
 
 **The counter Nelson kept seeing was real, and my earlier check had been wrong.** Three variants of
