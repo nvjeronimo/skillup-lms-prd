@@ -556,6 +556,46 @@ real content. What matters for the design:
 > **This unblocks proposal B2**, which we have been designing blind since the start. The surface exists, the
 > shape matches what we drew, and real copy now exists to draw against.
 
+### ⚠︎ BOTH VARIANTS CAPTURED — and the wrong-answer one does not explain anything
+
+Submitted Question 2 of SKOADM01EN with a deliberately wrong option, reading the markup straight out of the
+`problem_check` response so nothing could move on before it was captured. The question is left at 1 of 2
+attempts, so it can still be answered correctly.
+
+Same three-part structure both times — `explanation-title` / `hint-label` / `hint-text` — but the content
+differs in kind, not just in wording:
+
+| Variant | Class | Label | Text |
+|---|---|---|---|
+| Right answer | `feedback-hint-correct` | `Correct: ` | *"The Reach, Act, Convert, and Engage (RACE) framework helps marketers evaluate how visibility, interaction, conversion, and ongoing engagement work together to support business goals."* |
+| Wrong answer | `feedback-hint-incorrect` | `Incorrect: ` | *"Please revisit the “Introduction to Digital Channels” video."* |
+
+> **The learner who gets it right is told why. The learner who gets it wrong is told to go and watch a video.**
+> That is backwards: the one who needed the explanation is the one who did not get it.
+
+**Three things follow.**
+
+1. **This is the prose workaround, in production.** On 30 Jul Simran described the only way to point a
+   learner at content from feedback: *"you can mention that you can go and review module 3 of the course…
+   but we cannot link it from there."* We wrote in `04-quiz-experience-spec.md` §9.5 that authors must not be
+   asked to do this, because it goes stale when content is reordered. **It is already being done**, and the
+   reference here is a video title in quotation marks with no link.
+
+2. **It qualifies our decision to drop the review action from the question card.** We removed it on the
+   grounds that the shell can only resolve the parent module, not the specific lesson — so the label
+   overpromised. That reasoning stands. But this shows **authors are already trying to do exactly that, by
+   hand, per question**. The need is demonstrated and authored; what is missing is a machine-resolvable way
+   to express it. That is a better argument for the affordance than the one we retired it on, and it should
+   be revisited rather than left closed.
+
+3. **Do not assume "explanations are being adopted" means explanations.** For wrong answers, in the course
+   the vendor named as *the* example of the explanation functionality, it currently means a redirection. Any
+   business case for proposal B2 should be built on what the feedback actually says, not on the fact that a
+   feedback field is populated.
+
+**Sample size, stated honestly:** two questions, one course. Whether the pattern holds across the other eight
+is untested.
+
 ### ✅ CONFIRMED — randomisation is what produces Reset, and it forces a two-step retry
 
 Submitting a second answer without resetting was refused: *"The state of this problem has changed since you
