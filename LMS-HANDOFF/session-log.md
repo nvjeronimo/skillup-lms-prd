@@ -520,6 +520,25 @@ carries only an empty `notification-show-answer is-hidden` container. Seeing a r
 requires submitting an answer, which spends one of two attempts on Nelson's own record. Not done without
 asking. The practice quizzes in SKOAIFP01 have unlimited attempts and would be a free place to test.
 
+### ✅ TESTED — what the bucket does on submit, and one thing it costs us
+
+Submitted all ten questions of the SKOAIFP01 practice quiz — unlimited attempts, so the test was free —
+answering the first option throughout to force a mixture.
+
+- **One verdict for the block:** `success: "incorrect"`.
+- **But each question is marked:** 4 `status correct`, 6 `status incorrect`.
+- **Score `4/10` — partial credit.** One point per correct question. The block-level "incorrect" is a flag
+  meaning *not everything was right*, not the grade.
+- Answers revealed in place; one attempt consumed for all ten.
+- **No explanations and no per-choice feedback in this course** — that is the other one.
+
+**The cost, and it is a design constraint we did not know about.** The progress API returns
+`problem_scores` per *problem*. In the per-question model that is one entry per question — `0/1 0/1 0/1…`.
+In the bucket model it is a single entry for the whole quiz — `4/10`. So **a results screen listing each
+question can only be built for per-question quizzes.** For a bucket quiz the API knows the total and nothing
+else; which question was missed lives in the problem's own rendered state, a much weaker contract. This
+qualifies the results-screen plan in `04-quiz-experience-spec.md` §10.4.
+
 ### ⚠︎ ASSERTED — one Submit for all questions, by putting them in one bucket
 
 > *"In this we have made use of only **one submit button** by adding all the question in one bucket"*

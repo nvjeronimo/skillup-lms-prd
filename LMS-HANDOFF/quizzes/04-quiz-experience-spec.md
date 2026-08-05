@@ -401,7 +401,42 @@ practice work. It costs the quiz-level Submit, and it is why attempts cannot be 
   design work — one Submit is a real improvement over ten. It should be on the table in its own right rather
   than folded into B, since its cost is authoring and its trade-off is losing per-question feedback.
 
-### 11.4 Also observed
+### 11.4 What the bucket actually does when you submit — tested Aug 5, 2026
+
+Submitted all ten questions of the SKOAIFP01 practice quiz (unlimited attempts, so the test cost nothing),
+answering the first option throughout to force a mixture of right and wrong.
+
+| Observation | Result |
+|---|---|
+| Block-level verdict | **one** — `success: "incorrect"` for the whole set |
+| Per-question marking | **yes** — 4 `status correct`, 6 `status incorrect`, rendered question by question |
+| Score | **`4/10` — partial credit**, one point per correct question |
+| Answers | revealed in place, with *"Answers are displayed within the problem"* |
+| Attempts | one attempt consumed, for all ten |
+
+**So the bucket is not all-or-nothing.** It marks each question and awards a point for each correct one. The
+single `success: "incorrect"` is a block-level flag, not the grade — it means *"not everything was right"*.
+
+**The consequence that matters for the results screen.** In the per-question model the progress API returns
+one entry per question:
+
+```
+problem_scores: 0/1  0/1  0/1  0/1  0/1
+```
+
+In the bucket model it returns **one entry for the whole quiz**:
+
+```
+problem_scores: 4/10
+```
+
+> **A per-question breakdown on our results screen is therefore only possible in the per-question model.** In
+> the bucket model the API can tell us 4 out of 10 and nothing more — which question was missed is inside the
+> problem's own rendered state, not in the score API. Any results design that lists questions individually
+> must either be restricted to per-question quizzes or read the block's HTML, which is a different and much
+> weaker contract. This qualifies §10.4.
+
+### 11.5 Also observed
 
 - **Multi-select is in use** — the SKOAIFP01 practice quiz contains a checkbox question. The vendor's "about
   5% of courses" figure holds, but it is no longer zero in anything we have audited.
