@@ -66,6 +66,35 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-05 · Section 02 rebuilt as journeys, not inventories
+
+Nelson's correction: what I had built was **three vertical stacks of components**, not journeys. A stakeholder
+cannot read a stack — there is no sense of what follows what, and none of the branching that makes a quiz
+interesting. What was needed was a flow diagram drawn with finished screens.
+
+**Rebuilt as one band per type, each with two lanes.** Mode B runs along the top as the proposed journey;
+mode A runs beneath it, the same journey degrading. Reading down a column answers *"and what does that look
+like today?"* at every single step, which is the comparison the whole page exists to make.
+
+| Type | Journey |
+|---|---|
+| **Practice** | opens → answers → right → **gets one wrong** → tries again → right at the second go → finishes |
+| **Graded** | opens → answers without submitting → **wrong, one attempt left** → tries again, right → another question, **both attempts spent → answer revealed** → results |
+| **Final** | opens → answers → right → **wrong with nothing left → answer revealed** → results, **or the score withheld** |
+
+**The branches are the point.** Each type is the same quiz with a different consequence for being wrong, and
+until now that difference was described in prose rather than shown. Practice can retry forever; graded gets
+one recovery and then the answer; final gets none.
+
+**Mode A carries the findings inline**, at the step where a learner would meet them: the missing entry screen,
+the Save trap with its "saved but not graded" message, the empty space where an explanation should be, the
+second submit refused until Reset, and nothing at all at the end. The Final lane also reaches a closed
+question — attempts spent or past the course end date — because that is the state that cost us two days.
+
+Every screen is a real component instance on the mode-A or mode-B preset, so the journeys stay true when the
+design system changes. The legacy canonical mock and the worklist moved out of the way rather than being
+deleted.
+
 ## 2026-08-05 · A review page for the quizzes
 
 New Figma page: **`↳ Phase 1 - Quizzes - Ready for Review 🟠`**, in the READY FOR REVIEW group beside the
