@@ -2,6 +2,33 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-05 · The stepper moves into B, and the framing corrected to discovery
+
+Two corrections from Nelson, and the second reverses a call I had made.
+
+**"Both to be built" was overclaiming.** Nothing here is agreed — this is still discussion and discovery.
+The Figma section is now `04.5 · Quiz — mode A (today) vs mode B (proposed) · in discussion`, and
+`08-two-modes.md` opens by saying so. Cost tags read as *what this would cost if we shipped it*, not as
+commitments.
+
+**The stepper belongs in B.** I had excluded it and parked it in column C as deliberately left out, on the
+grounds that one question per unit means re-authoring the whole catalogue. That reasoning is right about
+production and wrong about a prototype: **in a prototype the stepper costs nothing, and letting people use it
+is exactly how we find out whether the authoring cost is worth paying.** Excluding it meant deciding the most
+expensive question by assumption, which is the opposite of why we are building two modes at all.
+
+It is now difference **10** — one question per screen, Previous and Next, and a percentage complete — tagged
+✎ Authoring (heavy) + ▣ Design so the real cost stays visible. It also makes difference 1 native: with one
+question per unit the counter is the platform's own rather than something our shell computes.
+
+Two things carried with it. **How Reset behaves under sequence navigation is untested** — Simran is checking,
+and until then retry behaviour in a stepper is unverified rather than assumed. And if it is ever adopted for
+real, it should be for new courses rather than retrofitted.
+
+One trap flagged for the prototype: **A's Previous/Next must leave the quiz**, because that is what they
+really do. Making them step through questions in A would quietly give A half of B's improvement and flatten
+the comparison.
+
 ## 2026-08-05 · A and B are two modes, not a before and an after
 
 New doc: `quizzes/08-two-modes.md`, and the Figma section renamed to

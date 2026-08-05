@@ -2,6 +2,10 @@
 
 *Created Aug 5, 2026 · Canonical definition of the two quiz experiences we are putting side by side.*
 
+> **Status: discussion / discovery. Nothing here is agreed.** Mode B is a proposal, and the point of building
+> both is to decide it with evidence rather than argument. Read cost tags as *what this would cost if we
+> shipped it*, not as commitments.
+
 Companion docs: [04-quiz-experience-spec.md](04-quiz-experience-spec.md) (full component spec, and the source
 verification in §10) · [06-quiz-screen-matrix.md](06-quiz-screen-matrix.md) (every state) ·
 [07-results-decisions.md](07-results-decisions.md) (pass mark, alerts, retry) ·
@@ -50,6 +54,25 @@ The **cost tag** is what it takes on the real platform, not in the prototype.
 | 7 | No entry screen. The learner clicks the quiz and is already answering it | An entry screen: what the quiz is, how many questions, attempts per question, what it counts towards | ▣ Design |
 | 8 | "Choose the correct option(s)" repeats above every question — the same sentence five times, with a plural that is wrong for single-select. Question numbers are typed by the author, so they lie when anything is reordered or shuffled | The question stem is the heading. Numbering comes from the shell, so it survives reordering and shuffling | ▣ Design |
 | 9 | A Save button that stores the answer without spending an attempt — genuinely useful — but returns "saved but not graded" and is never mentioned again. Saving four questions and submitting one scores one mark out of five | Saving happens quietly as the learner moves. The interface spends its words on what decides the grade: which questions are still **unsubmitted** | ▣ Design |
+| 10 | Every question at once, in one long scroll. No pacing, and no way to judge how much is left except by scrolling | **A real stepper** — one question per screen, Previous and Next, and a percentage of the quiz completed | ✎ Authoring (heavy) + ▣ Design |
+
+### 3a. Difference 10 deserves its own note
+
+The stepper is **natively possible with no custom code**: one question per unit, and the platform's own
+sequence navigation does the rest. It also makes difference 1 native — the counter becomes the platform's
+own rather than something our shell computes.
+
+**It was previously excluded from B on cost, and that was the wrong call for a prototype.** Every existing
+quiz is authored as a single unit with all questions stacked inside it, so adopting it for real means
+re-authoring the catalogue — a genuine, large, recurring cost. But in a prototype it costs nothing, and
+letting people use it is exactly how we find out whether that cost is worth paying. Excluding it would have
+meant deciding the expensive question by assumption, which is the opposite of why we are building this.
+
+**Two things to carry with it:**
+
+- **Untested: how Reset behaves once sequence navigation is on.** Simran is checking. Until then, treat the
+  retry behaviour in a stepper as unverified rather than assuming it matches the single-page case.
+- If it is ever adopted for real courses, it should be for **new** ones rather than retrofitted.
 
 **Cost key.** ▣ Design — ours to build, already in the redesign. ⚙ Setting — one inherited field on the
 subsection, no re-authoring. ✎ Authoring — the content team writes something new. ⌥ Build — frontend plugin
@@ -112,9 +135,12 @@ contradicts them teaches the wrong lesson.
 - **B's results screen renders in place, below the last question.** It is not a route and not a modal: no
   plugin slot in the platform fires on *leaving* a subsection, so an interstitial would be inventing
   behaviour we cannot ship.
-- **Do not build the stepper.** One question per unit is natively possible and needs no code, but it would
-  mean re-authoring the entire catalogue. It is excluded on purpose. B's counter tells the learner where they
-  are on a page they can already see all of — it does not move them one question at a time.
+- **B is a stepper** — one question per screen, Previous and Next, with a percentage complete. A stays a
+  single scrolling page. This is the biggest structural difference between the two modes and the main thing a
+  tester will notice, so get it right before the smaller ones.
+- **A's Previous/Next must leave the quiz**, because that is what they really do — they move between units,
+  and the whole quiz is one unit. It is tempting to make them step through questions in A. Don't: that would
+  quietly give A half of B's improvement and flatten the comparison.
 
 ---
 
@@ -129,4 +155,8 @@ Worth stating, so the sessions produce decisions rather than opinions:
    a measurable failure mode.
 4. **Is the entry screen worth its space,** or does it just delay the learner?
 
-Items 3 and 4 are the ones where a prototype beats a discussion outright.
+5. **Is the stepper worth re-authoring the catalogue for?** The most expensive question we have, and the one
+   we would otherwise answer by assumption. A prototype costs nothing to try it in; the real adoption costs a
+   lot. If testers do not prefer it, we have saved a very large amount of authoring.
+
+Items 3, 4 and 5 are the ones where a prototype beats a discussion outright.
