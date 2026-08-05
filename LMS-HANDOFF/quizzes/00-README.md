@@ -4,10 +4,15 @@
 
 Exhaustive compilation of how quizzes/assessments work on our Open edX-based platform, what the platform allows us to build, benchmark inspiration, and the component/screen spec for dev handoff.
 
+> **Start here if you are building or testing.** [08-two-modes.md](08-two-modes.md) defines the two quiz
+> experiences — **A**, how it works today, and **B**, our proposal — as a single switch at quiz level, so
+> both can run side by side on the same questions. Everything else in this folder is the evidence behind it.
+
 ## Reading order
 
 | Doc | What it answers |
 |---|---|
+| [08-two-modes.md](08-two-modes.md) | **What are we building and testing?** The two modes as one per-quiz switch, the nine differences with what each costs on the real platform, what must be held constant for the comparison to mean anything, and the four questions a prototype answers better than a meeting. |
 | [01-edx-quiz-capabilities.md](01-edx-quiz-capabilities.md) | **What can the platform do?** Every problem type, the full settings matrix (attempts, show-answer enum, hints, partial credit, randomization, visibility), scoring model, all learner-facing states, and the `render_xblock`/API integration options. |
 | [02-coursera-quiz-benchmark.md](02-coursera-quiz-benchmark.md) | **What does great look like?** Coursera's assessment types, quiz flow, feedback/retry UX, in-video questions, grades integration, and the patterns worth stealing (fast feedback, next-step nudge, soft deadlines, draft safety). |
 | [03-current-lms-quiz-audit.md](03-current-lms-quiz-audit.md) | **What do we have today?** Hands-on authenticated audit of SKOAIH01: architecture (MFE + iframe), quiz anatomy and real states, graded vs practice config, ORA flow, SCORM activities, Progress page, and the UX gaps. |
@@ -19,6 +24,6 @@ Exhaustive compilation of how quizzes/assessments work on our Open edX-based pla
 ## Headline findings
 
 1. **Architecture**: course shell = Learning MFE; every unit renders in an iframe via `render_xblock` on `courses.skillup.online`. Custom quiz UI ⇒ choose between iframe theming, native re-implementation against XBlock handlers, or hybrid (recommended: native for the 5 core CAPA types, iframe for SCORM/ORA).
-2. **edX has no quiz-level submit** — each question is an independent problem with its own Submit/attempts/feedback. Entry header, progress rail and results summary must be built client-side.
+2. **edX has no quiz-level submit** — each question is an independent problem with its own Submit/attempts/feedback. Entry header, progress and results must be built client-side. *(Verified in source Aug 4, 2026: the subsection block exposes only completion and navigation handlers. The results screen is a **frontend plugin**, not a fork — the learner can read their own subsection score from `/api/course_home/progress/{course_id}`, and `sequence_bottom_navigation.v1` is a supported place to render it. See `04-quiz-experience-spec.md` §10.4.)*
 3. **Current config** (SKOAIH01): MCQ-only, graded quizzes = 2 attempts/question + Save, practice = unlimited, per-choice feedback authored, shuffle on, pass 70%, Graded Quiz 60% + Final Exam 40%, Final Project (ORA) ungraded, no timers.
-4. **Biggest UX wins available**: pre-quiz context header, in-quiz progress map, results summary with retry/review CTAs, loud draft-vs-submitted distinction, review-lesson links on wrong answers — none require backend changes.
+4. **Biggest UX wins available**: pre-quiz context header, per-question progress, a results surface, and a loud draft-vs-submitted distinction — none require backend changes. *(Amended Aug 5, 2026. The draft-vs-submitted point turned out to be the sharpest: Save persists an answer without spending an attempt, but a saved answer scores **zero**, and nothing on the page says so — see `04-quiz-experience-spec.md` §8.2a. The "review lesson on a wrong answer" idea was dropped: the link can only resolve to the module, not to the lesson covering that question, so the label promised precision we cannot deliver. It survives in the entry header.)*

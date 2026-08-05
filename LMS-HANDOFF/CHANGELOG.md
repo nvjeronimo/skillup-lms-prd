@@ -2,6 +2,35 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-05 · A and B are two modes, not a before and an after
+
+New doc: `quizzes/08-two-modes.md`, and the Figma section renamed to
+**`04.5 · Quiz — mode A (today) vs mode B (proposed) · both to be built`**.
+
+**The reframe.** Everything so far has read as *here is how it works and here is how it should work*. That is
+not what we are building. The prototype carries **both experiences at once, selected per quiz**, so some
+quizzes run A and some run B and the same questions go through either. You settle an argument about feedback
+by letting people use both, not by describing the second one well.
+
+**The switch is one property at quiz level — `mode: 'A' | 'B'`.** It belongs to the quiz, not the question
+and not the course. **Default is A**, so an unconfigured quiz behaves as production does, and anyone who
+meets B knows someone chose it.
+
+**What must be held constant, added as its own section**, because a comparison between two things that differ
+in five ways measures nothing: the same questions in the same order, the same attempts, the same question
+type, the same pass mark, and the same visual language. Only behaviour and content may differ. That last one
+matters most — showing A as raw edX and B in the new design would have the room choosing the prettier column
+rather than the better experience.
+
+The nine differences are numbered to match the Figma board, so a comment on "number 4" means the same thing
+in the doc, on the board and in the prototype.
+
+**Also corrected in `quizzes/00-README.md`**, which is read first and had two stale headline findings: the
+results screen is a frontend plugin rather than a fork, and the "review lesson on a wrong answer" idea is
+dropped — the link can only resolve to the module, so the label promised precision we cannot deliver. The
+draft-versus-submitted point was sharpened rather than removed: it turned out to be the most dangerous thing
+in the quiz.
+
 ## 2026-08-05 · We had been auditing a course that had ended
 
 Simran moved the AZ-204 end date forward. Re-reading the same problems through `/xblock/{id}` on the open
