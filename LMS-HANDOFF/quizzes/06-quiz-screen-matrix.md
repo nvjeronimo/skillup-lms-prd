@@ -521,3 +521,33 @@ proposal, stated as absence.
 **Knowingly partial:** `Answer Input` shows 3 of its 9 variants — one state per input type, chosen to spread
 across Unanswered, Incorrect and Correct rather than repeat one state three times. Drawing all nine would add
 six screens that differ only in a control we have already shown. Noted here so the gap is a choice.
+
+### 11.11 The attempts line, and the missing Show answer CTA *(Aug 6, 2026)*
+
+Two defects Nelson caught by reading the boards rather than the audit output — neither was detectable by any
+check I had been running, because both were *correct component usage carrying wrong content*.
+
+**1 · Every card said "You have used 0 of 2 attempts".** The default text had been left in place on 45 cards
+regardless of quiz type or position in the journey. Rather than invent the right values, the platform was
+asked. Three problems were read on dev with `problem_get`:
+
+| Probe | Attempts line | Save |
+|---|---|---|
+| Practice, unlimited attempts | **none at all** | absent |
+| Graded bucket, 3 attempts | `You have used 1 of 3 attempts` | present |
+| Graded stacked, 2 attempts | `You have used 2 of 2 attempts` | absent (spent) |
+
+So with unlimited attempts the platform prints **no attempts line whatsoever** — it does not say "unlimited"
+and it does not count up. `Show attempts` is now **off across the whole Practice band in both modes**, which
+also matches the band's own copy about Save being hidden for the same reason.
+
+Elsewhere the count is derived from position rather than typed: walking each lane, a submitted state
+(`Correct`, `Incorrect`, `Partially correct`, `Results withheld`) increments the count; `Answer revealed`
+implies the attempts are spent, so it shows the maximum; `Last attempt` shows one short of it. Maximums are
+2 for Graded, 1 for Final and 3 for the Bucket — the last measured, not assumed.
+
+**2 · `Path 3 · asks to see the answer` never showed the Show answer control.** The path was named for an
+action whose button was switched off, in both modes. Fixed.
+
+The lesson for the audits: every check so far has asked *is the right component in the right state?* Neither
+of these failed that test. A board can be structurally perfect and still tell a learner something untrue.
