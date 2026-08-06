@@ -235,6 +235,41 @@ The three SkillUp courses are better structured, and they confirm the model we d
 
 ---
 
+## 2026-08-03 · SK-11378 handover call — and the VILT tabs that were missing
+
+**Present:** Nilesh Dabhi, Chitteti Amara Raju, Nelson Jerónimo.
+*Source: AI-generated meeting notes, not verified against a recording. Two transcription slips worth
+knowing: "post page" is the **course page**, "VLT" is **VILT**, "JITA" is **Jira**.*
+
+Nilesh walked through what Raju had compiled against SK-11378 — metadata, API information, features and
+role-based access, across the four tabs — and Nelson confirmed the file was downloaded and already being
+matched against the design.
+
+### CONFIRMED — two tabs are missing, and are being added
+
+Nilesh flagged that Raju had worked from older templates and left out the **live** and **recordings** tabs.
+Chitteti committed to adding both **from row 84 onwards**, alongside the existing outline, dates and progress
+sections, **by 4 Aug**, and to tag Nelson when the file is reissued. The ticket closes on that.
+
+> **This is the gap our own audit had just found, closing before we asked.** Searching all eight delivered
+> payloads for `session`, `recording`, `attendance`, `live` and `join` returns **nothing** — while the one
+> real course in the workbook is instructor-paced and carries `Session Recordings` and `Session Material`
+> chapters. It was about to go out as the largest open ask; it is now in flight instead.
+
+### Guidance for the interim — CONFIRMED
+
+Nilesh: use the file as delivered for **self-paced** courses; the two new tabs are specifically for the VILT
+flows. That matches the MVP scope (self-paced only, Harpreet 29 Jul) — but it also confirms the two are
+genuinely different data shapes, not one with optional fields.
+
+### Process — CONFIRMED
+
+Further requirements are handled by **raising new tasks against Raju**. So the open asks in
+[course-details-metadata-map.md](course-details-metadata-map.md) §11 have a route: one task each, not a
+second omnibus ticket like SK-11378.
+
+---
+
 ## 2026-08-03 · SK-11378 delivered — Course Page metadata
 
 The ticket raised with Nilesh on 30 Jul arrived as `_media/Course_metadata.xlsx`: 73 fields, eight endpoints

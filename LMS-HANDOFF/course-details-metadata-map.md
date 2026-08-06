@@ -464,6 +464,7 @@ into the tables.
 | Role-based visibility | `5020:493` | Sheet 4 as a matrix, with the scope caveat on the first column |
 | States | `5038:444` | The four states, what each turns on, what changes on screen — plus what is not drawn yet |
 | Decisions and open questions | `5021:444` | What is decided and where it came from; what is open and who owns it; why the certificate is a card |
+| Metadata we still need | `5105:444` | What the ✗ and ⚠︎ verdicts would take to become ✅, with owner and status |
 
 **Row 3 — out of scope**, under *Out of scope — states the learner panel never serves*
 
@@ -478,6 +479,63 @@ into the tables.
 Verdict key, used consistently in the tables and in this document:
 **✅** field exists and is populated · **◑** we derive it · **⚠︎** the field exists but is null in every
 payload · **✗** no source at all.
+
+---
+
+---
+
+## 11. Metadata we still need
+
+What it would take for the **✗** and **⚠︎** verdicts in §4 to become **✅**. Ordered by effort, cheapest first
+— and the cheapest tier may cost nothing at all.
+
+### Verify first — three of these may already exist
+
+The eight endpoints in the workbook are the ones the Learning MFE calls. They are not the only ones the
+platform has, and `CourseOverview` — the table `title`, `org`, `number`, `start` and `is_self_paced` already
+come from — carries more than these endpoints expose.
+
+| To check | What it would close |
+|---|---|
+| **Courses API** `/api/courses/v1/courses/{course_key}` | In stock Open edX this returns `media {course_image, banner_image, course_video}`, `short_description` and `effort`. That is the **course image**, **"What you'll learn"** and **"~ 14 hours"** — three ✗ closed at once, with no backend work |
+| **Course Blocks API v2**, `requested_fields` / `block_counts` | **Real topic types.** `icon` offers four values and returns only `other`; the child XBlock type is knowable |
+| **Bookmarks list endpoint** | Gives decision [009](../00-decisions/009-bookmark-pure-marker.md) the entry point it has never had. `course_tools` already links Bookmarks; only the list is missing |
+
+**Owner: Nelson**, in the dev environment. This is verification, not a request — do it before asking anyone
+for anything, because three asks may evaporate.
+
+### In flight — committed 3 Aug
+
+Raised the same day the workbook landed, in the call with Nilesh:
+
+| Coming | Why it matters |
+|---|---|
+| **Live sessions tab** | Schedule, join link, session state |
+| **Recordings tab** | The `Session Recordings` chapter has units named by date and nothing behind them |
+
+Both from **row 84** of the workbook, owner **Chitteti Amara Raju**, due 4 Aug. This closes the largest gap
+in the delivery: searching all eight payloads for `session`, `recording`, `attendance`, `live` and `join`
+returns **nothing**, while the one real course we were given is instructor-paced and carries two VILT
+chapters. Nilesh's guidance in the meantime: the current file covers self-paced courses; the new tabs are for
+the VILT flows.
+
+### Open — worth a new task each
+
+| Ask | Owner |
+|---|---|
+| **Unlock rule** — date or prerequisite, and which one. `accessible` is a boolean and nothing more | Nilesh / Rashid |
+| **Mentor record** — identity, SLA, thread. Decision 007 assigns one mentor at enrolment, so the link exists somewhere | Product |
+| **Partner brand** — the co-branding. `org` returns `"SkillUp"`, the platform's own key | Product |
+| **`effort_time` derived rather than authored** — video length sits in the XBlock and reading time is a word count. Ask this *before* asking anyone to hand-author thousands of blocks | Nilesh / Rashid |
+| **`language`** — i18n, and the accessibility layer in decisions 016 / 017 | Nilesh |
+| **`user_timezone` returns null in all three samples** — every date renders in UTC for cohorts split between India and Europe. A **defect**, not a missing field | Nilesh |
+
+### Two rules this settles for us, with nothing to ask anyone
+
+- **Trim `display_name`, never reformat it.** The payloads carry parasite whitespace — *"Module 5:  SQL
+  Advanced Topics"*, *"Final Quiz "* — and we render the field verbatim.
+- **No letter grades, anywhere.** `grade_range` is a single threshold, `Pass: 0.7`, and `letter_grade` is
+  null. A screen showing A/B/C draws something the platform cannot produce.
 
 ---
 

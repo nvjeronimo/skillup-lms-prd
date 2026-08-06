@@ -1088,6 +1088,35 @@ via `reset_student_attempts()`, which recurses into children.
 
 Recorded in `session-log.md` with file and line citations, and in `04-quiz-experience-spec.md` §10.
 
+## 2026-08-03 · Metadata we still need — a sixth reference table
+
+Sixth table in the Course Detail section (`5105:444`), written up as
+[course-details-metadata-map.md](course-details-metadata-map.md) §11: what each **✗** and **⚠︎** verdict
+would take to become **✅**, with owner and status. Ordered by effort, and the cheapest tier may cost nothing.
+
+- **Three asks may evaporate on verification.** The eight endpoints in the workbook are the ones the
+  Learning MFE calls, not the only ones the platform has. `CourseOverview` — where `title`, `org`, `start`
+  and `is_self_paced` already come from — also carries `media`, `short_description` and `effort` in stock
+  Open edX, and the **Courses API** `/api/courses/v1/courses/{course_key}` returns them. If it is enabled
+  here, the **course image**, **"What you'll learn"** and **"~ 14 hours"** all close with no backend work.
+  Two more to check: **Course Blocks API v2** with `block_counts` (real topic types, instead of `icon`'s
+  four values) and the **Bookmarks list endpoint** (the entry point decision 009 has never had). Owner:
+  Nelson, in the dev environment — verification before request.
+- **The VILT gap closed before we asked it.** Searching all eight payloads for `session`, `recording`,
+  `attendance`, `live` and `join` returns nothing, while the one real course is instructor-paced with
+  `Session Recordings` and `Session Material` chapters. On the handover call the same day, Nilesh flagged
+  that the **live** and **recordings** tabs had been left out; Chitteti is adding both from row 84, due
+  4 Aug. Logged in `session-log.md`.
+- **Still open, one task each** (Nilesh confirmed new tasks go to Raju, rather than another omnibus
+  ticket): the unlock rule, the mentor record, partner branding, `effort_time` **derived rather than
+  authored** — ask that before asking anyone to hand-author thousands of blocks — `language`, and
+  `user_timezone`, which returns null in all three samples and renders every date in UTC for cohorts split
+  between India and Europe. That last one is a defect, not a missing field.
+- **Two rules settled with nothing to ask anyone.** Trim `display_name` but never reformat it — the
+  payloads carry parasite whitespace (*"Module 5:  SQL Advanced Topics"*, *"Final Quiz "*) and we render
+  the field verbatim. And **no letter grades anywhere**: `grade_range` is a single `Pass: 0.7` threshold and
+  `letter_grade` is null, so a screen showing A/B/C draws something the platform cannot produce.
+
 ## 2026-08-03 · Scope correction — the panel is post-enrolment
 
 **The learner panel never serves an unenrolled course.** Enrolment happens on the site and in the
