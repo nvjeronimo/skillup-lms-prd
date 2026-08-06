@@ -847,3 +847,27 @@ authored `<solution>` if one exists (§12.2).
 **Also applied:** `Show hint nav` was removed from the alert entirely. The hint control lives in the card's
 Secondary actions beside Show answer and stays there for every press (§12.9), so the in-alert nav had no job
 left. The stakeholder ask for in-component navigation is superseded — worth confirming at the next review.
+
+### 12.13 Icon tokens and text styles across all six tones *(Aug 6, 2026)*
+
+Two drift problems, one of which predated the new variants.
+
+**Icon colour.** `Tone=Hint` and `Tone=Answer` carried raw stroke paints. Both are now bound to
+**`LMS/Text/text-brand-secondary`** — the same token `Tone=Info` uses. That is the right choice rather than a
+convenient one: Success, Warning and Error bind to their outcome tokens because the icon *is* the verdict,
+and revealed content has no outcome to report, so it takes the neutral brand colour.
+
+**Text styles — and the drift was older than the hint work.** Only the *description* line of each verdict tone
+carried a style; every **title** in the component, including the four original tones, had none. So the alert
+had been shipping half-styled since before any of this. All eighteen text layers across the six tones now
+resolve to styles:
+
+- titles → **`Body/Small/Semibold`**
+- body and secondary text → **`Body/Small/Regular`**
+
+The three hint lines are the interesting case. They need a bold prefix inside an otherwise regular line
+(§12.7), which a single style cannot express — and hard-setting the font would have reintroduced exactly the
+raw values we were removing. They use `setRangeTextStyleIdAsync`: Semibold on `Hint (N of M): `, Regular on
+the body. They read as `MIXED` because two styles apply by range, which is the correct state here, not drift.
+
+**Verified after the pass:** six tones, six bound icon colours, zero raw text.
