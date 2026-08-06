@@ -667,3 +667,28 @@ Two smaller corrections fell out of the same reading:
 list with the platform's own label format, and the third uses `Show secundary-text` so the alert grows one
 hint at a time. The reasoning is written into the component description so the next person does not re-add
 the arrow.
+
+### 12.6 Validation after the library update *(Aug 6, 2026)*
+
+| Check | Result |
+|---|---|
+| Broken instances · local components | 0 · 0 |
+| Cards offering *Next question* | 0 |
+| Alert titles by state | Success 11 · Incorrect 7 · Answer 5 · Partially correct 6 |
+| Hint alerts | 2, both `Tone=Hint` |
+| Stepper bars | 23, all `Mode=With Back only` |
+
+**`Next` in the bar is an optional variant, not the default.** `Mode=With Back only` stays the default while
+mode B is on hold; `Mode=With Back+Left` carries the forward control for when it resumes. The boards were
+briefly switched to the Next variant and then reverted — recording that here so the switch is not read as an
+oversight later.
+
+Two things needed a second pass because a republish had reset them: one card came back with *Next question*
+on, and six `Partially correct` alerts came back titled *"This grade replaced…"*. Both are the override
+asymmetry from §12.4 seen from the other side — a library update **does** overwrite a property or a text the
+instance had not deliberately overridden, so fixes applied before a republish can be undone by it. **Validate
+after every republish, not before.**
+
+> ⚠︎ Naming: the variant reads `Mode=With Back+Left`. The control it adds is *Next* — forward, on the right.
+> `With Back+Next` would say what it does. Variant names are read by everyone consuming the library, so this
+> one is worth correcting before the handoff.
