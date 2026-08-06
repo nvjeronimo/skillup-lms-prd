@@ -621,3 +621,49 @@ cost time twice, and the failure mode gives no hint of its cause.
 **State after this pass:** 0 broken instances, 0 local components, 0 cards offering *Next question*, 21 alert
 titles corrected. Outstanding until the ICP file accepts the update: hint alerts still render `Tone=Info`
 rather than the borderless lightbulb variant, and the stepper bars still show only `Back`.
+
+### 12.5 Demand hints have no back control — because they never need one *(Aug 6, 2026)*
+
+Nelson asked whether the learner can move forward *and back* through `Hint 1 of N`. Answered from
+`xmodule/capa_block.py` rather than from the screen, and the answer changes the component.
+
+**There is no back control, and `hint_index` never decreases.** The gate on the forward button is:
+
+```python
+def _should_enable_demand_hint(self, demand_hints, hint_index=None):
+    if hint_index is None:
+        should_enable = len(demand_hints) > 0
+    else:
+        should_enable = len(demand_hints) > 0 and hint_index + 1 < len(demand_hints)
+```
+
+One button. It disables once the last hint is on screen.
+
+**And going back would be pointless, because hints accumulate rather than replace.** `get_demand_hint` walks
+from the first hint to the current one and concatenates them into a single ordered list:
+
+```python
+counter = 0
+total_text = ""
+while counter <= hint_index:
+    total_text = HTML(_("{previous_hints}{list_start_tag}{strong_text}{hint_text}</li>")).format(
+        previous_hints=HTML(total_text), ...)
+    counter += 1
+total_text = HTML("<ol>{hints}</ol>").format(hints=total_text)
+```
+
+So hint 1 is still visible when hint 2 arrives. **It is a growing list, not a carousel** — which is why the
+platform never needed a Previous button, and why designing one would invent a problem the platform does not
+have.
+
+Two smaller corrections fell out of the same reading:
+
+- The label is literally **`Hint (N of M): `** — parentheses and a trailing colon. We had written
+  `Hint 1 of 3`.
+- `hint_index % len(demand_hints)` in `get_demand_hint` does wrap, but the button gates before it, so the
+  wrap is unreachable through the UI. Not a behaviour to draw.
+
+**Applied:** the `Back` button added to `Tone=Hint` was removed, the three lines now read as an accumulating
+list with the platform's own label format, and the third uses `Show secundary-text` so the alert grows one
+hint at a time. The reasoning is written into the component description so the next person does not re-add
+the arrow.
