@@ -362,3 +362,36 @@ is not — it must be set consistently across a whole quiz or the screen becomes
 > §11.4, become available. Until they do, `importComponentByKeyAsync` against the DS times out entirely —
 > which is itself the symptom to recognise: imports hanging usually means an unaccepted library update, not a
 > broken component.
+
+### 11.6 The bucket band, and what is still open *(Aug 6, 2026)*
+
+`JOURNEY · Bucket` now sits alongside Practice, Graded and Final, and the section is renamed accordingly:
+*the three types in both modes, **plus the bucket***. It is deliberately not a fourth type — the header reads
+**AS AUTHORED TODAY · SKOAIFP01**, because it is a way of authoring any of the three.
+
+**Path 1 · ten questions, one button.** Practice entry → Q1 and Q2 with `Show submit` off → Q10 carrying the
+only button and the only attempt line (`0 of 3`) → one submit marking all ten, shown partially correct at
+4/10. No stepper on any card: the bucket is a single problem, so there is no position to step through.
+
+**Path 2 · what it gives, and what it costs.** The results screen mode B would render from it — 40%, 4 / 10,
+2 of 3 attempts left — and the price, stated on the board: the per-question breakdown does not exist. The
+progress API returns one entry for the whole quiz, so nothing can say which of the ten was missed. The CTA
+reads **Retake all ten**, not *Retry incorrect*, because Reset clears every question at once. Drawing
+*Retry incorrect* here would have been a lie the platform cannot honour.
+
+All figures are measured, not illustrative: 4/10, 6/10, 6/10 and 3/10 from the four SKOAIFP01 buckets on
+Aug 6, 2026.
+
+**Audit after the build:** 34 question cards, 0 broken instances, 0 local components, 0 mode-A cards showing
+*Next question*, `Grade Summary` now used once.
+
+**Still open from §11.2** — named so they stay decisions rather than oversights:
+
+| # | Gap | Status |
+|---|---|---|
+| 1 | Bucket has no journey | **closed** — §11.6 |
+| 5 | `Grade Summary` never used | **closed** — the Graded mode-A lane now ends on the gradebook |
+| 2 | `Show hint` false on every card; `Hint 1 of N` unbuilt | open |
+| 3 | `Gate = Prerequisite` and `Gate = Not released` never appear | open |
+| 4 | `Answer Input` unused — dropdown, numerical, text | open |
+| 6 | Q14 content-hidden-after-due indistinguishable from past due | open, and untested |
