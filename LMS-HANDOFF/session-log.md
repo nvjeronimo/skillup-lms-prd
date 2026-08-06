@@ -927,3 +927,70 @@ Keep it in step with this log: if an item is ticked because a session settled it
 ## How to add to this log
 
 One section per session, newest first within its date. Include who was actually in the room, tag every capability claim, and quote anything that will be argued about later. If a session contradicts something we already hold, say so **in the entry** rather than quietly updating the other document — the contradiction is the useful part.
+
+---
+
+## Aug 6, 2026 · the feedback claim tested across every course on dev — and mostly withdrawn
+
+Nelson pushed back before this ran: *"estamos a levantar assunções"*. He was right. The line drafted for the
+team message — *"the wrong-answer feedback points learners at a topic instead of explaining the answer"* —
+generalised from **one** course to the platform. Tested properly, it does not survive.
+
+### Method — read-only where possible, submission only on dev
+
+Two LMS handlers do the work without touching state:
+
+- `…/handler/xmodule_handler/problem_get` returns the problem HTML, including the feedback for an answer
+  already given.
+- `…/handler/xmodule_handler/problem_show` returns the correct answers outright, and spends no attempt. It
+  respects `showanswer`, so it stays silent until the condition is met.
+
+Neither reveals feedback for an answer *not yet given* — CAPA only emits `<choicehint>` in the response to
+`problem_check`. The blocks API does not help either: `student_view_data` is empty for every problem, and
+`all_blocks=true` is staff-only (403). So establishing wrong-answer feedback requires submitting a wrong
+answer, which was done on **dev only**, where Nelson authorised full testing. Nothing was submitted on
+production.
+
+### What all three dev courses actually do
+
+Every `problem` block in every course the account can reach — 62 in total, not a sample.
+
+| Course | Problems | Shape | Feedback found |
+|---|---|---|---|
+| SKOAZ204EEP · AZ-204 | 48 | one question per problem | **0 of 48** |
+| SKOAIFP01 · AI-Powered Financial Analysis | 4 | **bucket** — 10 questions per problem | **0 of 4** |
+| SKOADM01EN · Digital Marketing | 10 | one question per problem | **7 of 7 tested** (3 already answered) |
+
+**The pattern is one course, not the platform.** Two of the three courses — 52 of the 62 problems — carry no
+authored feedback of any kind. Not a redirect, not an explanation, nothing beyond the attempts line. That is a
+larger and plainer problem than the one we were about to raise, and it is invisible until you submit.
+
+### The redirect is real, and it points somewhere we had misread
+
+In SKOADM01EN the feedback exists on every question tested. Six wrong answers all read:
+
+> *Please revisit the "…" VILT session recording.*
+
+**VILT** — virtual instructor-led training. These are recordings of live sessions, **not course blocks**. That
+retires the earlier finding that four of five named targets "do not appear anywhere in the course's block
+tree": of course they do not. They were never course content. The five distinct targets are session titles:
+
+- Session 1: Digital Marketing: Concepts, Evolution, and Growth
+- Session 1: Digital Strategy and Its Components
+- Session 2: Effective Use of Digital Channels for Growth
+- Session 2: Demographic and Psychographic Targeting
+- Session 3: Journey Interventions
+
+**What this changes.** The question for the vendor is no longer "why are these titles wrong?" It is *where do
+VILT recordings live, and can a learner reach one from inside a quiz?* If they sit outside the LMS, the
+redirect is not sloppy authoring — it is the only pointer available, and no design of ours can resolve it.
+If they are addressable, the review affordance becomes buildable for the first time.
+
+The one correct answer tested carries a genuine explanation, which confirms the asymmetry stands **within this
+course**: right answers get taught, wrong answers get redirected.
+
+### The bucket, measured
+
+The four SKOAIFP01 problems returned `4/10`, `6/10`, `6/10` and `3/10` from a single submission each —
+one problem, ten questions, one score, partial credit. Confirms §11 of the spec from the API rather than from
+the screen, and confirms the model is not hypothetical: it is how a live course is authored today.
