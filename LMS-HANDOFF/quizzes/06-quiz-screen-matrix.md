@@ -798,3 +798,23 @@ before clicking it. Added to what Studio unblocks, alongside the feedback covera
 questions, the five settings, and the `Hide content after due date` shell for gap 6.
 
 Until then the label is **⚠︎ unverified**, and the pre-hint state should not be handed over as final.
+
+### 12.11 Validation after the hint-control pass *(Aug 6, 2026)*
+
+Properties arrived with the intended defaults: `Show hint action` false, `Show next action` false,
+`Show hint nav` false, `Show hint 2` / `Show hint 3` false, and `Tone=Hint` present on the alert.
+
+| Check | Result |
+|---|---|
+| Broken instances · local components | 0 · 0 |
+| Cards offering *Next question* | 0 |
+| Cards with the `Hint` button | 4 |
+| Cards with a hint revealed | 2 |
+| Hint alert tone | 2 × `Tone=Hint` |
+| Stepper bars | 23 × `Mode=With Back only` |
+| Alert titles | Success 11 · Incorrect 7 · Answer 5 · Partially correct 6 |
+
+**The hint route now shows both halves of the interaction**, which it never did before: `Submits — wrong`
+carries the `Hint` button with **no hint on screen** — the state that makes the first press possible — and
+`Asks for a hint` carries the button *and* the revealed hint. Four cards with the button, two with a hint,
+in both modes. Previously only the second state existed, which is what made the missing control invisible.
