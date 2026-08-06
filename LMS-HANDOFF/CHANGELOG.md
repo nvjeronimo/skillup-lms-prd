@@ -66,6 +66,42 @@ counter, exactly as `should_show_save_button()` predicts.
 **Still open:** the explanations. `<solution>` content is not sent to the client before submitting, so seeing
 a real authored explanation means spending an attempt on Nelson's own record. Not done without asking.
 
+## 2026-08-06 · Next question comes back — I had removed it for the wrong mode
+
+Nelson spotted two gaps in the journeys, and the first is a reasoning error of mine worth stating plainly.
+
+**I removed `Next question` from every state, on the grounds that there is no next question.** That is true
+of **mode A** — every question sits on one scrolling page, so there is nowhere to advance to, and its
+Previous/Next move between *topics* and leave the subsection. It is **not** true of mode B, which is a
+stepper: one question per screen, and advancing is the entire point.
+
+Worse, the Stepper Bar carries **Back but no forward control**. So between removing the button and building
+the journeys, mode B had no way for a learner to move on at all. The gap was structural and I had built three
+journeys over it without noticing.
+
+Restored as `Show next action`, **default on**, because on is mode B:
+
+- **Primary** on `Correct`, `Partially correct`, `Answer revealed`, `Results withheld` — the question is
+  resolved, advancing is what is left.
+- **A link** on `Incorrect`, with **Try again staying primary** — with attempts left, retrying is the
+  encouraged action, not moving on.
+- **Off in the mode-A preset**, where it would be a lie.
+
+**Show answer turned on where the platform would actually offer it**, rather than everywhere or nowhere:
+
+| | Where it appears |
+|---|---|
+| Practice, mode B | from `Selected` onwards — practice leaves `showanswer` open, and there is nothing to protect |
+| Graded / Final, mode B | only on `Last attempt` and `Answer revealed` — that is `answer_available()` |
+| Mode A | only once the answer is already correct |
+
+Never on an untouched mode-A question. That was the 3 Aug finding we retracted, and it stays retracted.
+
+**And the counter now says which question each step is.** Twenty steps across the three journeys were all
+reading the component default of "Question 4 of 7" regardless of where they sat. Each now names its real
+position, and the progress bar fill is set to match rather than contradict it — a bar at 60% beside
+"Question 1 of 5" is the kind of detail that quietly tells a stakeholder the screens are not real.
+
 ## 2026-08-05 · The review page carries the journeys and nothing else
 
 **The review page is now one section: the canonical flows.** Everything else — the ten differences, the state
