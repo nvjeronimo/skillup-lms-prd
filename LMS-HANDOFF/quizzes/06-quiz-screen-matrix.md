@@ -937,3 +937,42 @@ Same row, same job, opposite endings. That is not a styling choice; it follows f
 > ⚠︎ **This route reaches no learner today.** `showanswer` is off in every course we can read, so the whole path is available on the platform and unreachable in the product. It goes into the handoff as **available, not enabled**, alongside the unverified hint-button label.
 
 **State after the pass:** 0 broken, 0 local, alert tones in use across both sections — Answer 5, Hint 5, Success 6, Warning 14, Error 8, Info 2.
+
+### 12.17 Radio, not checkbox — and the header lines were never a platform instruction *(Aug 6, 2026)*
+
+Nelson: *"the checkbox should be a radio when the quiz is not multiple-answer"*, and *"what do you mean by
+`1 point possible (graded)` — where is that from?"* Both were checked against rendered problems on dev rather
+than reasoned about. Both were wrong on our wall, in different ways.
+
+**1 · Single-select emits `radio`, and nothing else.** A single-answer question on dev renders
+`type="radio"` × 3 and **zero checkboxes**. Only the SKOAIFP01 bucket emits both, because it holds
+single- and multi-answer questions inside one problem. Every `LMS / Quiz · Option Row` variant now defaults
+to `Type=Radio`; `Checkbox` is switched on only for genuine multi-select. This matters beyond looks — a
+checkbox tells the learner they may pick several, which on a single-answer question is a false affordance
+before they have answered anything.
+
+Note the consequence for two states: `Missed` and `Correctly unselected` exist for multi-select marking and
+have no meaning on a radio. Recorded in the component description.
+
+**2 · `1 point possible (graded)` is edX's `problem-progress` element — and it is empty everywhere.**
+Searching the rendered HTML for `point possible` returns **nothing** in any course tested. The element is
+present and blank. So we had drawn a line the platform is not showing. It is now behind `Show points`,
+defaulting to **false**.
+
+**3 · The line above it is the block's `display_name`, not an instruction.** This is the sharper of the two.
+`<h3 class="problem-header">` carries whatever the author named the block:
+
+| Course | What the header actually says |
+|---|---|
+| SKOAZ204EEP | `Choose the correct option(s)` |
+| SKOADM01EN | `Question 1` … `Question 10` |
+| SKOAIFP01 | `Practice Quiz: Getting Started: AI for Financial Analysis` |
+
+We had copied AZ-204's string onto the component and read it as the platform telling the learner what to do.
+It is authored text, it differs per course, and in two of three courses it is not an instruction at all. The
+frame is still called *Platform prompt* — the name is now wrong, and the description says so rather than
+silently renaming a property that boards depend on.
+
+**This is the third case in the same family**, after `showanswer` and the hint button: a thing that looks
+like platform behaviour turning out to be a course-authoring artefact. Worth a standing check before
+anything else is drawn as "what the platform does".
