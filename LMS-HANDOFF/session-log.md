@@ -1214,3 +1214,49 @@ question and see whether the control appears. That is the next step, and it is s
 ### 4 · Per-problem attempts confirmed
 
 T1 practice `max_attempts` null (unlimited), T1 graded 3, T2 all 2 — matching what the boards now draw.
+
+### Aug 6, 2026 · the experiment — Show answer does render, and Reset appears uninvited
+
+Run on QA `Test-T2` Question 1, an import of SKOADM01EN, on a course whose settings are readable.
+
+| Moment | Buttons in the action row | Attempts |
+|---|---|---|
+| First view, nothing done | `Save` · **`Show answer`** · `Submit` | 0 of 2 |
+| After submitting (correct) | **`Reset`** · `Show answer` · `Submit` | 1 of 2 |
+| Reloaded | `Reset` · `Show answer` · `Submit` | 1 of 2 |
+
+**Show answer is present from the very first render** — before the learner has answered anything, not only
+once the problem is finished. **My earlier claim is therefore wrong twice over**: first I said `showanswer`
+was switched off (the setting is `finished`, the default), and then I assumed the control appears only at the
+end. It appears immediately.
+
+**Reset appears after the first submission despite `show_reset_button: false` at course level.** We had
+documented Reset as *"only when enabled per problem"*. On this course it was not enabled and it rendered
+anyway, once an answer existed and an attempt remained.
+
+### What this means, and what it does not
+
+**It does not mean the dev observation was wrong.** Dev's SKOADM01EN — the course this was imported from —
+renders **no** Show answer button on a finished question. The action row there holds Save and Submit and
+nothing else. Same content, two environments, opposite behaviour.
+
+So the variable is the **environment or the course's own advanced settings**, not the content. We can read
+settings on QA and on neither of the others, so the honest statement is:
+
+- **The control exists and reaches learners** — proven on QA.
+- **It does not render on dev's copy** — proven by the markup.
+- **Why they differ is unresolved**, and needs either Studio on dev/production or someone reading
+  `showanswer` on those courses for us.
+
+### Consequence for the mode A handoff
+
+The `⚠︎ available, not enabled` label put on Show answer and on the hint control must be **narrowed**. For
+Show answer it is now wrong as a blanket statement — on at least one environment it renders unprompted from
+the first view, which is also a *design* problem worth raising: a learner who has not yet tried is offered
+the answer.
+
+For demand hints the label stands: zero `<demandhint>` exists in either course's OLX, so that control is
+genuinely unauthored rather than merely unrendered.
+
+⚠︎ The boards currently draw `Show answer` appearing only once attempts are spent (§12.16). On QA that is not
+what happens. Do not hand over Path 2 as final until the environment difference is explained.
