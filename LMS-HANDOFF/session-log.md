@@ -1123,3 +1123,34 @@ Both look like a single scrolling page. Only one of them behaves the way we have
 **"Stacked" is safe as a statement about layout and false as a statement about submission.** Four courses —
 SKOAIH02, SKOAIH03, SKOADM01EN, SKOAZ204EEP — have known problem counts (58, 51, 10, 48) and unknown
 per-unit distribution. Until that is measured, no summary should say *all*.
+
+### Aug 6, 2026 · measured: every quiz on dev is one unit — but they do not all submit alike
+
+The stacked question, answered with the block tree rather than by inference. Counted `problem` blocks per
+`vertical` (unit) for every quiz the account can reach on dev — 16 quizzes, 62 problems.
+
+| Course | Quizzes | Shape | Submit |
+|---|---|---|---|
+| SKOAZ204EEP | 11 | 1 unit, 2–5 problems each | one **per question** |
+| SKOADM01EN | 1 | 1 unit, 10 problems | one **per question** |
+| SKOAIFP01 | 4 | 1 unit, **1 problem** holding 10 questions | one **for the whole quiz** |
+
+**Two findings, and they must not be collapsed into one sentence.**
+
+**1 · On layout, "stacked" holds — completely.** All 16 quizzes are a single unit. **Not one quiz anywhere is
+authored one-problem-per-unit.** That matters beyond layout: the platform's native question stepper only
+appears when a quiz is split across units, so the control exists in the code and is used by nothing we have.
+It also explains why the vendor could not find it — they were looking for a feature, and what is missing is
+an authoring choice nobody has made. Adopting the stepper is therefore a **content migration**, not a build.
+
+**2 · On submission, "stacked" is false for a quarter of them.** Twelve quizzes give a Submit per question.
+Four — every quiz in SKOAIFP01 — give **one Submit for ten questions**, with pooled attempts and partial
+credit. The two look identical to a learner scrolling the page and behave differently the moment they answer.
+
+**The safe sentence for stakeholders:** *every quiz today is a single scrolling page, and most — but not all —
+make the learner submit question by question.* Anything shorter is wrong in one direction or the other.
+
+**Still unmeasured: production.** SKOAIH02, SKOAIH03 and SKOAIH01 (58, 58 and 51 problems) have known counts
+and unknown per-unit distribution. SKOAIH01 was confirmed stacked by hand on Jul 29; the other two are
+assumed and should not be. QA is authenticated but returns 403 on both test courses — staff access has not
+been granted yet.
