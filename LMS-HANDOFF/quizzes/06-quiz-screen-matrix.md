@@ -692,3 +692,31 @@ after every republish, not before.**
 > ⚠︎ Naming: the variant reads `Mode=With Back+Left`. The control it adds is *Next* — forward, on the right.
 > `With Back+Next` would say what it does. Variant names are read by everyone consuming the library, so this
 > one is worth correcting before the handoff.
+
+### 12.7 One line per hint, not two *(Aug 6, 2026)*
+
+The question was whether `Hint (1 of 3)` and the hint body are two lines — which would mean six text layers
+instead of three. The markup settles it:
+
+```python
+strong_text=HTML("<strong>{hint_number_prefix}</strong>").format(
+    hint_number_prefix=Text(_("Hint ({hint_num} of {hints_count}): ")))
+...
+"{previous_hints}{list_start_tag}{strong_text}{hint_text}</li>"
+```
+
+Prefix and body sit **inline inside the same `<li>`**, the prefix wrapped in `<strong>`. So it is
+**three text layers, each with the prefix bolded as a character range** — not six. Applied: `Hint 1`,
+`Hint 2`, `Hint 3`, Montserrat Regular with characters 0–15 set to SemiBold.
+
+**The `Hints (3)` heading is ours, not the platform's.** `get_demand_hint` wraps the accumulated hints in
+`<ol>{hints}</ol>` and renders nothing above it. Two consequences worth deciding rather than inheriting:
+
+- In **mode A**, whose whole premise is showing exactly what the platform does, the heading is an invention
+  and should come off.
+- If it is kept as shell chrome in mode B, it must count the hints **revealed so far**, not the total —
+  otherwise a learner one hint in reads *"Hints (3)"* above a line that says *"Hint (1 of 3)"*, and the
+  header contradicts the body.
+
+Also renamed `Mode=With Back+Left` → **`Mode=With Back+Next`** on the stepper bar. The control it adds points
+forward; the old name said left.
