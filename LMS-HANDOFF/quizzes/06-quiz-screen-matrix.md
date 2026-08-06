@@ -395,3 +395,34 @@ Aug 6, 2026.
 | 3 | `Gate = Prerequisite` and `Gate = Not released` never appear | open |
 | 4 | `Answer Input` unused — dropdown, numerical, text | open |
 | 6 | Q14 content-hidden-after-due indistinguishable from past due | open, and untested |
+
+### 11.7 Reorganised by mode, and the gates closed *(Aug 6, 2026)*
+
+The single canonical-flows section became **three**, because interleaving the modes inside every band meant a
+reader had to hold two products in their head at once. Now each section is one product, read top to bottom:
+
+| Section | Contains | Cards |
+|---|---|---|
+| `02 · Canonical flows · MODE B — what we propose` | Practice, Graded, Final — proposal paths only | 20 |
+| `03 · Canonical flows · MODE A — how it works today` | the same three types, platform behaviour only | 10 |
+| `04 · Bucket authoring — the third option, live in production` | the bucket, both paths | 4 |
+
+Paths keep their numbering across 02 and 03, so *Path 2* in one is the same journey as *Path 2* in the other
+and the cost of each difference stays readable in a single comparison. The per-band `MODE A` / `MODE B`
+headers are gone — the section title carries it, and repeating it inside every band was noise.
+
+**The bucket is a section, not a band inside either mode.** It cuts across A and B rather than sitting in one:
+it is an authoring decision, and both shells would have to render it. Giving it its own section also puts it
+where a stakeholder will look for it, which is the point of the wall.
+
+**Gap 3 closed.** `Path 5 · locked before it starts` was added to the Graded band with `Gate = Prerequisite`
+and `Gate = Not released`. All five Gate variants are now in use across the page — four in mode A, `Expired`
+in mode B's timed path. The note on that path states what the screens cannot: **the locks belong to neither
+mode**, because they replace the quiz before either shell renders. ⚠︎ We still do not know what the API
+exposes of either unlock rule, so the wording on those two screens is the platform's, not ours.
+
+**Audit after the restructure:** 34 cards total, 0 broken instances, 0 local components, 0 mode-A cards
+showing *Next question*, 0 mode-B cards leaking into section 03.
+
+**Remaining open:** gaps 2 (`Show hint` false everywhere, `Hint 1 of N` unbuilt), 4 (`Answer Input` unused)
+and 6 (Q14 untested). None is mechanical — see §11.6.
