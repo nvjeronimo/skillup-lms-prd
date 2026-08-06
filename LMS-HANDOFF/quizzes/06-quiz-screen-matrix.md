@@ -1054,3 +1054,40 @@ Unstyled text falls into ten buckets. Four have an obvious home:
 (8), 11 SemiBold (4), 22 Bold (4), 34 Bold (2). These cannot be fixed by binding: either the type scale gains
 those steps, or the components move onto sizes the scale already has. Same class of decision as §13.2, and
 the same reason it is surfaced rather than forced.
+
+### 13.4 All 68 LMS components swept *(Aug 6, 2026)*
+
+The remaining 62 components were bound on the same rules. Totals across the whole sweep:
+
+| Bound | Count |
+|---|---|
+| Paddings | **470** |
+| Gaps | **274** |
+| Radii | **255** (213 fixed steps + 42 pill/full) |
+
+`Radius/fixed-full` needed a rule of its own: pill radii were authored as `999`, `9999` and even
+`8999.09`, all meaning the same thing. They now resolve to one token.
+
+**State after the sweep:**
+
+| | Remaining |
+|---|---|
+| Raw fills | **18** — `Answer Input` 9, `Results` 4, `Topic · Author & Updated Date` 3, `Stepper Bar` 2 |
+| Raw strokes | 7 |
+| Unbound padding | 171 |
+| Unbound gap | 46 |
+| Unbound radius | 28 |
+| Text without a style | **283** |
+
+Every remaining number is one of the two decisions in §13.2 and §13.3, not leftover work: the paddings and
+radii are off-scale values with no token to bind to, and the text is mostly sizes the type scale does not
+contain. Nothing was snapped and nothing was invented.
+
+The 18 raw fills are worth a separate look — they are concentrated in four components rather than spread,
+which usually means a handful of decorative shapes (progress bars, dividers) that were drawn rather than
+tokenised.
+
+**What this changes for the handoff.** The quiz components are now consistent with the base library on
+spacing, radius and colour, so a developer reading them gets tokens rather than numbers. The type scale is
+the one place where the library genuinely cannot express what the components use — that is a DS decision to
+take before handoff, not a defect to fix quietly.
