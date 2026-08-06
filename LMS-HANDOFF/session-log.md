@@ -994,3 +994,43 @@ course**: right answers get taught, wrong answers get redirected.
 The four SKOAIFP01 problems returned `4/10`, `6/10`, `6/10` and `3/10` from a single submission each —
 one problem, ten questions, one score, partial credit. Confirms §11 of the spec from the API rather than from
 the screen, and confirms the model is not hypothetical: it is how a live course is authored today.
+
+### Aug 6, 2026 (later) · production tested too — the redirect is one course, and only one
+
+Live was swept **read-only**: `problem_get` reads the block's current state and submits nothing. Nothing was
+answered, reset or graded on production.
+
+**229 problems examined in total** — 62 on dev (by submission, authorised) and 167 on production (by reading).
+
+| Environment | Course | Problems | What was found |
+|---|---|---|---|
+| dev | SKOAZ204EEP | 48 | no feedback on any question |
+| dev | SKOAIFP01 | 4 buckets (10 questions each) | no feedback; scores 4/10, 6/10, 6/10, 3/10 |
+| dev | SKOADM01EN | 10 | feedback on all 7 testable — **wrong answers redirect to a VILT recording** |
+| live | SKOAIH01 · Foundations of AI in Healthcare | 58 | 2 previously answered, both carry authored feedback |
+| live | SKOAIH02 · Machine Learning for Medical Data | 58 | none previously answered |
+| live | SKOAIH03 · AI Technologies in Healthcare | 51 | none previously answered |
+| live | IBM AI0101EN, IBM AI0117EN | 0 | no `problem` blocks returned at all — ⚠︎ worth a separate look |
+
+**The two answered questions on production settle the question.** One was answered correctly and one
+incorrectly, and the incorrect one returned:
+
+> *Incorrect: Ensembles improve accuracy on structured data but do not inherently process unstructured data.*
+
+That is a **real explanation of why the chosen answer is wrong** — exactly what we said learners were not
+getting. SKOAIH01 does the thing properly. So the redirect pattern belongs to SKOADM01EN alone, and the
+sentence drafted for the team message would have been wrong in front of the vendor.
+
+### The limit of read-only, stated plainly
+
+For the other 165 production questions, nothing can be concluded. CAPA emits `<choicehint>` only in the
+response to `problem_check`, so an unanswered question looks identical whether its author wrote rich feedback
+or none at all. Establishing coverage on production needs one of:
+
+1. **Studio or course-export access** — the OLX carries every `<choicehint>` in plain text, read-only. This is
+   the right ask, and it is cheap for whoever already has it.
+2. Permission to submit answers on production — which spends real attempts against real grades, and is not
+   worth it.
+
+**This is now the strongest argument for the Studio ask**: without it we can describe the learner experience
+only for questions someone has already answered, which is precisely the sample least likely to reveal a gap.
