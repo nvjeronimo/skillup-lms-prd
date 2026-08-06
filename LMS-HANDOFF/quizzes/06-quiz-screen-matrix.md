@@ -818,3 +818,32 @@ Properties arrived with the intended defaults: `Show hint action` false, `Show n
 carries the `Hint` button with **no hint on screen** — the state that makes the first press possible — and
 `Asks for a hint` carries the button *and* the revealed hint. Four cards with the button, two with a hint,
 in both modes. Previously only the second state existed, which is what made the missing control invisible.
+
+### 12.12 `Tone=Answer`, and the rule the alert component now follows *(Aug 6, 2026)*
+
+The Show answer box gets its own tone, as the hint did. Rather than invent a look for it, the distinction was
+read off what the component already does — and stating that rule was more useful than the variant itself.
+
+**Two families now live in `LMS / Inline Alert`:**
+
+| Family | Tones | Shape | Border | Meaning |
+|---|---|---|---|---|
+| **Verdict** | Info, Success, Warning, Error | square (radius 0) | coloured by outcome | what happened *after* the learner acted |
+| **Revealed content** | Hint, Answer | rounded (radius 8), tinted fill | see below | material the learner *asked* to see |
+
+Within the revealed family the border carries the meaning:
+
+- **Hint — no border.** Tentative, an aside offered before judgement. Glyph `lightbulb-01`.
+- **Answer — keeps the border.** Final, the resolution. Glyph `key-01`.
+
+Read as one sentence: **rounded means revealed, and the border says whether it settles the question.** That is
+why Answer is not simply "Info with a different icon" — the two are doing different jobs, and a learner who
+has just spent their last attempt should be able to tell at a glance which one they are looking at.
+
+`State=Answer revealed` on the card now points at `Tone=Answer`, titled **Answer**, with the solution text
+below — which is the shape the platform actually delivers: the correct options marked in place, plus the
+authored `<solution>` if one exists (§12.2).
+
+**Also applied:** `Show hint nav` was removed from the alert entirely. The hint control lives in the card's
+Secondary actions beside Show answer and stays there for every press (§12.9), so the in-alert nav had no job
+left. The stakeholder ask for in-component navigation is superseded — worth confirming at the next review.
