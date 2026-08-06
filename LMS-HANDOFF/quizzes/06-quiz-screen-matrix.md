@@ -871,3 +871,21 @@ raw values we were removing. They use `setRangeTextStyleIdAsync`: Semibold on `H
 the body. They read as `MIXED` because two styles apply by range, which is the correct state here, not drift.
 
 **Verified after the pass:** six tones, six bound icon colours, zero raw text.
+
+### 12.14 `Tone=Answer` recoloured — grey block, dark border *(Aug 6, 2026)*
+
+Answer moves off the brand tint onto neutral grey with a strong border:
+
+| | Fill | Border | Glyph |
+|---|---|---|---|
+| Hint | `LMS/Background/bg-brand-primary_alt` | none | `lightbulb-01` · `LMS/Text/text-brand-secondary` |
+| Answer | `LMS/Background/bg-secondary` | `LMS/Border/border-primary` | `key-01` · `Colors/Text/text-secondary (700)` |
+
+Both remain rounded at 8, so they still read as one family — revealed content, not verdicts. What separates
+them now carries meaning rather than just distinguishing them: **the brand tint invites, the grey block
+closes the question.** A hint is an offer the learner can take or leave and go on answering; the answer ends
+the exchange, and neutral grey with a hard edge says that without borrowing the red of a wrong answer or the
+green of a right one — which would both be misleading, since a revealed answer is neither.
+
+The glyph moved to `text-secondary` to sit with the grey rather than against it. Every value is a
+multi-mode alias, so the whole treatment follows light and dark themes without a second variant.
