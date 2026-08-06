@@ -997,3 +997,60 @@ the propagation could not reach.
 can read.
 
 **State:** 0 broken, 0 local, 180 option rows carrying the right control for their question type.
+
+---
+
+## 13. DS token audit of the LMS components *(Aug 6, 2026)*
+
+### 13.1 The LMS components had drifted from the base library
+
+Audited against `Buttons/Button` from the Untitled UI base, which is fully tokenised — 156 bound paddings,
+101 bound gaps, 141 bound radii, zero unbound. The LMS set was not:
+
+| | bound | unbound |
+|---|---|---|
+| `LMS / Quiz · Question Card` | 15 pad · 39 gap · 19 radius | **69 pad · 89 gap · 37 radius** |
+| `LMS / Inline Alert` | 0 · 0 · 1 | **6 pad · 12 gap · 1 radius** |
+
+So this was not a few stragglers — the base library binds spacing and radius everywhere and our LMS layer
+largely did not. **412 bindings applied** across the six quiz components: 215 paddings, 140 gaps, 57 radii,
+all to the semantic layer the rest of the library uses (`Spacing/*`, `Radius/fixed-*`) rather than to the raw
+`Numeric/*` primitives beneath it.
+
+Colour came out clean: **zero raw fills or strokes** in Question Card, Option Row, Inline Alert and Entry
+Header. The two in Stepper Bar and eight in Results are noted below.
+
+### 13.2 ⚠︎ 232 values that are not on the scale at all
+
+These could not be bound because **no token has their value**:
+
+| Value | Occurrences |
+|---|---|
+| 14px padding | 128 |
+| 10px padding | 72 |
+| 28px padding | 8 |
+| 22px padding | 4 |
+| 10px gap | 12 |
+| 18px gap | 4 |
+| 3px gap | 4 |
+
+The scale runs 0 · 2 · 4 · 6 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48… — 14, 10, 28, 22, 18 and 3 are simply
+off it. Binding them means **snapping to a neighbouring token and moving pixels**, which is a design decision
+and not a cleanup, so they are left as they are and listed here. 14 → 16 and 10 → 8 would cover 200 of the
+232 on their own.
+
+### 13.3 Text styles — the gap is partly missing styles, not missing bindings
+
+Unstyled text falls into ten buckets. Four have an obvious home:
+
+| Size / weight | Count | Style |
+|---|---|---|
+| 16 Medium | 9 | `Body/Default/Medium` |
+| 14 Regular | 11 | `Body/Small/Regular` |
+| 12 Medium | 4 | `Caption/Medium` |
+| 20 Bold | 4 | `Heading/H6/Bold` |
+
+**Six buckets have no matching style in the library at all** — 11 Medium (18), 15 SemiBold (13), 13 Medium
+(8), 11 SemiBold (4), 22 Bold (4), 34 Bold (2). These cannot be fixed by binding: either the type scale gains
+those steps, or the components move onto sizes the scale already has. Same class of decision as §13.2, and
+the same reason it is surfaced rather than forced.
