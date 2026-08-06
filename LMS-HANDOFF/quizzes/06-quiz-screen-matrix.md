@@ -976,3 +976,24 @@ silently renaming a property that boards depend on.
 **This is the third case in the same family**, after `showanswer` and the hint button: a thing that looks
 like platform behaviour turning out to be a course-authoring artefact. Worth a standing check before
 anything else is drawn as "what the platform does".
+
+### 12.18 Applied to the boards — the control now matches the question *(Aug 6, 2026)*
+
+| | Radio | Checkbox |
+|---|---|---|
+| Single-answer paths | **168** | 0 |
+| Multi-select paths | 0 | **12** |
+
+A clean split, and it took three passes to get there rather than one. Changing the default in the main
+component moved 169 rows, but it moved them **all** — including the two multi-select paths, which then had to
+be put back. And eleven rows in single-answer paths stayed on checkbox because they carried instance
+overrides from when the boards were built.
+
+Both directions of the same trap, in one operation: **a default change propagates to instances that never
+disagreed with it, and skips the ones that did.** The rows that most needed correcting were exactly the ones
+the propagation could not reach.
+
+`Show points` is off on every card, matching a platform that renders that element empty in every course we
+can read.
+
+**State:** 0 broken, 0 local, 180 option rows carrying the right control for their question type.
