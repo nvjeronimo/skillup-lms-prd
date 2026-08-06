@@ -551,3 +551,56 @@ action whose button was switched off, in both modes. Fixed.
 
 The lesson for the audits: every check so far has asked *is the right component in the right state?* Neither
 of these failed that test. A board can be structurally perfect and still tell a learner something untrue.
+
+---
+
+## 12. Stakeholder review, Aug 6, 2026 — decisions, and one answer that changes a screen
+
+### 12.1 What was decided
+
+| Decision | Applied |
+|---|---|
+| Feedback alerts always name the state — **Success**, **Incorrect** — with the explanation below, shown only if authored | DS: alert title and tone set per card variant |
+| Hints get a distinct alert: **no top border, lightbulb glyph, pagination inside the component** | DS: new `Tone=Hint` on `LMS / Inline Alert` + `Show hint nav` |
+| **Next question comes off the card**; forward navigation moves to the bar that already holds Back | DS: `Show next action` now defaults **false**; `Next` added to `LMS / Quiz · Stepper Bar` |
+| Mode B nuance: once the answer is correct, the primary button **relabels from Submit to Next question** | recorded on the card description; not drawn — mode B is on hold |
+| **Mode B on standby** pending the edX dev team's discovery | — |
+| **Focus: mode A handoff** | — |
+
+The hint moving inside its own alert is worth stating as a principle rather than a style: a hint is an aside
+offered *before* judgement, and every other alert on the card is a verdict *after* it. Same component, and
+the border is what separated them.
+
+### 12.2 The Show answer question, answered from the platform
+
+*"What does Show answer actually show — the hint, or a separate box with the answer? Is a hint the same field
+as an answer?"*
+
+**They are three different fields**, and conflating them would have produced a wrong screen:
+
+| Field | Control | What the learner gets |
+|---|---|---|
+| `<choicehint>` | none — appears on submit | *"Correct: …"* / *"Incorrect: …"* beside the answer given |
+| `<demandhint>` | **Hint** button, paginated `Hint 1 of N` | a nudge, requested before or between attempts |
+| `showanswer` + `<solution>` | **Show Answer** button | the correct option(s) marked in place, **plus** the author's written solution if one exists |
+
+So Show answer is not the hint and not the per-choice feedback. It reveals the answer itself, and the
+`<solution>` block is a separate authored field that may simply be empty.
+
+### 12.3 ⚠︎ The finding that affects the mode A handoff
+
+Buttons were read off four live problems on dev. **Not one exposes a Show Answer button, and not one exposes
+a Hint button.** The only controls present are `Save`, `Submit` and the accessibility `Review` links.
+
+- `SKOADM01EN` Q1 is *finished* — 2 of 2 attempts spent, Submit disabled — and still offers no Show Answer.
+  With the platform default of `showanswer: finished` the button would be there. It is not, so **`showanswer`
+  is switched off in these courses.**
+- **No `<demandhint>` is authored anywhere in dev**, so `Hint 1 of N` describes a control no learner has met.
+- The only `<solution>` container found sits in the SKOAIFP01 graded bucket, and it is **empty in the payload**
+  — edX fills it only when Show Answer is pressed, and there is no button to press.
+
+**Consequence for the handoff:** mode A currently draws a *Show answer* CTA and a hint alert. Both are real
+platform features and both are **off in every course we can read**. They must be handed over labelled as
+*available, not enabled* — otherwise the build implements two controls the learner will never see, and the
+first question in review will be why the screens do not match the product. `showanswer` is already one of the
+five settings in the vendor ask; this is the evidence for why it matters.
