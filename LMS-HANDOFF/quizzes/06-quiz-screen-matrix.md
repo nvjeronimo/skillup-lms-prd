@@ -720,3 +720,32 @@ Prefix and body sit **inline inside the same `<li>`**, the prefix wrapped in `<s
 
 Also renamed `Mode=With Back+Left` → **`Mode=With Back+Next`** on the stepper bar. The control it adds points
 forward; the old name said left.
+
+### 12.8 Validation after the hint rework *(Aug 6, 2026)*
+
+| Check | Result |
+|---|---|
+| Broken instances · local components | 0 · 0 |
+| Cards offering *Next question* | 0 |
+| Stepper bars | 23, all `Mode=With Back only` |
+| Hint alerts | 2, both `Tone=Hint`, one hint revealed + `Next hint` |
+| Alert titles | Success 11 · Incorrect 7 · Answer 5 · Partially correct 6 |
+
+The `Hints (N)` heading is gone and hints 2 and 3 start hidden, so the default state shows one hint with the
+forward control still live — which is the state a learner is actually in most of the time. Correct call.
+
+**Two fixes on top of it.**
+
+Hints 2 and 3 were hidden by **layer visibility with no property behind them**. That reads identically on the
+canvas and behaves differently: a hidden layer with no binding cannot be toggled from the properties panel,
+so the accumulating state — the whole reason this component is a list and not a carousel — could only be
+demonstrated by digging into the layer tree. They are now bound to `Show hint 2` and `Show hint 3`, both
+defaulting to false. Nothing changes visually; the states become reachable.
+
+The two hint alerts on the boards still read **`Hint 1 of 3`** — the old wording, held in an instance
+override that the republish could not touch (§12.4 again). Both now carry the platform's
+`Hint (1 of 3): …` with the prefix bolded as a range.
+
+That is the third time an override has survived a component fix. The pattern is stable enough to state as a
+rule: **after changing text in a main component, sweep the instances for the old string.** The library will
+not do it, and the canvas gives no sign that anything is stale.
