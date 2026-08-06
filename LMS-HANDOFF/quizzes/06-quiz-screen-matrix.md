@@ -502,3 +502,22 @@ placed in both modes.
 | 4 · `Answer Input` unused | closed — new `ANSWER TYPES` band in both modes |
 | 5 · `Grade Summary` unused | closed — §11.6 |
 | 6 · Q14 content hidden after due | **open — blocked on a setting we cannot flip** |
+
+### 11.10 Mode B cross-checked variant by variant *(Aug 6, 2026)*
+
+Every DS variant was crossed against its use in each section, rather than checking that each *component* was
+used. That distinction found something a component-level check could not:
+
+**Mode B never showed an unanswered question.** `State=Unanswered` stood at A:4, B:0 — mode B opened on an
+entry screen and cut straight to a question with an answer already selected. The single most-seen screen in
+the whole proposal, the first thing a learner meets after pressing start, was not drawn anywhere. Fixed:
+`Sees the first question` now opens Path 1 of both Practice and Graded in mode B.
+
+Everything else has parity. All 9 card states, all 5 gates, all 4 results, all 3 timer states and all 7
+option-row states appear in both modes, at comparable counts. The mode-only components behave as they should:
+`Entry Header` A:0 B:5, `Results` A:0 B:10, `Stepper Bar` A:0 B:21 — those three zeros in mode A are the
+proposal, stated as absence.
+
+**Knowingly partial:** `Answer Input` shows 3 of its 9 variants — one state per input type, chosen to spread
+across Unanswered, Incorrect and Correct rather than repeat one state three times. Drawing all nine would add
+six screens that differ only in a control we have already shown. Noted here so the gap is a choice.
