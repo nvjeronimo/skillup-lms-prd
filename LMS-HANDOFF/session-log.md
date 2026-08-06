@@ -1069,3 +1069,57 @@ or none at all. Establishing coverage on production needs one of:
 
 **This is now the strongest argument for the Studio ask**: without it we can describe the learner experience
 only for questions someone has already answered, which is precisely the sample least likely to reveal a gap.
+
+### Aug 6, 2026 (later still) · Studio access granted in principle, and two test courses on QA
+
+Simran asked Samyuktha for Studio access for Nelson; Samyuktha agreed and asked for course ids. Jaspinder's
+constraint is the right one and should be honoured: **"use test course… take import from a course which has
+content… avoid touching courses which are created for prod."** Two test courses were then created on the QA
+server:
+
+| Course | Studio URL |
+|---|---|
+| Test - AI-Powered Financial Analysis | `qa-apps.skillup.online/authoring/course/course-v1:SkillUp+Test-T1+2026` |
+| Test - Digital Marketing Fundamentals and the AI Mindset | `qa-apps.skillup.online/authoring/course/course-v1:SkillUp+Test-T2+2026` |
+
+They are imports of the two courses that matter most to the open questions: **T1 is the bucket course**
+(SKOAIFP01, one problem per quiz holding ten questions) and **T2 is the only course we have found that
+authors wrong-answer feedback as a redirect** (SKOADM01EN). Between them they cover both live findings.
+
+**Environments now in play — three, each with its own session:**
+
+| | Learner (LMS) | Authoring (Studio) |
+|---|---|---|
+| dev | `devcourses.skillup.online` | `studio-dev.skillup.online` |
+| QA | `qacourses.skillup.online` | `qa-apps.skillup.online/authoring` |
+| production | `courses.skillup.online` | `studio.skillup.online` |
+
+#### What Studio settles that the learner APIs cannot
+
+1. **Feedback coverage, read-only and complete.** The OLX carries every `<choicehint>` in plain text. This is
+   the only way to answer *"do the other 165 production questions have feedback?"* without answering them.
+   The LMS emits choicehints solely in the `problem_check` response — an unanswered question looks identical
+   whether its author wrote rich feedback or none.
+2. **The five settings, without asking anyone to flip them.** `showanswer`, `show_reset_button`,
+   `force_save_button`, `max_attempts` and `show_correctness` are all visible in Studio, per problem and
+   inherited at subsection level. On a test course they can also be *changed* and then read back in the LMS,
+   which turns four open questions into observations.
+3. **Q14 — the last open screen gap.** *Hide content after due date* is a subsection setting. With Studio on a
+   test course we can finally see whether the platform renders a distinct shell or reuses the past-due one,
+   which is the one thing blocking §11.9 gap 6.
+4. **The stacked question, definitively.** Studio shows the unit structure directly, so problems-per-unit
+   stops being an inference from the blocks API.
+
+#### The claim we must not make until it is measured
+
+Whether **every** quiz a learner can reach is authored as one scrolling page is still unproven. Two shapes
+are already confirmed and they behave differently, which is the point:
+
+- **SKOAIH01** — N `problem` blocks in one unit. One Submit *per question*. This is mode A as drawn.
+- **SKOAIFP01** — one `problem` block per quiz holding ten questions. One Submit *for the whole quiz*, pooled
+  attempts, partial credit.
+
+Both look like a single scrolling page. Only one of them behaves the way we have been describing mode A.
+**"Stacked" is safe as a statement about layout and false as a statement about submission.** Four courses —
+SKOAIH02, SKOAIH03, SKOADM01EN, SKOAZ204EEP — have known problem counts (58, 51, 10, 48) and unknown
+per-unit distribution. Until that is measured, no summary should say *all*.
