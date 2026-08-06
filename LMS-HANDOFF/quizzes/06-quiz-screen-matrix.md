@@ -749,3 +749,52 @@ override that the republish could not touch (§12.4 again). Both now carry the p
 That is the third time an override has survived a component fix. The pattern is stable enough to state as a
 rule: **after changing text in a main component, sweep the instances for the old string.** The library will
 not do it, and the canvas gives no sign that anything is stale.
+
+### 12.9 The first hint needs its own control — and it belongs beside Show answer *(Aug 6, 2026)*
+
+**"Asks for a hint" is correct.** On first render `hint_index` is `None`, so `_should_enable_demand_hint`
+returns the button enabled **with no hint text on screen**. Nothing appears unprompted; the learner presses
+for the first hint exactly as they press for the second. The step name stands.
+
+**But before that press there is no hint alert to hold the control.** The alert is created *by* the first
+hint. So a control that lives only inside the alert can never be pressed the first time — the state we had
+drawn was the second press onward, and the first press had nowhere to happen.
+
+**Placement: Secondary actions, beside `Show answer`.** Nelson's read — *"a similar situation to Show answer"* —
+matches both the platform and the component logic:
+
+| | Show answer | Hint |
+|---|---|---|
+| Where | Secondary actions | Secondary actions |
+| What it does | reveals content into an alert above the footer | same |
+| Repetition | fires once, terminal | pressed repeatedly, `Hint (N of M)` |
+| End state | gone | **disabled, not hidden** |
+
+They are siblings and should not behave differently. Implemented as `Show hint action` on
+`LMS / Quiz · Question Card` — a `Hint` button in the same row, on Unanswered, Selected, Incorrect,
+Last attempt and Saved.
+
+**⚠︎ This revisits a stakeholder decision.** The Aug 6 review asked for *"a navegação de Hints dentro do
+componente"*. The platform does the opposite: the hint list renders as an `<ol>` and the button stays in the
+action row for every press. Keeping the nav inside the alert would mean the control moves location between
+the first press and the second, and that two sibling controls behave differently. **`Show hint nav` is
+therefore now default `false`** — the variant is kept for mode B if the shell still wants it, but the footer
+button is the mechanism. Worth confirming at the next review rather than assuming the change is accepted.
+
+**What happens after hint 1:** the alert appears above the footer with hint 1; the footer button stays put
+and each press appends the next hint below the previous (§12.5); after the last one the button goes disabled
+and the full list remains on screen.
+
+### 12.10 Open question added to the Studio list
+
+**What does the hint button say before the first press?** Our component says `Next hint`, which is right from
+the second press on — but on the first there is nothing to be "next" to, and the platform most likely writes
+just `Hint`. The string lives in the Mako template `problem.html` that `capa_block.py` renders via
+`render_to_string`, and **that file is not in the public `edx-platform` tree** — four candidate paths return
+404 and the GitHub code search API requires authentication. It is not verifiable from source alone.
+
+**It is trivial to settle in Studio:** author one `<demandhint>` on a QA test course and read the button
+before clicking it. Added to what Studio unblocks, alongside the feedback coverage of the 165 production
+questions, the five settings, and the `Hide content after due date` shell for gap 6.
+
+Until then the label is **⚠︎ unverified**, and the pre-hint state should not be handed over as final.
