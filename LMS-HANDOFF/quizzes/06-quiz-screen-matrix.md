@@ -342,3 +342,23 @@ broken snapshot.
 The fix is to make the master *dirty* so publish cannot skip it (editing the component set's description is
 enough), then republish. Worth remembering: a component that is visibly correct in the DS can still be broken
 everywhere it is used, and the DS file will never tell you.
+
+### 11.5 Closing gap 1 — the card can now be drawn in bucket form *(Aug 6, 2026)*
+
+Drawing the bucket journey was blocked by the component, not by the layout. `LMS / Quiz · Question Card`
+carried its Submit button and its attempt line inside a `Primary action` frame with no visibility property,
+so every question in a stack would show its own Submit — the exact opposite of what the bucket does.
+
+`Show submit` (boolean, default **true**) now exists on the card and is bound across all nine variants. Turn
+it off on every question but the last and the stack reads correctly: one Submit, one pooled attempt count,
+one score for the whole quiz. Leave it on for one-problem-per-question authoring, where each question really
+does submit independently.
+
+This is the first card property that describes the **authoring model** rather than the learner's state, which
+is why it is worth naming: `Show progress`, `Show hint` and the rest are per-question decisions, and this one
+is not — it must be set consistently across a whole quiz or the screen becomes a lie.
+
+> ⚠︎ Consuming files must accept the pending library update before this property, and the `Exam Timer` fix in
+> §11.4, become available. Until they do, `importComponentByKeyAsync` against the DS times out entirely —
+> which is itself the symptom to recognise: imports hanging usually means an unaccepted library update, not a
+> broken component.
