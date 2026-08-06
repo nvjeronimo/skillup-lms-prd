@@ -467,3 +467,38 @@ renders, so they belong to neither mode — the note on that path says so.
 
 **Audit:** 49 cards, 0 broken instances, 0 local components, 0 cards rendered in the wrong mode, 0 mode-A
 cards offering *Next question*.
+
+### 11.9 The open gaps closed — and one of them was never a gap *(Aug 6, 2026)*
+
+**Gap 2 — hints. Half of it was wrong on my part.** §6 line 17 of this document says *"we built a single
+hint; the platform paginates them"*. The component was checked rather than assumed: the hint alert inside
+`LMS / Quiz · Question Card` already reads **"Hint 1 of 3"**. The pagination was built; only the usage was
+missing. `Show hint` is now on in `Practice · Path 2 · wrong, then right` in **both** modes, placed where the
+documented flow in §7 always said it belonged — submit → feedback → **hint** → retry. Line 17 above is
+therefore stale and should be read as closed.
+
+**Gap 4 — the other answer types.** `LMS / Quiz · Answer Input` was likewise complete: nine variants,
+Dropdown / Numerical / Text × Unanswered / Correct / Incorrect. It had simply never been placed. Both
+sections now carry an **`ANSWER TYPES`** band rather than another path, because an input type is a property
+of a question and not a journey — folding it into the path numbering would have implied a route through the
+quiz that does not exist. Mode A frames it as what the platform already renders; mode B as the same types
+inside our shell, where only the control changes.
+
+**Gap 6 — content hidden after due (Q14) stays open, and cannot be closed by us.** It needs the subsection
+setting *Hide content after due date* flipped on a course, which is exactly the kind of change neither we nor
+the content team can make. It is already on the list of five settings in the vendor ask. Until someone
+renders it, we do not know whether the platform shows a distinct shell or reuses the past-due one, and
+guessing on the wall would be worse than the blank.
+
+**Final audit of the page:** 51 question cards, 5 bands per section, 0 broken instances, 0 local components,
+0 cards rendered in the wrong mode, 0 mode-A cards offering *Next question*, all three answer-input types
+placed in both modes.
+
+| Gap | State |
+|---|---|
+| 1 · bucket has no journey | closed — §11.6, and now inside mode A |
+| 2 · hints unused; `Hint 1 of N` "unbuilt" | closed — it was built; now used in both modes |
+| 3 · Prerequisite / Not released gates | closed — §11.7 |
+| 4 · `Answer Input` unused | closed — new `ANSWER TYPES` band in both modes |
+| 5 · `Grade Summary` unused | closed — §11.6 |
+| 6 · Q14 content hidden after due | **open — blocked on a setting we cannot flip** |
