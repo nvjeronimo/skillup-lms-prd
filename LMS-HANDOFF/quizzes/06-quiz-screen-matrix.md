@@ -267,3 +267,64 @@ Confirmed against the Studio picker (`ProblemTypeKeys`). Five simple types, all 
 | Text input | text | ❌ | case-sensitivity and regex modes |
 
 Beyond the picker, "Advanced" opens the OLX editor — **Drag and Drop** and **Staff Graded Points** are registered there. Neither is in scope, but both can appear in a course, so the shell needs a graceful unknown-type fallback rather than a blank frame.
+
+---
+
+## 11. Coverage of the canonical-flows board — what the journeys actually show *(Aug 6, 2026)*
+
+The Figma page **`↳ Phase 1 - Quizzes - Ready for Review`** holds one section, `02 · Canonical flows`,
+whose brief is *every possible combination from start to end*, in both modes. This section audits that
+board against the inventory above, so the gap is a decision and not an oversight.
+
+**Measured on the board:** 30 question cards (10 mode A, 20 mode B), 4 entry headers (Practice, Graded,
+Final, Timed exam), 9 results screens, 4 gates, 3 timer states, 90 option rows.
+
+### 11.1 Covered
+
+| Documented | Where it appears |
+|---|---|
+| Q1 Unanswered, Q2 Selected, Q4 Correct, Q5 Incorrect + attempts remain, Q6 Last attempt | all three journeys |
+| Q3 Saved draft | ×2, both modes, with the saved-scores-zero prompt |
+| Q7 Partially correct | ×2 |
+| Q9 Answer revealed | ×3, plus a **Show answer** control on 6 cards |
+| Q11 Blocked by time between attempts | `Gate = Rate limited` |
+| Q12 Correctness withheld | ×1 card + `Results = Withheld` |
+| Q13 Closed — past due | `Gate = Past due` ×2 |
+| S4/S7/S8 scored, passed, not passed | `Results = Passed` ×3, `Not passed` ×3 |
+| S5 awaiting staff grading | `Results = Pending` ×2 |
+| S13/S14/S15 timed entry, running, expired | Timed entry header + `Running` / `Warning` / `Critical` + `Gate = Expired` |
+
+All four `Results` variants and three of five `Gate` variants are exercised.
+
+### 11.2 Not covered — and why it matters
+
+1. **The bucket authoring model has no journey at all.** §11 of the spec records it as *live in production
+   today* on SKOAIFP01: one problem holding ten questions, one Submit, three pooled attempts, partial
+   credit reported as `4/10`. It is the only model that already delivers a quiz-level Submit without a
+   build, and it is the third option a stakeholder will ask about. A board claiming every combination
+   cannot omit the one that is running in production.
+2. **Q8 Hint is on zero of the thirty cards.** `Show hint` is false everywhere. The documented Practice
+   flow in §7 reads *submit → feedback → hint on wrong → retry freely* — the hint step is named in our own
+   flow and missing from our own drawing of it. Screen #17 (`Hint 1 of N`) is also unbuilt: we drew a
+   single hint, the platform paginates them.
+3. **`Gate = Prerequisite` and `Gate = Not released` never appear** (S10, S11; screens #5 and #6). Both
+   variants exist in the DS and are token-correct. These are the states where learners get stuck and
+   support tickets start — §6 says exactly that.
+4. **`LMS / Quiz · Answer Input` is used zero times.** Dropdown, numerical and text answers (F-QZ-004/005/006,
+   screens #23–25) appear in no journey; every card on the board is an option-row question. The component
+   exists; nothing shows what a quiz made of them looks like.
+5. **`LMS / Quiz · Grade Summary` is used zero times.** Every mode-A lane ends by stating the score lives on
+   the Progress tab, and then never shows it. The one screen that closes mode A's loop is absent.
+6. **Q14 content hidden after due** has no representation distinct from `Past due`. Possibly correct — the
+   platform may render the same shell — but it is untested, so it should not be assumed.
+
+### 11.3 Verified clean
+
+- No detached nodes, no local components, no broken instances on the page.
+- `Next question` appears only in mode B, where a stepper exists to advance to. Mode A has no forward
+  control, which is the platform's actual behaviour.
+- `Show answer` never appears on an untouched question, and `Reset` never appears on a correct one.
+
+> ⚠︎ `LMS / Quiz · Exam Timer` reads as *"component set has existing errors"* from consuming files while
+> its master in the DS is clean (3 variants, one `State` property). The published snapshot is stale —
+> republish the library to clear it.
