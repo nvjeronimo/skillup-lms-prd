@@ -604,3 +604,20 @@ platform features and both are **off in every course we can read**. They must be
 *available, not enabled* — otherwise the build implements two controls the learner will never see, and the
 first question in review will be why the screens do not match the product. `showanswer` is already one of the
 five settings in the vendor ask; this is the evidence for why it matters.
+
+### 12.4 Applying the decisions to the boards — two traps, one recurring *(Aug 6, 2026)*
+
+**Text overrides do not follow the main component.** Renaming the alert title in the DS changed nothing on the
+wall: 21 instances still read *"Explanation"*, because each carried an override made when the boards were
+built. A library update never overwrites an override — that is the whole point of overrides — so the titles
+had to be set instance by instance, keyed off each card's `State`. Worth remembering the asymmetry: *structure*
+propagates from the library, *content* does not.
+
+**A pending library update looks like a broken plugin.** `importComponentSetByKey` timing out, `Tone=Hint`
+missing from the options list, and the new `Next` absent from all 23 stepper bars are one symptom, not three.
+The consuming file has to accept the update in its Libraries panel first — noted again here because it has now
+cost time twice, and the failure mode gives no hint of its cause.
+
+**State after this pass:** 0 broken instances, 0 local components, 0 cards offering *Next question*, 21 alert
+titles corrected. Outstanding until the ICP file accepts the update: hint alerts still render `Tone=Info`
+rather than the borderless lightbulb variant, and the stepper bars still show only `Back`.
