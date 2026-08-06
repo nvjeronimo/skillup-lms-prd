@@ -325,6 +325,20 @@ All four `Results` variants and three of five `Gate` variants are exercised.
   control, which is the platform's actual behaviour.
 - `Show answer` never appears on an untouched question, and `Reset` never appears on a correct one.
 
-> ⚠︎ `LMS / Quiz · Exam Timer` reads as *"component set has existing errors"* from consuming files while
-> its master in the DS is clean (3 variants, one `State` property). The published snapshot is stale —
-> republish the library to clear it.
+### 11.4 A publish trap worth knowing — `Exam Timer` *(Aug 6, 2026)*
+
+`LMS / Quiz · Exam Timer` read as *"component set has existing errors"* from every consuming file, while its
+master in the DS was clean: three variants, one `State` property, no duplicates.
+
+Importing the set by key from the consuming side showed why. The **published** snapshot had five children —
+`Running, Warning, Warning, Critical, Critical` — duplicate variant names left over from an earlier state of
+the set. Duplicates are exactly the condition Figma reports as "existing errors".
+
+**Republishing does not fix this on its own.** Figma publishes only what it considers changed, and the master
+had not changed since the bad publish, so every republish skipped it and the broken snapshot survived.
+Replacing the instances does not help either — instances created fresh from the library inherit the same
+broken snapshot.
+
+The fix is to make the master *dirty* so publish cannot skip it (editing the component set's description is
+enough), then republish. Worth remembering: a component that is visibly correct in the DS can still be broken
+everywhere it is used, and the DS file will never tell you.
