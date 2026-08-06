@@ -889,3 +889,30 @@ green of a right one — which would both be misleading, since a revealed answer
 
 The glyph moved to `text-secondary` to sit with the grey rather than against it. Every value is a
 multi-mode alias, so the whole treatment follows light and dark themes without a second variant.
+
+### 12.15 `REVEAL CONTROLS` — the hint sequence drawn press by press *(Aug 6, 2026)*
+
+A new band in mode A, because neither control is guessable from a single screen. Path 1 draws the hint
+sequence in four states:
+
+| Step | Card | Alert |
+|---|---|---|
+| Wrong — hints exist, none asked | `Hint` button live | **none** |
+| Presses Hint — the first appears | button live | hint 1 |
+| Presses again — the second is added | button live | hints 1 **and** 2 |
+| Presses again — the last, control now spent | button **disabled, still in place** | hints 1, 2 and 3 |
+
+The first and last states are the ones that were missing everywhere else. Without the first, the press that
+starts the sequence has no screen to happen on. Without the last, nothing shows what the end of the sequence
+looks like — and the end is not an empty box or a vanished button, it is a full list with a dead control
+beside it.
+
+The note on the band says the part the screens cannot: hints accumulate because the platform re-renders the
+whole list on every press, and the button goes disabled rather than disappearing, so the learner can see
+there is nothing left to ask for instead of watching a control vanish from under the cursor.
+
+**Path 2, the Show answer sequence, is not built yet** — it needs `Tone=Answer`, which is in the DS but has
+not reached the ICP file. Drawing it against `Tone=Info` would put the wrong container on the wall, so it
+waits.
+
+**State:** 0 broken, 0 local, 8 cards with the `Hint` button, 5 with a hint revealed.
