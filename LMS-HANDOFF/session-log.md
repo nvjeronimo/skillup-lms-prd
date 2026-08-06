@@ -1154,3 +1154,63 @@ make the learner submit question by question.* Anything shorter is wrong in one 
 and unknown per-unit distribution. SKOAIH01 was confirmed stacked by hand on Jul 29; the other two are
 assumed and should not be. QA is authenticated but returns 403 on both test courses — staff access has not
 been granted yet.
+
+---
+
+## Aug 6, 2026 · inside Studio at last — the OLX answers three of the four questions
+
+The QA SSO was failing on a malformed redirect, not on permissions: the login page appended `?next=…` to an
+already-complete OAuth URL with a `?` instead of `&`, producing
+**`Error: invalid_request — Duplicate response_type parameter`**. Once a live LMS session existed the second
+attempt built a clean URL and Studio opened. Worth recording: the failure looked like "no access" for hours
+and was a query-string bug.
+
+Both test courses are readable: **T1 = 4 bucket problems (10 questions each), T2 = 10 problems in one unit** —
+the same shapes as the originals they were imported from.
+
+### 1 · Feedback coverage, answered from the source rather than by answering questions
+
+| Course | Problems | `<choicehint>` | `<demandhint>` | `<solution>` |
+|---|---|---|---|---|
+| T1 · AI-Powered Financial Analysis | 4 × 10 questions | **0** | **0** | 1 |
+| T2 · Digital Marketing | 10 × 1 question | **4 per question** | **0** | 0 |
+
+**T1 has no authored feedback of any kind across all forty questions.** T2 has four choicehints per question —
+one per option — which is the redirect wording we already documented. This is the read-only answer we could
+not get from the LMS, and it holds for the whole course rather than for the questions someone happened to
+answer.
+
+### 2 · No demand hints exist anywhere
+
+Zero `<demandhint>` in either course. The `Hint (N of M)` control has never been authored on anything we can
+reach, which settles why no Hint button appears in any rendered problem.
+
+### 3 · ⚠︎ Correction — `showanswer` is NOT switched off
+
+Earlier today I recorded that *"`showanswer` is switched off in these courses"*, inferring it from the absence
+of a Show Answer button on a finished problem. The course-level advanced settings say otherwise:
+
+| Setting | T1 | T2 |
+|---|---|---|
+| `showanswer` | **`finished`** | **`finished`** |
+| `show_reset_button` | false | false |
+| `show_correctness` | always | always |
+| `rerandomize` | never | never |
+| `max_attempts` (course) | null | null |
+
+`finished` is the platform default and *should* expose the control once a problem is finished. So the earlier
+statement was an inference presented as a finding, and it was wrong — **corrected here rather than left
+standing**.
+
+**What is still true:** no Show Answer button renders on dev's SKOADM01EN Q1, a problem that is finished —
+answered correctly, 2 of 2 attempts spent. The action row contains a Save button and Submit and nothing else;
+the only "show answer" string in the markup is screen-reader help text describing options generally.
+
+**What is now unknown:** whether the dev/production originals carry a different course-level `showanswer` than
+these QA copies. Advanced settings are per course, imports do not necessarily preserve them, and we have no
+Studio on dev or production. **The clean experiment is on QA**, where the setting is readable: finish a T2
+question and see whether the control appears. That is the next step, and it is safe — T2 is a test course.
+
+### 4 · Per-problem attempts confirmed
+
+T1 practice `max_attempts` null (unlimited), T1 graded 3, T2 all 2 — matching what the boards now draw.
