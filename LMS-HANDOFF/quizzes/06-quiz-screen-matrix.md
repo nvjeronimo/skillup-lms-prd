@@ -916,3 +916,24 @@ not reached the ICP file. Drawing it against `Tone=Info` would put the wrong con
 waits.
 
 **State:** 0 broken, 0 local, 8 cards with the `Hint` button, 5 with a hint revealed.
+
+### 12.16 Path 2 — Show answer, and the ending that contrasts with hints *(Aug 6, 2026)*
+
+| Step | Card | Alert |
+|---|---|---|
+| Attempts spent — the answer can be asked for | `Show answer` live, attempts read `2 of 2` | **none** |
+| Presses Show answer — it appears | control **gone** | `Tone=Answer`, solution below |
+| The question is closed | no controls, Submit removed | answer stays |
+
+**The two paths in this band exist to be read against each other**, and the ending is where they diverge:
+
+- **Hint** ends with the control **disabled and still in place** — the sequence has more states behind it, and the learner needs to see that there are none left.
+- **Show answer** ends with the control **gone** — it has no second state to serve. Leaving a dead button there would imply something further to ask for.
+
+Same row, same job, opposite endings. That is not a styling choice; it follows from one being repeatable and the other terminal.
+
+**What the box does and does not contain.** `problem_show` returns the correct choice ids, and the platform marks them **on the options themselves**. The alert carries the written `<solution>` — and only when an author wrote one, which on our courses is usually not the case (§12.2). Putting the answer text inside the box would draw something the platform does not do.
+
+> ⚠︎ **This route reaches no learner today.** `showanswer` is off in every course we can read, so the whole path is available on the platform and unreachable in the product. It goes into the handoff as **available, not enabled**, alongside the unverified hint-button label.
+
+**State after the pass:** 0 broken, 0 local, alert tones in use across both sections — Answer 5, Hint 5, Success 6, Warning 14, Error 8, Info 2.
