@@ -426,3 +426,44 @@ showing *Next question*, 0 mode-B cards leaking into section 03.
 
 **Remaining open:** gaps 2 (`Show hint` false everywhere, `Hint 1 of N` unbuilt), 4 (`Answer Input` unused)
 and 6 (Q14 untested). None is mechanical — see §11.6.
+
+### 11.8 Both modes made whole, and mode A put first *(Aug 6, 2026)*
+
+Splitting by mode exposed something the interleaved layout had hidden: **mode A was never a complete
+journey.** It had ten cards to mode B's twenty, and what was missing was not decoration — mode A had no
+right-first-time path on a graded quiz, no show-answer route, no multi-select, no timed exam and no
+withheld score. We had been comparing a full proposal against a partial description of today, which flatters
+the proposal for the wrong reason.
+
+Both sections now carry the whole journey, and **mode A leads**, because the honest reading order is what
+exists before what is proposed.
+
+| | 02 · MODE A | 03 · MODE B |
+|---|---|---|
+| Question cards | 25 | 24 |
+| Entry headers | **0** — the platform has none | 5 |
+| Results screens | **0** — the platform has none | 10, all four variants |
+| Gates | all 5 variants | all 5 variants |
+| Exam timer | 3 states | 3 states |
+| Grade summary | 1 | 1 |
+
+**Path numbers now mean the same thing in both sections.** Practice 1–4, Graded 1–8, Final 1–5 and Bucket 1
+are the same journeys, so a reviewer reads one number in two places and sees only the difference. Three paths
+exist in one mode only, and each is a finding rather than a gap:
+
+- **A · Practice 5 — the end.** In mode A, leaving is the only ending there is.
+- **B · Graded 9 — the score is not ready yet.** A stale score can only be shown where a results screen
+  exists to show it on.
+- **B · Bucket 2 — what it gives, and what it costs.** Same reason.
+
+**The bucket now sits inside mode A**, as another way to configure the quiz on the platform as it stands —
+which is what it is: it runs on SKOAIFP01 today and needs nothing built. Mode B carries its own rendering of
+the same authoring, because a shell we build would still have to draw it. The A version has no entry screen
+and no results screen, and ends on a note saying the score exists at 4/10 with no way to see which of the ten
+was missed.
+
+The locked and closed states carry across both sections unchanged. They replace the quiz before either shell
+renders, so they belong to neither mode — the note on that path says so.
+
+**Audit:** 49 cards, 0 broken instances, 0 local components, 0 cards rendered in the wrong mode, 0 mode-A
+cards offering *Next question*.
