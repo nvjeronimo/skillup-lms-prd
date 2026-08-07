@@ -1558,3 +1558,44 @@ CTA to a question would duplicate the button beside it.**
 It remains one of the three open decisions in `07-results-decisions.md`, and should be settled before anyone
 estimates the results screen. A CTA that names a count — *(3)* — reads as a promise that the system knows
 which three and can act on just those. Today it knows, and cannot act.
+
+### 14.11 `Reset` was missing entirely — and Submit is not disabled by submitting *(Aug 6, 2026)*
+
+Nelson, on the Incorrect card: *"shouldn't Submit be disabled and say submitted, and shouldn't there be a
+retry CTA?"* Half right, and the half that was right exposed a control we never had.
+
+**Submit is not disabled by having submitted.** From `should_enable_submit_button()`:
+
+```python
+submitted_without_reset = self.is_submitted() and self.rerandomize == RANDOMIZATION.ALWAYS
+if self.closed() or submitted_without_reset:
+    return False
+return True
+```
+
+`closed()` is *all attempts used* **or** *past due*. Our courses run `rerandomize: never`, so after a wrong
+answer with an attempt left **Submit stays enabled** — the learner changes their answer and submits again.
+That *is* the retry. This also corrects a card of mine: `Correct` had Submit disabled, which is only true once
+attempts are spent. It is now enabled, because a correct answer does not close a problem that still has
+attempts.
+
+**But a retry control does exist, and we never drew it.** From `should_show_reset_button()`:
+
+```python
+if self.closed(): return False
+if self.is_correct(): return False
+return self.show_reset_button
+```
+
+`Reset` appears when the problem is **not closed**, **not correct**, and the problem's own
+`show_reset_button` is on — which is per problem, not per course. We saw it appear on the QA course after a
+submission even though the course-level setting reads false.
+
+**Added `Show reset` (default off) on Incorrect, Last attempt, Partially correct and Saved — never on
+Correct.** It is the platform's only dedicated retry affordance. There is no *Retry* and no *Try again*
+anywhere in edX; the `Try again` label we had on the Incorrect card in §14.4 was invented, and this is what it
+should have been all along.
+
+**The pattern across §14.4, §14.10 and this one:** every time a control looked missing, the answer was either
+*the platform uses a different control for that job* or *the platform genuinely lacks it*. Guessing which one
+without reading the source produced a wrong label three times.
