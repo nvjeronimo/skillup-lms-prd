@@ -1532,3 +1532,29 @@ This is the second time a proposal has been right about the idea and wrong about
 hint navigation, where the platform turned out to agree with the stakeholders and not with me. Worth keeping
 the two straight: *is this a better design* and *can this mode deliver it* are separate questions, and only
 the second one is settled by the platform.
+
+### 14.10 There is no retry control on a question — the Submit button is the retry *(Aug 6, 2026)*
+
+Nelson: *"isn't `Retry incorrect (X)` missing? If we show `attempt N of N`, shouldn't we show the CTA too?"*
+Right instinct, and the control is already there under a different name.
+
+**On the question card, retry IS Submit.** The platform's way to spend a remaining attempt is to change the
+answer and press Submit again — there is no separate retry affordance. That is why the card reads
+`Submit · enabled` on Incorrect and `Submit · disabled` on Correct and Answer revealed. The attempts line and
+the enabled Submit are a pair: one says an attempt remains, the other is how it is spent. **Adding a retry
+CTA to a question would duplicate the button beside it.**
+
+**`Retry incorrect (N)` exists only on `Results`**, on the Passed and Not passed variants. It is a
+**quiz-level** CTA, and `Results` does not exist in mode A — so it is outside this handoff entirely.
+
+**And it is not proven buildable**, which is the part worth carrying forward. A ⚠︎ now sits on the component:
+
+- **Stacked model** — each question is an independent problem, so "retry the wrong ones" is not an edX
+  action. The most it could mean is scrolling the learner to those questions: navigation wearing the costume
+  of a retry.
+- **Bucket model** — worse. `Reset` clears every question in the problem at once, so retrying only the
+  incorrect ones is impossible by construction. This is why the bucket board says **Retake all ten**.
+
+It remains one of the three open decisions in `07-results-decisions.md`, and should be settled before anyone
+estimates the results screen. A CTA that names a count — *(3)* — reads as a promise that the system knows
+which three and can act on just those. Today it knows, and cannot act.
