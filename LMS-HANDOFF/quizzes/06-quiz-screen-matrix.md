@@ -1380,3 +1380,32 @@ disabled because nothing is selected yet.
 
 A removal is not finished when the thing is off the screen. It is finished when nothing else still refers to
 it — and here the label of a different control was still carrying the idea.
+
+### 14.5 Delivery format — the Practice row across three devices *(Aug 6, 2026)*
+
+Second delivery surface, matching the one already approved for Video Lesson:
+**`ICP Phase 1 - Quiz (A) - Light - Ready ✅`**. Same anatomy — one row per topic, three cards per row, each
+holding a full course-player screen at 1440 · 960 · 375.
+
+**Row 1 · Practice quiz is complete.** The desktop screen already carried the quiz; tablet and mobile still
+held the video-lesson content and now carry the same `Topic header` + `Questions List`, resized to fill.
+Mobile keeps its own order — quiz first, then Content Feedback and Navigation Buttons below.
+
+**The audit caught two things the eye would not.**
+
+`Next question` had come back on two of the three Correct cards. It was not a regression in the boards — the
+cards were cloned from the desktop between a fix and a republish, and carried the old value across. Third
+time an override has outlived a correction; the sweep is now part of the routine rather than an afterthought.
+
+**And all six cards were showing “You have used 0 of 2 attempts” on a Practice quiz.** Practice has unlimited
+attempts, and the platform prints *no attempts line at all* — verified on dev, where a practice problem
+returns neither the line nor a Save button. Both are now off across the row. This is the same mistake in a
+new place: a value that looks like a decision and is actually an inherited default, which is exactly what
+§12.17 and §13.7 were about.
+
+**State:** 0 broken instances, 0 unexpected local components — the only two are the iPhone status bar and home
+indicator, which are device chrome inherited from the approved Video Lesson template. Six cards, all in the
+mode A preset, 18 radios.
+
+Rows 2 and 3 — Graded and Final — clone from this one once it is signed off, so the template is right before
+it is multiplied.
