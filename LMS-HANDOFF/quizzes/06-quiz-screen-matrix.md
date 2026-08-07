@@ -1409,3 +1409,27 @@ mode A preset, 18 radios.
 
 Rows 2 and 3 — Graded and Final — clone from this one once it is signed off, so the template is right before
 it is multiplied.
+
+### 14.6 Two different answers to one question *(Aug 6, 2026)*
+
+Nelson: *"why are the Submit button and the attempts counter hidden on these screens?"* They were hidden for
+two unrelated reasons, and only one of them was right.
+
+**The attempts counter — correct, and it should stay hidden.** This row is a **Practice** quiz, which has
+unlimited attempts, and the platform prints **no attempts line at all** in that case. Verified on dev: a
+practice problem returns neither the line nor a Save button. It does not say "unlimited" and it does not
+count up. On the Graded and Final rows the line comes back, because there the attempts are finite and edX
+does print it.
+
+**The Submit button — a real defect.** It was **hidden by a manual layer override**, not by the property:
+`Show submit` read `true` on every card while the button underneath was switched off by hand. And its label
+had been typed as **"Submited"** — a misspelling that no property would ever have produced, which is the
+tell that it was hand-edited.
+
+Fixed on all six cards: the button is visible, labelled `Submit`, and `Disabled` on Correct and Unanswered —
+which is what the platform renders. §14.4 has the rule.
+
+**This is the fourth time a manual visibility override has beaten a property in this project.** The pattern is
+now clear enough to state as a working rule: **if a control is missing and its property says it should be
+there, look for `visible: false` on the layer before looking anywhere else.** The properties panel will not
+show it, and the canvas gives no sign that a property is being ignored.
