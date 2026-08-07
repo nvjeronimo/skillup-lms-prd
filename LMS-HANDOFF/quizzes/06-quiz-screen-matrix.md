@@ -1464,3 +1464,8 @@ had a gap between the fix and the check.
 
 **Final state:** 9 screens, 18 question cards, 0 broken, 0 unexpected local components, 0 outside the mode A
 preset, Submit visible and correctly enabled or disabled on every card.
+
+> **Shared question content across the three rows is deliberate.** The audience is developers, so holding the
+> question constant makes the only variables the ones that matter — attempts, Save, and the Submit state.
+> Giving each type its own question would read better in a stakeholder deck and worse here, because the
+> difference between the rows would stop being obvious at a glance.
