@@ -1765,3 +1765,35 @@ hours ago and I still applied it wrong by hand — the check is what made it sti
 
 **Per-type state coverage is now deliberate rather than incidental.** Every absence in that table is a
 platform constraint with a reason, not a screen we forgot to draw.
+
+### 14.18 Submit is disabled on every screen that shows a result *(Aug 6, 2026)*
+
+Nelson: *"an active Submit on a screen showing a result doesn't make sense — shouldn't it at least be
+disabled?"* Right, and the reason is in the client, which is why reading only `capa_block.py` missed it.
+
+`should_enable_submit_button()` on the server governs the **initial render**. What happens after a submission
+is decided in `xmodule/js/src/capa/display.js`:
+
+```javascript
+enableSubmitButtonAfterResponse:
+  this.has_response = true;
+  if (!this.has_timed_out) { return this.enableSubmitButton(false); }
+```
+
+**The client disables Submit the moment the `problem_check` response arrives**, and re-enables it when the
+learner changes their answer. So every state that shows a result is, by definition, a state where Submit is
+disabled — regardless of how many attempts remain.
+
+**Corrected rule, now in the component and applied to all 66 cards:**
+
+| Submit | States |
+|---|---|
+| **Disabled** | Unanswered *(nothing chosen)* · Correct · Incorrect · Partially correct · Answer revealed · Results withheld — **every state showing a result** |
+| **Enabled** | Selected · Saved · Last attempt — the three where an unsubmitted answer is on screen and the learner can still act |
+
+`Last attempt` stays enabled because it is the warning shown **before** the final submission, not after it.
+
+**Why this took two passes to get right.** §14.11 read the server method and concluded "submitting does not
+disable Submit" — true of the server, and wrong about what a learner sees. The behaviour lives in two files,
+and the one that governs the visible moment is the one we had not read. **A rule derived from one layer of a
+two-layer system is a half rule**, and it looked complete enough to write down twice.
