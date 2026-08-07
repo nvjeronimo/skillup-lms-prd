@@ -1233,3 +1233,36 @@ without anyone touching an icon. Before this, 1,181 shapes held a colour that co
 semantic foreground — `fg-success-primary`, `fg-error-primary`, `fg-brand-secondary` — only when the icon
 **is** the message, which on our components means the alert glyphs and nothing else. That distinction is
 written into the variable description so it travels with the token.
+
+---
+
+## 14. The Ready-for-Dev page *(Aug 6, 2026)*
+
+Page renamed **`↳ Phase 1 · Quizzes — Ready for Dev 🟢`**, restructured into ten sections for three
+audiences at once.
+
+| Section | For | What it carries |
+|---|---|---|
+| 00 · Read me first | everyone | **the rule** — ⚙ setting · ✎ authoring · ↻ runtime · ▣ shell, and *if it is ⚙ or ✎, do not build* |
+| 01 · What a quiz is on this platform | PM, stakeholders | types are not platform types; the three authoring shapes with measured counts |
+| 02 · The journeys — mode A | stakeholders, PM | the existing end-to-end flows, 33 cards |
+| 03 · The kit | devs, designers | **11 components, 51 variants**, named exactly as in the DS |
+| 04 · What controls what | **devs** | the property map as a table on the wall, plus the doc link |
+| 05 · Behaviour you cannot see in a screen | **devs** | the five things no static frame carries |
+| 06 · Decisions taken, and what they cost | PM, stakeholders | each decision with its reason, not just its outcome |
+| 07 · Open questions | PM | four, each with what it blocks; two still able to change a screen |
+| 08 · Not in this handoff | everyone | mode B, ORA, SCORM, timed exams, unused answer types |
+| 09 · Mode B ⏸ pending | — | kept, marked, explicitly not to be estimated |
+
+**Why this order.** 04 and 05 sit before the decisions and the open questions because a developer stops
+reading the moment they find what they came for — and what they came for is *what do I actually build*. 08
+exists because without it someone asks about mode B mid-sprint.
+
+**The rule leads the page** because the single largest risk in this handoff is someone implementing
+configuration. Ten of the Question Card's twelve booleans are ⚙ or ✎.
+
+**Audit:** 0 broken instances, 0 local components, 69 question cards across the page.
+
+Two ⚠︎ markers are deliberately left on screens rather than buried in section 07 — `showanswer` and
+hide-after-due can both still change what is drawn, and a reader who starts at section 02 must meet them
+there rather than discover them after estimating.
