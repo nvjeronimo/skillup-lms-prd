@@ -1182,3 +1182,27 @@ the `(s)` tells a learner they may select several, and then the control refuses.
 We had also been treating that string as a platform instruction until §12.17 showed it is the block's
 `display_name`. Copying it onto a component turned one course's authoring habit into a system-wide default —
 which is exactly how this kind of thing spreads.
+
+### 13.8 `Stroke/icon` — a token for icon weight *(Aug 6, 2026)*
+
+Nelson's call, and the right one: define it once rather than typing 1.5 in hundreds of places.
+
+**What was there:** every icon sampled — 400 of them — carried a **raw `strokeWeight` of 2**, with no token
+of any kind for stroke width in the library. `Width/*` exists for widths, `Spacing/*` for spacing,
+`Radius/*` for corners; stroke weight had simply never been named.
+
+**Created:** `Stroke/icon = 1.5` in the `3. Responsive 📐` collection, set across all three modes
+(Desktop · Tablet · Mobile) and scoped to `STROKE_FLOAT` so it only offers itself where it makes sense.
+
+**Applied:** **536 icon vectors** across the 68 LMS components now resolve to it; 80 were already bound.
+
+**Why 1.5 rather than the 2 the set ships with.** Untitled UI draws its icons at 2px, which sits heavier than
+our type at the sizes we actually use icons — 16 and 20px, beside 12–16px text. At those sizes a 2px stroke
+makes the icon the loudest thing in a row it is meant to support. The alerts are the clearest case: a
+lightbulb heavier than the hint it introduces.
+
+> **Scope, stated plainly.** This binds the icons **inside the 68 LMS components**, not the icon library
+> itself. Every icon component on the Icons page still ships at a raw 2px, so an icon dropped in fresh will
+> arrive heavy until it is bound. Doing it at source would fix that in one pass and change every icon in
+> every file that uses this library — a bigger decision than this audit, and one to take deliberately rather
+> than as a side effect.
