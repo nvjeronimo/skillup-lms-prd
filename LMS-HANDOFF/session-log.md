@@ -1260,3 +1260,45 @@ genuinely unauthored rather than merely unrendered.
 
 ⚠︎ The boards currently draw `Show answer` appearing only once attempts are spent (§12.16). On QA that is not
 what happens. Do not hand over Path 2 as final until the environment difference is explained.
+
+### Aug 6, 2026 · two experiments on the QA test courses
+
+Both run on `Test-T2`, writing only to a test course as Jaspinder asked.
+
+#### Experiment 1 — the hint button label. **Answered, and it reverses a correction I made.**
+
+Authored three `<demandhint>` entries on Question 1, published, and read the rendered markup. **The platform
+uses two controls, in two places:**
+
+| Button | Lives in | Visible |
+|---|---|---|
+| **`Hint`** | `.action › .problem-action-buttons-wrapper` — the action row, beside Save | from the first view |
+| **`Next Hint`** | `.problem-hint › .notification › .notification-btn-wrapper` — **inside the hint block** | hidden until the first hint appears |
+
+So the first press happens in the footer and every later press happens **inside the hint alert**.
+
+**This means the stakeholders were right and I was wrong to overrule them.** The Aug 6 review asked for the
+hint navigation to live inside the component; I moved it to the footer on the strength of reading
+`capa_block.py`, which shows the flags but not where the template puts the buttons. The template does both.
+`Show hint nav` is restored on `Tone=Hint` with a `Next Hint` button, and the card keeps its `Hint` button —
+they are not duplicates, they are the two halves the platform actually renders.
+
+Worth naming the lesson: **reading the source told me what exists; only rendering it told me where it goes.**
+
+#### Experiment 2 — `Hide content after due date`. **Inconclusive, for an instructive reason.**
+
+Set `due = 2026-08-01` (in the past) and `hide_after_due = true` on the quiz subsection, published, and
+looked. `/api/courseware/sequence/{id}` returns **`is_hidden_after_due: false`** and the problem renders
+normally.
+
+**Because the account is course staff, and staff bypass due-date gating.** The setting is correct; the viewer
+is exempt. Masquerading as a student is the intended way round it and is blocked from outside the courseware
+page, so this needs either a non-staff account or someone using *View this course as: Learner* in the LMS UI.
+
+**One real finding fell out of it anyway.** Past the due date the action row changed from
+`Save · Show answer · Submit` to **`Hint · Show answer · Submit`** — Save disappears and Show answer stays,
+which is `showanswer: finished` behaving exactly as documented, since `finished` includes past-due.
+
+**State left in place deliberately:** `Test-T2`'s quiz subsection is still past-due with `hide_after_due` on,
+so anyone with a learner account can see the state we could not. Revert both fields when it is no longer
+needed. Gap 6 in the screen matrix stays open until then.
