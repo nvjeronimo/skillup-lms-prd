@@ -1628,3 +1628,30 @@ The three rules now live in every place someone might look:
 Writing it in four places is deliberate. The component description is what a designer reads, the Figma
 sections are what a developer reads on the wall, and the map is what survives when the file is reorganised.
 A behaviour recorded in only one of those is a behaviour that gets lost the next time something moves.
+
+### 14.13 Where `Show reset` goes when it lands *(Aug 6, 2026)*
+
+The property and its bound `Reset` button exist on the master; they have not reached the consuming file yet,
+because accepting a library update only applies what has already been **published** — and these had not been.
+Two different actions that are easy to confuse, and this is the third time the distinction has cost a round
+trip: *publish* pushes from the design system, *accept* pulls into the file.
+
+**The rule for where it goes**, from `should_show_reset_button()`:
+
+| State | `Show reset` | Why |
+|---|---|---|
+| Incorrect | **on** | not closed, not correct — the recovery state Reset exists for |
+| Last attempt | **on** | still spendable, still not correct |
+| Partially correct | **on** | not correct, so it qualifies |
+| Correct | **off** | `if self.is_correct(): return False` — never, at any attempt count |
+| Unanswered · Selected | off | nothing to reset |
+| Answer revealed · past due · attempts spent | off | `closed()` short-circuits first |
+| Saved | off **by choice** | the platform would show it, since a saved answer is neither submitted nor correct. We leave it off because Reset beside Save on an unsubmitted draft reads as two ways to discard, and we have no evidence of the combination in a live course |
+
+That last row is the only judgement call in the table, and it is marked as one rather than presented as
+platform behaviour.
+
+**Still conditional.** `show_reset_button` is read from the **problem**, not the course, so Reset is not
+guaranteed on every quiz — a course whose advanced setting says `false` can still have problems that show it,
+which is exactly what QA does. The screens show the enabled case; the property makes the other one one click
+away.
