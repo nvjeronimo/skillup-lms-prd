@@ -1433,3 +1433,34 @@ which is what the platform renders. §14.4 has the rule.
 now clear enough to state as a working rule: **if a control is missing and its property says it should be
 there, look for `visible: false` on the layer before looking anywhere else.** The properties panel will not
 show it, and the canvas gives no sign that a property is being ignored.
+
+### 14.7 All nine delivery screens *(Aug 6, 2026)*
+
+Rows 2 and 3 cloned from the signed-off Practice row. What differs between the three is exactly what the
+platform settings make differ — nothing was styled differently for effect:
+
+| Row | Attempts line | Save | Question 2 shows |
+|---|---|---|---|
+| **Practice** | **none** — unlimited, so the platform prints nothing | absent | answered correctly, Submit disabled |
+| **Graded** | `0 of 2` · `1 of 2` | **present** | wrong with one attempt left, Submit still enabled |
+| **Final** | `0 of 1` · `1 of 1` | absent | closed, Submit disabled |
+
+Each row's card header says what makes that type different rather than repeating the layout: Graded carries
+the Save trap — *a saved answer survives a reload, spends no attempt, and scores zero, and nothing on the page
+says so* — and Final carries the absence of recovery.
+
+**Two overrides had to be swept again**, and both are worth recording because they recurred *after* being
+fixed:
+
+- `Show next action` came back true on all nine screens. Fixed, and the secondary `Next question` layer was
+  hidden as well — the property alone was not enough, which is the same trap as §14.6.
+- The Submit button re-hid itself on all six `Correct` cards. Unhidden, verified in the same call this time
+  rather than in a later audit.
+
+**That is the fifth and sixth time.** The working conclusion is not "be careful" — it is that
+**a fix and its verification must happen in one operation**, because anything that clones, republishes or
+resets in between will quietly reintroduce the value. Every audit in this document that found a regression
+had a gap between the fix and the check.
+
+**Final state:** 9 screens, 18 question cards, 0 broken, 0 unexpected local components, 0 outside the mode A
+preset, Submit visible and correctly enabled or disabled on every card.
