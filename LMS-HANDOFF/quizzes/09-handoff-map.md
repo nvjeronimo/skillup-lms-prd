@@ -41,6 +41,8 @@ The component that carries the most confusion, because ten of its twelve boolean
 | `Show hint` | ✎ | same `<demandhint>` — this is the revealed state | `<ol>` of `<li><strong>Hint (N of M): </strong>…` |
 | `Show explanation` | ✎ | `<choicehint>` on the chosen option | `.feedback-hint-correct` / `.feedback-hint-incorrect` › `.hint-text` |
 | `Show submit` | ✎ | **authoring model** — one problem per question, or all questions in one problem | one `Submit` per problem, wherever the problem boundary is |
+| `Show reset` | ⚙ | `show_reset_button` **on the problem, not the course** | `Reset` button in `.action`. Never appears on a correct answer |
+| `Show attempt meter` | ▣ | — | mode B only. The platform's attempts line is inside the iframe; a badge row cannot be injected |
 | `Show platform prompt` | ✎ | the block's `display_name` | `<h3 class="problem-header">`. Authored text, differs per course |
 | `Show progress` | ▣ | — | mode B only. No platform equivalent |
 | `Show next action` | ▣ | — | mode B only. Off by default; forward navigation lives in the bar |
@@ -58,6 +60,51 @@ It must be consistent across a whole quiz or the screen lies — see §11 of the
 
 `Show attempts` off does not mean "hide the count". It means **unlimited attempts**, where the platform
 prints nothing. Verified on dev: a practice problem returns no attempts line and no Save button.
+
+---
+
+### 1a · The button rules, in one place
+
+These are the three that have been got wrong most often. All three come from `xmodule/capa_block.py` and were
+each confirmed against a rendered problem.
+
+**The primary button NEVER changes its label.** It is always `Submit` —
+`<span class="submit-label">Submit</span>`. edX toggles the `disabled` attribute and nothing else. There is no
+*Submitted*, no *Try again*, no *Next question*, in any state. And because mode A renders this markup inside
+the iframe, relabelling it is not a copy change anyone can make without forking the platform.
+
+**Submit is disabled only when the problem is closed.**
+
+```python
+submitted_without_reset = self.is_submitted() and self.rerandomize == RANDOMIZATION.ALWAYS
+if self.closed() or submitted_without_reset: return False
+return True
+```
+
+`closed()` = **all attempts used** or **past due**. Submitting does *not* disable it. With attempts remaining
+the learner changes their answer and submits again — **that is the retry**, and it is why no separate retry
+control exists on a question.
+
+**`Reset` is the only dedicated retry affordance, and it never appears on a correct answer.**
+
+```python
+if self.closed(): return False
+if self.is_correct(): return False
+return self.show_reset_button
+```
+
+Note `show_reset_button` is read from **the problem**, not the course. A course whose advanced setting reads
+`false` can still show Reset on individual problems — observed on QA.
+
+| State | Submit | Reset |
+|---|---|---|
+| Unanswered | disabled (nothing selected) | no |
+| Selected | **enabled** | no |
+| Incorrect, attempts remain | **enabled** | **yes**, if the problem enables it |
+| Last attempt | **enabled** | yes, if enabled |
+| Partially correct | **enabled** | yes, if enabled |
+| Correct | **enabled** while attempts remain | **never** |
+| Answer revealed · attempts spent · past due | **disabled** | no |
 
 ---
 

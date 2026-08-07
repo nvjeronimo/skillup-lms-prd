@@ -1599,3 +1599,32 @@ should have been all along.
 **The pattern across §14.4, §14.10 and this one:** every time a control looked missing, the answer was either
 *the platform uses a different control for that job* or *the platform genuinely lacks it*. Guessing which one
 without reading the source produced a wrong label three times.
+
+### 14.12 The button rules, written into all four places *(Aug 6, 2026)*
+
+*"So the primary CTA changes labels and states?"* — **No. It never changes label.** It is always `Submit`;
+only the `disabled` attribute toggles. That single sentence had been implied and never stated plainly, which
+is how three invented labels survived in the component for weeks.
+
+The three rules now live in every place someone might look:
+
+| Where | What it carries |
+|---|---|
+| `09-handoff-map.md` §1a | the three rules with the source quoted, plus a state × Submit × Reset table |
+| `09-handoff-map.md` §1 | `Show reset` and `Show attempt meter` added to the property table |
+| Figma §04 · What controls what | the same two properties, plus a row for the primary button itself |
+| Figma §05 · Behaviour you cannot see in a screen | rewritten to lead with the three button rules |
+| `LMS / Quiz · Question Card` description | the rules, in the component a designer opens |
+
+**The state table, which is the thing to remember:**
+
+| State | Submit | Reset |
+|---|---|---|
+| Unanswered | disabled — nothing selected | no |
+| Selected · Incorrect · Last attempt · Partially correct | **enabled** | **yes**, if the problem enables it (never on Correct) |
+| Correct | **enabled** while attempts remain | never |
+| Answer revealed · attempts spent · past due | **disabled** | no |
+
+Writing it in four places is deliberate. The component description is what a designer reads, the Figma
+sections are what a developer reads on the wall, and the map is what survives when the file is reorganised.
+A behaviour recorded in only one of those is a behaviour that gets lost the next time something moves.
