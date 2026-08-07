@@ -1206,3 +1206,30 @@ lightbulb heavier than the hint it introduces.
 > arrive heavy until it is bound. Doing it at source would fix that in one pass and change every icon in
 > every file that uses this library — a bigger decision than this audit, and one to take deliberately rather
 > than as a side effect.
+
+### 13.9 Done at source — the whole icon set, weight and colour *(Aug 6, 2026)*
+
+Nelson took the bigger option, and it was the right one: fixing 68 components while the library kept
+shipping raw 2px would have meant every newly placed icon arriving wrong.
+
+**`Icon/default`** created alongside `Stroke/icon`, in `1. Semantics`, across all four modes
+(Light/Dark × SKO/BrandX). It **aliases `Colors/Foreground/fg-quaternary (400)`** rather than restating a
+colour — the neutral an icon takes when it supports text rather than carrying meaning itself. Scoped to
+`STROKE_COLOR` and `SHAPE_FILL`.
+
+**Applied across the entire Icons page — 1,173 components, 1,181 stroked shapes.** Every one now resolves
+both weight and colour to a token:
+
+| | Before | After |
+|---|---|---|
+| Stroke weight | 2px, raw, 1,181 shapes | **`Stroke/icon` = 1.5, 0 unbound** |
+| Stroke colour | raw, 1,181 shapes | **`Icon/default`, 0 unbound** |
+
+**The alias matters more than the value.** Because `Icon/default` points at a foreground token rather than
+holding a colour, icons now follow theme and brand automatically — a dark-mode or BrandX switch moves them
+without anyone touching an icon. Before this, 1,181 shapes held a colour that could not respond to either.
+
+**The rule for using them.** `Icon/default` is what an icon takes when it is supporting text. Override with a
+semantic foreground — `fg-success-primary`, `fg-error-primary`, `fg-brand-secondary` — only when the icon
+**is** the message, which on our components means the alert glyphs and nothing else. That distinction is
+written into the variable description so it travels with the token.
