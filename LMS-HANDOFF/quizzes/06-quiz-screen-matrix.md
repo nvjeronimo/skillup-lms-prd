@@ -1319,3 +1319,29 @@ of this page now points there rather than to a section that is no longer below i
 
 **Full-page audit after the move:** 0 broken instances, 0 local components, 42 question cards, **0 outside
 the mode A preset**, 0 offering *Next question*, 123 radios to 10 checkboxes.
+
+### 14.3 Five components cut from the handoff *(Aug 6, 2026)*
+
+Nelson's call: remove anything not currently in use, until told otherwise. Applied to
+`Answer Input`, `Exam Timer`, `Results`, `Entry Header` and `Stat Tile`. **They stay in the design
+system** — this is a scope cut, not a deletion.
+
+**Two journeys went with them**, and this was checked before deleting rather than discovered after:
+`JOURNEY · Final › timed exam` (its only content was the three timer states) and the whole `ANSWER TYPES`
+band (its only content was the three input types). Final's paths were renumbered 1–4.
+
+**One consequence that only surfaced from the dependency check:** `Gate = Expired` is a timed-exam state, so
+with timed exams out of scope it is now unreachable — it appears in no journey. The variant stays in the kit
+because `Gate` stays, and its note now says which four of the five are live.
+
+**Section 08 became the record of what was cut and why**, with the reinstatement trigger written down:
+
+> *Reinstate `Answer Input` and `Exam Timer` before a course starts using either — the shell must render a
+> problem type we did not author.*
+
+That line matters more than the cut. Dropping unused components is cheap; the expensive failure is dropping
+them silently and meeting a dropdown question in production.
+
+**Page after the cut:** 9 sections, 42 question cards, 0 broken, 0 local, 0 outside the mode A preset,
+123 radios to 10 checkboxes. The kit is now five components — Question Card, Option Row, Inline Alert, Gate,
+Grade Summary — which is an honest picture of mode A.
