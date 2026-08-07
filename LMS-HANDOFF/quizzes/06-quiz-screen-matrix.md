@@ -1868,3 +1868,36 @@ That belongs with the Save trap as a platform-level usability hazard: both are c
 looks like housekeeping silently costs a grade. In mode B this is an argument for a confirmation on Reset
 when a non-zero score is on the line — and it is the second finding this week that came from asking what a
 control does rather than what it is called.
+
+### 14.21 The Reset finding, written down and enforced *(Aug 6, 2026)*
+
+Documented in the handoff map (§1b, plus two new rows in the open questions) and on the wall (section 07),
+then enforced on the components rather than left as prose.
+
+**The rule the components now encode**, with `closed` computed from the attempts line rather than assumed:
+
+| | Submit | Reset |
+|---|---|---|
+| Unanswered | disabled | no |
+| Selected | enabled | no |
+| Saved · Last attempt | enabled | **yes**, while attempts remain |
+| Incorrect · Partially correct | **disabled** — a result is showing | **yes**, while attempts remain |
+| Correct | disabled | **never** |
+| Answer revealed · Results withheld · closed | disabled | no |
+
+Seven cards had Reset wrong — all of them Final-exam cards where a single submission closes the problem, so
+Reset must disappear even on Incorrect. The audit derived `closed` from each card's own attempts text
+(`used N of M`) instead of trusting the state name, which is what caught them.
+
+**108 cards across the page, zero violations.**
+
+**Two decisions now sit in the open questions**, and both are cheap:
+
+1. **Turn `show_reset_button` off on partial-credit questions.** It is a per-problem setting — the content
+   team can do it today, no build. It removes the only route by which a learner can silently discard marks.
+2. **Confirm Reset in mode B** where a non-zero score would be lost. Mode A cannot; the button is inside the
+   iframe.
+
+The first one is worth pressing. Everything else in this document describes what the platform does; this is
+the one place where what it does can quietly cost somebody a grade, and where the fix needs no engineering at
+all.

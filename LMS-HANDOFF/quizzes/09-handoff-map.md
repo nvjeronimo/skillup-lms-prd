@@ -96,15 +96,50 @@ return self.show_reset_button
 Note `show_reset_button` is read from **the problem**, not the course. A course whose advanced setting reads
 `false` can still show Reset on individual problems — observed on QA.
 
+**Submit is also disabled the moment a result appears.** The server method above governs the *initial* render;
+after a submission the client takes over — `display.js` calls `enableSubmitButtonAfterResponse` →
+`enableSubmitButton(false)` as soon as the `problem_check` response arrives, and re-enables it when the
+learner changes their answer. So **every state showing a result has a disabled Submit**, whatever the attempt
+count. Reading only `capa_block.py` gives the opposite answer; the behaviour lives in two files.
+
 | State | Submit | Reset |
 |---|---|---|
-| Unanswered | disabled (nothing selected) | no |
-| Selected | **enabled** | no |
-| Incorrect, attempts remain | **enabled** | **yes**, if the problem enables it |
-| Last attempt | **enabled** | yes, if enabled |
-| Partially correct | **enabled** | yes, if enabled |
-| Correct | **enabled** while attempts remain | **never** |
-| Answer revealed · attempts spent · past due | **disabled** | no |
+| Unanswered | disabled — nothing selected | no |
+| Selected · Saved | **enabled** | no · yes if enabled |
+| Last attempt *(the warning BEFORE the final submit)* | **enabled** | yes, if enabled |
+| Incorrect · Partially correct | **disabled** — a result is showing | **yes**, if the problem enables it |
+| Correct | **disabled** | **never** |
+| Answer revealed · Results withheld · attempts spent · past due | **disabled** | no |
+
+### 1b · ⚠︎ `Reset` is destructive, and it publishes a zero
+
+`Reset` is not a retry. `reset_problem()`:
+
+```python
+self.lcp = self.new_lcp(None)
+self.set_state_from_lcp()
+self.set_score(self.score_from_lcp(self.lcp))
+self.publish_grade()
+```
+
+- **It deletes the learner's answers** and returns the problem to unfinished.
+- **It publishes a zero immediately** — `set_score()` runs against an empty problem, then `publish_grade()`.
+- **It does not refund the attempt.** `self.attempts` is untouched; only Submit increments it.
+- With `rerandomize` on `ALWAYS`/`ONRESET` it also reseeds — but the seed only affects problems that generate
+  values in a `<script>`, so for the plain multiple-choice questions in every course we have read, the
+  question and its options are unchanged.
+
+**The hazard:** Reset never appears on a correct answer, but it does on **Partially correct**. A learner
+holding 1 of 2 marks who presses Reset and then walks away has **lost the marks and kept the spent attempt**.
+There is no confirmation and nothing on screen says what will happen.
+
+**It is not an exploit.** Because Submit spends the attempt and Reset does not refund it, and because
+`should_show_reset_button()` returns false once `closed()`, Reset and Submit vanish together at the ceiling.
+A two-attempt question allows two submissions regardless of what happens in between.
+
+**Do not relabel it.** *Try again* would describe the intent and hide the cost — someone reading it expects
+their selection to survive. And in mode A it is rendered inside the iframe, so it could not be relabelled
+anyway.
 
 ---
 
@@ -217,6 +252,8 @@ Read-only handlers, which need no submission:
 | 2 | What does the hint button say before the first press? | our label reads `Next hint`, which cannot be right on the first press. String lives in a Mako template absent from the public repo |
 | 3 | Does `Hide content after due date` render a distinct shell? | Q14 in the screen matrix |
 | 4 | `problem`-per-unit distribution on production | whether "every quiz is one scrolling page" is safe to say |
+| 5 | **Should `Reset` be available on partial-credit questions at all?** It publishes a zero and refunds nothing, so a learner on 1 of 2 marks can throw them away in one click with no warning (§1b). `show_reset_button` is per problem, so the content team can turn it off on those questions today — no build required | whether we hand over a screen showing a control that can silently cost a grade |
+| 6 | **Should mode B put a confirmation on `Reset`?** Only where a non-zero score would be lost. Mode A cannot — the button is inside the iframe | a mode B decision, but it should be taken while the finding is fresh |
 
 **Who can answer what — corrected Aug 6, 2026.** An earlier version of this line said questions 1–3 were all
 answerable in the QA Studio. That is wrong for question 1: it asks about **dev and production**, and QA
