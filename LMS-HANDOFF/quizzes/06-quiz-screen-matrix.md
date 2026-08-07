@@ -1134,3 +1134,32 @@ threshold anyone will notice, and 10px text moving to 12px is a small accessibil
 What is left is a short, specific list — `28px` padding (5), `3px` padding, and radii of `13`, `3` and `1.5`.
 Radius 13 and 1.5 are the interesting ones: they are almost certainly meant to be 12 and 2, and are the kind
 of value that arrives from nudging a handle rather than typing a number.
+
+### 13.6 Audit closed — zero unbound values across all 68 components *(Aug 6, 2026)*
+
+| | Before | After |
+|---|---|---|
+| Raw fills | 18 | **0** |
+| Raw strokes | 7 | **0** |
+| Unbound padding | 171 | **0** |
+| Unbound gap | 46 | **0** |
+| Unbound radius | 28 | **0** |
+| Text without a style | 283 | **0** |
+
+The last pass was mostly near-misses rather than decisions, which is what the leftovers usually are:
+
+- **Radius `13` → 12, `1.5` → 2, `3` → 4.** Handle-drag residue.
+- **Pill radii `999`, `9999`, `8999.09`** → one `Radius/fixed-full`. Three numbers, one intent.
+- **Gap `10.799999237060547`** → 12. A dragged value carried to fifteen decimal places.
+- **Padding `28` → 24, `3` → 4, `9` → 8, `18` → 16, `22` → 24.**
+- **Border `#d9dee5` on the four `Results` cards** → `LMS/Border/border-secondary`, which is `#d5dce2`. Four
+  points off per channel — typed from memory rather than picked, and invisible until something enforces it.
+- **Three `#000000` @ 10% strokes** on video and avatar frames → `Colors/Border/border-secondary_alt`, which
+  is that exact colour, so the alpha stays and the value stops being loose.
+
+**Two things worth carrying forward.** First, the near-misses — `#d9dee5` for `#d5dce2`, radius 13 for 12 —
+are the ones no review catches by eye, and they are also the ones that make a design system quietly
+untrustworthy: the token exists, the component looks right, and the value is still hand-made. Second, none of
+this was visible from the canvas. It took reading the file rather than looking at it.
+
+The LMS layer now matches the base library on every axis the audit can measure.
