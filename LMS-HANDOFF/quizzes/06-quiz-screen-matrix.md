@@ -1709,3 +1709,31 @@ inside the iframe, so it could not be relabelled even if we wanted it.
 **The lesson, and it is the sharpest one in this document.** When two symptoms alternate — fix A and B
 returns, fix B and A returns — they are not two problems. Stop fixing and go find the thing that couples
 them. Thirteen rounds of instance-level correction were spent on a single wrong binding.
+
+### 14.16 Clean — the whole page, against every rule *(Aug 6, 2026)*
+
+First audit of this page to come back with nothing.
+
+| Check | Result |
+|---|---|
+| Question cards | 65 |
+| Broken instances · unexpected local components | 0 · 0 |
+| Not in mode A preset | 0 |
+| Stepper visible (mode B chrome) | 0 |
+| `Next question` on | 0 |
+| `Skip` on | 0 |
+| `Reset` wrong for its state | 0 |
+| Submit hidden, relabelled, or wrongly enabled/disabled | 0 |
+
+States: Unanswered 14 · Incorrect 14 · Correct 12 · Selected 7 · Answer revealed 6 · Partially correct 5 ·
+Last attempt 3 · Saved 2 · Results withheld 2. Controls: 184 radios, 23 checkboxes. Alert tones: all six in
+use.
+
+**The confirmation that mattered** came one step earlier: after unbinding the primary button, turning
+`Show next action` off on 25 cards left **`submitStillNeededUnhiding: 0`**. Before the fix, that same
+operation hid 25 Submit buttons. Same action, opposite outcome — which is the proof that the binding was the
+cause and the thirteen previous rounds were treating a symptom.
+
+**What this page now guarantees:** every card renders what the platform renders, every control that exists is
+one edX actually has, and every control edX has that we can show is shown. Where a rule could not be
+satisfied it is written down as an open question rather than drawn as if resolved.
