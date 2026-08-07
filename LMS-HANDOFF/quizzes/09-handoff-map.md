@@ -108,17 +108,33 @@ Read off the component, not from memory. `Submit` is always present and always s
 changes. A dash means the control **does not exist** in that state. ▣ marks mode B chrome, off by default and
 outside this handoff.
 
-| State | Submit | Hint | Save draft | Show answer | Reset | Next question ▣ | Skip ▣ |
-|---|---|---|---|---|---|---|---|
-| Unanswered | **disabled** | ✓ | ✓ | ✓ | — | — | ✓ |
-| Selected | enabled | ✓ | ✓ | ✓ | — | — | ✓ |
-| Saved | enabled | ✓ | *"Draft saved"* | ✓ | ✓ | — | ✓ |
-| Last attempt | enabled | ✓ | *"Draft saved"* | ✓ | ✓ | — | — |
-| Incorrect | **disabled** | ✓ | — | ✓ | ✓ | ✓ | — |
-| Partially correct | **disabled** | — | — | ✓ | ✓ | — | — |
-| Correct | **disabled** | — | — | ✓ | **never** | — | — |
-| Answer revealed | **disabled** | — | — | — | — | — | — |
-| Results withheld | **disabled** | — | — | — | — | — | — |
+| State | Submit | Hint | Save draft | Show answer | Reset | Review ⚑ | Next question ▣ | Skip ▣ |
+|---|---|---|---|---|---|---|---|---|
+| Unanswered | **disabled** | ✓ | ✓ | ✓ | — | — | — | ✓ |
+| Selected | enabled | ✓ | ✓ | ✓ | — | — | — | ✓ |
+| Saved | enabled | ✓ | *"Draft saved"* | ✓ | ✓ | **✓** | — | ✓ |
+| Last attempt | enabled | ✓ | *"Draft saved"* | ✓ | ✓ | — | — | — |
+| Incorrect | **disabled** | ✓ | — | ✓ | ✓ | **✓** | ✓ | — |
+| Partially correct | **disabled** | — | — | ✓ | ✓ | **✓** | — | — |
+| Correct | **disabled** | — | — | ✓ | **never** | **✓** | — | — |
+| Answer revealed | **disabled** | — | — | — | — | **✓** | — | — |
+| Results withheld | **disabled** | — | — | — | — | **✓** | — | — |
+
+⚑ **`Review` is on the platform and not yet in our components.** It lives inside every notification block
+(`.notification-btn.review-btn`) and scrolls focus back to the question header. Visually hidden until focused,
+which is why it went unnoticed. Present wherever a notification is — every result state, the hint block, the
+save confirmation and the gentle alert.
+
+**The button each CTA actually uses**, read off the component:
+
+| CTA | Component | Hierarchy | Size | State |
+|---|---|---|---|---|
+| Submit | `Buttons/Button` | Primary | md | Default · Disabled |
+| Save draft | `Buttons/Button` | Secondary | md | Default |
+| *Draft saved* | `Buttons/Button` | Secondary | md | **Disabled** — a confirmation, not an action |
+| Hint · Show answer · Reset | `Buttons/Button` | Link color | md | Default |
+| Next question ▣ · Skip ▣ | `Buttons/Button` | Link color · Secondary | md | Default |
+| Review ⚑ | **to build** | Link color suggested | md | Default |
 
 **Property defaults:** `Show submit`, `Show explanation`, `Show attempts` and `Show progress` are **true**;
 everything else is **false** — `Show next action`, `Show save`, `Show reset`, `Show hint action`, `Show skip`,
@@ -270,6 +286,9 @@ Read-only handlers, which need no submission:
 | 4 | `problem`-per-unit distribution on production | whether "every quiz is one scrolling page" is safe to say |
 | 5 | **Should `Reset` be available on partial-credit questions at all?** It publishes a zero and refunds nothing, so a learner on 1 of 2 marks can throw them away in one click with no warning (§1b). `show_reset_button` is per problem, so the content team can turn it off on those questions today — no build required | whether we hand over a screen showing a control that can silently cost a grade |
 | 6 | **Should mode B put a confirmation on `Reset`?** Only where a non-zero score would be lost. Mode A cannot — the button is inside the iframe | a mode B decision, but it should be taken while the finding is fresh |
+| 7 | ⚑ **`Review` is missing from every alert.** `.notification-btn.review-btn` sits in every notification block and returns focus to the question header. Ours have no equivalent, so a keyboard or screen-reader user has no way back from a result to the question | accessibility of every feedback, hint and answer state — this is a gap in what we hand over, not an unknown |
+| 8 | ⚑ **`.notification-save` is a transient, ours is a state.** The platform shows a save confirmation that **disappears the moment any input changes**. We drew `Saved` as a persistent card state with a "Draft saved" button | whether the Saved screen is honest. Ours implies the confirmation stays; it does not |
+| 9 | ⚑ **No component for `.notification-gentle-alert`.** The platform's error channel — save failures, hint failures, AJAX errors, and grading-poll timeouts such as *"The grading process is still running. Refresh the page to see updates."* | we have no state for a problem whose request failed, only for right and wrong answers |
 
 **Who can answer what — corrected Aug 6, 2026.** An earlier version of this line said questions 1–3 were all
 answerable in the QA Studio. That is wrong for question 1: it asks about **dev and production**, and QA

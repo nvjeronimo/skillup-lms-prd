@@ -1961,3 +1961,32 @@ as we have them, and there is no seventh *action* — `Review` is navigation, no
 
 These three are additions to the open questions rather than corrections to the matrix: the matrix is right
 about what it covers, and incomplete in a way that only shows up on a keyboard or a bad network.
+
+### 14.24 The matrix gains a `Review` column and a button-spec block *(Aug 6, 2026)*
+
+The three gaps are now in the open questions — both in `09-handoff-map.md` §8 (rows 7–9) and in section 07 on
+the wall — and the matrix itself has been rebuilt with what was missing.
+
+**`Review` is now a column**, marked ⚑ *exists on the platform, not yet in our components*. It appears
+wherever a notification does: every result state, plus `Saved`, where the save confirmation carries it. It is
+absent from `Unanswered`, `Selected` and `Last attempt`, because no notification is on screen yet.
+
+**And the Figma table gained a `BUTTON SPECS` block** — each CTA beside a live instance of the button it
+actually uses, so a developer reads the spec and sees the thing at the same time:
+
+| CTA | Hierarchy · Size · State |
+|---|---|
+| Submit | Primary · md · Default / Disabled |
+| Save draft | Secondary · md · Default |
+| *Draft saved* | Secondary · md · **Disabled** — a confirmation, not an action |
+| Hint · Show answer · Reset | Link color · md · Default |
+| Next question ▣ · Skip ▣ | Link color · Secondary · md · Default |
+| **Review ⚑** | **— TO BUILD —** · Link color suggested |
+
+The previews are cloned from the published component rather than redrawn, so they cannot drift from it —
+if the button changes, the spec block changes with it.
+
+**One thing the specs exposed:** *Draft saved* is a `Secondary · Disabled` button, which is right — it is a
+confirmation and should not invite a click. Nothing else in the kit uses a disabled button as a status
+message, and it is the closest thing we have to the platform's `.notification-save`. Worth remembering when
+open question 8 gets decided.
