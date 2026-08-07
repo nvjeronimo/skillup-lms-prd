@@ -1919,3 +1919,45 @@ and the fact that `Correct` still offers `Show answer` while offering no Reset a
 chrome. It is the same shape as the `Show next action` default that produced seven rounds of the same bug
 (§14.14). It has not been flipped because it is a live default on a published component and the change should
 be deliberate, but it is the last known default pointing at the wrong mode.
+
+### 14.23 Double-checking the matrix against the platform — three gaps *(Aug 6, 2026)*
+
+Crossed our seven controls against `xmodule/js/src/capa/display.js`, which is where every learner-facing
+control on a problem is bound. Six of ours match. **Three things exist that we had not modelled.**
+
+**1 · The `Review` button — a seventh control we never drew.**
+
+```javascript
+this.reviewButton = this.$(".notification-btn.review-btn")
+this.reviewButton.click(this.scroll_to_problem_meta)
+```
+
+It sits **inside every notification block** and, on click, scrolls to the problem header and focuses it. It
+is an **accessibility affordance** — it returns a screen-reader or keyboard user to the question after a
+result appears somewhere below it. It appeared in every DOM capture we took and we read past it three times
+because it is visually hidden until focused.
+
+**Consequence:** our feedback and hint alerts are missing a control that is always there in the markup. On a
+keyboard-only pass, our screens would be missing the way back to the question.
+
+**2 · `.notification-save` — a save confirmation we do not have.**
+
+Shown after a successful save, carrying `response.msg` from the server, and — this is the part that matters —
+**hidden again the moment the learner changes any input**. We modelled `Saved` as a card *state* with a
+"Draft saved" button label. The platform models it as a transient notification that disappears on the next
+keystroke. Those are different things, and ours implies more permanence than the platform offers.
+
+**3 · `.notification-gentle-alert` — an error channel we have no component for.**
+
+Triggered by save failures, hint failures, AJAX errors, grading-poll timeouts, and every file-upload
+validation message: *"You did not select any files to submit"*, *"The grading process is still running.
+Refresh the page to see updates."* We have no state for a problem whose **request failed** — only for
+problems that answered correctly or incorrectly.
+
+**What was verified as correct:** Submit, Save, Show Answer, Reset, Hint and Next Hint are all bound exactly
+as we have them, and there is no seventh *action* — `Review` is navigation, not an action on the problem.
+
+**Also flipped:** `Show progress` default is now **false**. It was the last default pointing at mode B chrome.
+
+These three are additions to the open questions rather than corrections to the matrix: the matrix is right
+about what it covers, and incomplete in a way that only shows up on a keyboard or a bad network.
