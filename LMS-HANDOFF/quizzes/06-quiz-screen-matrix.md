@@ -1655,3 +1655,28 @@ platform behaviour.
 guaranteed on every quiz — a course whose advanced setting says `false` can still have problems that show it,
 which is exactly what QA does. The screens show the enabled case; the property makes the other one one click
 away.
+
+### 14.14 The reason `Next question` kept coming back *(Aug 6, 2026)*
+
+Nelson's screenshot of the properties panel settled something that seven separate fixes had not.
+
+**`Show next action` had a default of `true`.** Every new instance, every clone, every reset produced a card
+with *Next question* on. I had been correcting instances while the source kept manufacturing them — which is
+why it returned after the boards, after the delivery screens, after the reset, and after each republish. The
+default is now **false**, and that is the actual fix; the seven earlier ones were symptom management.
+
+Worth generalising: **a value that comes back after being fixed is not a recurring mistake, it is a default.**
+The question to ask on the second occurrence is not "who changed it" but "what produces it".
+
+**`Show save` was also defaulting to `true`.** Save is a per-course setting — `force_save_button`, or
+randomisation — and it is absent on Practice entirely. Defaulting it on meant every fresh card claimed a
+control most quizzes do not have. Now **false**: off unless the course configures it.
+
+**And the warning in the screenshot was real.** *"Not used within component"* on `Show attempt meter` meant
+exactly what it said — the `Attempt meter` frame had been removed from `State=Last attempt`, leaving the
+property with nothing to control. An orphaned property is worse than no property: it appears in the panel,
+invites a designer to toggle it, and does nothing. **Deleted**, and every other boolean was checked the same
+way — no other orphans.
+
+**Component state:** 14 properties, all of them bound to something, `Show next action` and `Show save` now
+defaulting off.
