@@ -1680,3 +1680,32 @@ way — no other orphans.
 
 **Component state:** 14 properties, all of them bound to something, `Show next action` and `Show save` now
 defaulting off.
+
+### 14.15 The two bugs were one bug *(Aug 6, 2026)*
+
+A full-page audit against everything established so far turned up four violation classes — 25 cards with
+`Next question` on, 20 with Submit hidden, 8 with Submit relabelled. Chasing them found that the first two
+were **the same defect**, and it was structural.
+
+**In `Correct`, `Partially correct`, `Answer revealed` and `Results withheld`, the primary button was bound to
+`Show next action`.** A leftover from when those states used *Next question* as their main CTA. The
+consequence:
+
+- Setting `Show next action` to false **deleted the Submit button** from those four states.
+- Setting it true brought Submit back — *and* was flagged by every audit as a mode-B leak.
+
+So the two things I had been fixing in alternation were one binding pulling in both directions. Seven rounds
+of "Next question is back" and six of "Submit is hidden" were the same line of the component, and no amount
+of instance-level fixing could have resolved it: **turning one off turned the other on.**
+
+**Fixed at the source.** The primary button is now unbound in all nine variants — its visibility belongs to
+`Show submit` on the `Primary action` frame, which is what that property is for. `Show next action` now
+governs only the secondary *Next question* button, which exists in `Incorrect` alone.
+
+**And two labels still read "Submitted"** in the master — `Correct` and `Results withheld` — with eight more
+across the page. Reset to `Submit`. edX never relabels this button (§14.4), and in mode A the markup is
+inside the iframe, so it could not be relabelled even if we wanted it.
+
+**The lesson, and it is the sharpest one in this document.** When two symptoms alternate — fix A and B
+returns, fix B and A returns — they are not two problems. Stop fixing and go find the thing that couples
+them. Thirteen rounds of instance-level correction were spent on a single wrong binding.
