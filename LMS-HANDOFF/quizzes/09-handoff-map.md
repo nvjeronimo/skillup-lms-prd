@@ -171,4 +171,13 @@ Read-only handlers, which need no submission:
 | 3 | Does `Hide content after due date` render a distinct shell? | Q14 in the screen matrix |
 | 4 | `problem`-per-unit distribution on production | whether "every quiz is one scrolling page" is safe to say |
 
-Questions 1–3 are answerable in the QA Studio in one session. Question 4 needs a production session.
+**Who can answer what — corrected Aug 6, 2026.** An earlier version of this line said questions 1–3 were all
+answerable in the QA Studio. That is wrong for question 1: it asks about **dev and production**, and QA
+Studio cannot see either.
+
+- **Question 1 needs someone with Studio on dev and production.** It is a two-value read in
+  *Settings → Advanced Settings*, no changes required.
+- **Questions 2 and 3 are ours to run**, in the QA test courses, and need nobody: author one `<demandhint>`
+  on `Test-T2` and read the button before clicking it; switch *Hide content after due date* on a subsection
+  and open it past the date.
+- **Question 4 needs a learner session on production**, not Studio.
