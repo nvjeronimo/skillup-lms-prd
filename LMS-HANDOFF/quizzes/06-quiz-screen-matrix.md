@@ -1990,3 +1990,55 @@ if the button changes, the spec block changes with it.
 confirmation and should not invite a click. Nothing else in the kit uses a disabled button as a status
 message, and it is the closest thing we have to the platform's `.notification-save`. Worth remembering when
 open question 8 gets decided.
+
+### 14.25 Mode A-2 drawn — the bucket, as a delivery frame *(Aug 7, 2026)*
+
+`ICP Phase 1 - Quiz (A-2) - One Submit - Light - Draft 🟠` clones the Mode A delivery frame and rebuilds it
+as the **bucket authoring model** — the one §11 of the spec measured and never drew. Same format as A: three
+quiz types × three devices, now **two screens each** (before the single Submit, and after it) = 18 screens.
+
+**What the screens say.** Five questions render in series with no action of their own — no Submit, no Hint,
+no Save, no attempt counter, no stepper. All of that moved to a single footer under the last question:
+`Hint · Save draft` and one `Submit` before, `Reset` and a spent attempt after. The points line at the top
+of the problem carries the score: `5 points possible (graded)` becomes `3/5 points (graded)`.
+
+| | Practice | Graded | Final exam |
+|---|---|---|---|
+| Attempts (pooled) | 0 of 3 | 0 of 2 | 0 of 1 |
+| After submit | Hint · Reset | Hint · Reset | **Show answer** only |
+| Submit after submit | Disabled | Disabled | Disabled |
+
+The final exam is the interesting one. One pooled attempt means a single Submit **closes all five questions
+at once** — `should_show_reset_button` returns False when closed, so Reset disappears, and `showanswer:
+finished` is satisfied by the spent attempt, so Show answer appears. That is the only one of the three where
+Show answer is reachable on the second screen; practice and graded still have attempts left, so `finished`
+is not met and the control stays hidden.
+
+**Three gaps this exposed, written onto the frame itself:**
+
+1. **There is no quiz-level action bar in the kit.** Submit, Save draft, the attempt counter and Reset all
+   live *inside* the Question Card, because in Mode A they belong to a question. In A-2 they belong to the
+   problem. The footer on these screens is cloned from the card's own footer so the styling is right, but it
+   is not a component — and it would have to be one before anyone builds this.
+2. **The platform does not number questions inside a bucket.** It renders the stems in order and nothing
+   else. "Question 3 of 5" becomes something an author types into the stem, or it does not exist. Mode A got
+   numbering free from the stepper; A-2 does not.
+3. **A per-question results breakdown is off the table** — already recorded in §11.4, now visible: with one
+   `problem_scores` entry for the set, a results screen can say 3 out of 5 and nothing more.
+
+**What it is not.** Not a build target, and the cards say so — the green *Ready for DEV* chips are hidden on
+all nine and the frame is marked Draft. It is an authoring option placed beside Mode A so the trade can be
+seen rather than argued: one Submit costs per-question feedback, per-question attempts and per-question
+Reset, and buys nothing that needs code.
+
+**One thing I could not verify.** Figma screenshots were unavailable this session — the REST token has
+expired and the desktop bridge's image channel did not answer — so the frame was validated structurally
+(18 screens, 0 broken instances, 0 local components, footer/attempt/state values read back per screen) but
+not looked at. Worth a human glance before it goes in front of anyone.
+
+**And one thing worth knowing about the delivery frames generally.** Auditing A-2 against the token rules
+made me audit Mode A the same way: the *annotation layer* of these frames — the card headers, the eyebrow,
+the meta strip — was never token-bound. Mode A carries 47 raw fills and 12 unstyled text nodes outside
+instances; A-2 inherits those and adds ~35 more of the same kind in its new comparison panel. The
+zero-violation result recorded in §14.x was about the wall sections and the DS components, not these frames.
+Binding them is a separate job and it applies to both.
