@@ -1163,3 +1163,22 @@ untrustworthy: the token exists, the component looks right, and the value is sti
 this was visible from the canvas. It took reading the file rather than looking at it.
 
 The LMS layer now matches the base library on every axis the audit can measure.
+
+### 13.7 `option(s)` — the plural was ours to stop copying *(Aug 6, 2026)*
+
+The header read *"Choose the correct option(s)"* on cards whose control is a radio. Fixed: **48 cards to the
+singular, 4 multi-select cards to the plural**, and the DS default is now singular across all nine variants,
+since the default control is a radio.
+
+Where the plural came from is the part worth keeping. It is not our copy — **every problem in SKOAZ204EEP is
+titled `Choose the correct option(s)` by its author, and every one of those 48 questions is single-select**
+(§12.17: three radios, zero checkboxes). The hedge is in the live content, on questions that never allow more
+than one answer.
+
+So the mismatch we just removed from the boards **still exists in the product**, on 48 questions. That is a
+content note for the course team rather than a design fix, and it belongs with the other authoring findings:
+the `(s)` tells a learner they may select several, and then the control refuses.
+
+We had also been treating that string as a platform instruction until §12.17 showed it is the block's
+`display_name`. Copying it onto a component turned one course's authoring habit into a system-wide default —
+which is exactly how this kind of thing spreads.
