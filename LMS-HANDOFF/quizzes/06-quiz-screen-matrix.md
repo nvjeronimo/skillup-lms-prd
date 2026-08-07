@@ -1345,3 +1345,38 @@ them silently and meeting a dropdown question in production.
 **Page after the cut:** 9 sections, 42 question cards, 0 broken, 0 local, 0 outside the mode A preset,
 123 radios to 10 checkboxes. The kit is now five components — Question Card, Option Row, Inline Alert, Gate,
 Grade Summary — which is an honest picture of mode A.
+
+### 14.4 The primary button never changes its label *(Aug 6, 2026)*
+
+Nelson asked whether the Submit CTA on `State=Correct` should read **Submitted**, disabled. Checked against
+the rendered platform first, and the answer is half yes:
+
+```html
+<button class="submit btn-brand" data-value="Submit" disabled>
+  <span class="submit-label">Submit</span>
+</button>
+```
+
+**edX toggles `disabled` and never relabels.** Not to *Submitted*, not to *Try again*, not to *Next question*.
+And in mode A that markup is server-rendered inside the iframe, so relabelling it is not a copy change we can
+make — it would need a platform fork. *Submitted* belongs to mode B.
+
+**The check found something worse than the question.** Four states still carried `Next question` in the
+**primary** button, and `Incorrect` carried `Try again` — neither exists on the platform. They survived the
+Aug 6 decision to take Next question off the card, because that pass removed the *secondary* button and never
+looked at the primary one.
+
+| State | Was | Now |
+|---|---|---|
+| Correct | Next question · enabled | **Submit · disabled** |
+| Incorrect | Try again · enabled | Submit · enabled |
+| Partially correct | Next question · enabled | Submit · enabled |
+| Answer revealed | Next question · enabled | **Submit · disabled** |
+| Results withheld | Next question · enabled | **Submit · disabled** |
+
+The rule, now in the component description: **disabled when the problem is finished** — correct, attempts
+spent, answer revealed, results withheld, past due; **enabled while an attempt remains**. Unanswered is
+disabled because nothing is selected yet.
+
+A removal is not finished when the thing is off the screen. It is finished when nothing else still refers to
+it — and here the label of a different control was still carrying the idea.
