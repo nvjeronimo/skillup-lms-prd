@@ -1500,3 +1500,35 @@ drawing an attempts line on unlimited attempts.
 script that created them. Fixed and read back in one call, per §14.7. The recurrence pattern is now specific
 enough to be worth naming: it returns on **cloned instances**, because the clone carries the source's
 resolved value rather than the property that was about to be written.
+
+### 14.9 `Show attempt meter` — a good idea, parked in the right mode *(Aug 6, 2026)*
+
+Nelson added a badge row above the footer on `State=Last attempt` — the attempt in progress, and whether a
+draft is held — and asked whether it made more sense than the plain text line. It does, and it is now a
+property defaulting **off**.
+
+**Why it is better.** It moves *status* out of the footer and leaves the footer for *actions*. `Attempt 2 of 2
+· last attempt` as a badge is read at a glance; `You have used 1 of 2 attempts` sitting beside the button is
+not.
+
+**Why the draft badge is the important half.** The Save trap is the sharpest usability gap in this product —
+a saved answer survives a reload, spends no attempt, and **scores zero**, and nothing on the page says so.
+A persistent badge is the one place that sentence can live. Its wording is now
+**"Draft saved · scores nothing until submitted"**, and it is bound to `Show save`, so it cannot appear on a
+variant where saving is impossible.
+
+**Why it must default off.** In mode A the attempts line is rendered by the platform inside the iframe
+(`.submit-attempt-container`). A badge row is our chrome and there is nowhere to inject it without touching
+the platform. Left on, the mode A handoff would show something nobody can build — the same failure as drawing
+an entry screen.
+
+**The counters disagreed and now do not.** The badge said `attempt 2 of 2` while the footer said
+`used 0 of 2`. On a last attempt one has already been spent, so the footer reads **used 1 of 2** and the badge
+reads **Attempt 2 of 2** — the same fact from two directions. The component description adds the rule: when
+the meter is on, turn `Show attempts` off, because two counters saying the same thing is worse than either
+alone.
+
+This is the second time a proposal has been right about the idea and wrong about the layer — the first was the
+hint navigation, where the platform turned out to agree with the stakeholders and not with me. Worth keeping
+the two straight: *is this a better design* and *can this mode deliver it* are separate questions, and only
+the second one is settled by the platform.
