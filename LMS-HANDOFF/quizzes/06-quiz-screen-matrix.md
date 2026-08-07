@@ -1469,3 +1469,34 @@ preset, Submit visible and correctly enabled or disabled on every card.
 > question constant makes the only variables the ones that matter — attempts, Save, and the Submit state.
 > Giving each type its own question would read better in a stakeholder deck and worse here, because the
 > difference between the rows would stop being obvious at a glance.
+
+### 14.8 The Practice screen now carries every state Practice can reach *(Aug 6, 2026)*
+
+The reset returned both blocks to component defaults — which meant mode **B** preset, since `Show platform
+prompt` defaults off and `Show next action` had drifted back on. Restored and expanded to **seven blocks**,
+each with its own question and its own option marking:
+
+| # | State | Also showing | Control |
+|---|---|---|---|
+| 1 | Unanswered | Hint button available | radio |
+| 2 | Selected | Hint button available | radio |
+| 3 | Incorrect | per-choice feedback | radio |
+| 4 | Incorrect | **hint revealed** + Show answer | radio |
+| 5 | Correct | explanation, Submit disabled | radio |
+| 6 | **Partially correct** | Missed + Correctly unselected marking | **checkbox** |
+| 7 | Answer revealed | solution, Submit disabled | radio |
+
+**Three states are missing on purpose, and that is the finding.** A Practice quiz cannot reach them:
+
+- **`Last attempt`** — attempts are unlimited, so there is never a last one.
+- **`Saved`** — the platform hides Save when submitting costs nothing.
+- **`Results withheld`** — Practice always shows correctness.
+
+They belong on the Graded and Final screens, where the settings make them reachable. Putting all nine states
+on a Practice screen would have shown three that no learner can meet there — the same class of error as
+drawing an attempts line on unlimited attempts.
+
+**`Next question` came back a seventh time**, on blocks 5–7, immediately after being set false in the same
+script that created them. Fixed and read back in one call, per §14.7. The recurrence pattern is now specific
+enough to be worth naming: it returns on **cloned instances**, because the clone carries the source's
+resolved value rather than the property that was about to be written.
