@@ -1266,3 +1266,27 @@ configuration. Ten of the Question Card's twelve booleans are ⚙ or ✎.
 Two ⚠︎ markers are deliberately left on screens rather than buried in section 07 — `showanswer` and
 hide-after-due can both still change what is drawn, and a reader who starts at section 02 must meet them
 there rather than discover them after estimating.
+
+### 14.1 The kit split in two — a label was not enough *(Aug 6, 2026)*
+
+Nelson: *"`LMS / Quiz · Results` doesn't exist in version A, right?"* Correct, and it exposed a structural
+problem rather than a wording one. `Results` and `Entry Header` each carried a `▣ shell — mode A has no…`
+note, but they sat **interleaved with the components that do exist**. On a specimen sheet, a one-line note
+under a heading is not a boundary — a reader scanning variants sees screens and assumes they are on the menu.
+
+The kit is now two groups with their own headers:
+
+**Group A — what the platform renders today.** Question Card, Option Row, Inline Alert, Answer Input, Gate,
+Exam Timer, Grade Summary. A developer finds these in the markup; section 04 says what switches each on.
+
+**Group B — ▣ shell only, NOT in this handoff.** Entry Header, Results, Stat Tile. edX has no quiz-level
+submit, no entry screen and no results screen — each question is an independent problem. They are drawn so
+the kit is complete and so section 09 has something to point at, and the header says *do not estimate them*.
+
+`Grade Summary` stays in Group A on purpose and its note was sharpened: it is the **course gradebook on the
+Progress tab**, which does exist today — and it is the only ending mode A has. `Stat Tile` moved to Group B
+with a caveat, since it only reaches mode A through Grade Summary.
+
+**The lesson is about specimen sheets generally:** a variant grid reads as an inventory of what is available.
+If part of it is not available, that has to be structural — a separate group with its own heading — because
+nobody reads the caption before looking at the pictures.
