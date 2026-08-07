@@ -1737,3 +1737,31 @@ cause and the thirteen previous rounds were treating a symptom.
 **What this page now guarantees:** every card renders what the platform renders, every control that exists is
 one edX actually has, and every control edX has that we can show is shown. Where a rule could not be
 satisfied it is written down as an open question rather than drawn as if resolved.
+
+### 14.17 All nine delivery screens, every state each type can reach *(Aug 6, 2026)*
+
+66 question cards across three types × three devices, each type carrying only the states its settings make
+reachable. Zero violations.
+
+| | Practice · 6 states | Graded · 8 states | Final · 7 states |
+|---|---|---|---|
+| Attempts | **no line** — unlimited | `0–2 of 2` | `0–1 of 1` |
+| Save | absent | **present** until submitted | absent |
+| Unanswered · Selected | ✓ | ✓ | ✓ |
+| Incorrect | ✓ ×2 — one with the hint open | ✓ | ✓ *(closed)* |
+| Correct · Partially correct · Answer revealed | ✓ | ✓ | ✓ *(closed)* |
+| **Saved** | — no Save, so unreachable | **✓** | — |
+| **Last attempt** | — unlimited, never a last | **✓** | — one attempt is not a *last* warning |
+| **Results withheld** | — correctness always shown | — | **✓** |
+
+**The Final row exposed a rule I had applied wrongly.** With `max_attempts: 1`, a single submission closes the
+problem — `closed()` is true — so **Submit is disabled and Reset disappears** on Correct, Incorrect *and*
+Partially correct. I had drawn them enabled by copying the Graded pattern, where one attempt still remains.
+The audit's own arithmetic caught it: attempts used ≥ max means closed, regardless of whether the answer was
+right.
+
+That is the difference between a rule written down and a rule enforced. §14.11 stated it correctly a few
+hours ago and I still applied it wrong by hand — the check is what made it stick.
+
+**Per-type state coverage is now deliberate rather than incidental.** Every absence in that table is a
+platform constraint with a reason, not a screen we forgot to draw.
