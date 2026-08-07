@@ -1290,3 +1290,32 @@ with a caveat, since it only reaches mode A through Grade Summary.
 **The lesson is about specimen sheets generally:** a variant grid reads as an inventory of what is available.
 If part of it is not available, that has to be structural — a separate group with its own heading — because
 nobody reads the caption before looking at the pictures.
+
+### 14.2 Every specimen states its own status *(Aug 6, 2026)*
+
+Grouping was still not enough. `Results` read *"the screen after a quiz ends"* — accurate as a description
+and misleading as a status, because a specimen gets linked, screenshotted and pasted into a ticket **without
+its group header**. Each item now carries its own verdict as the first thing in the line:
+
+| Component | Note now opens with |
+|---|---|
+| Question Card | ✓ EXISTS TODAY — the problem block itself, rendered server-side by capa |
+| Option Row | ✓ EXISTS TODAY — radio for single-answer, checkbox only for genuine multi-select |
+| Inline Alert | ✓ EXISTS TODAY, except Info |
+| Answer Input | ✓ EXISTS ON THE PLATFORM, used by no course we have read |
+| Gate | ✓ EXISTS TODAY — belongs to neither mode |
+| Exam Timer | ✓ EXISTS ON THE PLATFORM, no course uses it |
+| Grade Summary | ✓ EXISTS TODAY — the only place a learner sees a score in mode A |
+| **Results** | **▣ DOES NOT EXIST IN MODE A** — no quiz-level submit, so no end-of-quiz screen; the quiz simply stops |
+| **Entry Header** | **▣ DOES NOT EXIST IN MODE A** — the learner lands straight on question 1 |
+| **Stat Tile** | **▣ NOT REACHABLE ON ITS OWN** — reaches mode A only through Grade Summary |
+
+Three shades, not two: *exists and is used*, *exists on the platform but no course uses it*, and *does not
+exist at all*. The middle one matters — `Answer Input` and `Exam Timer` need building for a course we did not
+author, while `Results` needs a product decision first.
+
+**Mode B moved** to the discovery page (`Topic Content Types — Ready for Review`, section 08), and section 08
+of this page now points there rather than to a section that is no longer below it.
+
+**Full-page audit after the move:** 0 broken instances, 0 local components, 42 question cards, **0 outside
+the mode A preset**, 0 offering *Next question*, 123 radios to 10 checkboxes.
