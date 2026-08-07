@@ -1797,3 +1797,34 @@ disabled — regardless of how many attempts remain.
 disable Submit" — true of the server, and wrong about what a learner sees. The behaviour lives in two files,
 and the one that governs the visible moment is the one we had not read. **A rule derived from one layer of a
 two-layer system is a half rule**, and it looked complete enough to write down twice.
+
+### 14.19 `Reset` keeps its name — it is not a retry *(Aug 6, 2026)*
+
+Nelson asked whether the `Reset` CTA could take a clearer label, *"Retry again"*. Two reasons it stays
+`Reset`, and the second is the one that matters.
+
+**We cannot.** Like Submit, this button is rendered by the platform inside the iframe in mode A. Relabelling
+it is a fork, not a copy change. The codebase uses `Reset` throughout with no variants.
+
+**We should not.** `reset_problem()` is not another go at the same question:
+
+```python
+def reset_problem(self, _data):
+    """Changes problem state to unfinished -- removes student answers,
+    Causes problem to rerender itself if randomization is enabled."""
+```
+
+It calls `new_lcp(None)` — **the learner's answers are removed** and the problem returns to unfinished. With
+`rerandomize` on `ALWAYS` or `ONRESET` it also calls `choose_new_seed()`, so the learner gets **a different
+version of the question**. It does not spend an attempt. And in the bucket model it clears **all ten
+questions at once**.
+
+So Reset is a *destructive clear*, not a second try. **`Retry` would describe the intent and hide the cost** —
+a learner who reads "Retry" expects their selection to still be there, and it will not be. The word `Reset`
+is doing real work.
+
+**The genuine retry has no button**: change your answer and press Submit again. That is why §14.10 concluded
+nothing was missing from the card, and why the two controls should never be conflated in copy.
+
+*(For mode B, where the shell is ours, the same semantic problem applies. If that button is ever relabelled it
+should say what it does — something in the family of "Clear answer" — not what the learner wishes it did.)*
