@@ -102,14 +102,30 @@ after a submission the client takes over — `display.js` calls `enableSubmitBut
 learner changes their answer. So **every state showing a result has a disabled Submit**, whatever the attempt
 count. Reading only `capa_block.py` gives the opposite answer; the behaviour lives in two files.
 
-| State | Submit | Reset |
-|---|---|---|
-| Unanswered | disabled — nothing selected | no |
-| Selected · Saved | **enabled** | no · yes if enabled |
-| Last attempt *(the warning BEFORE the final submit)* | **enabled** | yes, if enabled |
-| Incorrect · Partially correct | **disabled** — a result is showing | **yes**, if the problem enables it |
-| Correct | **disabled** | **never** |
-| Answer revealed · Results withheld · attempts spent · past due | **disabled** | no |
+### The CTA matrix — every control, in every state
+
+Read off the component, not from memory. `Submit` is always present and always says *Submit*; only its state
+changes. A dash means the control **does not exist** in that state. ▣ marks mode B chrome, off by default and
+outside this handoff.
+
+| State | Submit | Hint | Save draft | Show answer | Reset | Next question ▣ | Skip ▣ |
+|---|---|---|---|---|---|---|---|
+| Unanswered | **disabled** | ✓ | ✓ | ✓ | — | — | ✓ |
+| Selected | enabled | ✓ | ✓ | ✓ | — | — | ✓ |
+| Saved | enabled | ✓ | *"Draft saved"* | ✓ | ✓ | — | ✓ |
+| Last attempt | enabled | ✓ | *"Draft saved"* | ✓ | ✓ | — | — |
+| Incorrect | **disabled** | ✓ | — | ✓ | ✓ | ✓ | — |
+| Partially correct | **disabled** | — | — | ✓ | ✓ | — | — |
+| Correct | **disabled** | — | — | ✓ | **never** | — | — |
+| Answer revealed | **disabled** | — | — | — | — | — | — |
+| Results withheld | **disabled** | — | — | — | — | — | — |
+
+**Property defaults:** `Show submit`, `Show explanation`, `Show attempts` and `Show progress` are **true**;
+everything else is **false** — `Show next action`, `Show save`, `Show reset`, `Show hint action`, `Show skip`,
+`Show platform prompt`, `Show points`.
+
+⚠︎ `Show progress` still defaults **true** and it is the stepper — mode B chrome. Same shape as the
+`Show next action` default that cost seven rounds of chasing (§14.14 of the screen matrix). Worth flipping.
 
 ### 1b · ⚠︎ `Reset` is destructive, and it publishes a zero
 
