@@ -1828,3 +1828,43 @@ nothing was missing from the card, and why the two controls should never be conf
 
 *(For mode B, where the shell is ours, the same semantic problem applies. If that button is ever relabelled it
 should say what it does — something in the family of "Clear answer" — not what the learner wishes it did.)*
+
+### 14.20 What Reset actually does — three questions, and one nobody had asked *(Aug 6, 2026)*
+
+**1 · Does Reset swap the question for a different one?** Only for problems that generate values in a
+`<script>`. `choose_new_seed()` changes the seed, and the seed only feeds programmatic generation — for an
+ordinary `multiplechoiceresponse` the question text and the choices are identical across every seed. **Every
+question in every course we have read is plain multiple choice**, so here Reset clears the answer and nothing
+else. The behaviour exists; it does not currently reach anyone.
+
+**2 · Is it optional in Studio?** Yes. `show_reset_button` is a per-problem setting with a course-level
+default, which is why QA shows Reset on problems while its course setting reads `false`.
+
+**3 · Is it a hack — reset forever until you guess right?** **No**, and the reason is worth stating precisely
+because the intuition is reasonable. Reset does not spend an attempt, but **Submit does** — and
+`reset_problem()` leaves `self.attempts` untouched:
+
+```python
+self.lcp = self.new_lcp(None)
+self.set_state_from_lcp()
+self.set_score(self.score_from_lcp(self.lcp))
+self.publish_grade()
+```
+
+The counter only ever goes up, and `should_show_reset_button()` returns `False` once `closed()` — attempts
+exhausted — so at the ceiling **both Reset and Submit disappear together**. On a two-attempt question you get
+two submissions whatever you do in between. On an unlimited-attempt practice question you could already
+resubmit forever; Reset adds nothing.
+
+**4 · The one nobody asked, and it is the real finding.** Look at the last two lines above: Reset calls
+`set_score()` on a fresh, empty problem and then `publish_grade()`. **Resetting publishes a zero immediately.**
+
+Reset never appears on a correct answer, so a right answer cannot be thrown away. But it *does* appear on
+**Partially correct** — so a learner sitting on 1 of 2 marks who presses Reset and then walks away has
+**given up the marks and kept the spent attempt**. Nothing warns them, and Reset is one click with no
+confirmation.
+
+That belongs with the Save trap as a platform-level usability hazard: both are cases where an action that
+looks like housekeeping silently costs a grade. In mode B this is an argument for a confirmation on Reset
+when a non-zero score is on the line — and it is the second finding this week that came from asking what a
+control does rather than what it is called.
