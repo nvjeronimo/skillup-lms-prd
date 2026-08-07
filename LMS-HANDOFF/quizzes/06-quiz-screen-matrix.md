@@ -1091,3 +1091,46 @@ tokenised.
 spacing, radius and colour, so a developer reading them gets tokens rather than numbers. The type scale is
 the one place where the library genuinely cannot express what the components use — that is a DS decision to
 take before handoff, not a defect to fix quietly.
+
+### 13.5 Closing the audit — snapped, styled, and the fills explained *(Aug 6, 2026)*
+
+**The 18 raw fills were three unrelated problems**, which is why they clustered:
+
+| Where | What it actually was | Fix |
+|---|---|---|
+| `Answer Input` (9) | `Input field` / `Select` **instances** with a white fill painted over them | bound to `LMS/Background/bg-primary` |
+| `Results` (4) | the four component roots — the card surface itself | same token |
+| `Stepper Bar` (2) | `Progress bar` instances, same white override | same token |
+| `Topic · Author & Updated` (3) | **text** in pure `#000000` | `text-primary (900)` for the name, `text-secondary (700)` for role and date |
+
+Only the last was a real colour mistake. Pure black is not in the palette at all — it had been typed rather
+than picked, and at 100% it is heavier than any text token in the system.
+
+**Spacing.** `14 → 16` and `10 → 8` applied across all 68 components: **328 paddings and 28 gaps**. Combined
+with the earlier pass, **1,355 bindings** in total.
+
+**Type.** Two distinct groups, and separating them mattered:
+
+- **170 text layers already had a matching style** and had simply never been bound — no scale change needed.
+- **106 sat on sizes the scale does not contain.** Rather than add six steps, they were snapped onto the
+  existing scale: 11→12, 13→14, 15→16, 10→12, 22→24, 28→30, 34→36.
+
+**Why snap rather than extend.** The type scale is modular and intact — 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36
+· 48 · 60 · 72. Inserting 11, 13, 15, 22, 28 and 34 would put a step between almost every existing pair and
+leave a designer choosing between 14 and 15 with nothing to decide on. Every snap is +1px or +2px, below the
+threshold anyone will notice, and 10px text moving to 12px is a small accessibility gain rather than a loss.
+
+**Final state across all 68 LMS components:**
+
+| | Remaining |
+|---|---|
+| Raw fills | **0** |
+| Text without a style | **0** |
+| Raw strokes | 7 |
+| Unbound padding | 21 |
+| Unbound gap | 18 |
+| Unbound radius | 28 |
+
+What is left is a short, specific list — `28px` padding (5), `3px` padding, and radii of `13`, `3` and `1.5`.
+Radius 13 and 1.5 are the interesting ones: they are almost certainly meant to be 12 and 2, and are the kind
+of value that arrives from nudging a handle rather than typing a number.
