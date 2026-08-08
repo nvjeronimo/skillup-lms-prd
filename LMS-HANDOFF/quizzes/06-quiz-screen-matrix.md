@@ -3108,3 +3108,44 @@ frame has claimed since it was built that in a bucket the footer belongs to the 
 were still reserving space for one.
 
 Page: 13,527 instances, 0 broken, 0 unexpected locals, 0 overlaps.
+
+### 14.62 Full-page validation *(Aug 7, 2026)*
+
+Nothing failed.
+
+| Structure | |
+|---|---|
+| Component instances | 13,527 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow | **0 · 0 · 0** |
+| Columns overflowing their table | **0** |
+| Raw text fills | 10 — the title band, accepted |
+
+| Behaviour, 198 question cards | |
+|---|---|
+| On the shared footer | **198 of 198** |
+| `Show progress` on | **0** |
+| `Next question` · `Skip` visible | **0 · 0** |
+| Reset on a `Correct` answer | **0** |
+| Submit enabled on a result state | **0** |
+| Counter spent but still actionable | **0** |
+| Submit relabelled | **0** |
+
+**`Show Footer Questions`, which is the new one, lands exactly where it should:**
+
+| Where | On | Off |
+|---|---|---|
+| Mode A-1 | 66 | 0 |
+| Mode A-2 | 0 | **90** |
+| Journeys | 33 | 0 |
+| Kit | 9 | 0 |
+
+| Consistency | |
+|---|---|
+| Tables on the pattern | **12** |
+| Kit variant coverage | Option Row 7/7 · Inline Alert 6/6 · Gate 5/5 · Question Card 9/9 · Stepper Bar 2/2 · Footer Actions · Grade Summary |
+| Topic Headers (27) | Title, type and duration on · description, author and status off |
+| A-2 screens | six configurations, `(ungraded)` on practice and `(graded)` on the other two |
+| Copy — ORA · plural · stale ten · stepper claim · bare glyphs | **0 · 0 · 0 · 0 · 0** |
+
+Delivery frame: 6,614 × 17,909px, two columns.
