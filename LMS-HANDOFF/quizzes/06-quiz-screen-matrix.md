@@ -2459,3 +2459,31 @@ cheapest test available: if it still says *"Your part is done"* in the ICP, the 
 | Raw text fills | 20 — the dark headers, waiting on the same publish |
 
 Both remaining items are the same blocker, not two.
+
+### 14.41 The test paid off: this publish landed, the variables still did not *(Aug 7, 2026)*
+
+The un-overridden Success alert did its job. After this republish:
+
+| | |
+|---|---|
+| Section 03 Success showcase | now reads **"Correct · 1 / 1 point"** — the DS default arrived |
+| ORA copy anywhere on the page | **0** |
+| `1. Semantics` published | still **321** of 347 |
+| Importing the three on-brand tokens | still fails |
+
+So the publish **provably landed** — a component text change made in the DS this session propagated to an
+instance that had never been overridden — **and the variables were excluded from that same operation.**
+
+That settles it, and it corrects §14.39 in turn: the previous publish was genuinely empty, but the general
+pattern is what was first suspected. **Components go through; variables in `1. Semantics` do not.** Five
+publishes, one of them now proven to have carried component changes in the same action.
+
+Everything on our side is verified: the three tokens exist, sit in the same collection as the published
+`text-primary_on-brand`, carry the same four modes and the same `TEXT_FILL` scope, are not hidden from
+publishing, resolve correctly, and pass AA on the band at 14.03:1, 9.89:1 and 5.67:1.
+
+The one thing left to establish is whether Figma is **offering** them in the publish dialog. If they are
+listed and being published, this is a Figma-side fault worth raising with support. If they are not listed at
+all, that is the symptom to report. Nothing further can be determined from the plugin API.
+
+**The 20 raw text fills in the two dark headers are the only outstanding item on the page.**
