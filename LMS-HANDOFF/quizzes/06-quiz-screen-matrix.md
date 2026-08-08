@@ -2545,3 +2545,22 @@ is what makes the hidden line legible rather than suspicious:
 Section 05 grew 912 → 1,510px. Page after re-flow: 13,185 instances, **0 broken, 0 unexpected locals, 0
 overlaps, 0 unstyled text, 0 text overflowing its column**. The 20 raw fills in the dark headers remain the
 only open item, still waiting on the variables to publish.
+
+### 14.44 The six stale attempt texts cleared — and why the other 123 stay *(Aug 7, 2026)*
+
+The six hidden `You have used 0 of 3 / 1 of 3 attempts` in the A-2 practice footers are now **empty**. If
+anyone ever turns `Show attempts` back on there, they see nothing — which is exactly what the platform does
+with `max_attempts` unset, so the empty string is not a placeholder, it is the correct value.
+
+Sweeping the rest of the page for the same problem turned up 126 more hidden attempt lines, and **only three
+of them are the same kind of thing**:
+
+| | Count | What it is |
+|---|---|---|
+| Cleared | 6 | A-2 practice — my own overrides, claiming 3 attempts that no longer exist |
+| **Left alone** | **123** | The component's own default, `You have used 0 of 2 attempts`, un-overridden and hidden. Clearing these would create 123 overrides where there are none, and break the link to the DS. |
+| Still overridden | 3 | Two `0 of 3` and one `2 of 2` in section 02, hidden. These belong to lanes that legitimately model 3 and 2 attempts, so the values are not stale — flagged, not touched. |
+
+The distinction matters more than the tidiness: **an un-overridden default is not debt, it is the component
+doing its job.** Overwriting it would turn 123 inert nodes into 123 things that stop tracking the library —
+the same class of mistake as the stale `Show hint action` flags, made deliberately instead of by accident.
