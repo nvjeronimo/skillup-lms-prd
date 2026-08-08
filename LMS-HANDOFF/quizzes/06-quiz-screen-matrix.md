@@ -2896,3 +2896,45 @@ Nothing failed. Including the counter rule that caught the last defect, which no
 
 The counter check is the one worth keeping: it is the only rule here that is derived from what the card
 *renders* rather than from which variant it is, and it is the one that found a defect five sweeps in.
+
+### 14.55 Full audit after the two modes were merged into one frame *(Aug 7, 2026)*
+
+Nelson merged A-1 and A-2 into a single delivery frame, two columns side by side with a rule between them.
+**The screens themselves came through the merge intact — every behaviour check passes on all 156 question
+cards.** What needed fixing was labelling and leftovers.
+
+**Screens vs component behaviour — clean:**
+
+| Check | A-1 (66 cards) | A-2 (90 cards) |
+|---|---|---|
+| Cards on the shared footer | 66/66 | 90/90 |
+| `Show progress` on anywhere | 0 | 0 |
+| `Next question` · `Skip` visible | 0 · 0 | 0 · 0 |
+| Reset on a `Correct` answer | 0 | 0 |
+| Submit enabled on a result state | 0 | 0 |
+| Counter at `used >= total` still actionable | 0 | 0 |
+| Question carrying its own action row | n/a | **0 of 90** — the footer belongs to the problem |
+| Attempt lines | practice none · graded 0→2 of 2 · final 0→1 of 1 | practice none · graded 0→1 of 2 · final 0→1 of 1 |
+
+**Six things were wrong, all of them labelling or leftovers from the merge:**
+
+1. **The second column was still named `Mode A-1`.** Renamed to `Mode A-2 · one Submit for the set`, and the
+   first to `Mode A-1 · one Submit per question`.
+2. **The frame header described only mode A** — eyebrow, subtitle, `9 SCREENS`, and a costs line about A-1
+   alone. It now says `MODES A-1 AND A-2`, **27 SCREENS**, and names what each column costs.
+3. **Card titles said `(Mode A)`** while the column heading said A-1. Nine titles unified to `(Mode A-1)`.
+4. **A-2 practice claimed `(graded)`** on its points line — *"5 points possible (graded)"* and *"3/5 points
+   (graded)"* on a quiz that is ungraded by definition. Six screens corrected to `(ungraded)`.
+5. **A duplicate section 01** — a second `01 · What a quiz is on this platform`, byte-for-byte identical to
+   the original (1,170 characters of text, compared in full before removing).
+6. **The new `00 · Read me first` block carried a stray `Notes` frame** — the entire *"THREE THINGS THIS NEEDS
+   THAT WE DO NOT HAVE"* list, cloned in from the A-2 comparison table and identical to the copy still living
+   there. Removed, and the block's label corrected from *"ALL CTAs Actions"* to *"READ ME FIRST"*.
+
+**One thing to flag rather than fix.** The points line is **off on all 66 A-1 cards** — the documented
+decision, because edX renders that element empty in the courses we can reach — while **A-2 shows it on all 18
+screens**, because that is where the bucket's score appears after submitting. Both cannot be right. Settling
+it needs a look at a real bucket render, which we have measured through the API but never seen on screen.
+
+Page: **13,331 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow**, and
+raw fills down from 20 to **10** — merging the frames removed one of the two dark title bands.
