@@ -2652,3 +2652,60 @@ opening it.
 
 Section 05 is now 1,598px: intro, the seven behaviour lines, and the table. Page re-flowed and re-checked —
 13,185 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow.
+
+### 14.48 Eleven tables, one pattern *(Aug 7, 2026)*
+
+Sections 00, 01 and 04–08 now use the same table pattern as the CTA comparison — bordered container with the
+bound fill and 8px radius, a header row with a bottom rule, body rows with top rules, and every cell a
+`Frame 1` wrapper holding a filling text.
+
+| Section | Table |
+|---|---|
+| 00 · Read me first | 5 × 2 — `KIND / WHAT IT MEANS`, the ⚙ ✎ ↻ ▣ taxonomy |
+| 01 · What a quiz is | 4 × 3 — `SHAPE / COUNTED / WHAT IT GIVES` |
+| 04 · What controls what | 17 × 4, 10 × 9 (CTA matrix), 4 × 4, 6 × 4, 7 × 4 |
+| 05 · Behaviour | 8 × 2, plus the attempt-line table |
+| 06 · Decisions | 7 × 2 |
+| 07 · Open questions | 10 × 2 |
+| 08 · Not in this handoff | 6 × 2 |
+
+Four sections had no header row at all — they were label-and-description pairs. They were given one
+(`BEHAVIOUR / WHAT THE PLATFORM DOES`, `DECISION / WHY, AND WHAT IT COSTS`, `OPEN QUESTION / WHAT IT BLOCKS,
+AND WHAT WOULD SETTLE IT`, `NOT IN THIS HANDOFF / WHY, AND WHERE IT WENT`), because a header row is what makes
+the pattern a table rather than a list. `BUTTON SPECS` stayed outside its table — it holds live button
+instances, not text.
+
+### 14.49 Sections 02 and 03 validated against today's decisions
+
+**Section 02 — the journeys. Clean on every rule we have established:**
+
+| Rule | Result |
+|---|---|
+| `Next question` visible anywhere in mode A | **0** |
+| `Skip question` visible anywhere | **0** |
+| Reset offered on a `Correct` answer | **0** |
+| Submit left enabled on a result state | **0** |
+| Removed components still present (Results, Entry Header, Stat Tile, Answer Input, Exam Timer, Score Ring) | **0** |
+
+Twenty journey lanes across practice, graded, final, the bucket, and the hint/answer reveal.
+
+**One inconsistency, and it is editorial.** The `JOURNEY · Bucket` group sits inside a section titled *"The
+journeys — mode A, end to end"* and describes *"one problem, ten questions, one Submit"* — while the A-2
+delivery frame built this week models the same thing with **five** questions. Both are defensible on their
+own (ten is SKOAIFP01, five is a demo) but a reader meeting them an hour apart will think one is wrong. Worth
+deciding: align the counts, or say on the lane that it is drawn from the live course.
+
+**Section 03 — the kit. Two components were missing, both now added:**
+
+- **`LMS / Quiz · Footer Actions`** — it appeared nine times, but only *nested inside* Question Cards, with no
+  block of its own. After this week it is a shared component used by a question and by a bucket problem
+  alike, so the kit now shows it directly with five configurations: practice unanswered, after submit,
+  saved, closed final exam, and the mode B ▣ skip/next pair.
+- **`LMS / Quiz · Stepper Bar`** — same situation. Now shown with both modes, and the note records that it
+  does not exist in mode A-2 at all: a bucket is one page, so there is nothing to step through.
+
+The variant naming flagged in §12.6 has been corrected in the DS — it now reads `Mode=With Back+Next`, not
+`With Back+Left`.
+
+Page after all of it: **13,323 instances, 0 broken, 0 unexpected local components, 0 overlaps, 0 unstyled
+text, 0 column overflow.**
