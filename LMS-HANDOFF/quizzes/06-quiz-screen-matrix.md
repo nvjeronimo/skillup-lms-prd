@@ -2339,3 +2339,28 @@ Status chips are visible again on the A-2 cards, showing `In progress` rather th
 that was hidden earlier — which says the right thing without pretending the frame is a build target.
 
 Page: 13,185 instances, 0 broken, 0 unexpected local components.
+
+### 14.36 Section header and all 18 changelogs *(Aug 7, 2026)*
+
+**The Mode A section header was still advertising the Video Lesson.** Its meta strip read *6 SCREENS · 1
+desktop · 1 collapsed · 1 tablet · 1 mobile · + 2 tabs*, *8 STORIES · P1-10 through P1-31*, *3 EPICS · E3
+Video · E4 Transcript · E5 Notes* — none of it about quizzes, all of it inherited from the frame this was
+cloned from. It now says what is actually there, in the same four-column shape the A-2 header uses:
+
+| | |
+|---|---|
+| 9 SCREENS | 3 quiz types × 3 devices — desktop, tablet and mobile |
+| EVIDENCE | Every state checked against a rendered problem on dev or QA |
+| WHAT IT COSTS | No quiz-level Submit · no entry screen · no results screen |
+| DOCS | 06-quiz-screen-matrix.md · 09-handoff-map.md |
+
+**All eighteen changelog blocks** now carry a description written for their own quiz type and mode, instead
+of the one paragraph repeated nine times per frame, and a real recent-changes line: the footer component
+adoption on Mode A, and *"new frame, not a build target"* on A-2.
+
+The reference card's changelog had the same contamination as its header — an A-2 description sitting in the
+Mode A frame. Corrected.
+
+Page after re-flow: 13,185 instances, **0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text**. The
+only outstanding item is the 20 raw text fills in the two dark headers, still waiting on the on-brand
+variables to publish.
