@@ -2082,3 +2082,46 @@ That means the zero-violation result recorded earlier was about the components a
 have said so more precisely at the time. Binding the annotation layer is a real, bounded job — pick DS text
 styles for eyebrow / heading / body / caption and a bound colour, then apply to ~550 nodes — but it is a
 design decision first, and it applies to the sections, both delivery frames and this table alike.
+
+### 14.28 The annotation layer bound to DS text styles *(Aug 7, 2026)*
+
+**578 text nodes bound, 0 left unstyled.** Every piece of writing on the page — the nine sections, the
+comparison table, both delivery frames — now carries a DS text style instead of loose formatting. The 15
+styles used were imported from the DS by key, so they update when the DS does.
+
+The local styles already in the file were no help: all 15 are named `V7-Experiments(Remove)/…` and several
+are Outfit or Playfair, neither of which appears anywhere on the page. Everything on the wall was already
+Montserrat, which is what the DS ladder uses, so the binding was a size-and-weight question only.
+
+**Where it landed:**
+
+| Style | Nodes |
+|---|---|
+| Body/Small/Regular | 204 |
+| Body/Small/Semibold | 136 |
+| Caption/Semibold | 113 |
+| Caption/Medium | 71 |
+| Body/Lead/Regular | 32 |
+| Body/Default/Semibold | 20 |
+| Overline/Semibold | 16 |
+| the other eight | 46 |
+
+**The one judgment call, and it is reversible.** The page's most common size was **13px — 263 nodes, 45% of
+all the text — and 13 is not on the DS ladder at all.** It sits exactly between Caption (12) and Body/Small
+(14). I sent it **up to Body/Small**, because that copy is running body text and Caption is meant for
+captions; sending it down would have been a semantic demotion to save one pixel. Same reasoning collapsed
+11px and 12px labels into Caption, and 9px into Overline. If you want 13 → Caption instead, it is one pass.
+
+**What moved as a result.** Nothing overflowed and nothing collided, but text got very slightly taller, so
+the sections were re-flowed: section 02 grew 12,443 → 12,674px, 04 grew 1,787 → 1,859px, 00 grew 858 → 888px,
+and the rest shifted down accordingly. Frame A settled at 16,308px.
+
+**One duplicate found and removed.** A loose text node was sitting on the canvas at page level, holding a
+byte-for-byte copy of the *Read me first* paragraph and overlapping section 00. It had been overlapping by
+5px all along; growing the type made it a 57px collision, which is how it surfaced. Compared in full before
+deleting — identical, 420 characters.
+
+**Still not bound: text colour.** 179 of the 638 text nodes carry a raw fill rather than a colour variable
+(459 are bound). Text styles in Figma do not carry colour, so this is a separate binding and a separate
+decision — which semantic token the annotation layer should use for primary, secondary and muted copy. Say
+the word and it is the same kind of pass.
