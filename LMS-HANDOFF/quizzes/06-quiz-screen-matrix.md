@@ -3047,3 +3047,42 @@ asks whether a field is populated anywhere in the catalogue; the other asks whic
 type. They belong in the same message as question 1, the `showanswer` read.
 
 Page: 13,527 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 overflow.
+
+### 14.60 Duration back on, and a full-page pass *(Aug 7, 2026)*
+
+**The duration is drawn again on all 27 screens** — Nelson is confident the value is reachable. The open
+question changed shape rather than closing: it is no longer *"should this be on screen"* but **"which source
+fills it"**. Reworded in both places to say so, and it now blocks the binding rather than the design.
+
+Description and the author row stay hidden. The header sits between the two extremes it had this afternoon:
+
+| Field | State |
+|---|---|
+| Title · Topic type · Duration | shown |
+| Marked as completed | off, turns on by state |
+| Description · Author & Updated | hidden — no field, and the author row is against the shell rule |
+
+**Full-page validation — nothing failed.**
+
+| Structure | |
+|---|---|
+| Component instances | 13,527 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow | **0 · 0 · 0** |
+| Columns overflowing their table | **0** |
+| Raw text fills | 10 — the title band, accepted |
+
+| Behaviour, 198 question cards | |
+|---|---|
+| On the shared footer | **198 of 198** |
+| `Show progress` on | **0** |
+| `Next question` · `Skip` visible | **0 · 0** |
+| Reset on a `Correct` answer | **0** |
+| Submit enabled on a result state | **0** |
+| Counter spent but still actionable | **0** |
+| Submit relabelled | **0** |
+
+| Copy | |
+|---|---|
+| ORA copy · plural bug · stale "ten questions" · "per-question stepper" | **0 · 0 · 0 · 0** |
+| `KIND` cells still showing a bare glyph | **0** |
