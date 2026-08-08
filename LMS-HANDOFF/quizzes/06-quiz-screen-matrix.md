@@ -3206,3 +3206,32 @@ feedback.
 
 Page after the change: 13,527 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 text
 or column overflow. Delivery frame 18,089px.
+
+### 14.65 The mobile nav is fixed — now drawn, not just written *(Aug 7, 2026)*
+
+First attempt was a line in section 05 saying the topic nav is pinned to the bottom on mobile. Nelson's
+answer was the right one: *"o desenho não mostra o comportamento que realmente deve ter."* A rule nobody can
+see in the frame is a rule that gets built wrong.
+
+**Six viewport screens added**, one per mobile card — three in A-1, three in A-2, at the real device height
+of **375 × 812** with the frame clipping. The topic nav was lifted out of the scrolling column, given the
+top bar's own bound surface and top rule, and pinned absolutely to the bottom, its background extending
+through the 34px home-indicator safe area the way iOS does it.
+
+The result shows what the tall frames cannot: **a question cut off mid-card behind the bar**, with
+`←  2 of 9  →` sitting on top of it. That single crop says "the content scrolls, this does not" better than
+the sentence does.
+
+**What the tall screens were saying instead.** The nav sat inside the content column with automatic
+positioning, 16px above the end of a **4,434px** frame. On a 375-wide mockup that reads as "the nav is at the
+bottom of the page" — true of the drawing, false of the product, and exactly the kind of thing that ships as
+a nav you have to scroll four thousand pixels to reach.
+
+The tall screens stay as they are — they are the only way to see a whole quiz at once. The viewport screen
+sits beside each one, so a developer gets both the full page and the thing that is fixed within it.
+
+The section 05 row stays too, now that it describes something visible: *"No static frame can show this: the
+mobile screens here are 4,434px tall, so the nav sits at the end of a long scroll, which is exactly what it
+must NOT do at 812px."*
+
+Page: 16,031 instances, 0 broken, 0 unexpected locals, 0 overlaps. Delivery frame 20,717px.
