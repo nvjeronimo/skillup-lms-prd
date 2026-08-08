@@ -2635,3 +2635,20 @@ defect:
   they are there — and if the publish is ever unblocked, binding them is a single pass.
 
 **The page has no outstanding items.**
+
+### 14.47 The attempt-line table rebuilt in the table pattern *(Aug 7, 2026)*
+
+The block added in §14.43 was built with section 05's plain two-column row style. It has been rebuilt in
+**the table pattern Nelson designed** — the bordered container with the bound fill and 8px radius, a
+`WHERE / ATTEMPT LINE / WHY` header row with a bottom rule, and body rows where each cell is a `Frame 1`
+wrapper holding a filling text. Same structure as the CTA comparison table, so the two read as one system.
+
+Columns are 420 / 300 / 1000 inside a 1,784px container, and long copy wraps inside its cell instead of
+running past it.
+
+It stays in **English**, like the rest of the wall — the Portuguese version exists only in our conversation,
+and a single Portuguese block on an otherwise English handoff page would read as an accident to anyone
+opening it.
+
+Section 05 is now 1,598px: intro, the seven behaviour lines, and the table. Page re-flowed and re-checked —
+13,185 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow.
