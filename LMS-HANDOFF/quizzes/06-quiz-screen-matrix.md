@@ -2422,3 +2422,40 @@ default over any un-overridden instance.** That is what brought the peer-grading
 
 Only three instances on the page were still showing a component default, all three in the section 03 variant
 showcase, where showing the default is the point. Every working screen overrides its own copy.
+
+### 14.39 The publish diagnosis, corrected *(Aug 7, 2026)*
+
+I have been telling Nelson that "components publish and variables do not". **That was wrong, and a cleaner
+test proves it.**
+
+The `Tone=Success` alert default was changed in the DS this session. The section 03 showcase instance of that
+variant has **never been overridden** — so if a publish carried DS changes, it would show the new text. After
+the latest republish:
+
+| Checked in the DS file | Checked in the ICP file |
+|---|---|
+| `Tone=Success` = *"Correct · 1 / 1 point"* | showcase still reads *"Your part is done / …peer review completed"* |
+| `Tone=Warning` = *"Partially correct · 1 / 2 points"* | showcase shows my own instance override, not the default |
+| three on-brand tokens present, 347 in `1. Semantics` | library reports 321, import fails |
+
+**Nothing from the DS reached the ICP in this publish — not a component, not a variable.** Earlier publishes
+did land (the Footer Actions properties arrived, the Question Card swap arrived), so publishing works in
+general; this one carried no changes.
+
+So the real story is not "variables are excluded from publishing". It is that **some publishes are going out
+empty**, and the variables have been caught in every one of them. The un-overridden Success alert is now the
+cheapest test available: if it still says *"Your part is done"* in the ICP, the publish did not land.
+
+### 14.40 Page state *(Aug 7, 2026)*
+
+| Check | Result |
+|---|---|
+| Component instances | 13,185 |
+| Broken · unexpected local components | 0 · 0 |
+| Overlapping top-level nodes | 0 |
+| Unstyled text outside instances | 0 |
+| Question Cards using the shared footer | **198 of 198** |
+| ORA copy on the page | 1 — the un-overridden Success showcase, waiting on the publish |
+| Raw text fills | 20 — the dark headers, waiting on the same publish |
+
+Both remaining items are the same blocker, not two.
