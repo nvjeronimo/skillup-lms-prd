@@ -2938,3 +2938,44 @@ it needs a look at a real bucket render, which we have measured through the API 
 
 Page: **13,331 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow**, and
 raw fills down from 20 to **10** — merging the frames removed one of the two dark title bands.
+
+### 14.56 The restructure validated — and the CTA matrix restored *(Aug 7, 2026)*
+
+The sections are now numbered frames in a single column, and the journeys and kit stayed as wide sections
+alongside the delivery frame. Validating it turned up three things, one of them serious.
+
+**1 · The CTA matrix had been lost.** Only its heading — *"Every CTA, in every state"* — survived the
+restructure. The nine-column table and the `BUTTON SPECS` block with live button instances were both gone.
+This was the most-verified artefact on the page: every cell read off the component, and it is the thing a
+developer checks before wiring a state. **Rebuilt from `09-handoff-map.md`**, ten rows × nine columns —
+`STATE · Submit · Hint · Save draft · Show answer · Reset · Review ⚑ · Next q. ▣ · Skip ▣` — and `BUTTON
+SPECS` rebuilt beneath it with eight live `Footer Actions` instances plus the `Review ⚑` row marked
+**TO BUILD**.
+
+**2 · Every table's columns were wider than the table holding them.** The columns kept the widths they were
+given at 1,784px while the frames are now 1,184, so the right-hand column ran outside the container in all
+eleven tables — by 40px on the two-column ones, 80 on the three-column, and **120 on section 04's**. Refitted
+so each table's columns sum to its own content width:
+
+| Shape | Columns now |
+|---|---|
+| 2-column | 320 / 748 |
+| 3-column | 349 / 164 / 515 |
+| 4-column | 237 / 197 / 256 / 298 |
+| CTA matrix, 9-column | 208 + eight of 104 |
+
+**3 · The `KIND` column showed glyphs where it should show words.** Thirty cells replaced: `⚙` → `SETTING`,
+`✎` → `AUTHORING`, `↻` → `RUNTIME`, `▣` → `SHELL`, and the combinations spelled out — `⚙ ✎` became
+`SETTING + AUTHORING`, `⚙ ↻` became `SETTING + RUNTIME`. The legend for those glyphs lives in section 00, a
+long scroll away; a developer reading section 04 should not have to go and find it.
+
+Also repaired in passing: the **Option Row heading had been merged into the CTA block**, leaving its table
+without a title. Split back out and placed above its own table.
+
+**Numbering, for the record.** The column now runs 00 · Read me first, 01 · ALL CTAs Actions, 02 · What a quiz
+is, 04 · What controls what, 05, 06, 07, 08 — **there is no 03**, and the journeys and kit sections carry no
+number at all. Not corrected, because the gap may be deliberate now that those two live beside the delivery
+frame rather than in the column.
+
+Page: 13,527 instances, **0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 text overflowing a
+cell, 0 columns overflowing a table.**
