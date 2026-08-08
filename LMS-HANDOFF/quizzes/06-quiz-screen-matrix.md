@@ -2169,3 +2169,65 @@ headers**, the dark `#13282f` band — a four-tone hierarchy in pale blue (`#f2f
 So the honest state is: **the LMS skin has no secondary / tertiary / quaternary on-brand text tokens.**
 Either three get added to the skin and these 20 nodes bind cleanly, or the dark header is rebuilt from
 tokens that do exist. Forcing the cyan family would have made the page bind-clean and visually wrong.
+
+### 14.30 Footer Actions adopted on the A-2 screens *(Aug 7, 2026)*
+
+Nelson built `LMS / Quiz · Footer Actions` in the DS so the footer could be reused by a question **and** by a
+problem — which is exactly the gap the A-2 frame flagged. All **18 A-2 screens** now use it: the hand-cloned
+`Problem footer` is gone, replaced by a real library instance, filling the column width. **Gap 1 on the frame
+is closed.**
+
+The component shipped with two booleans, `Show Secondary actions` and `Show Primary action`, and five fixed
+buttons. That is not enough to drive a footer per state, so six were added (additive — nothing broke):
+`Show hint`, `Show skip`, `Show save`, `Show answer`, `Show reset`, `Show attempts`. The five secondary ones
+default to **false**, matching the Question Card convention: turn on only what the state allows.
+
+**Only the CTAs each screen requires are active**, from the CTA matrix:
+
+| Screen | Active | Submit | Attempts |
+|---|---|---|---|
+| practice / graded · before | Hint + Save draft | Default | 0 of 3 · 0 of 2 |
+| practice / graded · after | Hint + Reset | Disabled | 1 of 3 · 1 of 2 |
+| final exam · before | Save draft | Default | 0 of 1 attempt |
+| final exam · after | **Show answer** | Disabled | 1 of 1 attempt |
+
+Final exam carries no Hint (exams are not authored with `demandhint`) and no Reset — one pooled attempt
+closes the problem, so `should_show_reset_button` returns False and `showanswer: finished` is satisfied.
+
+**One difference worth knowing:** the component's save button is *"Draft saved"*, `Secondary · Disabled` —
+the confirmation, not the action. The before-submit screens need the action, so those instances override the
+label to *"Save draft"* and the state to `Default`. Both are legitimate states of the same control; it may be
+worth a `Saved` boolean on the component rather than nine label overrides.
+
+### 14.31 Why the Question Card was not swapped — tested, not assumed
+
+The same swap inside `LMS / Quiz · Question Card` was **tested on a scratch component before touching
+anything**, because 66 live instances depend on that component's contract. The result:
+
+- `isExposedInstance = true` **works** — the nested Footer Actions' eight properties become reachable on the
+  parent instance through `exposedInstances`.
+- But a parent property **cannot** be pointed at a nested instance's boolean.
+  `componentPropertyReferences` accepts only `visible`, `characters` and `mainComponent`; assigning
+  `'Show hint'` fails validation outright.
+
+So nesting the component inside the card would **retire the card's own property names**. `Show hint action`,
+`Show save`, `Show answer action`, `Show reset`, `Show attempts`, `Show submit` would stop driving anything
+and control would move to a nested `Footer Actions` group. Those names are the documented contract in
+`09-handoff-map.md` §1a and on the wall, and all 66 instances would fall back to defaults and need
+re-driving.
+
+That is recoverable — every instance's correct state is derivable from the CTA matrix — but it changes what a
+developer reads, so it is a decision rather than a mechanical step. Left for Nelson to call.
+
+### 14.32 The publish diagnosis, finally narrowed
+
+`importComponentByKeyAsync` on Footer Actions **succeeded**, while the three new on-brand colour variables
+still fail with *"could not find variable with key"*, and the published collection still reports **321
+variables against 347 in the file**.
+
+**So publishing works — it is the variables that are being left out of it.** In the publish dialog, variables
+sit in their own section, separate from components and styles. Components are getting through; variables are
+not. That is the one thing to check.
+
+The 20 nodes therefore remain raw, all in the two delivery-frame headers. Everything else is ready: the
+tokens exist, resolve correctly, and pass AA on the band (14.03:1, 9.89:1, 5.67:1).
