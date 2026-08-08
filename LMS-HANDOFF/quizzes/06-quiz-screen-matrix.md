@@ -2364,3 +2364,36 @@ Mode A frame. Corrected.
 Page after re-flow: 13,185 instances, **0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text**. The
 only outstanding item is the 20 raw text fills in the two dark headers, still waiting on the on-brand
 variables to publish.
+
+### 14.37 The peer-grading alert: what it is, and why it keeps coming back *(Aug 7, 2026)*
+
+Nelson spotted an alert on a `Partially correct` checkbox question reading *"This grade replaced the peer
+score / Staff assessment always takes precedence over peer grading."*
+
+**It means nothing in that question. The copy is wrong twice over.**
+
+1. **Wrong feature.** Peer grading and staff override belong to **ORA** (`openassessment`) — submit a work,
+   peers grade it against a rubric, staff can override. Our quizzes are **CAPA** problems. A CAPA problem has
+   no peer grading and no staff override, so no grade can "replace a peer score". The two are different
+   XBlocks, recorded in `topic-types-inventory.md`.
+2. **Wrong state.** On a partially correct answer the platform reports partial credit —
+   `◐ Partially correct (x/y points)` per §99 of the experience spec — plus whatever `choicehint` the author
+   wrote for the choices picked. Nothing about grade replacement.
+
+**Where it comes from.** It is the **default copy of the `LMS / Inline Alert` component's `Tone=Warning`
+variant** in the DS. The Question Card's `Partially correct` state uses that tone, so every instance that has
+not had its text deliberately overridden inherits it.
+
+**And this is the second time.** §12.6 records six of these on 6 Aug, fixed then — and a republish brought
+them back, exactly the override asymmetry described there: *a library update overwrites text an instance had
+not deliberately overridden.* Thirteen alerts were carrying it again.
+
+All thirteen are corrected: title `Partially correct · 1 / 2 points`, and a body written for each question —
+the checkbox one now reads *"You picked the role but missed the output format. Both belong in a well-formed
+prompt; the model vendor does not."* Zero occurrences left on the page.
+
+**The root cause is still there.** The fix above is on instances; the DS component's Warning variant still
+carries the peer-grading text as its default, so the next republish can reintroduce it a third time. The
+component (`LMS / Inline Alert`, `20328:3296`) needs its default copy changed to something a quiz would
+actually say. Attempted this session — the DS file timed out three times on read, so it is left flagged
+rather than half-done.
