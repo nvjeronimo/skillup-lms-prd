@@ -2856,3 +2856,43 @@ there is nowhere to advance to at all"* — the correct statement — while the 
 opposite. Swept the whole page for navigation claims: six mentions, one wrong, now fixed.
 
 Page: 13,323 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow.
+
+### 14.54 Full-page validation *(Aug 7, 2026)*
+
+Nothing failed. Including the counter rule that caught the last defect, which now runs as part of the sweep.
+
+| Structure | |
+|---|---|
+| Component instances | 13,323 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlapping top-level nodes | **0** |
+| Unstyled text outside instances | **0** |
+| Text overflowing its column | **0** |
+| Raw text fills | 20 — the two title bands, accepted |
+
+| Behaviour, against every rule on this page | |
+|---|---|
+| Question Cards on the shared footer | **198 of 198** |
+| `Show progress` true anywhere | **0** — mode A stacks and scrolls |
+| `Next question` · `Skip question` visible | **0 · 0** |
+| Reset on a `Correct` answer | **0** |
+| Submit enabled on a result state | **0** |
+| **Counter at `used >= total` with Submit enabled or Reset offered** | **0** |
+| Submit labels that are not "Submit" | **0** |
+
+| Copy | |
+|---|---|
+| ORA copy anywhere | **0** |
+| `of 1 attempts` plural bug | **0** |
+| Stale "ten questions" in the bucket lane | **0** |
+| "per-question stepper" claim | **0** |
+
+| Consistency | |
+|---|---|
+| Tables on the shared pattern | **11** |
+| Kit variant coverage | Option Row 7/7 · Inline Alert 6/6 · Gate 5/5 · Question Card 9/9 · Stepper Bar 2/2 · Footer Actions · Grade Summary |
+| Journey attempt lines | Practice none · Bucket 0→1 of 2 · Graded 0→2 of 2 · Final 0→1 of 1 |
+| A-2 screens | six configurations, all correct |
+
+The counter check is the one worth keeping: it is the only rule here that is derived from what the card
+*renders* rather than from which variant it is, and it is the one that found a defect five sweeps in.
