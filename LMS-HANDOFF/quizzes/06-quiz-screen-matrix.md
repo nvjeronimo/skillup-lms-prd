@@ -3086,3 +3086,25 @@ Description and the author row stay hidden. The header sits between the two extr
 |---|---|
 | ORA copy · plural bug · stale "ten questions" · "per-question stepper" | **0 · 0 · 0 · 0** |
 | `KIND` cells still showing a bare glyph | **0** |
+
+### 14.61 The A-2 question cards drop their footer container *(Aug 7, 2026)*
+
+`Show Footer Questions` — the boolean Nelson added to the Question Card — is now **false on all 90 A-2
+question cards**. Until now the individual actions were off but the container itself still rendered, so every
+question carried an empty action row: 44–48px of nothing, five times per screen.
+
+| | Footer Questions |
+|---|---|
+| Mode A-1 — 66 cards | **on**, 66 of 66 — the action row belongs to the question there |
+| Mode A-2 — 90 cards | **off**, 90 of 90 — it belongs to the problem |
+| Elsewhere on the page (journeys, kit) — 42 cards | on, untouched |
+
+The delivery frame came down from 19,229 to **17,909px** — 1,300px of empty rows removed — and the six
+problem-footer configurations are unchanged, which is the check that mattered: the actions had to disappear
+from the questions without disappearing from the set.
+
+This closes the last structural difference between what the A-2 screens *said* and what they *drew*. The
+frame has claimed since it was built that in a bucket the footer belongs to the problem; the question cards
+were still reserving space for one.
+
+Page: 13,527 instances, 0 broken, 0 unexpected locals, 0 overlaps.
