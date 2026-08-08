@@ -2397,3 +2397,28 @@ carries the peer-grading text as its default, so the next republish can reintrod
 component (`LMS / Inline Alert`, `20328:3296`) needs its default copy changed to something a quiz would
 actually say. Attempted this session — the DS file timed out three times on read, so it is left flagged
 rather than half-done.
+
+### 14.38 The Inline Alert defaults fixed at source *(Aug 7, 2026)*
+
+Reading all six variants showed the Warning tone was not alone — **two of them carried ORA copy**, and both
+are tones the Question Card uses for quiz feedback:
+
+| Tone | Was | Now |
+|---|---|---|
+| Warning *(= Partially correct)* | *"This grade replaced the peer score / Staff assessment always takes precedence over peer grading."* | *"Partially correct · 1 / 2 points / Partial credit is awarded per correct choice…"* |
+| Success *(= Correct)* | *"Your part is done / Response submitted · peer review completed. We'll email you when your grade is released."* | *"Correct · 1 / 1 point / Attributed purchases are the only one of the three that ties spend to money coming in."* |
+
+Both were describing a peer-graded submission — ORA — inside the component that renders CAPA feedback. Zero
+ORA copy left in the set.
+
+**Three were deliberately left alone.** `Hint` and `Answer` already carry quiz copy. `Info` keeps *"Best
+viewed on a larger screen"* and `Error` keeps *"This activity couldn't load / Our activity server didn't
+respond"* — those are real platform messages, and the Error one is exactly the failed-request copy open
+question 9 says we need a component for. Changing them to quiz feedback would delete something we asked for.
+
+The reasoning is written into the component description, including the trap: **the Question Card inherits
+this copy wherever an instance has not deliberately overridden the text, and a library update restores the
+default over any un-overridden instance.** That is what brought the peer-grading line back twice.
+
+Only three instances on the page were still showing a component default, all three in the section 03 variant
+showcase, where showing the default is the point. Every working screen overrides its own copy.
