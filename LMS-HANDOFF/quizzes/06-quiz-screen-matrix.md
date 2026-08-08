@@ -2231,3 +2231,48 @@ not. That is the one thing to check.
 
 The 20 nodes therefore remain raw, all in the two delivery-frame headers. Everything else is ready: the
 tokens exist, resolve correctly, and pass AA on the band (14.03:1, 9.89:1, 5.67:1).
+
+### 14.33 The Question Card footer is now the shared component *(Aug 7, 2026)*
+
+All **nine variants** of `LMS / Quiz · Question Card` had their local `Secondary actions` + `Primary action`
+frames removed and replaced by a single exposed instance of `LMS / Quiz · Footer Actions`. The footer is one
+component now, used by a question and by a problem alike.
+
+**Two controls had to be added first, or the swap would have lost them.**
+
+- **`Next question`** existed in the card's Incorrect variant and not in Footer Actions. Cloned across and
+  given a `Show next` boolean — without it, the mode-B control would have silently disappeared.
+- **`Saved`**, as Nelson asked. The component's one save button was *"Draft saved"* (`Secondary · Disabled`),
+  the confirmation. A boolean cannot invert, so a second button — *"Save draft"* (`Secondary · Default`), the
+  action — now sits beside it. `Show save` drives the action, `Saved` drives the confirmation. No more label
+  overrides, and it matches the platform, where `.notification-save` is a separate transient thing from the
+  Save button.
+
+Footer Actions now carries ten properties: `Show Secondary actions`, `Show Primary action`, `Show hint`,
+`Show skip`, `Show save`, `Saved`, `Show answer`, `Show next`, `Show reset`, `Show attempts`.
+
+**The card's contract changed, and here is exactly how.** Eight properties were deleted because the layers
+they pointed at no longer exist:
+
+| Deleted from the card | Now |
+|---|---|
+| `Show submit` | `Footer Actions → Show Primary action` |
+| `Show attempts` | `Footer Actions → Show attempts` |
+| `Show hint action` | `Footer Actions → Show hint` |
+| `Show skip` · `Show save` · `Show reset` | `Footer Actions → Show skip` · `Show save` · `Show reset` |
+| `Show answer action` | `Footer Actions → Show answer` |
+| `Show next action` | `Footer Actions → Show next` |
+
+The card keeps six of its own: `Show progress`, `Show hint` *(the hint alert, not the button)*,
+`Show explanation`, `Show platform prompt`, `Show points`, `State`. `09-handoff-map.md` §1a needs this
+correction — the CTA row of that table now names properties on a nested component.
+
+**Why it had to work this way.** A parent property cannot be pointed at a nested instance's boolean —
+`componentPropertyReferences` accepts only `visible`, `characters` and `mainComponent`, tested directly.
+`isExposedInstance = true` is the mechanism that exists, and it surfaces the nested properties on every
+instance rather than proxying them.
+
+**Still to do, and it needs a publish.** The 198 Question Card instances on the ICP page still show the old
+structure — the file reports the fourteen old property names and a local `Footer` frame, because the library
+has not been republished since the swap. Their current settings were snapshotted first (all 198, with the
+visible CTAs, attempt text and Submit state each one renders), so restoring them is a replay, not a guess.
