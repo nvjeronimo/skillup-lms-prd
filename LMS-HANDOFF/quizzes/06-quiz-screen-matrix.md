@@ -2774,3 +2774,46 @@ Nothing failed this time.
 Nine sections, two delivery frames and the comparison table. The page is internally consistent: the bucket
 appears in three places — a journey lane, a delivery frame and a comparison table — and all three now agree on
 five questions, two pooled attempts and a 3/5 score, with the live-course measurement cited rather than drawn.
+
+### 14.52 Sections 02 and 03 validated in depth — one real contradiction found *(Aug 7, 2026)*
+
+**Section 03 — complete.** Every variant of every component in the kit is shown, checked against the DS
+component sets rather than by eye:
+
+| Component | In the DS | Shown | Missing |
+|---|---|---|---|
+| Option Row | 7 | 7 | — |
+| Inline Alert | 6 | 6 | — |
+| Gate | 5 | 5 | — |
+| Question Card | 9 | 9 | — |
+| Stepper Bar | 2 | 2 | — |
+| Footer Actions | single component | 5 configurations | — |
+| Grade Summary | single component | 1 | — |
+
+**Section 02 — the attempt rule holds per journey, which is the check that matters:**
+
+| Journey | Cards | Counter |
+|---|---|---|
+| Practice | 8 | no counter on any — unlimited |
+| Bucket | 4 | footer hidden on the early questions, `0 of 2` then `1 of 2` |
+| Graded | 9 | `0 of 2` · `1 of 2` · `2 of 2` |
+| Final | 5 | `0 of 1` · `1 of 1` |
+
+**And one card was contradicting itself.** In the hints-and-reveal group, the step *"Attempts spent — the
+answer can be revealed"* showed `2 of 2 attempts` with **Submit still enabled**. All attempts used means the
+problem is closed, and §05 of this page says so in as many words: *Submit is disabled only when the problem is
+CLOSED — all attempts used.* The card was offering a submission that the platform would refuse.
+
+Fixed: Submit is now `Disabled`. Reset was already correctly absent, and Show answer correctly present —
+`showanswer: finished` is satisfied precisely because the attempts are spent, which is what that step exists
+to demonstrate.
+
+**Why the earlier sweeps missed it.** They checked Submit against the *result* states — Correct, Incorrect,
+Partially correct, Answer revealed, Results withheld — and `Last attempt` is not one of them. The rule is not
+about the state at all: it is about the counter. Reading `used >= total` and requiring a disabled Submit and
+no Reset catches it regardless of variant, and that check found exactly one across all 198 cards.
+
+**One clarity gap, not an error.** The hints-and-reveal group runs two paths — hints on a problem with no
+counter, then Show answer on one at `2 of 2` — because `showanswer: finished` needs a finite attempt count to
+demonstrate at all. A reader sees the counter appear halfway through what looks like one story. A caption on
+each path naming its quiz type would settle it.
