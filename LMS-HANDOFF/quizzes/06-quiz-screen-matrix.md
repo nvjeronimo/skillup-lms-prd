@@ -3179,3 +3179,30 @@ Nine cards say **not a build target** under a chip that now says **Ready for DEV
 with the changelog — *"A-2 costs authoring only"*. Either the A-2 column is genuinely being handed over for
 build, in which case that copy should go, or the chip on those nine should say something else. Not changed
 either way, because which one is true is a product decision, not a tidy-up.
+
+### 14.64 A-2 is a build target — the copy follows *(Aug 7, 2026)*
+
+*"Not a build target"* is gone from the nine A-2 cards. It was replaced rather than deleted, because the
+sentence was doing two jobs and only one of them was wrong:
+
+> The bucket authoring model, reached by authoring rather than by code: all five questions sit in one CAPA
+> problem, so the platform itself gives one Submit, one pooled attempt count and one score. The footer belongs
+> to the problem, not to the question — every question card here has its own action row switched off.
+
+The claim about *how you get there* is still true and worth keeping. The claim about *whether it ships* was
+the one contradicting the chip.
+
+**Two more places said the same thing quietly**, found by sweeping rather than by memory:
+
+- The frame subtitle ended *"authoring only, drawn for comparison"*. It now ends **"Both are handed over;
+  which one a course uses is an authoring decision, not a code one."**
+- The badge read `PHASE 1 · BUILD TARGET + VARIANT` — one column promoted, the other demoted, in three words.
+  Now `PHASE 1 · BOTH MODES`.
+
+The *cost* line was left exactly as it was: **"A-1 costs design and code · A-2 costs authoring only, and
+per-question feedback."** That is a trade-off, not a status, and it is the honest thing to keep in front of
+whoever picks between them. Nothing about being ready for development makes A-2 stop costing per-question
+feedback.
+
+Page after the change: 13,527 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 text
+or column overflow. Delivery frame 18,089px.
