@@ -2738,3 +2738,39 @@ all, only the last question has the Submit, and after submitting the card is `Pa
 and a disabled Submit. That is the bucket behaving as the platform does.
 
 Page: 13,323 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow.
+
+### 14.51 Full-page validation *(Aug 7, 2026)*
+
+Nothing failed this time.
+
+| Structure | |
+|---|---|
+| Component instances | 13,323 |
+| Broken instances · unexpected local components | **0 · 0** |
+| Overlapping top-level nodes | **0** |
+| Unstyled text outside instances | **0** |
+| Text overflowing its column | **0** |
+| Raw text fills | 20 — the two title bands, accepted in §14.46 |
+
+| Behaviour — checked against every rule we have established | |
+|---|---|
+| Question Cards, all on the shared footer | **198 of 198** |
+| `Next question` visible in mode A | **0** |
+| `Skip question` visible anywhere | **0** |
+| Reset offered on a `Correct` answer | **0** |
+| Submit left enabled on a result state | **0** |
+| Submit labels that are not "Submit" | **0** |
+| ORA copy anywhere on the page | **0** |
+| `of 1 attempts` plural bug | **0** |
+| Stale "ten questions" copy in the bucket lane | **0** |
+
+| Consistency | |
+|---|---|
+| Tables on the shared pattern | **11** — 00, 01, 04 (×5), 05, 06, 07, 08 |
+| Kit blocks | 7 components, Footer Actions and Stepper Bar included |
+| Mode A attempt line | practice 0/21 shown · graded 24/24 · final 21/21 — exactly the rule |
+| A-2 screens | six configurations, one per type × phase, all correct |
+
+Nine sections, two delivery frames and the comparison table. The page is internally consistent: the bucket
+appears in three places — a journey lane, a delivery frame and a comparison table — and all three now agree on
+five questions, two pooled attempts and a 3/5 score, with the live-course measurement cited rather than drawn.
