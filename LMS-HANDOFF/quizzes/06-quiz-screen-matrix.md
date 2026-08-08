@@ -3266,3 +3266,36 @@ to 18,089px. The section 05 line was rewritten from *"on mobile the topic nav is
 version, pointing at the new frame.
 
 Page: 14,878 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 overflow.
+
+### 14.67 Full-page validation *(Aug 7, 2026)*
+
+Nothing failed.
+
+| Structure | |
+|---|---|
+| Component instances | 14,878 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow · column overflow | **0 · 0 · 0 · 0** |
+| Raw text fills | **20**, and located: 10 in each of the two dark title bands, none inside a screen or a card |
+
+| Behaviour, 219 question cards | |
+|---|---|
+| On the shared footer | **219 of 219** |
+| `Show progress` on | **0** |
+| `Next question` · `Skip` visible | **0 · 0** |
+| Reset on a `Correct` answer | **0** |
+| Submit enabled on a result state | **0** |
+| Counter spent but still actionable | **0** |
+| Submit relabelled | **0** |
+
+The card count rose from 198 to 219 — the 21 in the new player-shell frame. `Show Footer Questions` follows
+the rule everywhere: off on all 90 A-2 cards, on for A-1, the journeys, the kit and the shell examples.
+
+| Consistency | |
+|---|---|
+| Topic Headers | 30, all with title, type and duration on; description, author and status off |
+| Status chips | **44 of 44 Ready for DEV** |
+| Copy — ORA · plural · stale ten · stepper claim · bare glyphs · "not a build target" | **0 · 0 · 0 · 0 · 0 · 0** |
+
+Twelve top-level artefacts: eight numbered blocks in the reading column, the two wide sections, the delivery
+frame and the player-shell frame.
