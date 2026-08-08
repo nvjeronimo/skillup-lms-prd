@@ -2979,3 +2979,12 @@ frame rather than in the column.
 
 Page: 13,527 instances, **0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 text overflowing a
 cell, 0 columns overflowing a table.**
+
+### 14.57 Numbering: settled *(Aug 7, 2026)*
+
+The journeys and the kit stay **unnumbered** — Nelson's call. They are wide sections living beside the
+delivery frame rather than blocks in the reading column, so a number would imply a place in a sequence they
+are no longer part of.
+
+That also settles the gap in the column, which reads 00 · 01 · 02 · 04 · 05 · 06 · 07 · 08. **There is no 03
+and there should not be**: it was the kit, and the kit moved out. Not a mistake to be tidied later.
