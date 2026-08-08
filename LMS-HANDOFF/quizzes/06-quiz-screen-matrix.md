@@ -2817,3 +2817,42 @@ no Reset catches it regardless of variant, and that check found exactly one acro
 counter, then Show answer on one at `2 of 2` — because `showanswer: finished` needs a finite attempt count to
 demonstrate at all. A reader sees the counter appear halfway through what looks like one story. A caption on
 each path naming its quiz type would settle it.
+
+### 14.53 Path captions, and a wrong claim about navigation *(Aug 7, 2026)*
+
+**Captions added** to the two paths in the reveal-controls group, using the caption pattern the practice
+journey already uses:
+
+- *Path 1 · asking for hints* — "Drawn on a practice quiz — unlimited attempts, so no counter appears. Hints
+  behave the same on any type: they cost nothing and spend nothing."
+- *Path 2 · revealing the answer* — "Drawn on a graded quiz — two attempts. Show answer only appears once
+  they are spent, because `showanswer` is set to `finished`, so this path needs a finite count to exist at
+  all."
+
+**And Nelson caught an error in the comparison table.** The `Question navigation` row claimed mode A-1 has
+*"Back and a per-question stepper"*. **It does not.** Checked against the frame rather than argued:
+
+| | |
+|---|---|
+| Mode A-1 question cards | 66 |
+| Cards with `Show progress` true | **0** |
+| Cards where the Stepper Bar is visible | **0** |
+| Question cards stacked per screen | 7–8 |
+
+A mode A quiz is N problems in **one unit** — the questions are stacked on a single page and the learner
+scrolls. There is no per-question navigation in mode A either. The real difference to A-2 is the granularity
+of Submit, not navigation, and the row was implying a control that ships off.
+
+| Row | Was | Now |
+|---|---|---|
+| A-1 | Back and a per-question stepper | none — the questions are stacked on one page and the learner scrolls. The Stepper Bar exists but is off on every screen. |
+| A-2 | none: the set is one page | none — the set is one problem on one page. The Stepper Bar does not apply at all. |
+
+The kit note on `LMS / Quiz · Stepper Bar` was carrying the same implication and now says it ships **off**,
+with the count as evidence.
+
+**Worth noting the page contradicted itself and one half was right.** Section 06 already said *"In mode A
+there is nowhere to advance to at all"* — the correct statement — while the comparison table said the
+opposite. Swept the whole page for navigation claims: six mentions, one wrong, now fixed.
+
+Page: 13,323 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow.
