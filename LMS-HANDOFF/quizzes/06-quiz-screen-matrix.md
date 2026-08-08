@@ -2564,3 +2564,44 @@ of them are the same kind of thing**:
 The distinction matters more than the tidiness: **an un-overridden default is not debt, it is the component
 doing its job.** Overwriting it would turn 123 inert nodes into 123 things that stop tracking the library —
 the same class of mistake as the stale `Show hint action` flags, made deliberately instead of by accident.
+
+### 14.45 Full-page validation — and the regression it caught *(Aug 7, 2026)*
+
+**The validation earned its keep.** All eighteen A-2 problem footers had lost their secondary actions — every
+screen showing `—` where `Hint + Save draft` or `Hint + Reset` or `Show answer` belonged.
+
+**Cause, and it is a lesson we now have twice.** Those footers were configured by setting `.visible` on the
+nested buttons, because at the time the component had only two booleans. When the component was republished
+with the six new ones, those layers became **property-driven**, and the raw visibility overrides were
+discarded in favour of the property defaults — all false. Same shape as the peer-grading copy coming back:
+**a library update overwrites anything an instance did not express as a deliberate property override.**
+
+Re-driven through the properties this time, so the next republish cannot undo it:
+
+| Screen | Active | Counter | Submit |
+|---|---|---|---|
+| practice · before | Hint + Save draft | none — unlimited | Default |
+| practice · after | Hint + Reset | none — unlimited | Disabled |
+| graded · before | Hint + Save draft | 0 of 2 | Default |
+| graded · after | Hint + Reset | 1 of 2 | Disabled |
+| final · before | Save draft | 0 of 1 attempt | Default |
+| final · after | Show answer | 1 of 1 attempt | Disabled |
+
+**Everything else on the page checks out:**
+
+| Check | Result |
+|---|---|
+| Component instances | 13,185 |
+| Broken · unexpected local components | 0 · 0 |
+| Overlapping top-level nodes | 0 |
+| Unstyled text outside instances | 0 |
+| Text overflowing its column | 0 |
+| Question Cards on the shared footer | **198 of 198** |
+| Submit labels that are not "Submit" | 0 |
+| Submit left enabled on a result state | 0 |
+| ORA copy anywhere | 0 |
+| `of 1 attempts` plural bug | 0 |
+| Card header sequences | 01–09 on both frames |
+| Raw text fills | **20** — the dark headers, still waiting on the variables |
+
+Nine sections, two delivery frames and the comparison table, no collisions.
