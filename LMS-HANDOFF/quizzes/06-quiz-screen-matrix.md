@@ -2709,3 +2709,32 @@ The variant naming flagged in §12.6 has been corrected in the DS — it now rea
 
 Page after all of it: **13,323 instances, 0 broken, 0 unexpected local components, 0 overlaps, 0 unstyled
 text, 0 column overflow.**
+
+### 14.50 The bucket lane aligned to five questions *(Aug 7, 2026)*
+
+The `JOURNEY · Bucket` lane in section 02 drew ten questions with three pooled attempts, because it was
+modelled directly on `SKOAIFP01`. The mode A-2 frame draws five with two. Both were right on their own terms
+and confusing together, so **the lane now draws five**, matching the frame:
+
+| | Was | Now |
+|---|---|---|
+| Heading | one problem, **ten** questions, one Submit | one problem, **five** questions, one Submit |
+| Steps | Question 1 of 10 · 2 of 10 · 10 of 10 | Question 1 of 5 · 2 of 5 · **5 of 5** |
+| Attempts | 0 of 3 · 1 of 3 | **0 of 2 · 1 of 2** |
+| Result alert | *"Six of the ten questions were right"* | *"Three of the five questions were right"* |
+| Score in the tail copy | reports 4/10 | reports **3/5** here, and 4/10 on the live course |
+
+**The measurement was not thrown away — it was moved to where it belongs.** The intro now says the lane is
+*"drawn here with five questions, to match the mode A-2 frame"* and keeps the evidence as a citation:
+*"Measured Aug 6, 2026 on SKOAIFP01, which authors ten: four such quizzes returned 4/10, 6/10, 6/10 and 3/10
+from a single submission each."* The drawing is the demo; the numbers behind it are still the live course, and
+now a reader can tell which is which.
+
+Layer names were renamed with the copy — a step frame still called `Question 10 of 10` while its label reads
+`Question 5 of 5` is the kind of thing that survives into a developer's questions.
+
+**The lane's structure was already correct and stayed untouched:** questions 1 and 2 carry no action row at
+all, only the last question has the Submit, and after submitting the card is `Partially correct` with Reset
+and a disabled Submit. That is the bucket behaving as the platform does.
+
+Page: 13,323 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 column overflow.
