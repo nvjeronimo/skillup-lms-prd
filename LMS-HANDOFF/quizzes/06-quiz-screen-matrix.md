@@ -2605,3 +2605,33 @@ Re-driven through the properties this time, so the next republish cannot undo it
 | Raw text fills | **20** — the dark headers, still waiting on the variables |
 
 Nine sections, two delivery frames and the comparison table, no collisions.
+
+### 14.46 The 20 raw fills: located, and accepted *(Aug 7, 2026)*
+
+Nelson asked whether the 20 could be ignored because they are not in the components or screens. Checked
+before agreeing, and the reading is right:
+
+| | |
+|---|---|
+| Total | 20 |
+| Inside a screen (`ICP-Quiz-*`) | **0** |
+| Inside a handoff card | **0** |
+| Inside a wall section | **0** |
+| Inside a component instance | **0** |
+
+All twenty sit in the **title band of the two delivery frames** — the eyebrow, title, subtitle and meta strip
+of `▸ Quiz (A) · how a learner meets it` and `▸ Quiz (A-2) · all questions in series, one Submit`. That band
+is handoff chrome we wrote for whoever reads the wall. No developer builds it and none of it reaches the
+product.
+
+**So this is closed as accepted, not outstanding.** Two things recorded so it does not get re-opened as a
+defect:
+
+- **The band's own background is raw too** — `#13282f` and the `#26708f` badge. They were never in the count
+  because they are frame fills rather than text, but they are the same thing in the same place. Ignoring the
+  text means ignoring the band.
+- **The three on-brand tokens were not wasted work.** They exist in the DS, resolve correctly and pass AA at
+  14.03:1, 9.89:1 and 5.67:1. If the band is ever reused, or anything else needs text on the brand surface,
+  they are there — and if the publish is ever unblocked, binding them is a single pass.
+
+**The page has no outstanding items.**
