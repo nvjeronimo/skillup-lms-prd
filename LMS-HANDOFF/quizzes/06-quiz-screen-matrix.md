@@ -2519,3 +2519,29 @@ means rewriting copy Nelson has reviewed.
 
 Also fixed in passing: five instances in section 02 still read `0 of 1 attempts` / `1 of 1 attempts`. Now
 singular.
+
+### 14.43 A-2 practice aligned to unlimited, and the rule put on the wall *(Aug 7, 2026)*
+
+**A-2 practice is now unlimited**, matching mode A practice and `SKOAIFP01`, the live bucket course it is
+modelled on. The attempt line is off across all six practice screens — three devices × before and after the
+single Submit — and the card description now says so: *"unlimited attempts — the same as the practice quiz in
+mode A and as SKOAIFP01 on the platform."*
+
+Nothing is lost by it. Graded shows `2` pooled and final shows `1` pooled, so the pooling behaviour — the
+thing the bucket is being shown for — is still demonstrated twice.
+
+**And the table is on the wall**, as a new block in section 05, where the rule already lived as a one-liner
+(*"Unlimited attempts prints nothing"*). The block spells out where that rule lands on our own screens, which
+is what makes the hidden line legible rather than suspicious:
+
+| Where | Attempt line | Why |
+|---|---|---|
+| Mode A · practice — 21 cards | hidden | Unlimited attempts. With `max_attempts` unset the platform writes no counter at all. |
+| Mode A · graded — 24 cards | `0 of 2` · `1 of 2` · `2 of 2` | `max_attempts: 2` |
+| Mode A · final exam — 21 cards | `0 of 1` · `1 of 1` | `max_attempts: 1`; the second value closes the problem |
+| Mode A-2 — 90 question cards | hidden on every question | In the bucket the counter belongs to the problem. It renders once per screen, in the Problem footer. |
+| Mode A-2 · practice footer | hidden | Aligned to unlimited on 7 Aug |
+
+Section 05 grew 912 → 1,510px. Page after re-flow: 13,185 instances, **0 broken, 0 unexpected locals, 0
+overlaps, 0 unstyled text, 0 text overflowing its column**. The 20 raw fills in the dark headers remain the
+only open item, still waiting on the variables to publish.
