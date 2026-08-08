@@ -2306,3 +2306,36 @@ because each variant carried its own subset of buttons. One shared footer makes 
 thing in every state — a property that is on now shows something, always.
 
 Page after re-flow: 13,185 instances, **0 broken, 0 unexpected local components, 0 overlaps**.
+
+### 14.35 Card headers rebuilt to Nelson's pattern — and a migration fault found *(Aug 7, 2026)*
+
+Nelson set `Card · 1` of the Mode A frame as the reference and asked for the rest to match. Reading the other
+seventeen showed the headers were not merely inconsistent — **the component update had put the values in the
+wrong properties.** On every card except the reference, `Sequence` held what used to be the title
+("Practice quiz · Tablet") and `Title` held the long description. Nothing was lost, but nothing was in the
+right field either.
+
+All eighteen now carry the reference's shape: `Sequence` 01–09 per frame, a short `Title`, Phase badge,
+Status and Version-Control on, `r1 · 2026-08-07`, designer and PM filled, RSD link, `08/08/2026`, and the
+external links off.
+
+| | Mode A | Mode A-2 |
+|---|---|---|
+| Title | `<Type> (Mode A) · 1 Submit per question · <Device>` | `<Type> (Mode A-2) · one Submit for the set · <Device>` |
+| Screen title | `<Device> · one Submit per question` | `<Device> · one Submit for the whole set` |
+| RSD | `screens-spec.md` | `06-quiz-screen-matrix.md` |
+
+**Two things were corrected on the way, and both are worth knowing.**
+
+The reference card itself carried **A-2 copy inside the Mode A frame** — its screen title read *"one Submit
+for the whole set"* and its subtitle described *"one CAPA problem holding five response elements"*, which is
+the bucket, not mode A. Replaced with the per-question description that belongs there.
+
+And the device subtitles on the Mode A cards were still the **Video Lesson text they were cloned from** —
+*"Active line follows playback. Click any line to seek."* on a quiz card. That staleness was noted back when
+the A-2 frame was built but never fixed in A; it is fixed now, on both frames.
+
+Status chips are visible again on the A-2 cards, showing `In progress` rather than the green `Ready for DEV`
+that was hidden earlier — which says the right thing without pretending the frame is a build target.
+
+Page: 13,185 instances, 0 broken, 0 unexpected local components.
