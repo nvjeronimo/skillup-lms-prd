@@ -2042,3 +2042,43 @@ the meta strip — was never token-bound. Mode A carries 47 raw fills and 12 uns
 instances; A-2 inherits those and adds ~35 more of the same kind in its new comparison panel. The
 zero-violation result recorded in §14.x was about the wall sections and the DS components, not these frames.
 Binding them is a separate job and it applies to both.
+
+### 14.26 The comparison table, rebuilt to Nelson's row pattern *(Aug 7, 2026)*
+
+The A-2 comparison came out of the delivery frame and became its own frame,
+`▸ What A-2 changes, and what it costs - Table`, sitting between the wall and the two quiz frames. The row
+structure was redesigned on the header row and the `Submit` row: each cell is a `Frame 1` wrapper —
+horizontal, gap 10, **fill width, hug height, centred** — with the text inside. That was applied to the
+remaining eight rows, so all ten now share one rule and the columns line up at 274px.
+
+**One consequence worth naming.** Wrapping the cells means long copy now *wraps inside its column* instead
+of running past it. Three rows gained a second line and one gained a third — `not possible — the API knows
+the total and nothing else` is the widest. Left as-is, that also made the table hug down to 739px, narrower
+than the blocks above and below it, so `comparison` is now fixed at 853px to match its siblings. The table
+reads at 901 × 1154.
+
+### 14.27 Full-page validation *(Aug 7, 2026)*
+
+| Check | Result |
+|---|---|
+| Component instances on the page | 10,404 |
+| Broken instances | **0** |
+| Unexpected local components | **0** |
+| Overlapping top-level nodes | **0** |
+| A-2 screens | 18 — all 5 questions, 0 stray per-question Submits |
+| Attempt counters / Submit states / score lines | correct on all 18 |
+| CTA matrix | 9 state rows + BUTTON SPECS with 9 CTA rows, intact |
+| Cell text overflowing its column | **0** |
+
+Trailing whitespace at the foot of the A-2 frame — left over from lifting the panel out — was trimmed:
+20,816px → 20,339px.
+
+**The one thing that is not clean, and it is not new.** The *annotation layer* of this page has never used
+shared text styles. Across the nine sections: **518 text nodes with no text style, 0 with one**, plus 132
+raw fills. The new table adds 34 of each, all its own copy. Component fills are bound — 476 bound fills and
+81 bound strokes in the sections — so this is specifically the writing on the wall, not the kit.
+
+That means the zero-violation result recorded earlier was about the components and the cards, and I should
+have said so more precisely at the time. Binding the annotation layer is a real, bounded job — pick DS text
+styles for eyebrow / heading / body / caption and a bound colour, then apply to ~550 nodes — but it is a
+design decision first, and it applies to the sections, both delivery frames and this table alike.
