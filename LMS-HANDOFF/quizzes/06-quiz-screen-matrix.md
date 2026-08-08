@@ -3149,3 +3149,33 @@ Nothing failed.
 | Copy — ORA · plural · stale ten · stepper claim · bare glyphs | **0 · 0 · 0 · 0 · 0** |
 
 Delivery frame: 6,614 × 17,909px, two columns.
+
+### 14.63 All headers marked Ready for DEV *(Aug 7, 2026)*
+
+**44 of 44 headers now carry `Status/Done` — "Ready for DEV".** That is the 8 blocks in the reading column,
+18 cards in mode A-1 and 18 in mode A-2.
+
+The starting state was messier than a single stale value:
+
+| Was | Count |
+|---|---|
+| `Status/In progress` reading *"In progress"* | 20 |
+| `Status/Done` reading *"Ready for DEV"* | 18 |
+| **`Status/In progress` reading *"Ready for DEV"*** | **6** |
+
+Those six were the interesting ones: the **component said In progress while a text override said Ready for
+DEV**. Anyone reading the chip believed one thing and anyone reading the component believed another, and the
+amber pill next to green words is the kind of detail that gets argued about in a review rather than noticed.
+All 26 non-Done chips were swapped to the real component, so the label now comes from the component in every
+case — no overrides left to drift.
+
+**One contradiction this creates, and it needs a sentence from Nelson.** The mode A-2 cards still carry, in
+their changelog block:
+
+> *"New frame. Not a build target — the bucket authoring model, drawn so the trade against mode A can be
+> seen rather than argued."*
+
+Nine cards say **not a build target** under a chip that now says **Ready for DEV**. The frame header agrees
+with the changelog — *"A-2 costs authoring only"*. Either the A-2 column is genuinely being handed over for
+build, in which case that copy should go, or the chip on those nine should say something else. Not changed
+either way, because which one is true is a product decision, not a tidy-up.
