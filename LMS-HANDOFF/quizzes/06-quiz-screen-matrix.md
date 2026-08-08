@@ -2487,3 +2487,35 @@ listed and being published, this is a Figma-side fault worth raising with suppor
 all, that is the symptom to report. Nothing further can be determined from the plugin API.
 
 **The 20 raw text fills in the two dark headers are the only outstanding item on the page.**
+
+### 14.42 Why the attempt line is hidden where it is *(Aug 7, 2026)*
+
+Nelson asked whether the hidden `You have used N of N attempts` line was deliberate. It is, for two separate
+reasons, and **nothing changed in the footer swap** — all 198 cards are byte-identical to their pre-swap
+state on this.
+
+| Where | Attempt line | Why |
+|---|---|---|
+| Mode A · **practice** (21 cards) | **hidden** | The practice quiz has **unlimited attempts**. With `max_attempts` unset, edX renders no counter at all — there is nothing to count. |
+| Mode A · **graded** (24 cards) | shown — `0 of 2` · `1 of 2` · `2 of 2` | `max_attempts: 2` |
+| Mode A · **final** (21 cards) | shown — `0 of 1` · `1 of 1` | `max_attempts: 1` |
+| Mode **A-2** (90 cards) | **hidden on every question** | In the bucket the counter belongs to the **problem**, not to the question. It renders once per screen, in the Problem footer — which is the whole point of the model. |
+
+So "hidden on almost all cards" is 90 A-2 questions where it moved to the footer, plus 21 practice cards
+where the platform shows no counter, which is most of the total but for two different and correct reasons.
+
+**A measurement note worth keeping.** My first comparison said three cards had lost the line. They had not —
+I was comparing the snapshot's *layer flag* against the *effective* visibility. In the old card the attempts
+text sat inside `Primary action`, which was bound to `Show submit`, so the layer could be flagged visible
+while the parent hid it. Comparing like with like — `submit && attempts-text` — gives **198 of 198
+unchanged**. The same trap as the stale `Show hint action`: a flag is not what renders.
+
+**One inconsistency found while checking, and it is ours.** Mode A practice is unlimited, and the live bucket
+course `SKOAIFP01` is unlimited too — but the **A-2 practice footer says `0 of 3 attempts`**, and the card
+descriptions say "three attempts pooled". Graded (`2`) and final (`1`) already demonstrate pooling, so the
+practice row does not need a finite number to make the point. Aligning A-2 practice to unlimited — no counter
+— would match both Mode A and the course it is modelled on. Flagged rather than changed, because it also
+means rewriting copy Nelson has reviewed.
+
+Also fixed in passing: five instances in section 02 still read `0 of 1 attempts` / `1 of 1 attempts`. Now
+singular.
