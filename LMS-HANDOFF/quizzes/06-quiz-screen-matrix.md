@@ -3235,3 +3235,34 @@ mobile screens here are 4,434px tall, so the nav sits at the end of a long scrol
 must NOT do at 812px."*
 
 Page: 16,031 instances, 0 broken, 0 unexpected locals, 0 overlaps. Delivery frame 20,717px.
+
+### 14.66 The player shell — its own frame, three devices *(Aug 7, 2026)*
+
+Two corrections from Nelson, in order. First: **it is not a mobile rule.** On every device the player is an
+application shell, not a document — the Course Player Topbar is pinned to the top, the topic nav to the
+bottom, and the body fills the viewport in both directions and is the only thing that scrolls. Second:
+drawing that on all 27 screens was noise. **It now lives in one frame of its own:**
+
+`ICP Phase 1 - Quiz · The player shell — header and nav are fixed`
+
+Three screens, one per device, cropped to real viewport heights and **drawn mid-scroll** — 1440×900,
+960×1024, 375×812 — because mid-scroll is the only state where a fixed bar and a bar at the end of the page
+look different. Each is captioned, and a table under them says what is pinned and why:
+
+| What is fixed | On every device |
+|---|---|
+| `LMS / Course Player Topbar` | Pinned to the top. Outline toggle, brand, notifications, bookmark, avatar and close — none of which should scroll away mid-question |
+| Topic nav — Previous · Unit info · Next topic | Pinned to the bottom. A learner must be able to leave a topic without scrolling to the end of it, which on a nine-question quiz is several screens |
+| The body | The only scroll container, filling the viewport in both directions. On desktop that includes the outline sidebar, which scrolls independently inside it |
+| Mobile safe area | The nav surface runs through the 34px home-indicator area; the buttons stay above it |
+| Why the delivery frames cannot show it | They are as tall as their content — 3,500 to 4,400px — and at that height the two states are identical |
+
+**What the drawing had been saying instead.** On all 27 screens the topbar and the nav sat in the scroll
+flow, and the body was only as tall as its content. On a 4,434px mobile frame that reads as "the nav is at
+the end of the page" — true of the mockup, false of the product, and exactly what would have been built.
+
+The 18 viewport screens from the first pass were removed from the delivery cards; the delivery frame is back
+to 18,089px. The section 05 line was rewritten from *"on mobile the topic nav is fixed"* to the all-device
+version, pointing at the new frame.
+
+Page: 14,878 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 overflow.
