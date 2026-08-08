@@ -2276,3 +2276,33 @@ instance rather than proxying them.
 structure — the file reports the fourteen old property names and a local `Footer` frame, because the library
 has not been republished since the swap. Their current settings were snapshotted first (all 198, with the
 visible CTAs, attempt text and Submit state each one renders), so restoring them is a replay, not a guess.
+
+### 14.34 The 198 instances restored — and what the restore exposed *(Aug 7, 2026)*
+
+Library republished, and all **198 Question Card instances** were driven back to what they were showing
+before the swap. Verified by replaying the snapshot against the rendered result: **0 mismatches across 198**,
+comparing the visible CTAs, the attempt line and the Submit state one by one.
+
+The card now reports seven of its own properties — Nelson also renamed the container to `Footer Questions`
+and gave it a boolean, so the whole footer can be hidden — plus a nested `Footer actions` exposing all ten.
+
+**The restore caught a fault we had been carrying without knowing.** The first pass drove the new booleans
+from the old property *values* and came back with **five mismatches**. All five were the same thing: a
+variant whose `Show hint action` was **true while the variant had no Hint button at all**. The property was
+set, nothing rendered, and nobody could tell.
+
+| Instance | Was showing | Property said |
+|---|---|---|
+| 2 cards | *(nothing)* | `Show answer action` on |
+| 3 cards | Reset + Show answer | `Show hint action` on as well |
+
+Now that every variant carries the same seven buttons from one component, those stale trues would have made
+controls appear out of nowhere — a Hint on an *Answer revealed* card, a Show answer on a card that had none.
+The second pass drove the booleans from **what was actually rendered** rather than from what the properties
+claimed, which is the only trustworthy source, and the mismatches went to zero.
+
+**That is an argument for the swap, not against it.** The old card let a property be true and mean nothing,
+because each variant carried its own subset of buttons. One shared footer makes every property mean the same
+thing in every state — a property that is on now shows something, always.
+
+Page after re-flow: 13,185 instances, **0 broken, 0 unexpected local components, 0 overlaps**.
