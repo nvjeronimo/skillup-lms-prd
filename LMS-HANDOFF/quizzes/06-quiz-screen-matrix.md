@@ -3016,3 +3016,34 @@ author and no meaningful "updated" date. It was **on in all 27 instances**. Turn
 today, but unlike the author row there is no rule saying a quiz should not have them — a duration is
 plausible for a quiz if `effort_time` ever gets authored, and the description could carry the quiz brief.
 They are drawn; whether they can be filled is the vendor's answer to action 3, not ours.
+
+### 14.59 The empty fields hidden, and two questions added *(Aug 7, 2026)*
+
+**The Topic Header now shows only what the platform can fill.** Duration and Description are off on all 27
+screens, joining the author row. What is left is the two fields with a field behind them, plus the type badge:
+
+| Field | State | Why |
+|---|---|---|
+| Title | shown | `display_name` |
+| Topic type — *"Quiz"* | shown | needs another call, but the type is derivable |
+| Marked as completed | off by state | Completion API — turns on when completed |
+| Duration | **hidden** | `effort_time` null on every block |
+| Description | **hidden** | no per-block field |
+| Author & Updated | **hidden** | no field, and against the shared-shell rule |
+
+The header is 54px tall now, down from 108. A quiz screen opens with a badge and a title, which is what the
+platform actually knows about it.
+
+**Two questions added, in both places** — `09-handoff-map.md` §8 as rows 10 and 11, and section 07 on the
+wall:
+
+- **Is `effort_time` authored anywhere?** Null on every block in the delivered payloads. Already action 3 to
+  the vendor on the course page; raised again because it now blocks a quiz screen, not just a syllabus line.
+- **How do we tell a quiz from a video in the outline?** `blocks.{id}.icon` documents four values against our
+  ten topic types and returns only `null` (45×) and `"other"` (21×).
+
+Both are noted as **vendor questions, not Studio reads** — neither can be answered by opening a course. One
+asks whether a field is populated anywhere in the catalogue; the other asks which endpoint carries a usable
+type. They belong in the same message as question 1, the `showanswer` read.
+
+Page: 13,527 instances, 0 broken, 0 unexpected locals, 0 overlaps, 0 unstyled text, 0 overflow.

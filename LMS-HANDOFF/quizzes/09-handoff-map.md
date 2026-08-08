@@ -289,6 +289,8 @@ Read-only handlers, which need no submission:
 | 7 | ⚑ **`Review` is missing from every alert.** `.notification-btn.review-btn` sits in every notification block and returns focus to the question header. Ours have no equivalent, so a keyboard or screen-reader user has no way back from a result to the question | accessibility of every feedback, hint and answer state — this is a gap in what we hand over, not an unknown |
 | 8 | ⚑ **`.notification-save` is a transient, ours is a state.** The platform shows a save confirmation that **disappears the moment any input changes**. We drew `Saved` as a persistent card state with a "Draft saved" button | whether the Saved screen is honest. Ours implies the confirmation stays; it does not |
 | 9 | ⚑ **No component for `.notification-gentle-alert`.** The platform's error channel — save failures, hint failures, AJAX errors, and grading-poll timeouts such as *"The grading process is still running. Refresh the page to see updates."* | we have no state for a problem whose request failed, only for right and wrong answers |
+| 10 | **Is `effort_time` authored anywhere?** It is `null` on every block in the delivered payloads, and the Topic Header's duration depends on it entirely. Already action 3 to the vendor in `course-details-metadata-map.md` — asking again here because it now blocks a quiz screen, not just the course page | the `8 min` line on all 27 quiz screens. Hidden until answered |
+| 11 | **How do we tell a quiz from a video in the outline?** `blocks.{id}.icon` documents four values against our ten topic types, and in the payloads returns only `null` (45×) and `"other"` (21×). Does the type come from the child XBlock — meaning another call — or from somewhere else? | the topic-type badge in the Topic Header and in the syllabus |
 
 **Who can answer what — corrected Aug 6, 2026.** An earlier version of this line said questions 1–3 were all
 answerable in the QA Studio. That is wrong for question 1: it asks about **dev and production**, and QA
@@ -300,3 +302,6 @@ Studio cannot see either.
   on `Test-T2` and read the button before clicking it; switch *Hide content after due date* on a subsection
   and open it past the date.
 - **Question 4 needs a learner session on production**, not Studio.
+- **Questions 10 and 11 are vendor questions, not Studio reads.** Neither can be answered by looking at a
+  course: 10 asks whether the field is populated anywhere in the catalogue, 11 asks which endpoint carries a
+  usable type. They belong in the same message as question 1.
