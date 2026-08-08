@@ -2125,3 +2125,47 @@ deleting — identical, 420 characters.
 (459 are bound). Text styles in Figma do not carry colour, so this is a separate binding and a separate
 decision — which semantic token the annotation layer should use for primary, secondary and muted copy. Say
 the word and it is the same kind of pass.
+
+### 14.29 Text colour bound — and two things it exposed *(Aug 7, 2026)*
+
+**159 of the 179 raw text fills are now bound to variables — 618 of 638 text nodes in total.** The mapping
+follows the convention the page already used, `LMS/Text/*`:
+
+| Was | Now | Nodes |
+|---|---|---|
+| `#101828` · `#111111` | `LMS/Text/text-primary` | 74 |
+| `#333333` | `LMS/Text/text-secondary` | 30 |
+| `#737d8f` | `LMS/Text/text-tertiary` | 25 |
+| `#9ea8b8` | `Colors/Text/text-quaternary (500)` | 16 |
+| `#b54708` | `LMS/Text/text-warning-primary` | 10 |
+| `#ffffff` | `LMS/Text/text-primary_on-brand` | 4 |
+
+**It fixed a legibility problem we did not know we had.** Two of the hand-picked greys were failing WCAG AA
+on the page background (`#f9fafc`), and binding them to the skin corrected both:
+
+| Token | Before | After |
+|---|---|---|
+| text-tertiary | 3.97:1 ❌ | **6.63:1 ✅** |
+| text-quaternary | 2.30:1 ❌ | **4.37:1** ⚠︎ |
+| text-warning-primary | 5.20:1 | 5.91:1 ✅ |
+
+`#9ea8b8` at **2.30:1** was well under the 4.5:1 floor — it is used for the muted markers on the journey
+diagram (`NO ENTRY SCREEN`, `NOTHING APPEARS HERE`). The bound token is much better but lands at **4.37:1,
+which still misses AA for normal text.** Moving those 16 nodes to `text-tertiary` would clear it at 6.63:1
+at the cost of some of the muting they were given deliberately. That is a design call, so it is left as-is
+and flagged here rather than changed quietly.
+
+**And it exposed a real gap in the skin.** The remaining **20 raw fills are all in the two delivery-frame
+headers**, the dark `#13282f` band — a four-tone hierarchy in pale blue (`#f2f7fc`, `#d9ebfa`, `#b5d9ed`,
+`#8cb8d1`). There is nothing correct to bind them to:
+
+- **The LMS skin ships exactly one on-brand text token** — `LMS/Text/text-primary_on-brand`, which resolves
+  to `#ffffff`. The four white nodes were bound to it; the other four tones have no equivalent.
+- **The generic `Colors/Text/*_on-brand` family is not skinned for us.** It resolves to Untitled UI cyan —
+  `#b9e6fe` and `#7cd4fd` — which is the wrong brand. Binding to it would have turned the header cyan.
+- **The band itself is unbound too**: `#13282f` background and the `#26708f` badge are both raw. The whole
+  dark header is a hand-picked palette that was never derived from a token pairing.
+
+So the honest state is: **the LMS skin has no secondary / tertiary / quaternary on-brand text tokens.**
+Either three get added to the skin and these 20 nodes bind cleanly, or the dark header is rebuilt from
+tokens that do exist. Forcing the cyan family would have made the page bind-clean and visually wrong.
