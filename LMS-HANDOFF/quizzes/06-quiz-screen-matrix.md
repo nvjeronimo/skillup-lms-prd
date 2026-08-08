@@ -2988,3 +2988,31 @@ are no longer part of.
 
 That also settles the gap in the column, which reads 00 · 01 · 02 · 04 · 05 · 06 · 07 · 08. **There is no 03
 and there should not be**: it was the kit, and the kit moved out. Not a mistake to be tidied later.
+
+### 14.58 Topic Header vs the API — three of its seven fields have no field *(Aug 7, 2026)*
+
+The component is already on all 27 quiz screens. The question is whether edX can fill it, and the answer is
+already measured — `course-details-metadata-map.md` maps every element of the course frame against the
+**delivered payloads** (73 fields, 8 endpoints, a real course), not against stock Open edX.
+
+| Topic Header shows | Field | Verdict |
+|---|---|---|
+| Title — *"Practice Quiz: Define and measure"* | `blocks.{vertical}.display_name` | ✅ — navigation API only, and render it verbatim |
+| Marked as completed | `blocks.{id}.complete` · Completion API | ✅ |
+| Topic type — *"Quiz"* | `blocks.{id}.icon` | ⚠︎ **unusable as delivered.** Four documented values against our ten types, and in the payloads only `null` (45×) and `"other"` (21×). The type would have to come from the child XBlock — another call |
+| Duration — *"8 min"* | `effort_time` / `effort_activities` | ✗ **null on every block.** Already action 3 to the vendor: *"every duration on the page depends on it"* |
+| Description | — | ✗ no per-block description field |
+| Author — *"By Sarah Chen, Senior Product Designer"* | — | ✗ **nothing.** No mentor, instructor or staff-profile field in any of the 73 |
+| Published / Updated dates | — | ✗ not in the delivered payloads |
+
+**So two of the seven are safe, one needs another call, and four have nothing behind them.**
+
+**And one of those four was a rule violation, now fixed.** `topic-types-inventory.md` already settles it:
+the *Author & Updated Date* row is kept only on authored content that changes over time — Reading, Video,
+Lesson Page, Lab, Podcast — and **removed on assessment types, Quiz among them**, because they have no single
+author and no meaningful "updated" date. It was **on in all 27 instances**. Turned off in all 27.
+
+**Duration and Description were left on, as a decision rather than a defect.** Both are empty in the payloads
+today, but unlike the author row there is no rule saying a quiz should not have them — a duration is
+plausible for a quiz if `effort_time` ever gets authored, and the description could carry the quiz brief.
+They are drawn; whether they can be filled is the vendor's answer to action 3, not ours.
