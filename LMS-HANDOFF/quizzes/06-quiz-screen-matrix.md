@@ -3299,3 +3299,49 @@ the rule everywhere: off on all 90 A-2 cards, on for A-1, the journeys, the kit 
 
 Twelve top-level artefacts: eight numbered blocks in the reading column, the two wide sections, the delivery
 frame and the player-shell frame.
+
+### 14.68 Scrollbar tokens, and the shell structure applied to all three devices *(Aug 7, 2026)*
+
+**Six scrollbar tokens in the DS**, in `1. Semantics`, four modes each:
+
+| Token | Light | Dark | Was |
+|---|---|---|---|
+| `LMS/Scrollbar/track` | Neutral/50 | Dark-Neutral/900 | bound to `bg-secondary` |
+| `LMS/Scrollbar/thumb` | Neutral/200 | Neutral/600 | bound to `fg-quaternary` |
+| `LMS/Scrollbar/thumb-hover` | Neutral/400 | Neutral/500 | **new** — there was no hover |
+| `LMS/Scrollbar/width` | 6 | | was a hard number |
+| `LMS/Scrollbar/radius` | 3 | | **was 0** |
+| `LMS/Scrollbar/thumb-min-height` | 32 | | **new** |
+
+The colours resolve to exactly what the component already rendered, so nothing moved — except the radius,
+which went **0 → 3**: at 6px wide that makes it a capsule rather than a hard rectangle, and it is the one
+visual change in the set. Say the word if you want it square again; it is one value.
+
+`thumb-min-height` is the one worth keeping: without a floor, a thumb on a 4,000px quiz page becomes a few
+pixels tall and effectively ungrabbable.
+
+The `Vertical Scroll` component is bound to all of them and its description now says to change the bar in the
+tokens, not in the component.
+
+**And the shell structure now matches on all three devices.** Nelson restructured the desktop screen; the
+recipe was read off it rather than invented:
+
+| | |
+|---|---|
+| Device frame | viewport size, `FIXED/FIXED`, **clips** |
+| Topbar (and the status bar on mobile) | in flow, at the top |
+| `body` | fills the remaining height |
+| The scroll container | `Main Content` on desktop and tablet, `content` on mobile — clips, and `primaryAxisAlignItems: CENTER`, which is what parks the tall column mid-scroll |
+| Topic nav | `ABSOLUTE` inside the scroll container, constraints `MIN/MAX` |
+| `Vertical Scroll` | `ABSOLUTE`, constraints `MAX/STRETCH`, stopping above the nav |
+
+| Screen | Viewport | Scroll container | Overflow |
+|---|---|---|---|
+| Desktop | 1440×900 | Main Content 1112×808 | 2,538px |
+| Tablet | 960×1024 | Main Content 632×932 | 2,806px |
+| Mobile | 375×812 | content 343×686 | 3,404px |
+
+**The sidebar and the content scroll independently**, and that is now visible rather than implied: both clip,
+and both carry their own `Vertical Scroll`. The sidebar's had to go in as a sibling overlapping its right
+edge — `LMS / Sidebar v2` is an instance and will not take children. Mobile has no sidebar scrollbar because
+there is no sidebar: it is a drawer.
