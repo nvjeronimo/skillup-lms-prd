@@ -3429,3 +3429,35 @@ tracking the DS, which is the same mistake as clearing an un-overridden default.
 fix belongs in the DS.
 
 Sweep after the pass: **0 default names, 0 "untitled", 0 "copy of"** anywhere outside instances.
+
+### 14.72 The rename reached the ICP, and a full pass *(Aug 7, 2026)*
+
+**The layer rename propagated.** Instances on the ICP page now read `label · Reduce process variation b`
+where they read `Frame 418` this morning — which also confirms the rename did not break instance overrides,
+the one risk that mattered.
+
+**The variables still did not.** `1. Semantics` is still published at **321**, and both the scrollbar tokens
+and the on-brand text tokens fail to import. Third confirmation, three separate token sets.
+
+**Full-page validation — nothing failed.**
+
+| Structure | |
+|---|---|
+| Component instances | 14,883 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow · column overflow | **0 · 0 · 0 · 0** |
+| Default layer names outside instances | **0** |
+| Raw text fills | 20 — the two title bands, accepted |
+
+| Behaviour, 219 question cards | |
+|---|---|
+| On the shared footer | **219 of 219** |
+| Total behaviour violations | **0** |
+| `Show Footer Questions` | off on all 90 A-2 cards, on for the other 129 |
+
+| Consistency | |
+|---|---|
+| Copy checks — ORA, plural, stale ten, stepper claim, glyphs, "not a build target" | **0** |
+| Status chips | **44 of 44 Ready for DEV** |
+| Topic Headers | 30, title + type + duration on; description, author and status off |
+| Player shell | desktop and tablet carry **two** scroll bars each, mobile one — the sidebar is a drawer there |
