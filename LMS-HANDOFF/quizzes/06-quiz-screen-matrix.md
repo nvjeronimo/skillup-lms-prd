@@ -3345,3 +3345,36 @@ recipe was read off it rather than invented:
 and both carry their own `Vertical Scroll`. The sidebar's had to go in as a sibling overlapping its right
 edge — `LMS / Sidebar v2` is an instance and will not take children. Mobile has no sidebar scrollbar because
 there is no sidebar: it is a drawer.
+
+### 14.69 Both scrollbars inset the same way, and a full pass *(Aug 7, 2026)*
+
+The content scrollbar now sits where the sidebar's does — **4px off the right edge, 8px down from the top,
+and stopping 8px short of the nav** instead of running flush into the corners:
+
+| Screen | Was | Now |
+|---|---|---|
+| Desktop | x1106 · y0 · h746 | **x1102 · y8 · h730** |
+| Tablet | x626 · y0 · h870 | **x622 · y8 · h854** |
+| Mobile | x337 · y0 · h626 | **x333 · y8 · h610** |
+
+Two scroll containers, two bars, the same inset — which is the point: the independence reads as deliberate
+rather than accidental.
+
+**The publish did not carry the scrollbar work.** Checked before validating: the instances still render
+`radius 0`, the component description is empty, and the three colour tokens fail to import. Same as the
+on-brand variables — components and variables both stayed behind this time. The bar will keep its square
+corners and its generic bindings until a publish lands.
+
+**Full-page validation — nothing failed.**
+
+| | |
+|---|---|
+| Component instances | 14,883 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow · column overflow | **0 · 0 · 0 · 0** |
+| Raw text fills | 20 — the two title bands, accepted |
+| Question cards | 219, all on the shared footer |
+| Behaviour violations across all of them | **0** |
+| `Show Footer Questions` | off on all 90 A-2 cards, on for the other 129 |
+| Copy checks — ORA, plural, stale ten, stepper claim, bare glyphs, "not a build target" | **0** |
+| Status chips | **44 of 44 Ready for DEV** |
