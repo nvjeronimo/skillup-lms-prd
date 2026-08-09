@@ -3406,3 +3406,26 @@ capsule-shaped because the *component* carries the radius; its colours are still
 **Full-page validation — nothing failed.** 14,883 instances · 0 broken · 0 unexpected local components ·
 0 overlaps · 0 unstyled text · 0 text or column overflow · 219 question cards with **0 behaviour violations**
 · 20 raw fills, both title bands, accepted.
+
+### 14.71 No layer left called "Frame" *(Aug 7, 2026)*
+
+Swept all 2,271 nodes outside instances. **422 carried a default name** — `Frame`, `Frame 1`, `Frame 2…11`,
+`Vector 1`. All 422 renamed from what they actually hold, so the layer list reads instead of counting:
+
+| Kind | Count | Named |
+|---|---|---|
+| Table cells | 386 | `cell · Submit` · `cell · one per question` · `cell · 2 for all five, pooled` … |
+| Journey callouts | 14 | `note · NO ENTRY SCREEN` · `note · IT SCORES ZERO` · `note · THE LEARNER NEVER REACHES…` |
+| Block headings | 10 | `block · Every CTA, in every state` · `block · LMS / Quiz · Option Row` … |
+| Meta-strip items | 8 | `meta · 27 SCREENS` · `meta · WHAT IT COSTS` · `meta · DOCS` … |
+| Structure | 4 | `Column divider · A-1 \| A-2` · `Kit · all components` · `Kit · intro and scope` · `Topic nav preview · Previous and Next` |
+
+The names are derived from each layer's own first text rather than invented, so they cannot drift from the
+content — a cell renamed by hand would, one named after what it contains does not.
+
+**Instance internals were left alone deliberately.** Names like `Frame 418` inside `LMS / Quiz · Option Row`
+belong to the library component, not to this page: renaming them would create an override that stops
+tracking the DS, which is the same mistake as clearing an un-overridden default. If those bother anyone, the
+fix belongs in the DS.
+
+Sweep after the pass: **0 default names, 0 "untitled", 0 "copy of"** anywhere outside instances.
