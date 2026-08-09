@@ -3378,3 +3378,31 @@ corners and its generic bindings until a publish lands.
 | `Show Footer Questions` | off on all 90 A-2 cards, on for the other 129 |
 | Copy checks — ORA, plural, stale ten, stepper claim, bare glyphs, "not a build target" | **0** |
 | Status chips | **44 of 44 Ready for DEV** |
+
+### 14.70 The shell frame gains its notes — and the publish split, proven twice *(Aug 7, 2026)*
+
+**The component landed and the variables did not.** Checked before anything else:
+
+| | |
+|---|---|
+| `Vertical Scroll` instances | now render **radius 3**, capsule ends, and the component description arrived |
+| `LMS/Scrollbar/*` tokens | **still fail to import**; the published collection is still **321** with zero Scrollbar entries |
+
+That is the second independent confirmation of §14.41, with a different set of variables and a component
+changed in the same session: **components publish, variables in `1. Semantics` do not.** The bar is now
+capsule-shaped because the *component* carries the radius; its colours are still bound to the generic
+`bg-secondary` / `fg-quaternary` because the *tokens* never arrived.
+
+**Five notes added** to the player-shell frame, taking its table from five rows to ten:
+
+| Note | Says |
+|---|---|
+| Two scroll containers, not one | The outline and the content column clip separately and carry their own bars. Scrolling a quiz never moves the outline. On mobile there is no second container — the outline is a drawer |
+| The scrollbar is a component | 6px, capsule ends, driven by `LMS/Scrollbar/*` — change the bar in the tokens, never in the screen |
+| The thumb has a floor | 32px. A quiz page runs to 4,000px; without a floor the thumb is a few pixels tall and cannot be grabbed |
+| Both bars are inset, not flush | 4px off the right edge, 8px from the top, and the content bar stops short of the fixed nav rather than running under it |
+| What these three crops are showing | A page mid-scroll — the only state where a fixed bar and a bar in the flow look different |
+
+**Full-page validation — nothing failed.** 14,883 instances · 0 broken · 0 unexpected local components ·
+0 overlaps · 0 unstyled text · 0 text or column overflow · 219 question cards with **0 behaviour violations**
+· 20 raw fills, both title bands, accepted.
