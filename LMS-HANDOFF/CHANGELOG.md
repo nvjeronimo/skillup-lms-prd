@@ -1760,3 +1760,31 @@ Major restructure of the Figma handoff. Three new pages built, 132 LMS Extension
 ---
 
 For v1.0 → v1.7 release notes, see [`history/CHANGELOG-archive.md`](history/CHANGELOG-archive.md).
+
+## Aug 7, 2026 — layer names audited on the DS LMS components page
+
+Same audit as the ICP page, run on `❖ LMS COMPONENTS ✅`. **355 of 7,700 nodes carried a default name** —
+`Frame`, `Frame 418`, `Rectangle`, `Ellipse 1`, `Group 1620`, `star`.
+
+**The DS needed a different rule from the ICP page, and it is worth writing down.** On the ICP page names
+were derived from each layer's own content. That is wrong inside a component set: **Figma matches layers
+across variants by name**, so naming the same logical layer `label · Correct` in one variant and
+`label · Incorrect` in the next would break override propagation between them. So inside sets, layers were
+grouped by their index path and **every layer in a group got one name**, taken from whichever variant had
+text to offer.
+
+| Where | Count | Treatment |
+|---|---|---|
+| Inside instances | 136 → 33 remaining | **Left alone.** They mirror their own component; renaming creates an override that stops tracking |
+| Inside variant sets | 87 | One name per index-path group, applied to every variant |
+| Inside single components | 71 | Named from content |
+| Loose on the page | 61 | Named from content |
+
+322 layers renamed, by prefix: `label ·` 134, `shape ·` 102, `block ·` 31, `slot ·` 22, `group ·` 15, plus 18
+diagram connectors.
+
+**Verified after the pass:** zero default names outside instances, and **zero cases where one logical layer
+ended up with two names across variants** — the check that mattered, since that is the failure this approach
+was designed to avoid. The 128 index paths that do differ between variants were already different layers —
+`LMS / Completion Status` genuinely has `check-icon`, `dot` and `status-circle` at the same position — not
+damage from the rename.
