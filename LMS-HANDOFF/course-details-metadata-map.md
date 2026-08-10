@@ -1,8 +1,11 @@
 # Course Details — the metadata, mapped to the design
 
-**Source:** `_media/Course_metadata.xlsx`, delivered 3 Aug 2026 against Jira **SK-11378**. Four sheets:
-Metadata (73 fields), API Information (8 endpoints with real payloads), Feature Inventory (33 features),
-Role-Based Visibility. Sample course: `course-v1:SkillUp+SQL-TMDA+2025_B13` — *TechMaster - SQL*.
+**Source:** two deliveries against Jira **SK-11378**.
+`_media/Course_metadata.xlsx`, 3 Aug 2026 — Metadata (73 fields), API Information (8 endpoints with real
+payloads), Feature Inventory, Role-Based Visibility. Sample course `course-v1:SkillUp+SQL-TMDA+2025_B13`.
+`30-07 meetings/Course_metadata (2).xlsx`, 4 Aug 2026 — the VILT addendum, from row 84: **Live** (11 fields),
+**Recordings** (20 fields) and the **Instructor dashboard** (80 fields), plus eight endpoints and three new
+blocks in the role matrix. See §12.
 
 **Design audited:** `Course Detail — v9 · Self-paced MVP (workshop 29 Jul)`, node `4975:80196`,
 file [LMS-ICP-Phase-1](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4975-80196).
@@ -48,6 +51,11 @@ from stock Open edX.
 | `dates` | Dates |
 | `discussion` | **Mentorship Q&A** |
 | `instructor` | Instructor |
+
+> **Corrected 4 Aug: the list is five for a self-paced course, seven for a VILT one.** The addendum adds
+> **Live** (`live`) and **Recordings** (`recordings`) as course tabs — see §12. Both are conditional: Live
+> only where a `CourseLiveConfiguration` exists and is enabled, Recordings only where a succeeded MP4 exists.
+> That is the strongest argument yet for rendering the bar from `tabs[]` rather than hardcoding it.
 
 There is **no Resources tab, no Grades tab and no Certificates tab**. Grades live *inside* Progress
 (`course_grade`, `section_scores`, `grading_policy`); the certificate is a **card** (`cert_data`), not a
@@ -155,13 +163,13 @@ Verdicts: **✅ field exists and is populated** · **◑ derivable** (we compute
 | Breadcrumb *My Learning › Courses* | — | our IA, not API |
 | Breadcrumb leaf | `title` | ✅ |
 | `Course` type badge | — | ✗ our own construct; the API has no course/programme distinction |
-| `SELF-PACED` chip | `is_self_paced` | ✅ — **false** on the sample course |
+| `SELF-PACED` chip | `is_self_paced` — course_metadata · `pacing` — **Courses API** | ✅ — both say instructor-paced on the real courses |
 | `BY IBM` partner logo | — | ✗ `org` is `"SkillUp"` (the platform's own org key), `number` is `"SQL-TMDA"`. Neither is a partner brand |
-| Course image | — | ✗ no image or media field in any of the 73. Confirms 01:28:54 |
+| Course image | `media.course_image` · `media.banner_image` · `media.image` — **Courses API** | ✅ verified populated 3 Aug — §12. Overturns 01:28:54 |
 | Title | `title` | ✅ |
 | *(missing)* | `title_prefix` | ✅ a **custom SkillUp field**, empty on the sample, not in our design |
 | `4 modules · 16 lessons` | count of `type=chapter` / `type=sequential` | ◑ — but see §2: "lessons" is the wrong noun for their sequentials |
-| `~ 14 hours` | — | ✗ no course-level duration; `effort_time` null throughout |
+| `~ 14 hours` | `effort` — **Courses API**, free text, e.g. `"88 hours"` | ✅ authored, not computed |
 
 ### Progress card
 
@@ -177,11 +185,12 @@ Verdicts: **✅ field exists and is populated** · **◑ derivable** (we compute
 
 | Element | Field | Verdict |
 |---|---|---|
-| Heading + paragraph | — | ✗ **not in the delivered metadata.** No `short_description`, `overview` or objectives field on any of the eight endpoints |
+| Heading + paragraph | `short_description`, and the *Skills You Will Gain* section of `overview` — **Courses API** | ⚠︎ exists, but `overview` is JSON double-encoded inside HTML. Parsing is real work — §12.1 |
 
 The workshop ruled this must be a mapped edX field, with the heading following the field name (01:30:39).
-As delivered, there is no such field to map. Either it is exposed from `CourseOverview` (it exists in the
-data model but is not on these endpoints) or the section is written elsewhere. **Ask.**
+**It is one** — just not on the eight endpoints in the workbook. `overview` even names its own section
+*"Skills You Will Gain"*, which is exactly the heading the ruling demands. What remains is a parsing problem,
+not a data one: see §12.1.
 
 ### Syllabus
 
@@ -465,6 +474,7 @@ into the tables.
 | States | `5038:444` | The four states, what each turns on, what changes on screen — plus what is not drawn yet |
 | Decisions and open questions | `5021:444` | What is decided and where it came from; what is open and who owns it; why the certificate is a card |
 | Metadata we still need | `5105:444` | What the ✗ and ⚠︎ verdicts would take to become ✅, with owner and status |
+| Live and Recordings | `5225:444` | What the VILT addendum rules in and out for design — not the fields, which are in §12 |
 
 **Row 3 — out of scope**, under *Out of scope — states the learner panel never serves*
 
@@ -489,35 +499,22 @@ payload · **✗** no source at all.
 What it would take for the **✗** and **⚠︎** verdicts in §4 to become **✅**. Ordered by effort, cheapest first
 — and the cheapest tier may cost nothing at all.
 
-### Verify first — three of these may already exist
+### Verified in the dev environment, 3 Aug — see §12 for the result
 
-The eight endpoints in the workbook are the ones the Learning MFE calls. They are not the only ones the
-platform has, and `CourseOverview` — the table `title`, `org`, `number`, `start` and `is_self_paced` already
-come from — carries more than these endpoints expose.
+The eight endpoints in the workbook are the ones the Learning MFE calls, not the only ones the platform has.
+Three were checked before asking anyone for anything. **One is confirmed and closes three ✗ on its own.**
 
-| To check | What it would close |
+| Checked | Result |
 |---|---|
-| **Courses API** `/api/courses/v1/courses/{course_key}` | In stock Open edX this returns `media {course_image, banner_image, course_video}`, `short_description` and `effort`. That is the **course image**, **"What you'll learn"** and **"~ 14 hours"** — three ✗ closed at once, with no backend work |
-| **Course Blocks API v2**, `requested_fields` / `block_counts` | **Real topic types.** `icon` offers four values and returns only `other`; the child XBlock type is knowable |
-| **Bookmarks list endpoint** | Gives decision [009](../00-decisions/009-bookmark-pure-marker.md) the entry point it has never had. `course_tools` already links Bookmarks; only the list is missing |
+| **Courses API** `/api/courses/v1/courses/{course_key}` | ✅ **Live, and readable without authentication.** Returns `media`, `short_description`, `effort`, `overview`, `pacing`, `end`. Three ✗ closed with no backend work — §12 |
+| **Course Blocks API v2**, `requested_fields` / `block_counts` | ◑ **Exists**, but rejects an anonymous call: *"username: This field is required unless all_blocks is requested."* A field error, not a 404 — so the capability is there and needs a signed-in call to prove the payload |
+| **Bookmarks list endpoint** | Untested — same authentication constraint |
 
-**Owner: Nelson**, in the dev environment. This is verification, not a request — do it before asking anyone
-for anything, because three asks may evaporate.
+### Delivered 4 Aug — the VILT addendum
 
-### In flight — committed 3 Aug
-
-Raised the same day the workbook landed, in the call with Nilesh:
-
-| Coming | Why it matters |
-|---|---|
-| **Live sessions tab** | Schedule, join link, session state |
-| **Recordings tab** | The `Session Recordings` chapter has units named by date and nothing behind them |
-
-Both from **row 84** of the workbook, owner **Chitteti Amara Raju**, due 4 Aug. This closes the largest gap
-in the delivery: searching all eight payloads for `session`, `recording`, `attendance`, `live` and `join`
-returns **nothing**, while the one real course we were given is instructor-paced and carries two VILT
-chapters. Nilesh's guidance in the meantime: the current file covers self-paced courses; the new tabs are for
-the VILT flows.
+Committed on the handover call and delivered the next day, as `Course_metadata (2).xlsx`. It is far larger
+than "two tabs": **Live (11 fields), Recordings (20 fields) and the whole Instructor dashboard (80 fields)**,
+plus eight new endpoints and three new blocks in the role matrix. Written up in §12.
 
 ### Open — worth a new task each
 
@@ -536,6 +533,96 @@ the VILT flows.
   Advanced Topics"*, *"Final Quiz "* — and we render the field verbatim.
 - **No letter grades, anywhere.** `grade_range` is a single threshold, `Pass: 0.7`, and `letter_grade` is
   null. A screen showing A/B/C draws something the platform cannot produce.
+
+---
+
+---
+
+## 12. Verified in the dev environment — and the VILT addendum
+
+### 12.1 The Courses API is live, and it closes three ✗ on its own
+
+Called against `devcourses.skillup.online` for `course-v1:SkillUp+SKOAZ204EEP+2024_b1`:
+
+| Field | What came back | Closes |
+|---|---|---|
+| `media.course_image.uri`, `media.image.{raw,small,large}`, `media.banner_image` | populated asset URLs | **Course image** ✗ → ✅ |
+| `short_description` | *"Learn how to build end-to-end solutions in Microsoft Azure…"* | **"What you'll learn"** ✗ → ✅ |
+| `effort` | `"88 hours"` | **"~ 14 hours"** ✗ → ✅ |
+| `overview` | ~7 000 characters of authored copy | see below |
+| `pacing` | `"instructor"` | pacing, explicitly |
+| `end`, `enrollment_start`, `enrollment_end`, `start_display`, `start_type` | populated | dates |
+| `invitation_only`, `hidden`, `mobile_available` | booleans | |
+| `blocks_url` | a link straight to Blocks API v2 | |
+| `media.course_video.uri` | **null** on this course | the promo-video slot exists but is unused |
+
+Two things beyond the fix:
+
+- **No authentication needed.** On the same session `/api/user/v1/me` answered *"Authentication credentials
+  were not provided"* while this returned a full payload. The course description and image are **public** —
+  convenient for us, and it means the catalogue and the panel can share one source rather than two.
+- **`overview` is rich but malformed.** It is a JSON array double-encoded inside HTML —
+  `<p>[ { "id": 0, "title": "Course Overview", "description": "</p>…` — with a second array of FAQs joined by
+  a literal `&amp;&amp;`. Its sections are already the ones a course page wants: *Course Overview*,
+  *How It Works*, **Skills You Will Gain**, *Who Should Enroll*, *Prerequisites*, plus FAQs.
+  **"Skills You Will Gain" is "What you'll learn", already written, with the heading the workshop insisted
+  must come from the field.** But parsing it is real work and the encoding is fragile — flag it before anyone
+  budgets it as "just render the field".
+
+### 12.2 Blocks API v2 — the capability is there
+
+The anonymous call returned a **field error, not a 404**: *"username: This field is required unless all_blocks
+is requested."* So the endpoint exists and takes the parameters; proving the `block_counts` payload — the fix
+for topic types — needs a signed-in call. Bookmarks is untested for the same reason. **Still mine to finish.**
+
+### 12.3 The addendum is much larger than "two tabs"
+
+**Live — 11 fields, and it is not ours to design.**
+`CourseLiveConfiguration` carries `provider_type` (`"zoom"`), `enabled`, `free_tier`, `pii_sharing_allowed`,
+the LTI 1.1 launch URL, client key and secret (write-only), and `iframe` — *"rendered embed HTML with
+LTI-signed srcdoc"* from `CourseLiveTab.render_to_fragment()`.
+
+> **The Live tab is Zoom's own interface inside an iframe.** The role matrix confirms it: Upcoming Meetings,
+> Previous Meetings, Meeting Summary, Join Meeting, host controls, an Appointments tab, a Get Training link
+> and a timezone display are all listed as things *the tab* shows — every one of them Zoom's chrome, not a
+> component we draw. This is the quiz XBlock constraint again: we own the frame, not the inside.
+
+LTI roles map Student for learners and Administrator for course staff, with GlobalStaff forced to Student on
+Zoom. `pii_sharing_allowed` must be true for Zoom to receive a learner's email or username — a privacy
+decision someone should make deliberately rather than inherit.
+
+**Recordings — 20 fields, and this one *is* ours.**
+`ZoomRecordingAsset` supplies everything a list and a player need: `recording_start` (grouped by date, newest
+first), a client-side count per date rendered as *"1 recording" / "4 recordings"*, `topic` as the title
+(*"truncated if long"*, so a truncation rule is expected of us), `duration_seconds` → *"1h 30m"*,
+`file_size_bytes` → *"45 MB"*, `status` and `is_archived`.
+
+Design consequences worth naming now:
+
+- **Playback is a short-lived SAS URL**, generated per recording by `POST …/playback_url/` and returned only
+  when the recording succeeded, is not archived and has a blob path. The URL expires — so it cannot be
+  pre-fetched for a whole list, and a copied link will not survive.
+- **The tab appears only if a succeeded MP4 exists.** No empty state to design for a course that has one
+  scheduled but nothing recorded yet — the tab is simply absent.
+- Anything pending, uploading, failed or archived is hidden **from everyone, including staff**, by default.
+- `file_type` is `MP4 / M4A / CHAT / TRANSCRIPT`. **Transcripts and chat logs exist as assets** — the first
+  real data behind decision [001](../00-decisions/001-transcript-anchored-notes.md), and worth pulling on.
+
+**Eight new endpoints**, four live and four recordings, half of each staff-only.
+
+**Instructor — 80 fields, every one staff.** Its whole visibility block is ❌ for learners, which confirms what
+we assumed and closes it as out of scope. One lead inside it: a **custom SKO** sub-tab, *Program Certificates*
+(`#view-cert_mentors`), whose only substantive field is `mentor_page_url` pointing at `settings.FRONTEND_URL`.
+It is a staff link to a separate frontend, not a learner-facing profile — **but it proves a mentor concept
+exists in their custom layer, with a frontend of its own.** That is the thread to pull for the mentor card:
+who owns that frontend, and does it hold the mentor-to-learner assignment that decision 007 implies?
+
+### 12.4 What it does to the tab bar
+
+For a self-paced course the bar is what v10 draws. For a VILT course it is up to **six learner tabs** —
+Course, Progress, Dates, Mentorship Q&A, Live, Recordings — and both new ones are conditional: Live on a
+`CourseLiveConfiguration` being enabled, Recordings on a succeeded MP4 existing. Rendering from `tabs[]` was
+already the right call; it is now the only one that works.
 
 ---
 
