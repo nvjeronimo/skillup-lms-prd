@@ -3544,3 +3544,38 @@ rather than the tone name.
 | `Correct` · `Incorrect` | 45 | **Mode A-2 only** — the bucket returns one score for the set, which lives on the problem header |
 
 Verified that every score-less title is in the A-2 column: 27 `Correct` and 18 `Incorrect`, none elsewhere.
+
+### 14.76 Full-page validation — the publish held *(Aug 8, 2026)*
+
+This was the pass that mattered: the previous republish was the one that broke 45 red ✗ by making a dead
+property live. Nothing broke this time, and the fixes stuck.
+
+| Structure | |
+|---|---|
+| Component instances | 14,881 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow · column overflow | **0 · 0 · 0 · 0** |
+| Default layer names outside instances | **0** |
+| Raw text fills | 20 — the two title bands, accepted |
+
+| Behaviour, 219 question cards | |
+|---|---|
+| Total violations | **0** |
+| Success tick on a wrongly-answered question | **0** |
+| `Incorrect` rows missing their red ✗ | **0** — all 58 restored and holding |
+| `Show Footer Questions` | off on all 90 A-2 cards, on for the other 129 |
+| Status chips | **44 of 44 Ready for DEV** |
+| Copy issues | **0** |
+
+**The option-row markers now read exactly as the platform does:**
+
+| State | Marker | Count |
+|---|---|---|
+| Incorrect | ✗ shown | 58 |
+| Correct — the learner's own right answer | ✓ shown | 47 |
+| Correct — highlighted after a wrong answer | **✓ suppressed** | 22 |
+| Missed | no tick, text marker | 29 |
+
+**And the alert titles held their scores through the republish**, which is what the DS default alignment was
+for: 51 carry `(1/1 point)` / `(0/1 point)` / `(1/2 points)` in Mode A-1, the journeys and the kit; 45 stay
+score-less and **every one of them is in the A-2 column**, where the score belongs to the problem header.
