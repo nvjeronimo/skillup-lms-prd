@@ -3461,3 +3461,43 @@ and the on-brand text tokens fail to import. Third confirmation, three separate 
 | Status chips | **44 of 44 Ready for DEV** |
 | Topic Headers | 30, title + type + duration on; description, author and status off |
 | Player shell | desktop and tablet carry **two** scroll bars each, mobile one — the sidebar is a drawer there |
+
+### 14.73 Three misses, found by reading the platform docs *(Aug 8, 2026)*
+
+Nelson went back to `learner_problem_view.html` and caught three things the screens had wrong. All three are
+now fixed. Worth recording *how* they were missed as much as what they were.
+
+**1 · The feedback text was not showing the score.** The docs are explicit: underneath the problem, the
+feedback text says whether it was answered correctly or incorrectly **and shows the problem score**. Our
+alerts read `Correct` (27×) and `Incorrect` (41×) with no score anywhere — and because the points line is off
+on every Mode A-1 card, **the score appeared nowhere on the screen at all**.
+
+Our own spec had it right — §04 line 99 says `✔ Correct (1/1 point)` / `✖ Incorrect (0/1 point)` /
+`◐ Partially correct (x/y points)`. The screens drifted from the spec and nobody re-read the spec. 38 alert
+titles rewritten:
+
+| State | Now reads |
+|---|---|
+| Correct | `Correct (1/1 point)` |
+| Incorrect | `Incorrect (0/1 point)` |
+| Partially correct | `Partially correct (1/2 points)` |
+
+**Mode A-2 was deliberately left alone.** In the bucket the platform returns one score for the whole set, so
+the per-question alerts stay `Correct` / `Incorrect` and the score lives on the problem header — `3/5 points`.
+Putting a per-question score there would invent a number the API does not have.
+
+**2 · `Success` was leaking as an alert title.** Twelve `Correct` cards showed the *tone name* as the copy.
+Fixed in the same pass.
+
+**3 · The correct answer was showing a green check after a wrong answer.** On `Partially correct` (16) and
+`Answer revealed` (6), the correct option carried the success ✓. Nelson's rule: **green, but no checkmark** —
+a tick reads as praise, and the learner did not get it right. `Show state-check-icon` turned off on all 22.
+
+Verified after: **0 cards showing a check on a wrongly-answered question.**
+
+**Still open from the same reading.** `showanswer` has eleven valid values — `always`, `answered`,
+`attempted`, `closed`, `finished`, `past_due`, `correct_or_past_due`, `after_all_attempts`,
+`after_all_attempts_or_correct`, `attempted_no_past_due`, `never` — plus a per-problem *Show Answer: After
+Some Number of Attempts*. Our screens draw one policy (`finished`) as though it were settled. It is open
+question 1, and it is now clearly a **design** dependency and not just a config one: at `always` the button
+is on screen from the first view, which is a different screen from the one we drew.
