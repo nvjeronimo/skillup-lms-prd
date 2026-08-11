@@ -1788,3 +1788,37 @@ ended up with two names across variants** — the check that mattered, since tha
 was designed to avoid. The 128 index paths that do differ between variants were already different layers —
 `LMS / Completion Status` genuinely has `check-icon`, `dot` and `status-circle` at the same position — not
 damage from the rename.
+
+## Aug 8, 2026 — `Show state-check-icon` made real, except where it should not be
+
+The property claimed to control the state marker on `LMS / Quiz · Option Row` and only did so on one of the
+four variants that have a `state-row`. Now bound on three — and deliberately not on the fourth.
+
+| Variant | Property does |
+|---|---|
+| `Correct` | hides the ✓ **and collapses the row with it**, so no stray 12px gap is left behind |
+| `Incorrect` | same, for the ✗ |
+| `Correctly unselected` | hides the *"Un-selected is correct"* marker — there is no icon there, the text is the marker |
+| `Missed` | **nothing, on purpose** |
+
+**Why `Missed` is left unbound, and it is not tidiness.** Binding it was tried first, and a probe caught the
+consequence immediately: a bound layer takes its visibility from the property, and the property defaults to
+`true` — so `Missed` started rendering a green tick it had never had. One boolean cannot default `true` for
+`Correct` and `false` for `Missed`; the variant was carrying that decision, and binding it threw the decision
+away.
+
+That decision is the rule Nelson set the same day: **a correct answer the learner did not choose shows green
+with no tick, because a tick reads as praise for an answer they got wrong.** Leaving the icon hidden at
+source keeps it true by construction — nobody can switch it on by flipping a property, and a new instance
+cannot default wrong.
+
+Written into the component description, including the instruction not to bind it.
+
+**Verified by probing each variant** — instantiate, read, flip the property, read again:
+
+| Variant | default | property off |
+|---|---|---|
+| Correct | icon shown | icon hidden, row collapsed |
+| Incorrect | icon shown | icon hidden, row collapsed |
+| Missed | icon hidden, text shown | unchanged |
+| Correctly unselected | text shown | text hidden |
