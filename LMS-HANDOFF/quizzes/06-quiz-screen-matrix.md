@@ -3501,3 +3501,46 @@ Verified after: **0 cards showing a check on a wrongly-answered question.**
 Some Number of Attempts*. Our screens draw one policy (`finished`) as though it were settled. It is open
 question 1, and it is now clearly a **design** dependency and not just a config one: at `always` the button
 is on screen from the first view, which is a different screen from the one we drew.
+
+### 14.74 Making the property real broke something, and the sweep caught it *(Aug 8, 2026)*
+
+The publish landed and `Missed` held — green, no tick, exactly as intended. But binding
+`Show state-check-icon` had a consequence nobody could have seen before it shipped:
+
+**45 `Incorrect` option rows lost their red ✗.** They had been carrying `Show state-check-icon = false` for
+who knows how long, and it did nothing, because the ✗ was never bound to the property. Making the property
+real made all 45 of those stale falses suddenly mean something. The docs are explicit — a red X marks the
+incorrect response — so all 45 were set back to `true`.
+
+**Worth naming the pattern, because it is the third time this session.** A property that does nothing is not
+harmless: instances accumulate arbitrary values against it, and the day it starts working, those values fire
+all at once. Same shape as the stale `Show hint action` trues found during the footer swap, and the
+un-overridden alert copy that kept coming back. **Wiring a dead property is a migration, not a fix** — and
+the sweep afterwards is the part that matters.
+
+**Six alert titles had also reverted to `Success`** — five in the journeys, one in the kit — losing the score
+added the day before. Restored, and the DS defaults were aligned to the same format at source
+(`Correct (1/1 point)`, `Partially correct (1/2 points)`) so a future republish restores the right string
+rather than the tone name.
+
+### 14.75 Full-page validation
+
+| | |
+|---|---|
+| Component instances | 14,881 |
+| Broken · unexpected local components | **0 · 0** |
+| Overlaps · unstyled text · text overflow · column overflow | **0 · 0 · 0 · 0** |
+| Default layer names outside instances | **0** |
+| Question cards | 219, **0 behaviour violations** |
+| Success tick on a wrongly-answered question | **0** |
+| Copy issues (ORA, plural, stale ten, stepper, glyphs, `Success`) | **0** |
+| Raw text fills | 20 — the two title bands, accepted |
+
+**Alert titles now read as they should**, and the split is deliberate:
+
+| Title | Count | Where |
+|---|---|---|
+| `Incorrect (0/1 point)` · `Correct (1/1 point)` · `Partially correct (1/2 points)` | 51 | Mode A-1, the journeys and the kit — the card is the problem, so it carries the score |
+| `Correct` · `Incorrect` | 45 | **Mode A-2 only** — the bucket returns one score for the set, which lives on the problem header |
+
+Verified that every score-less title is in the A-2 column: 27 `Correct` and 18 `Incorrect`, none elsewhere.
