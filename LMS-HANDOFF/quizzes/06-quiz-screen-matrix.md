@@ -3579,3 +3579,69 @@ property live. Nothing broke this time, and the fixes stuck.
 **And the alert titles held their scores through the republish**, which is what the DS default alignment was
 for: 51 carry `(1/1 point)` / `(0/1 point)` / `(1/2 points)` in Mode A-1, the journeys and the kit; 45 stay
 score-less and **every one of them is in the A-2 column**, where the score belongs to the problem header.
+
+---
+
+### 14.77 Mode B drawn in full — 36 screens *(Aug 13, 2026)*
+
+The 8 Aug call removed the reason Mode B was still a proposal. Vikas Goyal, on the record: the LMS is no
+longer being built on the edX LMS — it is a fresh front end reading the same APIs, configured through an
+admin panel — so *"there are no bar on to the design side"* as long as the functionality exists on the
+platform. Mode B costs no more to develop than Mode A. Rashid asked for the design the same week, because
+his team had four to five ICP tickets reserved for the sprint starting Wednesday.
+
+So Mode B stops being a sketch and becomes a delivery: **`ICP Phase 1 - Quiz (B) - Light`** = `5287:20301`,
+built in the same format as the A-1 + A-2 frame.
+
+**36 screens: 3 quiz types × 3 devices × 4 steps.**
+
+| Step | What the learner sees | Where it comes from |
+|---|---|---|
+| 1 · entry | `LMS / Quiz · Entry Header`, one variant per type | the rules before the first question |
+| 2 · question + slider | one `Question Card`, `Show progress` **on**, Stepper `With Back only` | Next is not available until they submit |
+| 3 · feedback | the same card in `Incorrect`, Stepper `With Back+Next` | practice and graded — the answer is marked before moving on |
+| 3 · submitted (final exam) | the card in `Results withheld`, Stepper `With Back+Next` | a final exam confirms the submission and withholds the score |
+| 4 · results | `LMS / Quiz · Results` | `Passed` for practice · `Not passed` for graded · `Withheld` for the final exam |
+
+**The slider is not new hardware.** It is `Show progress` on the Question Card, which has been in the DS all
+along and was measured *off* on all 66 Mode A cards (§14.31). Mode A has no question navigation; Mode B is
+that same property turned on, plus the `LMS / Quiz · Stepper Bar` variant that carries Back and Next. Every
+question card in the B frame was cloned from the A card of the same quiz type and device, so the footer
+configuration — attempts, hint, reset, the disabled Submit — is the verified one, not a re-authored guess.
+
+**One story across the whole section: five questions.** Entry headers read `5 questions`, the slider reads
+`Question 1 of 5`, the feedback screen sits at 20%, and the results read `4 / 5`, `2 / 5` and `5 of 5
+answered`. The counts had been inherited from the A frame at 3, 8 and 20 and would have contradicted the
+slider on every screen.
+
+**Two things the build surfaced.**
+
+`LMS / Quiz · Results` is authored at 582px and does not survive 311px: its footer row is horizontal with no
+wrap, so `1 question still has attempts left` compressed to one character per line and the buttons ran past
+the card edge. Fixed locally on the three mobile instances — the row wraps, the text hugs its line, and the
+retry button shortens to `Retry (n)`. **The component itself still has the bug**; a DS-side fix needs a
+republish, and the deadline did not allow one.
+
+`layoutMode` cannot be overridden on an instance child — it silently reverts. `layoutWrap`,
+`layoutSizingHorizontal` and `itemSpacing` all persist. That is the difference between fighting an instance
+and working with it, and it cost several attempts to learn.
+
+**A third thing, and it was older than Mode B.** Every screen in both delivery frames carried the same page
+chrome: topic header `Practice Quiz: Define and measure · 8 min`, the same title in the bottom nav, and a
+`Practice Assignment` badge on the current sidebar row — including the graded and final-exam rows. A screen
+whose card header reads *Graded quiz* while the page it shows reads *Practice Quiz* is a defect a BA will
+raise on the first read. Corrected across **both** frames rather than only the new one, so A and B stay in
+parity:
+
+| Row | Topic header | Duration | Sidebar badge |
+|---|---|---|---|
+| Practice | `Practice Quiz: Define and measure` | 8 min | Practice Assignment |
+| Graded | `Graded Quiz: Analyze and improve` | 10 min | Graded Assignment |
+| Final exam | `Final Exam: Six Sigma Black Belt` | 20 min | Graded Assignment |
+
+21 screens each, 63 in total — verified by sweeping both frames for the old string in the topic header and
+the bottom nav: **0 left**.
+
+**Final state of the B frame.** 5,622 instances · 0 broken · 0 local components · 0 default layer names ·
+0 unstyled text · 36 screens · 36 captions · 18 of 18 status chips `Ready for DEV`. The 10 raw text fills
+are the dark title band, the same accepted exception as the A frame.
