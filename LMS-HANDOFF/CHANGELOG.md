@@ -2,6 +2,37 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-13 · Decision CTAs stretch on narrow containers, and it took two numbers not a variant
+
+Full-width CTAs on mobile looked like it needed a mobile version of every component carrying a decision. It
+does not. It needs `min-width` on the buttons and `max-width` on the row.
+
+**New component — `Action Row`** (page `↳ Button groups`, variants `Actions = 2 | 3`). A wrapping flex row
+whose `cta-slot` frames carry the minimum and whose buttons fill their slot. Swap the button, inherit the
+behaviour. Measured: 279 → 279 / 279 stacked · 560 → 184 / 184 · 1032 → 184 / 184.
+
+**`LMS / Quiz · Entry Header` — formula applied to all four variants.** Buttons Fill + `min-width 184`,
+`Action` row `max-width 376`. Timed exam runs wider because its primary label is: 292 / 184 → 484. Measured
+on the component: 311px device → **263 / 263 stacked**, 600 and 1080 → 184 / 184 side by side.
+
+**Three things the file taught us, all verified:**
+
+- `min-width` and `max-width` **cannot be overridden on an instance**. They are authored at source or they do
+  not exist. This is why the fix could not be applied only in the ICP file.
+- They **can** be set on a button instance you place yourself. The restriction bites only when the button is
+  a child of someone else's component.
+- `resize()` on a child inside a wrapping container is refused, and `Fill` inside a `Hug` parent does not
+  collapse to content width — it inherits the authored width. Neither is a route to this behaviour.
+
+**Not applied to `Buttons/Button` itself, on purpose.** 161 variants, and `min-width` cannot be overridden —
+a floor on the button is law everywhere, which would make a compact toolbar or a table-row action
+impossible. The value that triggers the wrap depends on half the container, which is context the button
+cannot know. The button may deserve a small universal minimum one day; it is a different number from this
+one.
+
+Both the component and the four Entry Header variants are annotated in Figma with the formula and how to
+extend it.
+
 ## 2026-08-05 · Explanations exist, and the wrong answers never get one
 
 Tested all ten questions of the course the vendor named as *the* example of the explanation functionality.

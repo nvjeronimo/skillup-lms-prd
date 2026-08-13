@@ -3683,3 +3683,41 @@ desktop screens were already right:
 42 screens across both frames — 24 in B, 18 in A. Swept and verified: of 63 screens, **0** with a wrong nav
 title, **0** with a wrong counter, **0** with the highlight on the wrong row, and none with no highlight at
 all. Every quiz screen now agrees with itself about which topic the learner is on.
+
+### 14.79 Full-width CTAs on mobile — a formula, not a variant *(Aug 13, 2026)*
+
+The ask was narrow: on mobile, decision CTAs should take the full width. The obvious answers all fail, and
+the file is what proved it:
+
+| Attempt | Result |
+|---|---|
+| Set the two buttons to Fill on the mobile instance | 136 / 136 side by side, labels truncated — Fill has no minimum, so it never triggers the wrap |
+| Set `min-width` on the buttons in the instance | **Ignored.** `min-width` / `max-width` cannot be overridden on an instance |
+| Set a fixed width on the buttons | **Refused.** `resize()` on a child inside a wrapping container is overwritten by the parent's layout |
+| Set the row to Hug so Fill children collapse to content | 263 / 263 — `Fill` inside `Hug` inherits the authored width, it does not collapse |
+
+What works is two numbers with different owners:
+
+```
+cta-min = 184 · gap = 8
+button:  Fill · min-width = cta-min
+row:     wrap · Fill · max-width = n × cta-min + (n−1) × gap
+```
+
+`min-width` is the wrap trigger — two buttons at 184 need 376, so a container narrower than that breaks the
+line, and a button alone on its line fills it. `max-width` is the opposite brake: without it the filling
+buttons stretch to half the viewport. Measured on `Entry Header`: **311px device → 263 / 263 stacked**, 600
+and 1080 → 184 / 184 side by side.
+
+**Where it lives.** In the DS, because those two properties do not survive as instance overrides. `LMS /
+Quiz · Entry Header` carries them on all four variants; the reusable version is a new **`Action Row`**
+component whose `cta-slot` frames own the minimum, so a swapped button inherits it without anyone
+remembering the formula. Both annotated in Figma.
+
+**Not put on `Buttons/Button`.** 161 variants, and since `min-width` cannot be overridden, a floor on the
+button would be law in every product — no compact toolbar, no narrow table action. And the number that
+triggers the wrap is half the container, which is context the button cannot know. Two different numbers,
+two different owners.
+
+The dev rule is in `09-handoff-map.md` §6b: one flex container, `flex-wrap: wrap`, `min-width` on the
+children. Not a breakpoint, not a mobile component.

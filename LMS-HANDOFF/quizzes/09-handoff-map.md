@@ -253,6 +253,42 @@ Tolerance setting; text input carries case-sensitivity and regex modes.
 
 ---
 
+## 6b · Decision CTAs go full-width on narrow containers
+
+**The rule.** Where a screen asks the learner to decide — *Start practice quiz / Review lesson first*,
+*Retry incorrect / Retake quiz* — the buttons sit side by side while there is room, and **each one takes the
+full width once there is not**. On a 375px device that means stacked, full-bleed.
+
+**This is not a mobile component and not a breakpoint.** It is one flex container and one number:
+
+```css
+.action-row  { display: flex; flex-wrap: wrap; gap: 8px; max-width: 376px; }
+.action-row > * { flex: 1 1 auto; min-width: 184px; }
+```
+
+`min-width` is the wrap trigger — two buttons at 184 need 376, so any container narrower than that breaks the
+line, and a button alone on its line fills it. `max-width` is the opposite brake: without it the flexing
+buttons would stretch to half the viewport on desktop.
+
+**Generalised:** `max-width = n × cta-min + (n−1) × gap`, with `cta-min = 184` and `gap = 8`. Where a label is
+naturally wider than `cta-min`, that button's `min-width` is the label width and the row's `max-width` rises
+by the same amount — the Timed exam entry runs at 292 / 184 → 484.
+
+**Measured**, on `LMS / Quiz · Entry Header`:
+
+| Container | Result |
+|---|---|
+| 311 (mobile card) | **263 / 263 — stacked, full width** |
+| 600 (tablet) | 184 / 184 side by side |
+| 1080 (desktop) | 184 / 184 side by side |
+
+**In Figma** the same two properties are authored on the component, because `min-width` and `max-width`
+cannot be overridden on an instance — they exist only at source. `LMS / Quiz · Entry Header` carries them
+now; the reusable version is the `Action Row` component, whose slots own the minimum so a swapped button
+inherits it. Both are annotated in the file.
+
+---
+
 ## 7 · The DOM, for whoever implements against the iframe
 
 Verified strings on dev, useful for grepping:
