@@ -3645,3 +3645,41 @@ the bottom nav: **0 left**.
 **Final state of the B frame.** 5,622 instances · 0 broken · 0 local components · 0 default layer names ·
 0 unstyled text · 36 screens · 36 captions · 18 of 18 status chips `Ready for DEV`. The 10 raw text fills
 are the dark title band, the same accepted exception as the A frame.
+
+### 14.78 The content disposition, and the rest of the chrome that was lying *(Aug 13, 2026)*
+
+Nelson set the layout on `[Phase 1] Practice quiz · Desktop · 1440` and asked for it everywhere. Three
+changes, and they are what makes the screen read as a player rather than a document:
+
+| Node | Was | Is |
+|---|---|---|
+| `Main Content` | HUG · CENTER | **FILL · SPACE_BETWEEN** |
+| `content` | HUG | **FILL** |
+| `Questions List` | HUG | **FILL** |
+
+Content sits at the top, the feedback strip drops to the bottom of the content area, and the topic nav rests
+on the floor of the viewport instead of hugging the card. Applied to all **24 desktop and tablet screens**.
+
+The four **final-tablet** screens sat at 1042 rather than 1062 — `Sidebar Container` was hugging, and that
+sidebar is 20px shorter than the others, so the whole screen inherited the difference and left a dead band at
+the bottom. The height was never a viewport; it was whatever the sidebar happened to measure. Pinned the
+container to 1002 and they match now.
+
+**Mobile is a different structure and was left alone.** There is no `Main Content` wrapper — `content` sits
+directly in `Sidebar Container` and the nav is a child of `content`. Matching the disposition would mean
+pinning each screen to 375×812 and letting content scroll under a fixed nav, which is the shell rule that
+already has its own section, and three of the twelve mobile screens are taller than 812.
+
+**And the same sweep found the rest of the chrome pointing at the wrong topic.** §14.77 fixed the topic
+header; the footer and the sidebar were still on the old placeholder, on **tablet and mobile only** — the 21
+desktop screens were already right:
+
+| | Was | Is |
+|---|---|---|
+| Nav footer title | `Introduction to the DMAIC methodology` | the screen's own topic |
+| Nav footer counter | `2 of 9` | `4 of 9` |
+| Sidebar highlighted row | the first video | the quiz row |
+
+42 screens across both frames — 24 in B, 18 in A. Swept and verified: of 63 screens, **0** with a wrong nav
+title, **0** with a wrong counter, **0** with the highlight on the wrong row, and none with no highlight at
+all. Every quiz screen now agrees with itself about which topic the learner is on.
