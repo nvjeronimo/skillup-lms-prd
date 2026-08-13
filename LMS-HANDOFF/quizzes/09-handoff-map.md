@@ -282,10 +282,30 @@ by the same amount — the Timed exam entry runs at 292 / 184 → 484.
 | 600 (tablet) | 184 / 184 side by side |
 | 1080 (desktop) | 184 / 184 side by side |
 
-**In Figma** the same two properties are authored on the component, because `min-width` and `max-width`
-cannot be overridden on an instance — they exist only at source. `LMS / Quiz · Entry Header` carries them
-now; the reusable version is the `Action Row` component, whose slots own the minimum so a swapped button
-inherits it. Both are annotated in the file.
+**When the buttons share the row with something else** — the results card puts a note beside them — the
+same idea needs four constraints instead of two, because a flexing sibling will otherwise crush the buttons
+before the row ever wraps:
+
+```css
+.row        { display: flex; flex-wrap: wrap; gap: 16px; }
+.row > .note    { flex: 1 1 auto; min-width: 180px; max-width: 226px; }
+.row > .actions { flex: 1 1 auto; min-width: 163px; max-width: 292px;
+                  display: flex; flex-wrap: wrap; gap: 8px; }
+.row > .actions > * { flex: 1 1 auto; min-width: <natural label width>; }
+```
+
+The `min-width` on `.actions` is the one that is easy to miss: without it the actions collapse to a sliver
+and the buttons overflow instead of the row wrapping. The `max-width` on the note is what hands the leftover
+space to the actions rather than splitting it evenly.
+
+**In Figma** the same properties are authored on the component, because `min-width` and `max-width` cannot be
+overridden on an instance — they exist only at source. `LMS / Quiz · Entry Header` and `LMS / Quiz · Results`
+carry them now; the reusable version is the `Action Row` component, whose slots own the minimum so a swapped
+button inherits it. All are annotated in the file.
+
+**A single CTA is out of scope.** With one button there is nothing to wrap, so `Results` `Pending` and
+`Withheld` are untouched. Making a lone button full-bleed on mobile and content-width on desktop is a real
+breakpoint, not a formula.
 
 ---
 

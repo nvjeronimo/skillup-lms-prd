@@ -30,8 +30,20 @@ impossible. The value that triggers the wrap depends on half the container, whic
 cannot know. The button may deserve a small universal minimum one day; it is a different number from this
 one.
 
-Both the component and the four Entry Header variants are annotated in Figma with the formula and how to
-extend it.
+**`LMS / Quiz · Results` — same formula, but this row has a text sibling and it needs four constraints.**
+Buttons Fill + min-width at their natural label width; the button slot Fill + min-width (widest button) +
+max-width (Σ buttons + gaps); the note text Fill + min-width 180 + max-width (its natural width); the parent
+row wrapping. Measured: 311px device → note 226, then **263 / 263 stacked** · 600 and 1080 → 226 · 163 / 121,
+byte-identical to before.
+
+The one that is easy to miss is the **min-width on the slot**. Without it the slot has no minimum, so a
+flexing sibling squeezes it to a sliver and the buttons overflow instead of the row wrapping — which is
+exactly the bug we hand-patched on three mobile instances last week. Those local patches (wrap, hug, and the
+shortened `Retry (1)` label) can be reverted once the library is republished.
+
+`Pending` and `Withheld` untouched: one CTA has nothing to wrap.
+
+Both components and the affected rows are annotated in Figma with the formula and how to extend it.
 
 ## 2026-08-05 · Explanations exist, and the wrong answers never get one
 
