@@ -2,13 +2,22 @@
 
 *Created Aug 5, 2026 · Canonical definition of the two quiz experiences we are putting side by side.*
 
-> **Status, updated Aug 13, 2026: Mode B is confirmed buildable and is being handed off.** The 8 Aug call
-> settled the question the cost tags were hedging against — the LMS is no longer the edX LMS but a fresh
-> front end over the same APIs, configured through an admin panel, so design is unconstrained as long as the
-> functionality exists on the platform. Mode B carries no development premium. All three modes (A-1, A-2, B)
-> go to the BA team; which one a given quiz topic uses is a content-team decision, made per quiz in the admin
-> panel. Read the cost tags below as *what each difference is made of* — design, setting, authoring or build
-> — not as a reason to prefer one mode.
+> **Decision, Aug 14, 2026: A-2 is the build target. A-1 and B are parked.** Navdeep's call, after the
+> thread that framed it as one question — *is the purpose of this quiz to teach, or to measure?* A-2 measures:
+> the learner answers everything before any feedback arrives, so no answer is influenced by an earlier
+> correction. B teaches: every question becomes a mini lesson. A-2 also matches how every existing course is
+> already authored, so it costs authoring and no build.
+>
+> **A-1 is rejected**, on the grounds that it takes away what A-2 is for — per-question feedback during an
+> assessment is the thing A-2 exists to avoid.
+>
+> **B is parked, not dead.** It was confirmed buildable on 8 Aug and the technical constraint is gone. What
+> would revive it is a teaching-shaped quiz, and that is a content-team decision — the thread is asking
+> Rupali, Simran and Saransh for exactly that input. Navdeep's own framing is that the instructors should end
+> up with a simple rule for choosing A-2 or B by instructional intent.
+>
+> The cost tags below now read as *what each difference is made of* — design, setting, authoring or build —
+> for whoever revisits this.
 
 Companion docs: [04-quiz-experience-spec.md](04-quiz-experience-spec.md) (full component spec, and the source
 verification in §10) · [06-quiz-screen-matrix.md](06-quiz-screen-matrix.md) (every state) ·
@@ -16,8 +25,9 @@ verification in §10) · [06-quiz-screen-matrix.md](06-quiz-screen-matrix.md) (e
 [../session-log.md](../session-log.md) (where each finding came from).
 
 Figma: ICP page → section **`04.5 · Quiz — mode A (today) vs mode B (proposed) · in discussion`**.
-Delivery frames: **`ICP Phase 1 - Quiz (A-1 + A-2) - Light`** and **`ICP Phase 1 - Quiz (B) - Light`**
-(`5287:20301`, 36 screens — see `06-quiz-screen-matrix.md` §14.77).
+Delivery frames, left to right on the ICP page: **`ICP Phase 1 - Quiz (A-2) - Light`** (18 screens, Ready for
+DEV) · **`ICP Phase 1 - Quiz (A-1) - Light`** (9 screens, In progress) · **`ICP Phase 1 - Quiz (B) - Light`**
+(36 screens, In progress). The kit stays shared — the components are the same in all three.
 Design system: `LMS / Quiz · Question Card` serves both modes — see §9.
 
 ---

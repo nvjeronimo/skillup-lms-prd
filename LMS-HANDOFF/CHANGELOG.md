@@ -2,6 +2,38 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-14 · A-2 is the build target, and the page is reorganised around that
+
+Navdeep's decision, reached by reframing the whole argument as one question: **is the purpose of this quiz to
+teach, or to measure?** A-2 measures — the learner answers everything before any feedback arrives, so no
+answer is influenced by an earlier correction. B teaches — every question becomes a mini lesson. A-2 also
+matches how every existing course is already authored, so it costs authoring and no build.
+
+**A-1 is rejected**, on the grounds that per-question feedback during an assessment is precisely the thing
+A-2 exists to avoid. **B is parked, not dead** — buildable, and revivable by a teaching-shaped quiz, which is
+a content-team call. Rupali, Simran and Saransh are being asked for that input.
+
+**The page is reorganised.** The two mode-A versions were sharing one frame in two columns; they are now
+separate frames, in decision order:
+
+| Frame | Screens | Status |
+|---|---|---|
+| `ICP Phase 1 - Quiz (A-2) - Light` | 18 | **Ready for DEV** |
+| `ICP Phase 1 - Quiz (A-1) - Light` | 9 | In progress |
+| `ICP Phase 1 - Quiz (B) - Light` | 36 | In progress |
+
+Then the player shell, the journeys, and the kit. **The kit stays shared** — the components are the same in
+all three, which is the point of having had them.
+
+Every header band rewritten to say which version it is and why it is where it is, and all 27 card changelogs
+carry the 14 Aug decision. The chip on a parked card reads `In progress`; the band carries the real reason,
+because a chip cannot say "parked pending a content-team decision".
+
+**One thing the status sweep exposed.** Six of the mobile cards did not follow the instance swap: their
+`Status Tag` had the words *Ready for DEV* typed straight onto the text node, from the day we marked
+everything ready. Swapping the status component underneath changed nothing visible. Same lesson as the CTA
+overrides, in a different costume — **a typed override outranks the component and stays silent about it.**
+
 ## 2026-08-13 · Decision CTAs stretch on narrow containers, and it took two numbers not a variant
 
 Full-width CTAs on mobile looked like it needed a mobile version of every component carrying a decision. It

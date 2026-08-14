@@ -3775,3 +3775,32 @@ along the A-2 boundary.
 **Two loose nodes at page level, left alone:** a duplicate `ICP-Quiz-B-final-mobile · 1 · entry` at
 (20266, 14597) and a stray `Vertical Scroll` at the origin. Both sit outside every card. Neither is mine to
 delete — flagged for Nelson.
+
+### 14.81 A-2 is the build target — the page reorganised around the decision *(Aug 14, 2026)*
+
+Navdeep settled it by reframing the argument as one question: **is the purpose of this quiz to teach, or to
+measure?** A-2 measures, B teaches, and every quiz we have is an assessment. A-1 is rejected outright — it
+gives back the per-question feedback that A-2 exists to withhold.
+
+**Three frames now, in decision order.** The two mode-A versions had been sharing one frame as two columns;
+splitting them was moving one column into a new frame, not a rebuild.
+
+| Frame | Screens | Chip | Band says |
+|---|---|---|---|
+| `ICP Phase 1 - Quiz (A-2) - Light` | 18 | Ready for DEV | approved 14 Aug · authoring only, no build |
+| `ICP Phase 1 - Quiz (A-1) - Light` | 9 | In progress | parked · superseded by A-2 |
+| `ICP Phase 1 - Quiz (B) - Light` | 36 | In progress | parked · buildable, awaiting the content team |
+
+Then the player shell, the journeys and **the kit, which stays shared** — the components are the same in all
+three, which is what having a kit was for.
+
+**The chip and the band do different jobs.** `In progress` is the only parked-ish status the handoff kit has,
+and it is not quite true — nobody is working on A-1. So the chip carries the coarse signal and the band
+carries the sentence: *Parked 14 Aug · not the build target · superseded by A-2*. A BA reading only chips
+still sees which frame is for building.
+
+**Six cards ignored the status swap.** The mobile card headers had *Ready for DEV* typed directly onto the
+`Status Tag` text, left over from the day we marked everything ready. Swapping the status component beneath
+them changed nothing on screen. This is the third time in three days that a typed or dragged override has
+outranked a component and said nothing about it — the sweep for them is now part of any component-level
+change, not an afterthought.
