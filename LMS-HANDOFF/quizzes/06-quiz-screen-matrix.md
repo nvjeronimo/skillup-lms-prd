@@ -3721,3 +3721,57 @@ two different owners.
 
 The dev rule is in `09-handoff-map.md` §6b: one flex container, `flex-wrap: wrap`, `min-width` on the
 children. Not a breakpoint, not a mobile component.
+
+### 14.80 Full-page validation after the CTA republish *(Aug 14, 2026)*
+
+The republish landed the responsive CTA properties on every instance. What it also did was expose the
+overrides we had left behind.
+
+**Three stale overrides, all ours, all silent.**
+
+| Where | Override | Effect |
+|---|---|---|
+| `graded-mobile · 4 · results` | note `text-align: CENTER` | note off-centre against the other eight results screens |
+| `final-desktop · 1 · entry` | buttons stuck on `Hug` | rendered identically by luck — the min-width happened to equal the hug width |
+| three mobile `Results` (fixed the day before) | `Hug`, no-wrap, `Retry (1)` | buttons overflowed the card |
+
+The pattern is now confirmed twice: **an instance override outranks the component and survives a republish.**
+A hand-patch made before the real fix does not retire itself — it sits there contradicting the fix, and the
+second case shows it can do so invisibly until the component changes again. Any component-side fix has to be
+followed by a sweep of the instances we touched by hand.
+
+**A measurement error worth recording.** The first pass reported the A-2 column as having zero question
+cards. It has ninety. They are the same component, renamed `Q1`…`Q5` at instance level — sensible authoring,
+and it defeats an audit that matches on layer name. The sweep now matches on a component property
+(`Show progress`), which renaming cannot hide. Card count went from a wrong 147 to the true **237**.
+
+**State of the page.**
+
+| Structure | |
+|---|---|
+| Component instances | 20,656 |
+| Broken · unexpected local components | **0 · 0** |
+| Default layer names outside instances | **0** |
+| Unstyled text | **0** |
+| Real overflow | **0** — the 37 flagged are hidden overlays (`AI Panel`, `Menu open`) |
+| Clipped text | **0** |
+| Raw text fills | 30 — the three dark title bands, accepted |
+| Status chips | **62 of 62 Ready for DEV** |
+
+| Behaviour, 237 question cards | |
+|---|---|
+| Success tick on a wrongly-answered question | **0** |
+| `Incorrect` rows missing their red ✗ | **0** |
+| `Success` leaking as alert copy | **0** |
+| `Show progress` on | **18** — exactly the mode B question and feedback cards, none in mode A |
+| `Show Footer Questions` off | **90** — exactly the A-2 bucket cards |
+| Score-less alert titles | **45, every one in the A-2 column** |
+
+**Four alert titles corrected.** Three journey cards and one kit card read a bare `Incorrect`. The rule is
+that only A-2 omits the score, because there the score belongs to the problem header; everywhere else the
+platform prints it beside the result. They now read `Incorrect (0/1 point)`, and the split is exactly 45 / 67
+along the A-2 boundary.
+
+**Two loose nodes at page level, left alone:** a duplicate `ICP-Quiz-B-final-mobile · 1 · entry` at
+(20266, 14597) and a stray `Vertical Scroll` at the origin. Both sit outside every card. Neither is mine to
+delete — flagged for Nelson.
