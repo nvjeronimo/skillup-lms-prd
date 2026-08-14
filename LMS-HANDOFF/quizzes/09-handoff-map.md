@@ -283,29 +283,36 @@ by the same amount — the Timed exam entry runs at 292 / 184 → 484.
 | 1080 (desktop) | 184 / 184 side by side |
 
 **When the buttons share the row with something else** — the results card puts a note beside them — the
-same idea needs four constraints instead of two, because a flexing sibling will otherwise crush the buttons
-before the row ever wraps:
+answer is not more constraints. It is to stop sharing the row.
+
+**Figma's `Fill` divides free space equally between siblings and uses min/max only as clamps** — it does not
+distribute in proportion to their minimums. So an uneven split (note 226 · actions 292) can only be produced
+by capping one of the two, and any cap that produces the desktop layout is the same cap that stops the note
+filling the line on mobile. Beside-the-buttons and full-width-note are mutually exclusive in one static
+configuration. The same is true in CSS flex, for the same reason.
+
+So the results card stacks: the note on its own line, the actions below.
 
 ```css
-.row        { display: flex; flex-wrap: wrap; gap: 16px; }
-.row > .note    { flex: 1 1 auto; min-width: 180px; max-width: 226px; }
-.row > .actions { flex: 1 1 auto; min-width: 163px; max-width: 292px;
-                  display: flex; flex-wrap: wrap; gap: 8px; }
-.row > .actions > * { flex: 1 1 auto; min-width: <natural label width>; }
+.result-footer   { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.result-footer > .note    { width: 100%; text-align: left; }
+.result-footer > .actions { display: flex; flex-wrap: wrap; gap: 8px; max-width: 292px; }
+.result-footer > .actions > * { flex: 1 1 auto; min-width: <natural label width>; }
 ```
 
-The `min-width` on `.actions` is the one that is easy to miss: without it the actions collapse to a sliver
-and the buttons overflow instead of the row wrapping. The `max-width` on the note is what hands the leftover
-space to the actions rather than splitting it evenly.
+**One trap worth naming.** The note was right-aligned, which read correctly while it sat in a 226px box beside
+the buttons. At full width that same alignment throws it to the far edge and the block looks broken. When a
+node goes from a narrow box to full width, re-check its text alignment.
 
 **In Figma** the same properties are authored on the component, because `min-width` and `max-width` cannot be
 overridden on an instance — they exist only at source. `LMS / Quiz · Entry Header` and `LMS / Quiz · Results`
 carry them now; the reusable version is the `Action Row` component, whose slots own the minimum so a swapped
 button inherits it. All are annotated in the file.
 
-**A single CTA is out of scope.** With one button there is nothing to wrap, so `Results` `Pending` and
-`Withheld` are untouched. Making a lone button full-bleed on mobile and content-width on desktop is a real
-breakpoint, not a formula.
+**A single CTA is out of scope.** With one button there is nothing to wrap. `Results` `Pending` and
+`Withheld` use the same stacked composition for consistency, but their button stays at content width at every
+size. Making a lone button full-bleed on mobile and content-width on desktop is a real breakpoint, not a
+formula.
 
 ---
 

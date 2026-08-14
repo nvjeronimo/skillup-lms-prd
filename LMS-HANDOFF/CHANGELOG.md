@@ -30,18 +30,29 @@ impossible. The value that triggers the wrap depends on half the container, whic
 cannot know. The button may deserve a small universal minimum one day; it is a different number from this
 one.
 
-**`LMS / Quiz · Results` — same formula, but this row has a text sibling and it needs four constraints.**
-Buttons Fill + min-width at their natural label width; the button slot Fill + min-width (widest button) +
-max-width (Σ buttons + gaps); the note text Fill + min-width 180 + max-width (its natural width); the parent
-row wrapping. Measured: 311px device → note 226, then **263 / 263 stacked** · 600 and 1080 → 226 · 163 / 121,
-byte-identical to before.
+**`LMS / Quiz · Results` — the note stops sharing the row with the buttons.** Where the actions have a text
+sibling the formula does not apply, and no amount of constraints makes it: **Figma's `Fill` divides free
+space equally between siblings and uses min/max only as clamps.** It does not distribute in proportion to
+their minimums — measured, with mins of 180 and 246 in a 534 row it returns 259 / 259. So the uneven desktop
+split (note 226 · actions 292) can only come from capping one of them, and the cap that makes desktop work is
+the same cap that stops the note filling the line on mobile. The two requirements are mutually exclusive in
+one static configuration, in Figma and in CSS flex alike.
 
-The one that is easy to miss is the **min-width on the slot**. Without it the slot has no minimum, so a
-flexing sibling squeezes it to a sliver and the buttons overflow instead of the row wrapping — which is
-exactly the bug we hand-patched on three mobile instances last week. Those local patches (wrap, hug, and the
-shortened `Retry (1)` label) can be reverted once the library is republished.
+So the footer row is **vertical** in all four variants: note on its own line at full width, actions below.
+Slot Fill + max-width at content width, wrap on; buttons Fill + min-width at their natural label width.
+Measured (Not passed): 311px → note 263, then **263 / 263 stacked** · 600 and 1080 → note full width, then
+166 / 121.
 
-`Pending` and `Withheld` untouched: one CTA has nothing to wrap.
+**A trap worth naming:** the note was right-aligned, which read correctly inside a 226px box beside the
+buttons. At full width the same setting threw it to the far edge and the block looked broken. When a node
+goes from a narrow box to full width, re-check its text alignment.
+
+`Pending` and `Withheld` share the composition for consistency, but their single CTA stays at content width —
+one button has no wrap to trigger.
+
+The local patches on three mobile instances in the ICP file (hug, no-wrap, and the shortened `Retry (1)`
+label) were reverted after the republish: an instance override outranks the component and does not disappear
+on publish, so a stale hand-fix silently contradicts the real fix.
 
 Both components and the affected rows are annotated in Figma with the formula and how to extend it.
 
