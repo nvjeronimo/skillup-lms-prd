@@ -2,6 +2,45 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-14 · Option Row marking corrected, the LMS token layer closed, and a voice rule
+
+A long working session across the Figma page, the DS library and the prototype. Four things settled
+and three left open.
+
+- **`Missed` and `Correctly unselected` do apply to radios — the DS note was wrong.** The Option Row
+  property table and the component description both claimed they were multi-select marking with "no
+  meaning on a radio". Counting the Ready-for-Dev page finds **16 `Missed` on radios and 8
+  `Correctly unselected`**, so the screens use both. Both notes are corrected in Figma. The marking:
+  the right answer the learner did not pick is green with **no tick** and the text marker *"This
+  should be selected"*; a tick reads as praise and they did not earn it.
+- **Feedback carries the score in A-1 and not in A-2.** The card is the problem in A-1, so it prints
+  `Correct (1/1 point)`. In the bucket one score covers the whole set, so per-question alerts stay
+  bare and the number sits on the problem header (`5 points possible` → `3/5 points`). A per-question
+  score there would invent a figure the API never returns.
+- **The LMS token layer now covers the components.** 75 components audited; 97 bindings that reached
+  into the Untitled UI base collection were rebound to LMS tokens, and **seven tokens were created**
+  to close real gaps: `text-brand-tertiary`, `border-error`, `border-error_subtle`,
+  `border-warning_subtle`, `border-success_subtle`, `border-brand_subtle`,
+  `fg-success-secondary`. All alias SKO-Brand primitives with light and dark. This is not cosmetic:
+  the base tokens carry no brand and diverge in dark mode.
+- **Voice: say what comes next, not what is missing.** Shell copy that reported an absence now
+  carries an expectation — *"Your instructor hasn't attached any files"* became *"Files will appear
+  here as your instructor adds them"*. Two exceptions, deliberate: **warnings keep their force**
+  (submit-is-final, the SCORM mobile caveat, the activity-server error), and **learning content is
+  untouched**, because quiz feedback and lesson copy use negation to teach. No em dashes.
+
+**Open, and none of them ours to close:**
+
+- **A-1 attempts are counted per quiz, not per question.** Each A-1 question is its own CAPA problem,
+  so the counters should be independent; today three submissions leave the counter at `1 of 2`, and
+  Reset then re-submit does not advance it. Raised rather than fixed — it changes behaviour.
+- **`09-handoff-map.md` and `06-quiz-screen-matrix.md` do not exist.** Both were cited as sources of
+  truth; the `quizzes/` folder runs `00`–`05`. Work proceeded from the Figma page, which is
+  priority 1 in that same list.
+- **12 genuine paint overrides remain** on quiz instances in the Phase 1 file (7 Option Row, 5
+  Question Card). A further ~1,340 base-collection bindings sit inside the nested Untitled UI
+  `_Checkbox base`; rebinding those means forking a vendor component, which is a different decision.
+
 ## 2026-07-30 · Two vendor sessions — quiz types confirmed, Course Page data requested
 
 New **`session-log.md`** — a record of who said what, when, and how sure they were, with every

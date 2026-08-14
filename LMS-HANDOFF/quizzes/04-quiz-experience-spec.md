@@ -93,6 +93,18 @@ The Option Row exposes an **optional prefix slot** so both are representable in 
 ### F-QZ-007 Submit & Feedback cycle
 On submit: status strip shows `✔ Correct (1/1 point)` / `✖ Incorrect (0/1 point)` / `◐ Partially correct (x/y points)`; per-choice feedback rendered under the chosen option(s); correct answer marked green when revealed per policy. Incorrect + attempts remaining → encouraging retry copy + **Review lesson** link when a related unit is mapped (Coursera lesson-link gap — our improvement).
 **BR:** feedback text comes from the problem definition (answer-specific feedback); never invent client-side.
+**BR (option marking, verified against the Ready-for-Dev page Aug 14 2026):** a tick is praise and belongs only to an answer the learner earned.
+
+| Option state | Fill | Marker |
+|---|---|---|
+| `Incorrect` — what they chose | red | ✗, always |
+| `Correct` — their own right answer | green | ✓ |
+| `Missed` — the right answer they did not pick | green | **no tick**, text marker *"This should be selected"* |
+| `Correctly unselected` | white | text marker *"Un-selected is correct"* |
+
+`Missed` and `Correctly unselected` **apply to radios as well as checkboxes** — the screens carry 16 and 8 of them on radios. An earlier note calling them multi-select-only was wrong and is corrected in Figma. `Show state-check-icon` is bound on `Correct`, `Incorrect` and `Correctly unselected` and deliberately **not** on `Missed`, whose default `true` would otherwise render the tick it must never have.
+
+**BR (where the score goes):** in **A-1** the card is the problem, so the feedback title carries it — `Correct (1/1 point)`. In **A-2** one bucket returns one score for the set, so per-question titles stay bare (`Correct`) and the number lives on the problem header, `5 points possible` → `3/5 points`.
 **AC:** feedback appears without page reload <1 s after response; retry preserves previous selection visible-but-editable.
 
 ### F-QZ-008 Attempts & Save
