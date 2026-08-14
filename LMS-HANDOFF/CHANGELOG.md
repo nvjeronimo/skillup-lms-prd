@@ -30,25 +30,25 @@ impossible. The value that triggers the wrap depends on half the container, whic
 cannot know. The button may deserve a small universal minimum one day; it is a different number from this
 one.
 
-**`LMS / Quiz · Results` — the note stops sharing the row with the buttons.** Where the actions have a text
-sibling the formula does not apply, and no amount of constraints makes it: **Figma's `Fill` divides free
-space equally between siblings and uses min/max only as clamps.** It does not distribute in proportion to
-their minimums — measured, with mins of 180 and 246 in a 534 row it returns 259 / 259. So the uneven desktop
-split (note 226 · actions 292) can only come from capping one of them, and the cap that makes desktop work is
-the same cap that stops the note filling the line on mobile. The two requirements are mutually exclusive in
-one static configuration, in Figma and in CSS flex alike.
+**`LMS / Quiz · Results` — the note keeps the row, and the buttons stack under it when the room runs out.**
+Row horizontal + wrap + space-between; note Fill with `max-width` at **its own natural width**; the action
+slot Fill with `min-width` at **the widest button** and `max-width` at the content sum, wrapping; buttons Fill
+with `min-width` at their natural label width. Measured (Not passed): 311px → note 244 on one line, then
+**263 / 263 stacked** · 600 and 1080 → note 244 · 166 / 121 side by side, as before.
 
-So the footer row is **vertical** in all four variants: note on its own line at full width, actions below.
-Slot Fill + max-width at content width, wrap on; buttons Fill + min-width at their natural label width.
-Measured (Not passed): 311px → note 263, then **263 / 263 stacked** · 600 and 1080 → note full width, then
-166 / 121.
+**Two numbers carry it.** The note's max-width is what stops it ever needing a second line *and* what hands
+the leftover space to the actions — because **Figma's `Fill`, like `flex: 1`, divides free space equally
+between siblings and treats min/max as the only way to bias it**. Measured: two siblings with mins of 180 and
+246 in a 534 row come back 259 / 259, not 226 / 292. The slot's min-width is what forces the row to wrap
+rather than crushing the actions while the buttons overflow.
 
-**A trap worth naming:** the note was right-aligned, which read correctly inside a 226px box beside the
-buttons. At full width the same setting threw it to the far edge and the block looked broken. When a node
-goes from a narrow box to full width, re-check its text alignment.
+**The bug underneath three failed attempts:** we capped the note at 223 — the width it had been *compressed*
+to inside the old layout — instead of its natural 244. It wrapped to two lines the moment it had its own
+line, which read as a layout failure and sent us restructuring the row twice, first to vertical and back.
+Cap a text at what it measures while hugging, never at what it measures while being squeezed.
 
-`Pending` and `Withheld` share the composition for consistency, but their single CTA stays at content width —
-one button has no wrap to trigger.
+Component canvas widened 582 → 620 so the widest variant fits on one line in the preview. Instances are Fill,
+so no screen changes.
 
 The local patches on three mobile instances in the ICP file (hug, no-wrap, and the shortened `Retry (1)`
 label) were reverted after the republish: an instance override outranks the component and does not disappear
