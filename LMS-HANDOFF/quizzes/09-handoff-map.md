@@ -317,6 +317,38 @@ content-width on desktop is a real breakpoint, not a formula.
 
 ---
 
+## 6c · The outline sidebar is one viewport tall, and scrolls on its own
+
+**The rule.** The course outline is **never as tall as the page**. It occupies the viewport, clips its own
+overflow and carries its own scrollbar. Scrolling a long quiz never moves the outline; scrolling the outline
+never moves the quiz. Two scroll containers, not one.
+
+```css
+.body            { display: flex; height: calc(100vh - var(--topbar-h)); }
+.body > .outline { flex: 0 0 280px; overflow-y: auto; }   /* its own scroll */
+.body > .content { flex: 1 1 auto;  overflow-y: auto; }   /* the other one */
+```
+
+**In the boards**, where a screen frame is as tall as its content rather than a viewport, the sidebar is a
+fixed height so it cannot stretch with the page:
+
+| Device | Viewport | Sidebar | Its scrollbar |
+|---|---|---|---|
+| Desktop | 1440 × 900 | **808** | 6 × 792, inset 8px from the top, 6px right of the sidebar |
+| Tablet | 960 × 1024 | **932** | 6 × 916, same insets |
+| Mobile | 375 × 812 | — | none: the outline is a drawer, not a column |
+
+808 = 900 − 60 topbar − 32 container padding. 932 = 1024 − 60 − 32.
+
+**Why it is drawn this way.** A sidebar that stretches to 4,000px says the outline scrolls with the page,
+which is the opposite of the behaviour. Pinning it to a viewport height mid-page is the only static drawing
+that tells the truth: the outline stops there, and what is below it is more *page*, not more *outline*.
+
+Applied to all 42 desktop and tablet screens across the three delivery frames. The 21 mobile screens are
+untouched — there is no sidebar column on mobile.
+
+---
+
 ## 7 · The DOM, for whoever implements against the iframe
 
 Verified strings on dev, useful for grepping:

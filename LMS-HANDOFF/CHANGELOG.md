@@ -2,6 +2,32 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-15 · The outline sidebar stops growing with the page
+
+A sidebar that stretches to 4,000px says the outline scrolls with the page. It does not — the outline and the
+content column are two scroll containers, each clipping its own overflow and carrying its own bar. The
+delivery boards had been drawing the opposite, because the sidebar was set to fill a container that hugged
+the full page height. On the tall A-1 screens it reached 4,176px.
+
+**Pinned to one viewport, on every desktop and tablet screen:**
+
+| Device | Viewport | Sidebar | Scrollbar |
+|---|---|---|---|
+| Desktop | 1440 × 900 | 808 | 6 × 792, 8px from the top, 6px right of the sidebar |
+| Tablet | 960 × 1024 | 932 | 6 × 916, same insets |
+| Mobile | 375 × 812 | — | the outline is a drawer, not a column |
+
+808 = 900 − 60 topbar − 32 padding. The numbers are read off the player-shell crops, not invented, so the
+boards and the shell section now state the same thing.
+
+**42 screens across the three frames; 21 mobile screens untouched.** The frames stay as tall as their content
+— that is deliberate and documented — so the sidebar now ends mid-page with the quiz continuing below it.
+That is the point: it is the only static drawing that says *the outline stops here, and what follows is more
+page, not more outline.*
+
+The shell section's own table said the delivery frames could not show any of this. Half of that is no longer
+true, and the cell now says which half.
+
 ## 2026-08-14 · A-2 is the build target, and the page is reorganised around that
 
 Navdeep's decision, reached by reframing the whole argument as one question: **is the purpose of this quiz to

@@ -3804,3 +3804,34 @@ still sees which frame is for building.
 them changed nothing on screen. This is the third time in three days that a typed or dragged override has
 outranked a component and said nothing about it — the sweep for them is now part of any component-level
 change, not an afterthought.
+
+### 14.82 The sidebar stops growing with the page *(Aug 15, 2026)*
+
+Measured before touching anything, which is what made the fix obvious:
+
+| Frame | Screen height | Sidebar height |
+|---|---|---|
+| A-1 graded-tablet | 4,268 | **4,176** |
+| A-1 practice-tablet | 3,876 | **3,784** |
+| A-2 practice-desktop · after Submit | 2,292 | **2,200** |
+| B practice-desktop | 1,062 | 970 |
+
+The sidebar was `Fill` inside a container that hugged the whole page, so it grew with the quiz. Drawn that
+way it claims the outline scrolls with the content — the opposite of the behaviour we documented in the
+player-shell section, where the outline and the content column are two independent scroll containers.
+
+**Pinned to one viewport**, using the numbers already established by the shell crops rather than new ones:
+
+| Device | Viewport | Sidebar | Its scrollbar |
+|---|---|---|---|
+| Desktop | 1440 × 900 | 808 | 6 × 792 · x +286 · y +24 · MIN/MIN |
+| Tablet | 960 × 1024 | 932 | 6 × 916 · same |
+| Mobile | 375 × 812 | — | drawer, no column |
+
+`808 = 900 − 60 topbar − 32 container padding`. The scrollbar is `Vertical Scroll`, absolutely positioned and
+constrained **MIN/MIN** rather than the shell's MIN/STRETCH — in a page-tall container, STRETCH would run the
+bar down the whole page and reintroduce the lie in a thinner form.
+
+**42 screens: 12 in A-2, 6 in A-1, 24 in B. 21 mobile screens skipped** — there is no sidebar column on
+mobile, the outline is a drawer. Zero failures, and no screen height changed: the frames stay as tall as
+their content, which is what makes the pinned sidebar legible in the first place.
