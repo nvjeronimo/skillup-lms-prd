@@ -4,6 +4,10 @@ One coherent view over the SkillUp design system. The **shipped artifacts** (tok
 component inventory) physically live in [`../LMS-HANDOFF/`](../LMS-HANDOFF/) — the deployed package —
 and are linked from here, not copied. This folder holds the **rationale** and the **footer contract**.
 
+Also here: [`mobile-app-and-token-architecture.md`](mobile-app-and-token-architecture.md) — the
+Mobile App analysis (24 live-session scenarios, 11 components) and the proposal for restructuring
+the collections so one system can carry LMS, App, marketing, email and, later, social and print.
+
 ## Publication status — current
 
 **DS v3.3 is PUBLISHED in Figma (2026-07-24):** 1052 variables · 18 CVD primitives · verified **1:1
