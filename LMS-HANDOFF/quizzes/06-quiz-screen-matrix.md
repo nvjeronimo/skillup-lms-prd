@@ -3835,3 +3835,32 @@ bar down the whole page and reintroduce the lie in a thinner form.
 **42 screens: 12 in A-2, 6 in A-1, 24 in B. 21 mobile screens skipped** — there is no sidebar column on
 mobile, the outline is a drawer. Zero failures, and no screen height changed: the frames stay as tall as
 their content, which is what makes the pinned sidebar legible in the first place.
+
+**Full-page validation after the sidebar change.** The 15 Aug entry is on all 27 card changelogs, newest
+first — the changelog slot takes more than one row, so nothing was overwritten.
+
+| Structure | |
+|---|---|
+| Nodes outside instances | 3,027 |
+| Default layer names · local components | **0 · 0** |
+| Unstyled text | **0** of 762 |
+| Real overflow · clipped text | **0 · 0** |
+| Raw text fills | 40 — the four dark title bands, accepted |
+| Loose at page root | **0** |
+
+| Behaviour, 237 question cards | |
+|---|---|
+| Success tick on a wrongly-answered question | **0** |
+| `Incorrect` rows missing their red ✗ | **0** |
+| `Success` leaking as alert copy | **0** |
+| `Show progress` on | **18** — the mode B question and feedback cards only |
+| `Show Footer Questions` off | **90** — the A-2 bucket cards only |
+| Score-less alert titles | **45, all in A-2** |
+| Sidebar pinned + clipped + own scrollbar | **42 of 42** desktop and tablet |
+| Module counters in `N of M` | **171 of 171** |
+
+Chips: 18 Ready for DEV in A-2, 18 In progress in each of A-1 and B. The other 8 on the page belong to the
+documentation frames.
+
+20 screens were refitted after the changelogs grew by a row — a card that gains a line pushes its frame, and
+the frame has to be told.
