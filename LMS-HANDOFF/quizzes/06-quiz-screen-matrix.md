@@ -3864,3 +3864,21 @@ documentation frames.
 
 20 screens were refitted after the changelogs grew by a row — a card that gains a line pushes its frame, and
 the frame has to be told.
+
+**The scrollbar covers the scrolling region, not the sidebar** *(Aug 15, 2026)*. Nelson placed one by hand on
+`ICP-Quiz-A-practice-desktop` and the geometry gave the rule away: `6 × 623 at y 193`, where mine had been
+`6 × 792 at y 24`. 193 = the sidebar top plus 170 — the course header (108) and the overall-progress block
+(62), which are **fixed** at the top of the outline and do not move under it.
+
+```
+bar top    = sidebar top + 170 + 7
+bar bottom = sidebar bottom − 8
+bar x      = sidebar right + 6
+```
+
+Desktop 623, tablet 747. Applied to all 42 desktop and tablet screens; the 15 Aug changelog entry on the 27
+cards now carries the sentence rather than gaining a second row for the same change.
+
+The correction is small and the reasoning is not: **a scrollbar is a statement about what moves.** Drawn over
+the whole sidebar it says the course title and the progress ring scroll away with the list, which is a
+different product.

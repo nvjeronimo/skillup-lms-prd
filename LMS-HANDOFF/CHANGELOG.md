@@ -13,9 +13,14 @@ the full page height. On the tall A-1 screens it reached 4,176px.
 
 | Device | Viewport | Sidebar | Scrollbar |
 |---|---|---|---|
-| Desktop | 1440 × 900 | 808 | 6 × 792, 8px from the top, 6px right of the sidebar |
-| Tablet | 960 × 1024 | 932 | 6 × 916, same insets |
+| Desktop | 1440 × 900 | 808 | 6 × 623 |
+| Tablet | 960 × 1024 | 932 | 6 × 747 |
 | Mobile | 375 × 812 | — | the outline is a drawer, not a column |
+
+**The bar covers the scrolling region, not the sidebar** — Nelson placed one by hand and the geometry gave the
+rule away. It starts below the course header and the overall-progress block, which are fixed at the top of the
+outline: `top = sidebar top + 170 + 7`, `bottom = sidebar bottom − 8`. A full-height bar would claim those two
+blocks scroll with the list.
 
 808 = 900 − 60 topbar − 32 padding. The numbers are read off the player-shell crops, not invented, so the
 boards and the shell section now state the same thing.

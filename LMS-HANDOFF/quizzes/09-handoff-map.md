@@ -334,11 +334,23 @@ fixed height so it cannot stretch with the page:
 
 | Device | Viewport | Sidebar | Its scrollbar |
 |---|---|---|---|
-| Desktop | 1440 × 900 | **808** | 6 × 792, inset 8px from the top, 6px right of the sidebar |
-| Tablet | 960 × 1024 | **932** | 6 × 916, same insets |
+| Desktop | 1440 × 900 | **808** | 6 × 623 |
+| Tablet | 960 × 1024 | **932** | 6 × 747 |
 | Mobile | 375 × 812 | — | none: the outline is a drawer, not a column |
 
 808 = 900 − 60 topbar − 32 container padding. 932 = 1024 − 60 − 32.
+
+**The bar covers the scrolling region, not the sidebar.** The course header and the overall-progress block are
+fixed at the top of the outline — only the module and topic list moves under them — so the bar starts below
+them:
+
+```
+bar top    = sidebar top + 170 + 7      (170 = course header 108 + overall progress 62)
+bar bottom = sidebar bottom − 8
+bar x      = sidebar right + 6
+```
+
+A bar drawn over the full height of the sidebar would say those two blocks scroll with the list. They do not.
 
 **Why it is drawn this way.** A sidebar that stretches to 4,000px says the outline scrolls with the page,
 which is the opposite of the behaviour. Pinning it to a viewport height mid-page is the only static drawing
