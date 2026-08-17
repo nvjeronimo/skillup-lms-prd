@@ -28,6 +28,12 @@ page, not more outline.*
 The shell section's own table said the delivery frames could not show any of this. Half of that is no longer
 true, and the cell now says which half.
 
+**The rule now lives on `LMS / Sidebar v2` itself**, as a third annotation alongside the two that were
+already there, and as a line appended to the component description so it shows in the Assets panel. It gives
+the numbers, the arithmetic behind them, the CSS, and the instruction that matters when someone places an
+instance: set the height, keep clipping on, add the bar — **do not let it Fill a page-tall container**. That
+last sentence is the one that would have prevented this.
+
 ## 2026-08-14 · A-2 is the build target, and the page is reorganised around that
 
 Navdeep's decision, reached by reframing the whole argument as one question: **is the purpose of this quiz to
