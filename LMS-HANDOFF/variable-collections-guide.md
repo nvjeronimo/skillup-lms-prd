@@ -38,6 +38,10 @@ has zero effect on default SKO modes (those use a fixed teal from `_Primitives`)
 Each color has `-light`/`-dark` variants as a **NAME suffix (not a mode)** because a Figma collection
 can only have one mode axis.
 
+**15 variáveis:** 12 de cor (`Brand-Skins/*`) + 3 famílias tipográficas (`font-display`,
+`font-body`, `font-highlight`). A família está aqui porque o tipo de letra é identidade de marca —
+e só a família: tamanhos, pesos e line-heights não são marca e ficam no `3. Responsive`.
+
 **Modos:** SKO, Gold, Violet, Sky, Red, Ink
 
 ---
@@ -46,7 +50,9 @@ can only have one mode axis.
 
 Spacing + Radius + Typography + Container, all sharing one Desktop/Tablet/Mobile mode axis.
 Set a frame's explicit mode for THIS collection to preview/lock a breakpoint.
-All values alias `_Primitives/Numeric` ou `_Primitives/Type`.
+Os valores alias `_Primitives/Numeric` ou `_Primitives/Type` — excepto `Type/family/*`, que alias
+`2. Skins` para que a família siga a marca. Ver "Dívida conhecida": só 14 dos 35 tokens de tipo
+variam mesmo com o breakpoint.
 
 **Modos:** Desktop, Tablet, Mobile
 
@@ -366,20 +372,57 @@ a feature foi prototipada primeiro; o DS codifica os valores e documenta o mecan
 
 ## Dívida conhecida
 
-### `Type/family/*` vive na coleção errada
+### ~~`Type/family/*` vive na coleção errada~~ — RESOLVIDO (2026-08-17)
 
-`Type/family/display` e `Type/family/body` estão em `3. Responsive`, uma coleção cujo eixo de
-modos são **breakpoints**. Font-family não varia com o tamanho do ecrã — é modelação errada.
+A família migrou para `2. Skins`, que é onde a nota anterior dizia que conceptualmente pertencia:
+o tipo de letra faz parte da identidade de marca.
 
-Conceptualmente a família pertence a `2. Skins`, porque o tipo de letra faz parte da identidade
-de marca e *poderia* variar por skin.
+**Custou muito menos do que esta secção temia.** O receio era rewirear os 47 text styles. Nenhum
+foi tocado. Os text styles continuam ligados a `Type/family/*` no `3. Responsive` — mudou apenas
+aquilo a que esses tokens apontam:
 
-**Porque não foi corrigido (2026-07-22):** existiam duplicados `Font/family-display` e
-`Font/family-body` em `2. Skins`, mas com **zero** ligações. Os 47 text styles ligam todos aos
-`Type/family/*` do Responsive. Os duplicados mortos foram apagados; rewirear 47 text styles para
-ganhar uma capacidade que ninguém pediu (os 6 skins são todos Montserrat) seria trabalho
-especulativo com risco real.
+```
+Type/family/display   →  Brand-Skins/font-display     (24 text styles)
+Type/family/body      →  Brand-Skins/font-body        (23 text styles)
+Type/family/highlight →  Brand-Skins/font-highlight   (0 — ainda por usar)
+```
 
-**Gatilho para corrigir:** no momento em que um skin precisar de tipografia própria. Aí migram-se
-as famílias para `2. Skins` como migração deliberada, com os text styles a serem re-ligados de uma
-só vez.
+Os 47 text styles ligam-se todos a uma variável de família; a variação por marca acontece uma
+camada abaixo, invisível para eles.
+
+**O gatilho foi consumido de outra maneira.** A nota dizia "migrar quando um skin precisar de
+tipografia própria". Nenhum skin precisou — o que apareceu foi uma terceira família, a
+**Merriweather** para destaques, e ao acrescentá-la fazia menos sentido pô-la sozinha fora das
+Skins do que trazer as outras duas para junto dela.
+
+**Ao corrigir descobriu-se que a nota estava errada num ponto.** Dizia que os duplicados
+`Font/family-display` e `Font/family-body` em `2. Skins` "foram apagados". Estavam apagados mas
+**continuavam a resolver** — o `3. Responsive` ainda lhes apontava, e por isso não apareciam na
+lista da colecção. Eram uma referência pendente, do género que desaparece em silêncio numa
+limpeza. Agora são variáveis a sério: a colecção passou de 12 para 15.
+
+### Regra que ficou
+
+**Só a família é marca.** `font-display`, `font-body`, `font-highlight` e mais nada. Tamanhos,
+pesos e line-heights não são identidade — ficam fora das Skins.
+
+As três estão em Montserrat/Merriweather nos seis modos. As faces por marca são uma decisão por
+tomar, não um valor por omissão, e está escrito na descrição de cada variável.
+
+---
+
+### `3. Responsive 📐` guarda 21 tokens que não são responsivos
+
+Dos 35 tokens de tipo da coleção, **só 14 variam com o breakpoint** — os tamanhos de display, o
+`text-xl`, e as suas line-heights. Os outros 21 carregam o mesmo valor nos três modos: as três
+famílias, os dez pesos e os tamanhos pequenos.
+
+A coleção chama-se Responsive e a maioria do que lá está não muda com o ecrã.
+
+**Porque não foi corrigido:** separar em `Typography` (um modo) + `Responsive` (três) foi proposto
+e recusado — arrastar as famílias para uma coleção nova era mexer numa definição global por
+arrumação. O desencontro é real mas não custa nada hoje: um token com o mesmo valor em três modos
+resolve bem.
+
+**Gatilho para corrigir:** quando alguém precisar de mudar um peso ou um tamanho pequeno e tiver
+de o fazer em três sítios. Aí a separação paga-se; até lá não.
