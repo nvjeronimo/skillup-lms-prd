@@ -135,6 +135,49 @@ structure for products that do not exist yet, and the shape should come from a r
   exist at all, or be variants of shared ones.
 - The `LMS/*` namespace was renamed to `SKO/*` at some point between 14 and 17 Aug. Docs written
   before that still name `LMS/…`. Worth one sweep once the namespace decision above is made.
-- The DS file still carries the Untitled UI sample furniture — Marketing website examples,
-  Application examples. If this file becomes the system for every product, that content should
-  move out rather than be mistaken for ours.
+- ~~The DS file still carries the Untitled UI sample furniture.~~ **DECIDED 18 Aug: it leaves the
+  file.** No re-pointing of tokens on those pages — work spent on material that is going away is
+  work lost. See "Removing the vendor sample content" below.
+
+---
+
+## Removing the vendor sample content — what must stay
+
+Decided 18 Aug 2026. Before anything is deleted, this distinction has to hold, because it is not
+the one the page names suggest.
+
+**The vendor's *examples* can go. The vendor's *base components* are load-bearing** — our own
+components nest them, and deleting them empties the things we ship.
+
+Measured across `❖ LMS COMPONENTS ✅` and `❖ MobileApp Component ✅`: **2 022 instances** whose main
+component lives on a vendor page.
+
+| Page | Instances of ours |
+|---|---:|
+| `↳ Icons` | 1 099 |
+| `↳ Buttons` | 307 |
+| `↳ Badges` | 292 |
+| `↳ Checkboxes` | 110 |
+| `↳ Tabs` | 54 |
+| `↳ Avatars` · `↳ Tags` | 25 each |
+| `↳ Breadcrumbs` | 24 |
+| `↳ Progress indicators` | 20 |
+| `↳ Video players` | 16 |
+| `↳ Toggles` · `↳ Button groups` · `↳ Tooltips` · `↳ Inputs` · `↳ Dropdowns` · `↳ Misc icons` | 3–12 each |
+
+### The trap
+
+**`↳ Tabs` (54) and `↳ Breadcrumbs` (24) sit under `❖ APPLICATION COMPONENTS`** — a section whose
+name reads like sample material and which someone would reasonably delete wholesale. Doing that
+breaks 78 instances inside our LMS components.
+
+So the cut is not by section. It is: **keep any page this table names**, whatever section it is
+filed under; everything else in Shared assets, Marketing website examples/components and
+Application examples/components can go.
+
+### One more thing found while measuring
+
+Seven instances have a main component that resolves but belongs to **no page** — `LMS / Overall
+Progress/Mobile` and `LMS / Topic-Types Badge/Discussion…`. Deleted mains that still render, the
+same ghost state we found twice before: the `Font/family-*` duplicates and the `Container/legacy/*`
+tokens after deletion. Worth resolving before the clean-up, or they will vanish with it.
