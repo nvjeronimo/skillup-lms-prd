@@ -249,7 +249,7 @@ Ranked by how strong the case is for putting it on the page.
 | 9 | **State banners** | `has_ended`, `enroll_alert`, `dates_banner_info.missed_deadlines` | Course ended / enrol CTA / missed deadlines |
 | 10 | **Staff affordances** | `studio_access`, `is_staff`, `original_user_is_staff` | *View in Studio*, masquerade. Out of scope for the learner MVP, in scope for the matrix |
 
-**Found by the audit of 19 Aug — declared, learner-facing, and never once mentioned by us:**
+**Found by the audit of 19 Aug — declared, learner-facing, never mentioned, and now placed on `v11`:**
 
 | Field | What the workbook says it is for | Why it matters here |
 |---|---|---|
@@ -497,6 +497,7 @@ into the tables.
 | Never started | `5029:870` | `resume_course.has_visited_course: false` |
 | Completed — certificate earned | `5029:1246` | `cert_data.cert_status` |
 | Course ended | `5029:1622` | `has_ended: true` |
+| **v11 · everything the data allows** | `5401:325` | the maximal version — every available field placed, so the cost of having them all is visible |
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 
@@ -664,6 +665,35 @@ For a self-paced course the bar is what v10 draws. For a VILT course it is up to
 Course, Progress, Dates, Mentorship Q&A, Live, Recordings — and both new ones are conditional: Live on a
 `CourseLiveConfiguration` being enabled, Recordings on a succeeded MP4 existing. Rendering from `tabs[]` was
 already the right call; it is now the only one that works.
+
+---
+
+---
+
+## 13. v11 — everything the data allows
+
+A deliberate maximum, not a proposal. `Course Detail — v11 · everything the data allows` (`5401:325`) places
+**every field the platform offers this page**, so the cost of having them all is visible rather than argued.
+
+| Added over v10 | Field | Where |
+|---|---|---|
+| Track chip, beside *Self-paced* | `enrollment_mode` | hero |
+| `org · number` sub-header | `org`, `number` | under the hero stats, where the workbook puts them |
+| *Search this course* | Feature 33 | right of the tab bar |
+| *Currently passing* | `user_has_passing_grade` | progress card — arrives on the outline call, no extra request |
+| *More content coming* | `blocks.{id}.has_scheduled_content` | module subtitle |
+| Upcoming dates | `dates_widget.course_date_blocks` + `dates_tab_link` | sidebar |
+| Course tools | `course_tools[]` — Bookmarks | sidebar |
+| Weekly goal | `course_goals` | sidebar |
+| Milestone celebration | `celebrations` | the card strip, being an overlay rather than page furniture |
+
+**What it demonstrates, which is the point of drawing it:** the right column goes from three cards to six and
+runs to roughly 1 100 px — longer than the syllabus beside it. A learner scrolling to Module 4 passes a
+mentor, a certificate, handouts, dates, bookmarks and a weekly goal on the way. Every one is backed by a real
+field. The frame asks which of them earns the room.
+
+**How to read it at the review:** v10 is the proposal, v11 is the inventory. Decide what moves from one to the
+other, rather than treating v11 as the target.
 
 ---
 

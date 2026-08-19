@@ -1211,6 +1211,27 @@ via `reset_student_attempts()`, which recurses into children.
 
 Recorded in `session-log.md` with file and line citations, and in `04-quiz-experience-spec.md` §10.
 
+## 2026-08-19 · v11 — everything the data allows, so the cost is visible
+
+The six fields the audit surfaced are now on a screen, along with the three sidebar widgets that were
+available and undrawn. **`Course Detail — v11 · everything the data allows`** (`5401:325`) is a deliberate
+maximum, not a proposal.
+
+Added over v10: `enrollment_mode` as a track chip; `org` and `number` as the sub-header the workbook assigns
+them; content search to the right of the tab bar; *Currently passing* from `user_has_passing_grade`, which
+arrives on the outline call with no extra request; *More content coming* from `has_scheduled_content` on a
+module subtitle; and the **dates widget**, **course tools** and **weekly goal** cards. `celebrations` went to
+the card strip instead, being an overlay rather than page furniture.
+
+**What it demonstrates is the point of drawing it.** The right column goes from three cards to six and runs to
+roughly 1 100 px — longer than the syllabus beside it. A learner scrolling to Module 4 passes a mentor, a
+certificate, handouts, dates, bookmarks and a weekly goal on the way. Every one is backed by a real field. The
+frame asks which of them earns the room. **v10 stays the proposal; v11 is the inventory to decide against.**
+
+Noted while rendering, and not ours: the shared left-shell component now contains a `WIP` text layer and comes
+back as a grey placeholder in server-side screenshots — on v10 as well as v11, so it is the sidebar front's to
+look at, not this one.
+
 ## 2026-08-19 · Fidelity audit — every claim checked against the workbooks
 
 Checked mechanically rather than by reading: extracted every declared API key from both workbooks (174) and
