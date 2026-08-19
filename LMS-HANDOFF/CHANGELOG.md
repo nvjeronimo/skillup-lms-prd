@@ -1211,6 +1211,30 @@ via `reset_student_attempts()`, which recurses into children.
 
 Recorded in `session-log.md` with file and line citations, and in `04-quiz-experience-spec.md` §10.
 
+## 2026-08-04 · Three corrections applied, and the card states drawn
+
+- **The letter-grades rule was wrong as an absolute, and it was marked *Applied*.** On every course we
+  sampled `grade_range` is a single `Pass: 0.7` threshold and `letter_grade` is null — but the addendum
+  shows the Instructor tab formatting `grade_cutoffs` as *"A: 0.9, B: 0.8"*. **The platform supports both.**
+  The rule is now: render whatever `grade_range` returns, and hardcode neither shape. That is more design
+  work, not less — the component has to hold a single threshold *and* a lettered scale.
+- **The certificate card has four states, not two.** `certificate_statuses_with_count` gives the vocabulary:
+  `downloadable`, `notpassing`, `generating`, plus `audit_passing` from the outline payload. The gap was
+  **`generating`** — certificates are issued in batches, so there is a real interval between passing and the
+  file existing, and we had nothing for it.
+- **New artifact: `Cards — states the pages do not show`** (`5389:325`), beside the screens. The four
+  certificate states together, because a page can only ever show one of them — plus the **recent recordings**
+  card, whose list endpoint is `IsEnrolledOrStaff` and therefore learner-callable. It links to the tab rather
+  than playing inline, because playback is a separate short-lived URL. Marked VILT-only: putting it on the
+  self-paced Six Sigma example would have been false.
+- **"Course not started" was not drawn, deliberately.** `start` in the future looks like a fifth state, but
+  `course_metadata` carries `course_access {has_access, error_code, user_message}` and the workbook says it
+  is *"used for 403 redirect"* — so the learner is probably redirected rather than shown a variant of this
+  page. Recorded as a question in the States table with the copy source named. Drawing it now would repeat
+  the unenrolled mistake: inventing a screen the platform may never serve.
+- **Two stale layer names fixed:** the API table said 8 endpoints and holds 17; the section title still said
+  *v9, v10, unenrolled*.
+
 ## 2026-08-03 · Metadata we still need — a sixth reference table
 
 Sixth table in the Course Detail section (`5105:444`), written up as

@@ -354,6 +354,30 @@ tooltip is removed — its date is in the past, and it never had a field behind 
 **Still to draw:** a module locked behind an unmet prerequisite as its own state, once we know what the API
 can say about *why* it is locked (§7, item 2).
 
+### The certificate card has four states, not two
+
+`certificate_statuses_with_count` in the addendum gives the vocabulary: `{downloadable, notpassing,
+generating}`, and the outline payload adds `audit_passing`.
+
+| State | `cert_status` | Where |
+|---|---|---|
+| Not earned | `notpassing`, `audit_passing` | Drawn on v10 and on Course ended, with different wording |
+| **Generating** | `generating` | **The gap.** Certificates are issued in batches, so there is a real interval between passing and the file existing. Now drawn in the card strip |
+| Issued | `downloadable` | Drawn on Completed — *View* and *Download* |
+| Withheld | unverified / no ID | In the vocabulary; no course we have seen produces it. Not drawn |
+
+They live in **`Cards — states the pages do not show`** beside the screens, because a page can only show one
+of them at a time.
+
+### Course not started — a question, not a state
+
+`start` in the future is an obvious fifth state, and it may not be a state of this page at all.
+`course_metadata` carries `course_access {has_access, error_code, user_message}` and the workbook says it is
+*"used for 403 redirect"*. So a learner enrolled before the start date is likely **redirected**, with the copy
+coming from `user_message`, rather than shown a variant of this page. **Verify in the dev environment before
+drawing anything** — drawing a start-date variant of the course page would be inventing a screen the platform
+may never serve, which is the same mistake as the unenrolled states.
+
 ### A correction found while drawing these
 
 The mentor card read *"Office hours every Tuesday at 11 AM"* with a **Book session** button. Decision
@@ -463,6 +487,7 @@ into the tables.
 | Completed — certificate earned | `5029:1246` | `cert_data.cert_status` |
 | Course ended | `5029:1622` | `has_ended: true` |
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
+| **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 
 **Row 2 — the reference tables**, under *Reference — one place per fact*
 
@@ -527,12 +552,16 @@ plus eight new endpoints and three new blocks in the role matrix. Written up in 
 | **`language`** — i18n, and the accessibility layer in decisions 016 / 017 | Nilesh |
 | **`user_timezone` returns null in all three samples** — every date renders in UTC for cohorts split between India and Europe. A **defect**, not a missing field | Nilesh |
 
-### Two rules this settles for us, with nothing to ask anyone
+### Two rules this settles for us — one of which needed correcting
 
 - **Trim `display_name`, never reformat it.** The payloads carry parasite whitespace — *"Module 5:  SQL
   Advanced Topics"*, *"Final Quiz "* — and we render the field verbatim.
-- **No letter grades, anywhere.** `grade_range` is a single threshold, `Pass: 0.7`, and `letter_grade` is
-  null. A screen showing A/B/C draws something the platform cannot produce.
+- ~~**No letter grades, anywhere.**~~ **Corrected 4 Aug — the rule was too absolute.** On every course we
+  sampled, `grade_range` is a single threshold (`Pass: 0.7`) and `letter_grade` is null. But the addendum
+  shows the Instructor tab formatting `grade_cutoffs` as *"A: 0.9, B: 0.8"* — **the platform supports both
+  shapes.** So the rule is: **render whatever `grade_range` returns**, and neither shape may be hardcoded.
+  That is more design work, not less: the component has to hold a single pass threshold *and* a lettered
+  scale.
 
 ---
 
