@@ -1211,6 +1211,38 @@ via `reset_student_attempts()`, which recurses into children.
 
 Recorded in `session-log.md` with file and line citations, and in `04-quiz-experience-spec.md` §10.
 
+## 2026-08-19 · Fidelity audit — every claim checked against the workbooks
+
+Checked mechanically rather than by reading: extracted every declared API key from both workbooks (174) and
+every key appearing in the sample payloads (133), then extracted every technical token we assert — 104 in
+`course-details-metadata-map.md`, 92 across the Figma tables and panels — and cross-referenced them.
+
+**The documentation is faithful.** Not one invented field, not one misspelling, in either surface. Every
+token resolves to a declared field, a payload key, or the Courses/Blocks API, which is not in the workbooks
+and is labelled as verified live.
+
+Three accuracy fixes:
+
+- **The source path was wrong.** Both workbooks live in `30-07 meetings/`; the document cited
+  `_media/Course_metadata.xlsx`, which no longer exists.
+- **`playback_url` was under-specified.** The workbook says it is returned only when
+  `include_playback_url=true` **and** the recording succeeded, is not archived and has a blob path. We had
+  the three conditions and not the request parameter — the one a developer actually has to send.
+- Stale layer names from the section's growth, corrected earlier the same day.
+
+**Six fields the workbooks declare, that are learner-facing, and that we had never once mentioned** — now a
+section of the element → field table and §5 of the map:
+
+- `blocks.{id}.has_scheduled_content` — *"More content coming"*, present on every block. We draw locked
+  modules and have nothing for a module that is open but still growing.
+- `celebrations` — *"triggers celebration modals on milestones (first section completion, streaks)"*. A whole
+  feature: the platform fires a milestone moment and our design has none.
+- `user_has_passing_grade` — a pass/fail signal that arrives **on the outline call**, no extra request. The
+  page shows completion but never whether the learner is passing.
+- `enrollment_mode` — the learner's own track, and a real field, unlike the course-type badge we drew.
+- **Content search** — feature 33, declared in both workbooks, never designed.
+- `number` and `org` — the workbook assigns them to the breadcrumb; ours uses neither.
+
 ## 2026-08-04 · Three corrections applied, and the card states drawn
 
 - **The letter-grades rule was wrong as an absolute, and it was marked *Applied*.** On every course we

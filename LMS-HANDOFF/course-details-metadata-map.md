@@ -1,7 +1,7 @@
 # Course Details — the metadata, mapped to the design
 
 **Source:** two deliveries against Jira **SK-11378**.
-`_media/Course_metadata.xlsx`, 3 Aug 2026 — Metadata (73 fields), API Information (8 endpoints with real
+`30-07 meetings/Course_metadata.xlsx`, 3 Aug 2026 — Metadata (73 fields), API Information (8 endpoints with real
 payloads), Feature Inventory, Role-Based Visibility. Sample course `course-v1:SkillUp+SQL-TMDA+2025_B13`.
 `30-07 meetings/Course_metadata (2).xlsx`, 4 Aug 2026 — the VILT addendum, from row 84: **Live** (11 fields),
 **Recordings** (20 fields) and the **Instructor dashboard** (80 fields), plus eight endpoints and three new
@@ -248,6 +248,17 @@ Ranked by how strong the case is for putting it on the page.
 | 8 | **Weekly learning goal** | `course_goals` + `POST save_course_goal` | Flag-gated, off on the sample. Days per week + email reminders |
 | 9 | **State banners** | `has_ended`, `enroll_alert`, `dates_banner_info.missed_deadlines` | Course ended / enrol CTA / missed deadlines |
 | 10 | **Staff affordances** | `studio_access`, `is_staff`, `original_user_is_staff` | *View in Studio*, masquerade. Out of scope for the learner MVP, in scope for the matrix |
+
+**Found by the audit of 19 Aug — declared, learner-facing, and never once mentioned by us:**
+
+| Field | What the workbook says it is for | Why it matters here |
+|---|---|---|
+| `blocks.{id}.has_scheduled_content` | *"More content coming"* indicator, from the Learning Sequences API | **A syllabus affordance we never designed.** We draw locked modules; we have nothing for a module that is open but still growing. It is on every block in the outline payload |
+| `celebrations` | *"Triggers celebration modals on milestones (first section completion, streaks)"* — `{first_section, streak_length_to_celebrate, streak_discount_enabled, weekly_goal}` | A whole feature. Our design has no milestone moment at all, and the platform fires one |
+| `user_has_passing_grade` | *"Shows passing/not-passing indicator"* | A pass/fail signal that arrives **on the outline call**, with no extra request. The course page shows completion but never whether the learner is passing |
+| `enrollment_mode` | `audit`, `verified`, `honor`, `no-id-professional` | The learner's own track. We show a course-type badge that has no field; this one has |
+| Content Search (feature 33) | *"Search course content, units, lessons and learning materials using keywords… shows a popup"* | Listed in both workbooks, never designed |
+| `number`, `org` | *"Breadcrumb / sub-header"* | The workbook assigns them a place in the breadcrumb. Ours uses neither |
 
 **And what we can now defensibly drop.** Every commerce field comes back empty on the real course:
 `verified_mode: null`, `can_show_upgrade_sock: false`, `access_expiration: null`, `offer: null`,
@@ -629,8 +640,9 @@ first), a client-side count per date rendered as *"1 recording" / "4 recordings"
 Design consequences worth naming now:
 
 - **Playback is a short-lived SAS URL**, generated per recording by `POST …/playback_url/` and returned only
-  when the recording succeeded, is not archived and has a blob path. The URL expires — so it cannot be
-  pre-fetched for a whole list, and a copied link will not survive.
+  when the request asks for it (`include_playback_url=true`) **and** the recording succeeded, is not archived
+  and has a blob path. The URL expires — so it cannot be pre-fetched for a whole list, and a copied link will
+  not survive.
 - **The tab appears only if a succeeded MP4 exists.** No empty state to design for a course that has one
   scheduled but nothing recorded yet — the tab is simply absent.
 - Anything pending, uploading, failed or archived is hidden **from everyone, including staff**, by default.
