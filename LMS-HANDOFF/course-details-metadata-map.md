@@ -501,6 +501,34 @@ into the tables.
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 | **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 42 of ours, 34 from the library |
+| **⚙ TECHNICAL · Course Detail** | `5446:3985` | the stakeholder page — every element annotated with its field and whether it can be built |
+| Technical page — legend | `5448:4325` | how to read it, the verdict key, and the three questions it should provoke |
+
+### The technical page, and how to run a review from it
+
+`⚙ TECHNICAL · Course Detail` is v12 with **38 native Figma annotations across 23 elements**. Open it in
+**Dev Mode**. It uses all four annotation categories rather than putting everything under Development,
+because they are four different conversations with four different owners:
+
+| Category | Carries | Count |
+|---|---|---|
+| **Development** | the API field and its verdict | 25 |
+| **Content** | where the words come from and who owns them | 7 |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 |
+| **Accessibility** | contrast and dark mode, and how they are achieved | 1 |
+
+The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
+(Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
+single list would collapse them into one.
+
+**The three questions the legend ends on**, which are what the meeting should actually decide:
+
+1. **Who supplies the mentor?** The only gap that survived both the API audit and the library sweep.
+2. **Who authors `effort_time`?** Every duration on the page depends on a field nobody fills.
+3. **Does the unlock tooltip stay?** The API gives a boolean — no date, no prerequisite, no rule.
+
+v12 is deliberately left **unannotated**: the same page without the engineering, for when the conversation is
+about the design rather than the data.
 
 **Components page** — `↳ LMS / Course Detail — Components 🟠` (`5409:325`)
 
