@@ -206,7 +206,7 @@ not a data one: see §12.1.
 | Lesson row title | `blocks.{sequential}.display_name` | ✅ |
 | `3 topics · 22 min` | `completion_stat.completable_children` ◑ / duration ✗ | ⚠︎ |
 | Topic row title | `blocks.{vertical}.display_name` | ✅ navigation API only |
-| Topic type prefix (`Watch ·`, `Read ·`, `Checkpoint ·`) and type badge | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against our ten ICP topic types. In the payloads it returns only `null` (45×) and `"other"` (21×) |
+| Topic type prefix (`Watch ·`, `Read ·`, `Checkpoint ·`) and type badge | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against the twelve types in the ICP catalogue (eight live). In the payloads it returns only `null` (45×) and `"other"` (21×) |
 | Clickable title → immersive | `lms_web_url` on sequentials ✅ / **null on verticals** | ⚠︎ construct `jump_to`; verify |
 | `(N Questions)` on a graded quiz | appended to `display_name` by the platform | ✅ documented, field 24 |
 | Graded/exam label | `description` (*"Homework"*, *"Midterm Exam"*), `special_exam_info` | ✅ null on this course |
@@ -500,6 +500,22 @@ into the tables.
 | **v11 · everything the data allows** | `5401:325` | the maximal version — every available field placed, so the cost of having them all is visible |
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
+| **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 42 of ours, 34 from the library |
+
+**Components page** — `↳ LMS / Course Detail — Components 🟠` (`5409:325`)
+
+| Item | Node |
+|---|---|
+| Cover and the four rules | `5409:326` |
+| Foundations — colour, live-bound swatches | `5410:325` |
+| Foundations — space, radius, type | `5411:325` |
+| `Meta` · `Card shell` | `5414:327` · `5415:327` |
+| `Module row` · `Topic row` | `5416:382` · `5419:384` |
+| `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
+| Integration proof | `5429:419` |
+| Verb prefix — three-way comparison | `5433:498` |
+| Topic types — descriptive or consequential | `5442:699` |
+| ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
 
 **Row 2 — the reference tables**, under *Reference — one place per fact*
 

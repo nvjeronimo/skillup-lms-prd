@@ -2999,7 +2999,7 @@ already measured — `course-details-metadata-map.md` maps every element of the 
 |---|---|---|
 | Title — *"Practice Quiz: Define and measure"* | `blocks.{vertical}.display_name` | ✅ — navigation API only, and render it verbatim |
 | Marked as completed | `blocks.{id}.complete` · Completion API | ✅ |
-| Topic type — *"Quiz"* | `blocks.{id}.icon` | ⚠︎ **unusable as delivered.** Four documented values against our ten types, and in the payloads only `null` (45×) and `"other"` (21×). The type would have to come from the child XBlock — another call |
+| Topic type — *"Quiz"* | `blocks.{id}.icon` | ⚠︎ **unusable as delivered.** Four documented values against the twelve catalogued types, and in the payloads only `null` (45×) and `"other"` (21×). The type would have to come from the child XBlock — another call |
 | Duration — *"8 min"* | `effort_time` / `effort_activities` | ✗ **null on every block.** Already action 3 to the vendor: *"every duration on the page depends on it"* |
 | Description | — | ✗ no per-block description field |
 | Author — *"By Sarah Chen, Senior Product Designer"* | — | ✗ **nothing.** No mentor, instructor or staff-profile field in any of the 73 |
@@ -3040,7 +3040,7 @@ wall:
 - **Is `effort_time` authored anywhere?** Null on every block in the delivered payloads. Already action 3 to
   the vendor on the course page; raised again because it now blocks a quiz screen, not just a syllabus line.
 - **How do we tell a quiz from a video in the outline?** `blocks.{id}.icon` documents four values against our
-  ten topic types and returns only `null` (45×) and `"other"` (21×).
+  twelve catalogued topic types and returns only `null` (45×) and `"other"` (21×).
 
 Both are noted as **vendor questions, not Studio reads** — neither can be answered by opening a course. One
 asks whether a field is populated anywhere in the catalogue; the other asks which endpoint carries a usable

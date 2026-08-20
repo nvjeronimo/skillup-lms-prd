@@ -323,7 +323,7 @@ exist*, 01:02:14), but it has to be decided before the syllabus is built.
 Two further structural notes: the topic level is **not in the Outline API at all** (every sequential returns
 `children: []`) — it needs a second call to the Navigation API, where `lms_web_url` is null on verticals, so
 topic deep-links must be constructed rather than read. And `icon`, the only type signal, has a four-value
-vocabulary against our ten topic types and returns only `other` in practice.
+vocabulary against the twelve catalogued topic types and returns only `other` in practice.
 
 ### The sample course is instructor-paced
 

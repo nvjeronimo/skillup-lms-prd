@@ -1211,6 +1211,58 @@ via `reset_student_attempts()`, which recurses into children.
 
 Recorded in `session-log.md` with file and line citations, and in `04-quiz-experience-spec.md` §10.
 
+## 2026-08-20 · Course Detail componentised — and two of ours turned out to already exist
+
+Built the Course Detail components against the published library, then swept the library for everything the
+metadata audit had recorded as missing. The sweep cost us two components and gained us four.
+
+**Foundations — nothing created, everything imported.** The design system is a separate published library,
+`❖ SKO Design System (Untitled UI)`, and this file already subscribes to it. **74 variables imported** from
+`1. Semantics` and `3. Responsive`; **zero created locally**. Typography by published style
+(`Body/{Lead,Default,Small}/*`, `Caption/*`), never by value — the repo's own `typography.css` says so.
+New page `↳ LMS / Course Detail — Components 🟠` with a cover and two live foundations frames: every swatch
+has its fill bound to the variable, so a broken import shows as grey rather than passing silently.
+
+**Seven components, not nine.** Namespaced `LMS / Course Detail /`, 24 variants, all tokenised:
+`Meta`, `Card shell`, `Module row`, `Topic row`, `Progress card`, `Certificate card`, `Sidebar card`.
+
+**Two were retired because the library already had them.**
+- `Marker` → **`LMS / Completion Status`**, which carried Done, Pending and Locked — and had *In Progress*
+  hidden, for the same reason we never built one. Our extra `Number` state was dropped rather than ported:
+  the module title already reads *"Module 2 · …"*.
+- `Banner` → **`Alert`**, 24 variants with responsive breakpoints and Code Connected to `InlineAlert.tsx`.
+  Ours had two variants and no idea what mobile was.
+
+**What the sweep also found, that the audit had listed as gaps:** `LMS / Course Complete Modal` — that is the
+`celebrations` field, already designed and never wired. `LMS / Section Header` — *Module → Section → Topic for
+modules with 10+ topics*, an existing answer to the structural finding. `Input field`, `bookmark`,
+`certificate-01`. The only gap that survived the sweep is **mentor**: absent from the API and absent from the
+library.
+
+**`Course Detail — v12 · componentised`** is the new entry screen: **42 instances** of our components plus 34
+from the library, and a hidden duplicate topic list inherited from v9 removed along the way. v11 stays beside
+it as the hand-built reference. Componentising forced three corrections the drawing had hidden — the sky-blue
+buttons were never the brand, the dark mentor card was an invented colour (the right answer is a **mode flip**
+to `Dark mode SKO`, not a second palette), and there is no "in progress" state because the platform does not
+report one.
+
+**Verb rule closed.** Drop the verb where the type is descriptive (Reading, Video, Podcast, Activity); keep it
+where consequential (Quiz, Final Project, VILT, Lab). Decided from a three-column comparison, applied to v12,
+and written on the `Topic row`. Criterion: does it produce something recorded against the learner, or force
+them out of the flow?
+
+**Corrections to earlier entries.**
+- **"Ten ICP topic types" was wrong — there are twelve** (eight live, one deprecated, three blocked). Fixed in
+  five places across these docs, including two quiz files where the wrong number had spread.
+- **Code Connect is not inapplicable.** Phase 4 recorded it as out of scope because this repository holds no
+  component code. `Alert` maps to `InlineAlert.tsx`, so a component codebase exists and mappings are already
+  in use. The claim was made by looking at the wrong repository.
+
+**Feedback owed to the library owner:** `Alert`'s `Breakpoint` axis is really stacked-versus-inline. Desktop
+puts title and supporting text on one line and clips any long copy, so `Mobile` is the only usable option for
+`welcome_message_html` on a desktop screen. And a `Persistent` variant would let the never-dismissible rule
+live in the system instead of in our documentation.
+
 ## 2026-08-19 · v11 — everything the data allows, so the cost is visible
 
 The six fields the audit surfaced are now on a screen, along with the three sidebar widgets that were
@@ -1384,7 +1436,7 @@ delivery is logged in `session-log.md`.
   (`accessible` is a boolean — no date, no prerequisite: that is the answer to open action 8, and it is
   a negative one), *What you'll learn* (no description or objectives field is exposed), the mentor card
   (no such record exists), the course image and the IBM logo (`org` returns `"SkillUp"`), and the topic
-  type prefixes (`icon` has four values against our ten and returns only `other`).
+  type prefixes (`icon` has four values against a catalogue of twelve and returns only `other`).
 - **Resume vs Start resolved** — `resume_course.has_visited_course`, closing an open workshop question.
 - **Structural notes for dev:** the topic level is **not in the Outline API** (every sequential returns
   `children: []`) — it needs a second call to the Navigation API, cached one hour — and `lms_web_url` is
