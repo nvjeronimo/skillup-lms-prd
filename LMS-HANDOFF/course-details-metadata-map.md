@@ -522,14 +522,14 @@ into the tables.
 
 ### The technical page, and how to run a review from it
 
-`⚙ TECHNICAL · Course Detail` is v12 with **36 native Figma annotations across 21 elements**. Open it in
+`⚙ TECHNICAL · Course Detail` is v12 with **37 native Figma annotations across 22 elements** (counted live, 20 Aug). Open it in
 **Dev Mode**. It uses all four annotation categories rather than putting everything under Development,
 because they are four different conversations with four different owners:
 
 | Category | Carries | Count |
 |---|---|---|
 | **Development** | the API field and its verdict | 23 |
-| **Content** | where the words come from and who owns them | 7 |
+| **Content** | where the words come from and who owns them | 8 |
 | **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 |
 | **Accessibility** | contrast and dark mode, and how they are achieved | 1 |
 
