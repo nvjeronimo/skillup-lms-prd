@@ -211,9 +211,15 @@ not a data one: see §12.1.
 | `(N Questions)` on a graded quiz | appended to `display_name` by the platform | ✅ documented, field 24 |
 | Graded/exam label | `description` (*"Homework"*, *"Midterm Exam"*), `special_exam_info` | ✅ null on this course |
 
-The topic-type finding is the one to act on. Our syllabus distinguishes ten content types by badge and verb;
-the outline data distinguishes four, and authors none of them. Either the type comes from somewhere else —
-the block's child XBlock type, which means another call — or the syllabus shows titles without types.
+The topic-type finding is the one to act on. Our syllabus distinguishes **twelve** content types by badge and
+verb (eight of them live); the outline data distinguishes four, and authors none of them. Either the type comes
+from somewhere else — the block's child XBlock type, which means another call — or the syllabus shows titles
+without types.
+
+**The syllabus now states the type outright.** Every topic row carries an `LMS / Topic-Types Badge` with its
+type spelled out — `Reading`, `Video`, `Quiz`, `Lab` — instead of leaving it to an icon. That raises the cost
+of the finding above rather than lowering it: an icon can be vague, a word cannot. If the type has to be
+derived from a second call, the badge is what will be wrong on screen when the derivation fails.
 
 ### Mentor card
 

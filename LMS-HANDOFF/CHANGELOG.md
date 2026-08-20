@@ -2,6 +2,29 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · Every topic row said "Reading"
+
+The topic rows now carry an explicit `LMS / Topic-Types Badge` — a deliberate change, but the values had been
+left at the component default, so all fourteen rows across both screens read **Reading**. Including
+*Checkpoint · DMAIC fundamentals*, which is a Quiz, and *Lab · Running the analyse phase*, which is a Lab.
+
+Recovered the intended type from **v11**, which still names its rows (`Topic row · Video`, `· Quiz`) and still
+carries the verb prefixes (`Watch ·`, `Read ·`) that v12 drops. Ten instances corrected:
+Reading / Video / Video / Video / Reading / Quiz / Lab.
+
+**A default that looks like data is worse than an empty slot.** Nothing on the screen said "unset" — every row
+made a confident, wrong claim about what kind of thing it was. Same failure the `Course stats` programme row is
+built to avoid, arriving from the opposite direction: there a default asserted a field that does not exist,
+here a default asserted the wrong value of a field that does.
+
+**And it raises the cost of the open topic-type finding rather than lowering it.** `blocks.{id}.icon` is
+unusable — four documented values against twelve catalogued types, and only `null` and `"other"` in the actual
+payloads. While the type was an icon, vagueness was survivable. Now the row says the word, and a wrong
+derivation will be wrong in plain English.
+
+Also fixed a stale **"ten content types"** in §5 that the earlier correction pass missed — the line directly
+above it already said twelve.
+
 ## 2026-08-20 · The hero was the last thing drawn by hand
 
 Course Detail is now built entirely from components. The hero — breadcrumb, chips, title, thumbnail and the
