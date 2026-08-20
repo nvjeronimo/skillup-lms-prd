@@ -544,7 +544,7 @@ about the design rather than the data.
 | Foundations — colour, live-bound swatches | `5410:325` |
 | Foundations — space, radius, type | `5411:325` |
 | `Meta` · `Card shell` | `5414:327` · `5415:327` |
-| `Module row` · `Topic row` | `5416:382` · `5419:384` |
+| `Module row` (6 variants: State × Expanded) · `Topic row` | `5416:382` · `5419:384` |
 | `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
 | Integration proof | `5429:419` |
 | Verb prefix — three-way comparison | `5433:498` |

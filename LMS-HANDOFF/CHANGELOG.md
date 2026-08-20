@@ -2,6 +2,38 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · The open module looked exactly like the closed ones
+
+`Module row` gains an `Expanded` axis — six variants now, `State` (Complete / Incomplete / Locked) crossed with
+`Expanded` (False / True). Disclosure and progress are orthogonal, so they are two axes, not one.
+
+**The defect this exposed.** Module 3 has been drawn open since v10, and its row was pixel-identical to the
+closed ones: same chevron, same rotation, same full border and radius. The affordance was lying, and the open
+module read as two stacked boxes rather than one card. Expansion was never in the component at all — it was a
+sibling frame assembled by hand next to the row.
+
+**Followed the library's idiom rather than inventing one.** `LMS / Module Header` — the sidebar equivalent,
+which already exists — uses one `chevron-down` at rest and *the same icon rotated 180°* when open. Ours now
+does the same, which also fixes our closed rows: they pointed right, off-convention, against a library that
+points down.
+
+**Did not adopt `LMS / Module Header` itself.** It is 280px, borderless, two-line, with neither the status
+circle nor the lock — both of which carry API meaning here (`complete`, `accessible: false`). It is a sidebar
+component for a sidebar. Taking the convention without taking the component is the right amount of borrowing.
+
+**`Locked × Expanded=True` is unreachable** — a module with `accessible: false` serves no topics. It exists
+because Figma sets cannot express a conditional axis, and the component description says so.
+
+**A new silent-success trap, and a file to keep them in.** `clone()` on a variant inside a component set drops
+the `componentPropertyReferences` that point at the *set's* properties, while keeping those that point at a
+nested instance's own — so the damage looks partial and plausible. Three variants came out with three bindings
+where they should have seven, and the symptom was Module 3 rendering *"Module 1 · Foundations of Six Sigma"*
+while its Title property read correctly. Counting bindings per variant found it; reading the code would not
+have.
+
+All nineteen of these now live in `figma-api-traps.md` rather than in a scratch file under `/tmp`, which is
+where they have been sitting and where they would have been lost.
+
 ## 2026-08-20 · Every topic row said "Reading"
 
 The topic rows now carry an explicit `LMS / Topic-Types Badge` — a deliberate change, but the values had been
