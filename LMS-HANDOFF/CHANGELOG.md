@@ -37,6 +37,16 @@ Left undesigned on purpose and written into the annotation: the drag ghost, keyb
 supports it), and the per-drop screen-reader announcement. Interaction spec, not decoration — they need a
 decision first.
 
+**A Figma rule the visual check exposed.** The first pass gave the item bank and the feedback alert boolean
+properties. On screen every variant then showed the same thing: an unanswered board with a feedback alert, a
+graded board still offering items to place. **A boolean property's default outranks each variant's own layer
+visibility** — one default, six states, and the states could not disagree with it. Both properties deleted;
+the bank and the alert are now consequences of `State`. Only `Show platform prompt` and `Show Footer
+Questions` remain as booleans, because those are genuinely per-instance choices.
+
+The same check killed the zone ring on Correct/Incorrect: the zone and the item were both drawing the same
+green, which is exactly the doubling the annotation forbids. The zone now draws nothing once filled.
+
 ## 2026-08-15 · The outline sidebar stops growing with the page
 
 A sidebar that stretches to 4,000px says the outline scrolls with the page. It does not — the outline and the
