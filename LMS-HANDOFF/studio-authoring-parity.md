@@ -35,17 +35,30 @@ Legend: ✅ covered · 🟡 partial or a decision, not a build · ❌ missing ·
 
 ## 2 · Missing — a creator can pick it and we have nothing
 
-### ❌ Drag and Drop — the real gap
+### ✅ Drag and Drop — built 20 Aug 2026
 `drag-and-drop-v2`. A first-class, **mobile-ready** problem type sitting in the grid, and our own
 `topic-types-inventory.md` §123 already calls it *"highest-return if picked up later"*. Nothing in the DS.
 
-It is not one component. It needs:
-- a **background image surface** with drop zones
-- a **draggable item** chip (idle · dragging · placed · locked)
-- a **drop zone** (empty · hover · filled · correct · incorrect)
-- two modes, which behave differently: **Standard** — feedback per drop, retry in place · **Assessment** —
-  place everything, then Submit, with attempt limits and best-attempt-wins
-- the submitted/graded state, which can reuse `Quiz · Footer Actions` and `Inline Alert`
+Three components, in `5 · Assessments · Quiz`:
+
+| Component | Variants |
+|---|---|
+| `LMS / Drag and Drop · Item` | Idle · Dragging · Placed · Correct · Incorrect · Locked |
+| `LMS / Drag and Drop · Zone` | Empty · Hover · Filled · Correct · Incorrect |
+| `LMS / Drag and Drop · Card` | Unanswered · In progress · Correct · Incorrect · Partially correct · Answer revealed, plus booleans for prompt, item bank, feedback and footer |
+
+**The two modes are the footer, not a variant.** Standard gives feedback on every drop and has **no Submit**
+(`Show Primary action = false` on the Footer Actions instance); Assessment keeps the primary, applies attempts
+and takes the best one. A Standard board carrying a Submit button promises a grading step that never comes.
+
+**State ownership:** the zone stops drawing chrome the moment it is filled — from then on the item carries the
+state and the zone adds only a ring on Correct / Incorrect, so nothing is coloured twice.
+
+**The board background is author-supplied content**, so the component ships a labelled placeholder rather than
+a fake diagram, with zones absolutely positioned over it.
+
+**Left undesigned on purpose:** the drag ghost, keyboard placement (the XBlock supports it) and the
+screen-reader announcement per drop. Those are interaction spec and need a decision before they are drawn.
 
 ### ❌ Zooming Image Tool
 In the Text menu of our Studio. The learner clicks a region and it enlarges in an overlay. We have no
@@ -97,8 +110,7 @@ Not part of free stacking, but a creator can pick them, so parity still applies.
 
 ## 6 · The build list, in order
 
-1. **Drag and Drop** — the only tile in the grid with no design at all, and it is mobile-ready, so a creator
-   can ship it to phones today with nothing from us.
+1. ~~**Drag and Drop**~~ — done 20 Aug. Publish the DS to release it.
 2. **`HTML (Table)`** on `LMS / Lesson Block` — cheap, natively authorable, and the responsive behaviour has
    to be decided by someone rather than discovered on a phone.
 3. **Zooming Image** — *after* Simran confirms the template actually works in our release.

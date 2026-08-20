@@ -2,6 +2,41 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · Drag and Drop, the one Studio tile we had never designed
+
+The goal behind this is free assembly: a creator should be able to build a topic any way they like and find
+every piece already designed. Measured against the nine tiles in our own **Add New Component** grid, seven
+were covered and **Drag and Drop had nothing at all** — while being auto-graded and mobile-ready, so a creator
+could ship it to phones today on our silence.
+
+**Three components** in `5 · Assessments · Quiz`:
+
+| Component | Variants |
+|---|---|
+| `LMS / Drag and Drop · Item` | Idle · Dragging · Placed · Correct · Incorrect · Locked |
+| `LMS / Drag and Drop · Zone` | Empty · Hover · Filled · Correct · Incorrect |
+| `LMS / Drag and Drop · Card` | 6 states + booleans for prompt, item bank, feedback, footer |
+
+Every fill and stroke is bound — the state language is lifted straight from `Quiz · Option Row`, so correct is
+the same green and selected the same brand tint a learner already knows from a quiz.
+
+**Three decisions worth naming.**
+
+**The two modes are the footer, not a variant.** Standard gives feedback per drop and has no Submit;
+Assessment submits once, with attempts and best-attempt-wins. Encoding that as a variant axis would double the
+set to express something the existing `Footer Actions` boolean already says.
+
+**The zone stops drawing chrome once it is filled.** From then on the item carries the state and the zone adds
+only a ring. Two components colouring the same thing is how a system starts disagreeing with itself.
+
+**The board background is author-supplied content**, so it ships as a labelled placeholder rather than an
+invented diagram. Drawing a fake process map would have made the component look finished and taught the
+content team nothing about what they have to provide.
+
+Left undesigned on purpose and written into the annotation: the drag ghost, keyboard placement (the XBlock
+supports it), and the per-drop screen-reader announcement. Interaction spec, not decoration — they need a
+decision first.
+
 ## 2026-08-15 · The outline sidebar stops growing with the page
 
 A sidebar that stretches to 4,000px says the outline scrolls with the page. It does not — the outline and the
