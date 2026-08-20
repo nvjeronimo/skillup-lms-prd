@@ -2,6 +2,38 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · The verb goes, and the tooltip was in the library too
+
+**The verb prefix is retired from every topic type.** Titles now render `display_name` verbatim — *DMAIC
+fundamentals*, not *Checkpoint · DMAIC fundamentals*. The rule that kept it on consequential types justified
+itself with "the icon already says how you consume them"; the type is now a labelled badge, and that same
+sentence removes the verb everywhere. Four titles changed across the two screens.
+
+The three-way comparison on the components page keeps all three options and now records which was taken —
+board 2, chosen. Its old objection (*"but look at row 6"* — a checkpoint that stops announcing itself) is
+answered by the badge, which states the type once in the place where every row states it.
+
+**It also removes a dependency nobody could have satisfied.** A verb prefix is not a field. Something would
+have had to derive `Checkpoint ·` from a type the outline does not send — `blocks.{id}.icon` is four documented
+values against twelve catalogued types, and returns only `null` and `"other"` in practice. Rendering the field
+as-is needs nothing.
+
+**`Tooltip` adopted from the library** — fifth adoption on this page, after `Breadcrumbs`, `Badge`,
+`Horizontal tabs` and `Input field`. Ours was a hand-drawn dark pill with a hand-drawn caret; the library ships
+`Text`, `Supporting text` and a seven-position `Arrow` axis. Taken as `Supporting text=False, Arrow=Top center`
+and anchored under the locked module row in both screens.
+
+**The functionality is now documented on the technical page**, which was the point of adopting it rather than
+just swapping it. What the tooltip does: hover or focus the lock, get why the module is closed and when it
+opens; dismiss on blur. What that requires: the lock must be a **focusable control**, because a tooltip that
+only appears on hover does not exist for keyboard or touch. What the API gives: `accessible: false`, a boolean,
+and nothing else.
+
+So *Unlocks 28 Apr 2026* is drawn copy with no field behind it. Three ways out, in order of cost — drop the
+date and say only that the module is locked; derive it from course `start` plus a pacing rule the content team
+owns; or add a field to the outline, which is a platform change. **Until one is chosen, build it without the
+date.** The boolean supports "Locked". It does not support "Unlocks 28 Apr".
+
 ## 2026-08-20 · One scale for both rows, and a rule that now argues against itself
 
 **Padding and gaps bound to the spacing scale.** `Module row` (all six variants) and `Topic row` (both) now
