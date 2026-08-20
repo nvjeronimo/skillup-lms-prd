@@ -1,7 +1,7 @@
 # Course Details — the metadata, mapped to the design
 
 **Source:** two deliveries against Jira **SK-11378**.
-`_media/Course_metadata.xlsx`, 3 Aug 2026 — Metadata (73 fields), API Information (8 endpoints with real
+`30-07 meetings/Course_metadata.xlsx`, 3 Aug 2026 — Metadata (73 fields), API Information (8 endpoints with real
 payloads), Feature Inventory, Role-Based Visibility. Sample course `course-v1:SkillUp+SQL-TMDA+2025_B13`.
 `30-07 meetings/Course_metadata (2).xlsx`, 4 Aug 2026 — the VILT addendum, from row 84: **Live** (11 fields),
 **Recordings** (20 fields) and the **Instructor dashboard** (80 fields), plus eight endpoints and three new
@@ -206,14 +206,20 @@ not a data one: see §12.1.
 | Lesson row title | `blocks.{sequential}.display_name` | ✅ |
 | `3 topics · 22 min` | `completion_stat.completable_children` ◑ / duration ✗ | ⚠︎ |
 | Topic row title | `blocks.{vertical}.display_name` | ✅ navigation API only |
-| Topic type prefix (`Watch ·`, `Read ·`, `Checkpoint ·`) and type badge | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against our ten ICP topic types. In the payloads it returns only `null` (45×) and `"other"` (21×) |
+| Topic type prefix (`Watch ·`, `Read ·`, `Checkpoint ·`) and type badge | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against the twelve types in the ICP catalogue (eight live). In the payloads it returns only `null` (45×) and `"other"` (21×) |
 | Clickable title → immersive | `lms_web_url` on sequentials ✅ / **null on verticals** | ⚠︎ construct `jump_to`; verify |
 | `(N Questions)` on a graded quiz | appended to `display_name` by the platform | ✅ documented, field 24 |
 | Graded/exam label | `description` (*"Homework"*, *"Midterm Exam"*), `special_exam_info` | ✅ null on this course |
 
-The topic-type finding is the one to act on. Our syllabus distinguishes ten content types by badge and verb;
-the outline data distinguishes four, and authors none of them. Either the type comes from somewhere else —
-the block's child XBlock type, which means another call — or the syllabus shows titles without types.
+The topic-type finding is the one to act on. Our syllabus distinguishes **twelve** content types by badge and
+verb (eight of them live); the outline data distinguishes four, and authors none of them. Either the type comes
+from somewhere else — the block's child XBlock type, which means another call — or the syllabus shows titles
+without types.
+
+**The syllabus now states the type outright.** Every topic row carries an `LMS / Topic-Types Badge` with its
+type spelled out — `Reading`, `Video`, `Quiz`, `Lab` — instead of leaving it to an icon. That raises the cost
+of the finding above rather than lowering it: an icon can be vague, a word cannot. If the type has to be
+derived from a second call, the badge is what will be wrong on screen when the derivation fails.
 
 ### Mentor card
 
@@ -248,6 +254,17 @@ Ranked by how strong the case is for putting it on the page.
 | 8 | **Weekly learning goal** | `course_goals` + `POST save_course_goal` | Flag-gated, off on the sample. Days per week + email reminders |
 | 9 | **State banners** | `has_ended`, `enroll_alert`, `dates_banner_info.missed_deadlines` | Course ended / enrol CTA / missed deadlines |
 | 10 | **Staff affordances** | `studio_access`, `is_staff`, `original_user_is_staff` | *View in Studio*, masquerade. Out of scope for the learner MVP, in scope for the matrix |
+
+**Found by the audit of 19 Aug — declared, learner-facing, never mentioned, and now placed on `v11`:**
+
+| Field | What the workbook says it is for | Why it matters here |
+|---|---|---|
+| `blocks.{id}.has_scheduled_content` | *"More content coming"* indicator, from the Learning Sequences API | **A syllabus affordance we never designed.** We draw locked modules; we have nothing for a module that is open but still growing. It is on every block in the outline payload |
+| `celebrations` | *"Triggers celebration modals on milestones (first section completion, streaks)"* — `{first_section, streak_length_to_celebrate, streak_discount_enabled, weekly_goal}` | A whole feature. Our design has no milestone moment at all, and the platform fires one |
+| `user_has_passing_grade` | *"Shows passing/not-passing indicator"* | A pass/fail signal that arrives **on the outline call**, with no extra request. The course page shows completion but never whether the learner is passing |
+| `enrollment_mode` | `audit`, `verified`, `honor`, `no-id-professional` | The learner's own track. We show a course-type badge that has no field; this one has |
+| Content Search (feature 33) | *"Search course content, units, lessons and learning materials using keywords… shows a popup"* | Listed in both workbooks, never designed |
+| `number`, `org` | *"Breadcrumb / sub-header"* | The workbook assigns them a place in the breadcrumb. Ours uses neither |
 
 **And what we can now defensibly drop.** Every commerce field comes back empty on the real course:
 `verified_mode: null`, `can_show_upgrade_sock: false`, `access_expiration: null`, `offer: null`,
@@ -486,8 +503,84 @@ into the tables.
 | Never started | `5029:870` | `resume_course.has_visited_course: false` |
 | Completed — certificate earned | `5029:1246` | `cert_data.cert_status` |
 | Course ended | `5029:1622` | `has_ended: true` |
+| **v11 · everything the data allows** | `5401:325` | the maximal version — every available field placed, so the cost of having them all is visible |
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
+| **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
+| **⚙ TECHNICAL · Course Detail** | `5446:3985` | the stakeholder page — every element annotated with its field and whether it can be built |
+| Technical page — legend | `5448:4325` | how to read it, the verdict key, and the three questions it should provoke |
+
+### The technical page, and how to run a review from it
+
+`⚙ TECHNICAL · Course Detail` is v12 with **36 native Figma annotations across 21 elements**. Open it in
+**Dev Mode**. It uses all four annotation categories rather than putting everything under Development,
+because they are four different conversations with four different owners:
+
+| Category | Carries | Count |
+|---|---|---|
+| **Development** | the API field and its verdict | 23 |
+| **Content** | where the words come from and who owns them | 7 |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 |
+| **Accessibility** | contrast and dark mode, and how they are achieved | 1 |
+
+The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
+(Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
+single list would collapse them into one.
+
+**The three questions the legend ends on**, which are what the meeting should actually decide:
+
+1. **Who supplies the mentor?** The only gap that survived both the API audit and the library sweep.
+2. **Who authors `effort_time`?** Every duration on the page depends on a field nobody fills.
+3. **Does the unlock tooltip stay?** The API gives a boolean — no date, no prerequisite, no rule.
+
+v12 is deliberately left **unannotated**: the same page without the engineering, for when the conversation is
+about the design rather than the data.
+
+**Components page** — `↳ LMS / Course Detail — Components 🟠` (`5409:325`)
+
+| Item | Node |
+|---|---|
+| Cover and the four rules | `5409:326` |
+| Foundations — colour, live-bound swatches | `5410:325` |
+| Foundations — space, radius, type | `5411:325` |
+| `Meta` · `Card shell` | `5414:327` · `5415:327` |
+| `Module row` · `Topic row` | `5416:382` · `5419:384` |
+| `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
+| Integration proof | `5429:419` |
+| Verb prefix — three-way comparison | `5433:498` |
+| Topic types — descriptive or consequential | `5442:699` |
+| `Section intro` | `5456:852` |
+| `Course stats` | `5460:871` |
+| `Course title` | `5460:15187` |
+| ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
+
+### Finishing the hero, and four more things we did not need to build
+
+The hero was the last part of the page still drawn by hand. Closing it took **three new components** and
+**four adoptions from the library** — and the ratio is the point: of seven pieces, only three were ours to make.
+
+| Piece | Outcome |
+|---|---|
+| Breadcrumb | adopted **`Breadcrumbs`** (SKO) — `Divider=Chevron, Type=Text, Desktop`, first crumb and its chevron hidden to give three levels |
+| `Self-paced` · `Professional` chips | adopted **`Badge`** (SKO) — `Size=md, Type=Pill color, Color=Gray` |
+| Tab bar | adopted **`Horizontal tabs`** (SKO) — `Type=Underline, Size=md`, six unused tabs hidden |
+| Course search | adopted **`Input field`** (SKO) — `Type=Search, Size=sm` |
+| `Section intro` | built — heading plus lead paragraph, with a boolean for the paragraph |
+| `Course stats` | built — structure, duration, `org · number`, and a programme row |
+| `Course title` | built — title, thumbnail, and an optional `short_description` |
+
+The `Badge` set already carries a **`Type=LMS Topic Types Badge`** variant, which is what the topic rows use.
+That is worth noting for its own sake: a badge we would have built twice was already in the library under a
+name none of our searches would have reached.
+
+**`Course stats` has its programme row off by default.** `Course 2 of 6` and `Cohort Apr 2026` read like
+metadata but no Course Home API sends either one. Making the row a boolean that defaults to **false** means
+the screen cannot quietly acquire a field that does not exist — someone has to turn it on and say where the
+data comes from. Same reasoning as the `Dismissible` correction on `Alert`: a default is a claim.
+
+**One annotation was lost and folded, not dropped.** Replacing the hand-built title block removed the `Image`
+node that carried two Development annotations about `course_image_urls`. Both facts now live in the single
+`Course title` annotation, which is why the count moved from 38 across 23 elements to **36 across 21**.
 
 **Row 2 — the reference tables**, under *Reference — one place per fact*
 
@@ -629,8 +722,9 @@ first), a client-side count per date rendered as *"1 recording" / "4 recordings"
 Design consequences worth naming now:
 
 - **Playback is a short-lived SAS URL**, generated per recording by `POST …/playback_url/` and returned only
-  when the recording succeeded, is not archived and has a blob path. The URL expires — so it cannot be
-  pre-fetched for a whole list, and a copied link will not survive.
+  when the request asks for it (`include_playback_url=true`) **and** the recording succeeded, is not archived
+  and has a blob path. The URL expires — so it cannot be pre-fetched for a whole list, and a copied link will
+  not survive.
 - **The tab appears only if a succeeded MP4 exists.** No empty state to design for a course that has one
   scheduled but nothing recorded yet — the tab is simply absent.
 - Anything pending, uploading, failed or archived is hidden **from everyone, including staff**, by default.
@@ -652,6 +746,35 @@ For a self-paced course the bar is what v10 draws. For a VILT course it is up to
 Course, Progress, Dates, Mentorship Q&A, Live, Recordings — and both new ones are conditional: Live on a
 `CourseLiveConfiguration` being enabled, Recordings on a succeeded MP4 existing. Rendering from `tabs[]` was
 already the right call; it is now the only one that works.
+
+---
+
+---
+
+## 13. v11 — everything the data allows
+
+A deliberate maximum, not a proposal. `Course Detail — v11 · everything the data allows` (`5401:325`) places
+**every field the platform offers this page**, so the cost of having them all is visible rather than argued.
+
+| Added over v10 | Field | Where |
+|---|---|---|
+| Track chip, beside *Self-paced* | `enrollment_mode` | hero |
+| `org · number` sub-header | `org`, `number` | under the hero stats, where the workbook puts them |
+| *Search this course* | Feature 33 | right of the tab bar |
+| *Currently passing* | `user_has_passing_grade` | progress card — arrives on the outline call, no extra request |
+| *More content coming* | `blocks.{id}.has_scheduled_content` | module subtitle |
+| Upcoming dates | `dates_widget.course_date_blocks` + `dates_tab_link` | sidebar |
+| Course tools | `course_tools[]` — Bookmarks | sidebar |
+| Weekly goal | `course_goals` | sidebar |
+| Milestone celebration | `celebrations` | the card strip, being an overlay rather than page furniture |
+
+**What it demonstrates, which is the point of drawing it:** the right column goes from three cards to six and
+runs to roughly 1 100 px — longer than the syllabus beside it. A learner scrolling to Module 4 passes a
+mentor, a certificate, handouts, dates, bookmarks and a weekly goal on the way. Every one is backed by a real
+field. The frame asks which of them earns the room.
+
+**How to read it at the review:** v10 is the proposal, v11 is the inventory. Decide what moves from one to the
+other, rather than treating v11 as the target.
 
 ---
 
