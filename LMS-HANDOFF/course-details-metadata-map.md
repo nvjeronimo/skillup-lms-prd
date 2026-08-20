@@ -554,6 +554,19 @@ about the design rather than the data.
 | `Course title` | `5460:15187` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
 
+**Row paddings and gaps are bound to `Spacing/*`** on both row components — `lg` (12) for the row insets,
+`md` (8) for the topic gap, `none` for its horizontal padding, `xxs` (2) for the module's title/meta gap. No
+value changed when they were bound; the point is that they can no longer drift apart. `Topic row` carries a
+bound `minHeight` of `6xl` (48), its exact natural height. `Module row` has none on purpose: 68 is derived and
+off-scale, and a floor at the nearest step (64) would never engage.
+
+**The verb-prefix boards now carry per-type badges**, which changes what they show. The rule we closed justified
+dropping the verb on descriptive types because *"the icon already says how you consume them"* — but the type is
+now a **labelled** badge, not an icon. By that same sentence, *Checkpoint · DMAIC fundamentals* beside a badge
+reading **Quiz** duplicates exactly as *Read · Introduction…* beside **Reading** does. Board 2 — bare titles, as
+the API returns them — is the only one of the three that states the type once. Left unchanged: it is a decision
+for the room.
+
 ### Finishing the hero, and four more things we did not need to build
 
 The hero was the last part of the page still drawn by hand. Closing it took **three new components** and

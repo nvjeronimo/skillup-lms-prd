@@ -2,6 +2,40 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · One scale for both rows, and a rule that now argues against itself
+
+**Padding and gaps bound to the spacing scale.** `Module row` (all six variants) and `Topic row` (both) now
+take every padding and gap from `Spacing/*` instead of raw numbers — `lg` (12) for the row insets, `lg` for the
+module's gap, `md` (8) for the topic's, `none` for the topic's horizontal padding, `xxs` (2) for the module's
+title/meta gap. No value changed, so nothing moved on screen; what changed is that they can no longer drift
+apart silently.
+
+`Topic row` also gets a bound `minHeight` of `6xl` (48), which is exactly its natural height — a real floor.
+**`Module row` deliberately has none.** Its 68px is derived (12 + 24 + 2 + 18 + 12) and is not a step on the
+scale; the nearest step below is 64, and a floor at 64 would never engage. A constraint that can never bind is
+a claim the file makes and does not keep, so it is better absent. Heights built from tokenised parts do not
+themselves need to be tokens.
+
+**The 24 examples on the components page were all still `Reading`.** Seventeen corrected. They sit on four
+boards, three of which are the verb-prefix comparison — the boards whose entire subject is how a topic's type
+gets communicated. Arguing that question with every badge showing the same wrong word was worse than useless.
+
+### And now the verb rule argues against itself
+
+With the badges correct, the three boards say something they could not say before. The rule we closed reads:
+
+> The verb stays where the type is *consequential* — Quiz produces a grade, counts attempts, has a deadline.
+> Descriptive types drop it; **the icon already says how you consume them.**
+
+That justification was written when the type was an *icon*. It is now a **labelled badge**. Applied
+consistently, the same sentence removes the verb from the consequential types too: *Checkpoint · DMAIC
+fundamentals* next to a badge reading **Quiz** is the identical duplication we rejected in *Read · Introduction
+to the DMAIC methodology* next to **Reading**.
+
+Board 2 — bare titles, as the API returns them — is now the only one of the three that does not say the type
+twice. That is a decision for the room, not a change to make quietly, so nothing was changed. But the board
+now makes the argument on its own, which is what it was built for.
+
 ## 2026-08-20 · The open module looked exactly like the closed ones
 
 `Module row` gains an `Expanded` axis — six variants now, `State` (Complete / Incomplete / Locked) crossed with
