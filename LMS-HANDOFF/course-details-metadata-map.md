@@ -500,19 +500,19 @@ into the tables.
 | **v11 · everything the data allows** | `5401:325` | the maximal version — every available field placed, so the cost of having them all is visible |
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
-| **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 42 of ours, 34 from the library |
+| **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
 | **⚙ TECHNICAL · Course Detail** | `5446:3985` | the stakeholder page — every element annotated with its field and whether it can be built |
 | Technical page — legend | `5448:4325` | how to read it, the verdict key, and the three questions it should provoke |
 
 ### The technical page, and how to run a review from it
 
-`⚙ TECHNICAL · Course Detail` is v12 with **38 native Figma annotations across 23 elements**. Open it in
+`⚙ TECHNICAL · Course Detail` is v12 with **36 native Figma annotations across 21 elements**. Open it in
 **Dev Mode**. It uses all four annotation categories rather than putting everything under Development,
 because they are four different conversations with four different owners:
 
 | Category | Carries | Count |
 |---|---|---|
-| **Development** | the API field and its verdict | 25 |
+| **Development** | the API field and its verdict | 23 |
 | **Content** | where the words come from and who owns them | 7 |
 | **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 |
 | **Accessibility** | contrast and dark mode, and how they are achieved | 1 |
@@ -543,7 +543,38 @@ about the design rather than the data.
 | Integration proof | `5429:419` |
 | Verb prefix — three-way comparison | `5433:498` |
 | Topic types — descriptive or consequential | `5442:699` |
+| `Section intro` | `5456:852` |
+| `Course stats` | `5460:871` |
+| `Course title` | `5460:15187` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
+
+### Finishing the hero, and four more things we did not need to build
+
+The hero was the last part of the page still drawn by hand. Closing it took **three new components** and
+**four adoptions from the library** — and the ratio is the point: of seven pieces, only three were ours to make.
+
+| Piece | Outcome |
+|---|---|
+| Breadcrumb | adopted **`Breadcrumbs`** (SKO) — `Divider=Chevron, Type=Text, Desktop`, first crumb and its chevron hidden to give three levels |
+| `Self-paced` · `Professional` chips | adopted **`Badge`** (SKO) — `Size=md, Type=Pill color, Color=Gray` |
+| Tab bar | adopted **`Horizontal tabs`** (SKO) — `Type=Underline, Size=md`, six unused tabs hidden |
+| Course search | adopted **`Input field`** (SKO) — `Type=Search, Size=sm` |
+| `Section intro` | built — heading plus lead paragraph, with a boolean for the paragraph |
+| `Course stats` | built — structure, duration, `org · number`, and a programme row |
+| `Course title` | built — title, thumbnail, and an optional `short_description` |
+
+The `Badge` set already carries a **`Type=LMS Topic Types Badge`** variant, which is what the topic rows use.
+That is worth noting for its own sake: a badge we would have built twice was already in the library under a
+name none of our searches would have reached.
+
+**`Course stats` has its programme row off by default.** `Course 2 of 6` and `Cohort Apr 2026` read like
+metadata but no Course Home API sends either one. Making the row a boolean that defaults to **false** means
+the screen cannot quietly acquire a field that does not exist — someone has to turn it on and say where the
+data comes from. Same reasoning as the `Dismissible` correction on `Alert`: a default is a claim.
+
+**One annotation was lost and folded, not dropped.** Replacing the hand-built title block removed the `Image`
+node that carried two Development annotations about `course_image_urls`. Both facts now live in the single
+`Course title` annotation, which is why the count moved from 38 across 23 elements to **36 across 21**.
 
 **Row 2 — the reference tables**, under *Reference — one place per fact*
 

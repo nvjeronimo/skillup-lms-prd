@@ -2,6 +2,36 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · The hero was the last thing drawn by hand
+
+Course Detail is now built entirely from components. The hero — breadcrumb, chips, title, thumbnail and the
+stats sub-header — was the part that had resisted, and closing it took **three new components and four
+adoptions from the library**. Of seven pieces, three were ours to make.
+
+Adopted: `Breadcrumbs`, `Badge`, `Horizontal tabs`, `Input field` — all from ❖ SKO Design System.
+Built: `LMS / Course Detail / Section intro`, `… / Course stats`, `… / Course title`.
+
+**The library keeps being ahead of us.** `Badge` already ships a `Type=LMS Topic Types Badge` variant — the
+exact badge the topic rows use. That is the third time on this page that something we were about to build
+already existed under a name our searches did not reach, after `Marker` → `LMS / Completion Status` and
+`Banner` → `Alert`. The lesson is not "search harder"; it is that searching by *what a thing looks like* fails
+when the library names things by *where they are used*.
+
+**A default is a claim.** `Course stats` has a programme row — `Course 2 of 6 · Cohort Apr 2026` — that reads
+like metadata but has no source in any Course Home API. It is a boolean defaulting to **false**, so the screen
+cannot quietly acquire a field that does not exist; someone has to turn it on and name the service that fills
+it. Same correction we made to `Dismissible` on `Alert`.
+
+**What the counts say.** v12 is 30 top-level instances, 21 ours and 9 from the library, and the only loose
+text left is the unlock-tooltip callout — a note about the design, not part of it. The technical page moved
+from 38 annotations across 23 elements to 36 across 21: replacing the title block removed the `Image` node
+and its two annotations about `course_image_urls`, and both facts were folded into the `Course title`
+annotation rather than dropped.
+
+Also filed `library-requests.md` — two requests to the library owner: `Alert`'s `Breakpoint` axis is misnamed
+(it controls stacked-vs-inline, not viewport), and a permanent warning needs a `Persistent` variant so it
+cannot be dismissed.
+
 ## 2026-08-20 · Drag and Drop, the one Studio tile we had never designed
 
 The goal behind this is free assembly: a creator should be able to build a topic any way they like and find
