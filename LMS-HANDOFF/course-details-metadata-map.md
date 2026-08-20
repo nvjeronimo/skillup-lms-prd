@@ -206,7 +206,7 @@ not a data one: see §12.1.
 | Lesson row title | `blocks.{sequential}.display_name` | ✅ |
 | `3 topics · 22 min` | `completion_stat.completable_children` ◑ / duration ✗ | ⚠︎ |
 | Topic row title | `blocks.{vertical}.display_name` | ✅ navigation API only |
-| Topic type prefix (`Watch ·`, `Read ·`, `Checkpoint ·`) and type badge | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against the twelve types in the ICP catalogue (eight live). In the payloads it returns only `null` (45×) and `"other"` (21×) |
+| Type badge (~~`Watch ·` prefix, retired~~) | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against the twelve types in the ICP catalogue (eight live). In the payloads it returns only `null` (45×) and `"other"` (21×) |
 | Clickable title → immersive | `lms_web_url` on sequentials ✅ / **null on verticals** | ⚠︎ construct `jump_to`; verify |
 | `(N Questions)` on a graded quiz | appended to `display_name` by the platform | ✅ documented, field 24 |
 | Graded/exam label | `description` (*"Homework"*, *"Midterm Exam"*), `special_exam_info` | ✅ null on this course |
@@ -216,10 +216,20 @@ verb (eight of them live); the outline data distinguishes four, and authors none
 from somewhere else — the block's child XBlock type, which means another call — or the syllabus shows titles
 without types.
 
-**The syllabus now states the type outright.** Every topic row carries an `LMS / Topic-Types Badge` with its
-type spelled out — `Reading`, `Video`, `Quiz`, `Lab` — instead of leaving it to an icon. That raises the cost
-of the finding above rather than lowering it: an icon can be vague, a word cannot. If the type has to be
-derived from a second call, the badge is what will be wrong on screen when the derivation fails.
+**The syllabus states the type outright, once.** Every topic row carries an `LMS / Topic-Types Badge` with its
+type spelled out — `Reading`, `Video`, `Quiz`, `Lab`. That raises the cost of the finding above rather than
+lowering it: an icon can be vague, a word cannot. If the type has to be derived from a second call, the badge
+is what will be wrong on screen when the derivation fails.
+
+**The verb prefix is retired, from every type.** Titles now render `display_name` verbatim — *DMAIC
+fundamentals*, not *Checkpoint · DMAIC fundamentals*. The earlier rule kept the verb where the type was
+*consequential* and dropped it where it was *descriptive*, reasoning that "the icon already says how you
+consume them". That reasoning held while the type was an icon; the badge now carries a **word**, and the same
+sentence removes the verb everywhere.
+
+It also removes a dependency. A verb prefix is not a field — something would have had to derive it from a type
+the outline does not send. Rendering `display_name` as-is needs nothing. The three-way comparison on the
+components page (`5433:498`) records all three options and which was taken.
 
 ### Mentor card
 
@@ -544,7 +554,7 @@ about the design rather than the data.
 | Foundations — colour, live-bound swatches | `5410:325` |
 | Foundations — space, radius, type | `5411:325` |
 | `Meta` · `Card shell` | `5414:327` · `5415:327` |
-| `Module row` · `Topic row` | `5416:382` · `5419:384` |
+| `Module row` (6 variants: State × Expanded) · `Topic row` | `5416:382` · `5419:384` |
 | `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
 | Integration proof | `5429:419` |
 | Verb prefix — three-way comparison | `5433:498` |
@@ -553,6 +563,19 @@ about the design rather than the data.
 | `Course stats` | `5460:871` |
 | `Course title` | `5460:15187` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
+
+**Row paddings and gaps are bound to `Spacing/*`** on both row components — `lg` (12) for the row insets,
+`md` (8) for the topic gap, `none` for its horizontal padding, `xxs` (2) for the module's title/meta gap. No
+value changed when they were bound; the point is that they can no longer drift apart. `Topic row` carries a
+bound `minHeight` of `6xl` (48), its exact natural height. `Module row` has none on purpose: 68 is derived and
+off-scale, and a floor at the nearest step (64) would never engage.
+
+**The verb-prefix boards now carry per-type badges**, which changes what they show. The rule we closed justified
+dropping the verb on descriptive types because *"the icon already says how you consume them"* — but the type is
+now a **labelled** badge, not an icon. By that same sentence, *Checkpoint · DMAIC fundamentals* beside a badge
+reading **Quiz** duplicates exactly as *Read · Introduction…* beside **Reading** does. Board 2 — bare titles, as
+the API returns them — is the only one of the three that states the type once. Left unchanged: it is a decision
+for the room.
 
 ### Finishing the hero, and four more things we did not need to build
 
@@ -565,6 +588,7 @@ The hero was the last part of the page still drawn by hand. Closing it took **th
 | `Self-paced` · `Professional` chips | adopted **`Badge`** (SKO) — `Size=md, Type=Pill color, Color=Gray` |
 | Tab bar | adopted **`Horizontal tabs`** (SKO) — `Type=Underline, Size=md`, six unused tabs hidden |
 | Course search | adopted **`Input field`** (SKO) — `Type=Search, Size=sm` |
+| Lock tooltip | adopted **`Tooltip`** (SKO) — `Supporting text=False, Arrow=Top center` |
 | `Section intro` | built — heading plus lead paragraph, with a boolean for the paragraph |
 | `Course stats` | built — structure, duration, `org · number`, and a programme row |
 | `Course title` | built — title, thumbnail, and an optional `short_description` |
