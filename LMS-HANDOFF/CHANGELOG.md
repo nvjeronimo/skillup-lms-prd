@@ -148,6 +148,52 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · Every learner capability on the Q&A tab, and a sweep of the other ✗
+
+**The Q&A screen now shows what the platform actually offers a learner.** Both components rebuilt and the
+screen with them: search (`text_search`, and the response's `text_search_rewrite` gives *"did you mean"* for
+free), filters that are query parameters rather than client work (`following=True`, unanswered = question
+threads without `has_endorsed`), QUESTION / ANSWERED / FOLLOWING chips, an accepted answer marked in place,
+STAFF author labels, follow toggle, an overflow rendered from `editable_fields`, and a composer with the
+course's inherited anonymity option. 22 annotations across 14 elements, up from 4.
+
+Two things put on the screen precisely so they can be argued with: **anonymous posting**, which is live
+(`allow_anonymous: true`) and a strange fit for a conversation with your assigned mentor; and **votes and
+report**, which exist in the API and are off by default, because upvoting your mentor in a private thread does
+not mean anything.
+
+### The ✗ sweep
+
+Every remaining ✗ re-checked against the live environment, with one test: was this read off a payload, or off
+the workbook?
+
+**Two were wrong.** The **partner logo** — `GET /api/organizations/v0/organizations/` returns all 18
+organisations with a `logo` URL, IBM included. And the **course-level duration** — the Courses API returns
+`effort`, populated: `"4 weeks<br>2-4 hours/week"`. Both endpoints are simply absent from the workbook.
+
+**Four hold, and now on live evidence rather than inherited.** `effort_time` and `effort_activities` null on
+all 22 blocks; `due` null on every block, which is *why* Dates returns two rows; no mentor or instructor field
+in any payload; and `icon` returning `null` on twenty blocks and `fa-pencil-square-o` on two — two values
+against twelve types.
+
+**One was never testable.** Nothing in this course is locked, so `accessible: false` never appears. The claim
+that no unlock date exists is documented, not observed. It is now **⚠︎ untested rather than ✗ confirmed** — a
+different thing, and it should not go into a meeting as the same thing.
+
+**And five fields nobody had recorded**, one of which changes a design: `weekly_learning_goal_enabled` is
+`false` on this course, so the Weekly goal card can be switched off per course — the same shape as
+`disable_progress_graph`. Two sidebar cards now need a suppressed state. Also `hide_from_toc`, `title_prefix`,
+`enroll_alert`, and a `cert_status` of `audit_passing` that the four-state certificate card does not cover.
+
+### What the sweep says about method
+
+Two of six ✗ verdicts were wrong and both failed the same way: **a gap in the workbook was recorded with the
+same ✗ as a gap observed in a payload.** The verdict looked identical, the evidence behind it was not.
+Everything checked directly against a response held.
+
+So the fix goes in the verdict key rather than into more checking. **✗ now means "no source, verified against
+the platform".** Anything resting only on the workbook is ⚠︎ until someone fetches it.
+
 ## 2026-08-21 · Correction: edX does have a discussion API, and it does most of this
 
 Challenged on the claim that no learner-facing discussion API exists, and the challenge was right. **The

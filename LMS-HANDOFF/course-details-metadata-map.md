@@ -798,6 +798,59 @@ The anonymous call returned a **field error, not a 404**: *"username: This field
 is requested."* So the endpoint exists and takes the parameters; proving the `block_counts` payload — the fix
 for topic types — needs a signed-in call. Bookmarks is untested for the same reason. **Still mine to finish.**
 
+### 12.6 The ✗ sweep — two verdicts were wrong, three hold, one was never testable
+
+After the discussion-API correction, every remaining ✗ was re-checked against the live environment rather than
+against the workbook. The test applied to each: **was this read off a payload I fetched, or off a spreadsheet?**
+
+#### Wrong — corrected
+
+**The partner logo.** The IBM chip was marked *"no source anywhere"*.
+`GET /api/organizations/v0/organizations/` returns all 18 organisations, each with a **`logo`** URL —
+IBM's is `/media/organization_logos/ibm_new.png`. Match on `short_name` against the course's `org`. The
+endpoint simply is not in the workbook. **✗ → ✅**, with one real caveat: `org` is the *authoring*
+organisation. This course returns `SkillUp`; a Google course returns `Google`. Where the partner brand and the
+author differ, `org` is the wrong field and there is no other.
+
+**The course-level duration.** The Courses API returns **`effort`**, populated:
+`"4 weeks<br>2-4 hours/week"`. So the *"~ 14 hours"* line is renderable. **✗ → ✅ with a warning** — `effort`
+is free HTML authored in Studio, carries a `<br>`, and mixes a span with a rate. Render verbatim.
+
+#### Confirmed — these hold, and now on live evidence rather than inherited
+
+| Claim | Live result |
+|---|---|
+| `effort_time` and `effort_activities` are null on every block | ✅ confirmed — null on all 22 blocks in the outline |
+| `due` is null on every block | ✅ confirmed — which is *why* Dates returns two rows |
+| No mentor, instructor or staff-profile field anywhere | ✅ confirmed — no `instructors` on the Courses API, none in the outline, none in `course_metadata` |
+| `blocks.{id}.icon` is unusable for the type badge | ✅ confirmed — `null` on 20 blocks, `fa-pencil-square-o` on the two graded sequentials. Two values against twelve types |
+
+#### Never testable on this course
+
+**The lock and the unlock date.** Nothing in `SKOADM01EN` is locked, so neither `accessible: false` nor
+`type: "lock"` appears in the payload at all. The claim that no unlock date exists is still *documented* rather
+than *observed* — it needs a course with a real prerequisite. **Marked ⚠︎ untested rather than ✗ confirmed**,
+which is a different thing and should not go into a meeting as the same thing.
+
+#### Five fields the outline returns that we had never recorded
+
+| Field | Why it matters |
+|---|---|
+| `course_goals.weekly_learning_goal_enabled` | **`false` on this course.** The Weekly goal card can be switched off per course — the same shape of finding as `disable_progress_graph` on Progress. Two sidebar cards now have a suppressed state |
+| `hide_from_toc` | Per block. A unit can be excluded from the table of contents while still existing |
+| `title_prefix` | Empty here, but it prefixes the course title |
+| `enroll_alert` | `{can_enroll, extra_text}` |
+| `cert_data.cert_status: "audit_passing"` | A status value the four-state certificate card does not cover |
+
+#### What the sweep says about method
+
+Two of the six ✗ verdicts were wrong, and both failed the same way: **a gap in the SK-11378 workbook was
+recorded with the same ✗ as a gap observed in a payload.** The verdict looked identical; the evidence behind it
+was not. Everything checked directly against a response held.
+
+The fix is in the verdict key, not in more checking: **✗ now means "no source, verified against the platform"**.
+Anything resting only on the workbook is ⚠︎ until someone fetches it.
+
 ### 12.5 Verified with a session, 21 Aug — the topic type is derivable
 
 Signed in as `nelson-jeronimo` against `course-v1:SkillUp+SKOADM01EN+2026_v1` — *Digital Marketing
