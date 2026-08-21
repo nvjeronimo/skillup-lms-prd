@@ -207,7 +207,7 @@ not a data one: see §12.1.
 | `3 topics · 22 min` | `completion_stat.completable_children` ◑ / duration ✗ | ⚠︎ |
 | Topic row title | `blocks.{vertical}.display_name` | ✅ navigation API only |
 | Type badge (~~`Watch ·` prefix, retired~~) | `blocks.{id}.icon` | ✗ **unusable.** Documented vocabulary is four values — `fa-pencil-square-o`, `problem`, `video`, `other` — against the twelve types in the ICP catalogue (eight live). In the payloads it returns only `null` (45×) and `"other"` (21×) |
-| Clickable title → immersive | `lms_web_url` on sequentials ✅ / **null on verticals** | ⚠︎ construct `jump_to`; verify |
+| Clickable title → immersive | `lms_web_url` on sequentials ✅ / **null on verticals** | ✅ `jump_to` constructed and **verified live 21 Aug** — see §12.5 |
 | `(N Questions)` on a graded quiz | appended to `display_name` by the platform | ✅ documented, field 24 |
 | Graded/exam label | `description` (*"Homework"*, *"Midterm Exam"*), `special_exam_info` | ✅ null on this course |
 
@@ -736,6 +736,73 @@ Two things beyond the fix:
 The anonymous call returned a **field error, not a 404**: *"username: This field is required unless all_blocks
 is requested."* So the endpoint exists and takes the parameters; proving the `block_counts` payload — the fix
 for topic types — needs a signed-in call. Bookmarks is untested for the same reason. **Still mine to finish.**
+
+### 12.5 Verified with a session, 21 Aug — the topic type is derivable
+
+Signed in as `nelson-jeronimo` against `course-v1:SkillUp+SKOADM01EN+2026_v1` — *Digital Marketing
+Fundamentals and the AI Mindset*, the course the live Progress screenshot came from. Everything below is a
+response read off the dev environment, not a workbook sample.
+
+**1. `block_counts` comes back on every block — all 84 of them.** And it answers the question that has been
+open since `blocks.{id}.icon` turned out to be unusable:
+
+| | |
+|---|---|
+| Verticals in the course | **27** |
+| Resolve to a **single** child type | **26** |
+| Mixed | **1** — *Final Project*, which is `html` + `openassessment`: a brief and a submission, genuinely two things |
+
+**So the topic type can be derived** — from the vertical's children, or equivalently from its `block_counts`.
+It costs one extra call to Blocks API v2. That closes the §5 finding as *buildable*, and it is the first
+answer we have had to it.
+
+**But it collapses the catalogue.** The whole course uses **five** leaf types — `html` (14), `problem` (10),
+`video` (6), `scorm` (6), `openassessment` (1) — against **twelve** ICP topic types. `scorm` covers Lab,
+Activity and Practice; `video` covers Video *and* Podcast; `problem` covers Quiz *and* Practice Assignment.
+A derived badge can say **Reading / Video / Quiz / Interactive / Peer-graded** honestly. It cannot say
+*Podcast*, and it cannot tell a Lab from an Activity.
+
+**The authors already know this.** Real `display_name` values in the course include *"Video: Course
+Introduction"* and — the telling one — **"Video: Podcast: Job Roles, Career Path and Growth"**. They are
+writing the type into the title because the platform has nowhere else to put it. Any decision to derive the
+badge has to say what happens to those prefixes, or every row will state its type twice.
+
+**2. Bookmarks is real.** `GET /api/bookmarks/v1/bookmarks/?course_id=…` → **200**, paginated
+(`count`, `num_pages`, `current_page`, `next`, `previous`), zero rows for this user. The *Bookmarks* item in
+the Course tools card has a source. ✓
+
+**3. `jump_to` is verified, with a vertical id.** ✓
+`GET /courses/{course_id}/jump_to/{vertical_block_id}` resolves and redirects to
+`…/learning/course/{course_id}/{sequential_id}/{vertical_id}` in the MFE — it finds the parent sequential
+itself. The ⚠︎ in §3 on constructing topic deep-links becomes a ✓.
+
+**4. Dates returns two blocks on a real course too.** `course-start-date` (28 Jul 2026) and `course-end-date`
+(31 Oct 2037 — a placeholder someone typed). Nothing else. §14.2 was read off the workbook; this confirms it
+against a live course. The ruling it forces is unchanged.
+
+**5. The live Progress payload carries five fields the workbook sample does not:**
+
+| Field | Value here | Why it matters |
+|---|---|---|
+| `disable_progress_graph` | `false` | **A config flag that hides the completion graph.** Our Completion card needs a state for when it is true — otherwise the design assumes a component the course can switch off |
+| `user_has_passing_grade` | `false` | A direct boolean. Cleaner than reading `course_grade.is_passing`, and worth checking which one the MFE trusts |
+| `verification_data` | `{link: null, status: "none", status_date: null}` | ID verification. Not in scope, but it is on the payload |
+| `studio_url` | present | Staff only — this response is role-dependent |
+| `username` | `nelson-jeronimo` | The payload names its subject, which matters for the staff "view as" case |
+
+**6. The chain closes.** The numbers agree end to end, which is the point of doing this at all:
+
+| | Payload | Live page | Our screen |
+|---|---|---|---|
+| Completion | `complete_count: 1`, `incomplete_count: 26` → 3.7% | **4% completed** | 38% (Six Sigma sample) |
+| Grade | `course_grade.percent: 0.15` | **15%** | 15% |
+| Threshold | `grade_range: {Pass: 0.7}` | **Passing grade 70%** | Passing 70% |
+| Policies | Final Exam 0.5 · Final Project 0.5 | **50% / 50%** | 50% / 50% |
+| Graded subsections | 2 of 14 | **one module, two lessons** | one section, two rows |
+
+And it caught a defect in our own screen: the completion card read *"38 complete · 4 incomplete"* beside
+**38%**, which is 90%. Now `16 complete · 26 incomplete · 0 locked` — 42 topics, matching the Course tab, and
+16/42 = 38%. A card whose own two numbers disagree is worse than one with no numbers.
 
 ### 12.3 The addendum is much larger than "two tabs"
 

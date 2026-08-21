@@ -77,6 +77,48 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The topic type is derivable, and five fields we had never seen
+
+Ran the dev-environment verifications with a session, against the real course from the live Progress
+screenshot. Six results, written up as §12.5.
+
+**The topic type can be derived.** `block_counts` comes back on all 84 blocks, and **26 of 27 verticals
+resolve to a single child type** — the one exception being the Final Project, which is `html` +
+`openassessment`, genuinely two things. One extra call to Blocks API v2 buys the badge. That question had been
+open since `blocks.{id}.icon` turned out to return only `null` and `"other"`.
+
+**But it collapses twelve ICP types into five.** The whole course uses `html`, `problem`, `video`, `scorm` and
+`openassessment`. A derived badge can say Reading / Video / Quiz / Interactive / Peer-graded honestly. It
+cannot say *Podcast*, and it cannot tell a Lab from an Activity.
+
+The authors already know. A real title in this course is **"Video: Podcast: Job Roles, Career Path and
+Growth"** — they are writing the type into `display_name` because the platform has nowhere else to put it.
+Deriving the badge without deciding what happens to those prefixes gives every row its type twice, which is
+the duplication we just spent a day removing.
+
+**Bookmarks is real** — 200, paginated, zero rows for this user. The Course tools card has a source. ✓
+
+**`jump_to` is verified with a vertical id** — it resolves to `{sequential}/{vertical}` in the MFE, finding the
+parent itself. The ⚠︎ on constructing topic deep-links becomes a ✓.
+
+**Dates returns two blocks on a real course too** — start and end, nothing else. §14.2 was read off the
+workbook; this confirms it live.
+
+**And the live Progress payload carries five fields the workbook sample does not**, one of which changes a
+design: **`disable_progress_graph`**. It is a config flag that hides the completion graph, so the Completion
+card needs a state for a component the course can switch off. Also `user_has_passing_grade` (a direct boolean,
+where we had been deriving from `is_passing`), `verification_data`, `studio_url` and `username` — the last two
+confirming the response is role-dependent.
+
+**The chain closes.** `complete_count: 1 / incomplete_count: 26` → the live page's **4%**;
+`course_grade.percent: 0.15` → **15%**; `grade_range {Pass: 0.7}` → **70%**; Final Exam 0.5 / Final Project 0.5
+→ the **50/50** table; 2 graded subsections of 14 → **one module, two lessons** in Detailed grades.
+
+Which caught a defect in our own screen. The completion card read *"38 complete · 4 incomplete"* next to
+**38%** — that is 90%. It now reads `16 complete · 26 incomplete · 0 locked`: 42 topics, matching the Course
+tab, and 16/42 = 38%. A card whose own two numbers disagree is worse than one with no numbers, and nobody had
+noticed because nobody had done the division.
+
 ## 2026-08-21 · The technical pages get their own section
 
 `⚙ TECHNICAL · Progress tab` (`5490:4793`) — the Progress tab annotated the same way the Course tab was:
