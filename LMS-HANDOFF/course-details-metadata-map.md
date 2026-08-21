@@ -564,12 +564,22 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 24 | 12 | 4 | 16 | **56** |
+| **Development** | does the field exist, and does it come back populated | 24 | 12 | 4 | 14 | **54** |
 | **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 4 | **17** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 8 | — | 2 | **15** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 7 | — | 3 | **15** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **36** | **26** | **5** | **22** | **89** |
-| | **on elements** | **22** | **17** | **5** | **14** | **58** |
+| | **annotations** | **36** | **25** | **5** | **21** | **87** |
+| | **on elements** | **22** | **16** | **4** | **13** | **55** |
+
+**Nothing is annotated twice.** Verified by comparing every annotation body across the four tabs: 87 distinct
+notes, 87 places. Two shared elements are annotated **only on the Course tab** — the course header and the tab
+bar — because both are identical on all four and a copy is four places to forget to update.
+
+Where a note looked like it was about the tab bar but was really about *that tab's destination*, it moved to
+the page rather than being deleted: the Dates ruling now sits on its own note element, the Q&A cohort-privacy
+constraints on the conversation list, and the *"Progress 404s if the tab is disabled"* warning on the Progress
+heading. The generic *"render from `tabs[]`, never hardcode"* stays once, on the Course tab — where it was
+also misfiled on the course-type badge until 21 Aug.
 
 **The course header is identical on all four tabs and is annotated only on the Course tab.** The inner tabs
 leave it unannotated on purpose. Every field in it comes from `course_metadata` and the Courses API, both
