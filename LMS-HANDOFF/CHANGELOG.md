@@ -86,6 +86,39 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The annotations go back on the working screen
+
+`★ ENTRY · Course Detail — v12` now carries the same **37 annotations across 22 elements** as the technical
+page. Nothing had been deleted — the counts on `⚙ TECHNICAL · Course tab` were intact the whole time — but
+moving the annotated twin into its own section left the screen people actually work on looking bare, which is
+the same thing from where the user was standing.
+
+**The original reasoning was wrong and it is worth naming why.** v12 was left unannotated so there would be
+"the same page without the engineering, for when the conversation is about the design rather than the data".
+But **Dev Mode annotations do not render in Design mode**. The clean view never needed a second copy to buy it
+— you get it by not being in Dev Mode. We paid a real cost for a benefit that did not exist.
+
+Copied node-by-node: 28 matched on structural path, and five needed a second pass on name and content because
+the two trees have diverged — v12's module rows sit directly under `Container:margin` where the technical page
+has an extra `Container`. One of those five landed on the wrong node first (the verb-rule note went to the hero
+container at y=0 instead of the expanded module at y≈848) and was moved. Worth recording as a method: after a
+name-only match, **compare the two annotation orders by y-position** — the mismatch is visible instantly and
+invisible any other way.
+
+⚠︎ **Two copies now exist and Figma cannot keep them in step.** Annotate the technical page when they diverge
+and re-copy; do not maintain both by hand.
+
+**The section is now a comparison.** Under each of our screens sits a screenshot of the platform as it is
+today — ours above, theirs below. That changes what the section is for: not "here is the annotated design" but
+"here is what changes, here is the field behind each change, and here is what you have today".
+
+`Course Detail — Progress tab · v1` was deleted; the annotated `⚙ TECHNICAL · Progress tab` is the only copy
+and carries the design as well as the notes.
+
+**Confirmed again: the `Instructor` tab is staff-only.** It appears in `tabs[]` only for users holding the
+role, which is why it shows in a screenshot taken as Staff and never will for a learner. Nothing on it is ours
+to design.
+
 ## 2026-08-21 · The topic type is derivable, and five fields we had never seen
 
 Ran the dev-environment verifications with a session, against the real course from the live Progress

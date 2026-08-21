@@ -517,7 +517,21 @@ into the tables.
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 | **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
-| **Course Detail — Progress tab · v1** | `5482:4574` | the second tab, built from the Progress API payload and checked against the live page |
+| ~~Course Detail — Progress tab · v1~~ | ~~`5482:4574`~~ | **deleted 21 Aug** — the annotated `⚙ TECHNICAL · Progress tab` (`5490:4793`) is the only copy, and carries the design as well as the notes |
+
+### The comparison layout
+
+Under each of our screens in the technical section sits **a screenshot of the platform as it is today**, so a
+stakeholder can read our version and the current one without switching context. Ours above, theirs below.
+
+That is what the section is for now: not "here is the annotated design" but "here is what changes, here is the
+field behind each change, and here is what you have today". The annotations answer the question the comparison
+provokes.
+
+**The `Instructor` tab is staff-only** and is not part of any of this — confirmed again 21 Aug. It is edX's
+own instructor dashboard, fifty endpoints of enrolment, grade override and reporting, gated by role. It appears
+in `tabs[]` only for users who hold the role, which is why it shows in a screenshot taken as Staff and will
+never appear for a learner. Nothing on it is ours to design.
 
 ### The technical section, and how to run a review from it
 
@@ -557,8 +571,19 @@ single list would collapse them into one.
 5. **Is Mentorship Q&A a forum or 1:1?** `tabs[]` returns the platform forum renamed; decision 007 says 1:1
    async messaging. They are different products. See §14.3.
 
-v12 is deliberately left **unannotated**: the same page without the engineering, for when the conversation is
-about the design rather than the data.
+**Reversed 21 Aug — v12 carries the annotations too.** The rationale above was wrong, and worth saying why:
+**Dev Mode annotations do not render in Design mode.** The clean view was never something a second, unannotated
+copy had to buy — you get it by not being in Dev Mode. Once the technical pages moved into their own section,
+the working screen looked like it had lost its notes, which is a real cost paid for an imaginary benefit.
+
+`★ ENTRY · Course Detail — v12` now carries the same **37 annotations across 22 elements** as
+`⚙ TECHNICAL · Course tab`. They were copied node-by-node, matched by structural path and then by name and
+content for the five the two trees no longer share — v12's module rows sit directly under `Container:margin`
+where the technical page has an extra `Container`.
+
+⚠︎ **Two copies now exist and Figma cannot keep them in step.** Annotate the technical page when they diverge
+and re-copy; do not maintain both by hand. If the comparison layout ever stops needing a separate frame, the
+right move is to delete one, not to keep syncing them.
 
 **Components page** — `↳ LMS / Course Detail — Components 🟠` (`5409:325`)
 
