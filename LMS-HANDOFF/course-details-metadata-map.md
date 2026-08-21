@@ -551,13 +551,19 @@ Open them in **Dev Mode**. Together they carry **73 annotations across 50 elemen
 rather than everything under Development, because they are four different conversations with four different
 owners:
 
-| Category | Carries | Course tab | Progress tab |
-|---|---|---|---|
-| **Development** | the API field and its verdict | 23 | 15 |
-| **Content** | where the words come from and who owns them | 8 | 6 |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 |
-| **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — |
-| | **totals** | **37 across 22** | **27 across 19** |
+| Category | Carries | Course | Progress | Dates | Q&A | All |
+|---|---|---|---|---|---|---|
+| **Development** | the API field and its verdict | 23 | 15 | 4 | 3 | **45** |
+| **Content** | where the words come from and who owns them | 8 | 6 | 1 | 1 | **16** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | — | **11** |
+| **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — | — | — | **1** |
+| | **annotations** | **37** | **27** | **5** | **4** | **73** |
+| | **on elements** | **22** | **19** | **5** | **4** | **50** |
+
+**The four are not equally dense, and that is the finding rather than a gap.** A tab gets as many notes as it
+has fields behind it. Dates has five because *two date rows is the entire payload*. Q&A has four because the
+tab has no learner-facing API and what is drawn are two candidate products, neither signed off. Reading the
+counts as completeness would get it exactly backwards — the thin pages are thin because the platform is.
 
 The Progress page was brought up to the Course page's density on 21 Aug — the tables were annotated row by
 row, and the two cards had the session's findings folded into them. Two of those are worth reading even if
