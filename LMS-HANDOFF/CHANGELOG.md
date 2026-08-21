@@ -77,6 +77,35 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The technical pages get their own section
+
+`⚙ TECHNICAL · Progress tab` (`5490:4793`) — the Progress tab annotated the same way the Course tab was:
+17 annotations across 11 elements, in three of the four categories.
+
+What it puts in front of a stakeholder that the design page cannot: completion and grade are **two different
+numbers** and the card copy has to say so; **70% is `grading_policy.grade_range`**, not a sentence someone
+wrote; `subsections[].url` is a working `jump_to` link, **unlike the syllabus**, where the Navigation API
+returns null on every vertical; **four separate gates** decide whether a score is shown, so a row can be
+present with its score withheld; and the meter's geometry is **drawn, not data** — the one note that stops a
+developer measuring the artboard and shipping the sample's 15% as a constant.
+
+**Both annotated pages moved into a new section** — `⚙ Technical — every element, its field, and whether we
+can build it` (`5490:15278`) — together with the legend. Two reasons: the design pages stopped being read
+through engineering notes, and there is now more than one technical page, so "the technical page" had stopped
+being a thing you could point at.
+
+The frames lost their long names in the move: `⚙ TECHNICAL · Course tab`, `⚙ TECHNICAL · Progress tab`,
+`How to read this section`. The section title carries the explanation now, so the frames do not have to.
+
+**The legend was rewritten for two pages, and the counts were read off the file rather than remembered** —
+54 annotations across 33 elements, Development 32, Content 12, Interaction 9, Accessibility 1. Its closing
+list went from three questions to five: the Dates ruling and the Mentorship Q&A contradiction both belong in
+front of the same room as the mentor and `effort_time` questions.
+
+One small thing worth recording: **the ⚙ glyph does not render in Montserrat** and had to come out of the
+legend's canvas text. It survives in layer and section names, which Figma draws in its own UI font. Same
+family of failure as ✅, already in `figma-api-traps.md`.
+
 ## 2026-08-21 · The other four tabs, and the one we cannot draw
 
 The page had five tabs and one of them was designed. Mapping the other four turned out to need no new

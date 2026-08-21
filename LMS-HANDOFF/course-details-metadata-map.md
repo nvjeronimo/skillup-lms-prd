@@ -517,32 +517,45 @@ into the tables.
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 | **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
-| **⚙ TECHNICAL · Course Detail** | `5446:3985` | the stakeholder page — every element annotated with its field and whether it can be built |
 | **Course Detail — Progress tab · v1** | `5482:4574` | the second tab, built from the Progress API payload and checked against the live page |
-| Technical page — legend | `5448:4325` | how to read it, the verdict key, and the three questions it should provoke |
 
-### The technical page, and how to run a review from it
+### The technical section, and how to run a review from it
 
-`⚙ TECHNICAL · Course Detail` is v12 with **37 native Figma annotations across 22 elements** (counted live, 20 Aug). Open it in
-**Dev Mode**. It uses all four annotation categories rather than putting everything under Development,
-because they are four different conversations with four different owners:
+The annotated pages moved out of the main section on **21 Aug** into their own —
+`⚙ Technical — every element, its field, and whether we can build it` (`5490:15278`). Two reasons: the design
+pages stopped being read through engineering notes, and there is now more than one of them.
 
-| Category | Carries | Count |
+| Frame | Node | What it annotates |
 |---|---|---|
-| **Development** | the API field and its verdict | 23 |
-| **Content** | where the words come from and who owns them | 8 |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 |
-| **Accessibility** | contrast and dark mode, and how they are achieved | 1 |
+| `⚙ TECHNICAL · Course tab` | `5446:3985` | v12, the courseware tab |
+| `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
+| `How to read this section` | `5448:4325` | the legend, the verdict key, and the five questions |
+
+Open them in **Dev Mode**. Together they carry **54 annotations across 33 elements**, in all four categories
+rather than everything under Development, because they are four different conversations with four different
+owners:
+
+| Category | Carries | Course tab | Progress tab |
+|---|---|---|---|
+| **Development** | the API field and its verdict | 23 | 9 |
+| **Content** | where the words come from and who owns them | 8 | 4 |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 4 |
+| **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — |
+| | **totals** | **37 across 22** | **17 across 11** |
 
 The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
 (Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
 single list would collapse them into one.
 
-**The three questions the legend ends on**, which are what the meeting should actually decide:
+**The five questions the legend ends on**, which are what the meeting should actually decide:
 
 1. **Who supplies the mentor?** The only gap that survived both the API audit and the library sweep.
-2. **Who authors `effort_time`?** Every duration on the page depends on a field nobody fills.
+2. **Who authors `effort_time`?** Every duration on the Course tab depends on a field nobody fills.
 3. **Does the unlock tooltip stay?** The API gives a boolean — no date, no prerequisite, no rule.
+4. **Dates: tab or sidebar widget?** `course_date_blocks` returns two rows on our courses, because `due` is
+   null everywhere. See §14.2.
+5. **Is Mentorship Q&A a forum or 1:1?** `tabs[]` returns the platform forum renamed; decision 007 says 1:1
+   async messaging. They are different products. See §14.3.
 
 v12 is deliberately left **unannotated**: the same page without the engineering, for when the conversation is
 about the design rather than the data.
