@@ -113,6 +113,35 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The open questions get a board, and a sixth one
+
+`Open questions — who owns each, and what closes it` (`5504:5594`), under the legend in the technical section.
+The legend had been listing five questions as one-liners, which is enough to remember them and not enough to
+act on any of them.
+
+Each now carries three lines: **why it is open**, **what closes it**, and **what it blocks**, with an owner
+against the question itself. "Open" on its own does not tell you who to call — that was the whole problem with
+the list.
+
+| # | Question | Owner |
+|---|---|---|
+| 1 | Who supplies the mentor? | Product · SkillUp platform |
+| 2 | Who authors `effort_time`? | Content team |
+| 3 | Does the unlock tooltip stay? | Design · Product |
+| 4 | Dates: tab, or the sidebar widget? | Product |
+| 5 | Is Mentorship Q&A a forum, or 1:1? | Product — not design |
+| 6 | Do we derive the topic type, and what happens to the title prefixes? | Product · Content |
+
+**Six is new**, and it exists because of the dev-environment session. The topic type *is* derivable from
+Blocks v2 at the cost of one extra call — that part is good news, and it closes a finding that has been open
+since `blocks.{id}.icon` turned out to be unusable. But it collapses twelve ICP types into five, and the
+authors are already compensating by writing the type into `display_name`: a real title in the dev course is
+*"Video: Podcast: Job Roles, Career Path and Growth"*. Derive the badge without deciding what happens to those
+prefixes and every row states its type twice — the exact duplication the verb ruling had just removed.
+
+Two of the six changed character this week rather than being new. **4** and **5** used to be flagged in prose;
+both now have a page showing the options, so the board points at a drawing rather than at a paragraph.
+
 ## 2026-08-21 · The annotations are about edX, not about our components
 
 A scope correction, and it removes work rather than adding it. Every annotation on these pages should answer

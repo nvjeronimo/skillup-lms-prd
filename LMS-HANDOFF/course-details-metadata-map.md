@@ -545,7 +545,8 @@ pages stopped being read through engineering notes, and there is now more than o
 | `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
 | `⚙ TECHNICAL · Dates tab` | `5497:150395` | the two rows the payload actually returns, and the ruling it forces |
 | `⚙ TECHNICAL · Mentorship Q&A tab` | `5497:150800` | both candidate products, side by side, neither signed off |
-| `How to read this section` | `5448:4325` | the legend, the verdict key, and the five questions |
+| `How to read this section` | `5448:4325` | the legend, the scope rule, and the verdict key |
+| `Open questions — who owns each, and what closes it` | `5504:5594` | the six decisions this section exists to force |
 
 Open them in **Dev Mode**. Together they carry **73 annotations across 50 elements**, in all four categories
 rather than everything under Development, because they are four different conversations with four different
@@ -588,15 +589,23 @@ The Development / Content split is the one that earns its keep in a review. `wel
 (Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
 single list would collapse them into one.
 
-**The five questions the legend ends on**, which are what the meeting should actually decide:
+**The six open questions** now have their own board — `5504:5594`, under the legend. Each carries three
+lines that "open" on its own does not give you: **why it is open**, **who owns it**, and **what would close
+it**. None of them is a design question; every one needs somebody outside the file to choose.
 
-1. **Who supplies the mentor?** The only gap that survived both the API audit and the library sweep.
-2. **Who authors `effort_time`?** Every duration on the Course tab depends on a field nobody fills.
-3. **Does the unlock tooltip stay?** The API gives a boolean — no date, no prerequisite, no rule.
-4. **Dates: tab or sidebar widget?** `course_date_blocks` returns two rows on our courses, because `due` is
-   null everywhere. See §14.2.
-5. **Is Mentorship Q&A a forum or 1:1?** `tabs[]` returns the platform forum renamed; decision 007 says 1:1
-   async messaging. They are different products. See §14.3.
+| # | Question | Owner |
+|---|---|---|
+| 1 | Who supplies the mentor? | Product · SkillUp platform |
+| 2 | Who authors `effort_time`? | Content team |
+| 3 | Does the unlock tooltip stay? | Design · Product |
+| 4 | Dates: tab, or the sidebar widget? | Product |
+| 5 | Is Mentorship Q&A a forum, or 1:1? | Product — not design |
+| 6 | Do we derive the topic type, and what happens to the title prefixes? | Product · Content |
+
+Six is new. It came out of the 21 Aug session (§12.5): the topic type **is** derivable, at one extra call, but
+it collapses twelve ICP types into five and the authors are already writing the type into `display_name` to
+compensate. Deriving the badge without deciding what happens to those prefixes gives every row its type twice
+— the duplication the verb ruling had just removed.
 
 **Reversed 21 Aug — v12 carries the annotations too.** The rationale above was wrong, and worth saying why:
 **Dev Mode annotations do not render in Design mode.** The clean view was never something a second, unannotated
