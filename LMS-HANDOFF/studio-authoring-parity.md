@@ -261,3 +261,33 @@ proves unreadable without it.
 keyboard path, so on a phone and for a keyboard user the zoom does not exist. Whatever detail the image
 carries needs a second route to it: a caption, a table, or a full-size download. That is on top of edX listing
 the tool as unmaintained. Both are in the component's annotation, where whoever picks it will see them.
+
+---
+
+## 9 · Where this lives in the ICP — Aug 21, 2026
+
+Everything above is now a **section a reviewer can open**, next to the Technical section on
+`Plaftorm Pages (SkillUp UI) - V8 - WIP`:
+
+**`⚙ ICP — components and assets for topic creation`** — `5497:151413`
+([open](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=5497-151413))
+
+| Block | Node | What it holds |
+|---|---|---|
+| Cover | `5497:151414` | What the section is, and that the support/mobile columns are edX's, not ours |
+| The nine tiles | `5497:151417` | Tile → XBlock → what renders it → status, for all nine |
+| Inside the Text tile | `5497:151471` | The six templates, with Announcement and Zooming Image settled |
+| Built this round | `5497:151510` | **179 live instances** of the published components, in five titled cards |
+| Still open | `5497:152464` | The questions and the deliberate gaps, each with whose call it is |
+
+**Live instances, not pictures.** The gallery instantiates the published library components, so it tracks the
+DS: republish and accept, and the section updates itself. It also means each specimen opens to its own
+annotation in Dev Mode, which is where the mode rules and the accessibility warnings actually live.
+
+**One defect the gallery caught.** Laying the variants side by side exposed
+`ORA · Training Feedback · Mismatched` carrying a **duplicated third row** — *You selected · Staff selected ·
+Staff selected* — left behind by a plugin timeout during the build. Fixed at source. Nothing else in the
+179 instances was wrong; the only other truncations trace to `Input field`, which truncates by design.
+
+**The four reference images stay.** `image 2`–`image 5` in the Technical section are kept deliberately, for
+comparison against the frames that replaced them.

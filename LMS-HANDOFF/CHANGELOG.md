@@ -2,6 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-21 · The authoring inventory becomes a section a reviewer can open
+
+`⚙ ICP — components and assets for topic creation` — `5497:151413`, next to the Technical section on
+`Plaftorm Pages (SkillUp UI) - V8 - WIP`. Five blocks: the nine Studio tiles and what renders each, the six
+Text templates, **179 live instances** of the published components grouped into five titled cards, and a
+closing table of what is still open with whose call it is.
+
+**Live instances, not screenshots.** The gallery instantiates the library, so republishing the DS updates the
+section, and each specimen opens to its own annotation in Dev Mode — which is where the Drag and Drop mode
+rules and the Zooming Image accessibility warnings actually live. A picture would have stranded both.
+
+**Laying the variants side by side found a bug.** `ORA · Training Feedback · Mismatched` was carrying a
+duplicated third row — *You selected · Staff selected · Staff selected* — from a plugin timeout during the
+build. Fixed at source; the DS needs republishing to release it. Nothing else in the 179 instances was wrong.
+
+**The four reference images stay** in the Technical section, kept for comparison against the frames that
+replaced them.
+
 ## 2026-08-20 · The four gaps the doc sweep found, all closed
 
 | Built | Result |
