@@ -39,6 +39,44 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The other four tabs, and the one we cannot draw
+
+The page had five tabs and one of them was designed. Mapping the other four turned out to need no new
+research: the payloads for **Progress** and **Dates** were in the workbook all along, on the *API Information*
+sheet, as APIs 4 and 5. Written up as §14.
+
+**Progress is built** (`5482:4574`), from four new components — `Completion card`, `Grade meter`,
+`Grade summary row`, `Score row`. The numbers are the workbook's own sample, so the table can be checked
+against the payload instead of admired. The live page was the reference and confirmed the mapping: completion
+and grade are two different numbers in two separate cards, the 70% threshold is `grading_policy.grade_range`
+rather than copy, and *Detailed grades* lists only graded sections — which is why its footnote pointing
+elsewhere for everything ungraded is load-bearing.
+
+Five places we did not copy the platform: the live tab has **no hero at all**, so nothing on it names the
+course you are in; its **Related links** card offers two destinations already in the tab bar above it; it
+reports `locked_count` and renders only two of the three counts; its passing-grade notice is **dismissible**;
+and its sidebar carries links where ours carries Certificate and Weekly goal — the two cards that answer the
+questions this tab raises.
+
+**Dates is a whole tab for two rows.** `course_date_blocks[]` is a well-formed timeline with links and a
+complete flag, and on our courses it returns `course-start-date` and `course-end-date` and nothing else,
+because `due` is null on every block. A dedicated tab reading *"Course starts"* and *"Course ends"* will be
+read as broken. That forces the ruling flagged back in §5 — sidebar widget or tab — and the honest default is
+to keep the widget and not render the tab until content authors set due dates.
+
+**Mentorship Q&A cannot be drawn, and not for want of an API.** `tabs[]` returns `tab_id: discussion` titled
+*Mentorship Q&A*: the platform's **discussion forum**, renamed. Decision 007 is accepted and says mentoring is
+unlimited **1:1 asynchronous messaging**, explicitly not group threads. A forum is many-to-many by
+construction. So the tab is not the mentoring the product decided to build, and *Message David* on the mentor
+card has no 1:1 endpoint behind it.
+
+Drawing threads now would be guessing which side wins. Either mentoring is the forum and 007 needs revisiting,
+or it is 1:1 and needs a SkillUp-side service no Course Home API provides. That is a product decision, so the
+tab stays undrawn and the question goes back to the room.
+
+**Live, Recordings and Instructor** are specified in §14.4 and §14.5 — the first two real and out of MVP by
+Harpreet's ruling, the third fifty endpoints of staff administration a learner never sees.
+
 ## 2026-08-20 · The verb goes, and the tooltip was in the library too
 
 **The verb prefix is retired from every topic type.** Titles now render `display_name` verbatim — *DMAIC

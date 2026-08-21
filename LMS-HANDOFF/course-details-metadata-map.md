@@ -518,6 +518,7 @@ into the tables.
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 | **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
 | **⚙ TECHNICAL · Course Detail** | `5446:3985` | the stakeholder page — every element annotated with its field and whether it can be built |
+| **Course Detail — Progress tab · v1** | `5482:4574` | the second tab, built from the Progress API payload and checked against the live page |
 | Technical page — legend | `5448:4325` | how to read it, the verdict key, and the three questions it should provoke |
 
 ### The technical page, and how to run a review from it
@@ -562,6 +563,8 @@ about the design rather than the data.
 | `Section intro` | `5456:852` |
 | `Course stats` | `5460:871` |
 | `Course title` | `5460:15187` |
+| `Completion card` · `Grade meter` | `5483:979` · `5484:980` |
+| `Grade summary row` (Header/Row/Total) · `Score row` (Section/Subsection) | `5485:870` · `5486:862` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
 
 **Row paddings and gaps are bound to `Spacing/*`** on both row components — `lg` (12) for the row insets,
@@ -837,6 +840,38 @@ row must degrade to non-clickable. And `assignment_policies[].type` is free text
 sample carries `"Final Quiz "` with a trailing space and `"Hands-on Lab: BigQuery Machine Learning using
 Soccer Data"` as a *type*. Render verbatim, and do not design a layout that assumes a short label; `short_label`
 is the short one.
+
+### 14.1b The Progress tab, built — and five places we did not copy the platform
+
+`5482:4574`. Four new components: `Completion card`, `Grade meter`, `Grade summary row` (Header/Row/Total)
+and `Score row` (Section/Subsection). The numbers in it are the workbook's own sample — Final Quiz weighted
+0.3, Lab 0.7, current weighted grade 15%, pass at 70% — so the table can be checked against the payload rather
+than admired.
+
+The live page was the reference, and it confirmed the mapping. Five things we did **not** carry over:
+
+**1. The live Progress tab has no hero at all.** Nothing on it names the course you are in. Ours keeps a slim
+hero — breadcrumb and title, with the chips, stats and progress card hidden — because losing your place on a
+tab switch is a defect, not a layout saving.
+
+**2. Related links is redundant and was dropped.** The live sidebar offers *Dates* and *Course Outline* as
+links — two of the destinations already sitting in the tab bar at the top of the same page. Copying it would be
+copying a platform mistake.
+
+**3. The completion card shows `locked_count`.** The platform reports three numbers and renders two. A learner
+whose total is short with no explanation has nowhere to look; naming the locked count costs one line.
+
+**4. The passing-grade notice is not dismissible.** It uses the library `Alert` with `X close button=false`
+and `Color=Warning`. A requirement to pass is not a message you have finished reading — which is the exact case
+the `Persistent` variant request in `library-requests.md` was filed for. Until that variant exists, turning the
+close button off is the workaround, and it is a *property* rather than a rule, so it will drift.
+
+**5. The sidebar carries Certificate and Weekly goal, nothing else.** Both answer a question this tab raises —
+am I going to pass, and am I keeping pace. Mentor, Handouts, Dates and Tools belong to the Course tab.
+
+One thing to hand to engineering with the file: **the meter's geometry is drawn, not data.** Fill width and
+threshold position are pixels in Figma and percentages in code. The component description says so, because a
+developer measuring the artboard would ship the sample's 15% as a constant.
 
 ### 14.2 Dates — a whole tab for two rows
 
