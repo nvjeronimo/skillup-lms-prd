@@ -229,10 +229,35 @@ layout problem.
 
 ---
 
-## 8 · Revised build list
+## 8 · Build list — all closed, 20 Aug 2026
 
-1. **Math Expression Input** — a variant on `Quiz · Answer Input`. Full support, mobile ✅, small.
-2. **ORA Learner Training + Self Assessment** — two steps on the existing stepper, reusing the rubric.
-3. **`HTML (Table)`** on `Lesson Block` — natively authorable, and someone must decide 375px.
-4. **Zooming Image** — only if we are content for the team to use an unmaintained tool.
-5. **Annotate the Drag and Drop mode split** — free, and prevents the components being read as one behaviour.
+| # | Built | Where |
+|---|---|---|
+| 1 | **Math Expression Input** — `Type=Math` × 3 states | `Quiz · Answer Input`, now 12 variants |
+| 2 | **ORA Learner Training + Self Assessment** — 5 segments, 5 step variants, two booleans | `ORA · Stepper` |
+| 2b | **`ORA · Training Feedback`** — Matched / Mismatched | new component |
+| 3 | **`HTML (Table)`** | `Lesson Block`, now 9 kinds |
+| 4 | **`LMS / Zooming Image`** — Idle / Zoomed | new component |
+| 5 | **Drag and Drop mode split** annotated | `Drag and Drop · Card` · `Zone` |
+
+**Three decisions taken while building, each written into the component rather than left here.**
+
+**The maths preview is not decoration.** The learner types `x^2 + 2*x + 1` in plain text and the platform
+renders it as formatted maths below the field, live. That strip is how they check their expression parsed the
+way they meant — and grading is by mathematical equivalence, so two different-looking answers can both be
+right.
+
+**The ORA step numbers are placeholders and the component says so.** A course can enable any subset of the six
+steps; if training is off, *Review 1 peer* is step 2, not 3. The numbering has to come from the enabled step
+list. Staff Assessment gets no segment at all — it overrides the grade rather than being a step the learner
+walks through.
+
+**A table scrolls sideways at 375px; it does not restack into cards.** A table exists so columns can be
+compared, and stacking destroys the one thing it is for. The block clips and the table scrolls inside it, so
+the page never scrolls sideways. Pinning the first column is a build cost — specify it only if a real table
+proves unreadable without it.
+
+**And one warning that outranks the build.** `Zooming Image` is **pointer-only** — no documented touch or
+keyboard path, so on a phone and for a keyboard user the zoom does not exist. Whatever detail the image
+carries needs a second route to it: a caption, a table, or a full-size download. That is on top of edX listing
+the tool as unmaintained. Both are in the component's annotation, where whoever picks it will see them.

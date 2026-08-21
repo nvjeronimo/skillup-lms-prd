@@ -2,6 +2,44 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · The four gaps the doc sweep found, all closed
+
+| Built | Result |
+|---|---|
+| `Quiz · Answer Input` | `Type=Math` added — 12 variants |
+| `ORA · Stepper` | 5 segments, 5 step variants, `Show training` / `Show self` |
+| `ORA · Training Feedback` | new — Matched / Mismatched |
+| `Lesson Block` | `HTML (Table)` — 9 kinds |
+| `LMS / Zooming Image` | new — Idle / Zoomed |
+
+**The maths preview is the component, not a flourish.** The learner types `x^2 + 2*x + 1` as plain text and
+the platform renders it as formatted maths below the field as they type. That strip is how they verify the
+expression parsed the way they meant — and since grading is by mathematical equivalence, two answers that look
+nothing alike can both be correct.
+
+**The ORA step numbers are placeholders, and the component says so in its description.** A course enables any
+subset of the six steps; with training off, *Review 1 peer* is step 2, not 3. A static component cannot
+renumber itself, so the rule is written where someone will read it: derive the numbering from the enabled
+steps. Staff Assessment deliberately has no segment — it overrides the grade rather than being a step the
+learner walks through.
+
+**A table scrolls sideways at 375px rather than restacking into cards.** A table exists so columns can be
+compared; stacking destroys the only reason to use one. The block clips and the table scrolls within it, so
+the page itself never scrolls sideways. Pinning the first column is a build cost, specified only if a real
+table proves unreadable without it.
+
+**And a warning that matters more than the component it is attached to.** `Zooming Image` is **pointer-only** —
+no documented touch or keyboard path, so on a phone and for a keyboard user the zoom is simply absent. Any
+detail the image carries needs a second route: a caption, a table, or a full-size download. That sits on top
+of edX listing the tool as unmaintained. Both are in the annotation, where whoever reaches for it will see
+them before they commit.
+
+**Two build notes.** `combineAsVariants` re-derived the variant property from the component names and produced
+`Property 1` / `Property 2` on the Training Feedback set — renaming the variants back to `State=…` restored it.
+And the plugin bridge resolves nodes in the **active** file, so screenshots of the DS only work while the DS
+tab is in front; every component here was checked visually before being called done, and three defects were
+caught that way — a half-built table row, a missing feedback row, and a step numbered 3 in position 5.
+
 ## 2026-08-20 · What is inside each Studio tile, read off the official docs
 
 The nine tiles were the wrong unit of measurement. A creator does not pick "Problem" — they pick *Numerical
