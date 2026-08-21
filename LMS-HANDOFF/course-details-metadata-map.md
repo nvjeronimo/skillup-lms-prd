@@ -545,17 +545,26 @@ pages stopped being read through engineering notes, and there is now more than o
 | `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
 | `How to read this section` | `5448:4325` | the legend, the verdict key, and the five questions |
 
-Open them in **Dev Mode**. Together they carry **54 annotations across 33 elements**, in all four categories
+Open them in **Dev Mode**. Together they carry **64 annotations across 41 elements**, in all four categories
 rather than everything under Development, because they are four different conversations with four different
 owners:
 
 | Category | Carries | Course tab | Progress tab |
 |---|---|---|---|
-| **Development** | the API field and its verdict | 23 | 9 |
-| **Content** | where the words come from and who owns them | 8 | 4 |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 4 |
+| **Development** | the API field and its verdict | 23 | 15 |
+| **Content** | where the words come from and who owns them | 8 | 6 |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 |
 | **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — |
-| | **totals** | **37 across 22** | **17 across 11** |
+| | **totals** | **37 across 22** | **27 across 19** |
+
+The Progress page was brought up to the Course page's density on 21 Aug — the tables were annotated row by
+row, and the two cards had the session's findings folded into them. Two of those are worth reading even if
+nothing else on the page is:
+
+- **`disable_progress_graph` can switch the completion card off.** It is a per-course config flag, verified on
+  the live payload. The card needs a suppressed state; it is not guaranteed to be on the page.
+- **`user_has_passing_grade` is a top-level boolean**, alongside `course_grade.is_passing`. Both are on the
+  payload and they answer the same question. Decide which one the build trusts before they disagree.
 
 The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
 (Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a

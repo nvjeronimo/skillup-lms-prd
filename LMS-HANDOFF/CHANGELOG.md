@@ -95,6 +95,30 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The Progress page brought up to density
+
+`⚙ TECHNICAL · Progress tab` goes from **17 annotations across 11 elements to 27 across 19**. The section
+total is now **64 across 41**. What was missing was the detail level the Course tab already had: the tables
+were annotated as blocks, not row by row, so the things a developer actually asks about were not on the page.
+
+Added: the slim hero and why the chips are hidden; the search control; the grade-summary header and which two
+of its four columns are **derived** rather than fetched; the free-text hazard on `assignment_policies[].type`,
+with the real payload's `"Final Quiz "` trailing space; the total row equalling `course_grade.percent` and the
+warning not to recompute it independently; the section and subsection rows with their `jump_to` url and the
+**four gates** that decide whether a score is shown; and why the sidebar carries Certificate and Weekly goal
+where the platform puts a Related links card pointing at its own tab bar.
+
+**The session's findings were folded into the two cards**, which is where they will actually be read:
+
+- **`disable_progress_graph` can switch the completion card off** — a per-course config flag verified on the
+  live payload. The card needs a suppressed state. A design that assumes a component the course can disable is
+  a design that breaks on some courses and nobody knows why.
+- **`user_has_passing_grade` is a top-level boolean** alongside `course_grade.is_passing`. Both answer the same
+  question. Decide which the build trusts before they disagree.
+
+The legend was recounted off the file and its footer corrected — it still claimed un-annotated twins live in
+the main section, which stopped being true when v12 took the annotations and the Progress v1 frame was deleted.
+
 ## 2026-08-21 · The annotations go back on the working screen
 
 `★ ENTRY · Course Detail — v12` now carries the same **37 annotations across 22 elements** as the technical
