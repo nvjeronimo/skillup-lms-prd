@@ -205,7 +205,7 @@ The platform supports up to six ordered steps; our `ORA · Stepper` has three.
 | Step | DS |
 |---|---|
 | Your Response — prompt + rich text and/or file upload | ✅ `ORA · Upload` |
-| **Learner Training** — grade sample responses against the staff answer before peers | ❌ **missing** |
+| **Learner Training** — grade sample responses against the staff answer before peers | 🟡 a `Stepper` segment, but see §10 — the feedback it produces is Dev-mode only on our platform |
 | Peer Assessment — grade N peers | ✅ |
 | **Self Assessment** | ❌ **missing as a step** |
 | Staff Assessment — overrides all | ✅ `ORA · Grade Panel [Staff override]` |
@@ -213,6 +213,10 @@ The platform supports up to six ordered steps; our `ORA · Stepper` has three.
 
 Both gaps are steps, not screens from scratch — the rubric, the criteria and the grade surfaces already exist
 and are reused by each step.
+
+**Written before we knew what Learner Training does here.** The docs describe it as a learner step; on our
+platform its matched/mismatched feedback is an internal test surface. §10 has what changed and what is still
+open.
 
 ### 7.5 · Not in our grid at all
 
@@ -235,7 +239,7 @@ layout problem.
 |---|---|---|
 | 1 | **Math Expression Input** — `Type=Math` × 3 states | `Quiz · Answer Input`, now 12 variants |
 | 2 | **ORA Learner Training + Self Assessment** — 5 segments, 5 step variants, two booleans | `ORA · Stepper` |
-| 2b | **`ORA · Training Feedback`** — Matched / Mismatched | new component |
+| 2b | ~~**`ORA · Training Feedback`** — Matched / Mismatched~~ | **retired 21 Aug — see §10** |
 | 3 | **`HTML (Table)`** | `Lesson Block`, now 9 kinds |
 | 4 | **`LMS / Zooming Image`** — Idle / Zoomed | new component |
 | 5 | **Drag and Drop mode split** annotated | `Drag and Drop · Card` · `Zone` |
@@ -277,17 +281,40 @@ Everything above is now a **section a reviewer can open**, next to the Technical
 | Cover | `5497:151414` | What the section is, and that the support/mobile columns are edX's, not ours |
 | The nine tiles | `5497:151417` | Tile → XBlock → what renders it → status, for all nine |
 | Inside the Text tile | `5497:151471` | The six templates, with Announcement and Zooming Image settled |
-| Built this round | `5497:151510` | **179 live instances** of the published components, in five titled cards |
+| Built this round | `5497:151510` | **177 live instances** of the published components, in five titled cards |
 | Still open | `5497:152464` | The questions and the deliberate gaps, each with whose call it is |
 
 **Live instances, not pictures.** The gallery instantiates the published library components, so it tracks the
 DS: republish and accept, and the section updates itself. It also means each specimen opens to its own
 annotation in Dev Mode, which is where the mode rules and the accessibility warnings actually live.
 
-**One defect the gallery caught.** Laying the variants side by side exposed
-`ORA · Training Feedback · Mismatched` carrying a **duplicated third row** — *You selected · Staff selected ·
-Staff selected* — left behind by a plugin timeout during the build. Fixed at source. Nothing else in the
-179 instances was wrong; the only other truncations trace to `Input field`, which truncates by design.
+**One defect the gallery caught, and one component it retired.** Laying the variants side by side exposed
+`ORA · Training Feedback · Mismatched` carrying a duplicated third row. That fix was overtaken: the banner
+turned out not to be a learner surface at all, and the component is gone — §10. Nothing else in the
+**177 instances** is wrong; the only truncations trace to `Input field`, which truncates by design.
 
 **The four reference images stay.** `image 2`–`image 5` in the Technical section are kept deliberately, for
 comparison against the frames that replaced them.
+
+---
+
+## 10 · `ORA · Training Feedback` — retired 21 Aug 2026
+
+**Deleted from the DS, removed from the ICP gallery, and struck from the build list above.** It was designed
+on the strength of the edX docs, which describe Learner Training as a learner step: the learner scores a
+sample response, the platform compares their scores with the staff scores criterion by criterion, and tells
+them whether they matched.
+
+**On our platform that readout is a Dev-mode surface for internal testing, not something a learner ever
+sees.** Confirmed by Nelson, 21 Aug. A component for it would have put an internal test artefact into the
+content team's kit, described as a learner feature — the most expensive kind of wrong, because nobody
+questions a thing that is already drawn.
+
+**The open consequence.** `ORA · Stepper` still carries a `Training` segment and a `Show training` boolean,
+drawn from the same docs paragraph. If the training *step* is equally dev-only, that segment goes too and the
+stepper drops to four. Left standing deliberately: removing it is a different question from removing the
+banner, and it is not ours to answer.
+
+**What this does not undo.** The step-numbering rule survives — a course enables any subset of the six steps,
+so the numbers have to come from the enabled list rather than be baked in. That was always the point of the
+`Show training` / `Show self` booleans, whatever the training step turns out to be.

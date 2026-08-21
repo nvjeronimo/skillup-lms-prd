@@ -6,16 +6,25 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 `⚙ ICP — components and assets for topic creation` — `5497:151413`, next to the Technical section on
 `Plaftorm Pages (SkillUp UI) - V8 - WIP`. Five blocks: the nine Studio tiles and what renders each, the six
-Text templates, **179 live instances** of the published components grouped into five titled cards, and a
+Text templates, **177 live instances** of the published components grouped into five titled cards, and a
 closing table of what is still open with whose call it is.
 
 **Live instances, not screenshots.** The gallery instantiates the library, so republishing the DS updates the
 section, and each specimen opens to its own annotation in Dev Mode — which is where the Drag and Drop mode
 rules and the Zooming Image accessibility warnings actually live. A picture would have stranded both.
 
-**Laying the variants side by side found a bug.** `ORA · Training Feedback · Mismatched` was carrying a
-duplicated third row — *You selected · Staff selected · Staff selected* — from a plugin timeout during the
-build. Fixed at source; the DS needs republishing to release it. Nothing else in the 179 instances was wrong.
+**Laying the variants side by side found a bug, then retired the component.** `ORA · Training Feedback`
+was carrying a duplicated third row from a plugin timeout; the fix was overtaken within the hour. On our
+platform that matched/mismatched readout is a **Dev-mode surface for internal testing** — a learner never
+sees it. Deleted from the DS and from the gallery. It had been designed on the edX docs, which describe
+Learner Training as a learner step, and the gallery is what made the mismatch visible: a component sitting
+in the content team's kit, labelled as a learner feature, that no learner would ever meet.
+
+**One consequence left open.** `ORA · Stepper` still carries a `Training` segment and a `Show training`
+boolean from the same docs paragraph. If the step is equally dev-only, the stepper drops to four segments.
+Left standing — that is a different question, and not ours to answer.
+
+Nothing else in the **177 instances** is wrong.
 
 **The four reference images stay** in the Technical section, kept for comparison against the frames that
 replaced them.
@@ -26,7 +35,7 @@ replaced them.
 |---|---|
 | `Quiz · Answer Input` | `Type=Math` added — 12 variants |
 | `ORA · Stepper` | 5 segments, 5 step variants, `Show training` / `Show self` |
-| `ORA · Training Feedback` | new — Matched / Mismatched |
+| ~~`ORA · Training Feedback`~~ | new — Matched / Mismatched · **retired 21 Aug, Dev-mode only** |
 | `Lesson Block` | `HTML (Table)` — 9 kinds |
 | `LMS / Zooming Image` | new — Idle / Zoomed |
 
