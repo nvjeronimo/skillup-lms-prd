@@ -40,6 +40,15 @@ And the plugin bridge resolves nodes in the **active** file, so screenshots of t
 tab is in front; every component here was checked visually before being called done, and three defects were
 caught that way — a half-built table row, a missing feedback row, and a step numbered 3 in position 5.
 
+**Post-publish validation.** All eight components verified in the DS: correct variant counts, **0 raw paints**,
+**0 unstyled text** — six unstyled nodes were found and fixed during the sweep, five of them in the
+`HTML (iframe)` kind's source bar, which predated today and had been published that way.
+
+**The ICP has not taken the update yet.** Its instances still resolve to the old sets — Answer Input 9 of 12,
+Lesson Block 8 of 9, ORA Stepper 3 of 5 — with **0 broken**. Publishing makes an update available; the
+consuming file still has to accept it. Nothing is wrong, but nothing has arrived either, and the distinction
+is worth stating rather than assuming.
+
 ## 2026-08-20 · What is inside each Studio tile, read off the official docs
 
 The nine tiles were the wrong unit of measurement. A creator does not pick "Problem" — they pick *Numerical
