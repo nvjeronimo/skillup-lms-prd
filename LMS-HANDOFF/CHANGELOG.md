@@ -113,6 +113,36 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · The annotations are about edX, not about our components
+
+A scope correction, and it removes work rather than adding it. Every annotation on these pages should answer
+one of two questions — **does the platform do this**, and **can we get the data**. They are about our design
+against edX. Which component we built something from is design-system housekeeping and belongs in the
+component description, not on a page a stakeholder reads.
+
+**Six annotations removed** across the mirrored pages: *"should be an instance of the library `Input field`"*
+— which was also stale, since the swap happened days ago — and the mentor card's *"inverted by pinning the
+variant to `Dark mode SKO`"*.
+
+**Two were rewritten to keep the rule and drop the housekeeping.** The course-ended alert said *"Library
+`Alert`, Code Connected to `InlineAlert.tsx`. The course-ended tone must have `X close button` off…"*. It now
+says: **a warning about a permanent condition must not be dismissible** — `has_ended: true` does not turn back,
+and a close button removes information the learner cannot get back. Same rule, no library. The Progress tab's
+passing-grade notice got the same treatment, and split into the two facts it was carrying: the threshold
+rewrites itself from `grade_range`, and the notice must not be dismissible.
+
+**One was reclassified rather than cut.** The lock tooltip's note that the lock *must be a focusable control,
+because a hover-only tooltip does not exist for keyboard or touch*, was sitting under Interaction. That is an
+accessibility requirement and a functional one — it moved to Accessibility, which is now the only annotation
+in that category and correctly so.
+
+Section total: **71 annotations across 50 elements** — Development 45, Content 14, Interaction 11,
+Accessibility 1. The scope rule is now written into the legend itself, so the next person adding a note has
+the test in front of them.
+
+The distinction matters because of who reads this. A stakeholder deciding whether a tab ships does not care
+which library the alert came from. They care that the warning cannot be dismissed.
+
 ## 2026-08-21 · The Progress page brought up to density
 
 `⚙ TECHNICAL · Progress tab` goes from **17 annotations across 11 elements to 27 across 19**. The section

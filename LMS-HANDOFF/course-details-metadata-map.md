@@ -551,13 +551,23 @@ Open them in **Dev Mode**. Together they carry **73 annotations across 50 elemen
 rather than everything under Development, because they are four different conversations with four different
 owners:
 
+**Scope rule — what an annotation is for.** Every one answers one of two questions: **does the platform do
+this**, and **can we get the data**. They are about our design against edX. They are *not* about which
+component we built it from — a note saying "this should be an instance of `Input field`" is design-system
+housekeeping, it belongs in the component description, and it was removed from these pages on 21 Aug. Six
+annotations went; two more lost the half that named a library and kept the half that stated a rule.
+
+The distinction matters because of who reads this. A stakeholder deciding whether a tab ships does not care
+which library the alert came from. They care that **a warning about a permanent condition cannot be
+dismissible** — which is the same note with the housekeeping taken out, and is now what it says.
+
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | the API field and its verdict | 23 | 15 | 4 | 3 | **45** |
-| **Content** | where the words come from and who owns them | 8 | 6 | 1 | 1 | **16** |
+| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 3 | **45** |
+| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 1 | **14** |
 | **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | — | **11** |
-| **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — | — | — | **1** |
-| | **annotations** | **37** | **27** | **5** | **4** | **73** |
+| **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
+| | **annotations** | **35** | **27** | **5** | **4** | **71** |
 | | **on elements** | **22** | **19** | **5** | **4** | **50** |
 
 **The four are not equally dense, and that is the finding rather than a gap.** A tab gets as many notes as it
