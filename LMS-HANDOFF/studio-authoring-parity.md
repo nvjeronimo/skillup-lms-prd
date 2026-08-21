@@ -231,6 +231,13 @@ UBC Peer Instruction (Full) · Calculator · External Grader · Google Calendar 
 one to design first: it is Full support, mobile-ready, and a matrix of questions sharing one scale is a real
 layout problem.
 
+> ⚠️ **This section may be wrong.** `30-07 meetings/Studio Quizes/Screenshot 2026-07-30 at 11.14.18.png` shows
+> the problem picker with **two tabs — `Common Problem Types` and `Advanced`**. If that is our instance, the
+> premise above ("this instance has no Advanced dropdown") is false and everything in this list moves from
+> *watch* to *available*, with Survey first in line. The screenshot is of a shared screen in a meeting and may
+> be Simran's instance rather than ours, so it is recorded rather than acted on. **Same question, same person,
+> same trip as the Text toolbar above.**
+
 ---
 
 ## 8 · Build list — all closed, 20 Aug 2026
@@ -281,7 +288,7 @@ Everything above is now a **section a reviewer can open**, next to the Technical
 | Cover | `5497:151414` | What the section is, and that the support/mobile columns are edX's, not ours |
 | The nine tiles | `5497:151417` | Tile → XBlock → what renders it → status, for all nine |
 | Inside the Text tile | `5497:151471` | The six templates, with Announcement and Zooming Image settled |
-| **Inside one HTML (Text) block** | `5507:152743` | What the visual editor can author — composed specimen, list patterns, inline, and the limits |
+| **Inside one HTML (Text) block** | `5507:152743` | What the visual editor can author — composed specimen, list patterns, inline, the limits, and the unverified rest of the toolbar |
 | Built this round | `5497:151510` | **177 live instances** of the published components, in five titled cards |
 | Still open | `5497:152464` | The questions and the deliberate gaps, each with whose call it is |
 
@@ -362,7 +369,23 @@ since one is read aloud and the other is read on the page. **Any template we shi
 ships with a copy-paste HTML snippet for the content team, or it does not ship.** That is one of the things
 the Studio-versus-our-own-studio decision would change.
 
-**Not drawn, because it was not established:** blockquote, horizontal rule, code blocks, and text alignment.
-TinyMCE offers some of these by default, but none was confirmed in our own Studio on 19 Aug, and the point of
-this block is that everything in it was checked rather than assumed. GIF support is unconfirmed for the same
-reason; PNG and JPG were seen.
+**Not drawn, because it is not confirmed here.** The official *Visual Editor* page enumerates **25 toolbar
+controls**, and blockquote, all four alignments, horizontal rule, code block and author-picked text /
+background colour are among them. None of these was seen in our own Studio, and the docs never say which
+editor the toolbar belongs to — Open edX ships both a legacy visual editor and a newer one in the authoring
+MFE, with different toolbars. Our 30 Jul screenshots show the **legacy** Studio UI, which makes the legacy
+toolbar likely but not proven. Table `5507:152957` in the ICP records each control and its status.
+
+**Attempted 21 Aug and blocked.** `studio-dev.skillup.online` returns **403** on the test course and bounces
+`/home` to the learner dashboard — `nelson.jeronimo@skillup.online` has no author role on that instance. This
+needs someone with Studio access; Simran demoed it on 30 Jul.
+
+**Two of these are decisions, not builds.**
+
+- **Alignment.** If the toolbar carries centre, right and justify, a creator can justify body copy — and
+  justified text at 375px opens rivers between words with no way for us to stop it. The question is whether we
+  ask for those buttons to be removed rather than whether we design for them.
+- **Text and background colour.** Author-picked colour bypasses every semantic token and every contrast
+  guarantee the DS makes. Worth knowing before, not after, a course ships with white-on-yellow.
+
+GIF support is unconfirmed for the same reason; PNG and JPG were seen.
