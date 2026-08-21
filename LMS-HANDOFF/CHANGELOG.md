@@ -2,6 +2,32 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-21 · What one HTML (Text) block can actually hold
+
+Block `5507:152743` in the ICP section — a composed specimen, the list patterns on their own, inline
+emphasis and links, and an element-by-element table of how each is authored and where it stops. From the
+19 Aug session with Simran and Navdeep.
+
+**The parity table said “Text → covered”, which was true in the wrong way.** It told a reviewer a component
+exists and told a content creator nothing about what goes inside it. Bullets, numbered lists, nesting, links
+and inline emphasis had never been drawn, so every one of them would have been invented at build time.
+
+**One block holds all of it.** The first specimen is a single composed 592-wide Text component, not a row of
+parts, because a creator does not stack a block per bullet — and a design that implies they should sends the
+content team into a much slower way of working than the platform needs.
+
+**The bullet is drawn, not typed.** `•` in Montserrat at 16px renders as a low mid-dot that reads as
+punctuation. A browser rendering `list-style: disc` does not look like that, so the marker is a 6px ellipse.
+Text indents 36px, the disc sits 9px down on the optical centre of a 24px line, level two indents 28px more
+and goes hollow.
+
+**No captions on images, still.** The insert dialog offers dimensions and alt text and nothing else, so a
+captioned figure needs hand-written `<figure>` / `<figcaption>` against the `/static/` path. Any template we
+ship with captioned figures ships with a copy-paste snippet, or it does not ship.
+
+**Deliberately not drawn:** blockquote, horizontal rule, code blocks, alignment. TinyMCE offers some by
+default; none was confirmed in our Studio on 19 Aug, and the whole point of this block is that it was checked.
+
 ## 2026-08-21 · The authoring inventory becomes a section a reviewer can open
 
 `⚙ ICP — components and assets for topic creation` — `5497:151413`, next to the Technical section on

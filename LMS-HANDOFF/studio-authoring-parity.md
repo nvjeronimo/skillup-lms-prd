@@ -281,6 +281,7 @@ Everything above is now a **section a reviewer can open**, next to the Technical
 | Cover | `5497:151414` | What the section is, and that the support/mobile columns are edX's, not ours |
 | The nine tiles | `5497:151417` | Tile → XBlock → what renders it → status, for all nine |
 | Inside the Text tile | `5497:151471` | The six templates, with Announcement and Zooming Image settled |
+| **Inside one HTML (Text) block** | `5507:152743` | What the visual editor can author — composed specimen, list patterns, inline, and the limits |
 | Built this round | `5497:151510` | **177 live instances** of the published components, in five titled cards |
 | Still open | `5497:152464` | The questions and the deliberate gaps, each with whose call it is |
 
@@ -318,3 +319,50 @@ banner, and it is not ours to answer.
 **What this does not undo.** The step-numbering rule survives — a course enables any subset of the six steps,
 so the numbers have to come from the enabled list rather than be baked in. That was always the point of the
 `Show training` / `Show self` booleans, whatever the training step turns out to be.
+
+---
+
+## 11 · Inside one HTML (Text) block — drawn, 21 Aug 2026
+
+Block `5507:152743` in the ICP section. It exists because the parity table above says *"Text → covered"* and
+that is true in the wrong way: it tells a reviewer a component exists, and tells a content creator nothing
+about what they can put inside it. The limits come from the **19 Aug session with Simran and Navdeep**.
+
+**One Text component holds all of it.** Heading, paragraphs, bulleted list, numbered list, table, inline
+emphasis and links live inside a single tile from the grid. A creator does not stack a block per bullet, and a
+design that implies they should sends the content team into a much slower way of working than the platform
+requires. The first specimen is deliberately one composed 592-wide block rather than a row of parts.
+
+| Element | Authored by | Renders as | Limit |
+|---|---|---|---|
+| Heading | Formats → Heading | `Heading/H6` 20px | H5 is the page title; H6 is the ceiling for a body block |
+| Paragraph | typing | `Body/Default` 16/24 | — |
+| Bulleted list | toolbar | disc, 6px | nesting is Tab; level two is a hollow circle |
+| Numbered list | toolbar | decimal | restarts per list — no continue-from-previous |
+| Bold · italic | toolbar / ⌘B ⌘I | inline ranges | underline is also offered — reserve it for links |
+| Link | toolbar | brand colour **+ underline** | colour alone fails; the underline is the only reliable cue |
+| Table | Table menu | `Lesson Block · HTML (Table)` | scrolls sideways at 375px, never restacks |
+| Image | Files & Uploads, inserted through HTML | `Lesson Block · HTML (Image)` | **no image component**; alt text and dimensions only |
+| Downloadable file | Files & Uploads, linked by hand | `Lesson Block · HTML (File)` | link text is whatever the author types |
+| Embedded content | the separate IFrame Tool template | `Lesson Block · HTML (iframe)` | a different tile, not something added inside Text |
+
+**The list geometry, since a browser will not guess it for us.** Text indents 36px from the block edge — a
+20px marker column plus a 12px gap. 8px between items, the same as between paragraphs. The disc is 6px and
+sits 9px from the top, on the optical centre of a 24px line rather than on the baseline. Level two indents a
+further 28px and switches to a hollow circle.
+
+**Why the bullet is drawn and not typed.** `•` set in Montserrat at 16px renders as a small mid-dot sitting
+low — it reads as punctuation, not as a list marker. A browser rendering `list-style: disc` does not look
+like that, so the specimen uses a 6px ellipse and matches what will actually ship.
+
+**And the one that bites: there is no caption.** The insert-image dialog offers dimensions and alt text and
+stops. A captioned figure is only authorable by hand-writing `<figure>` / `<figcaption>` against the
+`/static/` path Studio returns after upload — and the alt text and the caption must not be the same string,
+since one is read aloud and the other is read on the page. **Any template we ship with captioned figures
+ships with a copy-paste HTML snippet for the content team, or it does not ship.** That is one of the things
+the Studio-versus-our-own-studio decision would change.
+
+**Not drawn, because it was not established:** blockquote, horizontal rule, code blocks, and text alignment.
+TinyMCE offers some of these by default, but none was confirmed in our own Studio on 19 Aug, and the point of
+this block is that everything in it was checked rather than assumed. GIF support is unconfirmed for the same
+reason; PNG and JPG were seen.
