@@ -148,6 +148,40 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · Everything in the technical section is on a token or a style
+
+Audited all 22 components and frames in the section — 235 text nodes, every fill, every stroke, every padding
+and gap. The result before: **90 text nodes with no style at all**, 49 raw fills, 13 raw strokes, 67 unbound
+paddings. After: **zero, zero, three, zero.**
+
+**The text was the worst of it, and it was my own fault.** The board and the legend were built fast and I
+invented sizes as I went — 10, 10.5, 11, 11.5, 12.5, 13, 15. None of those are on the scale. Every one is now
+a DS style, snapped to the nearest step.
+
+**And the audit surfaced a gap in the design system itself.** The text styles run Caption 12 → Body/Small 14 →
+Body/Default 16 → Body/Lead 18 → **Display 72**. There is nothing between 18 and 72, so a page heading has no
+style to take. Headings are bound to the `Type/size/*` and `Type/line-height/*` **variables** instead —
+`text-xl` 20, `display-xs` 24, `display-sm` 30, `display-md` 36. That is how this DS does headings, and it is
+worth knowing before someone else goes looking for a Heading style that does not exist.
+
+**Colour found the sky blue again.** The hero's two decorative circles were `#51bffc` at 12% — the same
+off-brand sky blue that turned up on the buttons during componentisation. Bound to `bg-brand-solid`, so the
+wash is teal now. `#04313d`, a dark teal on the course title and stats, went to `text-primary`: numerically
+`text-brand-primary` was marginally closer, but a course title is primary text, not brand-coloured text, and
+semantics beats proximity.
+
+**Three raw colours remain and they are deliberate** — the legend's four category dots. They match Figma's own
+Dev Mode annotation colours, so binding them to brand tokens would break the thing they exist to mirror.
+
+**Spacing: 214 values bound exactly, 84 snapped.** The snaps were all mine: 1→2, 3→2, 5→4, 10→8, 11→12,
+14.5→16, 18→16, 22→20, 26→24, 28→24.
+
+**Restyling broke the layout, which is the part worth recording.** Bigger type in fixed-width chips produced
+*"QUEST ION"*, *"ANSWE RED"*, *"Sen d"*. Forty-seven text nodes needed to hug rather than wrap, and the grade
+summary needed its column widths restored after the hug pass collapsed them. **Tokenising is not a
+find-and-replace** — every size change is a layout change, and the only way to catch it is to look at the
+screen afterwards.
+
 ## 2026-08-21 · One header, on all four tabs
 
 The full course header — breadcrumb, chips, partner logo, title, stats and progress card — is now on Progress,

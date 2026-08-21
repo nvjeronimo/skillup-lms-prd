@@ -694,6 +694,16 @@ right move is to delete one, not to keep syncing them.
 | `Grade summary row` (Header/Row/Total) · `Score row` (Section/Subsection) | `5485:870` · `5486:862` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
 
+**Everything in the technical section is on a token or a DS style** — audited 21 Aug across all 22 components
+and frames: 235 text nodes, every fill, stroke, padding and gap. Zero text without a style or a bound type
+variable; zero unbound spacing; three raw colours, all deliberate (the legend's category dots mirror Figma's
+own Dev Mode annotation colours).
+
+⚠︎ **The DS text styles have a gap:** Caption 12 → Body/Small 14 → Body/Default 16 → Body/Lead 18 →
+**Display 72**. Nothing between 18 and 72, so headings have no style to take and are bound to `Type/size/*`
+and `Type/line-height/*` variables instead — `text-xl` 20, `display-xs` 24, `display-sm` 30, `display-md` 36.
+Worth knowing before someone hunts for a Heading style that does not exist.
+
 **Row paddings and gaps are bound to `Spacing/*`** on both row components — `lg` (12) for the row insets,
 `md` (8) for the topic gap, `none` for its horizontal padding, `xxs` (2) for the module's title/meta gap. No
 value changed when they were bound; the point is that they can no longer drift apart. `Topic row` carries a
