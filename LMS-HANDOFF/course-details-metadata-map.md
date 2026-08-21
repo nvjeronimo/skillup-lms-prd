@@ -564,12 +564,12 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 3 | **45** |
-| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 1 | **14** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | — | **11** |
+| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 7 | **49** |
+| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 2 | **15** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | 1 | **12** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **35** | **27** | **5** | **4** | **71** |
-| | **on elements** | **22** | **19** | **5** | **4** | **50** |
+| | **annotations** | **35** | **27** | **5** | **10** | **77** |
+| | **on elements** | **22** | **19** | **5** | **7** | **53** |
 
 **The four are not equally dense, and that is the finding rather than a gap.** A tab gets as many notes as it
 has fields behind it. Dates has five because *two date rows is the entire payload*. Q&A has four because the
@@ -599,7 +599,7 @@ it**. None of them is a design question; every one needs somebody outside the fi
 | 2 | Who authors `effort_time`? | Content team |
 | 3 | Does the unlock tooltip stay? | Design · Product |
 | 4 | Dates: tab, or the sidebar widget? | Product |
-| 5 | Is Mentorship Q&A a forum, or 1:1? | Product — not design |
+| 5 | Who builds the mentor messaging service? | Engineering · Product |
 | 6 | Do we derive the topic type, and what happens to the title prefixes? | Product · Content |
 
 Six is new. It came out of the 21 Aug session (§12.5): the topic type **is** derivable, at one extra call, but
@@ -1038,27 +1038,42 @@ default:
    the array contains, which is a divergence to write down.
 3. **Wait for the content team.** Same as option 1 but honest about when it becomes useful.
 
-### 14.3 Mentorship Q&A — the tab our own decision contradicts
+### 14.3 Mentorship Q&A — settled as a chat, and every field on it is unsourced
 
-`tabs[]` returns `tab_id: discussion`, titled **Mentorship Q&A**. That is the platform's **discussion forum**,
-renamed. The workbook documents no learner-facing discussion API at all — the only forum endpoints in it are
-`list_forum_members` and `update_forum_role_membership`, both **instructor** role-management calls.
+**Settled 21 Aug: the tab is a chat.** That is decision
+[007](../00-decisions/007-mentor-async-messaging.md) drawn rather than a new choice — 007 is accepted and says
+mentoring is *unlimited 1:1 asynchronous messaging, one mentor assigned per learner at enrolment, explicitly
+not group threads*. Two panels: the conversation list, and the conversation inside it.
 
-That gap matters less than the contradiction behind it. Decision
-[007](../00-decisions/007-mentor-async-messaging.md) is accepted and says mentoring is **unlimited 1:1
-asynchronous messaging**, explicitly *not* group threads. A discussion forum is many-to-many by construction.
-So the tab named *Mentorship Q&A* is not the mentoring the product decided to build, and the *Message David*
-button on the mentor card has no 1:1 endpoint behind it — the forum is the only thing there.
+Two components, both new: `LMS / Course Detail / Thread row` (`5509:878`, Unread · Read · Selected) and
+`LMS / Course Detail / Message` (`5509:895`, From=Mentor · From=Learner).
 
-**This tab cannot be finished by design work**, and it is not a design question. Either mentoring is the forum
-and decision 007 needs revisiting, or mentoring is 1:1 messaging and it needs a SkillUp-side service that no
-Course Home API provides.
+**Why a list at all, when 007 gives one mentor per learner.** One mentor does not mean one conversation.
+Threading is what keeps a question answerable — a single scrolling chat buries the answer to *"what subgroup
+size?"* under three weeks of later messages. The list is the **Q&A** half of the tab's name, and it is the
+reason the tab is not just the mentor card with a text box under it.
 
-**Built 21 Aug as both, deliberately** (`5497:150800`). Option A is the platform forum `tabs[]` actually
-returns — solid, because it can be built today, with the caveat that even it has no documented learner-facing
-endpoint. Option B is decision 007's 1:1 thread — drawn dashed, because it is specified and unavailable, and
-carrying the note that the *Message David* button currently resolves to nothing. Neither is signed off.
-Choosing one is choosing the product, and that decision is on the page rather than hidden behind an absence.
+**And every field on the screen is ✗.** This is the honest part, and the screen exists to make it visible:
+
+| Element | Source |
+|---|---|
+| Thread subject, preview, age, message count, unread state | ✗ nothing |
+| Message author, body, timestamp, ordering | ✗ nothing |
+| The composer, and any attachment route | ✗ nothing — the write path does not exist either |
+| Mentor name, role, avatar | ✗ nothing — this is open question 1 |
+| *"Typically responds within 1 day"* | ◑ **BR-19**, a promise we make, not a measurement |
+| The fair-use nudge past 10 unanswered messages | ◑ **BR-20** — the only rule in the tab already specified |
+
+The workbook documents exactly two forum endpoints and both are instructor role-management:
+`list_forum_members` and `update_forum_role_membership`.
+
+**The platform disagrees with the tab's name.** `tabs[]` returns `tab_id: "discussion"` titled *Mentorship
+Q&A* — that entry points at edX's **discussion forum**, many-to-many by construction. If this tab becomes a
+chat, the `tabs[]` entry is either repurposed or replaced. That is a platform decision, not routing.
+
+**Two things the async ruling forbids.** No presence, and no typing indicator. 007 chose asynchronous
+deliberately, because the friction it removes is calendar coordination; anything implying the mentor is there
+right now contradicts the decision and sets an expectation BR-19's one-day SLA does not back.
 
 ### 14.4 Live and Recordings — specified, and out of MVP scope
 

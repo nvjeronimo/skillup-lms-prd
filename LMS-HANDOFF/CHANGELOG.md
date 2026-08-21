@@ -148,6 +148,39 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · Mentorship Q&A is a chat
+
+The tab is settled, and it is decision 007 drawn rather than a new choice: 007 is accepted and says mentoring
+is unlimited 1:1 asynchronous messaging, one mentor per learner, explicitly not group threads. The A/B
+comparison is replaced by the thing itself — a conversation list and the conversation inside it.
+
+Two components: `Thread row` (Unread · Read · Selected) and `Message` (From=Mentor · From=Learner).
+
+**Why a list, when 007 gives one mentor per learner.** One mentor does not mean one conversation. Threading is
+what keeps a question answerable — a single scrolling chat buries the answer to *"what subgroup size?"* under
+three weeks of later messages. The list is the **Q&A** half of the tab's name, and the reason this is not just
+the mentor card with a text box under it.
+
+**Every field on the screen is ✗, and the annotations say so ten times.** Thread subject, preview, age, message
+count, unread state; message author, body, timestamp, ordering; the composer and any attachment route — none
+of it exists. The workbook documents two forum endpoints and both are instructor role-management. Two lines are
+◑ rather than ✗, and both come from the business rules rather than an API: *"typically responds within 1 day"*
+is BR-19, a promise we make; the fair-use nudge past 10 unanswered messages is BR-20, and is the only rule in
+the tab that is already specified.
+
+**The platform disagrees with the tab's name.** `tabs[]` returns `tab_id: discussion` — that entry points at
+edX's forum. If this tab becomes a chat, the entry is repurposed or replaced, which is a platform decision.
+
+**Two things the async ruling forbids:** presence, and a typing indicator. 007 chose asynchronous because the
+friction it removes is calendar coordination. Anything implying the mentor is there right now contradicts the
+decision and sets an expectation the one-day SLA does not back.
+
+Open question 5 changed shape rather than closing. It was *"is Q&A a forum or 1:1?"* — that is answered. It is
+now **"who builds the mentor messaging service?"**, owned by Engineering and Product, because the design is
+settled and nothing implements it.
+
+Section total: **77 annotations across 53 elements.**
+
 ## 2026-08-21 · The open questions get a board, and a sixth one
 
 `Open questions — who owns each, and what closes it` (`5504:5594`), under the legend in the technical section.
