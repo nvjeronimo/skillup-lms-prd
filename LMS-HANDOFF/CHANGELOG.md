@@ -2,6 +2,43 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-08-20 · What is inside each Studio tile, read off the official docs
+
+The nine tiles were the wrong unit of measurement. A creator does not pick "Problem" — they pick *Numerical
+Input*, or *Math Expression Input*, and those are different design problems. So every tile was opened against
+the Open edX reference docs and its sub-types listed with edX's own support tier and mobile column.
+
+**What it found, in order of consequence.**
+
+**The Drag and Drop we shipped this morning is Assessment-mode only in two of its states.** The docs are
+explicit: in Standard mode a wrong item **returns to the item bank** — it never rests in a zone. So
+`Zone · Incorrect` and the card's `Incorrect` / `Partially correct` draw something the platform does not
+render in that mode. The components are right; they were under-labelled. Annotation and description corrected.
+Two more facts came with it: feedback is documented as appearing **above the background image**, and every
+zone carries a **mandatory screen-reader description** — which promotes our "not designed yet" accessibility
+note to a field with a requirement behind it.
+
+**Our ORA stepper has three of the platform's six steps.** *Learner Training* (grade samples against the staff
+answer before peers) and *Self Assessment* are both missing. Neither is a screen from scratch — the rubric and
+grade surfaces already exist and each step reuses them.
+
+**Math Expression Input is the only missing Problem type that matters.** Full support, mobile-ready, and it is
+one variant on `Quiz · Answer Input`: a text field with the typed expression rendered as formatted maths above
+it. The rest of the advanced list is author-supplied JavaScript or Python — no design surface — or in edX's
+own "not supported" tier.
+
+**Two open questions closed without any work.**
+
+*Announcement* is not a component. It is the Text editor pre-filled with instructional text for the author;
+nothing renders differently. And *Zooming Image* is real and documented with its own page — the "not
+supported" tier means edX does not maintain it, not that it fails. That reframes the question for Simran from
+*does it work* to *do we want the content team depending on an unmaintained tool*.
+
+**And a boundary worth recording:** Poll, Survey, Word Cloud, Conditional Module, LTI and Peer Instruction all
+exist in Open edX and **none appear in our grid** — this instance has no Advanced dropdown. Written down so
+nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
+first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
+
 ## 2026-08-20 · The verb goes, and the tooltip was in the library too
 
 **The verb prefix is retired from every topic type.** Titles now render `display_name` verbatim — *DMAIC

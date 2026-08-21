@@ -119,3 +119,120 @@ Not part of free stacking, but a creator can pick them, so parity still applies.
 **What this does not change.** Everything a creator can stack today — text, image, callout, file, iframe,
 video, audio, knowledge check — already resolves to a `LMS / Lesson Block` kind. The gaps are at the edges of
 the grid, not in the middle of it.
+
+---
+
+## 7 · Inside each tile — every sub-type the official docs list
+
+*Researched 20 Aug 2026 against [Guide to Problem Types](https://docs.openedx.org/en/latest/educators/references/course_development/exercise_tools/guide_problem_types.html),
+[Guide to Problem Settings](https://docs.openedx.org/en/latest/educators/references/course_development/problem_settings.html),
+[Guide to the Drag and Drop Problem](https://docs.openedx.org/en/latest/educators/references/course_development/exercise_tools/guide_drag_and_drop.html)
+and [About Text Components](https://docs.openedx.org/en/latest/educators/references/course_development/text_components/text_components.html).
+Support tier and mobile-readiness are edX's own columns, not ours.*
+
+### 7.1 · Problem — five simple, three advanced, three dead
+
+| Template | Tier | Mobile | DS |
+|---|---|---|---|
+| Single Select | Full | ✅ | ✅ `Quiz · Option Row` |
+| Multi Select | Full | ✅ | ✅ `Quiz · Option Row` |
+| Dropdown | Full | ✅ | ✅ `Quiz · Answer Input [Dropdown]` |
+| Numerical Input | Full | ✅ | ✅ `Quiz · Answer Input [Numerical]` |
+| Text Input | Full | ✅ | ✅ `Quiz · Answer Input [Text]` |
+| **Math Expression Input** | Full | ✅ | ❌ — a text field with a live rendered formula above it |
+| Custom JavaScript Display and Grading | Full | ❌ | ❌ — arbitrary author JS, nothing for us to draw |
+| Custom Python-Evaluated Input | Provisional | ❌ | ❌ — same |
+| Circuit Schematic Builder · Image Mapped Input · Problem with Adaptive Hint | Not supported | ❌ | skip |
+
+**Math Expression Input is the only real gap here**, and it is small: the platform renders the learner's typed
+expression as formatted maths above the input as they type. Everything else in the list is either drawn or is
+author-supplied code with no design surface.
+
+**The settings every Problem carries** — all learner-visible, all already designed:
+
+| Setting | Learner sees | DS |
+|---|---|---|
+| Problem Points | point value near the title | ✅ `Show points` |
+| Attempts | *You have used N of M attempts* | ✅ `Show attempts` |
+| **Time Between Attempts** | a countdown telling them to wait | ✅ `Quiz · Gate [Rate limited]` |
+| Show Answer (+ attempts threshold) | the answer, once the condition is met | ✅ `Answer revealed` |
+| Show Reset Button | Reset | ✅ `Footer Actions · Show reset` |
+| Hints | a Hint button, then sequential hints | ✅ `Show hint` |
+
+### 7.2 · Text — six templates, one learner surface we lack
+
+| Template | What it is | DS |
+|---|---|---|
+| Text | the visual editor, empty | ✅ `HTML (Text)` |
+| **Announcement** | *the same editor with pre-canned instructional text* — a Studio convenience, not a different block | ✅ covered by `HTML (Text)` |
+| IFrame Tool | same, pre-canned for embeds | ✅ `HTML (iframe)` |
+| Raw HTML | switches the **editor**, not the output | ⏭️ no learner surface |
+| **Zooming Image Tool** | mouse over a large image and a region enlarges | ❌ **missing** |
+| Anonymous User ID | not a documented template in the current docs | ⏭️ |
+
+**This settles §3's Announcement question: it is not a component.** It is the Text editor pre-filled with
+guidance for the author. Nothing renders differently, so nothing needs designing.
+
+**And it settles the Zooming Image contradiction.** The tool is real and documented with its own page — the
+*"Not supported"* tier means edX does not maintain it, not that it fails. So the question for Simran narrows:
+not *"does it work?"* but *"do we want the content team using an unmaintained tool?"* If yes, we owe it an
+overlay component; if no, we tell them not to pick it.
+
+### 7.3 · Drag and Drop — and a correction to what we just built
+
+The two modes differ more than we drew:
+
+| | Standard | Assessment |
+|---|---|---|
+| Attempts | unlimited | limited or unlimited; **best attempt is the final score** |
+| Feedback | **per drop, immediately** | only after Submit |
+| A wrong item | **returns to the item bank** | stays in the zone until corrected |
+| Success feedback | shown per correct drop | **not used at all** |
+
+**The correction:** our `Zone · State=Incorrect` and the card's `Incorrect` states are **Assessment-mode only**.
+In Standard mode a wrong item never rests in a zone — it bounces back to the bank and the learner sees a
+transient message. The components are right; the annotation now has to say which mode they belong to.
+
+Two more facts worth carrying: feedback is documented as appearing **above the background image**, not below
+the board — worth checking our inline-alert placement against. And **every zone carries a mandatory
+description exposed only to screen readers**, which turns our "not designed yet" accessibility note into a
+platform requirement with a field behind it.
+
+### 7.4 · Open Response — our stepper is missing two of six steps
+
+The platform supports up to six ordered steps; our `ORA · Stepper` has three.
+
+| Step | DS |
+|---|---|
+| Your Response — prompt + rich text and/or file upload | ✅ `ORA · Upload` |
+| **Learner Training** — grade sample responses against the staff answer before peers | ❌ **missing** |
+| Peer Assessment — grade N peers | ✅ |
+| **Self Assessment** | ❌ **missing as a step** |
+| Staff Assessment — overrides all | ✅ `ORA · Grade Panel [Staff override]` |
+| Waiting / Your Grade | ✅ `ORA · Waiting Panel` · `Grade Panel` |
+
+Both gaps are steps, not screens from scratch — the rubric, the criteria and the grade surfaces already exist
+and are reused by each step.
+
+### 7.5 · Not in our grid at all
+
+The docs list these as available in Open edX; **our Studio does not offer them**, because this instance has no
+*Advanced* dropdown. Recorded so nobody designs for a tile the content team cannot pick:
+
+Poll (Full, ❌ mobile) · Survey (Full, ✅ mobile) · Word Cloud (Provisional) · Conditional Module (Provisional —
+gates content on a prior block, and would need a *"do this first"* locked state) · LTI Component (Full) ·
+UBC Peer Instruction (Full) · Calculator · External Grader · Google Calendar / Drive · Oppia.
+
+**If the Advanced dropdown is ever switched on** — Teak turns several of these on by default — Survey is the
+one to design first: it is Full support, mobile-ready, and a matrix of questions sharing one scale is a real
+layout problem.
+
+---
+
+## 8 · Revised build list
+
+1. **Math Expression Input** — a variant on `Quiz · Answer Input`. Full support, mobile ✅, small.
+2. **ORA Learner Training + Self Assessment** — two steps on the existing stepper, reusing the rubric.
+3. **`HTML (Table)`** on `Lesson Block` — natively authorable, and someone must decide 375px.
+4. **Zooming Image** — only if we are content for the team to use an unmaintained tool.
+5. **Annotate the Drag and Drop mode split** — free, and prevents the components being read as one behaviour.
