@@ -153,11 +153,15 @@ first: Full support, mobile-ready, and a matrix of questions sharing one scale i
 The full course header — breadcrumb, chips, partner logo, title, stats and progress card — is now on Progress,
 Dates and Mentorship Q&A, not just Course.
 
-**Its annotations are not.** They were copied across at first and then taken back out: the header is the same
-eight elements on four tabs, so copying the notes meant the same eight facts written four times, four places
-to forget to update, and a count that read as depth rather than repetition. The header is annotated **once**,
-on the Course tab, and each inner tab carries a single pointer to it. **92 annotations across 61 elements** —
-the copy-everywhere version reached 125 across 85 and said nothing more.
+**Its annotations are not.** They were copied across, then reduced to a pointer, then removed entirely: the
+header is the same eight elements on four tabs, so any copy is the same facts written four times and four
+places to forget to update. It is annotated **only on the Course tab**; the inner tabs leave the header bare.
+**89 annotations across 58 elements** — the copy-everywhere version reached 125 across 85 and said nothing
+more.
+
+The one durable fact that lived on the Progress header moved to the **Course completion card**, where it
+belongs: the completion figure appears twice on that page, both readings of `completion_summary`, and they
+must never drift. It is a note about the card, not about the header.
 
 This reverses the slim-header decision from when Progress was built. The reasoning then was that the live
 platform drops the header entirely on inner tabs — which is true, and is a defect rather than a precedent: on

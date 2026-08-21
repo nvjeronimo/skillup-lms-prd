@@ -564,12 +564,26 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 24 | 14 | 5 | 16 | **59** |
+| **Development** | does the field exist, and does it come back populated | 24 | 12 | 4 | 16 | **56** |
 | **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 4 | **17** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 7 | — | 3 | **15** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 8 | — | 2 | **15** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **36** | **27** | **6** | **23** | **92** |
-| | **on elements** | **22** | **18** | **6** | **15** | **61** |
+| | **annotations** | **36** | **26** | **5** | **22** | **89** |
+| | **on elements** | **22** | **17** | **5** | **14** | **58** |
+
+**The course header is identical on all four tabs and is annotated only on the Course tab.** The inner tabs
+leave it unannotated on purpose. Every field in it comes from `course_metadata` and the Courses API, both
+called on every page load, so a constant header costs nothing — but repeating the same eight notes on four
+screens would be four places to forget to update, and would read as depth rather than repetition.
+
+This reverses the slim-header decision taken when the Progress tab was built. The live platform drops the
+header entirely on its inner tabs — on its Progress page nothing names the course you are in — which is a
+defect rather than a precedent.
+
+⚠︎ **On the Progress tab the completion figure appears twice**, once in the header card and once in the
+Course completion card. Both read `completion_summary`, so they can only be the same number. The warning lives
+on the completion card, which is page content — not on the header. They disagreed until 21 Aug: the header
+read *14 of 42*, the card read *16 complete · 26 incomplete*. Both now read 16 of 42, which is 38%.
 
 **The course header is identical on all four tabs and is annotated once**, on the Course tab. The inner tabs
 carry a single pointer to it rather than a copy. Every field in the header comes from `course_metadata` and the
