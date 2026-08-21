@@ -517,31 +517,45 @@ into the tables.
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 | **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
-| **⚙ TECHNICAL · Course Detail** | `5446:3985` | the stakeholder page — every element annotated with its field and whether it can be built |
-| Technical page — legend | `5448:4325` | how to read it, the verdict key, and the three questions it should provoke |
+| **Course Detail — Progress tab · v1** | `5482:4574` | the second tab, built from the Progress API payload and checked against the live page |
 
-### The technical page, and how to run a review from it
+### The technical section, and how to run a review from it
 
-`⚙ TECHNICAL · Course Detail` is v12 with **36 native Figma annotations across 21 elements**. Open it in
-**Dev Mode**. It uses all four annotation categories rather than putting everything under Development,
-because they are four different conversations with four different owners:
+The annotated pages moved out of the main section on **21 Aug** into their own —
+`⚙ Technical — every element, its field, and whether we can build it` (`5490:15278`). Two reasons: the design
+pages stopped being read through engineering notes, and there is now more than one of them.
 
-| Category | Carries | Count |
+| Frame | Node | What it annotates |
 |---|---|---|
-| **Development** | the API field and its verdict | 23 |
-| **Content** | where the words come from and who owns them | 7 |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 |
-| **Accessibility** | contrast and dark mode, and how they are achieved | 1 |
+| `⚙ TECHNICAL · Course tab` | `5446:3985` | v12, the courseware tab |
+| `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
+| `How to read this section` | `5448:4325` | the legend, the verdict key, and the five questions |
+
+Open them in **Dev Mode**. Together they carry **54 annotations across 33 elements**, in all four categories
+rather than everything under Development, because they are four different conversations with four different
+owners:
+
+| Category | Carries | Course tab | Progress tab |
+|---|---|---|---|
+| **Development** | the API field and its verdict | 23 | 9 |
+| **Content** | where the words come from and who owns them | 8 | 4 |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 4 |
+| **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — |
+| | **totals** | **37 across 22** | **17 across 11** |
 
 The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
 (Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
 single list would collapse them into one.
 
-**The three questions the legend ends on**, which are what the meeting should actually decide:
+**The five questions the legend ends on**, which are what the meeting should actually decide:
 
 1. **Who supplies the mentor?** The only gap that survived both the API audit and the library sweep.
-2. **Who authors `effort_time`?** Every duration on the page depends on a field nobody fills.
+2. **Who authors `effort_time`?** Every duration on the Course tab depends on a field nobody fills.
 3. **Does the unlock tooltip stay?** The API gives a boolean — no date, no prerequisite, no rule.
+4. **Dates: tab or sidebar widget?** `course_date_blocks` returns two rows on our courses, because `due` is
+   null everywhere. See §14.2.
+5. **Is Mentorship Q&A a forum or 1:1?** `tabs[]` returns the platform forum renamed; decision 007 says 1:1
+   async messaging. They are different products. See §14.3.
 
 v12 is deliberately left **unannotated**: the same page without the engineering, for when the conversation is
 about the design rather than the data.
@@ -562,6 +576,8 @@ about the design rather than the data.
 | `Section intro` | `5456:852` |
 | `Course stats` | `5460:871` |
 | `Course title` | `5460:15187` |
+| `Completion card` · `Grade meter` | `5483:979` · `5484:980` |
+| `Grade summary row` (Header/Row/Total) · `Score row` (Section/Subsection) | `5485:870` · `5486:862` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
 
 **Row paddings and gaps are bound to `Spacing/*`** on both row components — `lg` (12) for the row insets,
@@ -804,3 +820,121 @@ other, rather than treating v11 as the target.
 
 *Written 3 Aug 2026 from the SK-11378 delivery. Every ✅, ⚠︎ and ✗ above was checked against the payloads in
 the workbook, not against stock Open edX behaviour.*
+
+---
+
+## 14. The other tabs — what is inside Progress, Dates and Q&A
+
+Everything above documents the **`courseware` tab**. The tab bar renders five items (seven on VILT), so four
+more destinations exist and none had been mapped. The payloads for two of them were in the workbook all along,
+on the *API Information* sheet — APIs 4 and 5. Read before designing, they settle the shape of both tabs and
+kill one of them.
+
+### 14.1 Progress — the richest tab we have, and it is mostly a grade book
+
+`GET /api/course_home/v1/progress/{course_key}` (optional `/{student_id}` — **staff can view any student**;
+401 if not enrolled, 404 if the tab is disabled, and grades are recalculated on every call for non-staff).
+
+| Element it supports | Field | Verdict |
+|---|---|---|
+| Completion ring / bar | `completion_summary` → `complete_count`, `incomplete_count`, **`locked_count`** | ✅ — and note `locked_count`, which the Course tab's progress card never showed |
+| Grade percentage | `course_grade.percent` | ✅ **the grade, not the completion.** Two different numbers; the hero card shows completion |
+| Pass / fail | `course_grade.is_passing` + `grading_policy.grade_range` (`{"Pass": 0.7}`) | ✅ — the threshold is a field, so *"70% to pass"* is renderable, not copy |
+| Letter grade | `course_grade.letter_grade` | ⚠︎ `null` in the sample |
+| Grade breakdown by assignment type | `grading_policy.assignment_policies[]` → `type`, `short_label`, `weight`, `num_total`, `num_droppable` | ✅ — weights, so a *"Final Quiz 30% · Lab 70%"* table is real data |
+| Per-section score table | `section_scores[]` → `display_name` + `subsections[]` | ✅ the spine of the tab |
+| Each subsection row | `display_name`, `num_points_earned` / `num_points_possible`, `percent_graded`, `has_graded_assignment`, `assignment_type` | ✅ |
+| Row deep link | `subsections[].url` — a full `jump_to` URL | ✅ **already built, unlike the syllabus.** Worth noting: the Progress payload hands over the URL the Navigation API withholds |
+| Whether to show a score at all | `show_grades`, `show_correctness`, `learner_has_access`, `override` | ✅ — four separate gates, and a row can be visible with its score hidden |
+| Certificate | `certificate_data` | ✅ same object as the Course tab's card |
+
+Two cautions. `subsections[].url` **may be null after the due date** (the workbook says so explicitly), so the
+row must degrade to non-clickable. And `assignment_policies[].type` is free text authored in Studio — the
+sample carries `"Final Quiz "` with a trailing space and `"Hands-on Lab: BigQuery Machine Learning using
+Soccer Data"` as a *type*. Render verbatim, and do not design a layout that assumes a short label; `short_label`
+is the short one.
+
+### 14.1b The Progress tab, built — and five places we did not copy the platform
+
+`5482:4574`. Four new components: `Completion card`, `Grade meter`, `Grade summary row` (Header/Row/Total)
+and `Score row` (Section/Subsection). The numbers in it are the workbook's own sample — Final Quiz weighted
+0.3, Lab 0.7, current weighted grade 15%, pass at 70% — so the table can be checked against the payload rather
+than admired.
+
+The live page was the reference, and it confirmed the mapping. Five things we did **not** carry over:
+
+**1. The live Progress tab has no hero at all.** Nothing on it names the course you are in. Ours keeps a slim
+hero — breadcrumb and title, with the chips, stats and progress card hidden — because losing your place on a
+tab switch is a defect, not a layout saving.
+
+**2. Related links is redundant and was dropped.** The live sidebar offers *Dates* and *Course Outline* as
+links — two of the destinations already sitting in the tab bar at the top of the same page. Copying it would be
+copying a platform mistake.
+
+**3. The completion card shows `locked_count`.** The platform reports three numbers and renders two. A learner
+whose total is short with no explanation has nowhere to look; naming the locked count costs one line.
+
+**4. The passing-grade notice is not dismissible.** It uses the library `Alert` with `X close button=false`
+and `Color=Warning`. A requirement to pass is not a message you have finished reading — which is the exact case
+the `Persistent` variant request in `library-requests.md` was filed for. Until that variant exists, turning the
+close button off is the workaround, and it is a *property* rather than a rule, so it will drift.
+
+**5. The sidebar carries Certificate and Weekly goal, nothing else.** Both answer a question this tab raises —
+am I going to pass, and am I keeping pace. Mentor, Handouts, Dates and Tools belong to the Course tab.
+
+One thing to hand to engineering with the file: **the meter's geometry is drawn, not data.** Fill width and
+threshold position are pixels in Figma and percentages in code. The component description says so, because a
+developer measuring the artboard would ship the sample's 15% as a constant.
+
+### 14.2 Dates — a whole tab for two rows
+
+`GET learning/course/{course_key}/dates`. Returns `dates_banner_info`, `course_date_blocks[]`, `has_ended`,
+`learner_is_full_access`, `user_timezone`.
+
+Each block carries `date`, `date_type`, `title`, `description`, `assignment_type`, `complete`,
+`learner_has_access`, `link` / `link_text`, `extra_info`, `first_component_block_id` — a well-formed timeline
+row, with a link into the content and a complete flag.
+
+**And on our courses it returns two entries: `course-start-date` and `course-end-date`.** Nothing else,
+because `due` is null on every block (§1.4) — no assignment has a deadline to list. A dedicated tab whose
+content is *"Course starts"* and *"Course ends"* is a tab that will read as broken.
+
+This is the same finding as the sidebar Upcoming-dates widget, arriving from the other side, and it forces the
+ruling that was flagged in §5 row 5 — **ours or theirs**. Three options, and the middle one is the honest
+default:
+
+1. **Render the tab from `tabs[]` anyway** — it is what the platform returns, and the day content authors set
+   due dates it fills itself. Costs a tab that today shows two rows.
+2. **Keep the sidebar widget, drop the tab from our shell** — the widget already shows the same two dates in a
+   place where two rows look deliberate. `tabs[]` still lists it, so this is us choosing not to render an item
+   the array contains, which is a divergence to write down.
+3. **Wait for the content team.** Same as option 1 but honest about when it becomes useful.
+
+### 14.3 Mentorship Q&A — the tab our own decision contradicts
+
+`tabs[]` returns `tab_id: discussion`, titled **Mentorship Q&A**. That is the platform's **discussion forum**,
+renamed. The workbook documents no learner-facing discussion API at all — the only forum endpoints in it are
+`list_forum_members` and `update_forum_role_membership`, both **instructor** role-management calls.
+
+That gap matters less than the contradiction behind it. Decision
+[007](../00-decisions/007-mentor-async-messaging.md) is accepted and says mentoring is **unlimited 1:1
+asynchronous messaging**, explicitly *not* group threads. A discussion forum is many-to-many by construction.
+So the tab named *Mentorship Q&A* is not the mentoring the product decided to build, and the *Message David*
+button on the mentor card has no 1:1 endpoint behind it — the forum is the only thing there.
+
+**This tab cannot be designed until that is resolved**, and it is not a design question. Either mentoring is
+the forum and decision 007 needs revisiting, or mentoring is 1:1 messaging and it needs a SkillUp-side service
+that no Course Home API provides. Drawing threads now would be guessing which.
+
+### 14.4 Live and Recordings — specified, and out of MVP scope
+
+Both are documented (§12.3) and both have real endpoints: `GET /api/course_live/iframe/{course_id}/` returns
+the Zoom LTI iframe HTML; `GET /api/zoom_recordings/courses/{course_id}/recordings/` lists recordings sorted by
+`recording_start`, and `POST .../playback_url/` mints a **short-lived SAS URL** per playback. They appear only
+on VILT courses, which Harpreet's ruling (01:22:22) puts outside the MVP. Specified, not scheduled.
+
+### 14.5 Instructor — not ours
+
+Fifty endpoints of enrolment, grade override, reports and certificate administration. It is edX's staff
+dashboard, it is gated by role, and a learner never sees it. Out of scope for the learner panel entirely.
+

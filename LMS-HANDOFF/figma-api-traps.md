@@ -46,7 +46,8 @@ The rule they all point at: **after any structural mutation, read the state back
 12. **Text styles must be applied explicitly.** Setting `fontName` is not enough and passes silently.
     Call `setTextStyleIdAsync`.
 13. **`setTextStyleIdAsync` resets `textDecoration`.** Apply the style first, decoration after.
-14. **Montserrat does not render ✅.** Use ✓.
+14. **Montserrat does not render ✅ — or ⚙.** Use ✓, and keep symbol glyphs in layer and section *names*,
+    which Figma draws in its own UI font, rather than in canvas text.
 
 ## Colour and modes
 
