@@ -44,10 +44,19 @@ caught that way — a half-built table row, a missing feedback row, and a step n
 **0 unstyled text** — six unstyled nodes were found and fixed during the sweep, five of them in the
 `HTML (iframe)` kind's source bar, which predated today and had been published that way.
 
-**The ICP has not taken the update yet.** Its instances still resolve to the old sets — Answer Input 9 of 12,
-Lesson Block 8 of 9, ORA Stepper 3 of 5 — with **0 broken**. Publishing makes an update available; the
-consuming file still has to accept it. Nothing is wrong, but nothing has arrived either, and the distinction
-is worth stating rather than assuming.
+**After the ICP accepted the update:** ORA Stepper 9 of 9 instances on the five-segment set, Lesson Block 11 of
+11 on the nine-kind set, **0 broken**.
+
+**And the check found something the update could never have fixed.** Only 3 of 12 `Answer Input` instances
+moved to the new twelve-variant set. The other **nine are bound to a retired key** —
+`af1bec9f…` against the live `f0baa477…` — a previous published version of the same component, from before it
+was rebuilt into `Quiz — DS components (adopted)`. Figma keeps a retired component resolvable, so they are not
+broken and never will be; they are simply detached from the component that is maintained, and no future
+publish will reach them.
+
+All nine sit in one place — `03 · Every state — single & multi select › board › C · Other answer types`. The
+three that did update are on the mode B board. Swapping the nine restores them to the live component; it is
+offered rather than done, because a swap can drop instance overrides and that board is Ready for Review.
 
 ## 2026-08-20 · What is inside each Studio tile, read off the official docs
 
