@@ -148,6 +148,34 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · One header, on all four tabs
+
+The full course header — breadcrumb, chips, partner logo, title, stats and progress card — is now on Progress,
+Dates and Mentorship Q&A, not just Course. Its annotations travelled with it: each tab is read on its own, so a
+note that only exists on the Course tab is a note the Progress reader never sees. **125 annotations across 85
+elements**, up from 81 across 53.
+
+This reverses the slim-header decision from when Progress was built. The reasoning then was that the live
+platform drops the header entirely on inner tabs — which is true, and is a defect rather than a precedent: on
+the live Progress page nothing names the course you are in. A header that changes per tab is a header the
+learner has to re-read, and every field in it comes from calls the platform already makes on every page load.
+
+**And the constant header immediately found a defect.** With the same card on four screens, the hero read
+*"14 of 42 topics"* while the Progress tab's completion card read *"16 complete · 26 incomplete"* — the same
+`completion_summary`, two different numbers, on the same page. Fixed across all five frames to 16 of 42, which
+is the 38% both were already showing.
+
+That is the argument for the constant header in one line: **duplication that must agree will show you when it
+does not.** The slim header hid the disagreement rather than resolving it.
+
+⚠︎ On the Progress tab the header now genuinely repeats the page — the hero card and the completion card are
+the same data. Annotated as a known cost rather than smoothed over, because making the header conditional
+costs more than the repetition does.
+
+The verdict key was tightened at the same time: **⚠︎ now also covers a claim that rests on the workbook and
+has not been fetched**, and **✗ means verified against the platform**. That is the lesson of the sweep written
+where the next person will meet it.
+
 ## 2026-08-21 · Every learner capability on the Q&A tab, and a sweep of the other ✗
 
 **The Q&A screen now shows what the platform actually offers a learner.** Both components rebuilt and the

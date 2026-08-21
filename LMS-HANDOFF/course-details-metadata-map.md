@@ -564,12 +564,26 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 9 | **51** |
-| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 3 | **16** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | 2 | **13** |
+| **Development** | does the field exist, and does it come back populated | 24 | 24 | 15 | 26 | **89** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 8 | 1 | 4 | **18** |
+| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 4 | **17** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **35** | **27** | **5** | **14** | **81** |
-| | **on elements** | **22** | **19** | **5** | **7** | **53** |
+| | **annotations** | **36** | **38** | **17** | **34** | **125** |
+| | **on elements** | **22** | **26** | **14** | **23** | **85** |
+
+**The course header is identical on all four tabs**, and its annotations repeat with it — each tab is read on
+its own, so a note that only exists on the Course tab is a note the Progress reader never sees. Every field in
+the header comes from `course_metadata` and the Courses API, both called on **every** page load, so a constant
+header costs nothing extra.
+
+This reverses the slim-header decision taken when the Progress tab was built. The live platform drops the
+header entirely on its inner tabs — on its Progress page nothing names the course you are in. A header that
+changes per tab is a header the learner has to re-read.
+
+⚠︎ **On the Progress tab the header repeats the page**: the hero progress card and the Course completion card
+are the same `completion_summary`, rendered twice. That is the cost of the constant header and it is worth
+paying — but the two must never disagree. They did until 21 Aug, when the hero read *14 of 42* and the card
+read *16 complete · 26 incomplete*. Both now read 16 of 42, which is 38%.
 
 **The four are not equally dense, and that is the finding rather than a gap.** A tab gets as many notes as it
 has fields behind it. Dates has five because *two date rows is the entire payload*. Q&A has four because the
