@@ -564,12 +564,27 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 24 | 24 | 15 | 26 | **89** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 8 | 1 | 4 | **18** |
+| **Development** | does the field exist, and does it come back populated | 24 | 14 | 5 | 16 | **59** |
 | **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 4 | **17** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 7 | — | 3 | **15** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **36** | **38** | **17** | **34** | **125** |
-| | **on elements** | **22** | **26** | **14** | **23** | **85** |
+| | **annotations** | **36** | **27** | **6** | **23** | **92** |
+| | **on elements** | **22** | **18** | **6** | **15** | **61** |
+
+**The course header is identical on all four tabs and is annotated once**, on the Course tab. The inner tabs
+carry a single pointer to it rather than a copy. Every field in the header comes from `course_metadata` and the
+Courses API, both called on every page load, so a constant header costs nothing extra — but four copies of the
+same eight notes would be four places to forget to update, and the counts would read as depth that is not
+there.
+
+This reverses the slim-header decision taken when the Progress tab was built. The live platform drops the
+header entirely on its inner tabs — on its Progress page nothing names the course you are in — which is a
+defect rather than a precedent.
+
+⚠︎ **On the Progress tab the header repeats the page**: the hero progress card and the Course completion card
+are the same `completion_summary`, rendered twice. That is the cost of the constant header and it is worth
+paying — but the two must never disagree. They did until 21 Aug, when the hero read *14 of 42* and the card
+read *16 complete · 26 incomplete*. Both now read 16 of 42, which is 38%.
 
 **The course header is identical on all four tabs**, and its annotations repeat with it — each tab is read on
 its own, so a note that only exists on the Course tab is a note the Progress reader never sees. Every field in
