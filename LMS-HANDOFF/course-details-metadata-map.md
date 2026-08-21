@@ -517,7 +517,21 @@ into the tables.
 | **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
 | **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
 | **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
-| **Course Detail — Progress tab · v1** | `5482:4574` | the second tab, built from the Progress API payload and checked against the live page |
+| ~~Course Detail — Progress tab · v1~~ | ~~`5482:4574`~~ | **deleted 21 Aug** — the annotated `⚙ TECHNICAL · Progress tab` (`5490:4793`) is the only copy, and carries the design as well as the notes |
+
+### The comparison layout
+
+Under each of our screens in the technical section sits **a screenshot of the platform as it is today**, so a
+stakeholder can read our version and the current one without switching context. Ours above, theirs below.
+
+That is what the section is for now: not "here is the annotated design" but "here is what changes, here is the
+field behind each change, and here is what you have today". The annotations answer the question the comparison
+provokes.
+
+**The `Instructor` tab is staff-only** and is not part of any of this — confirmed again 21 Aug. It is edX's
+own instructor dashboard, fifty endpoints of enrolment, grade override and reporting, gated by role. It appears
+in `tabs[]` only for users who hold the role, which is why it shows in a screenshot taken as Staff and will
+never appear for a learner. Nothing on it is ours to design.
 
 ### The technical section, and how to run a review from it
 
@@ -529,19 +543,30 @@ pages stopped being read through engineering notes, and there is now more than o
 |---|---|---|
 | `⚙ TECHNICAL · Course tab` | `5446:3985` | v12, the courseware tab |
 | `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
+| `⚙ TECHNICAL · Dates tab` | `5497:150395` | the two rows the payload actually returns, and the ruling it forces |
+| `⚙ TECHNICAL · Mentorship Q&A tab` | `5497:150800` | both candidate products, side by side, neither signed off |
 | `How to read this section` | `5448:4325` | the legend, the verdict key, and the five questions |
 
-Open them in **Dev Mode**. Together they carry **54 annotations across 33 elements**, in all four categories
+Open them in **Dev Mode**. Together they carry **73 annotations across 50 elements**, in all four categories
 rather than everything under Development, because they are four different conversations with four different
 owners:
 
 | Category | Carries | Course tab | Progress tab |
 |---|---|---|---|
-| **Development** | the API field and its verdict | 23 | 9 |
-| **Content** | where the words come from and who owns them | 8 | 4 |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 4 |
+| **Development** | the API field and its verdict | 23 | 15 |
+| **Content** | where the words come from and who owns them | 8 | 6 |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 |
 | **Accessibility** | contrast and dark mode, and how they are achieved | 1 | — |
-| | **totals** | **37 across 22** | **17 across 11** |
+| | **totals** | **37 across 22** | **27 across 19** |
+
+The Progress page was brought up to the Course page's density on 21 Aug — the tables were annotated row by
+row, and the two cards had the session's findings folded into them. Two of those are worth reading even if
+nothing else on the page is:
+
+- **`disable_progress_graph` can switch the completion card off.** It is a per-course config flag, verified on
+  the live payload. The card needs a suppressed state; it is not guaranteed to be on the page.
+- **`user_has_passing_grade` is a top-level boolean**, alongside `course_grade.is_passing`. Both are on the
+  payload and they answer the same question. Decide which one the build trusts before they disagree.
 
 The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
 (Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
@@ -557,8 +582,19 @@ single list would collapse them into one.
 5. **Is Mentorship Q&A a forum or 1:1?** `tabs[]` returns the platform forum renamed; decision 007 says 1:1
    async messaging. They are different products. See §14.3.
 
-v12 is deliberately left **unannotated**: the same page without the engineering, for when the conversation is
-about the design rather than the data.
+**Reversed 21 Aug — v12 carries the annotations too.** The rationale above was wrong, and worth saying why:
+**Dev Mode annotations do not render in Design mode.** The clean view was never something a second, unannotated
+copy had to buy — you get it by not being in Dev Mode. Once the technical pages moved into their own section,
+the working screen looked like it had lost its notes, which is a real cost paid for an imaginary benefit.
+
+`★ ENTRY · Course Detail — v12` now carries the same **37 annotations across 22 elements** as
+`⚙ TECHNICAL · Course tab`. They were copied node-by-node, matched by structural path and then by name and
+content for the five the two trees no longer share — v12's module rows sit directly under `Container:margin`
+where the technical page has an extra `Container`.
+
+⚠︎ **Two copies now exist and Figma cannot keep them in step.** Annotate the technical page when they diverge
+and re-copy; do not maintain both by hand. If the comparison layout ever stops needing a separate frame, the
+right move is to delete one, not to keep syncing them.
 
 **Components page** — `↳ LMS / Course Detail — Components 🟠` (`5409:325`)
 
@@ -989,9 +1025,15 @@ asynchronous messaging**, explicitly *not* group threads. A discussion forum is 
 So the tab named *Mentorship Q&A* is not the mentoring the product decided to build, and the *Message David*
 button on the mentor card has no 1:1 endpoint behind it — the forum is the only thing there.
 
-**This tab cannot be designed until that is resolved**, and it is not a design question. Either mentoring is
-the forum and decision 007 needs revisiting, or mentoring is 1:1 messaging and it needs a SkillUp-side service
-that no Course Home API provides. Drawing threads now would be guessing which.
+**This tab cannot be finished by design work**, and it is not a design question. Either mentoring is the forum
+and decision 007 needs revisiting, or mentoring is 1:1 messaging and it needs a SkillUp-side service that no
+Course Home API provides.
+
+**Built 21 Aug as both, deliberately** (`5497:150800`). Option A is the platform forum `tabs[]` actually
+returns — solid, because it can be built today, with the caveat that even it has no documented learner-facing
+endpoint. Option B is decision 007's 1:1 thread — drawn dashed, because it is specified and unavailable, and
+carrying the note that the *Message David* button currently resolves to nothing. Neither is signed off.
+Choosing one is choosing the product, and that decision is on the page rather than hidden behind an absence.
 
 ### 14.4 Live and Recordings — specified, and out of MVP scope
 
