@@ -564,11 +564,11 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 7 | **49** |
-| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 2 | **15** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | 1 | **12** |
+| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 9 | **51** |
+| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 3 | **16** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | 2 | **13** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **35** | **27** | **5** | **10** | **77** |
+| | **annotations** | **35** | **27** | **5** | **14** | **81** |
 | | **on elements** | **22** | **19** | **5** | **7** | **53** |
 
 **The four are not equally dense, and that is the finding rather than a gap.** A tab gets as many notes as it
@@ -599,7 +599,7 @@ it**. None of them is a design question; every one needs somebody outside the fi
 | 2 | Who authors `effort_time`? | Content team |
 | 3 | Does the unlock tooltip stay? | Design · Product |
 | 4 | Dates: tab, or the sidebar widget? | Product |
-| 5 | Who builds the mentor messaging service? | Engineering · Product |
+| 5 | Mentoring on the forum, or a service of our own? | Product · Engineering |
 | 6 | Do we derive the topic type, and what happens to the title prefixes? | Product · Content |
 
 Six is new. It came out of the 21 Aug session (§12.5): the topic type **is** derivable, at one extra call, but
@@ -1038,42 +1038,81 @@ default:
    the array contains, which is a divergence to write down.
 3. **Wait for the content team.** Same as option 1 but honest about when it becomes useful.
 
-### 14.3 Mentorship Q&A — settled as a chat, and every field on it is unsourced
+### 14.3 Mentorship Q&A — a correction, and the forum does almost all of it
 
-**Settled 21 Aug: the tab is a chat.** That is decision
-[007](../00-decisions/007-mentor-async-messaging.md) drawn rather than a new choice — 007 is accepted and says
-mentoring is *unlimited 1:1 asynchronous messaging, one mentor assigned per learner at enrolment, explicitly
-not group threads*. Two panels: the conversation list, and the conversation inside it.
+**This section previously said no learner-facing discussion API exists. That was wrong**, and the error is
+worth naming precisely: it was true of the **SK-11378 workbook**, which documents only two forum endpoints and
+both are instructor role-management. It was never true of the **platform**. Reading a gap in a spreadsheet as
+a gap in edX is the exact mistake this document exists to prevent.
 
-Two components, both new: `LMS / Course Detail / Thread row` (`5509:878`, Unread · Read · Selected) and
-`LMS / Course Detail / Message` (`5509:895`, From=Mentor · From=Learner).
+**Open edX Discussions API v1 is live and enabled on the dev instance.** Verified 21 Aug against
+`course-v1:SkillUp+SKOADM01EN+2026_v1`:
 
-**Why a list at all, when 007 gives one mentor per learner.** One mentor does not mean one conversation.
-Threading is what keeps a question answerable — a single scrolling chat buries the answer to *"what subgroup
-size?"* under three weeks of later messages. The list is the **Q&A** half of the tab's name, and it is the
-reason the tab is not just the mentor card with a text box under it.
+```
+GET /api/discussion/v1/courses/{course_id}
+→ is_posting_enabled: true · provider: "openedx" · enable_in_context: true
+  allow_anonymous: true · allow_anonymous_to_peers: false · show_discussions: true
+```
 
-**And every field on the screen is ✗.** This is the honest part, and the screen exists to make it visible:
+#### What the thread payload actually returns
 
-| Element | Source |
-|---|---|
-| Thread subject, preview, age, message count, unread state | ✗ nothing |
-| Message author, body, timestamp, ordering | ✗ nothing |
-| The composer, and any attachment route | ✗ nothing — the write path does not exist either |
-| Mentor name, role, avatar | ✗ nothing — this is open question 1 |
-| *"Typically responds within 1 day"* | ◑ **BR-19**, a promise we make, not a measurement |
-| The fair-use nudge past 10 unanswered messages | ◑ **BR-20** — the only rule in the tab already specified |
+`GET /api/discussion/v1/threads/?course_id={id}` — paginated, and it carries every field the chat screen draws:
 
-The workbook documents exactly two forum endpoints and both are instructor role-management:
-`list_forum_members` and `update_forum_role_membership`.
+| Screen element | Field | |
+|---|---|---|
+| Thread subject | `title` | ✅ |
+| Preview line | `preview_body` | ✅ |
+| Age | `created_at` · `updated_at` | ✅ |
+| Message count | `comment_count` | ✅ |
+| Unread state | `read` · `unread_comment_count` | ✅ |
+| Message author | `author` · `author_label` (returns `"Staff"`) | ✅ |
+| Avatar | `users.{username}.profile.image` — four sizes plus a default | ✅ |
+| Body | `raw_body` · `rendered_body` | ✅ |
+| Replies | `comment_list_url` → `GET /api/discussion/v1/comments/?thread_id={id}` | ✅ |
+| Posting | `POST /api/discussion/v1/threads/` · `POST /api/discussion/v1/comments/` | ✅ |
 
-**The platform disagrees with the tab's name.** `tabs[]` returns `tab_id: "discussion"` titled *Mentorship
-Q&A* — that entry points at edX's **discussion forum**, many-to-many by construction. If this tab becomes a
-chat, the `tabs[]` entry is either repurposed or replaced. That is a platform decision, not routing.
+**And the Q&A primitive is native.** `type` on a thread is `discussion` or `question`; question threads carry
+`has_endorsed`, `endorsed_by`, `endorsed_at` and split their replies into `endorsed_comment_list_url` and
+`non_endorsed_comment_list_url`. An accepted answer is a platform feature, not something we build.
 
-**Two things the async ruling forbids.** No presence, and no typing indicator. 007 chose asynchronous
-deliberately, because the friction it removes is calendar coordination; anything implying the mentor is there
-right now contradicts the decision and sets an expectation BR-19's one-day SLA does not back.
+Also returned and not currently drawn: `following`, `pinned`, `closed`, `voted`, `vote_count`,
+`abuse_flagged`, `close_reason`, and **`editable_fields`** — the list of what *this* user may change, which is
+the honest source for whether an edit control renders.
+
+#### What it does not give: privacy — and the mechanism that would
+
+The forum is many-to-many by construction. On this course `group_id` and `group_name` come back **null**, so
+every thread is visible to everyone enrolled. A 1:1 conversation needs **divided discussions**: posts in a
+divided topic are visible only to members of the same cohort, plus staff. A cohort of one learner makes that
+a private conversation.
+
+The path is API-driven — `POST /api/cohorts/v1/courses/{course}/cohorts/`, then
+`POST .../cohorts/{id}/users/{username}` at enrolment — but it carries three constraints, and the first is hard:
+
+1. **Divided discussions must be configured before the course start date.** They cannot be turned on
+   afterwards. A course already running cannot be retrofitted.
+2. **Dividing course-wide topics requires dividing every content-specific topic too.** It is not a per-topic
+   switch, so in-context discussion on each unit becomes cohort-scoped — and on a cohort of one, unit
+   discussions stop being peer discussions at all.
+3. **The mentor needs moderator scope.** A Group Community TA sees only their own group; reaching many
+   learners needs discussion moderator or admin, a broader permission than "mentor" implies.
+
+#### What is still genuinely missing
+
+**Which member of staff is *your* mentor.** The forum tells you who wrote a post — `author`, `author_label`.
+It does not tell you who is assigned to you. That is open question 1, unchanged by any of this, and it is now
+the larger of the two gaps rather than the smaller.
+
+#### The choice this leaves
+
+**Route A — build on the forum.** Most of the screen works today; privacy costs the three constraints above.
+**Route B — a SkillUp-side messaging service.** Unconstrained, and everything has to be built.
+
+A is far cheaper and arrives sooner. B is the only one that satisfies 007 without asking a forum to behave
+like a private channel. That is open question 5, and it is a product and engineering decision.
+
+One more thing worth deciding early: `allow_anonymous: true` on this course. Anonymity is inherited course
+configuration and is a strange fit for a conversation with your assigned mentor.
 
 ### 14.4 Live and Recordings — specified, and out of MVP scope
 

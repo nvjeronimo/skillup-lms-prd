@@ -148,6 +148,43 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-08-21 · Correction: edX does have a discussion API, and it does most of this
+
+Challenged on the claim that no learner-facing discussion API exists, and the challenge was right. **The
+claim was true of the SK-11378 workbook and false of the platform.** The workbook documents two forum
+endpoints and both are instructor role-management; I read that gap as a gap in edX. Reading a spreadsheet as
+if it were the system is the exact mistake this document exists to prevent, and it went in as a verdict.
+
+**Open edX Discussions API v1 is live and enabled on the dev instance**, verified against the real course:
+`is_posting_enabled: true`, `provider: "openedx"`, `enable_in_context: true`.
+
+**Nearly every field I marked ✗ on the chat screen exists.** From one call to
+`/api/discussion/v1/threads/?course_id=`: `title` is the subject, `preview_body` the preview, `comment_count`
+the message count, `read` and `unread_comment_count` the unread state, `author` and `author_label` the writer
+— `author_label` returns `"Staff"` on live data — and `users.{username}.profile.image` the avatar in four
+sizes. Replies come from `comment_list_url`. Posting is `POST /threads/` and `POST /comments/`.
+
+**The Q&A primitive is native too.** A thread's `type` is `discussion` or `question`; question threads carry
+`has_endorsed`, `endorsed_by`, `endorsed_at` and split replies into endorsed and non-endorsed lists. An
+accepted answer is a platform feature.
+
+**What the forum does not give is privacy, and there is a mechanism.** `group_id` is null on this course, so
+every thread is course-wide. Divided discussions scope posts to a cohort; a cohort of one makes a private
+conversation, and cohorts are API-creatable at enrolment. Three constraints, the first hard: divided
+discussions **must be configured before the course start date** and cannot be retrofitted; dividing
+course-wide topics forces dividing every in-context topic, so unit discussions stop being peer discussions;
+and a mentor needs moderator scope, since a Group Community TA sees only their own group.
+
+**What is still genuinely missing is the mentor assignment.** The forum says who wrote a post. It does not say
+who is *yours*. That was open question 1 and it is now the larger gap, not the smaller.
+
+Open question 5 was *"who builds the mentor messaging service?"* — which assumed the answer. It is now
+**"mentoring on the forum, or a service of our own?"**: Route A is far cheaper and arrives sooner but pays the
+three constraints; Route B satisfies 007 without asking a forum to behave like a private channel.
+
+All fourteen annotations on the Q&A tab were rewritten. Section total **81 across 53**, and the legend now
+says that where the workbook and the platform disagree, the platform wins.
+
 ## 2026-08-21 · Mentorship Q&A is a chat
 
 The tab is settled, and it is decision 007 drawn rather than a new choice: 007 is accepted and says mentoring
