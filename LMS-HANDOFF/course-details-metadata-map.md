@@ -543,9 +543,11 @@ pages stopped being read through engineering notes, and there is now more than o
 |---|---|---|
 | `⚙ TECHNICAL · Course tab` | `5446:3985` | v12, the courseware tab |
 | `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
+| `⚙ TECHNICAL · Dates tab` | `5497:150395` | the two rows the payload actually returns, and the ruling it forces |
+| `⚙ TECHNICAL · Mentorship Q&A tab` | `5497:150800` | both candidate products, side by side, neither signed off |
 | `How to read this section` | `5448:4325` | the legend, the verdict key, and the five questions |
 
-Open them in **Dev Mode**. Together they carry **64 annotations across 41 elements**, in all four categories
+Open them in **Dev Mode**. Together they carry **73 annotations across 50 elements**, in all four categories
 rather than everything under Development, because they are four different conversations with four different
 owners:
 
@@ -1023,9 +1025,15 @@ asynchronous messaging**, explicitly *not* group threads. A discussion forum is 
 So the tab named *Mentorship Q&A* is not the mentoring the product decided to build, and the *Message David*
 button on the mentor card has no 1:1 endpoint behind it — the forum is the only thing there.
 
-**This tab cannot be designed until that is resolved**, and it is not a design question. Either mentoring is
-the forum and decision 007 needs revisiting, or mentoring is 1:1 messaging and it needs a SkillUp-side service
-that no Course Home API provides. Drawing threads now would be guessing which.
+**This tab cannot be finished by design work**, and it is not a design question. Either mentoring is the forum
+and decision 007 needs revisiting, or mentoring is 1:1 messaging and it needs a SkillUp-side service that no
+Course Home API provides.
+
+**Built 21 Aug as both, deliberately** (`5497:150800`). Option A is the platform forum `tabs[]` actually
+returns — solid, because it can be built today, with the caveat that even it has no documented learner-facing
+endpoint. Option B is decision 007's 1:1 thread — drawn dashed, because it is specified and unavailable, and
+carrying the note that the *Message David* button currently resolves to nothing. Neither is signed off.
+Choosing one is choosing the product, and that decision is on the page rather than hidden behind an absence.
 
 ### 14.4 Live and Recordings — specified, and out of MVP scope
 
