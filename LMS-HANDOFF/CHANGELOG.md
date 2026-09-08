@@ -148,6 +148,35 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · Alert recoloured in the library, and a collection called "Remove"
+
+All **24 variants** of the design system's `Alert` now carry a tinted background and a tone-matched border,
+copied from `LMS / Autosave Status`, which already worked that way. Brand, Success, Warning and Error take
+`bg-{tone}-primary` with `border-{tone}_subtle`; Gray takes `bg-secondary`; Default stays white so the two
+neutrals remain distinguishable. Title on `text-primary`, supporting text on `text-secondary`.
+
+Before this, every variant was white on the same neutral grey border — the tone lived only in the icon, so on
+a busy page a warning and a success alert were the same rectangle.
+
+**This is an edit to the shared library, and it is not published.** Figma library changes reach consumer files
+only when someone publishes, so nothing has moved for anyone. That call belongs to the library owner, and it
+is written down as such.
+
+**One thing not copied.** The autosave stacks two stroke paints — `fg-{tone}-primary` underneath,
+`border-{tone}_subtle` on top. Only the top one renders; the other is dead weight. The Alert got the visible
+result with a single stroke rather than the inherited redundancy.
+
+### The finding that outgrew the request
+
+**`Alert` was bound to a variable collection named `Colors (Remove)`.** Background, border and both text
+colours, all of them. Recolouring moved everything the Alert owns onto the live `SKO/Colors/*` collection — but
+the deprecated one is still reachable through what the Alert nests: `x-close`, `Featured icon`,
+`alert-circle`, `info-circle`, `check-circle`, and **`Buttons/Button`**.
+
+None of that is the Alert's to fix. The question that matters is whether `Colors (Remove)` is actually
+scheduled for removal, because if it is, every component still bound to it breaks the day it goes — and
+`Buttons/Button` is one of them. Filed as request 3 in `library-requests.md`.
+
 ## 2026-09-08 · The Dates tab, built to what the payload can actually carry
 
 New page — `↳ LMS / Dates — everything the payload can carry 🟠`. Two frames side by side: the full timeline,
