@@ -109,3 +109,67 @@ collection — but the deprecated collection is still reachable through the comp
 None of those is the Alert's to fix — they belong to `Featured icon` and `Buttons/Button`. **The question for
 the library owner is whether `Colors (Remove)` is scheduled for removal**, because if it is, every component
 still bound to it breaks on the day it goes, and `Buttons/Button` is one of them.
+
+---
+
+## 4 · `Colors (Remove)` cannot be removed yet — SKO covers 13% of it
+
+**Asked to migrate every component off the deprecated tokens on 8 Sep 2026, on confirmation that the
+collection is going. I did not do it, and this is why.**
+
+First, a correction to request 3: `Colors (Remove)` and `Component colors (Remove)` are **not a separate
+imported collection**. They live inside **`1. Semantics`**, alongside `SKO/Colors/*`. Three name families, one
+collection.
+
+### The measurement
+
+| | |
+|---|---|
+| `SKO/Colors/*` tokens | **78** |
+| `(Remove)` tokens | **281** |
+| Deprecated tokens with an SKO equivalent by name | **36** |
+| **Deprecated tokens with nowhere to go** | **245** |
+
+**SKO covers 13% of what the library is actually using.** The gap is not a long tail of oddities — it is whole
+categories that SKO has never had:
+
+| Family | Missing | What breaks without it |
+|---|---|---|
+| `Utility/*` colour ramps | 150 | badges, tags, charts, anything with a colour scale |
+| `Components/*` scoped tokens | 25 | buttons, toggles, footers — tokens written for one component |
+| `Alpha/*` | 20 | overlays, scrims, any transparency |
+| `_alt` surfaces | 18 | the second-surface pattern across backgrounds and borders |
+| **`_hover`** | 15 | **every interactive component** |
+| **`disabled`** | 8 | **every disabled state in the library** |
+| `pressed` / focus | 2 | toggles |
+| `Foreground/fg-{primary,secondary,tertiary,error,warning,success}` | 9 | icons everywhere |
+| `Background/bg-{quaternary,active,*-secondary,*-solid}` | 9 | surfaces |
+| `Text/text-{quaternary,white,placeholder}` | 4 | inputs, inverted text |
+| `Border/border-tertiary` | 1 | dividers |
+
+SKO has **three** hover tokens in total (`text-primary_on-brand-hover`, `bg-brand-hover`, `thumb-hover`) and
+**no disabled tokens at all**. `_Primitives` has neither — interaction states only exist in the semantic layer,
+and only in the deprecated half of it.
+
+### Why I did not migrate the 36 that do map
+
+Because it would not help and would hide the problem. A component that still holds **one** deprecated binding
+still breaks on removal day, and every interactive component holds several. Migrating the easy third would cut
+the token count, leave the breakage untouched, and make the remaining audit harder by mixing families inside
+single components.
+
+Two pages measured for scale before stopping: **Alerts 300 deprecated paints, Buttons 1,442.** Across 116
+pages this is tens of thousands of bindings — worth doing once, correctly, not twice.
+
+### What has to happen first
+
+**Someone has to author the missing SKO tokens** — at minimum the hover, disabled, `_alt` and `Foreground`
+families, because those are load-bearing rather than decorative. Once they exist the rebind is mechanical and
+can be scripted in an afternoon.
+
+**Until then, `Colors (Remove)` cannot be removed.** If it is removed on the current token set, the library
+loses every disabled state, almost every hover state, all overlays and all utility ramps at once.
+
+**And one honest note on request 3:** recolouring `Alert` moved the four bindings *it owns* onto SKO, but the
+component still inherits deprecated tokens through `Featured icon`, `Buttons/Button`, `x-close` and the icon
+instances. Even that component is not safe from the removal.

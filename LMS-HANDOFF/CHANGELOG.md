@@ -148,6 +148,45 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · The deprecated tokens cannot be removed — SKO covers 13% of them
+
+Asked to migrate every component off `Colors (Remove)` now that the collection is confirmed for removal.
+**I did not do it**, and the reason is a number.
+
+| | |
+|---|---|
+| `SKO/Colors/*` tokens | **78** |
+| `(Remove)` tokens | **281** |
+| With an SKO equivalent | **36** |
+| **With nowhere to go** | **245** |
+
+The gap is not a tail of oddities. It is whole categories SKO has never had: 150 `Utility/*` colour ramps,
+25 component-scoped tokens, 20 `Alpha/*`, 18 `_alt` surfaces, **15 `_hover`**, **8 `disabled`**, and the
+`Foreground/fg-{primary,secondary,tertiary,error,warning,success}` family that every icon in the library uses.
+
+SKO has **three** hover tokens in total and **no disabled tokens at all**. `_Primitives` has neither —
+interaction states exist only in the semantic layer, and only in its deprecated half.
+
+**I also did not migrate the 36 that do map**, which is the part worth arguing with. It would not help: a
+component holding *one* deprecated binding still breaks on removal day, and every interactive component holds
+several. Migrating the easy third would cut the token count, leave the breakage exactly where it was, and make
+the remaining audit harder by mixing both families inside single components.
+
+Scale, measured before stopping: **Alerts 300 deprecated paints, Buttons 1,442**, across 116 pages. Worth
+doing once, correctly.
+
+**What has to happen first:** someone authors the missing SKO tokens — hover, disabled, `_alt` and
+`Foreground` at minimum, because those are load-bearing rather than decorative. After that the rebind is
+mechanical and scriptable. Until then, removing the collection takes every disabled state, almost every hover
+state, all overlays and all utility ramps with it.
+
+A correction to yesterday's note while I am here: `Colors (Remove)` is **not** a separate imported collection.
+It sits inside **`1. Semantics`** alongside `SKO/Colors/*` — three name families in one collection.
+
+And an honest footnote on the Alert recolour: it moved the four bindings the Alert *owns* onto SKO, but the
+component still inherits deprecated tokens through `Featured icon`, `Buttons/Button`, `x-close` and the icon
+instances. Even that one is not safe from the removal.
+
 ## 2026-09-08 · Alert recoloured in the library, and a collection called "Remove"
 
 All **24 variants** of the design system's `Alert` now carry a tinted background and a tone-matched border,
