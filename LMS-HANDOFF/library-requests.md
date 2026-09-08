@@ -60,3 +60,52 @@ This is not a Course Detail problem.
 independently from the API: the platform reports `complete` as a boolean and has no in-progress state to
 report. Whoever hid it was right, and the reason is now documented on our side too — see
 `course-details-metadata-map.md` §8.
+
+---
+
+## 3 · `Alert` recoloured to the `LMS / Autosave Status` scheme — done, not published
+
+**Changed in the library file on 8 Sep 2026**, at the request of the design lead. All **24 variants** of
+`Alert` (`1130:81134`) now carry a tinted background and a tone-matched border, copied from
+`LMS / Autosave Status` (`19975:538137`) which already did it this way.
+
+| `Color` | Background | Border |
+|---|---|---|
+| Brand | `bg-brand-primary` | `border-brand_subtle` |
+| Success | `bg-success-primary` | `border-success_subtle` |
+| Warning | `bg-warning-primary` | `border-warning_subtle` |
+| Error | `bg-error-primary` | `border-error_subtle` |
+| Gray | `bg-secondary` | `border-secondary` |
+| Default | `bg-primary` | `border-secondary` |
+
+Title → `Text/text-primary`, supporting text → `Text/text-secondary`, matching the autosave. Radius stays 12
+— that is the Alert's own shape; the autosave's 0 is the autosave's.
+
+**Before:** every variant was white on a neutral grey border, so the tone lived only in the icon. On a busy
+page a warning and a success alert were the same rectangle.
+
+**Two things worth knowing about the change.**
+
+It is **not published**. Figma library edits reach consumer files only when someone publishes, so nothing has
+moved for anyone yet. That decision belongs to the library owner.
+
+The autosave carries **two stacked stroke paints** — `fg-{tone}-primary` underneath and
+`border-{tone}_subtle` on top. Only the top one is visible; the one beneath is dead weight, probably a
+leftover. The Alert was given the visible result with a single stroke rather than the redundant pair.
+
+### The finding that is bigger than the request
+
+**`Alert` was bound to a variable collection literally named `Colors (Remove)`.** Its background, border and
+both text colours all came from it. Recolouring moved everything the Alert *owns* onto the live `SKO/Colors/*`
+collection — but the deprecated collection is still reachable through the components it nests:
+
+| Deprecated token | Comes in via |
+|---|---|
+| `Foreground/fg-quaternary (400)` | `x-close` |
+| `Foreground/fg-{brand,error,warning,success,tertiary}-primary` | `Featured icon outline`, `alert-circle`, `info-circle`, `check-circle` |
+| `Background/bg-primary`, `Border/border-primary` | `Featured icon` |
+| `Text/text-brand-secondary (700)`, `Background/bg-primary` | `Buttons/Button` |
+
+None of those is the Alert's to fix — they belong to `Featured icon` and `Buttons/Button`. **The question for
+the library owner is whether `Colors (Remove)` is scheduled for removal**, because if it is, every component
+still bound to it breaks on the day it goes, and `Buttons/Button` is one of them.
