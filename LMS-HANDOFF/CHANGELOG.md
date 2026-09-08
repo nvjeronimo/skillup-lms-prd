@@ -148,6 +148,38 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · The tone tokens authored, and a rule that did not survive contact
+
+**18 tokens created in `1. Semantics`**, so `error`, `warning` and `success` now have the same shape:
+`bg-{tone}-secondary`, `bg-{tone}-solid_hover`, `border-{tone}` for warning and success,
+`text-{tone}-primary_hover`, **`fg-{tone}-primary`** for all three, `fg-{tone}-secondary` for error and
+warning, and focus rings for warning and success. Each with a value per mode, aliased to the
+`SKO-Brand/Accents` ramps.
+
+**And one correction.** `SKO/Effects/Focus rings/focus-ring-error` was aliasing `Colors/Error/500` — the
+Untitled UI **stock** ramp, inside an SKO-named token. Now `SKO-Brand/Accents/Red/500`.
+
+**Rule 1 held exactly.** `fg-{tone}-primary` resolves identically to `text-{tone}-primary` for all three tones
+in both modes — checked by comparison rather than assumed. That was the rule doing the most work, since
+`fg-{tone}-primary` is the icon colour every alert and badge in the library was reaching into
+`Colors (Remove)` for.
+
+**Rule 3 did not hold, and the verification pass is the only reason I know.** *"Secondary is one step in from
+primary"* gave `/100` for each tone and produced a strong pink for error beside pale tints for warning and
+success. **The Red ramp climbs far faster at the low end** — `Red/100` is a mid-tone where `Yellow/100` and
+`Green/100` are still tints. Corrected to `Red/50`.
+
+The lesson generalises: **a rule written as a step number assumes the ramps are parallel, and these are not.**
+Any future "one step in" has to be checked against the rendered colour, not the index.
+
+**One oddity inherited rather than introduced:** `border-warning` is `Yellow/300` because rule 2 makes the
+solid border equal the solid fill, and `bg-warning-solid` was already `Yellow/300`. That leaves the warning
+outline markedly lighter than error's and success's. Consistent with the rule, inconsistent with its siblings,
+and changing it means changing `bg-warning-solid` — a pre-existing decision, so it is flagged rather than
+overturned.
+
+Next: hover and disabled, 23 tokens, which is the pair that unblocks `Buttons`.
+
 ## 2026-09-08 · The deprecated tokens cannot be removed — SKO covers 13% of them
 
 Asked to migrate every component off `Colors (Remove)` now that the collection is confirmed for removal.
