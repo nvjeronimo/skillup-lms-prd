@@ -1,6 +1,6 @@
-# The tone token matrix — a proposal for `1. Semantics`
+# The tone token matrix — authored in `1. Semantics` on 8 Sep 2026
 
-**18 tokens to author and 1 to correct**, so that `error`, `warning` and `success` have the same shape.
+**18 tokens authored and 1 corrected** ✅, so that `error`, `warning` and `success` have the same shape.
 Values are steps on the ramps that already exist (`Colors/SKO-Brand/Accents/{Red,Yellow,Green}`), in both
 `Light mode SKO` and `Dark mode SKO`.
 
@@ -30,7 +30,7 @@ Light mode / Dark mode. **Bold** rows are new.
 | Slot | error | warning | success |
 |---|---|---|---|
 | `bg-{tone}-primary` | Red/25 · Surfaces/error-dark | Yellow/25 · Surfaces/warning-dark | Green/25 · Surfaces/success-dark |
-| **`bg-{tone}-secondary`** | **Red/100 · Red/900** | **Yellow/100 · Yellow/900** | **Green/100 · Green/900** |
+| **`bg-{tone}-secondary`** | **Red/50 · Red/900** ⚠︎ | **Yellow/100 · Yellow/900** | **Green/100 · Green/900** |
 | `bg-{tone}-solid` | Red/500 · Red/300 | Yellow/300 · Yellow/300 | Green/800 · Green/600 |
 | **`bg-{tone}-solid_hover`** | **Red/600 · Red/400** | **Yellow/400 · Yellow/400** | **Green/900 · Green/700** |
 | `border-{tone}` | Red/500 · Red/300 | **Yellow/300 · Yellow/300** | **Green/800 · Green/600** |
@@ -77,3 +77,40 @@ Disabled has no SKO representation at all today, so it needs its own slot list r
 
 Then, and only then, the rebind: from a reviewed mapping table, verified by a pass that reports zero remaining
 `(Remove)` bindings before the collection goes.
+
+
+---
+
+## What changed between proposing and building
+
+**Rule 1 held exactly.** `fg-{tone}-primary` resolves identically to `text-{tone}-primary` for all three
+tones in both modes — verified by comparison, not by assumption.
+
+**Rule 3 did not, and the check caught it.** *"Secondary is one step in from primary"* gave `/100` for each
+tone, which produced:
+
+```
+bg-error-secondary    #e8797b   a strong pink
+bg-warning-secondary  #ffebbd   a pale tint
+bg-success-secondary  #aaedc2   a pale tint
+```
+
+**The Red ramp climbs much faster at the low end than Yellow or Green.** `Red/100` is already a mid-tone where
+`Yellow/100` and `Green/100` are still tints. The visual peer of those two is **`Red/50`**, and that is what
+`bg-error-secondary` now uses.
+
+The lesson is worth keeping: **a rule expressed as a step number assumes the ramps are parallel, and these are
+not.** Any future rule of the form "one step in" has to be checked against the rendered value rather than the
+index — which is what the verification pass is for.
+
+Residual spread after the fix, by relative luminance: error 190, success 220, warning 236. Not identical, and
+that is the eye rather than the ramps — luminance weights red at 0.21 and green at 0.72, so a red tint always
+measures darker than a green one that looks equally pale. Left as is.
+
+## One inherited oddity, not introduced
+
+`border-warning` is `Yellow/300` (`#f9c654`) because rule 2 sets the solid border equal to `bg-warning-solid`,
+which was already `Yellow/300`. That makes the warning border markedly lighter than `border-error`
+(`Red/500`) and `border-success` (`Green/800`). It is consistent with the rule and inconsistent with its two
+siblings — **a warning outline will read as weaker than an error or success one.** Changing it means changing
+`bg-warning-solid` too, which is a pre-existing decision and not mine to overturn.
