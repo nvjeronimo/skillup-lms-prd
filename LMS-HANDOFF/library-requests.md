@@ -173,3 +173,65 @@ loses every disabled state, almost every hover state, all overlays and all utili
 **And one honest note on request 3:** recolouring `Alert` moved the four bindings *it owns* onto SKO, but the
 component still inherits deprecated tokens through `Featured icon`, `Buttons/Button`, `x-close` and the icon
 instances. Even that component is not safe from the removal.
+
+---
+
+## 5 · Recommendation — author the tone matrix first, and take values from the brand ramps
+
+### The thing that changes the plan
+
+The two families **do not point at the same colours**:
+
+```
+Colors (Remove)/Foreground/fg-error-primary   → Colors/Error/600                      (Untitled UI stock)
+SKO/Colors/Text/text-error-primary            → Colors/SKO-Brand/Accents/Red/600_AC3   (SkillUp brand)
+```
+
+A migration by name would have quietly repainted the library from stock to brand. That is probably the
+intended destination — but it is a **visual change**, not a like-for-like rebind, and it has to be decided
+rather than inherited. It also means **the missing SKO tokens cannot be authored by copying the deprecated
+values**: doing that imports the palette we are trying to leave.
+
+### Start with the tones, and the reason is not size
+
+`error` · `warning` · `success` are the smallest family and the highest leverage, but the argument for going
+first is that **SKO's tones are asymmetric**, and asymmetry is what makes designers hardcode:
+
+| Slot | error | warning | success |
+|---|---|---|---|
+| `bg-{tone}-primary` | ✅ | ✅ | ✅ |
+| `bg-{tone}-secondary` | ✗ | ✗ | ✗ |
+| `bg-{tone}-solid` | ✅ | ✅ | ✅ |
+| `border-{tone}` | ✅ | **✗** | **✗** |
+| `border-{tone}_subtle` | ✅ | ✅ | ✅ |
+| `text-{tone}-primary` | ✅ | ✅ | ✅ |
+| **`fg-{tone}-primary`** | **✗** | **✗** | **✗** |
+| `fg-{tone}-secondary` | ✗ | ✗ | ✅ |
+| `fg-{tone}-on-solid` | ✅ | ✅ | ✅ |
+| `focus-ring-{tone}` | ✅ | **✗** | **✗** |
+
+`border-error` exists and `border-warning` does not. `focus-ring-error` exists and the others do not.
+`fg-success-secondary` exists and its two siblings do not. Someone reaching for the warning border finds
+nothing and types a hex — which is exactly how `#04313d` and `#51bffc` got into our own screens.
+
+**`fg-{tone}-primary` is the single highest-priority gap.** It is the icon colour, and every alert, badge and
+status icon in the library currently reaches into `Colors (Remove)` for it.
+
+### The recommendation, in order
+
+1. **Fix the shape before the count.** Agree the slot list once — the ten rows above — and fill it for
+   *every* tone, including brand and info. Symmetry is the deliverable; a designer should never have to check
+   whether a slot exists for the tone they are on.
+2. **Take values from `Colors/SKO-Brand/Accents/*`**, not from the deprecated tokens. The ramps already exist;
+   this is choosing steps, not picking colours.
+3. **Author both modes at once.** `1. Semantics` has `Light mode SKO` and `Dark mode SKO`. A token authored in
+   one mode falls back silently in the other, and nobody notices until a dark screen ships.
+4. **Then hover and disabled** — 23 tokens, and the thing that actually blocks `Buttons`.
+5. **Leave `Utility/*` and `Alpha/*` for last** — 170 of the 245, and mostly primitives wearing semantic
+   clothes. They can stay where they are while the semantic layer is finished.
+6. **Rebind from a reviewed mapping table, not by name matching.** The `fg-error-primary` case above is the
+   proof: the names line up and the colours do not.
+7. **Remove the collection only after a rebind pass reports zero remaining bindings.** Measured, not assumed.
+
+**Roughly 19 tokens for the tones, 23 for hover and disabled.** That is the work that unblocks everything
+else, and it is naming and step-picking rather than a design exercise.
