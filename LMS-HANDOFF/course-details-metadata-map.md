@@ -1154,6 +1154,50 @@ default:
    the array contains, which is a divergence to write down.
 3. **Wait for the content team.** Same as option 1 but honest about when it becomes useful.
 
+### 14.2b The Dates tab, built to its full capability — on its own page
+
+`↳ LMS / Dates — everything the payload can carry 🟠` (page `5655:325`), two frames side by side: what the
+payload *can* carry, and what our courses return today. The comparison is the argument.
+
+**Eight `date_type` values, not two.** Read off `date_summary.py` — each literal is a class in the platform:
+
+| `date_type` | What it marks |
+|---|---|
+| `todays-date` | **the today marker** — what turns a list into a timeline |
+| `course-start-date` · `course-end-date` | the two our courses return |
+| `assignment-due-date` | a deadline, and the only type that carries `complete` and `past_due` |
+| `course-expired-date` | audit access ending |
+| `certificate-available-date` | certificate release |
+| `verified-upgrade-deadline` | upgrade cut-off |
+| `verification-deadline-date` | ID verification cut-off |
+
+**One component, `LMS / Dates / Date row`** (`5655:519`) — four states (Upcoming · Complete · Overdue ·
+Locked) and five booleans. Every element on it is a field: `date` formatted in `user_timezone`, `date_type`,
+`assignment_type`, `complete` / `past_due`, `learner_has_access`, `title`, `description`, and `link` /
+`link_text` or a `jump_to` from `first_component_block_id`.
+
+**Six things the current tab drops that the payload already returns:**
+
+1. **`description`** — the course-end block ships a real sentence about archiving; we render nothing.
+2. **`assignment_type`** — *Homework*, *Final Exam*. Free text from Studio, same hazard as the grading policy.
+3. **`complete` and `past_due`** — four row states instead of none.
+4. **`learner_has_access`** — the locked row.
+5. **`link` / `first_component_block_id`** — every date can be a way into the content.
+6. **`dates_banner_info`** — four flags, of which `missed_deadlines` is the one that matters. Drawn, and
+   **dismissible**, unlike the passing-grade notice on Progress: a missed deadline is news you finish reading.
+
+**And two corrections to the existing tab:**
+
+⚠︎ **It renders the raw `date_type` string as visible copy.** `course-start-date` is a debug artefact sitting
+on a page shown to stakeholders. Each type needs human copy; the literal belongs in the annotation.
+
+⚠︎ **The timeline was squeezed into 600px beside an empty 320px sidebar.** The Dates tab has no sidebar
+content, so the grid was giving a third of the page to nothing. Full width on the new page.
+
+**Not built, because there is no field:** a countdown (*"in 3 days"*) is derivable from `date` but is ours,
+not the platform's; and `enrollment_start` / `enrollment_end` exist on the Courses API but are **not** in
+`course_date_blocks`, so putting them in this list means injecting them from another call.
+
 ### 14.3 Mentorship Q&A — a correction, and the forum does almost all of it
 
 **This section previously said no learner-facing discussion API exists. That was wrong**, and the error is

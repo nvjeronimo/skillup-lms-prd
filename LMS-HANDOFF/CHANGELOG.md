@@ -148,6 +148,41 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · The Dates tab, built to what the payload can actually carry
+
+New page — `↳ LMS / Dates — everything the payload can carry 🟠`. Two frames side by side: the full timeline,
+and the two rows our courses return today. The comparison is the argument for the ruling that has been open
+since §5.
+
+**Eight date types, not two.** Read off `date_summary.py` rather than remembered: `todays-date`,
+`course-start-date`, `course-end-date`, `assignment-due-date`, `course-expired-date`,
+`certificate-available-date`, `verified-upgrade-deadline`, `verification-deadline-date`. Our courses return
+two of them because `due` is null on every block — **a content gap, not an API gap.** The day someone sets due
+dates, the tab becomes the left frame with no design change.
+
+One component, `LMS / Dates / Date row`: four states (Upcoming · Complete · Overdue · Locked), five booleans,
+every element a field.
+
+**Six things the current tab drops and the payload already returns:** `description` (the course-end block
+ships a real sentence), `assignment_type`, `complete` and `past_due`, `learner_has_access`, `link` /
+`first_component_block_id`, and `dates_banner_info` — of which `missed_deadlines` is drawn, and drawn
+**dismissible**, unlike the passing-grade notice: a missed deadline is news you finish reading.
+
+**Two defects in the existing tab, found by building the full version.**
+
+It renders the raw `date_type` string as visible copy — `course-start-date` sitting as a label on a page shown
+to stakeholders. That is a debug artefact.
+
+And the timeline was squeezed into 600px beside an **empty 320px sidebar**. The Dates tab has no sidebar
+content, so the grid was giving away a third of the page to nothing. Full width here.
+
+**Not built, because there is no field:** a countdown is derivable from `date` but is ours, not the platform's;
+and `enrollment_start` / `enrollment_end` live on the Courses API and are absent from `course_date_blocks`, so
+listing them means injecting from another call.
+
+Page audited on the way out: 46 text nodes, zero without a DS style or bound type variable, zero raw colours,
+zero unbound spacing.
+
 ## 2026-08-21 · Everything in the technical section is on a token or a style
 
 Audited all 22 components and frames in the section — 235 text nodes, every fill, every stroke, every padding
