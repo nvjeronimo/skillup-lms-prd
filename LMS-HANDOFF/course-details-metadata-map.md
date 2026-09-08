@@ -564,12 +564,65 @@ dismissible** — which is the same note with the housekeeping taken out, and is
 
 | Category | Carries | Course | Progress | Dates | Q&A | All |
 |---|---|---|---|---|---|---|
-| **Development** | does the field exist, and does it come back populated | 23 | 15 | 4 | 9 | **51** |
-| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 3 | **16** |
-| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 6 | — | 2 | **13** |
+| **Development** | does the field exist, and does it come back populated | 24 | 12 | 4 | 14 | **54** |
+| **Content** | where the words come from, and who owns them | 6 | 6 | 1 | 4 | **17** |
+| **Interaction** | behaviour — what 401s, what expires, what must not be dismissible | 5 | 7 | — | 3 | **15** |
 | **Accessibility** | what the interaction requires to be reachable at all | 1 | — | — | — | **1** |
-| | **annotations** | **35** | **27** | **5** | **14** | **81** |
-| | **on elements** | **22** | **19** | **5** | **7** | **53** |
+| | **annotations** | **36** | **25** | **5** | **21** | **87** |
+| | **on elements** | **22** | **16** | **4** | **13** | **55** |
+
+**Nothing is annotated twice.** Verified by comparing every annotation body across the four tabs: 87 distinct
+notes, 87 places. Two shared elements are annotated **only on the Course tab** — the course header and the tab
+bar — because both are identical on all four and a copy is four places to forget to update.
+
+Where a note looked like it was about the tab bar but was really about *that tab's destination*, it moved to
+the page rather than being deleted: the Dates ruling now sits on its own note element, the Q&A cohort-privacy
+constraints on the conversation list, and the *"Progress 404s if the tab is disabled"* warning on the Progress
+heading. The generic *"render from `tabs[]`, never hardcode"* stays once, on the Course tab — where it was
+also misfiled on the course-type badge until 21 Aug.
+
+**The course header is identical on all four tabs and is annotated only on the Course tab.** The inner tabs
+leave it unannotated on purpose. Every field in it comes from `course_metadata` and the Courses API, both
+called on every page load, so a constant header costs nothing — but repeating the same eight notes on four
+screens would be four places to forget to update, and would read as depth rather than repetition.
+
+This reverses the slim-header decision taken when the Progress tab was built. The live platform drops the
+header entirely on its inner tabs — on its Progress page nothing names the course you are in — which is a
+defect rather than a precedent.
+
+⚠︎ **On the Progress tab the completion figure appears twice**, once in the header card and once in the
+Course completion card. Both read `completion_summary`, so they can only be the same number. The warning lives
+on the completion card, which is page content — not on the header. They disagreed until 21 Aug: the header
+read *14 of 42*, the card read *16 complete · 26 incomplete*. Both now read 16 of 42, which is 38%.
+
+**The course header is identical on all four tabs and is annotated once**, on the Course tab. The inner tabs
+carry a single pointer to it rather than a copy. Every field in the header comes from `course_metadata` and the
+Courses API, both called on every page load, so a constant header costs nothing extra — but four copies of the
+same eight notes would be four places to forget to update, and the counts would read as depth that is not
+there.
+
+This reverses the slim-header decision taken when the Progress tab was built. The live platform drops the
+header entirely on its inner tabs — on its Progress page nothing names the course you are in — which is a
+defect rather than a precedent.
+
+⚠︎ **On the Progress tab the header repeats the page**: the hero progress card and the Course completion card
+are the same `completion_summary`, rendered twice. That is the cost of the constant header and it is worth
+paying — but the two must never disagree. They did until 21 Aug, when the hero read *14 of 42* and the card
+read *16 complete · 26 incomplete*. Both now read 16 of 42, which is 38%.
+
+**The course header is identical on all four tabs**, and its annotations repeat with it — each tab is read on
+its own, so a note that only exists on the Course tab is a note the Progress reader never sees. Every field in
+the header comes from `course_metadata` and the Courses API, both called on **every** page load, so a constant
+header costs nothing extra.
+
+This reverses the slim-header decision taken when the Progress tab was built. The live platform drops the
+header entirely on its inner tabs — on its Progress page nothing names the course you are in. A header that
+changes per tab is a header the learner has to re-read.
+
+⚠︎ **On the Progress tab the header repeats the page**: the hero progress card and the Course completion card
+are the same `completion_summary`, rendered twice. That is the cost of the constant header and it is worth
+paying — but the two must never disagree. They did until 21 Aug, when the hero read *14 of 42* and the card
+read *16 complete · 26 incomplete*. Both now read 16 of 42, which is 38%.
 
 **The four are not equally dense, and that is the finding rather than a gap.** A tab gets as many notes as it
 has fields behind it. Dates has five because *two date rows is the entire payload*. Q&A has four because the
@@ -640,6 +693,16 @@ right move is to delete one, not to keep syncing them.
 | `Completion card` · `Grade meter` | `5483:979` · `5484:980` |
 | `Grade summary row` (Header/Row/Total) · `Score row` (Section/Subsection) | `5485:870` · `5486:862` |
 | ~~`Marker`~~ · ~~`Banner`~~ | retired — superseded by `LMS / Completion Status` and `Alert` |
+
+**Everything in the technical section is on a token or a DS style** — audited 21 Aug across all 22 components
+and frames: 235 text nodes, every fill, stroke, padding and gap. Zero text without a style or a bound type
+variable; zero unbound spacing; three raw colours, all deliberate (the legend's category dots mirror Figma's
+own Dev Mode annotation colours).
+
+⚠︎ **The DS text styles have a gap:** Caption 12 → Body/Small 14 → Body/Default 16 → Body/Lead 18 →
+**Display 72**. Nothing between 18 and 72, so headings have no style to take and are bound to `Type/size/*`
+and `Type/line-height/*` variables instead — `text-xl` 20, `display-xs` 24, `display-sm` 30, `display-md` 36.
+Worth knowing before someone hunts for a Heading style that does not exist.
 
 **Row paddings and gaps are bound to `Spacing/*`** on both row components — `lg` (12) for the row insets,
 `md` (8) for the topic gap, `none` for its horizontal padding, `xxs` (2) for the module's title/meta gap. No
@@ -797,6 +860,59 @@ Two things beyond the fix:
 The anonymous call returned a **field error, not a 404**: *"username: This field is required unless all_blocks
 is requested."* So the endpoint exists and takes the parameters; proving the `block_counts` payload — the fix
 for topic types — needs a signed-in call. Bookmarks is untested for the same reason. **Still mine to finish.**
+
+### 12.6 The ✗ sweep — two verdicts were wrong, three hold, one was never testable
+
+After the discussion-API correction, every remaining ✗ was re-checked against the live environment rather than
+against the workbook. The test applied to each: **was this read off a payload I fetched, or off a spreadsheet?**
+
+#### Wrong — corrected
+
+**The partner logo.** The IBM chip was marked *"no source anywhere"*.
+`GET /api/organizations/v0/organizations/` returns all 18 organisations, each with a **`logo`** URL —
+IBM's is `/media/organization_logos/ibm_new.png`. Match on `short_name` against the course's `org`. The
+endpoint simply is not in the workbook. **✗ → ✅**, with one real caveat: `org` is the *authoring*
+organisation. This course returns `SkillUp`; a Google course returns `Google`. Where the partner brand and the
+author differ, `org` is the wrong field and there is no other.
+
+**The course-level duration.** The Courses API returns **`effort`**, populated:
+`"4 weeks<br>2-4 hours/week"`. So the *"~ 14 hours"* line is renderable. **✗ → ✅ with a warning** — `effort`
+is free HTML authored in Studio, carries a `<br>`, and mixes a span with a rate. Render verbatim.
+
+#### Confirmed — these hold, and now on live evidence rather than inherited
+
+| Claim | Live result |
+|---|---|
+| `effort_time` and `effort_activities` are null on every block | ✅ confirmed — null on all 22 blocks in the outline |
+| `due` is null on every block | ✅ confirmed — which is *why* Dates returns two rows |
+| No mentor, instructor or staff-profile field anywhere | ✅ confirmed — no `instructors` on the Courses API, none in the outline, none in `course_metadata` |
+| `blocks.{id}.icon` is unusable for the type badge | ✅ confirmed — `null` on 20 blocks, `fa-pencil-square-o` on the two graded sequentials. Two values against twelve types |
+
+#### Never testable on this course
+
+**The lock and the unlock date.** Nothing in `SKOADM01EN` is locked, so neither `accessible: false` nor
+`type: "lock"` appears in the payload at all. The claim that no unlock date exists is still *documented* rather
+than *observed* — it needs a course with a real prerequisite. **Marked ⚠︎ untested rather than ✗ confirmed**,
+which is a different thing and should not go into a meeting as the same thing.
+
+#### Five fields the outline returns that we had never recorded
+
+| Field | Why it matters |
+|---|---|
+| `course_goals.weekly_learning_goal_enabled` | **`false` on this course.** The Weekly goal card can be switched off per course — the same shape of finding as `disable_progress_graph` on Progress. Two sidebar cards now have a suppressed state |
+| `hide_from_toc` | Per block. A unit can be excluded from the table of contents while still existing |
+| `title_prefix` | Empty here, but it prefixes the course title |
+| `enroll_alert` | `{can_enroll, extra_text}` |
+| `cert_data.cert_status: "audit_passing"` | A status value the four-state certificate card does not cover |
+
+#### What the sweep says about method
+
+Two of the six ✗ verdicts were wrong, and both failed the same way: **a gap in the SK-11378 workbook was
+recorded with the same ✗ as a gap observed in a payload.** The verdict looked identical; the evidence behind it
+was not. Everything checked directly against a response held.
+
+The fix is in the verdict key, not in more checking: **✗ now means "no source, verified against the platform"**.
+Anything resting only on the workbook is ⚠︎ until someone fetches it.
 
 ### 12.5 Verified with a session, 21 Aug — the topic type is derivable
 
@@ -1037,6 +1153,50 @@ default:
    place where two rows look deliberate. `tabs[]` still lists it, so this is us choosing not to render an item
    the array contains, which is a divergence to write down.
 3. **Wait for the content team.** Same as option 1 but honest about when it becomes useful.
+
+### 14.2b The Dates tab, built to its full capability — on its own page
+
+`↳ LMS / Dates — everything the payload can carry 🟠` (page `5655:325`), two frames side by side: what the
+payload *can* carry, and what our courses return today. The comparison is the argument.
+
+**Eight `date_type` values, not two.** Read off `date_summary.py` — each literal is a class in the platform:
+
+| `date_type` | What it marks |
+|---|---|
+| `todays-date` | **the today marker** — what turns a list into a timeline |
+| `course-start-date` · `course-end-date` | the two our courses return |
+| `assignment-due-date` | a deadline, and the only type that carries `complete` and `past_due` |
+| `course-expired-date` | audit access ending |
+| `certificate-available-date` | certificate release |
+| `verified-upgrade-deadline` | upgrade cut-off |
+| `verification-deadline-date` | ID verification cut-off |
+
+**One component, `LMS / Dates / Date row`** (`5655:519`) — four states (Upcoming · Complete · Overdue ·
+Locked) and five booleans. Every element on it is a field: `date` formatted in `user_timezone`, `date_type`,
+`assignment_type`, `complete` / `past_due`, `learner_has_access`, `title`, `description`, and `link` /
+`link_text` or a `jump_to` from `first_component_block_id`.
+
+**Six things the current tab drops that the payload already returns:**
+
+1. **`description`** — the course-end block ships a real sentence about archiving; we render nothing.
+2. **`assignment_type`** — *Homework*, *Final Exam*. Free text from Studio, same hazard as the grading policy.
+3. **`complete` and `past_due`** — four row states instead of none.
+4. **`learner_has_access`** — the locked row.
+5. **`link` / `first_component_block_id`** — every date can be a way into the content.
+6. **`dates_banner_info`** — four flags, of which `missed_deadlines` is the one that matters. Drawn, and
+   **dismissible**, unlike the passing-grade notice on Progress: a missed deadline is news you finish reading.
+
+**And two corrections to the existing tab:**
+
+⚠︎ **It renders the raw `date_type` string as visible copy.** `course-start-date` is a debug artefact sitting
+on a page shown to stakeholders. Each type needs human copy; the literal belongs in the annotation.
+
+⚠︎ **The timeline was squeezed into 600px beside an empty 320px sidebar.** The Dates tab has no sidebar
+content, so the grid was giving a third of the page to nothing. Full width on the new page.
+
+**Not built, because there is no field:** a countdown (*"in 3 days"*) is derivable from `date` but is ours,
+not the platform's; and `enrollment_start` / `enrollment_end` exist on the Courses API but are **not** in
+`course_date_blocks`, so putting them in this list means injecting them from another call.
 
 ### 14.3 Mentorship Q&A — a correction, and the forum does almost all of it
 
