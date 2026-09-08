@@ -148,6 +148,30 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · Correction: the dropped calls were landing all along
+
+I wrote earlier that the `Buttons` rebind hit "real failures and not silent successes". **That was wrong, and
+the way I checked was wrong.** I re-read the count after one oversized attempt, saw it unmoved, and
+generalised from a single data point.
+
+Smaller tranches land. **A dropped `use_figma` response on a large file is usually a lost response, not a
+failed write.** Tranches of 8 and 20 landed every time; the tranche of 40 did not. Every call reported as
+dropped.
+
+**`Buttons/Button` is now at zero** — 123 → 0, done entirely through calls that all "failed". That is the
+component the `Alert` consumes, so the one that mattered most. The `↳ Buttons` page went **914 → 789**.
+
+The working method: **fire a small tranche, ignore the drop, repeat, and measure separately.** Recorded as
+trap 20 in `figma-api-traps.md`, because treating a dropped response as a failed write is how you conclude
+something is impossible when it is only slow.
+
+The remaining 789 on that page and about 25 further component pages are not blocked — they are roughly 20
+bindings per call, which is why `scripts/rebind-deprecated-tokens.js` still earns its place for the bulk.
+
+Also recorded as trap 19: **property access on a leaf node can throw rather than return undefined.**
+`textNode.findAll` raises a `TypeError`, so `node.findAll ? … : …` does not guard it — check `node.type`
+against a container list instead. It cost two calls to find.
+
 ## 2026-09-08 · The rebind ran on what matters, and stopped where it could not
 
 **Clean: `❖ LMS COMPONENTS`, `❖ MobileApp Component` and its two sub-pages, and

@@ -1,4 +1,4 @@
-# Figma Plugin API — nineteen things that fail quietly
+# Figma Plugin API — twenty things that fail quietly
 
 Collected while building the Course Detail components. Every one of these **succeeded without an error** and
 produced the wrong result — which is the only reason they are worth writing down. An exception teaches you on
@@ -56,10 +56,24 @@ The rule they all point at: **after any structural mutation, read the state back
 17. **`1. Semantics` carries `Light mode SKO` / `Dark mode SKO`** — a dark surface is a *mode flip* via
     `setExplicitVariableModeForCollection`, not a different token.
 18. **Icon colour lives on `strokes`, not `fills`.**
+19. **Property access on a leaf node can throw rather than return `undefined`.** `textNode.findAll` raises
+    a `TypeError` instead of being falsy, so `node.findAll ? … : …` does not guard it. Check `node.type`
+    against a container list instead.
+
+## The transport
+
+20. **A dropped `use_figma` response is not a failed write.** On a large file, a call that mutates more than
+    roughly 20–30 paints returns *"transport dropped mid-call"* — but the writes usually landed. Verified by
+    re-reading the count after each drop: tranches of 8 and 20 landed every time, a tranche of 40 did not.
+
+    So the pattern for bulk edits on a big file is **fire a small tranche, ignore the dropped response,
+    repeat, and measure separately.** Treating the drop as a failure and retrying the same range is how you
+    conclude something is impossible when it is only slow. `Buttons/Button` went from 123 outstanding to zero
+    this way, entirely through calls that all reported as dropped.
 
 ## Querying and annotations
 
-19. **`query()` attribute selectors fail on values containing a space.** `INSTANCE[name=Topic row]` silently
+21. **`query()` attribute selectors fail on values containing a space.** `INSTANCE[name=Topic row]` silently
     returns nothing. Filter with `findAll` instead — and remember **`findAll()` excludes the node it is called
     on**, so use `[node, ...node.findAll(...)]` when the root may match.
 

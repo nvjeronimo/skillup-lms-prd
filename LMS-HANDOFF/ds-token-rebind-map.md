@@ -166,11 +166,17 @@ Those are the pages our own work depends on, and they are clean.
 
 ## Not done, and why
 
-**`↳ Buttons` still has 914.** Four attempts, four dropped connections — including one limited to 250
-mutations. The heavy stock pages exceed what the remote transport can carry in a single call, and this is a
-genuine failure rather than a silent success: the count was re-read after each drop and had not moved.
+**Corrected.** The first reading of this was wrong. Dropped connections on this file are usually **lost
+responses, not failed writes** — the mutations land. What fails is a tranche that is too large: 40 mutations
+did not land, 8 and 20 landed every time.
 
-Roughly 25 component pages were never attempted for the same reason.
+So the working method is **fire a small tranche, ignore the drop, repeat, and measure separately.**
+
+`Buttons/Button` — the component the `Alert` consumes — went **123 → 0** entirely through calls that every
+one of them reported as dropped. `↳ Buttons` as a page went **914 → 789**.
+
+The remaining 789 on that page and roughly 25 further component pages are not blocked, just slow: about
+20 bindings per call.
 
 ## What replaces it
 
