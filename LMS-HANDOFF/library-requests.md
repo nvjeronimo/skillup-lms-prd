@@ -235,3 +235,24 @@ status icon in the library currently reaches into `Colors (Remove)` for it.
 
 **Roughly 19 tokens for the tones, 23 for hover and disabled.** That is the work that unblocks everything
 else, and it is naming and step-picking rather than a design exercise.
+
+
+---
+
+## 6 · The tone matrix, proposed
+
+Written up in full as [`ds-tone-token-matrix.md`](ds-tone-token-matrix.md): **18 tokens to author, 1 to
+correct**, so `error`, `warning` and `success` have the same shape, with a value per mode taken from the
+`SKO-Brand/Accents` ramps that already exist.
+
+Five rules generate every value, so the next tone can be filled without asking: `fg-{tone}-primary` mirrors
+`text-{tone}-primary`; `border-{tone}` equals `bg-{tone}-solid`; `-secondary` is one meaningful step in from
+`-primary`; `_hover` is one step further from the page; focus rings use the tone's own ramp.
+
+⚠︎ **One correction found while measuring:** `SKO/Effects/Focus rings/focus-ring-error` aliases `Error/500` —
+the Untitled UI **stock** ramp, not the brand one. An SKO-named token reaching into the palette we are leaving.
+
+And three inconsistencies already in the file that need a ruling rather than a fix: the dark-mode text steps
+follow no single rule (Red/50, Green/200, Yellow/400 — second, fourth and sixth steps); `bg-warning-solid` is
+the only solid identical in both modes; and backgrounds use `SKO-Brand/Surfaces/{tone}-dark` in dark mode
+where everything else uses ramp steps, which is the one row of the proposal I am least confident in.
