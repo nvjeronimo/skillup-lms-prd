@@ -148,6 +148,41 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · Hover and disabled, and two ramp steps that had to exist first
+
+**17 semantic tokens created**, plus **2 primitives**. The semantic layer now covers the load-bearing
+families: tones, hover, disabled, and the three base `Foreground` tokens SKO never had.
+
+**The ramp had a hole exactly where the work needed it.** `Dark-Neutral` ran `300` → `600` with nothing
+between, and disabled text belongs in that gap. `400` and `500` were **interpolated between the two anchors**
+rather than invented — `#93a3ab · #73848c · #53666e · #33474f` — and `text-disabled` takes `500`. Before this
+the only option was `600`, which is barely visible on a `#0e1a1f` surface.
+
+Also authored: **`fg-primary`, `fg-secondary`, `fg-tertiary`**, which SKO did not have at all. Not optional
+extras — a `fg-secondary_hover` without a `fg-secondary` is a hover state for something that does not exist.
+
+**The check that matters**, contrast against `bg-primary` in both modes:
+
+| | Light | Dark |
+|---|---|---|
+| `text-primary` | 15.30 | 15.50 |
+| `text-secondary` | 10.32 | 9.51 |
+| `text-tertiary` | 6.92 | 6.80 |
+| `text-disabled` | 3.04 | 2.93 |
+
+The ladder descends evenly rather than clustering, so the four levels are genuinely distinguishable — and
+**light and dark track each other within half a point at every rung**, which is the real test of whether two
+modes were authored together or separately.
+
+`text-disabled` at ~3.0 sits below WCAG AA, **and that is correct**: 1.4.3 exempts inactive controls. Dim
+enough to read as disabled, still perceptible.
+
+Three that were dropped from the estimate on inspection: `text-brand-secondary_hover`,
+`fg-brand-secondary_hover` and `bg-brand-solid_hover` are **empty in the deprecated collection** — no value in
+either mode. And three component-scoped ones were excluded deliberately: if `toggle-button-fg_disabled` and
+friends are recreated they belong in a `SKO/Components/*` layer, not mixed into the semantic one, which is
+what the deprecated file did.
+
 ## 2026-09-08 · The tone tokens authored, and a rule that did not survive contact
 
 **18 tokens created in `1. Semantics`**, so `error`, `warning` and `success` now have the same shape:
