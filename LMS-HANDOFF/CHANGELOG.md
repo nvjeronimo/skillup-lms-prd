@@ -148,6 +148,40 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · The semantic layer is complete — nothing left to author
+
+The last **11 tokens**: `text-quaternary`, `text-placeholder`, `text-placeholder_subtle`, `border-tertiary`,
+`bg-quaternary`, `bg-active`, `bg-primary-solid`, `bg-secondary-solid`, and the three `_alt` surfaces.
+
+**46 semantic tokens and 2 primitives across three passes.** Coverage went from **36 of 281** to **74 mapping
+by name, 5 safe renames, 7 empties to drop, and nothing left to write.**
+
+**I changed my mind about the `_alt` surfaces.** Yesterday I proposed renaming them to `bg-on-dark` and
+friends. They keep the `_alt` name inside the SKO namespace, with a description saying what it means — *a
+surface that stays light in dark mode*. My objection was ever only to **folding** them into the ordinary
+surfaces, which would have inverted them; the name is the Untitled UI convention and renaming it only breaks
+the muscle memory of anyone arriving from there.
+
+`border-secondary_alt` was literal `#000000`, not an alias. It now takes `Primary/950` DeepTeal — a visible
+change, and a deliberate one, because pure black is not in the palette.
+
+**The ladders verify.** Text is monotonic in both modes — 36 · 64 · 89 · 114 · 148 light, 240 · 190 · 160 ·
+129 · 99 dark — with `quaternary` and `placeholder` sitting together on purpose.
+
+**And two pre-existing oddities surfaced that are not mine to fix.** `bg-secondary_subtle` sits between
+`bg-primary` and `bg-secondary` in light but goes *past* `bg-secondary` in dark — one of the two modes is
+wrong about what "subtle" means. And `border-primary` uses `Neutral/400` in both modes, the only border that
+does not invert with the theme.
+
+One flagged before building and worth repeating: **`bg-active` resolves to the same value as `bg-secondary` in
+light mode.** The deprecated set did the same, so a selected row and a secondary surface have never been
+distinguishable. If they should be, `bg-active` wants a brand tint rather than a neutral — a product decision,
+not a step.
+
+Next is the rebind itself: 79 bindings by name and rename, one scripted pass, then a **screen review**,
+because the rebind repaints from Untitled UI stock ramps to SkillUp brand ramps and a zero-bindings count is
+not the test.
+
 ## 2026-09-08 · Hover and disabled, and two ramp steps that had to exist first
 
 **17 semantic tokens created**, plus **2 primitives**. The semantic layer now covers the load-bearing

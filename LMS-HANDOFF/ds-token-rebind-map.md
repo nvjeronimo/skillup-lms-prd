@@ -91,3 +91,60 @@ one.
 3. **Review screens**, because step 2 repaints from stock to brand. A zero-bindings count is not the test.
 4. **Decide `Utility/*`, `Alpha/*` and `Components/*` separately** — they are not on the critical path.
 5. **Remove the collection** only after a pass reports zero remaining bindings.
+
+
+---
+
+# The semantic layer is complete — 8 Sep 2026
+
+**46 semantic tokens and 2 primitives authored across three passes.** Nothing is left to write.
+
+| | Start | Now |
+|---|---|---|
+| `SKO/Colors/*` | 78 | **124** |
+| Deprecated tokens mapping by name | 36 | **74** |
+| Safe renames | — | 5 |
+| Empty, to be dropped rather than recreated | — | 7 |
+| **Still to author** | 245 | **0** |
+| Out of scope (`Utility` 150, `Components` 25, `Alpha` 20) | — | 195 |
+
+The twelve deprecated tokens still without a same-name destination are **all brand-family, and none needs a
+new token**: five are safe renames (`text-white` → `fg-white`, `text-brand-tertiary_alt` →
+`text-brand-tertiary`, `border-brand_alt` → `border-brand`, `fg-brand-primary_alt` → `fg-brand-primary`,
+`bg-brand-primary_alt` → `bg-brand-primary`) and seven are empty in both modes.
+
+## The ladders, verified
+
+**Text** — monotonic in both modes, and the two intended equals sit together:
+
+| | Light | Dark |
+|---|---|---|
+| `text-primary` | 36 | 240 |
+| `text-secondary` | 64 | 190 |
+| `text-tertiary` | 89 | 160 |
+| `text-quaternary` · `text-placeholder` | 114 | 129 |
+| `text-disabled` | 148 | 99 |
+
+**Background** — monotonic in light (255 · 249 · 245 · 230 · 194).
+
+**Border** — `primary` strongest, then `secondary`, then `tertiary`, in both modes.
+
+## Two pre-existing oddities the verification surfaced
+
+Neither was introduced by this work and neither is fixed here.
+
+1. **`bg-secondary_subtle` is not in the same place in both modes.** In light it sits between `bg-primary` and
+   `bg-secondary` (249 against 255 and 245). In dark it goes past `bg-secondary` (37 against 31) — the most
+   elevated surface rather than the least differentiated. One of the two modes is wrong about what "subtle"
+   means.
+2. **`border-primary` uses `Neutral/400` in both modes**, so it does not invert with the theme. It stays the
+   strongest border in both, which is defensible, but it is the only border that behaves this way.
+
+## What is left, in order
+
+1. **Rebind** categories 1 and 2 — 74 by name plus 5 renames, one scripted pass.
+2. **Review screens.** The rebind repaints from Untitled UI stock ramps to SkillUp brand ramps. A
+   zero-bindings count is not the test.
+3. **Drop the 7 empties** rather than recreating them.
+4. **Decide `Utility` / `Alpha` / `Components` separately** — not on the critical path.
+5. **Remove the collection** only after a pass reports zero remaining bindings.
