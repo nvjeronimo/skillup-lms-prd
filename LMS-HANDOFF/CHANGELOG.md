@@ -148,6 +148,34 @@ exist in Open edX and **none appear in our grid** — this instance has no Advan
 nobody designs for a tile the content team cannot pick. If it is ever switched on, Survey is the one to design
 first: Full support, mobile-ready, and a matrix of questions sharing one scale is a real layout problem.
 
+## 2026-09-08 · The rebind ran on what matters, and stopped where it could not
+
+**Clean: `❖ LMS COMPONENTS`, `❖ MobileApp Component` and its two sub-pages, and
+`↳ Alerts & notifications`** — zero outstanding bindings on every page our own work depends on.
+
+**`↳ Buttons` still has 914, and I stopped trying.** Four attempts, four dropped connections, including one
+capped at 250 mutations. Each time I re-read the count rather than assuming: it had not moved, so these were
+real failures and not silent successes. About 25 component pages were never attempted for the same reason —
+the heavy stock pages exceed what the remote transport carries in one call.
+
+**What replaces the attempts:** `scripts/rebind-deprecated-tokens.js`, the same pass written to run from a
+plugin console **inside the file**, where there is no transport timeout. One go, whole file, prints what it
+changed.
+
+It carries the three decisions this work arrived at, so they do not leave with the session:
+
+- **Never rebind inside an `INSTANCE`.** That creates a permanent override which survives later changes to the
+  main component. Instances follow once their component's own page is processed — which is why the numbers
+  look small: 142 nodes on the Alerts page, 322 correctly skipped.
+- **Skip the foundations pages.** `↳ Colors` is the swatch sheet that documents the deprecated collection;
+  repainting it destroys the record of what those tokens were. It alone holds 7,356 deprecated paints, which
+  is why the first whole-file estimate was so wrong.
+- **Report `Utility/*`, `Alpha/*` and `Components/*` rather than guess.** `↳ Badges` alone has 1,835 bindings
+  with no SKO destination — all colour ramps. Badges are the component that most needs the `Utility` decision.
+
+And the check afterwards is not the outstanding count. **The rebind repaints stock ramps to brand ramps** —
+the intended change, and a visual one. Screens get reviewed before the collection is deleted.
+
 ## 2026-09-08 · The semantic layer is complete — nothing left to author
 
 The last **11 tokens**: `text-quaternary`, `text-placeholder`, `text-placeholder_subtle`, `border-tertiary`,

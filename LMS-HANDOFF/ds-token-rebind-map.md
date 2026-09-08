@@ -148,3 +148,47 @@ Neither was introduced by this work and neither is fixed here.
 3. **Drop the 7 empties** rather than recreating them.
 4. **Decide `Utility` / `Alpha` / `Components` separately** — not on the critical path.
 5. **Remove the collection** only after a pass reports zero remaining bindings.
+
+
+---
+
+# The rebind — run, and stopped honestly
+
+## Done
+
+| Page | Outstanding |
+|---|---|
+| `❖ LMS COMPONENTS ✅` | **0** |
+| `❖ MobileApp Component ✅` + its two sub-pages | **0** |
+| `↳ Alerts & notifications` | **0** |
+
+Those are the pages our own work depends on, and they are clean.
+
+## Not done, and why
+
+**`↳ Buttons` still has 914.** Four attempts, four dropped connections — including one limited to 250
+mutations. The heavy stock pages exceed what the remote transport can carry in a single call, and this is a
+genuine failure rather than a silent success: the count was re-read after each drop and had not moved.
+
+Roughly 25 component pages were never attempted for the same reason.
+
+## What replaces it
+
+[`scripts/rebind-deprecated-tokens.js`](scripts/rebind-deprecated-tokens.js) — the same pass, written to run
+**from a plugin console inside the file**, where there is no transport timeout. It does the whole file in one
+go and prints what it changed.
+
+It encodes the three decisions this work arrived at, so they are not lost with the session:
+
+1. **It never touches a node inside an `INSTANCE`.** Rebinding there creates a permanent override that
+   survives future changes to the main component. Instances follow once their component's page is processed.
+2. **It skips the foundations pages.** `↳ Colors` is the swatch sheet that *documents* the deprecated
+   collection — repainting it destroys the record of what those tokens were. Same for Typography, Icons and
+   Spacing, and for the demo pages the file itself marks "you can move to a separate file".
+3. **It reports `Utility/*`, `Alpha/*` and `Components/*` rather than guessing.** They have no SKO
+   destination, and the script lists them at the end.
+
+## The check that matters afterwards
+
+Not the outstanding count. **The rebind repaints from Untitled UI stock ramps to SkillUp brand ramps** — it is
+the intended repaint, and it is a visual change. Screens need a review pass before the collection is deleted.
