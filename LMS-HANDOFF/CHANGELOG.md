@@ -24,6 +24,35 @@ and `Components/*` (25) have no SKO destination, so `Colors (Remove)` still cann
 need a review pass — the rebind repaints Untitled UI stock ramps to SkillUp brand ramps, which is the point
 of it and is visible. And the library remains unpublished; that is its owner's call.
 
+## 2026-09-09 · Reading gets its screens — 16, across 5 scenario rows
+
+Page `↳ Phase 1 · Reading - Ready for Review 🟠`, frame `5685:170871`. Full matrix in
+[reading-screen-matrix.md](reading-screen-matrix.md).
+
+**Reading is P0 — 84 topics, 30% of the program — and it had one screen.** A 1112 content column that had
+never been placed in a device shell. Video and Quiz are both APPROVED with full scenario grids; this brings
+the most common type in the catalogue to the same bar: Article, Downloads, completion states, the long-form
+composition reference, and four edge cases, at 1440 / 960 / 375.
+
+**The column that existed was already the right thing.** It *is* `Main Content` in the player shell — what
+was missing was the topbar, the sidebar and the AI panel around it, and every state other than the happy path.
+
+**A shell bug that would have spread.** `Main Content` came from the Video shell with
+`primaryAxisAlignItems: CENTER`. When content is taller than the viewport that centres the overflow and clips
+both ends — on tablet it silently removed the topic header and the tab bar. Fixed to `MIN`. Any future type
+cloned from that shell inherits the same default.
+
+**Two content defects caught by assembling it.** The canonical page had a Downloads tab counting 2 over a
+list of 4. And at 375 the header meta truncates to *"approx. 8 mi"* — that one is inside `LMS / Topic Header`,
+so it is a DS fix and is recorded rather than patched locally.
+
+**One state drawn because the DS ships it, with no rule behind it.** `Topic-Status-Badge` has a **`Review`**
+variant alongside Mark as Complete and Completed. Nothing defines when a Reading enters review. Drawn in
+Row 3.3 so the question is visible; it either earns a rule or leaves the component.
+
+**Locked is deliberately not drawn** — the API gives a boolean with no date and no rule, the same finding as
+the unlock tooltip. Whether a locked topic page is reachable at all is unanswered.
+
 ## 2026-08-21 · What one HTML (Text) block can actually hold
 
 Block `5507:152743` in the ICP section — a composed specimen, the list patterns on their own, inline
