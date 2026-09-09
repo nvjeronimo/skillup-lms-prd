@@ -2,6 +2,28 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-09 · The rebind is finished — 55 pages at zero
+
+Every component page in the DS library is at **zero** outstanding bindings to `Colors (Remove)`, verified by
+a counting pass that is separate from the runner that did the writing. `❖ BASE COMPONENTS 2` (22–38),
+`❖ SHARED ASSETS` (40–45) and `❖ APPLICATION COMPONENTS` (88–113), plus the LMS and MobileApp pages that
+were already clean.
+
+**The earlier reading of the transport was wrong, and it cost time.** "Tranches of 40 do not land" described
+one busy afternoon, not the API. The same runner then returned cleanly at 30, 40, 120, 200, 400 and 600
+mutations per call. Sizing every tranche to a number observed once would have turned a two-hour job into a
+two-day one.
+
+**What replaces the guess is a runner that measures itself.** It carries a mutation budget and counts what
+it did not reach in the same pass, so `stillLeft` is computed after the writes and survives a dropped
+response. `0` means the page is provably done. That is trap 21; trap 20 is corrected to say an internal
+timeout also lands its writes — one timeout at a cap of 40 had written 88 bindings before it was cut off.
+
+**Three things are still open, and two of them are decisions, not work.** `Utility/*` (150), `Alpha/*` (20)
+and `Components/*` (25) have no SKO destination, so `Colors (Remove)` still cannot be deleted. The screens
+need a review pass — the rebind repaints Untitled UI stock ramps to SkillUp brand ramps, which is the point
+of it and is visible. And the library remains unpublished; that is its owner's call.
+
 ## 2026-08-21 · What one HTML (Text) block can actually hold
 
 Block `5507:152743` in the ICP section — a composed specimen, the list patterns on their own, inline

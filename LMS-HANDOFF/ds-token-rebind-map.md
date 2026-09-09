@@ -198,3 +198,62 @@ It encodes the three decisions this work arrived at, so they are not lost with t
 
 Not the outstanding count. **The rebind repaints from Untitled UI stock ramps to SkillUp brand ramps** — it is
 the intended repaint, and it is a visual change. Screens need a review pass before the collection is deleted.
+
+---
+
+# The rebind is finished — 9 Sep 2026
+
+Every component page in the file is at **zero** outstanding mappable bindings. 55 pages, verified by a
+second pass that counts rather than trusts the runner's own report.
+
+## What the transport actually does
+
+The previous entry said tranches of 40 do not land. **That was wrong, and wrong in a way worth recording:**
+it described one bad afternoon, not the transport.
+
+Once `Buttons/Button` was clear, the same runner returned cleanly at 30, then 40, then 120, then 200, then
+400, then 600 mutations per call. The size was never the problem — the file was busy. There are three
+distinct outcomes and only one of them is a failure:
+
+| What comes back | What happened |
+| --- | --- |
+| `{rebound: n}` | n mutations landed |
+| **internal timeout** | **mutations still landed** — one timeout at cap 40 wrote 88 |
+| dropped response | mutations landed; the answer was lost |
+| `An unexpected error occurred` | nothing is guaranteed — re-measure |
+
+So the method is not "small tranches". It is **measure, never assume**: every runner carries its own
+`stillLeft` count, computed after the writes, in the same call. That number is the only trustworthy output.
+
+## The runner
+
+Same three decisions as the handover script — never inside an `INSTANCE`, never the foundations pages,
+never guess at `Utility/*` — plus a page list and a mutation budget, so one call can sweep several small
+pages or take a bite out of a large one and say exactly how much is left.
+
+## The pages, and what they cost
+
+| Section | Pages | Notes |
+| --- | --- | --- |
+| `❖ LMS COMPONENTS ✅` | 1 | already clean |
+| `❖ MobileApp Component ✅` | 3 | already clean |
+| `❖ BASE COMPONENTS 2` | 22–38 | `↳ Buttons` 914, `↳ Inputs` 1,116, `↳ Radio groups` 1,376 |
+| `❖ SHARED ASSETS` | 40–45 | `↳ Background elements` 1,578 |
+| `❖ APPLICATION COMPONENTS` | 88–113 | `↳ Modals` 456, `↳ Tables` 417 |
+| `♿ Accessibility Standards` | 15 | nothing bound to the deprecated collection |
+
+Deliberately untouched, as decided: the foundations pages (4–12) — `↳ Colors` **documents** the deprecated
+collection and repainting it destroys the record — the `MARKETING WEBSITE EXAMPLES` and
+`APPLICATION EXAMPLES` demo sections the file itself marks as movable, and the two "you can delete this"
+pages. `↳ Badges` keeps **1,835** `Utility/*` bindings that have no SKO destination.
+
+## Still open
+
+**`Utility/*` (150), `Alpha/*` (20) and `Components/*` (25) have no SKO equivalent.** They are not a
+mechanical rebind; somebody has to decide whether SKO adopts those ramps or drops them. Until that is
+settled, `Colors (Remove)` cannot actually be deleted.
+
+**The screens still need a look.** The rebind repaints Untitled UI stock ramps to SkillUp brand ramps. That
+is the point of it, and it is a visible change on every component page.
+
+**The library is still unpublished.** None of this reaches a consuming file until its owner publishes.

@@ -1,4 +1,4 @@
-# Figma Plugin API — twenty things that fail quietly
+# Figma Plugin API — twenty-one things that fail quietly
 
 Collected while building the Course Detail components. Every one of these **succeeded without an error** and
 produced the wrong result — which is the only reason they are worth writing down. An exception teaches you on
@@ -62,14 +62,33 @@ The rule they all point at: **after any structural mutation, read the state back
 
 ## The transport
 
-20. **A dropped `use_figma` response is not a failed write.** On a large file, a call that mutates more than
-    roughly 20–30 paints returns *"transport dropped mid-call"* — but the writes usually landed. Verified by
-    re-reading the count after each drop: tranches of 8 and 20 landed every time, a tranche of 40 did not.
+20. **A dropped `use_figma` response is not a failed write.** On a large file, a call that mutates a lot of
+    paints often returns *"transport dropped mid-call"* — but the writes landed. Treating the drop as a
+    failure and retrying the same range is how you conclude something is impossible when it is only slow.
+    `Buttons/Button` went from 123 outstanding to zero entirely through calls that all reported as dropped.
 
-    So the pattern for bulk edits on a big file is **fire a small tranche, ignore the dropped response,
-    repeat, and measure separately.** Treating the drop as a failure and retrying the same range is how you
-    conclude something is impossible when it is only slow. `Buttons/Button` went from 123 outstanding to zero
-    this way, entirely through calls that all reported as dropped.
+    An **internal timeout** is the same thing with a different name: one timeout at a cap of 40 had written
+    88 bindings by the time it was cut off. Only `An unexpected error occurred` leaves the state genuinely
+    unknown.
+
+21. **Tranche size is not the variable — file load is.** The first read of trap 20 was that 8 and 20 land
+    while 40 does not. That held for one afternoon and then stopped being true: with the same runner, the
+    same file returned cleanly at 30, 40, 120, 200, 400 and 600 mutations per call. Sizing tranches to a
+    number observed once turns a two-hour job into a two-day one.
+
+    **Make the runner measure itself instead.** Give it a mutation budget, and have it count what it did
+    *not* reach in the same pass:
+
+    ```js
+    if (budget <= 0) { remaining++; continue; }   // count, don't write
+    ...
+    done++; budget--;
+    return { rebound: done, stillLeft: remaining };
+    ```
+
+    `stillLeft` is computed after the writes, inside the call, so it survives a dropped response — and when
+    it comes back `0` the page is provably finished. Then raise the budget until a call fails, rather than
+    guessing low forever.
 
 ## Querying and annotations
 
