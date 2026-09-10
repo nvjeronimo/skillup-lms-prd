@@ -2,6 +2,31 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · Blockquote and Key Takeaways become Lesson Block Kinds
+
+`LMS / Lesson Block` (`20328:3682`) goes from 9 Kinds to **11**: `HTML (Blockquote)` and
+`HTML (Key Takeaways)`.
+
+**They were hand-drawn on nine screens each** because nothing in the DS rendered them, and both are among the
+most common things a Reading contains. `HTML (Callout)` was not a substitute — it resolves to
+`LMS / Inline Alert`, a tinted alert with a glyph, which is a different object from a pull quote.
+
+Built from the geometry already in use, on DS tokens: blockquote is `bg-brand-section` with a 4px
+`bg-brand-solid` rule on the left; Key Takeaways is `bg-tertiary` with numbered rows whose number sits in a
+fixed 16px column so the text edges align regardless of how many items there are.
+
+Both are authored inside a single Text component in Studio, like every other HTML Kind — **formatting, not
+separate blocks.** Written into the component description so nobody stacks one block per quote.
+
+### Measured, for the mobile tabs decision
+
+Two tabs (`Article` + `Downloads` with its count badge) come to **191px at Size=sm** and 213 at md, inside a
+**343** viewport. Video's three (`Transcript · Notes · Downloads`) come to **309**, leaving 34. Horizontal
+tabs fit on a phone with room to spare in both cases.
+
+The catch is not width: tab height is **32px at sm and 36 at md**, against the 48px minimum touch target the
+usual guidance cites. Whichever pattern wins, that needs fixing at source.
+
 ## 2026-09-10 · The demo course starts at zero, and the phantom slots are gone
 
 **The 10 instances cleaned.** Every canonical page on Topic Content Types Discovery — VILT, Lab, Podcast,
