@@ -2,6 +2,26 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · The demo course starts at zero, and the phantom slots are gone
+
+**The 10 instances cleaned.** Every canonical page on Topic Content Types Discovery — VILT, Lab, Podcast,
+ORA, Activity, Lesson Page, Reading, Quiz and the two Lesson Page exhibits — had the header's mark-status row
+forced visible over an empty badge. Content column **914 → 1080** on all ten.
+
+Done by setting visibility explicitly rather than waiting on the binding: the ICP's cached copy of
+`LMS / Topic Header` still reported `{}` for the row's property reference well after the publish, the same
+stale-snapshot lag seen with `Sidebar-ICP`. Explicit visibility gives the right result now and the binding
+governs from here.
+
+**The outline reads as a learner who has just started.** Modules 02 and 03 moved off *Completed* to
+`Module In progress`, counters **0 of 3** and **0 of 9**. With Module 01 at 0 of 3 and the ring at 0%, every
+number on the sidebar now tells one story instead of three.
+
+**A note on what the component cannot say.** `LMS / Module Info` offers only *In progress* and *Completed*,
+so "not started" has to be spelled as in-progress-with-zero. That is a reasonable reading of a counter at
+`0 of N`, but it is a workaround: a module the learner has never opened and one they opened and abandoned
+look identical. Recorded here rather than papered over.
+
 ## 2026-09-10 · The header's mark-status slot collapses with its contents
 
 `LMS / Topic Header` (`19975:537676`). `Show Mark-Status-Badge` now drives **both** the badge and the row
