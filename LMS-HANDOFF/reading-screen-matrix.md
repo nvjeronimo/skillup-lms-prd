@@ -189,7 +189,49 @@ outline cannot express a module the learner has not opened yet, which is why the
 
 ---
 
-## 7 · One responsive defect, and its real cause
+## 7 · The tabs are components now, and what the audit found
+
+**The tab row was hand-built.** Two local `Tab` frames with a text node and a rectangle for the underline —
+not `Horizontal tabs` from the DS, which the Video screens have used since Phase 1. Rebound across all 16.
+
+**Desktop and tablet** take `Horizontal tabs` (`Type=Underline, Size=sm, Full width=False`) with two
+`_Tab button base` children — Article, and Downloads carrying its count badge — and the remaining eight
+hidden, which is how the Video screens use it.
+
+**Mobile takes a different component, and finding out why cost three failed attempts.** Setting
+`Breakpoint=Mobile` on `Horizontal tabs` does not narrow the row: **it swaps the whole thing for a `Select`
+dropdown**. The clone's children stop being tab buttons, so every property call after that throws. The DS's
+actual mobile pattern is a separate component — `LMS / Mobile Tab Select` — which is what the Video mobile
+screens use, and now the Reading ones. Worth knowing before anyone rebinds tabs elsewhere.
+
+*(One casualty: five orphan clones piled up in `article-mobile` before I caught it, each inserted just before
+the throw. Removed. When a batch fails mid-loop, check what it left behind.)*
+
+### What else is not on a component
+
+The rest of the audit came back cleaner than expected. Already correct: Topic Header, Sidebar, Topbar, AI
+Panel, Author & Updated Date, Feedback, Topic-Status-Badge, Navigation Buttons, the `LMS / File Item` rows in
+the downloads list, and the `LMS / Lesson Block` instances on the composition screens. The remaining local
+frames — `Tabs`, `content`, `scroll-area`, `Frame 413` — are layout containers, not duplicated components.
+
+**Two genuine gaps, and they are gaps rather than misuse:**
+
+| Pattern | Screens | Nearest DS piece | Why it does not fit |
+|---|---|---|---|
+| `Blockquote` | 9 | `Lesson Block · HTML (Callout)` | that Kind resolves to `LMS / Inline Alert` — a tinted alert with a glyph, not a left-ruled quote |
+| `Key Takeaways` | 9 (36 rows) | `AI Panel · Mode=Key Takeaways` | that is the AI side panel, a different surface entirely |
+
+Both are drawn locally because **nothing in the DS renders them**. They are also two of the most common
+things a Reading will contain. Either they earn components, or the content team is told not to use them —
+and the second answer is not credible for a pull quote.
+
+**One open question rather than a defect:** the article prose sits as raw text nodes in `Frame 12` rather than
+inside an `LMS / Lesson Block · Kind=HTML (Text)`. Arguably right — the prose *is* the inside of one Text
+block — but the composition screens wrap it and these do not. Worth settling so both read the same way.
+
+---
+
+## 8 · One responsive defect, and its real cause
 
 **The mobile header truncation is fixed, and it was not what I said it was.** At 375 the meta line read
 *"Reading · approx."* — the duration cut off. I had recorded this as needing the min/max arithmetic used for
