@@ -148,10 +148,15 @@ and 03 collapsed; Module 01 set to *In progress · 0 of 3* (*1 of 3* on the comp
 progress reads *Module 1 of 3*; the footer nav reads *1 of 3 · Next: The cost of poor quality*. Audited clean
 across all 16 on eight checks.
 
-**One loose end, left visible rather than faked.** The Overall Progress ring still draws **67%** while the
-label now reads *Module 1 of 3*. The percentage is a text node but the arc is geometry inside
-`LMS / Progress Circle`, so changing the number alone would put the two out of step. Either the component
-gains a way to set the arc, or the demo course settles on one story and both follow it.
+**The progress ring reads 0%, arc included.** The percentage is a text node, but the arc is geometry — two
+`ELLIPSE` nodes with `arcData`, a full-circle track and a progress sweep starting at 3π/2. The old 67% was
+literally `endingAngle − startingAngle = 4.2097 rad` over 2π. Setting the sweep to zero empties the ring, so
+the number and the drawing now agree. `arcData` is overridable on an instance child, which is not true of
+`layoutMode` or `minWidth` — worth remembering.
+
+The two names differ by breakpoint: desktop wraps it in `ProgressRing`, mobile in `Progress Circle` with the
+ellipses named `shape · Overall Progress`. Targeting the arc geometry rather than the node name is what
+caught all 16.
 
 **Discovery notes do not ship.** The composition screens were built from the discovery exhibit, which labels
 every block with its research annotation — `01 · TEXT / RICH TEXT`, `html XBlock · ~5s visibility completion ·
@@ -184,17 +189,28 @@ outline cannot express a module the learner has not opened yet, which is why the
 
 ---
 
-## 7 · Two responsive defects, not fixed here
+## 7 · One responsive defect, and its real cause
 
-At 375 the topic header meta truncates: **"approx. 8 mi"** instead of *"approx. 8 min read"*. It is inside
-`LMS / Topic Header`, so the fix belongs in the DS, not in these screens — and it needs the same min/max
-arithmetic used for the decision CTAs rather than a local override. Recorded so it is not lost.
+**The mobile header truncation is fixed, and it was not what I said it was.** At 375 the meta line read
+*"Reading · approx."* — the duration cut off. I had recorded this as needing the min/max arithmetic used for
+the decision CTAs. Wrong diagnosis.
 
-**`Navigation Buttons` has no mobile behaviour.** Its three children are all `Fill`, so at 343 they split
-equally into 93px each and the centre block collides with both buttons — the same equal-split finding as the
-decision CTAs, where `Fill` divides free space evenly and only min/max can bias it. Worked around here by
-hiding the centre `Info Container` at 375, which costs nothing because the header already carries the topic
-title. The component still needs the min-width rule.
+The real cause: **an empty container still reserves its width.** `Header Container` holds the content column
+and a `Mark-As-Completed-row`. When `Show Mark-Status-Badge` is off, the row's *contents* disappear but the
+row itself stays, hugging **162px**. At 1440 that leaves 914 for the content and nobody notices. At 375 it
+leaves **145 of 311** — the meta line loses more than half its space and clips.
+
+Hiding the row wherever the badge is off restores the full 311 and the line renders whole. This also puts the
+screens back in line with the rule that the *action* lives only at the bottom; the header slot is for the ✓
+status badge, and when there is no badge there should be nothing there at all.
+
+**Worth fixing at source.** The row should collapse with its contents rather than reserve space — otherwise
+every narrow surface built from this header inherits the same silent tax.
+
+**Correction on the footer nav.** An earlier note here claimed `Navigation Buttons` has no mobile behaviour.
+It does — icon-only previous/next with the position between them, which is the right treatment at 375 and is
+Nelson's own. The instances were simply carrying stale content (`4 of 9 · Practice Quiz…`) after the library
+update reset their overrides. Content corrected; the structure was never wrong.
 
 ---
 
