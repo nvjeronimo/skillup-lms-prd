@@ -2,6 +2,32 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · Blockquote and Key Takeaways swapped onto the components
+
+The 9 Reading screens that carried hand-drawn `Blockquote` and `Key Takeaways` frames now use
+`LMS / Lesson Block` instances — **18 swaps, zero local frames left**. Content was identical on all nine and
+matches the component defaults, so nothing had to be re-typed.
+
+**Found while swapping: one mobile screen was 32px narrower than its siblings.** `article-mobile`'s
+`scroll-area` carried 16px of side padding on top of the 16 already supplied by `Sidebar Container`, so its
+whole column ran at **311** while the other three mobile screens ran at 343. The same doubled-padding fault
+as Video's `Section Header`, in a different place. Removed.
+
+### A DS change landed mid-task and wiped the module counters
+
+`LMS / Module Header` was rebuilt while this was in flight: the text nodes renamed to `Eyebrow`, the nested
+`LMS / Module Info` removed, and an `Is completed` boolean added in its place. Renaming a layer **drops every
+override on it**, so all 16 sidebars fell back to the component default — Module 03 was labelled
+*"MODULE 01 · 3 of 3"* on every screen.
+
+Re-applied by matching on **text content** rather than node name (`/^MODULE \d\d$/`, `/of \d/`), which
+survives a rename. All 16 back to `MODULE 01 · 0 of 3 / MODULE 02 · 0 of 3 / MODULE 03 · 0 of 9`.
+
+**Worth knowing: the rebuild may close an open gap.** The old `Module Info` had only *In progress* and
+*Completed*, which is why a not-started module could not be expressed. An `Is completed` boolean plus a
+counter says it directly. If that was the intent, the note in `Sidebar-ICP`'s description about the missing
+third state can come out.
+
 ## 2026-09-10 · The 48px target lands — verified after publish
 
 DS published and through. Final state across the 26 screens touched:
