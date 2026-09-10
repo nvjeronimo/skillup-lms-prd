@@ -2,6 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · Video's mobile column widens to 343, matching Reading
+
+`Section Header` on the 10 Video mobile screens (5 light, 5 dark) carried **12px of side padding** on top of
+the tab component's own 16, narrowing the row to 319 inside a 343 column. Padding removed; the tabs instance
+now measures **343** with an inner box of 311, exactly like Reading.
+
+**It fixed an overflow nobody had noticed.** At 319 the instance's own 16px insets left a content box of
+**287**, while the three-tab row needs **309** — the row had been 22px wider than the space it was given.
+Widening turns a silent overflow into 2px of slack.
+
+**And the tabs now line up.** They previously sat 12px inside the topic title and the transcript rows below
+them; at 343 all three share one left edge.
+
+**What it does not fix.** Three tabs at `Size=md` need 344 against the new 311 box, so Video still ships at
+`sm` with a 32px touch target. Closing that last 33px needs shorter labels — *Downloads* → *Files* saves
+about 40 — since removing the component's own 16px insets would break alignment with everything below.
+Reading is unaffected: two tabs at md are 211 in 311.
+
 ## 2026-09-10 · Mobile tabs stay tabs, and the touch target gets bigger
 
 **The dropdown is gone.** All 4 Reading mobile screens and all 10 Video mobile screens (5 light, 5 dark) now
