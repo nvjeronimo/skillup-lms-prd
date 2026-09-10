@@ -2,6 +2,29 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · The header's mark-status slot collapses with its contents
+
+`LMS / Topic Header` (`19975:537676`). `Show Mark-Status-Badge` now drives **both** the badge and the row
+that holds it. Before, only the badge was bound: switching it off emptied the row but left it hugging
+**162px** of nothing.
+
+**Invisible at 1440, fatal at 375.** On desktop the content column just gets 914 instead of 1080 and nobody
+looks twice. At 375 it left the content **145 of 311**, and the meta line clipped to *"Reading · approx."* —
+which had been recorded as a min/max problem needing the decision-CTA arithmetic. It was not. An empty
+container still reserves its width.
+
+**It also restores the rule.** The header slot is for the completed *status* badge, never the action — the
+action lives only in the footer. With no badge there should be nothing in the slot, reserved space included.
+
+**Blast radius, measured before the fix:** 100 `Topic Header` instances in the ICP, 97 with the badge off —
+but only **10** were actually paying the tax, all on the Topic Content Types Discovery page (the canonical
+VILT, Lab, Podcast, ORA, Activity, Lesson Page and Reading pages). The other 87 already inherited the
+component's hidden default. **Nothing on the Ready-for-Dev Quizzes or Video pages changes.** Those 10 gain
+166px of text width once the update is accepted — an improvement, and none of them is an approved deliverable.
+
+**Still open at 375:** with the badge *on*, the content column drops to 209 and the title wraps hard. Whether
+the badge belongs beside the title on a phone, or below it, is undecided and written into the component.
+
 ## 2026-09-10 · The outline can open any module
 
 `LMS / Sidebar-ICP` (`19975:536883`) gains three booleans — `Show Module 01 / 02 / 03 topics` — on the
