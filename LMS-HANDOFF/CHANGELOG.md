@@ -2,6 +2,32 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · The outline can open any module
+
+`LMS / Sidebar-ICP` (`19975:536883`) gains three booleans — `Show Module 01 / 02 / 03 topics` — on the
+`Expanded` and `Mobile` variants. Each module now carries its own topic list.
+
+**Why it was needed.** Figma will not let an instance reorder its own children, and the component was authored
+with Module 03 expanded and the topic rows simply following its header. So no override could put the topics
+under a different module — and every content type's demo topic sits somewhere different: Video's in Module 03,
+Reading's in Module 01, per the article's own first sentence.
+
+**Booleans, not a variant axis.** `State` already carries five options; a `Module Open` axis would have made
+fifteen variants, most meaningless — the Collapsed rails show no outline at all.
+
+**Nothing existing moved.** Defaults are 03 on, 01 and 02 off. Both variants came back at their original
+heights (1062 and 954) and render identically, so the 680 Ready-for-Dev screens are untouched. Verified on a
+throwaway instance, which was then deleted.
+
+**The header and the boolean are separate on purpose.** The boolean shows the topics; the nested Module
+Header's own `State` draws the chevron. Both must be set. Keeping them apart allows a header expanded on a
+module whose topics have not loaded.
+
+Modules 01 and 02 ship placeholder content (`Foundations`, `Lean thinking`). Rename freely — the structure is
+the deliverable.
+
+**Needs a DS publish and an accept in the ICP** before the Reading screens can use it.
+
 ## 2026-09-09 · The rebind is finished — 55 pages at zero
 
 Every component page in the DS library is at **zero** outstanding bindings to `Colors (Remove)`, verified by

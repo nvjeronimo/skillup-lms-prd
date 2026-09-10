@@ -127,20 +127,32 @@ header says so rather than inventing a range.
 
 ## 6 · Two blockers that belong to the DS, not to these screens
 
-**The outline cannot open Module 01.** `LMS / Sidebar-ICP` is authored with modules 01 and 02 collapsed and
+**RESOLVED 10 Sep — `Module Open` built.** `LMS / Sidebar-ICP` (`19975:536883`) now carries three booleans:
+`Show Module 01 topics` · `Show Module 02 topics` · `Show Module 03 topics`, applied to the `Expanded` and
+`Mobile` variants. Each module has its own topic list; the boolean shows it, and the nested Module Header's
+own `State` draws the chevron — **both must be set**, and they are separate on purpose, since a header can be
+expanded on a module whose topics have not loaded.
+
+Defaults are **03 on, 01 and 02 off** — exactly what every screen built before this expects. Both variants
+came back at their original heights (1062 and 954) and render identically, so the 680 Ready-for-Dev screens
+are untouched. Verified on a throwaway instance before the test was deleted.
+
+Booleans rather than a variant axis: `State` already has five options, so a `Module Open` axis would have
+produced fifteen variants, most of them meaningless — the Collapsed rails have no outline at all.
+
+Module 01 and 02 now ship demo content (`Foundations` and `Lean thinking`, three topics each, all Completed).
+It is placeholder — rename freely; the structure is the deliverable.
+
+**Waiting on:** DS publish, and accept in the ICP. Until then the 16 Reading screens still open Module 03.
+
+**The original problem, for the record.** `LMS / Sidebar-ICP` is authored with modules 01 and 02 collapsed and
 **03 expanded**, and the topic rows are simply the nodes that follow the third header. Figma does not allow
 reordering children inside an instance, so no override can move the rows under Module 01 — swapping the
 expand/collapse properties alone would leave the topics reading as if they belonged to a collapsed Module 03.
 
-This is a real gap, not a one-off: **every content type's demo topic sits in a different module.** Video's
-lives in Module 03, which is why the component is authored this way; Reading's belongs to Module 01, per the
-article's own first sentence. Two ways out —
-
-1. **Add a `Module Open` property to `LMS / Sidebar-ICP`** (01 / 02 / 03), defaulting to 03 so every existing
-   approved screen is untouched. Correct and reusable, costs a DS edit, republish and accept.
-2. **Move the article to Module 03** — one phrase in the body text, free, and the outline is already right.
-
-Option 1 is the one worth paying for, because the same request will arrive for Lab, Podcast and VILT.
+It was never a one-off: **every content type's demo topic sits in a different module.** Video's lives in
+Module 03, which is why the component was authored that way; Reading's belongs to Module 01, per the article's
+own first sentence. The same request would have arrived for Lab, Podcast and VILT.
 
 **`LMS / Module Info` has no "not started" state.** Only `Module In progress` and `Module Completed`. So an
 outline cannot express a module the learner has not opened yet, which is why the demo course reads as
