@@ -144,7 +144,7 @@ Module 01 and 02 now ship demo content (`Foundations` and `Lean thinking`, three
 It is placeholder — rename freely; the structure is the deliverable.
 
 **Applied to all 16 screens, 10 Sep.** `Show Module 01 topics` on, 02 and 03 off; Module Header 01 expanded
-and 03 collapsed; Module 01 set to *In progress · 1 of 3*; the selected row is `What is Six Sigma?`; overall
+and 03 collapsed; Module 01 set to *In progress · 0 of 3* (*1 of 3* on the completed screens); the selected row is `What is Six Sigma?`; overall
 progress reads *Module 1 of 3*; the footer nav reads *1 of 3 · Next: The cost of poor quality*. Audited clean
 across all 16 on eight checks.
 
@@ -152,6 +152,17 @@ across all 16 on eight checks.
 label now reads *Module 1 of 3*. The percentage is a text node but the arc is geometry inside
 `LMS / Progress Circle`, so changing the number alone would put the two out of step. Either the component
 gains a way to set the arc, or the demo course settles on one story and both follow it.
+
+**Discovery notes do not ship.** The composition screens were built from the discovery exhibit, which labels
+every block with its research annotation — `01 · TEXT / RICH TEXT`, `html XBlock · ~5s visibility completion ·
+Learner Notes work only on stock html`, and so on for all seven. Those are notes *about* the design, rendered
+inside the learner's page. **15 of them per screen**, now hidden on both `all-blocks` screens; the exhibit at
+`5413:113861` keeps them, because there they are the point.
+
+The topic header carried the same problem in a subtler place — title *Lesson Page — every block*, description
+*"Reference exhibit… Not a real lesson"* — sitting in slots a learner reads. Replaced with real content
+(*Applying Six Sigma in practice*). **The rule this settles: what a screen is for belongs in the handoff card,
+never inside the screen.** The card already says "composition reference"; the screen should look like a page.
 
 **Overrides survive a restructure, and can lie.** After the component changed shape, several screens still
 showed `The measure phase` in Module 01's third row — a local override from the old flat list, mapped onto
