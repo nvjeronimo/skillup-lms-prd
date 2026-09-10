@@ -48,6 +48,27 @@ that names a different topic than the page is the kind of error a reviewer trust
 *both* ends — on tablet it silently ate the topic header and the tab bar. Set to `MIN` with `clipsContent`.
 Worth knowing because every future type cloned from the Video shell inherits the same default.
 
+### The three fixed regions
+
+Nothing in a topic page scrolls the whole window. Three regions are pinned to the viewport and each scrolls
+on its own:
+
+| Region | Height | Behaviour |
+|---|---|---|
+| Topbar | 60 desktop · 56 mobile | fixed |
+| Sidebar | **964** = 1056 − 60 topbar − 32 padding | one viewport, own scroll |
+| Content column | 902 = 964 − 62 nav | scrolls |
+| **Navigation buttons** | 62 | **pinned to the bottom of the content column** |
+
+**The nav was floating.** Before this pass it was simply the last child in a hugging column, so it landed
+wherever the article ended: **y 456** on `minimal-desktop` — halfway up an empty page — and **y 2580** on
+`all-blocks-desktop`, far below the fold. Now `Main Content` is fixed-height with `content` set to FILL and
+clipping, so the nav sits at 902 → 964 on every desktop and tablet screen regardless of article length.
+
+Mobile needed a structural change rather than a resize: everything lived in one column, so a 1308px body
+pushed the nav out of the frame entirely. The scrolling children are now wrapped in a `scroll-area` that
+fills, with the nav as a sibling below it.
+
 ---
 
 ## 3 · The 16 screens
@@ -104,11 +125,40 @@ header says so rather than inventing a range.
 
 ---
 
-## 6 · One responsive defect, not fixed here
+## 6 · Two blockers that belong to the DS, not to these screens
+
+**The outline cannot open Module 01.** `LMS / Sidebar-ICP` is authored with modules 01 and 02 collapsed and
+**03 expanded**, and the topic rows are simply the nodes that follow the third header. Figma does not allow
+reordering children inside an instance, so no override can move the rows under Module 01 — swapping the
+expand/collapse properties alone would leave the topics reading as if they belonged to a collapsed Module 03.
+
+This is a real gap, not a one-off: **every content type's demo topic sits in a different module.** Video's
+lives in Module 03, which is why the component is authored this way; Reading's belongs to Module 01, per the
+article's own first sentence. Two ways out —
+
+1. **Add a `Module Open` property to `LMS / Sidebar-ICP`** (01 / 02 / 03), defaulting to 03 so every existing
+   approved screen is untouched. Correct and reusable, costs a DS edit, republish and accept.
+2. **Move the article to Module 03** — one phrase in the body text, free, and the outline is already right.
+
+Option 1 is the one worth paying for, because the same request will arrive for Lab, Podcast and VILT.
+
+**`LMS / Module Info` has no "not started" state.** Only `Module In progress` and `Module Completed`. So an
+outline cannot express a module the learner has not opened yet, which is why the demo course reads as
+01 ✓ · 02 ✓ · 03 in progress and cannot read any other way.
+
+---
+
+## 7 · Two responsive defects, not fixed here
 
 At 375 the topic header meta truncates: **"approx. 8 mi"** instead of *"approx. 8 min read"*. It is inside
 `LMS / Topic Header`, so the fix belongs in the DS, not in these screens — and it needs the same min/max
 arithmetic used for the decision CTAs rather than a local override. Recorded so it is not lost.
+
+**`Navigation Buttons` has no mobile behaviour.** Its three children are all `Fill`, so at 343 they split
+equally into 93px each and the centre block collides with both buttons — the same equal-split finding as the
+decision CTAs, where `Fill` divides free space evenly and only min/max can bias it. Worked around here by
+hiding the centre `Info Container` at 375, which costs nothing because the header already carries the topic
+title. The component still needs the min-width rule.
 
 ---
 
