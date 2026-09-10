@@ -2,6 +2,35 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · Mobile tabs stay tabs, and the touch target gets bigger
+
+**The dropdown is gone.** All 4 Reading mobile screens and all 10 Video mobile screens (5 light, 5 dark) now
+use `Horizontal tabs` instead of `LMS / Mobile Tab Select`.
+
+**Width was never the argument.** Reading's two tabs measure 191px at sm, 213 at md, in a 343 viewport.
+Video's three measure 309 in 319. Both fit. And 2–3 short labels is exactly the range the usual guidance
+gives to tabs rather than dropdowns.
+
+**The argument was the badge.** In the dropdown's Article state the control reads only *"Article"* — the
+count vanishes. On desktop the tab says *Downloads 4* and the learner knows the files exist; on a phone they
+had no way to find out. Only mobile users paid that, and they are the least likely to go looking.
+
+**Touch target: `Underline` at `md` is now 48px.** Six variants of `_Tab button base` went from a fixed 36 to
+hugging at 48, with the extra 12px added *above* the label so the gap between text and underline is
+unchanged. `sm` stays 32 — desktop is a pointer and does not need it. 70 instances in the ICP use
+`Underline + md`, all on WIP pages; the 2,048 on `sm` are untouched.
+
+**Video cannot have both, and that is measured, not assumed.** Three tabs at `md` come to 344 in a 319
+column — 25px over. `Full width=True` fits the row but crushes each tab to 85px while *"Downloads"* alone
+needs 122, so the labels clip. Video therefore ships at `sm` (309, fits, no clipping) and keeps a 32px
+target. Three ways out, none of them free: shorten *Downloads* to *Files* on mobile (~40px, and arguably
+better copy), widen the mobile content column from 319 to Reading's 343, or let the row scroll. **Nelson's
+call — the labels are on approved screens.**
+
+**A trap worth recording:** changing `Size` swaps the variant and **drops text overrides**. One screen came
+back reading *"My details"* twice — the component's default label — because I set the size after the text.
+Variants first, text second, always.
+
 ## 2026-09-10 · Blockquote and Key Takeaways become Lesson Block Kinds
 
 `LMS / Lesson Block` (`20328:3682`) goes from 9 Kinds to **11**: `HTML (Blockquote)` and
