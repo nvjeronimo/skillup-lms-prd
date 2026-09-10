@@ -38,6 +38,11 @@ ICP-Reading-<scenario>-desktop            1440 × 1056
 Tablet: 960 viewport, sidebar holds at 280, content takes 632.
 Mobile: 375 viewport, **no sidebar** — the outline moves behind the menu; content 343.
 
+**The outline had to be re-pointed too.** Cloning the Video shell brings its *selection* with it: the
+highlighted row read `Introduction to the DMAIC methodology · Video · 3m 20s` on every Reading screen, and
+the footer nav carried the same title. Now `What is Six Sigma? · Reading · 8 min` across all 16. A sidebar
+that names a different topic than the page is the kind of error a reviewer trusts rather than questions.
+
 **One bug found and fixed while assembling.** `Main Content` was inherited with
 `primaryAxisAlignItems: CENTER`. With content taller than the viewport that centres the overflow and clips
 *both* ends — on tablet it silently ate the topic header and the tab bar. Set to `MIN` with `clipsContent`.
