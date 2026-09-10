@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-10 · The 48px target lands — verified after publish
+
+DS published and through. Final state across the 26 screens touched:
+
+| | Size | Tab height | Row / box |
+|---|---|---|---|
+| Reading desktop & tablet (12) | sm | 32 | 189–191 in 1048 · 568 |
+| Reading mobile (4) | **md** | **48** | 209–211 in 311 |
+| Video mobile (10, light + dark) | sm | 32 | 309 in 311 |
+
+**Three instances needed a nudge the library could not give them.** After the publish, the *active* tab
+resolved to the new 48px variant while the *inactive* one still reported `paddingTop: 0` from the cached
+`Current=False, Size=md` main — so three Reading screens had a 48 tab beside a 36 one. Toggling the variant
+did not clear it. Set `paddingTop: 12` on those instance children, which is exactly the value the DS now
+ships, so the override is identical to what will arrive and cannot diverge.
+
+**Library updates do not land atomically.** Three components this session — `Sidebar-ICP`, `Topic Header`,
+`_Tab button base` — each reported stale data in the consuming file well after the publish, and
+`_Tab button base` came through *variant by variant*. Read the instance back before believing a publish
+reached it, and expect a partial state in between.
+
 ## 2026-09-10 · Video's mobile column widens to 343, matching Reading
 
 `Section Header` on the 10 Video mobile screens (5 light, 5 dark) carried **12px of side padding** on top of
