@@ -2,6 +2,41 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-11 · The scrollbar rule reaches Video and Quizzes
+
+Applied across all three Ready-for-Dev pages. Sidebar bars now sit **12px below the Overall Progress** and
+stop 8px short of the bottom, derived from each sidebar's own children rather than a fixed offset.
+
+| Page | Screens | Sidebar bar | Content bar |
+|---|---|---|---|
+| Reading | 16 | 16 | 16 |
+| Video Lessons | 36 | 27 | 29 |
+| Quizzes | 66 | 57 | **0 — by design** |
+
+**Quizzes get no content bar, and that is the finding.** Their frames are **1742px** — full-page artboards,
+not viewport crops. The content column runs the whole length and scrolls *with the page*, so the browser's own
+scrollbar serves it; a second bar inside the column would claim an independent scroll region that does not
+exist. Video and Reading frames are viewport-sized (917–1056) with the content clipped and a nav pinned at the
+bottom, so there both regions genuinely scroll.
+
+**Three guards the sweep needed.** A collapsed sidebar rail has no `Module Header` and does not scroll — 2
+screens skipped rather than given a nonsense 148px bar. One screen names its sidebar `LMS / Sidebar-ICP`
+instead of `Sidebar`. And the note-editor and edge-case exhibits have no `Sidebar Container` at all.
+
+### And the nav truncation was mine
+
+*"Next: The cost of poor quality"* was clipping to *"Next: The cost of..."*. Not the scrollbar, and not the
+publish — **I caused it** when I lengthened the label from *"Next: The define phase"*. The button sat at a
+fixed 186px and the longer text did not fit.
+
+The fix needed the rule we already had written down: **`Fill` inside a `Hug` parent keeps its authored width
+instead of collapsing to content.** The button's `Text padding` was `Fill` at 138, so hugging the button
+changed nothing until that frame was set to `Hug` too. Label now renders at 211 in a 263px button.
+
+**Tablet could not take it.** At 632 the three-part nav gives each part 189, and 211 does not fit. The centre
+`Info Container` is now hidden there as it already was on mobile — the topic title is in the header anyway,
+and at 189 it was truncating too.
+
 ## 2026-09-10 · Blockquote and Key Takeaways swapped onto the components
 
 The 9 Reading screens that carried hand-drawn `Blockquote` and `Key Takeaways` frames now use
