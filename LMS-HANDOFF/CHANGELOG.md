@@ -2,6 +2,33 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-11 · A scrollbar only where something actually scrolls
+
+Measured every bar against its container — natural content height versus the visible box — and removed the
+ones with nothing to scroll. **54 of 102 came out.**
+
+| Page | Screens | Sidebar bar | Content bar |
+|---|---|---|---|
+| Reading | 16 | **0** | 11 |
+| Video Lessons | 36 | 27 | **0** |
+| Quizzes | 66 | 57 | **0** |
+
+**Each page type scrolls in exactly one place, and it is a different place in each.** That only became
+visible by measuring:
+
+- **Reading** — the outline is 674 tall in a 964 sidebar, because only Module 01 is expanded. Nothing to
+  scroll. The article column is what runs long, so the bar belongs there.
+- **Video** — the reverse. Its sidebar has every module open and overflows by 82–139, while the content
+  column measures **902 in a 902 box** exactly: the transcript and notes lists scroll *inside themselves* and
+  already carry their own bars. A column bar there would have been a third scroll region that does not exist.
+- **Quizzes** — full-page artboards, so only the sidebar is a scroll container at all.
+
+**One measurement error, caught by the numbers being implausible.** The first pass reported Reading's mobile
+content as `791/791 — no overflow` and stripped all four bars. The container it measured was `content`, but
+the scrolling child is `scroll-area`, which is `Fill` and therefore always reports the box height. Measured
+properly, those four overflow by **66 to 1,426px**. Bars restored. When a container is `Fill`, its height
+tells you the viewport, never the content.
+
 ## 2026-09-11 · The scrollbar rule reaches Video and Quizzes
 
 Applied across all three Ready-for-Dev pages. Sidebar bars now sit **12px below the Overall Progress** and
