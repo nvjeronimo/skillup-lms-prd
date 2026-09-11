@@ -56,16 +56,22 @@ it belongs to.
 
 | | x | y | height |
 |---|---|---|---|
-| Sidebar, desktop & tablet | 286 | 193 | 779 |
+| Sidebar, desktop & tablet | 286 | 204 | 768 |
 | Content, desktop | 1414 | 24 | 886 |
 | Content, tablet | 934 | 24 | 886 |
-| Sidebar, mobile *(inside the open menu)* | 310 | 177 | 676 |
+| Sidebar, mobile *(inside the open menu)* | 310 | 128 | 725 |
 | Content, mobile | 333 | 8 | 691–715 |
 
-**The bar covers only what scrolls.** The sidebar's starts at **+177** — past the course header (108) and the
-overall progress (62), which are fixed — and stops 8px short of the bottom. The content column has nothing
+**The bar covers only what scrolls.** The sidebar's starts **12px below the Overall Progress** — the course
+header and the progress are both fixed — and stops 8px short of the bottom. The content column has nothing
 fixed at its top, so its bar starts at +8; it stops above the pinned nav rather than running to the frame
 edge, because the nav does not scroll.
+
+**Derived, not hard-coded.** The first attempt used `+170` from the old component geometry (header 108 +
+progress 62). Those heights have since changed to 122 + 54, and the mobile sidebar's fixed region is only 116
+because its progress is an absolutely-positioned badge rather than a row. The placement now walks the
+sidebar's own children, takes the bottom of the last fixed one before the first `Module Header`, and adds 12 —
+so it survives the next time the component is rebuilt.
 
 **A third bar had to come out.** The downloads list arrived from Video carrying its own scrollbar, from a
 panel where the list scrolled inside a fixed height. Here the whole content column scrolls, so an inner
