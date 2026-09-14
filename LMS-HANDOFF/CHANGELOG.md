@@ -252,6 +252,23 @@ the deliverable.
 
 **Needs a DS publish and an accept in the ICP** before the Reading screens can use it.
 
+## 2026-09-14 · Course Detail adopts the DS where the DS already has it
+
+Navdeep's rule, drawn on the LMS components page: **exists in the SKO file → use the library; does not → peer
+review.** Applied to Course Detail without promoting anything into the DS.
+
+**Five local components against their nearest library match** — `metadata-map §15`. Topic row adopted (tested
+at 560px first, and it brings the `Locked` state `accessible: false` needed); Thread row, Message and
+Certificate card kept because the library ones do a different job; Grades adoptable once three gaps close; the
+unused `_Remove · Banner` deleted.
+
+**Every hand-drawn chip, avatar, button, filter and field that the DS already has is now an instance** — in
+`Thread row`, `Message`, `Sidebar card`, `Grade meter`, `Date row` and the Q&A screen. Seven `Date row` text
+overrides and four Q&A annotations were saved and restored rather than lost in the swap.
+
+**It surfaced a library defect:** `Badge` `Color=Brand` is Untitled UI purple, bound to an unmapped
+`Utility/Brand` token. Library request 7; our chips are `Gray` meanwhile.
+
 ## 2026-09-09 · The rebind is finished — 55 pages at zero
 
 Every component page in the DS library is at **zero** outstanding bindings to `Colors (Remove)`, verified by

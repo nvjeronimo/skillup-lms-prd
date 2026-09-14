@@ -1286,3 +1286,64 @@ on VILT courses, which Harpreet's ruling (01:22:22) puts outside the MVP. Specif
 Fifty endpoints of enrolment, grade override, reports and certificate administration. It is edX's staff
 dashboard, it is gated by role, and a learner never sees it. Out of scope for the learner panel entirely.
 
+
+---
+
+## 15. Adopting the DS — five pairs, and everything drawn by hand
+
+From the 8 Sep catchup with Navdeep: component reuse is one of the four workshop themes, and the rule is his
+flow on `❖ LMS COMPONENTS ✅` (`21397:4897`) — **exists in the SKO file → use the library component; does not
+exist → peer review, and check tokens and variables.** Nothing is promoted into the DS while this is discovery.
+
+### 15.1 The five pairs
+
+| # | Ours (local) | DS | Verdict |
+|---|---|---|---|
+| 1 | `Topic row` | `LMS / Topic Row` (9 variants) | **Adopted.** Tested at the syllabus' 560px first; it stretches cleanly |
+| 2 | `Thread row` · `Message` | `LMS / Thread Item` | **Keep ours** — Thread Item is a forum feed card with no unread, selected or answered state. Peer review |
+| 3 | `Certificate card` | `LMS / Course Certificate` | **Keep ours** — the DS one is the certificate document itself; ours is its status card. Issued → View opens it |
+| 4 | `Grade meter` · `Grade summary row` · `Score row` | `LMS / Quiz · Grade Summary` | **Adopt, after three gaps close** — only a `Below pass` variant, no lettered scale, and "Quiz" in the name of a course-level component |
+| 5 | `_Remove · Banner` | `Alert` | **Done** — the screens already used `Alert`; the local set had 0 instances and is deleted |
+
+**What adopting Topic Row buys.** A `Locked` state, which `accessible: false` had nowhere to go without; hover
+and open; and a bookmark slot the Bookmarks API can fill. What it costs: the single line with meta on the right,
+the underlined title, and the row's own divider. Swapped on `⚙ TECHNICAL · Course tab` and the `★ ENTRY` screen
+(14 instances). The 24 instances on the exploration boards (*Verb prefix*, *Integration proof*) stay on the local
+component, which is kept for them.
+
+### 15.2 Hand-drawn elements that already exist in the DS — swapped
+
+| Where | Was | Now |
+|---|---|---|
+| `Thread row` | QUESTION · ANSWERED · FOLLOWING chips | `Badge` · Pill color · sm |
+| `Message` | avatar, STAFF, ACCEPTED ANSWER | `Avatar` (Text) + `Badge` |
+| `Sidebar card` | mentor avatar | `Avatar` · md |
+| `Grade meter` | "Passing 70%" chip | `Tooltip` · Arrow Top center, exposed so the value stays editable per instance |
+| `Date row` | type, assignment type and status chips | `Badge` — Gray, Success for Complete, Error for Overdue |
+| Q&A screen | All · Unanswered · Following | `Button group`, All current |
+| Q&A screen | Ask a question · Following · ··· · Send | `Buttons/Button` — Secondary, Secondary, Tertiary icon-only, Primary |
+| Q&A screen | question search · reply field | `Input field` — Search · Default |
+
+**Two things had to be carried across, not just replaced.** Seven `Date row` instances carried their own text
+(`COURSE-END-DATE`, `FINAL EXAM`…); swapping a chip inside the main component throws those overrides away, so
+they were saved per instance and put back. And four Q&A controls carried annotations, moved onto the new
+instances — the screen still has 21, the Course tab still 36.
+
+### 15.3 What the swap surfaced
+
+⚠︎ **`Badge` `Color=Brand` is Untitled UI purple, in the library itself.** It is bound to
+`Component colors (Remove)/Utility/Brand/*` — one of the 150 `Utility` tokens with no SKO destination. Not a
+publishing lag. Our brand chips use `Gray` until that is ruled on. Logged as library request 7.
+
+⚠︎ **`Progress bar` only has variants in steps of 10%.** A 15% or 38% bar is not a variant; worth knowing
+before Grades adopts anything built on it.
+
+⚠︎ **The tab labels no longer share a baseline on the technical screens** — *Course* and *Mentorship Q&A* sit
+higher than *Progress* and *Dates*. Not caused by this pass; the likeliest source is the 10 Sep change that
+made `Underline/md` a 48px target. Needs a look in `Horizontal tabs`.
+
+⚠︎ **`Date row` still shows the raw `date_type` literal as a chip** — the same defect §14.2b records against the
+live tab. If the chip is there to document the field, the literal belongs in the annotation.
+
+**Kept as history:** the first Dates tab is renamed `BK · ⚙ TECHNICAL · Dates tab — histórico` and stays in the
+section beside its replacement, `5655:520`.

@@ -256,3 +256,19 @@ And three inconsistencies already in the file that need a ruling rather than a f
 follow no single rule (Red/50, Green/200, Yellow/400 — second, fourth and sixth steps); `bg-warning-solid` is
 the only solid identical in both modes; and backgrounds use `SKO-Brand/Surfaces/{tone}-dark` in dark mode
 where everything else uses ramp steps, which is the one row of the proposal I am least confident in.
+
+
+---
+
+## 7 · `Badge` `Color=Brand` renders Untitled UI purple
+
+Found 14 Sep while swapping hand-drawn chips on the Course Detail screens for `Badge`. The `Brand` colour of
+`Badge` (`1046:3819`) is bound to `Component colors (Remove)/Utility/Brand/utility-brand-50 / -200 / -700` —
+`#f9f5ff`, `#6941c6`. That is the stock Untitled UI brand, in the library, not a consumer out of date.
+
+It is one of the 150 `Utility/*` bindings the rebind deliberately left alone because SKO has no destination for
+them. So it is not a new problem — but it is the first place a designer adopting the DS as instructed gets a
+visibly wrong brand colour for doing the right thing.
+
+**Ask:** map `Utility/Brand/*` onto the SKO brand ramp, or rule that `Badge` must not offer `Brand` until it is.
+Until then the Course Detail screens use `Gray`.
