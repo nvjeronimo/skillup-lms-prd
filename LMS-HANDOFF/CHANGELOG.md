@@ -252,6 +252,22 @@ the deliverable.
 
 **Needs a DS publish and an accept in the ICP** before the Reading screens can use it.
 
+## 2026-09-15 · The issued certificate, as a document
+
+`metadata-map §16`. The file had a certificate *screen* and no certificate: nothing anyone would print or
+file. Now it has one — **A4 landscape, one layout for print and digital**, built entirely from library logos,
+text styles, SKO tokens and effect styles — with a board showing it as printed sheets and in a viewer, and a
+thumbnail of it on the `Issued` certificate card.
+
+**Every element is traced to the platform**, and two of them have no source yet: the partner logo (the open
+*Partner brand* question) and a human-readable certificate ID. The signatories on the mockup are invented;
+Studio's certificate configuration is where the real ones come from.
+
+**And one assumption is corrected before anyone builds on it: Open edX does not generate PDF certificates.**
+It renders web certificates at `/certificates/{verify_uuid}` and the learner prints or shares from the browser.
+So the document is specified as a web certificate with a print stylesheet, and `Download PDF` is either
+print-to-PDF or vendor work — six questions logged for the vendor and product.
+
 ## 2026-09-14 · Course Detail adopts the DS where the DS already has it
 
 Navdeep's rule, drawn on the LMS components page: **exists in the SKO file → use the library; does not → peer

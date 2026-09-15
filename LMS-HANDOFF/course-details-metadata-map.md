@@ -1347,3 +1347,73 @@ live tab. If the chip is there to document the field, the literal belongs in the
 
 **Kept as history:** the first Dates tab is renamed `BK · ⚙ TECHNICAL · Dates tab — histórico` and stays in the
 section beside its replacement, `5655:520`.
+
+---
+
+## 16. The issued certificate — the document itself, for print and digital
+
+The `Certificate card` on Course Detail says *whether* a certificate exists. Nothing in the file showed **what
+it is** — the only certificate drawn was the in-app screen on the Phase 3 page (`LMS / Course Certificate`),
+with a green header, stats and buttons. That is a web page, not a document anyone would print or file.
+
+### 16.1 What was built
+
+| Node | What |
+|---|---|
+| `LMS / Course Detail / Certificate document` (`5774:1195`) | The certificate. **A4 landscape, 297 × 210 mm, 1123 × 794 at 96 dpi.** Local component, discovery — not in the DS |
+| `Certificate — digital & print mockup` (`5780:1077`) | Board: two printed sheets on a surface, and the same document in a viewer with Share and Download |
+| `Certificate card` · `Status=Issued` (`5425:533`) | Now carries a thumbnail of the document rather than of the app screen |
+
+**One layout for both uses.** White edge and no bleed, so it prints on an office printer without trimming; all
+content inside a 10 mm safe area, marked by the brand rule. Everything on it is from the library: the
+`Skillup_logo` and `Placeholder Logo / IBM` components, Montserrat text styles, SKO colour tokens — including
+the QR, rebuilt so that no module is a raw hex — and the `shadow-2xl` / `shadow-lg` effect styles on the board.
+
+### 16.2 Every element, and where it comes from
+
+| Element | Source | Verdict |
+|---|---|---|
+| Learner name | the user's profile name | ✅ |
+| Course name | `course_display_name` (Certificates API) | ✅ |
+| Certificate type — *professional course* | `certificate_type`: `honor` · `verified` · `professional` | ✅ — the copy has to follow the value, not be fixed |
+| Issue date | `created_date` | ✅ |
+| Course meta — modules, topics, hours, pacing | Blocks API counts, Courses API `effort` and `pacing` — §12.1, §12.2 | ⚠︎ — same gaps as the hero: `effort` is authored or absent |
+| Signatories — name, title, organisation, signature image | Studio → Certificates configuration, per course | ✅ exists on the platform, **but the two on the mockup are invented** |
+| SkillUp logo | platform branding | ✅ |
+| Partner logo — *In partnership with IBM* | **no source** | ✗ — the open *Partner brand* question in §11: `org` returns `"SkillUp"`. Co-branding cannot be printed until that is answered |
+| Verification URL and QR | `/certificates/{verify_uuid}` | ✅ the pattern is real; the URL on the mockup is illustrative |
+| Certificate ID | `verify_uuid`, or a SkillUp-formatted ID mapped to it | ⚠︎ — `SKL-SIXSIGMA-2609-7F3K` is invented. Needs a decision on whether learners see the UUID or a readable ID |
+| Grade | `grade` is returned | deliberately **not printed** — a certificate of completion states completion |
+
+### 16.3 A correction to the design: there is no PDF
+
+⚠︎ **Open edX does not generate PDF certificates.** The platform's own decision record says PDF generation
+has not been supported for some time and that only web (HTML) certificates are generated; a learner opens
+the certificate at `/certificates/{verify_uuid}` and shares or prints it from the browser. The
+`download_url` field on the Certificates API survives from the PDF era.
+
+What that does to the design:
+
+- **The certificate is a web page designed to print.** The A4 document is still the right artefact — but it has
+  to be specified as the HTML certificate template plus a print stylesheet, not as a file the platform emits.
+- **`Download` on the certificate card and `Download PDF` on the board are not free.** Either the button opens
+  the web certificate and the browser's print-to-PDF does the rest, or the vendor builds PDF rendering. The
+  first costs nothing and should be the default until someone asks for the second.
+- **Verification is the web page itself**, which is why the QR and URL are on the document: a printed copy
+  points back to the live record.
+
+### 16.4 Questions this adds
+
+**To the vendor (Nilesh / Rashid)**
+
+1. Is our certificate the stock Open edX web certificate template, or has SkillUp already customised it? The
+   A4 layout is specified against the template, so this decides how much of it is new.
+2. Is a real PDF wanted anywhere — LinkedIn, employer uploads — or is print-to-PDF from the web certificate
+   enough? The card's `Download` button depends on the answer.
+3. What does the verification URL look like on `devcourses.skillup.online`, and is it public without a login?
+
+**To product**
+
+4. **Who signs.** One SkillUp signatory, a partner signatory, or both — and does that vary by course?
+5. **Partner co-branding** — the §11 question, now with a second place it appears.
+6. **Readable ID or UUID** on the printed certificate.
