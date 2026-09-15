@@ -1311,6 +1311,34 @@ the underlined title, and the row's own divider. Swapped on `⚙ TECHNICAL · Co
 (14 instances). The 24 instances on the exploration boards (*Verb prefix*, *Integration proof*) stay on the local
 component, which is kept for them.
 
+### 15.1b Grades — adopted on the Progress tab, 15 Sep
+
+After peer review, `LMS / Quiz · Grade Summary` replaces `Grade meter`, `Grade summary` and `Detailed grades`
+on `⚙ TECHNICAL · Progress tab`. **The DS was not changed** — everything below is an instance override, and
+what an override could not reach is listed as a gap.
+
+**Carried across.** The screen's data (15% against 70%, the two assignment types, one graded module with two
+lessons); the passing-grade `Alert` above it; and the footnote below, whose annotation calls it load-bearing.
+The annotations moved onto the matching sublayers of the instance — `Header`, `Progress`, `Table`,
+`Breakdown` — and **four duplicated pairs were merged**, so the tab went from 25 annotations to 21 with nothing
+lost. The three local grade components now have **0 instances**; kept, not deleted, while this is discovery.
+
+**Two overrides that make it read correctly.** The long assignment type wraps — the cell and row were set to
+hug, as the `type` annotation asks — and the section row (*Module 4 · …*) is set to `Body/Small/Semibold` so
+section and lessons do not read as siblings.
+
+**The gaps — library request 8.** Fine on this screen, not fine for production:
+
+| Gap | Why it matters |
+|---|---|
+| **Table has two body rows, fixed** | `assignment_policies[]` has as many rows as Studio authors. A third type cannot be shown without detaching |
+| **Breakdown is four flat rows, fixed** | `section_scores[] › subsections[]` is a two-level list of any length. Extra rows are hidden here, and hierarchy is faked with a text style |
+| **`Progress bar` has 10% steps** | 15% is drawn as 20%. The annotation already warns the geometry is drawn, not data |
+| **The pass marker is fixed at 70%** | `grade_range` is per course. It matches here by coincidence |
+| **Only `Result=Below pass`** | no Passing or Not started state |
+| **No lettered scale** | the rule is *render whatever `grade_range` returns*, and the platform supports both shapes |
+| **"Quiz" in the name** | it is a course-level gradebook, and the name will send people looking in the wrong place |
+
 ### 15.2 Hand-drawn elements that already exist in the DS — swapped
 
 | Where | Was | Now |

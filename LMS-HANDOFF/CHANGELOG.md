@@ -252,6 +252,16 @@ the deliverable.
 
 **Needs a DS publish and an accept in the ICP** before the Reading screens can use it.
 
+## 2026-09-15 · Grades adopt the library component
+
+`metadata-map §15.1b`. After peer review, the Progress tab's three hand-built grade components are replaced by
+`LMS / Quiz · Grade Summary`, without touching the DS. Data, the passing-grade alert and the load-bearing
+footnote carried across; annotations moved onto the instance's own sublayers, with four duplicated pairs
+merged (25 → 21, nothing lost). The local components are left in place with 0 instances.
+
+**It fits this screen and would not fit the next course** — two fixed table rows, four fixed breakdown rows,
+a pass marker fixed at 70%, a bar in 10% steps. Library request 8.
+
 ## 2026-09-15 · The issued certificate, as a document
 
 `metadata-map §16`. The file had a certificate *screen* and no certificate: nothing anyone would print or

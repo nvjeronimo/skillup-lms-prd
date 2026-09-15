@@ -272,3 +272,21 @@ visibly wrong brand colour for doing the right thing.
 
 **Ask:** map `Utility/Brand/*` onto the SKO brand ramp, or rule that `Badge` must not offer `Brand` until it is.
 Until then the Course Detail screens use `Gray`.
+
+
+---
+
+## 8 · `LMS / Quiz · Grade Summary` — built for one quiz, used as a gradebook
+
+Adopted on the Course Detail Progress tab on 15 Sep, without changing the library. It works for that screen
+because the screen's data happens to fit it. It will not fit the next course. From most to least blocking:
+
+1. **The assignment-type table has exactly two body rows.** `grading_policy.assignment_policies[]` has as many
+   as the course author creates. It needs to be a list of a row component, not two drawn rows.
+2. **The breakdown is four flat, fixed rows.** The data is `section_scores[] › subsections[]` — two levels, any
+   length. Same fix: a section row and a subsection row as components, in a list.
+3. **The pass marker is a rectangle fixed at 70%.** `grade_range` is per course.
+4. **It sits on `Progress bar`, whose variants step by 10%.**
+5. **Only `Result=Below pass`.** Passing and Not started are missing.
+6. **No lettered grade scale**, which the platform supports alongside a single pass threshold.
+7. **The name.** It is described as a course-level gradebook and named as a quiz component.
