@@ -1366,9 +1366,13 @@ publishing lag. Our brand chips use `Gray` until that is ruled on. Logged as lib
 ⚠︎ **`Progress bar` only has variants in steps of 10%.** A 15% or 38% bar is not a variant; worth knowing
 before Grades adopts anything built on it.
 
-⚠︎ **The tab labels no longer share a baseline on the technical screens** — *Course* and *Mentorship Q&A* sit
-higher than *Progress* and *Dates*. Not caused by this pass; the likeliest source is the 10 Sep change that
-made `Underline/md` a 48px target. Needs a look in `Horizontal tabs`.
+✓ **Fixed 15 Sep — the tab labels did not share a baseline across the technical screens.** The cause was not
+padding. Course tab and the `★ ENTRY` screen were on the current `_Tab button base` (48px, 12/12 padding);
+Progress, Dates and Q&A were still on the earlier version (36px, 0/12), stretched to 48 by hand-set overrides —
+so the label sat at 12px, 6px or 0px from the top depending on the tab, and the Dates bar was 36px tall.
+The three stale bars were swapped to the current version with each screen's labels and current tab kept.
+All four technical screens now place the bar at the same y with the label at 12px. `★ ENTRY` sits 4px lower
+because its search field is 60px tall, not 56 — outside the technical section and left alone.
 
 ⚠︎ **`Date row` still shows the raw `date_type` literal as a chip** — the same defect §14.2b records against the
 live tab. If the chip is there to document the field, the literal belongs in the annotation.
