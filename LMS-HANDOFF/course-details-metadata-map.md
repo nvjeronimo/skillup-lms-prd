@@ -1382,6 +1382,34 @@ section beside its replacement, `5655:520`.
 
 ---
 
+### 15.4 Two ideas taken back from the v8 screens
+
+The v8 Brand section (`4340:323`) was reviewed for patterns worth carrying into the technical screens, each
+checked against what edX returns. Two are adopted now; the rest wait for a decision item by item.
+
+**Module number, then a check.** A module shows its **position number** until it is complete, and a check only
+then — as v8 did. New local component `LMS / Course Detail / Module number` (`5834:1527`): `Complete` (check),
+`Incomplete` (number on the brand tint), `Locked` (muted number), with a `Number` text property. It replaces
+`LMS / Completion Status` inside all six `Module row` variants and is exposed, so each instance carries its own
+number. The DS has no equivalent — `LMS / Numbered Step` is for ordered instructions — so it goes to peer review.
+The check uses the same tokens as `Completion Status`, so the module check and the topic checks below it are the
+same green. The number is the section's **position in the outline**; titles like *"Module 1 · …"* repeat it,
+and real `display_name`s (*"Module 5:  SQL Advanced Topics"*) will too.
+
+**Certificate in progress, with what is missing.** `Certificate card` · `Not earned` now lists two rows, each
+with `LMS / Completion Status` and a text property: **Reach the passing grade** — *15% now · 70% needed* — and
+**Complete the course content** — *16 of 42 topics · 38%*. Annotated once, on the Course tab.
+
+⚠︎ **Only the grade is an edX requirement.** `cert_status` stays `notpassing` until the grade passes; completion
+is not checked by the platform. The content row repeats the card's earlier copy (*"finish all four modules"*) —
+confirm it is a SkillUp rule before it ships, or drop it.
+
+⚠︎ **Two contradictions on the screens, found while checking the card, not caused by it:**
+
+- The progress card and the completion ring say **25%**; the counts on the same screens — *16 of 42 topics*,
+  *16 complete · 26 incomplete* — are **38%**. The certificate card follows the counts.
+- The progress card says **"Currently passing"** beside a grade of **15% against 70%**.
+
 ## 16. The issued certificate — the document itself, for print and digital
 
 The `Certificate card` on Course Detail says *whether* a certificate exists. Nothing in the file showed **what
