@@ -1483,3 +1483,56 @@ What that does to the design:
 4. **Who signs.** One SkillUp signatory, a partner signatory, or both — and does that vary by course?
 5. **Partner co-branding** — the §11 question, now with a second place it appears.
 6. **Readable ID or UUID** on the printed certificate.
+
+---
+
+## 17. Weekly goal — the standard, taken from edX itself
+
+No brief and no PR yet. So the design starts from what the platform already does, checked against what comparable
+platforms show, and is honest about the one thing the API cannot give.
+
+### 17.1 It is a native Open edX feature
+
+**Weekly Learning Goals** is built into the learning MFE: a widget on the course home. The copy below is the
+platform's own.
+
+| Element | edX | Field |
+|---|---|---|
+| Header | *Set a weekly learning goal* · *Setting a goal motivates you to finish the course. You can always change it later.* | — |
+| **Three goals** | **Casual** 1 day · **Regular** 3 days · **Intense** 5 days a week | ✓ `course_goals.selected_goal.days_per_week` |
+| Opt out | *Not sure yet* | ✓ |
+| **Reminders** | *If we notice you're not quite at your goal, we'll send you an email reminder.* | ✓ `subscribed_to_reminders` — on by default once a goal is picked |
+| Edit | *Edit goal* | ✓ POST `/api/course_home/v1/save_course_goal` |
+| **Celebration** | modal in courseware — *You met your goal!* · *Take a moment to celebrate and share your progress.* | ✓ `celebrations.weekly_goal`, a boolean |
+| Feature switch | — | ✓ `weekly_learning_goal_enabled` |
+
+**Reminder emails** go out in the learner's morning, only while enough days remain to meet the goal, and never to
+learners holding a downloadable certificate or whose audit access ends that week.
+
+⚠︎ **Switched off on every SkillUp course we have seen.** Turning it on is vendor work: the waffle flag
+`course_experience.enable_course_goals`, the goal-reminder management command on a schedule (edx.org runs it every
+3 hours), and an email channel in edx-ace. It works only in the learning MFE.
+
+### 17.2 What edX does not give
+
+**The days a learner was active this week.** The platform records activity server-side — it is how it decides
+when to email and when to celebrate — but no API returns it. `celebrations.weekly_goal` says the goal was met, not
+how; `streak_length_to_celebrate` exists only at the moment a streak is celebrated. No time-based goal either: edX
+does not measure minutes.
+
+That is exactly what the usual pattern adds. Coursera sets a weekly goal in days and shows the week as a row of
+day markers; our own v8 dashboard drew a streak the same way. **Vendor request: days active this week, per course.**
+
+### 17.3 What was built
+
+| Node | What |
+|---|---|
+| `LMS / Course Detail / Weekly goal card` (`5852:1666`) | `Not set` · `Set` · `Met`, plus `Show week strip` (off by default). Built from DS `Radio group item`, `Toggle`, `Buttons/Button` (link) and `LMS / Completion Status`; the card shell matches the other sidebar cards |
+| `LMS / Course Detail / Week day` (`5848:139230`) | `Done` · `Today` · `Missed` · `Upcoming`, with a `Day` text property. **Missed is neutral on purpose** — a quiet day is not an error |
+| Board `Weekly goal — states and what edX gives us` (`5855:6181`) | In the technical section: Not set, Set, Met, the two week-strip variants, and **Off — not rendered**. One annotation per state |
+
+The course sidebar on the Course tab, Progress tab and `★ ENTRY` now uses the card in `Set`, without the strip —
+the buildable version. The two old annotations (Course tab and Progress tab) said much the same thing; they are
+one annotation now, on the Course tab, pointing at the board.
+
+Both components are local and go to peer review: the DS has no goal card and no day marker.
