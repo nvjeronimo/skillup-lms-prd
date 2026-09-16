@@ -1603,15 +1603,14 @@ All eight variants now share the same order, so the card never rearranges itself
 5. **Error** — `Save failed` only
 6. **Reminders** — **only in the goal settings** (`Not set`, `Editing`). They are a setting, not a status, so they do not sit on the card the rest of the time; *Edit goal* is how a learner reaches them. Board cases E6 and E7 moved to `Editing` accordingly
 7. **Note** — bound to `Show note` / `Note` on every variant (four variants had lost the binding when cloned)
-8. **Edit** — the goal on the left, the action on the right: *Edit goal* · *Try again* · *Save weekly goal*.
-   `Not set` has no Edit row: there is no goal yet
+8. **Edit** — the goal on the left, the action on the right: *Edit goal* · *Try again* · *Done*
 
 `Loading` draws the same eight rows as grey bars. The goal moved out of the title into the Edit row, so it is in
 the same place in every state.
 
-⚠︎ **`Editing` now has a Save button — the edX card has none; picking a level saves immediately.** Either the
-button is kept and the save waits for it (then the body copy *"it saves as soon as you choose"* is wrong), or
-the edX behaviour is kept and the button becomes *Done*. Decide one.
+✓ **Decided 16 Sep — as edX: picking a level saves.** The action in the goal settings is **Done**, in the same
+link style as *Edit goal* and *Try again*: it only closes the settings, there is nothing left to save. On `Not set`
+it stays disabled until a level is picked.
 
 ### 17.6 What counts as an active day — precise
 
