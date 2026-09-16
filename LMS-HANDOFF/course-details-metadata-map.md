@@ -1500,8 +1500,7 @@ platform's own.
 |---|---|---|
 | Header | *Set a weekly learning goal* · *Setting a goal motivates you to finish the course. You can always change it later.* | — |
 | **Three goals** | **Casual** 1 day · **Regular** 3 days · **Intense** 5 days a week | ✓ `course_goals.selected_goal.days_per_week` |
-| Opt out | *Not sure yet* | ✓ |
-| **Reminders** | *If we notice you're not quite at your goal, we'll send you an email reminder.* | ✓ `subscribed_to_reminders` — on by default once a goal is picked |
+| **Reminders** | *If we notice you're not quite at your goal, we'll send you an email reminder.* | ✓ `subscribed_to_reminders` — **off and disabled until a goal is picked**, then switched on by the first pick |
 | Edit | *Edit goal* | ✓ POST `/api/course_home/v1/save_course_goal` |
 | **Celebration** | modal in courseware — *You met your goal!* · *Take a moment to celebrate and share your progress.* | ✓ `celebrations.weekly_goal`, a boolean |
 | Feature switch | — | ✓ `weekly_learning_goal_enabled` |
@@ -1544,3 +1543,50 @@ variant (the property still controls `Set`), so the board's separate "Met, with 
 It depends on the same vendor request as the strip in §17.2. **Fallback** if the vendor cannot provide days active:
 the card still knows the goal was met from `celebrations.weekly_goal` — drop the week panel and keep the header and
 the line below it.
+
+### 17.4 Edge cases — read from the edX code
+
+*Corrected 16 Sep, from the source rather than the message catalogue:* the weekly goal card has **no "Not sure
+yet"** — that string belongs to the older course-goals feature — and its reminder toggle is **disabled until a goal
+is picked**. Both were wrong on the first board and in §17.1; both are fixed.
+
+Sources: `WeeklyLearningGoalCard.jsx` in the learning MFE, the course home outline view, and the
+`goal_reminder_email` management command in edx-platform.
+
+**What the code settles**
+
+- **Picking a goal saves immediately.** The edX card has no collapsed state and no Save; our collapsed *Set* with
+  *Edit goal* is a sidebar decision, and *Editing* is the card opened back up.
+- **The card exists only for enrolled learners**, and only where `ENABLE_COURSE_GOALS` is on **for that course**.
+- **There is no end-date check.** The card keeps rendering after the course ends — an open product decision.
+- **A week is Monday to Sunday in the learner's timezone**, falling back to last-seen timezone, then UTC. With
+  `user_timezone` null in every sample (§11), a learner in India would see the week roll over at 05:30 Monday.
+- **The reminder email** goes once a week, 08:00–18:00 local, only when the days still needed are at least the
+  days left — and **never** to learners who enrolled this week, hold a downloadable certificate, or whose audit
+  access expires this week.
+- **Staff masquerading** can click the goals, but nothing is saved.
+- **Emails deep-link** with `?weekly_goal=1|3|5`, which saves that goal on arrival; the unsubscribe link goes to a
+  separate MFE page.
+- **A failed save shows nothing.**
+
+**What was built.** Five new variants on `Weekly goal card` — `Editing`, `At risk`, `Out of reach`, `Save failed`,
+`Loading` — plus a `Show note` / `Note` pair on every variant, and a `Today done` state on `Week day`. The board
+gains an **Edge cases** section, E1–E13, each annotated with its source:
+
+| # | Case | edX | Ours |
+|---|---|---|---|
+| E1 | Editing | saves on select | the collapsed state around it |
+| E2 | At risk | the email's own condition | the calm version on screen — needs days active |
+| E3 | Out of reach | stops emailing, says nothing | *a new week starts on Monday* |
+| E4 | Goal exceeded | celebrates once | every active day, with the goal beside it |
+| E5 | A new week | Monday, learner timezone | the UTC fallback flagged |
+| E6 | Reminders off | ✓ + unsubscribe page | — |
+| E7 | Reminders paused | skips certificate holders, new and expiring enrolments | one line so the toggle does not lie |
+| E8 | Viewing as a learner | silently does not save | say so |
+| E9 | Save failed | shows nothing | keep the old goal, *Try again* |
+| E10 | Loading | outline call | skeleton |
+| E11 | Opened from the email | saves the linked goal | confirm it in one line |
+| E12 | Not enrolled | not rendered ✓ verified | — |
+| E13 | Course ended | **still rendered** | decision needed — product |
+
+E2, E3 and E4, like the week strip, depend on the vendor request in §17.2.
