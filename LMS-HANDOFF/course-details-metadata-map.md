@@ -1536,3 +1536,11 @@ the buildable version. The two old annotations (Course tab and Progress tab) sai
 one annotation now, on the Course tab, pointing at the board.
 
 Both components are local and go to peer review: the DS has no goal card and no day marker.
+
+**Met shows the week, 16 Sep.** A goal met is now visible, not only stated: the `Met` variant always carries the
+week — a check for each day the learner was active in the course, on a `bg-success-primary` panel, with
+*3 of 3 days this week* in `text-success-primary`. The strip is no longer switched by `Show week strip` in that
+variant (the property still controls `Set`), so the board's separate "Met, with the week" column is gone.
+It depends on the same vendor request as the strip in §17.2. **Fallback** if the vendor cannot provide days active:
+the card still knows the goal was met from `celebrations.weekly_goal` — drop the week panel and keep the header and
+the line below it.
