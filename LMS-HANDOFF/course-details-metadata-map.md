@@ -1601,7 +1601,7 @@ All eight variants now share the same order, so the card never rearranges itself
 3. **Body** — one sentence
 4. **Content** — the three levels (`Not set`, `Editing`) or the week strip
 5. **Error** — `Save failed` only
-6. **Reminders**
+6. **Reminders** — **only in the goal settings** (`Not set`, `Editing`). They are a setting, not a status, so they do not sit on the card the rest of the time; *Edit goal* is how a learner reaches them. Board cases E6 and E7 moved to `Editing` accordingly
 7. **Note** — bound to `Show note` / `Note` on every variant (four variants had lost the binding when cloned)
 8. **Edit** — the goal on the left, the action on the right: *Edit goal* · *Try again* · *Save weekly goal*.
    `Not set` has no Edit row: there is no goal yet
