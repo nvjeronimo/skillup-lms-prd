@@ -1404,11 +1404,17 @@ with `LMS / Completion Status` and a text property: **Reach the passing grade** 
 is not checked by the platform. The content row repeats the card's earlier copy (*"finish all four modules"*) —
 confirm it is a SkillUp rule before it ships, or drop it.
 
-⚠︎ **Two contradictions on the screens, found while checking the card, not caused by it:**
+✓ **Two contradictions on the screens — fixed 16 Sep.**
 
-- The progress card and the completion ring say **25%**; the counts on the same screens — *16 of 42 topics*,
-  *16 complete · 26 incomplete* — are **38%**. The certificate card follows the counts.
-- The progress card says **"Currently passing"** beside a grade of **15% against 70%**.
+- **38%, everywhere.** The progress card said 25% and the completion ring said 25% over an arc drawn at 67%,
+  while the counts beside them — *16 of 42 topics* — are 38%, which is what the card's own annotation derives
+  from `completion_summary`. The four technical headers and `★ ENTRY` now say 38% (the `Progress bar` sits at
+  40%, its nearest 10% step); the ring says 38% and its arc is overridden to 38%. The ring text is still an
+  override, not bound to the card's `Percent` property.
+- **"Currently passing" beside 15% against 70%.** `Progress card` gains a `Not passing` state — warning dot and
+  text tokens, `Show not passing` and `Not passing label` — alongside the passing one, which stays for when
+  `user_has_passing_grade` is true. The screens show *Not passing yet · 15% of 70%*, matching the Progress
+  tab alert, the grade badge and the certificate card. The BK Dates screen is left as it was.
 
 ## 16. The issued certificate — the document itself, for print and digital
 
