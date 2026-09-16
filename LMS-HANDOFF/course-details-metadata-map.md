@@ -1590,3 +1590,34 @@ gains an **Edge cases** section, E1–E13, each annotated with its source:
 | E13 | Course ended | **still rendered** | decision needed — product |
 
 E2, E3 and E4, like the week strip, depend on the vendor request in §17.2.
+
+### 17.5 One anatomy for every state
+
+All eight variants now share the same order, so the card never rearranges itself between states:
+
+1. **Label** — *Weekly goal*
+2. **Header** — status icon (shown only on `Met`) and a title that states the situation: *Set a weekly learning
+   goal* · *Your weekly goal* · *You met your goal this week* · *Two days to go this week* · *Not this week*
+3. **Body** — one sentence
+4. **Content** — the three levels (`Not set`, `Editing`) or the week strip
+5. **Error** — `Save failed` only
+6. **Reminders**
+7. **Note** — bound to `Show note` / `Note` on every variant (four variants had lost the binding when cloned)
+8. **Edit** — the goal on the left, the action on the right: *Edit goal* · *Try again* · *Save weekly goal*.
+   `Not set` has no Edit row: there is no goal yet
+
+`Loading` draws the same eight rows as grey bars. The goal moved out of the title into the Edit row, so it is in
+the same place in every state.
+
+⚠︎ **`Editing` now has a Save button — the edX card has none; picking a level saves immediately.** Either the
+button is kept and the save waits for it (then the body copy *"it saves as soon as you choose"* is wrong), or
+the edX behaviour is kept and the button becomes *Done*. Decide one.
+
+### 17.6 What counts as an active day — precise
+
+A `UserActivity` row: **one per learner, course and date**, written when the learner **opens courseware** (the
+courseware metadata call, and the xblock view from the mobile app). **A visit, not a completion** — opening a unit
+counts; finishing a topic is not required. Staff masquerading never count. The date is the learner's local date.
+
+⚠︎ **Rows are only written while `ENABLE_COURSE_GOALS` is on for that course.** On SkillUp today there is no
+activity history to show — not this week's, not any week's. It starts the day the flag is switched on.
