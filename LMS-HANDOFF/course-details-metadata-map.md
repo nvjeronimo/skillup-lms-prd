@@ -1389,7 +1389,7 @@ checked against what edX returns. Two are adopted now; the rest wait for a decis
 
 **Module number, then a check.** A module shows its **position number** until it is complete, and a check only
 then — as v8 did. New local component `LMS / Course Detail / Module number` (`5834:1527`): `Complete` (check),
-`Incomplete` (number on the brand tint), `Locked` (muted number), with a `Number` text property. It replaces
+`Incomplete` (number on the brand tint), `Locked` (the lock — same circle, icon and tokens as `Completion Status` · `Locked`, so a locked module reads like a locked topic), with a `Number` text property. It replaces
 `LMS / Completion Status` inside all six `Module row` variants and is exposed, so each instance carries its own
 number. The DS has no equivalent — `LMS / Numbered Step` is for ordered instructions — so it goes to peer review.
 The check uses the same tokens as `Completion Status`, so the module check and the topic checks below it are the
