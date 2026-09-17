@@ -1707,6 +1707,10 @@ wrong thing. The sample courses in the workbook are instructor-paced (§1, point
 Annotations updated in Figma: the delivery mode chip, the unlock tooltip, the certificate card, and the Dates
 timeline and missed-deadlines banner.
 
+*17 Sep:* the two chip annotations moved **off the `Course title` component and onto the `⚙ TECHNICAL · Course tab`
+screen**, where the rest of the technical notes live — one copy, on the Course tab only, as with the header and the
+tab bar. The Course tab holds 39 annotations.
+
 ### 18.3 Two reasons a module is locked — Date and Prerequisite
 
 `LMS / Course Detail / Module row` gains a variant property **`Lock reason`**: `None` · `Date` · `Prerequisite`.
