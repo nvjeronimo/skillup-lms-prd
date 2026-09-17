@@ -1687,3 +1687,9 @@ recordings — §12.3). **Blended has no marker.** Vendor question: where is the
 
 **Four gaps, library request 9:** *Flexible + Live* on the badge against *Flexible + Live Sessions* in the variable;
 variants named by label instead of mode; a loading spinner as the Beginner icon; no descriptions.
+
+**17 Sep — the chip reads *Flexible + Live Classes*.** The hero now shows the Blended variant of
+`LMS / Delivery Mode Badge` with the label *Flexible + Live Classes*, the wording on skillup.online course pages.
+⚠︎ **That makes three spellings of one mode:** *Flexible + Live Classes* (site, and now the chip), *Flexible + Live
+Sessions* (the *Courses Type* variable) and *Flexible + Live* (the DS badge). The label is a text override on the
+instance until one of the three is chosen and the badge is bound to it — library request 9.
