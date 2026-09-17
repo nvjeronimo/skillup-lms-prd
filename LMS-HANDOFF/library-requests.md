@@ -302,7 +302,7 @@ mode, in place of two generic `Badge` pills with typed text. Not changed in the 
 1. **Labels drift from the source of truth.** The project file has a string-variable collection, *Courses Type*:
    **Self-Paced → Flexible Learning · VILT → Live Sessions · Blended → Flexible + Live Sessions**. The badge says
    **Flexible + Live**. One of the two has to change, and the badge text should be **bound to the variables**
-   (move the collection into the library) so it cannot drift again.
+   (move the collection into the library) so it cannot drift again. *This phase only uses Self-Paced → Flexible Learning, which already matches; the drift is on Blended.*
 2. **Variants are named by label, not by mode.** `Type=Flexible Learning / Live Sessions / Flexible + Live`. Name
    them by what the data carries — `Mode=Self-Paced / VILT / Blended` — and let the label follow the variable.
 3. **The Beginner icon is `loading-01`** — a spinner, which reads as "still loading". Intermediate and Advanced use

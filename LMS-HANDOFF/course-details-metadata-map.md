@@ -86,6 +86,7 @@ per-topic times (a 6-minute and a 22-minute video are not the same commitment), 
 **the action belongs to the content team**, not to us.
 
 **5. The one real course we were given is not self-paced.**
+> *17 Sep:* and it is not the course this phase delivers — that one **is** self-paced (§18.2).
 `is_self_paced: false`. It also carries a `Session Recordings` chapter whose units are named by date
 (*7th March 2026*, *8th March 2026*…) and a `Session Material` chapter. That is a VILT course. Our MVP frame
 is self-paced only, by Harpreet's ruling (01:22:22) — that ruling stands, but the sample tells us the
@@ -163,7 +164,7 @@ Verdicts: **✅ field exists and is populated** · **◑ derivable** (we compute
 | Breadcrumb *My Learning › Courses* | — | our IA, not API |
 | Breadcrumb leaf | `title` | ✅ |
 | `Course` type badge | — | ✗ our own construct; the API has no course/programme distinction |
-| `SELF-PACED` chip | `is_self_paced` — course_metadata · `pacing` — **Courses API** | ✅ — both say instructor-paced on the real courses |
+| Delivery mode chip — *Flexible Learning* (§18.1) | `is_self_paced` — course_metadata · `pacing` — **Courses API** | ✅ — the sample courses say instructor-paced; **the course this phase delivers is self-paced** (§18.2) |
 | `BY IBM` partner logo | — | ✗ `org` is `"SkillUp"` (the platform's own org key), `number` is `"SQL-TMDA"`. Neither is a partner brand |
 | Course image | `media.course_image` · `media.banner_image` · `media.image` — **Courses API** | ✅ verified populated 3 Aug — §12. Overturns 01:28:54 |
 | Title | `title` | ✅ |
@@ -725,7 +726,7 @@ The hero was the last part of the page still drawn by hand. Closing it took **th
 | Piece | Outcome |
 |---|---|
 | Breadcrumb | adopted **`Breadcrumbs`** (SKO) — `Divider=Chevron, Type=Text, Desktop`, first crumb and its chevron hidden to give three levels |
-| `Self-paced` · `Professional` chips | adopted **`Badge`** (SKO) — `Size=md, Type=Pill color, Color=Gray` |
+| ~~`Self-paced` · `Professional` chips~~ | ~~adopted `Badge`~~ → now **`LMS / Delivery Mode Badge`** and **`LMS / Difficulty Badge`** (§18.1) |
 | Tab bar | adopted **`Horizontal tabs`** (SKO) — `Type=Underline, Size=md`, six unused tabs hidden |
 | Course search | adopted **`Input field`** (SKO) — `Type=Search, Size=sm` |
 | Lock tooltip | adopted **`Tooltip`** (SKO) — `Supporting text=False, Arrow=Top center` |
@@ -1674,22 +1675,34 @@ The hero's two generic `Badge` pills are replaced, inside `LMS / Course Detail /
 
 | Layer | Component | Values |
 |---|---|---|
-| `Chip · delivery mode` | `LMS / Delivery Mode Badge` | Self-Paced → *Flexible Learning* · VILT → *Live Sessions* · Blended → *Flexible + Live Sessions* |
+| `Chip · delivery mode` | `LMS / Delivery Mode Badge` | **Self-Paced → *Flexible Learning*** for this phase. VILT → *Live Sessions* and Blended → *Flexible + Live Sessions* exist for later phases |
 | `Chip · level` | `LMS / Difficulty Badge` | *Beginner · Intermediate · Advanced* |
 
 The labels come from the *Courses Type* variable collection in the project file. Both components already existed —
 the ask was to create them — so per the exists-in-SKO rule they are adopted, not duplicated. Their style is an icon
 and a label rather than a pill.
 
-**Delivery mode has no single field.** ◑ `is_self_paced` separates self-paced from instructor-paced (and returned
-*false* on the one real course). VILT shows indirectly, through configured live sessions (`course_live`, Zoom
-recordings — §12.3). **Blended has no marker.** Vendor question: where is the course type stored?
+**Delivery mode.** ✓ For this phase it is one field: `is_self_paced` (`course_metadata`) or `pacing: "self"` (Courses API). VILT and Blended would need more — VILT shows only indirectly through `course_live` and Zoom recordings (§12.3), and Blended has no marker — but both are out of this phase.
 
 **Four gaps, library request 9:** *Flexible + Live* on the badge against *Flexible + Live Sessions* in the variable;
 variants named by label instead of mode; a loading spinner as the Beginner icon; no descriptions.
 
-**17 Sep — the chip reads *Flexible + Live Classes*.** The hero now shows the Blended variant of
-`LMS / Delivery Mode Badge` with the label *Flexible + Live Classes*, the wording on skillup.online course pages.
-⚠︎ **That makes three spellings of one mode:** *Flexible + Live Classes* (site, and now the chip), *Flexible + Live
-Sessions* (the *Courses Type* variable) and *Flexible + Live* (the DS badge). The label is a text override on the
-instance until one of the three is chosen and the badge is bound to it — library request 9.
+### 18.2 This phase delivers a Self-Paced course — and what that changes
+
+*17 Sep.* The chip briefly read *Flexible + Live Classes* (the site's Blended wording). The course this phase
+delivers is **Self-Paced**, so the chip reads **Flexible Learning**, to avoid telling devs and stakeholders the
+wrong thing. The sample courses in the workbook are instructor-paced (§1, point 5); they are not the course being built.
+
+**What self-paced means on the Course Detail screens** — from the Open edX course-pacing documentation and
+`edx-platform`:
+
+| Where | Instructor-paced (the samples) | **Self-paced (this phase)** |
+|---|---|---|
+| **Module locks** | release dates can lock a module until a date | **no release dates** — everything opens at course start. A lock can only come from a **prerequisite** (subsection gating, entrance exam). *Unlocks 28 Apr 2026* on the Course tab cannot happen; the tooltip annotation now says so |
+| **Due dates** | fixed, the same for every learner | **personal** — Personalised Learning Schedule, counted from each learner's enrolment (default even spread, or *N weeks after enrolment*). No date on the Dates tab can be fixed copy |
+| **Missed deadlines** | missed | **can be shifted** — `reset_course_deadlines` moves the learner's schedule to start today. Decide whether SkillUp exposes *Shift due dates* on the banner |
+| **Certificate** | may wait for the end or a `certificate_available_date` | **visible as soon as generated** — `should_certificate_be_visible()` returns true for any self-paced course. `generating` still applies |
+| **Tabs** | — | Course · Progress · Dates · Mentorship Q&A, plus Instructor for staff (§1, point 1); Live and Recordings are VILT only |
+
+Annotations updated in Figma: the delivery mode chip, the unlock tooltip, the certificate card, and the Dates
+timeline and missed-deadlines banner.
