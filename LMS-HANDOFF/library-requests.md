@@ -290,3 +290,21 @@ because the screen's data happens to fit it. It will not fit the next course. Fr
 5. **Only `Result=Below pass`.** Passing and Not started are missing.
 6. **No lettered grade scale**, which the platform supports alongside a single pass threshold.
 7. **The name.** It is described as a course-level gradebook and named as a quiz component.
+
+
+---
+
+## 9 · `LMS / Difficulty Badge` and `LMS / Delivery Mode Badge` — adopted, with four gaps
+
+Adopted on 17 Sep in the Course Detail hero (`LMS / Course Detail / Course title`) for course level and delivery
+mode, in place of two generic `Badge` pills with typed text. Not changed in the library. Four things to fix there:
+
+1. **Labels drift from the source of truth.** The project file has a string-variable collection, *Courses Type*:
+   **Self-Paced → Flexible Learning · VILT → Live Sessions · Blended → Flexible + Live Sessions**. The badge says
+   **Flexible + Live**. One of the two has to change, and the badge text should be **bound to the variables**
+   (move the collection into the library) so it cannot drift again.
+2. **Variants are named by label, not by mode.** `Type=Flexible Learning / Live Sessions / Flexible + Live`. Name
+   them by what the data carries — `Mode=Self-Paced / VILT / Blended` — and let the label follow the variable.
+3. **The Beginner icon is `loading-01`** — a spinner, which reads as "still loading". Intermediate and Advanced use
+   `bar-chart-02` and `bar-chart-12`; Beginner wants the matching low bar chart.
+4. **Neither component has a description**, so nothing tells a designer which field or which wording they map to.

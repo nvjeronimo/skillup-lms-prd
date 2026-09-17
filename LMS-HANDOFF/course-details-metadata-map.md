@@ -1667,3 +1667,23 @@ only in the marketing site's CMS? If the latter, the LMS needs it synced or dupl
 
 **In Figma:** the layer inside `LMS / Course Detail / Course title` is renamed `Chip · level`, its default text is
 *Beginner* on all five screens, and the annotation on it is rewritten.
+
+### 18.1 Both chips are DS components now — level and delivery mode
+
+The hero's two generic `Badge` pills are replaced, inside `LMS / Course Detail / Course title`, by the library's own:
+
+| Layer | Component | Values |
+|---|---|---|
+| `Chip · delivery mode` | `LMS / Delivery Mode Badge` | Self-Paced → *Flexible Learning* · VILT → *Live Sessions* · Blended → *Flexible + Live Sessions* |
+| `Chip · level` | `LMS / Difficulty Badge` | *Beginner · Intermediate · Advanced* |
+
+The labels come from the *Courses Type* variable collection in the project file. Both components already existed —
+the ask was to create them — so per the exists-in-SKO rule they are adopted, not duplicated. Their style is an icon
+and a label rather than a pill.
+
+**Delivery mode has no single field.** ◑ `is_self_paced` separates self-paced from instructor-paced (and returned
+*false* on the one real course). VILT shows indirectly, through configured live sessions (`course_live`, Zoom
+recordings — §12.3). **Blended has no marker.** Vendor question: where is the course type stored?
+
+**Four gaps, library request 9:** *Flexible + Live* on the badge against *Flexible + Live Sessions* in the variable;
+variants named by label instead of mode; a loading spinner as the Beginner icon; no descriptions.
