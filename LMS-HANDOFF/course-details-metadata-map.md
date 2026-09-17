@@ -1042,7 +1042,7 @@ A deliberate maximum, not a proposal. `Course Detail — v11 · everything the d
 
 | Added over v10 | Field | Where |
 |---|---|---|
-| Track chip, beside *Self-paced* | `enrollment_mode` | hero |
+| ~~Track chip, beside *Self-paced*~~ → **Level chip** (§18) | ~~`enrollment_mode`~~ → `level_type` (Discovery) | hero |
 | `org · number` sub-header | `org`, `number` | under the hero stats, where the workbook puts them |
 | *Search this course* | Feature 33 | right of the tab bar |
 | *Currently passing* | `user_has_passing_grade` | progress card — arrives on the outline call, no extra request |
@@ -1640,3 +1640,30 @@ default). The week header keeps only the range, *This week · 15–21 Sep*. The 
   settles the open question in §17.6.
 - ⚠︎ **Empty until `ENABLE_COURSE_GOALS` is on for the course.** In the first week after switching it on there is no
   last week — hide the line.
+
+---
+
+## 18. The level chip — Beginner · Intermediate · Advanced
+
+*17 Sep.* The hero chip beside *Self-paced* read **Professional**, from `enrollment_mode`. It now reads the **course
+level**, which is what SkillUp actually shows learners.
+
+**`enrollment_mode` was the wrong field for this.** It is the **learner's enrolment track** — `audit`, `verified`,
+`honor`, `professional`, `no-id-professional`, `credit`, `masters` and the executive-education and bootcamp modes in
+`course_modes/models.py`. *Professional* looks like a level and is not one; it would also differ between two
+learners on the same course.
+
+**The wording is SkillUp's own:** **Beginner · Intermediate · Advanced**. The public site filters its catalogue by
+level and labels course pages *"Intermediate Level"*. **Not "Medium"** — keep the site's word, or the two will
+disagree for the same course.
+
+**Where the value comes from.** ◑ No LMS API has it: neither the Courses API nor the Course Home APIs carry a
+difficulty field, and `CourseOverview` has none. Open edX keeps level in the **Discovery service**
+(`course-discovery`): `Course.level_type` → `LevelType`, a **free-text, translatable name with a sort order**, so
+the three SkillUp labels can be configured exactly (edX.org uses *Introductory / Intermediate / Advanced*).
+
+**Vendor question:** is course-discovery deployed for SkillUp with `level_type` filled in — or does the level live
+only in the marketing site's CMS? If the latter, the LMS needs it synced or duplicated before the chip can be built.
+
+**In Figma:** the layer inside `LMS / Course Detail / Course title` is renamed `Chip · level`, its default text is
+*Beginner* on all five screens, and the annotation on it is rewritten.
