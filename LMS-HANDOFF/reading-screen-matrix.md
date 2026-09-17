@@ -106,7 +106,7 @@ fills, with the nav as a sibling below it.
 | Row | Screen | What it settles |
 |---|---|---|
 | **1 · Article** | desktop · tablet · mobile | The default read at all three widths |
-| **2 · Downloads** | desktop · tablet · mobile | The second tab, with the file list |
+| **2 · Attachments** | desktop · tablet · mobile | Files in the body, no tab |
 | **3 · Completion** | not completed · completed · review · completed-mobile | The manual-completion loop |
 | **4 · Long-form** | desktop · mobile | Every stackable primitive in one page, and the sidebar at full page length |
 | **5 · Edge cases** | downloads empty · no author · minimal content · no Downloads tab | The four states that are normal, not failures |
@@ -288,3 +288,47 @@ update reset their overrides. Content corrected; the structure was never wrong.
 
 *Source: topic-types-inventory.md · studio-authoring-parity.md · authoring constraints verified with Simran,
 19 Aug 2026.*
+
+
+---
+
+## 11 · The Downloads tab is gone — 17 Sep 2026
+
+**Decided with Navdeep.** A `vertical` has no tabs in Open edX. `tabs[]` is a **course-level** field — Course,
+Progress, Dates, Discussion — and nothing in Studio lets a creator put a file into a per-topic "Downloads"
+tab, because no such surface exists. Ours was a design construct. With the tab bar down to one option, the
+rule that a lone tab is hidden finishes the job: **the tab bar is removed from all 16 screens.**
+
+**But half the premise was wrong, and it changes the outcome.** The meeting's reasoning was that there is no
+way to add extra files at all. There is:
+
+> `topic-types-inventory.md` §284 — **File / download** · `<a>` to a Files & Uploads asset · completion via
+> the Completion tool · mobile ✅ · *"The Lab `.ipynb` download pattern"*
+>
+> §233 — **Reading** · `html` + Files & Uploads · *"html, images, video, **downloads**, knowledge-check —
+> freely"*
+
+A creator uploads to Files & Uploads and writes the link inside the Text component. It is the same mechanism
+the **Lab already ships in production**. What does not exist is the *tab*, not the *file*.
+
+So the three Downloads screens became **`with-files-*`**: the article body plus three
+`Lesson Block · HTML (File)` blocks, which is what those hand-written links actually render as.
+
+### Two screens are now duplicates
+
+`downloads-empty-desktop` and `no-downloads-tab-desktop` only existed because of the tab — one was its empty
+state, the other asked whether a lone tab should render. Both questions are void, and both screens are now
+`article-desktop` with a different name. **Left in place; deleting them is Nelson's call.**
+
+### Removing the tab exposed two layout faults
+
+Neither was caused by the removal — both were hidden while the content happened to fit.
+
+- **`not-completed-desktop` was bottom-aligned.** Its content column had `primaryAxisAlignItems: MAX`, so once
+  the body overflowed, the clipping took the *top* — the topic header sat at **y −127**, off-screen. Set to
+  `MIN`.
+- **`all-blocks-desktop` lost its viewport.** `Main Content` had reverted to `HUG` at 1984, so the column was
+  no longer one screen tall and the nav was not pinned. Back to `FIXED` 964 with the content filling.
+
+Scrollbars re-measured after the reflow: 14 screens now overflow and carry a content bar; `downloads-empty`
+and `minimal` do not and carry none.
