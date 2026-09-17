@@ -1620,3 +1620,25 @@ counts; finishing a topic is not required. Staff masquerading never count. The d
 
 ⚠︎ **Rows are only written while `ENABLE_COURSE_GOALS` is on for that course.** On SkillUp today there is no
 activity history to show — not this week's, not any week's. It starts the day the flag is switched on.
+
+### 17.7 Last week, as a variant
+
+**`State=Last week`** on `Weekly goal card`: the previous Monday–Sunday, drawn with the same anatomy — header with the
+success mark when the goal was met (*Last week, you met your goal*), a sentence, the week on a neutral panel with
+only past days (`Done` / `Missed`), the count, and the Edit row.
+
+**How a learner gets there.** Every state with the strip now opens with a **week header** — the range on the left
+(*This week · 15–21 Sep*) and a `Link gray` action on the right: *Last week* here, *This week* on the way back. One
+week back only; a longer history belongs on the Progress tab.
+
+**What the data allows**
+
+- ✗ **Vendor data, but no extra work beyond the current week.** It is the same `UserActivity` rows for a different
+  Monday–Sunday range in the learner's timezone.
+- ✓ **Judged against the goal that applied then.** `CourseGoal` keeps its history (`HistoricalRecords` in
+  `course_goals/models.py`), so a learner who moves from Regular to Intense today does not see last week rewritten as
+  a miss. This settles the open question in §17.6.
+- ⚠︎ **Empty until `ENABLE_COURSE_GOALS` is on for the course** — nothing is recorded before that.
+
+On the board: column **5 · Last week**, and edge case **E14 · Last week, not met** — the same view without the
+success mark, count in neutral text, no red.
