@@ -1698,7 +1698,7 @@ wrong thing. The sample courses in the workbook are instructor-paced (§1, point
 
 | Where | Instructor-paced (the samples) | **Self-paced (this phase)** |
 |---|---|---|
-| **Module locks** | release dates can lock a module until a date | **no release dates** — everything opens at course start. A lock can only come from a **prerequisite** (subsection gating, entrance exam). *Unlocks 28 Apr 2026* on the Course tab cannot happen; the tooltip annotation now says so |
+| **Module locks** | release dates can lock a module until a date | **no release dates** — everything opens at course start. A lock can only come from a **prerequisite** (§18.3). The Course tab now shows that lock |
 | **Due dates** | fixed, the same for every learner | **personal** — Personalised Learning Schedule, counted from each learner's enrolment (default even spread, or *N weeks after enrolment*). No date on the Dates tab can be fixed copy |
 | **Missed deadlines** | missed | **can be shifted** — `reset_course_deadlines` moves the learner's schedule to start today. Decide whether SkillUp exposes *Shift due dates* on the banner |
 | **Certificate** | may wait for the end or a `certificate_available_date` | **visible as soon as generated** — `should_certificate_be_visible()` returns true for any self-paced course. `generating` still applies |
@@ -1706,3 +1706,33 @@ wrong thing. The sample courses in the workbook are instructor-paced (§1, point
 
 Annotations updated in Figma: the delivery mode chip, the unlock tooltip, the certificate card, and the Dates
 timeline and missed-deadlines banner.
+
+### 18.3 Two reasons a module is locked — Date and Prerequisite
+
+`LMS / Course Detail / Module row` gains a variant property **`Lock reason`**: `None` · `Date` · `Prerequisite`.
+The two `Locked` variants are `Date`; two new `Locked` variants are `Prerequisite`, identical except for the tooltip.
+`Show Unlock Date Tooltip` is renamed **`Show unlock tooltip`**, since it now serves both.
+
+| Lock reason | When it can happen | Tooltip |
+|---|---|---|
+| **Date** | **instructor-paced only** — a release date on the content | *Unlocks 28 Apr 2026* — and even then ✗, no Course Home endpoint returns the date |
+| **Prerequisite** | **self-paced and instructor-paced** — this phase | *Complete “Module 3 · Checkpoint” to unlock* |
+
+The Course tab and `★ ENTRY` now show Module 4 locked by **Prerequisite**; the *Integration proof* board keeps `Date`.
+
+**What edX returns for a prerequisite** — read from `seq_block.py` and `openedx/core/lib/gating/api.py`:
+
+- ✓ **That it is locked** — the outline marks the block `accessible: false`, or `type: "lock"` when
+  `enable_prerequisite_block_type` is on. A boolean only.
+- ✓ **What to finish** — `gated_content` on the **sequence metadata** call (`/api/courseware/sequence/{usage_key}`):
+  `gated`, `prereq_section_name`, `prereq_url` (a `jump_to` link) and `prereq_id`. The tooltip copy is
+  `prereq_section_name`.
+- ⚠︎ **Prerequisites are on subsections, not modules.** Studio sets them per subsection (*Access* → prerequisite, with
+  a minimum score and minimum completion). *Module 4 is locked* summarises its gated subsections.
+- ⚠︎ **The reason is not on the course page.** It comes per subsection, one call each, only when that sequence is
+  requested. Vendor question: add the prerequisite name to the outline.
+- ⚠︎ **The thresholds are not returned** — `min_score` and `min_completion` stay server-side, so the tooltip cannot say
+  *with at least 70%*.
+
+The longer tooltip is centred on the lock and runs past the right edge of the module card; on the full screen it
+may reach the sidebar gutter.
