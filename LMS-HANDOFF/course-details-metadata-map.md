@@ -1740,3 +1740,30 @@ The Course tab and `★ ENTRY` now show Module 4 locked by **Prerequisite**; the
 
 The longer tooltip is centred on the lock and runs past the right edge of the module card; on the full screen it
 may reach the sidebar gutter.
+
+---
+
+## 19. The course header is one component, with a Program variant
+
+*17 Sep.* The Course tab's hero was rebuilt by hand — the content row became a **horizontal auto-layout with the
+progress card in flow**, instead of a grid with the card absolutely positioned, and the wrapper was renamed
+*Header Container* — so the four other screens were still on the old layout.
+
+**`LMS / Course Detail / Course header`** (`5914:7211`) now holds it, with two variants:
+
+| Variant | For | What differs today |
+|---|---|---|
+| `Type=Course` | the Course Detail screens | — |
+| `Type=Program` | the programme page, later | breadcrumb *Programs*, `LMS / Course Type Badge` on `Program`, the title, and stats reading *6 courses · 1 capstone* |
+
+The Program variant is a **placeholder** on purpose: the two will diverge (a programme has courses and a capstone,
+not modules and topics), and having the axis now means the divergence has somewhere to go.
+
+**Applied to all five screens** — Course tab, Progress, Dates, Mentorship Q&A and `★ ENTRY` — each header is an
+instance, so the next hero change reaches them all.
+
+**Annotations stayed on the Course tab only**, reapplied onto the instance's own layers: breadcrumb, partner chip,
+course title, the two chips (§18.1), course stats and the progress card — nine in total.
+
+⚠︎ *One annotation was dropped on purpose:* the partner-chip note existed **twice**, once on each of the two partner
+chips. It is now on one.
