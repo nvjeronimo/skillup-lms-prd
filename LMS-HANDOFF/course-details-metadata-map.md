@@ -1810,3 +1810,11 @@ Each person has a Secondary icon-only button (`message-chat-circle`) that opens 
 So until **Route B** (a SkillUp messaging service, §14.3) or a vendor change that notifies the named staff member,
 the button should read as *Ask the course team*, not as a private message. It is hidden for anyone listed who is not
 staff on the course run — authorship does not grant forum permissions.
+
+**18 Sep — why the course image is a small thumbnail.** The header's `Image Thumb` is fixed at **84 × 84** on
+purpose. On the marketing pages the image is large because it persuades someone to enrol; by the time a learner
+reaches Course Detail that job is done, and this is a page they return to daily. A large image would take the first
+screen from progress, *Resume*, what is due and the syllabus. It stays small to identify the course at a glance
+(learners enrolled in several) and keep the brand present. Source ✓ `course_image_urls.small` (or the Courses API
+`media.image`), prefixed with the LMS host; the platform serves a placeholder when a course has none. Annotated on
+the technical Course tab.
