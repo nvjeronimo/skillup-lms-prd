@@ -1622,6 +1622,27 @@ counts; finishing a topic is not required. Staff masquerading never count. The d
 ⚠︎ **Rows are only written while `ENABLE_COURSE_GOALS` is on for that course.** On SkillUp today there is no
 activity history to show — not this week's, not any week's. It starts the day the flag is switched on.
 
+**Precisely what records a day — 18 Sep, read from each call site.** One row per learner, course and day, in the
+learner's timezone (last-seen timezone, then UTC); Monday–Sunday; staff masquerading excluded.
+
+| Learner does | Web | Mobile app |
+|---|---|---|
+| Opens a lesson in courseware — any type | ✓ counts (`courseware_api` metadata call) | ✓ counts (xblock view) |
+| Finishes it — watches, reads, answers | not required | not required |
+| Signs in | ✗ | ✗ |
+| Opens Course Detail or Progress | ✗ (no call in the outline or progress views) | — |
+| Opens Dates | ✗ | ✓ (`only_if_mobile_app`) |
+| Opens discussions (Q&A) | ✗ | ✓ (`only_if_mobile_app`) |
+| Attends a live session | ✗ unless they open course content | ✗ |
+
+**It measures presence, not progress** — opening a video and leaving counts. The card copy is corrected from *Any
+activity in this course counts towards the day* to **A day counts when you open any lesson in this course.**
+⚠︎ **Web and mobile disagree** on Dates and Q&A — vendor question. ⚠︎ *A day with a completed topic* would be a
+separate backend rule.
+
+In Figma: the table is on the board **Weekly goal — what counts as a day** (`5935:7350`), beside the states board,
+and the same table is an annotation on the Course tab's weekly goal card.
+
 ### 17.7 Last week — a comparison, not a view
 
 *Revised 17 Sep.* A separate *Last week* variant, navigated to from the week header, was drawn and then replaced:
