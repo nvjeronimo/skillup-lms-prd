@@ -1878,3 +1878,11 @@ tier; do mentors have HubSpot calendars; Route A or Route B, decided before the 
 normal Q&A question any staff member can answer, so it should not promise a message to a named person; once Route A
 or B exists, the label can name the mentor again. The Course tab mentor annotation gains the journey
 note; the two existing ones (no field behind it; decision 007) stay.
+
+**18 Sep — the certificate requirements use `Completion Status · Pending`.** The two rows on `Certificate card` ·
+`Not earned` were on `Completion Status · In Progress`, a variant since **removed from the DS** (`Completion Status`
+is now `Done · Pending · Locked` — the consolidation recommended in August, when `In Progress` had 0 uses). They are
+now **`Pending`** — an empty circle, the same mark as an unfinished topic — and a met requirement becomes **`Done`**.
+The percentage stays in the detail line under each row. `LMS / Progress Circle` was considered and not used: 46 px is
+too large for a row, and its arc is drawn, not data. No other `In Progress` instance remains in the Course Detail
+work.
