@@ -1767,3 +1767,46 @@ course title, the two chips (§18.1), course stats and the progress card — nin
 
 ⚠︎ *One annotation was dropped on purpose:* the partner-chip note existed **twice**, once on each of the two partner
 chips. It is now on one.
+
+---
+
+## 20. Course team — instructors and authors, and a way to ask them
+
+*18 Sep.* Show the course's instructors and team **when they exist**, and give each a quick way into Mentorship Q&A.
+
+### 20.1 Where the names come from
+
+- ✗ **Not on the LMS APIs.** The Courses API has no instructor, author or staff field — checked live on the three
+  SkillUp course keys in this document — and `overview` names no one ("your instructor", "our mentoring service").
+  The Course Home APIs have none either. **skillup.online course pages name no instructors today.**
+- ◑ **Open edX keeps people in the Discovery service.** `CourseRun.staff` → `Person`: `given_name`, `family_name`,
+  `profile_image`, `bio`, and `Position` (`title`, `organization`), in the order the course team sets. That is the
+  card as drawn — avatar, name, *role · organisation*. Whether course-discovery is deployed for SkillUp is unknown
+  (§18); **vendor question.**
+- **Not the same thing, and not used:** Studio's course-team roles (`instructor`, `staff`) are permissions and
+  include admins and TAs, with no learner API; **certificate signatories** (§16) sign, and need not have authored
+  anything; the **mentor** is a SkillUp service, not authorship.
+
+### 20.2 Where it goes
+
+**`Sidebar card` · `Type=Team`** — *Course team*, on the Course tab sidebar directly below the Mentor, on the
+technical Course tab and `★ ENTRY`. One row per person, using the DS **`Avatar label group`** with initials (the
+same treatment as the mentor; a shared placeholder photo made three people look like one). **Hidden when the list is
+empty** — no heading over nothing. The DS already has a byline pattern for topic pages,
+`LMS / Topic · Author & Updated Date`; a byline in the course header remains an option if one lead author matters
+more than the team.
+
+### 20.3 The quick button — what it can and cannot promise
+
+Each person has a Secondary icon-only button (`message-chat-circle`) that opens the Q&A composer with a new
+**question** started and the person named. The Mentor card's *Message David* is the same action.
+
+- ✓ `POST /api/discussion/v1/threads/` with `type: "question"`; staff replies come back marked (`author_label`);
+  accepted answers are native (`endorsed_by`).
+- ✗ **A forum thread has no recipient.** The question is visible to the course (or the cohort, with divided
+  discussions — §14.3) and **any** staff member can answer; the named person is **not notified as a person**.
+  Naming them is a label, not routing.
+
+So until **Route B** (a SkillUp messaging service, §14.3) or a vendor change that notifies the named staff member,
+the button should read as *Ask the course team*, not as a private message. It is hidden for anyone listed who is not
+staff on the course run — authorship does not grant forum permissions.
