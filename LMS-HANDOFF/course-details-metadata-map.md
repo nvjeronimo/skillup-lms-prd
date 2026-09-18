@@ -1817,3 +1817,39 @@ screen from progress, *Resume*, what is due and the syllabus. It stays small to 
 (learners enrolled in several) and keep the brand present. Source ✓ `course_image_urls.small` (or the Courses API
 `media.image`), prefixed with the LMS host; the platform serves a placeholder when a course has none. Annotated on
 the technical Course tab.
+
+---
+
+## 21. The mentor journey — Message first; a call only if decision 007 changes
+
+*18 Sep.* Flow drawn in FigJam: **[Mentor 1:1 journey — Course Detail](https://www.figma.com/board/k0TNtf4M6Lxv7yI0u8DZQK)**.
+
+**The question was:** does *Message [mentor]* go to a HubSpot calendar to book a call, or to a 1:1 chat in
+Mentorship Q&A? **Answer: they are two jobs.** An async message covers the frequent case (*"I'm stuck on this"*)
+and is what the card already promises — *Unlimited 1:1 messaging… typically responds within 1 day*. A call covers
+the rare, heavier case. A calendar behind *Message* would turn a two-minute question into a meeting.
+
+⚠︎ **Decision 007 (accepted) already settles most of it:** *"mentoring is unlimited 1:1 asynchronous messaging, not
+booked sessions"*, and an earlier *Book session* button was removed as wrong. So:
+
+| Action | Where it goes | Status |
+|---|---|---|
+| **Message David** — primary | **Mentorship Q&A**, a private 1:1 conversation | per 007 |
+| **Book a call** — `Show book a call` on the Mentor card, **off by default** | **HubSpot Meetings**, this mentor's calendar, prefilled with the learner's name and email; the booking lives in the HubSpot CRM, not the LMS | **contradicts 007** — ready only if product revisits it |
+
+**What the Message path needs**
+
+- ✗ **The learner → mentor assignment** (open question 1). Without it neither the Q&A nor HubSpot knows whose
+  conversation or calendar to open. **The first blocker.**
+- **A private channel** (open question 5, §14.3): **Route A**, divided discussions with a cohort of one — ⚠︎ **must be
+  configured before the course start date**, so for this phase's course it is still possible only if decided now; it
+  divides every topic, and the mentor needs moderator scope. Or **Route B**, a SkillUp messaging service.
+- **Fallback at launch:** the button reads *Ask your mentor* and opens a normal Q&A question — the same honesty as
+  *Ask the course team* (§20.3).
+
+**Questions for product:** is a call part of the offer at all (007 says no), and for whom — every learner or a
+tier; do mentors have HubSpot calendars; Route A or Route B, decided before the course starts.
+
+**In Figma:** the Mentor card variant has an *Actions* row — *Message David* (layer renamed *Message mentor*) and
+*Book a call*, the second bound to `Show book a call` (off). The Course tab mentor annotation gains the journey
+note; the two existing ones (no field behind it; decision 007) stay.
