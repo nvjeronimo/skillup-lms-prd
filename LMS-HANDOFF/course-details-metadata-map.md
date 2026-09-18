@@ -1834,7 +1834,7 @@ booked sessions"*, and an earlier *Book session* button was removed as wrong. So
 
 | Action | Where it goes | Status |
 |---|---|---|
-| **Message David** — primary | **Mentorship Q&A**, a private 1:1 conversation | per 007 |
+| **Ask your mentor** — primary | **Mentorship Q&A**, a private 1:1 conversation once Route A/B exists; a normal Q&A question until then | per 007 |
 | **Book a call** — `Show book a call` on the Mentor card, **off by default** | **HubSpot Meetings**, this mentor's calendar, prefilled with the learner's name and email; the booking lives in the HubSpot CRM, not the LMS | **contradicts 007** — ready only if product revisits it |
 
 **What the Message path needs**
@@ -1851,5 +1851,9 @@ booked sessions"*, and an earlier *Book session* button was removed as wrong. So
 tier; do mentors have HubSpot calendars; Route A or Route B, decided before the course starts.
 
 **In Figma:** the Mentor card variant has an *Actions* row — *Message David* (layer renamed *Message mentor*) and
-*Book a call*, the second bound to `Show book a call` (off). The Course tab mentor annotation gains the journey
+*Book a call*, the second bound to `Show book a call` (off).
+
+*18 Sep:* the primary button reads **Ask your mentor** (was *Message David*). Until a private route is live it opens a
+normal Q&A question any staff member can answer, so it should not promise a message to a named person; once Route A
+or B exists, the label can name the mentor again. The Course tab mentor annotation gains the journey
 note; the two existing ones (no field behind it; decision 007) stay.
