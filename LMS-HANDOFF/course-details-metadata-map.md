@@ -1796,20 +1796,19 @@ empty** — no heading over nothing. The DS already has a byline pattern for top
 `LMS / Topic · Author & Updated Date`; a byline in the course header remains an option if one lead author matters
 more than the team.
 
-### 20.3 The quick button — what it can and cannot promise
+### 20.3 One button — *Ask the course team*
 
-Each person has a Secondary icon-only button (`message-chat-circle`) that opens the Q&A composer with a new
-**question** started and the person named. The Mentor card's *Message David* is the same action.
+*Revised 18 Sep.* A button beside each name was drawn first and then replaced by **one button under the list,
+*Ask the course team*** (Secondary, `message-chat-circle`), because a per-person button promises a private message the
+platform cannot deliver. It opens the Mentorship Q&A composer with a new **question** started.
 
 - ✓ `POST /api/discussion/v1/threads/` with `type: "question"`; staff replies come back marked (`author_label`);
   accepted answers are native (`endorsed_by`).
 - ✗ **A forum thread has no recipient.** The question is visible to the course (or the cohort, with divided
-  discussions — §14.3) and **any** staff member can answer; the named person is **not notified as a person**.
-  Naming them is a label, not routing.
+  discussions — §14.3) and **any** staff member can answer; no one is notified as a person.
 
-So until **Route B** (a SkillUp messaging service, §14.3) or a vendor change that notifies the named staff member,
-the button should read as *Ask the course team*, not as a private message. It is hidden for anyone listed who is not
-staff on the course run — authorship does not grant forum permissions.
+A per-person action becomes possible only with **Route B** (a SkillUp messaging service, §14.3) or a vendor change
+that notifies a named staff member. The Mentor card's *Message David* has the same limit and is untouched here.
 
 **18 Sep — why the course image is a small thumbnail.** The header's `Image Thumb` is fixed at **84 × 84** on
 purpose. On the marketing pages the image is large because it persuades someone to enrol; by the time a learner
