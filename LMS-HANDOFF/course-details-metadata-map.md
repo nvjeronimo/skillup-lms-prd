@@ -1879,10 +1879,11 @@ normal Q&A question any staff member can answer, so it should not promise a mess
 or B exists, the label can name the mentor again. The Course tab mentor annotation gains the journey
 note; the two existing ones (no field behind it; decision 007) stay.
 
-**18 Sep — the certificate requirements use `Completion Status · Pending`.** The two rows on `Certificate card` ·
-`Not earned` were on `Completion Status · In Progress`, a variant since **removed from the DS** (`Completion Status`
-is now `Done · Pending · Locked` — the consolidation recommended in August, when `In Progress` had 0 uses). They are
-now **`Pending`** — an empty circle, the same mark as an unfinished topic — and a met requirement becomes **`Done`**.
-The percentage stays in the detail line under each row. `LMS / Progress Circle` was considered and not used: 46 px is
-too large for a row, and its arc is drawn, not data. No other `In Progress` instance remains in the Course Detail
-work.
+**18 Sep — the certificate requirements use `LMS / Overall Progress` (Device=Mobile).** The two rows on
+`Certificate card` · `Not earned` were on `Completion Status · In Progress`, a variant since **removed from the DS**
+(`Completion Status` is now `Done · Pending · Locked`). A first swap to `Pending` was replaced by the DS progress
+component: each requirement now shows a **46 px ring with its percentage** — **15%** for the grade, **38%** for
+content — the arc overridden to the same value, as on the Completion card's ring. `Device=Desktop` and
+`Desktop-OLD` are 413 px bars and do not fit a 288 px card. Ring text and arc are overrides, not bound to the
+`Grade progress` / `Content progress` properties, so a new value has to be set in both. No other `In Progress`
+instance remains in the Course Detail work.
