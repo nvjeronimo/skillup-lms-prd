@@ -1887,3 +1887,16 @@ content — the arc overridden to the same value, as on the Completion card's ri
 `Desktop-OLD` are 413 px bars and do not fit a 288 px card. Ring text and arc are overrides, not bound to the
 `Grade progress` / `Content progress` properties, so a new value has to be set in both. No other `In Progress`
 instance remains in the Course Detail work.
+
+**19 Sep — the certificate card, as refined in Figma.** Three changes to `LMS / Course Detail / Certificate card`,
+made directly in the file and recorded here:
+
+- **`Not earned` — requirements are bars, not rings.** Each requirement row now reads label → detail → a DS
+  **`Progress bar`** (`Label=False`) at full width, replacing the `Overall Progress` rings. The bars sit on the DS
+  10 % steps: **10 %** for the grade (15 %) and **40 %** for content (38 %) — the same limit recorded for Grades in
+  §15.1b; the detail line carries the exact figure. The title reads **"Not earned yet, keep on track!"**.
+- **`Generating` — a preview skeleton.** While the certificate is being generated in batches, the card shows a grey
+  **skeleton of the certificate** in the preview slot, so the Issued state that follows does not jump. Its inner layer
+  names (*Edit*, *Goal*, *Action*, *Header*, *Content*) are carried over from the weekly goal skeleton.
+- `Issued` and `Run closed` are unchanged. The card is used on the Course tab, Progress tab and `★ ENTRY`, all in
+  `Not earned`.
