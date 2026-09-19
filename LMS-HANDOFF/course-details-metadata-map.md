@@ -1902,3 +1902,43 @@ made directly in the file and recorded here:
   skeleton they were copied from.
 - `Issued` and `Run closed` are unchanged. The card is used on the Course tab, Progress tab and `★ ENTRY`, all in
   `Not earned`.
+
+---
+
+## 22. Upcoming dates and Course tools — from a line each to what is next
+
+*19 Sep.* Both sidebar cards read as placeholders: one date, one link. Redesigned inside `Sidebar card`
+(`Type=Dates`, `Type=Tools`); the `LMS / Footnote` dev notes are kept and rewritten.
+
+### Upcoming dates
+
+**What the outline gives:** `dates_widget` — `course_date_blocks[]`, `dates_tab_link`, `user_timezone`. Read in
+`course_home_api/outline/views.py`: the widget is built with `get_course_date_blocks(…, num_assignments=1)` — **the
+course dates plus only the next assignment**. So the card shows *what is next*, not the list; *All dates* opens the
+Dates tab.
+
+**Now:** one row per date — a **date tile** (day, month), title, a meta line (date type in human copy, time in the
+learner's timezone) and a **relative badge** (DS `Badge`: Warning within a week, Gray otherwise) — then *All dates →*.
+Drawn with *Module 3 · Checkpoint* (in 3 days) and *Course ends* (in 8 days).
+
+Self-paced: the assignment row is a **personal** due date (§18.2). The relative badge is computed by us from `date`.
+With only the end date (the sample course) the card shows one row; with no dates, it is hidden.
+
+### Course tools
+
+**What the outline gives:** `course_tools[]`, each `{analytics_id, title, url}` — a plugin list. Open edX ships four,
+read from the `openedx.course_tool` entry points:
+
+| Tool | `analytics_id` | Shown when |
+|---|---|---|
+| Bookmarks | `edx.bookmarks` | always, for enrolled learners |
+| Updates | `edx.updates` | the course has updates |
+| Subscribe to calendar updates | `edx.calendar-sync` | relative dates are on — **self-paced**; flips to *Unsubscribe…* |
+| Financial Assistance | `edx.tool.financial_assistance` | the site enables it |
+
+**Now:** one row per tool — icon tile (mapped from `analytics_id`), title, a one-line description, chevron. Drawn with
+Bookmarks, Updates and Calendar sync. The live response carried Bookmarks only.
+
+◑ *4 saved lessons* needs the **Bookmarks API**, a second call; the tool returns no count. The descriptions are ours.
+
+Annotations on the Course tab rewritten for both cards (dates: 2, tools: 1).
