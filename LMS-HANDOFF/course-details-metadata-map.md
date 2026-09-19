@@ -1896,7 +1896,9 @@ made directly in the file and recorded here:
   10 % steps: **10 %** for the grade (15 %) and **40 %** for content (38 %) — the same limit recorded for Grades in
   §15.1b; the detail line carries the exact figure. The title reads **"Not earned yet, keep on track!"**.
 - **`Generating` — a preview skeleton.** While the certificate is being generated in batches, the card shows a grey
-  **skeleton of the certificate** in the preview slot, so the Issued state that follows does not jump. Its inner layer
-  names (*Edit*, *Goal*, *Action*, *Header*, *Content*) are carried over from the weekly goal skeleton.
+  **skeleton of the certificate** in the preview slot, so the Issued state that follows does not jump. Its layers are named
+  after the certificate document they stand in for — *Logos* (*SkillUp logo*, *Partner logo*), *Learner name*,
+  *Course and signatures*, *Verification* (*Certificate ID*, *QR and link*) — renamed 19 Sep from the weekly goal
+  skeleton they were copied from.
 - `Issued` and `Run closed` are unchanged. The card is used on the Course tab, Progress tab and `★ ENTRY`, all in
   `Not earned`.
