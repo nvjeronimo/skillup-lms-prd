@@ -1942,3 +1942,9 @@ Bookmarks, Updates and Calendar sync. The live response carried Bookmarks only.
 ◑ *4 saved lessons* needs the **Bookmarks API**, a second call; the tool returns no count. The descriptions are ours.
 
 Annotations on the Course tab rewritten for both cards (dates: 2, tools: 1).
+
+**Documented on the component, not only on the screen.** Every `Sidebar card` variant — Mentor, Handouts, Dates,
+Tools, Team — now carries its technical notes in the **variant description**, copied from the Course tab annotations,
+so they survive if a screen is rebuilt. Descriptions rather than annotations on the main component on purpose:
+component annotations appear on **every instance**, which would put them back on `★ ENTRY` (kept annotation-free) and
+double them on the Course tab — the reason the chip annotations were moved off `Course title` (§18.2).
