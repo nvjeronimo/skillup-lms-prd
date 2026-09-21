@@ -332,3 +332,41 @@ Neither was caused by the removal — both were hidden while the content happene
 
 Scrollbars re-measured after the reflow: 14 screens now overflow and carry a content bar; `downloads-empty`
 and `minimal` do not and carry none.
+
+
+---
+
+## 12 · Everything a Reading can hold, in one column — 21 Sep 2026
+
+Node `5888:53100` (548 column, 516 body) now carries **every content type and every rich-text capability a
+creator can author in our Studio**, as one realistic article rather than a labelled catalogue — the rule from
+§11 stands: notes about the design live in the card, never in the screen.
+
+**Rich text (inside one Text component):** H6 headings · paragraphs · **bold** · *italic* · link (brand +
+underline) · bulleted list · numbered list · nested list (level two hollow).
+
+**Content types:** all 11 `Lesson Block` Kinds — Text, Image, Callout, Table, Blockquote, Video, Audio,
+iframe, File, Knowledge check, Key Takeaways — plus `LMS / Zooming Image` from the Text menu. Grouped under
+plain article headings: *Seeing it in practice · Watch and listen · Explore the tools · Check your
+understanding*.
+
+**Deliberately absent:** horizontal rule, code block, alignment and author-picked colour. The TinyMCE toolbar
+documents them but none was seen in our Studio, and alignment and colour are decisions rather than builds
+(justified text at 375, colour bypassing every token). Same position as §7.
+
+### Found while assembling
+
+- **The list clones came in the wrong weight.** They were built with `Body/Default/Regular`; this article
+  uses `Body/Default/Medium`. Rebound — and the inline paragraph had its bold, italic and link ranges re-applied,
+  because setting a text style on a node wipes range overrides.
+- **Three components ship spec text in learner slots.** `HTML (iframe)` carried *"Embedded · read-only · does
+  not contribute to completion"* and *"Google Doc · Sheet · Slides · Calendar · any external page"*;
+  `Zooming Image` a caption reading *"author-supplied"*; `HTML (Callout)` copy about *interactive activities*.
+  Overridden on these instances. **The iframe defaults want fixing at source** — every new instance starts life
+  with a spec note in front of the learner.
+- **The audio player overflows at 516.** Its `Controls` row is `NO_WRAP` and clipped, and the six controls sum
+  to ~522 in 476, so the last button was cut off. Set to wrap on this instance — nothing is hidden now, but one
+  button sits alone on a second line. The real fix is in `LMS / Podcast · Player`: decide which control drops
+  first at narrow widths.
+- **The knowledge check shows its answered state** by default — the component's variant, not a choice made
+  here. Fine for a showcase; a live page would start unanswered.
