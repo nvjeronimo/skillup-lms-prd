@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-21 · The iframe Kind stops printing its spec to the learner
+
+`LMS / Lesson Block · Kind=HTML (iframe)` (`20985:534350`) shipped three lines of specification in learner
+slots: *"Embedded external content"*, *"Google Doc · Sheet · Slides · Calendar · any external page"*, and a
+caption reading *"Embedded · read-only · does not contribute to completion"*. Every new instance put them in
+front of the learner until someone overrode them.
+
+Now: a sample document title (*Control plan template*) and its source (*Google Docs*) inside the embed, and a
+caption that says only what the learner can do with it — *Embedded document · read-only*. Same slot and
+register as Video's *"Video · 6:12 · transcript available"*.
+
+**Nothing was lost.** The allowed sources and *completion: none* were already in the variant description; a
+note there now says why they belong there and not on the canvas.
+
+**Done through `use_figma`, not the console bridge** — the bridge's plugin hung inside the DS file and would
+not recover on reconnect. Worth knowing the second path exists.
+
+Needs a DS publish; existing instances pick up the new defaults unless they already override them.
+
 ## 2026-09-11 · A scrollbar only where something actually scrolls
 
 Measured every bar against its container — natural content height versus the visible box — and removed the
