@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-22 (later) · Podcast poster is cover art; ORA covers all five Studio flows
+
+- `Kind=Video (Audio)`: the poster is now podcast cover art rather than a person on camera, because a
+  YouTube podcast is a still image with sound. Timer reads *-19:04*. The 7 swapped instances were
+  force-refreshed after the publish.
+- `LMS / ORA · Stepper`: new boolean **Show peer**, so Self only, Self → Staff and Staff only can be drawn.
+- `LMS / ORA · Grade Panel`: new variants **Source=Self** and **Source=Staff**, where staff is the grader and
+  not an override.
+- The Studio component menu is mapped in `reading-screen-matrix.md` §13. Announcement, Anonymous User ID and
+  Raw HTML all render as Text; Problem Bank and Library Content have no learner UI of their own.
+
+Needs a DS publish.
+
 ## 2026-09-22 · Studio has no audio — podcasts are video now
 
 From the review with Simran and her Studio screenshots (full table in `reading-screen-matrix.md` §13):

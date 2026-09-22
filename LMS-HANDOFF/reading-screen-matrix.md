@@ -409,3 +409,34 @@ hold, not a real Reading. And the *06 Podcast* type in Discovery collapses into 
 - ORA text-only response state.
 - File download button — build the add-on or not.
 - Author row — PMs.
+
+### Second pass — the component menus and the learner's podcast (22 Sep, after publish)
+
+**The podcast, as the learner sees it:** a YouTube embed whose picture is a still of cover art — the episode
+is sound over a static image. `Kind=Video (Audio)` now uses a cover-art poster (title, episode, microphone tile
+on the brand teal) instead of a person on camera, and the timer reads *-19:04* to match the meta line. The 7
+swapped instances (3 Reading, 4 Discovery) were refreshed after the publish — the library cache still held
+the old Podcast Player until a forced import.
+
+**Studio's full component menu**, and where each lands in the DS:
+
+| Studio | Learner sees | DS |
+|---|---|---|
+| Text → Text · Announcement · Anonymous User ID · Raw HTML | Rich text (Announcement is a template of headings and paragraphs; Anonymous User ID is text plus a link) | `Kind=Text` — no new component |
+| Text → IFrame Tool · Zooming Image Tool | Embed · zoomable image | `Kind=HTML (iframe)` · `LMS / Zooming Image` |
+| Problem → Checkboxes · Dropdown · Multiple Choice · Numerical Input · Text Input, each also *with Hints and Feedback* | One question | `Quiz · Option Row` · `Quiz · Answer Input` (Dropdown, Numerical, Text, Math) · `Inline Alert Tone=Hint` — all covered |
+| Problem Bank (Beta) · Library Content (Beta) · Legacy Library | A question drawn at random from a library — no UI of its own | Nothing to add. No libraries exist yet in our Studio. |
+| Open Response → Peer only · Self only · Self → Peer · Self → Staff · Staff only | Stepper + grade | **Gap fixed:** `ORA · Stepper` gains *Show peer*; `ORA · Grade Panel` gains *Source=Self* and *Source=Staff* |
+| Video · Drag and Drop | — | §13 above |
+
+**ORA flows mapped to the Stepper booleans:**
+
+| Flow | Show training | Show peer | Show self | Grade Panel |
+|---|---|---|---|---|
+| Peer only | as set | on | off | Peer |
+| Self only | off | off | on | Self |
+| Self → Peer | as set | on | on | Peer |
+| Self → Staff | off | off | on | Staff |
+| Staff only | off | off | off | Staff |
+
+*Staff override* stays for the case where staff replaces a peer grade after the fact.
