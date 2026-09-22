@@ -10,6 +10,8 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - Image Kind: alt text **or** "decorative only" is required in Studio, and `<figure>`/`<figcaption>` captions
   are in production use.
 - All-content example: inline code added to the rich-text paragraph.
+- After publish: the PDF variant sits in the all-content example under *Explore the tools*, after the Google
+  Doc embed. The 3 podcast blocks show the cover-art poster and *-19:04*.
 
 Needs a DS publish.
 
