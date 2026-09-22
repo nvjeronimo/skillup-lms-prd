@@ -515,3 +515,31 @@ through it here*. The viewer bar belongs to the browser and varies by browser; t
 
 **Found while building:** on all 12 desktop and tablet Reading screens, the third Module Header read *MODULE 01 ·
 1 of 3* above *DMAIC for process improvement*. Restored to *MODULE 03 · 0 of 9*.
+
+### Tablet and mobile (22 Sep)
+
+Row 6 now has all three breakpoints: 6 desktop, 6.2 tablet, 6.3 mobile. They were cloned from article-tablet and
+article-mobile, with the same article copy and ORA block.
+
+At 311 the Stepper broke its labels mid-word (*Your resp / onse*). On the mobile instance, only the current step
+keeps its label; the others show just their number (*① Your response · 2 · 3*). **The DS needs this as a
+compact mode of `ORA · Stepper`**; for now it is an override.
+
+## 16 · Everything a Reading can hold — the example, completed (22 Sep 2026)
+
+`5888:53100` now covers the whole Studio catalogue, not only the Lesson Block Kinds:
+
+| Group | Added |
+|---|---|
+| Text templates | **Announcement** (date + instructor in bold, notice text) · **Anonymous User ID** (text + survey link) |
+| Image layouts | resized to 60% and centred · resized and left-aligned · two side by side (Nelson's 3-up row was already there) |
+| Problems | **Checkboxes** (select all that apply) · **Dropdown** · **Numerical input** + a **hint** (Inline Alert Tone=Hint) · **Text input**. Each is the Knowledge check Kind with its option rows swapped for `Quiz · Answer Input` |
+| Drag and Drop | `Drag and Drop · Card`, in progress. Set to *ungraded*, because a graded unit is labelled Assessment |
+| Open Response | Self-only flow (*Your response → Assess your own → Your grade*), text response **and** upload, *Submit response* |
+
+**Found on the way:**
+- `Drag and Drop · Card` prints *"Background image · author-supplied"* inside the board. That is spec text in
+  a learner slot, the same fault the iframe had. Hidden on this instance; **fix at source**.
+- Hiding the feedback line on a cloned Knowledge check makes it unreachable from the clones. The original
+  check above them keeps its *Correct…* feedback, so the example still shows feedback once.
+- Problem Bank and Library Content have no learner UI of their own. Nothing to draw.

@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-22 (late) · ORA on tablet and mobile; the all-content example covers the whole catalogue
+
+- Row 6 gains `ora-text-only-tablet` and `ora-text-only-mobile`. On mobile the Stepper is compact (current
+  step labelled, others numbered). This is an override until the DS has the mode.
+- `5888:53100` adds the Announcement and Anonymous User ID templates, three image layouts, Checkboxes,
+  Dropdown, Numerical with a hint, Text input, Drag and Drop, and an Open Response with text and upload.
+  Details in `reading-screen-matrix.md` §16.
+- DS follow-ups: a compact mode for `ORA · Stepper`; remove *Background image · author-supplied* from
+  `Drag and Drop · Card`.
+
 ## 2026-09-22 (night) · Text-only Open Response, and an example Reading screen
 
 - DS: `LMS / ORA · Text Response`, with the states Empty, Draft saved and Submitted. Use one per prompt.
