@@ -496,3 +496,22 @@ terms, `<ul>` and `<ol>`. The Text Kind's heading must be styled from `h3` down,
 **Embedded PDF.** New variant `Lesson Block · Kind=HTML (iframe · PDF)` (`21689:5014`): source path, the
 browser's page and zoom bar (*3 / 24 · 100%*), a page on the viewer's grey stage, caption *Embedded PDF · page
 through it here*. The viewer bar belongs to the browser and varies by browser; that is in the description.
+
+## 15 · Open Response, text only — 22 Sep 2026
+
+**DS:** new `LMS / ORA · Text Response` (`21692:536524`), in the ORA group after `ORA · Upload`.
+- One instance per prompt: the prompt text, then a *Your response* textarea (`Textarea input field` from the
+  foundation library), then the hint line, then *Save draft*.
+- States: **Empty** (*Text only — this assignment has no file upload*) → **Draft saved** (*Draft saved at 14:32
+  · 86 words*) → **Submitted** (read-only textarea, no button).
+- An ORA with several prompts stacks several instances. This also closes the multi-question gap from §Third pass.
+- When upload is also on, `ORA · Upload` follows the last prompt.
+
+**Screen:** Row 6 · *Card 6 · ora-text-only-desktop*, cloned from article-desktop.
+- A short reading, then the ORA: Stepper in the Peer-only flow (*1 Your response · 2 Review 1 peer · 3 Your
+  grade*, with training and self off), two text responses, and *Submit response* at the right.
+- Submit opens the Submit Gate; it is never a bare submit.
+- The unit is ungraded, so the topic stays a **Reading**. Graded, the platform would label it Assessment.
+
+**Found while building:** on all 12 desktop and tablet Reading screens, the third Module Header read *MODULE 01 ·
+1 of 3* above *DMAIC for process improvement*. Restored to *MODULE 03 · 0 of 9*.
