@@ -5,7 +5,8 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 ## 2026-09-22 (night) · Text-only Open Response, and an example Reading screen
 
 - DS: `LMS / ORA · Text Response`, with the states Empty, Draft saved and Submitted. Use one per prompt.
-- ICP: Row 6 · `ora-text-only-desktop`. The text responses are placed after the DS publish.
+- ICP: Row 6 · `ora-text-only-desktop` shows two prompts: one with a saved draft, one empty. Both are about
+  Six Sigma. The content overflows, so the content scrollbar stays.
 - ICP: the third Module Header was restored to *MODULE 03 · 0 of 9* on all 12 desktop and tablet Reading
   screens; it had regressed to *MODULE 01 · 1 of 3*.
 
