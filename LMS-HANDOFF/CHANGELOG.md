@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-22 (DS fixes) · Compact ORA Stepper; the Drag and Drop board stops printing its spec
+
+- `LMS / ORA · Stepper`: new variant property **Size = Default | Compact**. In Compact the current step keeps
+  its label and takes the free width; the other steps show only their number (50px each, full height). At 343
+  with all five steps, the label wraps on a word boundary; with three steps it stays on one line.
+- `LMS / Drag and Drop · Card`: *"Background image · author-supplied"* removed from all 6 variants. The drop
+  zones are now centred vertically on the board, since nothing sits above them any more.
+
+Needs a DS publish. After the publish, ICP 6.3 mobile swaps its hand-made override for Size=Compact.
+
 ## 2026-09-22 (late) · ORA on tablet and mobile; the all-content example covers the whole catalogue
 
 - Row 6 gains `ora-text-only-tablet` and `ora-text-only-mobile`. On mobile the Stepper is compact (current
