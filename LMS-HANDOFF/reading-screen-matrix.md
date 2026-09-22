@@ -440,3 +440,25 @@ the old Podcast Player until a forced import.
 | Staff only | off | off | off | Staff |
 
 *Staff override* stays for the case where staff replaces a peer grade after the fact.
+
+### Third pass — the Otter transcript and summary (22 Sep)
+
+Checked against the full transcript. Nothing new contradicts §13; three things sharpen it, and the Otter
+summary gets two facts wrong.
+
+- **Single vs multiple choice** (Simran, 15:44): *"we are making use of multiple choice, single choice"*.
+  Already in the DS — `Quiz · Option Row` defaults to a radio, and its exposed `Checkbox` switches to
+  `Type=Checkbox`. The description now says which Studio problem maps to which.
+- **PDF inside an iframe** (27:01): a booklet can be embedded and paged through. Added to the iframe Kind
+  description. Nelson's action item — *redo that block as an iframe* — is the 21 Sep iframe fix.
+- **Quiz instructions before start** (24:26): covered by the description line in `Quiz · Entry Header`.
+- **ORA responses can be multi-question** (18:38). The DS has no multi-prompt response layout; flagged,
+  not built.
+- **Transcripts are sometimes burned into the video, with no file** (05:37). The Video meta line
+  *transcript available* shows only when one was uploaded.
+
+**Where the Otter summary is wrong:**
+- It says time estimates are *manually input*. The transcript says the opposite (22:53): duration is
+  automatic, title and description are manual.
+- It calls the text box under an image *alt-text*. What Simran described is visible text below the image.
+  Alt text is a different, screen-reader field — whether our Studio's image dialog has one is unverified.
