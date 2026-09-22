@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-22 · Studio has no audio — podcasts are video now
+
+From the review with Simran and her Studio screenshots (full table in `reading-screen-matrix.md` §13):
+
+- **Audio:** no audio component exists. `Kind=Video (Audio)` is now a 16:9 video player; the 6 podcast players
+  on the Reading and Discovery pages were swapped for it.
+- **`LMS / Podcast · Player`** kept for a future audio feature, and fixed: controls wrap as two groups, time
+  under the scrubber, no clipping from 640 down to 343.
+- **Callout** is a platform alert, not authorable — removed from every screen that showed it as content.
+- **Drag and Drop:** item bank moved above the board, as Studio renders it.
+- **Descriptions** on 10 Kinds, Topic Header and Author now record what Studio does: type and duration are
+  derived, image captions are a separate text box, file download is an add-on, the iframe source bar is ours.
+- **Gap found:** ORA has no text-only response state.
+- **Discovery learner view:** 12 notes hidden; exhibit notes corrected.
+
+Needs a DS publish.
+
 ## 2026-09-21 · The iframe Kind stops printing its spec to the learner
 
 `LMS / Lesson Block · Kind=HTML (iframe)` (`20985:534350`) shipped three lines of specification in learner

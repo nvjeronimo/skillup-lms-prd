@@ -370,3 +370,42 @@ documents them but none was seen in our Studio, and alignment and colour are dec
   first at narrow widths.
 - **The knowledge check shows its answered state** by default — the component's variant, not a choice made
   here. Fine for a showcase; a live page would start unanswered.
+
+## 13 · What Studio actually does — Simran, 22 Sep 2026
+
+A review with Simran (content creator), with screenshots of the Studio authoring panels. Everything below is
+now written into the relevant `Lesson Block` Kind descriptions as *VERIFIED IN STUDIO — Simran, 22 Sep 2026*.
+
+| Content type | What Studio does | What we changed |
+|---|---|---|
+| **Audio / podcast** | No audio component. Podcasts go in through the **Video** component (usually YouTube) and play as video. Fixed full width. | `Kind=Video (Audio)` rebuilt as a 16:9 video player — *Podcast episode · 19:04 · transcript available*. Every podcast player on the Reading and Discovery pages swapped for it (6 instances). |
+| **Podcast Player** (component kept for a future audio feature) | — | Controls split into *Playback* and *Options* groups on a wrapping row; time moved under the scrubber. Holds at 640, 476 and 343 with no clipping — at 343 the Options pair wraps together, never one button alone. |
+| **Video** | Fixed full width. Transcript optional, can be multi-language. | Description only. |
+| **Image** | Resizable; left / centre / right; 2–4 side by side. **No caption field** — a caption is a separate text box below. | Description. Our Image Kind's built-in caption is a design convenience; dev renders it as body text. |
+| **File** | A link that opens the PDF in a new tab. | Description: a *Download* button is an **add-on feature**, not current behaviour. |
+| **iframe** | Embeds PDFs (navigable) and Google Docs. | Description. The source bar on our embed is our addition. |
+| **Callout** | A platform alert. **Not authorable.** | Removed from the all-content example, both all-blocks screens and the Discovery learner view. Kind kept, marked *NOT AUTHORABLE*. |
+| **Problems** | Any problem type can sit inside a reading. A quiz can carry instructions before it starts. | Description. |
+| **Drag and Drop** | Items sit in a bar **above** the background image; feedback below the board. | `LMS / Drag and Drop · Card`: Item bank moved above the Board in all 6 variants. |
+| **ORA** | Upload can be on or off — the response can be **text only**. Steps can be switched on or off. Staff grade with rubrics. | Gap: `LMS / ORA · Upload` has only *Empty* and *Uploaded*. No text-only state yet. |
+
+### The topic header is derived, not authored
+
+Topic **type** is set by the platform from what the unit contains: text only → **Reading**; any video →
+**Video**; a graded unit with any question → **Assessment**. **Duration** is computed. **Title** and
+**description** are typed by the author. The **author row** waits on a PM decision. Topic Header and Author
+descriptions now say so.
+
+**Consequence for these screens:** a Reading that contains a video is labelled *Video* by the platform. That
+applies to the all-content example (§12) and both all-blocks screens — they are showcases of what a body can
+hold, not a real Reading. And the *06 Podcast* type in Discovery collapses into Video.
+
+### Still open
+
+- Publish the DS (Podcast Player, Video (Audio), Drag and Drop order, descriptions), then check the swapped
+  instances render as video — the example's old Controls-wrap override may linger.
+- Decide whether showcase screens keep the *Reading* label or drop the video blocks.
+- Retire *Podcast* as a topic type, or keep it as a future feature.
+- ORA text-only response state.
+- File download button — build the add-on or not.
+- Author row — PMs.
