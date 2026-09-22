@@ -462,3 +462,37 @@ summary gets two facts wrong.
   automatic, title and description are manual.
 - It calls the text box under an image *alt-text*. What Simran described is visible text below the image.
   Alt text is a different, screen-reader field — whether our Studio's image dialog has one is unverified.
+
+## 14 · The editor toolbar, alt text and a real course's HTML — 22 Sep 2026
+
+Nelson's screenshots of the Studio text editor and image dialog, plus the HTML source of a live reading
+(*Course Overview*, AI-Powered Financial Analysis).
+
+**The toolbar has more than §12 assumed.** Format (paragraph/headings) · font family · **B** · *I* ·
+U̲nderline · text colour · inline code · align left/centre/right/justify · bulleted · numbered · outdent ·
+indent · blockquote · link · unlink · image · HTML source. §12 listed alignment and colour as *not seen in our
+Studio* — that was wrong. They exist; whether the rendered page honours them is a dev decision:
+
+| Capability | Recommendation |
+|---|---|
+| Text colour | Ignore on render — author colours bypass every token and break dark mode and contrast |
+| Justify | Render as left below 768 — justified text at 343 opens rivers |
+| Left / centre / right | Honour — mostly used for images |
+| Underline | Honour, but advise authors against it — underline is how our links read |
+| Inline code | Honour — now shown in the all-content example (`=STDEV.S(B2:B31)`, Space Mono) |
+| Font family | Ignore on render — the DS type scale owns it |
+
+**Alt text exists.** The image dialog asks for *Image Description (Alt Text)* **or** a *This image is
+decorative only* checkbox. The caveat in §Third pass is closed.
+
+**Captions exist too.** The live reading uses `<figure><img alt="…"><figcaption>…</figcaption></figure>`
+twice. So the Image Kind's caption is real content, not a design convenience — authored in HTML source, or as a
+text box under the image in the visual editor. The same page also puts two `<img width height>` side by side
+inside one paragraph.
+
+**Headings in the real content are `<h3>`.** The reading's body uses H3 for section titles, `<strong>` for
+terms, `<ul>` and `<ol>`. The Text Kind's heading must be styled from `h3` down, not only H6.
+
+**Embedded PDF.** New variant `Lesson Block · Kind=HTML (iframe · PDF)` (`21689:5014`): source path, the
+browser's page and zoom bar (*3 / 24 · 100%*), a page on the viewer's grey stage, caption *Embedded PDF · page
+through it here*. The viewer bar belongs to the browser and varies by browser; that is in the description.

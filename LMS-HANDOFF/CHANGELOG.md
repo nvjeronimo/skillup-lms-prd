@@ -2,6 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-22 (evening) · Embedded PDF variant; the editor can align and colour after all
+
+- New `Lesson Block · Kind=HTML (iframe · PDF)` — a pageable PDF inside the topic.
+- Text Kind description lists the real Studio toolbar. Alignment, text colour, underline, inline code and
+  font family all exist. The render recommendations are in `reading-screen-matrix.md` §14.
+- Image Kind: alt text **or** "decorative only" is required in Studio, and `<figure>`/`<figcaption>` captions
+  are in production use.
+- All-content example: inline code added to the rich-text paragraph.
+
+Needs a DS publish.
+
 ## 2026-09-22 (later) · Podcast poster is cover art; ORA covers all five Studio flows
 
 - `Kind=Video (Audio)`: the poster is now podcast cover art rather than a person on camera, because a
