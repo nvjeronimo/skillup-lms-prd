@@ -547,7 +547,7 @@ pages stopped being read through engineering notes, and there is now more than o
 | `⚙ TECHNICAL · Dates tab` | `5497:150395` | the two rows the payload actually returns, and the ruling it forces |
 | `⚙ TECHNICAL · Mentorship Q&A tab` | `5497:150800` | both candidate products, side by side, neither signed off |
 | `How to read this section` | `5448:4325` | the legend, the scope rule, and the verdict key |
-| `Open questions — who owns each, and what closes it` | `5504:5594` | the six decisions this section exists to force |
+| `Open questions — who owns each, and what closes it` | `5504:5594` | the fourteen decisions this section exists to force (§25) |
 
 Open them in **Dev Mode**. Together they carry **73 annotations across 50 elements**, in all four categories
 rather than everything under Development, because they are four different conversations with four different
@@ -642,6 +642,8 @@ nothing else on the page is:
 The Development / Content split is the one that earns its keep in a review. `welcome_message_html` **exists**
 (Development, ✓) *and* its copy is arbitrary instructor-authored HTML (Content) — two facts, two owners, and a
 single list would collapse them into one.
+
+> *23 Sep:* the board now holds **fourteen**, each with a milestone — the current register is §25.
 
 **The six open questions** now have their own board — `5504:5594`, under the legend. Each carries three
 lines that "open" on its own does not give you: **why it is open**, **who owns it**, and **what would close
@@ -2030,3 +2032,35 @@ as **request 10**.
 
 **ENTRY tab row was 4 px low** (tabs at y 364, 360 on the technical screens). Its container spacing was 28 and the
 search frame padding 10/10, unbound; now `Spacing/3xl` and `Spacing/md` like the technical tabs. Height 56, tabs at 360.
+
+## 25. Open questions — one register, with owner and milestone — 23 Sep
+
+The questions had spread across the annotations and §14–§24; the board `5504:5594` held the six from August, three
+of them out of date. It now holds **all fourteen**, numbered so that 1–6 keep their old numbers (the text above
+cites *open question 1* and *5*). Each keeps *why it is open · what closes it · what it blocks* and gains a
+**By** chip. Milestones, not dates, because none are set: **dev handoff → course build → course start → after launch**.
+
+| # | Question | Owner | By | Blocks | § |
+|---|---|---|---|---|---|
+| 1 | Who supplies the mentor, and who is assigned to whom? | Product · SkillUp platform | course start | Mentor card, *Ask your mentor*, *Book a call* | 14.3, 21 |
+| 2 | Who authors `effort_time`? | Content | course build | every duration, *~ 8h 40m left* | 1, 24 |
+| 3 | Can the outline name the prerequisite? | **Vendor** | dev handoff | the Prerequisite lock tooltip | 18.3 |
+| 4 | Dates: the tab, the sidebar card, or both? — *design proposes both* | Product | dev handoff | whether the Dates tab ships | 14.2b, 22 |
+| 5 | Mentoring on the forum (Route A) or our own service (Route B)? | Product · Engineering | **course start** — divided discussions must be set before it | the private 1:1 channel | 14.3, 21 |
+| 6 | Derive the topic type, and what happens to the title prefixes? | Product · Content | dev handoff | the type badge on every topic row | 12.5 |
+| 7 | Is course-discovery deployed for SkillUp (`level_type`, `CourseRun.staff`)? | Vendor | dev handoff | level chip, Course team card | 18, 20 |
+| 8 | Will weekly goals be switched on (flag, reminder command, email channel)? | Vendor · Product | course start | Weekly goal card, reminders, celebration | 17.1 |
+| 9 | Can the platform return days active per week, per course — one rule for web and mobile? | Vendor | course start | week strip, *Last week* | 17.2, 17.6 |
+| 10 | Certificate: which template, a real PDF, public verification URL? | Vendor | dev handoff | certificate document, *Download* | 16.4 |
+| 11 | Certificate and header: who signs, whose logo, readable ID or UUID? | Product | dev handoff | certificate document, partner logos | 11, 16.4 |
+| 12 | Do we offer *Shift due dates* (`reset_course_deadlines`)? | Product | course start | the missed-deadline banner action | 18.2, 24 |
+| 13 | Is a call part of the mentoring offer (decision 007)? | Product | after launch | `Show book a call` | 21 |
+| 14 | What happens to the weekly goal after the course ends? | Product | after launch | an Ended state for the card | 17.6 |
+
+**Changed from August:** 1 now includes the learner → mentor assignment; 3 is no longer about dates (self-paced has
+none) but about getting `prereq_section_name` onto the outline; 4 is no longer "two rows look broken" — with the
+Personalised Learning Schedule the tab fills itself, and design proposes keeping both.
+
+**By owner.** Vendor: 3, 7, 9, 10, plus 8 with product — the agenda for Nilesh / Rashid. Product: 1, 4, 5, 11, 12,
+13, 14, plus 8. Content: 2, and 6 with product. **Settle first:** 5 and 1, which have to be decided before the
+course start date or the private channel is lost for this run.

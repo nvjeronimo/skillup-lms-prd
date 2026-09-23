@@ -2,6 +2,12 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-23 (later) · Course Detail: open questions in one register
+
+- Board `5504:5594` goes from six questions to **fourteen**, each with an owner and a **By** milestone (dev handoff →
+  course build → course start → after launch). Q1, Q3, Q4 and Q5 rewritten for self-paced and the mentor work; Q7–Q14
+  collected from §16–§24. Metadata map §25 has the table, grouped by owner.
+
 ## 2026-09-23 · Course Detail: known inconsistencies fixed
 
 - **One today (Thu 18 Sep 2026)** across the Dates tab, the Upcoming dates card and the Weekly goal strip.
