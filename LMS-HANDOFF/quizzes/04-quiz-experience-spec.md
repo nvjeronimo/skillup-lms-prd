@@ -32,8 +32,13 @@ Defines every component, screen, state and platform contract needed to build the
 0c. **Stepper vs. one scroll is an AUTHORING choice, not a platform limit** *(corrected Jul 29, 2026 — supersedes an earlier claim in this file that stacking was forced and a stepper impossible; that claim also contradicted the definition of Subsection in §1.3)*. The **subsection is the quiz-level container**: the grading container (*"when you set the assignment type for a subsection, all problems in the subsection are graded and weighted as a single type"*), the timed/proctored-exam container, and the navigation container. The platform ships `SequenceNavigation` — one tab per unit plus Previous/Next — and its own `{current} of {total}` counter over units. The Open edX glossary defines the control outright: *"unit navigation bar — the horizontal control that appears at the top of the Course page… contains an icon for each unit in the selected subsection."* See [ADR 0002 · courseware page decisions](https://github.com/openedx/frontend-app-learning/blob/master/docs/decisions/0002-courseware-page-decisions.md): *"Course navigation in a hierarchical course happens primarily via the 'sequence navigation'… navigate to the next and previous unit… and also select specific units within the sequence directly."* Therefore:
     - **one `problem` per unit ⇒ a question-by-question stepper, natively, zero custom code**;
     - **N `problem`s in one unit ⇒ a single scrolling page** (how SKOAIH01 is authored today — see [03-current-lms-quiz-audit.md](03-current-lms-quiz-audit.md) §4).
+    **Sources, all verified Aug 5, 2026** — recorded here because the vendor searched for "SequenceNavigation" and found nothing. That is expected: it is the **React component name in the code**, not a term in the user-facing documentation. The searchable term is **"unit navigation bar"**.
+    - [Open edX glossary](https://docs.openedx.org/en/latest/glossary.html) — *"The unit navigation bar is the horizontal control that appears at the top of the Course page in the LMS. The unit navigation bar contains an icon for each unit in the selected subsection."*
+    - [ADR 0002 · courseware page decisions](https://github.com/openedx/frontend-app-learning/blob/master/docs/decisions/0002-courseware-page-decisions.md) — names the component outright: *"Course navigation in a hierarchical course happens primarily via the 'sequence navigation'. This component lets users navigate to the next and previous unit in the course, and also select specific units within the sequence directly. The next and previous buttons (SequenceNavigation and UnitNavigation)…"*
+    - [SequenceNavigationSlot README](https://github.com/openedx/frontend-app-learning/blob/master/src/plugin-slots/SequenceNavigationSlot/README.md) — slot id `org.openedx.frontend.learning.sequence_navigation.v1`, with props and a screenshot of the default control.
+    - Component source: `src/courseware/course/sequence/sequence-navigation/` — `SequenceNavigation.jsx`, `SequenceNavigationTabs.jsx`, `SequenceNavigationDropdown.jsx`, `UnitButton.jsx`, `UnitNavigation.jsx`.
     *Version caveat:* the horizontal unit tab bar was rendered by default through Teak; in Ulmo/Verawood it moved to a plugin slot, replaced by the Course Outline sidebar + Previous/Next. Restoring it is an `env.config.jsx` entry — configuration, not a fork.
-0d. **What Open edX genuinely lacks** *(verified Jul 29, 2026)* — the real gap, and where our shell adds value: **(i)** no per-question counter ("Question 3 of 10" — the native one counts *units*), **(ii)** no quiz-level submit-all, **(iii)** no end-of-quiz review/summary screen. The timed-exam submit dialog is explicit that it ends the *attempt*, not the answers: *"Make sure that you have selected 'Submit' for each problem before you submit your exam."*
+0d. **What Open edX genuinely lacks** *(verified Jul 29, 2026)* — the real gap, and where our shell adds value: **(i)** no per-question counter ("Question 3 of 10" — the native one counts *units*), **(ii)** no quiz-level submit-all, **(iii)** no end-of-quiz review/summary screen. The timed-exam submit dialog is explicit that it ends the *attempt*, not the answers: *"Make sure that you have selected 'Submit' for each problem before you submit your exam."* **Verified in source Aug 4, 2026** — `submitExam()` calls `submitAttempt(attemptId)` only, and `edx_proctoring` contains no reference to `problem_check` or `capa` at all. A timed exam is a timer and a lockout, not an aggregate submit. **(iii) is buildable as a frontend plugin — see §10.4**, which supersedes the assumption that it needs backend work. **(ii) is CORRECTED Aug 5, 2026:** a subsection has no submit handler, but a single `problem` block may contain many questions, and then it renders one Submit, one attempts counter and one score for the set. Confirmed live on SKOAIFP01, where each quiz is one problem holding ten questions at 3 pooled attempts. Quiz-level submit is an **authoring pattern already in production**, not development — see §11.
 1. **Per-question lifecycle.** *Submission* has no quiz-level container — each problem submits/scores independently (grading *does* roll up at subsection level; see 0c). A "one Submit for the whole quiz" UX would require orchestrating N problem submissions client-side (possible, but each question still grades independently — no cross-question validation).
 2. **Current production config** (SKOAIH01): single-select MCQ only; practice = unlimited attempts; graded = 2 attempts/question; answer-choice shuffling ON; per-choice feedback authored; immediate results; no hints, no partial credit, no due dates; pass mark 70%; Graded Quiz 60% + Final Exam 40%.
 3. **Rendering contract options** (decision needed — see section 6): (A) theme the existing iframe, (B) native re-implementation of the 5 CAPA types against XBlock handlers, (C) hybrid (native CAPA + iframe for SCORM/ORA/everything else). Recommendation: **C**.
@@ -69,7 +74,7 @@ Defines every component, screen, state and platform contract needed to build the
 ## 3. Functional Requirements
 
 ### F-QZ-001 Quiz Entry Header
-Before the first question, show a context block: quiz title; badge `Practice` / `Graded` / `Final Exam`; question count; attempts policy ("2 attempts per question" / "Unlimited attempts"); weight ("Counts 20% of your final grade" — computed from grading policy) or "Doesn't affect your grade"; pass threshold when graded; estimated time (authored or count×1.5 min); primary CTA **Start quiz** opens step 1 (or **Resume** at the furthest answered question). *(Updated Jul 29, 2026: the quiz is a stepper — one question per step — so the entry header is the first screen rather than a block above a scroll. See §1.4-0c.)*
+Before the first question, show a context block: quiz title; badge `Practice` / `Graded` / `Final Exam`; question count; attempts policy — quiz-level, e.g. "2 attempts" meaning two runs through the whole quiz (§9.3); weight ("Counts 20% of your final grade" — computed from grading policy) or "Doesn't affect your grade"; pass threshold when graded; estimated time (authored or count×1.5 min); primary CTA **Start quiz** opens step 1 (or **Resume** at the furthest answered question). *(Updated Jul 29, 2026: the quiz is a stepper — one question per step — so the entry header is the first screen rather than a block above a scroll. See §1.4-0c.)*
 **BR-1:** data sourced from Course Home/sequence metadata APIs + grading policy; never hard-coded.
 **BR-2:** "Submit is final per question" warning shown for graded quizzes (matches current platform truth).
 **AC:** given a graded quiz of 7 questions with 2 attempts, header shows all five facts; resume state appears when ≥1 question submitted.
@@ -220,19 +225,56 @@ The near-misses, so nobody re-opens them:
 - **Subsection prerequisites** gate access to a whole subsection, never to a question.
 - **The unit tab bar** can be hidden, but only through an MFE plugin-slot config for the entire deployment — never per course.
 
-### 8.2 The finding that actually matters: unsubmitted answers are lost
+### 8.2 The finding that actually matters — corrected Aug 5, 2026
 
-`ProblemBlock.should_show_save_button()` returns **False** when `max_attempts is None` and randomization is not *Always*. There is no autosave, no `beforeunload` guard, and unsubmitted input lives only in the unit's iframe DOM, which is destroyed on navigation.
+> **⚠︎ The original version of this section said unsubmitted answers are simply lost. That was wrong, and
+> the error is worth understanding: it was tested on a course that had already ended, where the Save button
+> is suppressed. On an open course Save is present, and it works.**
 
-So on a stock Open edX front end:
+`should_show_save_button()` returns **False** when `max_attempts is None` and randomization is not *Always*
+— and also whenever the problem is `closed()`, which includes past the **course end date**. That last clause
+is what invalidated the original test.
 
 | Quiz type | `max_attempts` | Save button | An unsubmitted selection… |
 |---|---|---|---|
 | **Practice** — unlimited retakes | none | **absent** | **is lost** on Next/Previous |
-| **Graded** — 2 attempts | 2 | present | survives, but only after a manual Save click |
-| **Final** — 1 attempt | 1 | present | survives, but only after a manual Save click |
+| **Graded** — 2 attempts | 2 | **present** | **persists**, if the learner clicks Save |
+| **Final** — 1 attempt | 1 | **present** | **persists**, if the learner clicks Save |
+| *Any type, course ended* | — | **absent** | is lost — and Submit is dead anyway |
 
-The learner's *position* is remembered (`position`, `Scope.user_state`); only the answer is discarded.
+**Verified live on AZ-204 after the course end date was moved forward:** three questions were saved, then
+re-fetched from the server through `/xblock/{id}`. Each came back with its radio already `checked`, and every
+question still read *"You have used 0 of 2 attempts"*. Saving persists server-side and costs no attempt.
+
+The learner's *position* is remembered (`position`, `Scope.user_state`) independently of any of this.
+
+### 8.2a Saved is not graded — and nothing says so
+
+`save_problem()` (line 2075) sets `lcp.student_answers` and `has_saved_answers = True`, then returns:
+
+> *"Your answers have been saved but not graded. Click 'Submit' to grade them."*
+
+It never calls `publish_grade()`. **A saved answer is worth zero until submitted, and each question must be
+submitted on its own** — `submit_problem` runs against a single block, increments that block's attempt
+counter and publishes that block's grade. Saving four questions and submitting only the fifth grades only the
+fifth.
+
+**Confirmed against the live progress API** with three answers saved and none submitted:
+
+```
+Knowledge Check — earned 0, possible 5, percent 0
+problem_scores: 0/1  0/1  0/1  0/1  0/1
+```
+
+**This is the most dangerous affordance in the quiz, and it is dangerous because it feels like progress.**
+The learner gets a success message, returns later and sees their choice still selected, and has scored
+nothing. The platform warns about this in exactly one place — the timed-exam submit dialog, *"Make sure that
+you have selected 'Submit' for each problem"* — which an ordinary quiz never shows. The only other
+explanation is a screen-reader-only sentence listing the buttons that may follow Submit.
+
+**Design requirement:** wherever a saved-but-unsubmitted answer exists, our shell must say so at the question
+*and* in the quiz-level chrome, in terms of grading rather than storage. "Saved" is the platform's word for
+it and it is the misleading one.
 
 ### 8.3 What this means for our design
 
@@ -240,8 +282,8 @@ The stepper we adopted lets learners move between questions freely — which the
 
 **This is ours to solve, not edX's.** We are building a custom shell over the problem blocks (§6, hybrid integration), so the shell holds the unsubmitted selection in client state as the learner moves between questions and calls `problem_check` only on submit. Requirements this adds:
 
-- The shell must retain a selection when the learner navigates away from an unsubmitted question and back. **Do not rely on the platform for this.**
-- Never surface edX's own "Save" affordance — it would be a second, competing save model.
+- The shell must retain a selection when the learner navigates away from an unsubmitted question and back. On practice quizzes the platform genuinely cannot help — Save is absent there by design, because unlimited attempts make submitting free.
+- **Revised Aug 5, 2026 — do not simply hide edX's Save.** The original text said never to surface it, on the grounds that it would compete with our own model. Now that Save is confirmed working and free of attempt cost, the better route is to *use* it as the persistence mechanism where it exists and never show it as a button: the shell saves silently as the learner moves, and spends its interface budget on the thing that actually matters, which is that **nothing counts until Submit**. A visible "Save" invites the exact misunderstanding described in §8.2a.
 - If the shell's state is ever lost (reload, session end), the honest behaviour is an empty question, not a stale one. Our "N of M still unanswered" counter must be computed from *submitted* answers so it never over-reports.
 
 **The "should the learner be allowed to go back?" question is therefore a product choice we implement in the shell, not a platform setting we configure.** Freedom to review is the platform default and the accessible behaviour; if the room wants it restricted for Final exams, that is custom work in our shell, and it should be justified against the accessibility cost rather than assumed.
@@ -272,13 +314,47 @@ Established in a live Studio walkthrough by Simran Jindal, who authors these cou
 
 **Staff graded points is not ours to design here.** It is an assignment with hand grading, which is the ORA/assignment track.
 
-### 9.3 Attempts — "unlimited" does not exist
+### 9.3 An attempt is one run through the WHOLE quiz
 
-Confirmed: Open edX has **no unlimited-attempts setting**. Authors fake it with a high number (10, 20, 100). If no number is set on a timed exam, the platform defaults to **one attempt**.
+**Corrected Aug 3, 2026 (Nelson).** An attempt is a retake of the **entire quiz**, not a retry of a single answer. "2 attempts" means the learner may sit the quiz twice; it does not mean two tries at each question. This package previously said *"2 attempts per question"* in several places — that was wrong and is corrected throughout.
 
-> **Correction required.** Any screen of ours that says *"Unlimited retakes"* describes a state the platform cannot produce. The UI must render the number the backend returns, and the copy must degrade cleanly when the number is high — "100 attempts" is technically honest but reads as noise. Recommendation: show the remaining count (*"3 of 100 attempts used"* is worse than *"97 attempts left"*), and suppress the count entirely above a threshold rather than inventing the word "unlimited".
+**Where it gets awkward — and it is worse than it first looked.** Two independent source reviews confirm the same negative finding: **there is no per-subsection attempt limit anywhere in core Open edX.**
 
-### 9.4 Linking from a quiz to course content — not possible in authored content
+- `SequenceBlock` has no attempts field. Its complete settings list is `position`, `relative_weeks_due`, `hide_after_due`, `is_entrance_exam`, `is_time_limited`, `default_time_limit_minutes`, `is_proctored_enabled`, `exam_review_rules`, `is_practice_exam`, `is_onboarding_exam`, plus inherited `graded`, `format`, `due`, `show_correctness`.
+- The current Studio subsection Configure modal exposes no attempts control.
+- `Maximum Attempts` is a field on the **problem block** — on each question. Blank means *"infinite attempts are allowed"* in the platform's own help text.
+- Even a **timed exam has no attempt limit** — it has a time limit and a single session. Retakes are staff-initiated: staff clear the attempt.
+- `reset_problem()` is per problem and explicitly **does not refund an attempt**.
+
+So "2 attempts at the whole quiz" is **entirely ours to build and enforce**. The platform will not count it, will not stop a learner exceeding it, and has no field to store it in. Concretely the shell must: set the same per-problem limit on every question, track which run the learner is on, decide what a "run" resets, and block a third run itself.
+
+> If anyone reports having seen a per-quiz attempts setting, it is one of three other things: the prerequisite **Minimum score** gate, staff clearing a timed-exam attempt, or a vendor fork. Not core.
+
+Two consequences for the design:
+
+- **"Attempt 2 of 2 · last attempt" on the question card stays**, but only if it reads as *the second run of the quiz*. It must never be mistaken for a second try at the question in front of the learner. It is quiz-level information repeated on the card for orientation, not something scoped to that question.
+- **"Retry incorrect (N)" is a partial retake, and the platform has no such concept.** Decide explicitly whether it consumes a full quiz attempt. If it does, the label must say so. If it does not, the attempt limit means nothing: a learner can grind the wrong answers indefinitely while the counter still reads "2 attempts" — worse than having no limit, because it looks like a rule.
+
+### 9.4 Attempts — blank means two different things
+
+**Corrected Aug 3, 2026.** An earlier version of this section said Open edX has no unlimited-attempts setting. That was too broad, and it came from over-reading one vendor sentence.
+
+The platform's own documentation (see `01-edx-quiz-capabilities.md` §2) is explicit: **Maximum Attempts is an integer, and empty = unlimited**, with a course-wide advanced setting supplying the default. Simran said in the walkthrough that *"there's no option of unlimited… you can keep it like 10, 20 or maybe 100"* — but she also said *"if there is no number and it's a **timed exam**, then by default it takes one."* Both are true, of different things:
+
+| Context | Maximum Attempts blank means |
+|---|---|
+| Ordinary problem | **unlimited** |
+| Timed / special exam | **one attempt** |
+
+So the design rules are:
+
+- **"Unlimited attempts" is legitimate on a practice quiz** and must never appear on a timed one, where blank silently means a single attempt. Getting this backwards is the dangerous direction: a learner told they have unlimited tries on a one-shot exam.
+- Otherwise render the number the backend returns. Above roughly ten the count stops being a meaningful constraint, so hide the pill rather than printing noise like "100 attempts".
+- Never invent the word "unlimited" for a high number — say what the number is, or say nothing.
+
+> **⚠︎ Still to verify in the dev environment.** Whether *their* Studio actually permits a blank value, or whether their authoring practice forces a number. Simran's phrasing suggests the latter, which would be a house convention rather than a platform limit. Added to the dev-environment checks.
+
+### 9.5 Linking from a quiz to course content — not possible in authored content
 
 Confirmed twice: an author **cannot** put a working link or CTA in a question or in feedback text. The only workaround offered is prose — *"you can go and review module 3"* — with the learner navigating manually via the content outline.
 
@@ -287,3 +363,323 @@ Confirmed twice: an author **cannot** put a working link or CTA in a question or
 - The review affordance is **shell-owned**, resolved from course structure. Never authored into feedback text.
 - It therefore only exists when the shell can resolve a parent — consistent with the existing rule that the button hides when the quiz is not linked to a module.
 - Authors must not be asked to write "go and review module 3" into feedback as a substitute; that produces prose that goes stale when content is reordered.
+
+---
+
+## 11. Two authoring models — and the one that gives a quiz-level Submit
+
+*Added Aug 5, 2026, after auditing two courses the vendor supplied.*
+
+A CAPA `problem` may hold **many response elements**. That single fact produces two very different quizzes,
+both in production on our own platform today, and it settles a question we had been answering wrongly.
+
+| | **Per-question model** | **Bucket model** |
+|---|---|---|
+| Live example | AZ-204, `SKOADM01EN` | `SKOAIFP01` |
+| `problem` blocks per quiz | one per question | **one for the whole quiz** |
+| Submit | one per question | **one for the quiz** |
+| Attempts | per question (2 each) | **pooled (3 for all ten)** |
+| Feedback timing | immediate, question by question | all at once, after the single submit |
+| Reset | one question | the whole set |
+| Score | per question | one score for the set |
+
+### 11.1 What this corrects
+
+We have said since July that Open edX has no quiz-level submit and that our shell would have to orchestrate
+N submissions to fake one. **The first half is true only of the subsection** — `seq_block.py` has no submit
+handler, verified. It is not true of a quiz as a learner meets it. `SKOAIFP01` renders ten question stems,
+one `submit btn-brand`, one Save and *"You have used 0 of 3 attempts"* covering all ten.
+
+**So the quiz-level Submit we assumed needed custom development already exists, and it cost authoring.**
+
+It also answers a question asked on 3 Aug — *are attempts for the whole quiz, or per answer?* The answer at
+the time was "per problem, always". The accurate answer is: **per problem — and a problem can be the whole
+quiz.**
+
+### 11.2 What it costs, in both directions
+
+Neither model is better; they trade different things, and the trade is not adjustable per question.
+
+**Choosing the bucket** buys one Submit, pooled attempts and a single score — the model most people picture
+when they say "quiz". It costs per-question feedback timing (nothing can be revealed until the whole set is
+submitted), per-question attempts, and per-question Reset.
+
+**Choosing per-question** buys immediate feedback and independent retries, which is what makes formative
+practice work. It costs the quiz-level Submit, and it is why attempts cannot be pooled.
+
+### 11.3 Consequences for our two modes
+
+- **Mode A must reproduce whichever model the quiz it is imitating actually uses.** Our reference quizzes so
+  far are per-question, so A stays per-question. If a bucket quiz is ever tested, A must show a single
+  Submit and pooled attempts — anything else would not be faithful.
+- **Mode B is unaffected in structure.** B's improvements are chrome, copy, feedback and a results surface;
+  none of them depends on which authoring model sits underneath.
+- **But the bucket model is a third option worth naming**, because it delivers part of B's value with zero
+  design work — one Submit is a real improvement over ten. It should be on the table in its own right rather
+  than folded into B, since its cost is authoring and its trade-off is losing per-question feedback.
+
+### 11.4 What the bucket actually does when you submit — tested Aug 5, 2026
+
+Submitted all ten questions of the SKOAIFP01 practice quiz (unlimited attempts, so the test cost nothing),
+answering the first option throughout to force a mixture of right and wrong.
+
+| Observation | Result |
+|---|---|
+| Block-level verdict | **one** — `success: "incorrect"` for the whole set |
+| Per-question marking | **yes** — 4 `status correct`, 6 `status incorrect`, rendered question by question |
+| Score | **`4/10` — partial credit**, one point per correct question |
+| Answers | revealed in place, with *"Answers are displayed within the problem"* |
+| Attempts | one attempt consumed, for all ten |
+
+**So the bucket is not all-or-nothing.** It marks each question and awards a point for each correct one. The
+single `success: "incorrect"` is a block-level flag, not the grade — it means *"not everything was right"*.
+
+**The consequence that matters for the results screen.** In the per-question model the progress API returns
+one entry per question:
+
+```
+problem_scores: 0/1  0/1  0/1  0/1  0/1
+```
+
+In the bucket model it returns **one entry for the whole quiz**:
+
+```
+problem_scores: 4/10
+```
+
+> **A per-question breakdown on our results screen is therefore only possible in the per-question model.** In
+> the bucket model the API can tell us 4 out of 10 and nothing more — which question was missed is inside the
+> problem's own rendered state, not in the score API. Any results design that lists questions individually
+> must either be restricted to per-question quizzes or read the block's HTML, which is a different and much
+> weaker contract. This qualifies §10.4.
+
+### 11.5 Also observed
+
+- **Multi-select is in use** — the SKOAIFP01 practice quiz contains a checkbox question. The vendor's "about
+  5% of courses" figure holds, but it is no longer zero in anything we have audited.
+- **Practice quizzes have unlimited attempts, no Save and no attempts counter** — exactly what
+  `should_show_save_button()` predicts when `max_attempts is None`. The source and the platform agree.
+
+---
+
+## 10. Platform limit vs. their configuration — source verification (Aug 4, 2026)
+
+The vendor walkthrough of 4 Aug produced a set of answers about what the platform does. Because those answers come from the person who *configures* SkillUp's courses, they are reliable about SkillUp and unreliable as statements about Open edX. Each was taken back to primary source — the `openedx` repositories read at `master` (`edx-platform` @ `feb3e3fd`, `frontend-app-learning` @ `db2134c9`, `edx-proctoring`, `completion`, `xblocks-core`), not documentation summaries.
+
+Full evidence, with file and line citations, is in [session-log.md](../session-log.md) under *2026-08-04 · Source verification of the walkthrough answers*. What follows is what it changes for this spec.
+
+### 10.1 The split
+
+| Claim from the walkthrough | Verdict | Cost to change |
+|---|---|---|
+| No submit for a whole quiz | **Platform limit** — `seq_block.py` has two handlers, neither submits | — |
+| No end-of-quiz score summary | **Platform limit** — zero occurrences of `score` in `seq_block.py` | see 10.4 |
+| No per-quiz pass mark as a verdict | **Platform limit** — `GRADE_CUTOFFS` is course-wide | see 10.5 |
+| Show answer is tied to graded/non-graded | **Their configuration** — `answer_available()` never reads `graded` | one inherited field |
+| Quizzes are all open, nothing is gated | **Their configuration** — `enable_subsection_gating` defaults `False` | one Advanced Setting + authoring |
+| Reset appears after submitting | **Their configuration** — `show_reset_button` defaults `False` | one inherited field |
+| Attempts cannot be restricted quiz-wise | **Half wrong** — `max_attempts` is inheritable; set once on the subsection it covers every question | one inherited field |
+
+### 10.2 Correction to this spec — feedback *is* immediate by default
+
+`show_correctness`, display name **"Show Results"**, is inheritable with default **`"always"`**; the only other values are `never` and `past_due`. So the correct formulation, replacing any looser wording elsewhere in this document:
+
+> **Per-question correctness is shown immediately unless deliberately suppressed. What does not exist is a quiz-level summary.**
+
+Where learners appear to see nothing after submitting, `show_correctness` has been set away from its default on that subsection.
+
+### 10.3 Three rules this settles for our screens
+
+1. **Show answer is not a graded/practice rule — it is a per-quiz choice.** Twelve values exist (`class SHOWANSWER`, `capa_block.py:82`), and the field is inheritable down from course, section or subsection. Our design should stop presenting the split as something the platform imposes and present it as the editorial policy it is. The design recommendation stands (free on practice, attempts-exhausted on graded); the justification changes from "the platform requires it" to "we chose it, and one field per subsection implements it."
+2. **Reset does not refund an attempt.** `self.attempts` is incremented in exactly one place in `capa_block.py` (line 1817, inside submit); `reset_problem()` never touches it. Any copy on `Retry incorrect` must not imply the attempt comes back. This is the highest-risk wording in the whole flow.
+3. **`Gate · Prerequisite` is a real platform feature that is switched off, not an impossibility.** `enable_subsection_gating` + `min_score` (0–100) + `min_completion`, enforced by `descendants_are_gated()` against direct-URL access, with a Studio UI. Keep the component; treat it as *available if the business wants it*, not as a state our learners currently meet.
+
+### 10.4 The results screen is a frontend plugin, not a fork
+
+This is the most consequential correction, and it reverses the cost assumption in F-QZ-013.
+
+**The learner can read their own subsection score.** `GET /api/course_home/progress/{course_id}` — `ProgressTabView`, `permission_classes = (IsAuthenticated,)`, defaulting to the requesting user. Per subsection it returns `num_points_earned`, `num_points_possible`, `percent_graded` and `problem_scores: [{earned, possible}]`. Every subsection-granular route under `/api/grades/v1/` is by contrast staff-gated — including `/subsection/{id}/`, the one that looks obvious and 403s for a learner.
+
+**There is a supported place to render it.** `org.openedx.frontend.learning.sequence_bottom_navigation.v1` receives `courseId`, **`sequenceId`** and `unitId` with `mergeProps: true`, wrapping the Prev/Next area. `sequenceId` is what makes last-unit-in-subsection detection possible. The fallback `sequence_container.v1` sits after all sequence content but exposes only `courseId` and `unitId`.
+
+**Design consequences:**
+
+- **The `Pending` variant of `LMS / Quiz · Results` is required, not defensive.** Scores are recomputed asynchronously off `PROBLEM_WEIGHTED_SCORE_CHANGED` (`grades/tasks.py`), so a fetch immediately after the last submit can legitimately return a stale total.
+- **The screen appears in place, below the question content — it is not a route.** No slot fires on *leaving* a subsection; both render continuously while the learner is on a unit. There is no interstitial to design.
+- **Last-unit detection is ours to build.** The MFE's `isLastUnit` means last of the *course* (`sequence-navigation/hooks.js:45`); `isLastUnitInSequence` stays internal.
+- **Treat the data source as unstable.** `course_home_api/urls.py` declares itself an unversioned BFF that may change between releases, and is gated by the waffle toggle `course_home_mfe_progress_tab_is_active`. The screen must degrade to "see your results on the Progress tab" rather than break.
+
+*Caveat carried forward:* reading the MFE's redux store from inside a plugin widget — needed for `sequence.unitIds` — is the pattern the app's own slot fallbacks use, but the slot READMEs do not document it as a contract. **UNVERIFIED.**
+
+### 10.4a ⚠︎ Their MFE is older than the slot names we cited — verified Aug 5, 2026
+
+Inspected the running `frontend-app-learning` bundle on the dev environment. **The plugin-slot framework is
+present, but the slot *names* are the legacy ones.** Not a single `org.openedx.frontend.*` id appears in any
+chunk; `idAliases` is absent too. The build carries fourteen bare ids:
+
+`default_contents` · `read_theme_cookie` · `courseware_verified_certificate_upsell` ·
+`outline_tab_notifications_slot` · `newsletter` · `header_slot` · `notification_tray_slot` ·
+`notification_widget_slot` · **`sequence_container_slot`** · **`next_button_slot`** ·
+`content_iframe_loader_slot` · `gated_unit_content_message_slot` · `unit_title_slot` · `live_tab`
+
+**This places their MFE before the slot-id rename**, i.e. earlier than the release whose documentation §10.4
+cites. Corroborated in the DOM: no unit tab bar renders at all — the page shows the Course Outline sidebar
+plus Previous/Next, which is the arrangement described in the version caveat at §1.4 0c.
+
+**The results-screen plan survives, under a different name.** The slot §10.4 relies on —
+`sequence_bottom_navigation.v1`, valued because it supplies `sequenceId` — has a legacy predecessor in their
+build with the props we need:
+
+```js
+PluginSlot id="next_button_slot" pluginProps:{
+  courseId, disabled, buttonText, nextArrow, nextLink,
+  shouldDisplayNotificationTriggerInSequence,
+  sequenceId, unitId, nextSequenceHandler, handleNavigate, ...
+}
+```
+
+`sequenceId` **and** `unitId` **and** `nextSequenceHandler`. Last-unit-of-subsection detection is therefore
+possible on the version they are running today.
+
+The weaker alternative also exists but is genuinely weaker here:
+
+```js
+PluginSlot id="sequence_container_slot" pluginProps:{ courseId, unitId }
+```
+
+— no `sequenceId`, exactly as the newer `sequence_container.v1` is documented.
+
+> **What to write in any brief or estimate:** target **`next_button_slot`**, not
+> `sequence_bottom_navigation.v1`. Naming the newer id would send their dev team looking for something their
+> build does not contain, and the likely conclusion would be "not possible" rather than "different name".
+
+*Caveat kept honest:* slot ids are string literals and survive minification, so their absence is reliable
+evidence. Component names are mangled, so nothing here should be read as a claim about which React
+components exist — only about which slot ids the build exposes.
+
+### 10.5 What Reset actually does — the behaviour behind our "Try again"
+
+Read from `capa_block.py` at `master`. This is the full contract, because the label we put on this button
+depends on it.
+
+**When the button appears** — `should_show_reset_button()`, line 1031, in evaluation order:
+
+1. `is_survey_question = (max_attempts == 0)`
+2. if `closed()` and not a survey question → **False**. `closed()` (line 1435) is `used_all_attempts() or is_past_due()`. So **once the last attempt is spent, Reset disappears.**
+3. if `rerandomize` is `always`/`onreset` **and** the problem is submitted → **True**
+4. if `is_correct()` → **False**
+5. otherwise → the value of `show_reset_button`, which **defaults to `False`**
+
+**What it does** — `reset_problem()`, line 2121:
+
+- refuses if `closed()`: *"You cannot select Reset for a problem that is closed."*
+- refuses if not submitted: *"You must submit an answer before you can select Reset."*
+- re-seeds if randomised — on a shuffled question the learner may get a **different variant**
+- rebuilds the problem and **clears the submitted answer**
+- `set_score(...)` then `publish_grade()` — **the points already earned are removed immediately**
+- **never touches `self.attempts`.** That variable is assigned in exactly one place in the whole 2,481-line file: line 1817, `self.attempts = self.attempts + 1`, inside submit.
+
+**So the honest description is:** *Reset clears your answer and the score it earned, so you can answer again
+using an attempt you still have.* It is free in itself, but the re-answer costs the next attempt, and it is
+unavailable once attempts run out.
+
+**Two consequences for the design:**
+
+- **Reset is hidden after a correct answer, and that is protective, not an oversight.** Because reset wipes
+  the score on the spot, a learner who pressed it on a question they had right would destroy a point they
+  had already banked. Our `Correct` state must therefore never offer it — which is what the redraw of the
+  today column already shows.
+- **The label carries the risk.** "Try again" reads as a free second go. It is only safe next to a visible
+  count of attempts remaining, and it must never suggest the spent attempt comes back. "Reset" is the
+  platform's own word and is accurate but tells the learner nothing about the cost. **Recommendation: keep a
+  human label, and bind it to the attempts statement rather than leaving it standing alone** — which is what
+  the `PROPOSED COPY` note in column B specifies.
+
+### 10.6 Save is a real feature we are not using
+
+`force_save_button` (line 267, Boolean, default `False`), `should_show_save_button()` (line 1052), the
+`problem_save` handler (line 422) and `save_problem()` (line 2075) which sets `lcp.has_saved_answers = True`.
+**Save stores an answer without submitting it and without spending an attempt.**
+
+The display logic is worth reading closely, because it predicts something we can check. Save is deliberately
+hidden when `max_attempts is None` and the problem is not randomised — the code's own comment explains that
+with unlimited attempts and no randomisation, submitting costs nothing, so a save button is pointless. But on
+a **graded** quiz with `max_attempts = 2`, not closed and not yet submitted, the function returns `True`.
+
+**On our graded quizzes the Save button should therefore already be rendering, and in the screenshot of the
+live AZ-204 Knowledge Check it is not.** That is very likely why the 3 Aug test lost an unsubmitted answer on
+navigation. Either their theme suppresses it or the platform version differs — a question for the vendor, not
+an assumption for us.
+
+Both `Save draft` and `Skip question` are therefore modelled as **optional** in `LMS / Quiz · Question Card`
+(`Show save`, `Show skip`, both defaulting off). Save because it is a real feature that may be switched on
+per quiz; Skip because it has no platform counterpart at all and only becomes meaningful if the stepper is
+ever adopted — a decision that would reshape the whole flow.
+
+### 10.7 The button contract — every action on a question
+
+Written after finding four buttons on `LMS / Quiz · Question Card` that the platform has no counterpart for.
+They arrived honestly: the component was drawn as our *proposal*, and nobody had yet asked which of its
+affordances the backend can actually honour.
+
+**The test applied to each one:** does it exist in the Open edX source, and if so, what does it really do?
+Everything below is read from `capa_block.py` and `seq_block.py` at `master`, not from documentation.
+
+| Button | In the platform? | Mechanism | Decision |
+|---|---|---|---|
+| **Submit** | Yes | `problem_check` → `submit_problem` (line 422). The only place `self.attempts` is incremented (1817) | Always present. The one action that spends an attempt |
+| **Show answer** | Yes | `showanswer`, twelve values, **inheritable**, default `finished` (238, 82) | Keep. Set deliberately per quiz, not per question |
+| **Reset** *("Try again")* | Yes | `problem_reset` → `reset_problem` (2121). `show_reset_button` defaults **off** (270) | Keep. Label must sit beside the attempts count — see §10.5 |
+| **Save** *("Save draft")* | Yes | `problem_save` → `save_problem` (2075). `force_save_button` defaults **off** (267) | **Optional** (`Show save`, off). Real feature, not enabled today |
+| **Hint** *("Next hint")* | Yes | `demandhint` in the problem XML | **Optional** (`Show hint`, off). Zero authored anywhere in our catalogue |
+| **Skip question** | **No** | Zero occurrences of `skip` in `capa_block.py` or `seq_block.py` | **Optional** (`Show skip`, off). Ours. Only meaningful if the stepper is adopted |
+| **Next question** | **No** | Navigation is per *unit* (`goto_position`), and a quiz is one unit | **Unresolved** — still on four variants. See below |
+| **Review lesson** | **No**, inside a problem | Authors cannot link out of problem content; our shell can resolve the parent | **Removed from the card.** Kept in the Entry Header, where it is outside the iframe |
+
+#### 10.7.1 The rule this produced
+
+**A button on a question may only promise what the backend can honour.** Three of the eight failed that test,
+and each failed differently:
+
+- *Skip* and *Next question* promise **navigation that does not exist** — every question is on one page, so
+  there is nowhere to go. They are artefacts of a stepper we deliberately excluded.
+- *Review lesson* promised **precision we cannot deliver** — the link resolves to the module, not to the
+  lesson covering that question, because no question→content mapping is authored.
+- *Save draft* looked like an invention and was not. Removing it on suspicion would have deleted a real
+  feature from the design.
+
+That last one is why the test is "does it exist in the source", not "does it look familiar".
+
+#### 10.7.2 Where the platform hides a button, copy that behaviour
+
+The platform suppresses actions at moments where they would harm the learner, and those rules are worth
+inheriting rather than re-deriving:
+
+- **Reset disappears once the answer is correct** (`is_correct()` → `False`, line 1048). Because reset wipes
+  the score on the spot, offering it there would let a learner destroy a point they had banked.
+- **Reset and Save both disappear once the problem is closed** — `used_all_attempts() or is_past_due()`
+  (1435). An action that can no longer succeed should not be on screen.
+- **Save is hidden when attempts are unlimited and the question is not randomised** (1066). The code's own
+  comment: submitting costs nothing in that case, so a save button is noise.
+
+#### 10.7.3 Still open
+
+**`Next question` remains on four variants** — `Correct`, `Partially correct`, `Answer revealed` and
+`Results withheld`. It is the same defect as `Skip question`, and it is the *primary* action in all four, so
+removing it raises a real question: what replaces it? The redrawn today column answers that for `Correct` —
+**nothing**, because after a right answer on a scrolling page there is no next step to offer. Applying that
+to the other three is the obvious move, but it is a design decision, not a correction, and it is Nelson's.
+
+### 10.8 The pass mark has a route nobody raised
+
+`min_score` in the gating API **is** a per-subsection threshold, evaluated by `get_subsection_grade_percentage(usage_key, user)`. So "the learner must reach 80% on this quiz" is expressible today. What the platform does with it is **open downstream content**, not stamp a verdict on the quiz.
+
+Which route applies depends on what the pass mark is *for*:
+
+| Intent | Supported? | Cost |
+|---|---|---|
+| "80% on Quiz 3 before Module 4 opens" | **Yes, today** | Authoring — same lever as 10.3 rule 3 |
+| "Show the learner Passed / Not passed on Quiz 3" | No | Needs the results surface in 10.4 |
+| "Quiz 3 pass/fail drives certification independently of course grade" | No | Custom development |
+
+The first two are the same underlying feature: turning on subsection prerequisites delivers per-quiz thresholds *and* gating in one configuration change. **This does not change the recommendation in [07-results-decisions.md](07-results-decisions.md) §1** — the pass mark stays authored metadata worded as a target, never a gate, and never on practice. It does mean that if the business later wants it to be a gate, the platform is ready and the change is authoring, not engineering.

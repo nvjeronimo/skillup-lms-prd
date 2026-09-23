@@ -1,5 +1,8 @@
 # SkillUp LMS — Prototype + Storybook Handoff
 
+> **Start at the ICP Hub:** https://claude.ai/artifact/LYu6uccAohvumsMUPe4sUy. It covers content-type status, verified platform rules, decisions, open questions, and links to every document and Figma page.
+
+
 Code handoff package for the V7 LMS prototype. Built from the Figma source of truth:
 
 - Working file: `Wz2TCYFVr0hD8tJNiLajLt` (LMS ICP Phase 1)

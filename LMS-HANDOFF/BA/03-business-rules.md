@@ -257,3 +257,27 @@ Default properties always included: `courseId, topicId, userId, sessionId, times
 
 ### BR-42 · Privacy
 Anonymous-by-default. PII only attached if user signed in AND opted in. Honor "Do Not Track" header. Retention: 18 months for raw events.
+
+## Topic type
+
+Verified in the Open edX source on 23 Sep 2026. Shared page: https://claude.ai/artifact/8TMV2dzzuRoFwCyRe19KyW
+(open it in a browser). Full notes are in `../reading-screen-matrix.md` §17.
+
+### BR-43 · Type is derived, never authored
+Open edX sets a topic's type from the components inside its unit (`vertical_block.get_icon_class`). Authors have no
+field for it. The topic header's type label, its icon and the sidebar row icon all read this value. See BR-34.
+
+### BR-44 · Problem wins
+If the unit contains any problem → `problem` (our **Quiz / Assessment**). That covers MCQ, checkboxes, dropdown,
+numerical, text input and ORA. It applies whether the problem is graded or not, and even when the unit also has
+a video.
+
+### BR-45 · Then video, then other
+Otherwise, a unit with a video → `video` (our **Video**). Podcasts count, because they go in through the Video
+component. Anything else → `other` (our **Reading**): text, images, tables, iframes, embedded PDFs, and Drag and
+Drop v2, which declares no type of its own.
+
+### BR-46 · Grading does not change the type
+*Graded* is set on the subsection (Studio → Configure → Grade as) and inherited by units. It never changes the
+type. The platform has exactly three types. Adding more, for example telling a practice quiz from a graded
+assessment, means replacing the rule through the `OVERRIDE_GET_UNIT_ICON` hook. That is an engineering decision.

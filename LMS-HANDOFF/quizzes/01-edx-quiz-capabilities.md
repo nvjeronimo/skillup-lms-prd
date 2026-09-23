@@ -71,9 +71,9 @@ Source: [Guide to Problem Settings](https://docs.openedx.org/en/latest/educators
 | Value | Answer becomes visible when… |
 |---|---|
 | `always` | Always (even before submitting) |
-| `answered` | Learner has answered **correctly** |
-| `attempted` | Learner has submitted ≥1 attempt (persists after reset) |
-| `attempted_no_past_due` | Attempted OR due date passed |
+| `answered` | Learner has answered **correctly**. ⚠︎ Studio labels this "Answered", but the code checks `is_correct()` |
+| `attempted` | Attempted **OR** past due. ⚠︎ Studio labels this "**Attempted or Past Due**" |
+| `attempted_no_past_due` | Attempted only. ⚠︎ Studio labels this "**Attempted**" |
 | `after_attempts` | A configured minimum attempt count reached |
 | `after_all_attempts` | All allowed attempts used (requires Max Attempts set) |
 | `after_all_attempts_or_correct` | Attempts exhausted OR answered correctly |
@@ -85,6 +85,12 @@ Source: [Guide to Problem Settings](https://docs.openedx.org/en/latest/educators
 
 - **Show Answer: Number of Attempts** — companion integer for `after_attempts`.
 - Show Answer also reveals the `<solution>` **explanation** block.
+- **Default is `finished`** (attempts exhausted OR past due OR correct).
+- **Two global overrides sit above all twelve values.** If the subsection withholds correctness (`never` / `never_but_include_grade`, or `past_due` before the due date) the answer is *never* shown whatever this is set to. Staff see the answer for every value except `never`.
+- ⚠︎ The Advanced-Settings help text in `inheritance.py` omits `after_attempts`; the real accepted set is all twelve.
+
+### Grading Method — undocumented, but the learner sees it *(added Aug 3, 2026)*
+`grading_method` on the problem block: **`last_score`** (default), `first_score`, `highest_score`, `average_score`. It decides which of several attempts' scores counts, and it renders under the Submit button as *"Grading method: Last Score"*. It appears **nowhere in the educator documentation** — it was found by reading `capa_block.py`. On Redwood/Sumac it sat behind `ENABLE_GRADING_METHOD_IN_PROBLEMS`; on current `master` the flag is gone and the label always renders. **Verify against our release** — if it renders, our design has to accommodate a line we never accounted for, and "best score kept" copy has to match the configured method rather than assume it.
 
 ### Reset
 - **Show Reset Button** (per-problem, with course-wide default): clears unsubmitted input; if already submitted, clears the submission; re-randomizes variables when Randomization = On Reset.

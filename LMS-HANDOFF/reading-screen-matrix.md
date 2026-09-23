@@ -1,0 +1,581 @@
+# Reading — the screen matrix
+
+*Created 9 Sep 2026. Reading is **P0**: 84 topics, **30% of the program**, the most common type in the
+catalogue. Until today it had **one** screen — a 1112 content column that had never been placed in a device
+shell. Video and Quiz are both APPROVED and each shipped a full scenario grid; this brings Reading to the
+same bar.*
+
+**Where it lives:** page `↳ Phase 1 · Reading - Ready for Review 🟠`, frame
+`ICP Phase 1 - Reading - Light - Ready for Review` (`5685:170871`).
+**16 screens across 5 rows** — 11 desktop · 2 tablet · 3 mobile.
+
+---
+
+## 1 · What Reading actually is
+
+`html` XBlock + Files & Uploads, with manual completion via the Completion tool. **No anchor** — a composed
+document of stacked primitives. Same shape as Lab and Lesson Page.
+
+That has one consequence that drives the whole matrix: **the body is author-composed, so its length and
+composition are not ours to fix.** Every state below has to survive a one-paragraph page and a 2,600px page
+equally.
+
+---
+
+## 2 · The shell
+
+The content column that already existed *is* `Main Content`. What was missing was everything around it:
+
+```
+ICP-Reading-<scenario>-desktop            1440 × 1056
+├ LMS / Course Player Topbar              1440 × 60
+└ body
+  ├ Sidebar                                280      one viewport, own scroll
+  ├ Main Content                          1112      ← the existing Reading page
+  └ LMS / AI Panel                         360      collapsed by default
+```
+
+Tablet: 960 viewport, sidebar holds at 280, content takes 632.
+Mobile: 375 viewport, **no sidebar** — the outline moves behind the menu; content 343.
+
+**The outline had to be re-pointed too.** Cloning the Video shell brings its *selection* with it: the
+highlighted row read `Introduction to the DMAIC methodology · Video · 3m 20s` on every Reading screen, and
+the footer nav carried the same title. Now `What is Six Sigma? · Reading · 8 min` across all 16. A sidebar
+that names a different topic than the page is the kind of error a reviewer trusts rather than questions.
+
+**One bug found and fixed while assembling.** `Main Content` was inherited with
+`primaryAxisAlignItems: CENTER`. With content taller than the viewport that centres the overflow and clips
+*both* ends — on tablet it silently ate the topic header and the tab bar. Set to `MIN` with `clipsContent`.
+Worth knowing because every future type cloned from the Video shell inherits the same default.
+
+### Two scroll containers, and a bar on each
+
+Both regions scroll independently, and each now carries `LMS / Quiz · Vertical Scroll` — **32 bars across
+16 screens**. 6px wide, absolutely positioned, constraints MIN/MIN, 4px in from the right edge of the column
+it belongs to.
+
+| | x | y | height |
+|---|---|---|---|
+| Sidebar, desktop & tablet | 286 | 204 | 768 |
+| Content, desktop | 1414 | 24 | 886 |
+| Content, tablet | 934 | 24 | 886 |
+| Sidebar, mobile *(inside the open menu)* | 310 | 128 | 725 |
+| Content, mobile | 333 | 8 | 691–715 |
+
+**The bar covers only what scrolls.** The sidebar's starts **12px below the Overall Progress** — the course
+header and the progress are both fixed — and stops 8px short of the bottom. The content column has nothing
+fixed at its top, so its bar starts at +8; it stops above the pinned nav rather than running to the frame
+edge, because the nav does not scroll.
+
+**Derived, not hard-coded.** The first attempt used `+170` from the old component geometry (header 108 +
+progress 62). Those heights have since changed to 122 + 54, and the mobile sidebar's fixed region is only 116
+because its progress is an absolutely-positioned badge rather than a row. The placement now walks the
+sidebar's own children, takes the bottom of the last fixed one before the first `Module Header`, and adds 12 —
+so it survives the next time the component is rebuilt.
+
+**A third bar had to come out.** The downloads list arrived from Video carrying its own scrollbar, from a
+panel where the list scrolled inside a fixed height. Here the whole content column scrolls, so an inner
+scroll region contradicts the rule the board itself states — *two scroll containers, not one*. Removed from
+the three downloads screens.
+
+### The three fixed regions
+
+Nothing in a topic page scrolls the whole window. Three regions are pinned to the viewport and each scrolls
+on its own:
+
+| Region | Height | Behaviour |
+|---|---|---|
+| Topbar | 60 desktop · 56 mobile | fixed |
+| Sidebar | **964** = 1056 − 60 topbar − 32 padding | one viewport, own scroll |
+| Content column | 902 = 964 − 62 nav | scrolls |
+| **Navigation buttons** | 62 | **pinned to the bottom of the content column** |
+
+**The nav was floating.** Before this pass it was simply the last child in a hugging column, so it landed
+wherever the article ended: **y 456** on `minimal-desktop` — halfway up an empty page — and **y 2580** on
+`all-blocks-desktop`, far below the fold. Now `Main Content` is fixed-height with `content` set to FILL and
+clipping, so the nav sits at 902 → 964 on every desktop and tablet screen regardless of article length.
+
+Mobile needed a structural change rather than a resize: everything lived in one column, so a 1308px body
+pushed the nav out of the frame entirely. The scrolling children are now wrapped in a `scroll-area` that
+fills, with the nav as a sibling below it.
+
+---
+
+## 3 · The 16 screens
+
+| Row | Screen | What it settles |
+|---|---|---|
+| **1 · Article** | desktop · tablet · mobile | The default read at all three widths |
+| **2 · Attachments** | desktop · tablet · mobile | Files in the body, no tab |
+| **3 · Completion** | not completed · completed · review · completed-mobile | The manual-completion loop |
+| **4 · Long-form** | desktop · mobile | Every stackable primitive in one page, and the sidebar at full page length |
+| **5 · Edge cases** | downloads empty · no author · minimal content · no Downloads tab | The four states that are normal, not failures |
+
+---
+
+## 4 · The rules the screens encode
+
+**Completion is manual, and the action sits only at the bottom.** A top CTA invites the learner to mark a
+page complete before reading it. Once complete, the ✓ badge appears in **both** header and footer — there it
+is status, not an action. `Show Mark-Status-Badge` is false until completion, true after.
+
+**`Topic-Status-Badge` ships a third state nobody has specified.** Alongside `Mark as Complete` and
+`Completed` there is **`Review`**. It is drawn (Row 3.3) because the DS has it, but *when* a Reading enters
+review is not defined anywhere. Either it earns a rule or it should come out of the component.
+
+**Attachments are optional, so an empty Downloads tab is a normal state.** Row 5 draws it with
+`LMS / Empty State · Kind=Downloads` and the count at 0. It must not read as an error.
+
+**The count on the tab must match the list.** The canonical page shipped with a count of 2 over a list of 4;
+corrected to 4. Trivial to get wrong, and it is the first thing a reader checks.
+
+**When there is no author, the row and its divider both go.** There is no API field guaranteeing an author —
+this is the same gap the Technical section flags for the mentor. An empty author row is worse than none.
+
+**A table scrolls sideways inside its block; it never restacks.** Carried over from the HTML (Text) work.
+
+---
+
+## 5 · What the screens deliberately leave open
+
+**Does the tab bar render when a Reading has no attachments at all?** Row 5.4 draws the single-tab case, but
+a bar with one tab is arguably no bar. This is a product call, not a drawing one, and it is the only screen
+in the set that is a question rather than an answer.
+
+**"Locked" is not drawn.** The API returns a boolean with no date and no rule behind it — the same finding as
+the unlock tooltip in the Technical section. The sidebar already shows locked topics; whether a locked topic
+*page* is even reachable is unanswered, so inventing one would have been guessing.
+
+**Empty-state copy says "lesson" and mentions a mentor.** *"No downloads for this lesson … Your mentor can
+help in the meantime."* Reading is not a lesson, and the mentor has no field behind it. Copy fix, but it
+touches the open mentor question, so it is flagged rather than silently rewritten.
+
+**No story mapping.** Video's header cites P1-10 → P1-31. Reading has no user stories written yet, and the
+header says so rather than inventing a range.
+
+---
+
+## 6 · Two blockers that belong to the DS, not to these screens
+
+**RESOLVED 10 Sep — `Module Open` built.** `LMS / Sidebar-ICP` (`19975:536883`) now carries three booleans:
+`Show Module 01 topics` · `Show Module 02 topics` · `Show Module 03 topics`, applied to the `Expanded` and
+`Mobile` variants. Each module has its own topic list; the boolean shows it, and the nested Module Header's
+own `State` draws the chevron — **both must be set**, and they are separate on purpose, since a header can be
+expanded on a module whose topics have not loaded.
+
+Defaults are **03 on, 01 and 02 off** — exactly what every screen built before this expects. Both variants
+came back at their original heights (1062 and 954) and render identically, so the 680 Ready-for-Dev screens
+are untouched. Verified on a throwaway instance before the test was deleted.
+
+Booleans rather than a variant axis: `State` already has five options, so a `Module Open` axis would have
+produced fifteen variants, most of them meaningless — the Collapsed rails have no outline at all.
+
+Module 01 and 02 now ship demo content (`Foundations` and `Lean thinking`, three topics each, all Completed).
+It is placeholder — rename freely; the structure is the deliverable.
+
+**Applied to all 16 screens, 10 Sep.** `Show Module 01 topics` on, 02 and 03 off; Module Header 01 expanded
+and 03 collapsed; Module 01 set to *In progress · 0 of 3* (*1 of 3* on the completed screens); the selected row is `What is Six Sigma?`; overall
+progress reads *Module 1 of 3*; the footer nav reads *1 of 3 · Next: The cost of poor quality*. Audited clean
+across all 16 on eight checks.
+
+**The progress ring reads 0%, arc included.** The percentage is a text node, but the arc is geometry — two
+`ELLIPSE` nodes with `arcData`, a full-circle track and a progress sweep starting at 3π/2. The old 67% was
+literally `endingAngle − startingAngle = 4.2097 rad` over 2π. Setting the sweep to zero empties the ring, so
+the number and the drawing now agree. `arcData` is overridable on an instance child, which is not true of
+`layoutMode` or `minWidth` — worth remembering.
+
+The two names differ by breakpoint: desktop wraps it in `ProgressRing`, mobile in `Progress Circle` with the
+ellipses named `shape · Overall Progress`. Targeting the arc geometry rather than the node name is what
+caught all 16.
+
+**Discovery notes do not ship.** The composition screens were built from the discovery exhibit, which labels
+every block with its research annotation — `01 · TEXT / RICH TEXT`, `html XBlock · ~5s visibility completion ·
+Learner Notes work only on stock html`, and so on for all seven. Those are notes *about* the design, rendered
+inside the learner's page. **15 of them per screen**, now hidden on both `all-blocks` screens; the exhibit at
+`5413:113861` keeps them, because there they are the point.
+
+The topic header carried the same problem in a subtler place — title *Lesson Page — every block*, description
+*"Reference exhibit… Not a real lesson"* — sitting in slots a learner reads. Replaced with real content
+(*Applying Six Sigma in practice*). **The rule this settles: what a screen is for belongs in the handoff card,
+never inside the screen.** The card already says "composition reference"; the screen should look like a page.
+
+**Overrides survive a restructure, and can lie.** After the component changed shape, several screens still
+showed `The measure phase` in Module 01's third row — a local override from the old flat list, mapped onto
+the new node and covering the DS content underneath. Setting the text explicitly beat resetting overrides,
+which would have wiped the selection state too. Worth expecting on any future component restructure.
+
+**The original problem, for the record.** `LMS / Sidebar-ICP` is authored with modules 01 and 02 collapsed and
+**03 expanded**, and the topic rows are simply the nodes that follow the third header. Figma does not allow
+reordering children inside an instance, so no override can move the rows under Module 01 — swapping the
+expand/collapse properties alone would leave the topics reading as if they belonged to a collapsed Module 03.
+
+It was never a one-off: **every content type's demo topic sits in a different module.** Video's lives in
+Module 03, which is why the component was authored that way; Reading's belongs to Module 01, per the article's
+own first sentence. The same request would have arrived for Lab, Podcast and VILT.
+
+**`LMS / Module Info` has no "not started" state.** Only `Module In progress` and `Module Completed`. So an
+outline cannot express a module the learner has not opened yet, which is why the demo course reads as
+01 ✓ · 02 ✓ · 03 in progress and cannot read any other way.
+
+---
+
+## 7 · The tabs are components now, and what the audit found
+
+**The tab row was hand-built.** Two local `Tab` frames with a text node and a rectangle for the underline —
+not `Horizontal tabs` from the DS, which the Video screens have used since Phase 1. Rebound across all 16.
+
+**Desktop and tablet** take `Horizontal tabs` (`Type=Underline, Size=sm, Full width=False`) with two
+`_Tab button base` children — Article, and Downloads carrying its count badge — and the remaining eight
+hidden, which is how the Video screens use it.
+
+**Mobile takes a different component, and finding out why cost three failed attempts.** Setting
+`Breakpoint=Mobile` on `Horizontal tabs` does not narrow the row: **it swaps the whole thing for a `Select`
+dropdown**. The clone's children stop being tab buttons, so every property call after that throws. The DS's
+actual mobile pattern is a separate component — `LMS / Mobile Tab Select` — which is what the Video mobile
+screens use, and now the Reading ones. Worth knowing before anyone rebinds tabs elsewhere.
+
+*(One casualty: five orphan clones piled up in `article-mobile` before I caught it, each inserted just before
+the throw. Removed. When a batch fails mid-loop, check what it left behind.)*
+
+### What else is not on a component
+
+The rest of the audit came back cleaner than expected. Already correct: Topic Header, Sidebar, Topbar, AI
+Panel, Author & Updated Date, Feedback, Topic-Status-Badge, Navigation Buttons, the `LMS / File Item` rows in
+the downloads list, and the `LMS / Lesson Block` instances on the composition screens. The remaining local
+frames — `Tabs`, `content`, `scroll-area`, `Frame 413` — are layout containers, not duplicated components.
+
+**Two genuine gaps, and they are gaps rather than misuse:**
+
+| Pattern | Screens | Nearest DS piece | Why it does not fit |
+|---|---|---|---|
+| `Blockquote` | 9 | `Lesson Block · HTML (Callout)` | that Kind resolves to `LMS / Inline Alert` — a tinted alert with a glyph, not a left-ruled quote |
+| `Key Takeaways` | 9 (36 rows) | `AI Panel · Mode=Key Takeaways` | that is the AI side panel, a different surface entirely |
+
+Both are drawn locally because **nothing in the DS renders them**. They are also two of the most common
+things a Reading will contain. Either they earn components, or the content team is told not to use them —
+and the second answer is not credible for a pull quote.
+
+**One open question rather than a defect:** the article prose sits as raw text nodes in `Frame 12` rather than
+inside an `LMS / Lesson Block · Kind=HTML (Text)`. Arguably right — the prose *is* the inside of one Text
+block — but the composition screens wrap it and these do not. Worth settling so both read the same way.
+
+---
+
+## 8 · One responsive defect, and its real cause
+
+**The mobile header truncation is fixed, and it was not what I said it was.** At 375 the meta line read
+*"Reading · approx."* — the duration cut off. I had recorded this as needing the min/max arithmetic used for
+the decision CTAs. Wrong diagnosis.
+
+The real cause: **an empty container still reserves its width.** `Header Container` holds the content column
+and a `Mark-As-Completed-row`. When `Show Mark-Status-Badge` is off, the row's *contents* disappear but the
+row itself stays, hugging **162px**. At 1440 that leaves 914 for the content and nobody notices. At 375 it
+leaves **145 of 311** — the meta line loses more than half its space and clips.
+
+Hiding the row wherever the badge is off restores the full 311 and the line renders whole. This also puts the
+screens back in line with the rule that the *action* lives only at the bottom; the header slot is for the ✓
+status badge, and when there is no badge there should be nothing there at all.
+
+**Worth fixing at source.** The row should collapse with its contents rather than reserve space — otherwise
+every narrow surface built from this header inherits the same silent tax.
+
+**Correction on the footer nav.** An earlier note here claimed `Navigation Buttons` has no mobile behaviour.
+It does — icon-only previous/next with the position between them, which is the right treatment at 375 and is
+Nelson's own. The instances were simply carrying stale content (`4 of 9 · Practice Quiz…`) after the library
+update reset their overrides. Content corrected; the structure was never wrong.
+
+---
+
+*Source: topic-types-inventory.md · studio-authoring-parity.md · authoring constraints verified with Simran,
+19 Aug 2026.*
+
+
+---
+
+## 11 · The Downloads tab is gone — 17 Sep 2026
+
+**Decided with Navdeep.** A `vertical` has no tabs in Open edX. `tabs[]` is a **course-level** field — Course,
+Progress, Dates, Discussion — and nothing in Studio lets a creator put a file into a per-topic "Downloads"
+tab, because no such surface exists. Ours was a design construct. With the tab bar down to one option, the
+rule that a lone tab is hidden finishes the job: **the tab bar is removed from all 16 screens.**
+
+**But half the premise was wrong, and it changes the outcome.** The meeting's reasoning was that there is no
+way to add extra files at all. There is:
+
+> `topic-types-inventory.md` §284 — **File / download** · `<a>` to a Files & Uploads asset · completion via
+> the Completion tool · mobile ✅ · *"The Lab `.ipynb` download pattern"*
+>
+> §233 — **Reading** · `html` + Files & Uploads · *"html, images, video, **downloads**, knowledge-check —
+> freely"*
+
+A creator uploads to Files & Uploads and writes the link inside the Text component. It is the same mechanism
+the **Lab already ships in production**. What does not exist is the *tab*, not the *file*.
+
+So the three Downloads screens became **`with-files-*`**: the article body plus three
+`Lesson Block · HTML (File)` blocks, which is what those hand-written links actually render as.
+
+### Two screens are now duplicates
+
+`downloads-empty-desktop` and `no-downloads-tab-desktop` only existed because of the tab — one was its empty
+state, the other asked whether a lone tab should render. Both questions are void, and both screens are now
+`article-desktop` with a different name. **Left in place; deleting them is Nelson's call.**
+
+### Removing the tab exposed two layout faults
+
+Neither was caused by the removal — both were hidden while the content happened to fit.
+
+- **`not-completed-desktop` was bottom-aligned.** Its content column had `primaryAxisAlignItems: MAX`, so once
+  the body overflowed, the clipping took the *top* — the topic header sat at **y −127**, off-screen. Set to
+  `MIN`.
+- **`all-blocks-desktop` lost its viewport.** `Main Content` had reverted to `HUG` at 1984, so the column was
+  no longer one screen tall and the nav was not pinned. Back to `FIXED` 964 with the content filling.
+
+Scrollbars re-measured after the reflow: 14 screens now overflow and carry a content bar; `downloads-empty`
+and `minimal` do not and carry none.
+
+
+---
+
+## 12 · Everything a Reading can hold, in one column — 21 Sep 2026
+
+Node `5888:53100` (548 column, 516 body) now carries **every content type and every rich-text capability a
+creator can author in our Studio**, as one realistic article rather than a labelled catalogue — the rule from
+§11 stands: notes about the design live in the card, never in the screen.
+
+**Rich text (inside one Text component):** H6 headings · paragraphs · **bold** · *italic* · link (brand +
+underline) · bulleted list · numbered list · nested list (level two hollow).
+
+**Content types:** all 11 `Lesson Block` Kinds — Text, Image, Callout, Table, Blockquote, Video, Audio,
+iframe, File, Knowledge check, Key Takeaways — plus `LMS / Zooming Image` from the Text menu. Grouped under
+plain article headings: *Seeing it in practice · Watch and listen · Explore the tools · Check your
+understanding*.
+
+**Deliberately absent:** horizontal rule, code block, alignment and author-picked colour. The TinyMCE toolbar
+documents them but none was seen in our Studio, and alignment and colour are decisions rather than builds
+(justified text at 375, colour bypassing every token). Same position as §7.
+
+### Found while assembling
+
+- **The list clones came in the wrong weight.** They were built with `Body/Default/Regular`; this article
+  uses `Body/Default/Medium`. Rebound — and the inline paragraph had its bold, italic and link ranges re-applied,
+  because setting a text style on a node wipes range overrides.
+- **Three components ship spec text in learner slots.** `HTML (iframe)` carried *"Embedded · read-only · does
+  not contribute to completion"* and *"Google Doc · Sheet · Slides · Calendar · any external page"*;
+  `Zooming Image` a caption reading *"author-supplied"*; `HTML (Callout)` copy about *interactive activities*.
+  Overridden on these instances. **The iframe defaults want fixing at source** — every new instance starts life
+  with a spec note in front of the learner.
+- **The audio player overflows at 516.** Its `Controls` row is `NO_WRAP` and clipped, and the six controls sum
+  to ~522 in 476, so the last button was cut off. Set to wrap on this instance — nothing is hidden now, but one
+  button sits alone on a second line. The real fix is in `LMS / Podcast · Player`: decide which control drops
+  first at narrow widths.
+- **The knowledge check shows its answered state** by default — the component's variant, not a choice made
+  here. Fine for a showcase; a live page would start unanswered.
+
+## 13 · What Studio actually does — Simran, 22 Sep 2026
+
+A review with Simran (content creator), with screenshots of the Studio authoring panels. Everything below is
+now written into the relevant `Lesson Block` Kind descriptions as *VERIFIED IN STUDIO — Simran, 22 Sep 2026*.
+
+| Content type | What Studio does | What we changed |
+|---|---|---|
+| **Audio / podcast** | No audio component. Podcasts go in through the **Video** component (usually YouTube) and play as video. Fixed full width. | `Kind=Video (Audio)` rebuilt as a 16:9 video player — *Podcast episode · 19:04 · transcript available*. Every podcast player on the Reading and Discovery pages swapped for it (6 instances). |
+| **Podcast Player** (component kept for a future audio feature) | — | Controls split into *Playback* and *Options* groups on a wrapping row; time moved under the scrubber. Holds at 640, 476 and 343 with no clipping — at 343 the Options pair wraps together, never one button alone. |
+| **Video** | Fixed full width. Transcript optional, can be multi-language. | Description only. |
+| **Image** | Resizable; left / centre / right; 2–4 side by side. **No caption field** — a caption is a separate text box below. | Description. Our Image Kind's built-in caption is a design convenience; dev renders it as body text. |
+| **File** | A link that opens the PDF in a new tab. | Description: a *Download* button is an **add-on feature**, not current behaviour. |
+| **iframe** | Embeds PDFs (navigable) and Google Docs. | Description. The source bar on our embed is our addition. |
+| **Callout** | A platform alert. **Not authorable.** | Removed from the all-content example, both all-blocks screens and the Discovery learner view. Kind kept, marked *NOT AUTHORABLE*. |
+| **Problems** | Any problem type can sit inside a reading. A quiz can carry instructions before it starts. | Description. |
+| **Drag and Drop** | Items sit in a bar **above** the background image; feedback below the board. | `LMS / Drag and Drop · Card`: Item bank moved above the Board in all 6 variants. |
+| **ORA** | Upload can be on or off — the response can be **text only**. Steps can be switched on or off. Staff grade with rubrics. | Gap: `LMS / ORA · Upload` has only *Empty* and *Uploaded*. No text-only state yet. |
+
+### The topic header is derived, not authored
+
+Topic **type** is set by the platform from what the unit contains: text only → **Reading**; any video →
+**Video**; a graded unit with any question → **Assessment**. **Duration** is computed. **Title** and
+**description** are typed by the author. The **author row** waits on a PM decision. Topic Header and Author
+descriptions now say so.
+
+**Consequence for these screens:** a Reading that contains a video is labelled *Video* by the platform. That
+applies to the all-content example (§12) and both all-blocks screens — they are showcases of what a body can
+hold, not a real Reading. And the *06 Podcast* type in Discovery collapses into Video.
+
+### Still open
+
+- Publish the DS (Podcast Player, Video (Audio), Drag and Drop order, descriptions), then check the swapped
+  instances render as video — the example's old Controls-wrap override may linger.
+- Decide whether showcase screens keep the *Reading* label or drop the video blocks.
+- Retire *Podcast* as a topic type, or keep it as a future feature.
+- ORA text-only response state.
+- File download button — build the add-on or not.
+- Author row — PMs.
+
+### Second pass — the component menus and the learner's podcast (22 Sep, after publish)
+
+**The podcast, as the learner sees it:** a YouTube embed whose picture is a still of cover art — the episode
+is sound over a static image. `Kind=Video (Audio)` now uses a cover-art poster (title, episode, microphone tile
+on the brand teal) instead of a person on camera, and the timer reads *-19:04* to match the meta line. The 7
+swapped instances (3 Reading, 4 Discovery) were refreshed after the publish — the library cache still held
+the old Podcast Player until a forced import.
+
+**Studio's full component menu**, and where each lands in the DS:
+
+| Studio | Learner sees | DS |
+|---|---|---|
+| Text → Text · Announcement · Anonymous User ID · Raw HTML | Rich text (Announcement is a template of headings and paragraphs; Anonymous User ID is text plus a link) | `Kind=Text` — no new component |
+| Text → IFrame Tool · Zooming Image Tool | Embed · zoomable image | `Kind=HTML (iframe)` · `LMS / Zooming Image` |
+| Problem → Checkboxes · Dropdown · Multiple Choice · Numerical Input · Text Input, each also *with Hints and Feedback* | One question | `Quiz · Option Row` · `Quiz · Answer Input` (Dropdown, Numerical, Text, Math) · `Inline Alert Tone=Hint` — all covered |
+| Problem Bank (Beta) · Library Content (Beta) · Legacy Library | A question drawn at random from a library — no UI of its own | Nothing to add. No libraries exist yet in our Studio. |
+| Open Response → Peer only · Self only · Self → Peer · Self → Staff · Staff only | Stepper + grade | **Gap fixed:** `ORA · Stepper` gains *Show peer*; `ORA · Grade Panel` gains *Source=Self* and *Source=Staff* |
+| Video · Drag and Drop | — | §13 above |
+
+**ORA flows mapped to the Stepper booleans:**
+
+| Flow | Show training | Show peer | Show self | Grade Panel |
+|---|---|---|---|---|
+| Peer only | as set | on | off | Peer |
+| Self only | off | off | on | Self |
+| Self → Peer | as set | on | on | Peer |
+| Self → Staff | off | off | on | Staff |
+| Staff only | off | off | off | Staff |
+
+*Staff override* stays for the case where staff replaces a peer grade after the fact.
+
+### Third pass — the Otter transcript and summary (22 Sep)
+
+Checked against the full transcript. Nothing new contradicts §13; three things sharpen it, and the Otter
+summary gets two facts wrong.
+
+- **Single vs multiple choice** (Simran, 15:44): *"we are making use of multiple choice, single choice"*.
+  Already in the DS — `Quiz · Option Row` defaults to a radio, and its exposed `Checkbox` switches to
+  `Type=Checkbox`. The description now says which Studio problem maps to which.
+- **PDF inside an iframe** (27:01): a booklet can be embedded and paged through. Added to the iframe Kind
+  description. Nelson's action item — *redo that block as an iframe* — is the 21 Sep iframe fix.
+- **Quiz instructions before start** (24:26): covered by the description line in `Quiz · Entry Header`.
+- **ORA responses can be multi-question** (18:38). The DS has no multi-prompt response layout; flagged,
+  not built.
+- **Transcripts are sometimes burned into the video, with no file** (05:37). The Video meta line
+  *transcript available* shows only when one was uploaded.
+
+**Where the Otter summary is wrong:**
+- It says time estimates are *manually input*. The transcript says the opposite (22:53): duration is
+  automatic, title and description are manual.
+- It calls the text box under an image *alt-text*. What Simran described is visible text below the image.
+  Alt text is a different, screen-reader field — whether our Studio's image dialog has one is unverified.
+
+## 14 · The editor toolbar, alt text and a real course's HTML — 22 Sep 2026
+
+Nelson's screenshots of the Studio text editor and image dialog, plus the HTML source of a live reading
+(*Course Overview*, AI-Powered Financial Analysis).
+
+**The toolbar has more than §12 assumed.** Format (paragraph/headings) · font family · **B** · *I* ·
+U̲nderline · text colour · inline code · align left/centre/right/justify · bulleted · numbered · outdent ·
+indent · blockquote · link · unlink · image · HTML source. §12 listed alignment and colour as *not seen in our
+Studio* — that was wrong. They exist; whether the rendered page honours them is a dev decision:
+
+| Capability | Recommendation |
+|---|---|
+| Text colour | Ignore on render — author colours bypass every token and break dark mode and contrast |
+| Justify | Render as left below 768 — justified text at 343 opens rivers |
+| Left / centre / right | Honour — mostly used for images |
+| Underline | Honour, but advise authors against it — underline is how our links read |
+| Inline code | Honour — now shown in the all-content example (`=STDEV.S(B2:B31)`, Space Mono) |
+| Font family | Ignore on render — the DS type scale owns it |
+
+**Alt text exists.** The image dialog asks for *Image Description (Alt Text)* **or** a *This image is
+decorative only* checkbox. The caveat in §Third pass is closed.
+
+**Captions exist too.** The live reading uses `<figure><img alt="…"><figcaption>…</figcaption></figure>`
+twice. So the Image Kind's caption is real content, not a design convenience — authored in HTML source, or as a
+text box under the image in the visual editor. The same page also puts two `<img width height>` side by side
+inside one paragraph.
+
+**Headings in the real content are `<h3>`.** The reading's body uses H3 for section titles, `<strong>` for
+terms, `<ul>` and `<ol>`. The Text Kind's heading must be styled from `h3` down, not only H6.
+
+**Embedded PDF.** New variant `Lesson Block · Kind=HTML (iframe · PDF)` (`21689:5014`): source path, the
+browser's page and zoom bar (*3 / 24 · 100%*), a page on the viewer's grey stage, caption *Embedded PDF · page
+through it here*. The viewer bar belongs to the browser and varies by browser; that is in the description.
+
+## 15 · Open Response, text only — 22 Sep 2026
+
+**DS:** new `LMS / ORA · Text Response` (`21692:536524`), in the ORA group after `ORA · Upload`.
+- One instance per prompt: the prompt text, then a *Your response* textarea (`Textarea input field` from the
+  foundation library), then the hint line, then *Save draft*.
+- States: **Empty** (*Text only — this assignment has no file upload*) → **Draft saved** (*Draft saved at 14:32
+  · 86 words*) → **Submitted** (read-only textarea, no button).
+- An ORA with several prompts stacks several instances. This also closes the multi-question gap from §Third pass.
+- When upload is also on, `ORA · Upload` follows the last prompt.
+
+**Screen:** Row 6 · *Card 6 · ora-text-only-desktop*, cloned from article-desktop.
+- A short reading, then the ORA: Stepper in the Peer-only flow (*1 Your response · 2 Review 1 peer · 3 Your
+  grade*, with training and self off), two text responses, and *Submit response* at the right.
+- Submit opens the Submit Gate; it is never a bare submit.
+- The unit is ungraded, so the topic stays a **Reading**. Graded, the platform would label it Assessment.
+
+**Found while building:** on all 12 desktop and tablet Reading screens, the third Module Header read *MODULE 01 ·
+1 of 3* above *DMAIC for process improvement*. Restored to *MODULE 03 · 0 of 9*.
+
+### Tablet and mobile (22 Sep)
+
+Row 6 now has all three breakpoints: 6 desktop, 6.2 tablet, 6.3 mobile. They were cloned from article-tablet and
+article-mobile, with the same article copy and ORA block.
+
+At 311 the Stepper broke its labels mid-word (*Your resp / onse*). On the mobile instance, only the current step
+keeps its label; the others show just their number (*① Your response · 2 · 3*). **The DS needs this as a
+compact mode of `ORA · Stepper`**; for now it is an override.
+
+## 16 · Everything a Reading can hold — the example, completed (22 Sep 2026)
+
+`5888:53100` now covers the whole Studio catalogue, not only the Lesson Block Kinds:
+
+| Group | Added |
+|---|---|
+| Text templates | **Announcement** (date + instructor in bold, notice text) · **Anonymous User ID** (text + survey link) |
+| Image layouts | resized to 60% and centred · resized and left-aligned · two side by side (Nelson's 3-up row was already there) |
+| Problems | **Checkboxes** (select all that apply) · **Dropdown** · **Numerical input** + a **hint** (Inline Alert Tone=Hint) · **Text input**. Each is the Knowledge check Kind with its option rows swapped for `Quiz · Answer Input` |
+| Drag and Drop | `Drag and Drop · Card`, in progress. Set to *ungraded*, because a graded unit is labelled Assessment |
+| Open Response | Self-only flow (*Your response → Assess your own → Your grade*), text response **and** upload, *Submit response* |
+
+**Found on the way:**
+- `Drag and Drop · Card` prints *"Background image · author-supplied"* inside the board. That is spec text in
+  a learner slot, the same fault the iframe had. Hidden on this instance; **fix at source**.
+- Hiding the feedback line on a cloned Knowledge check makes it unreachable from the clones. The original
+  check above them keeps its *Correct…* feedback, so the example still shows feedback once.
+- Problem Bank and Library Content have no learner UI of their own. Nothing to draw.
+
+## 17 · How the platform really picks a topic's type — verified in source, 23 Sep 2026
+
+§13 recorded Simran's rule as *text → Reading, any video → Video, graded unit with any question → Assessment*. The
+code agrees on video, but not on the rest.
+
+**The rule** (`edx-platform/xmodule/vertical_block.py`, `get_icon_class`): a unit looks at the icon class of
+every component inside it and walks the list `['video', 'problem']`, **overwriting** as it goes. So:
+
+| The unit contains… | Type sent to the learner app | Learning MFE icon |
+|---|---|---|
+| any problem (MCQ, checkboxes, dropdown, numerical, text input, **ORA**) | `problem`, **even if it also has a video** | edit-square |
+| a video and no problem | `video` | videocam |
+| anything else: text, iframe, images, **Drag and Drop v2** | `other` | book |
+
+What each component reports: `capa_block.py` → `problem`; `video_block.py` → `video`; ORA
+(`edx-ora2`, `lms_mixin.py`) → `problem`; `x_module.py` default → `other`. HTML/Text and the Drag and Drop v2
+XBlock define none, so they fall back to `other`.
+
+**Grading plays no part in the type.** *Graded* is a subsection setting in Studio (*Configure → Grade as*); units
+and problems inherit it. An ungraded knowledge check still makes its unit `problem`. A graded subsection with
+only text stays `other`.
+
+**The platform only knows three types** — video, problem, other. *Reading / Video / Quiz* in our designs is our
+naming of those three. Anything more (e.g. telling a Quiz from an Assessment) needs the subsection's `graded` +
+`format`, or a custom rule. The rule can be replaced without forking: `get_icon` is a pluggable override
+(`OVERRIDE_GET_UNIT_ICON` in `openedx/core/lib/xblock_utils`).
+
+**What it means for our screens:**
+- The all-content example and the all-blocks screens hold problems, so the platform would type them `problem`,
+  not *Video* as §13 said.
+- Row 6 (ORA in a Reading) becomes `problem`: ORA reports `problem`, graded or not. Its card footer claim,
+  *"ungraded, so it stays a Reading"*, is wrong.
+- A Reading with only a Drag and Drop stays `other`, a Reading. That quirk comes from the XBlock, not from a
+  decision.
+- *Duration* is not part of this mechanism. Where it comes from is still to verify.
