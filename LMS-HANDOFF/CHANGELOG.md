@@ -20,6 +20,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 See metadata map §24.
 
+## 2026-09-23 · Topic type verified in source: problem beats video; grading is irrelevant
+
+Details are in `reading-screen-matrix.md` §17. A unit's type is `problem` if it contains any problem (ORA
+included), else `video` if it contains a video, else `other`. *Graded* is a subsection setting and does not
+change the type. This corrects §13 and the Row 6 card footer.
+
 ## 2026-09-22 (DS fixes) · Compact ORA Stepper; the Drag and Drop board stops printing its spec
 
 - `LMS / ORA · Stepper`: new variant property **Size = Default | Compact**. In Compact the current step keeps

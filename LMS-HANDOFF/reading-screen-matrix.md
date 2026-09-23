@@ -543,3 +543,39 @@ compact mode of `ORA · Stepper`**; for now it is an override.
 - Hiding the feedback line on a cloned Knowledge check makes it unreachable from the clones. The original
   check above them keeps its *Correct…* feedback, so the example still shows feedback once.
 - Problem Bank and Library Content have no learner UI of their own. Nothing to draw.
+
+## 17 · How the platform really picks a topic's type — verified in source, 23 Sep 2026
+
+§13 recorded Simran's rule as *text → Reading, any video → Video, graded unit with any question → Assessment*. The
+code agrees on video, but not on the rest.
+
+**The rule** (`edx-platform/xmodule/vertical_block.py`, `get_icon_class`): a unit looks at the icon class of
+every component inside it and walks the list `['video', 'problem']`, **overwriting** as it goes. So:
+
+| The unit contains… | Type sent to the learner app | Learning MFE icon |
+|---|---|---|
+| any problem (MCQ, checkboxes, dropdown, numerical, text input, **ORA**) | `problem`, **even if it also has a video** | edit-square |
+| a video and no problem | `video` | videocam |
+| anything else: text, iframe, images, **Drag and Drop v2** | `other` | book |
+
+What each component reports: `capa_block.py` → `problem`; `video_block.py` → `video`; ORA
+(`edx-ora2`, `lms_mixin.py`) → `problem`; `x_module.py` default → `other`. HTML/Text and the Drag and Drop v2
+XBlock define none, so they fall back to `other`.
+
+**Grading plays no part in the type.** *Graded* is a subsection setting in Studio (*Configure → Grade as*); units
+and problems inherit it. An ungraded knowledge check still makes its unit `problem`. A graded subsection with
+only text stays `other`.
+
+**The platform only knows three types** — video, problem, other. *Reading / Video / Quiz* in our designs is our
+naming of those three. Anything more (e.g. telling a Quiz from an Assessment) needs the subsection's `graded` +
+`format`, or a custom rule. The rule can be replaced without forking: `get_icon` is a pluggable override
+(`OVERRIDE_GET_UNIT_ICON` in `openedx/core/lib/xblock_utils`).
+
+**What it means for our screens:**
+- The all-content example and the all-blocks screens hold problems, so the platform would type them `problem`,
+  not *Video* as §13 said.
+- Row 6 (ORA in a Reading) becomes `problem`: ORA reports `problem`, graded or not. Its card footer claim,
+  *"ungraded, so it stays a Reading"*, is wrong.
+- A Reading with only a Drag and Drop stays `other`, a Reading. That quirk comes from the XBlock, not from a
+  decision.
+- *Duration* is not part of this mechanism. Where it comes from is still to verify.
