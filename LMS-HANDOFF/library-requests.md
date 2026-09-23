@@ -308,3 +308,16 @@ mode, in place of two generic `Badge` pills with typed text. Not changed in the 
 3. **The Beginner icon is `loading-01`** — a spinner, which reads as "still loading". Intermediate and Advanced use
    `bar-chart-02` and `bar-chart-12`; Beginner wants the matching low bar chart.
 4. **Neither component has a description**, so nothing tells a designer which field or which wording they map to.
+
+
+---
+
+## 10 · `LMS / Overall Progress` — no value property
+
+The ring exposes only `Device`. Its percentage text and its arc (`arcData` sweep) are two separate overrides in
+every instance, and a parent component cannot bind a property to a layer inside an instance. So every card that
+uses the ring has to be told twice what the number is — the Course Detail Completion card showed *25%* over an arc
+drawn at 67% until 16 Sep.
+
+**Ask:** a `Percent` text property on the ring, and variants (or a documented rule) for the arc so the drawn sweep
+follows it. Until then, `LMS / Course Detail / Completion card` documents the two overrides in its description.

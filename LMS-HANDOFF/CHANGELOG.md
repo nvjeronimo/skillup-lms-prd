@@ -2,6 +2,18 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-23 · Course Detail: known inconsistencies fixed
+
+- **One today (Thu 18 Sep 2026)** across the Dates tab, the Upcoming dates card and the Weekly goal strip.
+- Dates tab: human copy on the type chip instead of `ASSIGNMENT-DUE-DATE`; links only on assignment rows; the
+  upgrade deadline moved to PAST; the missed-deadline Alert speaks to the learner, action *Shift due dates*.
+- Upcoming dates card (Course tab + ENTRY) shows what the Dates tab has: final project tomorrow, certificate in 15 days.
+- Progress card: *~ 8h 40m left* (was *12 min left*, which contradicted ~14 h at 38%).
+- Completion card: orphan `Percent` property removed; ring overrides documented; library request 10.
+- ENTRY tab row aligned with the technical screens (4 px, spacing tokens bound).
+
+See metadata map §24.
+
 ## 2026-09-22 (DS fixes) · Compact ORA Stepper; the Drag and Drop board stops printing its spec
 
 - `LMS / ORA · Stepper`: new variant property **Size = Default | Compact**. In Compact the current step keeps

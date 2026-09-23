@@ -1989,3 +1989,44 @@ passes re-bound by local variable id and could not see them.
   categories).
 - The *Foundations — colour* board on the components page still lists the old names ("the 36 imported") —
   obsolete documentation.
+
+## 24. Known inconsistencies, fixed — 23 Sep
+
+**One "today" for the whole file: Thursday 18 Sep 2026.** The Weekly goal strip already said so (*This week ·
+15–21 Sep*, Thursday = `Today done`). Every other date now agrees with it.
+
+**Dates tab (`5655:520`)** — the screen was contradicting its own annotations:
+
+- **The type chip printed `ASSIGNMENT-DUE-DATE` on all nine rows**, including *Course starts* and *Certificate
+  available*. It now carries human copy per `date_type`: *Course* (start · end) · *Due date* (assignment) ·
+  *Upgrade* · *Certificate* · *Access* (course-expired). The literal lives only in the row annotation.
+- **"Open the assignment →" on rows that are not assignments** — hidden on Upgrade, Certificate, Audit access and
+  Course ends. Those blocks carry no `link` (the upgrade block's `link_text` is only relevant while the deadline is
+  in the future). Rows without a link are 106 px, like the Locked row.
+- **Upgrade deadline (30 Aug) sat under UPCOMING, after a TODAY of 8 Sep.** Moved to PAST. The today marker reads
+  *18 Sep 2026*.
+- **The missed-deadline Alert showed developer copy** (`dates_banner_info.missed_deadlines is true…`) to the
+  learner. It now reads *You missed a deadline on your schedule · Your due dates are a suggested schedule, counted
+  from the day you enrolled. Shift them forward to get back on track — the work you have done stays.* The action is
+  **Shift due dates** → `reset_course_deadlines`, which is what self-paced edX offers. The field names stay in the
+  annotation, where they already were.
+
+**Upcoming dates card (Course tab + ENTRY)** said *22 Sep · Module 3 · Checkpoint · In 3 days* and *27 Sep · Course
+ends · In 8 days* — neither exists in the Dates tab. With today 18 Sep, `dates_widget` (`num_assignments=1`)
+returns the next assignment and the next course date: **19 Sep · Module 4 · Final project · Tomorrow** and **03 Oct ·
+Certificate available · In 15 days**. Meta line follows the pattern *type · time*.
+
+**"12 min left" contradicted the header.** A ~14 h course at 38% has about **8h 40m** left, not 12 minutes. The
+progress card (`Progress card` default and both `Course header` types) now says *16 of 42 topics · ~ 8h 40m left*.
+The source is the sum of `effort_time` over incomplete blocks — the same field as the per-topic durations
+Navdeep kept, **null today**. Until the content team authors it, the footer hides it (`Show item 2`); it must never
+print a guess. Course-level `effort` cannot feed it: it is free HTML (*"4 weeks<br>2-4 hours/week"*).
+
+**Completion card ring.** The card had a `Percent` text property that no layer used — setting it changed nothing,
+while the ring's *38%* was a separate override. Figma cannot bind a property to a layer inside an instance, and the
+DS `LMS / Overall Progress` exposes only `Device`. So the orphan property is **removed**, the component description
+says the text and the arc are two overrides to set together, and the missing value property goes to the library
+as **request 10**.
+
+**ENTRY tab row was 4 px low** (tabs at y 364, 360 on the technical screens). Its container spacing was 28 and the
+search frame padding 10/10, unbound; now `Spacing/3xl` and `Spacing/md` like the technical tabs. Height 56, tabs at 360.
