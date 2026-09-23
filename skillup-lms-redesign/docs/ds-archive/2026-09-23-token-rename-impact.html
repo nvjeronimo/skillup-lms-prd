@@ -1,0 +1,280 @@
+<title>SKO Token Rename Impact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+  :root {
+    --ground:#F5F8F8; --surface:#FFFFFF; --surface-sunk:#ECF1F1;
+    --ink:#13282F; --ink-soft:#40585F; --ink-faint:#71878D;
+    --rule:#D3DEDE; --rule-soft:#E4EBEB;
+    --accent:#17607A; --accent-soft:#E2EDF1;
+    --ok:#2C6E52; --ok-soft:#E0EDE6; --alert:#A8412A; --alert-soft:#F6E5E0; --unknown:#7A6836; --unknown-soft:#F1ECDC;
+    --display:"Newsreader",Georgia,"Times New Roman",serif; --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace; --col:70ch;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --ground:#0D1618; --surface:#142126; --surface-sunk:#1B2C31; --ink:#E6EEEE; --ink-soft:#A9BEC2; --ink-faint:#7B9197; --rule:#2A3E44; --rule-soft:#21343A; --accent:#6FB8CE; --accent-soft:#16333E; --ok:#7BC49C; --ok-soft:#163024; --alert:#E4927C; --alert-soft:#35201A; --unknown:#CBB878; --unknown-soft:#2C2718; } }
+  :root[data-theme="dark"] {
+    --ground:#0D1618; --surface:#142126; --surface-sunk:#1B2C31; --ink:#E6EEEE; --ink-soft:#A9BEC2; --ink-faint:#7B9197; --rule:#2A3E44; --rule-soft:#21343A; --accent:#6FB8CE; --accent-soft:#16333E; --ok:#7BC49C; --ok-soft:#163024; --alert:#E4927C; --alert-soft:#35201A; --unknown:#CBB878; --unknown-soft:#2C2718; }
+
+  * { box-sizing:border-box; }
+  body { background:var(--ground); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1040px; margin:0 auto; padding:56px 28px 96px; display:flex; flex-direction:column; gap:52px; }
+  .masthead { display:flex; flex-direction:column; gap:18px; }
+  .kicker { font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+  h1 { font-family:var(--display); font-weight:500; font-size:clamp(2.1rem,5vw,3rem); line-height:1.08; letter-spacing:-.015em; margin:0; text-wrap:balance; }
+  .standfirst { font-family:var(--display); font-size:clamp(1.05rem,2.2vw,1.25rem); line-height:1.5; color:var(--ink-soft); max-width:var(--col); margin:0; }
+  .provenance { font-family:var(--mono); font-size:12px; color:var(--ink-faint); line-height:1.9; border-top:1px solid var(--rule); padding-top:14px; display:flex; flex-wrap:wrap; gap:4px 28px; }
+  .provenance b { color:var(--ink-soft); font-weight:500; }
+  section { display:flex; flex-direction:column; gap:18px; }
+  h2 { font-family:var(--display); font-weight:500; font-size:1.7rem; line-height:1.2; margin:0; letter-spacing:-.01em; text-wrap:balance; }
+  h2 .num { font-family:var(--mono); font-size:.72em; font-weight:500; color:var(--accent); margin-right:.6em; }
+  h3 { font-family:var(--body); font-weight:600; font-size:1rem; margin:0; }
+  p { margin:0; max-width:var(--col); } p+p { margin-top:.85em; }
+  .lede { color:var(--ink-soft); }
+  ul,ol { margin:0; padding-left:1.3em; max-width:var(--col); display:flex; flex-direction:column; gap:8px; color:var(--ink-soft); }
+  li b { color:var(--ink); font-weight:600; }
+  code,.m { font-family:var(--mono); font-size:.875em; }
+  code { background:var(--surface-sunk); padding:.12em .4em; border-radius:3px; color:var(--ink); }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; min-width:560px; font-size:14px; }
+  th { text-align:left; font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); border-bottom:1px solid var(--rule); padding:0 14px 8px 0; white-space:nowrap; }
+  td { padding:9px 14px 9px 0; border-bottom:1px solid var(--rule-soft); vertical-align:top; color:var(--ink-soft); }
+  td:first-child { color:var(--ink); } td.n { font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr:last-child td { border-bottom:none; }
+  .chip { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:3px 7px; border-radius:2px; white-space:nowrap; vertical-align:middle; }
+  .chip.ok{background:var(--ok-soft);color:var(--ok);} .chip.alert{background:var(--alert-soft);color:var(--alert);} .chip.unknown{background:var(--unknown-soft);color:var(--unknown);} .chip.accent{background:var(--accent-soft);color:var(--accent);}
+  .note { border-left:2px solid var(--rule); padding-left:18px; color:var(--ink-soft); max-width:var(--col); }
+  .note.flag{border-left-color:var(--alert);} .note.good{border-left-color:var(--ok);} .note.accent{border-left-color:var(--accent);}
+  .glance { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .g { background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent); border-radius:4px; padding:14px 16px; display:flex; flex-direction:column; gap:6px; }
+  .g.warn { border-top-color:var(--alert); } .g.good { border-top-color:var(--ok); } .g.ask { border-top-color:var(--unknown); }
+  .g h4 { margin:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  .g p { font-size:14.5px; line-height:1.5; color:var(--ink-soft); max-width:none; }
+  .g p b { color:var(--ink); font-weight:600; }
+  .strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); border:1px solid var(--rule); background:var(--surface); }
+  .fig { padding:18px 20px; border-right:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:3px; }
+  .fig:last-child{border-right:none;}
+  .fig .v { font-family:var(--display); font-size:2rem; line-height:1; font-variant-numeric:tabular-nums; color:var(--ink); }
+  .fig .v.warn{color:var(--alert);} .fig .v.good{color:var(--ok);}
+  .fig .k { font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); }
+  .sw { display:inline-block; width:14px; height:14px; border-radius:3px; border:1px solid var(--rule); vertical-align:-2px; margin-right:6px; }
+  .link { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  .verdict { font-family:var(--display); font-size:1.2rem; line-height:1.45; color:var(--ink); margin:0; max-width:var(--col); }
+  footer { border-top:1px solid var(--rule); padding-top:18px; font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); line-height:1.8; }
+  @media (max-width:620px){ .wrap{padding:36px 18px 64px;gap:40px;} .fig{border-right:none;border-bottom:1px solid var(--rule-soft);} }
+  .docnav { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 20px; font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; color:var(--ink-faint); padding-bottom:14px; border-bottom:1px solid var(--rule); margin-bottom:-24px; }
+  .docnav .lbl { text-transform:uppercase; letter-spacing:.12em; font-weight:500; margin-right:6px; }
+  .docnav a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  .docnav a:hover, .docnav a:focus-visible { border-bottom-color:var(--accent); outline:none; }
+  .docnav .here { color:var(--ink); font-weight:600; border-bottom:2px solid var(--accent); }
+  .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+  .camp { background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
+  .camp h4 { margin:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  .camp .who { font-family:var(--display); font-size:1.1rem; color:var(--ink); }
+  .camp p, .camp ul { font-size:14px; color:var(--ink-soft); max-width:none; }
+  .camp.a { border-top:3px solid var(--unknown); } .camp.c { border-top:3px solid var(--accent); }
+  .tight li { line-height:1.5; }
+  .srcs { columns:2; column-gap:28px; font-size:13.5px; }
+  .srcs li { break-inside:avoid; margin-bottom:6px; }
+  @media (max-width:720px){ .srcs{columns:1;} }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+
+<div class="wrap">
+
+  <nav class="docnav" aria-label="SKO Design System documents">
+    <span class="lbl">SKO Design System</span>
+    <a href="https://claude.ai/code/artifact/ad6dc6ec-8243-4ef8-a343-041b3739e3e8">Index</a>
+    <a href="https://claude.ai/code/artifact/dac668f5-62b2-4257-a0ba-388ed6286d9a">Audit</a>
+    <a href="https://claude.ai/code/artifact/c51810fb-98d5-466d-aeb6-2b7670974ef6">Plan</a>
+    <a href="https://claude.ai/code/artifact/ab94ea98-2615-45ef-a0c2-56526b194230">Naming</a>
+    <a href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4">Colour tokens</a>
+    <a href="https://claude.ai/artifact/VQnmRLVzt6p5TcCz6L3aZ1">Migration</a>
+    <a href="https://claude.ai/artifact/5KrpzC6BoPYG1mJw4Ghp4u">Challenge</a>
+    <span class="here">Rename impact</span> <a href="https://claude.ai/artifact/WhQnhby4zK8UkfZ5sd4bCG">Manual</a> <a href="https://claude.ai/artifact/YAtAqLo6dTSNHmGiHme9BM">Final names</a>
+    <a href="https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/%E2%9D%96-SKO-Design-System--Untitled-UI-?node-id=21420-5353&t=OTqlDlBt6rZch8VU-4">Figma ↗</a>
+  </nav>
+
+  <header class="masthead">
+    <div class="kicker">Measurement · before a decision</div>
+    <h1>What a second rename would cost</h1>
+    <p class="standfirst">If the 47 Material-named roles become element-first names such as
+      <span class="m">text/muted</span> and <span class="m">bg/brand</span>, what moves, what breaks,
+      what has to be rewritten, and how long it takes. Measured on the live files on 22 September 2026.</p>
+    <div class="provenance">
+      <span><b>Status</b> measured 22 Sep · <b>applied the same evening</b> · legacy layer being retired 23 Sep</span>
+      <span><b>Written</b> 22 Sep 2026</span>
+      <span><b>Scanned</b> DS library (2 product pages), ICP (4 main pages), Mobile App (2 dev-ready pages), 9 documents, 5 Figma doc sections, the prototype repo</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>In one minute</h2>
+    <div class="strip">
+      <div class="fig"><span class="v">32 274</span><span class="k">bindings scanned</span></div>
+      <div class="fig"><span class="v good">83%</span><span class="k">follow a plain rename</span></div>
+      <div class="fig"><span class="v warn">10%</span><span class="k">re-bound by rule, no pixel change</span></div>
+      <div class="fig"><span class="v">5%</span><span class="k">need one decision each</span></div>
+      <div class="fig"><span class="v">0</span><span class="k">lines of code affected</span></div>
+      <div class="fig"><span class="v">3–4</span><span class="k">working days</span></div>
+    </div>
+    <div class="glance">
+      <div class="g good"><h4>Applied, 22 Sep</h4><p>Nelson chose element-first and it went live the same evening, published and accepted in ICP. <b>83 tokens</b>, not the 53 proposed here: the 47 roles renamed in place, 20 tokens that split a role by element (<span class="m">border/primary</span>, <span class="m">icon/primary</span>, <span class="m">bg/inverse</span>, <span class="m">bg/on-media</span>…) and 16 accents. About 6,000 paints re-bound in the DS and 2,800 in ICP, 0 left, no colour changed. The final names differ from §2 in places: the word is <span class="m">primary</span>, not <span class="m">brand</span> (<span class="m">bg/primary</span>, <span class="m">text/on-primary</span>, <span class="m">bg/primary-soft</span>); <span class="m">surface-container</span> became <span class="m">bg/faint</span> and <span class="m">surface-variant</span> was kept as <span class="m">bg/subtle</span>, not folded (they differ in Light too); <span class="m">on-surface-faint</span> became <span class="m">icon/faint</span>, <span class="m">success-bright</span> <span class="m">icon/success-strong</span>, and <span class="m">primary-outline-variant</span> <span class="m">border/primary-muted</span>. The <a class="link" href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4#names-now">colour memo §0</a> holds the final map.</p></div>
+      <div class="g good"><h4>Legacy layer being retired, 23 Sep</h4><p>The 35 SKO leftover and component tokens and the 69 Untitled UI tokens are gone: DS and ICP verified at 0 before each deletion, snapshot saved. The last group, 146 Untitled UI utility colours, is being re-bound by context rule (container fill → <span class="m">bg/</span>, stroke → <span class="m">border/</span>, text → <span class="m">text/</span>, vector → <span class="m">icon/</span>; hues → neutral, primary, status or one of the four accents) and will be deleted once DS and ICP read 0. Accents are never baked into a component, only pickable (Badge Color=Teal). An interim <span class="m">_Vendor (Untitled UI palette)</span> collection holds the same values during the move and goes with the legacy group. The prototype got <span class="m">tokens/colors.css</span> v4 the same day: 83 <span class="m">--color-*</span> tokens in six modes, <span class="m">--sk-*</span> kept as aliases.</p></div>
+      <div class="g good"><h4>Figma bindings</h4><p><b>83% are a rename in place</b> (the variable keeps its id, every binding follows). <b>10% are roles that serve several elements</b>, above all <span class="m">primary</span>, which is a fill, a border, an icon and a text at once; element-first splits it into four tokens and a script re-binds by node type. Same values, zero pixel change.</p></div>
+      <div class="g good"><h4>Code</h4><p><b>Nothing.</b> The prototype still runs the July <span class="m">--sk-*</span> file (45 variables, v3.2, 24 Jul) and never took the Material names. SKO's Storybook repo has not received a first export. Whatever name we export first is the first name developers ever type.</p></div>
+      <div class="g warn"><h4>Documents and frames</h4><p>The real cost. <b>1 024 mentions in the nine HTML documents</b>, the whole designer manual (47-row cheat sheet, 40-row lookup table, nine images rendered from the library), and <b>675 mentions in 592 Figma text nodes</b>, most of them the generated Colours boards and the roles appendix.</p></div>
+      <div class="g "><h4>Consumers</h4><p>ICP takes renames automatically, as it did on 19 Sep. Its annotations never cite token names (checked on all 39 pages). The Mobile App file binds <b>none</b> of the 47 roles; it is still on the old variables. Other consumer files: unknown, Nelson has the list.</p></div>
+      <div class="g ask"><h4>One visible change</h4><p>Folding <span class="m">surface-variant</span> into <span class="m">bg/subtle</span> changes 716 fills in Dark only (#122228 → the container's Dark). Everything else keeps its value. Keep it as its own token and nothing changes.</p></div>
+      <div class="g ask"><h4>Window</h4><p>The cost is lowest <b>before the first export to code and before the manual is shared</b>. After that, every rename is also a code migration and a retraining.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">1</span>Where the names live today</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Place</th><th>What carries the name</th><th>Count</th><th>Rename cost</th></tr></thead>
+        <tbody>
+          <tr><td>🎨 SKO-Semantics, variables</td><td>47 role names; codeSyntax WEB · Android · iOS on all 47; 42 descriptions still say only “Model C · was …”</td><td class="n">47 + 141 + 47</td><td>one script: rename, regenerate codeSyntax, rewrite descriptions (the descriptions were owed anyway)</td></tr>
+          <tr><td>DS library, product pages</td><td>bindings on LMS Components and MobileApp Component pages</td><td class="n">6 557</td><td>follow the rename; 10% re-bound by rule</td></tr>
+          <tr><td>DS library, base components</td><td>Buttons, Badges, Inputs, Toggles… and the 8 focus-ring effect styles (where <span class="m">primary-hover</span>, <span class="m">surface-fixed</span>, <span class="m">focus-ring-gap</span> live)</td><td class="n">not re-scanned; 180 124 on the roles on 19 Sep</td><td>follow the rename; <span class="m">primary</span> in buttons needs the same split</td></tr>
+          <tr><td>ICP, four main pages</td><td>Quizzes 25 742 nodes, Video Lessons 10 589, Platform Pages 17 628, Reading 5 505</td><td class="n">25 717</td><td>follow the rename once the DS is published and ICP accepts; overrides re-bound by the same rule</td></tr>
+          <tr><td>ICP, annotations and text</td><td>text nodes on all 39 pages mentioning a role word</td><td class="n">0 real</td><td>none: the hits are plain English (“course outline”, “primary action”)</td></tr>
+          <tr><td>Mobile App file</td><td>Home and Live sessions pages</td><td class="n">0 role bindings</td><td>none; the file binds 81 other variables (1 734 bindings), all pre-Model C</td></tr>
+          <tr><td>Nine HTML documents</td><td>Memo 233 · Legacy tokens 498 · Migration 83 · Challenge EN/PT 86 + 84 · Plan 34 · Naming 4 · Audit 1 · Hub 1</td><td class="n">1 024</td><td>Memo, Plan, Migration by hand; Legacy tokens and the roles tables are generated from <span class="m">modelc-roles.json</span> and can be regenerated</td></tr>
+          <tr><td>SKO Design System · Manual for Designers (Claude Doc)</td><td>47 hits on <span class="m">on-surface</span> alone; 40-row lookup table, 47-row cheat sheet, 4 recipes, 9 library-rendered images</td><td class="n">whole document</td><td>regenerate tables and images, rewrite prose; the “why Material” section becomes “why element-first”</td></tr>
+          <tr><td>Figma, Colours page</td><td>six mode boards (381 mentions in 363 texts) and the spec table (94 in 80)</td><td class="n">475</td><td>generated: rebuild by script</td></tr>
+          <tr><td>Figma, DS Structure discussion</td><td>memo frames 08–13 + appendix 146 · plan and glance frames 51 · naming frames 3</td><td class="n">200</td><td>appendix is generated; frames 03, 09, 10, 11, A, C by hand (about 60 text nodes)</td></tr>
+          <tr><td>Prototype repo</td><td><span class="m">tokens/colors.css</span> v3.2, 24 Jul, 45 <span class="m">--sk-*</span> variables</td><td class="n">0 Material names</td><td>none now; it needs a fresh export under either vocabulary</td></tr>
+          <tr><td>Project handoff docs (OneDrive repo)</td><td>decision 017, LMS-HANDOFF skin-switcher demo and sync notes, DS rationale pages</td><td class="n">10 files on <span class="m">--sk-*</span>, 0 Material names</td><td>none; they already cite the July names and will need the same refresh under either vocabulary</td></tr>
+          <tr><td>SKO Storybook repo</td><td>no export received yet (engineering, 21 Sep)</td><td class="n">0</td><td>none</td></tr>
+          <tr><td>Zeplin</td><td>whether the ICP tokens were ever exported to Zeplin is still the open 8 Sep question</td><td class="n">unknown</td><td>if yes, one re-export</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>The mapping, role by role</h2>
+    <p class="lede">Counts are the six scanned pages. Property columns: container fill · icon (shape fill + shape stroke) · text · container stroke · effect. Text and icons share a token on purpose; that is how the library already uses them.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Role today</th><th>Element-first name</th><th>Action</th><th>Bindings</th><th>DS / ICP</th><th>fill · icon · text · border · fx</th><th>Note</th></tr></thead>
+        <tbody>
+<tr><td class="n">surface</td><td class="n">bg/page</td><td><span class="chip ok">rename</span></td><td class="n">3,540</td><td class="n">508 / 3,032</td><td class="n">3518 · 11 · 0 · 0 · 11</td><td></td></tr>
+<tr><td class="n">surface-container</td><td class="n">bg/subtle</td><td><span class="chip ok">rename</span></td><td class="n">510</td><td class="n">84 / 426</td><td class="n">510 · 0 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">surface-container-high</td><td class="n">bg/muted</td><td><span class="chip ok">rename</span></td><td class="n">1,255</td><td class="n">181 / 1,074</td><td class="n">1153 · 102 · 0 · 0 · 0</td><td>102 shape fills (chips) follow</td></tr>
+<tr><td class="n">surface-container-highest</td><td class="n">bg/strong</td><td><span class="chip ok">rename</span></td><td class="n">58</td><td class="n">7 / 51</td><td class="n">58 · 0 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">surface-variant</td><td class="n">bg/subtle</td><td><span class="chip unknown">merge</span></td><td class="n">716</td><td class="n">200 / 516</td><td class="n">716 · 0 · 0 · 0 · 0</td><td>same Light value; Dark #122228 → container Dark. Visible in Dark only</td></tr>
+<tr><td class="n">on-surface</td><td class="n">text/default</td><td><span class="chip ok">rename</span></td><td class="n">4,682</td><td class="n">941 / 3,741</td><td class="n">328 · 239 · 4023 · 92 · 0</td><td>420 container fills and strokes use it as a dark fill or strong border: keep via scope, or rebind to bg/inverse and border/strong</td></tr>
+<tr><td class="n">on-surface-variant</td><td class="n">text/muted</td><td><span class="chip ok">rename</span></td><td class="n">2,793</td><td class="n">579 / 2,214</td><td class="n">6 · 289 · 2498 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-surface-muted</td><td class="n">text/subtle</td><td><span class="chip ok">rename</span></td><td class="n">3,944</td><td class="n">1,026 / 2,918</td><td class="n">8 · 89 · 3847 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-surface-subtle</td><td class="n">text/placeholder</td><td><span class="chip ok">rename</span></td><td class="n">86</td><td class="n">9 / 77</td><td class="n">0 · 0 · 86 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-surface-faint</td><td class="n">icon/muted</td><td><span class="chip ok">rename</span></td><td class="n">1,168</td><td class="n">97 / 1,071</td><td class="n">112 · 845 · 160 · 51 · 0</td><td>845 icon strokes; 160 texts keep the scope</td></tr>
+<tr><td class="n">on-surface-disabled</td><td class="n">text/disabled</td><td><span class="chip ok">rename</span></td><td class="n">318</td><td class="n">32 / 286</td><td class="n">2 · 0 · 316 · 0 · 0</td><td></td></tr>
+<tr><td class="n">outline</td><td class="n">border/default</td><td><span class="chip ok">rename</span></td><td class="n">1,905</td><td class="n">297 / 1,608</td><td class="n">106 · 772 · 3 · 1024 · 0</td><td>772 icon strokes coloured with the border grey: keep via scope, or rebind to icon/muted</td></tr>
+<tr><td class="n">outline-variant</td><td class="n">border/subtle</td><td><span class="chip ok">rename</span></td><td class="n">3,394</td><td class="n">791 / 2,603</td><td class="n">141 · 9 · 0 · 3244 · 0</td><td></td></tr>
+<tr><td class="n">outline-disabled</td><td class="n">border/disabled</td><td><span class="chip ok">rename</span></td><td class="n">91</td><td class="n">14 / 77</td><td class="n">4 · 1 · 11 · 75 · 0</td><td></td></tr>
+<tr><td class="n">outline-inverse</td><td class="n">border/inverse</td><td><span class="chip ok">rename</span></td><td class="n">10</td><td class="n">4 / 6</td><td class="n">0 · 0 · 0 · 10 · 0</td><td></td></tr>
+<tr><td class="n">scrim</td><td class="n">bg/overlay</td><td><span class="chip ok">rename</span></td><td class="n">94</td><td class="n">7 / 87</td><td class="n">94 · 0 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">fixed-white</td><td class="n">text/on-media</td><td><span class="chip ok">rename</span></td><td class="n">631</td><td class="n">116 / 515</td><td class="n">144 · 360 · 126 · 1 · 0</td><td>144 container fills (white pills over video): keep via scope, or bg/on-media</td></tr>
+<tr><td class="n">primary</td><td class="n">bg/brand · border/brand · icon/brand · text/brand</td><td><span class="chip alert">split</span></td><td class="n">2,180</td><td class="n">439 / 1,741</td><td class="n">474 · 1046 · 44 · 616 · 0</td><td>by node type and property: 474 fills, 616 borders, 1 046 icons, 44 texts</td></tr>
+<tr><td class="n">on-primary</td><td class="n">text/on-brand</td><td><span class="chip ok">rename</span></td><td class="n">433</td><td class="n">133 / 300</td><td class="n">179 · 31 · 211 · 12 · 0</td><td>179 container fills (toggle knob, marks): keep via scope</td></tr>
+<tr><td class="n">primary-container</td><td class="n">bg/brand-soft · border/brand-soft</td><td><span class="chip alert">split</span></td><td class="n">594</td><td class="n">121 / 473</td><td class="n">349 · 0 · 1 · 244 · 0</td><td>349 fills, 244 borders</td></tr>
+<tr><td class="n">on-primary-container</td><td class="n">text/on-brand-soft</td><td><span class="chip ok">rename</span></td><td class="n">142</td><td class="n">44 / 98</td><td class="n">4 · 22 · 102 · 14 · 0</td><td></td></tr>
+<tr><td class="n">primary-text</td><td class="n">text/brand</td><td><span class="chip ok">rename</span></td><td class="n">957</td><td class="n">320 / 637</td><td class="n">5 · 78 · 863 · 11 · 0</td><td>absorbs the 44 texts bound to primary</td></tr>
+<tr><td class="n">primary-outline-variant</td><td class="n">border/brand-soft</td><td><span class="chip unknown">merge</span></td><td class="n">3</td><td class="n">1 / 2</td><td class="n">0 · 0 · 0 · 3 · 0</td><td>same job as primary-container strokes</td></tr>
+<tr><td class="n">primary-hover</td><td class="n">bg/brand-hover</td><td><span class="chip ok">rename</span></td><td class="n">0</td><td class="n">0 / 0</td><td class="n">0 · 0 · 0 · 0 · 0</td><td>lives on the Buttons page, not scanned</td></tr>
+<tr><td class="n">on-primary-hover</td><td class="n">text/on-brand-hover</td><td><span class="chip ok">rename</span></td><td class="n">0</td><td class="n">0 / 0</td><td class="n">0 · 0 · 0 · 0 · 0</td><td>Buttons page, not scanned</td></tr>
+<tr><td class="n">error</td><td class="n">bg/error · border/error</td><td><span class="chip alert">split</span></td><td class="n">16</td><td class="n">15 / 1</td><td class="n">5 · 6 · 0 · 5 · 0</td><td>16 bindings</td></tr>
+<tr><td class="n">on-error</td><td class="n">text/on-error</td><td><span class="chip ok">rename</span></td><td class="n">3</td><td class="n">3 / 0</td><td class="n">1 · 1 · 1 · 0 · 0</td><td></td></tr>
+<tr><td class="n">error-container</td><td class="n">bg/error-soft</td><td><span class="chip ok">rename</span></td><td class="n">80</td><td class="n">15 / 65</td><td class="n">79 · 1 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-error-container</td><td class="n">text/error · border/error</td><td><span class="chip alert">split</span></td><td class="n">371</td><td class="n">75 / 296</td><td class="n">3 · 133 · 100 · 135 · 0</td><td>100 texts + 132 icons stay; 135 borders move</td></tr>
+<tr><td class="n">error-container-variant</td><td class="n">border/error-soft</td><td><span class="chip ok">rename</span></td><td class="n">10</td><td class="n">7 / 3</td><td class="n">3 · 0 · 0 · 7 · 0</td><td></td></tr>
+<tr><td class="n">success</td><td class="n">bg/success</td><td><span class="chip ok">rename</span></td><td class="n">72</td><td class="n">50 / 22</td><td class="n">71 · 1 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-success</td><td class="n">text/on-success</td><td><span class="chip ok">rename</span></td><td class="n">48</td><td class="n">29 / 19</td><td class="n">1 · 46 · 1 · 0 · 0</td><td>46 icon strokes</td></tr>
+<tr><td class="n">success-container</td><td class="n">bg/success-soft</td><td><span class="chip ok">rename</span></td><td class="n">165</td><td class="n">47 / 118</td><td class="n">162 · 3 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-success-container</td><td class="n">text/success · border/success</td><td><span class="chip alert">split</span></td><td class="n">1,074</td><td class="n">148 / 926</td><td class="n">7 · 262 · 643 · 162 · 0</td><td>643 texts + 259 icons stay; 162 borders move</td></tr>
+<tr><td class="n">success-container-variant</td><td class="n">border/success-soft</td><td><span class="chip ok">rename</span></td><td class="n">6</td><td class="n">6 / 0</td><td class="n">5 · 0 · 0 · 1 · 0</td><td></td></tr>
+<tr><td class="n">success-bright</td><td class="n">icon/success</td><td><span class="chip ok">rename</span></td><td class="n">4</td><td class="n">2 / 2</td><td class="n">0 · 4 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">warning</td><td class="n">bg/warning</td><td><span class="chip ok">rename</span></td><td class="n">3</td><td class="n">3 / 0</td><td class="n">3 · 0 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-warning</td><td class="n">text/on-warning</td><td><span class="chip ok">rename</span></td><td class="n">1</td><td class="n">1 / 0</td><td class="n">1 · 0 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">warning-container</td><td class="n">bg/warning-soft</td><td><span class="chip ok">rename</span></td><td class="n">20</td><td class="n">13 / 7</td><td class="n">20 · 0 · 0 · 0 · 0</td><td></td></tr>
+<tr><td class="n">on-warning-container</td><td class="n">text/warning · border/warning</td><td><span class="chip alert">split</span></td><td class="n">219</td><td class="n">92 / 127</td><td class="n">3 · 67 · 90 · 59 · 0</td><td>90 texts + 67 icons stay; 59 borders move</td></tr>
+<tr><td class="n">warning-container-variant</td><td class="n">border/warning-soft</td><td><span class="chip ok">rename</span></td><td class="n">4</td><td class="n">4 / 0</td><td class="n">3 · 0 · 0 · 1 · 0</td><td></td></tr>
+<tr><td class="n">info</td><td class="n">bg/info · icon/info · border/info</td><td><span class="chip alert">split</span></td><td class="n">339</td><td class="n">37 / 302</td><td class="n">48 · 96 · 0 · 195 · 0</td><td>48 fills, 96 icons, 195 borders</td></tr>
+<tr><td class="n">shadow</td><td class="n">shadow/default</td><td><span class="chip ok">rename</span></td><td class="n">335</td><td class="n">59 / 276</td><td class="n">0 · 0 · 0 · 0 · 335</td><td></td></tr>
+<tr><td class="n">surface-fixed</td><td class="n">bg/fixed</td><td><span class="chip ok">rename</span></td><td class="n">0</td><td class="n">0 / 0</td><td class="n">0 · 0 · 0 · 0 · 0</td><td>Badges page, not scanned</td></tr>
+<tr><td class="n">surface-fixed-dim</td><td class="n">bg/fixed-subtle</td><td><span class="chip ok">rename</span></td><td class="n">0</td><td class="n">0 / 0</td><td class="n">0 · 0 · 0 · 0 · 0</td><td>Badges page, not scanned</td></tr>
+<tr><td class="n">on-surface-fixed</td><td class="n">text/on-fixed</td><td><span class="chip ok">rename</span></td><td class="n">0</td><td class="n">0 / 0</td><td class="n">0 · 0 · 0 · 0 · 0</td><td>not yet used</td></tr>
+<tr><td class="n">focus-ring-gap</td><td class="n">border/focus-gap</td><td><span class="chip ok">rename</span></td><td class="n">0</td><td class="n">0 / 0</td><td class="n">0 · 0 · 0 · 0 · 0</td><td>effect styles only</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede"><b>53 tokens instead of 47.</b> The six extra come from the splits: brand and info gain a border and an icon token, the three status texts gain a border. Folding <span class="m">icon/</span> into <span class="m">text/</span> brings it back to 49.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>What the numbers say</h2>
+    <ul class="tight">
+      <li><b>26 917 bindings (83%) follow a rename in place.</b> Same mechanism as 19 Sep: the variable id survives, ICP received the renamed collection without a single re-bind.</li>
+      <li><b>3 126 bindings (10%) are re-bound by a rule</b>, all on seven roles that today serve several elements: <span class="m">primary</span> 2 180, <span class="m">info</span> 339, <span class="m">primary-container</span> 244, the three <span class="m">on-*-container</span> borders 356, <span class="m">error</span> 7. The rule is mechanical: fill on a container → <span class="m">bg/</span>, stroke on a container → <span class="m">border/</span>, fill or stroke on a shape → <span class="m">icon/</span>, text → <span class="m">text/</span>. The new tokens alias the same primitives, so no pixel changes.</li>
+      <li><b>1 515 bindings (5%) need one decision each</b>, because the library already uses a text colour as a fill or a border colour as an icon: <span class="m">on-surface</span> as a dark fill (420), <span class="m">outline</span> as an icon colour (772), <span class="m">on-primary</span> as a knob fill (179), <span class="m">fixed-white</span> as a white pill (144). Either keep permissive scopes and leave them, or re-bind to <span class="m">bg/inverse</span>, <span class="m">icon/muted</span>, <span class="m">bg/on-media</span>. Element-first makes these misfits visible; Material hid them.</li>
+      <li><b>716 bindings (2%) change colour if <span class="m">surface-variant</span> is folded</b>, and only in Dark. Keeping it as <span class="m">bg/subtle-alt</span> costs one token and changes nothing.</li>
+      <li><b>The Mobile App file is not a consumer of the roles.</b> Its two dev-ready pages bind 1 734 paints to 81 variables, none of them a Model C role. It will need the Model C migration or the element-first one, whichever wins; the rename does not make that worse.</li>
+      <li><b>Base components were not re-scanned.</b> The 19 Sep count for the whole DS was 180 124 bindings on the roles. Buttons bind <span class="m">primary</span> heavily, so the split script must run there too; the base pages are where the 22 Sep clean-up already moved 18 checkbox marks and 310 overrides, so the tooling exists.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>The work, in order</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Step</th><th>What</th><th>Effort</th><th>Who</th></tr></thead>
+        <tbody>
+          <tr><td class="n">0</td><td>Freeze the mapping (section 2) and the five decisions (section 6). Version snapshot “Before element-first rename”.</td><td>half a day, meeting</td><td>Nelson + team</td></tr>
+          <tr><td class="n">1</td><td>Create the 6 new tokens (border/brand, icon/brand, border/brand-soft, icon/info, border/info, the status borders) as aliases of the same primitives, all six modes.</td><td>1 hour, script</td><td>Claude</td></tr>
+          <tr><td class="n">2</td><td>Re-bind the 3 126 split bindings by rule on DS product pages + base components, masters first, then overrides. Same page-by-page method as step 8 of the migration.</td><td>half a day</td><td>Claude</td></tr>
+          <tr><td class="n">3</td><td>Rename the 47 in place, regenerate codeSyntax (141 entries), write “use for / never for” descriptions. Scopes per folder.</td><td>1 hour, script</td><td>Claude</td></tr>
+          <tr><td class="n">4</td><td>Nelson publishes; ICP accepts; re-bind the ICP overrides of the split roles by the same rule; verify 0 left.</td><td>half a day</td><td>Nelson + Claude</td></tr>
+          <tr><td class="n">5</td><td>Regenerate the generated artefacts: Colours boards, spec table, appendix, Legacy tokens tables, cheat sheet (from a renamed <span class="m">modelc-roles.json</span>).</td><td>half a day</td><td>Claude</td></tr>
+          <tr><td class="n">6</td><td>Hand edits: Memo, Plan, Migration, Challenge, Naming; Figma frames 03, 09, 10, 11, A, C; the manual’s prose and its nine images.</td><td>1–1.5 days</td><td>Claude, Nelson reviews</td></tr>
+          <tr><td class="n">7</td><td>First export to code under the new names: <span class="m">tokens/colors.css</span> for the prototype, the tokens file for Storybook. Tell Vikas and Bruno the vocabulary before they type anything.</td><td>half a day</td><td>Claude + engineering</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">Total: <b>3 to 4 working days</b>, one publish, one ICP accept. The 19 Sep migration took the same order of magnitude and its scripts are reusable.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>Risks, from the last migration</h2>
+    <ul class="tight">
+      <li><b>Same-collection aliases resolve in the default mode</b> unless the modeId is kept; the first Model C run was rolled back for this. The checker rule is written down in the Migration doc.</li>
+      <li><b>Forced modes are untouched.</b> Renaming variables does not change modes or modeIds, so the 1 317 nodes forcing a mode in the DS and ~735 in ICP stay as they are.</li>
+      <li><b>Library style edits do not reach nested usage in consumers</b> until the components using them are republished as CHANGED; the focus-ring styles need the same trick again if <span class="m">focus-ring-gap</span> is renamed.</li>
+      <li><b>Long scans kill the plugin.</b> The Desktop Bridge stopped answering for the DS during this measurement; the official MCP finished the job. Run passes page by page with stored progress.</li>
+      <li><b>Read descriptions before folding a value</b> (the <span class="m">bg-secondary_alt</span> lesson). Only <span class="m">surface-variant</span> folds here, and its description says “was Background/bg-secondary”, nothing about Dark.</li>
+      <li><b>Credibility.</b> The team was told “decided, live since 19 Sep”. The honest line is in the Challenge doc: we chose Material for the sync, we measured, the sync never depended on it.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>Decisions needed before step 1</h2>
+    <ol class="tight">
+      <li><b>surface-variant:</b> fold into <span class="m">bg/subtle</span> (716 fills change in Dark) or keep as <span class="m">bg/subtle-alt</span>.</li>
+      <li><b>icon/ as its own folder or inside text/</b>: 4 tokens either way; a separate folder is clearer in the picker, one folder fewer to explain.</li>
+      <li><b>The 1 515 misfits</b> (text colour as fill, border colour as icon): keep permissive scopes, or re-bind to <span class="m">bg/inverse</span>, <span class="m">icon/muted</span>, <span class="m">bg/on-media</span>.</li>
+      <li><b>Word choices:</b> <span class="m">subtle</span> / <span class="m">muted</span> / <span class="m">strong</span> for the neutral background ladder, <span class="m">muted</span> / <span class="m">subtle</span> / <span class="m">placeholder</span> for the text ladder, <span class="m">brand</span> instead of <span class="m">primary</span>, <span class="m">-soft</span> instead of <span class="m">-container</span>.</li>
+      <li><b>Timing:</b> before the first export and before the manual is shared, or not at all this quarter.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Method</h2>
+    <p class="lede">Bindings were read from every node’s paints and effects (<span class="m">paint.boundVariables.color</span>, never the node-level list, which is not in paint order), on 22 Sep 2026 between 17:00 and 18:30. Node types VECTOR, BOOLEAN_OPERATION, LINE, ELLIPSE, STAR and POLYGON count as icons; TEXT as text; everything else as a container. Document mentions were counted as whole-word matches of the 47 names in the stripped HTML. Figma text mentions were counted the same way on the text nodes of the named frames. Raw scan data: <span class="m">scans.json</span> and <span class="m">scans-agg.json</span> in this session’s scratchpad.</p>
+  </section>
+
+  <footer>SKO Design System · Token rename impact · 22 Sep 2026 · measured for Nelson before the decision on element-first names. Companion to the Challenge document.</footer>
+
+</div>

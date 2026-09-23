@@ -1,0 +1,334 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SKO Colour Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+  :root {
+    --ground:#F5F8F8; --surface:#FFFFFF; --surface-sunk:#ECF1F1;
+    --ink:#13282F; --ink-soft:#40585F; --ink-faint:#71878D;
+    --rule:#D3DEDE; --rule-soft:#E4EBEB;
+    --accent:#17607A; --accent-soft:#E2EDF1;
+    --ok:#2C6E52; --ok-soft:#E0EDE6; --alert:#A8412A; --alert-soft:#F6E5E0; --unknown:#7A6836; --unknown-soft:#F1ECDC;
+    --display:"Newsreader",Georgia,"Times New Roman",serif; --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace; --col:70ch;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --ground:#0D1618; --surface:#142126; --surface-sunk:#1B2C31; --ink:#E6EEEE; --ink-soft:#A9BEC2; --ink-faint:#7B9197; --rule:#2A3E44; --rule-soft:#21343A; --accent:#6FB8CE; --accent-soft:#16333E; --ok:#7BC49C; --ok-soft:#163024; --alert:#E4927C; --alert-soft:#35201A; --unknown:#CBB878; --unknown-soft:#2C2718; } }
+  :root[data-theme="dark"] {
+    --ground:#0D1618; --surface:#142126; --surface-sunk:#1B2C31; --ink:#E6EEEE; --ink-soft:#A9BEC2; --ink-faint:#7B9197; --rule:#2A3E44; --rule-soft:#21343A; --accent:#6FB8CE; --accent-soft:#16333E; --ok:#7BC49C; --ok-soft:#163024; --alert:#E4927C; --alert-soft:#35201A; --unknown:#CBB878; --unknown-soft:#2C2718; }
+
+  * { box-sizing:border-box; }
+  body { background:var(--ground); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:56px 28px 96px; display:flex; flex-direction:column; gap:56px; }
+  .masthead { display:flex; flex-direction:column; gap:18px; }
+  .kicker { font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+  h1 { font-family:var(--display); font-weight:500; font-size:clamp(2.1rem,5vw,3.1rem); line-height:1.08; letter-spacing:-.015em; margin:0; text-wrap:balance; }
+  .standfirst { font-family:var(--display); font-size:clamp(1.05rem,2.2vw,1.28rem); line-height:1.5; color:var(--ink-soft); max-width:var(--col); margin:0; }
+  .provenance { font-family:var(--mono); font-size:12px; color:var(--ink-faint); line-height:1.9; border-top:1px solid var(--rule); padding-top:14px; display:flex; flex-wrap:wrap; gap:4px 28px; }
+  .provenance b { color:var(--ink-soft); font-weight:500; }
+  section { display:flex; flex-direction:column; gap:20px; }
+  h2 { font-family:var(--display); font-weight:500; font-size:1.75rem; line-height:1.2; margin:0; letter-spacing:-.01em; text-wrap:balance; }
+  h2 .num { font-family:var(--mono); font-size:.72em; font-weight:500; color:var(--accent); margin-right:.6em; }
+  h3 { font-family:var(--body); font-weight:600; font-size:1rem; margin:0; }
+  p { margin:0; max-width:var(--col); } p+p { margin-top:.85em; }
+  .lede { color:var(--ink-soft); }
+  ul,ol { margin:0; padding-left:1.3em; max-width:var(--col); display:flex; flex-direction:column; gap:8px; color:var(--ink-soft); }
+  li b { color:var(--ink); font-weight:600; }
+  code,.m { font-family:var(--mono); font-size:.875em; }
+  code { background:var(--surface-sunk); padding:.12em .4em; border-radius:3px; color:var(--ink); }
+  pre { margin:0; background:var(--surface); border:1px solid var(--rule-soft); border-left:3px solid var(--accent); padding:18px 22px; font-family:var(--mono); font-size:14px; line-height:1.75; color:var(--ink); overflow-x:auto; }
+  pre .dim { color:var(--ink-faint); }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; min-width:520px; font-size:14px; }
+  th { text-align:left; font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); border-bottom:1px solid var(--rule); padding:0 14px 8px 0; white-space:nowrap; }
+  td { padding:9px 14px 9px 0; border-bottom:1px solid var(--rule-soft); vertical-align:top; color:var(--ink-soft); }
+  td:first-child { color:var(--ink); } td.n { font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr:last-child td { border-bottom:none; }
+  .chip { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:3px 7px; border-radius:2px; white-space:nowrap; vertical-align:middle; }
+  .chip.ok{background:var(--ok-soft);color:var(--ok);} .chip.alert{background:var(--alert-soft);color:var(--alert);} .chip.unknown{background:var(--unknown-soft);color:var(--unknown);} .chip.accent{background:var(--accent-soft);color:var(--accent);}
+  .note { border-left:2px solid var(--rule); padding-left:18px; color:var(--ink-soft); max-width:var(--col); }
+  .note.flag{border-left-color:var(--alert);} .note.good{border-left-color:var(--ok);} .note.accent{border-left-color:var(--accent);}
+  .strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); border:1px solid var(--rule); background:var(--surface); }
+  .fig { padding:18px 20px; border-right:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:3px; }
+  .fig:last-child{border-right:none;}
+  .fig .v { font-family:var(--display); font-size:2rem; line-height:1; font-variant-numeric:tabular-nums; color:var(--ink); }
+  .fig .v.warn{color:var(--alert);}
+  .fig .k { font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); }
+  .tiers { display:grid; grid-template-columns:1fr; gap:12px; }
+  .tier { background:var(--surface); border:1px solid var(--rule-soft); padding:18px 22px; display:flex; flex-direction:column; gap:6px; }
+  .tier.owners { border-left:3px solid var(--alert); } .tier.all { border-left:3px solid var(--accent); }
+  .tier .who { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .tier .what { font-family:var(--display); font-size:1.15rem; color:var(--ink); }
+  .tier p { color:var(--ink-soft); font-size:14px; }
+  .swatchrow { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .sw { display:flex; flex-direction:column; gap:6px; }
+  .sw .c { height:44px; border-radius:6px; border:1px solid var(--rule-soft); }
+  .sw .l { font-family:var(--mono); font-size:11.5px; color:var(--ink); }
+  .sw .s { font-family:var(--mono); font-size:10px; color:var(--ink-faint); }
+  .steps { display:flex; flex-direction:column; gap:10px; max-width:var(--col); }
+  .step { display:grid; grid-template-columns:32px 1fr; gap:14px; align-items:baseline; }
+  .step .n { font-family:var(--mono); font-size:12px; color:var(--accent); font-weight:500; }
+  .step .t { color:var(--ink-soft); } .step .t b { color:var(--ink); }
+  .link { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  footer { border-top:1px solid var(--rule); padding-top:18px; font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); line-height:1.8; }
+  @media (max-width:620px){ .wrap{padding:36px 18px 64px;gap:40px;} .fig{border-right:none;border-bottom:1px solid var(--rule-soft);} }
+  .docnav { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 20px; font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; color:var(--ink-faint); padding-bottom:14px; border-bottom:1px solid var(--rule); margin-bottom:-24px; }
+  .docnav .lbl { text-transform:uppercase; letter-spacing:.12em; font-weight:500; margin-right:6px; }
+  .docnav a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  .docnav a:hover, .docnav a:focus-visible { border-bottom-color:var(--accent); outline:none; }
+  .docnav .here { color:var(--ink); font-weight:600; border-bottom:2px solid var(--accent); }
+
+  /* condensed layout */
+  .glance { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .g { background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent); border-radius:4px; padding:14px 16px; display:flex; flex-direction:column; gap:6px; }
+  .g.warn { border-top-color:var(--alert); } .g.good { border-top-color:var(--ok); } .g.ask { border-top-color:var(--unknown); }
+  .g h4 { margin:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  .g p { font-size:14.5px; line-height:1.5; color:var(--ink-soft); max-width:none; }
+  .g p b { color:var(--ink); font-weight:600; }
+  .refs { display:flex; flex-direction:column; gap:0; }
+  .refs > h2 { margin-bottom:6px; }
+  details.ref { border-top:1px solid var(--rule-soft); padding:12px 0; }
+  details.ref:last-child { border-bottom:1px solid var(--rule-soft); }
+  details.ref summary { cursor:pointer; font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--accent); list-style-position:inside; }
+  details.ref summary:hover { color:var(--ink); }
+  details.ref .refbody { display:flex; flex-direction:column; gap:18px; padding:18px 0 6px; }
+  .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+  .tight li { line-height:1.5; }
+</style>
+<style>
+  .sw { display:inline-block; width:12px; height:12px; border-radius:3px; border:1px solid var(--rule); vertical-align:-1px; margin-right:4px; }
+  tr.grp td { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); padding-top:18px; }
+  td.al { font-size:13px; } td.al .n, td .n { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+  .cmp td:first-child { color:var(--ink-soft); } .cmp td b { color:var(--ink); }
+  .win { color:var(--ok); font-weight:600; } .lose { color:var(--alert); font-weight:600; }
+  .stepno { font-family:var(--display); font-size:1.25rem; color:var(--accent); }
+</style>
+
+<div class="wrap">
+
+  <nav class="docnav" aria-label="SKO Design System documents">
+    <span class="lbl">SKO Design System</span>
+    <a href="https://claude.ai/code/artifact/ad6dc6ec-8243-4ef8-a343-041b3739e3e8">Index</a>
+    <a href="https://claude.ai/code/artifact/dac668f5-62b2-4257-a0ba-388ed6286d9a">Audit</a>
+    <a href="https://claude.ai/code/artifact/c51810fb-98d5-466d-aeb6-2b7670974ef6">Plan</a>
+    <a href="https://claude.ai/code/artifact/ab94ea98-2615-45ef-a0c2-56526b194230">Naming</a>
+    <a href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4">Colour tokens</a>
+    <span class="here">Migration</span> <a href="https://claude.ai/artifact/5KrpzC6BoPYG1mJw4Ghp4u">Challenge</a> <a href="https://claude.ai/artifact/K7XJExPk558SNdENWuQobX">Rename impact</a> <a href="https://claude.ai/artifact/WhQnhby4zK8UkfZ5sd4bCG">Manual</a> <a href="https://claude.ai/artifact/YAtAqLo6dTSNHmGiHme9BM">Final names</a>
+    <a href="https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/%E2%9D%96-SKO-Design-System--Untitled-UI-?node-id=21420-5353&t=OTqlDlBt6rZch8VU-4">Figma ↗</a>
+  </nav>
+
+  <header class="masthead">
+    <div class="kicker">Migration plan · Model C into the live library</div>
+    <h1>Rename the tokens we have. Don’t rebuild them.</h1>
+    <p class="standfirst">How to move the live SKO library to the Model C colour roles with the least work, using what the test file proved. Every number below was measured on 19 Sep 2026 in the live DS file and in LMS ICP Phase 1, the main file that consumes it.</p>
+    <div class="provenance">
+      <span><b>Status</b> steps 1–8 applied 19–21 Sep; Skins and 113 legacy tokens deleted; ICP clean; published 22 Sep; roles renamed element-first 22 Sep</span>
+      <span><b>Rehearsed in</b> ❖ SKO Design System (OptionC-Material)</span>
+      <span><b>Applies to</b> ❖ SKO Design System (Untitled UI)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>In one minute</h2>
+    <div class="glance">
+      <div class="g warn"><h4>Renamed again, 22 Sep</h4><p>The roles this migration created now carry <b>element-first names</b> (<span class="m">bg/page</span>, <span class="m">text/default</span>, <span class="m">border/subtle</span>…): same variables, same colours. The steps below keep the names of their day; the <a class="link" href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4#names-now">colour memo §0</a> maps each one.</p></div>
+      <div class="g good"><h4>The recommendation</h4><p><b>Rename in place.</b> 42 of the 43 roles already exist in <span class="m">1. Semantics</span> under their current SKO names, with the exact Light and Dark value. For example, <span class="m">SKO/Colors/Background/bg-primary</span> becomes <span class="m">surface</span>. Each one takes the new name and keeps every binding. Only <span class="m">on-primary-hover</span> is new.</p></div>
+      <div class="g warn"><h4>Why not a new collection</h4><p>Every consumer would have to re-bind. <b>ICP alone: 13,623 direct bindings and about 735 frames that force a mode.</b> The DS itself has 1,317 forced modes, the regression that broke the dark Topbar in the test file.</p></div>
+      <div class="g"><h4>What it costs</h4><p>One scripted session in the DS file, in ten steps, with a named version before each. Then you publish and consumers accept the update. <b>Nothing to re-bind downstream.</b></p></div>
+      <div class="g ask"><h4>What changes on screen</h4><p>No token changes value: all 411 old variables resolve to the same SKO Light and SKO Dark colours as before. What changes comes from the fixes replayed from the test file: text on primary buttons, the hover pair, the pressed toggle, the mobile footer and the Course-Completed button.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where it stands</h2>
+    <div class="note accent"><p><b>Applied 19 Sep, steps 1 to 7, in order 1, 2, 5, 3, 4, 6, 7.</b> A first attempt was rolled back because its checker read same-collection aliases in Light only. The redo stored every raw value first and checked each role against its true Light and Dark pair, alpha included. All 42 survivors and 47 planned aliases matched the plan.</p></div>
+    <div class="scroll">
+      <table class="cmp">
+        <thead><tr><th>Step</th><th>Result in the live DS</th></tr></thead>
+        <tbody>
+          <tr><td>1 · Collection and modes</td><td><span class="m">1. Semantics</span> is now <span class="m">🎨 SKO-Semantics</span> (called <span class="m">🎨 Colour</span> until 21 Sep), same key. Modes: SKO Light, SKO Dark, Gold Light, Gold Dark, Red Light, Red Dark</td></tr>
+          <tr><td>2 · Fill the brand modes</td><td>411 variables copied from SKO Light / SKO Dark</td></tr>
+          <tr><td>5 · Leave 2. Skins</td><td>31 variables, 186 values now point straight at the skin primitives</td></tr>
+          <tr><td>3 · Rename and brand values</td><td>42 survivors renamed, <span class="m">on-primary-hover</span> created, 28 Gold/Red values set. The brand roles match the test file in all six modes</td></tr>
+          <tr><td>4 · Aliases and legacy</td><td>48 exact duplicates now alias their role (the 47 planned plus <span class="m">Icon/default</span>, which already aliased <span class="m">on-surface-faint</span>). 363 others moved under <span class="m">_legacy/</span>. The 3 font and 3 scrollbar-size variables keep their names</td></tr>
+          <tr><td>Check after 4</td><td class="win">0 differences across 411 variables in SKO Light and SKO Dark</td></tr>
+          <tr><td>6 · Picker and Dev Mode</td><td class="win">Exactly 43 colour variables pickable, each with <span class="m">var(--color-…)</span> and a camelCase name for mobile</td></tr>
+          <tr><td>7 · Component fixes</td><td>534 bindings replayed from the test file and confirmed node by node, plus the state layer on 4 toggle masters, which all 8 instances inherit</td></tr>
+          <tr><td>Not replayed</td><td>Components that differ between the two files by design, not because of the migration: Button_V2 Secondary Hover (Branded) is a light hover in live and solid primary in the test file (56 bindings), and Progress steps (WIP) borders are brand in live and neutral in the test file (26). Live is kept; Nelson to decide</td></tr>
+          <tr><td>Follow-up, 19 Sep</td><td>The paint-by-paint audit found 3 Progression-Button icons on a primary fill that step 7 had missed. Now <span class="m">on-primary</span>; needs one more publish</td></tr>
+          <tr><td>Test-file audit</td><td>The test file’s own migration used the faulty checker. <b>274 bindings on 8 tokens</b> there got the wrong Dark colour (Light was always right). Live was never affected. 160 are button text and icons: live keeps <span class="m">on-primary</span>, the test file has white. The other 114 are near-duplicates, and each needs a decision before live changes: <span class="m">bg-secondary_alt</span> (white in Dark in live), <span class="m">border-disabled_subtle</span>, <span class="m">bg-disabled</span>, <span class="m">text-brand-tertiary</span>, <span class="m">Brand-Skins/stage</span>, and the error and success subtle borders</td></tr>
+          <tr><td>Near-duplicates, 20 Sep</td><td>Five approved and applied as aliases: <span class="m">bg-secondary_alt</span> (reverted 21 Sep, see below), <span class="m">border-disabled_subtle</span>, <span class="m">bg-disabled</span>, <span class="m">border-error_subtle</span>, <span class="m">border-success_subtle</span>. 879 bindings, Light unchanged, Dark fixed (<span class="m">bg-secondary_alt</span> was white in Dark). <span class="m">text-brand-tertiary</span> and <span class="m">Brand-Skins/stage</span> left out on purpose</td></tr>
+          <tr><td>8 · Re-bind, 20–21 Sep</td><td class="win">About 10,760 bindings moved from the 53 alias variables to the role itself: 4,626 on components, then 6,123 real overrides inside instances, then 14 strokes in an exploration frame. Components go first so instances inherit instead of gaining new overrides</td></tr>
+          <tr><td>Skins deleted, 21 Sep</td><td>With 0 bindings, 0 frames forcing its mode, 0 styles and 0 aliases left, in the DS and in ICP, <span class="m">2. Skins 🎨</span> was removed. All 43 roles re-resolved in all 6 modes: nothing broken. The file now has three collections: <span class="m">_Primitives</span>, <span class="m">🎨 SKO-Semantics</span>, <span class="m">3. Responsive 📐</span></td></tr>
+          <tr><td>Renamed, 21 Sep</td><td><span class="m">🎨 Colour</span> became <span class="m">🎨 SKO-Semantics</span>, Nelson’s choice. Same key, so every binding and ICP follow. The six non-colour variables (font families, scrollbar sizes) stay in it by decision</td></tr>
+          <tr><td>Fixed surfaces, 21 Sep</td><td>A mistake of the 20 Sep pass: <span class="m">bg-secondary_alt</span> was documented as an “alt” surface that must stay light in Dark, and it had been folded into <span class="m">surface-container</span>. Rather than keep a legacy token alive, three roles were added on Material’s <span class="m">*-fixed</span> pattern, with Nelson’s approval: <span class="m">surface-fixed</span> #FFFFFF, <span class="m">surface-fixed-dim</span> #F8F9FA, <span class="m">on-surface-fixed</span> #13282F, the same in all six modes. The Topic Types badge icon circle (1 master, 116 instances) now uses <span class="m">surface-fixed-dim</span>; <span class="m">bg-secondary_alt</span> is an alias of it. <b>The set was then 46 roles, all pickable</b> (47 since 22 Sep, below). Rule kept: no new role without approval, and Material-shaped names</td></tr>
+          <tr><td>text-brand-tertiary, 21 Sep</td><td>Nelson’s call: it becomes <span class="m">primary-text</span>. Now an alias of it, and all 212 bindings in the DS point at <span class="m">primary-text</span> directly (the 442 instance layers inherit; 0 left on the old name). Dark is unchanged in every brand; Light gets slightly darker (SKO #26708E → #215477, Gold #8F621A → #553600, Red #B62226 → #88262A). The Red Light value had been the exact error red, so this also clears a ΔE-rule breach</td></tr>
+          <tr><td>Focus, alpha, shadows, 21 Sep</td><td>Option A, Nelson’s approval. Focus-ring colours in 7 effect styles moved to <span class="m">primary</span> / <span class="m">error</span> / <span class="m">success</span>; 20 “focused” input strokes to <span class="m">primary</span>. Alpha: 334 paints to <span class="m">on-surface</span> (alpha-black-N) or <span class="m">surface</span> (alpha-white-N) at N% opacity. Shadows: colours unbound to their Light values, so they now show in Dark too, and the styles renamed <span class="m">Elevation/level1…level5</span>. Every ring and shadow spread was checked after the rebind, because the API resets it to 0</td></tr>
+          <tr><td>Colors and Typography pages, 21 Sep</td><td>Colors: six boards, one per mode (SKO, Gold, Red × Light, Dark), every swatch bound to its role, with the spec table below; the Untitled UI frames stay underneath. Typography: the 47 text styles renamed to Material’s scale (display, headline, title, body, label × large, medium, small, as <span class="m">role/Weight</span>), values unchanged</td></tr>
+          <tr><td>ICP clean-up, 21–22 Sep</td><td>After publish and accept, ICP’s component copies were current, but instance overrides still held the old variables: 1,854 bindings. Rewritten in ICP with the same rules as option A: 442 alpha paints to roles, 734 nodes moved to the new versions of 5 effect styles, 3 effects unbound. Recounted page by page: <b>0 left</b>, in nodes, styles and variables. The 8 Topic Footer Nav V2 instances, a variant no longer in the DS, were swapped to V1; the private <span class="m">_iPhone mockup status bar</span> stays as it is</td></tr>
+          <tr><td>44 deleted, 22 Sep</td><td class="win">With 0 uses in the DS (116 pages) and in ICP, the 44 legacy variables are gone: 3 focus rings, 21 shadows, 20 alpha</td></tr>
+          <tr><td>focus-ring-gap, 22 Sep</td><td>The inner gap of the focus rings sat on the legacy <span class="m">bg-primary</span>. <span class="m">surface</span> matches it in Light but not in Dark (#062C41 vs #0E1A1F), so the team approved a role of its own: <span class="m">focus-ring-gap</span>, #FFFFFF Light and #062C41 Dark in every brand, effect colours only, <span class="m">var(--color-focus-ring-gap)</span> / <span class="m">focusRingGap</span>. The 8 focus-ring styles use it. <b>The set is now 47 roles.</b></td></tr>
+          <tr><td>Next</td><td>Still open: the Untitled UI layer and utility palettes (Phase B), Button_V2 Secondary Hover and the Progress steps borders, other consumer files besides ICP, and a retirement date for <span class="m">--sk-*</span> before the 53 aliases can be deleted</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">1</span>Two paths, measured</h2>
+    <div class="scroll">
+      <table class="cmp">
+        <thead><tr><th></th><th>Rename in place</th><th>New collection, re-bind everything</th></tr></thead>
+        <tbody>
+          <tr><td>Roles whose exact value already exists, under today’s SKO name</td><td class="win">42 of 43</td><td>not used; all 43 created</td></tr>
+          <tr><td>Bindings in the DS that stay untouched</td><td class="win">180,124, the survivors’</td><td class="lose">0; every binding moves</td></tr>
+          <tr><td>DS nodes that force a mode</td><td class="win">1,317 keep working, mode IDs unchanged</td><td class="lose">1,317 to re-map, or they render light</td></tr>
+          <tr><td>ICP direct bindings to library colours</td><td class="win">13,623 follow the rename</td><td class="lose">13,623 to re-bind in the file</td></tr>
+          <tr><td>ICP frames that force a library mode</td><td class="win">~735 keep working</td><td class="lose">~735 to re-map</td></tr>
+          <tr><td>Other consumers (Mobile App, marketing)</td><td class="win">accept the update</td><td class="lose">the same work, file by file</td></tr>
+          <tr><td>Old variables</td><td>become hidden aliases and keep working</td><td>must stay published until every consumer has moved</td></tr>
+          <tr><td>Hidden cost</td><td>the 4 new brand modes need values for every existing variable, one scripted pass</td><td>none in the DS; all of it lands on the consumers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note accent"><p><b>The ICP file already proves the point.</b> The library collection it uses is the live <span class="m">1. Semantics</span>, same key, published earlier as “1. Color modes”, “1. Brands” and “1. Semantics”. Every rename so far reached it without a re-bind. That is the path to keep using.</p></div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>The steps, in order</h2>
+    <p class="lede">Each step is scripted and has been rehearsed in the test file. A named version comes before each one, so any step can be rolled back on its own. Steps 0 to 7 fit in one working session.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>#</th><th>What</th><th>Size</th><th>Changes pixels</th></tr></thead>
+        <tbody>
+          <tr><td class="stepno">0</td><td><b>Prepare.</b> Named version “Before Model C”, pause publishing, list the consuming files.</td><td class="n">—</td><td>no</td></tr>
+          <tr><td class="stepno">1</td><td><b>Collection and modes.</b> Rename <span class="m">1. Semantics</span> to <span class="m">🎨 SKO-Semantics</span>, and its modes to <span class="m">SKO Light</span> and <span class="m">SKO Dark</span>; the IDs stay. Add <span class="m">Gold Light</span>, <span class="m">Gold Dark</span>, <span class="m">Red Light</span>, <span class="m">Red Dark</span>.</td><td class="n">6 of 10 modes</td><td>no</td></tr>
+          <tr><td class="stepno">2</td><td><b>Give the new modes values.</b> Every existing colour variable copies SKO Light into Gold and Red Light, and SKO Dark into Gold and Red Dark. Without this, a brand mode shows the wrong colours on everything that is still legacy.</td><td class="n">405 variables</td><td>no</td></tr>
+          <tr><td class="stepno">3</td><td><b>Rename the survivors.</b> Each role takes the name of the existing variable listed in the reference below, at the top of the collection. Create <span class="m">on-primary-hover</span>. The seven brand roles take their Gold and Red values from the test file.</td><td class="n">42 renames, 1 new</td><td>no</td></tr>
+          <tr><td class="stepno">4</td><td><b>Turn duplicates into aliases.</b> The other variables with the exact same values become aliases of their role, and follow the brand modes. The near-duplicates you approved in the test file join them. Everything moves under <span class="m">_legacy/</span>.</td><td class="n">47 exact + approved near-duplicates</td><td>only the approved near-duplicates</td></tr>
+          <tr><td class="stepno">5</td><td><b>Brand.</b> Roles and aliases that still point at <span class="m">2. Skins</span> take their values directly in each mode. Skins stays until clean-up: ICP forces its mode on 4 frames and binds none of its variables.</td><td class="n">31 Skins aliases</td><td>no</td></tr>
+          <tr><td class="stepno">6</td><td><b>Picker and Dev Mode.</b> Only the 43 roles stay pickable; every other colour variable is hidden from the picker. Each role gets its code name (<span class="m">var(--color-on-surface)</span>, <span class="m">onSurface</span>) so Dev Mode shows what developers type.</td><td class="n">43 visible</td><td>no</td></tr>
+          <tr><td class="stepno">7</td><td><b>Replay the component fixes from the test file.</b> Its node IDs match the live file. Primary button hover pair and <span class="m">on-primary</span> text; toggle knob and state layer; Progression button; Course-Completed on <span class="m">success</span> / <span class="m">on-success</span>; mobile footer on <span class="m">surface</span> / <span class="m">on-surface</span>.</td><td class="n">~10 components</td><td>Dark only, as approved</td></tr>
+          <tr><td class="stepno">8</td><td><b>Optional: re-bind to role names.</b> DS components bound to a legacy alias move to the role itself. The values are identical, so this only makes Dev Mode show the role name everywhere. Instances follow.</td><td class="n">38,722 bindings</td><td>no</td></tr>
+          <tr><td class="stepno">9</td><td><b>Check, publish, accept.</b> Check the key screens in SKO Light and Dark and the six-mode proof. You publish; the ICP and the other consumers accept the update.</td><td class="n">—</td><td>no</td></tr>
+          <tr><td class="stepno">10</td><td><b>Clean up later, one approval each.</b> Delete unused variables, the Skins collection and the Untitled UI demo pages (after checking marketing), then retire the aliases once consumers stop using them. Rebuilding the base components and moving the Topbar to modes come after.</td><td class="n">separate</td><td>per item</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>What stays as legacy, and why</h2>
+    <ul class="tight">
+      <li><b>298 variables in use have no matching role.</b> Most are the Untitled UI palette inside the base components (Buttons, Badges, Inputs, icons), with 238,606 bindings between them. They stay working and hidden from the picker. Mapping them would shift shades, which is a design decision.</li>
+      <li><b>43 of them are SKO-named</b> and worth a look later: <span class="m">text-brand-tertiary</span> (3,421), <span class="m">border-tertiary</span> (2,125), <span class="m">Icon/default</span> (1,433), <span class="m">bg-active</span> (1,002), <span class="m">focus-ring</span> (423), and the Untitled UI shadow scale.</li>
+      <li><b>Nothing is deleted in steps 0 to 9.</b> Deletion is step 10, with a check of every consumer first.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>What the test file taught us</h2>
+    <ul class="tight">
+      <li><b>A forced mode only belongs to its own collection.</b> Moving bindings to a new collection left the dark Topbar and 14 demos rendering light. Renaming in place avoids this entirely.</li>
+      <li><b>A new mode starts from the default mode’s values.</b> That is why step 2 comes straight after step 1.</li>
+      <li><b>A second fill’s opacity doesn’t reach instances.</b> The toggle’s state layer is a separate layer with its own opacity.</li>
+      <li><b>Compare colours with their alpha.</b> <span class="m">scrim</span> and <span class="m">shadow</span> are translucent, and a check without alpha reports false changes.</li>
+      <li><b>Scripts run in batches of 20 to 25 seconds.</b> The live file is large, and the plugin stops a call at 30.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>Before step 1, we need</h2>
+    <ol class="tight">
+      <li><b>Your go-ahead</b> on renaming in place.</li>
+      <li><b>The list of files that consume the library</b> besides ICP: the Mobile App file, marketing, any others.</li>
+      <li><b>Whether step 8 runs now or later.</b> It is safe, but it adds 38,722 changes to the publish diff.</li>
+      <li><b>The near-duplicate list.</b> It is re-derived from the test file at step 4 and shown to you before anything is applied.</li>
+      <li><b>A retirement date for the old code names</b> (<span class="m">--sk-*</span>), which the developers keep as aliases.</li>
+    </ol>
+  </section>
+
+  <section class="refs">
+    <h2>Reference</h2>
+    <details class="ref">
+      <summary>The 43 roles: which existing variable each one becomes</summary>
+      <div class="refbody">
+        <p class="lede">Survivor: the variable in <span class="m">1. Semantics</span> that takes the role’s name, shown by its current name without the <span class="m">SKO/Colors/</span> prefix, chosen by meaning, then by use. Bindings: how many nodes in the DS file bind it today; they all stay. Becomes an alias: other variables with exactly the same Light and Dark values, which will point at the role. ◆ changes with the brand. Swatches: SKO Light, then SKO Dark.</p>
+        <div class="scroll"><table>
+          <thead><tr><th>Role</th><th>Survivor (today’s name)</th><th>Bindings</th><th>Becomes an alias</th></tr></thead>
+          <tbody>
+          <tr class="grp"><td colspan="4">Surfaces</td></tr>
+          <tr><td><span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#0E1A1F"></span><span class="m">surface</span></td><td><span class="m">Background/bg-primary</span></td><td class="n">24,673</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#F8F9FA"></span><span class="sw" style="background:#16282F"></span><span class="m">surface-container</span></td><td><span class="m">Background/bg-secondary_subtle</span></td><td class="n">520</td><td class="al">Background/bg-primary_hover <span class="n">595</span></td></tr>
+          <tr><td><span class="sw" style="background:#E1E7EC"></span><span class="sw" style="background:#25383F"></span><span class="m">surface-container-high</span></td><td><span class="m">Background/bg-tertiary</span></td><td class="n">835</td><td class="al">Background/bg-thumb-placeholder <span class="n">1</span></td></tr>
+          <tr><td><span class="sw" style="background:#B9C4CE"></span><span class="sw" style="background:#2C3D45"></span><span class="m">surface-container-highest</span></td><td><span class="m">Background/bg-quaternary</span></td><td class="n">1,022</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#F3F5FA"></span><span class="sw" style="background:#122228"></span><span class="m">surface-variant</span></td><td><span class="m">Background/bg-secondary</span></td><td class="n">2,018</td><td class="al">Text/text-secondary_on-brand <span class="n">0</span>; Scrollbar/track <span class="n">1</span></td></tr>
+          <tr class="grp"><td colspan="4">Text and icons on surfaces</td></tr>
+          <tr><td><span class="sw" style="background:#13282F"></span><span class="sw" style="background:#EAF1F4"></span><span class="m">on-surface</span></td><td><span class="m">Text/text-primary</span></td><td class="n">9,924</td><td class="al">Foreground/fg-primary <span class="n">644</span></td></tr>
+          <tr><td><span class="sw" style="background:#39414C"></span><span class="sw" style="background:#B3C0C7"></span><span class="m">on-surface-variant</span></td><td><span class="m">Text/text-secondary</span></td><td class="n">20,008</td><td class="al">Foreground/fg-secondary <span class="n">62</span>; Text/text-tertiary_hover <span class="n">248</span>; Foreground/fg-tertiary_hover <span class="n">0</span></td></tr>
+          <tr><td><span class="sw" style="background:#4F5B69"></span><span class="sw" style="background:#93A3AB"></span><span class="m">on-surface-muted</span></td><td><span class="m">Text/text-tertiary</span></td><td class="n">33,121</td><td class="al">Foreground/fg-tertiary <span class="n">44</span></td></tr>
+          <tr><td><span class="sw" style="background:#677482"></span><span class="sw" style="background:#73848C"></span><span class="m">on-surface-subtle</span></td><td><span class="m">Text/text-quaternary</span></td><td class="n">6,198</td><td class="al">Text/text-placeholder <span class="n">2,193</span></td></tr>
+          <tr><td><span class="sw" style="background:#B9C4CE"></span><span class="sw" style="background:#606B7A"></span><span class="m">on-surface-faint</span></td><td><span class="m">Foreground/fg-quaternary</span></td><td class="n">361</td><td class="al">Scrollbar/thumb <span class="n">1</span></td></tr>
+          <tr><td><span class="sw" style="background:#8995A6"></span><span class="sw" style="background:#53666E"></span><span class="m">on-surface-disabled</span></td><td><span class="m">Text/text-disabled</span></td><td class="n">484</td><td class="al">Foreground/fg-disabled <span class="n">529</span></td></tr>
+          <tr class="grp"><td colspan="4">Lines</td></tr>
+          <tr><td><span class="sw" style="background:#8995A6"></span><span class="sw" style="background:#8995A6"></span><span class="m">outline</span></td><td><span class="m">Border/border-primary</span></td><td class="n">18,214</td><td class="al">Foreground/fg-quaternary_hover <span class="n">0</span></td></tr>
+          <tr><td><span class="sw" style="background:#D5DCE2"></span><span class="sw" style="background:#2C3D45"></span><span class="m">outline-variant</span></td><td><span class="m">Border/border-secondary</span></td><td class="n">26,516</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#B9C4CE"></span><span class="sw" style="background:#25383F"></span><span class="m">outline-disabled</span></td><td><span class="m">Border/border-disabled</span></td><td class="n">144</td><td class="al">Foreground/fg-disabled_subtle <span class="n">257</span></td></tr>
+          <tr><td><span class="sw" style="background:#13282F"></span><span class="sw" style="background:#16282F"></span><span class="m">outline-inverse</span></td><td><span class="m">Border/border-secondary_alt</span></td><td class="n">423</td><td class="al">—</td></tr>
+          <tr class="grp"><td colspan="4">Overlay, elevation, fixed</td></tr>
+          <tr><td><span class="sw" style="background:#0E1A1F"></span><span class="sw" style="background:#0E1A1F"></span><span class="m">scrim</span></td><td><span class="m">Background/bg-overlay</span></td><td class="n">208</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#1F233E"></span><span class="sw" style="background:#1F233E"></span><span class="m">shadow</span></td><td><span class="m">Effects/Shadows/shadow-card</span></td><td class="n">90</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#FFFFFF"></span><span class="m">fixed-white</span></td><td><span class="m">Foreground/fg-white</span></td><td class="n">13,052</td><td class="al">(R) Text/text-white <span class="n">2,058</span>; (R) Foreground/fg-white <span class="n">3,946</span>; Background/bg-primary_alt <span class="n">530</span></td></tr>
+          <tr class="grp"><td colspan="4">Brand (changes with the brand)</td></tr>
+          <tr><td><span class="sw" style="background:#26708E"></span><span class="sw" style="background:#4AA3C7"></span><span class="m">◆ primary</span></td><td><span class="m">Background/bg-brand-solid</span></td><td class="n">5,146</td><td class="al">Foreground/fg-brand-primary <span class="n">7,322</span>; Foreground/fg-brand <span class="n">2,187</span>; Border/border-brand <span class="n">5,803</span>; Border/border-focus-ring <span class="n">2</span>; (R) Border/border-brand <span class="n">100</span>; (R) Border/border-brand_alt <span class="n">217</span>; (RC) Components/Icons/Icons/icon-fg-brand <span class="n">103</span>; (RC) Components/Icons/Featured icons/featured-icon-light-fg-brand <span class="n">539</span>; (R) Foreground/fg-brand-primary (600) <span class="n">1,255</span>; (R) Foreground/fg-brand-primary_alt <span class="n">107</span>; (R) Foreground/fg-brand-secondary (500) <span class="n">3,101</span>; (R) Foreground/fg-brand-secondary_hover <span class="n">12</span>; (R) Background/bg-brand-solid <span class="n">629</span></td></tr>
+          <tr><td><span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#0E1A1F"></span><span class="m">◆ on-primary</span></td><td><span class="m">Text/text-primary_on-brand</span></td><td class="n">161</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#EBF8FF"></span><span class="sw" style="background:#0F2C38"></span><span class="m">◆ primary-container</span></td><td><span class="m">Background/bg-brand-section</span></td><td class="n">342</td><td class="al">Background/bg-brand-primary <span class="n">189</span>; (R) Background/bg-brand-primary <span class="n">350</span>; (R) Background/bg-brand-primary_alt <span class="n">41</span>; (R) Background/bg-brand-secondary <span class="n">213</span>; (R) Background/bg-brand-section <span class="n">435</span>; (R) Background/bg-brand-section_subtle <span class="n">94</span></td></tr>
+          <tr><td><span class="sw" style="background:#044150"></span><span class="sw" style="background:#CDEAF6"></span><span class="m">◆ on-primary-container</span></td><td><span class="m">Text/text-brand-primary</span></td><td class="n">58</td><td class="al">(R) Text/text-brand-primary (900) <span class="n">95</span></td></tr>
+          <tr><td><span class="sw" style="background:#215477"></span><span class="sw" style="background:#6CC0E0"></span><span class="m">◆ primary-text</span></td><td><span class="m">Text/text-brand-secondary</span></td><td class="n">6,123</td><td class="al">Text/text-brand <span class="n">4,490</span></td></tr>
+          <tr><td><span class="sw" style="background:#ACD5F4"></span><span class="sw" style="background:#215477"></span><span class="m">◆ primary-outline-variant</span></td><td><span class="m">Border/border-brand_subtle</span></td><td class="n">12</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#F9C654"></span><span class="sw" style="background:#6CC0E0"></span><span class="m">◆ primary-hover</span></td><td><span class="m">Background/bg-brand-hover</span></td><td class="n">18</td><td class="al">(R) Background/bg-brand-solid_hover <span class="n">15</span></td></tr>
+          <tr><td><span class="sw" style="background:#044150"></span><span class="sw" style="background:#0E1A1F"></span><span class="m">◆ on-primary-hover</span></td><td><em>new variable</em></td><td class="n">0</td><td class="al">—</td></tr>
+          <tr class="grp"><td colspan="4">Error</td></tr>
+          <tr><td><span class="sw" style="background:#DA3336"></span><span class="sw" style="background:#E26567"></span><span class="m">error</span></td><td><span class="m">Background/bg-error-solid</span></td><td class="n">93</td><td class="al">Border/border-error <span class="n">35</span>; Foreground/fg-error-secondary <span class="n">127</span></td></tr>
+          <tr><td><span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#0E1A1F"></span><span class="m">on-error</span></td><td><span class="m">Foreground/fg-error-on-solid</span></td><td class="n">4</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#FCE8E8"></span><span class="sw" style="background:#34191B"></span><span class="m">error-container</span></td><td><span class="m">Background/bg-error-primary</span></td><td class="n">65</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#B62226"></span><span class="sw" style="background:#F3AFB0"></span><span class="m">on-error-container</span></td><td><span class="m">Text/text-error-primary</span></td><td class="n">247</td><td class="al">Foreground/fg-error-primary <span class="n">54</span></td></tr>
+          <tr><td><span class="sw" style="background:#F3AFB0"></span><span class="sw" style="background:#741B1D"></span><span class="m">error-container-variant</span></td><td><span class="m">Background/bg-error-secondary</span></td><td class="n">55</td><td class="al">—</td></tr>
+          <tr class="grp"><td colspan="4">Success</td></tr>
+          <tr><td><span class="sw" style="background:#1F7643"></span><span class="sw" style="background:#2D9C5B"></span><span class="m">success</span></td><td><span class="m">Background/bg-success-solid</span></td><td class="n">106</td><td class="al">Border/border-success <span class="n">16</span></td></tr>
+          <tr><td><span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#0E1A1F"></span><span class="m">on-success</span></td><td><span class="m">Foreground/fg-success-on-solid</span></td><td class="n">1</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#E4FCED"></span><span class="sw" style="background:#102B1D"></span><span class="m">success-container</span></td><td><span class="m">Background/bg-success-primary</span></td><td class="n">55</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#1F7643"></span><span class="sw" style="background:#72D99A"></span><span class="m">on-success-container</span></td><td><span class="m">Text/text-success-primary</span></td><td class="n">411</td><td class="al">Foreground/fg-success-primary <span class="n">60</span></td></tr>
+          <tr><td><span class="sw" style="background:#AAEDC2"></span><span class="sw" style="background:#1B6440"></span><span class="m">success-container-variant</span></td><td><span class="m">Background/bg-success-secondary</span></td><td class="n">90</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#33A864"></span><span class="sw" style="background:#40C075"></span><span class="m">success-bright</span></td><td><span class="m">Foreground/fg-success-secondary</span></td><td class="n">1,208</td><td class="al">—</td></tr>
+          <tr class="grp"><td colspan="4">Warning</td></tr>
+          <tr><td><span class="sw" style="background:#F9C654"></span><span class="sw" style="background:#F9C654"></span><span class="m">warning</span></td><td><span class="m">Background/bg-warning-solid</span></td><td class="n">3</td><td class="al">Border/border-warning <span class="n">0</span></td></tr>
+          <tr><td><span class="sw" style="background:#13282F"></span><span class="sw" style="background:#13282F"></span><span class="m">on-warning</span></td><td><span class="m">Foreground/fg-warning-on-solid</span></td><td class="n">67</td><td class="al">Text/text-primary_on-brand-hover <span class="n">22</span></td></tr>
+          <tr><td><span class="sw" style="background:#FFF9EB"></span><span class="sw" style="background:#2E2410"></span><span class="m">warning-container</span></td><td><span class="m">Background/bg-warning-primary</span></td><td class="n">15</td><td class="al">—</td></tr>
+          <tr><td><span class="sw" style="background:#85580E"></span><span class="sw" style="background:#FAB929"></span><span class="m">on-warning-container</span></td><td><span class="m">Text/text-warning-primary</span></td><td class="n">87</td><td class="al">Foreground/fg-warning-primary <span class="n">0</span></td></tr>
+          <tr><td><span class="sw" style="background:#FFEBBD"></span><span class="sw" style="background:#996816"></span><span class="m">warning-container-variant</span></td><td><span class="m">Background/bg-warning-secondary</span></td><td class="n">3</td><td class="al">—</td></tr>
+          <tr class="grp"><td colspan="4">Info</td></tr>
+          <tr><td><span class="sw" style="background:#0086C9"></span><span class="sw" style="background:#66A3D6"></span><span class="m">info</span></td><td><span class="m">Foreground/fg-progress</span></td><td class="n">7,943</td><td class="al">—</td></tr>
+          </tbody></table></div>
+      </div>
+    </details>
+    <details class="ref">
+      <summary>How the numbers were measured</summary>
+      <div class="refbody">
+        <ul class="tight">
+          <li><b>DS file</b>, 116 pages: 457,452 bindings to <span class="m">1. Semantics</span> and <span class="m">2. Skins</span> across 405 colour variables. The 89 variables that exactly match a role hold 218,846 of them, and the 42 chosen survivors hold 180,124. 1,317 nodes force a <span class="m">1. Semantics</span> mode.</li>
+          <li><b>ICP file</b>, 39 pages: 666,164 bindings. 597,713 sit inside instances, and follow the library; 68,451 are direct, of which 13,623 bind 98 library colour variables. 735 nodes force a mode of the same collection, which has key <span class="m">b301caf…</span>.</li>
+          <li><b>Exact match</b> means the same hex in SKO Light and SKO Dark, alpha included, resolved through every alias to the primitive.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Companion documents: SKO Design System Plan · SKO Colour Token Model · measured 19 Sep 2026 in the live DS and LMS ICP Phase 1 files
+  </footer>
+
+</div>
+
+</body></html>

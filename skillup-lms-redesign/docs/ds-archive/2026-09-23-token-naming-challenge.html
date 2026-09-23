@@ -1,0 +1,349 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SKO Token Naming Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+  :root {
+    --ground:#F5F8F8; --surface:#FFFFFF; --surface-sunk:#ECF1F1;
+    --ink:#13282F; --ink-soft:#40585F; --ink-faint:#71878D;
+    --rule:#D3DEDE; --rule-soft:#E4EBEB;
+    --accent:#17607A; --accent-soft:#E2EDF1;
+    --ok:#2C6E52; --ok-soft:#E0EDE6; --alert:#A8412A; --alert-soft:#F6E5E0; --unknown:#7A6836; --unknown-soft:#F1ECDC;
+    --display:"Newsreader",Georgia,"Times New Roman",serif; --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace; --col:70ch;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --ground:#0D1618; --surface:#142126; --surface-sunk:#1B2C31; --ink:#E6EEEE; --ink-soft:#A9BEC2; --ink-faint:#7B9197; --rule:#2A3E44; --rule-soft:#21343A; --accent:#6FB8CE; --accent-soft:#16333E; --ok:#7BC49C; --ok-soft:#163024; --alert:#E4927C; --alert-soft:#35201A; --unknown:#CBB878; --unknown-soft:#2C2718; } }
+  :root[data-theme="dark"] {
+    --ground:#0D1618; --surface:#142126; --surface-sunk:#1B2C31; --ink:#E6EEEE; --ink-soft:#A9BEC2; --ink-faint:#7B9197; --rule:#2A3E44; --rule-soft:#21343A; --accent:#6FB8CE; --accent-soft:#16333E; --ok:#7BC49C; --ok-soft:#163024; --alert:#E4927C; --alert-soft:#35201A; --unknown:#CBB878; --unknown-soft:#2C2718; }
+
+  * { box-sizing:border-box; }
+  body { background:var(--ground); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1040px; margin:0 auto; padding:56px 28px 96px; display:flex; flex-direction:column; gap:52px; }
+  .masthead { display:flex; flex-direction:column; gap:18px; }
+  .kicker { font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+  h1 { font-family:var(--display); font-weight:500; font-size:clamp(2.1rem,5vw,3rem); line-height:1.08; letter-spacing:-.015em; margin:0; text-wrap:balance; }
+  .standfirst { font-family:var(--display); font-size:clamp(1.05rem,2.2vw,1.25rem); line-height:1.5; color:var(--ink-soft); max-width:var(--col); margin:0; }
+  .provenance { font-family:var(--mono); font-size:12px; color:var(--ink-faint); line-height:1.9; border-top:1px solid var(--rule); padding-top:14px; display:flex; flex-wrap:wrap; gap:4px 28px; }
+  .provenance b { color:var(--ink-soft); font-weight:500; }
+  section { display:flex; flex-direction:column; gap:18px; }
+  h2 { font-family:var(--display); font-weight:500; font-size:1.7rem; line-height:1.2; margin:0; letter-spacing:-.01em; text-wrap:balance; }
+  h2 .num { font-family:var(--mono); font-size:.72em; font-weight:500; color:var(--accent); margin-right:.6em; }
+  h3 { font-family:var(--body); font-weight:600; font-size:1rem; margin:0; }
+  p { margin:0; max-width:var(--col); } p+p { margin-top:.85em; }
+  .lede { color:var(--ink-soft); }
+  ul,ol { margin:0; padding-left:1.3em; max-width:var(--col); display:flex; flex-direction:column; gap:8px; color:var(--ink-soft); }
+  li b { color:var(--ink); font-weight:600; }
+  code,.m { font-family:var(--mono); font-size:.875em; }
+  code { background:var(--surface-sunk); padding:.12em .4em; border-radius:3px; color:var(--ink); }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; min-width:560px; font-size:14px; }
+  th { text-align:left; font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); border-bottom:1px solid var(--rule); padding:0 14px 8px 0; white-space:nowrap; }
+  td { padding:9px 14px 9px 0; border-bottom:1px solid var(--rule-soft); vertical-align:top; color:var(--ink-soft); }
+  td:first-child { color:var(--ink); } td.n { font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr:last-child td { border-bottom:none; }
+  .chip { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:3px 7px; border-radius:2px; white-space:nowrap; vertical-align:middle; }
+  .chip.ok{background:var(--ok-soft);color:var(--ok);} .chip.alert{background:var(--alert-soft);color:var(--alert);} .chip.unknown{background:var(--unknown-soft);color:var(--unknown);} .chip.accent{background:var(--accent-soft);color:var(--accent);}
+  .note { border-left:2px solid var(--rule); padding-left:18px; color:var(--ink-soft); max-width:var(--col); }
+  .note.flag{border-left-color:var(--alert);} .note.good{border-left-color:var(--ok);} .note.accent{border-left-color:var(--accent);}
+  .glance { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .g { background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent); border-radius:4px; padding:14px 16px; display:flex; flex-direction:column; gap:6px; }
+  .g.warn { border-top-color:var(--alert); } .g.good { border-top-color:var(--ok); } .g.ask { border-top-color:var(--unknown); }
+  .g h4 { margin:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  .g p { font-size:14.5px; line-height:1.5; color:var(--ink-soft); max-width:none; }
+  .g p b { color:var(--ink); font-weight:600; }
+  .strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); border:1px solid var(--rule); background:var(--surface); }
+  .fig { padding:18px 20px; border-right:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:3px; }
+  .fig:last-child{border-right:none;}
+  .fig .v { font-family:var(--display); font-size:2rem; line-height:1; font-variant-numeric:tabular-nums; color:var(--ink); }
+  .fig .v.warn{color:var(--alert);} .fig .v.good{color:var(--ok);}
+  .fig .k { font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); }
+  .sw { display:inline-block; width:14px; height:14px; border-radius:3px; border:1px solid var(--rule); vertical-align:-2px; margin-right:6px; }
+  .link { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  .verdict { font-family:var(--display); font-size:1.2rem; line-height:1.45; color:var(--ink); margin:0; max-width:var(--col); }
+  footer { border-top:1px solid var(--rule); padding-top:18px; font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); line-height:1.8; }
+  @media (max-width:620px){ .wrap{padding:36px 18px 64px;gap:40px;} .fig{border-right:none;border-bottom:1px solid var(--rule-soft);} }
+  .docnav { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 20px; font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; color:var(--ink-faint); padding-bottom:14px; border-bottom:1px solid var(--rule); margin-bottom:-24px; }
+  .docnav .lbl { text-transform:uppercase; letter-spacing:.12em; font-weight:500; margin-right:6px; }
+  .docnav a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  .docnav a:hover, .docnav a:focus-visible { border-bottom-color:var(--accent); outline:none; }
+  .docnav .here { color:var(--ink); font-weight:600; border-bottom:2px solid var(--accent); }
+  .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+  .camp { background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
+  .camp h4 { margin:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  .camp .who { font-family:var(--display); font-size:1.1rem; color:var(--ink); }
+  .camp p, .camp ul { font-size:14px; color:var(--ink-soft); max-width:none; }
+  .camp.a { border-top:3px solid var(--unknown); } .camp.c { border-top:3px solid var(--accent); }
+  .tight li { line-height:1.5; }
+  .srcs { columns:2; column-gap:28px; font-size:13.5px; }
+  .srcs li { break-inside:avoid; margin-bottom:6px; }
+  @media (max-width:720px){ .srcs{columns:1;} }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+
+<div class="wrap">
+
+  <nav class="docnav" aria-label="SKO Design System documents">
+    <span class="lbl">SKO Design System</span>
+    <a href="https://claude.ai/code/artifact/ad6dc6ec-8243-4ef8-a343-041b3739e3e8">Index</a>
+    <a href="https://claude.ai/code/artifact/dac668f5-62b2-4257-a0ba-388ed6286d9a">Audit</a>
+    <a href="https://claude.ai/code/artifact/c51810fb-98d5-466d-aeb6-2b7670974ef6">Plan</a>
+    <a href="https://claude.ai/code/artifact/ab94ea98-2615-45ef-a0c2-56526b194230">Naming</a>
+    <a href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4">Colour tokens</a>
+    <a href="https://claude.ai/artifact/VQnmRLVzt6p5TcCz6L3aZ1">Migration</a>
+    <span class="here">Challenge</span> <a href="https://claude.ai/artifact/K7XJExPk558SNdENWuQobX">Rename impact</a> <a href="https://claude.ai/artifact/WhQnhby4zK8UkfZ5sd4bCG">Manual</a> <a href="https://claude.ai/artifact/YAtAqLo6dTSNHmGiHme9BM">Final names</a>
+    <a href="https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/%E2%9D%96-SKO-Design-System--Untitled-UI-?node-id=21420-5353&t=OTqlDlBt6rZch8VU-4">Figma ↗</a>
+  </nav>
+
+  <header class="masthead">
+    <div class="kicker">Second opinion · for design and engineering</div>
+    <h1>Did we pick the right token naming strategy?</h1>
+    <p class="standfirst">Model C went live on 19 September. Before the team builds on it, this
+      document tests the decision against what the most respected design systems and their authors
+      actually do, audits all 47 roles, and says what to change and what to leave alone.</p>
+    <div class="provenance">
+      <span><b>Status</b> challenge, not a decision · <b>outcome 22 Sep:</b> element-first chosen and applied</span>
+      <span><b>Written</b> 22 Sep 2026</span>
+      <span><b>Scope</b> colour roles, token structure, type and spacing names</span>
+      <span><b>Evidence</b> 11 production systems, 12 authors, 2 industry reports, the live library</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>In one minute</h2>
+    <div class="glance">
+      <div class="g good"><h4>Outcome, 22 Sep</h4><p>After this challenge Nelson chose <b>element-first names</b>, with the word <span class="m">primary</span> kept. They were applied to the live library the same evening: 47 roles renamed, 20 tokens added to split roles by element, 16 accents, published and re-bound in ICP. The <a class="link" href="https://claude.ai/artifact/K7XJExPk558SNdENWuQobX">Rename impact</a> doc measured the cost; the <a class="link" href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4#names-now">colour memo §0</a> maps every name. This page stays as the reasoning.</p></div>
+      <div class="g good"><h4>Structure · sound</h4><p>Tokens born in Foundations only, primitives hidden, a semantic layer and no component tier yet, role-not-value names, one canonical name transformed per platform, aliases with a retirement date. <b>This is what 85–90% of systems do</b> and what every author we read recommends.</p></div>
+      <div class="g ask"><h4>Vocabulary · defensible, premise weakened</h4><p>Material names were chosen so that <b>a framework reads them by name</b>. Today no confirmed platform does: the web is plain CSS variables with no Tailwind and no Material UI, and the mobile stack is still question 7.</p></div>
+      <div class="g warn"><h4>43% of the set is not Material</h4><p>Of 47 roles, <b>19 are Material verbatim, 8 follow its shape, 20 are SKO inventions</b> in Material dress. Flutter or Paper would take 19 slots directly and need an extension for the rest, so "no mapping table" was never fully true.</p></div>
+      <div class="g "><h4>What the best systems do</h4><p>Atlassian, Polaris, Carbon, Primer, Spectrum, Apple and Figma's own guide name <b>by element first</b> (text, background, border) and still carry contrast pairs. Material and shadcn name <b>by role first</b>. Both camps are respectable; the element-first camp is larger.</p></div>
+      <div class="g warn"><h4>Six defects to fix now</h4><p><span class="m">surface-variant</span> is deprecated by Material and duplicates a value; three border roles are named as containers; <span class="m">fixed-white</span> encodes a value; <span class="m">info</span> has no pair; <span class="m">primary-text</span> is justified by a contrast need the numbers do not show; the picker is a flat list of 47. <b>All are renames that keep bindings.</b></p></div>
+      <div class="g good"><h4>Recommendation</h4><p><b>Keep Model C.</b> Do not rename the vocabulary twice in one week without evidence. Apply the six fixes, write down the decision test that ends the debate, and set two conditions that would reopen it, at most once.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">1</span>What the field actually says</h2>
+    <p class="lede">Eleven systems that teams copy, plus the authors who shaped the practice. Every one of
+      them names by role rather than value; where they differ is whether the name starts with the
+      <em>element</em> it colours or with the <em>role</em> it plays.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>System</th><th>Grammar</th><th>Examples</th><th>Text on a coloured fill</th></tr></thead>
+        <tbody>
+          <tr><td>Material 3 (Google)</td><td>role · on-role · container</td><td><span class="m">primary</span> <span class="m">on-primary</span> <span class="m">surface-container</span> <span class="m">on-surface-variant</span></td><td><span class="m">on-primary</span></td></tr>
+          <tr><td>shadcn/ui</td><td>role · role-foreground</td><td><span class="m">primary</span> <span class="m">primary-foreground</span> <span class="m">muted-foreground</span></td><td><span class="m">-foreground</span></td></tr>
+          <tr><td>Atlassian</td><td>color.property.role.emphasis.state</td><td><span class="m">color.text.brand</span> <span class="m">color.background.brand.bold</span></td><td><span class="m">color.text.inverse</span></td></tr>
+          <tr><td>Shopify Polaris</td><td>color-element-role-variant-state</td><td><span class="m">color-bg-fill-brand</span> <span class="m">color-text-secondary</span></td><td><span class="m">color-text-brand-on-bg-fill</span></td></tr>
+          <tr><td>IBM Carbon v11</td><td>element-role-modifier-state</td><td><span class="m">text-primary</span> <span class="m">layer-01</span> <span class="m">background-brand</span></td><td><span class="m">text-on-color</span></td></tr>
+          <tr><td>GitHub Primer v8</td><td>property-variant-scale</td><td><span class="m">fgColor-default</span> <span class="m">bgColor-emphasis</span> <span class="m">borderColor-muted</span></td><td><span class="m">fgColor-onEmphasis</span></td></tr>
+          <tr><td>Adobe Spectrum</td><td>context · unit · clarification, alias layer</td><td><span class="m">gray-800</span> → <span class="m">text-color</span>, <span class="m">background-color</span></td><td>alias layer</td></tr>
+          <tr><td>Apple HIG</td><td>element hierarchy</td><td><span class="m">label</span> <span class="m">secondaryLabel</span> <span class="m">systemBackground</span></td><td>—</td></tr>
+          <tr><td>HashiCorp Helios</td><td>Element/Role</td><td><span class="m">Foreground/Primary</span> <span class="m">Surface/Faint</span></td><td>Foreground/{status} on surface</td></tr>
+          <tr><td>Figma, resource library 2025</td><td>category/role/variant</td><td><span class="m">color/action/primary</span> <span class="m">color/text/disabled</span></td><td>—</td></tr>
+          <tr><td>Nathan Curtis, EightShapes</td><td>namespace · object · base · modifier</td><td><span class="m">color-text-primary</span> <span class="m">color-background-warning</span></td><td>mode modifier, <span class="m">on-dark</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two">
+      <div class="camp c">
+        <h4>Role first</h4>
+        <span class="who">Material, shadcn, Flutter, Compose, RN Paper, Angular Material</span>
+        <ul class="tight">
+          <li><b>Strength:</b> every fill ships with its text colour, so Dark mode and brands are a theme swap and never a branch in a component.</li>
+          <li><b>Strength:</b> the vocabulary is published, taught and recognised, and four frameworks read it verbatim.</li>
+          <li><b>Cost:</b> <span class="m">on-surface-variant</span> for "secondary text" asks the reader to know the system. Material's answer is a generator, an algorithm that fills the roles, which we do not use.</li>
+          <li><b>Cost:</b> the set was designed around Google's tonal palettes; a brand that starts from its own palette ends up inventing roles, as we did.</li>
+        </ul>
+      </div>
+      <div class="camp a">
+        <h4>Element first</h4>
+        <span class="who">Atlassian, Polaris, Carbon, Primer, Spectrum, Apple, Helios, Figma's guide, Curtis</span>
+        <ul class="tight">
+          <li><b>Strength:</b> the name says where it goes. Carbon renamed its whole set in v11 for one reason: so people could apply colour without opening the guide.</li>
+          <li><b>Strength:</b> the Figma picker groups by slash, so <span class="m">text/…</span>, <span class="m">bg/…</span>, <span class="m">border/…</span> become folders for free. Our base kit, Untitled UI, is built this way.</li>
+          <li><b>Not a weakness:</b> contrast pairs exist here too, as a modifier: <span class="m">fgColor-onEmphasis</span>, <span class="m">color.text.inverse</span>, <span class="m">text-on-color</span>. The memo's table called them "implicit" in Model A; in the field they are explicit.</li>
+          <li><b>Cost:</b> no framework reads these names; the theme is always hand-mapped, which on a plain-CSS web is no cost at all.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Where the authors agree, and our plan already complies</h3>
+    <ul class="tight">
+      <li><b>One canonical name, transformed per platform.</b> Improta's mistake #4, Atlassian's Figma-to-code rule, Figma's Dev Mode conversion. Never a second vocabulary maintained by hand.</li>
+      <li><b>Name the role, never the value.</b> Improta's mistake #2, Curtis, Figma: "A token named text-secondary will outlast a rebrand."</li>
+      <li><b>Two tiers first, a component tier only when a component must diverge.</b> zeroheight's 2026 report: 90% primitives, 85% semantic, 52% component. Nate Baldwin, who built Spectrum's component tokens, warns a single component can spawn 432 of them.</li>
+      <li><b>Do not globalise early.</b> Curtis: three real uses make a value token-worthy; before that it stays local. Our new-token rule should carry that threshold.</li>
+      <li><b>Rename with aliases and a retirement date.</b> Improta's mistake #6. We have <span class="m">_legacy/</span> and <span class="m">--sk-*</span>; we still owe the date.</li>
+      <li><b>Consistency over preference.</b> Curtis on <span class="m">on-</span> versus alternatives: the choice tilts to taste; that a convention exists matters more. Stuart Robson: the best naming system is the one the whole team actually follows.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>The premise, checked</h2>
+    <p class="lede">The rule agreed on 17 September was: adopt Material's names only where a framework on
+      the other end reads them by name. Here is who reads them today.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Platform</th><th>Reads Material names by name?</th><th>Status on 22 Sep</th></tr></thead>
+        <tbody>
+          <tr><td>Web · SKO LMS</td><td><b>No.</b> Plain CSS variables in the Storybook repo. No Tailwind, no Material UI. Any name works.</td><td><span class="chip ok">confirmed 21 Sep</span></td></tr>
+          <tr><td>Marketing · PHP / HTML</td><td><b>No.</b> The same CSS variables.</td><td><span class="chip ok">confirmed</span></td></tr>
+          <tr><td>Mobile · Flutter</td><td><b>Yes.</b> <span class="m">ColorScheme</span> takes 19 of our 47 roles verbatim; the other 28 go through a <span class="m">ThemeExtension</span>.</td><td><span class="chip unknown">not chosen</span></td></tr>
+          <tr><td>Mobile · React Native + Paper</td><td><b>Yes.</b> The MD3 theme object, same 19 / 28 split.</td><td><span class="chip unknown">not chosen</span></td></tr>
+          <tr><td>Mobile · React Native, own theme or NativeWind</td><td><b>No.</b> A theme is a JavaScript object; any key works.</td><td><span class="chip unknown">not chosen</span></td></tr>
+          <tr><td>LMS prototype · Tailwind</td><td><b>No.</b> Utilities are generated from any name.</td><td><span class="chip accent">comparison only</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note flag">
+      <p><b>So the premise is a bet on the mobile stack.</b> If question 7 comes back "Flutter" or "Paper", the bet pays 19 slots and a familiar vocabulary for the mobile team. If it comes back "React Native with our own theme", the Material names carry only their intrinsic merits: the <span class="m">on-</span> pairs, a published spec, wide recognition. Those merits are real, but the element-first camp has the pairs too, and the recognition cuts both ways: a Flutter developer who knows Material will expect <span class="m">surface-variant</span> to be deprecated and <span class="m">on-surface-muted</span> not to exist.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>The 47 roles, audited against Material 3</h2>
+    <div class="strip">
+      <div class="fig"><span class="v">47</span><span class="k">roles live</span></div>
+      <div class="fig"><span class="v good">19</span><span class="k">Material verbatim</span></div>
+      <div class="fig"><span class="v">8</span><span class="k">Material-shaped, standard extension</span></div>
+      <div class="fig"><span class="v warn">20</span><span class="k">SKO inventions</span></div>
+      <div class="fig"><span class="v warn">1</span><span class="k">deprecated by Material</span></div>
+    </div>
+    <p class="lede">The 19: surface, surface-container, -high, -highest, on-surface, on-surface-variant, outline,
+      outline-variant, scrim, shadow, the four primary roles, the four error roles, and surface-variant.
+      The 8: success and warning, four roles each, in the error shape. The 20 are listed below by what is
+      wrong with them, if anything.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Finding</th><th>Roles</th><th>What the evidence says</th><th>Proposed action</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chip alert">A · deprecated</span></td><td class="n">surface-variant</td><td>Material deprecated it in the 2023 tone-based update; Flutter 3.22 maps it to <span class="m">surfaceContainerHighest</span>. Ours is <span class="sw" style="background:#F3F5FA"></span>#F3F5FA in Light, the same value as <span class="m">surface-container</span>; only Dark differs (#122228 vs the container's).</td><td>Decide: fold into <span class="m">surface-container</span> (Light unchanged, Dark shifts on AI panel, Drag-and-drop card, ORA stepper, Tabs) or rename to the Material role it behaves like, <span class="m">surface-container-low</span>. A deprecated name should not be the one we teach.</td></tr>
+          <tr><td><span class="chip alert">B · grammar</span></td><td class="n">error-container-variant<br>success-container-variant<br>warning-container-variant</td><td>In Material a <em>container</em> is a fill. These three are borders ("outline of a soft error block"), and the brand version of the same job is already called <span class="m">primary-outline-variant</span>. The 17 Sep merge renamed <span class="m">warning-outline-variant</span> the wrong way.</td><td>Rename to <span class="m">error-outline-variant</span>, <span class="m">success-outline-variant</span>, <span class="m">warning-outline-variant</span>. Renames keep bindings; regenerate codeSyntax.</td></tr>
+          <tr><td><span class="chip alert">C · value in name</span></td><td class="n">fixed-white</td><td>The name says the value. Improta's mistake #2, Curtis's first rule. Its role is content over media, photos and the dark Topbar, which is what the existing <span class="m">scrim</span> role sits under.</td><td>Rename to <span class="m">on-scrim</span> (closes the scrim pair) or <span class="m">on-media</span>. 42+ bindings follow the rename.</td></tr>
+          <tr><td><span class="chip alert">D · pair rule</span></td><td class="n">info<br>warning · on-warning</td><td>The argument for Model C was "every x has an on-x". <span class="m">info</span> stands alone; the memo's own table promised four. <span class="m">warning</span> and <span class="m">on-warning</span> are bound by nothing, which fails Curtis's three-use test.</td><td>Either complete <span class="m">info</span> (three roles, with a first use each) or document it as a single accent by design. Keep <span class="m">warning</span> only because the set is symmetrical; say so.</td></tr>
+          <tr><td><span class="chip alert">E · justification</span></td><td class="n">primary-text</td><td>The memo says fills use #26708E and text needs #215477 "for contrast". Measured: #26708E on white is <b>5.5:1</b>, on <span class="m">surface-container</span> <b>5.1:1</b>, both above AA for body text. In Gold and Red it already equals <span class="m">primary</span>.</td><td>Keep it if the design team wants the darker link colour; record it as a taste decision, not a contrast need. Material would use <span class="m">primary</span>.</td></tr>
+          <tr><td><span class="chip unknown">F · four tiers</span></td><td class="n">on-surface-muted<br>on-surface-subtle<br>on-surface-faint<br>on-surface-disabled</td><td>Material has one lower-emphasis text role; we have five. Documented deviation, and they are the most-used tokens in the file. But no framework slot receives them, and <span class="m">on-surface-faint</span> shares #B9C4CE with <span class="m">surface-container-highest</span> and <span class="m">outline-disabled</span>.</td><td>No change. State plainly in the memo that about 40% of roles pass through an extension on any Material platform.</td></tr>
+          <tr><td><span class="chip unknown">G · shaped, not Material</span></td><td class="n">primary-hover · on-primary-hover<br>primary-outline-variant<br>outline-disabled · outline-inverse<br>focus-ring-gap · success-bright<br>surface-fixed · -dim · on-surface-fixed</td><td>Material uses state layers, not hover colours; its <span class="m">fixed</span> roles are accent roles, the surface use is ours; it has no per-status outline, no bright dot, no focus-gap colour. Each is a reasonable SKO need.</td><td>No change. Count them honestly; stop describing the set as "Material's roles".</td></tr>
+          <tr><td><span class="chip accent">H · missing</span></td><td class="n">inverse-surface<br>inverse-on-surface<br>inverse-primary<br>surface-container-low · -lowest<br>surface-dim · -bright</td><td>Before adding our own roles, these exist. The Topbar's legacy Theme=Dark variant, still on 21 <span class="m">fixed-white</span> bindings, is exactly the <span class="m">inverse-surface</span> use case, and would remove the forced-Dark workaround from plan step 7.</td><td>Consider <span class="m">inverse-surface</span> + <span class="m">inverse-on-surface</span> for the Topbar instead of forcing a mode.</td></tr>
+          <tr><td><span class="chip unknown">I · type</span></td><td class="n">title-medium = 18<br>label-small = 10</td><td>Material's <span class="m">title-medium</span> is 16 and <span class="m">label-small</span> 11. A developer who trusts the name gets the wrong size unless the theme is built from our tokens file.</td><td>Write the rule: values always come from the tokens file, never from a framework default. Then the names are safe.</td></tr>
+          <tr><td><span class="chip alert">J · picker</span></td><td class="n">all 47</td><td>Checked live: names are flat (<span class="m">on-surface-variant</span>, <span class="m">surface-fixed</span>), so the Figma picker shows 47 hyphenated names in one alphabetical list. Every element-first system gets folders for free from the slash.</td><td>Group in Figma (<span class="m">Surface/surface-container</span>, <span class="m">On surface/on-surface-variant</span>) and keep <span class="m">codeSyntax</span> flat. Confirm the export reads <span class="m">codeSyntax</span>, not the Figma path.</td></tr>
+          <tr><td><span class="chip alert">K · found</span></td><td class="n">01 · Foundations</td><td>A second published library, "01 · Foundations", carries a collection named Semantic with element-first names such as <span class="m">color/bg/surface</span>. Two vocabularies now exist in the workspace, one per model.</td><td>Decide which library is the Foundations of the plan and retire the other before anyone binds to it.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Structure, scored against the field</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Our decision</th><th>What the field does</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Tokens are born in Foundations only; product libraries consume, never create</td><td>Frost's tier model, Curtis's promotion path, Figma: hide the primitives</td><td><span class="chip ok">keep</span></td></tr>
+          <tr><td>Primitives hidden, 47 semantic roles pickable, no component tokens</td><td>zeroheight 2026: primitive 90%, semantic 85%, component 52%. Baldwin: component tokens only with 4+ frameworks and a dedicated tool</td><td><span class="chip ok">keep</span> add a component token only when a component must diverge from a role</td></tr>
+          <tr><td>Role, never value; kebab-case; one canonical name; codeSyntax per platform</td><td>Improta #2 and #4, Figma, Atlassian, Curtis</td><td><span class="chip ok">keep</span></td></tr>
+          <tr><td><span class="m">_legacy/</span> aliases and <span class="m">--sk-*</span> kept alive</td><td>Improta #6: alias, deprecate with a date, then remove</td><td><span class="chip unknown">keep, set the date</span></td></tr>
+          <tr><td>Brand × scheme collapsed into one axis: six modes, five brands maximum</td><td>The DTCG Resolver module (stable 2025.10) treats brand and scheme as two orthogonal modifiers and generates the product. Figma's own multi-brand answer, extended collections, shipped November 2025 for Enterprise only. On our plan the mode product is the correct Figma model.</td><td><span class="chip ok">keep in Figma</span> the export must split the axis back into <em>brand</em> and <em>scheme</em> so code never inherits the five-brand cap</td></tr>
+          <tr><td>Spacing on a numeric 4px scale, three stroke widths, our breakpoints</td><td>Tailwind's default scale, USWDS's system tokens; Material has no spacing vocabulary</td><td><span class="chip ok">keep</span></td></tr>
+          <tr><td>Type styles carry Material's names with SKO values</td><td>Names carry expectations (finding I)</td><td><span class="chip ok">keep</span> with the tokens-file rule</td></tr>
+          <tr><td>New tokens only when extremely necessary, with approval, in Material-uniform names</td><td>Curtis: three real uses first; do not globalise prematurely</td><td><span class="chip ok">keep</span> add the three-use threshold; drop "Material-uniform" for roles Material does not have, and say "Material-shaped" instead</td></tr>
+          <tr><td>Components as <span class="m">Scope/Sub-product/Group/Component</span>, reserved property names, layers named by anatomy</td><td>Not a token question; matches Figma's slash folders and every system's component grammar</td><td><span class="chip ok">keep</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>The question Bruno and Navdeep keep asking</h2>
+    <p class="lede">Why should the design system carry a developer-oriented scheme at all? Why not let
+      designers pick simple names and let each codebase map them?</p>
+    <p><b>The field's answer to the second half is unanimous: no.</b> Every system in section 1 uses
+      one vocabulary in Figma and in code. Atlassian's Figma names and code names are the same words in
+      different casing; Figma's Dev Mode turns <span class="m">color/action/primary</span> into
+      <span class="m">--color-action-primary</span> and expects developers to type exactly that;
+      Gordashko's rule is that the transform may add prefixes and change casing, never meaning; Improta
+      lists a hand-kept mapping as a mistake. Per-codebase maps are what teams abandoned with the CTI
+      era. The memo's ten-minute test stands.</p>
+    <p><b>But the first half deserves a better answer than the one we gave.</b> "Simple for designers"
+      is not the same as "Material". The field's simple-for-designers answer is element-first semantic
+      names, <span class="m">text/secondary</span>, <span class="m">bg/brand</span>,
+      <span class="m">border/subtle</span>, exported unchanged. Carbon did its v11 rename for exactly
+      that reason, and Untitled UI, the kit our whole library is built on, already speaks that way.
+      Element-first would have been just as much "one vocabulary", arguably more legible in the picker,
+      and free of deprecated or invented Material names. We chose role-first because of the
+      <span class="m">on-</span> pairs and a bet on the mobile stack. That is a fair choice, and it
+      should be presented as a choice, not as the only way to keep design and code in sync.</p>
+    <div class="note accent">
+      <p><b>What to tell them.</b> The scheme is not developer-oriented; it is a shared vocabulary, and
+      the alternative the field recognises is a different shared vocabulary, not a mapping table. We are
+      three days past a published migration. Switching now costs credibility and about three days of
+      work; the benefit is unmeasured. So we keep Model C, fix its defects, and agree on the test below.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>Recommendation</h2>
+    <p class="verdict">Keep Model C. Fix the six defects in one publish. Close the debate with a written
+      test rather than another opinion, and name the two facts that would reopen it.</p>
+    <h3>Now, one publish</h3>
+    <ol class="tight">
+      <li><b>surface-variant:</b> decide fold or rename (finding A). The only step with a visible change, in Dark.</li>
+      <li><b>Three border roles</b> → <span class="m">*-outline-variant</span> (B).</li>
+      <li><b>fixed-white</b> → <span class="m">on-scrim</span> (C).</li>
+      <li><b>info:</b> complete the pair or document the exception (D). Note in the memo that <span class="m">warning</span> exists for symmetry.</li>
+      <li><b>primary-text:</b> rewrite the justification (E).</li>
+      <li><b>Picker folders</b> in Figma, <span class="m">codeSyntax</span> unchanged (J); descriptions "use for / never for" on every role, since 30 of 47 still say only "was …".</li>
+    </ol>
+    <h3>The decision test, to write into the Plan</h3>
+    <p>A naming proposal is acceptable when all four hold: one canonical name lives in Figma and is
+      typed unchanged in code apart from casing and prefix; the name says the role, never the value or
+      the element's current look; every fill role has a text role that goes with it; a new name is added
+      only after three real uses and one approval. Model C passes. An element-first model would pass
+      too. We have Model C.</p>
+    <h3>Two conditions that reopen it, at most once</h3>
+    <ul class="tight">
+      <li><b>Question 7 answers "React Native with our own theme or NativeWind"</b>, so no framework reads the names, <em>and</em></li>
+      <li><b>a twenty-minute picking test with three designers</b>, on real screens, shows more than one mis-pick in five on Model C names. Run it in October, after the ICP work, and log the result in the memo either way.</li>
+    </ul>
+    <h3>Owed to engineering before the first export</h3>
+    <ul class="tight">
+      <li>The export splits the six modes into two modifiers, brand and scheme, in the DTCG resolver shape.</li>
+      <li>The transform reads <span class="m">codeSyntax</span>, not the Figma path, so picker folders never reach code.</li>
+      <li>A retirement date for <span class="m">--sk-*</span> and the <span class="m">_legacy/</span> aliases.</li>
+      <li>One named engineer approves token pull requests; still unnamed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <p class="lede">Read for this document. Where a source sits behind a paywall, the public excerpt or a mirror was used.</p>
+    <ul class="srcs">
+      <li>Nathan Curtis, <a class="link" href="https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676">Naming Tokens in Design Systems</a> and <a class="link" href="https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421">Tokens in Design Systems</a>, EightShapes</li>
+      <li>Nathan Curtis, <a class="link" href="https://medium.com/eightshapes-llc/reimagining-a-token-taxonomy-462d35b2b033">Reimagining a Token Taxonomy</a></li>
+      <li>Brad Frost, <a class="link" href="https://bradfrost.com/blog/post/the-many-faces-of-themeable-design-systems/">The Many Faces of Themeable Design Systems</a></li>
+      <li>Lukas Oppermann (GitHub Primer), <a class="link" href="https://uxdesign.cc/naming-design-tokens-9454818ed7cb">The Practical Guide to Naming Design Tokens</a></li>
+      <li>Samantha Gordashko, <a class="link" href="https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens">A new approach to naming design tokens</a></li>
+      <li>Francesco Improta, <a class="link" href="https://designtokens.substack.com/p/6-common-mistakes-in-design-tokens">6 Common Mistakes in Design Tokens Naming</a></li>
+      <li>Nate Baldwin (Adobe Spectrum), <a class="link" href="https://medium.com/@NateBaldwin/component-level-design-tokens-are-they-worth-it-d1ae4c6b19d4">Component-level Design Tokens: are they worth it?</a></li>
+      <li>Thomas Gossmann, <a class="link" href="https://gos.si/blog/inside-design-tokens-naming">Inside Design Tokens: Naming</a> and <a class="link" href="https://gos.si/blog/inside-design-tokens-the-three-class-token-society">The Three Class Token Society</a></li>
+      <li>Stuart Robson, <a class="link" href="https://www.alwaystwisted.com/articles/design-token-naming-conventions">Design Token Naming Conventions</a></li>
+      <li>Vitaly Friedman, <a class="link" href="https://www.smashingmagazine.com/2024/05/naming-best-practices/">Best Practices For Naming Design Tokens, Components And Variables</a>, Smashing Magazine</li>
+      <li>Cristiano Rastelli, <a class="link" href="https://medium.com/@didoo/because-ive-found-the-cti-category-type-item-structure-very-rigid-and-sometimes-you-find-82e1e059b2aa">on the rigidity of CTI</a></li>
+      <li>Figma, <a class="link" href="https://www.figma.com/resource-library/design-tokens/">Design Tokens: How to Sync Design and Code</a></li>
+      <li>zeroheight, <a class="link" href="https://report.zeroheight.com/">Design Systems Report 2026</a>; <a class="link" href="https://zeroheight.com/learn/naming-your-design-tokens-a-practical-guide/">Naming your design tokens</a>; <a class="link" href="https://zeroheight.com/learn/naming-your-design-tokens-in-figma-variables-groups-and-conventions/">…in Figma</a></li>
+      <li>W3C DTCG, <a class="link" href="https://www.designtokens.org/tr/drafts/format/">Format Module 2025.10</a> and <a class="link" href="https://www.designtokens.org/tr/drafts/resolver/">Resolver Module</a></li>
+      <li>Material Design 3, <a class="link" href="https://m3.material.io/foundations/design-tokens">Design tokens</a>, <a class="link" href="https://m3.material.io/styles/color/roles">Color roles</a>, <a class="link" href="https://m3.material.io/blog/tone-based-surface-color-m3">Tone-based surfaces</a>; Flutter, <a class="link" href="https://docs.flutter.dev/release/breaking-changes/new-color-scheme-roles">New ColorScheme roles</a></li>
+      <li>Atlassian, <a class="link" href="https://atlassian.design/foundations/tokens/design-tokens">Design tokens</a>; Shopify, <a class="link" href="https://polaris-react.shopify.com/design/colors/color-tokens">Polaris color tokens</a>; IBM, <a class="link" href="https://github.com/carbon-design-system/carbon/discussions/7827">Carbon v11 color token naming</a>; GitHub, <a class="link" href="https://primer.style/product/primitives/token-names/">Primer token names</a>; Adobe, <a class="link" href="https://spectrum.adobe.com/page/design-tokens/">Spectrum design tokens</a>; HashiCorp, <a class="link" href="https://helios.hashicorp.design/foundations/colors">Helios colors</a>; Red Hat, <a class="link" href="https://github.com/RedHat-UX/red-hat-design-system/wiki/Semantic-Token-Names">Semantic token names</a>; GitLab, <a class="link" href="https://gitlab.com/gitlab-org/gitlab-services/design.gitlab.com/-/issues/1602">Token naming discussion</a></li>
+      <li>shadcn/ui, <a class="link" href="https://ui.shadcn.com/docs/theming">Theming</a>; React Native Paper, <a class="link" href="https://oss.callstack.com/react-native-paper/docs/guides/theming">Theming</a></li>
+      <li>Figma, <a class="link" href="https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables">Modes for variables</a> (10 per collection on Professional) and <a class="link" href="https://help.figma.com/hc/en-us/articles/35794667554839-What-s-new-from-Schema-2025">Extended collections, Schema 2025</a> (Enterprise)</li>
+      <li>SKO live library, <span class="m">🎨 SKO-Semantics</span>, 47 roles read on 22 Sep 2026; the <a class="link" href="https://claude.ai/code/artifact/09bcf45e-0656-47c3-bdae-e474ad0936b4">Colour Token Model memo</a>, v34</li>
+    </ul>
+  </section>
+
+  <footer>SKO Design System · Token naming challenge · 22 Sep 2026 · a second opinion for Nelson, Navdeep, Bruno, Pintu and Vikas. It changes no decision on its own; section 6 lists what would.</footer>
+
+</div>
+
+</body></html>
