@@ -12,6 +12,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 Needs a DS publish. After the publish, ICP 6.3 mobile swaps its hand-made override for Size=Compact.
 
+**Correction (23 Sep).** The first publish shipped a broken Compact, for two reasons. Cloning the variants dropped their
+`Show training / peer / self` bindings. And the variants were measured before the set's auto-layout stretched them,
+so they came out as five equal segments with no hug sizing. The bindings and hug sizing were re-applied and tested at
+311 with the peer-only flow: *① Your response · 3 · 5*, one line, 58px tall. The step numbers are positional,
+as the component description warns, so the screen renumbers them to 2 and 3. **Needs a second publish.** ICP 6.3
+already uses Size=Compact and picks the fix up then.
+
 ## 2026-09-22 (late) · ORA on tablet and mobile; the all-content example covers the whole catalogue
 
 - Row 6 gains `ora-text-only-tablet` and `ora-text-only-mobile`. On mobile the Stepper is compact (current
