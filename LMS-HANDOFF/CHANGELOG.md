@@ -2,6 +2,20 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-23 · Difficulty and delivery badges get icons that mean something
+
+Both badges showed Untitled UI's default arrow-up on every variant.
+
+- **`LMS / Difficulty Badge`**: new `LMS / Difficulty · Level Icon`, Level 1/2/3, drawn as signal bars. The
+  filled bars sit in the vector `Icon`, the layer name every Untitled UI icon uses, so the Badge still colours
+  them. The empty bars are `Track` at 35% of `icon/faint` and stay neutral. The level now reads from the shape,
+  not only from colour and the word. It was built in the LMS library because the icon set has nothing that
+  shows 1, 2 or 3 levels: `bar-chart-*` are all full sets, and `battery-*` suggests charge or effort.
+- **`LMS / Delivery Mode Badge`**: Live Sessions = `video-recorder` (the same icon as the VILT-Live Session topic
+  badge) · Flexible + Live = `calendar-check-01` · Flexible Learning = `clock`. Chosen by Nelson.
+
+Needs a DS publish; the ICP instances update after it.
+
 ## 2026-09-23 (later) · Course Detail: open questions in one register
 
 - Board `5504:5594` goes from six questions to **fourteen**, each with an owner and a **By** milestone (dev handoff →
