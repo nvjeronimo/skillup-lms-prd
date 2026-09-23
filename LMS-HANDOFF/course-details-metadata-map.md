@@ -1434,7 +1434,7 @@ with a green header, stats and buttons. That is a web page, not a document anyon
 **One layout for both uses.** White edge and no bleed, so it prints on an office printer without trimming; all
 content inside a 10 mm safe area, marked by the brand rule. Everything on it is from the library: the
 `Skillup_logo` and `Placeholder Logo / IBM` components, Montserrat text styles, SKO colour tokens — including
-the QR, rebuilt so that no module is a raw hex — and the `shadow-2xl` / `shadow-lg` effect styles on the board.
+the QR, rebuilt so that no module is a raw hex — and the `shadow-2xl` / `Elevation/level4` (was `shadow-lg`) effect styles on the board.
 
 ### 16.2 Every element, and where it comes from
 
@@ -1538,8 +1538,8 @@ one annotation now, on the Course tab, pointing at the board.
 Both components are local and go to peer review: the DS has no goal card and no day marker.
 
 **Met shows the week, 16 Sep.** A goal met is now visible, not only stated: the `Met` variant always carries the
-week — a check for each day the learner was active in the course, on a `bg-success-primary` panel, with
-*3 of 3 days this week* in `text-success-primary`. The strip is no longer switched by `Show week strip` in that
+week — a check for each day the learner was active in the course, on a `bg/success-soft` panel, with
+*3 of 3 days this week* in `text/success`. The strip is no longer switched by `Show week strip` in that
 variant (the property still controls `Set`), so the board's separate "Met, with the week" column is gone.
 It depends on the same vendor request as the strip in §17.2. **Fallback** if the vendor cannot provide days active:
 the card still knows the goal was met from `celebrations.weekly_goal` — drop the week panel and keep the header and
@@ -1649,7 +1649,7 @@ and the same table is an annotation on the Course tab's weekly goal card.
 last week is only a **reference point for the week that has started**.
 
 Every state with the strip now shows it beside this week's count — **3 of 3 days this week** on the left,
-**Last week: 2 of 3** on the right, in `Caption/Medium` `text-tertiary`, switched by `Show last week` (on by
+**Last week: 2 of 3** on the right, in `body-small/Medium` `text/subtle`, switched by `Show last week` (on by
 default). The week header keeps only the range, *This week · 15–21 Sep*. The `Last week` variant, the *Last week* /
 *This week* links, board column 5 and edge case E14 are removed; the annotation moved to *Set, with the week*.
 
@@ -1948,3 +1948,44 @@ Tools, Team — now carries its technical notes in the **variant description**, 
 so they survive if a screen is rebuilt. Descriptions rather than annotations on the main component on purpose:
 component annotations appear on **every instance**, which would put them back on `★ ENTRY` (kept annotation-free) and
 double them on the Course tab — the reason the chip annotations were moved off `Course title` (§18.2).
+
+---
+
+## 23. Token audit after the element-first rename — 23 Sep
+
+The DS moved to **element-first names** on 22 Sep (`🎨 SKO-Semantics`: `bg/`, `text/`, `icon/`, `border/`,
+`shadow/`, 83 tokens; rule: container fill → `bg/`, container stroke → `border/`, shape → `icon/`, text → `text/`)
+and ICP was re-bound the same night. The Course Detail work was audited against it — every paint on the local
+components (`LMS / Course Detail — Components`) and on every board of the technical section, split into **ours**
+(local nodes and instance overrides) and **inherited** (from DS components).
+
+**Ours — clean.** 437 bindings on the local components and ~370 on the technical screens are element-first.
+Fixed during the audit, all with **no pixel change** (values checked before re-binding):
+
+- The *Not passing* dot on `Progress card` (4 variants + 4 screen overrides) and the `Certificate card · Generating`
+  stroke were on a **stale copy of the old `warning`** (#F9C654) → **`bg/warning`**, the same value.
+- `Module number · Complete`: fill `text/success` → **`bg/success`** (same #1F7643), check `icon/on-primary` →
+  **`icon/on-success`** — now identical to the DS `Completion Status · Done`.
+
+**Inherited — not ours to fix, and not wrong in the DS either, except one:**
+
+| From DS component | In ICP | In the DS | Action |
+|---|---|---|---|
+| `Badge` (132 paints) | utility-gray/success/warning/error | pills already re-bound, CHANGED | publish, then accept in ICP |
+| `Input field` (18), `_Tab button base` (9), `_Button group base` (1), `search-md` (5) | old Model C / `1. Semantics` names | clean | publish / accept |
+| `book-open-01` in `Course Type Badge` (4) | utility-blue-light-500 | still utility — part of the utility-palette round | the DS session's round |
+| **`Alert` (10 here, ~90 in the DS)** | old names | ⚠︎ **bound to a remote, published copy of its own library** (`1. Semantics`, `primary-outline-variant`, `text-secondary`…) | **re-bind in the DS** |
+
+The `Alert` is the real finding: the component binds variables through a **remote copy of the SKO library itself**
+(`remote=true`), most likely from the August recolour done by importing variables by key inside the DS. The rename
+passes re-bound by local variable id and could not see them.
+
+**Left as decisions, not changed:**
+- `Lesson name` on the Course tab is a raw **#606B7A** — no token has that value (`text/subtle` #4F5B69,
+  `text/placeholder` #677482).
+- The partner chip's white stroke is bound to `text/on-primary`; no white `border/` token exists.
+- `Image Thumb` placeholder fill is `text/subtle` — a text token as a fill.
+- The three legend dots in *How to read this section* are deliberate raw colours (they mirror Figma's annotation
+  categories).
+- The *Foundations — colour* board on the components page still lists the old names ("the 36 imported") —
+  obsolete documentation.
