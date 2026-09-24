@@ -10,6 +10,13 @@ for exactly this level (Module → Lesson → Topic), with the same text style a
 an instance at FILL width with the row's 8/12 padding; the result is pixel-identical. It was the only copy on the
 page. The component description now says the Platform pages consume it, so nobody forks a copy.
 
+**Rolled out to the other pages (24 Sep).** Every page with a module outline outside an instance was scanned:
+Platform Pages V8, Course Detail — Components, Completion + Certificate. The ICP screens get the header through the
+Sidebar component, and Nelson's Discovery pages were left alone. One more outline turned up: the main
+**ENTRY · Course Detail — v12** screen, with the same Module 3 topics and no lesson label. An `LMS / Lesson Header`
+(*Define and measure*, FILL, 8/12) was added at the top of it. Every frame up to the screen hugs its content, so
+the extra 34px is absorbed and nothing is clipped.
+
 ## 2026-09-23 · Difficulty and delivery badges get icons that mean something
 
 Both badges showed Untitled UI's default arrow-up on every variant.
