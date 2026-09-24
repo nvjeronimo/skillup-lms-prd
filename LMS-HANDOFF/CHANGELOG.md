@@ -10,6 +10,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - Metadata map §15.1: the Topic Row adoption is marked reversed; the local set has `State=Locked`.
 - Module 3 subtitle on both screens: *12 topics · 3h 20m* → **9 topics · 3h 48m**, what its list actually holds
   (the four modules now sum to ~13h 48m, which matches the header's ~14 hours).
+- Module 4 subtitle: *12 topics* → **9 topics**, so the modules sum to 12 + 12 + 9 + 9 = **42**, the header's total.
 
 ## 2026-09-24 · Badge v2: 453 variants become 120, accents strong, statuses soft
 
