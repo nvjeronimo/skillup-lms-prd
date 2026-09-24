@@ -2090,3 +2090,30 @@ Personalised Learning Schedule the tab fills itself, and design proposes keeping
 **By owner.** Vendor: 3, 7, 9, 10, plus 8 with product — the agenda for Nilesh / Rashid. Product: 1, 4, 5, 11, 12,
 13, 14, plus 8. Content: 2, and 6 with product. **Settle first:** 5 and 1, which have to be decided before the
 course start date or the private channel is lost for this run.
+
+## 26. Mobile — the Course tab at 375 — 24 Sep
+
+`★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), beside `★ ENTRY` in *Course Detail V10*. Built from
+the same instances as ENTRY, so it keeps ENTRY's Dev Notes; no drawn parts.
+
+| Band | What | Source |
+|---|---|---|
+| Status bar | `_iPhone mockup status bar`, as on the ICP mobile screens | copied from the ICP |
+| Platform nav | DS `Header navigation` · Mobile · Simple — SkillUp logo and menu; the menu opens the LMS sidebar (`Open=True`) | replaces the desktop sidebar |
+| Course header | **`Course header` · `Breakpoint=Mobile`** (new axis; desktop variants renamed `Breakpoint=Desktop`) | one column: breadcrumb without the current page, badge + partners, title, stats, progress card |
+| Tabs | DS `Horizontal tabs` Underline **sm** — the four fit (344 of 359px); more tabs scroll | the DS *Mobile* breakpoint is a dropdown, not used |
+| Content | search · alert · section intro · modules · the seven sidebar cards, stacked in desktop order | as the edX learning MFE stacks its columns |
+
+**What changed in components to make it work — none visible on desktop:**
+- **Type scales by mode, not by style.** The title's size and line height are bound to `3. Responsive 📐`; the mobile
+  header variant sets that collection to **Mobile**, and everything bound to it follows.
+- `Course stats` rows and the `Course title` paragraph **fill and wrap**, so the stats line breaks instead of overflowing.
+- `Meta` wraps, and fills its column inside `Module row`.
+- **`Module row` gains `Show lock reason` + `Lock reason`** (Locked variants): the same copy as the tooltip, as a
+  line under the subtitle. **A phone has no hover**, so on mobile the tooltip is off and the line is on.
+
+**Three annotations, mobile-only** (behaviour, not components): the tabs scroll rather than collapse; the order —
+outline, then cards; the lock reason as text on touch.
+
+**Left as it is:** topic titles wrap to two lines beside their type and duration; readable, and it keeps
+`Topic row` single-layout. Progress, Dates and Mentorship Q&A in mobile are next.

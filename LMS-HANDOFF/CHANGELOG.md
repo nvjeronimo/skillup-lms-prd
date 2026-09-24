@@ -2,6 +2,15 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Course Detail mobile — the Course tab
+
+- New screen `★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), 375 wide, next to ENTRY. Status bar,
+  DS `Header navigation` Mobile, `Course header` Mobile, underline tabs (sm), content and sidebar cards stacked.
+- `Course header`: new `Breakpoint` axis — `Type=Course, Breakpoint=Mobile`, one column, `3. Responsive 📐` in Mobile mode.
+- `Course title` / `Course stats`: fill and wrap. `Meta`: wraps; fills its column in `Module row`.
+- `Module row`: `Show lock reason` + `Lock reason` in the Locked variants — the tooltip's copy as text, for touch.
+- Three mobile-only annotations (tabs, order, lock on touch). Metadata map §26.
+
 ## 2026-09-24 · The Lock molecule on the locked topic
 
 - `LMS / Course Detail / Lock` becomes a set, **Size = md (32) · sm (18)** (`6120:2380`). `md` keeps the Module row's
