@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · The course page's lesson label is the ICP's Lesson Header
+
+The Course Detail module outline (Technical · Course tab) had its lesson label, *Define and measure*, as a loose
+frame (`Lesson Name container`). Its text colour was not bound to a token. `LMS / Lesson Header` already exists
+for exactly this level (Module → Lesson → Topic), with the same text style and colour. The frame was replaced by
+an instance at FILL width with the row's 8/12 padding; the result is pixel-identical. It was the only copy on the
+page. The component description now says the Platform pages consume it, so nobody forks a copy.
+
 ## 2026-09-23 · Difficulty and delivery badges get icons that mean something
 
 Both badges showed Untitled UI's default arrow-up on every variant.
