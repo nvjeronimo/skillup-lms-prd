@@ -2094,7 +2094,9 @@ course start date or the private channel is lost for this run.
 ## 26. Mobile — the Course tab at 375 — 24 Sep
 
 `★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), beside `★ ENTRY` in *Course Detail V10*. Built from
-the same instances as ENTRY, so it keeps ENTRY's Dev Notes; no drawn parts.
+the same instances as ENTRY; no drawn parts. *24 Sep:* the alert, section intro and the seven sidebar cards were
+re-cloned from `⚙ TECHNICAL · Course tab`, the final screen — ENTRY's differed (Weekly goal *Set* vs *Met*, another
+Mentor variant).
 
 | Band | What | Source |
 |---|---|---|
@@ -2133,3 +2135,32 @@ cloned from the technical Progress tab, annotations removed.
   alert and table all at **15%** — now 15%; and the pass alert's body was developer copy (*From grading_policy.grade_range
   — the threshold is a field…*) — now *Your current weighted grade is 15%.* The field stays in the annotation.
 - One mobile-only annotation, on the grade table.
+
+## 27. The handoff frame — dev-ready, no annotations — 24 Sep
+
+**`Platform Pages - Course Detail (self-paced) - Light`** (`6146:10226`) on *Platform Pages V8*, right of the
+Technical section, with the banner **Ready for dev** above it (`6146:10247`). Same format as the ICP handoff pages
+(Quizzes A-2): intro header — eyebrow, title, description, meta strip — then one row per tab, one **card** per
+screen: `Handoff card header + Subheader` (sequence, title, version 2026-09-24 · r1, *Ready for DEV*, designer,
+PM, RSD = this document), the screen, and `Handoff / Page Changelog Header` (description + the latest change).
+
+| # | Card | Screen source |
+|---|---|---|
+| 01 | Course tab · Desktop | `⚙ TECHNICAL · Course tab` |
+| 02 | Course tab · Mobile | `★ ENTRY · Course Detail — mobile · Course tab` |
+| 03 | Progress tab · Desktop | `⚙ TECHNICAL · Progress tab` |
+| 04 | Progress tab · Mobile | `★ ENTRY · Course Detail — mobile · Progress tab` |
+| 05 | Dates tab · Desktop | `⚙ TECHNICAL · Dates tab` |
+| 06 | Mentorship Q&A tab · Desktop | `⚙ TECHNICAL · Mentorship Q&A tab` |
+
+**The screens are copies with every Figma annotation removed** — 0 in the frame, checked after the copy (12 had
+survived as overrides inside instances and were cleared). The Technical screens keep theirs (89); the
+annotations stay the source for *why*, the frame is what to build. Dev Notes footnotes stay where the component
+shows them.
+
+**Visible developer copy removed on the Technical screens before copying:** the Dates timezone line (was
+*"user_timezone on the dates payload. It is null…"*, now *All times are shown in your time zone (Europe/Lisbon,
+UTC+1)*) and the Q&A composer's *"Post anonymously · allow_anonymous is on for this course"* (now *Post anonymously*).
+
+**Not in this handoff:** Dates and Mentorship Q&A on mobile — the rows say so. The screens in the frame are copies:
+when a Technical screen changes, re-copy the card's screen rather than editing both.

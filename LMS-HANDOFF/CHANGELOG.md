@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Course Detail handoff frame — dev-ready, no annotations
+
+- New frame `Platform Pages - Course Detail (self-paced) - Light` (`6146:10226`) + *Ready for dev* banner, in the ICP
+  handoff format: 6 cards — Course, Progress, Dates, Q&A desktop; Course and Progress mobile. 0 annotations inside.
+- Mobile Course tab re-aligned to the Technical Course tab (sidebar cards, alert, intro).
+- Visible developer copy removed: Dates timezone line; Q&A *Post anonymously* tail.
+- Metadata map §27.
+
 ## 2026-09-24 · Course Detail mobile — the Progress tab
 
 - New screen `★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`). Both mobile screens set
