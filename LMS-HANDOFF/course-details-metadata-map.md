@@ -685,7 +685,7 @@ right move is to delete one, not to keep syncing them.
 | Foundations — colour, live-bound swatches | `5410:325` |
 | Foundations — space, radius, type | `5411:325` |
 | `Meta` · `Card shell` | `5414:327` · `5415:327` |
-| `Module row` (5 variants: State × Expanded, no Locked × open) · `Lock` molecule · `Topic row` | `5416:382` · `5419:384` |
+| `Module row` (6 variants: State × Expanded) · `Lock` molecule · `Topic row` | `5416:382` · `5419:384` |
 | `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
 | Integration proof | `5429:419` |
 | Verb prefix — three-way comparison | `5433:498` |
@@ -1757,8 +1757,9 @@ The two `Locked` variants are `Date`; two new `Locked` variants are `Prerequisit
 The Course tab and `★ ENTRY` now show Module 4 locked by **Prerequisite**; the *Integration proof* board keeps `Date`.
 
 > **Superseded 24 Sep — atomic.** The reason only ever changed the tooltip's text, so it is no longer a variant.
-> `Module row` goes from **8 variants to 5** — `State` (Complete · Incomplete · Locked) × `Expanded`, without
-> Locked × Expanded=True, which `accessible: false` cannot reach. `Lock reason`, `Show unlock tooltip` and
+> `Module row` goes from **8 variants to 6** — `State` (Complete · Incomplete · Locked) × `Expanded`. A locked
+> module **can be expanded** (Nelson, 24 Sep): the learner sees what it holds before it opens, each topic as
+> `Topic row` State=Locked. `Lock reason`, `Show unlock tooltip` and
 > `Show Locked Module` are gone. The lock and its tooltip are a new molecule, **`LMS / Course Detail / Lock`**
 > (`6118:10300`): the DS `LMS / Completion Status · Locked` + the DS `Tooltip`, with `Show tooltip` and the Tooltip
 > exposed, so the reason is set as **copy** on the instance (the table above is its guide). The Locked variant holds

@@ -2,13 +2,13 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-09-24 · Module row, atomic: 8 variants → 5, the lock reason is copy
+## 2026-09-24 · Module row, atomic: 8 variants → 6, the lock reason is copy
 
 - New molecule **`LMS / Course Detail / Lock`** (`6118:10300`): DS `Completion Status · Locked` + DS `Tooltip`,
   `Show tooltip`, Tooltip exposed. No drawn parts.
 - `LMS / Course Detail / Module row`: `Lock reason` axis removed (Date and Prerequisite differed only in tooltip
-  text), the two unreachable Locked × Expanded=True variants deleted, `Show unlock tooltip` and `Show Locked Module`
-  removed. The Locked variant holds the Lock molecule as an exposed nested instance. Description rewritten.
+  text), `Show unlock tooltip` and `Show Locked Module` removed. One `State=Locked, Expanded=True` remains — a locked
+  module can be expanded to show its (locked) topics. The Locked variant holds the Lock molecule as an exposed nested instance. Description rewritten.
 - 11 instances checked: Course tab and ENTRY Module 4 keep *Complete “Module 3 · Checkpoint” to unlock*; the
   Integration proof board's Date instance moved to the Locked variant. Module 4 annotation corrected (§18.3).
 
