@@ -2,6 +2,72 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Course Detail mobile — the Progress tab
+
+- New screen `★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`). Both mobile screens set
+  `3. Responsive 📐` = Mobile at the frame.
+- Grade table on mobile: Weighted column only, score and weight in the row (the DS first column has a 170 min width).
+  Library request 8 gains point 8.
+- Technical Progress tab: grade badge 62% → **15%**; pass alert body in learner copy.
+
+## 2026-09-24 · Course Detail mobile — the Course tab
+
+- New screen `★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), 375 wide, next to ENTRY. Status bar,
+  DS `Header navigation` Mobile, `Course header` Mobile, underline tabs (sm), content and sidebar cards stacked.
+- `Course header`: new `Breakpoint` axis — `Type=Course, Breakpoint=Mobile`, one column, `3. Responsive 📐` in Mobile mode.
+- `Course title` / `Course stats`: fill and wrap. `Meta`: wraps; fills its column in `Module row`.
+- `Module row`: `Show lock reason` + `Lock reason` in the Locked variants — the tooltip's copy as text, for touch.
+- Three mobile-only annotations (tabs, order, lock on touch). Metadata map §26.
+
+## 2026-09-24 · The Lock molecule on the locked topic
+
+- `LMS / Course Detail / Lock` becomes a set, **Size = md (32) · sm (18)** (`6120:2380`). `md` keeps the Module row's
+  tooltip, below and centred. `sm` puts the DS Tooltip above the lock with `Arrow=Bottom left`, anchored left.
+- `LMS / Course Detail / Topic row` State=Locked: status icon replaced by `Lock` Size=sm, exposed. Description updated.
+- Module 4 on the Course tab and ENTRY kept `Show tooltip` and its text through the change. No screen uses a locked topic yet.
+- Topic row State=Locked: title underline removed — a locked topic does not open, so it is not drawn as a link. The
+  `body-large/Medium` style is kept (the underline was a local override on it).
+- Topic row State=Locked: title colour `text/on-primary-soft` (link) → **`text/default`**.
+
+## 2026-09-24 · Module row, atomic: 8 variants → 6, the lock reason is copy
+
+- New molecule **`LMS / Course Detail / Lock`** (`6118:10300`): DS `Completion Status · Locked` + DS `Tooltip`,
+  `Show tooltip`, Tooltip exposed. No drawn parts.
+- `LMS / Course Detail / Module row`: `Lock reason` axis removed (Date and Prerequisite differed only in tooltip
+  text), `Show unlock tooltip` and `Show Locked Module` removed. One `State=Locked, Expanded=True` remains — a locked
+  module can be expanded to show its (locked) topics. The Locked variant holds the Lock molecule as an exposed nested instance. Description rewritten.
+- 11 instances checked: Course tab and ENTRY Module 4 keep *Complete “Module 3 · Checkpoint” to unlock*; the
+  Integration proof board's Date instance moved to the Locked variant. Module 4 annotation corrected (§18.3).
+
+## 2026-09-24 · Course Detail syllabus: local Topic row, grouped by Lesson Header
+
+- The Course tab's Module 3 (redrawn by Nelson) is the format: `Module row` · `sep` · a container with the DS
+  `LMS / Lesson Header` per lesson and the local `LMS / Course Detail / Topic row` per topic, meta on the right.
+- `★ ENTRY` Module 3 switched to the same block; its DS `LMS / Topic Row` list is gone. No annotations on ENTRY.
+- Metadata map §15.1: the Topic Row adoption is marked reversed; the local set has `State=Locked`.
+- Module 3 subtitle on both screens: *12 topics · 3h 20m* → **9 topics · 3h 48m**, what its list actually holds
+  (the four modules now sum to ~13h 48m, which matches the header's ~14 hours).
+- Module 4 subtitle: *12 topics* → **9 topics**, so the modules sum to 12 + 12 + 9 + 9 = **42**, the header's total.
+
+## 2026-09-24 (late) · Badge v2 across the Untitled UI pages; Topic-Types keeps its own colours
+
+- **Untitled UI pages migrated.** 649 direct V1 badges moved to Badge v2 across 30 vendor pages, using the same
+  mapping as the LMS migration:
+  - Badge → Soft, Badge Stroke → Outline, Badge modern → Modern, Badge color (icon only) → Soft.
+  - Kept: text, the chosen icons, flags, avatar photos, position and sizing. Hidden badges stay hidden; for
+    example, the extra badges in *Table cell* are configured while visible, then hidden again.
+  - The ~1 800 badges nested in vendor components followed their masters.
+  - A file-wide count now finds **0 V1 badges on any page**. The one left is inside
+    `LMS / Topic-Types Badge/Discussion Prompt`, a deleted component that sits on no page.
+- **Layer names.** The 59 badges migrated earlier kept the old layer name *Badge-V1-to-remove*, which made them
+  look like V1 in the layers panel. They are renamed *Badge*.
+- **Topic-Types Badge.** Nelson recoloured it: Plain Gray with a `bg/primary-soft` circle, an `icon/primary` icon
+  and `text/subtle` text. Recommendation: keep it as a component-level change and don't add a Badge style yet.
+  One component uses it; promote it when a second one needs it.
+- **ICP after the update.** The same 5 restored texts were wiped again: 4 quiz Entry Headers and the Reading
+  Topic Header. They were re-applied as direct text overrides. Check them again after each publish.
+- `Badge-V1-to-remove` can go once the Mobile App file and any other consumer file stop using it.
+
 ## 2026-09-24 · Badge v2: 453 variants become 120, accents strong, statuses soft
 
 **Design system (❖ SKO Design System)**

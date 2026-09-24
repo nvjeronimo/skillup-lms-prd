@@ -685,7 +685,7 @@ right move is to delete one, not to keep syncing them.
 | Foundations — colour, live-bound swatches | `5410:325` |
 | Foundations — space, radius, type | `5411:325` |
 | `Meta` · `Card shell` | `5414:327` · `5415:327` |
-| `Module row` (6 variants: State × Expanded) · `Topic row` | `5416:382` · `5419:384` |
+| `Module row` (6 variants: State × Expanded) · `Lock` molecule (Size md · sm) · `Topic row` | `5416:382` · `5419:384` |
 | `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
 | Integration proof | `5429:419` |
 | Verb prefix — three-way comparison | `5433:498` |
@@ -1314,6 +1314,15 @@ the underlined title, and the row's own divider. Swapped on `⚙ TECHNICAL · Co
 (14 instances). The 24 instances on the exploration boards (*Verb prefix*, *Integration proof*) stay on the local
 component, which is kept for them.
 
+> **Reversed 24 Sep — the syllabus is back on the local `Topic row`, grouped by `Lesson Header`.** Nelson redrew
+> Module 3 on `⚙ TECHNICAL · Course tab` (`5446:4074`) and it is now the format: the `Module row`, a 1px `sep`, then
+> one container (padding 4/20) holding the DS **`LMS / Lesson Header`** for each lesson (*Define and measure*,
+> *Analyze and interpret* — `sequential.display_name`) followed by its **`LMS / Course Detail / Topic row`** instances
+> (`vertical`). One line per topic: state icon, underlined title, type and duration on the right. The two costs listed
+> above are what came back; the one gain that mattered, **`Locked`**, the local set now has too (`State=Locked`).
+> `★ ENTRY` was switched to the same block (a clone of the Course tab's, no annotations). The exploration boards stay
+> as they were.
+
 ### 15.1b Grades — adopted on the Progress tab, 15 Sep
 
 After peer review, `LMS / Quiz · Grade Summary` replaces `Grade meter`, `Grade summary` and `Detailed grades`
@@ -1747,6 +1756,23 @@ The two `Locked` variants are `Date`; two new `Locked` variants are `Prerequisit
 
 The Course tab and `★ ENTRY` now show Module 4 locked by **Prerequisite**; the *Integration proof* board keeps `Date`.
 
+> **Superseded 24 Sep — atomic.** The reason only ever changed the tooltip's text, so it is no longer a variant.
+> `Module row` goes from **8 variants to 6** — `State` (Complete · Incomplete · Locked) × `Expanded`. A locked
+> module **can be expanded** (Nelson, 24 Sep): the learner sees what it holds before it opens, each topic as
+> `Topic row` State=Locked. `Lock reason`, `Show unlock tooltip` and
+> `Show Locked Module` are gone. The lock and its tooltip are a new molecule, **`LMS / Course Detail / Lock`**
+> (`6118:10300`): the DS `LMS / Completion Status · Locked` + the DS `Tooltip`, with `Show tooltip` and the Tooltip
+> exposed, so the reason is set as **copy** on the instance (the table above is its guide). The Locked variant holds
+> it as an exposed nested instance. Course tab and `★ ENTRY` Module 4 show the prerequisite tooltip again; the
+> *Integration proof* board's Date instance moved to the one Locked variant, tooltip off. The Module 4 annotation
+> that said the tooltip "cannot be produced" now points at `gated_content.prereq_section_name`.
+>
+> **Same molecule on the topic (24 Sep).** `Lock` is now a set with **`Size`**: `md` (32) for the Module row, tooltip
+> below and centred; `sm` (18) for **`Topic row` State=Locked**, which swaps its status icon for it. In `sm` the DS
+> Tooltip uses `Arrow=Bottom left`, above the lock and anchored left, so it grows away from the lock and still
+> points at it at any text length (the DS has no *Top left*). A topic inside a locked module carries the module's
+> reason; a topic gated on its own takes its subsection's `prereq_section_name`. No screen shows a locked topic yet.
+
 **What edX returns for a prerequisite** — read from `seq_block.py` and `openedx/core/lib/gating/api.py`:
 
 - ✓ **That it is locked** — the outline marks the block `accessible: false`, or `type: "lock"` when
@@ -2064,3 +2090,46 @@ Personalised Learning Schedule the tab fills itself, and design proposes keeping
 **By owner.** Vendor: 3, 7, 9, 10, plus 8 with product — the agenda for Nilesh / Rashid. Product: 1, 4, 5, 11, 12,
 13, 14, plus 8. Content: 2, and 6 with product. **Settle first:** 5 and 1, which have to be decided before the
 course start date or the private channel is lost for this run.
+
+## 26. Mobile — the Course tab at 375 — 24 Sep
+
+`★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), beside `★ ENTRY` in *Course Detail V10*. Built from
+the same instances as ENTRY, so it keeps ENTRY's Dev Notes; no drawn parts.
+
+| Band | What | Source |
+|---|---|---|
+| Status bar | `_iPhone mockup status bar`, as on the ICP mobile screens | copied from the ICP |
+| Platform nav | DS `Header navigation` · Mobile · Simple — SkillUp logo and menu; the menu opens the LMS sidebar (`Open=True`) | replaces the desktop sidebar |
+| Course header | **`Course header` · `Breakpoint=Mobile`** (new axis; desktop variants renamed `Breakpoint=Desktop`) | one column: breadcrumb without the current page, badge + partners, title, stats, progress card |
+| Tabs | DS `Horizontal tabs` Underline **sm** — the four fit (344 of 359px); more tabs scroll | the DS *Mobile* breakpoint is a dropdown, not used |
+| Content | search · alert · section intro · modules · the seven sidebar cards, stacked in desktop order | as the edX learning MFE stacks its columns |
+
+**What changed in components to make it work — none visible on desktop:**
+- **Type scales by mode, not by style.** The title's size and line height are bound to `3. Responsive 📐`; the mobile
+  header variant sets that collection to **Mobile**, and everything bound to it follows.
+- `Course stats` rows and the `Course title` paragraph **fill and wrap**, so the stats line breaks instead of overflowing.
+- `Meta` wraps, and fills its column inside `Module row`.
+- **`Module row` gains `Show lock reason` + `Lock reason`** (Locked variants): the same copy as the tooltip, as a
+  line under the subtitle. **A phone has no hover**, so on mobile the tooltip is off and the line is on.
+
+**Three annotations, mobile-only** (behaviour, not components): the tabs scroll rather than collapse; the order —
+outline, then cards; the lock reason as text on touch.
+
+**Left as it is:** topic titles wrap to two lines beside their type and duration; readable, and it keeps
+`Topic row` single-layout. Progress, Dates and Mentorship Q&A in mobile are next.
+
+### 26.1 Progress tab — mobile
+
+`★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`), beside the Course tab. Same shell (Progress current),
+then: heading · Completion card · pass alert · `LMS / Quiz · Grade Summary` · footnote · Certificate · Weekly goal —
+cloned from the technical Progress tab, annotations removed.
+
+- **Both mobile screens now set `3. Responsive 📐` to Mobile at the frame**, so every heading bound to it scales —
+  not only the course title.
+- **The grade table cannot be narrowed.** The DS sets a **min width of 170 on the first column**, and min size cannot
+  be overridden in an instance. On mobile it keeps one number column, **Weighted**, and each type reads
+  *Final Quiz · 50%, worth 30%*; rows hug their height. Added to library request 8.
+- **Two fixes on the technical Progress tab too:** the grade badge said *62% · below the 70% pass mark* against a bar,
+  alert and table all at **15%** — now 15%; and the pass alert's body was developer copy (*From grading_policy.grade_range
+  — the threshold is a field…*) — now *Your current weighted grade is 15%.* The field stays in the annotation.
+- One mobile-only annotation, on the grade table.
