@@ -685,7 +685,7 @@ right move is to delete one, not to keep syncing them.
 | Foundations — colour, live-bound swatches | `5410:325` |
 | Foundations — space, radius, type | `5411:325` |
 | `Meta` · `Card shell` | `5414:327` · `5415:327` |
-| `Module row` (6 variants: State × Expanded) · `Lock` molecule · `Topic row` | `5416:382` · `5419:384` |
+| `Module row` (6 variants: State × Expanded) · `Lock` molecule (Size md · sm) · `Topic row` | `5416:382` · `5419:384` |
 | `Progress card` · `Certificate card` · `Sidebar card` | `5422:600` · `5425:566` · `5426:568` |
 | Integration proof | `5429:419` |
 | Verb prefix — three-way comparison | `5433:498` |
@@ -1766,6 +1766,12 @@ The Course tab and `★ ENTRY` now show Module 4 locked by **Prerequisite**; the
 > it as an exposed nested instance. Course tab and `★ ENTRY` Module 4 show the prerequisite tooltip again; the
 > *Integration proof* board's Date instance moved to the one Locked variant, tooltip off. The Module 4 annotation
 > that said the tooltip "cannot be produced" now points at `gated_content.prereq_section_name`.
+>
+> **Same molecule on the topic (24 Sep).** `Lock` is now a set with **`Size`**: `md` (32) for the Module row, tooltip
+> below and centred; `sm` (18) for **`Topic row` State=Locked**, which swaps its status icon for it. In `sm` the DS
+> Tooltip uses `Arrow=Bottom left`, above the lock and anchored left, so it grows away from the lock and still
+> points at it at any text length (the DS has no *Top left*). A topic inside a locked module carries the module's
+> reason; a topic gated on its own takes its subsection's `prereq_section_name`. No screen shows a locked topic yet.
 
 **What edX returns for a prerequisite** — read from `seq_block.py` and `openedx/core/lib/gating/api.py`:
 

@@ -2,6 +2,13 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · The Lock molecule on the locked topic
+
+- `LMS / Course Detail / Lock` becomes a set, **Size = md (32) · sm (18)** (`6120:2380`). `md` keeps the Module row's
+  tooltip, below and centred. `sm` puts the DS Tooltip above the lock with `Arrow=Bottom left`, anchored left.
+- `LMS / Course Detail / Topic row` State=Locked: status icon replaced by `Lock` Size=sm, exposed. Description updated.
+- Module 4 on the Course tab and ENTRY kept `Show tooltip` and its text through the change. No screen uses a locked topic yet.
+
 ## 2026-09-24 · Module row, atomic: 8 variants → 6, the lock reason is copy
 
 - New molecule **`LMS / Course Detail / Lock`** (`6118:10300`): DS `Completion Status · Locked` + DS `Tooltip`,
