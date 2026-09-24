@@ -2,6 +2,15 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Module row holds its topics; Topic row mobile
+
+- `Module row`: every variant is a bordered card — `Header` + a **`Topics` SLOT** shown when expanded. Screens (Technical,
+  ENTRY, mobile, handoff) use one instance per module, no wrapper frames, topics inside the slot.
+- `Topic row`: **Breakpoint = Desktop · Mobile**. Mobile puts type and duration under a full-width title. The mobile
+  screens use it.
+- Locked topic title: underline removed again (desktop + mobile). *Implementing feedback* Locked on every copy.
+- Metadata map §28.
+
 ## 2026-09-24 · Course Detail handoff frame — dev-ready, no annotations
 
 - New frame `Platform Pages - Course Detail (self-paced) - Light` (`6146:10226`) + *Ready for dev* banner, in the ICP

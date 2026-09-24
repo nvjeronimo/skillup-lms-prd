@@ -2165,3 +2165,21 @@ UTC+1)*) and the Q&A composer's *"Post anonymously · allow_anonymous is on for 
 
 **Not in this handoff:** Dates and Mentorship Q&A on mobile — the rows say so. The screens in the frame are copies:
 when a Technical screen changes, re-copy the card's screen rather than editing both.
+
+## 28. Module row holds its topics (slot); Topic row gets a mobile layout — 24 Sep
+
+**`Module row` is now the whole module.** Each of the six variants is one bordered card: `Header` (the row as it
+was — number, title and meta, lock, chevron) and a **`Topics` slot** (`Topics#6161:12`), visible when
+`Expanded=True`. The slot takes `LMS / Lesson Header` per lesson and `LMS / Course Detail / Topic row` per topic —
+the format Nelson set on the Course tab (Module 3). Default content: a lesson header and three topic rows in the
+states of the variant. Screens no longer wrap the row in bordered frames or keep a separate topic list: on the
+Technical Course tab, ENTRY, the mobile Course tab and both handoff copies, every module is **one instance**, and
+Module 3's eleven lesson headers and topics now live in its slot. Overrides survived the restructure (subtitle
+counts, lock tooltip, lock reason); the one annotation on the old topic container moved to the Module 3 instance.
+
+**`Topic row` gains `Breakpoint` = Desktop · Mobile** (6 variants). Mobile: the title takes the full width and
+wraps, type and duration sit on a line below, the status aligns with the first line. The mobile Course tab and its
+handoff copy use it; each topic's type badge and duration were restored after the swap.
+
+**Kept in line with the Technical screen:** *Implementing feedback* is Locked there, so it is Locked on every copy.
+The locked title's underline, which had come back on the desktop variant, is removed on both breakpoints.
