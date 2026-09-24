@@ -1,0 +1,883 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SKO Phase 0 Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+  :root {
+    --ground:        #F5F8F8;
+    --surface:       #FFFFFF;
+    --surface-sunk:  #ECF1F1;
+    --ink:           #13282F;
+    --ink-soft:      #40585F;
+    --ink-faint:     #71878D;
+    --rule:          #D3DEDE;
+    --rule-soft:     #E4EBEB;
+    --accent:        #17607A;
+    --accent-soft:   #E2EDF1;
+    --ok:            #2C6E52;
+    --ok-soft:       #E0EDE6;
+    --alert:         #A8412A;
+    --alert-soft:    #F6E5E0;
+    --unknown:       #7A6836;
+    --unknown-soft:  #F1ECDC;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --col: 70ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:       #0D1618;
+      --surface:      #142126;
+      --surface-sunk: #1B2C31;
+      --ink:          #E6EEEE;
+      --ink-soft:     #A9BEC2;
+      --ink-faint:    #7B9197;
+      --rule:         #2A3E44;
+      --rule-soft:    #21343A;
+      --accent:       #6FB8CE;
+      --accent-soft:  #16333E;
+      --ok:           #7BC49C;
+      --ok-soft:      #163024;
+      --alert:        #E4927C;
+      --alert-soft:   #35201A;
+      --unknown:      #CBB878;
+      --unknown-soft: #2C2718;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:       #0D1618;
+    --surface:      #142126;
+    --surface-sunk: #1B2C31;
+    --ink:          #E6EEEE;
+    --ink-soft:     #A9BEC2;
+    --ink-faint:    #7B9197;
+    --rule:         #2A3E44;
+    --rule-soft:    #21343A;
+    --accent:       #6FB8CE;
+    --accent-soft:  #16333E;
+    --ok:           #7BC49C;
+    --ok-soft:      #163024;
+    --alert:        #E4927C;
+    --alert-soft:   #35201A;
+    --unknown:      #CBB878;
+    --unknown-soft: #2C2718;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead { display: flex; flex-direction: column; gap: 18px; }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: var(--display);
+    font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: var(--col);
+    margin: 0;
+  }
+
+  .provenance {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.9;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 28px;
+  }
+  .provenance b { color: var(--ink-soft); font-weight: 500; }
+
+  /* ---------- section shell ---------- */
+  section { display: flex; flex-direction: column; gap: 20px; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  h2 .num {
+    font-family: var(--mono);
+    font-size: 0.72em;
+    font-weight: 500;
+    color: var(--accent);
+    margin-right: 0.6em;
+  }
+
+  h3 {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.005em;
+    margin: 0;
+  }
+
+  p { margin: 0; max-width: var(--col); }
+  p + p { margin-top: 0.85em; }
+
+  .lede { color: var(--ink-soft); }
+
+  code, .m { font-family: var(--mono); font-size: 0.875em; }
+  code {
+    background: var(--surface-sunk);
+    padding: 0.12em 0.4em;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ---------- answer blocks ---------- */
+  .qa {
+    background: var(--surface);
+    border: 1px solid var(--rule-soft);
+    border-left: 3px solid var(--accent);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .q {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .q .qn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    flex: none;
+  }
+
+  .verdict {
+    font-family: var(--display);
+    font-size: 1.22rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+    max-width: var(--col);
+  }
+
+  /* ---------- tables ---------- */
+  .scroll { overflow-x: auto; }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 520px;
+    font-size: 14px;
+  }
+
+  th {
+    text-align: left;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 14px 8px 0;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 9px 14px 9px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  td:first-child { color: var(--ink); }
+  td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.id { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ---------- status chips ---------- */
+  .chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .chip.ok      { background: var(--ok-soft);      color: var(--ok); }
+  .chip.alert   { background: var(--alert-soft);   color: var(--alert); }
+  .chip.unknown { background: var(--unknown-soft); color: var(--unknown); }
+  .chip.accent  { background: var(--accent-soft);  color: var(--accent); }
+
+  /* ---------- figure strip ---------- */
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .fig {
+    padding: 18px 20px;
+    border-right: 1px solid var(--rule-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .fig:last-child { border-right: none; }
+  .fig .v {
+    font-family: var(--display);
+    font-size: 2rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .fig .v.warn { color: var(--alert); }
+  .fig .k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- callouts ---------- */
+  .note {
+    border-left: 2px solid var(--rule);
+    padding-left: 18px;
+    color: var(--ink-soft);
+    max-width: var(--col);
+  }
+  .note.flag { border-left-color: var(--alert); }
+
+  /* ---------- change list ---------- */
+  .changes { display: flex; flex-direction: column; gap: 26px; }
+  .change { display: flex; flex-direction: column; gap: 7px; }
+  .change .hd { display: flex; gap: 11px; align-items: baseline; flex-wrap: wrap; }
+  .change p { color: var(--ink-soft); }
+
+  /* ---------- open questions ---------- */
+  ol.open { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 13px; max-width: var(--col); }
+  ol.open li { color: var(--ink-soft); }
+  ol.open li b { color: var(--ink); font-weight: 600; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    line-height: 1.8;
+  }
+
+  @media (max-width: 620px) {
+    .wrap { padding: 36px 18px 64px; gap: 40px; }
+    .fig { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+  }
+  .docnav { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 20px; font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; color:var(--ink-faint); padding-bottom:14px; border-bottom:1px solid var(--rule); margin-bottom:-24px; }
+  .docnav .lbl { text-transform:uppercase; letter-spacing:.12em; font-weight:500; margin-right:6px; }
+  .docnav a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); }
+  .docnav a:hover, .docnav a:focus-visible { border-bottom-color:var(--accent); outline:none; }
+  .docnav .here { color:var(--ink); font-weight:600; border-bottom:2px solid var(--accent); }
+
+  /* condensed layout */
+  .glance { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .g { background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent); border-radius:4px; padding:14px 16px; display:flex; flex-direction:column; gap:6px; }
+  .g.warn { border-top-color:var(--alert); } .g.good { border-top-color:var(--ok); } .g.ask { border-top-color:var(--unknown); }
+  .g h4 { margin:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  .g p { font-size:14.5px; line-height:1.5; color:var(--ink-soft); max-width:none; }
+  .g p b { color:var(--ink); font-weight:600; }
+  .refs { display:flex; flex-direction:column; gap:0; }
+  .refs > h2 { margin-bottom:6px; }
+  details.ref { border-top:1px solid var(--rule-soft); padding:12px 0; }
+  details.ref:last-child { border-bottom:1px solid var(--rule-soft); }
+  details.ref summary { cursor:pointer; font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--accent); list-style-position:inside; }
+  details.ref summary:hover { color:var(--ink); }
+  details.ref .refbody { display:flex; flex-direction:column; gap:18px; padding:18px 0 6px; }
+  .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+  .tight li { line-height:1.5; }
+</style>
+
+<div class="wrap">
+
+  <nav class="docnav" aria-label="SKO Design System documents">
+    <span class="lbl">SKO Design System</span>
+    <a href="https://claude.ai/code/artifact/ad6dc6ec-8243-4ef8-a343-041b3739e3e8">Index</a>
+    <span class="here">Audit</span>
+    <a href="https://claude.ai/code/artifact/c51810fb-98d5-466d-aeb6-2b7670974ef6">Plan</a>
+    <a href="https://claude.ai/code/artifact/ab94ea98-2615-45ef-a0c2-56526b194230">Naming</a> <a href="https://claude.ai/artifact/WhQnhby4zK8UkfZ5sd4bCG">Manual</a> <a href="https://claude.ai/artifact/YAtAqLo6dTSNHmGiHme9BM">Final names</a>
+    <a href="https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/%E2%9D%96-SKO-Design-System--Untitled-UI-?node-id=21420-5353&t=OTqlDlBt6rZch8VU-4">Figma ↗</a>
+  </nav>
+
+  <header class="masthead">
+    <div class="kicker">Phase 0 · the measured baseline · no changes made</div>
+    <h1>SKO Design System: what the file actually says</h1>
+    <p class="standfirst">The numbers behind the plan, read from the file on 11 Sep 2026. Two
+      minutes to read; the full tables are folded at the end.</p>
+    <div class="provenance">
+      <span><b>File</b> ❖ SKO Design System · Untitled UI</span>
+      <span><b>Scope</b> ❖ LMS COMPONENTS ✅ · 81 components</span>
+      <span><b>Read</b> 11 Sep 2026, from the file itself</span>
+      <span><b>Since then</b> the colour collection is 🎨 SKO-Semantics with 83 element-first tokens (47 roles on 19 Sep, renamed 22 Sep) and the text styles use Material names; see the <a class="link" href="https://claude.ai/artifact/YAtAqLo6dTSNHmGiHme9BM">final token names</a></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="strip">
+      <div class="fig"><span class="v">81</span><span class="k">components</span></div>
+      <div class="fig"><span class="v">75</span><span class="k">published, current</span></div>
+      <div class="fig"><span class="v warn">4</span><span class="k">changed, unpublished</span></div>
+      <div class="fig"><span class="v">89<span style="font-size:.55em">%</span></span><span class="k">fills on SKO tokens</span></div>
+      <div class="fig"><span class="v warn">462</span><span class="k">primitives exposed</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>In one minute</h2>
+    <div class="glance">
+      <div class="g "><h4>The finding</h4><p><b>Healthy where it looks weak, weak where it looks healthy.</b> 89% of fills sit on SKO tokens and only 7 are hardcoded. The real debt is quieter: 493 fills bound to vendor tokens, and 462 raw primitives visible in every picker.</p></div>
+      <div class="g "><h4>Why it matters</h4><p>Those two are what designers feel every day, and what any check that only asks “is it bound?” misses. They set the order of the plan.</p></div>
+      <div class="g good"><h4>Cheap and safe</h4><p>Renaming components, booleans and layers: instances follow. Deleting the <span class="m">To be removed</span> section: never published. Rebuilding the Topbar on Light/Dark modes: one component.</p></div>
+      <div class="g warn"><h4>The expensive one</h4><p>Renaming <b>variant</b> properties. They are keyed by name, so every override drops: 417 instances on four components, in the ICP file alone.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">1</span>Five numbers that set the order of work</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Measured</th><th>Number</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td>Raw primitives visible downstream</td><td class="n">462</td><td>Hiding them from publishing is a repair, not a precaution.</td></tr>
+          <tr><td>Fills bound to vendor tokens</td><td class="n">493 · 11%</td><td>The real remediation target, concentrated in seven components.</td></tr>
+          <tr><td>Hardcoded fills</td><td class="n">7</td><td>All in the Topbar. Hardcoding is not this library’s problem.</td></tr>
+          <tr><td>Instances on the four breakpoint components</td><td class="n">417</td><td>Variant property renames need a migration plan, not a batch.</td></tr>
+          <tr><td>Instances whose main is an Untitled UI page</td><td class="n">2,068 of 2,903</td><td>Adopt what we depend on into Foundations before deleting any vendor page.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>Already fixed along the way</h2>
+    <ul class="tight">
+      <li><b>Documentation drift.</b> Five section headers described a lettering scheme that no longer exists.</li>
+      <li><b>Two misspelled booleans.</b> Renamed with their ids intact: all 304 instances kept their values.</li>
+      <li><b>17 Topic Rows</b> pointing at a superseded component, re-linked to the live one with their titles restored.</li>
+      <li><b>Two logos</b> from a stale brand-library version, moved to the current one. The remaining 18 remote logos are correct.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>What the file cannot tell us</h2>
+    <ul class="tight">
+      <li><b>Plan tier and branching.</b> Read it from the toolbar and the billing page.</li>
+      <li><b>How many people have library edit rights.</b> It changes how risky a variant rename is.</li>
+      <li><b>Whether the brand book has accent ramps,</b> or only base hex. It decides whether accents are transcription or authoring.</li>
+    </ul>
+  </section>
+
+  <section class="refs">
+    <h2>Reference</h2>
+    <details class="ref">
+      <summary>Publish status: 75 current, 4 changed, 2 never published</summary>
+      <div class="refbody">
+    
+    <p class="verdict">Yes. Seventy-five of eighty-one components are published and current,
+      including every component in the section whose own header says <em>“Proposed, not yet
+      adopted”</em>.</p>
+    <p class="lede">That answers question 6.1 of the brief directly: the proposed work is not
+      sitting in a corner of the file, it is in the library that every consuming file sees.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Status</th><th>Count</th><th>Which</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="chip ok">current</span></td>
+            <td class="n">75</td>
+            <td>All nine sections, section 4 included</td>
+            <td>Published and in sync</td>
+          </tr>
+          <tr>
+            <td><span class="chip alert">changed</span></td>
+            <td class="n">4</td>
+            <td><span class="m">Sidebar-ICP</span>, <span class="m">Module Header</span>,
+                <span class="m">Sidebar / Course Header</span>, <span class="m">Overall Progress</span></td>
+            <td>Local edits not yet published. The library is out of sync right now.</td>
+          </tr>
+          <tr>
+            <td><span class="chip accent">unpublished</span></td>
+            <td class="n">2</td>
+            <td>Both <span class="m">_Remove ·</span> components in <span class="m">To be removed</span></td>
+            <td>Never published. Deleting them cannot break a consuming file.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note flag">
+      <p>Fix the four <b>changed</b> components before Phase 1 begins. Ground rule 1 says verify
+      before you change; that rule cannot hold while four published components differ from what
+      the library is serving.</p>
+    </div>
+  </div>
+    </details>
+    <details class="ref">
+      <summary>Variable collections, modes, and what is hidden</summary>
+      <div class="refbody">
+    
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Collection</th><th>Modes</th><th>Variables</th><th>Hidden</th><th>Visible downstream</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="m">_Primitives</span></td>
+            <td>Style</td>
+            <td class="n">621</td>
+            <td class="n">159</td>
+            <td class="n" style="color:var(--alert)">462</td>
+          </tr>
+          <tr>
+            <td><span class="m">1. Semantics</span></td>
+            <td>Light mode SKO · Dark mode SKO</td>
+            <td class="n">411</td>
+            <td class="n">283</td>
+            <td class="n">128</td>
+          </tr>
+          <tr>
+            <td><span class="m">3. Responsive 📐</span></td>
+            <td>Desktop · Tablet · Mobile</td>
+            <td class="n">78</td>
+            <td class="n">0</td>
+            <td class="n">78</td>
+          </tr>
+          <tr>
+            <td><span class="m">2. Skins 🎨</span></td>
+            <td>SKO · Gold · Violet · Sky · Red · Ink</td>
+            <td class="n">12</td>
+            <td class="n">0</td>
+            <td class="n">12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">Also local to the file: 47 text styles, 628 paint styles, 25 effect styles,
+      across 116 pages.</p>
+
+    <div class="note flag">
+      <p><b>Phase 5(d) is not a refinement, it is a live leak.</b> Four hundred and sixty-two raw
+      primitives are already visible in every consuming file's picker. The phase is written as
+      though hiding them is a precaution; it is a repair.</p>
+    </div>
+
+    <div class="note">
+      <p><b>Dark mode already resolves through modes.</b> <span class="m">1. Semantics</span>
+      carries Light and Dark as modes, which settles Phase 4.1 without a survey: modes are the
+      mechanism, and the <span class="m">Theme</span> variant axis is the intruder.</p>
+    </div>
+  </div>
+    </details>
+    <details class="ref">
+      <summary>The three unnamed variant properties</summary>
+      <div class="refbody">
+    
+    <p class="verdict">Exactly three, not “at least”. The fourth id the brief lists is a variant
+      inside one of them, not a separate component.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Component</th><th>Node</th><th>Values</th><th>Proposed</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="m">LMS / Live Control Bar States</span></td>
+            <td class="id">19975:537795</td>
+            <td>Live On Control Bar · Join Live Control Bar</td>
+            <td><span class="m">State</span></td>
+          </tr>
+          <tr>
+            <td><span class="m">sidebar-expand-collapse-toggle</span></td>
+            <td class="id">19975:536832</td>
+            <td>Collapsed · Expanded</td>
+            <td><span class="m">State</span></td>
+          </tr>
+          <tr>
+            <td><span class="m">LMS</span></td>
+            <td class="id">20053:3286</td>
+            <td>Topic Footer Nav Default (V1) &mdash; one value only</td>
+            <td>Delete the property</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p>The third is not a naming problem. A variant property with a single value controls
+      nothing, so naming it preserves a control that does no work. Delete it and rename the
+      component, as Phase 3.1 already proposes.</p>
+    </div>
+  </div>
+    </details>
+    <details class="ref">
+      <summary>Hardcoded and vendor-bound fills, by component</summary>
+      <div class="refbody">
+    
+    <p class="verdict">Seven, in the whole library. All seven sit in
+      <span class="m">LMS / Course Player Topbar</span>, and three of them are pure
+      <span class="m">#FF0000</span>.</p>
+    <p class="lede">Hardcoding is not this library's problem. The debt is four hundred and
+      ninety-three fills bound to a vendor variable rather than to <span class="m">SKO/*</span>,
+      which reads as healthy in any check that only asks “is it bound?”.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Binding</th><th>Fills</th><th>Share</th><th>Reading</th></tr></thead>
+        <tbody>
+          <tr><td>Bound to <span class="m">SKO/*</span></td><td class="n">3,977</td><td class="n">89%</td><td>Correct</td></tr>
+          <tr><td>Bound to a vendor variable</td><td class="n">493</td><td class="n">11%</td><td>The actual remediation target</td></tr>
+          <tr><td>Hardcoded</td><td class="n">7</td><td class="n">0.2%</td><td>All in one component</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lede">Fifty of the eighty-one components are completely clean. The vendor bindings
+      concentrate hard:</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Component</th><th>Section</th><th>Vendor-bound</th><th>Hardcoded</th></tr></thead>
+        <tbody>
+          <tr><td><span class="m">LMS / Quiz · Question Card</span></td><td>5</td><td class="n">138</td><td class="n">0</td></tr>
+          <tr><td><span class="m">LMS / Quiz · Entry Header</span></td><td>5</td><td class="n">79</td><td class="n">0</td></tr>
+          <tr><td><span class="m">LMS / Drag and Drop · Card</span></td><td>5</td><td class="n">72</td><td class="n">0</td></tr>
+          <tr><td><span class="m">LMS / Course Player Topbar</span></td><td>2</td><td class="n">25</td><td class="n" style="color:var(--alert)">6</td></tr>
+          <tr><td><span class="m">LMS / Quiz · Answer Input</span></td><td>5</td><td class="n">24</td><td class="n">0</td></tr>
+          <tr><td><span class="m">LMS / Provider Badge</span></td><td>7</td><td class="n">12</td><td class="n">0</td></tr>
+          <tr><td><span class="m">Topic-Status-Badge</span></td><td>1</td><td class="n">10</td><td class="n">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    </details>
+    <details class="ref">
+      <summary>Every finding in the brief, re-read against its node</summary>
+      <div class="refbody">
+    
+    <p class="lede">Each id in the brief was resolved and inspected. One finding no longer exists,
+      three are true but understated, the rest confirm exactly.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Finding</th><th>Node</th><th>Status</th><th>What the node says</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>3.2 · lettering scheme in section 4 header</td>
+            <td class="id">20328:3270</td>
+            <td><span class="chip ok">already fixed</span></td>
+            <td>Corrected 9 Sep, along with four more of the same kind the audit did not reach</td>
+          </tr>
+          <tr>
+            <td>3.1 · section 5 height</td>
+            <td class="id">19975:537812</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>15,610 px tall</td>
+          </tr>
+          <tr>
+            <td>3.1 · page span</td>
+            <td class="id">—</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>17,256 px wide, down from ~18,000 after the section 4 header fix</td>
+          </tr>
+          <tr>
+            <td>3.3 · <span class="m">To be removed</span> section</td>
+            <td class="id">20590:433813</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>SECTION, 3 children, both components UNPUBLISHED</td>
+          </tr>
+          <tr>
+            <td>3.3 · raster screenshot</td>
+            <td class="id">20878:3826</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>RECTANGLE with an image fill</td>
+          </tr>
+          <tr>
+            <td>3.3 · <span class="m">Device=Desktop-OLD</span></td>
+            <td class="id">19975:536989</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>Hidden variant inside <span class="m">LMS / Overall Progress</span></td>
+          </tr>
+          <tr>
+            <td>3.3 · <span class="m">State=In Progress</span></td>
+            <td class="id">19975:536794</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>Hidden variant inside <span class="m">LMS / Completion Status</span></td>
+          </tr>
+          <tr>
+            <td>3.3 · decision in a component name</td>
+            <td class="id">19975:538034</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td><span class="m">LMS / Daily Goals (decide later)</span>, no variant properties</td>
+          </tr>
+          <tr>
+            <td>3.4 · four off-convention names</td>
+            <td class="id">…536832 …536827 …537649 …431924</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>All four resolve as described</td>
+          </tr>
+          <tr>
+            <td>3.4 · the frame named <span class="m">LMS</span></td>
+            <td class="id">20053:3286</td>
+            <td><span class="chip alert">understated</span></td>
+            <td>A COMPONENT_SET, not a frame, and its one variant value is dead weight</td>
+          </tr>
+          <tr>
+            <td>3.4 · three names for one breakpoint</td>
+            <td class="id">—</td>
+            <td><span class="chip alert">understated</span></td>
+            <td>Four components, and <span class="m">Sidebar-ICP</span> compounds two concepts in one value</td>
+          </tr>
+          <tr>
+            <td>3.4 · <span class="m">Milestone=Module-Completd</span></td>
+            <td class="id">19975:537760</td>
+            <td><span class="chip alert">understated</span></td>
+            <td>Confirmed, plus two more misspellings the audit missed</td>
+          </tr>
+          <tr>
+            <td>3.5 · <span class="m">Theme</span> baked into variants</td>
+            <td class="id">19975:537695</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>Six variants, <span class="m">Theme</span> × <span class="m">Size</span>. The only component in the library that does this.</td>
+          </tr>
+          <tr>
+            <td>3.6 · Inline Alert tone scale</td>
+            <td class="id">20328:3296</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>Six tones, <span class="m">Hint</span> and <span class="m">Answer</span> among them</td>
+          </tr>
+          <tr>
+            <td>3.6 · Stat Tile tone scale</td>
+            <td class="id">20388:706341</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td><span class="m">Neutral · Success · Error</span></td>
+          </tr>
+          <tr>
+            <td>3.6 · partner brand colours</td>
+            <td class="id">19975:538091</td>
+            <td><span class="chip ok">confirmed</span></td>
+            <td>Six partners, 12 vendor-bound fills, zero on SKO tokens</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    </details>
+    <details class="ref">
+      <summary>The seven measurements, in full</summary>
+      <div class="refbody">
+    
+
+    <div class="changes">
+
+      <div class="change">
+        <div class="hd"><h3>Phase 2 is cheaper than it looks</h3><span class="chip ok">de-risked</span></div>
+        <p>Both <span class="m">_Remove ·</span> components report <span class="m">UNPUBLISHED</span>.
+        They have never been in the library, so no consuming file holds an instance of them.
+        Deleting the <span class="m">To be removed</span> section is a local cleanup with no
+        downstream reach, snapshot or not.</p>
+      </div>
+
+      <div class="change">
+        <div class="hd"><h3>Phase 3.3 is the expensive one, by a wide margin</h3><span class="chip alert">417 instances, one file</span></div>
+        <p>Renaming <span class="m">Device</span>, <span class="m">Size</span> and
+        <span class="m">State</span> to <span class="m">Breakpoint</span> touches four components.
+        Those four have <b>417 live instances across ten pages of the ICP file alone</b>, and every
+        one carries a variant value that a rename drops:
+        <span class="m">Transcript Line</span> 120 · <span class="m">Overall Progress</span> 112 ·
+        <span class="m">Course Player Topbar</span> 97 · <span class="m">Sidebar-ICP</span> 88.
+        The Mobile App and marketing files are on top of that and were not counted.</p>
+      </div>
+
+      <div class="change">
+        <div class="hd"><h3>The <span class="m">Sidebar-ICP</span> rename is not a rename</h3><span class="chip alert">scope</span></div>
+        <p>Its property reads
+        <span class="m">State=[Expanded | Collapsed | Mobile | Collapsed · noLesson | Mobile · noLesson]</span>.
+        Two of those values fuse a breakpoint with a content shape. Splitting them into
+        <span class="m">Breakpoint</span> plus a second axis multiplies the variant count and
+        re-maps every existing override by hand. It belongs in its own batch with its own review,
+        not in a sweep with the other three.</p>
+      </div>
+
+      <div class="change">
+        <div class="hd"><h3>Phase 4 is one component, not a survey</h3><span class="chip ok">cheap win</span></div>
+        <p>Exactly one component in the library carries a <span class="m">Theme</span> axis, and
+        Light/Dark modes already exist in <span class="m">1. Semantics</span>. Rebuilding the
+        Topbar against modes and dropping the axis halves its variants from six to three and
+        removes the second mechanism outright. Worth doing early: it is small, visible, and
+        proves the pattern before the costly renames.</p>
+      </div>
+
+      <div class="change">
+        <div class="hd"><h3>Delete before you split</h3><span class="chip accent">sequencing</span></div>
+        <p>Phase 1 moves nine sections onto nine pages; Phase 2 then deletes content that Phase 1
+        just moved. Running Phase 2's deletions first means less to move and fewer links to
+        verify. Nothing else in the ordering depends on the split happening first.</p>
+      </div>
+
+      <div class="change">
+        <div class="hd"><h3>Thirty-five instances pointed outside this file</h3><span class="chip ok">resolved · 35 → 18 correct</span></div>
+        <p><b>An earlier draft of this report called these “deleted mains”. That was wrong.</b> All
+        35 reported <span class="m">remote = true</span>: the main lived in another file, which is
+        why it belonged to no page here. Nothing was deleted. They were two separate cross-file
+        dependencies, and only one of them was a fault.</p>
+        <p><b>Seventeen</b> in <span class="m">9 · Playground</span> sat on a superseded
+        <span class="m">LMS / Topic Row</span> (set key <span class="m">1ea88ee9…</span>) whose
+        property was <span class="m">State=[Locked|Pending|Active|Done]</span>, while the live
+        local component (key <span class="m">438068d9…</span>) uses
+        <span class="m">Topic Status</span> × <span class="m">Tab Status</span>. The sidebar
+        showcases were documenting a variant API the library no longer has. All seventeen are now
+        on the local component, mapped
+        <span class="m">Locked→Locked/Default</span>,
+        <span class="m">Pending→Pending/Default</span>,
+        <span class="m">Done→Completed/Default</span> and
+        <span class="m">Active→Pending/Open</span>, that last one an owner decision since the new
+        API has no direct equivalent. Titles were captured before the swap and restored after;
+        17 of 17 verified on variant, title and locality, with every width unchanged.</p>
+        <p><b>Eighteen</b> in <span class="m">2 · Player shell</span> are logo components from an
+        external brand library, nested inside <span class="m">Course Player Topbar</span> variants.
+        <b>These are supposed to be remote and stay remote.</b> The fault was that
+        <span class="m">Skillup_logo</span> arrived from two different versions of that library at
+        once. Two instances, both Dark, sat on the stale set
+        <span class="m">1af6c966…</span> and were moved to <span class="m">9008e11b…</span>. All
+        six now follow one rule: Light takes <span class="m">color</span>, Dark takes
+        <span class="m">Monotone_Light</span>.</p>
+        <p class="note" style="border-left-color:var(--accent);margin-top:4px">The page-level count
+        does not go to zero and should not. Eighteen remote logo instances remain, and that is the
+        correct state for a component owned by another library.</p>
+      </div>
+
+      <div class="change">
+        <div class="hd"><h3>Renaming a boolean property is not renaming a variant property</h3><span class="chip ok">fixed · 304 instances intact</span></div>
+        <p><span class="m">Show secundary-text</span> on <span class="m">LMS / Inline Alert</span>
+        and <span class="m">Show alert-secundary-text</span> on
+        <span class="m">LMS / Autosave Status</span> both misspelled “secondary”. Both are now
+        corrected.</p>
+        <p>They were safe to fix because a BOOLEAN property carries a stable id:
+        <span class="m">Show secundary-text#20386:11</span> became
+        <span class="m">Show secondary-text#20386:11</span>, the id untouched, so every instance
+        override survives. Verified across all 25 instances in this file: none lost the property.
+        The other 279 sit in the ICP file and were all at the default anyway.</p>
+        <p><b>This does not generalise to Phase 3.3.</b> Variant properties are keyed by name, not
+        by id, which is exactly why renaming <span class="m">Device</span>,
+        <span class="m">Size</span> and <span class="m">State</span> drops 417 overrides while this
+        rename dropped none. The two cases look alike in the brief and behave nothing alike.</p>
+        <p><b>Confirmed after publishing.</b> All 279 instances in the ICP file now read
+        <span class="m">Show secondary-text#20386:11</span> and
+        <span class="m">Show alert-secondary-text#20383:6</span>, none lost the property, no
+        misspelling survives anywhere, and every value is intact. The library itself came back at
+        <b>79 CURRENT</b>, with only the two never-published <span class="m">_Remove ·</span>
+        components outside that count.</p>
+      </div>
+
+    </div>
+  </div>
+    </details>
+    <details class="ref">
+      <summary>The fork decision, costed: 2,068 vendor instances by page</summary>
+      <div class="refbody">
+    
+    <p class="lede">Not a recommendation. The number the decision turns on:</p>
+
+    <div class="strip">
+      <div class="fig"><span class="v">2,903</span><span class="k">instances on the page</span></div>
+      <div class="fig"><span class="v">800</span><span class="k">main on the same page</span></div>
+      <div class="fig"><span class="v warn">2,068</span><span class="k">main on an Untitled UI page</span></div>
+      <div class="fig"><span class="v">18</span><span class="k">main in another file</span></div>
+    </div>
+
+    <p class="lede">Seventy-one per cent of everything the SKO layer renders comes from a vendor
+      page in the same file. That is the re-link bill for “extract the SKO layer”, and it is
+      concentrated enough to estimate honestly:</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Untitled UI page</th><th>Instances</th><th>Untitled UI page</th><th>Instances</th></tr></thead>
+        <tbody>
+          <tr><td><span class="m">↳ Icons</span></td><td class="n">1,201</td><td><span class="m">↳ Breadcrumbs</span></td><td class="n">24</td></tr>
+          <tr><td><span class="m">↳ Buttons</span></td><td class="n">327</td><td><span class="m">↳ Progress indicators</span></td><td class="n">20</td></tr>
+          <tr><td><span class="m">↳ Badges</span></td><td class="n">273</td><td><span class="m">↳ Video players</span></td><td class="n">16</td></tr>
+          <tr><td><span class="m">↳ Checkboxes</span></td><td class="n">110</td><td><span class="m">↳ Tooltips</span> · <span class="m">↳ Toggles</span></td><td class="n">12 each</td></tr>
+          <tr><td><span class="m">↳ Tabs</span></td><td class="n">36</td><td><span class="m">↳ Inputs</span></td><td class="n">9</td></tr>
+          <tr><td><span class="m">↳ Avatars</span></td><td class="n">25</td><td><span class="m">↳ Dropdowns</span></td><td class="n">3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note flag">
+      <p><b>“Delete unused Untitled UI pages” needs this table first.</b> Every page listed here is
+      load-bearing. <span class="m">↳ Tabs</span> and <span class="m">↳ Breadcrumbs</span> in
+      particular sit under a section whose name reads like sample material, and deleting that
+      section wholesale breaks 60 instances inside shipped components. The cut is by page, never
+      by section.</p>
+    </div>
+  </div>
+    </details>
+  </section>
+
+  <footer>
+    Read from metadata and node inspection · no nodes were modified in this phase · figures are counts at time of reading and will drift as the file is edited
+  </footer>
+
+</div>
+
+</body></html>
