@@ -8,6 +8,8 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   tooltip, below and centred. `sm` puts the DS Tooltip above the lock with `Arrow=Bottom left`, anchored left.
 - `LMS / Course Detail / Topic row` State=Locked: status icon replaced by `Lock` Size=sm, exposed. Description updated.
 - Module 4 on the Course tab and ENTRY kept `Show tooltip` and its text through the change. No screen uses a locked topic yet.
+- Topic row State=Locked: title underline removed — a locked topic does not open, so it is not drawn as a link. The
+  `body-large/Medium` style is kept (the underline was a local override on it).
 
 ## 2026-09-24 · Module row, atomic: 8 variants → 6, the lock reason is copy
 
