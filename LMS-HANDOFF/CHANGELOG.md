@@ -2,6 +2,64 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Badge v2: 453 variants become 120, accents strong, statuses soft
+
+**Design system (❖ SKO Design System)**
+- **`Badge v2`** replaces the Untitled UI badge (renamed `Badge-V1-to-remove` by Nelson). It is 4 styles × 3 sizes
+  × 10 colours = 120 variants, down from 453.
+  - **Styles:**
+    - Soft: soft fill, no outline.
+    - Outline: soft fill and soft outline.
+    - Modern: page fill and strong outline.
+    - Plain: no box, icon in a circle (the Topic Types look).
+  - **Colours:**
+    - Statuses: Gray, Brand, Info, Error, Warning, Success.
+    - Accents: Teal, Green, Red, Yellow.
+- **Private atom `_Badge base`** holds the structure:
+  - booleans for Label, Dot, Icon leading, Avatar, Flag, Icon only, Icon trailing and Close;
+  - a Text property;
+  - swaps for the leading, trailing and icon-only icons, and for the flag.
+  Each public variant is an instance of it with colour overrides. A structural change is made once.
+- **Accents strong, statuses soft.** Yellow used exactly the same primitives as Warning, and Green/Success and
+  Red/Error were close. The brand book has only Primary, Neutral and the four accents (AA–AD), so the accents
+  moved to the solid brand colour in Soft (`bg/accent-*` + `text/on-accent-*`), with a vivid outline in Outline
+  and Modern. Everything stays inside the brand book.
+- **Tokens.** One token per element for every colour: `bg/…-soft`, `text/…`, `icon/…`, `border/…-soft`,
+  `border/…`.
+  - **New (19):**
+    - `icon/accent-*` ×4
+    - `border/accent-*-soft` ×4
+    - `border/accent-*` ×4, the solid accent
+    - `icon/on-accent-*` ×4
+    - `bg/info-soft` (Primary/100 in Light, Primary/900 in Dark)
+    - `text/info` (Primary/700, 5.2:1)
+    - `border/info-soft`
+  - **Changed:**
+    - `border/primary-soft` now has visible contrast: Primary/100, as with the other soft outlines. It used to
+      alias the fill.
+    - `text/accent-teal` in Dark was fixed from 800 (2.6:1) to 100 (13.6:1), matching its own description.
+  - **Wrong family fixed:** icons were bound to `border/*`. They now use `icon/*`, including all of
+    `_Badge close X`, which also gains Green and Info.
+- **Showcase:** the frame `Badge v2 · Showcase` shows Light and Dark, styles × colours, sizes, options and
+  combinations.
+- **Badge group:** its 80 variants now use v2. Pill color maps to Outline with a white fill; Badge modern maps to
+  Modern.
+
+**Migration: LMS and ICP only**
+- **In 11 LMS components, 61 badges were swapped:**
+  - V1 Badge → Soft
+  - V1 modern → Modern
+  - Topic Types → Plain
+  Text, icons and sizing were kept. The Provider-Partner badges stay text-only: their V1 icon was hidden.
+- **VILT · Stage Stepper:** a stray *"Label"* badge, already visible in V1, was removed.
+- **ICP:** after the library update, all instances on the Quizzes, Video, Reading and Platform Pages V8 pages are
+  on v2. The badge texts that screens had overridden were recorded before the swap and restored:
+  - 39 in the 9 quiz Entry Headers
+  - *Reading* in a Topic Header
+  - *15% · below the 70% pass mark* in a Grade Summary
+- **Not migrated yet:** the Untitled UI example pages in the DS, and other files such as the Mobile App.
+  `Badge-V1-to-remove` stays until those move.
+
 ## 2026-09-24 · The course page's lesson label is the ICP's Lesson Header
 
 The Course Detail module outline (Technical · Course tab) had its lesson label, *Define and measure*, as a loose
