@@ -2155,8 +2155,9 @@ PM, RSD = this document), the screen, and `Handoff / Page Changelog Header` (des
 
 **The screens are copies with every Figma annotation removed** — 0 in the frame, checked after the copy (12 had
 survived as overrides inside instances and were cleared). The Technical screens keep theirs (89); the
-annotations stay the source for *why*, the frame is what to build. Dev Notes footnotes stay where the component
-shows them.
+annotations stay the source for *why*, the frame is what to build. **Dev Notes footnotes are hidden too** — `Show
+Footnote` off on the Course team and Certificate cards, the only four that showed one — so the screens are only what
+the learner sees.
 
 **Visible developer copy removed on the Technical screens before copying:** the Dates timezone line (was
 *"user_timezone on the dates payload. It is null…"*, now *All times are shown in your time zone (Europe/Lisbon,

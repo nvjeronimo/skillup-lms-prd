@@ -8,6 +8,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   handoff format: 6 cards — Course, Progress, Dates, Q&A desktop; Course and Progress mobile. 0 annotations inside.
 - Mobile Course tab re-aligned to the Technical Course tab (sidebar cards, alert, intro).
 - Visible developer copy removed: Dates timezone line; Q&A *Post anonymously* tail.
+- Dev Notes footnotes hidden in the frame (Course team, Certificate — 4 instances), so the screens show only learner UI.
 - Metadata map §27.
 
 ## 2026-09-24 · Course Detail mobile — the Progress tab
