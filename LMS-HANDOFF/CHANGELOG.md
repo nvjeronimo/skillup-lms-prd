@@ -49,6 +49,25 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   (the four modules now sum to ~13h 48m, which matches the header's ~14 hours).
 - Module 4 subtitle: *12 topics* → **9 topics**, so the modules sum to 12 + 12 + 9 + 9 = **42**, the header's total.
 
+## 2026-09-24 (late) · Badge v2 across the Untitled UI pages; Topic-Types keeps its own colours
+
+- **Untitled UI pages migrated.** 649 direct V1 badges moved to Badge v2 across 30 vendor pages, using the same
+  mapping as the LMS migration:
+  - Badge → Soft, Badge Stroke → Outline, Badge modern → Modern, Badge color (icon only) → Soft.
+  - Kept: text, the chosen icons, flags, avatar photos, position and sizing. Hidden badges stay hidden; for
+    example, the extra badges in *Table cell* are configured while visible, then hidden again.
+  - The ~1 800 badges nested in vendor components followed their masters.
+  - A file-wide count now finds **0 V1 badges on any page**. The one left is inside
+    `LMS / Topic-Types Badge/Discussion Prompt`, a deleted component that sits on no page.
+- **Layer names.** The 59 badges migrated earlier kept the old layer name *Badge-V1-to-remove*, which made them
+  look like V1 in the layers panel. They are renamed *Badge*.
+- **Topic-Types Badge.** Nelson recoloured it: Plain Gray with a `bg/primary-soft` circle, an `icon/primary` icon
+  and `text/subtle` text. Recommendation: keep it as a component-level change and don't add a Badge style yet.
+  One component uses it; promote it when a second one needs it.
+- **ICP after the update.** The same 5 restored texts were wiped again: 4 quiz Entry Headers and the Reading
+  Topic Header. They were re-applied as direct text overrides. Check them again after each publish.
+- `Badge-V1-to-remove` can go once the Mobile App file and any other consumer file stop using it.
+
 ## 2026-09-24 · Badge v2: 453 variants become 120, accents strong, statuses soft
 
 **Design system (❖ SKO Design System)**
