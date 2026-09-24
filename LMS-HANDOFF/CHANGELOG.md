@@ -2,6 +2,13 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Course Detail syllabus: local Topic row, grouped by Lesson Header
+
+- The Course tab's Module 3 (redrawn by Nelson) is the format: `Module row` · `sep` · a container with the DS
+  `LMS / Lesson Header` per lesson and the local `LMS / Course Detail / Topic row` per topic, meta on the right.
+- `★ ENTRY` Module 3 switched to the same block; its DS `LMS / Topic Row` list is gone. No annotations on ENTRY.
+- Metadata map §15.1: the Topic Row adoption is marked reversed; the local set has `State=Locked`.
+
 ## 2026-09-24 · Badge v2: 453 variants become 120, accents strong, statuses soft
 
 **Design system (❖ SKO Design System)**

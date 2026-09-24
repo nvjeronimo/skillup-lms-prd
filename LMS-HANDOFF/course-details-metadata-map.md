@@ -1314,6 +1314,15 @@ the underlined title, and the row's own divider. Swapped on `⚙ TECHNICAL · Co
 (14 instances). The 24 instances on the exploration boards (*Verb prefix*, *Integration proof*) stay on the local
 component, which is kept for them.
 
+> **Reversed 24 Sep — the syllabus is back on the local `Topic row`, grouped by `Lesson Header`.** Nelson redrew
+> Module 3 on `⚙ TECHNICAL · Course tab` (`5446:4074`) and it is now the format: the `Module row`, a 1px `sep`, then
+> one container (padding 4/20) holding the DS **`LMS / Lesson Header`** for each lesson (*Define and measure*,
+> *Analyze and interpret* — `sequential.display_name`) followed by its **`LMS / Course Detail / Topic row`** instances
+> (`vertical`). One line per topic: state icon, underlined title, type and duration on the right. The two costs listed
+> above are what came back; the one gain that mattered, **`Locked`**, the local set now has too (`State=Locked`).
+> `★ ENTRY` was switched to the same block (a clone of the Course tab's, no annotations). The exploration boards stay
+> as they were.
+
 ### 15.1b Grades — adopted on the Progress tab, 15 Sep
 
 After peer review, `LMS / Quiz · Grade Summary` replaces `Grade meter`, `Grade summary` and `Detailed grades`
