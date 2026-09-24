@@ -8,6 +8,8 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   `LMS / Lesson Header` per lesson and the local `LMS / Course Detail / Topic row` per topic, meta on the right.
 - `★ ENTRY` Module 3 switched to the same block; its DS `LMS / Topic Row` list is gone. No annotations on ENTRY.
 - Metadata map §15.1: the Topic Row adoption is marked reversed; the local set has `State=Locked`.
+- Module 3 subtitle on both screens: *12 topics · 3h 20m* → **9 topics · 3h 48m**, what its list actually holds
+  (the four modules now sum to ~13h 48m, which matches the header's ~14 hours).
 
 ## 2026-09-24 · Badge v2: 453 variants become 120, accents strong, statuses soft
 
