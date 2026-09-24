@@ -2117,3 +2117,19 @@ outline, then cards; the lock reason as text on touch.
 
 **Left as it is:** topic titles wrap to two lines beside their type and duration; readable, and it keeps
 `Topic row` single-layout. Progress, Dates and Mentorship Q&A in mobile are next.
+
+### 26.1 Progress tab — mobile
+
+`★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`), beside the Course tab. Same shell (Progress current),
+then: heading · Completion card · pass alert · `LMS / Quiz · Grade Summary` · footnote · Certificate · Weekly goal —
+cloned from the technical Progress tab, annotations removed.
+
+- **Both mobile screens now set `3. Responsive 📐` to Mobile at the frame**, so every heading bound to it scales —
+  not only the course title.
+- **The grade table cannot be narrowed.** The DS sets a **min width of 170 on the first column**, and min size cannot
+  be overridden in an instance. On mobile it keeps one number column, **Weighted**, and each type reads
+  *Final Quiz · 50%, worth 30%*; rows hug their height. Added to library request 8.
+- **Two fixes on the technical Progress tab too:** the grade badge said *62% · below the 70% pass mark* against a bar,
+  alert and table all at **15%** — now 15%; and the pass alert's body was developer copy (*From grading_policy.grade_range
+  — the threshold is a field…*) — now *Your current weighted grade is 15%.* The field stays in the annotation.
+- One mobile-only annotation, on the grade table.

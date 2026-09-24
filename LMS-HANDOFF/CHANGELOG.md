@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Course Detail mobile — the Progress tab
+
+- New screen `★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`). Both mobile screens set
+  `3. Responsive 📐` = Mobile at the frame.
+- Grade table on mobile: Weighted column only, score and weight in the row (the DS first column has a 170 min width).
+  Library request 8 gains point 8.
+- Technical Progress tab: grade badge 62% → **15%**; pass alert body in learner copy.
+
 ## 2026-09-24 · Course Detail mobile — the Course tab
 
 - New screen `★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), 375 wide, next to ENTRY. Status bar,

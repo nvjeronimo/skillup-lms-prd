@@ -290,6 +290,9 @@ because the screen's data happens to fit it. It will not fit the next course. Fr
 5. **Only `Result=Below pass`.** Passing and Not started are missing.
 6. **No lettered grade scale**, which the platform supports alongside a single pass threshold.
 7. **The name.** It is described as a course-level gradebook and named as a quiz component.
+8. **It cannot go below ~420px.** The first table column has a **min width of 170**, the other three are equal
+   FILL columns, and min size cannot be overridden in an instance. At 343 the headers collide. The Course Detail
+   mobile screen works around it by hiding two columns; the component needs a mobile layout (or a smaller min).
 
 
 ---
