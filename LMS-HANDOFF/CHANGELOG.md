@@ -2,6 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited
+
+- Mobile: Dates, Q&A list and Q&A conversation added (5 mobile screens). `Date row` and `Message` gain a Mobile
+  breakpoint; `Thread row` text column fills.
+- Token audit on all ten screens + local components: 0 unbound colours, spacing, radii; 0 unstyled texts. Spacing bound
+  per mode; off-scale values snapped (10, 14, 18, 36, 56, r3). Card labels → `label-small/Medium` (10px, the DS
+  overline).
+- Components instead of drawings: Dates dividers → `Content divider`; `Date row` link → DS `Button` Link; `Course
+  stats` icons → DS icons.
+- Handoff frame: nine cards; chrome colours on the nearest tokens. Metadata map §29; figma-api-traps 22–27.
+
 ## 2026-09-24 · Module row holds its topics; Topic row mobile
 
 - `Module row`: every variant is a bordered card — `Header` + a **`Topics` SLOT** shown when expanded. Screens (Technical,

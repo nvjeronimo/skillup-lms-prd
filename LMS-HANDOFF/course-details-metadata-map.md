@@ -2183,3 +2183,53 @@ handoff copy use it; each topic's type badge and duration were restored after th
 
 **Kept in line with the Technical screen:** *Implementing feedback* is Locked there, so it is Locked on every copy.
 The locked title's underline, which had come back on the desktop variant, is removed on both breakpoints.
+
+## 29. Mobile for every tab; every screen on DS tokens and components — 24 Sep
+
+**Mobile, complete.** Beside the Course and Progress tabs: `★ ENTRY · Course Detail — mobile · Dates tab`
+(`6167:104714`), `… · Mentorship Q&A tab · list` (`6168:14899`) and `… · conversation` (`6168:26944`). Q&A on a phone
+is two screens: the list (no Selected state — there is no split view) and the conversation, opened from a row,
+with *Your questions* (DS `Button` Link gray + `arrow-left`) to go back.
+
+**Breakpoints added where the desktop layout does not fit 375** — same pattern as `Topic row`:
+- `LMS / Dates / Date row` · `Breakpoint=Mobile`: date and time on a line above the content, badges wrap.
+- `LMS / Course Detail / Message` · `Breakpoint=Mobile`: the bubble fills the column (desktop keeps its 420 max).
+- `Thread row`: the text column fills (it was fixed at 320, which pushed the unread dot out at 343).
+
+**Token audit — every Course Detail screen, desktop and mobile, and the local components.** Nothing inside DS
+instances was touched (that is the DS's job). After the pass, **0 unbound fills, strokes, spacing, radii and 0
+unstyled texts** on the ten screens and in the components.
+
+| | Screens | Components |
+|---|---|---|
+| Colours bound | 6 fills, 5 strokes (tab rows: `bg/page`, `border/subtle`; ENTRY: `bg/faint`) | certificate paper |
+| Spacing bound | 37 | 209 |
+| Radius bound | 11 | 55 |
+| Text styles applied | 6 page headings → `headline-medium/Bold` | 30 |
+
+**Spacing is bound in the node's own mode** — `Spacing/*` lives in `3. Responsive 📐`, so the same token is 24 on
+Desktop and 16 on Mobile. Mobile frames and Mobile variants got the token that gives their number in Mobile.
+
+**Values that were off the scale were snapped** to the nearest token: 10→12 (padding, 34×) and 10→8 (gap, 16×),
+56→48 (2×), 36→32, 14→16, 18→16, radius 3→2 (8×). Sub-pixel to a few pixels; visible only side by side.
+
+**Text styles — two decisions to confirm:**
+- The uppercase card labels (*MENTOR*, *COURSE TEAM*, *UPCOMING DATES*…) were 12/18 with no style. The DS style for
+  exactly this — *"Overline — short uppercase eyebrow label"* — is **`label-small/Medium`, 10/14**. Applied, so they
+  are **2px smaller**. The alternative, `body-small/Medium` + uppercase, detaches the style (trap 22).
+- The certificate's 10px labels → `label-small/Semibold`; their letter spacing goes from 16–24% to the style's 4%.
+
+**Existing components instead of drawn ones:**
+- Dates: *Past*, *Upcoming* and the today marker → DS **`Content divider`** (Text, Single line) — the DS's own
+  "Today" pattern; the filled chip is gone (`Badge v2` has no strong style).
+- `Date row` link → DS **`Button`** (Link color, sm, `arrow-right`) instead of text with "→".
+- `Course stats` icons → DS **`book-open-01`** (modules · topics — it was a clock) and **`building-07`** (organisation,
+  hidden as before) instead of drawn vectors.
+- Left drawn, with no DS equivalent: status dots, the timeline spine, 1px separators inside cards, the date tile,
+  the certificate's signature, QR and seal.
+
+**Handoff frame refreshed:** the six screens re-copied, **three mobile cards added** (07 Dates, 08 Q&A list,
+09 Q&A conversation) — nine screens. Its chrome, cloned from the ICP handoff pages, had raw colours with no exact
+token; they now use the nearest: card stroke `border/subtle` (Δ2), badge `bg/primary` (Δ1), wrapper `bg/strong`
+(Δ27, a shade darker), header texts `text/on-primary`, and the meta labels `text/disabled` (legible, but the
+wrong role — the ICP handoff pages carry the same raw palette).
