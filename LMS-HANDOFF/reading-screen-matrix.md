@@ -600,6 +600,10 @@ note) **hidden** in the layer tree. §11's rule holds: what a screen is for belo
 of the learner. Grouping changed no pixel; the body is 7 778 tall before and after, 12 between blocks and
 inside them (`Spacing/lg`).
 
+**The loose example is gone.** Once Row 7 carried it, `5888:53100` was deleted from the page (with the
+1702 × 1298 screenshot beside it). §12 and §16 still describe what it held; **Row 7 is now the source** — Card 7
+for desktop, 7.2 for mobile.
+
 | # | Block | XBlock | Completion |
 |---|---|---|---|
 | 01 | Text / rich text — headings, paragraphs, bold, italic, link, three list kinds | `html` | ~5s visibility |
@@ -623,15 +627,24 @@ Every row comes from `topic-types-inventory.md` §278–296 and `studio-authorin
 assumed. **Remember §17:** blocks 13 and 15 make the platform type this unit `problem`, not Reading.
 
 The blocks sit on the real shell, cloned from Row 4: **Card 7 · all-assets-desktop** and **Card 7.2 ·
-all-assets-mobile**. Both are drawn **at full length** (8 544 and 10 161) — at one viewport the card would show a
+all-assets-mobile**. Both are drawn **at full length** (8 544 and 10 141) — at one viewport the card would show a
 tenth of the article. The card says so: in the product the column scrolls and the footer nav stays pinned.
 
 **At 375** the blocks reflow into the 311 column, with nothing overflowing: the 3-up image row stacks, the 60%
 images stay at 60% (187), two-up stays side by side, the ORA stepper takes `Size=Compact` as in 6.3.
 
-**One DS defect it exposed.** `LMS / Drag and Drop · Card` keeps its three zones in a horizontal row. At 311 each
-zone is 70 wide, the placed items overlap, and the footer clips *Submit*. An instance cannot change auto-layout
-direction, so this is fixable only at source — zones should wrap or stack below ~480. Recorded on card 7.2.
+**One DS defect it exposed — fixed at source, 25 Sep.** `LMS / Drag and Drop · Card` broke at 375 in three
+ways, and an instance cannot change auto-layout direction, so the fix went into the DS (all six states, published
+and live in ICP):
+
+| Fault at 311 | Fix |
+|---|---|
+| Three zones in one `NO_WRAP` row, 70 wide each — placed items overlapped | Zones wrap, 120 minimum each: one row at desktop widths, stacked full-width on a phone |
+| Fixed padding 24 left 261 for `Quiz · Footer Actions`, which needs 279 — *Submit* clipped | Padding bound to `Spacing/3xl`: 24 desktop, 16 mobile, which leaves exactly 279. `Footer Actions` untouched, so the Quiz screens are unaffected |
+| `Feedback` (Correct / Incorrect alert) and, in four states, `Item bank` were fixed at 569 | Both fill the card |
+
+Checked at 619 on Desktop (unchanged) and 311 on Mobile in *In progress*, *Incorrect* and *Answer revealed*.
+The behaviour is in the component description.
 
 ### What the Ready-for-Dev pass fixed
 
@@ -656,6 +669,5 @@ direction, so this is fixable only at source — zones should wrap or stack belo
 - `completion-completed-mobile`: the completed badge squeezes the title to two lines, and the footer row cannot
   be brought into view without cutting most of the article.
 - 6.3 is titled *ORA · text · Mobile*; its siblings say *Open Response · text only*.
-- Three loose frames sit beside the board: the authorability matrix, the §16 example (now grouped) and a
-  1702 × 1298 image.
+- The authorability matrix still sits beside the board, outside it.
 - The status pill truncates (*READY FO…*) on every 439-wide mobile card — a limit of the card header component.
