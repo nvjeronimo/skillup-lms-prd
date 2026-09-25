@@ -2,6 +2,54 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-25 · Consistency pass: spacing and layer names on the ready-for-dev screens
+
+- Desktop tab content is one row (Progress was a grid), gap 40; main-column gap 24 on every tab; notice wrappers
+  removed (Course had 20px extra). Empty hidden Dates sidebar deleted.
+- Generic layer names replaced (Page › Main › CourseDetail › Tab content › Main column); block names unified across
+  desktop and mobile. ENTRY follows. Handoff re-copied: 0 generic names, 0 hidden, 0 annotations. §29.2.
+
+## 2026-09-25 · Mobile tab rows: top padding
+
+- Following Nelson's fix on the handoff Course tab card: every mobile tab row gets **padding-top `Spacing/lg` (12)**,
+  left `Spacing/xl`, gap `Spacing/3xl` — the four mobile screens with tabs and their handoff copies (row height 32 → 44).
+
+## 2026-09-25 · Course Detail corrections after the audit
+
+- 43 `Badge-V1-to-remove` → `Badge v2` (Outline, sm) in Date row, Thread row, Message, Sidebar card; 62 screen texts
+  restored. Date row default chip *DUE DATE*.
+- Date rows hug their height. ENTRY aligned with the Technical Course tab. Handoff meta labels on `text/on-primary`.
+- Library requests 11 (filled Badge v2) and 12 (12px overline). Handoff re-copied and re-audited to zero. §29.1.
+
+## 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited
+
+- Mobile: Dates, Q&A list and Q&A conversation added (5 mobile screens). `Date row` and `Message` gain a Mobile
+  breakpoint; `Thread row` text column fills.
+- Token audit on all ten screens + local components: 0 unbound colours, spacing, radii; 0 unstyled texts. Spacing bound
+  per mode; off-scale values snapped (10, 14, 18, 36, 56, r3). Card labels → `label-small/Medium` (10px, the DS
+  overline).
+- Components instead of drawings: Dates dividers → `Content divider`; `Date row` link → DS `Button` Link; `Course
+  stats` icons → DS icons.
+- Handoff frame: nine cards; chrome colours on the nearest tokens. Metadata map §29; figma-api-traps 22–27.
+
+## 2026-09-24 · Module row holds its topics; Topic row mobile
+
+- `Module row`: every variant is a bordered card — `Header` + a **`Topics` SLOT** shown when expanded. Screens (Technical,
+  ENTRY, mobile, handoff) use one instance per module, no wrapper frames, topics inside the slot.
+- `Topic row`: **Breakpoint = Desktop · Mobile**. Mobile puts type and duration under a full-width title. The mobile
+  screens use it.
+- Locked topic title: underline removed again (desktop + mobile). *Implementing feedback* Locked on every copy.
+- Metadata map §28.
+
+## 2026-09-24 · Course Detail handoff frame — dev-ready, no annotations
+
+- New frame `Platform Pages - Course Detail (self-paced) - Light` (`6146:10226`) + *Ready for dev* banner, in the ICP
+  handoff format: 6 cards — Course, Progress, Dates, Q&A desktop; Course and Progress mobile. 0 annotations inside.
+- Mobile Course tab re-aligned to the Technical Course tab (sidebar cards, alert, intro).
+- Visible developer copy removed: Dates timezone line; Q&A *Post anonymously* tail.
+- Dev Notes footnotes hidden in the frame (Course team, Certificate — 4 instances), so the screens show only learner UI.
+- Metadata map §27.
+
 ## 2026-09-24 · Course Detail mobile — the Progress tab
 
 - New screen `★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`). Both mobile screens set
@@ -48,6 +96,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - Module 3 subtitle on both screens: *12 topics · 3h 20m* → **9 topics · 3h 48m**, what its list actually holds
   (the four modules now sum to ~13h 48m, which matches the header's ~14 hours).
 - Module 4 subtitle: *12 topics* → **9 topics**, so the modules sum to 12 + 12 + 9 + 9 = **42**, the header's total.
+
+## 2026-09-25 · Mentor card: a Q&A variant for the current build
+
+The mentor flow as decided by Nelson:
+- **When the course has a mentor assigned**, the sidebar shows a standard message. There is no named mentor.
+- **The button, *Ask your mentor*,** takes the learner to the **Mentorship Q&A** tab. They post the question
+  there, and the course staff and/or the mentor answer in the same place.
+
+In the design system:
+- **`LMS / Course Detail / Sidebar card`** gains **`Type=Mentor Q&A`**: the MENTOR label, the title *Ask anything
+  to your mentor* in body-large/Semibold, the body text and the button. Avatar, name and role are hidden.
+- **`Type=Mentor`** (a named mentor, 1:1 messaging, optional *Book a call*) is **kept unchanged** for a future
+  phase.
+- **Screens switched to the new variant (5 cards):** Course Detail v12, mobile Course tab, TECHNICAL Course tab,
+  and the self-paced Course Detail screens (×2).
+  - They had been built by overriding Type=Mentor, turning the name line into the title and hiding the avatar.
+    Those overrides were cleared.
+  - Every visible text is identical before and after.
 
 ## 2026-09-24 (late) · Badge v2 across the Untitled UI pages; Topic-Types keeps its own colours
 

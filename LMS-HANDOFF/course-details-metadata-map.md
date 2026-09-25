@@ -2094,7 +2094,9 @@ course start date or the private channel is lost for this run.
 ## 26. Mobile — the Course tab at 375 — 24 Sep
 
 `★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), beside `★ ENTRY` in *Course Detail V10*. Built from
-the same instances as ENTRY, so it keeps ENTRY's Dev Notes; no drawn parts.
+the same instances as ENTRY; no drawn parts. *24 Sep:* the alert, section intro and the seven sidebar cards were
+re-cloned from `⚙ TECHNICAL · Course tab`, the final screen — ENTRY's differed (Weekly goal *Set* vs *Met*, another
+Mentor variant).
 
 | Band | What | Source |
 |---|---|---|
@@ -2133,3 +2135,134 @@ cloned from the technical Progress tab, annotations removed.
   alert and table all at **15%** — now 15%; and the pass alert's body was developer copy (*From grading_policy.grade_range
   — the threshold is a field…*) — now *Your current weighted grade is 15%.* The field stays in the annotation.
 - One mobile-only annotation, on the grade table.
+
+## 27. The handoff frame — dev-ready, no annotations — 24 Sep
+
+**`Platform Pages - Course Detail (self-paced) - Light`** (`6146:10226`) on *Platform Pages V8*, right of the
+Technical section, with the banner **Ready for dev** above it (`6146:10247`). Same format as the ICP handoff pages
+(Quizzes A-2): intro header — eyebrow, title, description, meta strip — then one row per tab, one **card** per
+screen: `Handoff card header + Subheader` (sequence, title, version 2026-09-24 · r1, *Ready for DEV*, designer,
+PM, RSD = this document), the screen, and `Handoff / Page Changelog Header` (description + the latest change).
+
+| # | Card | Screen source |
+|---|---|---|
+| 01 | Course tab · Desktop | `⚙ TECHNICAL · Course tab` |
+| 02 | Course tab · Mobile | `★ ENTRY · Course Detail — mobile · Course tab` |
+| 03 | Progress tab · Desktop | `⚙ TECHNICAL · Progress tab` |
+| 04 | Progress tab · Mobile | `★ ENTRY · Course Detail — mobile · Progress tab` |
+| 05 | Dates tab · Desktop | `⚙ TECHNICAL · Dates tab` |
+| 06 | Mentorship Q&A tab · Desktop | `⚙ TECHNICAL · Mentorship Q&A tab` |
+
+**The screens are copies with every Figma annotation removed** — 0 in the frame, checked after the copy (12 had
+survived as overrides inside instances and were cleared). The Technical screens keep theirs (89); the
+annotations stay the source for *why*, the frame is what to build. **Dev Notes footnotes are hidden too** — `Show
+Footnote` off on the Course team and Certificate cards, the only four that showed one — so the screens are only what
+the learner sees.
+
+**Visible developer copy removed on the Technical screens before copying:** the Dates timezone line (was
+*"user_timezone on the dates payload. It is null…"*, now *All times are shown in your time zone (Europe/Lisbon,
+UTC+1)*) and the Q&A composer's *"Post anonymously · allow_anonymous is on for this course"* (now *Post anonymously*).
+
+**Not in this handoff:** Dates and Mentorship Q&A on mobile — the rows say so. The screens in the frame are copies:
+when a Technical screen changes, re-copy the card's screen rather than editing both.
+
+## 28. Module row holds its topics (slot); Topic row gets a mobile layout — 24 Sep
+
+**`Module row` is now the whole module.** Each of the six variants is one bordered card: `Header` (the row as it
+was — number, title and meta, lock, chevron) and a **`Topics` slot** (`Topics#6161:12`), visible when
+`Expanded=True`. The slot takes `LMS / Lesson Header` per lesson and `LMS / Course Detail / Topic row` per topic —
+the format Nelson set on the Course tab (Module 3). Default content: a lesson header and three topic rows in the
+states of the variant. Screens no longer wrap the row in bordered frames or keep a separate topic list: on the
+Technical Course tab, ENTRY, the mobile Course tab and both handoff copies, every module is **one instance**, and
+Module 3's eleven lesson headers and topics now live in its slot. Overrides survived the restructure (subtitle
+counts, lock tooltip, lock reason); the one annotation on the old topic container moved to the Module 3 instance.
+
+**`Topic row` gains `Breakpoint` = Desktop · Mobile** (6 variants). Mobile: the title takes the full width and
+wraps, type and duration sit on a line below, the status aligns with the first line. The mobile Course tab and its
+handoff copy use it; each topic's type badge and duration were restored after the swap.
+
+**Kept in line with the Technical screen:** *Implementing feedback* is Locked there, so it is Locked on every copy.
+The locked title's underline, which had come back on the desktop variant, is removed on both breakpoints.
+
+## 29. Mobile for every tab; every screen on DS tokens and components — 24 Sep
+
+**Mobile, complete.** Beside the Course and Progress tabs: `★ ENTRY · Course Detail — mobile · Dates tab`
+(`6167:104714`), `… · Mentorship Q&A tab · list` (`6168:14899`) and `… · conversation` (`6168:26944`). Q&A on a phone
+is two screens: the list (no Selected state — there is no split view) and the conversation, opened from a row,
+with *Your questions* (DS `Button` Link gray + `arrow-left`) to go back.
+
+**Breakpoints added where the desktop layout does not fit 375** — same pattern as `Topic row`:
+- `LMS / Dates / Date row` · `Breakpoint=Mobile`: date and time on a line above the content, badges wrap.
+- `LMS / Course Detail / Message` · `Breakpoint=Mobile`: the bubble fills the column (desktop keeps its 420 max).
+- `Thread row`: the text column fills (it was fixed at 320, which pushed the unread dot out at 343).
+
+**Token audit — every Course Detail screen, desktop and mobile, and the local components.** Nothing inside DS
+instances was touched (that is the DS's job). After the pass, **0 unbound fills, strokes, spacing, radii and 0
+unstyled texts** on the ten screens and in the components.
+
+| | Screens | Components |
+|---|---|---|
+| Colours bound | 6 fills, 5 strokes (tab rows: `bg/page`, `border/subtle`; ENTRY: `bg/faint`) | certificate paper |
+| Spacing bound | 37 | 209 |
+| Radius bound | 11 | 55 |
+| Text styles applied | 6 page headings → `headline-medium/Bold` | 30 |
+
+**Spacing is bound in the node's own mode** — `Spacing/*` lives in `3. Responsive 📐`, so the same token is 24 on
+Desktop and 16 on Mobile. Mobile frames and Mobile variants got the token that gives their number in Mobile.
+
+**Values that were off the scale were snapped** to the nearest token: 10→12 (padding, 34×) and 10→8 (gap, 16×),
+56→48 (2×), 36→32, 14→16, 18→16, radius 3→2 (8×). Sub-pixel to a few pixels; visible only side by side.
+
+**Text styles — two decisions to confirm:**
+- The uppercase card labels (*MENTOR*, *COURSE TEAM*, *UPCOMING DATES*…) were 12/18 with no style. The DS style for
+  exactly this — *"Overline — short uppercase eyebrow label"* — is **`label-small/Medium`, 10/14**. Applied, so they
+  are **2px smaller**. The alternative, `body-small/Medium` + uppercase, detaches the style (trap 22).
+- The certificate's 10px labels → `label-small/Semibold`; their letter spacing goes from 16–24% to the style's 4%.
+
+**Existing components instead of drawn ones:**
+- Dates: *Past*, *Upcoming* and the today marker → DS **`Content divider`** (Text, Single line) — the DS's own
+  "Today" pattern; the filled chip is gone (`Badge v2` has no strong style).
+- `Date row` link → DS **`Button`** (Link color, sm, `arrow-right`) instead of text with "→".
+- `Course stats` icons → DS **`book-open-01`** (modules · topics — it was a clock) and **`building-07`** (organisation,
+  hidden as before) instead of drawn vectors.
+- Left drawn, with no DS equivalent: status dots, the timeline spine, 1px separators inside cards, the date tile,
+  the certificate's signature, QR and seal.
+
+**Handoff frame refreshed:** the six screens re-copied, **three mobile cards added** (07 Dates, 08 Q&A list,
+09 Q&A conversation) — nine screens. Its chrome, cloned from the ICP handoff pages, had raw colours with no exact
+token; they now use the nearest: card stroke `border/subtle` (Δ2), badge `bg/primary` (Δ1), wrapper `bg/strong`
+(Δ27, a shade darker), header texts `text/on-primary`, and the meta labels `text/disabled` (legible, but the
+wrong role — the ICP handoff pages carry the same raw palette).
+
+### 29.1 Corrections after the audit — 25 Sep
+
+1. **`Badge-V1-to-remove` is gone from Course Detail.** 43 instances inside four local components — `Date row`
+   (type, assignment type, status), `Thread row` (question, answered, following), `Message` (staff, accepted answer),
+   `Sidebar card` (relative date) — are now **`Badge v2`, Style=Outline, sm**, same colour, same visibility binding.
+   The 62 text overrides on the screens were recorded before and re-applied after (the Upcoming dates card now reads
+   *Tomorrow · In 15 days* again). The `Date row` default chip is *DUE DATE*, no longer the raw literal.
+2. **`Date row` instances hug their height** — six desktop rows were fixed at 106/128, and the DS link button is taller
+   than the text it replaced.
+3. **`★ ENTRY` follows the Technical Course tab:** alert, section intro and the seven sidebar cards are copies of
+   the Technical ones (Weekly goal *Met*, the same Mentor card); the header already matched. No annotations.
+4. **Handoff header meta labels** moved from `text/disabled` (wrong role) to `text/on-primary`.
+5. **Library requests 11 and 12:** a filled `Badge v2` style for the today marker; a 12px overline.
+6. **Handoff re-copied** (all nine screens) and re-audited: 0 unbound colours, spacing, radii, 0 unstyled text, 0
+   annotations, 0 old badges. Annotations inside instances needed a second pass after the copy (trap 28).
+
+### 29.2 Consistency pass on the ready-for-dev screens — 25 Sep
+
+Checked on the nine source screens (4 desktop, 5 mobile), ENTRY, and the handoff copies; nothing inside instances.
+
+- **Spacing made uniform:** the desktop tab content is one row, main column + 40 (`Spacing/5xl`) + sidebar, on every
+  tab — Progress was a grid. The main column's gap is **24** (`Spacing/3xl`) on all four tabs (Dates and Q&A were 16).
+  Notices no longer sit in `Container:margin` wrappers — Course had an extra 20px under its alert, Progress none; the
+  column gap now spaces them. Mobile tab rows: padding-top 12 (§ changelog, 25 Sep).
+- **Removed:** the empty, hidden `Sidebar` left on the desktop Dates tab.
+- **Layer names:** no generic names left (*Body, App, Container, Container:margin, Frame 15/1/18*). The structure reads
+  `Page › Main › CourseDetail › Tab content › Main column | Sidebar`; blocks are named for what they are and the same
+  on desktop and mobile — `Alert · course update | passing grade | missed deadlines`, `Modules`, `Grade summary`,
+  `Past dates`, `Upcoming dates`, `Note · timezone`, `Note · ungraded progress` (learner copy, so not "Footnote",
+  which is the Dev Notes atom). Names that carry the API (`Tabs (tabs[] from course_metadata)`, `Timeline
+  (course_date_blocks[])`) are kept on purpose.
+- **Handoff re-copied and checked:** 0 generic names, 0 hidden layers, 0 annotations, 0 unbound colours or spacing.

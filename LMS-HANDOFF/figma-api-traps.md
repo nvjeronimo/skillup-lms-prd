@@ -98,3 +98,30 @@ The rule they all point at: **after any structural mutation, read the state back
 
     **Reading `node.annotations` returns both `label` and `labelMarkdown`; writing back with both fails
     validation.** Keep `labelMarkdown` only.
+
+## Components, slots and tokens (24 Sep)
+
+22. **Setting `textCase` on a text that has a text style detaches the style** — even when the style already has
+    that case. Apply the style last and set nothing after it; if the case must differ, pick a style that has it.
+
+23. **`findAll()` descends into instances.** A token pass that writes fills from `node.findAll()` also writes
+    *overrides inside nested instances* — it painted a DS partner logo white. Walk the tree yourself and stop at
+    `INSTANCE`. To undo, `instance.removeOverrides()` (re-set the instance name afterwards); main nodes of remote
+    components are not reachable by id, so they cannot be copied back.
+
+24. **Min / max size cannot be overridden in an instance** (`min-size` error). A DS component with a min width is
+    as narrow as it gets; work around it (hide columns) or ask the library.
+
+25. **`setBoundVariable` on responsive spacing picks the value of the node's mode.** `Spacing/3xl` is 24 on
+    Desktop and 16 on Mobile. Read `node.resolvedVariableModes[collectionId]` and choose the token that gives the
+    same number in that mode; a frame set to Mobile resolves every bound child in Mobile.
+
+26. **Slots:** `set.addComponentProperty(name,'SLOT','')` then `frame.componentPropertyReferences =
+    {slotContentId: key}` turns the frame into a `SLOT` in each variant. In an instance the slot is found with
+    `findAllWithCriteria({types:['SLOT']})`; append children to it.
+
+27. **Layers hidden by a boolean property are absent from an instance's `findAll`** until the property is on —
+    turn it on, edit, turn it off.
+
+28. **Annotations on layers inside instances survive the first clear after a `clone()`.** Clearing right after the
+    clone misses them; a second `findAll(n=>n.annotations?.length)` pass clears them. Always re-count.
