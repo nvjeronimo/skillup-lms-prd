@@ -2249,3 +2249,20 @@ wrong role — the ICP handoff pages carry the same raw palette).
 5. **Library requests 11 and 12:** a filled `Badge v2` style for the today marker; a 12px overline.
 6. **Handoff re-copied** (all nine screens) and re-audited: 0 unbound colours, spacing, radii, 0 unstyled text, 0
    annotations, 0 old badges. Annotations inside instances needed a second pass after the copy (trap 28).
+
+### 29.2 Consistency pass on the ready-for-dev screens — 25 Sep
+
+Checked on the nine source screens (4 desktop, 5 mobile), ENTRY, and the handoff copies; nothing inside instances.
+
+- **Spacing made uniform:** the desktop tab content is one row, main column + 40 (`Spacing/5xl`) + sidebar, on every
+  tab — Progress was a grid. The main column's gap is **24** (`Spacing/3xl`) on all four tabs (Dates and Q&A were 16).
+  Notices no longer sit in `Container:margin` wrappers — Course had an extra 20px under its alert, Progress none; the
+  column gap now spaces them. Mobile tab rows: padding-top 12 (§ changelog, 25 Sep).
+- **Removed:** the empty, hidden `Sidebar` left on the desktop Dates tab.
+- **Layer names:** no generic names left (*Body, App, Container, Container:margin, Frame 15/1/18*). The structure reads
+  `Page › Main › CourseDetail › Tab content › Main column | Sidebar`; blocks are named for what they are and the same
+  on desktop and mobile — `Alert · course update | passing grade | missed deadlines`, `Modules`, `Grade summary`,
+  `Past dates`, `Upcoming dates`, `Note · timezone`, `Note · ungraded progress` (learner copy, so not "Footnote",
+  which is the Dev Notes atom). Names that carry the API (`Tabs (tabs[] from course_metadata)`, `Timeline
+  (course_date_blocks[])`) are kept on purpose.
+- **Handoff re-copied and checked:** 0 generic names, 0 hidden layers, 0 annotations, 0 unbound colours or spacing.

@@ -2,6 +2,13 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-25 · Consistency pass: spacing and layer names on the ready-for-dev screens
+
+- Desktop tab content is one row (Progress was a grid), gap 40; main-column gap 24 on every tab; notice wrappers
+  removed (Course had 20px extra). Empty hidden Dates sidebar deleted.
+- Generic layer names replaced (Page › Main › CourseDetail › Tab content › Main column); block names unified across
+  desktop and mobile. ENTRY follows. Handoff re-copied: 0 generic names, 0 hidden, 0 annotations. §29.2.
+
 ## 2026-09-25 · Mobile tab rows: top padding
 
 - Following Nelson's fix on the handoff Course tab card: every mobile tab row gets **padding-top `Spacing/lg` (12)**,
