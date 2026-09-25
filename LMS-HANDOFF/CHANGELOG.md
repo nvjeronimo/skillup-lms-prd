@@ -2,6 +2,11 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-25 · Mobile tab rows: top padding
+
+- Following Nelson's fix on the handoff Course tab card: every mobile tab row gets **padding-top `Spacing/lg` (12)**,
+  left `Spacing/xl`, gap `Spacing/3xl` — the four mobile screens with tabs and their handoff copies (row height 32 → 44).
+
 ## 2026-09-25 · Course Detail corrections after the audit
 
 - 43 `Badge-V1-to-remove` → `Badge v2` (Outline, sm) in Date row, Thread row, Message, Sidebar card; 62 screen texts
