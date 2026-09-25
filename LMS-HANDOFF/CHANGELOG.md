@@ -114,6 +114,9 @@ In the design system:
   - They had been built by overriding Type=Mentor, turning the name line into the title and hiding the avatar.
     Those overrides were cleared.
   - Every visible text is identical before and after.
+- **Body text changed (25 Sep):** *Unlimited 1:1 messaging, for the whole course. Typically responds within 1 day.*
+  becomes *Post your question in Q&A*. Answers come from the course staff and/or the mentor, not a 1:1 channel.
+  The 5 screen cards follow the variant.
 
 ## 2026-09-24 (late) · Badge v2 across the Untitled UI pages; Topic-Types keeps its own colours
 
