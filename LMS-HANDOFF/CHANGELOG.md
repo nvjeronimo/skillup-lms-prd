@@ -97,6 +97,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   (the four modules now sum to ~13h 48m, which matches the header's ~14 hours).
 - Module 4 subtitle: *12 topics* → **9 topics**, so the modules sum to 12 + 12 + 9 + 9 = **42**, the header's total.
 
+## 2026-09-25 · Mentor card: a Q&A variant for the current build
+
+The mentor flow as decided by Nelson:
+- **When the course has a mentor assigned**, the sidebar shows a standard message. There is no named mentor.
+- **The button, *Ask your mentor*,** takes the learner to the **Mentorship Q&A** tab. They post the question
+  there, and the course staff and/or the mentor answer in the same place.
+
+In the design system:
+- **`LMS / Course Detail / Sidebar card`** gains **`Type=Mentor Q&A`**: the MENTOR label, the title *Ask anything
+  to your mentor* in body-large/Semibold, the body text and the button. Avatar, name and role are hidden.
+- **`Type=Mentor`** (a named mentor, 1:1 messaging, optional *Book a call*) is **kept unchanged** for a future
+  phase.
+- **Screens switched to the new variant (5 cards):** Course Detail v12, mobile Course tab, TECHNICAL Course tab,
+  and the self-paced Course Detail screens (×2).
+  - They had been built by overriding Type=Mentor, turning the name line into the title and hiding the avatar.
+    Those overrides were cleared.
+  - Every visible text is identical before and after.
+
 ## 2026-09-24 (late) · Badge v2 across the Untitled UI pages; Topic-Types keeps its own colours
 
 - **Untitled UI pages migrated.** 649 direct V1 badges moved to Badge v2 across 30 vendor pages, using the same
