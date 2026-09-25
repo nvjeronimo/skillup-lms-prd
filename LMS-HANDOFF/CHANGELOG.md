@@ -2,6 +2,13 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-25 · Course Detail corrections after the audit
+
+- 43 `Badge-V1-to-remove` → `Badge v2` (Outline, sm) in Date row, Thread row, Message, Sidebar card; 62 screen texts
+  restored. Date row default chip *DUE DATE*.
+- Date rows hug their height. ENTRY aligned with the Technical Course tab. Handoff meta labels on `text/on-primary`.
+- Library requests 11 (filled Badge v2) and 12 (12px overline). Handoff re-copied and re-audited to zero. §29.1.
+
 ## 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited
 
 - Mobile: Dates, Q&A list and Q&A conversation added (5 mobile screens). `Date row` and `Message` gain a Mobile

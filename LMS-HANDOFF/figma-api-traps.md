@@ -122,3 +122,6 @@ The rule they all point at: **after any structural mutation, read the state back
 
 27. **Layers hidden by a boolean property are absent from an instance's `findAll`** until the property is on —
     turn it on, edit, turn it off.
+
+28. **Annotations on layers inside instances survive the first clear after a `clone()`.** Clearing right after the
+    clone misses them; a second `findAll(n=>n.annotations?.length)` pass clears them. Always re-count.

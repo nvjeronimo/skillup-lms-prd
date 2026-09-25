@@ -324,3 +324,27 @@ drawn at 67% until 16 Sep.
 
 **Ask:** a `Percent` text property on the ring, and variants (or a documented rule) for the arc so the drawn sweep
 follows it. Until then, `LMS / Course Detail / Completion card` documents the two overrides in its description.
+
+
+---
+
+## 11 · `Badge v2` — no filled (strong) style
+
+`Badge v2` has Soft, Outline, Modern and Plain. None fills with the strong colour and white text. The Course Detail
+Dates tab used exactly that for its **today marker** (*TODAY · 18 Sep 2026*, `bg/primary` + `text/on-primary`) — a
+chip that has to stand out from every other chip on the timeline. With no such style it became a DS `Content divider`
+(Type=Text), which is the DS's own "Today" pattern but loses the emphasis.
+
+**Ask:** a `Style=Solid` (strong fill, `text/on-*`), at least for Brand, Gray and the status colours — or a ruling
+that the today marker is a divider.
+
+---
+
+## 12 · No 12px overline
+
+The Course Detail card labels (*MENTOR*, *COURSE TEAM*, *UPCOMING DATES*, *WEEKLY GOAL*…) are uppercase eyebrows at
+12/18. The DS overline, `label-small/*`, is **10/14**. They now use `label-small/Medium` — 2px smaller than
+designed — because `body-small/Medium` + uppercase detaches the style (a case override is a style override).
+
+**Ask:** either confirm 10px is the overline and the cards follow it, or add a 12px overline (e.g.
+`label-medium/*`, uppercase, 12/18).

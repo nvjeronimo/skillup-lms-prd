@@ -2233,3 +2233,19 @@ Desktop and 16 on Mobile. Mobile frames and Mobile variants got the token that g
 token; they now use the nearest: card stroke `border/subtle` (Δ2), badge `bg/primary` (Δ1), wrapper `bg/strong`
 (Δ27, a shade darker), header texts `text/on-primary`, and the meta labels `text/disabled` (legible, but the
 wrong role — the ICP handoff pages carry the same raw palette).
+
+### 29.1 Corrections after the audit — 25 Sep
+
+1. **`Badge-V1-to-remove` is gone from Course Detail.** 43 instances inside four local components — `Date row`
+   (type, assignment type, status), `Thread row` (question, answered, following), `Message` (staff, accepted answer),
+   `Sidebar card` (relative date) — are now **`Badge v2`, Style=Outline, sm**, same colour, same visibility binding.
+   The 62 text overrides on the screens were recorded before and re-applied after (the Upcoming dates card now reads
+   *Tomorrow · In 15 days* again). The `Date row` default chip is *DUE DATE*, no longer the raw literal.
+2. **`Date row` instances hug their height** — six desktop rows were fixed at 106/128, and the DS link button is taller
+   than the text it replaced.
+3. **`★ ENTRY` follows the Technical Course tab:** alert, section intro and the seven sidebar cards are copies of
+   the Technical ones (Weekly goal *Met*, the same Mentor card); the header already matched. No annotations.
+4. **Handoff header meta labels** moved from `text/disabled` (wrong role) to `text/on-primary`.
+5. **Library requests 11 and 12:** a filled `Badge v2` style for the today marker; a 12px overline.
+6. **Handoff re-copied** (all nine screens) and re-audited: 0 unbound colours, spacing, radii, 0 unstyled text, 0
+   annotations, 0 old badges. Annotations inside instances needed a second pass after the copy (trap 28).
