@@ -5,9 +5,9 @@ catalogue. Until today it had **one** screen — a 1112 content column that had 
 shell. Video and Quiz are both APPROVED and each shipped a full scenario grid; this brings Reading to the
 same bar.*
 
-**Where it lives:** page `↳ Phase 1 · Reading - Ready for Review 🟠`, frame
-`ICP Phase 1 - Reading - Light - Ready for Review` (`5685:170871`).
-**16 screens across 5 rows** — 11 desktop · 2 tablet · 3 mobile.
+**Where it lives:** page `↳ Phase 1 · Reading - Ready for Dev 🟢`, frame
+`ICP Phase 1 - Reading - Light - Ready  ✅` (`5685:170871`).
+**20 screens across 7 rows** — 11 desktop · 3 tablet · 6 mobile (§18).
 
 ---
 
@@ -101,7 +101,7 @@ fills, with the nav as a sibling below it.
 
 ---
 
-## 3 · The 16 screens
+## 3 · The 20 screens
 
 | Row | Screen | What it settles |
 |---|---|---|
@@ -109,7 +109,13 @@ fills, with the nav as a sibling below it.
 | **2 · Attachments** | desktop · tablet · mobile | Files in the body, no tab |
 | **3 · Completion** | not completed · completed · review · completed-mobile | The manual-completion loop |
 | **4 · Long-form** | desktop · mobile | Every stackable primitive in one page, and the sidebar at full page length |
-| **5 · Edge cases** | downloads empty · no author · minimal content · no Downloads tab | The four states that are normal, not failures |
+| **5 · Edge cases** | no author · minimal content · no Downloads tab | The states that are normal, not failures |
+| **6 · Open Response** | desktop · tablet · mobile | An ORA inside a Reading, text only (§15) |
+| **7 · Everything a Reading can hold** | desktop · mobile | The §16 example as a real page, classified block by block (§18) |
+
+*Rows 1–5 were the original 16 screens; `downloads-empty` has since been taken off the board — it duplicated
+`article-desktop` once the tab went (§11), which is why Row 5 starts at 5.2. Rows 6 and 7 were added 22 and
+25 Sep.*
 
 ---
 
@@ -579,3 +585,89 @@ naming of those three. Anything more (e.g. telling a Quiz from an Assessment) ne
 - A Reading with only a Drag and Drop stays `other`, a Reading. That quirk comes from the XBlock, not from a
   decision.
 - *Duration* is not part of this mechanism. Where it comes from is still to verify.
+
+---
+
+## 18 · Row 7 and the Ready-for-Dev pass — 25 Sep 2026
+
+The page is now `↳ Phase 1 · Reading - Ready for Dev 🟢`, and the board was brought to that bar in one pass.
+
+### Row 7 · Everything a Reading can hold
+
+The §16 example (`5888:53100`) was 47 loose layers in one column. It is now **16 blocks**, grouped and named the
+way the all-blocks screens are: `block · NN · TYPE`, each with its label and a dev line (XBlock · completion ·
+note) **hidden** in the layer tree. §11's rule holds: what a screen is for belongs in the card, never in front
+of the learner. Grouping changed no pixel; the body is 7 778 tall before and after, 12 between blocks and
+inside them (`Spacing/lg`).
+
+**The loose example is gone.** Once Row 7 carried it, `5888:53100` was deleted from the page (with the
+1702 × 1298 screenshot beside it). §12 and §16 still describe what it held; **Row 7 is now the source** — Card 7
+for desktop, 7.2 for mobile.
+
+| # | Block | XBlock | Completion |
+|---|---|---|---|
+| 01 | Text / rich text — headings, paragraphs, bold, italic, link, three list kinds | `html` | ~5s visibility |
+| 02 | Blockquote | `html` | — |
+| 03 | Text template / Announcement | `html` | — |
+| 04 | Text template / Anonymous User ID | `html` | — |
+| 05 | Image / layouts — full, 3-up, 60% centred, left, 2-up | `html` + static asset | none |
+| 06 | Table | `html` | — |
+| 07 | Video clip | `video` | ≥90% watched, if it drives completion |
+| 08 | Audio | `video` (audio source) | ≥90% listened |
+| 09 | Embed / iframe | `iframe` | none |
+| 10 | Embed / PDF | `iframe` | none |
+| 11 | Zooming Image | `html` (template) | — |
+| 12 | File / download | `<a>` to Files & Uploads | Completion tool |
+| 13 | Knowledge check — single, multi, dropdown, numerical, text, hints | `problem` (ungraded) | practice, never graded |
+| 14 | Drag and Drop | `drag-and-drop-v2` | Standard, ungraded |
+| 15 | Open Response | `openassessment` | anchor, owns completion |
+| 16 | Key Takeaways | `html` | — |
+
+Every row comes from `topic-types-inventory.md` §278–296 and `studio-authoring-parity.md` §7; nothing was
+assumed. **Remember §17:** blocks 13 and 15 make the platform type this unit `problem`, not Reading.
+
+The blocks sit on the real shell, cloned from Row 4: **Card 7 · all-assets-desktop** and **Card 7.2 ·
+all-assets-mobile**. Both are drawn **at full length** (8 544 and 10 141) — at one viewport the card would show a
+tenth of the article. The card says so: in the product the column scrolls and the footer nav stays pinned.
+
+**At 375** the blocks reflow into the 311 column, with nothing overflowing: the 3-up image row stacks, the 60%
+images stay at 60% (187), two-up stays side by side, the ORA stepper takes `Size=Compact` as in 6.3.
+
+**One DS defect it exposed — fixed at source, 25 Sep.** `LMS / Drag and Drop · Card` broke at 375 in three
+ways, and an instance cannot change auto-layout direction, so the fix went into the DS (all six states, published
+and live in ICP):
+
+| Fault at 311 | Fix |
+|---|---|
+| Three zones in one `NO_WRAP` row, 70 wide each — placed items overlapped | Zones wrap, 120 minimum each: one row at desktop widths, stacked full-width on a phone |
+| Fixed padding 24 left 261 for `Quiz · Footer Actions`, which needs 279 — *Submit* clipped | Padding bound to `Spacing/3xl`: 24 desktop, 16 mobile, which leaves exactly 279. `Footer Actions` untouched, so the Quiz screens are unaffected |
+| `Feedback` (Correct / Incorrect alert) and, in four states, `Item bank` were fixed at 569 | Both fill the card |
+
+Checked at 619 on Desktop (unchanged) and 311 on Mobile in *In progress*, *Incorrect* and *Answer revealed*.
+The behaviour is in the component description.
+
+### What the Ready-for-Dev pass fixed
+
+- **Status.** All 18 cards said *Ready for Review*; now *Ready for DEV*, and the board frame is `… Ready  ✅`.
+- **`completion-not-completed` showed a tick** in the sidebar on its current topic. Back to `Pending`.
+- **The completion screens hid their subject.** The Mark-as-Complete row sat at y 1018 in a 902 viewport, below
+  the fold on all three desktop cards. *Key Takeaways* is hidden on those three, so header and footer are both
+  in view — 3.2 exists to show the badge in both.
+- **The Attachments tablet and mobile screens showed no file.** The file card was 183 and 1 052 px below the
+  fold. Filler blocks are hidden on 2.2 (two) and 2.3 (six) until it is in view.
+- Every hidden block says why in its layer name.
+- **Tokens.** Spacing and radii bound on 67 frames, all exact except the all-blocks body gap: 28 is off-scale,
+  and the nearest-token snap picked `3xl` on desktop and `6xl` on mobile. One gap, one token: `Spacing/4xl`
+  (32 / 20).
+- **Dividers stay rectangles.** `Content divider` only ships labelled variants; the 1px separators are
+  `border/subtle` rectangles until the DS has a plain line.
+
+### Still open
+
+- Card 5.4's description still carries its *OPEN QUESTION* (void since §11), and the intro says *not yet mapped
+  to stories* — neither belongs on a Ready-for-Dev board.
+- `completion-completed-mobile`: the completed badge squeezes the title to two lines, and the footer row cannot
+  be brought into view without cutting most of the article.
+- 6.3 is titled *ORA · text · Mobile*; its siblings say *Open Response · text only*.
+- The authorability matrix still sits beside the board, outside it.
+- The status pill truncates (*READY FO…*) on every 439-wide mobile card — a limit of the card header component.
