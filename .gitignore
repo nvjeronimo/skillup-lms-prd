@@ -30,3 +30,10 @@ Active Workspace _ Notes _ AI.html
 # AI notes and any screenshot of an internal ticket all name colleagues and
 # carry internal URLs. Same rule, wider net.
 30-07 meetings/
+
+# Claude Code — local tooling. The Impeccable install (skill + agents) and the
+# redesign bundle's own .claude/ stay on each machine; .claude/skills/sync/ is
+# project tooling and stays tracked.
+.claude/agents/
+.claude/skills/impeccable/
+skillup-lms-redesign/.claude/
