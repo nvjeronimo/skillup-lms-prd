@@ -5,7 +5,8 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 ## 2026-09-30 · Certificates — component handoff, ready for dev
 
 - New frame `Platform Pages - Course Detail · Certificates (component) - Light` (`6353:7518`) + banner: 01 the four
-  Certificate card statuses · 02 the Certificate document · 03 the digital and print mockup. Dev notes visible under
+  Certificate card statuses · 02 the digital and print mockup (a representation). The Certificate document is not for
+  development — its card was removed; the component description says so. Dev notes visible under
   each (from the Technical screens' annotations and §16).
 - Certificate card Generating: title typo fixed; the discovery flag *"The state we were missing"* removed.
 - The mockup on tokens and styles (handoff copy and original). Note on the duplicated working page and its new ids.
