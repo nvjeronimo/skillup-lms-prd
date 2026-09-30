@@ -2395,6 +2395,26 @@ What changed on the way (design vs the drawn experiment):
   (*0/32 · 0/5 · 0/64*). Its eyebrow still says *6 courses + capstone* against *Courses 0/5* — to confirm.
 - Programs grid now uses the Courses grid tracks (3 flexible columns, 24 gap); program cards hug their height.
 
-**Still to do:** the token and naming pass on the five screens (page containers, the headings *Good morning, John.*
-and *Keep going.*); tablet and mobile for the five screens; the top bar on the Course Detail screens; the handoff
+**Token and naming pass (30 Sep).** Re-audited outside instances: **0 raw fills, strokes, effects, spacing, radii
+or unstyled texts, 0 generic layer names** on the five desktop screens.
+- One shell for the four My Learning screens: `Main` (padding 5xl / 5xl / 8xl / 5xl, gap 4xl) → `Header` (`Intro`
+  fill + `Stats` fixed 600) → `Collection` (gap 3xl: `Toolbar` + `Course grid` / `Course list` / `Program grid` /
+  `Program list`). Before, the header split 720/480, 600/600 or 480/480 depending on the screen, Courses List had
+  an extra `MyLearning` wrapper, and the gaps were 36 + 4 + 8 and 22. At 600 each stat is 200 wide and *Daily goals
+  completed* fits on one line.
+- Dashboard: `Content` → `Greeting`, `Overview` (Glance + Streak), `Due and resume`, `Jump`; the three
+  `Container:margin` wrappers are gone. The Due list's border was an inner shadow → `border/subtle` stroke,
+  `Radius/fixed-md`. The resume list lost an invisible stroke and shadow.
+- Page title (*Good morning, John.* · *Keep going.*, drawn Bold 40): **`headline-large/Bold` (36/44)**. The DS page
+  title `display-medium` is 60 — too large for these pages; the HTML stays `<h1>`. The grey second phrase keeps
+  `text/subtle`, not the italic (request 14). ⚠︎ `headline-large` has **36 paragraph spacing**: a two-line title
+  takes a line break (Shift+Enter), not a paragraph break.
+- The hidden intro paragraph (*You're four weeks into…*) is on `body-medium/Regular`, `text/subtle`, still hidden.
+  A hidden duplicate program card in Programs List (a compact *Cybersecurity* row) was removed.
+- Course list cards now 24 apart (was 16), like every other collection.
+- ⚠︎ `LMS / Course Card` progress: the fill is a fixed 149 px frame on every card — 5 %, 35 %, 52 % and *Not started*
+  all drew the same bar. Each fill is now sized to its percentage and hidden when not started; overrides, not a
+  property (library request 13).
+
+**Still to do:** tablet and mobile for the five screens; the top bar on the Course Detail screens; the handoff
 frame.

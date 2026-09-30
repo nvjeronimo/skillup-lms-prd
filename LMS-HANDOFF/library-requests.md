@@ -359,6 +359,10 @@ layouts a long *Up next* title runs under its type badge. Nothing truncates or w
 **Ask:** title and *Up next* limited to a set number of lines with an ellipsis (2 and 1?), and the progress column
 given a fixed width the title cannot enter.
 
+**And the progress fill has no value.** `fill` is a fixed 149 px frame inside `bar`, identical on every card — 5 %,
+52 % and *Not started* draw the same bar. My Learning sizes each fill by hand (and hides it when not started); a
+card resized later keeps the old width. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
+
 ---
 
 ## 14 · No italic text style (editorial headings)

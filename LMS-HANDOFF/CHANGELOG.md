@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · My Learning and Dashboard — token and naming pass
+
+- Five desktop screens at zero raw values and zero generic names (audited outside instances). One shell for the
+  four My Learning screens (Header: Intro + Stats 600; Collection: Toolbar + items); Dashboard wrappers removed,
+  the Due list's inner-shadow border became a `border/subtle` stroke.
+- Page titles on `headline-large/Bold`; course-card progress fills sized to their percentage (the DS card draws
+  one width for all). Metadata map §33; library request 13 extended.
+
 ## 2026-09-30 · My Learning and Dashboard — local components
 
 - Eight `LMS / Platform / …` components for what the DS lacks: Stat, Section header, Due item, Jump tile, Glance
