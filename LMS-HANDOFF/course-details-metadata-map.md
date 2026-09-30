@@ -2368,6 +2368,33 @@ Dashboard (from the top-bar experiment) and the four My Learning screens, sideba
   Thinking*), and in both layouts a long *Up next* title runs under its type badge — the component does not truncate.
   Library request to follow.
 
-**Still to do:** local components for what the DS lacks (program card, the Dashboard widgets, the My Learning
-stats, the browse-catalog tile); the token and naming pass; tablet and mobile for the five screens; the top bar on
-the Course Detail screens; the handoff frame.
+**Local components** (components page, `LMS / Platform / …`, for peer review — none promoted to the DS). Each is
+built from DS atoms, on tokens and DS text styles, and replaces what was drawn on the five desktop screens.
+
+| Component | Id | What it is | Replaced |
+|---|---|---|---|
+| `Stat` | `6378:3299` | Theme Default · Inverse; Label, Value, Detail, Show divider. Content bottom-aligned, so values share a baseline when a label wraps | 12 My Learning stats, 4 Dashboard KPIs |
+| `Section header` | `6382:3172` | Title + Emphasis (headline-small/Bold, text/default + text/subtle), optional DS `Buttons/Button` sm · Link gray + arrow-right | *Due this week*, *Pick up where you left off*, *Jump somewhere* |
+| `Due item` | `6382:3495` | Urgency Today (day in text/error) · Upcoming; Day, When, Title, Meta; status = exposed `Badge v2` Soft sm (Error + dot for Live, Warning for Due) | 3 rows of *Due this week* |
+| `Jump tile` | `6382:3302` | Icon (swap, DS icon in icon/primary on bg/primary-soft), Title, Description | 4 tiles (message-chat-circle, calendar, award-01, user-01) |
+| `Glance card` | `6384:17651` | Title + 4 `Stat` · Inverse in a 2×2 grid on bg/inverse; two decorative circles (bg/info, bg/primary at 12 % layer opacity) | *Today at a glance* |
+| `Streak card` | `6384:17785` | Count (display-large/Bold, the one hero figure per screen), Label, 7 `LMS / Course Detail / Week day`, Message | the streak card |
+| `Program card` | `6388:3858` | Layout Grid · List × State In progress · Not started; DS `LMS / Delivery Mode Badge`, `Badge v2` Gray (cohort, status), DS `Progress bar`, `Buttons/Button` Primary *Continue* / Secondary *Details* | 2 programs × grid and list |
+| `Browse tile` | `6388:116426` | Dashed border/default on bg/faint, DS `plus`, Title, Subtitle | *Browse catalog* in Courses grid |
+
+What changed on the way (design vs the drawn experiment):
+- **Streak days** now use the Course Detail `Week day` states (outlined check, dashed upcoming) instead of solid
+  circles — one pattern for "a week of study" across Dashboard and Weekly goal. The *13 hours* highlight was #51BFFC
+  on white (fails contrast); it is `text/primary` Semibold.
+- **Section titles lose their italic.** The DS has no italic text style; the two-colour split stays. Library request 14.
+- **Program hero** on `bg/primary` for both states: the not-started grey-blue (#49667A) has no token and `bg/primary`
+  is the nearest. The state reads from the body (0 %, *Not started* badge, *Details*).
+- **Progress bar is stepped** (0–100 by 10): 27 % shows the 30 % bar. Library request 15.
+- **The *Today at a glance* title** was #51BFFC; no text token carries it on `bg/inverse` → `text/on-inverse`.
+- Data: the not-started grid card showed the in-progress figures (*Week 4/32 · Courses 1/7*); aligned with the list
+  (*0/32 · 0/5 · 0/64*). Its eyebrow still says *6 courses + capstone* against *Courses 0/5* — to confirm.
+- Programs grid now uses the Courses grid tracks (3 flexible columns, 24 gap); program cards hug their height.
+
+**Still to do:** the token and naming pass on the five screens (page containers, the headings *Good morning, John.*
+and *Keep going.*); tablet and mobile for the five screens; the top bar on the Course Detail screens; the handoff
+frame.

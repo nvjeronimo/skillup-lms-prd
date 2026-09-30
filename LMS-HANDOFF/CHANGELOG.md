@@ -2,6 +2,15 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · My Learning and Dashboard — local components
+
+- Eight `LMS / Platform / …` components for what the DS lacks: Stat, Section header, Due item, Jump tile, Glance
+  card, Streak card, Program card (Grid · List × In progress · Not started), Browse tile — DS atoms inside, tokens
+  and DS styles throughout; peer review, not promoted.
+- The five desktop screens use them instead of drawn blocks. Design changes on the way: streak days are the Course
+  Detail `Week day`; section titles keep the colour split but lose the italic (no DS italic style); the program hero
+  is `bg/primary` in both states; contrast-failing #51BFFC text replaced. Metadata map §33; library requests 13–15.
+
 ## 2026-09-30 · Course Detail tablet — the four tabs at 960
 
 - Tablet screens for Course, Progress, Dates and Mentorship Q&A (960, Responsive = Tablet): DS header navigation,

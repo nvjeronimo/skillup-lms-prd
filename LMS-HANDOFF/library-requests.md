@@ -348,3 +348,35 @@ designed — because `body-small/Medium` + uppercase detaches the style (a case 
 
 **Ask:** either confirm 10px is the overline and the cards follow it, or add a 12px overline (e.g.
 `label-medium/*`, uppercase, 12/18).
+
+---
+
+## 13 · `LMS / Course Card` — no truncation
+
+In the List layout a long title runs under the progress column (*UX Research and Design Thinking*), and in both
+layouts a long *Up next* title runs under its type badge. Nothing truncates or wraps inside the card.
+
+**Ask:** title and *Up next* limited to a set number of lines with an ellipsis (2 and 1?), and the progress column
+given a fixed width the title cannot enter.
+
+---
+
+## 14 · No italic text style (editorial headings)
+
+The platform pages title their sections in two voices — *Due* **this week**, *Pick up* **where you left off**, *Keep*
+**going.**, *Good morning,* **John.** — the second phrase italic and grey. The DS has weight variables for italics
+(`Type/weight/bold-italic`, `medium-italic`…) but **no italic text style**, so the italic cannot be applied without
+detaching the style. `LMS / Platform / Section header` keeps the colour split and drops the italic.
+
+**Ask:** an emphasis style for headlines (e.g. `headline-small/Bold Italic`, `display-medium/Medium Italic`), or a
+ruling that the platform headings are not italic.
+
+---
+
+## 15 · `Progress bar` — stepped values only
+
+`Progress` is a variant from 0 % to 100 % in steps of 10. A program at 27 % shows the 30 % bar next to the text
+*27%*, and every card has to round.
+
+**Ask:** a continuous value (a width bound to a number, or a `Percent` property the fill follows), as for request 10.
+
