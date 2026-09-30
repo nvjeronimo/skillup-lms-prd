@@ -2341,3 +2341,33 @@ Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no sta
 **Handoff:** the screens handoff gains a tablet card in each row, between desktop and mobile — **13 screens**, cards
 renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
 handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
+
+## 33. My Learning and Dashboard — toward dev-ready (in progress) — 30 Sep
+
+**Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
+development and hidden on every platform page**; navigation is the **top bar from the Dashboard experiment**, on
+desktop, tablet and mobile. The four My Learning screens (Programs and Courses, grid and list) and the Dashboard go
+to dev on all three breakpoints. What the DS lacks becomes local components for peer review; course cards move to
+the DS `LMS / Course Card`.
+
+**`LMS / Platform / Topbar`** (`6374:3608`, components page) — Breakpoint = Desktop · Compact. Desktop: logo, the
+five sections, notifications and the learner; Compact (tablet, mobile): logo, notifications, menu. Built from DS
+atoms (`Skillup_logo`, `bell-01`, `chevron-down`, `Avatar`, `Badge v2`) and the atom **`LMS / Platform / Topbar
+item`** (`6373:3313`, State = Default · Current, Label, Show count). The experiment's bar was drawn with raw values
+and off-scale type (13.5 / 12.5 / 10.5); the component is on tokens (`bg/inverse`, `text/on-inverse`) and DS styles.
+
+⚠︎ **A translucent fill cannot be a token.** With a colour variable bound, Figma ignores the paint's opacity (it
+renders solid). The Current item's 8 % white is a `Highlight` layer — `bg/on-media` with **layer** opacity 8 %.
+
+**Desktop screens** (section *My Learning & Dashboard — dev-ready sources*, `6374:16005`, on the WIP 2 page):
+Dashboard (from the top-bar experiment) and the four My Learning screens, sidebar removed, content at 1280.
+- Courses grid and list now use **`LMS / Course Card`** (Grid, List) instead of drawn cards and the retiring
+  `LMS / Course Card_Remove`. Data fixed on the way: the Courses tab labelled every course *PROGRAM* → *COURSE*;
+  *Flexible + Live* → *Flexible + Live Sessions* (the Courses Type wording).
+- ⚠︎ In the DS `LMS / Course Card` · List, a long title runs under the progress column (e.g. *UX Research and Design
+  Thinking*), and in both layouts a long *Up next* title runs under its type badge — the component does not truncate.
+  Library request to follow.
+
+**Still to do:** local components for what the DS lacks (program card, the Dashboard widgets, the My Learning
+stats, the browse-catalog tile); the token and naming pass; tablet and mobile for the five screens; the top bar on
+the Course Detail screens; the handoff frame.
