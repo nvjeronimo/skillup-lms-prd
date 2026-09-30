@@ -2296,7 +2296,6 @@ colours, spacing or radii, 0 unstyled text, 0 generic names, no overlap on the p
 | # | Card | Content |
 |---|---|---|
 | 01 | Certificate card · the four statuses | Not earned · Generating · Issued · Run closed — instances of `LMS / Course Detail / Certificate card` |
-| 02 | Certificate · digital and print mockup | a copy of *Certificate — digital & print mockup* — a visual representation |
 
 **Explanations as visible dev notes (`LMS / Footnote`).** Per status: the five annotations on the Technical
 screens' Certificate cards (cert_status values, batch issuance, the self-paced visibility rule, actions only on
@@ -2321,3 +2320,5 @@ components page keep theirs.
 > what the learner receives; the platform renders the web certificate from its own template. Its card is removed
 > from the handoff, the mockup card is labelled a representation, the Issued dev note says the thumbnail is
 > illustrative, and the component description says *not for development*. §16's field map stays as discovery.
+> *30 Sep, later still:* the **digital and print mockup** is removed from the handoff too — the same document in
+> other contexts, equally not for development. The Certificates handoff is **the Certificate card alone**.
