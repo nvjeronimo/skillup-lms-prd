@@ -75,7 +75,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-09-24 · Course Detail mobile — the Progress tab
 
-- New screen `★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`). Both mobile screens set
+- New screen `★ ENTRY · Course Detail — mobile · Progress tab` (`6207:256494`). Both mobile screens set
   `3. Responsive 📐` = Mobile at the frame.
 - Grade table on mobile: Weighted column only, score and weight in the row (the DS first column has a 170 min width).
   Library request 8 gains point 8.
@@ -83,7 +83,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-09-24 · Course Detail mobile — the Course tab
 
-- New screen `★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), 375 wide, next to ENTRY. Status bar,
+- New screen `★ ENTRY · Course Detail — mobile · Course tab` (`6207:256470`), 375 wide, next to ENTRY. Status bar,
   DS `Header navigation` Mobile, `Course header` Mobile, underline tabs (sm), content and sidebar cards stacked.
 - `Course header`: new `Breakpoint` axis — `Type=Course, Breakpoint=Mobile`, one column, `3. Responsive 📐` in Mobile mode.
 - `Course title` / `Course stats`: fill and wrap. `Meta`: wraps; fills its column in `Module row`.
@@ -249,7 +249,7 @@ Needs a DS publish; the ICP instances update after it.
 
 ## 2026-09-23 (later) · Course Detail: open questions in one register
 
-- Board `5504:5594` goes from six questions to **fourteen**, each with an owner and a **By** milestone (dev handoff →
+- Board `6207:257477` goes from six questions to **fourteen**, each with an owner and a **By** milestone (dev handoff →
   course build → course start → after launch). Q1, Q3, Q4 and Q5 rewritten for self-paced and the mentor work; Q7–Q14
   collected from §16–§24. Metadata map §25 has the table, grouped by owner.
 
@@ -1302,7 +1302,7 @@ Section total: **77 annotations across 53 elements.**
 
 ## 2026-08-21 · The open questions get a board, and a sixth one
 
-`Open questions — who owns each, and what closes it` (`5504:5594`), under the legend in the technical section.
+`Open questions — who owns each, and what closes it` (`6207:257477`), under the legend in the technical section.
 The legend had been listing five questions as one-liners, which is enough to remember them and not enough to
 act on any of them.
 
@@ -1460,7 +1460,7 @@ noticed because nobody had done the division.
 
 ## 2026-08-21 · The technical pages get their own section
 
-`⚙ TECHNICAL · Progress tab` (`5490:4793`) — the Progress tab annotated the same way the Course tab was:
+`⚙ TECHNICAL · Progress tab` (`6207:257333`) — the Progress tab annotated the same way the Course tab was:
 17 annotations across 11 elements, in three of the four categories.
 
 What it puts in front of a stakeholder that the design page cannot: completion and grade are **two different
@@ -1471,7 +1471,7 @@ present with its score withheld; and the meter's geometry is **drawn, not data**
 developer measuring the artboard and shipping the sample's 15% as a constant.
 
 **Both annotated pages moved into a new section** — `⚙ Technical — every element, its field, and whether we
-can build it` (`5490:15278`) — together with the legend. Two reasons: the design pages stopped being read
+can build it` (`6207:257303`) — together with the legend. Two reasons: the design pages stopped being read
 through engineering notes, and there is now more than one technical page, so "the technical page" had stopped
 being a thing you could point at.
 
@@ -3024,7 +3024,7 @@ live in the system instead of in our documentation.
 ## 2026-08-19 · v11 — everything the data allows, so the cost is visible
 
 The six fields the audit surfaced are now on a screen, along with the three sidebar widgets that were
-available and undrawn. **`Course Detail — v11 · everything the data allows`** (`5401:325`) is a deliberate
+available and undrawn. **`Course Detail — v11 · everything the data allows`** (`6207:255912`) is a deliberate
 maximum, not a proposal.
 
 Added over v10: `enrollment_mode` as a track chip; `org` and `number` as the sub-header the workbook assigns
@@ -3085,7 +3085,7 @@ section of the element → field table and §5 of the map:
   `downloadable`, `notpassing`, `generating`, plus `audit_passing` from the outline payload. The gap was
   **`generating`** — certificates are issued in batches, so there is a real interval between passing and the
   file existing, and we had nothing for it.
-- **New artifact: `Cards — states the pages do not show`** (`5389:325`), beside the screens. The four
+- **New artifact: `Cards — states the pages do not show`** (`6207:255871`), beside the screens. The four
   certificate states together, because a page can only ever show one of them — plus the **recent recordings**
   card, whose list endpoint is `IsEnrolledOrStaff` and therefore learner-callable. It links to the tab rather
   than playing inline, because playback is a separate short-lived URL. Marked VILT-only: putting it on the
@@ -3100,7 +3100,7 @@ section of the element → field table and §5 of the map:
 
 ## 2026-08-03 · Metadata we still need — a sixth reference table
 
-Sixth table in the Course Detail section (`5105:444`), written up as
+Sixth table in the Course Detail section (`6207:255703`), written up as
 [course-details-metadata-map.md](course-details-metadata-map.md) §11: what each **✗** and **⚠︎** verdict
 would take to become **✅**, with owner and status. Ordered by effort, and the cheapest tier may cost nothing.
 
