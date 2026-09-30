@@ -2333,7 +2333,8 @@ Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no sta
 - **`Course header` · `Breakpoint=Tablet`** (new variant): breadcrumb, then one row — type and partners, title (with the
   image, as on desktop) and stats on the left, the progress card at 320 on the right.
 - **Tabs** with search on the same row, search filling what the tabs leave.
-- **Content:** the Technical desktop tab content with the main column filling and the sidebar at 280 (cards fill it);
+- **Content:** the Technical desktop tab content with the main column filling and the sidebar at **320** — the
+  desktop width, kept as the minimum on tablet (Nelson, 30 Sep; was 280) — cards fill it;
   Dates full width with the desktop Date row; Q&A keeps the two panes — list 320, conversation filling.
 - **Touch:** a tablet has no hover either, so Module 4 shows its lock reason as text (`Show lock reason`), as on mobile.
 
