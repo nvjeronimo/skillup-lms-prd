@@ -2,6 +2,22 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · Certificates — component handoff, ready for dev
+
+- New frame `Platform Pages - Course Detail · Certificates (component) - Light` (`6353:7518`) + banner: 01 the four
+  Certificate card statuses · 02 the Certificate document · 03 the digital and print mockup. Dev notes visible under
+  each (from the Technical screens' annotations and §16).
+- Certificate card Generating: title typo fixed; the discovery flag *"The state we were missing"* removed.
+- The mockup on tokens and styles (handoff copy and original). Note on the duplicated working page and its new ids.
+  Metadata map §31; figma-api-traps 29–30.
+
+## 2026-09-30 · Weekly goal card — component handoff, ready for dev
+
+- New frame `Platform Pages - Course Detail · Weekly goal card (component) - Light` (`6350:7334`) + *Ready for dev*
+  banner, beside the screens handoff: 01 the five states · 02 thirteen edge cases · 03 what counts as a day.
+- The 19 annotations became visible dev notes (`LMS / Footnote`) under each state; spacing and radius on tokens; no
+  annotations, generic names or raw values left. Metadata map §30.
+
 ## 2026-09-25 · Consistency pass: spacing and layer names on the ready-for-dev screens
 
 - Desktop tab content is one row (Progress was a grid), gap 40; main-column gap 24 on every tab; notice wrappers

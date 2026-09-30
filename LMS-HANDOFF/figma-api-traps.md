@@ -125,3 +125,9 @@ The rule they all point at: **after any structural mutation, read the state back
 
 28. **Annotations on layers inside instances survive the first clear after a `clone()`.** Clearing right after the
     clone misses them; a second `findAll(n=>n.annotations?.length)` pass clears them. Always re-count.
+
+29. **`findAllWithCriteria` descends into instances too**, like `findAll`. A text-style pass over it restyled 51 texts
+    inside three certificate instances. Walk the tree yourself and return at `INSTANCE`.
+
+30. **Texts inside a scaled instance have no text style** — scaling rewrites their size, and a style would pin it.
+    An audit that stops at instances does not see them; one that does must not "fix" them.
