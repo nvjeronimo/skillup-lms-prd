@@ -131,3 +131,11 @@ The rule they all point at: **after any structural mutation, read the state back
 
 30. **Texts inside a scaled instance have no text style** — scaling rewrites their size, and a style would pin it.
     An audit that stops at instances does not see them; one that does must not "fix" them.
+
+31. **`resize()` pins both axes to Fixed.** Setting `primaryAxisSizingMode = 'AUTO'` and then calling `resize()` on a
+    new auto-layout component leaves it Fixed — the Due item stayed 80 tall and its instances clipped their text. Set
+    the sizing modes **after** the resize.
+
+32. **Two kinds of grid.** In a grid whose children are auto-placed, `setGridChildPosition` throws — reorder with
+    `insertChild`. In a grid with explicit anchors, `insertChild` does not move anything — use
+    `setGridChildPosition(row, col)`. And `gridRowCount` cannot drop a row that still holds a child: move the child first.
