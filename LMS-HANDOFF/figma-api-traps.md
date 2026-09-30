@@ -153,3 +153,8 @@ The rule they all point at: **after any structural mutation, read the state back
 36. **Absolutely positioned layers keep that when cloned** — the ICP status bar is absolute in its screen; set
     `layoutPositioning = 'AUTO'` before `layoutSizingHorizontal = 'FILL'`.
 
+37. **A non-auto-layout component does not follow a new width, and its instances cannot fix it.** Children of an
+    instance cannot be moved (`x` is "relative-transform", not overridable), and a hugging auto-layout row ignores a
+    `STRETCH` constraint. Fix the component (fixed row width + `STRETCH`, children pinned), then resize the instance
+    down and up so the constraints settle.
+

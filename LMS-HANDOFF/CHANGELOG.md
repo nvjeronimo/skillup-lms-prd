@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · Course Detail — the platform top bar
+
+- The LMS sidebar is gone from every Course Detail screen: `LMS / Platform / Topbar` on desktop (content at 1280,
+  margins 40 both sides), the Compact variant on tablet and mobile instead of the platform header.
+- `Course header` · Desktop adapts to its width (stretching content row, circles pinned right).
+- Handoff: 13 screens re-copied (0 annotations, footnotes as before), tablet cards renamed, changelog entry on
+  every card. Metadata map §33 and §27; figma-api-traps 37.
+
 ## 2026-09-30 · My Learning and Dashboard — tablet and mobile
 
 - Tablet (960) and mobile (375) for the Dashboard and My Learning Courses / Programs; Topbar Compact; mobile with

@@ -2163,6 +2163,8 @@ the learner sees.
 *"user_timezone on the dates payload. It is null…"*, now *All times are shown in your time zone (Europe/Lisbon,
 UTC+1)*) and the Q&A composer's *"Post anonymously · allow_anonymous is on for this course"* (now *Post anonymously*).
 
+*30 Sep:* the screens carry the platform top bar instead of the LMS sidebar / platform header — §33.
+
 **Not in this handoff:** Dates and Mentorship Q&A on mobile — the rows say so. The screens in the frame are copies:
 when a Technical screen changes, re-copy the card's screen rather than editing both.
 
@@ -2441,4 +2443,21 @@ drawn parts. Re-audited: 0 raw values, 0 generic names.
   thumbnail grew to 686; the *Up next* title fills and truncates to one line (the Topic-type badge used to be pushed
   out); progress fills re-sized per breakpoint. All three are library request 13.
 
-**Still to do:** the top bar on the Course Detail screens; the handoff frame.
+**The top bar on Course Detail (30 Sep).** The LMS sidebar is hidden on every platform page, Course Detail included.
+- **Desktop** — `⚙ TECHNICAL` Course (`6207:257304`), Progress (`6207:257333`), Dates (`6207:257718`), Mentorship Q&A
+  (`6207:257432`) and `★ ENTRY · … v12 · componentised` (`6207:256439`): `Page` was a grid (240 sidebar | 1040
+  main); now a column — `LMS / Platform / Topbar` (Desktop, *My Learning* current), then the page at **1280**.
+  Header, tabs and content fill it; the page margins are 40 on both sides (the right-only 40 is gone), so the
+  breadcrumb and main column start at 40 and the progress card, search and sidebar end at 1240. Course tab: main
+  column 840 + sidebar 320. Progress: two columns of 580. Dates: the *Upcoming* list fills like *Past*.
+- **`Course header` · Desktop** (both types) now adapts to its width: the content row is 960 at x 40 with
+  `STRETCH`, the left column fills, the progress card stays 360; the circles pin right. It was drawn for 1040 with
+  `MIN` constraints and a hugging row — at 1280 the card stopped at 960.
+- **Tablet and mobile** — the four tablet and five mobile `★ ENTRY` screens: DS `Header navigation (platform)` →
+  `LMS / Platform / Topbar` · Compact (48 in these modes, was 64).
+- **Handoff** (`6146:10226`): the 13 screens re-copied from their sources — 87 annotations cleared, footnote
+  state carried, 0 visible footnotes, 0 annotations left, no overlaps on the page. Cards 02 · 05 · 08 · 11 were
+  named *…-desktop · 1280*; now *…-tablet · 960*. Each card's changelog gains the 30 Sep top-bar entry; the tablet
+  descriptions said *280 sidebar* → 320.
+
+**Still to do:** the handoff frame for My Learning and Dashboard.
