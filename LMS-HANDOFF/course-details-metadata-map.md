@@ -2332,7 +2332,7 @@ Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no sta
 - **Shell:** DS `Header navigation` (logo + menu) instead of the 240 desktop sidebar, which does not fit at 960.
 - **`Course header` · `Breakpoint=Tablet`** (new variant): breadcrumb, then one row — type and partners, title (with the
   image, as on desktop) and stats on the left, the progress card at 320 on the right.
-- **Tabs** with search on the same row, search filling what the tabs leave.
+- **Tabs** with search on the same row, the search pushed to the right and **at most 320** wide (Nelson, 30 Sep).
 - **Content:** the Technical desktop tab content with the main column filling and the sidebar at **320** — the
   desktop width, kept as the minimum on tablet (Nelson, 30 Sep; was 280) — cards fill it;
   Dates full width with the desktop Date row; Q&A keeps the two panes — list 320, conversation filling.
