@@ -2,6 +2,12 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · Course Detail tablet — the four tabs at 960
+
+- Tablet screens for Course, Progress, Dates and Mentorship Q&A (960, Responsive = Tablet): DS header navigation,
+  new `Course header` Tablet variant, tabs with search, main column + 280 sidebar; lock reason as text (touch).
+- Screens handoff: one tablet card per row between desktop and mobile — 13 screens, renumbered; the component
+  handoffs moved right. Metadata map §32.
 ## 2026-09-30 · Certificates — component handoff, ready for dev
 
 - New frame `Platform Pages - Course Detail · Certificates (component) - Light` (`6353:7518`) + banner: 01 the four

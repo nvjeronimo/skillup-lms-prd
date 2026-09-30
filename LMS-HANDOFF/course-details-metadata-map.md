@@ -2322,3 +2322,20 @@ components page keep theirs.
 > illustrative, and the component description says *not for development*. §16's field map stays as discovery.
 > *30 Sep, later still:* the **digital and print mockup** is removed from the handoff too — the same document in
 > other contexts, equally not for development. The Certificates handoff is **the Certificate card alone**.
+## 32. Tablet — the four tabs at 960 — 30 Sep
+
+Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no status bar (a browser view). Sources on
+*Plaftorm Pages (SkillUp UI) - V8 - WIP 🟠 2*, in *Course Detail V10*, one row below the mobile screens:
+`★ ENTRY · Course Detail — tablet · Course tab | Progress tab | Dates tab | Mentorship Q&A tab`.
+
+- **Shell:** DS `Header navigation` (logo + menu) instead of the 240 desktop sidebar, which does not fit at 960.
+- **`Course header` · `Breakpoint=Tablet`** (new variant): breadcrumb, then one row — type and partners, title (with the
+  image, as on desktop) and stats on the left, the progress card at 320 on the right.
+- **Tabs** with search on the same row, search filling what the tabs leave.
+- **Content:** the Technical desktop tab content with the main column filling and the sidebar at 280 (cards fill it);
+  Dates full width with the desktop Date row; Q&A keeps the two panes — list 320, conversation filling.
+- **Touch:** a tablet has no hover either, so Module 4 shows its lock reason as text (`Show lock reason`), as on mobile.
+
+**Handoff:** the screens handoff gains a tablet card in each row, between desktop and mobile — **13 screens**, cards
+renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
+handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
