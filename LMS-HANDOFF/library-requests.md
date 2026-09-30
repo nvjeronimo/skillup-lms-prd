@@ -363,6 +363,13 @@ given a fixed width the title cannot enter.
 52 % and *Not started* draw the same bar. My Learning sizes each fill by hand (and hides it when not started); a
 card resized later keeps the old width. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
 
+**And it does not survive a narrower screen.** (1) `thumb` is a square with a locked ratio that fills the header's
+height; the header's height comes from the title, the title's width from what the thumb leaves. At 960 this loops:
+the titles column went to 1 px and the thumb to 686 × 686. (2) The List layout overlaps below ~1100. (3) *Up next*
+pushes the Topic-type badge out of the card. My Learning pins the thumb at 86, truncates *Up next* to one line and
+uses Grid only below desktop. **Ask:** a fixed thumb size, a truncating *Up next*, and a List that reflows (or a
+ruling that List is desktop-only).
+
 ---
 
 ## 14 · No italic text style (editorial headings)
@@ -383,4 +390,14 @@ ruling that the platform headings are not italic.
 *27%*, and every card has to round.
 
 **Ask:** a continuous value (a width bound to a number, or a `Percent` property the fill follows), as for request 10.
+
+---
+
+## 16 · `LMS / Course Row` — no narrow layout
+
+The row (title + delivery badge, then progress + button) wraps its two lines, but the first line hugs its content:
+352–405 px for the Dashboard's three courses, wider than a phone (327 inside the page padding). Its inner frames
+do not take width overrides. The mobile Dashboard hides the delivery badge so the title fits.
+
+**Ask:** a mobile layout (title line fills and wraps, badge under the title), or a `Show badge` property.
 

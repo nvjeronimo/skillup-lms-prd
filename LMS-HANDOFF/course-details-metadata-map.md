@@ -2416,5 +2416,29 @@ or unstyled texts, 0 generic layer names** on the five desktop screens.
   all drew the same bar. Each fill is now sized to its percentage and hidden when not started; overrides, not a
   property (library request 13).
 
-**Still to do:** tablet and mobile for the five screens; the top bar on the Course Detail screens; the handoff
-frame.
+**Tablet and mobile (30 Sep).** Same section, two rows under the desktop row; built from the desktop screens, no
+drawn parts. Re-audited: 0 raw values, 0 generic names.
+
+| Screen | Tablet (960, `Responsive = Tablet`) | Mobile (375, `Responsive = Mobile`) |
+|---|---|---|
+| Dashboard | `6397:16635` | `6400:29528` |
+| My Learning · Courses | `6397:17285` | `6400:29847` |
+| My Learning · Programs | `6397:18563` | `6400:31480` |
+
+- **Below desktop there is only Grid** (Nelson, 30 Sep): the grid/list toggle is hidden and both collections show
+  Grid — 2 columns on tablet, 1 on mobile. So 3 screens per breakpoint, not 5. The DS `LMS / Course Card` · List
+  does not fit under desktop (title and progress overlap at 896).
+- **Shell:** `LMS / Platform / Topbar` · Compact on both. Mobile adds the ICP `_iPhone mockup status bar` and
+  `_iPhone mockup home`, as on the Course Detail mobile screens. Spacing follows the mode.
+- **Dashboard.** Tablet: *Due* and *Pick up* stack; Glance + Streak stay side by side. Mobile: everything stacks,
+  Jump tiles 2 × 2, and the `LMS / Course Row` hides its delivery badge — the DS row has no narrow layout and
+  its title line (352–405) is wider than the phone.
+- **My Learning.** Tablet keeps the desktop header (Intro + Stats 600). Mobile stacks it and the **Stats go
+  vertical** (one per row, no divider) — three columns of 109 broke *COMPLETED* mid-word. Toolbar on mobile: tabs
+  (`sm`) above a full-width search. The Browse tile is 160 tall on mobile.
+- **Course Card fixes (overrides, all breakpoints):** the thumbnail is pinned at 86 × 86 — in the component it is a
+  locked-ratio square that fills the header height, so at 960 the titles column collapsed to 1 px and the
+  thumbnail grew to 686; the *Up next* title fills and truncates to one line (the Topic-type badge used to be pushed
+  out); progress fills re-sized per breakpoint. All three are library request 13.
+
+**Still to do:** the top bar on the Course Detail screens; the handoff frame.

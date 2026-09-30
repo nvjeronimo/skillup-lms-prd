@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · My Learning and Dashboard — tablet and mobile
+
+- Tablet (960) and mobile (375) for the Dashboard and My Learning Courses / Programs; Topbar Compact; mobile with
+  the ICP status bar. Below desktop only Grid — the view toggle is hidden (Nelson, 30 Sep).
+- Mobile: stacked Dashboard, 2 × 2 Jump tiles, Course Row without its badge; My Learning stats stacked, tabs above
+  a full-width search. Course Card thumbnail, *Up next* truncation and progress fills fixed by override on every
+  breakpoint. Metadata map §33; library requests 13 (extended) and 16; figma-api-traps 33–36.
+
 ## 2026-09-30 · My Learning and Dashboard — token and naming pass
 
 - Five desktop screens at zero raw values and zero generic names (audited outside instances). One shell for the

@@ -139,3 +139,17 @@ The rule they all point at: **after any structural mutation, read the state back
 32. **Two kinds of grid.** In a grid whose children are auto-placed, `setGridChildPosition` throws — reorder with
     `insertChild`. In a grid with explicit anchors, `insertChild` does not move anything — use
     `setGridChildPosition(row, col)`. And `gridRowCount` cannot drop a row that still holds a child: move the child first.
+
+33. **Cutting a grid's row count can leave its track at a fixed 1 px.** The Programs grid rendered 1 px tall after
+    `gridRowCount = 1`. `gridRowSizes = [{type:'HUG', value:1}]` did nothing; `[{type:'HUG'}]` (no value) fixed it.
+
+34. **An instance does not keep a `layoutMode` override.** Setting a DS row to VERTICAL read back HORIZONTAL and
+    left its children half-configured. And inside `LMS / Course Row` the nested frames ignore `resize()` and
+    sizing changes — visibility is the override that works.
+
+35. **A variant swap resets text overrides in nested instances.** `Horizontal tabs` md → sm put the component's
+    default labels back (*My details 2*, twice). Copy the texts across after the swap.
+
+36. **Absolutely positioned layers keep that when cloned** — the ICP status bar is absolute in its screen; set
+    `layoutPositioning = 'AUTO'` before `layoutSizingHorizontal = 'FILL'`.
+
