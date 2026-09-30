@@ -2,6 +2,12 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-09-30 · My Learning and Dashboard — ready for dev
+
+- New frame `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) + *Ready for dev* banner, right of the
+  Certificates handoff: 11 screens in three rows — Dashboard (desktop · tablet · mobile), Courses and Programs
+  (grid and list on desktop, tablet, mobile). Each card links to its source screen. Metadata map §33.
+
 ## 2026-09-30 · Course Detail — the platform top bar
 
 - The LMS sidebar is gone from every Course Detail screen: `LMS / Platform / Topbar` on desktop (content at 1280,

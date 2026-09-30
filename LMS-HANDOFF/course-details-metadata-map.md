@@ -2344,7 +2344,7 @@ Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no sta
 renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
 handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
 
-## 33. My Learning and Dashboard — toward dev-ready (in progress) — 30 Sep
+## 33. My Learning and Dashboard — ready for dev — 30 Sep
 
 **Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
 development and hidden on every platform page**; navigation is the **top bar from the Dashboard experiment**, on
@@ -2460,4 +2460,20 @@ drawn parts. Re-audited: 0 raw values, 0 generic names.
   named *…-desktop · 1280*; now *…-tablet · 960*. Each card's changelog gains the 30 Sep top-bar entry; the tablet
   descriptions said *280 sidebar* → 320.
 
-**Still to do:** the handoff frame for My Learning and Dashboard.
+**Handoff — ready for dev (30 Sep).** `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) with its
+*Ready for dev* banner (`6408:35142`) on *Platform Pages - Ready for Dev 🟢*, right of the Certificates handoff.
+Same format as the Course Detail handoff (§27): intro and meta strip, then one row per page, one card per screen —
+header (sequence, title, version 2026-09-30 · r1, *Ready for DEV*, RSD = this section, a Figma link to the source
+screen), the screen, and the changelog header (description + first entry).
+
+| # | Card | Source |
+|---|---|---|
+| 01 · 02 · 03 | Dashboard · Desktop · Tablet · Mobile | `6374:16006` · `6397:16635` · `6400:29528` |
+| 04 · 05 | Courses · grid · list · Desktop | `6374:114591` · `6374:115077` |
+| 06 · 07 | Courses · Tablet · Mobile | `6397:17285` · `6400:29847` |
+| 08 · 09 | Programs · grid · list · Desktop | `6374:115915` · `6374:116384` |
+| 10 · 11 | Programs · Tablet · Mobile | `6397:18563` · `6400:31480` |
+
+The screens are copies: 0 annotations, no footnotes, no overlaps on the page. When a source changes, re-copy the
+card's screen. **Not in this handoff:** the eight local components as their own component handoff (like Weekly goal
+and Certificates) — they carry descriptions on the components page and wait for peer review.
