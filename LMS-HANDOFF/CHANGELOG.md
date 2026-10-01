@@ -2,6 +2,12 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-01 · Course header — hatched circle
+
+- `Course header` (courses and programs, all breakpoints): the big decorative circle is a diagonal hatch of 1px
+  `border/primary` lines; the small one stays solid. Tablet and Mobile circles repositioned so the effect shows.
+  Metadata map §34.7.
+
 ## 2026-10-01 · Program Page — the Courses tab, desktop (in progress)
 
 - What the data allows: programs are enabled on dev and course-discovery is deployed (closes open question 7);

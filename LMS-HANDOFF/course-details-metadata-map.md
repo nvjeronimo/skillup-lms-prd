@@ -2530,6 +2530,14 @@ Course tab — outline · Course tab — sidebar cards · Progress tab · Dates 
 Dashboard · My Learning; Docs and proofs. Node ids are unchanged. A new component goes inside its section; if a
 component grows, re-pack the section rather than moving one neighbour.
 
+**7. The header's big circle is a diagonal hatch** (Nelson, 1 Oct, from a reference he sent). In `Course header`,
+all four variants — so courses and programs, every breakpoint: `Big Circle decoration` has no fill and holds one
+vector, *Hatch (decoration)* — 1px lines every 10, running down to the right, stroke `border/primary`, the frame
+at 35 % layer opacity and clipping to its circle. `Small Circle decoration` stays solid (`bg/primary` at 12 %).
+On Tablet and Mobile the circles moved to the desktop composition — hatched circle top right, solid one behind the
+content — they had been sitting under the progress card, and the tablet's small circle outside the header.
+29 instances (17 in the sources, 12 in the handoffs) changed with the component.
+
 ## 35. Program Page — what the data allows — 1 Oct
 
 **Decisions (Nelson, 1 Oct).** The Program Page mirrors Course Detail (courses where Course Detail has modules);
