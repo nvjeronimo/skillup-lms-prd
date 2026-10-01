@@ -2578,3 +2578,30 @@ page — Discovery + `progress_details`, or the marketing backend?
 attendance of live sessions (VILT is out of the MVP; the Live tab is Zoom's iframe, §12.3), the assigned mentor,
 the program certificate, and the capstone as a special object — it is the seventh course.
 
+### 35.3 Courses tab · desktop — built 1 Oct, in progress
+
+`Program Detail · Courses tab · Desktop` (`6443:18722`) in the section *Program Detail — sources (in progress)*
+(`6443:18721`) on the WIP 2 page. A clone of `★ ENTRY · Course Detail — v12` with courses where it had modules;
+0 annotations, 0 raw values, 0 generic names.
+
+| Part | Built with | Data |
+|---|---|---|
+| Top bar | `LMS / Platform / Topbar`, *My Learning* current | — |
+| Header | `Course header` · `Type=Program` — breadcrumb *My Learning › Programs*, `LMS / Course Type Badge` Program, title, Delivery (*Flexible + Live*) and Difficulty (*Beginner*) badges, *7 courses · 4 months · SkillUp* | `display_name`, `course_type`, `course_level`, `courses_in_program.length`, `duration`, `org`, `program_image_url` |
+| Progress card | `Progress card` in the header: *14 %*, *Program progress*, *Course 2 of 7 · in progress*, **Resume course**, *1 of 7 courses complete*; no passing line, no time left | courses completed ÷ total, from `progress_details` buckets; Resume = the in-progress course's resume URL |
+| Tabs | DS `Horizontal tabs`: **Courses** · Certificates · FAQs · About. No search — nothing searches a program | §35.2 |
+| Course list | `Module row` × 7, *Course n · title*, state Complete / Incomplete, meta *Complete* · *In progress · 40% complete* · *Not started* | title from `courses_in_program`; status from the buckets; the percentage from the Course Progress API, one call per course |
+| Open course | local **`LMS / Program Detail / Course panel`** (`6444:3657`, State In progress · Not started · Complete) in the row's `Topics` slot: the intro, *Topics covered* as a bulleted list, DS `Progress bar` and `Buttons/Button` (*Resume* · *Start* · *Review course*) | `introductory_sentence`, `topics_covered` — strings, not real topics: no status, type or duration |
+| Sidebar | `Sidebar card` · Dates as *Program dates* (started, ends); `Card shell` as *What's included*; `Sidebar card` · Team as *Program instructor* | `start`, `end`; `includes`; `instructors[0]` |
+
+**Not on the page, for lack of data:** locked courses and unlock dates, the capstone as a special card, the mentor,
+weekly goal, certificate, handouts and tools cards, the course-update alert and the search field.
+
+**Two things to know.**
+- **The header is dark.** `Course header` · `Type=Program` carries `🎨 SKO-Semantics = SKO Dark` on the variant, so
+  every token inside resolves to its dark value — a dark hero made of tokens, under the light top bar. To make it
+  light like Course Detail, clear the explicit mode on the variant.
+- `Card shell`'s slot was a fixed 40 px frame; it is now a vertical auto layout that hugs its content.
+
+**Next:** Certificates, FAQs and About; tablet and mobile; the handoff frame, starting *In progress*.
+

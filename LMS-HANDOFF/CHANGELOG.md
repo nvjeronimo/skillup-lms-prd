@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-01 · Program Page — the Courses tab, desktop (in progress)
+
+- What the data allows: programs are enabled on dev and course-discovery is deployed (closes open question 7);
+  Credentials is not. The current platform's program payload (45 fields) saved as evidence. Of the eight V8 tabs,
+  four are backed by data: Courses, Certificates, FAQs, About.
+- `Program Detail · Courses tab · Desktop` (`6443:18722`): `Course header` · Program, seven courses on `Module row`
+  with a local `LMS / Program Detail / Course panel` in the open row, three sidebar cards. Metadata map §35.
+
 ## 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card
 
 - `LMS / Platform / Topbar` is light (`bg/page`, `border/subtle` rule); Current item on `bg/primary-soft`. All
