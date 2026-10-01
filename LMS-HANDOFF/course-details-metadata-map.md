@@ -2266,3 +2266,76 @@ Checked on the nine source screens (4 desktop, 5 mobile), ENTRY, and the handoff
   which is the Dev Notes atom). Names that carry the API (`Tabs (tabs[] from course_metadata)`, `Timeline
   (course_date_blocks[])`) are kept on purpose.
 - **Handoff re-copied and checked:** 0 generic names, 0 hidden layers, 0 annotations, 0 unbound colours or spacing.
+
+## 30. Weekly goal card — the component handoff — 30 Sep
+
+**`Platform Pages - Course Detail · Weekly goal card (component) - Light`** (`6350:7334`), with its *Ready for dev*
+banner (`6350:7800`), on *Platform Pages - Ready for Dev 🟢*, to the right of the screens handoff. Same format: intro
+header, then one card per row.
+
+| # | Card | Content |
+|---|---|---|
+| 01 | Weekly goal card · the five states | Not set · Set · Met this week · Set with the week strip · Off (not rendered) |
+| 02 | Weekly goal card · thirteen edge cases | E1–E13, from editing to course ended (open decision) |
+| 03 | Weekly goal · what counts as an active day | the web / mobile-app table, notes and sources |
+
+It was built from the copy of *Weekly goal — states and what edX gives us* placed on this page; its sections were
+moved into the cards and the empty board removed. The original stays in the Technical section (`5855:6181`).
+
+**The explanation lived in 19 Figma annotations; a handoff carries none**, so each state now has its dev notes
+visible under the card — the DS **`LMS / Footnote`** atom (*Dev Notes: …*, Space Mono), the annotation text verbatim
+minus the markdown. Then: 141 spacing values and 24 radius corners bound to DS tokens (the table cells' 14 → 16),
+the table's text layers named by column, the table eyebrow *WEEKLY GOAL · RULE*. Checked: 0 annotations, 0 unbound
+colours, spacing or radii, 0 unstyled text, 0 generic names, no overlap on the page.
+
+## 31. Certificates — the component handoff — 30 Sep
+
+**`Platform Pages - Course Detail · Certificates (component) - Light`** (`6353:7518`) + *Ready for dev* banner
+(`6353:8713`), to the right of the Weekly goal handoff. Same format.
+
+| # | Card | Content |
+|---|---|---|
+| 01 | Certificate card · the four statuses | Not earned · Generating · Issued · Run closed — instances of `LMS / Course Detail / Certificate card` |
+
+**Explanations as visible dev notes (`LMS / Footnote`).** Per status: the five annotations on the Technical
+screens' Certificate cards (cert_status values, batch issuance, the self-paced visibility rule, actions only on
+Issued, the requirement rows and that only the grade is an edX requirement). For the document: the field map of
+§16.2 and the no-PDF correction of §16.3, in one note. No new claims — everything comes from those two sources.
+
+**Fixed in the component on the way:** Generating's title read *"You Certificate is being issued"* → *Your
+certificate is being issued*; and a discovery flag inside the card, *"The state we were missing"*, is removed (its
+point is in the dev notes). The mockup's spacing, radii and eyebrow are on tokens and styles, in the handoff copy
+and in the original on the components page.
+
+Checked: 0 annotations, 0 unbound colours, spacing or radii, 0 generic names, no overlap. The certificates inside
+the mockup are instances scaled to 72 %: their texts carry no text style by construction (a style would fix the
+size), as before.
+
+⚠︎ **Node ids.** The working page was duplicated to *Plaftorm Pages (SkillUp UI) - V8 - WIP 🟠 2* (`6207:245582`);
+the original page now holds only the handoffs. The Technical screens, ENTRY and the mobile screens live on the new
+page with **new ids** — the ids quoted for them in §14–§29 point at the old copies. The handoff frames and the
+components page keep theirs.
+
+> *30 Sep, later:* **the Certificate document is not for development** (Nelson). It is a visual representation of
+> what the learner receives; the platform renders the web certificate from its own template. Its card is removed
+> from the handoff, the mockup card is labelled a representation, the Issued dev note says the thumbnail is
+> illustrative, and the component description says *not for development*. §16's field map stays as discovery.
+> *30 Sep, later still:* the **digital and print mockup** is removed from the handoff too — the same document in
+> other contexts, equally not for development. The Certificates handoff is **the Certificate card alone**.
+## 32. Tablet — the four tabs at 960 — 30 Sep
+
+Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no status bar (a browser view). Sources on
+*Plaftorm Pages (SkillUp UI) - V8 - WIP 🟠 2*, in *Course Detail V10*, one row below the mobile screens:
+`★ ENTRY · Course Detail — tablet · Course tab | Progress tab | Dates tab | Mentorship Q&A tab`.
+
+- **Shell:** DS `Header navigation` (logo + menu) instead of the 240 desktop sidebar, which does not fit at 960.
+- **`Course header` · `Breakpoint=Tablet`** (new variant): breadcrumb, then one row — type and partners, title (with the
+  image, as on desktop) and stats on the left, the progress card at 320 on the right.
+- **Tabs** with search on the same row, search filling what the tabs leave.
+- **Content:** the Technical desktop tab content with the main column filling and the sidebar at 280 (cards fill it);
+  Dates full width with the desktop Date row; Q&A keeps the two panes — list 320, conversation filling.
+- **Touch:** a tablet has no hover either, so Module 4 shows its lock reason as text (`Show lock reason`), as on mobile.
+
+**Handoff:** the screens handoff gains a tablet card in each row, between desktop and mobile — **13 screens**, cards
+renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
+handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
