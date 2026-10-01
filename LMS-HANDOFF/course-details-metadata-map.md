@@ -2344,7 +2344,7 @@ Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no sta
 renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
 handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
 
-## 33. My Learning and Dashboard — ready for dev — 30 Sep
+## 33. My Learning and Dashboard — handoff frame, still in progress — 30 Sep
 
 **Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
 development and hidden on every platform page**; navigation is the **top bar from the Dashboard experiment**, on
@@ -2460,10 +2460,10 @@ drawn parts. Re-audited: 0 raw values, 0 generic names.
   named *…-desktop · 1280*; now *…-tablet · 960*. Each card's changelog gains the 30 Sep top-bar entry; the tablet
   descriptions said *280 sidebar* → 320.
 
-**Handoff — ready for dev (30 Sep).** `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) with its
-*Ready for dev* banner (`6408:35142`) on *Platform Pages - Ready for Dev 🟢*, right of the Certificates handoff.
+**Handoff frame (30 Sep) — work in progress, not ready for dev (Nelson, 1 Oct).** `Platform Pages - My Learning &
+Dashboard - Light` (`6408:35150`) with its banner (`6408:35142`, now *WIP*, Warning) on *Platform Pages - Ready for Dev 🟢*, right of the Certificates handoff.
 Same format as the Course Detail handoff (§27): intro and meta strip, then one row per page, one card per screen —
-header (sequence, title, version 2026-09-30 · r1, *Ready for DEV*, RSD = this section, a Figma link to the source
+header (sequence, title, version 2026-09-30 · r1, status *In progress*, RSD = this section, a Figma link to the source
 screen), the screen, and the changelog header (description + first entry).
 
 | # | Card | Source |
@@ -2510,6 +2510,9 @@ Checkbox*).
 
 **4. *Ready for DEV* uses `Status/Done`.** Nelson swapped the Status Tag on card 01 from `Status/In progress`
 (label overridden) to `Status/Done` — green, with the dot. The other 27 tags on *Platform Pages - Ready for Dev 🟢*
-followed: Course Detail (12), Weekly goal (3), Certificates (1), My Learning & Dashboard (11). No other page in
-the file has a Status Tag. New handoff cards: `Status/Done` (key `a61c9edc…`), label *Ready for DEV*.
+followed on the frames that are ready for dev: Course Detail (12), Weekly goal (3), Certificates (1) — 17 with
+card 01. **My Learning & Dashboard is not ready for dev**: Nelson set its banner to *WIP*, and its 11 cards are
+`Status/In progress`, label *In progress* (I had marked them *Ready for DEV* when building the frame — wrong).
+No other page in the file has a Status Tag. Rule: `Status/Done` + *Ready for DEV* only when Nelson marks a frame
+ready; a new handoff frame starts as `Status/In progress`.
 

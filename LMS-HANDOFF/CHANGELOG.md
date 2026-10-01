@@ -9,12 +9,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - `Course header` · Tablet and Mobile show the Delivery and Difficulty badges; the mobile Dashboard shows the
   delivery badge through a local `LMS / Platform / Resume row` (the DS row cannot fit it).
 - Mobile Mentorship Q&A conversation: header, messages and composer in one card, from Nelson's reference.
-- Handoff cards: the *Ready for DEV* Status Tag is `Status/Done` on all 28 cards (was `Status/In progress`).
+- Handoff cards: the *Ready for DEV* Status Tag is `Status/Done` on the 17 Course Detail cards (was
+  `Status/In progress`). My Learning & Dashboard is **WIP**: banner *WIP*, its 11 cards `Status/In progress`.
   Metadata map §34; library request 16 updated.
 
-## 2026-09-30 · My Learning and Dashboard — ready for dev
+## 2026-09-30 · My Learning and Dashboard — handoff frame (in progress)
 
-- New frame `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) + *Ready for dev* banner, right of the
+- New frame `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) + banner (*WIP* since 1 Oct), right of the
   Certificates handoff: 11 screens in three rows — Dashboard (desktop · tablet · mobile), Courses and Programs
   (grid and list on desktop, tablet, mobile). Each card links to its source screen. Metadata map §33.
 
