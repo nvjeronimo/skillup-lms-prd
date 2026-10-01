@@ -2530,3 +2530,51 @@ Course tab — outline · Course tab — sidebar cards · Progress tab · Dates 
 Dashboard · My Learning; Docs and proofs. Node ids are unchanged. A new component goes inside its section; if a
 component grows, re-pack the section rather than moving one neighbour.
 
+## 35. Program Page — what the data allows — 1 Oct
+
+**Decisions (Nelson, 1 Oct).** The Program Page mirrors Course Detail (courses where Course Detail has modules);
+the tabs start from the V8 exploration (`Program Detail - Dark Hero`, `6207:246312`) but only what an API backs
+goes in; desktop first. A new handoff starts *In progress*.
+
+### 35.1 Evidence — public, read-only requests, no credentials
+
+**Open edX, dev (`devcourses.skillup.online`).** `GET /api/mfe_config/v1`: **`ENABLE_PROGRAMS = true`**,
+`DISCOVERY_API_BASE_URL = https://discovery-dev.skillup.online`, **`CREDENTIALS_BASE_URL = ""`**.
+- course-discovery **is deployed** (`/health/` → OK; `/api/v1/programs/` → 401, it exists and wants a login).
+  This answers open question 7 of §25 (level chip, Course team card).
+- `GET /api/dashboard/v0/programs/{uuid}/progress_details/` → 401: the learner's program progress endpoint
+  exists. In Open edX it returns the program, and its courses bucketed **completed / in progress / not started**.
+- `/dashboard/programs/{uuid}/` → 302 to login: the legacy program page is routed.
+- **Credentials is not configured** → no program certificate and no Learner Record.
+
+**The current platform (`skillup.online`).** The public page of *Certificate Program in AI Augmented Digital
+Marketing* (uuid `ed676db2-8681-4da3-9513-a7e74153f2e7`) server-renders a 45-field program payload — saved,
+without prices, as [`program-page-payload-2026-10-01.json`](program-page-payload-2026-10-01.json):
+`display_name`, `type` (*Professional Certs*), `org`, `subtitle`, `course_type` (*BLENDED*), `course_level`
+(*BEGINNER*), `mentored`, `duration` (*4 months*), `start` / `end` / `enrollment_*`, `courses_in_program[7]`
+(`title`, `introductory_sentence`, `course` id, `topics_covered[5]`), `overview[8]`, `faq[10]`, `includes[8]`,
+`create[9]`, `exercises[10]`, `instructors[1]`, `certificate` (*Certificate of Completion*; `certificate_url`
+empty).
+
+**Not verified.** What `progress_details` returns to a logged-in learner here, and whether this program exists in
+course-discovery or only behind the marketing site — the payload's field names are not Discovery's
+(`display_name`, `courses_in_program`, `includes`…). **Vendor question:** which is the source for the LMS program
+page — Discovery + `progress_details`, or the marketing backend?
+
+### 35.2 The eight V8 tabs against the data
+
+| V8 tab | Open edX | Current platform | Verdict |
+|---|---|---|---|
+| Syllabus | courses by status (`progress_details`) | 7 courses, intro, 5 topics each | **in** — *Courses* |
+| Program Info | `overview`, staff | 8 overview sections, includes, instructor | **in** — *About* |
+| FAQs | `faq` | 10 FAQs | **in** |
+| Certificates | course certificates yes; program certificate no (Credentials empty) | the words *Certificate of Completion*, no URL | **in** — the courses' certificates only |
+| Calendar | none at program level | — | **out** — the top bar's Calendar is global (walkthrough, 10 Apr) |
+| Resources | handouts per course only | — | **out** |
+| Projects | none | a descriptive list (`create`) | **out** as a tab; the list goes in *About* |
+| 1:1 Mentor | none | the flag `mentored` | **out**; the flag shows in the header |
+
+**Dropped from V8 for lack of data:** per-course unlock dates (all seven runs share one start and end),
+attendance of live sessions (VILT is out of the MVP; the Live tab is Zoom's iframe, §12.3), the assigned mentor,
+the program certificate, and the capstone as a special object — it is the seventh course.
+
