@@ -7,7 +7,7 @@ payloads), Feature Inventory, Role-Based Visibility. Sample course `course-v1:Sk
 **Recordings** (20 fields) and the **Instructor dashboard** (80 fields), plus eight endpoints and three new
 blocks in the role matrix. See §12.
 
-**Design audited:** `Course Detail — v9 · Self-paced MVP (workshop 29 Jul)`, node `4975:80196`,
+**Design audited:** `Course Detail — v9 · Self-paced MVP (workshop 29 Jul)`, node `6207:252677`,
 file [LMS-ICP-Phase-1](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=4975-80196).
 
 This document does one thing: it takes **every element on that frame** and names the field behind it.
@@ -358,10 +358,10 @@ four states, and all four are drawn.
 
 | State | Turns on | Node |
 |---|---|---|
-| In progress | the default | `5008:444` (v10) |
-| Never started | `resume_course.has_visited_course: false` | `5029:870` |
-| Completed | `cert_data.cert_status` | `5029:1246` |
-| Course ended | `has_ended: true` | `5029:1622` |
+| In progress | the default | `6207:252969` (v10) |
+| Never started | `resume_course.has_visited_course: false` | `6207:254175` |
+| Completed | `cert_data.cert_status` | `6207:254469` |
+| Course ended | `has_ended: true` | `6207:254782` |
 
 **Never started.** One boolean separates Start from Resume, and it changes more than the button: 0%, no
 eyebrow above the label because there is no last topic to go to, *0 of 42 topics*, nothing ticked, and every
@@ -508,17 +508,17 @@ into the tables.
 
 | Frame | Node | Note |
 |---|---|---|
-| SUPERSEDED · Course Detail — v9 (workshop 29 Jul) | `4975:80196` | kept for comparison |
-| v9 — the workshop record | `4975:90967` | trimmed to the rulings in the room's own words; everything else moved to the decisions table |
-| Course Detail — v10 · metadata applied | `5008:444` | the in-progress state |
-| Never started | `5029:870` | `resume_course.has_visited_course: false` |
-| Completed — certificate earned | `5029:1246` | `cert_data.cert_status` |
-| Course ended | `5029:1622` | `has_ended: true` |
-| **v11 · everything the data allows** | `5401:325` | the maximal version — every available field placed, so the cost of having them all is visible |
-| **Course Detail — how to read this section** | `5039:444` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
-| **Cards — states the pages do not show** | `5389:325` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
-| **★ ENTRY · Course Detail — v12 · componentised** | `5430:3589` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
-| ~~Course Detail — Progress tab · v1~~ | ~~`5482:4574`~~ | **deleted 21 Aug** — the annotated `⚙ TECHNICAL · Progress tab` (`5490:4793`) is the only copy, and carries the design as well as the notes |
+| SUPERSEDED · Course Detail — v9 (workshop 29 Jul) | `6207:252677` | kept for comparison |
+| v9 — the workshop record | `6207:252957` | trimmed to the rulings in the room's own words; everything else moved to the decisions table |
+| Course Detail — v10 · metadata applied | `6207:252969` | the in-progress state |
+| Never started | `6207:254175` | `resume_course.has_visited_course: false` |
+| Completed — certificate earned | `6207:254469` | `cert_data.cert_status` |
+| Course ended | `6207:254782` | `has_ended: true` |
+| **v11 · everything the data allows** | `6207:255912` | the maximal version — every available field placed, so the cost of having them all is visible |
+| **Course Detail — how to read this section** | `6207:255081` | the one narrative panel: v9 → v10, the structural finding, the two corrections, and where the rest lives |
+| **Cards — states the pages do not show** | `6207:255871` | the four certificate states, including `generating`, and the recent-recordings card for VILT courses |
+| **★ ENTRY · Course Detail — v12 · componentised** | `6207:256439` | the entry screen, built from instances — 30 at the top level, 21 ours and 9 from the library. The only loose text left on the page is the unlock-tooltip callout, which is a note about the design rather than part of it |
+| ~~Course Detail — Progress tab · v1~~ | ~~`5482:4574`~~ | **deleted 21 Aug** — the annotated `⚙ TECHNICAL · Progress tab` (`6207:257333`) is the only copy, and carries the design as well as the notes |
 
 ### The comparison layout
 
@@ -537,17 +537,17 @@ never appear for a learner. Nothing on it is ours to design.
 ### The technical section, and how to run a review from it
 
 The annotated pages moved out of the main section on **21 Aug** into their own —
-`⚙ Technical — every element, its field, and whether we can build it` (`5490:15278`). Two reasons: the design
+`⚙ Technical — every element, its field, and whether we can build it` (`6207:257303`). Two reasons: the design
 pages stopped being read through engineering notes, and there is now more than one of them.
 
 | Frame | Node | What it annotates |
 |---|---|---|
-| `⚙ TECHNICAL · Course tab` | `5446:3985` | v12, the courseware tab |
-| `⚙ TECHNICAL · Progress tab` | `5490:4793` | the Progress tab, from the API Information sheet |
-| `⚙ TECHNICAL · Dates tab` | `5497:150395` | the two rows the payload actually returns, and the ruling it forces |
-| `⚙ TECHNICAL · Mentorship Q&A tab` | `5497:150800` | both candidate products, side by side, neither signed off |
-| `How to read this section` | `5448:4325` | the legend, the scope rule, and the verdict key |
-| `Open questions — who owns each, and what closes it` | `5504:5594` | the fourteen decisions this section exists to force (§25) |
+| `⚙ TECHNICAL · Course tab` | `6207:257304` | v12, the courseware tab |
+| `⚙ TECHNICAL · Progress tab` | `6207:257333` | the Progress tab, from the API Information sheet |
+| `⚙ TECHNICAL · Dates tab` | `6207:257388` | the two rows the payload actually returns, and the ruling it forces |
+| `⚙ TECHNICAL · Mentorship Q&A tab` | `6207:257432` | both candidate products, side by side, neither signed off |
+| `How to read this section` | `6207:257354` | the legend, the scope rule, and the verdict key |
+| `Open questions — who owns each, and what closes it` | `6207:257477` | the fourteen decisions this section exists to force (§25) |
 
 Open them in **Dev Mode**. Together they carry **73 annotations across 50 elements**, in all four categories
 rather than everything under Development, because they are four different conversations with four different
@@ -645,7 +645,7 @@ single list would collapse them into one.
 
 > *23 Sep:* the board now holds **fourteen**, each with a milestone — the current register is §25.
 
-**The six open questions** now have their own board — `5504:5594`, under the legend. Each carries three
+**The six open questions** now have their own board — `6207:257477`, under the legend. Each carries three
 lines that "open" on its own does not give you: **why it is open**, **who owns it**, and **what would close
 it**. None of them is a design question; every one needs somebody outside the file to choose.
 
@@ -753,23 +753,23 @@ node that carried two Development annotations about `course_image_urls`. Both fa
 
 | Table | Node | What it holds |
 |---|---|---|
-| Course Detail — element → field | `5019:444` | 36 rows: every element, its field, and a verdict |
-| API surface (8 endpoints) | `5020:444` | Endpoint, when it is called, what it carries, caching, the 401s |
-| Role-based visibility | `5020:493` | Sheet 4 as a matrix, with the scope caveat on the first column |
-| States | `5038:444` | The four states, what each turns on, what changes on screen — plus what is not drawn yet |
-| Decisions and open questions | `5021:444` | What is decided and where it came from; what is open and who owns it; why the certificate is a card |
-| Metadata we still need | `5105:444` | What the ✗ and ⚠︎ verdicts would take to become ✅, with owner and status |
-| Live and Recordings | `5225:444` | What the VILT addendum rules in and out for design — not the fields, which are in §12 |
+| Course Detail — element → field | `6207:255097` | 36 rows: every element, its field, and a verdict |
+| API surface (8 endpoints) | `6207:255297` | Endpoint, when it is called, what it carries, caching, the 401s |
+| Role-based visibility | `6207:255411` | Sheet 4 as a matrix, with the scope caveat on the first column |
+| States | `6207:255499` | The four states, what each turns on, what changes on screen — plus what is not drawn yet |
+| Decisions and open questions | `6207:255563` | What is decided and where it came from; what is open and who owns it; why the certificate is a card |
+| Metadata we still need | `6207:255703` | What the ✗ and ⚠︎ verdicts would take to become ✅, with owner and status |
+| Live and Recordings | `6207:255815` | What the VILT addendum rules in and out for design — not the fields, which are in §12 |
 
 **Row 3 — out of scope**, under *Out of scope — states the learner panel never serves*
 
 | Frame | Node |
 |---|---|
-| Unenrolled (platform state, not reachable in the panel) | `5016:444` |
-| A · public access off | `5023:828` |
-| B · anonymous | `5023:1162` |
-| C · enrolment closed | `5023:1496` |
-| Out of scope — notes | `5018:444` |
+| Unenrolled (platform state, not reachable in the panel) | `6207:253272` |
+| A · public access off | `6207:253551` |
+| B · anonymous | `6207:253644` |
+| C · enrolment closed | `6207:253908` |
+| Out of scope — notes | `6207:253536` |
 
 Verdict key, used consistently in the tables and in this document:
 **✅** field exists and is populated · **◑** we derive it · **⚠︎** the field exists but is null in every
@@ -1040,7 +1040,7 @@ already the right call; it is now the only one that works.
 
 ## 13. v11 — everything the data allows
 
-A deliberate maximum, not a proposal. `Course Detail — v11 · everything the data allows` (`5401:325`) places
+A deliberate maximum, not a proposal. `Course Detail — v11 · everything the data allows` (`6207:255912`) places
 **every field the platform offers this page**, so the cost of having them all is visible rather than argued.
 
 | Added over v10 | Field | Where |
@@ -1315,7 +1315,7 @@ the underlined title, and the row's own divider. Swapped on `⚙ TECHNICAL · Co
 component, which is kept for them.
 
 > **Reversed 24 Sep — the syllabus is back on the local `Topic row`, grouped by `Lesson Header`.** Nelson redrew
-> Module 3 on `⚙ TECHNICAL · Course tab` (`5446:4074`) and it is now the format: the `Module row`, a 1px `sep`, then
+> Module 3 on `⚙ TECHNICAL · Course tab` (`6207:257322`) and it is now the format: the `Module row`, a 1px `sep`, then
 > one container (padding 4/20) holding the DS **`LMS / Lesson Header`** for each lesson (*Define and measure*,
 > *Analyze and interpret* — `sequential.display_name`) followed by its **`LMS / Course Detail / Topic row`** instances
 > (`vertical`). One line per topic: state icon, underlined title, type and duration on the right. The two costs listed
@@ -1390,13 +1390,13 @@ because its search field is 60px tall, not 56 — outside the technical section 
 live tab. If the chip is there to document the field, the literal belongs in the annotation.
 
 **Kept as history:** the first Dates tab is renamed `BK · ⚙ TECHNICAL · Dates tab — histórico` and stays in the
-section beside its replacement, `5655:520`.
+section beside its replacement, `6207:257718`.
 
 ---
 
 ### 15.4 Two ideas taken back from the v8 screens
 
-The v8 Brand section (`4340:323`) was reviewed for patterns worth carrying into the technical screens, each
+The v8 Brand section (`6207:245583`) was reviewed for patterns worth carrying into the technical screens, each
 checked against what edX returns. Two are adopted now; the rest wait for a decision item by item.
 
 **Module number, then a check.** A module shows its **position number** until it is complete, and a check only
@@ -1540,7 +1540,7 @@ day markers; our own v8 dashboard drew a streak the same way. **Vendor request: 
 |---|---|
 | `LMS / Course Detail / Weekly goal card` (`5852:1666`) | `Not set` · `Set` · `Met`, plus `Show week strip` (off by default). Built from DS `Radio group item`, `Toggle`, `Buttons/Button` (link) and `LMS / Completion Status`; the card shell matches the other sidebar cards |
 | `LMS / Course Detail / Week day` (`5848:139230`) | `Done` · `Today` · `Missed` · `Upcoming`, with a `Day` text property. **Missed is neutral on purpose** — a quiet day is not an error |
-| Board `Weekly goal — states and what edX gives us` (`5855:6181`) | In the technical section: Not set, Set, Met, the two week-strip variants, and **Off — not rendered**. One annotation per state |
+| Board `Weekly goal — states and what edX gives us` (`6207:257749`) | In the technical section: Not set, Set, Met, the two week-strip variants, and **Off — not rendered**. One annotation per state |
 
 The course sidebar on the Course tab, Progress tab and `★ ENTRY` now uses the card in `Set`, without the strip —
 the buildable version. The two old annotations (Course tab and Progress tab) said much the same thing; they are
@@ -1651,7 +1651,7 @@ activity in this course counts towards the day* to **A day counts when you open 
 ⚠︎ **Web and mobile disagree** on Dates and Q&A — vendor question. ⚠︎ *A day with a completed topic* would be a
 separate backend rule.
 
-In Figma: the table is on the board **Weekly goal — what counts as a day** (`5935:7350`), beside the states board,
+In Figma: the table is on the board **Weekly goal — what counts as a day** (`6207:257855`), beside the states board,
 and the same table is an annotation on the Course tab's weekly goal card.
 
 ### 17.7 Last week — a comparison, not a view
@@ -2023,7 +2023,7 @@ passes re-bound by local variable id and could not see them.
 **One "today" for the whole file: Thursday 18 Sep 2026.** The Weekly goal strip already said so (*This week ·
 15–21 Sep*, Thursday = `Today done`). Every other date now agrees with it.
 
-**Dates tab (`5655:520`)** — the screen was contradicting its own annotations:
+**Dates tab (`6207:257718`)** — the screen was contradicting its own annotations:
 
 - **The type chip printed `ASSIGNMENT-DUE-DATE` on all nine rows**, including *Course starts* and *Certificate
   available*. It now carries human copy per `date_type`: *Course* (start · end) · *Due date* (assignment) ·
@@ -2061,7 +2061,7 @@ search frame padding 10/10, unbound; now `Spacing/3xl` and `Spacing/md` like the
 
 ## 25. Open questions — one register, with owner and milestone — 23 Sep
 
-The questions had spread across the annotations and §14–§24; the board `5504:5594` held the six from August, three
+The questions had spread across the annotations and §14–§24; the board `6207:257477` held the six from August, three
 of them out of date. It now holds **all fourteen**, numbered so that 1–6 keep their old numbers (the text above
 cites *open question 1* and *5*). Each keeps *why it is open · what closes it · what it blocks* and gains a
 **By** chip. Milestones, not dates, because none are set: **dev handoff → course build → course start → after launch**.
@@ -2093,7 +2093,7 @@ course start date or the private channel is lost for this run.
 
 ## 26. Mobile — the Course tab at 375 — 24 Sep
 
-`★ ENTRY · Course Detail — mobile · Course tab` (`6126:100579`), beside `★ ENTRY` in *Course Detail V10*. Built from
+`★ ENTRY · Course Detail — mobile · Course tab` (`6207:256470`), beside `★ ENTRY` in *Course Detail V10*. Built from
 the same instances as ENTRY; no drawn parts. *24 Sep:* the alert, section intro and the seven sidebar cards were
 re-cloned from `⚙ TECHNICAL · Course tab`, the final screen — ENTRY's differed (Weekly goal *Set* vs *Met*, another
 Mentor variant).
@@ -2122,7 +2122,7 @@ outline, then cards; the lock reason as text on touch.
 
 ### 26.1 Progress tab — mobile
 
-`★ ENTRY · Course Detail — mobile · Progress tab` (`6133:99183`), beside the Course tab. Same shell (Progress current),
+`★ ENTRY · Course Detail — mobile · Progress tab` (`6207:256494`), beside the Course tab. Same shell (Progress current),
 then: heading · Completion card · pass alert · `LMS / Quiz · Grade Summary` · footnote · Certificate · Weekly goal —
 cloned from the technical Progress tab, annotations removed.
 
@@ -2163,6 +2163,8 @@ the learner sees.
 *"user_timezone on the dates payload. It is null…"*, now *All times are shown in your time zone (Europe/Lisbon,
 UTC+1)*) and the Q&A composer's *"Post anonymously · allow_anonymous is on for this course"* (now *Post anonymously*).
 
+*30 Sep:* the screens carry the platform top bar instead of the LMS sidebar / platform header — §33.
+
 **Not in this handoff:** Dates and Mentorship Q&A on mobile — the rows say so. The screens in the frame are copies:
 when a Technical screen changes, re-copy the card's screen rather than editing both.
 
@@ -2187,7 +2189,7 @@ The locked title's underline, which had come back on the desktop variant, is rem
 ## 29. Mobile for every tab; every screen on DS tokens and components — 24 Sep
 
 **Mobile, complete.** Beside the Course and Progress tabs: `★ ENTRY · Course Detail — mobile · Dates tab`
-(`6167:104714`), `… · Mentorship Q&A tab · list` (`6168:14899`) and `… · conversation` (`6168:26944`). Q&A on a phone
+(`6207:256509`), `… · Mentorship Q&A tab · list` (`6207:256535`) and `… · conversation` (`6207:256556`). Q&A on a phone
 is two screens: the list (no Selected state — there is no split view) and the conversation, opened from a row,
 with *Your questions* (DS `Button` Link gray + `arrow-left`) to go back.
 
@@ -2280,7 +2282,7 @@ header, then one card per row.
 | 03 | Weekly goal · what counts as an active day | the web / mobile-app table, notes and sources |
 
 It was built from the copy of *Weekly goal — states and what edX gives us* placed on this page; its sections were
-moved into the cards and the empty board removed. The original stays in the Technical section (`5855:6181`).
+moved into the cards and the empty board removed. The original stays in the Technical section (`6207:257749`).
 
 **The explanation lived in 19 Figma annotations; a handoff carries none**, so each state now has its dev notes
 visible under the card — the DS **`LMS / Footnote`** atom (*Dev Notes: …*, Space Mono), the annotation text verbatim
@@ -2311,10 +2313,10 @@ Checked: 0 annotations, 0 unbound colours, spacing or radii, 0 generic names, no
 the mockup are instances scaled to 72 %: their texts carry no text style by construction (a style would fix the
 size), as before.
 
-⚠︎ **Node ids.** The working page was duplicated to *Plaftorm Pages (SkillUp UI) - V8 - WIP 🟠 2* (`6207:245582`);
-the original page now holds only the handoffs. The Technical screens, ENTRY and the mobile screens live on the new
-page with **new ids** — the ids quoted for them in §14–§29 point at the old copies. The handoff frames and the
-components page keep theirs.
+**Node ids.** The working page was duplicated to *Plaftorm Pages (SkillUp UI) - V8 - WIP 🟠 2* (`6207:245582`);
+the original page (*Platform Pages - Ready for Dev 🟢*) now holds only the handoffs. *30 Sep:* every id in this
+document, the CHANGELOG and the library requests now points at the new page (39 replaced). Left as they were: the
+Progress tab v1 (`5482:4574`, deleted 21 Aug), the old Dates page (`5655:325`), and ids from the DS file.
 
 > *30 Sep, later:* **the Certificate document is not for development** (Nelson). It is a visual representation of
 > what the learner receives; the platform renders the web certificate from its own template. Its card is removed
@@ -2326,16 +2328,152 @@ components page keep theirs.
 
 Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no status bar (a browser view). Sources on
 *Plaftorm Pages (SkillUp UI) - V8 - WIP 🟠 2*, in *Course Detail V10*, one row below the mobile screens:
-`★ ENTRY · Course Detail — tablet · Course tab | Progress tab | Dates tab | Mentorship Q&A tab`.
+`★ ENTRY · Course Detail — tablet · Course tab` (`6359:12024`), `· Progress tab` (`6359:12852`), `· Dates tab`
+(`6359:13209`), `· Mentorship Q&A tab` (`6359:13759`). The header variant is `6358:46187`.
 
 - **Shell:** DS `Header navigation` (logo + menu) instead of the 240 desktop sidebar, which does not fit at 960.
 - **`Course header` · `Breakpoint=Tablet`** (new variant): breadcrumb, then one row — type and partners, title (with the
   image, as on desktop) and stats on the left, the progress card at 320 on the right.
-- **Tabs** with search on the same row, search filling what the tabs leave.
-- **Content:** the Technical desktop tab content with the main column filling and the sidebar at 280 (cards fill it);
+- **Tabs** with search on the same row, the search pushed to the right and **at most 320** wide (Nelson, 30 Sep).
+- **Content:** the Technical desktop tab content with the main column filling and the sidebar at **320** — the
+  desktop width, kept as the minimum on tablet (Nelson, 30 Sep; was 280) — cards fill it;
   Dates full width with the desktop Date row; Q&A keeps the two panes — list 320, conversation filling.
 - **Touch:** a tablet has no hover either, so Module 4 shows its lock reason as text (`Show lock reason`), as on mobile.
 
 **Handoff:** the screens handoff gains a tablet card in each row, between desktop and mobile — **13 screens**, cards
 renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
 handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
+
+## 33. My Learning and Dashboard — ready for dev — 30 Sep
+
+**Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
+development and hidden on every platform page**; navigation is the **top bar from the Dashboard experiment**, on
+desktop, tablet and mobile. The four My Learning screens (Programs and Courses, grid and list) and the Dashboard go
+to dev on all three breakpoints. What the DS lacks becomes local components for peer review; course cards move to
+the DS `LMS / Course Card`.
+
+**`LMS / Platform / Topbar`** (`6374:3608`, components page) — Breakpoint = Desktop · Compact. Desktop: logo, the
+five sections, notifications and the learner; Compact (tablet, mobile): logo, notifications, menu. Built from DS
+atoms (`Skillup_logo`, `bell-01`, `chevron-down`, `Avatar`, `Badge v2`) and the atom **`LMS / Platform / Topbar
+item`** (`6373:3313`, State = Default · Current, Label, Show count). The experiment's bar was drawn with raw values
+and off-scale type (13.5 / 12.5 / 10.5); the component is on tokens (`bg/inverse`, `text/on-inverse`) and DS styles.
+
+⚠︎ **A translucent fill cannot be a token.** With a colour variable bound, Figma ignores the paint's opacity (it
+renders solid). The Current item's 8 % white is a `Highlight` layer — `bg/on-media` with **layer** opacity 8 %.
+
+**Desktop screens** (section *My Learning & Dashboard — dev-ready sources*, `6374:16005`, on the WIP 2 page):
+Dashboard (from the top-bar experiment) and the four My Learning screens, sidebar removed, content at 1280.
+- Courses grid and list now use **`LMS / Course Card`** (Grid, List) instead of drawn cards and the retiring
+  `LMS / Course Card_Remove`. Data fixed on the way: the Courses tab labelled every course *PROGRAM* → *COURSE*;
+  *Flexible + Live* → *Flexible + Live Sessions* (the Courses Type wording).
+- ⚠︎ In the DS `LMS / Course Card` · List, a long title runs under the progress column (e.g. *UX Research and Design
+  Thinking*), and in both layouts a long *Up next* title runs under its type badge — the component does not truncate.
+  Library request to follow.
+
+**Local components** (components page, `LMS / Platform / …`, for peer review — none promoted to the DS). Each is
+built from DS atoms, on tokens and DS text styles, and replaces what was drawn on the five desktop screens.
+
+| Component | Id | What it is | Replaced |
+|---|---|---|---|
+| `Stat` | `6378:3299` | Theme Default · Inverse; Label, Value, Detail, Show divider. Content bottom-aligned, so values share a baseline when a label wraps | 12 My Learning stats, 4 Dashboard KPIs |
+| `Section header` | `6382:3172` | Title + Emphasis (headline-small/Bold, text/default + text/subtle), optional DS `Buttons/Button` sm · Link gray + arrow-right | *Due this week*, *Pick up where you left off*, *Jump somewhere* |
+| `Due item` | `6382:3495` | Urgency Today (day in text/error) · Upcoming; Day, When, Title, Meta; status = exposed `Badge v2` Soft sm (Error + dot for Live, Warning for Due) | 3 rows of *Due this week* |
+| `Jump tile` | `6382:3302` | Icon (swap, DS icon in icon/primary on bg/primary-soft), Title, Description | 4 tiles (message-chat-circle, calendar, award-01, user-01) |
+| `Glance card` | `6384:17651` | Title + 4 `Stat` · Inverse in a 2×2 grid on bg/inverse; two decorative circles (bg/info, bg/primary at 12 % layer opacity) | *Today at a glance* |
+| `Streak card` | `6384:17785` | Count (display-large/Bold, the one hero figure per screen), Label, 7 `LMS / Course Detail / Week day`, Message | the streak card |
+| `Program card` | `6388:3858` | Layout Grid · List × State In progress · Not started; DS `LMS / Delivery Mode Badge`, `Badge v2` Gray (cohort, status), DS `Progress bar`, `Buttons/Button` Primary *Continue* / Secondary *Details* | 2 programs × grid and list |
+| `Browse tile` | `6388:116426` | Dashed border/default on bg/faint, DS `plus`, Title, Subtitle | *Browse catalog* in Courses grid |
+
+What changed on the way (design vs the drawn experiment):
+- **Streak days** now use the Course Detail `Week day` states (outlined check, dashed upcoming) instead of solid
+  circles — one pattern for "a week of study" across Dashboard and Weekly goal. The *13 hours* highlight was #51BFFC
+  on white (fails contrast); it is `text/primary` Semibold.
+- **Section titles lose their italic.** The DS has no italic text style; the two-colour split stays. Library request 14.
+- **Program hero** on `bg/primary` for both states: the not-started grey-blue (#49667A) has no token and `bg/primary`
+  is the nearest. The state reads from the body (0 %, *Not started* badge, *Details*).
+- **Progress bar is stepped** (0–100 by 10): 27 % shows the 30 % bar. Library request 15.
+- **The *Today at a glance* title** was #51BFFC; no text token carries it on `bg/inverse` → `text/on-inverse`.
+- Data: the not-started grid card showed the in-progress figures (*Week 4/32 · Courses 1/7*); aligned with the list
+  (*0/32 · 0/5 · 0/64*). Its eyebrow still says *6 courses + capstone* against *Courses 0/5* — to confirm.
+- Programs grid now uses the Courses grid tracks (3 flexible columns, 24 gap); program cards hug their height.
+
+**Token and naming pass (30 Sep).** Re-audited outside instances: **0 raw fills, strokes, effects, spacing, radii
+or unstyled texts, 0 generic layer names** on the five desktop screens.
+- One shell for the four My Learning screens: `Main` (padding 5xl / 5xl / 8xl / 5xl, gap 4xl) → `Header` (`Intro`
+  fill + `Stats` fixed 600) → `Collection` (gap 3xl: `Toolbar` + `Course grid` / `Course list` / `Program grid` /
+  `Program list`). Before, the header split 720/480, 600/600 or 480/480 depending on the screen, Courses List had
+  an extra `MyLearning` wrapper, and the gaps were 36 + 4 + 8 and 22. At 600 each stat is 200 wide and *Daily goals
+  completed* fits on one line.
+- Dashboard: `Content` → `Greeting`, `Overview` (Glance + Streak), `Due and resume`, `Jump`; the three
+  `Container:margin` wrappers are gone. The Due list's border was an inner shadow → `border/subtle` stroke,
+  `Radius/fixed-md`. The resume list lost an invisible stroke and shadow.
+- Page title (*Good morning, John.* · *Keep going.*, drawn Bold 40): **`headline-large/Bold` (36/44)**. The DS page
+  title `display-medium` is 60 — too large for these pages; the HTML stays `<h1>`. The grey second phrase keeps
+  `text/subtle`, not the italic (request 14). ⚠︎ `headline-large` has **36 paragraph spacing**: a two-line title
+  takes a line break (Shift+Enter), not a paragraph break.
+- The hidden intro paragraph (*You're four weeks into…*) is on `body-medium/Regular`, `text/subtle`, still hidden.
+  A hidden duplicate program card in Programs List (a compact *Cybersecurity* row) was removed.
+- Course list cards now 24 apart (was 16), like every other collection.
+- ⚠︎ `LMS / Course Card` progress: the fill is a fixed 149 px frame on every card — 5 %, 35 %, 52 % and *Not started*
+  all drew the same bar. Each fill is now sized to its percentage and hidden when not started; overrides, not a
+  property (library request 13).
+
+**Tablet and mobile (30 Sep).** Same section, two rows under the desktop row; built from the desktop screens, no
+drawn parts. Re-audited: 0 raw values, 0 generic names.
+
+| Screen | Tablet (960, `Responsive = Tablet`) | Mobile (375, `Responsive = Mobile`) |
+|---|---|---|
+| Dashboard | `6397:16635` | `6400:29528` |
+| My Learning · Courses | `6397:17285` | `6400:29847` |
+| My Learning · Programs | `6397:18563` | `6400:31480` |
+
+- **Below desktop there is only Grid** (Nelson, 30 Sep): the grid/list toggle is hidden and both collections show
+  Grid — 2 columns on tablet, 1 on mobile. So 3 screens per breakpoint, not 5. The DS `LMS / Course Card` · List
+  does not fit under desktop (title and progress overlap at 896).
+- **Shell:** `LMS / Platform / Topbar` · Compact on both. Mobile adds the ICP `_iPhone mockup status bar` and
+  `_iPhone mockup home`, as on the Course Detail mobile screens. Spacing follows the mode.
+- **Dashboard.** Tablet: *Due* and *Pick up* stack; Glance + Streak stay side by side. Mobile: everything stacks,
+  Jump tiles 2 × 2, and the `LMS / Course Row` hides its delivery badge — the DS row has no narrow layout and
+  its title line (352–405) is wider than the phone.
+- **My Learning.** Tablet keeps the desktop header (Intro + Stats 600). Mobile stacks it and the **Stats go
+  vertical** (one per row, no divider) — three columns of 109 broke *COMPLETED* mid-word. Toolbar on mobile: tabs
+  (`sm`) above a full-width search. The Browse tile is 160 tall on mobile.
+- **Course Card fixes (overrides, all breakpoints):** the thumbnail is pinned at 86 × 86 — in the component it is a
+  locked-ratio square that fills the header height, so at 960 the titles column collapsed to 1 px and the
+  thumbnail grew to 686; the *Up next* title fills and truncates to one line (the Topic-type badge used to be pushed
+  out); progress fills re-sized per breakpoint. All three are library request 13.
+
+**The top bar on Course Detail (30 Sep).** The LMS sidebar is hidden on every platform page, Course Detail included.
+- **Desktop** — `⚙ TECHNICAL` Course (`6207:257304`), Progress (`6207:257333`), Dates (`6207:257718`), Mentorship Q&A
+  (`6207:257432`) and `★ ENTRY · … v12 · componentised` (`6207:256439`): `Page` was a grid (240 sidebar | 1040
+  main); now a column — `LMS / Platform / Topbar` (Desktop, *My Learning* current), then the page at **1280**.
+  Header, tabs and content fill it; the page margins are 40 on both sides (the right-only 40 is gone), so the
+  breadcrumb and main column start at 40 and the progress card, search and sidebar end at 1240. Course tab: main
+  column 840 + sidebar 320. Progress: two columns of 580. Dates: the *Upcoming* list fills like *Past*.
+- **`Course header` · Desktop** (both types) now adapts to its width: the content row is 960 at x 40 with
+  `STRETCH`, the left column fills, the progress card stays 360; the circles pin right. It was drawn for 1040 with
+  `MIN` constraints and a hugging row — at 1280 the card stopped at 960.
+- **Tablet and mobile** — the four tablet and five mobile `★ ENTRY` screens: DS `Header navigation (platform)` →
+  `LMS / Platform / Topbar` · Compact (48 in these modes, was 64).
+- **Handoff** (`6146:10226`): the 13 screens re-copied from their sources — 87 annotations cleared, footnote
+  state carried, 0 visible footnotes, 0 annotations left, no overlaps on the page. Cards 02 · 05 · 08 · 11 were
+  named *…-desktop · 1280*; now *…-tablet · 960*. Each card's changelog gains the 30 Sep top-bar entry; the tablet
+  descriptions said *280 sidebar* → 320.
+
+**Handoff — ready for dev (30 Sep).** `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) with its
+*Ready for dev* banner (`6408:35142`) on *Platform Pages - Ready for Dev 🟢*, right of the Certificates handoff.
+Same format as the Course Detail handoff (§27): intro and meta strip, then one row per page, one card per screen —
+header (sequence, title, version 2026-09-30 · r1, *Ready for DEV*, RSD = this section, a Figma link to the source
+screen), the screen, and the changelog header (description + first entry).
+
+| # | Card | Source |
+|---|---|---|
+| 01 · 02 · 03 | Dashboard · Desktop · Tablet · Mobile | `6374:16006` · `6397:16635` · `6400:29528` |
+| 04 · 05 | Courses · grid · list · Desktop | `6374:114591` · `6374:115077` |
+| 06 · 07 | Courses · Tablet · Mobile | `6397:17285` · `6400:29847` |
+| 08 · 09 | Programs · grid · list · Desktop | `6374:115915` · `6374:116384` |
+| 10 · 11 | Programs · Tablet · Mobile | `6397:18563` · `6400:31480` |
+
+The screens are copies: 0 annotations, no footnotes, no overlaps on the page. When a source changes, re-copy the
+card's screen. **Not in this handoff:** the eight local components as their own component handoff (like Weekly goal
+and Certificates) — they carry descriptions on the components page and wait for peer review.

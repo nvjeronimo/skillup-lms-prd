@@ -348,3 +348,56 @@ designed — because `body-small/Medium` + uppercase detaches the style (a case 
 
 **Ask:** either confirm 10px is the overline and the cards follow it, or add a 12px overline (e.g.
 `label-medium/*`, uppercase, 12/18).
+
+---
+
+## 13 · `LMS / Course Card` — no truncation
+
+In the List layout a long title runs under the progress column (*UX Research and Design Thinking*), and in both
+layouts a long *Up next* title runs under its type badge. Nothing truncates or wraps inside the card.
+
+**Ask:** title and *Up next* limited to a set number of lines with an ellipsis (2 and 1?), and the progress column
+given a fixed width the title cannot enter.
+
+**And the progress fill has no value.** `fill` is a fixed 149 px frame inside `bar`, identical on every card — 5 %,
+52 % and *Not started* draw the same bar. My Learning sizes each fill by hand (and hides it when not started); a
+card resized later keeps the old width. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
+
+**And it does not survive a narrower screen.** (1) `thumb` is a square with a locked ratio that fills the header's
+height; the header's height comes from the title, the title's width from what the thumb leaves. At 960 this loops:
+the titles column went to 1 px and the thumb to 686 × 686. (2) The List layout overlaps below ~1100. (3) *Up next*
+pushes the Topic-type badge out of the card. My Learning pins the thumb at 86, truncates *Up next* to one line and
+uses Grid only below desktop. **Ask:** a fixed thumb size, a truncating *Up next*, and a List that reflows (or a
+ruling that List is desktop-only).
+
+---
+
+## 14 · No italic text style (editorial headings)
+
+The platform pages title their sections in two voices — *Due* **this week**, *Pick up* **where you left off**, *Keep*
+**going.**, *Good morning,* **John.** — the second phrase italic and grey. The DS has weight variables for italics
+(`Type/weight/bold-italic`, `medium-italic`…) but **no italic text style**, so the italic cannot be applied without
+detaching the style. `LMS / Platform / Section header` keeps the colour split and drops the italic.
+
+**Ask:** an emphasis style for headlines (e.g. `headline-small/Bold Italic`, `display-medium/Medium Italic`), or a
+ruling that the platform headings are not italic.
+
+---
+
+## 15 · `Progress bar` — stepped values only
+
+`Progress` is a variant from 0 % to 100 % in steps of 10. A program at 27 % shows the 30 % bar next to the text
+*27%*, and every card has to round.
+
+**Ask:** a continuous value (a width bound to a number, or a `Percent` property the fill follows), as for request 10.
+
+---
+
+## 16 · `LMS / Course Row` — no narrow layout
+
+The row (title + delivery badge, then progress + button) wraps its two lines, but the first line hugs its content:
+352–405 px for the Dashboard's three courses, wider than a phone (327 inside the page padding). Its inner frames
+do not take width overrides. The mobile Dashboard hides the delivery badge so the title fits.
+
+**Ask:** a mobile layout (title line fills and wraps, badge under the title), or a `Show badge` property.
+
