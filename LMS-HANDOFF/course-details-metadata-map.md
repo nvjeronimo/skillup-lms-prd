@@ -2538,6 +2538,15 @@ On Tablet and Mobile the circles moved to the desktop composition — hatched ci
 content — they had been sitting under the progress card, and the tablet's small circle outside the header.
 29 instances (17 in the sources, 12 in the handoffs) changed with the component.
 
+**8. Badges: only `Badge v2`** (Nelson, 1 Oct). Checked on all 40 pages: `_Badge base` is never placed on its
+own — every one (629 on Ready for Dev, 988 on WIP 2, 142 on the components page) is the layer inside a
+`Badge v2`. `Badge v2` has no text property of its own, so a badge's label and dot are set on that nested layer
+(`Text#21889:56`, `Dot#21889:7`); that is the component working as built, not the base being used.
+What did turn up: **28 instances of the old badge, `Badge-V1-to-remove`**, placed directly — the *What counts as a
+day* table (*Counts*, *Not required*, *No*) in the Weekly goal handoff and in the Technical section, plus
+*Self-paced* and *Professional* there. All replaced with `Badge v2` · Soft, same size, colour and text. 18 more V1
+badges remain, all hidden and all inside the DS `_Tab button base` — the library's to remove.
+
 ## 35. Program Page — what the data allows — 1 Oct
 
 **Decisions (Nelson, 1 Oct).** The Program Page mirrors Course Detail (courses where Course Detail has modules);

@@ -2,6 +2,11 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-01 · Badges — the old Badge V1 replaced
+
+- 28 `Badge-V1-to-remove` instances (Weekly goal *What counts as a day* table, handoff and Technical) are now
+  `Badge v2` · Soft. No `_Badge base` is placed on its own anywhere in the file. Metadata map §34.8.
+
 ## 2026-10-01 · Course header — hatched circle
 
 - `Course header` (courses and programs, all breakpoints): the big decorative circle is a diagonal hatch of 1px
