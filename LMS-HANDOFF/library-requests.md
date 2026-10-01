@@ -405,3 +405,14 @@ Dashboard now uses a local `LMS / Platform / Resume row` built from the same ato
 
 **Ask:** a mobile layout (title fills and wraps, badge under the title) with no minimum width on the title.
 
+---
+
+## 17 · The accordion item is not published
+
+`FAQ section` (marketing section, 32 variants) is built from `_FAQ item` — Expanded, Divider, Breakpoint, Icon
+position — but the item is private (underscore), so a product page cannot place an accordion without importing a
+whole FAQ section to reach it. The Program Page FAQs and About tabs use it that way.
+
+**Ask:** publish the accordion item (e.g. `Accordion item`), and note in its description that the divider is drawn
+above the item.
+

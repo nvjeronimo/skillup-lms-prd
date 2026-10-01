@@ -2603,5 +2603,30 @@ weekly goal, certificate, handouts and tools cards, the course-update alert and 
   light like Course Detail, clear the explicit mode on the variant.
 - `Card shell`'s slot was a fixed 40 px frame; it is now a vertical auto layout that hugs its content.
 
-**Next:** Certificates, FAQs and About; tablet and mobile; the handoff frame, starting *In progress*.
+### 35.4 Certificates, FAQs and About · desktop — built 1 Oct, in progress
+
+Three more screens in the same section, each a copy of the Courses screen with its own main column; the header,
+the tabs and the three sidebar cards are the same on all four. Audited: 0 raw values, 0 generic names, 0 annotations.
+
+| Screen | Id | Main column | Data |
+|---|---|---|---|
+| Courses | `6443:18722` | §35.3 | |
+| Certificates | `6449:21234` | `Section intro`, then one `LMS / Course Detail / Certificate card` per course that has certificate data — course 1 **Issued**, course 2 **Not earned** with its two progress lines — each under its course title; a note for the five not started | the courses' certificates (edX issues them per course run) |
+| FAQs | `6448:20247` | a card of ten DS `_FAQ item` (accordion), the first open | `faq[10]` — question and answer |
+| About | `6448:24409` | `Section intro` with the subtitle, then a card of ten `_FAQ item`: the eight `overview` sections, *What You Will Create* and *Exercises to Explore* | `subtitle`, `overview[8]`, `create[9]`, `exercises[10]` |
+
+- **`_FAQ item` is a private atom of the DS** (`FAQ section` is built from it; it is not published on its own, so it
+  cannot be imported by key — it is reached through `FAQ section`). Its divider sits **above** the item: the first
+  item takes `Divider=False`, the rest `True`. Library request: publish the accordion item.
+- **The subtitle is marketing copy.** It ends *"Enroll now to accelerate your digital marketing career!"* — dropped on
+  the About tab, where the learner is already enrolled. `overview` arrives as HTML (lists, line breaks) and is
+  shown as plain paragraphs and bullets.
+- **The program certificate is an open question.** FAQ 10 and the payload promise an *industry-recognized
+  Certificate of Completion* for the program, but Credentials — where Open edX keeps program certificates — is not
+  configured on dev. The Certificates tab shows the courses' certificates only. **Vendor question:** where is the
+  program certificate issued and how does the LMS read it?
+- The certificate thumbnail inside the Issued card is the illustrative `Certificate document` (§31 — not for
+  development); only the learner and the course name were set.
+
+**Next:** tablet and mobile for the four tabs; the handoff frame, starting *In progress*.
 

@@ -9,6 +9,9 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   four are backed by data: Courses, Certificates, FAQs, About.
 - `Program Detail · Courses tab · Desktop` (`6443:18722`): `Course header` · Program, seven courses on `Module row`
   with a local `LMS / Program Detail / Course panel` in the open row, three sidebar cards. Metadata map §35.
+- Certificates (`6449:21234`), FAQs (`6448:20247`) and About (`6448:24409`), desktop: `Certificate card` per course
+  with certificate data; DS `_FAQ item` accordions with the real FAQ and overview copy. The program certificate is an
+  open vendor question. Library request 17.
 
 ## 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card
 
