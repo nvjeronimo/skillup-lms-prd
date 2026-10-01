@@ -2477,3 +2477,34 @@ screen), the screen, and the changelog header (description + first entry).
 The screens are copies: 0 annotations, no footnotes, no overlaps on the page. When a source changes, re-copy the
 card's screen. **Not in this handoff:** the eight local components as their own component handoff (like Weekly goal
 and Certificates) — they carry descriptions on the components page and wait for peer review.
+
+## 34. Three corrections from Nelson — 1 Oct
+
+**1. The platform top bar is light, not dark.** `LMS / Platform / Topbar` (both breakpoints): `bg/page` with a 1px
+`border/subtle` rule below; name in `text/default`, role in `text/subtle`, icons `icon/default` (chevron
+`icon/subtle`); `Skillup_logo` in its default colour version (the white-text overrides are gone). `Topbar item`:
+label `text/subtle`; Current = `bg/primary-soft` behind a `text/primary` label (it was 8 % white on the dark bar).
+Every screen uses instances, so Dashboard, My Learning and Course Detail changed with the component — sources and
+handoff copies. The translucent-fill note in §33 no longer applies to the top bar.
+
+**2. Delivery and Difficulty badges show on every breakpoint.**
+- `Course header` · Tablet and · Mobile had no `Tags Container`; they now carry `LMS / Delivery Mode Badge` and
+  `LMS / Difficulty Badge` between the title and the stats, as on desktop (wrapping on mobile).
+- Dashboard mobile: the delivery badge is back on the resume rows. The DS `LMS / Course Row` cannot do it — its
+  title has a **264 minimum width**, so title + badge is at least 389 wide and instances cannot override a
+  minimum (library request 16). The mobile Dashboard uses a local **`LMS / Platform / Resume row`** (`6418:18853`):
+  the same atoms and tokens as the DS row — title, badge under it, DS `Progress bar` with the percentage,
+  `Buttons/Button`. To retire when the DS row gets a mobile layout. Desktop and tablet keep the DS row.
+
+**3. Mobile Mentorship Q&A conversation — one card.** Nelson's reference: the handoff copy he edited (card 13).
+`★ ENTRY · … mobile · Mentorship Q&A tab · conversation` (`6207:256556`) now wraps the header, the messages and the
+composer in one `Conversation` card (`bg/page`, `border/subtle`, rounded), as the desktop pane — which is what
+makes the mentor bubble visible (it was grey on a grey page). Messages have 16 padding and stay on
+`Message` · `Breakpoint=Mobile`, which fills the width; the reference used the Desktop variants, whose 420 bubble
+was clipped. `Message` · Mentor · Mobile: the author line wraps, so *Accepted answer* drops under the name instead
+of leaving the card. Layer names follow the reference (*Question Title*, *Question Metadata*, *Post Anonymously
+Checkbox*).
+
+**Handoffs:** card 13 (Course Detail) and card 03 (My Learning & Dashboard) re-copied; all 24 cards carry a
+1 Oct changelog entry. 0 annotations, no overlaps.
+

@@ -399,5 +399,9 @@ The row (title + delivery badge, then progress + button) wraps its two lines, bu
 352–405 px for the Dashboard's three courses, wider than a phone (327 inside the page padding). Its inner frames
 do not take width overrides. The mobile Dashboard hides the delivery badge so the title fits.
 
-**Ask:** a mobile layout (title line fills and wraps, badge under the title), or a `Show badge` property.
+*1 Oct:* hiding the badge was rejected — badges show on every breakpoint. The blocker is the title's **264
+minimum width** (instances cannot override a minimum, and the nested rows ignore width overrides). The mobile
+Dashboard now uses a local `LMS / Platform / Resume row` built from the same atoms.
+
+**Ask:** a mobile layout (title fills and wraps, badge under the title) with no minimum width on the title.
 

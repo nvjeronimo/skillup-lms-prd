@@ -2,6 +2,15 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card
+
+- `LMS / Platform / Topbar` is light (`bg/page`, `border/subtle` rule); Current item on `bg/primary-soft`. All
+  platform and Course Detail screens follow.
+- `Course header` · Tablet and Mobile show the Delivery and Difficulty badges; the mobile Dashboard shows the
+  delivery badge through a local `LMS / Platform / Resume row` (the DS row cannot fit it).
+- Mobile Mentorship Q&A conversation: header, messages and composer in one card, from Nelson's reference.
+  Metadata map §34; library request 16 updated.
+
 ## 2026-09-30 · My Learning and Dashboard — ready for dev
 
 - New frame `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) + *Ready for dev* banner, right of the
