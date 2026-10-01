@@ -2516,3 +2516,9 @@ card 01. **My Learning & Dashboard is not ready for dev**: Nelson set its banner
 No other page in the file has a Status Tag. Rule: `Status/Done` + *Ready for DEV* only when Nelson marks a frame
 ready; a new handoff frame starts as `Status/In progress`.
 
+**5. Profile access on tablet and mobile.** `LMS / Platform / Topbar` · Compact had logo, notifications and menu —
+no way to the profile. It now carries the learner's DS `Avatar` (*Profile*, sm) between notifications and the
+menu, the same atom as the Desktop user block; it opens the profile menu. Actions gap as on Desktop
+(`Spacing/lg`). The 15 compact top bars in the sources and the 15 in the handoffs are instances and changed with
+the component.
+
