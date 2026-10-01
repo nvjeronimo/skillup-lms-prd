@@ -9,6 +9,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - `Course header` · Tablet and Mobile show the Delivery and Difficulty badges; the mobile Dashboard shows the
   delivery badge through a local `LMS / Platform / Resume row` (the DS row cannot fit it).
 - Mobile Mentorship Q&A conversation: header, messages and composer in one card, from Nelson's reference.
+- Handoff cards: the *Ready for DEV* Status Tag is `Status/Done` on all 28 cards (was `Status/In progress`).
   Metadata map §34; library request 16 updated.
 
 ## 2026-09-30 · My Learning and Dashboard — ready for dev

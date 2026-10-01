@@ -2508,3 +2508,8 @@ Checkbox*).
 **Handoffs:** card 13 (Course Detail) and card 03 (My Learning & Dashboard) re-copied; all 24 cards carry a
 1 Oct changelog entry. 0 annotations, no overlaps.
 
+**4. *Ready for DEV* uses `Status/Done`.** Nelson swapped the Status Tag on card 01 from `Status/In progress`
+(label overridden) to `Status/Done` — green, with the dot. The other 27 tags on *Platform Pages - Ready for Dev 🟢*
+followed: Course Detail (12), Weekly goal (3), Certificates (1), My Learning & Dashboard (11). No other page in
+the file has a Status Tag. New handoff cards: `Status/Done` (key `a61c9edc…`), label *Ready for DEV*.
+
