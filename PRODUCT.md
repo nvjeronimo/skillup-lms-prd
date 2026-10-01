@@ -37,8 +37,11 @@ Binding on all design work:
 - **WCAG 2.2 AA** on every skin and theme, keyboard-only use, and captions. The accessibility layer is orthogonal to skin and theme: CVD-safe state colours (`data-vision="cvd"`) and text scale A / A+ / A++ (100 / 115 / 130 %) (ADR 016).
 - **Multi-skin, zero raw hex.** Every screen must work in all skins (`data-skin`) and in light and dark themes, using only DS role tokens (ADR 014).
 - **Figma DS is the source of truth.** Use existing SKO DS components and tokens. A new token needs approval and a Material-style name.
+- **Only what an API backs goes in.** Nothing is designed as real that the platform cannot serve. No API today for: due dates, cohort pace, XP, time left, the assigned mentor, live-session attendance. Live sessions (VILT) are out of the MVP. A field's status is in `LMS-HANDOFF/course-details-metadata-map.md`; check it before drawing data.
+- **Programs on Open edX** (verified on dev, 1 Oct 2026): programs are enabled and course-discovery is deployed; a learner's program progress comes as courses completed, in progress and not started. The Credentials service is not configured, so there is no program certificate or learner record to read yet.
+- **Content parity across breakpoints.** What a learner sees on desktop is there on tablet and mobile. Content is not hidden to make a component fit; the layout changes instead.
 
-Undecided: positioning; which brands occupy the skins for B2B and enterprise.
+Undecided: positioning; which brands occupy the skins for B2B and enterprise; where the program certificate is issued and how the LMS reads it; whether the LMS program page reads course-discovery or the marketing site's backend.
 
 ## Brand Commitments
 - Product name: SkillUp. Logos: `skillup-logo-light.svg` and `skillup-logo-dark.svg`.
@@ -48,14 +51,15 @@ Undecided: positioning; which brands occupy the skins for B2B and enterprise.
 - Source requirements: FRDs, PRDs, BA docs and syllabus spreadsheets in `05-source-docs/`.
 - Research: personas (synthetic), the design-system discovery transcript, the VILT walkthrough transcript and the UX audit (`04-research/`, `ux-audit/`).
 - Benchmarks: the Coursera quiz benchmark (`LMS-HANDOFF/quizzes/02-coursera-quiz-benchmark.md`). Coursera screenshots are local-only in `_media/`.
+- Platform evidence: the field-by-field map against Open edX and the dev environment (`LMS-HANDOFF/course-details-metadata-map.md`), and a real program payload from the current platform, without prices (`LMS-HANDOFF/program-page-payload-2026-10-01.json`).
 - Absent, never to be fabricated: real learner testimonials, completion or outcome metrics, customer or partner names, pricing.
 
 ## Product Principles
-1. **Pace is always visible.** A learner should never have to work out whether they are on track, behind or ahead.
+1. **Position and next step are always visible.** A learner always knows where they are and what comes next. Pace against the cohort is shown when the data exists; it is never implied without it.
 2. **Authorable or it doesn't ship.** A design the content team cannot build in Studio is not a design.
 3. **Accessible on every skin.** AA holds across every skin, theme, vision mode and text scale, not only the default.
 4. **One system, many brands.** Partners change the skin, not the structure or the components.
 5. **Decisions carry their source.** Every design choice traces to an ADR, a confirmed capability or a named requirement.
 
 ## Accessibility & Inclusion
-WCAG 2.2 AA minimum. Keyboard-only and screen-zoom use (persona P07). Captions on all media. Colour-vision-deficiency-safe states. User-selectable text scale up to 130 %. Low-literacy-friendly labels and confirmations (personas P01 and P07).
+WCAG 2.2 AA minimum, and stricter in two places: interactive targets are at least 44 px on mobile, and no text is smaller than 12 px. Keyboard-only and screen-zoom use (persona P07). Captions on all media. Colour-vision-deficiency-safe states. User-selectable text scale up to 130 %. Low-literacy-friendly labels and confirmations (personas P01 and P07).
