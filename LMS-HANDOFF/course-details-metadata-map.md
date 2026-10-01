@@ -2522,3 +2522,11 @@ menu, the same atom as the Desktop user block; it opens the profile menu. Action
 (`Spacing/lg`). The 15 compact top bars in the sources and the 15 in the handoffs are instances and changed with
 the component.
 
+**6. The components page is in sections.** `5409:325` had three clashes — `Message` over `Week day`, `Course
+header` (now 1 729 tall) over six Platform components, `Program card` over `Browse tile` and `Resume row` — all
+from components that grew after they were placed. The 40 items now sit in ten named sections, in three columns
+right of the Cover and Foundations frames, packed in rows with 100 between items: Course Detail · header and shell ·
+Course tab — outline · Course tab — sidebar cards · Progress tab · Dates tab · Mentorship Q&A; Platform · top bar ·
+Dashboard · My Learning; Docs and proofs. Node ids are unchanged. A new component goes inside its section; if a
+component grows, re-pack the section rather than moving one neighbour.
+

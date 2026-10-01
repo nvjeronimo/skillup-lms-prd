@@ -12,6 +12,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - Handoff cards: the *Ready for DEV* Status Tag is `Status/Done` on the 17 Course Detail cards (was
   `Status/In progress`). My Learning & Dashboard is **WIP**: banner *WIP*, its 11 cards `Status/In progress`.
 - `Topbar` · Compact gains the learner's Avatar — profile access on tablet and mobile.
+- Components page: ten named sections in three columns, no overlaps (three clashes fixed).
   Metadata map §34; library request 16 updated.
 
 ## 2026-09-30 · My Learning and Dashboard — handoff frame (in progress)
