@@ -2645,5 +2645,33 @@ the tabs and the three sidebar cards are the same on all four. Audited: 0 raw va
 - The certificate thumbnail inside the Issued card is the illustrative `Certificate document` (§31 — not for
   development); only the learner and the course name were set.
 
-**Next:** tablet and mobile for the four tabs; the handoff frame, starting *In progress*.
+### 35.5 The course list — three options with the DS course card — 4 Oct
+
+Nelson, 4 Oct: the `Module row` list reads as "expand here", but a course is a **destination** — the learner
+leaves for the course page — so the courses should look like the course cards of My Learning. Three options,
+second row of the same section, each a copy of the Courses screen. Nothing chosen yet; `6443:18722` (Module rows)
+stays as the current version.
+
+| Option | Screen | What |
+|---|---|---|
+| A — grid | `6526:20655` | DS `LMS / Course Card` · Grid, two columns in the 840 main column; the sidebar stays |
+| B — list | `6527:22768` | DS `LMS / Course Card` · List, one per row at 1 200; no sidebar on this tab (program dates, what's included and the instructor stay on About) |
+| C — list with sequence | `6527:29075` | B plus a spine on the left: `Module number` (Complete · the course number) joined by a 2px `border/subtle` connector — the order of the program stays visible |
+
+Card data, all API-backed: title, org, delivery and level, progress from the Course Progress API (*Complete* ·
+*40% complete* · *Not started*), **total effort** instead of time left (`effort` on the Courses API; time left has
+no API), *Up next* from the course's resume position, and for the completed course *Certificate · Issued …* in the
+Up next slot (the course certificate). CTA *Review* · *Resume* · *Start*.
+
+On the List card the title, progress and footer zones now share the width (`Footer`, `up-next` and `Next-Content`
+set to fill): the progress column lines up across rows and a long title wraps instead of running under it.
+
+⚠︎ **Correction to §33.** The Course Card progress bars on My Learning were **not** fixed on 30 Sep: `resize()` on a
+layer nested in an instance is ignored without an error, and the widths reported then were the computed ones, not
+read back — every fill was still 149. Fixed 4 Oct on the sources and the handoff copies, and verified by reading
+the width back: the fill is set to *fill* and the bar takes a right padding equal to the unfilled part
+(5 % → 17/334, 35 % → 117/334, 52 % → 174/334).
+
+**Next:** Nelson's choice of course list; then tablet and mobile for the four tabs; the handoff frame, starting
+*In progress*.
 

@@ -360,8 +360,9 @@ layouts a long *Up next* title runs under its type badge. Nothing truncates or w
 given a fixed width the title cannot enter.
 
 **And the progress fill has no value.** `fill` is a fixed 149 px frame inside `bar`, identical on every card — 5 %,
-52 % and *Not started* draw the same bar. My Learning sizes each fill by hand (and hides it when not started); a
-card resized later keeps the old width. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
+52 % and *Not started* draw the same bar. An instance cannot resize it (layers nested in an instance do not
+take a size). My Learning sets the fill to *fill* and gives `bar` a right padding equal to the unfilled part
+(and hides the fill when not started); a card resized later keeps the old padding. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
 
 **And it does not survive a narrower screen.** (1) `thumb` is a square with a locked ratio that fills the header's
 height; the header's height comes from the title, the title's width from what the thumb leaves. At 960 this loops:

@@ -2,6 +2,14 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-04 · Program Page — three options for the course list; progress bars really fixed
+
+- Courses tab: three options with the DS `LMS / Course Card` instead of `Module row` — A grid (`6526:20655`),
+  B list (`6527:22768`), C list with a numbered sequence (`6527:29075`). Awaiting Nelson's choice. Metadata map §35.5.
+- Correction: the Course Card progress fills on My Learning had not changed on 30 Sep (a nested `resize()` is
+  ignored silently). Now set by fill + track padding on sources and handoff, verified by read-back.
+  figma-api-traps 38.
+
 ## 2026-10-01 · Badges — the old Badge V1 replaced
 
 - 28 `Badge-V1-to-remove` instances (Weekly goal *What counts as a day* table, handoff and Technical) are now
