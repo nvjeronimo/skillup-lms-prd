@@ -2,6 +2,13 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-05 · Program Page — the course list is a list of expandable course rows
+
+- Nelson's decision: list only, the module the learner left off in visible at a glance, each course expandable to
+  its modules. New local `LMS / Program Detail / Course row` (`6538:6143`): DS Course Card · List + a modules bar
+  (*You left off in Module 2 of 4*, Show / Hide modules) + a slot of `Module row`. The Courses tab (`6443:18722`)
+  uses it; no sidebar on that tab. The three option screens and `Course panel` removed. Metadata map §35.6.
+
 ## 2026-10-04 · Program Page — three options for the course list; progress bars really fixed
 
 - Courses tab: three options with the DS `LMS / Course Card` instead of `Module row` — A grid (`6526:20655`),

@@ -2649,8 +2649,8 @@ the tabs and the three sidebar cards are the same on all four. Audited: 0 raw va
 
 Nelson, 4 Oct: the `Module row` list reads as "expand here", but a course is a **destination** — the learner
 leaves for the course page — so the courses should look like the course cards of My Learning. Three options,
-second row of the same section, each a copy of the Courses screen. Nothing chosen yet; `6443:18722` (Module rows)
-stays as the current version.
+second row of the same section, each a copy of the Courses screen. **None was chosen** — see §35.6; the three
+screens no longer exist.
 
 | Option | Screen | What |
 |---|---|---|
@@ -2672,6 +2672,29 @@ read back — every fill was still 149. Fixed 4 Oct on the sources and the hando
 the width back: the fill is set to *fill* and the bar takes a right padding equal to the unfilled part
 (5 % → 17/334, 35 % → 117/334, 52 % → 174/334).
 
-**Next:** Nelson's choice of course list; then tablet and mobile for the four tabs; the handoff frame, starting
-*In progress*.
+### 35.6 The course list — decided 5 Oct: a list of expandable course rows
+
+Nelson, 5 Oct, turning the three options down: **list format only; the learner sees at once which module they
+left off in; and each course expands to show its modules.** The three option screens were removed.
+
+**`LMS / Program Detail / Course row`** (`6538:6143`, components page, section *Program Detail*; local, for peer
+review) — `Expanded` = False · True.
+
+| Part | Built with | Data |
+|---|---|---|
+| Card | the DS `LMS / Course Card` · List — same card as My Learning; its border and shadow moved to the row's container (`bg/page`, `border/subtle`, `Radius/fixed-xl`, `Shadows/shadow-card`) | as §35.5: progress, total effort, *Up next*, CTA |
+| Modules bar | `Position` (body-medium/Semibold) + `Detail` (body-medium/Regular, text/subtle), and a DS `Buttons/Button` sm · Link gray *Show modules* / *Hide modules* with chevron-down / chevron-up | in progress: *You left off in Module 2 of 4* · *module name · 3 of 10 topics done*; not started: *4 modules* · *43 topics*; complete: *4 modules* · *All complete · 36 topics* |
+| Modules (Expanded=True, a **slot**) | one `LMS / Course Detail / Module row` per module, collapsed, no chevron — a module opens the course page at that module; the current one sits under a `Badge v2` · Soft · Brand *You left off here*; on `bg/faint` | the course outline: modules, their completion and the resume position — fetched **when the row is expanded**, one call per course |
+
+`Program Detail · Courses tab · Desktop` (`6443:18722`) now uses it: seven rows at 1 200, course 2 expanded, real
+module names, topic counts and durations from the syllabus. **No sidebar on this tab** — the List card needs the
+width; program dates, what's included and the instructor stay on Certificates, FAQs and About. Audited: 0 raw
+values, 0 generic names, 0 annotations.
+
+Removed with the old version: the local `LMS / Program Detail / Course panel` (0 instances left).
+
+⚠︎ The DS card's thumbnail loop (library request 13) hits here too: with the footer set to fill, the thumbnail grew
+to 580 and the title went one letter wide. The row pins the thumbnail (sizing *fixed* on both axes).
+
+**Next:** tablet and mobile for the four tabs; the handoff frame, starting *In progress*.
 
