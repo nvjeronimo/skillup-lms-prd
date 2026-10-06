@@ -7,6 +7,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The 35 local components renamed to the 14 Sep convention (`LMS/Platform/<Group>/<Component>`) and gathered in one
   section, ready to be cut and pasted into the new DS page `❖ LMS PLATFORM COMPONENTS` (`22011:941`). Baseline:
   1 394 instances on the two platform pages must resolve to the library afterwards. Metadata map §36.
+- Variant property `Type` → `Kind` on the four sets that had it (`Course-Header`, `Sidebar-Card`,
+  `Grade-Summary-Row`, `Score-Row`), before the move. Instances unchanged, file total still 1 648.
+- The page intro rewritten on DS styles and tokens (35 components, six groups, naming, five rules) and placed
+  inside the section to move. Metadata map §36.3.
+- **Blocker for a clean move:** the DS page `❖ LMS COMPONENTS ✅` already holds a pasted *copy* of the 35
+  (different keys, unpublished, still `Type`, old intro). To delete before the cut, or the DS gets every name
+  twice. Metadata map §36.2.
+- Correction: the instance undercount (1 213) was not unloaded pages alone — `getInstancesAsync()` is short on its
+  first pass. figma-api-traps 39–40. Library request 18 (Course Card *UP NEXT* at 11 px, no text style).
 
 ## 2026-10-05 · Program Page — the course list is a list of expandable course rows
 

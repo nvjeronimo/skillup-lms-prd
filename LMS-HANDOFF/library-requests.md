@@ -417,3 +417,16 @@ whole FAQ section to reach it. The Program Page FAQs and About tabs use it that 
 **Ask:** publish the accordion item (e.g. `Accordion item`), and note in its description that the divider is drawn
 above the item.
 
+---
+
+## 18 · `LMS / Course Card` — the *UP NEXT* overline is 11 px and has no text style
+
+`Next-Content › Overline` (*UP NEXT*) inside the card is Montserrat 11 px with 0.6 px tracking and **no text
+style**. It is the only text under 12 px in everything the platform pages place (found 6 Oct while checking the
+35 components before their move, §36.3 of the metadata map) and it breaks the 12 px minimum. An instance could
+override the size, but every card on My Learning, the Dashboard and the Program Page would need it, and the next
+card placed would be 11 px again.
+
+**Ask:** put the overline on a 12 px text style in the component. Same question as request 12 — there is no 12 px
+overline style to give it.
+

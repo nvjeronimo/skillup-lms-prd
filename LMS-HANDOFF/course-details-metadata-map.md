@@ -2707,9 +2707,10 @@ ends the "local, for peer review, nothing promoted" rule of §33 for these compo
 
 **How.** A real move — instances stay linked, overrides kept — exists only as Figma's own cut and paste between
 files; the plugin API works on one file at a time. So: (1) prepared here — renamed, gathered in one section;
-(2) **Nelson** cuts the section `MOVE TO DS → ❖ LMS PLATFORM COMPONENTS` (`6569:112566`) on the components page,
-pastes it on the new DS page, publishes the library and accepts the update in this file; (3) verified against the
-baseline below, then arranged on the DS page.
+(2) **Nelson** cuts the section `MOVE TO DS → ❖ LMS PLATFORM COMPONENTS` (`6569:112566`) on the components page
+(it holds the ten component sections and the intro), pastes it on the new DS page, publishes the library and
+accepts the update in this file; (3) verified against the baseline below, then arranged on the DS page.
+**Cut, not copy** — see §36.2.
 
 **Pre-flight (6 Oct).** 35 components, 96 variants. No local variable, no local style, every dependency inside
 the set, every component described. Three have no instances (`Grade-Meter`, `Grade-Summary-Row`, `Score-Row`) and
@@ -2717,8 +2718,14 @@ go anyway.
 
 **Baseline for the check after the move** — instances whose main component is one of the 35, counted with every
 page loaded: **1 648** in the file = 790 on *Platform Pages … WIP 2* + 604 on *Ready for Dev* + 254 inside the
-components themselves. (The 1 213 first reported was an undercount: not every page was loaded.) After the move the
-1 394 on the two pages must all resolve to **library** components, none missing.
+components themselves; 640 placed directly, 1 008 nested inside another instance. After the move the 1 394 on the
+two pages must all resolve to **library** components, none missing.
+
+*How to count (corrected 6 Oct).* `getInstancesAsync()` is short on its first pass in a session — 1 213, and
+1 170 on another run — and right on the second: the nested instances only appear once the first pass has walked
+them. Loading every page is needed and is not enough. Run the count twice and keep the second; the per-component
+numbers of the second pass were identical on two separate runs. (The earlier note here blamed unloaded pages
+alone.)
 
 ### 36.1 Old name → new name
 
@@ -2735,13 +2742,70 @@ components themselves. (The 1 213 first reported was an undercount: not every pa
 | My-Learning | `LMS / Platform / Program card` · `Browse tile` | `LMS/Platform/My-Learning/Program-Card` · `Browse-Tile` |
 | Program-Detail | `LMS / Program Detail / Course row` | `LMS/Platform/Program-Detail/Course-Row` |
 
-Sections before §36 use the old names; the node ids quoted there die with the move (a component gets a new id in
-the DS file) — the names above are the way to find them.
+Sections before §36 use the old names and the old property name `Type`; the node ids quoted there die with the
+move (a component gets a new id in the DS file) — the names above are the way to find them.
 
-**Not done, to decide.** The convention also reserves property names: `Kind` replaces `Type`. Four sets still use
-`Type` (`Course-Header`, `Sidebar-Card`, `Grade-Summary-Row`, `Score-Row`); `Theme`, `Urgency`, `From` and
-`Expanded` are not reserved names. Only component names were approved, so properties are unchanged.
+**`Type` → `Kind` (Nelson, 6 Oct — done before the move).** The variant property is renamed on the four sets that
+had it: `Course-Header` (`Kind` Course · Program), `Sidebar-Card` (Handouts · Dates · Tools · Team · Mentor Q&A ·
+Mentor WIP), `Grade-Summary-Row` (Header · Row · Total), `Score-Row` (Section · Subsection). Read back: no set
+keeps a `Type` variant; instances 29 → 29 and 42 → 42 (the other two sets have none); the file total is still
+1 648. Not touched: the booleans `Show type` (`Date-Row`, `Thread-Row`) and `Show assignment type` (`Date-Row`),
+which are not the reserved variant name, and `Theme`, `Urgency`, `From`, `Expanded`, which the convention does not
+reserve.
 
-**Seen on the way, not mine.** The two frames *Foundations — colour* and *Foundations — space, radius, type* are no
-longer on the components page. The DS has an empty `Page 118` (`22009:15222`) just below the new page.
+**The two Foundations frames and `Page 118`.** Both Nelson's: the frames were removed because they no longer made
+sense, and the DS page is now *DS Structure discussion* (`22009:15222`).
+
+### 36.2 Before the cut — a copy is already in the DS
+
+Found 6 Oct while reading the DS for the intro. The page **`❖ LMS COMPONENTS ✅`** (`1030:33572`) holds a pasted
+copy of the whole components page, to the right of the numbered sections (x 22 086 onwards): `Cover`
+(`22009:16438`), the ten component sections (`22009:16446` … `22009:17747`) and `Docs and proofs`
+(`22009:17587`) — twelve top-level nodes.
+
+| | The copy in the DS | The originals here |
+|---|---|---|
+| Components | 35, 96 variants, same `LMS/Platform/…` names | 35, 96 variants |
+| Keys | different on every one (`Course-Header` `3b09d9a2…`) | (`Course-Header` `b478abef…`) |
+| Instances that point to them | 61, all inside the copied `Docs and proofs`; none elsewhere on that page | 1 648 |
+| Variant property | still `Type` on the four sets | `Kind` |
+| Intro | the old one (*Nine sets… Locked 19 Aug 2026*) | rewritten, §36.3 |
+| Published | no | no |
+
+It is a **copy**, not the move: the keys differ, so no screen in this file is linked to it, and publishing it would
+not link any. If the section is then cut and pasted as planned, the DS ends up with **two components for each of
+the 35 names** — two entries in the assets panel, and no way to tell which one a screen uses without opening it.
+
+**To do before the cut (Nelson, or on his word):** delete the twelve pasted nodes from `❖ LMS COMPONENTS ✅`.
+Nothing outside them uses the copies. Not deleted by this session: they were not made here, and the DS is not
+written to without his go-ahead.
+
+### 36.3 The intro, rewritten
+
+`Cover` (`5409:326`) described the page as it was on 19 Aug — *LMS / Course Detail — Components*, nine sets, the
+old namespace, text styles that no longer exist (`Body/Lead…`), a run id pointing at `/tmp`, and no text style or
+token on any of its seven texts. It now reads, on DS styles (`body-small/Semibold`, `headline-small/Semibold`,
+`body-medium/Regular` and `Semibold`, `body-small/Regular`) and tokens (`bg/page`, `border/subtle`,
+`text/default` · `muted` · `subtle`, `Spacing/*`, `Radius/fixed-lg`), in the shape of the DS *Domain header*:
+
+- **LMS Platform components** — what the page is for, and that the player, the topic content types and the course
+  cards stay in `❖ LMS COMPONENTS`.
+- **What is here** — dated (*As of 6 Oct 2026*): 35 components, 96 variants, six groups with their counts
+  (Course-Detail 21 · Completion 2 · Navigation 2 · Dashboard 7 · My-Learning 2 · Program-Detail 1).
+- **Naming** — `LMS/Platform/<Group>/<Component>`, and the reserved property names, `Kind` in place of `Type`.
+- **The rules these components follow** — five: tokens only; text by style and nothing under 12 px; icons swap;
+  reuse before build; same content on every breakpoint.
+- The source of the decisions (this file, §33–§36).
+
+It now sits **inside** the section to move (top-left; the ten sections shifted 980 px right, no overlap), so it
+travels with the components. The page's top level is that section and `Docs and proofs`.
+
+**The rules were checked against the 35 before being written** (nested DS instances excluded unless said):
+
+| Rule | Read back |
+|---|---|
+| Tokens only | 8 344 nodes: every solid fill and stroke is bound, except what belongs to DS instances — the gradient stroke of `Buttons/Button` (8) and the logo artwork (3) |
+| Text by style | 323 texts, all styled (one, `Streak-Card` · *Message*, mixes Regular and Semibold — both DS styles) |
+| Nothing under 12 px | true of what was built here. Two exceptions, neither a local text: the certificate thumbnail in `Certificate-Card` (a scaled picture of the document, 3–8 px) and the *UP NEXT* overline **inside the DS `LMS / Course Card`** — 11 px, no text style — which `Program-Detail/Course-Row` nests. Library request 18 |
+| Reuse before build | DS instances inside the 35: `Badge v2` 54, `Buttons/Button` 35, `Progress bar` 12, `LMS / Completion Status` 12, `LMS / Delivery Mode Badge` 10, `Avatar` 8, `LMS / Topic-Types Badge` 6, `LMS / Difficulty Badge` 5, and others |
 
