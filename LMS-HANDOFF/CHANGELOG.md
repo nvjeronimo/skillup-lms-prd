@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · Handoff audit, second pass (Nelson: yes to all four)
+
+- **Video:** 28 values bound (8 × `Spacing/4xl`, 14 × `Radius/fixed-md`, 6 × `Radius/fixed-sm`). Left, all in the
+  hand-drawn note-editor modal: gap 10 (off-scale), tablet padding 32 and mobile padding 16 (no single token),
+  tag radius 999, safe-area 34, three texts in Inter Italic 14/20, five modal shadows without an effect style.
+  It needs a DS component, not more bindings.
+- **Reading:** list spacings rounded as decided, 9 → 8 (`Spacing/md`, 14) and 28 → 24 (4), the 16 gap on
+  `Spacing/xl`. 0 raw values left in the screens. The mobile list indent landed on `Spacing/5xl` (24 in Mobile)
+  while desktop is `Spacing/3xl`: same pixels, two tokens — to settle.
+- **DS, `❖ LMS COMPONENTS ✅`** (named version first): 199 spacings and 56 radii bound to the token with the same
+  value in the node's mode, 19 components. 19 descriptions written (drafts, to review). Left: off-scale spacings
+  10/14/18/22 (Lesson Block, Zooming Image, Drag and Drop · Item), radii 3, 1.33, 1.5 and mixed, 16 texts with no
+  matching style (Course Card 12, Course Type Badge 2, Footnote 2), 10 raw fills, 4 shadows without a style.
+  Not published.
+- **Prototype critique, local `main`:** see the session report; main findings are two learner identities and two
+  My Learning pages, three equal primary buttons in one view, and the topic page opening scrolled 355 px.
+
 ## 2026-10-06 · Handoff audit of the Ready for Dev pages (first pass)
 
 - Measured outside instances, screens only (children of `screen-wrap`): Platform 0 raw values; Quizzes 21 radii;
