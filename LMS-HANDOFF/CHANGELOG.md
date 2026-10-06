@@ -4,6 +4,9 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-06 · Local components → the DS (in progress)
 
+- **Relink (night):** DS published; 654 instances swapped to the DS components by key on the three pages, nine
+  nested-badge overrides repaired. `Course-Detail/Topic-Row` is still unpublished in the DS: its 87 instances wait.
+  Tokens inside the 35 are all bound to the DS's own variables. Metadata map §36.5.
 - **After the paste (evening):** the 35 are on the DS page (96 variants, all variables and styles local to the DS),
   not published yet. The paste did not carry the link: new keys, and the 1 242 instances in the ICP file still
   resolve to the old, deleted components. Next: Nelson deletes the older copy and publishes; then the instances

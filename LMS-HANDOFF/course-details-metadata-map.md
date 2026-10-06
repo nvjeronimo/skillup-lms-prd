@@ -2843,3 +2843,43 @@ DS component of the same name and variant, imported by key (`swapComponent` keep
 their parent). (3) Read back: zero local `LMS/Platform/…` mains, the per-component counts above against the DS
 keys, and a visual check of the handoff cards.
 
+### 36.5 The relink — 6 Oct (night): 654 of 741 done, `Topic-Row` waiting to be published
+
+Nelson deleted the older copy from `❖ LMS COMPONENTS ✅` and published the DS. Accepting the update here re-linked
+nothing (661 of 661 instances on the WIP page still on the old components), so the instances were swapped.
+
+**Tokens in the DS, re-read after the publish.** Inside the 35 components (96 variants): 3 051 variable bindings,
+all to the DS's own variables — `3. Responsive 📐` 2 263, `🎨 SKO-Semantics` 712, `_Primitives` 76; none remote,
+none missing. 334 text and effect styles, all local. The 76 on `_Primitives` are 38 texts in `label-small`
+(Medium, Semibold, Regular): the **style itself** binds its size and line height to `_Primitives · Type/size/text-xs`
+and `Type/line-height/text-xs` instead of the Responsive collection. Not caused by the move; a DS-wide fix if wanted.
+
+**Method.** Named version first (*Before relink: LMS/Platform instances → DS library*, saved through the Desktop
+Bridge — `saveVersionHistoryAsync` is not available to the remote plugin runner). Then, page by page: find every
+instance whose main component is a local `LMS/Platform/…`, take the top-most ones (no ancestor that is itself to
+be swapped), import the DS set or component by key, pick the variant with the same name, `swapComponent`, and
+compare the instance's size and visible text before and after; repeat until a pass finds nothing to swap. The
+nested ones follow their parent, except the ones placed in a slot, which the next pass swaps.
+
+| Page | Swapped | Left |
+|---|---:|---|
+| Course Detail — Components (`Docs and proofs`) | 30 | `Topic-Row` 24 |
+| Platform Pages V8 — WIP | 346 | `Topic-Row` 36 |
+| Platform Pages — Ready for Dev | 278 | `Topic-Row` 27 |
+| **Total** | **654** | **87** |
+
+**`Topic-Row` is not published.** `getPublishStatusAsync` on the DS: 34 `CURRENT`, `Course-Detail/Topic-Row`
+`UNPUBLISHED`; importing its key fails. Its 87 instances (24 placed directly, 63 nested) still resolve to the old
+local component. To finish: publish it, then run the same pass.
+
+**Nine instances lost an override of a nested badge and were repaired** (found by the before/after comparison):
+six `Dashboard/Due-Item` (*Peer review…*, on both platform pages) whose `Status` badge went back to *Live* with
+the dot — restored to *Due 11:59*, dot off, colour had stayed Warning; three `Sidebar-Card · Kind=Dates`
+(*Program dates*) whose first `Relative` badge went back to *In 3 days* — restored to *Started*. All nine read
+back with the same size and text as before the swap. Trap: a swap can reset the properties of a nested instance's
+own nested base (`_Badge base`: `Text`, `Dot`) while the nested instance keeps its variant.
+
+**Checked by eye:** the Dashboard desktop frame renders the same as on 1 Oct; the My Learning · Programs grid
+render is byte-identical to the 1 Oct one. Not checked: non-text overrides that change neither text nor size
+(a hidden icon, a colour) on the other screens.
+
