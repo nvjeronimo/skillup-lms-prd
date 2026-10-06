@@ -4,6 +4,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-06 · Local components → the DS (in progress)
 
+- **After the paste (evening):** the 35 are on the DS page (96 variants, all variables and styles local to the DS),
+  not published yet. The paste did not carry the link: new keys, and the 1 242 instances in the ICP file still
+  resolve to the old, deleted components. Next: Nelson deletes the older copy and publishes; then the instances
+  are swapped to the DS components by key. Metadata map §36.4.
 - The 35 local components renamed to the 14 Sep convention (`LMS/Platform/<Group>/<Component>`) and gathered in one
   section, ready to be cut and pasted into the new DS page `❖ LMS PLATFORM COMPONENTS` (`22011:941`). Baseline:
   1 394 instances on the two platform pages must resolve to the library afterwards. Metadata map §36.

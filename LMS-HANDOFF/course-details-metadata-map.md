@@ -2809,3 +2809,37 @@ travels with the components. The page's top level is that section and `Docs and 
 | Nothing under 12 px | true of what was built here. Two exceptions, neither a local text: the certificate thumbnail in `Certificate-Card` (a scaled picture of the document, 3–8 px) and the *UP NEXT* overline **inside the DS `LMS / Course Card`** — 11 px, no text style — which `Program-Detail/Course-Row` nests. Library request 18 |
 | Reuse before build | DS instances inside the 35: `Badge v2` 54, `Buttons/Button` 35, `Progress bar` 12, `LMS / Completion Status` 12, `LMS / Delivery Mode Badge` 10, `Avatar` 8, `LMS / Topic-Types Badge` 6, `LMS / Difficulty Badge` 5, and others |
 
+### 36.4 After the paste — read back 6 Oct (evening)
+
+Nelson pasted the section into the DS. Read from both files, nothing written:
+
+| | Read back |
+|---|---|
+| DS page `❖ LMS PLATFORM COMPONENTS` (`22011:941`), section `22009:21763` | 35 components, 96 variants, the `LMS/Platform/…` names, `Kind` on the four sets |
+| Variables bound inside it | 3 207, all local to the DS; none remote, none missing |
+| Text and effect styles | 343, all local to the DS |
+| Nested instances | 314 resolve to DS components; 12 are remote and were remote before too: `Placeholder Logo` (9) and `Skillup_logo` (3), which live in another library |
+| Solid paints without a variable | 23: the fill and stroke of the ten section frames (20) and the logo artwork (3). None inside a component's own layers |
+| Keys | new on every one (`Course-Header` `be031e16…`; it was `b478abef…` here) |
+| Published | no: the ICP file cannot import them by key yet |
+| The older copy on `❖ LMS COMPONENTS ✅` (§36.2) | still there (`22009:16438` … `22009:17587`). Nelson deletes it himself before publishing |
+| This file | the section `6569:112566` is gone and the components page holds only `Docs and proofs`. No instance is missing its main component, but every one still resolves to the **old, now deleted** component (same old key, `remote: false`) |
+
+**So the paste did not carry the link.** The keys changed, the ICP file is not a published library, and Figma only
+re-links a cut and paste between files for components that were published from the source. The screens look
+right today because Figma keeps a deleted main component alive for its instances; they will not follow the DS.
+
+**Baseline for the relink**, counted by walking every page and resolving each instance (`getMainComponentAsync`),
+6 Oct: **1 242** instances of 32 of the 35 components (`Grade-Meter`, `Grade-Summary-Row` and `Score-Row` have
+none) = 528 placed directly + 714 nested. Per page: *Platform Pages - Ready for Dev* 225 + 295, *Platform Pages
+V8 - WIP* 273 + 388, *Course Detail — Components* (`Docs and proofs`) 30 + 31. This is lower than the 1 394 of
+§36 for the two platform pages (1 181 here); the two counts were made differently (`getInstancesAsync` there) and
+were not reconciled. The check after the relink does not depend on either number: **no instance may resolve to a
+local `LMS/Platform/…` component.**
+
+**Next, in order.** (1) Nelson deletes the older copy from `❖ LMS COMPONENTS ✅`, publishes the DS and accepts the
+update here. (2) A named version of this file, then the relink: every instance placed directly is swapped to the
+DS component of the same name and variant, imported by key (`swapComponent` keeps overrides; the nested ones follow
+their parent). (3) Read back: zero local `LMS/Platform/…` mains, the per-component counts above against the DS
+keys, and a visual check of the handoff cards.
+
