@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · Handoff audit of the Ready for Dev pages (first pass)
+
+- Measured outside instances, screens only (children of `screen-wrap`): Platform 0 raw values; Quizzes 21 radii;
+  Reading 56 spacings; Video 66 (note-editor modal drawn by hand: 27 spacings, 29 radii, 3 texts without style,
+  6 effects without style, 1 raw backdrop fill). All colour and spacing bindings resolve to the DS library
+  (`🎨 SKO-Semantics`, `3. Responsive 📐`); no orphan collection.
+- Bound, after a named version (*Before handoff audit: bind raw spacing and radius on Ready for Dev screens*):
+  Quizzes 21 × `Radius/fixed-md`; Reading 37 spacings to the token with the same value in the node's mode.
+  Left on Reading: 14 × 9 px and 4 × 28 px (no token), 1 × 16 px (two tokens match on mobile). Video not touched.
+- Prototype `main` (`12b1109`): 114 colour tokens × 6 modes compared with the DS, 112 identical; the other two are
+  colour-plus-opacity values the plugin API does not resolve (`bg/overlay-soft` reads 20 % on both sides,
+  `bg/on-media-soft` not confirmed).
+
 ## 2026-10-06 · Local components → the DS
 
 - **Done (late):** `Topic-Row` would not publish because of an unused `Icon` instance-swap property (Figma:
