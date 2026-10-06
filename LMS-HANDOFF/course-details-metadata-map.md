@@ -2883,3 +2883,27 @@ own nested base (`_Badge base`: `Text`, `Dot`) while the nested instance keeps i
 render is byte-identical to the 1 Oct one. Not checked: non-text overrides that change neither text nor size
 (a hidden icon, a colour) on the other screens.
 
+### 36.6 `Topic-Row` published and relinked — 6 Oct (late): 741 of 741
+
+**Why it would not publish.** Figma listed it under *Invalid assets · Unused properties*: the set had an
+instance-swap property `Icon` (default `play-circle`) that no layer of the six variants used. It was already
+unused in the local component here, so the paste did not cause it; the icon in the row comes from the nested
+`LMS / Topic-Types Badge` (`Type`). 24 instances carried a value in it (`play-circle`, `book-open-01`,
+`help-circle`, `beaker-02`) that drew nothing. Nelson deleted the property and published. The set now has
+`Title`, `Show meta`, `State`, `Breakpoint`.
+
+**The pass.** Named version first (*Before relink: Topic-Row instances → DS library*), then the method of §36.5,
+with the comparison widened to the main component of every nested instance.
+
+| Page | Swapped | Differences | Local `LMS/Platform/…` left |
+|---|---:|---:|---:|
+| Course Detail — Components (`Docs and proofs`) | 24 (direct) | 0 | 0 |
+| Platform Pages V8 — WIP | 36 (nested) | 0 | 0 |
+| Platform Pages — Ready for Dev | 27 (nested) | 0 | 0 |
+| **Total** | **87** | **0** | **0** |
+
+With the 654 of §36.5, all 741 instances on the three pages resolve to the DS library. Not covered: pages outside
+these three (the DISCOVERY pages are left alone on purpose). Not checked by eye after this pass.
+
+**Seen in the same Publish dialog, not touched:** `Button` (*Unused properties*) and `Card_Event` (*Conflicting
+property values*) are also invalid assets in the DS.

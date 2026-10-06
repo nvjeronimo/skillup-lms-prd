@@ -2,8 +2,12 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-06 · Local components → the DS (in progress)
+## 2026-10-06 · Local components → the DS
 
+- **Done (late):** `Topic-Row` would not publish because of an unused `Icon` instance-swap property (Figma:
+  *Invalid assets · Unused properties*). Nelson deleted it and published; its 87 instances were swapped with 0
+  differences. All 741 instances on the three pages now resolve to the DS; no local `LMS/Platform/…` main is left
+  there. `Button` and `Card_Event` are also invalid assets in the DS, untouched. Metadata map §36.6.
 - **Relink (night):** DS published; 654 instances swapped to the DS components by key on the three pages, nine
   nested-badge overrides repaired. `Course-Detail/Topic-Row` is still unpublished in the DS: its 87 instances wait.
   Tokens inside the 35 are all bound to the DS's own variables. Metadata map §36.5.
