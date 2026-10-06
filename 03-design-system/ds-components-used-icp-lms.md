@@ -1,6 +1,6 @@
 # SKO DS components used in the ICP and LMS screens
 
-Source: Figma file "LMS-ICP Phase 1" (`Wz2TCYFVr0hD8tJNiLajLt`), read on 6 Oct 2026. Every instance on the pages below was resolved to its main component; "DS" means the main component comes from the published library (remote), not from this file.
+Source: Figma file "LMS-ICP Phase 1" (`Wz2TCYFVr0hD8tJNiLajLt`), read on 6 Oct 2026; section 1b and section 7 re-read the same day after the 35 platform components moved to the DS (the other sections were not recounted). Every instance on the pages below was resolved to its main component; "DS" means the main component comes from the published library (remote), not from this file.
 
 **Pages counted**
 
@@ -15,6 +15,7 @@ Counts are instances. The LMS Ready for Dev page repeats the WIP screens as hand
 | Group | Components | Only ICP | Only LMS | Both |
 |---|---:|---:|---:|---:|
 | LMS product components (`LMS / …`) | 67 | 38 | 8 | 21 |
+| LMS platform components (`LMS/Platform/…`, section 1b) | 32 | 0 | 32 | 0 |
 | Base DS components | 27 | 8 | 8 | 11 |
 | Icons | 62 | 19 | 14 | 29 |
 | Logos | 5 | | | |
@@ -91,6 +92,48 @@ Counts are instances. The LMS Ready for Dev page repeats the WIP screens as hand
 | LMS / Podcast · Player | ICP | 1 | 0 | 1 | 0 |
 | LMS / Autosave Status | ICP | 1 | 0 | 1 | 0 |
 | LMS / ORA · Submit Gate | ICP | 1 | 0 | 1 | 0 |
+
+## 1b. LMS platform components (`LMS/Platform/…`): in the DS since 6 Oct 2026
+
+Until 6 Oct these were local components of this file (old section 7). They now live on the DS page
+`❖ LMS PLATFORM COMPONENTS`, published, and every instance below resolves to the library (re-read 6 Oct, after the
+relink; 1242 instances, none on a local main). The library holds 35; 32 are placed on these pages. All
+are used on the LMS pages only, none on the ICP pages.
+
+| Component | Ready for Dev | WIP | Components page | Placed directly | Nested in another component |
+|---|---:|---:|---:|---:|---:|
+| LMS/Platform/Course-Detail/Week-Day | 105 | 112 | 0 | 0 | 217 |
+| LMS/Platform/Course-Detail/Meta | 51 | 74 | 27 | 0 | 152 |
+| LMS/Platform/Navigation/Topbar-Item | 45 | 70 | 0 | 0 | 115 |
+| LMS/Platform/Course-Detail/Topic-Row | 27 | 36 | 24 | 24 | 63 |
+| LMS/Platform/Dashboard/Stat | 36 | 36 | 0 | 48 | 24 |
+| LMS/Platform/Course-Detail/Date-Row | 27 | 27 | 0 | 54 | 0 |
+| LMS/Platform/Navigation/Topbar | 24 | 29 | 0 | 53 | 0 |
+| LMS/Platform/Course-Detail/Weekly-Goal-Card | 21 | 22 | 0 | 43 | 0 |
+| LMS/Platform/Course-Detail/Sidebar-Card | 15 | 27 | 0 | 42 | 0 |
+| LMS/Platform/Course-Detail/Module-Row | 12 | 20 | 3 | 31 | 4 |
+| LMS/Platform/Course-Detail/Module-Number | 12 | 20 | 3 | 0 | 35 |
+| LMS/Platform/Course-Detail/Course-Title | 12 | 18 | 0 | 1 | 29 |
+| LMS/Platform/Course-Detail/Course-Stats | 12 | 18 | 0 | 1 | 29 |
+| LMS/Platform/Course-Detail/Progress-Card | 12 | 18 | 0 | 1 | 29 |
+| LMS/Platform/Course-Detail/Course-Header | 12 | 17 | 0 | 29 | 0 |
+| LMS/Platform/Course-Detail/Message | 12 | 16 | 0 | 28 | 0 |
+| LMS/Platform/Course-Detail/Thread-Row | 12 | 12 | 0 | 24 | 0 |
+| LMS/Platform/Dashboard/Jump-Tile | 12 | 12 | 0 | 24 | 0 |
+| LMS/Platform/Completion/Certificate-Card | 10 | 9 | 0 | 19 | 0 |
+| LMS/Platform/Dashboard/Section-Header | 9 | 9 | 0 | 18 | 0 |
+| LMS/Platform/Dashboard/Due-Item | 9 | 9 | 0 | 18 | 0 |
+| LMS/Platform/My-Learning/Program-Card | 8 | 8 | 0 | 16 | 0 |
+| LMS/Platform/Course-Detail/Lock | 6 | 8 | 1 | 0 | 15 |
+| LMS/Platform/Course-Detail/Section-Intro | 3 | 8 | 0 | 11 | 0 |
+| LMS/Platform/Program-Detail/Course-Row | 0 | 7 | 0 | 7 | 0 |
+| LMS/Platform/Course-Detail/Completion-Card | 3 | 3 | 0 | 6 | 0 |
+| LMS/Platform/Dashboard/Glance-Card | 3 | 3 | 0 | 6 | 0 |
+| LMS/Platform/Dashboard/Streak-Card | 3 | 3 | 0 | 6 | 0 |
+| LMS/Platform/Dashboard/Resume-Row | 3 | 3 | 0 | 6 | 0 |
+| LMS/Platform/My-Learning/Browse-Tile | 3 | 3 | 0 | 6 | 0 |
+| LMS/Platform/Completion/Certificate-Document | 1 | 1 | 3 | 3 | 2 |
+| LMS/Platform/Course-Detail/Card-Shell | 0 | 3 | 0 | 3 | 0 |
 
 ## 2. Base DS components (27)
 
@@ -242,14 +285,17 @@ These sit inside the public components above (Badge v2, Checkbox, tabs, video pl
 
 ## 7. Not in the DS: local components of this file
 
-Used on the LMS pages only, built locally on "LMS / Course Detail — Components". Candidates for the library.
+The 35 platform components that were listed here moved to the DS on 6 Oct 2026 (section 1b). What is still local:
 
-LMS / Course Detail: Week day, Meta, Topic row, Module number, Module row, Weekly goal card, Sidebar card, Course title, Course stats, Progress card, Course header, Message, Thread row, Lock, Certificate card, Certificate document, Section intro, Completion card, Card shell.
-LMS / Platform: Topbar, Topbar item, Stat, Section header, Due item, Jump tile, Glance card, Streak card, Program card, Resume row, Browse tile.
-Other: LMS / Dates / Date row, LMS / Program Detail / Course row, a local "LMS" (Topic Footer Nav) with its own Course Progression Button (4 uses on the Video page), `_iPhone mockup home`, Worklist checkbox.
+- `LMS / Topic Footer Nav` with its own `LMS / Course Progression Button`: 4 uses each, Video Lessons page. The DS has both.
+- A local set named `LMS` (the Topic Footer Nav): 11 uses, Platform Pages V8 (WIP).
+- `_iPhone mockup home` (45) and one `_iPhone mockup status bar`: device chrome, not product UI.
+- `Worklist checkbox` (25, ICP review pages).
 
 ## Things this list shows
 
 - **Three components to retire are still in use:** `Badge-V1-to-remove` (12, Overlay Panels), `Badge` V1 (12 nested, Video Lessons), `LMS / Course Card_Remove` (5, Platform WIP).
 - **The Topic Footer Nav set is named just "LMS"** in the library (128 uses).
 - **ICP and LMS share little beyond the atoms:** of the 67 `LMS / …` components, 21 are used in both areas.
+- **The platform components are in the library now** (section 1b): no local `LMS/Platform/…` main is left on the three LMS pages.
+- **Handoff audit, 6 Oct:** 19 `LMS / …` components got a description, and raw spacing and radius values inside 21 of them were bound to tokens. What is still raw is listed in `LMS-HANDOFF/CHANGELOG.md`.

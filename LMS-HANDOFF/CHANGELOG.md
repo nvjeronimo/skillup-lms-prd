@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · Handoff audit, third pass (after the DS publish)
+
+- **DS, off-scale values snapped down to the nearest token** (named version first, not published): 24 spacings
+  (10 → 8, 14 → 12, 18 → 16, 22 → 20) in `Lesson Block`, `Zooming Image`, `Drag and Drop · Item`; 12 skeleton-line
+  radii 3 → 2 in `Lesson Block`; the two `Glance-Card` circles on `Radius/fixed-full`. These move things by 2 px.
+- **Left for a decision:** `Course Card` 12 texts with no style (15, 11, 14, 16, 20 px on auto line height:
+  applying a style changes the card height the prototype matches); `Course Type Badge` illustration (blues
+  #4078d9 / #80a1e5 / #b2c7f2 with no token, radius 1.33); four shadows that match no effect style; white fills
+  that three tokens share (`bg/page`, `bg/fixed`, `bg/on-media`); `Glance-Card` stats gap 28 (grid).
+- **Why `Button` is an invalid asset:** boolean `Tooltip` is used by no layer (set `21851:7608`, page Buttons).
+  `Card_Event` was not found as a component set under that exact name.
+- `03-design-system/ds-components-used-icp-lms.md`: new section 1b (the platform components, now DS), section 7 rewritten.
+- Trap: the Desktop Bridge plugin reported 87 Topic-Row instances as local after the relink; `use_figma` on the same
+  pages reads 87 remote, 0 local. Counts of remote/local come from `use_figma` only.
+
 ## 2026-10-06 · Handoff audit, second pass (Nelson: yes to all four)
 
 - **Video:** 28 values bound (8 × `Spacing/4xl`, 14 × `Radius/fixed-md`, 6 × `Radius/fixed-sm`). Left, all in the
