@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · `LMS / Note Editor` built in the DS (not published yet)
+
+- New component set `LMS / Note Editor` (`22071:6813`, key `e39dc2849f…`) on `❖ LMS COMPONENTS ✅`, section
+  *3 · Content & Notes*, after a named version. `Breakpoint`: Desktop and Tablet are the 560 modal, Mobile is the
+  bottom sheet (375, grabber, footer padded 34 for the safe area: the one raw value, on purpose). Text properties
+  `Title`, `Anchor`, `Quote`. Built from DS `Textarea input field` (Default and Tags), `Buttons/Button` md and the
+  `x-close` icon; every colour, spacing and radius on a DS variable (padding and gaps on `Spacing/2xl` and `3xl`,
+  which give 24/20/16 across the three modes), shadow on `Shadows/shadow-2xl`.
+- Modelled on the Light screens of the Video page, which already used the DS Textarea. Sizes read back: Desktop
+  560 × 592 and Tablet 560 × 584, the same as the Light modals `3823:16589` and `3822:39496`; Mobile 375 × 610
+  against 630 (the sample quote is one line shorter).
+- The hand-drawn copies are the three in the Dark frame (`3976:19847`, `3976:19880`, `3976:19913`; the dark mobile
+  is a centred modal, the light one a bottom sheet). Their quote was Inter Italic with no style; the component
+  uses `body-medium/Regular`, as the Light screens do.
+- Next, after the library is published: swap the six modals on the Video page to instances and bind the desktop
+  backdrop to `bg/overlay`.
+
 ## 2026-10-06 · Handoff audit, third pass (after the DS publish)
 
 - **DS, off-scale values snapped down to the nearest token** (named version first, not published): 24 spacings
