@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · Note editor modals on the Video page are DS instances
+
+- DS published by Nelson. Named version first (*Before swap: note editor modals → LMS / Note Editor*), then the
+  six modals replaced by instances of `LMS / Note Editor`, text carried over through `Title`, `Anchor`, `Quote` and
+  the nested note and tag texts. Light: 560 × 592, 560 × 584, 375 × 630, same size and same text as before.
+  Dark: 558 → 592, 550 → 584, and the mobile one from a centred 343 × 560 modal to the 375 × 630 bottom sheet
+  (its screen frame now lays out like the Light one: no padding, sheet at the bottom). No text lost.
+- Screen frames: desktop Dark backdrop bound to `bg/overlay` (was raw, same 50 %); unused 10 px gap set to 0;
+  tablet padding 32 bound to `Spacing/5xl`. The Video screens now read 0 raw values outside instances.
+- Dark: `SKO Dark` set explicitly on the three Dark instances. Read back, root `bg/page` = #0e1a1f and title
+  `text/default` = #eaf1f4. **Not confirmed by eye:** the server renders disagreed with those values (first a
+  fully light modal, then dark fields on a root that did not paint). To check in the Figma app.
+
 ## 2026-10-06 · `LMS / Note Editor` built in the DS (not published yet)
 
 - New component set `LMS / Note Editor` (`22071:6813`, key `e39dc2849f…`) on `❖ LMS COMPONENTS ✅`, section
