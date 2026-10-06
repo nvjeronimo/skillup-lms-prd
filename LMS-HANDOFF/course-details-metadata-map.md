@@ -2698,3 +2698,50 @@ to 580 and the title went one letter wide. The row pins the thumbnail (sizing *f
 
 **Next:** tablet and mobile for the four tabs; the handoff frame, starting *In progress*.
 
+## 36. The local components move to the DS — in progress — 6 Oct
+
+**Decisions (Nelson, 6 Oct).** All 35 local components go to the DS library (`c7EUDrQwP8si08aPipDSIV`), to a new
+top-level page **`❖ LMS PLATFORM COMPONENTS`** (`22011:941`, right after `❖ LMS COMPONENTS ✅`). Names follow the
+14 Sep convention — `LMS/Platform/<Group>/<Component>`, slash the only separator, words joined by a hyphen. This
+ends the "local, for peer review, nothing promoted" rule of §33 for these components.
+
+**How.** A real move — instances stay linked, overrides kept — exists only as Figma's own cut and paste between
+files; the plugin API works on one file at a time. So: (1) prepared here — renamed, gathered in one section;
+(2) **Nelson** cuts the section `MOVE TO DS → ❖ LMS PLATFORM COMPONENTS` (`6569:112566`) on the components page,
+pastes it on the new DS page, publishes the library and accepts the update in this file; (3) verified against the
+baseline below, then arranged on the DS page.
+
+**Pre-flight (6 Oct).** 35 components, 96 variants. No local variable, no local style, every dependency inside
+the set, every component described. Three have no instances (`Grade-Meter`, `Grade-Summary-Row`, `Score-Row`) and
+go anyway.
+
+**Baseline for the check after the move** — instances whose main component is one of the 35, counted with every
+page loaded: **1 648** in the file = 790 on *Platform Pages … WIP 2* + 604 on *Ready for Dev* + 254 inside the
+components themselves. (The 1 213 first reported was an undercount: not every page was loaded.) After the move the
+1 394 on the two pages must all resolve to **library** components, none missing.
+
+### 36.1 Old name → new name
+
+| Group | Was | Is |
+|---|---|---|
+| Course-Detail | `LMS / Course Detail / Course header` · `Course title` · `Course stats` · `Meta` · `Card shell` · `Section intro` · `Progress card` | `LMS/Platform/Course-Detail/Course-Header` · `Course-Title` · `Course-Stats` · `Meta` · `Card-Shell` · `Section-Intro` · `Progress-Card` |
+| Course-Detail | `… / Module number` · `Lock` · `Module row` · `Topic row` | `…/Module-Number` · `Lock` · `Module-Row` · `Topic-Row` |
+| Course-Detail | `… / Sidebar card` · `Weekly goal card` · `Week day` · `Completion card` | `…/Sidebar-Card` · `Weekly-Goal-Card` · `Week-Day` · `Completion-Card` |
+| Course-Detail | `… / Grade meter` · `Grade summary row` · `Score row` · `Thread row` · `Message` | `…/Grade-Meter` · `Grade-Summary-Row` · `Score-Row` · `Thread-Row` · `Message` |
+| Course-Detail | `LMS / Dates / Date row` | `LMS/Platform/Course-Detail/Date-Row` |
+| Completion | `LMS / Course Detail / Certificate card` · `Certificate document` | `LMS/Platform/Completion/Certificate-Card` · `Certificate-Document` |
+| Navigation | `LMS / Platform / Topbar` · `Topbar item` | `LMS/Platform/Navigation/Topbar` · `Topbar-Item` |
+| Dashboard | `LMS / Platform / Stat` · `Section header` · `Due item` · `Jump tile` · `Glance card` · `Streak card` · `Resume row` | `LMS/Platform/Dashboard/Stat` · `Section-Header` · `Due-Item` · `Jump-Tile` · `Glance-Card` · `Streak-Card` · `Resume-Row` |
+| My-Learning | `LMS / Platform / Program card` · `Browse tile` | `LMS/Platform/My-Learning/Program-Card` · `Browse-Tile` |
+| Program-Detail | `LMS / Program Detail / Course row` | `LMS/Platform/Program-Detail/Course-Row` |
+
+Sections before §36 use the old names; the node ids quoted there die with the move (a component gets a new id in
+the DS file) — the names above are the way to find them.
+
+**Not done, to decide.** The convention also reserves property names: `Kind` replaces `Type`. Four sets still use
+`Type` (`Course-Header`, `Sidebar-Card`, `Grade-Summary-Row`, `Score-Row`); `Theme`, `Urgency`, `From` and
+`Expanded` are not reserved names. Only component names were approved, so properties are unchanged.
+
+**Seen on the way, not mine.** The two frames *Foundations — colour* and *Foundations — space, radius, type* are no
+longer on the components page. The DS has an empty `Page 118` (`22009:15222`) just below the new page.
+

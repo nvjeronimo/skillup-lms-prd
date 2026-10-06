@@ -2,6 +2,12 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · Local components → the DS (in progress)
+
+- The 35 local components renamed to the 14 Sep convention (`LMS/Platform/<Group>/<Component>`) and gathered in one
+  section, ready to be cut and pasted into the new DS page `❖ LMS PLATFORM COMPONENTS` (`22011:941`). Baseline:
+  1 394 instances on the two platform pages must resolve to the library afterwards. Metadata map §36.
+
 ## 2026-10-05 · Program Page — the course list is a list of expandable course rows
 
 - Nelson's decision: list only, the module the learner left off in visible at a glance, each course expandable to
