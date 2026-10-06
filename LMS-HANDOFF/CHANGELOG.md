@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-06 · Video page: the last local components swapped to the DS
+
+- Nelson confirmed the three Dark note editor modals render correctly in the app.
+- Named version first (*Before swap: local Topic Footer Nav edge cases → DS*). The four local
+  `LMS / Topic Footer Nav` on the edge-cases board (*B. Footer Nav edges*) are now the DS footer (the set named
+  `LMS`), with the position and title carried over and the nested button on the DS milestone: first topic
+  (Previous disabled), next disabled, module completed, course completed. Sizes unchanged for the first two;
+  the two end-of-module/course footers go from 64 to 62 high.
+- **Copy changed by taking the DS variants:** *MODULE COMPLETE · Next module* → *MODULE COMPLETED · Go to next
+  Module*; *COURSE COMPLETE · Next course* → *COURSE COMPLETED · Go to next Course*. The end buttons are now the
+  DS ones (sm, 36 high) instead of the local md Primary (40).
+- The only local component left on the Video page is `_iPhone mockup home` (7, device chrome).
+- **Not fixable on the page:** the 12 old `Badge` (V1) are inside the DS `_Tab button base` (the count on
+  Horizontal tabs). It is a DS change: move that count to `Badge v2`.
+
 ## 2026-10-06 · Note editor modals on the Video page are DS instances
 
 - DS published by Nelson. Named version first (*Before swap: note editor modals → LMS / Note Editor*), then the

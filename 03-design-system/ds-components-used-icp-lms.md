@@ -287,15 +287,15 @@ These sit inside the public components above (Badge v2, Checkbox, tabs, video pl
 
 The 35 platform components that were listed here moved to the DS on 6 Oct 2026 (section 1b). What is still local:
 
-- `LMS / Topic Footer Nav` with its own `LMS / Course Progression Button`: 4 uses each, Video Lessons page. The DS has both.
 - A local set named `LMS` (the Topic Footer Nav): 11 uses, Platform Pages V8 (WIP).
 - `_iPhone mockup home` (45) and one `_iPhone mockup status bar`: device chrome, not product UI.
 - `Worklist checkbox` (25, ICP review pages).
 
 ## Things this list shows
 
-- **Three components to retire are still in use:** `Badge-V1-to-remove` (12, Overlay Panels), `Badge` V1 (12 nested, Video Lessons), `LMS / Course Card_Remove` (5, Platform WIP).
+- **Three components to retire are still in use:** `Badge-V1-to-remove` (12, Overlay Panels), `Badge` V1 (12 on Video Lessons, all inside the DS `_Tab button base`: a DS fix, not a page fix), `LMS / Course Card_Remove` (5, Platform WIP).
 - **The Topic Footer Nav set is named just "LMS"** in the library (128 uses).
 - **ICP and LMS share little beyond the atoms:** of the 67 `LMS / …` components, 21 are used in both areas.
 - **The platform components are in the library now** (section 1b): no local `LMS/Platform/…` main is left on the three LMS pages.
 - **Handoff audit, 6 Oct:** 19 `LMS / …` components got a description, and raw spacing and radius values inside 21 of them were bound to tokens. What is still raw is listed in `LMS-HANDOFF/CHANGELOG.md`.
+- **Video Lessons, 6 Oct (late):** the local Topic Footer Nav and its Progression Button (4 each) were swapped to the DS ones, and the note editor is the new DS `LMS / Note Editor` (6 instances). Counts in sections 1 to 5 predate this.
