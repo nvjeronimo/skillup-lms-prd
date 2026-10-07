@@ -507,17 +507,44 @@ off). **Two are inferred, to confirm:** *Peer review* in sentence case (as the C
 morning; the prototype writes *Peer Review*), and `layout-alt-01` for *Lesson* — the one icon that left the
 screens with the badges and had no other owner; the prototype has no record of it.
 
-### Still reading *Label* in the DS — 94 nested badges in 15 other sets, not touched
+### The other 15 sets — 94 nested badges, repaired 7 Oct (night); **not published**
 
-Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the repair
-above covers 20.
+On Nelson's second go-ahead, after a named version (*Before badge repair 2: nested badges in 15 LMS component
+sets*). Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the
+three wrapper sets were 20 of them, these are the other 94. `Text` restored on each, and `Dot` on the one that had
+it. Style, size and colour had survived and were not touched. All 94 read back; `Quiz · Entry Header` and
+`Program-Card` checked by eye.
 
-| Page | Component · badges |
-|---|---|
-| `❖ LMS COMPONENTS` | `Quiz · Entry Header` 24 · `Provider-Partner Badge` 6 · `Quiz · Results` 4 · `Course Type Badge` 2 (hidden layer) · `Topic-Status-Badge` 2 · `Quiz · Grade Summary` 1 · `VILT · Session Card` 1 |
-| `❖ LMS PLATFORM COMPONENTS` | `Date-Row` 24 · `Thread-Row` 9 · `Message` 8 · `Program-Card` 6 · `Sidebar-Card` 2 · `Topbar-Item` 2 · `Due-Item` 2 · `Course-Row` 1 |
+| Set | Badges | Restored to | From |
+|---|---:|---|---|
+| `LMS / Quiz · Entry Header` | 24 | Practice: *Practice quiz* · *Ungraded* · *3 questions* · *About 4 min* · *Unlimited attempts* · *Pass mark 60%* — Graded: *Graded quiz* · *20% of module grade* · *8 questions* · *About 10 min* · *2 attempts* · *Pass mark 70%* — Final: *Final exam* · *40% of course grade* · *20 questions* · *About 20 min* · *1 attempt* · *Pass mark 70%* — Timed exam: *Timed exam* · *30 min limit*, then the Final's four | the build script of 22 Jul; the Timed exam log of 3 Aug; the weight badges were still these on 28 Sep (prototype audit, R13) |
+| `LMS / Quiz · Results` | 4 | *Passed* · *Not passed* · *Submitted* (Pending) · *Recorded* (Withheld) | changelog, the pill table |
+| `LMS / Quiz · Grade Summary` | 1 | *62% · below the 70% pass mark* | the build script, 28–29 Jul |
+| `LMS / Provider-Partner Badge` | 6 | the variant's name | the prototype's `ProviderBadge` |
+| `LMS / Course Type Badge` | 2 | *Course* · *Program* (a hidden layer) | an instance that had not updated |
+| `Topic-Status-Badge` | 2 | *Marked as completed* · *Under Review* | the prototype's `TopicActionBar` |
+| `LMS / VILT · Session Card` | 1 | *Scheduled* | the stage name in the build script; the Unlocked variant still reads it |
+| `…/Course-Detail/Date-Row` | 24 | `Type` *DUE DATE* · `Assignment type` *HOMEWORK* · `Status` the state in capitals | the build script of 8 Sep and the 25 Sep migration |
+| `…/Course-Detail/Thread-Row` | 9 | *QUESTION* · *ANSWERED* · *FOLLOWING* | the build script, 21 Aug |
+| `…/Course-Detail/Message` | 8 | *STAFF* · *ACCEPTED ANSWER* | the build script, 21 Aug |
+| `…/Course-Detail/Sidebar-Card` · Dates | 2 | *In 3 days* · *In 8 days* | the build script, 19 Sep |
+| `…/Navigation/Topbar-Item` | 2 | *4* (hidden until `Show count`) | the width it kept (one character) and the screens |
+| `…/Dashboard/Due-Item` | 2 | Today: *Live* with the dot — Upcoming: *Due Fri* | the build script, 30 Sep |
+| `…/My-Learning/Program-Card` | 6 | *Cohort Apr 2026* · *Not started · Starts May 12* | the build script, 30 Sep |
+| `…/Program-Detail/Course-Row` | 1 | *You left off here* | the screen |
+
+**Least certain, to confirm by eye:** the four meta badges of *Timed exam* (taken from *Final*; the 3 Aug log
+shows only the strings that changed), *Scheduled*, the *4*, and the two `Topic-Status-Badge` labels (from the
+prototype, not from the DS).
+
+**Restored as they were, not as they should be.** `Due-Item` · Today reads *Live* again and `Program-Card` carries
+a cohort: both are defaults the edX pass of §37 took off the screens (§37.6, item 4). A repair is not the place to
+change a component's defaults; that item stays open.
+
+**Not checked:** `Badge v2` nested in components outside the two LMS pages (the Untitled UI pages, tabs,
+navigation, tables). The same loss is likely there.
 
 **And in the product file,** a badge whose text was set on a screen (*In 13 months*, *Due 11:59*, *QUESTION*, a
 cohort) lost that text too. Repairing the DS gives it the component's default back, not the screen's text: the
-screens need their own pass after the library is published.
-
+screens need their own pass after the library is published. The texts are on record: the 25 Sep migration saved
+them per instance, and the 7 Oct edX pass listed every screen.

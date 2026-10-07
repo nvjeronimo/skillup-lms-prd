@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · DS: the other 94 nested badges repaired (not published)
+
+Named version first: *Before badge repair 2: nested badges in 15 LMS component sets*. On Nelson's go-ahead.
+
+- Every `Badge v2` nested in a component on `❖ LMS COMPONENTS` and `❖ LMS PLATFORM COMPONENTS` has its text again
+  (and `Due-Item` · Today its dot): 94 badges in 15 sets — Quiz · Entry Header 24, Date-Row 24, Thread-Row 9,
+  Message 8, Provider-Partner Badge 6, Program-Card 6, Quiz · Results 4 and eight smaller ones. With the three
+  wrapper sets, all 114 are repaired. Values from the original build scripts, the migration records and the
+  prototype; library request 21 has the table, set by set, and the four that are least certain.
+- **Needs a DS publish**, then the update accepted in the product file.
+- **Still to do after that:** the badge texts that were set on screens (they come back as the component default),
+  and a look at `Badge v2` nested outside the two LMS pages.
+
 ## 2026-10-07 · DS: delivery, difficulty and topic-type badges repaired (not published)
 
 Named version first: *Before badge repair: Delivery Mode, Difficulty and Topic-Types badges*. On Nelson's go-ahead.
