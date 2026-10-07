@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · After Nelson accepted the library update: badges recounted on the Ready for Dev pages
+
+- Read with the server session, twice on Video. Visible `Badge v2` reading *Label*: Quizzes 0 of 483, Reading
+  0 of 78, Platform Ready for Dev 0 of 294, Video 46 of 212. Before the update was accepted the same count was
+  483, 76, 127 and 199.
+- **Video, the 46:** all in tabs, on the count next to *Notes* and *Downloads* (23 each). The new
+  `_Tab button base` has *Label* as the default text of its count badge, and the screens' counts did not survive
+  as overrides. Restored after a named version (*Before restoring tab counts on Video*): *Notes 2*,
+  *Downloads 4*, set as the badge's text property. Read back: 0 of 212 read *Label*; tabs are 81 and 123 wide
+  again (they had grown to 108 and 148).
+- **For the DS:** a count badge that defaults to *Label* will show *Label* wherever a screen does not set it.
+  The default should be a number.
+- Still two copies of `Badge v2` and of `_Tab button base` in use on Video and on Platform Ready for Dev
+  (five of the tab base on Platform): the update is in for the wrappers, not for every copy.
+
 ## 2026-10-07 · Platform screens: course covers, short course-row copy, DS writes — and the badges still read *Label*
 
 Named versions first, in both files.
