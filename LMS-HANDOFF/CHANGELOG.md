@@ -2,6 +2,18 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured
+
+- `Button` (`21851:7608`, Buttons page): the boolean `Tooltip` drove no layer and no tooltip layer exists; property
+  deleted after a named version. Properties now `Type`, `Hierarchy`, `State`. Not published.
+- **The old `Badge` on the Video tabs is not a DS defect.** `_Tab button base` (same key the product file uses)
+  already holds `Badge v2` (Soft, Gray and Brand, sm and md) and `Horizontal tabs` reads `CURRENT`. The 12 V1
+  badges are instances that have not taken the library update in the product file.
+- **Course Card, dry run on temporary clones (removed):** giving the six unstyled texts the nearest DS style
+  (`title-large` for the title and initials, `body-large/Semibold` for the percentage, `body-medium` for time
+  left and the up-next title, `body-small/Semibold` for *UP NEXT*) takes Grid from 380 × 342 to 380 × 358 and List
+  from 1200 × 113 to 1200 × 120. The up-next title goes from 15 to 14 px and *UP NEXT* from 11 to 12 px.
+
 ## 2026-10-06 · Video page: the last local components swapped to the DS
 
 - Nelson confirmed the three Dark note editor modals render correctly in the app.
