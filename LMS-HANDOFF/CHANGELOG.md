@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · Platform pages against Open edX — only what an API backs
+
+Named version first: *Before edX compatibility pass: My Learning, Dashboard and Program screens*.
+
+- **Evidence.** The dev environment answers on Learner Home, Mobile API v4, progress, dates, weekly goal,
+  notifications, certificates and program progress (status codes, no credentials) — Sumac or later. Fields read
+  from the Sumac source. Metadata map §37.1–37.2.
+- **Decisions (Nelson).** Dashboard glance → real totals, streak out; *Due this week* → assignments only; top bar
+  left as it is; the Program page's marketing content stays, waiting for the vendor.
+- **22 screens changed** (11 sources and their handoff copies): glance totals, no streak card, no live-session due
+  item, no *Book a mentor*; My Learning stats *In progress · Completed · Certificates*; total effort instead of
+  time left; one completed course; program cards without cohort, week and lesson counters and at 14 % (courses
+  complete ÷ courses); every delivery badge *Flexible Learning*. Program Detail: nine delivery badges. Metadata
+  map §37.4–37.5.
+- **Handoff** *My Learning & Dashboard*: a 7 Oct entry on the 11 cards, four descriptions rewritten. Still
+  *In progress*.
+- **Correction.** No route returns the dates of all of a learner's courses — not in Sumac and none found on
+  `master`. (While asking, I had said later releases have one.)
+- **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
+  the DS components' old defaults, the prototype. Metadata map §37.6.
+
 ## 2026-10-07 · DS: the five pending decisions applied (not published)
 
 Named version first: *Before handoff audit 3: Course Card text styles, badge illustration tokens, shadows, whites,

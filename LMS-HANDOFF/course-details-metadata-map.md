@@ -2907,3 +2907,170 @@ these three (the DISCOVERY pages are left alone on purpose). Not checked by eye 
 
 **Seen in the same Publish dialog, not touched:** `Button` (*Unused properties*) and `Card_Event` (*Conflicting
 property values*) are also invalid assets in the DS.
+
+## 37. The platform pages against Open edX — what each element reads — 7 Oct
+
+**Asked (Nelson, 7 Oct):** make sure everything the platform screens show is compatible with edX — the Ready for
+Dev page (`4340:322`), the My Learning and Dashboard sources (`6374:16005`) and the Program Detail sources
+(`6443:18721`). Course Detail was mapped field by field in §1–§32; My Learning and the Dashboard never were — §33
+records how they were built, not what backs them. This section is that map, and what changed because of it.
+
+**Reading the marks.** ✓ a stock Open edX API returns it. ◐ it can be produced, under a condition that is named
+(a flag, content that has to be authored, one call per course, a second service). ✗ nothing in Open edX stores or
+returns it.
+
+### 37.1 Evidence
+
+**The dev environment (`devcourses.skillup.online`), public requests, no credentials** — status codes only: 401
+means the route exists and wants a login, 404 that it does not exist.
+
+| Route | Status | What it tells |
+|---|---|---|
+| `/api/learner_home/init` | 401 | the Learner Home API is there |
+| `/api/mobile/v4/users/{u}/course_enrollments/` | 401 | Mobile API **v4** (v5 → 404) |
+| `/api/mobile/v1/notifications/create-token/` | 401 | a route that first shipped in **Sumac** |
+| `/api/course_home/progress/…` · `/dates/…` · `/save_course_goal` | 401 | per-course progress, dates and weekly goal |
+| `/api/course_home/outline/…` · `/course_metadata/…` · `/api/courseware/course/…` | 200 | public payloads; `effort: "20 hours"` and `pacing` carry values; `course_goals` and `celebrations` are there as fields, empty for a visitor who is not enrolled |
+| `/api/notifications/count/` | 401 | the notifications app |
+| `/api/certificates/v0/certificates/{u}/` · `/api/grades/v1/courses/…` · `/api/bookmarks/v1/bookmarks/` | 401 | certificates, grades, bookmarks |
+| `/api/discussion/v1/courses/…` | 401 | the forum |
+| `/api/dashboard/v0/programs/{uuid}/progress_details/` | 401 | program progress (§35.1) |
+| `/api/dashboard/v0/programs/` (no id) · `/api/programs/v1/programs/` | 404 | no list of a learner's programs outside enterprise |
+
+Mobile v4 exists in Sumac and not in Redwood (`mobile_api/utils.py`), so the environment is **Sumac or later**.
+
+**The source**, `openedx/edx-platform` at `open-release/sumac.master` (and `course-discovery` at the same tag):
+`learner_home/serializers.py`, `mobile_api/users/serializers.py` and `views.py`, `course_home_api/{progress,outline,
+dates}/serializers.py`, `learner_dashboard/api/v0/{urls,views}.py`, `notifications/{urls,views,base_notification}.py`,
+`course_goals/models.py`, `student/models/user.py` (`UserCelebration`), `courseware/courses.py`
+(`get_course_assignments`), and Discovery's `api/serializers.py` and `course_metadata/models.py`.
+
+### 37.2 What Open edX gives a learner's home, call by call
+
+| Call | Returns | Does not return |
+|---|---|---|
+| **Learner Home** `GET /api/learner_home/init` — one call, every enrolment | course name, number, image; provider name; `startDate`, `endDate`, `isStarted`, `isArchived`; `homeUrl`, `resumeUrl`, `progressUrl`; `hasStarted`, `lastEnrolled`, `mode`; `gradeData.isPassing`; `certificate` (`isEarned`, `isDownloadable`, `certPreviewUrl`, `availableDate`); `programs.relatedPrograms[]` (title, type, `numberOfCourses`, url, provider, banner) | a completion percentage, the name of the next unit, level, effort, delivery mode |
+| **Mobile enrolments** `GET /api/mobile/v4/users/{u}/course_enrollments/` — one call | for the **primary** course (the latest one touched): `course_status.last_visited_unit_display_name`, `course_progress` (assignments completed of total), `course_assignments.future_assignments` and `past_assignments`; for the others, `course_progress` on request | content completion; anything on the primary course's level for the other courses |
+| **Progress** `GET /api/course_home/progress/{course}` — one call **per course** | `completion_summary` (complete · incomplete · locked), `course_grade.percent`, `grading_policy`, `certificate_data` | — |
+| **Dates** `GET /api/course_home/dates/{course}` — one call **per course** | `course_date_blocks[]`: assignment deadlines with `title`, `date`, `assignment_type`, `complete`, `link`; ORA steps as *"{title} (Peer Assessment)"* | dates across courses — no route does that in Sumac, and none was found on `master` either |
+| **Courses** `GET /api/courses/v1/courses/{course}` | `effort`, `pacing`, `start`, `end`, `short_description`, media | level |
+| **Notifications** `GET /api/notifications/count/` | `count`, and `count_by_app_name` for `discussion`, `updates`, `grading`; needs the notifications flag on | a count of mentions — there is no such notification type |
+| **Program progress** `GET /api/dashboard/v0/programs/{uuid}/progress_details/` — one call per program | `program_data`, `course_data` as **completed · in_progress · not_started**, `certificate_data` | a percentage, weeks, lessons, a cohort |
+| **Discovery** `GET /api/v1/programs/{uuid}/` | `title`, `subtitle`, `type`, `overview`, `faq[]`, `staff[]`, `expected_learning_items`, `weeks_to_complete`, `total_hours_of_effort`, `courses[]` with their runs (`start`, `end`, `pacing_type`, `level_type`) | a program start or end, the counts under *What's included*, *What You Will Create*, *Exercises to Explore* |
+
+**What Open edX stores and does not return.** The streak — `UserCelebration.streak_length`, `longest_ever_streak`,
+`last_day_of_streak` — reaches the browser only as `streak_length_to_celebrate`, on the day a streak hits 3. Days
+active per course (`UserActivity`) reach nobody (§17.2, open question 9). **What it does not store at all:**
+minutes learned, XP or any ranking, attendance, a mentor's calendar, a subscription tier.
+
+### 37.3 Decisions (Nelson, 7 Oct)
+
+| Question | Decision |
+|---|---|
+| Dashboard — *Today at a glance* and the streak have no source | **Replace the glance stats with real totals; the streak goes** |
+| *Due this week* — deadlines exist per course only, none authored today, the live session has no source | **Keep it, assignments only** |
+| Top bar — Calendar, Discussion, Services and the two counters | **Leave as it is**; recorded as open (§37.6) |
+| Program page — content that only the marketing backend has | **Keep it, waiting for the vendor** (§35.1's question) |
+
+### 37.4 Element by element
+
+**Dashboard**
+
+| Element | Source | |
+|---|---|---|
+| Greeting, the learner's name | `/api/user/v1/accounts/{u}` | ✓ |
+| Glance — *Courses in progress 3 · of 5 enrolled* | Learner Home: enrolments where `hasStarted` and no certificate | ✓ |
+| Glance — *Courses completed 1* | Learner Home: `certificate.isEarned` (or `gradeData.isPassing`) | ✓ |
+| Glance — *Certificates 1 · ready to download* | Learner Home: `certificate.isDownloadable` | ✓ |
+| Glance — *Programs 2 · 1 in progress* | the distinct `relatedPrograms`; *in progress* from `progress_details`, one call per program | ◐ |
+| ~~Today's lessons · Live attendance · Week time learned · XP this week · Top 8% in cohort~~ | not stored | ✗ removed |
+| ~~Streak card — 12 days, the week, *13 hours left in the day*~~ | stored, not returned | ✗ removed |
+| *Due this week* — *Persona research draft (Peer Assessment)*, *Assignment 02 · Audience segmentation* | Dates API of each enrolled course: `title`, `date`, `assignment_type`; the course name from the enrolment | ◐ one call per course; empty until content carries due dates (§14.2) |
+| ~~*Live Q&A … Attendance required*~~ | VILT is out of the MVP; no attendance anywhere | ✗ removed |
+| *Pick up where you left off* — title, **Resume** | Learner Home: `courseName`, `resumeUrl` | ✓ |
+| … the percentage | Progress API `completion_summary` | ◐ one call per course |
+| … the delivery badge | `pacing` → *Flexible Learning*. *Flexible + Live* and *Live Sessions* have no marker (§18.1) | ✓ as *Flexible Learning* only |
+| Jump · *Discussion — 12 unread updates in your courses* | `count_by_app_name.discussion` | ◐ notifications flag |
+| Jump · *Certificates — 3 in progress · 1 to download* | Learner Home | ✓ |
+| Jump · *Profile — Your details · Account settings* | the Profile and Account pages | ✓ |
+| ~~Jump · *Book a mentor — Mara has Thursday open*~~ | no mentor assignment, no calendar (open questions 1 and 13) | ✗ removed |
+
+**My Learning**
+
+| Element | Source | |
+|---|---|---|
+| Stats — *In progress 3 · Completed 1 · Certificates 1* | Learner Home, as the glance card | ✓ |
+| ~~*Daily goals completed · Items completed · Minutes learned*~~ | not stored (and the labels did not match their values) | ✗ replaced |
+| Tabs — *Programs 2 · Courses 5*, search, grid / list | counts from Learner Home; the search and the toggle are the page's own | ✓ |
+| Course card — title, provider, *COURSE* | Learner Home | ✓ |
+| … *Beginner · Intermediate · Advanced* | Discovery `level_type` (deployed; whether it is filled in is the vendor's to confirm, §18) | ◐ |
+| … delivery badge | `pacing` → *Flexible Learning* | ✓ |
+| … *5% complete*, the bar | Progress API | ◐ one call per course |
+| … *10 hours total* | Courses API `effort` | ✓ |
+| ~~… *9 min left*~~ | no field; would need every block's `effort_time` and the learner's completion | ✗ replaced by total effort |
+| … *Starts Apr 28* · *Not started* | `startDate`, `hasStarted` | ✓ |
+| … *UP NEXT* and the unit's name | Mobile v4 `last_visited_unit_display_name` for the primary course; the others need their own call | ◐ |
+| … the topic-type badge | derived from the block (§12.5) | ◐ |
+| … *Complete* · *CERTIFICATE Issued 12 Sep 2026* · **Review** | Learner Home `certificate`; the date from the Certificates API | ✓ |
+| *Browse catalog* | Learner Home `platformSettings.courseSearchUrl` | ✓ |
+| Program card — title, *Program · 7 courses* | `relatedPrograms`: `title`, `numberOfCourses` | ✓ |
+| … *1 of 7 courses complete*, *14%* | `progress_details`: completed ÷ all courses — the same rule as the Program page (§35.3) | ✓ one call per program |
+| … *Up next · Course 2 · …*, **Continue** | the first course in `in_progress` | ✓ |
+| … *Not started · Starts May 12* | the earliest start among the program's course runs | ◐ |
+| ~~… *Cohort Apr 2026* · *Week 4/32* · *Lessons 10/64* · *6 courses + capstone* · *27%*~~ | no cohort, no weeks, no lesson totals; the capstone is the seventh course | ✗ removed or corrected |
+
+**Program Detail** (§35 stands; one change). The seven course rows read *Flexible + Live* under a header that
+reads *Flexible Learning* — now *Flexible Learning*, the only value `pacing` can give. **Kept, by decision, and not
+Open edX:** the counts under *What's included*, *What You Will Create*, *Exercises to Explore* and the eight-part
+overview come from the marketing backend's payload; Discovery has one `overview`, `faq`, `staff` and
+`expected_learning_items`. Program dates are derived from the course runs.
+
+**Course Detail** (Ready for Dev, §1–§32). Nothing was changed. What on those screens is still ◐ or ✗ was already in
+the register of §25:
+
+| On the screens | Depends on |
+|---|---|
+| The week strip in the Weekly goal card — *3 of 3 days this week*, *Last week: 2 of 3* | open question 9: days active are not returned. The fallback of §17.3 is the card without the strip |
+| Every duration — *3h 20m*, *18 min*, *~ 8h 40m left* | open question 2: nobody authors `effort_time`. *~ 14 hours* is `effort` and is ✓ |
+| *David Chen · your mentor · typically responds within 1 day* | open question 1; a response time is not stored |
+| *Beginner*, the Course team card | Discovery (`level_type`, `CourseRun.staff`), question 7 — deployed, content to confirm |
+| *Complete "Module 3 · Checkpoint" to unlock* | open question 3: the outline does not name the prerequisite |
+| A *Live Session* topic and an update that mentions *last week's live Q&A* | sample content in a self-paced course; VILT is out of the MVP. To reword when the frame is next edited |
+| The Weekly goal card itself | open question 8: switched off on every SkillUp course seen so far (§17.1). A request without a login cannot tell — the field is `false` for anyone not enrolled |
+
+### 37.5 What changed in Figma — 7 Oct
+
+Named version first: *Before edX compatibility pass: My Learning, Dashboard and Program screens*. The same edit ran
+on each source screen and on its handoff copy — 22 screens — and every value below was read back.
+
+- **Dashboard × 6.** `Glance-Card`: title *Your learning at a glance*, the four stats of §37.4. `Streak-Card`
+  removed; the glance card fills the row. `Due-Item` *Live Q&A* removed; the other two retitled as the Dates API
+  titles them. `Jump-Tile` *Book a mentor* removed (three tiles), the three descriptions rewritten. Delivery badges
+  → *Flexible Learning*. Desktop: the Due column is 440 (was 460) — with the wider badge, the longest course row
+  touched its progress bar.
+- **My Learning · Courses × 8.** The three header `Stat`s. `LMS / Course Card`: `Time-Left` → total effort on the
+  three courses in progress; *Intro to Product Analytics* is now the **completed** course (full bar,
+  *CERTIFICATE · Issued 12 Sep 2026*, **Review**) so that the totals agree with the list: 3 in progress, 1 complete,
+  1 not started. Delivery badges → *Flexible Learning* (two were *Flexible Learning* variants with the label typed
+  over).
+- **My Learning · Programs × 8.** The header `Stat`s. `Program-Card`: `Show cohort` off, `Week` and `Lessons`
+  hidden, eyebrow *Program · 7 courses* / *· 5 courses*, `Courses` *1 of 7 courses complete* / *0 of 5…*, 27 % →
+  **14 %** (bar at its 10 % step, library request 15), *Up next* names the course. Delivery badges.
+- **Program Detail · Courses.** Nine delivery badges read *Flexible Learning*.
+- **Handoff** (`6408:35150`, still *In progress*): each of the 11 cards has a 7 Oct changelog entry; four screen
+  descriptions rewritten (they still described the streak, four shortcuts, a hidden badge and the cohort). No
+  overlaps on the page.
+
+**Not changed, on purpose:** the top bar; the Program page's marketing content; the Course Detail frames.
+
+### 37.6 Open after this pass
+
+| # | What | Whose |
+|---|---|---|
+| 1 | **Top bar.** *My Learning 4* and *Calendar 3* have no defined source; *Learner · Pro* has none either (no tier in Open edX); *Calendar* and *Discussion* have no global page behind them (dates and forums are per course); *Services* is not Open edX | Nelson |
+| 2 | **Program page source** — Discovery plus `progress_details`, or the marketing backend. Until answered, *What's included*, *What You Will Create* and *Exercises to Explore* are not guaranteed | Vendor |
+| 3 | **A percentage per course costs a call per course** (Progress API). A learner with 12 enrolments is 13 requests for My Learning. Worth one vendor question: a completion figure on Learner Home | Vendor |
+| 4 | **The DS components still carry the old defaults** — `Glance-Card` (*Today at a glance*, XP, attendance), `Streak-Card`, `Program-Card` (cohort, week, lessons), `Due-Item`, `Jump-Tile`. The screens override them; the library does not say so. And `Glance-Card` is a 2 × 2 grid that an instance cannot change: across a 1 200 row it wants four in a line | DS |
+| 5 | **The prototype** (`/platform/*`) still shows the earlier data, marked *SAMPLE* | prototype session |
+| 6 | `PRODUCT.md` says there is *no API today for due dates*. More exactly: there is one per course and none across courses, and no SkillUp content has due dates yet | Nelson |
+| 7 | Tablet, mobile and a handoff frame for the Program page (§35.6) | — |
