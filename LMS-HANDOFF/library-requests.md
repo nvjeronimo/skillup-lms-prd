@@ -584,6 +584,34 @@ both platform pages, each read back and the result checked by eye:
 the grade pill on the Progress tab (*15% · below the 70% pass mark*), then a recount on every page, the ICP pages
 included (quiz entry headers, Video tab counts).
 
+### Closed on the two platform pages — 7 Oct (night)
+
+**Read-back: 0 of 286 visible badges read *Label* on Ready for Dev, 0 of 442 on the WIP page** (the local Program
+Detail components included).
+
+**What was wrong.** Asked for by key, the library returns the repaired components; the screens pointed at older
+copies of the same components. Direct instances of `LMS / Course Card`, `LMS / Course Row`, `Program-Card`,
+`Due-Item`, `Message` and `Quiz · Grade Summary` were behind, and so was every nested badge whose variant had been
+set on a screen. Nelson asked for the labels to be put right, so the instances were moved by script to the
+published version (named version first: *Before moving stale instances to the published DS versions*):
+
+| Pass | Ready for Dev | WIP + local components |
+|---|---:|---:|
+| Instances not nested, swapped to the published copy of their own component | 55 | 141 |
+| Nested badge wrappers still on an old copy, swapped the same way | 51 | 112 |
+
+Each call compared every non-badge text before and after and would have rolled back on a difference; none
+changed. Then the two texts that are not the component default: `Due-Item` · Today *Due 11:59* without the dot
+(6), the grade pill *15% · below the 70% pass mark* (6).
+
+**One side effect, found by eye and fixed:** on the Dashboard, the *Resume* button of course rows 2 and 3 kept its
+`Secondary` variant but took a primary fill and white text (8 buttons). The nested button was reset and
+`Secondary` applied again; fill and text now read the variant's tokens. A swap between two copies of one
+component is not override-neutral for nested instances: check paint as well as text.
+
+**Not done: the ICP pages** (Video, Quizzes, Reading). Their instances are still on the old copies. Either Nelson
+accepts the update in Libraries → Updates, or the same pass is run there.
+
 ---
 
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
@@ -597,6 +625,9 @@ Not patched on the screens: 23 overrides for a value that belongs to one master.
 
 **Ask:** in `Topbar` · `Breakpoint=Desktop`, *Item · Calendar* › *Count* › `Text` = *3*; publish. Needs Nelson's
 go-ahead, as any DS write. The counters still have no defined source (§37.6) and navigation is not final.
+
+**Done 7 Oct (night)**, on Nelson's go-ahead, after a named version; published by Nelson. The Dashboard and My
+Learning screens read *Calendar 3* again.
 
 **Likely elsewhere too:** any other text a DS master set on a badge inside a nested instance was lost the same
 way and now reads a plausible default. None is known; this one was found by comparing with the 30 Sep build.
@@ -619,3 +650,31 @@ The *Current module* frame around module 2 stays; its own padding leaves it 4 px
 
 **Ask:** remove the badge from the DS component, publish; the override on the desktop screen then has nothing to
 hide. Needs Nelson's go-ahead.
+
+**Done 7 Oct (night)**, on Nelson's go-ahead: removed from `Expanded=True` (578 → 550 high, gaps still 8),
+published by Nelson; the hidden copy in the desktop row's slot was removed too. No *You left off here* is left on
+any screen or in either component.
+
+---
+
+## 24 · `LMS/Platform/Dashboard/Today-at-a-glance` — variant names carry three stray properties
+
+Nelson gave the glance card two layouts on 7 Oct: `Breakpoint=Desktop`, four stats in a line, and
+`Breakpoint=Mobile`, 2 × 2 — which settles the open item of §37.6 (an instance cannot change a grid's columns).
+The screens use Desktop at 1 280 and 960 and Mobile at 375.
+
+Combining the variants split the old slash name into properties: every variant is named `Property 1=Platform,
+Property 2=Dashboard, Property 3=Glance-Card, Breakpoint=…`, and an instance shows three properties with one
+option each.
+
+**Ask:** delete `Property 1`, `Property 2` and `Property 3` from the set; publish. Instances keep their link (the
+variant keys do not change). The defaults are still the pre-edX sample (*Today at a glance*, XP, attendance —
+§37.6, item 4).
+
+---
+
+## 25 · Dev Mode notes go once on the main component and on one screen
+
+Nelson, 7 Oct: a note that applies to a component is not repeated on every instance. The *Navigation is not
+final* note was on 72 top bars and sidebars; it now sits on the `Topbar` set in the DS, on the local sidebar set
+(`6207:256263`) and on one screen (*Dashboard · Desktop*, Ready for Dev). Same rule for any future note.
