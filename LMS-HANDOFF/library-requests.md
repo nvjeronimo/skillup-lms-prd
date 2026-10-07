@@ -483,6 +483,41 @@ The ten that still read correctly on the WIP page are older instances that kept 
 again. The screens heal when the three sets are repaired and the library is published.
 
 **Ask:** in each variant of the three sets, set `Text` to the variant's label and `Icon leading` back on with its
-icon; check the other components that nest a `Badge v2`; publish. The labels are the variant names. The icons are
-in the file's version history from before the change.
+icon; check the other components that nest a `Badge v2`; publish.
+
+### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; **not published**
+
+On Nelson's go-ahead, after a named version (*Before badge repair: Delivery Mode, Difficulty and Topic-Types
+badges*). On the nested `Badge v2` of each variant: `Text`, `Icon leading = true`, `Icon leading swap`; on the
+topic-type badge also the label on `text/subtle` and the icon container's fill hidden, as before. Every variant
+read back; sizes are the old ones where an old one was on record (*Flexible Learning* 137 × 22, *Flexible + Live*
+117 × 22, *Beginner* 89 × 22, *Video* 61 × 20, *Reading* 78 × 20, *Live Session* 100 × 20); each set checked by eye.
+
+| Set | Variant → label · icon |
+|---|---|
+| `LMS / Delivery Mode Badge` | Live Sessions · `video-recorder` — Flexible + Live · `calendar-check-01` — Flexible Learning · `clock` |
+| `LMS / Difficulty Badge` | Beginner · Intermediate · Advanced, each with its `LMS / Difficulty · Level Icon` |
+| `LMS / Topic-Types Badge` | Video · `play` — Quiz · `help-circle` — Lab · `atom-01` — Reading · `book-open-01` — VILT-Live Session → *Live Session* · `video-recorder` — VILT-Recording → *Recording* · `video-recorder-off` — Activity · `lightbulb-02` — Project · `briefcase-01` — Practice Assignment → *Practice* · `edit-02` — Graded Assignment → *Graded* · `award-01` — Peer-graded · `users-01` — Peer Review → *Peer review* · `eye` — Podcast · `music-note-01` — Lesson Page → *Lesson* · `layout-alt-01` |
+
+**Where the values come from.** The Figma version history could not be read (the REST token has expired), so:
+delivery and difficulty from the changelog of 23 Sep, where Nelson chose those icons; topic types from the
+prototype's `TopicTypeBadge` (icons and short labels, written against this component) and from an instance in the
+product file that had not taken the update (*Reading*: `book-open-01`, label on `text/subtle`, container fill
+off). **Two are inferred, to confirm:** *Peer review* in sentence case (as the Course Detail screen read that
+morning; the prototype writes *Peer Review*), and `layout-alt-01` for *Lesson* — the one icon that left the
+screens with the badges and had no other owner; the prototype has no record of it.
+
+### Still reading *Label* in the DS — 94 nested badges in 15 other sets, not touched
+
+Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the repair
+above covers 20.
+
+| Page | Component · badges |
+|---|---|
+| `❖ LMS COMPONENTS` | `Quiz · Entry Header` 24 · `Provider-Partner Badge` 6 · `Quiz · Results` 4 · `Course Type Badge` 2 (hidden layer) · `Topic-Status-Badge` 2 · `Quiz · Grade Summary` 1 · `VILT · Session Card` 1 |
+| `❖ LMS PLATFORM COMPONENTS` | `Date-Row` 24 · `Thread-Row` 9 · `Message` 8 · `Program-Card` 6 · `Sidebar-Card` 2 · `Topbar-Item` 2 · `Due-Item` 2 · `Course-Row` 1 |
+
+**And in the product file,** a badge whose text was set on a screen (*In 13 months*, *Due 11:59*, *QUESTION*, a
+cohort) lost that text too. Repairing the DS gives it the component's default back, not the screen's text: the
+screens need their own pass after the library is published.
 

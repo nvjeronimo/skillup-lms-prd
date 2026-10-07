@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · DS: delivery, difficulty and topic-type badges repaired (not published)
+
+Named version first: *Before badge repair: Delivery Mode, Difficulty and Topic-Types badges*. On Nelson's go-ahead.
+
+- The 20 variants of `LMS / Delivery Mode Badge`, `LMS / Difficulty Badge` and `LMS / Topic-Types Badge` have their
+  label and leading icon again, and the topic-type badge its `text/subtle` label and hidden icon container fill.
+  Read back and checked by eye. Values from the 23 Sep changelog, the prototype and one instance that had not
+  updated; *Peer review* and the *Lesson* icon (`layout-alt-01`) are inferred. Library request 21.
+- **Needs a DS publish**, then the update accepted in the product file.
+- **Not repaired:** 94 more nested badges read *Label* in 15 other DS sets (Quiz · Entry Header, Date-Row,
+  Thread-Row, Message, Program-Card, Provider-Partner Badge…), and the screens' own badge texts are lost too.
+  Library request 21 has the list.
+
 ## 2026-10-07 · Program Page — tablet and mobile; a DS badge defect found on the way
 
 Named version first: *Before Program Page tablet and mobile*.
