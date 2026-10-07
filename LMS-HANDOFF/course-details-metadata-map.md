@@ -2346,6 +2346,12 @@ handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names,
 
 ## 33. My Learning and Dashboard — handoff frame, still in progress — 30 Sep
 
+> **Status on 7 Oct 2026 (Nelson): the navigation model is under study.** Whether the platform pages use a
+> sidebar or a top bar is not decided. What this section and §34 say about the sidebar being hidden and the top
+> bar being the navigation describes the screens as they are drawn, not a decision. The screens carry a Dev Mode
+> annotation on every top bar and sidebar (*Navigation is not final…*). Until it is decided: build page content
+> that works with either, and do not tie layout rules to the 72px top bar or to a 240px side column.
+
 **Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
 development and hidden on every platform page**; navigation is the **top bar from the Dashboard experiment**, on
 desktop, tablet and mobile. The four My Learning screens (Programs and Courses, grid and list) and the Dashboard go
@@ -2443,7 +2449,7 @@ drawn parts. Re-audited: 0 raw values, 0 generic names.
   thumbnail grew to 686; the *Up next* title fills and truncates to one line (the Topic-type badge used to be pushed
   out); progress fills re-sized per breakpoint. All three are library request 13.
 
-**The top bar on Course Detail (30 Sep).** The LMS sidebar is hidden on every platform page, Course Detail included.
+**The top bar on Course Detail (30 Sep).** The LMS sidebar is hidden on every platform page, Course Detail included. *(As drawn on 30 Sep. Since 7 Oct the choice between sidebar and top bar is under study: see the note at the top of §33.)*
 - **Desktop** — `⚙ TECHNICAL` Course (`6207:257304`), Progress (`6207:257333`), Dates (`6207:257718`), Mentorship Q&A
   (`6207:257432`) and `★ ENTRY · … v12 · componentised` (`6207:256439`): `Page` was a grid (240 sidebar | 1040
   main); now a column — `LMS / Platform / Topbar` (Desktop, *My Learning* current), then the page at **1280**.
