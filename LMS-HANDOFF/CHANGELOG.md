@@ -2,26 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-07 · Platform screens: no badge reads *Label* any more; DS writes for the top bar and the course row
+## 2026-10-07 · Platform screens: course covers, short course-row copy, DS writes — and the badges still read *Label*
 
 Named versions first, in both files.
 
-- **0 of 286 visible badges read *Label* on Ready for Dev, 0 of 442 on the WIP page.** The library published the
-  repaired components, but the screens still pointed at older copies of `LMS / Course Card`, `LMS / Course Row`,
-  `Program-Card`, `Due-Item`, `Message`, `Quiz · Grade Summary` and of the badge wrappers. 196 instances and 163
-  nested wrappers were moved to the published version by script, with a text comparison before and after;
-  then *Due 11:59* and the *15%* grade pill were set again. Library request 21.
-- **Side effect, fixed:** eight secondary *Resume* buttons on the Dashboard took a primary fill in the move.
-- **DS, on Nelson's go-ahead, published by him:** the *You left off here* badge is out of `Course-Row`
-  (request 23), and the top bar's *Calendar* counts 3 again (request 22).
-- **Nelson's own changes, followed on the screens:** the compact course row reads *Module 2 of 4* + module name,
-  *Show* / *Hide*, full-width button — the in-progress row on tablet and mobile has the new copy; the glance card
-  has a Desktop (four in a line) and a Mobile (2 × 2) variant — the mobile source screen now uses Mobile.
+- **Badges: not fixed.** 127 of 286 visible badges read *Label* on Ready for Dev and 199 of 434 on the WIP page.
+  Moving the instances by script to the copy the library publishes worked for about twenty minutes (0 *Label* in
+  read-back and renders) and then fell back: a swap does not change the version the file has accepted. **The
+  update has to be accepted in Libraries → Updates.** The texts set on instances (*Due 11:59*, the *15%* pill,
+  dates, tab counts) did hold. Library request 21.
+- **Course covers on 63 thumbnails** (My Learning, Program Detail): placeholder images from the public SkillUp
+  catalog, as fill overrides. Request 26 asks for an image option on the card.
+- **DS, on Nelson's go-ahead:** the *You left off here* badge is out of `Course-Row` (request 23), the top bar's
+  *Calendar* counts 3 again (request 22), and `Course-Row` reads *Module 2 of 4* + module name with *Show* /
+  *Hide*, as the compact row does. The first two are published; the last needs a publish.
+- **Nelson's own changes, followed on the screens:** the compact course row's short bar copy and full-width
+  button — the in-progress row has the new copy on desktop, tablet and mobile; the glance card's Desktop (four in
+  a line) and Mobile (2 × 2) variants — the mobile source screen now uses Mobile.
 - **The *Navigation is not final* note** is on the `Topbar` main component, on the local sidebar set and on one
   screen (*Dashboard · Desktop*, Ready for Dev); 71 copies removed. Request 25 states the rule.
-- **Open:** the ICP pages are still on the old copies; whether the desktop course row takes the short copy; the
-  glance card's stray variant properties (request 24); `topics-done` on the compact row is linked to nothing;
-  course thumbnails on the cards (asked for, source of the images to be decided).
+- **Open:** the library update (above); the glance card's stray variant properties (request 24); `topics-done` on
+  the compact row is linked to nothing.
 
 ## 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed
 

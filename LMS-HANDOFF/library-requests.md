@@ -584,33 +584,38 @@ both platform pages, each read back and the result checked by eye:
 the grade pill on the Progress tab (*15% · below the 70% pass mark*), then a recount on every page, the ICP pages
 included (quiz entry headers, Video tab counts).
 
-### Closed on the two platform pages — 7 Oct (night)
+### Tried by script on the two platform pages — it did not hold — 7 Oct (night)
 
-**Read-back: 0 of 286 visible badges read *Label* on Ready for Dev, 0 of 442 on the WIP page** (the local Program
-Detail components included).
+**State at the end of the night, as the file is saved: 127 of 286 visible badges read *Label* on Ready for Dev,
+199 of 434 on the WIP page** — inside `Delivery Mode Badge`, `Difficulty Badge`, `Topic-Types Badge`,
+`Provider-Partner Badge`, `Message`, `Due-Item` · Upcoming and `Program-Card`.
 
-**What was wrong.** Asked for by key, the library returns the repaired components; the screens pointed at older
-copies of the same components. Direct instances of `LMS / Course Card`, `LMS / Course Row`, `Program-Card`,
-`Due-Item`, `Message` and `Quiz · Grade Summary` were behind, and so was every nested badge whose variant had been
-set on a screen. Nelson asked for the labels to be put right, so the instances were moved by script to the
-published version (named version first: *Before moving stale instances to the published DS versions*):
+**What was tried.** Asked for by key, the library returns the repaired components; the screens point at older
+copies of them. Nelson asked for the labels to be put right, so the instances were moved by script to the copy the
+library returns (`importComponentByKeyAsync` + `swapComponent`; named version first: *Before moving stale
+instances to the published DS versions*): 196 instances that are not nested and 163 nested wrappers. Right after,
+0 of 286 and 0 of 442 read *Label*, in the read-back and in the renders.
 
-| Pass | Ready for Dev | WIP + local components |
-|---|---:|---:|
-| Instances not nested, swapped to the published copy of their own component | 55 | 141 |
-| Nested badge wrappers still on an old copy, swapped the same way | 51 | 112 |
+**About twenty minutes later the instances were back on copies that read *Label*.** A swap to another copy of the
+same component does not change which version of that component the file has accepted; the next time the
+components are resolved, the instances fall back to it. **The update has to be accepted in Figma's own
+Libraries → Updates panel. No script replaces that click**, and the same pass on the ICP pages would not hold
+either.
 
-Each call compared every non-badge text before and after and would have rolled back on a difference; none
-changed. Then the two texts that are not the component default: `Due-Item` · Today *Due 11:59* without the dot
-(6), the grade pill *15% · below the 70% pass mark* (6).
+**What did hold** (checked again at the end): every text set on an instance — *Due 11:59*, the *15%* grade pill,
+the dates cards, the Dates tab types, the tab counts, the direct badges on the technical frames. They will read
+right as soon as the component around them is on the repaired version.
 
-**One side effect, found by eye and fixed:** on the Dashboard, the *Resume* button of course rows 2 and 3 kept its
-`Secondary` variant but took a primary fill and white text (8 buttons). The nested button was reset and
-`Secondary` applied again; fill and text now read the variant's tokens. A swap between two copies of one
-component is not override-neutral for nested instances: check paint as well as text.
+**One side effect of the swap, fixed at the time:** eight `Secondary` *Resume* buttons on the Dashboard took a
+primary fill. Worth knowing if a swap between copies is ever used for something else.
 
-**Not done: the ICP pages** (Video, Quizzes, Reading). Their instances are still on the old copies. Either Nelson
-accepts the update in Libraries → Updates, or the same pass is run there.
+**Also seen:** the desktop app this session talks to answered *Unable to establish connection to Figma* twice and
+showed an older state of the file than the server (no cover images, *Calendar 4*). If the update was accepted
+from that app while it was out of sync, that may be why it only partly arrived.
+
+**To do, Nelson:** in the product file, reload the tab, then Libraries → Updates → Update all. If the panel lists
+nothing for these components, plan B is to touch each of the twelve sets in the DS and publish again, so the
+update is offered anew.
 
 ---
 
@@ -678,3 +683,19 @@ variant keys do not change). The defaults are still the pre-edX sample (*Today a
 Nelson, 7 Oct: a note that applies to a component is not repeated on every instance. The *Navigation is not
 final* note was on 72 top bars and sidebars; it now sits on the `Topbar` set in the DS, on the local sidebar set
 (`6207:256263`) and on one screen (*Dashboard · Desktop*, Ready for Dev). Same rule for any future note.
+
+---
+
+## 26 · `LMS / Course Card` — the thumbnail has no image option
+
+Nelson asked for a cover image on every course (7 Oct). The card's `thumb` is a square with initials on a token
+fill; an image can only go in as a fill override on each instance, with the initials hidden. Done that way on the
+63 thumbnails of My Learning and Program Detail (61 on screens, 2 in the local `Course-Row-Compact`).
+
+**The images are placeholders**: twelve covers from the public SkillUp catalog (course pages and program
+banners), chosen by topic. The seven courses of the digital marketing program have no cover of their own on the
+public site, so theirs are borrowed from other courses, except the first, which uses the program's banner. In
+production the image is the course's own (`course_image`; Learner Home returns it as `bannerImgSrc`).
+
+**Ask:** give the card a thumbnail that takes an image (a boolean or a swap, initials as the fallback when a
+course has none); then the screens drop their overrides.

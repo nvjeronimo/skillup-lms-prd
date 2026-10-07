@@ -2754,8 +2754,12 @@ component and on one Dashboard screen (§33).
   (no *You left off in*, no topic count), the toggle reads *Show* / *Hide*, the card's button fills the width,
   and the *You left off here* badge is gone (library request 23). The in-progress row on the tablet and mobile
   screens was given the same copy. A boolean `topics-done` was added and is linked to nothing yet. **The desktop
-  row still reads the long form** (*You left off in Module 2 of 4 · … · 3 of 10 topics done*, *Show modules*):
-  whether it follows is open.
+  row follows** (Nelson, same night): the DS `Course-Row` now defaults to *Module 2 of 4* + module name with
+  *Show* / *Hide*, and the desktop screen reads the same; the DS change needs a publish.
+
+  **Course covers.** Every course thumbnail on My Learning and on this page carries a placeholder image from the
+  public SkillUp catalog, set as a fill override with the initials hidden (library request 26). The field is the
+  course's own image (`course_image`; `bannerImgSrc` in Learner Home).
 
 **Read back on the eight screens:** every text visible on desktop is present on tablet and on mobile, except badge
 labels (next paragraph); 0 raw fills, strokes, spacing or radii, 0 unstyled texts, 0 generic layer names outside
