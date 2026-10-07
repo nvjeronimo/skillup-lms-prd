@@ -25,6 +25,20 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · One primary action per list in the screens; Course Card on tablet and mobile
+
+- **Completion + Certificate:** the three `modal-backdrop` rectangles bound to `bg/overlay` (were #13282f at
+  60 %, same change as on Overlay Panels). The page reads 0 raw values in its screens.
+- **One primary per list**, after a named version (*Before: one primary action per list on Dashboard and My
+  Learning*): in every list of three `LMS / Course Row` or `Resume-Row`, the first keeps the Primary *Resume* and
+  the other two are Secondary. 6 rows on Ready for Dev, 10 on V8 WIP; no size changed. Matches prototype PR 62.
+- **Course Card grid, the other way round:** in the screens every grid card already has a Secondary *Resume*;
+  the prototype makes the first one Primary. Not changed on either side: to decide.
+- **Course Card sizes:** in the DS the grid pads with `Spacing/3xl` (24 / 20 / 16) and the thumb is locked 1:1
+  and fills the header height, so it is 98 px next to a two-line title and 128 px next to a three-line one.
+  Prototype PR 64 takes the padding by breakpoint: 384 × 358, 438 × 350 and 327 × 366 match; the two-line mobile
+  card is 338 against 342 because the prototype thumb stays 86 px.
+
 ## 2026-10-07 · Platform navigation is under study; notes for developers; Review pages audited
 
 - **Decision status (Nelson, 7 Oct):** whether the platform pages use a sidebar or a top bar is still under
