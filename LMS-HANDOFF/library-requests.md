@@ -617,6 +617,45 @@ from that app while it was out of sync, that may be why it only partly arrived.
 nothing for these components, plan B is to touch each of the twelve sets in the DS and publish again, so the
 update is offered anew.
 
+### Closed — 7 Oct (late night): the update is in, no badge reads *Label*
+
+After Nelson published the DS again, the update reached the product file. Counted in the desktop app, and the
+platform screens checked against the server's copy as well:
+
+| Page | Visible badges | Reading *Label* |
+|---|---:|---:|
+| Platform Pages — Ready for Dev | 286 | 0 |
+| Platform Pages V8 — WIP (four sections) | 434 | 0 |
+| Video Lessons | 200 | 0 |
+| Quizzes | 483 | 0 |
+| Reading | 78 | 0 |
+| Overlay Panels — Ready for Review | 33 | 0 |
+| Topic Content Types — Ready for Review | 106 | 0 |
+
+The texts set on the platform screens earlier that night were all in place (*Due 11:59*, *Due Fri*, the *15%*
+pill, *Tomorrow* / *In 15 days*, *STAFF* / *ACCEPTED ANSWER*, the Dates tab types, the tab counts).
+
+**Restored on the other pages** (named version first), where the component default had replaced a screen's own
+text or the badge sits directly on the screen:
+
+| Where | Badges | Text | From |
+|---|---:|---|---|
+| Quizzes — the nine `Quiz · Entry Header` | 9 | *5 questions* (the defaults read 3, 8 and 20) | the 24 Sep record of the 39 overrides; the other 30 equal the defaults |
+| Overlay Panels — tags on the saved notes | 12 | *#discovery* · *#lifecycle* · *#ai* · *#research* | the layer names |
+| Overlay Panels — Saved tabs | 9 | *All* 5 · *Topics* 3 · *Notes* 2 | **counted** from the items the panel shows |
+| Overlay Panels — Notifications tabs | 12 | *All* 5 · *Discussions* 1 · *Grading* 2 · *Updates* 2 | **counted** from the five items shown |
+| Topic Content Types — video template tabs | 2 | *Notes* 2 · *Downloads* 4 | the Video Lessons page, same tabs |
+
+**The 21 panel tab counts are not recovered values.** No record of them was found; they follow the rule in
+P1-37 (*the count badge matches the items shown*). The split of the five notifications is a reading: the reply is
+a discussion; the quiz due and the peer rating are grading; the live session and the new content are updates.
+To confirm.
+
+**One update is still not in:** `Today-at-a-glance` · Desktop. The Dashboard at 1 280 and 960 still shows the old
+2 × 2 card (request 24).
+
+**Not checked:** Nelson's discovery pages and the archive, by rule.
+
 ---
 
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
