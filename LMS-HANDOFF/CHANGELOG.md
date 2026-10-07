@@ -55,6 +55,25 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · Prototype critique of the remaining screens; note editor and three rule fixes
+
+- **Measured** (prototype `main`, local): practice quiz, graded quiz, Reading and certificate at 1280 and 375;
+  contrast on six pages (video, Reading, quiz, certificate, Dashboard, My Learning) in dark, Gold, Red, Gold dark
+  and Red dark. No contrast failure in any mode except the disabled *Submit* (2.4:1 light, 2.0:1 dark; exempt).
+  One `h1` per page, no heading skips, no unnamed control, no horizontal scroll, no text under 12 px. First
+  attempt at the mode sweep gave false failures: colours were read mid-transition; transitions were switched
+  off for the second read.
+- **Fixed in the prototype** (PRs 66 and 67, merged): the note editor follows the DS `LMS / Note Editor` (bottom
+  sheet on mobile); Reading has no Downloads tab and lists its files in the body; Quiz, ORA and VILT read
+  *Completed*, not *Marked as completed*; the certificate no longer shows time learned.
+- **Figma against those fixes:** the Reading screens have no tab bar (agrees). The three certificate screens on
+  *Completion + Certificate* still show *4h 22m · Time*: the stat is drawn inside the DS `LMS / Course
+  Certificate`, which has no property to hide it. A DS change, not made.
+- **Open, for Nelson:** the practice quiz sample shows a completed topic with empty answers and a primary *Go to
+  next Module*; whether Video should read *Completed* too, since it completes on its own at 90 %.
+- Also checked: the transcript still follows the active line after PR 62, and a note saves from the new editor
+  (count 2 → 3). The prototype video does not advance time, so the follow was tested with a click on a line.
+
 ## 2026-10-07 · DS components in use: sections 1 to 5 recounted
 
 - `03-design-system/ds-components-used-icp-lms.md` recounted over the nine pages (one Plugin API read per page,
