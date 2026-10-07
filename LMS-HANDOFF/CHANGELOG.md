@@ -25,6 +25,18 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · DS components in use: sections 1 to 5 recounted
+
+- `03-design-system/ds-components-used-icp-lms.md` recounted over the nine pages (one Plugin API read per page,
+  every instance resolved, per-name sums equal to each page total). Components: LMS product 67 → 68
+  (`LMS / Note Editor`, 6 on Video), platform 32 → 31 (1 242 → 1 182 instances), base 27 → 25 (`Badge` V1 and
+  `Badge-V1-to-remove` at 0), icons 62 → 53, private bases 14 → 13.
+- Two causes outside the recount, checked on the Video page: `Badge v2` now has a `Content` property and no
+  nested `_Badge base` in most variants (212 badges, 13 bases), which also removes the icons that sat inside
+  badges; and the platform screens lost the streak card and some week days, jump tiles and due items when they
+  were cut back to what Open edX serves.
+- The ICP Hub (version 7) carries the 7 Oct audit decisions and three open questions.
+
 ## 2026-10-07 · Metadata map: navigation marked as under study
 
 - `course-details-metadata-map.md` §33 opens with a status note (sidebar or top bar not decided, 7 Oct), and the
