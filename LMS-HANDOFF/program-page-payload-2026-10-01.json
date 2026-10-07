@@ -1,0 +1,323 @@
+{
+ "uuid": "ed676db2-8681-4da3-9513-a7e74153f2e7",
+ "slug": "ai-digital-marketing-certificate-program",
+ "display_name": "Certificate Program in AI Augmented Digital Marketing",
+ "status": "active",
+ "hidden": "False",
+ "type": "Professional Certs",
+ "program_image_url": "https://discovery-dev.skillup.online/media/media/programs/banner_images/ed676db2-8681-4da3-9513-a7e74153f2e7-22e26a31478c.medium.png",
+ "org": "SkillUp",
+ "subtitle": "Build job-ready digital marketing expertise across content, search, paid media, social, ecommerce, and email-marketing while applying AI responsibly and strategically. Graduate with a portfolio-ready capstone that demonstrates end-to-end, real-world marketing capability. Enroll now to accelerate your digital marketing career!",
+ "number_of_courses_in_this_program": "7",
+ "about_this_program": [
+  "07 Courses\n",
+  "09 Skills"
+ ],
+ "certificate": [
+  "Certificate of Completion"
+ ],
+ "create": [
+  "Digital Marketing Strategy",
+  "AI-Powered Content Calendar Comprising Blog, Podcast, Visual, and Video",
+  "Full SEO-GEO Strategy with AI",
+  "Complete AI-Integrated Paid Media Strategy",
+  "AI-Integrated Social Commerce Strategy",
+  "Email Marketing Approach and Messaging",
+  "Basic Social Media Plan",
+  "Social Media Calendar",
+  "7 Additional Hands-On Projects"
+ ],
+ "includes": [
+  "76 Videos",
+  "90 Readings",
+  "10 Activities",
+  "13 Podcasts",
+  "24 Hands-on Lab",
+  "06 Final Projects",
+  "01 Capstone Project",
+  "06 Final Assessments"
+ ],
+ "duration_s": "P4M",
+ "duration": [
+  "4 months"
+ ],
+ "exercises": [
+  "Applying Prompt Frameworks to Write a Blog",
+  "Personalizing Content with Generative AI",
+  "Creating Ad Copy with AI",
+  "Generating Educational Videos with AI",
+  "Keyword Research and Ad Grouping",
+  "SEO Data Analysis",
+  "B2B Targeting  LinkedIn Audience Creation",
+  "Optimizing a Campaign Based on Data",
+  "Conversion Rate Optimization Through A/B Testing",
+  "Leverage AI for Email Content Development"
+ ],
+ "course_type": "BLENDED",
+ "project_based": false,
+ "course_level": "BEGINNER",
+ "mentored": "MENTORED",
+ "courses_in_program": [
+  {
+   "title": "Digital Marketing Fundamentals and the AI Mindset",
+   "introductory_sentence": "Build essential digital marketing foundations while developing practical AI fluency for modern marketing roles.",
+   "course": "course-v1:SkillUp+SKOADM01EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "Digital marketing ecosystem and strategy alignment",
+    "Customer journey mapping and audience segmentation",
+    "Channel selection across organic and paid environments",
+    "AI prompt fundamentals for marketing tasks",
+    "Structured digital marketing strategy development"
+   ]
+  },
+  {
+   "title": "AI-Driven Content and Brand Communication",
+   "introductory_sentence": "Create scalable, brand-consistent marketing content using AI while maintaining strategic clarity and authenticity.",
+   "course": "course-v1:SkillUp+SKOADM02EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "Brand positioning and messaging architecture",
+    "AI-assisted copywriting and content systems",
+    "Multi-format content creation (blog, visual, video)",
+    "AI content personalization and scaling workflows",
+    "Editorial planning and content operations"
+   ]
+  },
+  {
+   "title": "SEO, GEO, and Organic Growth with AI",
+   "introductory_sentence": "Build modern search visibility strategies across traditional search engines and AI-driven answer systems.",
+   "course": "course-v1:SkillUp+SKOADM03EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "SEO foundations and search intent architecture",
+    "AI-driven keyword research and topic clustering",
+    "On-page optimization and structured content systems",
+    "Generative engine optimization (GEO) techniques",
+    "Technical SEO and organic performance measurement"
+   ]
+  },
+  {
+   "title": "Paid Advertising, Media & AI-Integrated Campaign Strategy",
+   "introductory_sentence": "Design and optimize revenue-driven advertising systems using AI-enhanced targeting and performance strategies.",
+   "course": "course-v1:SkillUp+SKOADM04EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "Full-funnel paid media strategy",
+    "AI-powered audience targeting and segmentation",
+    "Search and social advertising execution",
+    "Campaign optimization and testing frameworks",
+    "Attribution strategy and ROI modeling"
+   ]
+  },
+  {
+   "title": "Social Media and Ecommerce Marketing",
+   "introductory_sentence": "Develop scalable social and ecommerce growth systems that convert engagement into measurable revenue.",
+   "course": "course-v1:SkillUp+SKOADM05EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "Social media strategy and content planning",
+    "AI-enabled content and community systems",
+    "Social commerce and D2C funnel design",
+    "Ecommerce product positioning and optimization",
+    "Social and ecommerce analytics"
+   ]
+  },
+  {
+   "title": "Email, CRM, and Lifecycle Marketing with AI",
+   "introductory_sentence": "Develop lifecycle marketing systems that improve customer retention and long-term value through AI-assisted personalization and automation.",
+   "course": "course-v1:SkillUp+SKOADM06EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "Email marketing strategy and automation",
+    "AI-powered personalization and segmentation",
+    "Lifecycle architecture and CRM systems",
+    "A/B testing and optimization",
+    "Email analytics and revenue modeling"
+   ]
+  },
+  {
+   "title": "Capstone Project: AI-First Marketing System",
+   "introductory_sentence": "Apply program learning to design and present a complete AI-first marketing system suitable for professional portfolios and interviews.",
+   "course": "course-v1:SkillUp+SKOADM07EN-CPAIADM-B1+2026",
+   "topics_covered": [
+    "Integrated digital growth architecture design",
+    "Cross-channel system alignment",
+    "AI-supervised workflow integration",
+    "Marketing performance measurement and reporting",
+    "Executive-level strategy presentation and defense"
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "id": "0",
+   "title": "What will I learn in the AI Augmented Digital Marketing program?",
+   "description": "<p>This <b>certificate program in AI augmented digital marketing</b> teaches how AI tools transform modern marketing; from audience analysis and content creation to campaign optimization and performance tracking. This helps marketers build smarter and more efficient digital strategies.</p>"
+  },
+  {
+   "id": "1",
+   "title": "Who should enroll in this program?",
+   "description": " <p>This <b>career-ready AI augmented digital marketing program</b> is ideal for students, marketing professionals, entrepreneurs, and career switchers who want to explore and understand how AI can improve marketing efficiency, creativity, and campaign performance in today’s digital economy.</p>"
+  },
+  {
+   "id": "2",
+   "title": "How does AI improve digital marketing strategies?",
+   "description": "<p>AI helps marketers analyze large datasets, identify trends, automate repetitive tasks, and personalize campaigns. The course explains how combining human creativity with AI insights leads to more effective and scalable digital marketing strategies.</p>"
+  },
+  {
+   "id": "3",
+   "title": "How can this program help advance my marketing career?",
+   "description": "<p>The program focuses on practical strategies and industry-relevant skills that help professionals adapt to evolving digital marketing roles where AI tools, data insights, and automation are becoming essential.</p>"
+  },
+  {
+   "id": "4",
+   "title": "Does the program cover the entire digital marketing process?",
+   "description": "<p>Yes. The program is designed as an <b>end-to-end AI augmented digital marketing program,</b> covering strategy, content creation, SEO, advertising, social media marketing, analytics, and campaign optimization using AI-powered tools.</p>"
+  },
+  {
+   "id": "5",
+   "title": "Is prior marketing experience required for this program?",
+   "description": "<p>No prior experience is required. The program starts with foundational marketing concepts before introducing advanced AI applications, making it accessible to beginners; while still valuable for professionals looking to upgrade their skills.</p>"
+  },
+  {
+   "id": "6",
+   "title": "What practical skills will I gain from this training?",
+   "description": "<p>Through this <b>AI augmented digital marketing training program,</b> learners develop practical skills in AI-assisted content creation, campaign management, audience targeting, marketing automation, and performance analysis used by modern digital marketing teams.</p>"
+  },
+  {
+   "id": "7",
+   "title": "Will I learn how AI-powered marketing systems work?",
+   "description": "<p>Yes. The program introduces detailed training for AI augmented digital marketing systems, helping learners understand how automation platforms, analytics tools, and AI-driven insights can streamline campaign management and improve marketing decision-making.</p>"
+  },
+  {
+   "id": "8",
+   "title": "What makes this program different from traditional marketing courses?",
+   "description": "<p>Unlike traditional courses, this <b>AI integrated digital marketing program</b> focuses on how AI tools enhance marketing creativity, automation, and data-driven decision-making across multiple digital channels.</p>"
+  },
+  {
+   "id": "9",
+   "title": "Will I get a certificate after completing the program?",
+   "description": "<p>Yes. After the successful completion of the modules and assessments; you will receive an industry-recognized Certificate of Completion that clearly highlights your detailed understanding of modern AI-assisted digital marketing strategies and practical campaign management techniques.</p>"
+  }
+ ],
+ "courses": [
+  {
+   "course_name": "Digital Marketing Fundamentals and the AI Mindset",
+   "course_id": "course-v1:SkillUp+SKOADM01EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  },
+  {
+   "course_name": "AI-Driven Content and Brand Communication",
+   "course_id": "course-v1:SkillUp+SKOADM02EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  },
+  {
+   "course_name": "SEO, GEO, and Organic Growth with AI",
+   "course_id": "course-v1:SkillUp+SKOADM03EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  },
+  {
+   "course_name": "Paid Advertising, Media & AI-Integrated Campaign Strategy",
+   "course_id": "course-v1:SkillUp+SKOADM04EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  },
+  {
+   "course_name": "Social Media and Ecommerce Marketing",
+   "course_id": "course-v1:SkillUp+SKOADM05EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  },
+  {
+   "course_name": "Email, CRM, and Lifecycle Marketing with AI",
+   "course_id": "course-v1:SkillUp+SKOADM06EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  },
+  {
+   "course_name": "Capstone Project: AI-First Marketing System",
+   "course_id": "course-v1:SkillUp+SKOADM07EN-CPAIADM-B1+2026",
+   "enrollment_start": "2026-03-16T00:00:00Z",
+   "enrollment_end": "2026-07-04T23:30:00Z",
+   "start": "2026-06-27T00:00:00Z",
+   "end": "2027-10-31T23:30:00Z"
+  }
+ ],
+ "overview": [
+  {
+   "id": "0",
+   "title": "Program Overview",
+   "description": "<p>The Certificate Program in AI-Augmented Digital Marketing prepares you to become a workforce-ready marketing professional in an AI-driven economy.</p><p>Across seven progressively structured courses, you will develop practical expertise in search engine optimization (SEO), content strategy, search and generative engine optimization (GEO), paid media and performance marketing, social media marketing, ecommerce growth systems, and email marketing. Rather than treating AI as a shortcut, the program teaches you how to supervise, structure, and strategically apply AI within professional marketing workflows.</p><p>What sets this program apart is its strong focus on execution. Beyond the hands-on work within each course, you will complete 7 additional portfolio projects that simulate end-to-end marketing execution across channels, helping you build a portfolio aligned with current industry expectations.</p><p>Each course builds toward integration, moving from foundations to specialization and finally to strategic orchestration. The program emphasizes decision-making, growth thinking, and responsible AI use in business contexts.</p><p>The program is delivered through a blended learning model that combines structured self-paced learning, applied labs, and live virtual instructor-led training (VILT) to ensure active engagement and guided skill development.</p><p>Your journey culminates in a capstone project, where you design and defend a complete AI-first marketing system. By the end of the program, you will have a portfolio that clearly demonstrates your readiness to take on modern marketing roles.</p>"
+  },
+  {
+   "id": "1",
+   "title": "How It Works",
+   "description": "<p>This Certificate Program comprises 7 courses that take you on a journey from the fundamentals to an advanced skill level.</p><p>Our proven learning methodology blends the best that instructor-led training and self-paced learning have to offer. Leveraging the power of instructor feedback, mentor-supported hands-on practice, and additional home-based studying, you will build the deep technical and practical understanding today’s employers are looking for.</p><p>Additionally, you will enjoy learning via an interactive online classroom environment where you will be able to participate and actively engage with your peers, instructors, and mentors. Plus, you will get the opportunity to earn recognized certificates which will help your resume and LinkedIn profile stand out.</p><p>The materials for each module are accessible from the start of each course and will remain available for the duration of your enrollment. Methods of learning and assessment will include reading material, hands-on labs, and online practice exam questions.</p><p>As part of our mentoring service, you will have access to valuable guidance and support throughout the program. We provide a dedicated discussion space where you can ask questions, chat with your peers, and resolve issues. And as part of our career services, you will get guidance on how to boost your profile and prepare for interviews.</p>"
+  },
+  {
+   "id": "2",
+   "title": "Skills You Will Gain",
+   "description": "<p>By the end of this program, you will have skills in:</p><ul><li>AI-Integrated Digital Marketing Strategy Design</li><li>Full-Funnel Growth System Architecture</li><li>Search & Generative Engine Optimization (SEO + GEO)</li><li>Performance Marketing & Paid Acquisition Strategy</li><li>AI-Driven Content & Brand Communication Systems</li><li>Social Commerce & Ecommerce Growth Strategy</li><li>Marketing Analytics and  Responsible AI Supervision in Marketing Workflows</li><li>Conversion Optimization & Experimentation Frameworks</li><li>Executive-Level Marketing Strategy Presentation</li></ul>"
+  },
+  {
+   "id": "3",
+   "title": "Who Should Enroll On This Program",
+   "description": "<ul><li>Recent graduates and early-career professionals seeking to enter digital marketing roles with AI-enabled capabilities.</li><li>Career switchers looking to transition into modern digital marketing careers.</li><li>Junior marketers aiming to accelerate career growth with practical, AI-augmented skills.</li><li>Freelancers and consultants building AI-enabled digital marketing services.</li><li>Startup team members and founders managing multi-channel marketing responsibilities.</li><li>Marketing professionals seeking structured, end-to-end digital marketing expertise aligned with current industry needs.</li></ul>"
+  },
+  {
+   "id": "4",
+   "title": "Prerequisites",
+   "description": "<p><b>Required:</b></p><ul><li>Basic computer literacy</li><li>Comfort using the internet and digital tools</li><li>Willingness to learn and apply AI tools responsibly</li></ul><p><b>Helpful but Not Mandatory</b></p><ul><li>Introductory understanding of marketing concepts</li><li>Prior exposure to social media or content creation</li><li>Analytical curiosity and problem-solving mindset</li></ul><p><b>No coding or technical background is required.</b></p>"
+  },
+  {
+   "id": "5",
+   "title": "Human Skills Training",
+   "description": "<p>Finely tuned soft skills are critical for success in both professional and personal life.</p><p>Research carried out by Wonderlic has shown that 97% of employers believe soft skills affect job performance. Now, professionals with strong human skills are often favored in job applications and interviews. This program will help you to develop key career and human skills such as expectation management, resume writing, profile building, and interview techniques.</p>"
+  },
+  {
+   "id": "6",
+   "title": "Career & Placement Services",
+   "description": "<p>Once you have successfully completed this program, our career and placement service will begin. This will include:</p><p><b>FOR ALL LEARNERS</b></p><p>A tech skills assessment & mock interview.</p><ul><li>A technical assessment test to gauge your skills level. This will ensure we provide the career mentoring you need.</li><li>Pre-employability training</li><li>Mock HR interviews</li><li>Mock technical interviews</li></ul><p>7-day Finishing School Program.</p><ul><li>Resume and online profile preparation</li><li>Further mock HR and technical interviews</li><li>Interview coaching</li><li>Individual counselling</li></ul>"
+  },
+  {
+   "id": "7",
+   "title": "Personalized Mentoring & Instructor Feedback",
+   "description": "<p>Our mentors are specialists in their technical fields. They have the experience and expertise required to understand the challenges you face as you tackle complex technical subject matter.</p><p>To support you as you learn, not only will you get real-time feedback from experienced instructors but also 1-to-1 mentoring assistance that enhances your understanding. Our mentors are on-call to help as you build your practical experience in the hands-on labs. They’ll also be contactable through our popular discussion spaces. Plus, they’ll monitor your progress and provide constructive and timely feedback to ensure you complete the program.</p><p>You'll benefit from:</p><ul><li>Feedback and support from qualified instructors during the live online classes.</li><li>1-to-1 mentoring to support you and answer your questions as you learn.</li><li>Interactive discussion space support from your mentors and peers.</li><li>Regular progress monitoring to keep you on track.</li><li>Regular formative and summative assessments.</li><li>Industry expert sessions introducing the corporate environment.</li></ul>"
+  }
+ ],
+ "packages": [],
+ "category": [],
+ "certificate_url": [
+  ""
+ ],
+ "instructors": [
+  {
+   "instructor_name": "Rajesh Menon",
+   "designation": "Marketing Services Expert, Digital Entrepreneur & University Faculty",
+   "linkedin_profile": "https://www.linkedin.com/in/rajeshmenon1/",
+   "instructor_image": "/images/staticCohort/defultexpert.png"
+  }
+ ],
+ "start": "Jun 27, 2026",
+ "end": "Oct 31, 2027",
+ "enrollment_end": "Jul 04, 2026",
+ "enrollment_start": "Mar 16, 2026",
+ "enrollment_open": true,
+ "single_program": true,
+ "meta_description": "Build job-ready skills with the AI-Augmented Digital Marketing certificate program. Learn SEO, AI content strategy, paid media, ecommerce, and lifecycle marketing.",
+ "meta_title": "AI Digital Marketing Certificate Program | SkillUp Online",
+ "og_title": "AI Digital Marketing Certificate Program | SkillUp Online",
+ "video": null,
+ "org_image": "/images/staticCohort/skillupLogo.png",
+ "isProgram": true
+}

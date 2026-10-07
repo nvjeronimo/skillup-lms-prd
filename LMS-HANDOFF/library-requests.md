@@ -360,8 +360,9 @@ layouts a long *Up next* title runs under its type badge. Nothing truncates or w
 given a fixed width the title cannot enter.
 
 **And the progress fill has no value.** `fill` is a fixed 149 px frame inside `bar`, identical on every card — 5 %,
-52 % and *Not started* draw the same bar. My Learning sizes each fill by hand (and hides it when not started); a
-card resized later keeps the old width. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
+52 % and *Not started* draw the same bar. An instance cannot resize it (layers nested in an instance do not
+take a size). My Learning sets the fill to *fill* and gives `bar` a right padding equal to the unfilled part
+(and hides the fill when not started); a card resized later keeps the old padding. **Ask:** a `Progress` property (or the DS `Progress bar` inside the card).
 
 **And it does not survive a narrower screen.** (1) `thumb` is a square with a locked ratio that fills the header's
 height; the header's height comes from the title, the title's width from what the thumb leaves. At 960 this loops:
@@ -399,5 +400,33 @@ The row (title + delivery badge, then progress + button) wraps its two lines, bu
 352–405 px for the Dashboard's three courses, wider than a phone (327 inside the page padding). Its inner frames
 do not take width overrides. The mobile Dashboard hides the delivery badge so the title fits.
 
-**Ask:** a mobile layout (title line fills and wraps, badge under the title), or a `Show badge` property.
+*1 Oct:* hiding the badge was rejected — badges show on every breakpoint. The blocker is the title's **264
+minimum width** (instances cannot override a minimum, and the nested rows ignore width overrides). The mobile
+Dashboard now uses a local `LMS / Platform / Resume row` built from the same atoms.
+
+**Ask:** a mobile layout (title fills and wraps, badge under the title) with no minimum width on the title.
+
+---
+
+## 17 · The accordion item is not published
+
+`FAQ section` (marketing section, 32 variants) is built from `_FAQ item` — Expanded, Divider, Breakpoint, Icon
+position — but the item is private (underscore), so a product page cannot place an accordion without importing a
+whole FAQ section to reach it. The Program Page FAQs and About tabs use it that way.
+
+**Ask:** publish the accordion item (e.g. `Accordion item`), and note in its description that the divider is drawn
+above the item.
+
+---
+
+## 18 · `LMS / Course Card` — the *UP NEXT* overline is 11 px and has no text style
+
+`Next-Content › Overline` (*UP NEXT*) inside the card is Montserrat 11 px with 0.6 px tracking and **no text
+style**. It is the only text under 12 px in everything the platform pages place (found 6 Oct while checking the
+35 components before their move, §36.3 of the metadata map) and it breaks the 12 px minimum. An instance could
+override the size, but every card on My Learning, the Dashboard and the Program Page would need it, and the next
+card placed would be 11 px again.
+
+**Ask:** put the overline on a 12 px text style in the component. Same question as request 12 — there is no 12 px
+overline style to give it.
 

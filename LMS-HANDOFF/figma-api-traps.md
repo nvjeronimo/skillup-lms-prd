@@ -158,3 +158,19 @@ The rule they all point at: **after any structural mutation, read the state back
     `STRETCH` constraint. Fix the component (fixed row width + `STRETCH`, children pinned), then resize the instance
     down and up so the constraints settle.
 
+38. **`resize()` on a layer nested in an instance does nothing, and says nothing.** Figma does not let an instance
+    resize its inner layers; the call returns without an error and the size stays the component's. What an
+    instance *can* override: sizing mode (fill / hug / fixed — fixed snaps to the component's size), padding,
+    gap, visibility, text. To size something, use those — a progress fill is *fill* plus a right padding on its
+    track. **Always report a size you read back, never the one you computed.**
+
+39. **`getInstancesAsync()` is short on its first pass.** Counting the instances of 96 variants gave 1 213, and
+    1 170 in another session, then **1 648** when the same loop ran a second time in the same call — on every run.
+    The instances nested inside other instances (1 008 of the 1 648) only show up once a first pass has walked
+    them. Loading every page first is needed (`for (const p of figma.root.children) await p.loadAsync()`) and is
+    not enough. Run the count twice, keep the second, and drop the results with no `PAGE` ancestor (orphans).
+
+40. **Copy and paste between files makes new components; only cut and paste moves them.** A page copied into the
+    library arrived with the same names and **different keys** — nothing in the source file points to it, and
+    publishing it links nothing. Compare `component.key` on both sides before calling a move done.
+

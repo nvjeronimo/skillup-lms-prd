@@ -2344,7 +2344,7 @@ Built to the ICP convention: **960 wide, `3. Responsive 📐` = Tablet**, no sta
 renumbered in order (desktop · tablet · mobile). It is now 3 630 wide, so the Weekly goal and Certificates
 handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names, no overlaps on the page.
 
-## 33. My Learning and Dashboard — ready for dev — 30 Sep
+## 33. My Learning and Dashboard — handoff frame, still in progress — 30 Sep
 
 **Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
 development and hidden on every platform page**; navigation is the **top bar from the Dashboard experiment**, on
@@ -2460,10 +2460,10 @@ drawn parts. Re-audited: 0 raw values, 0 generic names.
   named *…-desktop · 1280*; now *…-tablet · 960*. Each card's changelog gains the 30 Sep top-bar entry; the tablet
   descriptions said *280 sidebar* → 320.
 
-**Handoff — ready for dev (30 Sep).** `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) with its
-*Ready for dev* banner (`6408:35142`) on *Platform Pages - Ready for Dev 🟢*, right of the Certificates handoff.
+**Handoff frame (30 Sep) — work in progress, not ready for dev (Nelson, 1 Oct).** `Platform Pages - My Learning &
+Dashboard - Light` (`6408:35150`) with its banner (`6408:35142`, now *WIP*, Warning) on *Platform Pages - Ready for Dev 🟢*, right of the Certificates handoff.
 Same format as the Course Detail handoff (§27): intro and meta strip, then one row per page, one card per screen —
-header (sequence, title, version 2026-09-30 · r1, *Ready for DEV*, RSD = this section, a Figma link to the source
+header (sequence, title, version 2026-09-30 · r1, status *In progress*, RSD = this section, a Figma link to the source
 screen), the screen, and the changelog header (description + first entry).
 
 | # | Card | Source |
@@ -2477,3 +2477,605 @@ screen), the screen, and the changelog header (description + first entry).
 The screens are copies: 0 annotations, no footnotes, no overlaps on the page. When a source changes, re-copy the
 card's screen. **Not in this handoff:** the eight local components as their own component handoff (like Weekly goal
 and Certificates) — they carry descriptions on the components page and wait for peer review.
+
+## 34. Three corrections from Nelson — 1 Oct
+
+**1. The platform top bar is light, not dark.** `LMS / Platform / Topbar` (both breakpoints): `bg/page` with a 1px
+`border/subtle` rule below; name in `text/default`, role in `text/subtle`, icons `icon/default` (chevron
+`icon/subtle`); `Skillup_logo` in its default colour version (the white-text overrides are gone). `Topbar item`:
+label `text/subtle`; Current = `bg/primary-soft` behind a `text/primary` label (it was 8 % white on the dark bar).
+Every screen uses instances, so Dashboard, My Learning and Course Detail changed with the component — sources and
+handoff copies. The translucent-fill note in §33 no longer applies to the top bar.
+
+**2. Delivery and Difficulty badges show on every breakpoint.**
+- `Course header` · Tablet and · Mobile had no `Tags Container`; they now carry `LMS / Delivery Mode Badge` and
+  `LMS / Difficulty Badge` between the title and the stats, as on desktop (wrapping on mobile).
+- Dashboard mobile: the delivery badge is back on the resume rows. The DS `LMS / Course Row` cannot do it — its
+  title has a **264 minimum width**, so title + badge is at least 389 wide and instances cannot override a
+  minimum (library request 16). The mobile Dashboard uses a local **`LMS / Platform / Resume row`** (`6418:18853`):
+  the same atoms and tokens as the DS row — title, badge under it, DS `Progress bar` with the percentage,
+  `Buttons/Button`. To retire when the DS row gets a mobile layout. Desktop and tablet keep the DS row.
+
+**3. Mobile Mentorship Q&A conversation — one card.** Nelson's reference: the handoff copy he edited (card 13).
+`★ ENTRY · … mobile · Mentorship Q&A tab · conversation` (`6207:256556`) now wraps the header, the messages and the
+composer in one `Conversation` card (`bg/page`, `border/subtle`, rounded), as the desktop pane — which is what
+makes the mentor bubble visible (it was grey on a grey page). Messages have 16 padding and stay on
+`Message` · `Breakpoint=Mobile`, which fills the width; the reference used the Desktop variants, whose 420 bubble
+was clipped. `Message` · Mentor · Mobile: the author line wraps, so *Accepted answer* drops under the name instead
+of leaving the card. Layer names follow the reference (*Question Title*, *Question Metadata*, *Post Anonymously
+Checkbox*).
+
+**Handoffs:** card 13 (Course Detail) and card 03 (My Learning & Dashboard) re-copied; all 24 cards carry a
+1 Oct changelog entry. 0 annotations, no overlaps.
+
+**4. *Ready for DEV* uses `Status/Done`.** Nelson swapped the Status Tag on card 01 from `Status/In progress`
+(label overridden) to `Status/Done` — green, with the dot. The other 27 tags on *Platform Pages - Ready for Dev 🟢*
+followed on the frames that are ready for dev: Course Detail (12), Weekly goal (3), Certificates (1) — 17 with
+card 01. **My Learning & Dashboard is not ready for dev**: Nelson set its banner to *WIP*, and its 11 cards are
+`Status/In progress`, label *In progress* (I had marked them *Ready for DEV* when building the frame — wrong).
+No other page in the file has a Status Tag. Rule: `Status/Done` + *Ready for DEV* only when Nelson marks a frame
+ready; a new handoff frame starts as `Status/In progress`.
+
+**5. Profile access on tablet and mobile.** `LMS / Platform / Topbar` · Compact had logo, notifications and menu —
+no way to the profile. It now carries the learner's DS `Avatar` (*Profile*, sm) between notifications and the
+menu, the same atom as the Desktop user block; it opens the profile menu. Actions gap as on Desktop
+(`Spacing/lg`). The 15 compact top bars in the sources and the 15 in the handoffs are instances and changed with
+the component.
+
+**6. The components page is in sections.** `5409:325` had three clashes — `Message` over `Week day`, `Course
+header` (now 1 729 tall) over six Platform components, `Program card` over `Browse tile` and `Resume row` — all
+from components that grew after they were placed. The 40 items now sit in ten named sections, in three columns
+right of the Cover and Foundations frames, packed in rows with 100 between items: Course Detail · header and shell ·
+Course tab — outline · Course tab — sidebar cards · Progress tab · Dates tab · Mentorship Q&A; Platform · top bar ·
+Dashboard · My Learning; Docs and proofs. Node ids are unchanged. A new component goes inside its section; if a
+component grows, re-pack the section rather than moving one neighbour.
+
+**7. The header's big circle is a diagonal hatch** (Nelson, 1 Oct, from a reference he sent). In `Course header`,
+all four variants — so courses and programs, every breakpoint: `Big Circle decoration` has no fill and holds one
+vector, *Hatch (decoration)* — 1px lines every 10, running down to the right, stroke `border/primary`, the frame
+at 35 % layer opacity and clipping to its circle. `Small Circle decoration` stays solid (`bg/primary` at 12 %).
+On Tablet and Mobile the circles moved to the desktop composition — hatched circle top right, solid one behind the
+content — they had been sitting under the progress card, and the tablet's small circle outside the header.
+29 instances (17 in the sources, 12 in the handoffs) changed with the component.
+
+**8. Badges: only `Badge v2`** (Nelson, 1 Oct). Checked on all 40 pages: `_Badge base` is never placed on its
+own — every one (629 on Ready for Dev, 988 on WIP 2, 142 on the components page) is the layer inside a
+`Badge v2`. `Badge v2` has no text property of its own, so a badge's label and dot are set on that nested layer
+(`Text#21889:56`, `Dot#21889:7`); that is the component working as built, not the base being used.
+What did turn up: **28 instances of the old badge, `Badge-V1-to-remove`**, placed directly — the *What counts as a
+day* table (*Counts*, *Not required*, *No*) in the Weekly goal handoff and in the Technical section, plus
+*Self-paced* and *Professional* there. All replaced with `Badge v2` · Soft, same size, colour and text. 18 more V1
+badges remain, all hidden and all inside the DS `_Tab button base` — the library's to remove.
+
+## 35. Program Page — what the data allows — 1 Oct
+
+**Decisions (Nelson, 1 Oct).** The Program Page mirrors Course Detail (courses where Course Detail has modules);
+the tabs start from the V8 exploration (`Program Detail - Dark Hero`, `6207:246312`) but only what an API backs
+goes in; desktop first. A new handoff starts *In progress*.
+
+### 35.1 Evidence — public, read-only requests, no credentials
+
+**Open edX, dev (`devcourses.skillup.online`).** `GET /api/mfe_config/v1`: **`ENABLE_PROGRAMS = true`**,
+`DISCOVERY_API_BASE_URL = https://discovery-dev.skillup.online`, **`CREDENTIALS_BASE_URL = ""`**.
+- course-discovery **is deployed** (`/health/` → OK; `/api/v1/programs/` → 401, it exists and wants a login).
+  This answers open question 7 of §25 (level chip, Course team card).
+- `GET /api/dashboard/v0/programs/{uuid}/progress_details/` → 401: the learner's program progress endpoint
+  exists. In Open edX it returns the program, and its courses bucketed **completed / in progress / not started**.
+- `/dashboard/programs/{uuid}/` → 302 to login: the legacy program page is routed.
+- **Credentials is not configured** → no program certificate and no Learner Record.
+
+**The current platform (`skillup.online`).** The public page of *Certificate Program in AI Augmented Digital
+Marketing* (uuid `ed676db2-8681-4da3-9513-a7e74153f2e7`) server-renders a 45-field program payload — saved,
+without prices, as [`program-page-payload-2026-10-01.json`](program-page-payload-2026-10-01.json):
+`display_name`, `type` (*Professional Certs*), `org`, `subtitle`, `course_type` (*BLENDED*), `course_level`
+(*BEGINNER*), `mentored`, `duration` (*4 months*), `start` / `end` / `enrollment_*`, `courses_in_program[7]`
+(`title`, `introductory_sentence`, `course` id, `topics_covered[5]`), `overview[8]`, `faq[10]`, `includes[8]`,
+`create[9]`, `exercises[10]`, `instructors[1]`, `certificate` (*Certificate of Completion*; `certificate_url`
+empty).
+
+**Not verified.** What `progress_details` returns to a logged-in learner here, and whether this program exists in
+course-discovery or only behind the marketing site — the payload's field names are not Discovery's
+(`display_name`, `courses_in_program`, `includes`…). **Vendor question:** which is the source for the LMS program
+page — Discovery + `progress_details`, or the marketing backend?
+
+### 35.2 The eight V8 tabs against the data
+
+| V8 tab | Open edX | Current platform | Verdict |
+|---|---|---|---|
+| Syllabus | courses by status (`progress_details`) | 7 courses, intro, 5 topics each | **in** — *Courses* |
+| Program Info | `overview`, staff | 8 overview sections, includes, instructor | **in** — *About* |
+| FAQs | `faq` | 10 FAQs | **in** |
+| Certificates | course certificates yes; program certificate no (Credentials empty) | the words *Certificate of Completion*, no URL | **in** — the courses' certificates only |
+| Calendar | none at program level | — | **out** — the top bar's Calendar is global (walkthrough, 10 Apr) |
+| Resources | handouts per course only | — | **out** |
+| Projects | none | a descriptive list (`create`) | **out** as a tab; the list goes in *About* |
+| 1:1 Mentor | none | the flag `mentored` | **out**; the flag shows in the header |
+
+**Dropped from V8 for lack of data:** per-course unlock dates (all seven runs share one start and end),
+attendance of live sessions (VILT is out of the MVP; the Live tab is Zoom's iframe, §12.3), the assigned mentor,
+the program certificate, and the capstone as a special object — it is the seventh course.
+
+### 35.3 Courses tab · desktop — built 1 Oct, in progress
+
+`Program Detail · Courses tab · Desktop` (`6443:18722`) in the section *Program Detail — sources (in progress)*
+(`6443:18721`) on the WIP 2 page. A clone of `★ ENTRY · Course Detail — v12` with courses where it had modules;
+0 annotations, 0 raw values, 0 generic names.
+
+| Part | Built with | Data |
+|---|---|---|
+| Top bar | `LMS / Platform / Topbar`, *My Learning* current | — |
+| Header | `Course header` · `Type=Program` — breadcrumb *My Learning › Programs*, `LMS / Course Type Badge` Program, title, Delivery (*Flexible + Live*) and Difficulty (*Beginner*) badges, *7 courses · 4 months · SkillUp* | `display_name`, `course_type`, `course_level`, `courses_in_program.length`, `duration`, `org`, `program_image_url` |
+| Progress card | `Progress card` in the header: *14 %*, *Program progress*, *Course 2 of 7 · in progress*, **Resume course**, *1 of 7 courses complete*; no passing line, no time left | courses completed ÷ total, from `progress_details` buckets; Resume = the in-progress course's resume URL |
+| Tabs | DS `Horizontal tabs`: **Courses** · Certificates · FAQs · About. No search — nothing searches a program | §35.2 |
+| Course list | `Module row` × 7, *Course n · title*, state Complete / Incomplete, meta *Complete* · *In progress · 40% complete* · *Not started* | title from `courses_in_program`; status from the buckets; the percentage from the Course Progress API, one call per course |
+| Open course | local **`LMS / Program Detail / Course panel`** (`6444:3657`, State In progress · Not started · Complete) in the row's `Topics` slot: the intro, *Topics covered* as a bulleted list, DS `Progress bar` and `Buttons/Button` (*Resume* · *Start* · *Review course*) | `introductory_sentence`, `topics_covered` — strings, not real topics: no status, type or duration |
+| Sidebar | `Sidebar card` · Dates as *Program dates* (started, ends); `Card shell` as *What's included*; `Sidebar card` · Team as *Program instructor* | `start`, `end`; `includes`; `instructors[0]` |
+
+**Not on the page, for lack of data:** locked courses and unlock dates, the capstone as a special card, the mentor,
+weekly goal, certificate, handouts and tools cards, the course-update alert and the search field.
+
+**Two things to know.**
+- **The header is dark.** `Course header` · `Type=Program` carries `🎨 SKO-Semantics = SKO Dark` on the variant, so
+  every token inside resolves to its dark value — a dark hero made of tokens, under the light top bar. To make it
+  light like Course Detail, clear the explicit mode on the variant.
+- `Card shell`'s slot was a fixed 40 px frame; it is now a vertical auto layout that hugs its content.
+
+### 35.4 Certificates, FAQs and About · desktop — built 1 Oct, in progress
+
+Three more screens in the same section, each a copy of the Courses screen with its own main column; the header,
+the tabs and the three sidebar cards are the same on all four. Audited: 0 raw values, 0 generic names, 0 annotations.
+
+| Screen | Id | Main column | Data |
+|---|---|---|---|
+| Courses | `6443:18722` | §35.3 | |
+| Certificates | `6449:21234` | `Section intro`, then one `LMS / Course Detail / Certificate card` per course that has certificate data — course 1 **Issued**, course 2 **Not earned** with its two progress lines — each under its course title; a note for the five not started | the courses' certificates (edX issues them per course run) |
+| FAQs | `6448:20247` | a card of ten DS `_FAQ item` (accordion), the first open | `faq[10]` — question and answer |
+| About | `6448:24409` | `Section intro` with the subtitle, then a card of ten `_FAQ item`: the eight `overview` sections, *What You Will Create* and *Exercises to Explore* | `subtitle`, `overview[8]`, `create[9]`, `exercises[10]` |
+
+- **`_FAQ item` is a private atom of the DS** (`FAQ section` is built from it; it is not published on its own, so it
+  cannot be imported by key — it is reached through `FAQ section`). Its divider sits **above** the item: the first
+  item takes `Divider=False`, the rest `True`. Library request: publish the accordion item.
+- **The subtitle is marketing copy.** It ends *"Enroll now to accelerate your digital marketing career!"* — dropped on
+  the About tab, where the learner is already enrolled. `overview` arrives as HTML (lists, line breaks) and is
+  shown as plain paragraphs and bullets.
+- **The program certificate is an open question.** FAQ 10 and the payload promise an *industry-recognized
+  Certificate of Completion* for the program, but Credentials — where Open edX keeps program certificates — is not
+  configured on dev. The Certificates tab shows the courses' certificates only. **Vendor question:** where is the
+  program certificate issued and how does the LMS read it?
+- The certificate thumbnail inside the Issued card is the illustrative `Certificate document` (§31 — not for
+  development); only the learner and the course name were set.
+
+### 35.5 The course list — three options with the DS course card — 4 Oct
+
+Nelson, 4 Oct: the `Module row` list reads as "expand here", but a course is a **destination** — the learner
+leaves for the course page — so the courses should look like the course cards of My Learning. Three options,
+second row of the same section, each a copy of the Courses screen. **None was chosen** — see §35.6; the three
+screens no longer exist.
+
+| Option | Screen | What |
+|---|---|---|
+| A — grid | `6526:20655` | DS `LMS / Course Card` · Grid, two columns in the 840 main column; the sidebar stays |
+| B — list | `6527:22768` | DS `LMS / Course Card` · List, one per row at 1 200; no sidebar on this tab (program dates, what's included and the instructor stay on About) |
+| C — list with sequence | `6527:29075` | B plus a spine on the left: `Module number` (Complete · the course number) joined by a 2px `border/subtle` connector — the order of the program stays visible |
+
+Card data, all API-backed: title, org, delivery and level, progress from the Course Progress API (*Complete* ·
+*40% complete* · *Not started*), **total effort** instead of time left (`effort` on the Courses API; time left has
+no API), *Up next* from the course's resume position, and for the completed course *Certificate · Issued …* in the
+Up next slot (the course certificate). CTA *Review* · *Resume* · *Start*.
+
+On the List card the title, progress and footer zones now share the width (`Footer`, `up-next` and `Next-Content`
+set to fill): the progress column lines up across rows and a long title wraps instead of running under it.
+
+⚠︎ **Correction to §33.** The Course Card progress bars on My Learning were **not** fixed on 30 Sep: `resize()` on a
+layer nested in an instance is ignored without an error, and the widths reported then were the computed ones, not
+read back — every fill was still 149. Fixed 4 Oct on the sources and the handoff copies, and verified by reading
+the width back: the fill is set to *fill* and the bar takes a right padding equal to the unfilled part
+(5 % → 17/334, 35 % → 117/334, 52 % → 174/334).
+
+### 35.6 The course list — decided 5 Oct: a list of expandable course rows
+
+Nelson, 5 Oct, turning the three options down: **list format only; the learner sees at once which module they
+left off in; and each course expands to show its modules.** The three option screens were removed.
+
+**`LMS / Program Detail / Course row`** (`6538:6143`, components page, section *Program Detail*; local, for peer
+review) — `Expanded` = False · True.
+
+| Part | Built with | Data |
+|---|---|---|
+| Card | the DS `LMS / Course Card` · List — same card as My Learning; its border and shadow moved to the row's container (`bg/page`, `border/subtle`, `Radius/fixed-xl`, `Shadows/shadow-card`) | as §35.5: progress, total effort, *Up next*, CTA |
+| Modules bar | `Position` (body-medium/Semibold) + `Detail` (body-medium/Regular, text/subtle), and a DS `Buttons/Button` sm · Link gray *Show modules* / *Hide modules* with chevron-down / chevron-up | in progress: *You left off in Module 2 of 4* · *module name · 3 of 10 topics done*; not started: *4 modules* · *43 topics*; complete: *4 modules* · *All complete · 36 topics* |
+| Modules (Expanded=True, a **slot**) | one `LMS / Course Detail / Module row` per module, collapsed, no chevron — a module opens the course page at that module; the current one sits under a `Badge v2` · Soft · Brand *You left off here*; on `bg/faint` | the course outline: modules, their completion and the resume position — fetched **when the row is expanded**, one call per course |
+
+`Program Detail · Courses tab · Desktop` (`6443:18722`) now uses it: seven rows at 1 200, course 2 expanded, real
+module names, topic counts and durations from the syllabus. **No sidebar on this tab** — the List card needs the
+width; program dates, what's included and the instructor stay on Certificates, FAQs and About. Audited: 0 raw
+values, 0 generic names, 0 annotations.
+
+Removed with the old version: the local `LMS / Program Detail / Course panel` (0 instances left).
+
+⚠︎ The DS card's thumbnail loop (library request 13) hits here too: with the footer set to fill, the thumbnail grew
+to 580 and the title went one letter wide. The row pins the thumbnail (sizing *fixed* on both axes).
+
+**Next:** tablet and mobile for the four tabs; the handoff frame, starting *In progress*.
+
+## 36. The local components move to the DS — in progress — 6 Oct
+
+**Decisions (Nelson, 6 Oct).** All 35 local components go to the DS library (`c7EUDrQwP8si08aPipDSIV`), to a new
+top-level page **`❖ LMS PLATFORM COMPONENTS`** (`22011:941`, right after `❖ LMS COMPONENTS ✅`). Names follow the
+14 Sep convention — `LMS/Platform/<Group>/<Component>`, slash the only separator, words joined by a hyphen. This
+ends the "local, for peer review, nothing promoted" rule of §33 for these components.
+
+**How.** A real move — instances stay linked, overrides kept — exists only as Figma's own cut and paste between
+files; the plugin API works on one file at a time. So: (1) prepared here — renamed, gathered in one section;
+(2) **Nelson** cuts the section `MOVE TO DS → ❖ LMS PLATFORM COMPONENTS` (`6569:112566`) on the components page
+(it holds the ten component sections and the intro), pastes it on the new DS page, publishes the library and
+accepts the update in this file; (3) verified against the baseline below, then arranged on the DS page.
+**Cut, not copy** — see §36.2.
+
+**Pre-flight (6 Oct).** 35 components, 96 variants. No local variable, no local style, every dependency inside
+the set, every component described. Three have no instances (`Grade-Meter`, `Grade-Summary-Row`, `Score-Row`) and
+go anyway.
+
+**Baseline for the check after the move** — instances whose main component is one of the 35, counted with every
+page loaded: **1 648** in the file = 790 on *Platform Pages … WIP 2* + 604 on *Ready for Dev* + 254 inside the
+components themselves; 640 placed directly, 1 008 nested inside another instance. After the move the 1 394 on the
+two pages must all resolve to **library** components, none missing.
+
+*How to count (corrected 6 Oct).* `getInstancesAsync()` is short on its first pass in a session — 1 213, and
+1 170 on another run — and right on the second: the nested instances only appear once the first pass has walked
+them. Loading every page is needed and is not enough. Run the count twice and keep the second; the per-component
+numbers of the second pass were identical on two separate runs. (The earlier note here blamed unloaded pages
+alone.)
+
+### 36.1 Old name → new name
+
+| Group | Was | Is |
+|---|---|---|
+| Course-Detail | `LMS / Course Detail / Course header` · `Course title` · `Course stats` · `Meta` · `Card shell` · `Section intro` · `Progress card` | `LMS/Platform/Course-Detail/Course-Header` · `Course-Title` · `Course-Stats` · `Meta` · `Card-Shell` · `Section-Intro` · `Progress-Card` |
+| Course-Detail | `… / Module number` · `Lock` · `Module row` · `Topic row` | `…/Module-Number` · `Lock` · `Module-Row` · `Topic-Row` |
+| Course-Detail | `… / Sidebar card` · `Weekly goal card` · `Week day` · `Completion card` | `…/Sidebar-Card` · `Weekly-Goal-Card` · `Week-Day` · `Completion-Card` |
+| Course-Detail | `… / Grade meter` · `Grade summary row` · `Score row` · `Thread row` · `Message` | `…/Grade-Meter` · `Grade-Summary-Row` · `Score-Row` · `Thread-Row` · `Message` |
+| Course-Detail | `LMS / Dates / Date row` | `LMS/Platform/Course-Detail/Date-Row` |
+| Completion | `LMS / Course Detail / Certificate card` · `Certificate document` | `LMS/Platform/Completion/Certificate-Card` · `Certificate-Document` |
+| Navigation | `LMS / Platform / Topbar` · `Topbar item` | `LMS/Platform/Navigation/Topbar` · `Topbar-Item` |
+| Dashboard | `LMS / Platform / Stat` · `Section header` · `Due item` · `Jump tile` · `Glance card` · `Streak card` · `Resume row` | `LMS/Platform/Dashboard/Stat` · `Section-Header` · `Due-Item` · `Jump-Tile` · `Glance-Card` · `Streak-Card` · `Resume-Row` |
+| My-Learning | `LMS / Platform / Program card` · `Browse tile` | `LMS/Platform/My-Learning/Program-Card` · `Browse-Tile` |
+| Program-Detail | `LMS / Program Detail / Course row` | `LMS/Platform/Program-Detail/Course-Row` |
+
+Sections before §36 use the old names and the old property name `Type`; the node ids quoted there die with the
+move (a component gets a new id in the DS file) — the names above are the way to find them.
+
+**`Type` → `Kind` (Nelson, 6 Oct — done before the move).** The variant property is renamed on the four sets that
+had it: `Course-Header` (`Kind` Course · Program), `Sidebar-Card` (Handouts · Dates · Tools · Team · Mentor Q&A ·
+Mentor WIP), `Grade-Summary-Row` (Header · Row · Total), `Score-Row` (Section · Subsection). Read back: no set
+keeps a `Type` variant; instances 29 → 29 and 42 → 42 (the other two sets have none); the file total is still
+1 648. Not touched: the booleans `Show type` (`Date-Row`, `Thread-Row`) and `Show assignment type` (`Date-Row`),
+which are not the reserved variant name, and `Theme`, `Urgency`, `From`, `Expanded`, which the convention does not
+reserve.
+
+**The two Foundations frames and `Page 118`.** Both Nelson's: the frames were removed because they no longer made
+sense, and the DS page is now *DS Structure discussion* (`22009:15222`).
+
+### 36.2 Before the cut — a copy is already in the DS
+
+Found 6 Oct while reading the DS for the intro. The page **`❖ LMS COMPONENTS ✅`** (`1030:33572`) holds a pasted
+copy of the whole components page, to the right of the numbered sections (x 22 086 onwards): `Cover`
+(`22009:16438`), the ten component sections (`22009:16446` … `22009:17747`) and `Docs and proofs`
+(`22009:17587`) — twelve top-level nodes.
+
+| | The copy in the DS | The originals here |
+|---|---|---|
+| Components | 35, 96 variants, same `LMS/Platform/…` names | 35, 96 variants |
+| Keys | different on every one (`Course-Header` `3b09d9a2…`) | (`Course-Header` `b478abef…`) |
+| Instances that point to them | 61, all inside the copied `Docs and proofs`; none elsewhere on that page | 1 648 |
+| Variant property | still `Type` on the four sets | `Kind` |
+| Intro | the old one (*Nine sets… Locked 19 Aug 2026*) | rewritten, §36.3 |
+| Published | no | no |
+
+It is a **copy**, not the move: the keys differ, so no screen in this file is linked to it, and publishing it would
+not link any. If the section is then cut and pasted as planned, the DS ends up with **two components for each of
+the 35 names** — two entries in the assets panel, and no way to tell which one a screen uses without opening it.
+
+**To do before the cut (Nelson, or on his word):** delete the twelve pasted nodes from `❖ LMS COMPONENTS ✅`.
+Nothing outside them uses the copies. Not deleted by this session: they were not made here, and the DS is not
+written to without his go-ahead.
+
+### 36.3 The intro, rewritten
+
+`Cover` (`5409:326`) described the page as it was on 19 Aug — *LMS / Course Detail — Components*, nine sets, the
+old namespace, text styles that no longer exist (`Body/Lead…`), a run id pointing at `/tmp`, and no text style or
+token on any of its seven texts. It now reads, on DS styles (`body-small/Semibold`, `headline-small/Semibold`,
+`body-medium/Regular` and `Semibold`, `body-small/Regular`) and tokens (`bg/page`, `border/subtle`,
+`text/default` · `muted` · `subtle`, `Spacing/*`, `Radius/fixed-lg`), in the shape of the DS *Domain header*:
+
+- **LMS Platform components** — what the page is for, and that the player, the topic content types and the course
+  cards stay in `❖ LMS COMPONENTS`.
+- **What is here** — dated (*As of 6 Oct 2026*): 35 components, 96 variants, six groups with their counts
+  (Course-Detail 21 · Completion 2 · Navigation 2 · Dashboard 7 · My-Learning 2 · Program-Detail 1).
+- **Naming** — `LMS/Platform/<Group>/<Component>`, and the reserved property names, `Kind` in place of `Type`.
+- **The rules these components follow** — five: tokens only; text by style and nothing under 12 px; icons swap;
+  reuse before build; same content on every breakpoint.
+- The source of the decisions (this file, §33–§36).
+
+It now sits **inside** the section to move (top-left; the ten sections shifted 980 px right, no overlap), so it
+travels with the components. The page's top level is that section and `Docs and proofs`.
+
+**The rules were checked against the 35 before being written** (nested DS instances excluded unless said):
+
+| Rule | Read back |
+|---|---|
+| Tokens only | 8 344 nodes: every solid fill and stroke is bound, except what belongs to DS instances — the gradient stroke of `Buttons/Button` (8) and the logo artwork (3) |
+| Text by style | 323 texts, all styled (one, `Streak-Card` · *Message*, mixes Regular and Semibold — both DS styles) |
+| Nothing under 12 px | true of what was built here. Two exceptions, neither a local text: the certificate thumbnail in `Certificate-Card` (a scaled picture of the document, 3–8 px) and the *UP NEXT* overline **inside the DS `LMS / Course Card`** — 11 px, no text style — which `Program-Detail/Course-Row` nests. Library request 18 |
+| Reuse before build | DS instances inside the 35: `Badge v2` 54, `Buttons/Button` 35, `Progress bar` 12, `LMS / Completion Status` 12, `LMS / Delivery Mode Badge` 10, `Avatar` 8, `LMS / Topic-Types Badge` 6, `LMS / Difficulty Badge` 5, and others |
+
+### 36.4 After the paste — read back 6 Oct (evening)
+
+Nelson pasted the section into the DS. Read from both files, nothing written:
+
+| | Read back |
+|---|---|
+| DS page `❖ LMS PLATFORM COMPONENTS` (`22011:941`), section `22009:21763` | 35 components, 96 variants, the `LMS/Platform/…` names, `Kind` on the four sets |
+| Variables bound inside it | 3 207, all local to the DS; none remote, none missing |
+| Text and effect styles | 343, all local to the DS |
+| Nested instances | 314 resolve to DS components; 12 are remote and were remote before too: `Placeholder Logo` (9) and `Skillup_logo` (3), which live in another library |
+| Solid paints without a variable | 23: the fill and stroke of the ten section frames (20) and the logo artwork (3). None inside a component's own layers |
+| Keys | new on every one (`Course-Header` `be031e16…`; it was `b478abef…` here) |
+| Published | no: the ICP file cannot import them by key yet |
+| The older copy on `❖ LMS COMPONENTS ✅` (§36.2) | still there (`22009:16438` … `22009:17587`). Nelson deletes it himself before publishing |
+| This file | the section `6569:112566` is gone and the components page holds only `Docs and proofs`. No instance is missing its main component, but every one still resolves to the **old, now deleted** component (same old key, `remote: false`) |
+
+**So the paste did not carry the link.** The keys changed, the ICP file is not a published library, and Figma only
+re-links a cut and paste between files for components that were published from the source. The screens look
+right today because Figma keeps a deleted main component alive for its instances; they will not follow the DS.
+
+**Baseline for the relink**, counted by walking every page and resolving each instance (`getMainComponentAsync`),
+6 Oct: **1 242** instances of 32 of the 35 components (`Grade-Meter`, `Grade-Summary-Row` and `Score-Row` have
+none) = 528 placed directly + 714 nested. Per page: *Platform Pages - Ready for Dev* 225 + 295, *Platform Pages
+V8 - WIP* 273 + 388, *Course Detail — Components* (`Docs and proofs`) 30 + 31. This is lower than the 1 394 of
+§36 for the two platform pages (1 181 here); the two counts were made differently (`getInstancesAsync` there) and
+were not reconciled. The check after the relink does not depend on either number: **no instance may resolve to a
+local `LMS/Platform/…` component.**
+
+**Next, in order.** (1) Nelson deletes the older copy from `❖ LMS COMPONENTS ✅`, publishes the DS and accepts the
+update here. (2) A named version of this file, then the relink: every instance placed directly is swapped to the
+DS component of the same name and variant, imported by key (`swapComponent` keeps overrides; the nested ones follow
+their parent). (3) Read back: zero local `LMS/Platform/…` mains, the per-component counts above against the DS
+keys, and a visual check of the handoff cards.
+
+### 36.5 The relink — 6 Oct (night): 654 of 741 done, `Topic-Row` waiting to be published
+
+Nelson deleted the older copy from `❖ LMS COMPONENTS ✅` and published the DS. Accepting the update here re-linked
+nothing (661 of 661 instances on the WIP page still on the old components), so the instances were swapped.
+
+**Tokens in the DS, re-read after the publish.** Inside the 35 components (96 variants): 3 051 variable bindings,
+all to the DS's own variables — `3. Responsive 📐` 2 263, `🎨 SKO-Semantics` 712, `_Primitives` 76; none remote,
+none missing. 334 text and effect styles, all local. The 76 on `_Primitives` are 38 texts in `label-small`
+(Medium, Semibold, Regular): the **style itself** binds its size and line height to `_Primitives · Type/size/text-xs`
+and `Type/line-height/text-xs` instead of the Responsive collection. Not caused by the move; a DS-wide fix if wanted.
+
+**Method.** Named version first (*Before relink: LMS/Platform instances → DS library*, saved through the Desktop
+Bridge — `saveVersionHistoryAsync` is not available to the remote plugin runner). Then, page by page: find every
+instance whose main component is a local `LMS/Platform/…`, take the top-most ones (no ancestor that is itself to
+be swapped), import the DS set or component by key, pick the variant with the same name, `swapComponent`, and
+compare the instance's size and visible text before and after; repeat until a pass finds nothing to swap. The
+nested ones follow their parent, except the ones placed in a slot, which the next pass swaps.
+
+| Page | Swapped | Left |
+|---|---:|---|
+| Course Detail — Components (`Docs and proofs`) | 30 | `Topic-Row` 24 |
+| Platform Pages V8 — WIP | 346 | `Topic-Row` 36 |
+| Platform Pages — Ready for Dev | 278 | `Topic-Row` 27 |
+| **Total** | **654** | **87** |
+
+**`Topic-Row` is not published.** `getPublishStatusAsync` on the DS: 34 `CURRENT`, `Course-Detail/Topic-Row`
+`UNPUBLISHED`; importing its key fails. Its 87 instances (24 placed directly, 63 nested) still resolve to the old
+local component. To finish: publish it, then run the same pass.
+
+**Nine instances lost an override of a nested badge and were repaired** (found by the before/after comparison):
+six `Dashboard/Due-Item` (*Peer review…*, on both platform pages) whose `Status` badge went back to *Live* with
+the dot — restored to *Due 11:59*, dot off, colour had stayed Warning; three `Sidebar-Card · Kind=Dates`
+(*Program dates*) whose first `Relative` badge went back to *In 3 days* — restored to *Started*. All nine read
+back with the same size and text as before the swap. Trap: a swap can reset the properties of a nested instance's
+own nested base (`_Badge base`: `Text`, `Dot`) while the nested instance keeps its variant.
+
+**Checked by eye:** the Dashboard desktop frame renders the same as on 1 Oct; the My Learning · Programs grid
+render is byte-identical to the 1 Oct one. Not checked: non-text overrides that change neither text nor size
+(a hidden icon, a colour) on the other screens.
+
+### 36.6 `Topic-Row` published and relinked — 6 Oct (late): 741 of 741
+
+**Why it would not publish.** Figma listed it under *Invalid assets · Unused properties*: the set had an
+instance-swap property `Icon` (default `play-circle`) that no layer of the six variants used. It was already
+unused in the local component here, so the paste did not cause it; the icon in the row comes from the nested
+`LMS / Topic-Types Badge` (`Type`). 24 instances carried a value in it (`play-circle`, `book-open-01`,
+`help-circle`, `beaker-02`) that drew nothing. Nelson deleted the property and published. The set now has
+`Title`, `Show meta`, `State`, `Breakpoint`.
+
+**The pass.** Named version first (*Before relink: Topic-Row instances → DS library*), then the method of §36.5,
+with the comparison widened to the main component of every nested instance.
+
+| Page | Swapped | Differences | Local `LMS/Platform/…` left |
+|---|---:|---:|---:|
+| Course Detail — Components (`Docs and proofs`) | 24 (direct) | 0 | 0 |
+| Platform Pages V8 — WIP | 36 (nested) | 0 | 0 |
+| Platform Pages — Ready for Dev | 27 (nested) | 0 | 0 |
+| **Total** | **87** | **0** | **0** |
+
+With the 654 of §36.5, all 741 instances on the three pages resolve to the DS library. Not covered: pages outside
+these three (the DISCOVERY pages are left alone on purpose). Not checked by eye after this pass.
+
+**Seen in the same Publish dialog, not touched:** `Button` (*Unused properties*) and `Card_Event` (*Conflicting
+property values*) are also invalid assets in the DS.
+
+## 37. The platform pages against Open edX — what each element reads — 7 Oct
+
+**Asked (Nelson, 7 Oct):** make sure everything the platform screens show is compatible with edX — the Ready for
+Dev page (`4340:322`), the My Learning and Dashboard sources (`6374:16005`) and the Program Detail sources
+(`6443:18721`). Course Detail was mapped field by field in §1–§32; My Learning and the Dashboard never were — §33
+records how they were built, not what backs them. This section is that map, and what changed because of it.
+
+**Reading the marks.** ✓ a stock Open edX API returns it. ◐ it can be produced, under a condition that is named
+(a flag, content that has to be authored, one call per course, a second service). ✗ nothing in Open edX stores or
+returns it.
+
+### 37.1 Evidence
+
+**The dev environment (`devcourses.skillup.online`), public requests, no credentials** — status codes only: 401
+means the route exists and wants a login, 404 that it does not exist.
+
+| Route | Status | What it tells |
+|---|---|---|
+| `/api/learner_home/init` | 401 | the Learner Home API is there |
+| `/api/mobile/v4/users/{u}/course_enrollments/` | 401 | Mobile API **v4** (v5 → 404) |
+| `/api/mobile/v1/notifications/create-token/` | 401 | a route that first shipped in **Sumac** |
+| `/api/course_home/progress/…` · `/dates/…` · `/save_course_goal` | 401 | per-course progress, dates and weekly goal |
+| `/api/course_home/outline/…` · `/course_metadata/…` · `/api/courseware/course/…` | 200 | public payloads; `effort: "20 hours"` and `pacing` carry values; `course_goals` and `celebrations` are there as fields, empty for a visitor who is not enrolled |
+| `/api/notifications/count/` | 401 | the notifications app |
+| `/api/certificates/v0/certificates/{u}/` · `/api/grades/v1/courses/…` · `/api/bookmarks/v1/bookmarks/` | 401 | certificates, grades, bookmarks |
+| `/api/discussion/v1/courses/…` | 401 | the forum |
+| `/api/dashboard/v0/programs/{uuid}/progress_details/` | 401 | program progress (§35.1) |
+| `/api/dashboard/v0/programs/` (no id) · `/api/programs/v1/programs/` | 404 | no list of a learner's programs outside enterprise |
+
+Mobile v4 exists in Sumac and not in Redwood (`mobile_api/utils.py`), so the environment is **Sumac or later**.
+
+**The source**, `openedx/edx-platform` at `open-release/sumac.master` (and `course-discovery` at the same tag):
+`learner_home/serializers.py`, `mobile_api/users/serializers.py` and `views.py`, `course_home_api/{progress,outline,
+dates}/serializers.py`, `learner_dashboard/api/v0/{urls,views}.py`, `notifications/{urls,views,base_notification}.py`,
+`course_goals/models.py`, `student/models/user.py` (`UserCelebration`), `courseware/courses.py`
+(`get_course_assignments`), and Discovery's `api/serializers.py` and `course_metadata/models.py`.
+
+### 37.2 What Open edX gives a learner's home, call by call
+
+| Call | Returns | Does not return |
+|---|---|---|
+| **Learner Home** `GET /api/learner_home/init` — one call, every enrolment | course name, number, image; provider name; `startDate`, `endDate`, `isStarted`, `isArchived`; `homeUrl`, `resumeUrl`, `progressUrl`; `hasStarted`, `lastEnrolled`, `mode`; `gradeData.isPassing`; `certificate` (`isEarned`, `isDownloadable`, `certPreviewUrl`, `availableDate`); `programs.relatedPrograms[]` (title, type, `numberOfCourses`, url, provider, banner) | a completion percentage, the name of the next unit, level, effort, delivery mode |
+| **Mobile enrolments** `GET /api/mobile/v4/users/{u}/course_enrollments/` — one call | for the **primary** course (the latest one touched): `course_status.last_visited_unit_display_name`, `course_progress` (assignments completed of total), `course_assignments.future_assignments` and `past_assignments`; for the others, `course_progress` on request | content completion; anything on the primary course's level for the other courses |
+| **Progress** `GET /api/course_home/progress/{course}` — one call **per course** | `completion_summary` (complete · incomplete · locked), `course_grade.percent`, `grading_policy`, `certificate_data` | — |
+| **Dates** `GET /api/course_home/dates/{course}` — one call **per course** | `course_date_blocks[]`: assignment deadlines with `title`, `date`, `assignment_type`, `complete`, `link`; ORA steps as *"{title} (Peer Assessment)"* | dates across courses — no route does that in Sumac, and none was found on `master` either |
+| **Courses** `GET /api/courses/v1/courses/{course}` | `effort`, `pacing`, `start`, `end`, `short_description`, media | level |
+| **Notifications** `GET /api/notifications/count/` | `count`, and `count_by_app_name` for `discussion`, `updates`, `grading`; needs the notifications flag on | a count of mentions — there is no such notification type |
+| **Program progress** `GET /api/dashboard/v0/programs/{uuid}/progress_details/` — one call per program | `program_data`, `course_data` as **completed · in_progress · not_started**, `certificate_data` | a percentage, weeks, lessons, a cohort |
+| **Discovery** `GET /api/v1/programs/{uuid}/` | `title`, `subtitle`, `type`, `overview`, `faq[]`, `staff[]`, `expected_learning_items`, `weeks_to_complete`, `total_hours_of_effort`, `courses[]` with their runs (`start`, `end`, `pacing_type`, `level_type`) | a program start or end, the counts under *What's included*, *What You Will Create*, *Exercises to Explore* |
+
+**What Open edX stores and does not return.** The streak — `UserCelebration.streak_length`, `longest_ever_streak`,
+`last_day_of_streak` — reaches the browser only as `streak_length_to_celebrate`, on the day a streak hits 3. Days
+active per course (`UserActivity`) reach nobody (§17.2, open question 9). **What it does not store at all:**
+minutes learned, XP or any ranking, attendance, a mentor's calendar, a subscription tier.
+
+### 37.3 Decisions (Nelson, 7 Oct)
+
+| Question | Decision |
+|---|---|
+| Dashboard — *Today at a glance* and the streak have no source | **Replace the glance stats with real totals; the streak goes** |
+| *Due this week* — deadlines exist per course only, none authored today, the live session has no source | **Keep it, assignments only** |
+| Top bar — Calendar, Discussion, Services and the two counters | **Leave as it is**; recorded as open (§37.6) |
+| Program page — content that only the marketing backend has | **Keep it, waiting for the vendor** (§35.1's question) |
+
+### 37.4 Element by element
+
+**Dashboard**
+
+| Element | Source | |
+|---|---|---|
+| Greeting, the learner's name | `/api/user/v1/accounts/{u}` | ✓ |
+| Glance — *Courses in progress 3 · of 5 enrolled* | Learner Home: enrolments where `hasStarted` and no certificate | ✓ |
+| Glance — *Courses completed 1* | Learner Home: `certificate.isEarned` (or `gradeData.isPassing`) | ✓ |
+| Glance — *Certificates 1 · ready to download* | Learner Home: `certificate.isDownloadable` | ✓ |
+| Glance — *Programs 2 · 1 in progress* | the distinct `relatedPrograms`; *in progress* from `progress_details`, one call per program | ◐ |
+| ~~Today's lessons · Live attendance · Week time learned · XP this week · Top 8% in cohort~~ | not stored | ✗ removed |
+| ~~Streak card — 12 days, the week, *13 hours left in the day*~~ | stored, not returned | ✗ removed |
+| *Due this week* — *Persona research draft (Peer Assessment)*, *Assignment 02 · Audience segmentation* | Dates API of each enrolled course: `title`, `date`, `assignment_type`; the course name from the enrolment | ◐ one call per course; empty until content carries due dates (§14.2) |
+| ~~*Live Q&A … Attendance required*~~ | VILT is out of the MVP; no attendance anywhere | ✗ removed |
+| *Pick up where you left off* — title, **Resume** | Learner Home: `courseName`, `resumeUrl` | ✓ |
+| … the percentage | Progress API `completion_summary` | ◐ one call per course |
+| … the delivery badge | `pacing` → *Flexible Learning*. *Flexible + Live* and *Live Sessions* have no marker (§18.1) | ✓ as *Flexible Learning* only |
+| Jump · *Discussion — 12 unread updates in your courses* | `count_by_app_name.discussion` | ◐ notifications flag |
+| Jump · *Certificates — 3 in progress · 1 to download* | Learner Home | ✓ |
+| Jump · *Profile — Your details · Account settings* | the Profile and Account pages | ✓ |
+| ~~Jump · *Book a mentor — Mara has Thursday open*~~ | no mentor assignment, no calendar (open questions 1 and 13) | ✗ removed |
+
+**My Learning**
+
+| Element | Source | |
+|---|---|---|
+| Stats — *In progress 3 · Completed 1 · Certificates 1* | Learner Home, as the glance card | ✓ |
+| ~~*Daily goals completed · Items completed · Minutes learned*~~ | not stored (and the labels did not match their values) | ✗ replaced |
+| Tabs — *Programs 2 · Courses 5*, search, grid / list | counts from Learner Home; the search and the toggle are the page's own | ✓ |
+| Course card — title, provider, *COURSE* | Learner Home | ✓ |
+| … *Beginner · Intermediate · Advanced* | Discovery `level_type` (deployed; whether it is filled in is the vendor's to confirm, §18) | ◐ |
+| … delivery badge | `pacing` → *Flexible Learning* | ✓ |
+| … *5% complete*, the bar | Progress API | ◐ one call per course |
+| … *10 hours total* | Courses API `effort` | ✓ |
+| ~~… *9 min left*~~ | no field; would need every block's `effort_time` and the learner's completion | ✗ replaced by total effort |
+| … *Starts Apr 28* · *Not started* | `startDate`, `hasStarted` | ✓ |
+| … *UP NEXT* and the unit's name | Mobile v4 `last_visited_unit_display_name` for the primary course; the others need their own call | ◐ |
+| … the topic-type badge | derived from the block (§12.5) | ◐ |
+| … *Complete* · *CERTIFICATE Issued 12 Sep 2026* · **Review** | Learner Home `certificate`; the date from the Certificates API | ✓ |
+| *Browse catalog* | Learner Home `platformSettings.courseSearchUrl` | ✓ |
+| Program card — title, *Program · 7 courses* | `relatedPrograms`: `title`, `numberOfCourses` | ✓ |
+| … *1 of 7 courses complete*, *14%* | `progress_details`: completed ÷ all courses — the same rule as the Program page (§35.3) | ✓ one call per program |
+| … *Up next · Course 2 · …*, **Continue** | the first course in `in_progress` | ✓ |
+| … *Not started · Starts May 12* | the earliest start among the program's course runs | ◐ |
+| ~~… *Cohort Apr 2026* · *Week 4/32* · *Lessons 10/64* · *6 courses + capstone* · *27%*~~ | no cohort, no weeks, no lesson totals; the capstone is the seventh course | ✗ removed or corrected |
+
+**Program Detail** (§35 stands; one change). The seven course rows read *Flexible + Live* under a header that
+reads *Flexible Learning* — now *Flexible Learning*, the only value `pacing` can give. **Kept, by decision, and not
+Open edX:** the counts under *What's included*, *What You Will Create*, *Exercises to Explore* and the eight-part
+overview come from the marketing backend's payload; Discovery has one `overview`, `faq`, `staff` and
+`expected_learning_items`. Program dates are derived from the course runs.
+
+**Course Detail** (Ready for Dev, §1–§32). Two pieces of sample content were reworded (last row; Nelson, 7 Oct).
+What on those screens is still ◐ or ✗ was already in the register of §25:
+
+| On the screens | Depends on |
+|---|---|
+| The week strip in the Weekly goal card — *3 of 3 days this week*, *Last week: 2 of 3* | open question 9: days active are not returned. The fallback of §17.3 is the card without the strip |
+| Every duration — *3h 20m*, *18 min*, *~ 8h 40m left* | open question 2: nobody authors `effort_time`. *~ 14 hours* is `effort` and is ✓ |
+| *David Chen · your mentor · typically responds within 1 day* | open question 1; a response time is not stored |
+| *Beginner*, the Course team card | Discovery (`level_type`, `CourseRun.staff`), question 7 — deployed, content to confirm |
+| *Complete "Module 3 · Checkpoint" to unlock* | open question 3: the outline does not name the prerequisite |
+| ~~A *Live Session* topic and an update that mentions *last week's live Q&A*~~ | **reworded 7 Oct.** *Designing the prototype* is a **Video** (`Type=Video` on the `LMS / Topic-Types Badge`, a type the blocks can tell, §12.5). The update reads *The control chart worksheet in Handouts has a corrected example. The checkpoint at the end of Module 3 counts towards your grade and unlocks Module 4.* — nothing opens on a date in a self-paced course (§18.2), so *Module 3 is open* went too |
+| The Weekly goal card itself | open question 8: switched off on every SkillUp course seen so far (§17.1). A request without a login cannot tell — the field is `false` for anyone not enrolled |
+
+### 37.5 What changed in Figma — 7 Oct
+
+Named version first: *Before edX compatibility pass: My Learning, Dashboard and Program screens*. The same edit ran
+on each source screen and on its handoff copy — 22 screens — and every value below was read back.
+
+- **Dashboard × 6.** `Glance-Card`: title *Your learning at a glance*, the four stats of §37.4. `Streak-Card`
+  removed; the glance card fills the row. `Due-Item` *Live Q&A* removed; the other two retitled as the Dates API
+  titles them. `Jump-Tile` *Book a mentor* removed (three tiles), the three descriptions rewritten. Delivery badges
+  → *Flexible Learning*. Desktop: the Due column is 440 (was 460) — with the wider badge, the longest course row
+  touched its progress bar.
+- **My Learning · Courses × 8.** The three header `Stat`s. `LMS / Course Card`: `Time-Left` → total effort on the
+  three courses in progress; *Intro to Product Analytics* is now the **completed** course (full bar,
+  *CERTIFICATE · Issued 12 Sep 2026*, **Review**) so that the totals agree with the list: 3 in progress, 1 complete,
+  1 not started. Delivery badges → *Flexible Learning* (two were *Flexible Learning* variants with the label typed
+  over).
+- **My Learning · Programs × 8.** The header `Stat`s. `Program-Card`: `Show cohort` off, `Week` and `Lessons`
+  hidden, eyebrow *Program · 7 courses* / *· 5 courses*, `Courses` *1 of 7 courses complete* / *0 of 5…*, 27 % →
+  **14 %** (bar at its 10 % step, library request 15), *Up next* names the course. Delivery badges.
+- **Program Detail · Courses.** Nine delivery badges read *Flexible Learning*.
+- **Handoff** (`6408:35150`, still *In progress*): each of the 11 cards has a 7 Oct changelog entry; four screen
+  descriptions rewritten (they still described the streak, four shortcuts, a hidden badge and the cohort). No
+  overlaps on the page.
+
+- **Course Detail · Course tab × 7** (Technical, the three `★ ENTRY` breakpoints, handoff cards 01–03), after
+  Nelson's go-ahead and a second named version (*Before Course Detail sample fix…*): the topic badge and the
+  course update of §37.4. Row and screen sizes unchanged; no text on those screens mentions a live session any
+  more; cards 01–03 carry a 7 Oct entry and are still *Ready for DEV*.
+
+**Not changed, on purpose:** the top bar; the Program page's marketing content; everything else on Course Detail.
+
+### 37.6 Open after this pass
+
+| # | What | Whose |
+|---|---|---|
+| 1 | **Top bar.** *My Learning 4* and *Calendar 3* have no defined source; *Learner · Pro* has none either (no tier in Open edX); *Calendar* and *Discussion* have no global page behind them (dates and forums are per course); *Services* is not Open edX | Nelson |
+| 2 | **Program page source** — Discovery plus `progress_details`, or the marketing backend. Until answered, *What's included*, *What You Will Create* and *Exercises to Explore* are not guaranteed | Vendor |
+| 3 | **A percentage per course costs a call per course** (Progress API). A learner with 12 enrolments is 13 requests for My Learning. Worth one vendor question: a completion figure on Learner Home | Vendor |
+| 4 | **The DS components still carry the old defaults** — `Glance-Card` (*Today at a glance*, XP, attendance), `Streak-Card`, `Program-Card` (cohort, week, lessons), `Due-Item`, `Jump-Tile`. The screens override them; the library does not say so. And `Glance-Card` is a 2 × 2 grid that an instance cannot change: across a 1 200 row it wants four in a line | DS |
+| 5 | **The prototype** (`/platform/*`) still shows the earlier data, marked *SAMPLE* | prototype session |
+| 6 | `PRODUCT.md` says there is *no API today for due dates*. More exactly: there is one per course and none across courses, and no SkillUp content has due dates yet | Nelson |
+| 7 | Tablet, mobile and a handoff frame for the Program page (§35.6) | — |

@@ -2,9 +2,245 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-09-30 · My Learning and Dashboard — ready for dev
+## 2026-10-07 · Platform pages against Open edX — only what an API backs
 
-- New frame `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) + *Ready for dev* banner, right of the
+Named version first: *Before edX compatibility pass: My Learning, Dashboard and Program screens*.
+
+- **Evidence.** The dev environment answers on Learner Home, Mobile API v4, progress, dates, weekly goal,
+  notifications, certificates and program progress (status codes, no credentials) — Sumac or later. Fields read
+  from the Sumac source. Metadata map §37.1–37.2.
+- **Decisions (Nelson).** Dashboard glance → real totals, streak out; *Due this week* → assignments only; top bar
+  left as it is; the Program page's marketing content stays, waiting for the vendor.
+- **22 screens changed** (11 sources and their handoff copies): glance totals, no streak card, no live-session due
+  item, no *Book a mentor*; My Learning stats *In progress · Completed · Certificates*; total effort instead of
+  time left; one completed course; program cards without cohort, week and lesson counters and at 14 % (courses
+  complete ÷ courses); every delivery badge *Flexible Learning*. Program Detail: nine delivery badges. Metadata
+  map §37.4–37.5.
+- **Handoff** *My Learning & Dashboard*: a 7 Oct entry on the 11 cards, four descriptions rewritten. Still
+  *In progress*.
+- **Correction.** No route returns the dates of all of a learner's courses — not in Sumac and none found on
+  `master`. (While asking, I had said later releases have one.)
+- **Course Detail, Course tab** (7 screens, on Nelson's word): the *Live Session* topic is a *Video*, and the
+  course update no longer mentions a live Q&A or a module opening. Cards 01–03 carry a 7 Oct entry.
+- **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
+  the DS components' old defaults, the prototype. Metadata map §37.6.
+
+## 2026-10-07 · After the publish: old tab badges gone on Video, Course Card in the screens
+
+- DS published and the update accepted in the product file (Nelson). Platform Ready for Dev: `LMS / Course Card`
+  instances read 384 × 358 (desktop grid), 1200 × 152 (list), 438 × 350 (tablet), 327 × 342 and 366 (mobile);
+  nothing overflows its frame.
+- **Video, the 12 old `Badge` in the tabs.** The update did not reach them: the file holds four copies of
+  `_Tab button base · Current=True, Size=sm, Type=Underline` under the same key, one current (Badge v2) and three
+  old ones, and those 12 tabs were pinned to the old three. After a named version (*Before swap: old Badge in
+  tabs → Badge v2 (Video)*) they were swapped to the current copy. Read back: 212 `Badge v2`, 0 `Badge`; labels
+  and counts as before (*Notes 2*, *Downloads 4*); tab sizes 81 × 32 and 123 × 32 as before. Two repairs after
+  the swap: the Downloads count had fallen back to 2, and four badges kept a stale fixed width (overrides reset).
+- Still pinned to old copies on the Video page: 12 `Current=False` tab buttons (no badge involved).
+- Prototype: `nvjeronimo/skillup-lms-prototype` PR 63, the course card on `title-large`, 384 × 358.
+
+## 2026-10-07 · DS: the five pending decisions applied (not published)
+
+Named version first: *Before handoff audit 3: Course Card text styles, badge illustration tokens, shadows, whites,
+Glance-Card gap*.
+
+- **`LMS / Course Card`:** the 12 unstyled texts on DS styles (`title-large/Semibold` and `/Bold`,
+  `body-large/Semibold`, `body-medium/Regular` and `/Medium`, `body-small/Semibold`). Grid 380 × 342 → 380 × 358,
+  List 1200 × 113 → 1200 × 120, as measured in the dry run. The prototype card and the screens still have the old
+  height until the library update is taken and the prototype follows.
+- **`LMS / Course Type Badge` illustration:** Program stack on `icon/primary` at 30, 60 and 100 %; Course lines on
+  `icon/on-primary`. **Not a clean result:** the first write lost the opacity steps and flattened the fills, the
+  original fills per rectangle could not be read back (REST token expired), and the Course lines now all read
+  100 % although 70 and 50 were set. The Program cards overlap, so the translucent ones show through each other.
+  To look at in the app; the named version above holds the original.
+- **Shadows:** `Course Complete Modal` → `Shadows/shadow-2xl`, `Course Certificate` → `Shadows/shadow-3xl`,
+  `Drag and Drop · Item` → `Elevation/level3`, `Zooming Image` → `Elevation/level4`.
+- **`Lesson Block`:** `zoom` and `pager` on `bg/page`.
+- **`Glance-Card`:** the stats grid already had its row and column gaps on a 24 token; the 28 was a leftover
+  `itemSpacing` the grid does not use. Bound to `Spacing/3xl`; card 760 × 188 and columns unchanged.
+- Still raw on these components: `Course Type Badge` labels (SemiBold 12, auto line height) and icon radii 1.33.
+
+## 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured
+
+- `Button` (`21851:7608`, Buttons page): the boolean `Tooltip` drove no layer and no tooltip layer exists; property
+  deleted after a named version. Properties now `Type`, `Hierarchy`, `State`. Not published.
+- **The old `Badge` on the Video tabs is not a DS defect.** `_Tab button base` (same key the product file uses)
+  already holds `Badge v2` (Soft, Gray and Brand, sm and md) and `Horizontal tabs` reads `CURRENT`. The 12 V1
+  badges are instances that have not taken the library update in the product file.
+- **Course Card, dry run on temporary clones (removed):** giving the six unstyled texts the nearest DS style
+  (`title-large` for the title and initials, `body-large/Semibold` for the percentage, `body-medium` for time
+  left and the up-next title, `body-small/Semibold` for *UP NEXT*) takes Grid from 380 × 342 to 380 × 358 and List
+  from 1200 × 113 to 1200 × 120. The up-next title goes from 15 to 14 px and *UP NEXT* from 11 to 12 px.
+
+## 2026-10-06 · Video page: the last local components swapped to the DS
+
+- Nelson confirmed the three Dark note editor modals render correctly in the app.
+- Named version first (*Before swap: local Topic Footer Nav edge cases → DS*). The four local
+  `LMS / Topic Footer Nav` on the edge-cases board (*B. Footer Nav edges*) are now the DS footer (the set named
+  `LMS`), with the position and title carried over and the nested button on the DS milestone: first topic
+  (Previous disabled), next disabled, module completed, course completed. Sizes unchanged for the first two;
+  the two end-of-module/course footers go from 64 to 62 high.
+- **Copy changed by taking the DS variants:** *MODULE COMPLETE · Next module* → *MODULE COMPLETED · Go to next
+  Module*; *COURSE COMPLETE · Next course* → *COURSE COMPLETED · Go to next Course*. The end buttons are now the
+  DS ones (sm, 36 high) instead of the local md Primary (40).
+- The only local component left on the Video page is `_iPhone mockup home` (7, device chrome).
+- **Not fixable on the page:** the 12 old `Badge` (V1) are inside the DS `_Tab button base` (the count on
+  Horizontal tabs). It is a DS change: move that count to `Badge v2`.
+
+## 2026-10-06 · Note editor modals on the Video page are DS instances
+
+- DS published by Nelson. Named version first (*Before swap: note editor modals → LMS / Note Editor*), then the
+  six modals replaced by instances of `LMS / Note Editor`, text carried over through `Title`, `Anchor`, `Quote` and
+  the nested note and tag texts. Light: 560 × 592, 560 × 584, 375 × 630, same size and same text as before.
+  Dark: 558 → 592, 550 → 584, and the mobile one from a centred 343 × 560 modal to the 375 × 630 bottom sheet
+  (its screen frame now lays out like the Light one: no padding, sheet at the bottom). No text lost.
+- Screen frames: desktop Dark backdrop bound to `bg/overlay` (was raw, same 50 %); unused 10 px gap set to 0;
+  tablet padding 32 bound to `Spacing/5xl`. The Video screens now read 0 raw values outside instances.
+- Dark: `SKO Dark` set explicitly on the three Dark instances. Read back, root `bg/page` = #0e1a1f and title
+  `text/default` = #eaf1f4. **Not confirmed by eye:** the server renders disagreed with those values (first a
+  fully light modal, then dark fields on a root that did not paint). To check in the Figma app.
+
+## 2026-10-06 · `LMS / Note Editor` built in the DS (not published yet)
+
+- New component set `LMS / Note Editor` (`22071:6813`, key `e39dc2849f…`) on `❖ LMS COMPONENTS ✅`, section
+  *3 · Content & Notes*, after a named version. `Breakpoint`: Desktop and Tablet are the 560 modal, Mobile is the
+  bottom sheet (375, grabber, footer padded 34 for the safe area: the one raw value, on purpose). Text properties
+  `Title`, `Anchor`, `Quote`. Built from DS `Textarea input field` (Default and Tags), `Buttons/Button` md and the
+  `x-close` icon; every colour, spacing and radius on a DS variable (padding and gaps on `Spacing/2xl` and `3xl`,
+  which give 24/20/16 across the three modes), shadow on `Shadows/shadow-2xl`.
+- Modelled on the Light screens of the Video page, which already used the DS Textarea. Sizes read back: Desktop
+  560 × 592 and Tablet 560 × 584, the same as the Light modals `3823:16589` and `3822:39496`; Mobile 375 × 610
+  against 630 (the sample quote is one line shorter).
+- The hand-drawn copies are the three in the Dark frame (`3976:19847`, `3976:19880`, `3976:19913`; the dark mobile
+  is a centred modal, the light one a bottom sheet). Their quote was Inter Italic with no style; the component
+  uses `body-medium/Regular`, as the Light screens do.
+- Next, after the library is published: swap the six modals on the Video page to instances and bind the desktop
+  backdrop to `bg/overlay`.
+
+## 2026-10-06 · Handoff audit, third pass (after the DS publish)
+
+- **DS, off-scale values snapped down to the nearest token** (named version first, not published): 24 spacings
+  (10 → 8, 14 → 12, 18 → 16, 22 → 20) in `Lesson Block`, `Zooming Image`, `Drag and Drop · Item`; 12 skeleton-line
+  radii 3 → 2 in `Lesson Block`; the two `Glance-Card` circles on `Radius/fixed-full`. These move things by 2 px.
+- **Left for a decision:** `Course Card` 12 texts with no style (15, 11, 14, 16, 20 px on auto line height:
+  applying a style changes the card height the prototype matches); `Course Type Badge` illustration (blues
+  #4078d9 / #80a1e5 / #b2c7f2 with no token, radius 1.33); four shadows that match no effect style; white fills
+  that three tokens share (`bg/page`, `bg/fixed`, `bg/on-media`); `Glance-Card` stats gap 28 (grid).
+- **Why `Button` is an invalid asset:** boolean `Tooltip` is used by no layer (set `21851:7608`, page Buttons).
+  `Card_Event` was not found as a component set under that exact name.
+- `03-design-system/ds-components-used-icp-lms.md`: new section 1b (the platform components, now DS), section 7 rewritten.
+- Trap: the Desktop Bridge plugin reported 87 Topic-Row instances as local after the relink; `use_figma` on the same
+  pages reads 87 remote, 0 local. Counts of remote/local come from `use_figma` only.
+
+## 2026-10-06 · Handoff audit, second pass (Nelson: yes to all four)
+
+- **Video:** 28 values bound (8 × `Spacing/4xl`, 14 × `Radius/fixed-md`, 6 × `Radius/fixed-sm`). Left, all in the
+  hand-drawn note-editor modal: gap 10 (off-scale), tablet padding 32 and mobile padding 16 (no single token),
+  tag radius 999, safe-area 34, three texts in Inter Italic 14/20, five modal shadows without an effect style.
+  It needs a DS component, not more bindings.
+- **Reading:** list spacings rounded as decided, 9 → 8 (`Spacing/md`, 14) and 28 → 24 (4), the 16 gap on
+  `Spacing/xl`. 0 raw values left in the screens. The mobile list indent landed on `Spacing/5xl` (24 in Mobile)
+  while desktop is `Spacing/3xl`: same pixels, two tokens — to settle.
+- **DS, `❖ LMS COMPONENTS ✅`** (named version first): 199 spacings and 56 radii bound to the token with the same
+  value in the node's mode, 19 components. 19 descriptions written (drafts, to review). Left: off-scale spacings
+  10/14/18/22 (Lesson Block, Zooming Image, Drag and Drop · Item), radii 3, 1.33, 1.5 and mixed, 16 texts with no
+  matching style (Course Card 12, Course Type Badge 2, Footnote 2), 10 raw fills, 4 shadows without a style.
+  Not published.
+- **Prototype critique, local `main`:** see the session report; main findings are two learner identities and two
+  My Learning pages, three equal primary buttons in one view, and the topic page opening scrolled 355 px.
+
+## 2026-10-06 · Handoff audit of the Ready for Dev pages (first pass)
+
+- Measured outside instances, screens only (children of `screen-wrap`): Platform 0 raw values; Quizzes 21 radii;
+  Reading 56 spacings; Video 66 (note-editor modal drawn by hand: 27 spacings, 29 radii, 3 texts without style,
+  6 effects without style, 1 raw backdrop fill). All colour and spacing bindings resolve to the DS library
+  (`🎨 SKO-Semantics`, `3. Responsive 📐`); no orphan collection.
+- Bound, after a named version (*Before handoff audit: bind raw spacing and radius on Ready for Dev screens*):
+  Quizzes 21 × `Radius/fixed-md`; Reading 37 spacings to the token with the same value in the node's mode.
+  Left on Reading: 14 × 9 px and 4 × 28 px (no token), 1 × 16 px (two tokens match on mobile). Video not touched.
+- Prototype `main` (`12b1109`): 114 colour tokens × 6 modes compared with the DS, 112 identical; the other two are
+  colour-plus-opacity values the plugin API does not resolve (`bg/overlay-soft` reads 20 % on both sides,
+  `bg/on-media-soft` not confirmed).
+
+## 2026-10-06 · Local components → the DS
+
+- **Done (late):** `Topic-Row` would not publish because of an unused `Icon` instance-swap property (Figma:
+  *Invalid assets · Unused properties*). Nelson deleted it and published; its 87 instances were swapped with 0
+  differences. All 741 instances on the three pages now resolve to the DS; no local `LMS/Platform/…` main is left
+  there. `Button` and `Card_Event` are also invalid assets in the DS, untouched. Metadata map §36.6.
+- **Relink (night):** DS published; 654 instances swapped to the DS components by key on the three pages, nine
+  nested-badge overrides repaired. `Course-Detail/Topic-Row` is still unpublished in the DS: its 87 instances wait.
+  Tokens inside the 35 are all bound to the DS's own variables. Metadata map §36.5.
+- **After the paste (evening):** the 35 are on the DS page (96 variants, all variables and styles local to the DS),
+  not published yet. The paste did not carry the link: new keys, and the 1 242 instances in the ICP file still
+  resolve to the old, deleted components. Next: Nelson deletes the older copy and publishes; then the instances
+  are swapped to the DS components by key. Metadata map §36.4.
+- The 35 local components renamed to the 14 Sep convention (`LMS/Platform/<Group>/<Component>`) and gathered in one
+  section, ready to be cut and pasted into the new DS page `❖ LMS PLATFORM COMPONENTS` (`22011:941`). Baseline:
+  1 394 instances on the two platform pages must resolve to the library afterwards. Metadata map §36.
+- Variant property `Type` → `Kind` on the four sets that had it (`Course-Header`, `Sidebar-Card`,
+  `Grade-Summary-Row`, `Score-Row`), before the move. Instances unchanged, file total still 1 648.
+- The page intro rewritten on DS styles and tokens (35 components, six groups, naming, five rules) and placed
+  inside the section to move. Metadata map §36.3.
+- **Blocker for a clean move:** the DS page `❖ LMS COMPONENTS ✅` already holds a pasted *copy* of the 35
+  (different keys, unpublished, still `Type`, old intro). To delete before the cut, or the DS gets every name
+  twice. Metadata map §36.2.
+- Correction: the instance undercount (1 213) was not unloaded pages alone — `getInstancesAsync()` is short on its
+  first pass. figma-api-traps 39–40. Library request 18 (Course Card *UP NEXT* at 11 px, no text style).
+
+## 2026-10-05 · Program Page — the course list is a list of expandable course rows
+
+- Nelson's decision: list only, the module the learner left off in visible at a glance, each course expandable to
+  its modules. New local `LMS / Program Detail / Course row` (`6538:6143`): DS Course Card · List + a modules bar
+  (*You left off in Module 2 of 4*, Show / Hide modules) + a slot of `Module row`. The Courses tab (`6443:18722`)
+  uses it; no sidebar on that tab. The three option screens and `Course panel` removed. Metadata map §35.6.
+
+## 2026-10-04 · Program Page — three options for the course list; progress bars really fixed
+
+- Courses tab: three options with the DS `LMS / Course Card` instead of `Module row` — A grid (`6526:20655`),
+  B list (`6527:22768`), C list with a numbered sequence (`6527:29075`). Awaiting Nelson's choice. Metadata map §35.5.
+- Correction: the Course Card progress fills on My Learning had not changed on 30 Sep (a nested `resize()` is
+  ignored silently). Now set by fill + track padding on sources and handoff, verified by read-back.
+  figma-api-traps 38.
+
+## 2026-10-01 · Badges — the old Badge V1 replaced
+
+- 28 `Badge-V1-to-remove` instances (Weekly goal *What counts as a day* table, handoff and Technical) are now
+  `Badge v2` · Soft. No `_Badge base` is placed on its own anywhere in the file. Metadata map §34.8.
+
+## 2026-10-01 · Course header — hatched circle
+
+- `Course header` (courses and programs, all breakpoints): the big decorative circle is a diagonal hatch of 1px
+  `border/primary` lines; the small one stays solid. Tablet and Mobile circles repositioned so the effect shows.
+  Metadata map §34.7.
+
+## 2026-10-01 · Program Page — the Courses tab, desktop (in progress)
+
+- What the data allows: programs are enabled on dev and course-discovery is deployed (closes open question 7);
+  Credentials is not. The current platform's program payload (45 fields) saved as evidence. Of the eight V8 tabs,
+  four are backed by data: Courses, Certificates, FAQs, About.
+- `Program Detail · Courses tab · Desktop` (`6443:18722`): `Course header` · Program, seven courses on `Module row`
+  with a local `LMS / Program Detail / Course panel` in the open row, three sidebar cards. Metadata map §35.
+- Certificates (`6449:21234`), FAQs (`6448:20247`) and About (`6448:24409`), desktop: `Certificate card` per course
+  with certificate data; DS `_FAQ item` accordions with the real FAQ and overview copy. The program certificate is an
+  open vendor question. Library request 17.
+
+## 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card
+
+- `LMS / Platform / Topbar` is light (`bg/page`, `border/subtle` rule); Current item on `bg/primary-soft`. All
+  platform and Course Detail screens follow.
+- `Course header` · Tablet and Mobile show the Delivery and Difficulty badges; the mobile Dashboard shows the
+  delivery badge through a local `LMS / Platform / Resume row` (the DS row cannot fit it).
+- Mobile Mentorship Q&A conversation: header, messages and composer in one card, from Nelson's reference.
+- Handoff cards: the *Ready for DEV* Status Tag is `Status/Done` on the 17 Course Detail cards (was
+  `Status/In progress`). My Learning & Dashboard is **WIP**: banner *WIP*, its 11 cards `Status/In progress`.
+- `Topbar` · Compact gains the learner's Avatar — profile access on tablet and mobile.
+- Components page: ten named sections in three columns, no overlaps (three clashes fixed).
+  Metadata map §34; library request 16 updated.
+
+## 2026-09-30 · My Learning and Dashboard — handoff frame (in progress)
+
+- New frame `Platform Pages - My Learning & Dashboard - Light` (`6408:35150`) + banner (*WIP* since 1 Oct), right of the
   Certificates handoff: 11 screens in three rows — Dashboard (desktop · tablet · mobile), Courses and Programs
   (grid and list on desktop, tablet, mobile). Each card links to its source screen. Metadata map §33.
 
