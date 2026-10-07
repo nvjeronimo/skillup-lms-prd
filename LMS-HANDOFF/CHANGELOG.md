@@ -16,6 +16,11 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   The default should be a number.
 - Still two copies of `Badge v2` and of `_Tab button base` in use on Video and on Platform Ready for Dev
   (five of the tab base on Platform): the update is in for the wrappers, not for every copy.
+- **The other pages, 8 Oct:** Topic Content Types Discovery 0 of 108, Overlay Panels 0 of 33, Completion +
+  Certificate has no badge. Platform V8 WIP had 4 of 498, the same tab counts on two video screens under *Core
+  Learning Journey*; restored to *Notes 2* and *Downloads 4* after a named version (*Before restoring tab counts
+  on Platform V8 WIP*). Read back: 0 of 498. More than one copy in use on WIP: six of `_Tab button base`, two
+  each of `Badge v2` and of the Topic-Types, Provider-Partner, Delivery Mode, Difficulty and Course Type badges.
 
 ## 2026-10-07 · The badge defect is closed: no badge reads *Label* on any working page
 
