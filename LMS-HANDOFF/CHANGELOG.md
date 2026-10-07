@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · DS: the five pending decisions applied (not published)
+
+Named version first: *Before handoff audit 3: Course Card text styles, badge illustration tokens, shadows, whites,
+Glance-Card gap*.
+
+- **`LMS / Course Card`:** the 12 unstyled texts on DS styles (`title-large/Semibold` and `/Bold`,
+  `body-large/Semibold`, `body-medium/Regular` and `/Medium`, `body-small/Semibold`). Grid 380 × 342 → 380 × 358,
+  List 1200 × 113 → 1200 × 120, as measured in the dry run. The prototype card and the screens still have the old
+  height until the library update is taken and the prototype follows.
+- **`LMS / Course Type Badge` illustration:** Program stack on `icon/primary` at 30, 60 and 100 %; Course lines on
+  `icon/on-primary`. **Not a clean result:** the first write lost the opacity steps and flattened the fills, the
+  original fills per rectangle could not be read back (REST token expired), and the Course lines now all read
+  100 % although 70 and 50 were set. The Program cards overlap, so the translucent ones show through each other.
+  To look at in the app; the named version above holds the original.
+- **Shadows:** `Course Complete Modal` → `Shadows/shadow-2xl`, `Course Certificate` → `Shadows/shadow-3xl`,
+  `Drag and Drop · Item` → `Elevation/level3`, `Zooming Image` → `Elevation/level4`.
+- **`Lesson Block`:** `zoom` and `pager` on `bg/page`.
+- **`Glance-Card`:** the stats grid already had its row and column gaps on a 24 token; the 28 was a leftover
+  `itemSpacing` the grid does not use. Bound to `Spacing/3xl`; card 760 × 188 and columns unchanged.
+- Still raw on these components: `Course Type Badge` labels (SemiBold 12, auto line height) and icon radii 1.33.
+
 ## 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured
 
 - `Button` (`21851:7608`, Buttons page): the boolean `Tooltip` drove no layer and no tooltip layer exists; property
