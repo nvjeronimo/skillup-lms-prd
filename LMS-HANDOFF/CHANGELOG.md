@@ -2,6 +2,36 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · DS: delivery, difficulty and topic-type badges repaired (not published)
+
+Named version first: *Before badge repair: Delivery Mode, Difficulty and Topic-Types badges*. On Nelson's go-ahead.
+
+- The 20 variants of `LMS / Delivery Mode Badge`, `LMS / Difficulty Badge` and `LMS / Topic-Types Badge` have their
+  label and leading icon again, and the topic-type badge its `text/subtle` label and hidden icon container fill.
+  Read back and checked by eye. Values from the 23 Sep changelog, the prototype and one instance that had not
+  updated; *Peer review* and the *Lesson* icon (`layout-alt-01`) are inferred. Library request 21.
+- **Needs a DS publish**, then the update accepted in the product file.
+- **Not repaired:** 94 more nested badges read *Label* in 15 other DS sets (Quiz · Entry Header, Date-Row,
+  Thread-Row, Message, Program-Card, Provider-Partner Badge…), and the screens' own badge texts are lost too.
+  Library request 21 has the list.
+
+## 2026-10-07 · Program Page — tablet and mobile; a DS badge defect found on the way
+
+Named version first: *Before Program Page tablet and mobile*.
+
+- **Eight screens** in *Program Detail — sources*: Courses, Certificates, FAQs and About at 960 and at 375, on
+  the Course Detail shell of each breakpoint. Content parity with desktop read back; 0 raw values, 0 unstyled
+  texts, 0 generic names. Metadata map §35.7.
+- **Header:** `Course-Header` has no Program variant below desktop, so the screens use the Course variant with
+  overrides and `SKO Dark` on the instance. Library request 19.
+- **New local component** `LMS/Platform/Program-Detail/Course-Row-Compact` (`6665:4206`): the course row for
+  tablet and mobile — Grid card, a modules bar that wraps, same properties as the DS row. Library request 20.
+- **⚠︎ DS defect, not fixed here:** since today's library update every delivery, difficulty and topic-type badge
+  reads *Label* with no icon — 124 of 124 on Platform Ready for Dev, 182 of 192 on V8 WIP, 72, 242 and 48 on
+  Video, Quizzes and Reading. The three wrapper sets lost their text and icon when `Badge v2` was restructured.
+  Library request 21.
+- **Not done:** the Program Page handoff frame.
+
 ## 2026-10-07 · Platform pages against Open edX — only what an API backs
 
 Named version first: *Before edX compatibility pass: My Learning, Dashboard and Program screens*.
@@ -24,6 +54,25 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
   course update no longer mentions a live Q&A or a module opening. Cards 01–03 carry a 7 Oct entry.
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
+
+## 2026-10-07 · Prototype critique of the remaining screens; note editor and three rule fixes
+
+- **Measured** (prototype `main`, local): practice quiz, graded quiz, Reading and certificate at 1280 and 375;
+  contrast on six pages (video, Reading, quiz, certificate, Dashboard, My Learning) in dark, Gold, Red, Gold dark
+  and Red dark. No contrast failure in any mode except the disabled *Submit* (2.4:1 light, 2.0:1 dark; exempt).
+  One `h1` per page, no heading skips, no unnamed control, no horizontal scroll, no text under 12 px. First
+  attempt at the mode sweep gave false failures: colours were read mid-transition; transitions were switched
+  off for the second read.
+- **Fixed in the prototype** (PRs 66 and 67, merged): the note editor follows the DS `LMS / Note Editor` (bottom
+  sheet on mobile); Reading has no Downloads tab and lists its files in the body; Quiz, ORA and VILT read
+  *Completed*, not *Marked as completed*; the certificate no longer shows time learned.
+- **Figma against those fixes:** the Reading screens have no tab bar (agrees). The three certificate screens on
+  *Completion + Certificate* still show *4h 22m · Time*: the stat is drawn inside the DS `LMS / Course
+  Certificate`, which has no property to hide it. A DS change, not made.
+- **Open, for Nelson:** the practice quiz sample shows a completed topic with empty answers and a primary *Go to
+  next Module*; whether Video should read *Completed* too, since it completes on its own at 90 %.
+- Also checked: the transcript still follows the active line after PR 62, and a note saves from the new editor
+  (count 2 → 3). The prototype video does not advance time, so the follow was tested with a click on a line.
 
 ## 2026-10-07 · DS components in use: sections 1 to 5 recounted
 

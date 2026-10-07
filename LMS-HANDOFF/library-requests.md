@@ -430,3 +430,94 @@ card placed would be 11 px again.
 **Ask:** put the overline on a 12 px text style in the component. Same question as request 12 — there is no 12 px
 overline style to give it.
 
+---
+
+## 19 · `LMS/Platform/Course-Detail/Course-Header` — no Program variant below desktop
+
+The set has `Kind` Course · Program and `Breakpoint` Desktop · Tablet · Mobile, but only four variants: Program
+exists on Desktop alone. The Program Page tablet and mobile screens (metadata map §35.7) use `Kind=Course` with
+overrides — breadcrumb, type badge, title, stats, progress card, partner chips hidden, `SKO Dark` set on the
+instance. It reads as the program; the property says Course.
+
+One more thing in the same component: `Type and partners` is *space between*, so hiding the partner container
+centres the type badge. The screens hide the two chips and keep the container.
+
+**Ask:** `Kind=Program` × `Breakpoint=Tablet` and `Mobile`.
+
+---
+
+## 20 · `LMS/Platform/Program-Detail/Course-Row` — no layout below desktop
+
+The row is built on `LMS / Course Card` · List and a one-line modules bar. Under ~1 100 the List card overlaps
+(request 13), and on a phone the modules bar cannot hold *You left off in Module 2 of 4* beside its button; an
+instance cannot change either. The Program Page uses a local **`LMS/Platform/Program-Detail/Course-Row-Compact`**
+on tablet and mobile: the card in its Grid layout, the modules bar wrapping, the same properties as the DS row.
+
+**Ask:** fold it into the DS row as `Breakpoint` = Desktop · Compact (the top bar's own vocabulary), and retire
+the local one.
+
+---
+
+## 21 · Delivery, difficulty and topic-type badges read *Label* — 7 Oct
+
+**What is wrong.** `Badge v2` was restructured: no nested `_Badge base` any more, its properties (`Text`, `Icon
+leading`…) sit on `Badge v2` itself. The components that wrap it kept none of their overrides. In the DS, **every
+variant** of `LMS / Delivery Mode Badge` (3), `LMS / Difficulty Badge` (3) and `LMS / Topic-Types Badge` (14) is
+now the same thing: a `Badge v2` with `Text = Label` and `Icon leading = false`, 50 × 22 or 34 × 18. The same
+happens to badges nested in other components: the provider badge of the Course Card, the *You left off here* of
+`Course-Row`, the relative date of `Sidebar-Card` · Dates.
+
+**Where it shows** — visible badges that read *Label*, counted 7 Oct after the library update was accepted:
+
+| Page | Reading *Label* | Of |
+|---|---:|---:|
+| Platform Pages — Ready for Dev | 124 (49 delivery · 32 difficulty · 43 topic type) | 124 |
+| Platform Pages V8 — WIP | 182 | 192 |
+| Video Lessons | 72 | 72 |
+| Quizzes | 242 | 242 |
+| Reading | 48 | 48 |
+
+The ten that still read correctly on the WIP page are older instances that kept a local override.
+
+**Nothing was changed in the screens:** an override per badge would hide the defect and would have to be removed
+again. The screens heal when the three sets are repaired and the library is published.
+
+**Ask:** in each variant of the three sets, set `Text` to the variant's label and `Icon leading` back on with its
+icon; check the other components that nest a `Badge v2`; publish.
+
+### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; **not published**
+
+On Nelson's go-ahead, after a named version (*Before badge repair: Delivery Mode, Difficulty and Topic-Types
+badges*). On the nested `Badge v2` of each variant: `Text`, `Icon leading = true`, `Icon leading swap`; on the
+topic-type badge also the label on `text/subtle` and the icon container's fill hidden, as before. Every variant
+read back; sizes are the old ones where an old one was on record (*Flexible Learning* 137 × 22, *Flexible + Live*
+117 × 22, *Beginner* 89 × 22, *Video* 61 × 20, *Reading* 78 × 20, *Live Session* 100 × 20); each set checked by eye.
+
+| Set | Variant → label · icon |
+|---|---|
+| `LMS / Delivery Mode Badge` | Live Sessions · `video-recorder` — Flexible + Live · `calendar-check-01` — Flexible Learning · `clock` |
+| `LMS / Difficulty Badge` | Beginner · Intermediate · Advanced, each with its `LMS / Difficulty · Level Icon` |
+| `LMS / Topic-Types Badge` | Video · `play` — Quiz · `help-circle` — Lab · `atom-01` — Reading · `book-open-01` — VILT-Live Session → *Live Session* · `video-recorder` — VILT-Recording → *Recording* · `video-recorder-off` — Activity · `lightbulb-02` — Project · `briefcase-01` — Practice Assignment → *Practice* · `edit-02` — Graded Assignment → *Graded* · `award-01` — Peer-graded · `users-01` — Peer Review → *Peer review* · `eye` — Podcast · `music-note-01` — Lesson Page → *Lesson* · `layout-alt-01` |
+
+**Where the values come from.** The Figma version history could not be read (the REST token has expired), so:
+delivery and difficulty from the changelog of 23 Sep, where Nelson chose those icons; topic types from the
+prototype's `TopicTypeBadge` (icons and short labels, written against this component) and from an instance in the
+product file that had not taken the update (*Reading*: `book-open-01`, label on `text/subtle`, container fill
+off). **Two are inferred, to confirm:** *Peer review* in sentence case (as the Course Detail screen read that
+morning; the prototype writes *Peer Review*), and `layout-alt-01` for *Lesson* — the one icon that left the
+screens with the badges and had no other owner; the prototype has no record of it.
+
+### Still reading *Label* in the DS — 94 nested badges in 15 other sets, not touched
+
+Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the repair
+above covers 20.
+
+| Page | Component · badges |
+|---|---|
+| `❖ LMS COMPONENTS` | `Quiz · Entry Header` 24 · `Provider-Partner Badge` 6 · `Quiz · Results` 4 · `Course Type Badge` 2 (hidden layer) · `Topic-Status-Badge` 2 · `Quiz · Grade Summary` 1 · `VILT · Session Card` 1 |
+| `❖ LMS PLATFORM COMPONENTS` | `Date-Row` 24 · `Thread-Row` 9 · `Message` 8 · `Program-Card` 6 · `Sidebar-Card` 2 · `Topbar-Item` 2 · `Due-Item` 2 · `Course-Row` 1 |
+
+**And in the product file,** a badge whose text was set on a screen (*In 13 months*, *Due 11:59*, *QUESTION*, a
+cohort) lost that text too. Repairing the DS gives it the component's default back, not the screen's text: the
+screens need their own pass after the library is published.
+
