@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · Program Page — tablet and mobile; a DS badge defect found on the way
+
+Named version first: *Before Program Page tablet and mobile*.
+
+- **Eight screens** in *Program Detail — sources*: Courses, Certificates, FAQs and About at 960 and at 375, on
+  the Course Detail shell of each breakpoint. Content parity with desktop read back; 0 raw values, 0 unstyled
+  texts, 0 generic names. Metadata map §35.7.
+- **Header:** `Course-Header` has no Program variant below desktop, so the screens use the Course variant with
+  overrides and `SKO Dark` on the instance. Library request 19.
+- **New local component** `LMS/Platform/Program-Detail/Course-Row-Compact` (`6665:4206`): the course row for
+  tablet and mobile — Grid card, a modules bar that wraps, same properties as the DS row. Library request 20.
+- **⚠︎ DS defect, not fixed here:** since today's library update every delivery, difficulty and topic-type badge
+  reads *Label* with no icon — 124 of 124 on Platform Ready for Dev, 182 of 192 on V8 WIP, 72, 242 and 48 on
+  Video, Quizzes and Reading. The three wrapper sets lost their text and icon when `Badge v2` was restructured.
+  Library request 21.
+- **Not done:** the Program Page handoff frame.
+
 ## 2026-10-07 · Platform pages against Open edX — only what an API backs
 
 Named version first: *Before edX compatibility pass: My Learning, Dashboard and Program screens*.

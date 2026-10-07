@@ -2702,7 +2702,61 @@ Removed with the old version: the local `LMS / Program Detail / Course panel` (0
 ⚠︎ The DS card's thumbnail loop (library request 13) hits here too: with the footer set to fill, the thumbnail grew
 to 580 and the title went one letter wide. The row pins the thumbnail (sizing *fixed* on both axes).
 
-**Next:** tablet and mobile for the four tabs; the handoff frame, starting *In progress*.
+**Next:** ~~tablet and mobile for the four tabs~~ (done 7 Oct, §35.7); the handoff frame, starting *In progress*.
+
+### 35.7 Tablet and mobile — the four tabs at 960 and 375 — 7 Oct
+
+Named version first: *Before Program Page tablet and mobile*. Eight screens in the same section (`6443:18721`),
+a tablet row and a mobile row under the desktop one, each under its desktop tab.
+
+| Tab | Tablet · 960 (`Responsive = Tablet`) | Mobile · 375 (`Responsive = Mobile`) |
+|---|---|---|
+| Courses | `6666:24197` | `6668:32886` |
+| Certificates | `6666:28128` | `6668:36857` |
+| FAQs | `6666:30899` | `6668:39670` |
+| About | `6666:33668` | `6668:42581` |
+
+**The shell is Course Detail's** at each breakpoint (§32, §26): the same frame, modes, paddings, compact top bar,
+tab sizes (`md` on tablet, `sm` on mobile) and, on mobile, the status bar and home indicator. Only the content
+changed. The top bar keeps its *Navigation is not final* note (§33); nothing else on the eight screens carries an
+annotation.
+
+| Part | Tablet | Mobile |
+|---|---|---|
+| Header | `Course-Header` · **`Kind=Course`** · `Breakpoint=Tablet`, overridden to read as the program and set to `SKO Dark` — see below | the same on `Breakpoint=Mobile` |
+| Tabs | Courses · Certificates · FAQs · About, no search | the same, `sm` |
+| Courses | one column, 912 wide, no sidebar (as on desktop): `Section-Intro` and seven **`Course-Row-Compact`**, course 2 expanded | one column, 343 wide |
+| Certificates | main column 560 + sidebar 320; the two certificates one under the other at 320 | everything stacked; the certificates fill the width |
+| FAQs · About | main column 560 with the accordion card + sidebar 320 | the accordion items on `Breakpoint=Mobile`, texts unchanged; then the three cards |
+| Program dates · What's included · Program instructor | the sidebar on Certificates, FAQs and About | stacked after the content, as Course Detail does with its sidebar cards |
+
+**Two things the DS could not do, and what stands in for them.**
+
+- **`Course-Header` has no Program variant below desktop.** The set has four variants: Course × Desktop · Tablet ·
+  Mobile, and Program × Desktop only. The eight screens use the **Course** variant with overrides — breadcrumb
+  *Programs*, `LMS / Course Type Badge` on *Program*, the title, *7 courses · 4 months · SkillUp*, the progress
+  card (*14 %*, *Program progress*, *Course 2 of 7 · in progress*, *1 of 7 courses complete*, no passing line, no
+  time left), the partner chips hidden, and `🎨 SKO-Semantics = SKO Dark` set on the instance as the Program
+  variant has it. A developer reading the property sees `Kind=Course` on a program page. Library request 19.
+- **`Course-Row` has no layout below desktop.** Its card is the DS `LMS / Course Card` · List, which does not fit
+  under 1 100 (request 13), and its modules bar is one fixed line: on a phone *You left off in Module 2 of 4* is
+  wider than the space left of *Hide modules*, and an instance cannot stack them. Rather than shorten or hide the
+  text, a local **`LMS/Platform/Program-Detail/Course-Row-Compact`** (`6665:4206`, components page, section
+  *Program Detail · local — to move to the DS*; `Expanded` False · True, `Position`, `Detail`, slot `Modules` — the
+  DS row's own properties). Built from the DS row: the card in its **Grid** layout, and a modules bar that
+  **wraps** — the detail drops under the position, the button under both. One layout serves 912 and 343. To
+  become `Breakpoint=Compact` of the DS row. Library request 20.
+
+**Read back on the eight screens:** every text visible on desktop is present on tablet and on mobile, except badge
+labels (next paragraph); 0 raw fills, strokes, spacing or radii, 0 unstyled texts, 0 generic layer names outside
+instances; no overlaps in the section, which is now 6 000 × 11 808. Each screen was also checked by eye.
+
+⚠︎ **The badges read *Label*.** On these screens, as on every other platform screen since the library update of
+7 Oct, the delivery, difficulty, provider and topic-type badges show the DS default text and no icon. It is a
+DS defect, not a choice made here — library request 21 — and the screens were left alone so that they heal when
+the library is fixed.
+
+**Not done:** the handoff frame for the Program page.
 
 ## 36. The local components move to the DS — in progress — 6 Oct
 
@@ -3084,4 +3138,4 @@ on each source screen and on its handoff copy — 22 screens — and every value
 | 4 | **The DS components still carry the old defaults** — `Glance-Card` (*Today at a glance*, XP, attendance), `Streak-Card`, `Program-Card` (cohort, week, lessons), `Due-Item`, `Jump-Tile`. The screens override them; the library does not say so. And `Glance-Card` is a 2 × 2 grid that an instance cannot change: across a 1 200 row it wants four in a line | DS |
 | 5 | **The prototype** (`/platform/*`) still shows the earlier data, marked *SAMPLE* | prototype session |
 | 6 | `PRODUCT.md` says there is *no API today for due dates*. More exactly: there is one per course and none across courses, and no SkillUp content has due dates yet | Nelson |
-| 7 | Tablet, mobile and a handoff frame for the Program page (§35.6) | — |
+| 7 | ~~Tablet and mobile for the Program page~~ done 7 Oct (§35.7); its handoff frame is still to do | — |

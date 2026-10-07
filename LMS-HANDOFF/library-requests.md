@@ -430,3 +430,59 @@ card placed would be 11 px again.
 **Ask:** put the overline on a 12 px text style in the component. Same question as request 12 — there is no 12 px
 overline style to give it.
 
+---
+
+## 19 · `LMS/Platform/Course-Detail/Course-Header` — no Program variant below desktop
+
+The set has `Kind` Course · Program and `Breakpoint` Desktop · Tablet · Mobile, but only four variants: Program
+exists on Desktop alone. The Program Page tablet and mobile screens (metadata map §35.7) use `Kind=Course` with
+overrides — breadcrumb, type badge, title, stats, progress card, partner chips hidden, `SKO Dark` set on the
+instance. It reads as the program; the property says Course.
+
+One more thing in the same component: `Type and partners` is *space between*, so hiding the partner container
+centres the type badge. The screens hide the two chips and keep the container.
+
+**Ask:** `Kind=Program` × `Breakpoint=Tablet` and `Mobile`.
+
+---
+
+## 20 · `LMS/Platform/Program-Detail/Course-Row` — no layout below desktop
+
+The row is built on `LMS / Course Card` · List and a one-line modules bar. Under ~1 100 the List card overlaps
+(request 13), and on a phone the modules bar cannot hold *You left off in Module 2 of 4* beside its button; an
+instance cannot change either. The Program Page uses a local **`LMS/Platform/Program-Detail/Course-Row-Compact`**
+on tablet and mobile: the card in its Grid layout, the modules bar wrapping, the same properties as the DS row.
+
+**Ask:** fold it into the DS row as `Breakpoint` = Desktop · Compact (the top bar's own vocabulary), and retire
+the local one.
+
+---
+
+## 21 · Delivery, difficulty and topic-type badges read *Label* — 7 Oct
+
+**What is wrong.** `Badge v2` was restructured: no nested `_Badge base` any more, its properties (`Text`, `Icon
+leading`…) sit on `Badge v2` itself. The components that wrap it kept none of their overrides. In the DS, **every
+variant** of `LMS / Delivery Mode Badge` (3), `LMS / Difficulty Badge` (3) and `LMS / Topic-Types Badge` (14) is
+now the same thing: a `Badge v2` with `Text = Label` and `Icon leading = false`, 50 × 22 or 34 × 18. The same
+happens to badges nested in other components: the provider badge of the Course Card, the *You left off here* of
+`Course-Row`, the relative date of `Sidebar-Card` · Dates.
+
+**Where it shows** — visible badges that read *Label*, counted 7 Oct after the library update was accepted:
+
+| Page | Reading *Label* | Of |
+|---|---:|---:|
+| Platform Pages — Ready for Dev | 124 (49 delivery · 32 difficulty · 43 topic type) | 124 |
+| Platform Pages V8 — WIP | 182 | 192 |
+| Video Lessons | 72 | 72 |
+| Quizzes | 242 | 242 |
+| Reading | 48 | 48 |
+
+The ten that still read correctly on the WIP page are older instances that kept a local override.
+
+**Nothing was changed in the screens:** an override per badge would hide the defect and would have to be removed
+again. The screens heal when the three sets are repaired and the library is published.
+
+**Ask:** in each variant of the three sets, set `Text` to the variant's label and `Icon leading` back on with its
+icon; check the other components that nest a `Badge v2`; publish. The labels are the variant names. The icons are
+in the file's version history from before the change.
+
