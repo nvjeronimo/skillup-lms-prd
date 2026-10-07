@@ -3025,8 +3025,8 @@ Open edX:** the counts under *What's included*, *What You Will Create*, *Exercis
 overview come from the marketing backend's payload; Discovery has one `overview`, `faq`, `staff` and
 `expected_learning_items`. Program dates are derived from the course runs.
 
-**Course Detail** (Ready for Dev, §1–§32). Nothing was changed. What on those screens is still ◐ or ✗ was already in
-the register of §25:
+**Course Detail** (Ready for Dev, §1–§32). Two pieces of sample content were reworded (last row; Nelson, 7 Oct).
+What on those screens is still ◐ or ✗ was already in the register of §25:
 
 | On the screens | Depends on |
 |---|---|
@@ -3035,7 +3035,7 @@ the register of §25:
 | *David Chen · your mentor · typically responds within 1 day* | open question 1; a response time is not stored |
 | *Beginner*, the Course team card | Discovery (`level_type`, `CourseRun.staff`), question 7 — deployed, content to confirm |
 | *Complete "Module 3 · Checkpoint" to unlock* | open question 3: the outline does not name the prerequisite |
-| A *Live Session* topic and an update that mentions *last week's live Q&A* | sample content in a self-paced course; VILT is out of the MVP. To reword when the frame is next edited |
+| ~~A *Live Session* topic and an update that mentions *last week's live Q&A*~~ | **reworded 7 Oct.** *Designing the prototype* is a **Video** (`Type=Video` on the `LMS / Topic-Types Badge`, a type the blocks can tell, §12.5). The update reads *The control chart worksheet in Handouts has a corrected example. The checkpoint at the end of Module 3 counts towards your grade and unlocks Module 4.* — nothing opens on a date in a self-paced course (§18.2), so *Module 3 is open* went too |
 | The Weekly goal card itself | open question 8: switched off on every SkillUp course seen so far (§17.1). A request without a login cannot tell — the field is `false` for anyone not enrolled |
 
 ### 37.5 What changed in Figma — 7 Oct
@@ -3061,7 +3061,12 @@ on each source screen and on its handoff copy — 22 screens — and every value
   descriptions rewritten (they still described the streak, four shortcuts, a hidden badge and the cohort). No
   overlaps on the page.
 
-**Not changed, on purpose:** the top bar; the Program page's marketing content; the Course Detail frames.
+- **Course Detail · Course tab × 7** (Technical, the three `★ ENTRY` breakpoints, handoff cards 01–03), after
+  Nelson's go-ahead and a second named version (*Before Course Detail sample fix…*): the topic badge and the
+  course update of §37.4. Row and screen sizes unchanged; no text on those screens mentions a live session any
+  more; cards 01–03 carry a 7 Oct entry and are still *Ready for DEV*.
+
+**Not changed, on purpose:** the top bar; the Program page's marketing content; everything else on Course Detail.
 
 ### 37.6 Open after this pass
 

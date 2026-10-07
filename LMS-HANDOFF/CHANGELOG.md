@@ -20,6 +20,8 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
   *In progress*.
 - **Correction.** No route returns the dates of all of a learner's courses — not in Sumac and none found on
   `master`. (While asking, I had said later releases have one.)
+- **Course Detail, Course tab** (7 screens, on Nelson's word): the *Live Session* topic is a *Video*, and the
+  course update no longer mentions a live Q&A or a module opening. Cards 01–03 carry a 7 Oct entry.
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
