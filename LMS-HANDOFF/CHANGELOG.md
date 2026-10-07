@@ -25,6 +25,18 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · Video tabs all on the current component; a wrong swap on the WIP page, undone
+
+- Named version first: *Before swap: stale tab buttons (Video) and local footer (Platform WIP) → DS*.
+- **Video:** the 12 `Current=False` tab buttons pinned to old copies of `_Tab button base` moved to the current
+  copy. *Transcript*, 81 × 32, before and after. No tab button on the page points to an old copy now.
+- **Platform V8 WIP, my mistake:** I took the local set named `LMS` for the Topic Footer Nav (the DS footer set
+  has the same name) and swapped its 11 instances to the DS footer. It is the platform sidebar (`Sidebar-LMS`,
+  `Sidebar-Empty`, set `6207:256263`). Swapped back in the same session: all 11 on `Sidebar-Empty` again, same
+  sizes (240 wide, 778 to 1609 high), visible text identical to the component's. **Not provable from here:** that
+  no non-text override was lost in the round trip; the named version above holds the state from before.
+- Rule taken from it: identify a component by its variants and content, never by its name alone.
+
 ## 2026-10-07 · After the publish: old tab badges gone on Video, Course Card in the screens
 
 - DS published and the update accepted in the product file (Nelson). Platform Ready for Dev: `LMS / Course Card`

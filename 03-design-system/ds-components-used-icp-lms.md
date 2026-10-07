@@ -287,7 +287,7 @@ These sit inside the public components above (Badge v2, Checkbox, tabs, video pl
 
 The 35 platform components that were listed here moved to the DS on 6 Oct 2026 (section 1b). What is still local:
 
-- A local set named `LMS` (the Topic Footer Nav): 11 uses, Platform Pages V8 (WIP).
+- A local set named `LMS` (`6207:256263`): 11 uses, Platform Pages V8 (WIP). It is the **platform sidebar** (variants `Sidebar-LMS`, `Sidebar-Empty`), not the Topic Footer Nav: only the name is the same as the DS footer set.
 - `_iPhone mockup home` (45) and one `_iPhone mockup status bar`: device chrome, not product UI.
 - `Worklist checkbox` (25, ICP review pages).
 
