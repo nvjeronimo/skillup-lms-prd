@@ -25,6 +25,20 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · After the publish: old tab badges gone on Video, Course Card in the screens
+
+- DS published and the update accepted in the product file (Nelson). Platform Ready for Dev: `LMS / Course Card`
+  instances read 384 × 358 (desktop grid), 1200 × 152 (list), 438 × 350 (tablet), 327 × 342 and 366 (mobile);
+  nothing overflows its frame.
+- **Video, the 12 old `Badge` in the tabs.** The update did not reach them: the file holds four copies of
+  `_Tab button base · Current=True, Size=sm, Type=Underline` under the same key, one current (Badge v2) and three
+  old ones, and those 12 tabs were pinned to the old three. After a named version (*Before swap: old Badge in
+  tabs → Badge v2 (Video)*) they were swapped to the current copy. Read back: 212 `Badge v2`, 0 `Badge`; labels
+  and counts as before (*Notes 2*, *Downloads 4*); tab sizes 81 × 32 and 123 × 32 as before. Two repairs after
+  the swap: the Downloads count had fallen back to 2, and four badges kept a stale fixed width (overrides reset).
+- Still pinned to old copies on the Video page: 12 `Current=False` tab buttons (no badge involved).
+- Prototype: `nvjeronimo/skillup-lms-prototype` PR 63, the course card on `title-large`, 384 × 358.
+
 ## 2026-10-07 · DS: the five pending decisions applied (not published)
 
 Named version first: *Before handoff audit 3: Course Card text styles, badge illustration tokens, shadows, whites,
