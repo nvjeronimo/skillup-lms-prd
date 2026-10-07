@@ -25,6 +25,13 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · Metadata map: navigation marked as under study
+
+- `course-details-metadata-map.md` §33 opens with a status note (sidebar or top bar not decided, 7 Oct), and the
+  Course Detail passage that said the sidebar is hidden on every platform page now points to it. The 30 Sep text
+  is kept as the record of what was drawn. The two "sidebar hidden" lines in `prototype-flows.md` and the Course
+  Outline FRD are about the course player on mobile, a different sidebar: not touched.
+
 ## 2026-10-07 · One primary action per list in the screens; Course Card on tablet and mobile
 
 - **Completion + Certificate:** the three `modal-backdrop` rectangles bound to `bg/overlay` (were #13282f at
