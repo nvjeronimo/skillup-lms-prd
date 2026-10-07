@@ -619,8 +619,10 @@ update is offered anew.
 
 ### Closed — 7 Oct (late night): the update is in, no badge reads *Label*
 
-After Nelson published the DS again, the update reached the product file. Counted in the desktop app, and the
-platform screens checked against the server's copy as well:
+Nelson accepted the update in the product file's Libraries → Updates panel, and it reached every working page.
+Counted in the desktop app (visible badges with their label on), and the platform screens checked against the
+server's copy as well; the other session counted the four Ready for Dev pages from the server with the same
+result and restored the *Notes 2* / *Downloads 4* tab counts on Video (changelog, same day):
 
 | Page | Visible badges | Reading *Label* |
 |---|---:|---:|

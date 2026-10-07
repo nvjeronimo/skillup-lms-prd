@@ -19,9 +19,11 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-07 · The badge defect is closed: no badge reads *Label* on any working page
 
-- **The library update is in the product file** (after Nelson's last publish). 0 badges read *Label* on Platform
-  Pages (Ready for Dev 286, WIP 434), Video 200, Quizzes 483, Reading 78, Overlay Panels 33 and Topic Content
-  Types 106. Library request 21 has the table.
+- **The library update is in the product file**: Nelson accepted it in Libraries → Updates. 0 badges read *Label*
+  on Platform Pages (Ready for Dev 286, WIP 434), Video 200, Quizzes 483, Reading 78, Overlay Panels 33 and Topic
+  Content Types 106 — counted in the desktop app, visible badges with their label on. The entry below, from the
+  other session, has the same result from the server for the four Ready for Dev pages and the Video tab counts
+  it restored. Library request 21 has the table.
 - **Screen texts restored on the ICP pages** (named version first): *5 questions* on the nine quiz entry headers,
   the four tags on the saved notes, *Notes 2* / *Downloads 4* on the video template.
 - **Counted, not recovered:** the tab counts of the Notifications panel (*All* 5 · *Discussions* 1 · *Grading* 2 ·
