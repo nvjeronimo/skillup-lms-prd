@@ -2,6 +2,26 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed
+
+Named version first: *Before badge texts pass on platform screens*.
+
+- **The DS is published; the product file took the update for five sets only** (`Topbar-Item`, `Date-Row`,
+  `Thread-Row`, `Sidebar-Card`, `Program-Detail/Course-Row`). The delivery, difficulty, topic-type, provider and
+  course-type badges, `Quiz · Grade Summary`, `Message`, `Due-Item` and `Program-Card` still read *Label*: 255 of
+  434 visible badges on the WIP page, 157 of 286 on Ready for Dev. The rest of the update has to be accepted in
+  the product file. Library request 21.
+- **118 badge texts restored on the two platform pages**, each read back: 28 badges placed directly on the
+  technical frames, the *Programs 2* / *Courses 5* tab counts on eight screens, *Tomorrow* / *In 15 days* on the
+  course dates card, *Started* / *In 13 months* on the program dates card, and the type badges of the Dates tab
+  rows (*COURSE*, *UPGRADE*, *CERTIFICATE*, *ACCESS*, *FINAL PROJECT*, *FINAL EXAM*).
+- **The *You left off here* badge is gone from the program course rows** (Nelson: not needed, the modules bar
+  already says it). Removed from the local `Course-Row-Compact`; hidden on the desktop screen, because the DS
+  `Course-Row` still carries it. Library request 23.
+- **Found:** the top bar's *Calendar* count reads 4, it was 3 — an override inside the DS `Topbar` master, lost
+  with the others. Not patched on 23 screens; library request 22.
+- **Still to do:** `Due-Item` and the grade pill once the update is complete, then a recount on every page.
+
 ## 2026-10-07 · DS: the other 94 nested badges repaired (not published)
 
 Named version first: *Before badge repair 2: nested badges in 15 LMS component sets*. On Nelson's go-ahead.

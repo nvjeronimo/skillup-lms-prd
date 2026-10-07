@@ -485,7 +485,7 @@ again. The screens heal when the three sets are repaired and the library is publ
 **Ask:** in each variant of the three sets, set `Text` to the variant's label and `Icon leading` back on with its
 icon; check the other components that nest a `Badge v2`; publish.
 
-### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; **not published**
+### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; published the same night
 
 On Nelson's go-ahead, after a named version (*Before badge repair: Delivery Mode, Difficulty and Topic-Types
 badges*). On the nested `Badge v2` of each variant: `Text`, `Icon leading = true`, `Icon leading swap`; on the
@@ -507,7 +507,7 @@ off). **Two are inferred, to confirm:** *Peer review* in sentence case (as the C
 morning; the prototype writes *Peer Review*), and `layout-alt-01` for *Lesson* — the one icon that left the
 screens with the badges and had no other owner; the prototype has no record of it.
 
-### The other 15 sets — 94 nested badges, repaired 7 Oct (night); **not published**
+### The other 15 sets — 94 nested badges, repaired 7 Oct (night); published the same night
 
 On Nelson's second go-ahead, after a named version (*Before badge repair 2: nested badges in 15 LMS component
 sets*). Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the
@@ -548,3 +548,74 @@ navigation, tables). The same loss is likely there.
 cohort) lost that text too. Repairing the DS gives it the component's default back, not the screen's text: the
 screens need their own pass after the library is published. The texts are on record: the 25 Sep migration saved
 them per instance, and the 7 Oct edX pass listed every screen.
+
+### After the publish — 7 Oct (late): the update reached five sets; first part of the screens pass
+
+**The DS is published.** All 18 repaired sets read `CURRENT`, from the desktop app and from Figma's server.
+
+**The product file took the update for five sets only.** Read on the two platform pages, same result from both
+clients once they settled:
+
+| The file's copy reads the repaired values | The file's copy still reads *Label* |
+|---|---|
+| `Topbar-Item` · `Date-Row` · `Thread-Row` · `Sidebar-Card` · `Program-Detail/Course-Row` | `LMS / Delivery Mode Badge` · `LMS / Difficulty Badge` · `LMS / Topic-Types Badge` · `LMS / Provider-Partner Badge` · `LMS / Course Type Badge` · `LMS / Quiz · Grade Summary` · `Course-Detail/Message` · `Dashboard/Due-Item` · `My-Learning/Program-Card` — and, on the ICP pages, `Quiz · Entry Header`, `Quiz · Results`, `Topic-Status-Badge` |
+
+Visible badges still reading *Label* after this pass: **255 of 434** on Platform Pages V8 — WIP, **157 of 286** on
+Platform Pages — Ready for Dev, every one of them inside a set of the right-hand column. **To do, Nelson:** in the
+product file, Libraries → Updates, accept what is left (reload the tab first if nothing is listed).
+
+**How the half-state shows.** A nested badge nobody touched on the screen follows the component around it: the
+*Beginner* inside an updated `Course-Row` is right. A nested badge whose variant was set on the screen — every
+delivery badge, since the edX pass set them to *Flexible Learning* — follows the file's own copy of the badge and
+reads *Label* until that copy is updated. Do not read one correct badge as proof the update is in.
+
+**Restored on the screens, 118 badges** (named version first: *Before badge texts pass on platform screens*), on
+both platform pages, each read back and the result checked by eye:
+
+| What | Badges | Text |
+|---|---:|---|
+| `Badge v2` placed directly on the technical frames | 28 | *Counts* 8 · *No* 14 · *Not required* 4 · *Self-paced* 1 · *Professional* 1 — the layer name carries the text; the two chips from the 1 Oct replacement log |
+| Tab counts on the eight *Programs* screens | 16 | *Programs* **2** · *Courses* **5** |
+| `Sidebar-Card` · Dates on the Course tab (7 cards) | 14 | *Tomorrow* · *In 15 days* |
+| `Sidebar-Card` · Program dates (9 cards) | 18 | *Started* · *In 13 months* |
+| `Date-Row` on the Dates tab (6 screens) | 42 | `Type`: *COURSE* (starts, ends) · *UPGRADE* · *CERTIFICATE* · *ACCESS*; `Assignment type`: *FINAL PROJECT* · *FINAL EXAM* — rows matched by their title |
+
+**Waits for the rest of the update:** `Due-Item` on the Dashboard (*Due 11:59*, no dot; *Due Fri* is the default),
+the grade pill on the Progress tab (*15% · below the 70% pass mark*), then a recount on every page, the ICP pages
+included (quiz entry headers, Video tab counts).
+
+---
+
+## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
+
+The top bar was built with *My Learning* **4** and *Calendar* **3**. The 3 was an override two levels down, set in
+the `Topbar` master on the count badge of its *Calendar* item. The `Badge v2` restructure dropped it, and the
+repair of request 21 did not see it: that pass looked for badges reading *Label*, and this one reads the item's
+default, *4*. Every desktop platform screen now shows *Calendar 4* (23 top bars on the two pages).
+
+Not patched on the screens: 23 overrides for a value that belongs to one master.
+
+**Ask:** in `Topbar` · `Breakpoint=Desktop`, *Item · Calendar* › *Count* › `Text` = *3*; publish. Needs Nelson's
+go-ahead, as any DS write. The counters still have no defined source (§37.6) and navigation is not final.
+
+**Likely elsewhere too:** any other text a DS master set on a badge inside a nested instance was lost the same
+way and now reads a plausible default. None is known; this one was found by comparing with the 30 Sep build.
+
+---
+
+## 23 · `LMS/Platform/Program-Detail/Course-Row` — the *You left off here* badge goes
+
+Nelson, 7 Oct: the badge is not needed. The modules bar already reads *You left off in Module 2 of 4*, and the
+current module is the one with partial progress.
+
+| Where | State |
+|---|---|
+| Local `Course-Row-Compact` (tablet, mobile) | badge removed from the component |
+| Desktop *Courses* screen (`6539:29871`, DS `Course-Row`) | badge hidden on the instance |
+| DS `Course-Row` · `Expanded=True` | **still has it** |
+
+The *Current module* frame around module 2 stays; its own padding leaves it 4 px taller than the other rows
+(80 against 76 on desktop and tablet). List gaps read 8 on the three screens.
+
+**Ask:** remove the badge from the DS component, publish; the override on the desktop screen then has nothing to
+hide. Needs Nelson's go-ahead.
