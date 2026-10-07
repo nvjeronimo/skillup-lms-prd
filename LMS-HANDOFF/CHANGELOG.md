@@ -25,6 +25,25 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 - **Open:** the top bar's counters and sections, the program page's source, a call per course for the percentage,
   the DS components' old defaults, the prototype. Metadata map §37.6.
 
+## 2026-10-07 · Platform navigation is under study; notes for developers; Review pages audited
+
+- **Decision status (Nelson, 7 Oct):** whether the platform pages use a sidebar or a top bar is still under
+  study. Earlier text in this package that reads "the sidebar is hidden, navigation is the top bar" (metadata map
+  §33–§34) describes the screens as drawn, not a decision.
+- **Dev Mode annotations**, category *Development*, after a named version: on the 24 top bars placed on
+  *Platform Pages - Ready for Dev* and on the 29 top bars and 11 sidebars on *Platform Pages V8 - WIP*. Text:
+  *Navigation is not final (7 Oct 2026)… build the page content so it works with either: do not tie layout rules
+  to the 72px top bar or to a 240px side column. Ask design before building the navigation shell.*
+- **Nelson confirmed the 11 sidebars on the WIP page look right** after the swap that was undone.
+- **Ready for Review pages, same audit as the Ready for Dev ones:**
+  - *Overlay Panels:* 19 raw values and 12 old tag badges, all cleared. Unused gaps to 0 (5), mobile padding 32
+    on `Spacing/4xl` (2), six quotes from Inter Italic to `body-medium/Regular` (heights unchanged), six backdrops
+    from #13282f at 60 % to `bg/overlay` (#0e1a1f at 50 %: slightly lighter), 12 `Badge-V1-to-remove` tags to
+    `Badge v2` Soft Gray (each 2 px wider and taller, same text).
+  - *Completion + Certificate:* three raw fills, not touched yet.
+  - *Topic Content Types Discovery:* not a screen page. About 9 100 raw values in documentation boards and
+    archived hand mock-ups, 25 local `Worklist checkbox`. Left as it is.
+
 ## 2026-10-07 · Video tabs all on the current component; a wrong swap on the WIP page, undone
 
 - Named version first: *Before swap: stale tab buttons (Video) and local footer (Platform WIP) → DS*.
