@@ -2,9 +2,9 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-08 (night) · Partner labs in the prototype (PR 74, open)
+## 2026-10-08 (night) · Partner labs in the prototype (PR 74); critique leftovers (PR 75)
 
-Prototype `nvjeronimo/skillup-lms-prototype`, PR 74, not merged. Built from the handoff page
+Prototype `nvjeronimo/skillup-lms-prototype`, PRs 73, 74 and 75 merged by Nelson on 8 Oct. Built from the handoff page
 `↳ Lab · Third-party platforms` (`6789:325`) and `lab-third-party-platforms.md`.
 
 - **Two new topics** in the Six Sigma course, after the download lab, which is unchanged: a Google lab (LTI,
@@ -18,6 +18,11 @@ Prototype `nvjeronimo/skillup-lms-prototype`, PR 74, not merged. Built from the 
 - **Found while building:** on screen E2 (modal), step 1 still reads *It starts in a new tab*. The prototype says
   *It opens in a window over this page*. The Figma text is not changed yet.
 - **Not built:** the two IBM screens. They sit on Course Detail, a page the prototype does not have.
+- **Second critique, three findings closed:** the download lab has one Primary, *Download all*, and Secondary
+  rows (PR 74); a completed Activity reads *Open activity again*, Secondary (PR 75); with larger touch targets on,
+  the podcast slider is 44 px high and the video seek bar has a 44 px hit area on an 8 px track (PR 75).
+- **Still open from that critique:** 32 px targets on the player top bar on tablet and 24 px Dashboard links
+  (larger targets default on at 767 px and below only): a decision, not a fix.
 
 ## 2026-10-08 (night) · Content search (feature 33): the learner's experience, eight screens
 
