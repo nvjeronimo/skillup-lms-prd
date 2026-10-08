@@ -2,9 +2,57 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (evening) · DS clean-up, Program icon closed, prototype course-complete gate
+
+Decided by Nelson on 8 Oct.
+
+- **DS, named version first, not published:** the footer set named `LMS` (`20053:3286`) renamed
+  `LMS / Topic Footer Nav`; its key is unchanged, so instances keep their link and show the new name after the
+  update. `_Remove · LMS / Quiz · Results Summary` and `_Remove · LMS / Quiz · Score Ring` deleted: both
+  unpublished, the Score Ring used only inside the Results Summary (4 instances), and no instance of either in
+  the product file (36 pages read).
+- **`LMS / Course Card_Remove`, survey only:** 5 instances in the product file, all on the older screen
+  *My Learning - Courses - List View* (V8 WIP, *1 · Core Learning Journey - LMS DS*). Nothing deleted. To
+  retire it: rebuild that screen on `LMS / Course Card · Layout=List`, or archive the screen.
+- **Program icon:** accepted as published, back card faint in SKO Light. The open question left the ICP Hub
+  (version 13), with a decision entry.
+- **Prototype:** PR 69 (merged) fixed a regression of PR 68: on a last topic that cannot be completed, *Next*
+  stayed disabled and the course-complete dialog could not be reached. PR 70 (open): the dialog opens only when
+  every topic the learner can finish in the prototype is finished; locked topics, unavailable types, VILT and
+  quizzes are left out of the count.
+
+## 2026-10-08 · Screens: the 28 compact course rows on the DS row; the local component is gone
+
+Named version first: *Before the compact course rows move to the DS variant*. After Nelson's second publish.
+
+- **The 28 compact rows** (tablet and mobile Courses, sources and handoff copies) are the DS `Course-Row` on
+  `Breakpoint=Compact`. Texts compared before and after each swap: no difference. *Position*, *Detail* and the
+  effort line were set again after the swap (trap 44). Covers sit on the card's `Image` layer. The mobile expanded
+  row went from 962 to 942 high: the detail fits one line in the DS variant.
+- **The local `Course-Row-Compact` is removed** (`6665:4206` and its section `6664:7091`), after two counts found
+  0 instances.
+- **Program Page handoff frame:** 12 texts updated. Below desktop the header is the Program variant and the rows
+  are the DS compact row; no library request is quoted as open there any more.
+- **Read back after the pass**, sources and handoff copies: 42 program rows on the DS component (14 Desktop,
+  28 Compact), 42 covers on `Image` with `Show image` on; 0 badges read *Label* on the two WIP platform sections
+  (121 and 131 badges) and 0 visible *Label* texts in the two handoff frames.
+- ⚠︎ **Correction to the entry below — the 40 My Learning cards did not keep the new Course Card.** They had been
+  moved by script to the published copy of the same component and fell back to the version this file holds
+  (trap 42), losing `Show image` and the cover with it. Their covers are back as a fill on the thumbnail with the
+  initials hidden (the 7 Oct state), and the completed course's effort line was set to *8 hours total* by hand
+  (8 instances). They move to the `Image` layer once this file accepts the Course Card update in
+  Libraries → Updates.
+- **Still behind the library in this file** (direct instances in the two WIP platform sections whose main
+  component is not the copy the library returns, read 8 Oct): `Dashboard/Stat` ×24, `LMS / Course Card` ×20,
+  `Input field` ×8, `Program-Card` ×8, `Due-Item` ×6, `LMS / Course Row` ×6, `Course-Header` ×4,
+  `Today-at-a-glance` ×3, `Resume-Row` ×3. Only accepting them in the Libraries panel brings them in.
+
 ## 2026-10-08 · Screens: covers on the card's Image layer, Program header below desktop, rows on the published version
 
 Named version first: *Before the screens pass: covers on the Image layer, Program header and DS compact row*.
+
+> **Corrected the same day (entry above):** the 40 My Learning cards fell back to the previous Course Card; their
+> covers are on the thumbnail fill again. The 14 desktop program rows and the 16 headers held.
 
 - The published DS was not in the product file's instances yet, so each instance was moved to the copy the
   library returns, with its texts compared before and after (a difference rolls the call back).
