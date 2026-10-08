@@ -46,6 +46,12 @@ Decided by Nelson on 8 Oct ("yes to all").
   high on mobile and the recording's 24; on tablet the player top bar keeps 32 px targets and the Dashboard has
   24 px links; the prototype Dashboard still shows the streak and the glance figures that the Figma screens
   dropped on 7 Oct when they were cut back to what Open edX serves.
+- **After the publish and the accepted update, read back:** 0 visible badges read *Label* on Video (212),
+  Quizzes (483), Reading (78), Platform Ready for Dev (425) and V8 WIP (498). The 65 `Course Type Badge`
+  instances on Ready for Dev are 18 high on `body-small/Semibold`. PRs 71 and 72 merged.
+- **Side effect of the taller badge:** every grid course card grew 2 px: 384 × 360, 438 × 352, 327 × 340 (368
+  with a three-line title). Prototype PR 73 (open) follows: full DS padding with the border added, measured at
+  the same three sizes.
 
 ## 2026-10-08 (late) · My Learning: the 40 covers on the card's Image layer; why the update had not come in
 
