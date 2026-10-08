@@ -2705,7 +2705,7 @@ Removed with the old version: the local `LMS / Program Detail / Course panel` (0
 ⚠︎ The DS card's thumbnail loop (library request 13) hits here too: with the footer set to fill, the thumbnail grew
 to 580 and the title went one letter wide. The row pins the thumbnail (sizing *fixed* on both axes).
 
-**Next:** ~~tablet and mobile for the four tabs~~ (done 7 Oct, §35.7); the handoff frame, starting *In progress*.
+**Next:** ~~tablet and mobile for the four tabs~~ (done 7 Oct, §35.7); ~~the handoff frame, starting *In progress*~~ (done 8 Oct, §35.8).
 
 ### 35.7 Tablet and mobile — the four tabs at 960 and 375 — 7 Oct
 
@@ -2770,7 +2770,44 @@ instances; no overlaps in the section, which is now 6 000 × 11 808. Each screen
 DS defect, not a choice made here — library request 21 — and the screens were left alone so that they heal when
 the library is fixed.
 
-**Not done:** the handoff frame for the Program page.
+~~**Not done:** the handoff frame for the Program page.~~ Built 8 Oct, §35.8.
+
+### 35.8 The handoff frame — in progress — 8 Oct
+
+**`Platform Pages - Program Page - Light`** (`6728:15050`) on *Platform Pages - Ready for Dev*, to the right of the
+My Learning frame, under a **WIP** banner (`6728:16401`). Same format as the other handoff frames (§27): the
+header block, then one labelled row per tab and one card per screen: card header (sequence, title, version
+2026-10-08 · r1, status, designer, this document as RSD), the screen, and the changelog header (description and
+the first change).
+
+**Status: `Status/In progress` on all twelve cards.** Only Nelson marks a frame *Ready for DEV*.
+
+| # | Card | Screen source (WIP page, §35.3–35.7) |
+|---|---|---|
+| 01 · 02 · 03 | Courses · Desktop · Tablet · Mobile | `6443:18722` · `6666:24197` · `6668:32886` |
+| 04 · 05 · 06 | Certificates · Desktop · Tablet · Mobile | `6449:21234` · `6666:28128` · `6668:36857` |
+| 07 · 08 · 09 | FAQs · Desktop · Tablet · Mobile | `6448:20247` · `6666:30899` · `6668:39670` |
+| 10 · 11 · 12 | About · Desktop · Tablet · Mobile | `6448:24409` · `6666:33668` · `6668:42581` |
+
+**The screens are copies**, made on 8 Oct after the library update of that night; each copy is the size of its
+source and the frame holds 0 annotations. When a source changes, copy the screen again rather than editing both.
+The *Navigation is not final* note is not repeated here: it lives on the top bar's main component and on one
+Dashboard screen (§33).
+
+**What each description says, so it is not said twice elsewhere:** on desktop the Courses tab has no sidebar and
+the other three carry *Program dates*, *What's included* and *Program instructor* on the right; on tablet that
+sidebar stays on the right; on mobile the three cards follow the main column. Below desktop the header is the
+Course variant of the header component and the course rows are the local compact row (library requests 19, 20).
+The course covers are placeholder images (request 26).
+
+**Built by cloning**: the header block and the Dashboard row of the My Learning frame (three cards, emptied), so
+every piece is the design system's handoff component. The outer frame and the rows grid were created and given
+the same token bindings (`bg/page`, `Spacing/7xl`, `Spacing/8xl`), read back.
+
+**Open, before this can be marked ready:** where the program's data comes from and the program certificate
+(vendor, §35.1, §35.4); the marketing-only content on About (§37.3); navigation (§33); the two stand-ins below
+desktop; the glance card and Course Card changes still waiting for a library publish do not touch these screens,
+except the card thumbnail, which becomes a fixed 86 px once that update is accepted.
 
 ## 36. The local components move to the DS — in progress — 6 Oct
 
@@ -3154,4 +3191,4 @@ on each source screen and on its handoff copy — 22 screens — and every value
 | 4 | **The DS components still carry the old defaults** — `Glance-Card` (*Today at a glance*, XP, attendance), `Streak-Card`, `Program-Card` (cohort, week, lessons), `Due-Item`, `Jump-Tile`. The screens override them; the library does not say so. And `Glance-Card` is a 2 × 2 grid that an instance cannot change: across a 1 200 row it wants four in a line | DS |
 | 5 | **The prototype** (`/platform/*`) still shows the earlier data, marked *SAMPLE* | prototype session |
 | 6 | `PRODUCT.md` says there is *no API today for due dates*. More exactly: there is one per course and none across courses, and no SkillUp content has due dates yet | Nelson |
-| 7 | ~~Tablet and mobile for the Program page~~ done 7 Oct (§35.7); its handoff frame is still to do | — |
+| 7 | ~~Tablet and mobile for the Program page~~ done 7 Oct (§35.7); ~~its handoff frame~~ built 8 Oct, in progress (§35.8) | — |
