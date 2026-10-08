@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late night) · Prototype: the course search works (PR 79, open)
+
+Nelson tried the search on the live Course Detail and it did nothing: PR 77 had shipped the field without
+behaviour. Prototype PR 79, not merged.
+
+- **Built from the eight screens of section `6837:27914` and §39 of the metadata map:** hint while typing, search
+  on submit only, *Searching…*, results in a popup under the field (type tabs with counts, excerpt with the
+  matches marked, location, match count, *Show more results*, the count of results not open yet), no results,
+  failed search; on mobile a full screen with the field and *Cancel*.
+- **Measured at 1280:** popup 560 wide, 8 under the field; 104 typing, 102 searching, 794 results, 110 no results,
+  150 failed (148 in Figma). *control chart* gives *20 of 29* and *All 20 · Text 9 · Video 2 · Quiz 7 · Lesson 2*.
+- **Wider than the screens, asked by Nelson:** on mobile the field sits above every tab, not only Course.
+- **Sample content, not an index;** typing `fail` shows the failed state. Every result opens the same topic.
+- **Not read layer by layer:** the two mobile screens; the sheet follows §39.3.
+
 ## 2026-10-08 (late night) · Buttons: the screens are on the previous generation, not on Button V2
 
 Asked by Nelson: close the question of how `Buttons/Button`, `Button utility` and `Button close X` map to the
