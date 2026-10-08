@@ -2,6 +2,34 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · DS: LMS components renamed to `LMS/ICP/…` and `LMS/Platform/…`; versions written in Figma
+
+Decided by Nelson on 8 Oct (ideas 1, 2 and 5 of six, then "finish the versions"). Two named versions first:
+*Before component versions are written in the descriptions* and *Before the LMS components are renamed to LMS/ICP
+and LMS/Platform and regrouped*. **Not published: the publish is Nelson's.**
+
+- **74 components renamed**, names only, to the September convention: `LMS/ICP/<Group>/<Component>` (Player,
+  Sidebar, Content, Topics, Assessment, Live, AI) and `LMS/Platform/<Group>/<Component>`. Keys read back
+  unchanged, so instances follow. The four parts with no prefix got a name (`Player/Vertical-Scroll`,
+  `Sidebar/Collapse-Toggle`, `Sidebar/Bookmark`, `Content/Topic-Status-Badge`). Map from old to new:
+  `03-design-system/component-versions.md`, *Rename map*.
+- **Moved by ownership** to the page `❖ LMS PLATFORM COMPONENTS`, right of the existing section: the Discovery
+  frame (course card and row, four badges, level icon, card menu) and the course-end frame (`Completion/Certificate`,
+  `Completion/Course-Complete-Modal`).
+- **New page `❖ LMS · IN REVIEW / NOT FOR BUILD`:** the AI Assistant frame (`LMS/ICP/AI/AI-Panel`, work in
+  progress, on 117 screens) and five components on no screen: `Daily Goals`, `Live Attendance`,
+  `Module Time-Left`, `Dashboard/Streak-Card`, `Completion/Certificate-Document-demo`.
+- **Not renamed:** `Inline Alert`, `Empty State`, `Progress Circle`, `Autosave Status` (they wait for the
+  promotion to Foundations), `Footnote` (handoff atom) and `Discussion Prompt` (retired topic type).
+- **Versions in Figma:** the first line of the description reads `Version v1.0 · since 8 Oct 2026` on 139
+  components (82 on the LMS pages, 35 platform, 22 base; `v2.0` on `Badge v2`, `Button`, `Link Button` and
+  `Icon Button`). `Select` was not found by that name on the Inputs page.
+- **Corrected:** the register listed the button family under old instance names (`Buttons/Button`, `Button
+  utility`, `Button close X`). The library has `Button`, `Link Button` and `Icon Button`.
+- **Not done:** the section titles on the LMS components page still read *2 · Player shell* and so on; one
+  documentation text on that page and the code comments in the prototype still use the old names; the
+  components-used list keeps the old names with a note pointing to the map.
+
 ## 2026-10-08 (night) · Component versions: a convention and a register; the Hub lists the components
 
 Asked by Nelson, after the engineering team asked for the final component list for Storybook.

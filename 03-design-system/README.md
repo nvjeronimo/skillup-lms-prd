@@ -57,7 +57,7 @@ pending): [`components-inventory.md`](../LMS-HANDOFF/components-inventory.md). R
 | [`rationale/`](rationale/) | Token **architecture & discovery** docs (was `Design System Tokens/`): TOKEN-ARCHITECTURE, TOKEN-FOUNDATIONS, naming alignment, multibrand demo, the DS-review pushback, session transcript. The *why* behind the token model. |
 | [`footer-contract.md`](footer-contract.md) | The footer spec/contract. |
 | [`ds-components-used-icp-lms.md`](ds-components-used-icp-lms.md) | Which DS components the ICP and LMS screens use, with counts per area (read from Figma, 6 Oct 2026), and the 35 components still local to the file. |
-| [`component-versions.md`](component-versions.md) | The version of each of the 137 components the screens use (`MAJOR.MINOR`, baseline 8 Oct 2026), the rule for bumping it, and the register with Figma links. |
+| [`component-versions.md`](component-versions.md) | The version of each of the 141 components the screens use (`MAJOR.MINOR`, baseline 8 Oct 2026), the rule for bumping it, the register with Figma links, and the map from the old LMS component names to `LMS/ICP/…` and `LMS/Platform/…`. |
 | [`motion-matrix.md`](motion-matrix.md) | 🟠 **Draft.** Microinteractions contract — the audit of every duration in the repo, the proposed `--sk-duration-*` / `--sk-ease-*` scale, and the component × state × token matrix. Produces `../LMS-HANDOFF/tokens/motion.css` (not yet created). |
 
 ## Pointers into the handoff package
