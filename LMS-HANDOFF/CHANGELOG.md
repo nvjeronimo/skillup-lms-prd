@@ -36,6 +36,15 @@ Named version first: *Before the compact course rows move to the DS variant*. Af
 - **Read back after the pass**, sources and handoff copies: 42 program rows on the DS component (14 Desktop,
   28 Compact), 42 covers on `Image` with `Show image` on; 0 badges read *Label* on the two WIP platform sections
   (121 and 131 badges) and 0 visible *Label* texts in the two handoff frames.
+- ⚠︎ **Correction to the entry below — the 16 tablet and mobile Program headers were rendering light.** Clearing
+  the dark mode on the instance did not hand it back to the variant: it left an empty mode override, which
+  cancelled the variant's own dark mode (trap 45). Nobody had looked at the render. Named version first (*Before
+  the tablet and mobile Program headers get their dark mode back*), then each instance was given the two modes its
+  variant carries. Read back on all 16: semantics resolve to dark (`19547:2`), background 15,44,56, same texts,
+  same sizes (960 × 321, 375 × 525). The mode still counts as an override on the instance.
+- **Found while checking, not changed:** the Program header's background is `bg/subtle` on Desktop and
+  `bg/primary-soft` on Tablet and Mobile (18,34,40 against 15,44,56 in dark). The two variants built on 8 Oct kept
+  the Course variant's token; a sixth difference missed then. A one-token change in the DS, waiting for Nelson.
 - ⚠︎ **Correction to the entry below — the 40 My Learning cards did not keep the new Course Card.** They had been
   moved by script to the published copy of the same component and fell back to the version this file holds
   (trap 42), losing `Show image` and the cover with it. Their covers are back as a fill on the thumbnail with the
@@ -52,7 +61,8 @@ Named version first: *Before the compact course rows move to the DS variant*. Af
 Named version first: *Before the screens pass: covers on the Image layer, Program header and DS compact row*.
 
 > **Corrected the same day (entry above):** the 40 My Learning cards fell back to the previous Course Card; their
-> covers are on the thumbnail fill again. The 14 desktop program rows and the 16 headers held.
+> covers are on the thumbnail fill again. The 16 headers stayed on `Kind=Program` but rendered light until their
+> mode was set again. The 14 desktop program rows held.
 
 - The published DS was not in the product file's instances yet, so each instance was moved to the copy the
   library returns, with its texts compared before and after (a difference rolls the call back).

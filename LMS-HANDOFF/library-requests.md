@@ -451,6 +451,16 @@ the breadcrumb, the Program type badge, the title and the structure line. **Need
 tablet and mobile Program screens and their handoff copies switch `Kind` to Program and drop the dark mode set on
 the instance.
 
+**On the screens, 8 Oct**, after the publish: the 16 tablet and mobile headers (8 sources, 8 handoff copies) are
+on `Kind=Program`. Same texts, same sizes. The dark mode set on the instance was cleared first, and that was a
+mistake: an empty mode override stayed behind and cancelled the variant's own mode, so the headers rendered light
+(trap 45). Corrected the same day: each instance carries the two modes of its variant again and resolves to dark,
+read back on all 16.
+
+**Still open — one token.** The Desktop Program variant's background is `bg/subtle`; the Tablet and Mobile
+variants built on 8 Oct kept the Course variant's `bg/primary-soft` (in dark: 18,34,40 against 15,44,56). Ask:
+`bg/subtle` on both, then a publish. Not changed without Nelson's go-ahead.
+
 ---
 
 ## 20 · `LMS/Platform/Program-Detail/Course-Row` — no layout below desktop
@@ -477,6 +487,12 @@ variant and the local component is removed.
 *Detail* and the *Modules* slot did not follow the set's properties. Linked again and tested with a temporary
 instance. The first publish carried the unlinked variants; **one more publish is needed** before the rows are
 swapped.
+
+**On the screens, 8 Oct**, after the second publish: the 28 compact rows (tablet `6666:24197`, mobile
+`6668:32886`, handoff copies `6729:21404`, `6729:25817`) are the DS row on `Breakpoint=Compact`, with no text
+difference. The mobile expanded row is 942 high (962 with the local component: the detail now fits one line).
+The local `Course-Row-Compact` (`6665:4206`) and its section are removed. **Closed.** `topics-done` went with the
+local component; nothing was linked to it.
 
 ---
 
@@ -796,3 +812,15 @@ image`**, off by default; the initials stay underneath as the fallback. Same voc
 (`Show image`). Checked with temporary instances, image on and off; card sizes unchanged (380 × 358, 1 200 × 120).
 **Needs a DS publish.** Then, on the 63 thumbnails: `Show image` on, the cover moved from the thumbnail's fill to
 the `Image` layer, the thumbnail back on its token.
+
+**On the screens, 8 Oct — done for the Program page, not for My Learning.**
+
+| Where | Thumbnails | State, read back |
+|---|---|---|
+| Program page, sources and handoff copies | 42 (7 courses × desktop, tablet, mobile × 2) | `Show image` on, cover on `Image`, thumbnail on its token, initials underneath |
+| My Learning, sources and handoff copies | 40 | cover as a fill on the thumbnail, initials hidden; the card has no `Show image` |
+
+The 42 sit inside `Course-Row`, which arrived in its published version. The 40 are direct instances of the card:
+moved by script to the published copy, they fell back to the version this file holds (trap 42) and lost the cover,
+which was put back the 7 Oct way. **Open until the Course Card update is accepted in this file** (Libraries →
+Updates); then the 40 take `Show image` and the thumbnail goes back on its token.

@@ -196,3 +196,10 @@ The rule they all point at: **after any structural mutation, read the state back
     `Effort`): that text fell back to the default. A library update accepted in the UI keeps it. Before a swap,
     read the texts; after it, compare and restore — and throw on any other difference, so the call rolls back.
 
+45. **Clearing a mode on an instance does not hand it back to the component.** A variant can carry its own
+    explicit mode (the Program header is dark that way). `clearExplicitVariableModeForCollection` on an instance
+    of it leaves an **empty mode override**, which cancels the variant's mode: the instance resolves to the page's
+    mode and renders light, with the same texts and the same size, so a text-and-size comparison passes. To follow
+    the variant, set the variant's modes on the instance (`main.explicitVariableModes`) — and after any mode
+    change read `resolvedVariableModes` and look at the render.
+

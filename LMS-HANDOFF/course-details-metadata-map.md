@@ -2726,14 +2726,15 @@ component and on one Dashboard screen (§33).
 
 | Part | Tablet | Mobile |
 |---|---|---|
-| Header | `Course-Header` · **`Kind=Course`** · `Breakpoint=Tablet`, overridden to read as the program and set to `SKO Dark` — see below | the same on `Breakpoint=Mobile` |
+| Header | `Course-Header` · **`Kind=Program`** · `Breakpoint=Tablet` since 8 Oct (was the Course variant with overrides — see below) | the same on `Breakpoint=Mobile` |
 | Tabs | Courses · Certificates · FAQs · About, no search | the same, `sm` |
-| Courses | one column, 912 wide, no sidebar (as on desktop): `Section-Intro` and seven **`Course-Row-Compact`**, course 2 expanded | one column, 343 wide |
+| Courses | one column, 912 wide, no sidebar (as on desktop): `Section-Intro` and seven `Course-Row` on **`Breakpoint=Compact`** since 8 Oct (was a local `Course-Row-Compact`), course 2 expanded | one column, 343 wide |
 | Certificates | main column 560 + sidebar 320; the two certificates one under the other at 320 | everything stacked; the certificates fill the width |
 | FAQs · About | main column 560 with the accordion card + sidebar 320 | the accordion items on `Breakpoint=Mobile`, texts unchanged; then the three cards |
 | Program dates · What's included · Program instructor | the sidebar on Certificates, FAQs and About | stacked after the content, as Course Detail does with its sidebar cards |
 
-**Two things the DS could not do, and what stands in for them.**
+**Two things the DS could not do on 7 Oct, and what stood in for them. Both stand-ins are gone since 8 Oct** — see
+*Since 8 Oct* below; the two bullets are kept as the record of why the variants exist.
 
 - **`Course-Header` has no Program variant below desktop.** The set has four variants: Course × Desktop · Tablet ·
   Mobile, and Program × Desktop only. The eight screens use the **Course** variant with overrides — breadcrumb
@@ -2760,6 +2761,20 @@ component and on one Dashboard screen (§33).
   **Course covers.** Every course thumbnail on My Learning and on this page carries a placeholder image from the
   public SkillUp catalog, set as a fill override with the initials hidden (library request 26). The field is the
   course's own image (`course_image`; `bannerImgSrc` in Learner Home).
+
+**Since 8 Oct — the DS has both, and the screens use them** (library requests 19, 20, 26; two publishes by Nelson).
+
+- **Header:** the 8 screens use `Kind=Program` on their breakpoint; texts and sizes unchanged (960 × 321,
+  375 × 525). The variant carries the dark semantics mode itself. The instance carries the same two modes as its
+  variant: clearing the mode on the instance left an empty override that cancelled the variant's, and the headers
+  rendered light for a few hours on 8 Oct (trap 45 in `figma-api-traps.md`). **One token differs from desktop:**
+  the background is `bg/primary-soft` here and `bg/subtle` on the Desktop Program variant — open in request 19.
+- **Rows:** the 14 rows on the tablet and mobile Courses screens are the DS `Course-Row` on `Breakpoint=Compact`,
+  same properties, no text difference. The mobile expanded row is 942 high (962 before: the detail fits one
+  line). The local `Course-Row-Compact` and its section are removed; `topics-done` went with it.
+- **Covers on this page** sit on the card's `Image` layer with `Show image` on (21 thumbnails: 7 courses ×
+  desktop, tablet, mobile), the thumbnail on its token. **On My Learning they are still a fill on the thumbnail**:
+  those 20 cards are direct instances of a Course Card version this file has not accepted yet (request 26).
 
 **Read back on the eight screens:** every text visible on desktop is present on tablet and on mobile, except badge
 labels (next paragraph); 0 raw fills, strokes, spacing or radii, 0 unstyled texts, 0 generic layer names outside
@@ -2797,17 +2812,17 @@ Dashboard screen (§33).
 **What each description says, so it is not said twice elsewhere:** on desktop the Courses tab has no sidebar and
 the other three carry *Program dates*, *What's included* and *Program instructor* on the right; on tablet that
 sidebar stays on the right; on mobile the three cards follow the main column. Below desktop the header is the
-Course variant of the header component and the course rows are the local compact row (library requests 19, 20).
-The course covers are placeholder images (request 26).
+Program variant of the header component and the course rows are the DS row on `Breakpoint=Compact` (updated
+8 Oct, 12 texts, after the two stand-ins left). The course covers are placeholder images (request 26).
 
 **Built by cloning**: the header block and the Dashboard row of the My Learning frame (three cards, emptied), so
 every piece is the design system's handoff component. The outer frame and the rows grid were created and given
 the same token bindings (`bg/page`, `Spacing/7xl`, `Spacing/8xl`), read back.
 
 **Open, before this can be marked ready:** where the program's data comes from and the program certificate
-(vendor, §35.1, §35.4); the marketing-only content on About (§37.3); navigation (§33); the two stand-ins below
-desktop; the glance card and Course Card changes still waiting for a library publish do not touch these screens,
-except the card thumbnail, which becomes a fixed 86 px once that update is accepted.
+(vendor, §35.1, §35.4); the marketing-only content on About (§37.3); navigation (§33); the header's background token below
+desktop (request 19). ~~The two stand-ins below desktop~~ are gone since 8 Oct, and the copies in this frame were
+updated in place the same day (rows, covers, header mode), not copied again.
 
 ## 36. The local components move to the DS — in progress — 6 Oct
 
