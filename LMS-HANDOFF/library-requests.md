@@ -467,8 +467,9 @@ variant:
 | Placeholder partner logos | Microsoft wordmark grey 115, IBM a raw blue | wordmark white, IBM on `icon/on-media` (39 paints per variant) |
 
 Found by comparing the Course and Program variants layer by layer on each breakpoint, raw colours included; the
-remaining differences are now the same set on the three breakpoints. **Needs a DS publish**, then `Course-Header`
-accepted in the product file. The screens' headers do not override the background and will follow.
+remaining differences are now the same set on the three breakpoints. ~~Needs a DS publish, then `Course-Header`
+accepted in the product file.~~ **Published and accepted the same evening. Closed:** the 24 Program headers of
+the screens and handoff copies read `bg/subtle`, 18,34,40, dark, on the library's current version.
 
 ---
 
@@ -833,3 +834,8 @@ The 42 sit inside `Course-Row`, which arrived in its published version. The 40 a
 moved by script to the published copy, they fell back to the version this file holds (trap 42) and lost the cover,
 which was put back the 7 Oct way. **Open until the Course Card update is accepted in this file** (Libraries →
 Updates); then the 40 take `Show image` and the thumbnail goes back on its token.
+
+**8 Oct (evening), after another publish and accepted updates: unchanged.** `Course-Header` came in; the Course
+Card did not, in the server read and in the desktop app. The 40 cards point to a copy of the set with `Layout`
+only. Figma's Updates tab lists the current page's assets unless *Show updates for all pages* is on, and an
+update taken from one selected instance updates that instance only; one of the two is the likely reason.

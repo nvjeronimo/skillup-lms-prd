@@ -184,6 +184,9 @@ The rule they all point at: **after any structural mutation, read the state back
     is rebuilt in the library (`Badge v2`, twice in two days: new property ids), every component that wraps it is
     out of step in the consuming file until that file accepts the wrappers again; a count that read 0 can read
     hundreds the next morning with nothing touched. After any publish, recount; do not trust yesterday's 0.
+    "Updates accepted" is not all-or-nothing either: Figma's Updates tab lists the assets of the current page
+    unless *Show updates for all pages* is on, and *Update selected instance* updates one instance. After an
+    accepted update, group the instances by main component and name the sets still on an old copy.
 
 43. **Cloning a variant drops its property links.** `variant.clone()` inside a component set keeps the layers and
     loses `componentPropertyReferences`: texts no longer follow their TEXT property and a slot comes back as a

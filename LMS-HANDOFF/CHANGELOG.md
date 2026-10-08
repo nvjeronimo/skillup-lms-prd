@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (evening) · After the publish: the Program headers are in; the Course Card is still not
+
+Read only; nothing written to Figma in this pass.
+
+- **Program header, closed.** The 24 headers (12 sources, 12 handoff copies; Desktop, Tablet, Mobile) are on the
+  library's current version: background `bg/subtle`, 18,34,40, semantics resolved to dark, sizes unchanged
+  (1 280 × 352, 960 × 321, 375 × 525). Checked by eye on tablet and mobile. 0 visible *Label* texts in the two WIP
+  platform sections and the two handoff frames.
+- **`LMS / Course Card`, still the previous version in this file**, in the server read and in Nelson's desktop
+  app alike: the 40 My Learning cards point to a copy with `Layout` only (no `Show image`, layer `Time-Left`),
+  while the cards nested in the program rows are on the current one. The covers stay on the thumbnail fill.
+- **Still behind the library** (direct instances, two WIP platform sections): `Dashboard/Stat` ×24,
+  `LMS / Course Card` ×20, `Input field` ×8, `Button group` ×8, `Program-Card` ×8, `Due-Item` ×6,
+  `LMS / Course Row` ×6, `Today-at-a-glance` ×3, `Resume-Row` ×3. `Course-Header` left the list. All are
+  published in the DS (`CURRENT`).
+- **Likely why, from Figma's own help page** (*Review and accept library updates*): the Updates tab lists the
+  assets of the **current page** unless *Show updates for all pages* is on, and *Update selected instance*
+  updates one instance. Either leaves other components, or other instances, on the old version after an update
+  was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
+  pages* → *Update all*.
+
 ## 2026-10-08 · Lab on third-party platforms (Google, Microsoft, IBM): first pass
 
 From the content team's messages of 8 Oct (Kirti Mishra, Simran Jindal). Discovery only; the answers asked for
