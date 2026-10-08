@@ -2,6 +2,28 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late night) · Prototype: Course Detail, the platform pages in line with Figma, IBM as a hosted course
+
+Prototype `nvjeronimo/skillup-lms-prototype`. PRs 76 and 77 merged by Nelson; PR 78 open.
+
+- **PR 76, Dashboard, My Learning and Program:** compared against the handoff cards of 8 Oct at 1280, 960 and
+  375. Dashboard without the streak and with four totals; course cards with covers (placeholders, the pictures
+  the Figma screens use), total effort and one completed course; program card without cohort, week and lessons.
+  The Program page's Courses tab was still the 1 Oct design (numbered accordion and sidebar) and was rebuilt as
+  seven course rows; tablet and mobile use the compact row and the Program header.
+- **PR 77, Course Detail:** `/platform/course/six-sigma` with Course, Progress, Dates and Mentorship Q&A on the
+  three breakpoints. On My Learning the course title links to it. Not built: course search (the field is drawn),
+  the weekly goal and certificate states that are not on the screens, links from Program and Dashboard rows.
+- **PR 78 (open), IBM:** `/platform/course/introduction-to-cloud-computing`, the two IBM screens of the Lab page.
+  *Start course* opens the dialog before leaving; once started the card reads a dash, *Progress is tracked on
+  IBM* and *Continue on IBM*. Progress card 360 × 168 as in Figma. Under the header the page shows one marked
+  note, because that part is not designed. With it the eleven screens of the Lab page are in the prototype.
+- **Still on mobile only:** blocks with a button are a few px taller than Figma (44 px touch targets).
+- **Found in Figma, not changed:** on the Course Detail screens the modules add up to 42 topics only in the
+  header, Module 4 has two titles, *Course ends* is dated 2037, the weekly goal reads 2 of 3 on one tab and 3 of 3
+  on another, and the mobile grade badge is clipped; on the mobile Certificates card of the Program page the
+  certificate shows the component's default content; `certificate-seal-ring.png` is missing from the prototype.
+
 ## 2026-10-08 (night) · DS: LMS components renamed to `LMS/ICP/…` and `LMS/Platform/…`; versions written in Figma
 
 Decided by Nelson on 8 Oct (ideas 1, 2 and 5 of six, then "finish the versions"). Two named versions first:
