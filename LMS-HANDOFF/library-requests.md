@@ -874,6 +874,7 @@ existing was changed, so no named version was saved first.
 - **Buttons:** Primary in Ready and Unavailable, Secondary in Opened and Completed, so a screen keeps one primary
   action. The trailing icon is `link-external-01`; switch it off when the lab opens inside the page.
 
-**Needs a DS publish.** Then, in the product file: swap the stand-in on the Lab screens (42 instances: 9 discovery
-sources and 33 handoff cards, less the two IBM rows, which have none), set `State`, the provider and the texts,
-and drop the forced height. Request 27 closes when no Lab screen holds a SCORM Frame.
+**Needs a DS publish.** Then, in the product file: swap the stand-in on the Lab screens, set `State`, the provider and the
+texts, and drop the forced height. Expected count, to be read back when it is done: 32 instances, on eight of the
+nine topic screens (E1 holds the inline frame instead; the IBM screens have no launch card) × the discovery
+sources and the desktop, tablet and mobile cards. Request 27 closes when no Lab screen holds a SCORM Frame.
