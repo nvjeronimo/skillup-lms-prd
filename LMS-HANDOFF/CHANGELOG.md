@@ -2,6 +2,20 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Tab count default, prototype sample and labels, Course Type Badge render
+
+Decided by Nelson on 8 Oct.
+
+- **DS, `_Tab button base` (not published):** the count badge read *Label* by default in all 72 variants; it now
+  reads *2*. Named version first. A screen that does not set the count no longer shows *Label*.
+- **Prototype PR 68 (open):** the practice quiz sample *Quick check* is no longer completed; Video reads
+  *Completed* like Quiz, ORA and VILT; the footer shows *MODULE COMPLETED · Go to next Module* only once the last
+  topic of a module is done, and on an unfinished last topic of the course *Next* is disabled. The last point
+  was a defect the sample change uncovered: the milestone was decided by position alone.
+- **`LMS / Course Type Badge`, rendered at 8×** from a temporary copy (removed): the Course icon reads as a dark
+  card with three light lines. The Program icon reads as one flat teal shape: the three stacked cards are the
+  same solid colour, so the opacity steps set on 7 Oct do not show. Shown to Nelson; no change made.
+
 ## 2026-10-08 · DS: the glance card keeps one variant property
 
 Named version first: *Before removing the stray variant properties of Today-at-a-glance*. On Nelson's go-ahead.
