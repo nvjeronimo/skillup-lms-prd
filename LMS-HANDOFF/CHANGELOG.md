@@ -98,6 +98,10 @@ Decided by Nelson on 8 Oct.
   Quizzes (483), Reading (78), Platform Ready for Dev (425) and V8 WIP (498). The footer instances carry the new
   name `LMS / Topic Footer Nav`: 33 on Video, 66 on Quizzes, 20 on Reading, 2 on WIP. Video tabs read
   *Transcript · Notes 2 · Downloads 4*; grids P S S S S and rows P S S. PR 70 merged.
+- **Old screen archived in place (Nelson, 8 Oct):** the frame `6207:250057` on V8 WIP, section *1 · Core
+  Learning Journey - LMS DS*, is now named *My Learning - Courses - List View — archived (uses LMS / Course
+  Card_Remove)*, like its superseded neighbour. Named version first. Position, size and content unchanged; its
+  five `LMS / Course Card_Remove` instances are the last uses of that card in the product file.
 
 ## 2026-10-08 · Screens: the 28 compact course rows on the DS row; the local component is gone
 
