@@ -185,3 +185,14 @@ The rule they all point at: **after any structural mutation, read the state back
     out of step in the consuming file until that file accepts the wrappers again; a count that read 0 can read
     hundreds the next morning with nothing touched. After any publish, recount; do not trust yesterday's 0.
 
+43. **Cloning a variant drops its property links.** `variant.clone()` inside a component set keeps the layers and
+    loses `componentPropertyReferences`: texts no longer follow their TEXT property and a slot comes back as a
+    plain frame. The clone looks identical, and an instance of it ignores `setProperties` without an error. After
+    cloning, set the references again (`{characters: key}`, `{slotContentId: key}`, `{visible: key}`) and test
+    with a temporary instance.
+
+44. **`swapComponent` carries overrides by layer name, not by node id.** Moving an instance to a newer copy of its
+    own component kept every override except the one on a layer that had been renamed in between (`Time-Left` →
+    `Effort`): that text fell back to the default. A library update accepted in the UI keeps it. Before a swap,
+    read the texts; after it, compare and restore — and throw on any other difference, so the call rolls back.
+

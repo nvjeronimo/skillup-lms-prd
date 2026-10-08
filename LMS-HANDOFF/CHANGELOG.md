@@ -2,6 +2,22 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Screens: covers on the card's Image layer, Program header below desktop, rows on the published version
+
+Named version first: *Before the screens pass: covers on the Image layer, Program header and DS compact row*.
+
+- The published DS was not in the product file's instances yet, so each instance was moved to the copy the
+  library returns, with its texts compared before and after (a difference rolls the call back).
+- **Covers:** on the 40 My Learning cards and the 14 desktop program rows (sources and handoff copies),
+  `Show image` is on, the cover sits on the `Image` layer, and the thumbnail is back on its token. The effort line
+  was restored where the swap dropped it (trap 44).
+- **Program header:** the 16 tablet and mobile screens (8 sources, 8 handoff copies) use `Kind=Program`; the dark
+  mode set on the instance is gone. Same texts, same sizes.
+- **Desktop program rows** read *Flexible Learning* (the new default) instead of *Flexible + Live*.
+- **Not done yet: the 28 compact rows.** The Compact variants built in the DS had lost their property links when
+  cloned (trap 43): *Position*, *Detail* and the *Modules* slot did not follow the properties. Fixed in the DS;
+  **it needs one more publish**, then the rows are swapped and the local component removed.
+
 ## 2026-10-08 · DS: Program header below desktop, compact course row
 
 Named version first. On Nelson's go-ahead. **Not published yet.**

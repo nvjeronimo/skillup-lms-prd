@@ -473,6 +473,11 @@ override that only the local `Expanded=True` had on the *Up next* row (no visibl
 publish.** Then the 28 compact rows on the tablet and mobile screens and handoff copies are swapped to the DS
 variant and the local component is removed.
 
+**Corrected the same day:** the two Compact variants had lost their property links when cloned — *Position*,
+*Detail* and the *Modules* slot did not follow the set's properties. Linked again and tested with a temporary
+instance. The first publish carried the unlinked variants; **one more publish is needed** before the rows are
+swapped.
+
 ---
 
 ## 21 · Delivery, difficulty and topic-type badges read *Label* — 7 Oct
