@@ -12,6 +12,20 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   subtitle of the Program Page banner it was copied from. Both new banners now carry their own subtitle; the
   Program Page banner is unchanged.
 
+## 2026-10-08 (late night) · After the DS publish: names and versions read back in the product file
+
+Nelson published the DS and accepted the update. Read from the saved file, five pages, no renders.
+
+- **Badges reading *Label*: 0** on Video, Quizzes, Reading, Platform Ready for Dev and V8 WIP.
+- **New names are in.** On the four Ready for Dev pages every LMS component an instance points to is
+  `LMS/ICP/…` or `LMS/Platform/…`, except the ones left unrenamed on purpose (`Progress Circle`, `Empty State`,
+  `Inline Alert`, `Footnote`). On V8 WIP the old names remain only on the archived Discovery screen (it points to
+  the deleted `Course Card_Remove` and its nested badges) and on the local `LMS` set, the platform sidebar.
+- **Version line is in.** Three platform components (`Navigation/Topbar-Item`, `Completion/Certificate-Card`,
+  `Completion/Certificate-Document-demo`) came without it on the first read; Nelson published those three and
+  accepted, and the second read has `Version v1.0` on all of them (36, 24 and 5 instances on Ready for Dev).
+  Without the line now: only the archived Discovery screen's old copies and the local `LMS` sidebar set.
+
 ## 2026-10-08 (late night) · Prototype: Course Detail, the platform pages in line with Figma, IBM as a hosted course
 
 Prototype `nvjeronimo/skillup-lms-prototype`. PRs 76 and 77 merged by Nelson; PR 78 open.
