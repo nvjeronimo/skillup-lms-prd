@@ -2,6 +2,22 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Three decisions applied: certificate, Course Card thumbnail, first grid card
+
+Decided by Nelson on 8 Oct. Named versions first, in both files.
+
+- **Certificate without time learned (DS, not published):** the *4h 22m · Time* stat removed from
+  `LMS / Course Certificate`. The row reads *3 Modules · 11 Topics · 96% Avg quiz*; the component stays 720 × 524.
+  Open edX keeps no time-learned figure. The prototype dropped it in PR 67.
+- **Course Card thumbnail fixed (DS, not published):** in `Layout=Grid` the thumbnail was locked 1:1 and filled
+  the header height, so it was 98 px beside a two-line title and 128 px beside a three-line one. It is now a fixed
+  86 × 86. The card stays 380 × 358; the title column gains 12 px (216 → 228). `Layout=List` not changed.
+- **First grid card primary (screens):** in the three My Learning grids on Ready for Dev and the three on V8 WIP
+  (desktop, tablet, mobile), the first card's *Resume* is Primary and the rest stay Secondary
+  (*Resume · Resume · Resume · Review · Start* → P S S S S). No card changed size. The prototype already did this.
+- The three certificate screens on *Completion + Certificate* and the course cards on the platform pages show the
+  DS changes only after the library is published and the update accepted in the product file.
+
 ## 2026-10-07 · After Nelson accepted the library update: badges recounted on the Ready for Dev pages
 
 - Read with the server session, twice on Video. Visible `Badge v2` reading *Label*: Quizzes 0 of 483, Reading
