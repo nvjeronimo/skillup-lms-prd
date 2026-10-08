@@ -30,6 +30,13 @@ Decided by Nelson on 8 Oct. Named versions first, in both files.
   (*Resume · Resume · Resume · Review · Start* → P S S S S). No card changed size. The prototype already did this.
 - The three certificate screens on *Completion + Certificate* and the course cards on the platform pages show the
   DS changes only after the library is published and the update accepted in the product file.
+- **After the publish and the accepted update (8 Oct), read back:** no visible badge reads *Label* on Video
+  (212), Quizzes (483), Reading (78), Platform Ready for Dev (425) or V8 WIP (498); the 29 tab bars on Video read
+  *Transcript · Notes 2 · Downloads 4*. The three certificate screens read *Modules · Topics · Avg quiz*. Every
+  grid course card has an 86 × 86 thumbnail; the cards are 384 × 358, 438 × 350 and 327 × 338 (366 with a
+  three-line title), which are the prototype's sizes at the three breakpoints, the mobile one included. Grids
+  read P S S S S and course-row lists P S S on both platform pages. Two copies of `Badge v2` and of
+  `_Tab button base` are still in use on Video.
 
 ## 2026-10-07 · After Nelson accepted the library update: badges recounted on the Ready for Dev pages
 
