@@ -19,6 +19,11 @@ Two named versions first. On Nelson's go-ahead for each step. **Not published ye
 - **After the publish:** accept `Program-Card` in the product file (reload the tab first if Updates does not
   offer it). The 16 instances should keep their texts and sizes: 384 × 370 · 384 × 404 · 1 200 × 280 ×2 ·
   438 × 354 · 438 × 350 · 327 × 340 · 327 × 348, on the sources and on the handoff copies alike.
+- **Confirmed after Nelson's publish, the same night** (server read; the desktop bridge was not connected): the
+  16 instances are on the library's current version, 16 of 16 with the recorded size and visible texts; their
+  properties are `Title`, `Eyebrow`, `Courses`, `Percent`, `Up next`, `Layout`, `State`; none carries a `Cohort`,
+  `Week` or `Lessons` layer. 0 visible *Label* texts on the two WIP sections and the two handoff frames. Behind
+  the library: `Input field` ×8 only.
 - **Left as it is:** one `Percent` default (*14%*) serves both states, so a fresh *Not started* card reads 14 %
   until it is set. A text property has one default per set.
 
