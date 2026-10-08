@@ -444,6 +444,13 @@ centres the type badge. The screens hide the two chips and keep the container.
 
 **Ask:** `Kind=Program` × `Breakpoint=Tablet` and `Mobile`.
 
+**Done in the DS, 8 Oct**, on Nelson's go-ahead, after a named version: `Kind=Program, Breakpoint=Tablet`
+(960 × 321) and `Kind=Program, Breakpoint=Mobile` (375 × 546), each cloned from the Course variant of its
+breakpoint with the five differences the desktop Program variant has — the dark semantics mode on the variant,
+the breadcrumb, the Program type badge, the title and the structure line. **Needs a DS publish.** Then the eight
+tablet and mobile Program screens and their handoff copies switch `Kind` to Program and drop the dark mode set on
+the instance.
+
 ---
 
 ## 20 · `LMS/Platform/Program-Detail/Course-Row` — no layout below desktop
@@ -455,6 +462,16 @@ on tablet and mobile: the card in its Grid layout, the modules bar wrapping, the
 
 **Ask:** fold it into the DS row as `Breakpoint` = Desktop · Compact (the top bar's own vocabulary), and retire
 the local one.
+
+**Done in the DS, 8 Oct**, on Nelson's go-ahead, after a named version: `Course-Row` has `Breakpoint` = Desktop ·
+Compact. The two existing variants were renamed (`Expanded=…, Breakpoint=Desktop`; keys unchanged, so instances
+keep their link), and two Compact variants were built from them to match the local component as Nelson left it:
+the card in its grid layout with a full-width button and a truncating *Up next* title, the modules bar wrapping,
+400 wide. Read back: **400 × 425 and 400 × 886, the local component's own sizes**; card 398 × 356, button
+350 × 48, bar 398 × 67. Not carried over: the `topics-done` boolean (linked to nothing), and one alignment
+override that only the local `Expanded=True` had on the *Up next* row (no visible effect). **Needs a DS
+publish.** Then the 28 compact rows on the tablet and mobile screens and handoff copies are swapped to the DS
+variant and the local component is removed.
 
 ---
 
@@ -658,6 +675,23 @@ To confirm.
 
 **Not checked:** Nelson's discovery pages and the archive, by rule.
 
+### Outside the two LMS pages — sampled 8 Oct, nothing changed
+
+`Badge v2` nested in the Untitled UI kit components lost its text in the same restructure. Six component pages
+of the DS were read; a badge counts when its label is on:
+
+| DS page | Nested badges | Reading *Label* | Where |
+|---|---:|---:|---|
+| Application navigation | 177 | 177 | `Sidebar navigation`, `Header navigation`, `_Nav item base`, `_Nav item dropdown base`, `_Nav featured card` |
+| Tables | 276 | 276 | `Table`, `Table cell` |
+| Card headers | 4 | 4 | `Card header` |
+| Tabs | 472 | 0 | all read *2* since the default was set on `_Tab button base` |
+| Page headers · Dropdowns | 0 | — | no nested badge |
+
+**None of this shows on a working screen**: the seven pages counted above read 0. It will show the day one of
+these components is used without setting the badge. The original texts are the Untitled UI defaults and are not
+on record here; repairing them is a decision for Nelson, and the other kit pages were not read.
+
 ---
 
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
@@ -750,3 +784,10 @@ production the image is the course's own (`course_image`; Learner Home returns i
 
 **Ask:** give the card a thumbnail that takes an image (a boolean or a swap, initials as the fallback when a
 course has none); then the screens drop their overrides.
+
+**Done in the DS, 8 Oct**, on Nelson's go-ahead, after a named version: both variants have an `Image` layer that
+fills the thumbnail (absolute, stretched, clipped to the thumbnail's radius), shown by a new boolean **`Show
+image`**, off by default; the initials stay underneath as the fallback. Same vocabulary as `Course-Header`
+(`Show image`). Checked with temporary instances, image on and off; card sizes unchanged (380 × 358, 1 200 × 120).
+**Needs a DS publish.** Then, on the 63 thumbnails: `Show image` on, the cover moved from the thumbnail's fill to
+the `Image` layer, the thumbnail back on its token.

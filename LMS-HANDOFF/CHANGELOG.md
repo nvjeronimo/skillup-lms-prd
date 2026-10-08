@@ -2,6 +2,70 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · DS: Program header below desktop, compact course row
+
+Named version first. On Nelson's go-ahead. **Not published yet.**
+
+- **`Course-Header`**: `Kind=Program` now exists on Tablet and Mobile as well as Desktop (library request 19).
+- **`Program-Detail/Course-Row`**: new property `Breakpoint` = Desktop · Compact (library request 20). The Compact
+  variants match the local `Course-Row-Compact` in size (400 × 425, 400 × 886) and content. All four variants
+  default to *Flexible Learning*.
+- **After the publish**, on the screens: the tablet and mobile Program screens take the Program header and the DS
+  compact row, the local component goes, and the 63 course covers move to the card's new `Image` layer.
+- **Kit badges not repaired.** Their original texts are not on record. A duplicate of a DS version from before
+  7 Oct would give them, node by node.
+
+## 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card
+
+Named versions first. On Nelson's go-ahead. **Nothing here is published yet.**
+
+- **Defaults moved to what the screens show since the edX pass** (§37.6, item 4):
+  - `Today-at-a-glance`: *Your learning at a glance* · Courses in progress 3 · Courses completed 1 ·
+    Certificates 1 · Programs 2, in both variants.
+  - `Stat`: *In progress* · 3 · *courses*.
+  - `Due-Item`: an assignment deadline (*Persona research draft (Peer Assessment)*, *Tonight*); Today reads
+    *Due 11:59* on Warning, without the dot, instead of *Live*.
+  - `Program-Card`: *Program · 7 courses*, *1 of 7 courses complete*, 14 % with the bar at 10 %, *Course 2 ·
+    SEO & Organic Search*, *Flexible Learning*; `Show cohort` off, `Week` and `Lessons` hidden.
+  - `Jump-Tile`: *12 unread updates in your courses*. `Resume-Row` and `LMS / Course Row`: *Flexible Learning*.
+  - `LMS / Course Card`: the line that read *3h 20m left* reads *8 hours total* (layer `Effort`).
+  - `Streak-Card`: not changed; its description says nothing in Open edX backs it.
+- **`LMS / Course Card` takes an image**: a new boolean `Show image` shows an `Image` layer over the initials, in
+  both variants. Library request 26.
+- **This morning the badges read *Label* again and were back to 0 a minute later** (all platform frames, read in
+  the desktop app at 08:05 and 08:08 UTC). `Badge v2` was rebuilt in the library a second time; the entry below,
+  from the other session, has the cause. Traps 41 and 42 added to `figma-api-traps.md`.
+
+## 2026-10-08 (later) · After another publish: badges read *Label* again in the product file
+
+- Recount after Nelson published the DS and accepted the update. Visible `Badge v2` reading *Label*: Video 153
+  of 212, Quizzes 474 of 483, Reading 76 of 78, Platform Ready for Dev 105 of 425, V8 WIP 150 of 498. The count
+  was 0 on all five earlier the same day. Read twice from the server session and once from the desktop app
+  (Reading: 76 of 78 in both).
+- **Where:** inside the wrappers: `LMS / Topic-Types Badge`, `LMS / Provider-Partner Badge`,
+  `LMS / Delivery Mode Badge`, `LMS / Difficulty Badge`, the three quiz sets, `Message`, `Due-Item`,
+  `Program-Card`. The product file's own copies of those wrappers (new node ids `6735:…`) read *Label* in their
+  main component.
+- **DS side:** the same wrappers read right (*Video*, *IBM*, *Flexible Learning*…), all `CURRENT`. `Badge v2` has
+  been rebuilt since the last good state: 540 variants, a new `Icon Only` variant property, property ids
+  `#22100:…`, default text *Label*. The wrappers set the text through that property. So the file is again
+  holding a `Badge v2` and wrappers that do not match.
+- **Not caused by this session's DS writes** (tab count default, certificate, Course Card thumbnail, Program
+  icon): none of them touches a wrapper or `Badge v2`.
+- **What did arrive:** tab counts read *2*, *4* and *5*; the Program icon is on the three opaque tokens on Ready
+  for Dev (12 of 12) and on 12 of 17 on WIP (5 still raw); grids read P S S S S and rows P S S.
+- Nothing patched in the screens. Accepting the update is Nelson's click; if the panel offers nothing, the
+  wrappers need to be touched in the DS and published again.
+- **After Nelson accepted everything in Libraries → Updates:** 0 visible badges read *Label* on all five pages
+  (212, 483, 78, 425, 498). Video tabs read *Transcript · Notes 2 · Downloads 4* on the 29 bars. The Program icon
+  is on the three tokens on Ready for Dev (12 of 12); on WIP 5 of 17 are still raw. The first acceptance had
+  been partial; nothing was changed in the screens between the two counts.
+- **The five raw Program icons on WIP, located:** all inside `LMS / Course Card_Remove`, the DS card marked for
+  removal, on the older screen *My Learning - Courses - List View* under *1 · Core Learning Journey - LMS DS*.
+  That card still bundles an older copy of `LMS / Course Type Badge`, so its badges keep the original blues
+  (#b2c7f2, #80a1e5, #4078d9, back to front). They go when the `_Remove` card is retired or the screen is
+  rebuilt on `LMS / Course Card`; nothing to fix in the badge itself.
+
 ## 2026-10-08 · Dashboard: the glance card is four in a line on desktop and tablet
 
 Named version first: *Before fitting the glance card height on the Dashboards*.
@@ -27,6 +91,11 @@ Decided by Nelson on 8 Oct.
 - **`LMS / Course Type Badge`, rendered at 8×** from a temporary copy (removed): the Course icon reads as a dark
   card with three light lines. The Program icon reads as one flat teal shape: the three stacked cards are the
   same solid colour, so the opacity steps set on 7 Oct do not show. Shown to Nelson; no change made.
+- **Program icon redone (DS, not published), on Nelson's request:** the three stacked cards sit on three opaque
+  tokens, back to front `bg/primary-soft`, `border/primary-soft`, `icon/primary`. Named version first. Rendered at
+  8× in SKO Light, SKO Dark, Gold Light and Red Light from a temporary frame (removed): the stack reads in all
+  four; in SKO Light the back card is faint (#ebf8ff on white). Two of the three tokens are a background and a
+  border token used on an icon shape: no icon token exists in those lightness steps.
 
 ## 2026-10-08 · DS: the glance card keeps one variant property
 
