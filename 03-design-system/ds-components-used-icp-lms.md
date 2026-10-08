@@ -147,7 +147,7 @@ The family is no longer on the LMS pages only, so this table has one more column
 
 ## 2. Base DS components (28)
 
-Names as the instances report them. `Buttons/Button`, `Buttons/Button utility` and `Buttons/Button close X` are the components the register calls `Button`, `Link Button` and `Icon Button`; this count did not check which is which.
+Names as the instances report them. `Buttons/Button`, `Buttons/Button utility` and `Buttons/Button close X` are the **previous button generation**, not the `Button`, `Link Button` and `Icon Button` of the register (Button V2): different components with different keys. Button V2 is on none of these pages. See *Buttons: two generations* in [`component-versions.md`](component-versions.md).
 
 | Component | Used in | ICP | LMS | Placed directly | Nested in another component |
 |---|---|---:|---:|---:|---:|

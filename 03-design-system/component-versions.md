@@ -283,14 +283,17 @@ A link marked *(page)* goes to the component's page in the library.
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
 | [Badge v2](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v2.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
-| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
+| Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
+| Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · My Learning: the 40 covers on the card's Image layer; why the update had not come in |
 | [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.0 | 2026-10-08 | Published |  | 2026-09-22 · ORA on tablet and mobile; the all-content example covers the whole catalogue |
 | [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.0 | 2026-10-08 | Published |  | 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited |
 | [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
-| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v2.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
-| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v2.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
 | [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1085-57382) | v1.0 | 2026-10-08 | Published |  | 2026-08-05 · The quiz nav adopted across the sections |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
@@ -302,11 +305,48 @@ A link marked *(page)* goes to the component's page in the library.
 | [Tooltip](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1052-489) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
 | [Video player 16:9](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=9264-576771) | v1.0 | 2026-10-08 | Published |  | — |
 
+## Buttons: two generations
+
+Checked on 8 Oct 2026 by resolving the button instances on the screens and comparing component keys with the
+library's Buttons page.
+
+- **The screens use the previous generation**: `Buttons/Button` (1 559 instances on the ten pages counted),
+  `Buttons/Button utility` (342) and `Buttons/Button close X` (185). Its properties are `Size`, `Hierarchy`
+  (Primary, Secondary, Tertiary, Link color, Link gray), `State` and `Icon only`.
+- **The library has Button V2**: `Button`, `Link Button` and `Icon Button` (`Type` Brand / Destructive / Success ×
+  `Hierarchy` × `State`, size on a nested structure). They are different components, with different keys, and
+  **no instance on the ten pages uses them**.
+- **The previous generation is no longer served by the library**: importing `Buttons/Button` and
+  `Buttons/Button utility` by key fails (a published component imports fine in the same test). The instances keep
+  working, but they cannot receive an update. `Buttons/Button close X` was not tested.
+
+How one maps to the other (from the Button V2 review of 24 Sep 2026):
+
+| On the screens (previous generation) | In Button V2 | Seen on the four Ready for Dev pages* |
+|---|---|---:|
+| `Buttons/Button`, Hierarchy Primary | `Button`, Brand, Primary | 219 |
+| `Buttons/Button`, Hierarchy Secondary | `Button`, Brand, Secondary | 182 |
+| `Buttons/Button`, Hierarchy Tertiary (neutral grey outline) | **no equivalent**: V2 Tertiary is a brand ghost button | 89 |
+| `Buttons/Button`, Link color | `Link Button`, Primary | 21 |
+| `Buttons/Button`, Link gray | `Link Button`, Secondary | 9 |
+| `Buttons/Button`, Icon only = True | `Icon Button` (Secondary 31; the 31 Tertiary have the same gap as above) | 62 |
+| `Buttons/Button utility` (xs / sm, with an Active state) | **no equivalent** | 38 |
+| `Buttons/Button close X` (also on dark) | **no equivalent** | 14 |
+
+\* Instances whose layer still carries the component's name on Video, Quizzes, Reading and Platform Pages Ready
+for Dev; buttons nested under another layer name (for example inside a card) are not in this column.
+
+**What this means for engineering:** a story built from Button V2 does not match what the Ready for Dev screens
+show wherever the screen has a grey-outline Tertiary, a utility button or a close button. Until the screens are
+migrated or V2 gains those cases, the screens are the reference for how a button looks; V2 is the reference for
+the property names. The migration itself is not planned yet: it is a decision for Nelson.
+
 ## History
 
 | Date | Component | Version | What changed |
 |---|---|---|---|
 | 2026-10-08 | all | baseline | Versions start here: `1.0`, and `2.0` for `Badge v2` and the `Button` family (`Button`, `Link Button`, `Icon Button`). |
+| 2026-10-08 | Button family | no bump | Register corrected: the screens use the previous generation (`Buttons/Button`), not Button V2. See *Buttons: two generations*. |
 | 2026-10-08 | 74 LMS components | no bump | Renamed to `LMS/ICP/…` and `LMS/Platform/…`; Discovery and course-end components moved to the platform page; six components moved to *In review*. |
 
 ## Rename map (8 Oct 2026)
