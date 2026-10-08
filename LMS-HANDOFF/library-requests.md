@@ -485,7 +485,7 @@ again. The screens heal when the three sets are repaired and the library is publ
 **Ask:** in each variant of the three sets, set `Text` to the variant's label and `Icon leading` back on with its
 icon; check the other components that nest a `Badge v2`; publish.
 
-### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; **not published**
+### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; published the same night
 
 On Nelson's go-ahead, after a named version (*Before badge repair: Delivery Mode, Difficulty and Topic-Types
 badges*). On the nested `Badge v2` of each variant: `Text`, `Icon leading = true`, `Icon leading swap`; on the
@@ -507,17 +507,236 @@ off). **Two are inferred, to confirm:** *Peer review* in sentence case (as the C
 morning; the prototype writes *Peer Review*), and `layout-alt-01` for *Lesson* — the one icon that left the
 screens with the badges and had no other owner; the prototype has no record of it.
 
-### Still reading *Label* in the DS — 94 nested badges in 15 other sets, not touched
+### The other 15 sets — 94 nested badges, repaired 7 Oct (night); published the same night
 
-Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the repair
-above covers 20.
+On Nelson's second go-ahead, after a named version (*Before badge repair 2: nested badges in 15 LMS component
+sets*). Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the
+three wrapper sets were 20 of them, these are the other 94. `Text` restored on each, and `Dot` on the one that had
+it. Style, size and colour had survived and were not touched. All 94 read back; `Quiz · Entry Header` and
+`Program-Card` checked by eye.
 
-| Page | Component · badges |
-|---|---|
-| `❖ LMS COMPONENTS` | `Quiz · Entry Header` 24 · `Provider-Partner Badge` 6 · `Quiz · Results` 4 · `Course Type Badge` 2 (hidden layer) · `Topic-Status-Badge` 2 · `Quiz · Grade Summary` 1 · `VILT · Session Card` 1 |
-| `❖ LMS PLATFORM COMPONENTS` | `Date-Row` 24 · `Thread-Row` 9 · `Message` 8 · `Program-Card` 6 · `Sidebar-Card` 2 · `Topbar-Item` 2 · `Due-Item` 2 · `Course-Row` 1 |
+| Set | Badges | Restored to | From |
+|---|---:|---|---|
+| `LMS / Quiz · Entry Header` | 24 | Practice: *Practice quiz* · *Ungraded* · *3 questions* · *About 4 min* · *Unlimited attempts* · *Pass mark 60%* — Graded: *Graded quiz* · *20% of module grade* · *8 questions* · *About 10 min* · *2 attempts* · *Pass mark 70%* — Final: *Final exam* · *40% of course grade* · *20 questions* · *About 20 min* · *1 attempt* · *Pass mark 70%* — Timed exam: *Timed exam* · *30 min limit*, then the Final's four | the build script of 22 Jul; the Timed exam log of 3 Aug; the weight badges were still these on 28 Sep (prototype audit, R13) |
+| `LMS / Quiz · Results` | 4 | *Passed* · *Not passed* · *Submitted* (Pending) · *Recorded* (Withheld) | changelog, the pill table |
+| `LMS / Quiz · Grade Summary` | 1 | *62% · below the 70% pass mark* | the build script, 28–29 Jul |
+| `LMS / Provider-Partner Badge` | 6 | the variant's name | the prototype's `ProviderBadge` |
+| `LMS / Course Type Badge` | 2 | *Course* · *Program* (a hidden layer) | an instance that had not updated |
+| `Topic-Status-Badge` | 2 | *Marked as completed* · *Under Review* | the prototype's `TopicActionBar` |
+| `LMS / VILT · Session Card` | 1 | *Scheduled* | the stage name in the build script; the Unlocked variant still reads it |
+| `…/Course-Detail/Date-Row` | 24 | `Type` *DUE DATE* · `Assignment type` *HOMEWORK* · `Status` the state in capitals | the build script of 8 Sep and the 25 Sep migration |
+| `…/Course-Detail/Thread-Row` | 9 | *QUESTION* · *ANSWERED* · *FOLLOWING* | the build script, 21 Aug |
+| `…/Course-Detail/Message` | 8 | *STAFF* · *ACCEPTED ANSWER* | the build script, 21 Aug |
+| `…/Course-Detail/Sidebar-Card` · Dates | 2 | *In 3 days* · *In 8 days* | the build script, 19 Sep |
+| `…/Navigation/Topbar-Item` | 2 | *4* (hidden until `Show count`) | the width it kept (one character) and the screens |
+| `…/Dashboard/Due-Item` | 2 | Today: *Live* with the dot — Upcoming: *Due Fri* | the build script, 30 Sep |
+| `…/My-Learning/Program-Card` | 6 | *Cohort Apr 2026* · *Not started · Starts May 12* | the build script, 30 Sep |
+| `…/Program-Detail/Course-Row` | 1 | *You left off here* | the screen |
+
+**Least certain, to confirm by eye:** the four meta badges of *Timed exam* (taken from *Final*; the 3 Aug log
+shows only the strings that changed), *Scheduled*, the *4*, and the two `Topic-Status-Badge` labels (from the
+prototype, not from the DS).
+
+**Restored as they were, not as they should be.** `Due-Item` · Today reads *Live* again and `Program-Card` carries
+a cohort: both are defaults the edX pass of §37 took off the screens (§37.6, item 4). A repair is not the place to
+change a component's defaults; that item stays open.
+
+**Not checked:** `Badge v2` nested in components outside the two LMS pages (the Untitled UI pages, tabs,
+navigation, tables). The same loss is likely there.
 
 **And in the product file,** a badge whose text was set on a screen (*In 13 months*, *Due 11:59*, *QUESTION*, a
 cohort) lost that text too. Repairing the DS gives it the component's default back, not the screen's text: the
-screens need their own pass after the library is published.
+screens need their own pass after the library is published. The texts are on record: the 25 Sep migration saved
+them per instance, and the 7 Oct edX pass listed every screen.
 
+### After the publish — 7 Oct (late): the update reached five sets; first part of the screens pass
+
+**The DS is published.** All 18 repaired sets read `CURRENT`, from the desktop app and from Figma's server.
+
+**The product file took the update for five sets only.** Read on the two platform pages, same result from both
+clients once they settled:
+
+| The file's copy reads the repaired values | The file's copy still reads *Label* |
+|---|---|
+| `Topbar-Item` · `Date-Row` · `Thread-Row` · `Sidebar-Card` · `Program-Detail/Course-Row` | `LMS / Delivery Mode Badge` · `LMS / Difficulty Badge` · `LMS / Topic-Types Badge` · `LMS / Provider-Partner Badge` · `LMS / Course Type Badge` · `LMS / Quiz · Grade Summary` · `Course-Detail/Message` · `Dashboard/Due-Item` · `My-Learning/Program-Card` — and, on the ICP pages, `Quiz · Entry Header`, `Quiz · Results`, `Topic-Status-Badge` |
+
+Visible badges still reading *Label* after this pass: **255 of 434** on Platform Pages V8 — WIP, **157 of 286** on
+Platform Pages — Ready for Dev, every one of them inside a set of the right-hand column. **To do, Nelson:** in the
+product file, Libraries → Updates, accept what is left (reload the tab first if nothing is listed).
+
+**How the half-state shows.** A nested badge nobody touched on the screen follows the component around it: the
+*Beginner* inside an updated `Course-Row` is right. A nested badge whose variant was set on the screen — every
+delivery badge, since the edX pass set them to *Flexible Learning* — follows the file's own copy of the badge and
+reads *Label* until that copy is updated. Do not read one correct badge as proof the update is in.
+
+**Restored on the screens, 118 badges** (named version first: *Before badge texts pass on platform screens*), on
+both platform pages, each read back and the result checked by eye:
+
+| What | Badges | Text |
+|---|---:|---|
+| `Badge v2` placed directly on the technical frames | 28 | *Counts* 8 · *No* 14 · *Not required* 4 · *Self-paced* 1 · *Professional* 1 — the layer name carries the text; the two chips from the 1 Oct replacement log |
+| Tab counts on the eight *Programs* screens | 16 | *Programs* **2** · *Courses* **5** |
+| `Sidebar-Card` · Dates on the Course tab (7 cards) | 14 | *Tomorrow* · *In 15 days* |
+| `Sidebar-Card` · Program dates (9 cards) | 18 | *Started* · *In 13 months* |
+| `Date-Row` on the Dates tab (6 screens) | 42 | `Type`: *COURSE* (starts, ends) · *UPGRADE* · *CERTIFICATE* · *ACCESS*; `Assignment type`: *FINAL PROJECT* · *FINAL EXAM* — rows matched by their title |
+
+**Waits for the rest of the update:** `Due-Item` on the Dashboard (*Due 11:59*, no dot; *Due Fri* is the default),
+the grade pill on the Progress tab (*15% · below the 70% pass mark*), then a recount on every page, the ICP pages
+included (quiz entry headers, Video tab counts).
+
+### Tried by script on the two platform pages — it did not hold — 7 Oct (night)
+
+**State at the end of the night, as the file is saved: 127 of 286 visible badges read *Label* on Ready for Dev,
+199 of 434 on the WIP page** — inside `Delivery Mode Badge`, `Difficulty Badge`, `Topic-Types Badge`,
+`Provider-Partner Badge`, `Message`, `Due-Item` · Upcoming and `Program-Card`.
+
+**What was tried.** Asked for by key, the library returns the repaired components; the screens point at older
+copies of them. Nelson asked for the labels to be put right, so the instances were moved by script to the copy the
+library returns (`importComponentByKeyAsync` + `swapComponent`; named version first: *Before moving stale
+instances to the published DS versions*): 196 instances that are not nested and 163 nested wrappers. Right after,
+0 of 286 and 0 of 442 read *Label*, in the read-back and in the renders.
+
+**About twenty minutes later the instances were back on copies that read *Label*.** A swap to another copy of the
+same component does not change which version of that component the file has accepted; the next time the
+components are resolved, the instances fall back to it. **The update has to be accepted in Figma's own
+Libraries → Updates panel. No script replaces that click**, and the same pass on the ICP pages would not hold
+either.
+
+**What did hold** (checked again at the end): every text set on an instance — *Due 11:59*, the *15%* grade pill,
+the dates cards, the Dates tab types, the tab counts, the direct badges on the technical frames. They will read
+right as soon as the component around them is on the repaired version.
+
+**One side effect of the swap, fixed at the time:** eight `Secondary` *Resume* buttons on the Dashboard took a
+primary fill. Worth knowing if a swap between copies is ever used for something else.
+
+**Also seen:** the desktop app this session talks to answered *Unable to establish connection to Figma* twice and
+showed an older state of the file than the server (no cover images, *Calendar 4*). If the update was accepted
+from that app while it was out of sync, that may be why it only partly arrived.
+
+**To do, Nelson:** in the product file, reload the tab, then Libraries → Updates → Update all. If the panel lists
+nothing for these components, plan B is to touch each of the twelve sets in the DS and publish again, so the
+update is offered anew.
+
+### Closed — 7 Oct (late night): the update is in, no badge reads *Label*
+
+Nelson accepted the update in the product file's Libraries → Updates panel, and it reached every working page.
+Counted in the desktop app (visible badges with their label on), and the platform screens checked against the
+server's copy as well; the other session counted the four Ready for Dev pages from the server with the same
+result and restored the *Notes 2* / *Downloads 4* tab counts on Video (changelog, same day):
+
+| Page | Visible badges | Reading *Label* |
+|---|---:|---:|
+| Platform Pages — Ready for Dev | 286 | 0 |
+| Platform Pages V8 — WIP (four sections) | 434 | 0 |
+| Video Lessons | 200 | 0 |
+| Quizzes | 483 | 0 |
+| Reading | 78 | 0 |
+| Overlay Panels — Ready for Review | 33 | 0 |
+| Topic Content Types — Ready for Review | 106 | 0 |
+
+The texts set on the platform screens earlier that night were all in place (*Due 11:59*, *Due Fri*, the *15%*
+pill, *Tomorrow* / *In 15 days*, *STAFF* / *ACCEPTED ANSWER*, the Dates tab types, the tab counts).
+
+**Restored on the other pages** (named version first), where the component default had replaced a screen's own
+text or the badge sits directly on the screen:
+
+| Where | Badges | Text | From |
+|---|---:|---|---|
+| Quizzes — the nine `Quiz · Entry Header` | 9 | *5 questions* (the defaults read 3, 8 and 20) | the 24 Sep record of the 39 overrides; the other 30 equal the defaults |
+| Overlay Panels — tags on the saved notes | 12 | *#discovery* · *#lifecycle* · *#ai* · *#research* | the layer names |
+| Overlay Panels — Saved tabs | 9 | *All* 5 · *Topics* 3 · *Notes* 2 | **counted** from the items the panel shows |
+| Overlay Panels — Notifications tabs | 12 | *All* 5 · *Discussions* 1 · *Grading* 2 · *Updates* 2 | **counted** from the five items shown |
+| Topic Content Types — video template tabs | 2 | *Notes* 2 · *Downloads* 4 | the Video Lessons page, same tabs |
+
+**The 21 panel tab counts are not recovered values.** No record of them was found; they follow the rule in
+P1-37 (*the count badge matches the items shown*). The split of the five notifications is a reading: the reply is
+a discussion; the quiz due and the peer rating are grading; the live session and the new content are updates.
+To confirm.
+
+**One update is still not in:** `Today-at-a-glance` · Desktop. The Dashboard at 1 280 and 960 still shows the old
+2 × 2 card (request 24).
+
+**Not checked:** Nelson's discovery pages and the archive, by rule.
+
+---
+
+## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
+
+The top bar was built with *My Learning* **4** and *Calendar* **3**. The 3 was an override two levels down, set in
+the `Topbar` master on the count badge of its *Calendar* item. The `Badge v2` restructure dropped it, and the
+repair of request 21 did not see it: that pass looked for badges reading *Label*, and this one reads the item's
+default, *4*. Every desktop platform screen now shows *Calendar 4* (23 top bars on the two pages).
+
+Not patched on the screens: 23 overrides for a value that belongs to one master.
+
+**Ask:** in `Topbar` · `Breakpoint=Desktop`, *Item · Calendar* › *Count* › `Text` = *3*; publish. Needs Nelson's
+go-ahead, as any DS write. The counters still have no defined source (§37.6) and navigation is not final.
+
+**Done 7 Oct (night)**, on Nelson's go-ahead, after a named version; published by Nelson. The Dashboard and My
+Learning screens read *Calendar 3* again.
+
+**Likely elsewhere too:** any other text a DS master set on a badge inside a nested instance was lost the same
+way and now reads a plausible default. None is known; this one was found by comparing with the 30 Sep build.
+
+---
+
+## 23 · `LMS/Platform/Program-Detail/Course-Row` — the *You left off here* badge goes
+
+Nelson, 7 Oct: the badge is not needed. The modules bar already reads *You left off in Module 2 of 4*, and the
+current module is the one with partial progress.
+
+| Where | State |
+|---|---|
+| Local `Course-Row-Compact` (tablet, mobile) | badge removed from the component |
+| Desktop *Courses* screen (`6539:29871`, DS `Course-Row`) | badge hidden on the instance |
+| DS `Course-Row` · `Expanded=True` | **still has it** |
+
+The *Current module* frame around module 2 stays; its own padding leaves it 4 px taller than the other rows
+(80 against 76 on desktop and tablet). List gaps read 8 on the three screens.
+
+**Ask:** remove the badge from the DS component, publish; the override on the desktop screen then has nothing to
+hide. Needs Nelson's go-ahead.
+
+**Done 7 Oct (night)**, on Nelson's go-ahead: removed from `Expanded=True` (578 → 550 high, gaps still 8),
+published by Nelson; the hidden copy in the desktop row's slot was removed too. No *You left off here* is left on
+any screen or in either component.
+
+---
+
+## 24 · `LMS/Platform/Dashboard/Today-at-a-glance` — variant names carry three stray properties
+
+Nelson gave the glance card two layouts on 7 Oct: `Breakpoint=Desktop`, four stats in a line, and
+`Breakpoint=Mobile`, 2 × 2 — which settles the open item of §37.6 (an instance cannot change a grid's columns).
+The screens use Desktop at 1 280 and 960 and Mobile at 375.
+
+Combining the variants split the old slash name into properties: every variant is named `Property 1=Platform,
+Property 2=Dashboard, Property 3=Glance-Card, Breakpoint=…`, and an instance shows three properties with one
+option each.
+
+**Ask:** delete `Property 1`, `Property 2` and `Property 3` from the set; publish. Instances keep their link (the
+variant keys do not change). The defaults are still the pre-edX sample (*Today at a glance*, XP, attendance —
+§37.6, item 4).
+
+---
+
+## 25 · Dev Mode notes go once on the main component and on one screen
+
+Nelson, 7 Oct: a note that applies to a component is not repeated on every instance. The *Navigation is not
+final* note was on 72 top bars and sidebars; it now sits on the `Topbar` set in the DS, on the local sidebar set
+(`6207:256263`) and on one screen (*Dashboard · Desktop*, Ready for Dev). Same rule for any future note.
+
+---
+
+## 26 · `LMS / Course Card` — the thumbnail has no image option
+
+Nelson asked for a cover image on every course (7 Oct). The card's `thumb` is a square with initials on a token
+fill; an image can only go in as a fill override on each instance, with the initials hidden. Done that way on the
+63 thumbnails of My Learning and Program Detail (61 on screens, 2 in the local `Course-Row-Compact`).
+
+**The images are placeholders**: twelve covers from the public SkillUp catalog (course pages and program
+banners), chosen by topic. The seven courses of the digital marketing program have no cover of their own on the
+public site, so theirs are borrowed from other courses, except the first, which uses the program's banner. In
+production the image is the course's own (`course_image`; Learner Home returns it as `bannerImgSrc`).
+
+**Ask:** give the card a thumbnail that takes an image (a boolean or a swap, initials as the fallback when a
+course has none); then the screens drop their overrides.

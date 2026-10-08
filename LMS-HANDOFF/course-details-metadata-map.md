@@ -2348,8 +2348,11 @@ handoffs moved right. Checked: 0 annotations, 0 unbound values, 0 generic names,
 
 > **Status on 7 Oct 2026 (Nelson): the navigation model is under study.** Whether the platform pages use a
 > sidebar or a top bar is not decided. What this section and §34 say about the sidebar being hidden and the top
-> bar being the navigation describes the screens as they are drawn, not a decision. The screens carry a Dev Mode
-> annotation on every top bar and sidebar (*Navigation is not final…*). Until it is decided: build page content
+> bar being the navigation describes the screens as they are drawn, not a decision. A Dev Mode annotation says so
+> (*Navigation is not final…*). **Since 7 Oct (night) it sits in three places only** — the `Topbar` main component
+> in the DS, the local sidebar set on the WIP page, and one screen, *Dashboard · Desktop* on Ready for Dev — and
+> no longer on every top bar and sidebar (Nelson: once on the main component and on one screen is enough; 71
+> copies removed). Until it is decided: build page content
 > that works with either, and do not tie layout rules to the 72px top bar or to a 240px side column.
 
 **Decisions (Nelson, 30 Sep).** Base: the *LMS DS* set (*1 · Core Learning Journey - LMS DS*). The **LMS sidebar is in
@@ -2690,7 +2693,7 @@ review) — `Expanded` = False · True.
 |---|---|---|
 | Card | the DS `LMS / Course Card` · List — same card as My Learning; its border and shadow moved to the row's container (`bg/page`, `border/subtle`, `Radius/fixed-xl`, `Shadows/shadow-card`) | as §35.5: progress, total effort, *Up next*, CTA |
 | Modules bar | `Position` (body-medium/Semibold) + `Detail` (body-medium/Regular, text/subtle), and a DS `Buttons/Button` sm · Link gray *Show modules* / *Hide modules* with chevron-down / chevron-up | in progress: *You left off in Module 2 of 4* · *module name · 3 of 10 topics done*; not started: *4 modules* · *43 topics*; complete: *4 modules* · *All complete · 36 topics* |
-| Modules (Expanded=True, a **slot**) | one `LMS / Course Detail / Module row` per module, collapsed, no chevron — a module opens the course page at that module; the current one sits under a `Badge v2` · Soft · Brand *You left off here*; on `bg/faint` | the course outline: modules, their completion and the resume position — fetched **when the row is expanded**, one call per course |
+| Modules (Expanded=True, a **slot**) | one `LMS / Course Detail / Module row` per module, collapsed, no chevron — a module opens the course page at that module; the current one sat under a `Badge v2` · Soft · Brand *You left off here* until 7 Oct, when Nelson took the badge out (the modules bar already says it; library request 23); on `bg/faint` | the course outline: modules, their completion and the resume position — fetched **when the row is expanded**, one call per course |
 
 `Program Detail · Courses tab · Desktop` (`6443:18722`) now uses it: seven rows at 1 200, course 2 expanded, real
 module names, topic counts and durations from the syllabus. **No sidebar on this tab** — the List card needs the
@@ -2718,8 +2721,8 @@ a tablet row and a mobile row under the desktop one, each under its desktop tab.
 
 **The shell is Course Detail's** at each breakpoint (§32, §26): the same frame, modes, paddings, compact top bar,
 tab sizes (`md` on tablet, `sm` on mobile) and, on mobile, the status bar and home indicator. Only the content
-changed. The top bar keeps its *Navigation is not final* note (§33); nothing else on the eight screens carries an
-annotation.
+changed. No screen here carries an annotation: the *Navigation is not final* note lives on the top bar's main
+component and on one Dashboard screen (§33).
 
 | Part | Tablet | Mobile |
 |---|---|---|
@@ -2746,6 +2749,17 @@ annotation.
   DS row's own properties). Built from the DS row: the card in its **Grid** layout, and a modules bar that
   **wraps** — the detail drops under the position, the button under both. One layout serves 912 and 343. To
   become `Breakpoint=Compact` of the DS row. Library request 20.
+
+  **Changed by Nelson on 7 Oct (night), in the component:** the bar reads *Module 2 of 4* and the module name
+  (no *You left off in*, no topic count), the toggle reads *Show* / *Hide*, the card's button fills the width,
+  and the *You left off here* badge is gone (library request 23). The in-progress row on the tablet and mobile
+  screens was given the same copy. A boolean `topics-done` was added and is linked to nothing yet. **The desktop
+  row follows** (Nelson, same night): the DS `Course-Row` now defaults to *Module 2 of 4* + module name with
+  *Show* / *Hide*, and the desktop screen reads the same; the DS change needs a publish.
+
+  **Course covers.** Every course thumbnail on My Learning and on this page carries a placeholder image from the
+  public SkillUp catalog, set as a fill override with the initials hidden (library request 26). The field is the
+  course's own image (`course_image`; `bannerImgSrc` in Learner Home).
 
 **Read back on the eight screens:** every text visible on desktop is present on tablet and on mobile, except badge
 labels (next paragraph); 0 raw fills, strokes, spacing or radii, 0 unstyled texts, 0 generic layer names outside
@@ -3104,7 +3118,9 @@ Named version first: *Before edX compatibility pass: My Learning, Dashboard and 
 on each source screen and on its handoff copy — 22 screens — and every value below was read back.
 
 - **Dashboard × 6.** `Glance-Card`: title *Your learning at a glance*, the four stats of §37.4. `Streak-Card`
-  removed; the glance card fills the row. `Due-Item` *Live Q&A* removed; the other two retitled as the Dates API
+  removed; the glance card fills the row — since 7 Oct (night) as four stats in one line on desktop and tablet
+  and 2 × 2 on mobile, the two variants Nelson added to the DS card (`Today-at-a-glance`, `Breakpoint` =
+  Desktop · Mobile). `Due-Item` *Live Q&A* removed; the other two retitled as the Dates API
   titles them. `Jump-Tile` *Book a mentor* removed (three tiles), the three descriptions rewritten. Delivery badges
   → *Flexible Learning*. Desktop: the Due column is 440 (was 460) — with the wider badge, the longest course row
   touched its progress bar.

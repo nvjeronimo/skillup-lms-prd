@@ -2,6 +2,90 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-07 · After Nelson accepted the library update: badges recounted on the Ready for Dev pages
+
+- Read with the server session, twice on Video. Visible `Badge v2` reading *Label*: Quizzes 0 of 483, Reading
+  0 of 78, Platform Ready for Dev 0 of 294, Video 46 of 212. Before the update was accepted the same count was
+  483, 76, 127 and 199.
+- **Video, the 46:** all in tabs, on the count next to *Notes* and *Downloads* (23 each). The new
+  `_Tab button base` has *Label* as the default text of its count badge, and the screens' counts did not survive
+  as overrides. Restored after a named version (*Before restoring tab counts on Video*): *Notes 2*,
+  *Downloads 4*, set as the badge's text property. Read back: 0 of 212 read *Label*; tabs are 81 and 123 wide
+  again (they had grown to 108 and 148).
+- **For the DS:** a count badge that defaults to *Label* will show *Label* wherever a screen does not set it.
+  The default should be a number.
+- Still two copies of `Badge v2` and of `_Tab button base` in use on Video and on Platform Ready for Dev
+  (five of the tab base on Platform): the update is in for the wrappers, not for every copy.
+
+## 2026-10-07 · The badge defect is closed: no badge reads *Label* on any working page
+
+- **The library update is in the product file**: Nelson accepted it in Libraries → Updates. 0 badges read *Label*
+  on Platform Pages (Ready for Dev 286, WIP 434), Video 200, Quizzes 483, Reading 78, Overlay Panels 33 and Topic
+  Content Types 106 — counted in the desktop app, visible badges with their label on. The entry below, from the
+  other session, has the same result from the server for the four Ready for Dev pages and the Video tab counts
+  it restored. Library request 21 has the table.
+- **Screen texts restored on the ICP pages** (named version first): *5 questions* on the nine quiz entry headers,
+  the four tags on the saved notes, *Notes 2* / *Downloads 4* on the video template.
+- **Counted, not recovered:** the tab counts of the Notifications panel (*All* 5 · *Discussions* 1 · *Grading* 2 ·
+  *Updates* 2) and of the Saved panel (*All* 5 · *Topics* 3 · *Notes* 2), from the items each panel shows. To
+  confirm.
+- **Still pending:** the glance card's Desktop variant has not reached the Dashboard (old 2 × 2 at 1 280 and 960).
+
+## 2026-10-07 · Platform screens: course covers, short course-row copy, DS writes — and the badges still read *Label*
+
+Named versions first, in both files.
+
+- **Badges: not fixed.** 127 of 286 visible badges read *Label* on Ready for Dev and 199 of 434 on the WIP page.
+  Moving the instances by script to the copy the library publishes worked for about twenty minutes (0 *Label* in
+  read-back and renders) and then fell back: a swap does not change the version the file has accepted. **The
+  update has to be accepted in Libraries → Updates.** The texts set on instances (*Due 11:59*, the *15%* pill,
+  dates, tab counts) did hold. Library request 21.
+- **Course covers on 63 thumbnails** (My Learning, Program Detail): placeholder images from the public SkillUp
+  catalog, as fill overrides. Request 26 asks for an image option on the card.
+- **DS, on Nelson's go-ahead:** the *You left off here* badge is out of `Course-Row` (request 23), the top bar's
+  *Calendar* counts 3 again (request 22), and `Course-Row` reads *Module 2 of 4* + module name with *Show* /
+  *Hide*, as the compact row does. The first two are published; the last needs a publish.
+- **Nelson's own changes, followed on the screens:** the compact course row's short bar copy and full-width
+  button — the in-progress row has the new copy on desktop, tablet and mobile; the glance card's Desktop (four in
+  a line) and Mobile (2 × 2) variants — the mobile source screen now uses Mobile.
+- **The *Navigation is not final* note** is on the `Topbar` main component, on the local sidebar set and on one
+  screen (*Dashboard · Desktop*, Ready for Dev); 71 copies removed. Request 25 states the rule.
+- **Open:** the library update (above); the glance card's stray variant properties (request 24); `topics-done` on
+  the compact row is linked to nothing.
+
+## 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed
+
+Named version first: *Before badge texts pass on platform screens*.
+
+- **The DS is published; the product file took the update for five sets only** (`Topbar-Item`, `Date-Row`,
+  `Thread-Row`, `Sidebar-Card`, `Program-Detail/Course-Row`). The delivery, difficulty, topic-type, provider and
+  course-type badges, `Quiz · Grade Summary`, `Message`, `Due-Item` and `Program-Card` still read *Label*: 255 of
+  434 visible badges on the WIP page, 157 of 286 on Ready for Dev. The rest of the update has to be accepted in
+  the product file. Library request 21.
+- **118 badge texts restored on the two platform pages**, each read back: 28 badges placed directly on the
+  technical frames, the *Programs 2* / *Courses 5* tab counts on eight screens, *Tomorrow* / *In 15 days* on the
+  course dates card, *Started* / *In 13 months* on the program dates card, and the type badges of the Dates tab
+  rows (*COURSE*, *UPGRADE*, *CERTIFICATE*, *ACCESS*, *FINAL PROJECT*, *FINAL EXAM*).
+- **The *You left off here* badge is gone from the program course rows** (Nelson: not needed, the modules bar
+  already says it). Removed from the local `Course-Row-Compact`; hidden on the desktop screen, because the DS
+  `Course-Row` still carries it. Library request 23.
+- **Found:** the top bar's *Calendar* count reads 4, it was 3 — an override inside the DS `Topbar` master, lost
+  with the others. Not patched on 23 screens; library request 22.
+- **Still to do:** `Due-Item` and the grade pill once the update is complete, then a recount on every page.
+
+## 2026-10-07 · DS: the other 94 nested badges repaired (not published)
+
+Named version first: *Before badge repair 2: nested badges in 15 LMS component sets*. On Nelson's go-ahead.
+
+- Every `Badge v2` nested in a component on `❖ LMS COMPONENTS` and `❖ LMS PLATFORM COMPONENTS` has its text again
+  (and `Due-Item` · Today its dot): 94 badges in 15 sets — Quiz · Entry Header 24, Date-Row 24, Thread-Row 9,
+  Message 8, Provider-Partner Badge 6, Program-Card 6, Quiz · Results 4 and eight smaller ones. With the three
+  wrapper sets, all 114 are repaired. Values from the original build scripts, the migration records and the
+  prototype; library request 21 has the table, set by set, and the four that are least certain.
+- **Needs a DS publish**, then the update accepted in the product file.
+- **Still to do after that:** the badge texts that were set on screens (they come back as the component default),
+  and a look at `Badge v2` nested outside the two LMS pages.
+
 ## 2026-10-07 · DS: delivery, difficulty and topic-type badges repaired (not published)
 
 Named version first: *Before badge repair: Delivery Mode, Difficulty and Topic-Types badges*. On Nelson's go-ahead.
