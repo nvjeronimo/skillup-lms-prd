@@ -2,6 +2,36 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late night) · Components-used list recounted with the current names; the Lab page added
+
+`03-design-system/ds-components-used-icp-lms.md`, read-only in Figma, one read per page, every instance resolved
+to its main component (27 832 instances on ten pages, hidden ones included).
+
+- **Names:** the list now uses `LMS/ICP/…` and `LMS/Platform/…`. Section 1 is the course player family plus the
+  `LMS / …` components not renamed; section 1b is the platform family, with the Discovery and course-end
+  components. The note about old names is gone.
+- **Page added:** *Lab · Third-party platforms* (`6789:325`), 3 091 instances.
+- **Totals (7 Oct → 8 Oct):** LMS product 68 → 66, LMS platform 31 → 40, base 25 → 28, icons 53 → 61, logos 5,
+  private bases 13 → 16, handoff 13 → 12. Part of the movement is the rename: the Discovery and course-end
+  components moved to 1b, and `Vertical-Scroll`, `Bookmark`, `Collapse-Toggle` and `Topic-Status-Badge` moved
+  into section 1.
+- **Method check:** components that did not change give the 7 Oct numbers on the six ICP pages counted then
+  (`Option-Row` 913, `Question-Card` 286, `Topic-Row` 509, `Sidebar` 106, `AI-Panel` 115).
+- **Still under an old name:** `LMS / Course Card_Remove` (5) on the archived My Learning frame of V8 WIP
+  (`6207:250057`), and `LMS / Quiz · Answer Input` (9) on the Discovery page (`4998:100173`), which has a
+  different key from `LMS/ICP/Assessment/Answer-Input`. The 20 nested badges on the archived frame read old
+  names but have the keys of the renamed components.
+- **In review, yet on screens:** `LMS/ICP/AI/AI-Panel` 144 instances, all hidden;
+  `LMS/Platform/Completion/Certificate-Document-demo` 11.
+- **Platform components on ICP pages:** 21 of the 40, 601 instances (provider badge in the player sidebar, the
+  IBM Course Detail screens on the Lab and Discovery pages). Table 1b has an *ICP pages* column for it.
+- **Local:** 94 instances: the platform sidebar set `LMS` (`6207:256263`, 11), device chrome (58) and
+  `Worklist checkbox` (25).
+- **Seen, not changed:** the 33 handoff cards of the Lab page have no `Handoff / Phase Badge`.
+- **Corrected in `component-versions.md`:** it said the five components moved to *In review* besides `AI-Panel`
+  were on no screen. The count shows `Certificate-Document-demo` is placed (on the certificate screens); the
+  other four are on no screen.
+
 ## 2026-10-08 (late night) · Content search section moved to Ready for Dev; two banners corrected
 
 - **Nelson moved the Content search section** (`6837:27914`) from the WIP page to *Platform Pages - Ready for

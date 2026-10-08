@@ -66,8 +66,10 @@ bump: keys and instances are unchanged.
 - **Not renamed yet:** `Inline Alert`, `Empty State`, `Progress Circle` and `Autosave Status` wait for their
   promotion to Foundations; `Footnote` is a handoff atom, not product UI; `Discussion Prompt` is a retired topic
   type.
-- **Status *In review*:** on the page `❖ LMS · IN REVIEW / NOT FOR BUILD`. `AI-Panel` is work in progress; the
-  other five are on no screen and wait for a keep-or-remove decision. Engineering does not build these.
+- **Status *In review*:** on the page `❖ LMS · IN REVIEW / NOT FOR BUILD`. `AI-Panel` is work in progress (it is
+  on the player screens, hidden). `Certificate-Document-demo` is a sample document placed on the certificate
+  screens. The other four (`Daily Goals`, `Live Attendance`, `Module Time-Left`, `Streak-Card`) are on no screen
+  and wait for a keep-or-remove decision. Engineering does not build these.
 
 The old names, for anything written before 8 Oct, are in *Rename map* at the end.
 
