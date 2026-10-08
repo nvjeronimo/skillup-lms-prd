@@ -2,6 +2,42 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Dashboard: the glance card is four in a line on desktop and tablet
+
+Named version first: *Before fitting the glance card height on the Dashboards*.
+
+- **Confirmed after Nelson's publish and update**, from the desktop app and from the server: the six glance cards
+  are instances of `Today-at-a-glance` with `Title` and `Breakpoint` only. Desktop variant at 1 280 and 960,
+  Mobile at 375; the four totals unchanged.
+- **Height fitted on four screens** (desktop and tablet, sources and handoff copies): the instances had kept the
+  old card's fixed height and left an empty band under the stats. They now hug: 168 px on desktop, 160 on tablet.
+  The handoff screens are 955 and 1 110 px high.
+- The two Dashboard handoff cards (desktop, tablet) have a changelog entry dated 2026-10-08.
+
+## 2026-10-08 · Tab count default, prototype sample and labels, Course Type Badge render
+
+Decided by Nelson on 8 Oct.
+
+- **DS, `_Tab button base` (not published):** the count badge read *Label* by default in all 72 variants; it now
+  reads *2*. Named version first. A screen that does not set the count no longer shows *Label*.
+- **Prototype PR 68 (open):** the practice quiz sample *Quick check* is no longer completed; Video reads
+  *Completed* like Quiz, ORA and VILT; the footer shows *MODULE COMPLETED · Go to next Module* only once the last
+  topic of a module is done, and on an unfinished last topic of the course *Next* is disabled. The last point
+  was a defect the sample change uncovered: the milestone was decided by position alone.
+- **`LMS / Course Type Badge`, rendered at 8×** from a temporary copy (removed): the Course icon reads as a dark
+  card with three light lines. The Program icon reads as one flat teal shape: the three stacked cards are the
+  same solid colour, so the opacity steps set on 7 Oct do not show. Shown to Nelson; no change made.
+
+## 2026-10-08 · DS: the glance card keeps one variant property
+
+Named version first: *Before removing the stray variant properties of Today-at-a-glance*. On Nelson's go-ahead.
+
+- `LMS/Platform/Dashboard/Today-at-a-glance`: the variants are now `Breakpoint=Desktop` and `Breakpoint=Mobile`.
+  `Property 1`, `Property 2` and `Property 3`, left by the old slash name when the variants were combined, are
+  gone. Keys and sizes unchanged, so instances keep their link. Library request 24.
+- **Needs a DS publish**, then the update accepted in the product file. The Dashboard at 1 280 and 960 is still
+  waiting for the Desktop variant from the earlier publish.
+
 ## 2026-10-08 · Program Page: the handoff frame, in progress
 
 Named version first: *Before Program Page handoff frame*.
@@ -30,6 +66,13 @@ Decided by Nelson on 8 Oct. Named versions first, in both files.
   (*Resume · Resume · Resume · Review · Start* → P S S S S). No card changed size. The prototype already did this.
 - The three certificate screens on *Completion + Certificate* and the course cards on the platform pages show the
   DS changes only after the library is published and the update accepted in the product file.
+- **After the publish and the accepted update (8 Oct), read back:** no visible badge reads *Label* on Video
+  (212), Quizzes (483), Reading (78), Platform Ready for Dev (425) or V8 WIP (498); the 29 tab bars on Video read
+  *Transcript · Notes 2 · Downloads 4*. The three certificate screens read *Modules · Topics · Avg quiz*. Every
+  grid course card has an 86 × 86 thumbnail; the cards are 384 × 358, 438 × 350 and 327 × 338 (366 with a
+  three-line title), which are the prototype's sizes at the three breakpoints, the mobile one included. Grids
+  read P S S S S and course-row lists P S S on both platform pages. Two copies of `Badge v2` and of
+  `_Tab button base` are still in use on Video.
 
 ## 2026-10-07 · After Nelson accepted the library update: badges recounted on the Ready for Dev pages
 

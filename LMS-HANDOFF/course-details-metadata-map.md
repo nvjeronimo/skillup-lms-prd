@@ -2388,7 +2388,7 @@ built from DS atoms, on tokens and DS text styles, and replaces what was drawn o
 | `Section header` | `6382:3172` | Title + Emphasis (headline-small/Bold, text/default + text/subtle), optional DS `Buttons/Button` sm · Link gray + arrow-right | *Due this week*, *Pick up where you left off*, *Jump somewhere* |
 | `Due item` | `6382:3495` | Urgency Today (day in text/error) · Upcoming; Day, When, Title, Meta; status = exposed `Badge v2` Soft sm (Error + dot for Live, Warning for Due) | 3 rows of *Due this week* |
 | `Jump tile` | `6382:3302` | Icon (swap, DS icon in icon/primary on bg/primary-soft), Title, Description | 4 tiles (message-chat-circle, calendar, award-01, user-01) |
-| `Glance card` | `6384:17651` | Title + 4 `Stat` · Inverse in a 2×2 grid on bg/inverse; two decorative circles (bg/info, bg/primary at 12 % layer opacity) | *Today at a glance* |
+| `Glance card` (since 8 Oct the DS set `Today-at-a-glance`: `Breakpoint` Desktop = four in a line, Mobile = 2×2) | `6384:17651` | Title + 4 `Stat` · Inverse in a 2×2 grid on bg/inverse; two decorative circles (bg/info, bg/primary at 12 % layer opacity) | *Today at a glance* |
 | `Streak card` | `6384:17785` | Count (display-large/Bold, the one hero figure per screen), Label, 7 `LMS / Course Detail / Week day`, Message | the streak card |
 | `Program card` | `6388:3858` | Layout Grid · List × State In progress · Not started; DS `LMS / Delivery Mode Badge`, `Badge v2` Gray (cohort, status), DS `Progress bar`, `Buttons/Button` Primary *Continue* / Secondary *Details* | 2 programs × grid and list |
 | `Browse tile` | `6388:116426` | Dashed border/default on bg/faint, DS `plus`, Title, Subtitle | *Browse catalog* in Courses grid |
