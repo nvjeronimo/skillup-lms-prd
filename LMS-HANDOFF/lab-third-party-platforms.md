@@ -107,14 +107,14 @@ Sources: *Topic Content Types Discovery — Ready for Review* → section
 | IBM | I1 *Start course*, dialog before leaving SkillUp | `6779:9601` |
 | | I2 course started, *Continue on IBM* | `6779:22733` |
 
-Built from DS components: Topic Header, `LMS / Lab · Prerequisites`, `LMS / Numbered Step`, `LMS / Inline Alert`,
+Built from DS components: Topic Header, `LMS / Lab · Launch Card`, `LMS / Lab · Prerequisites`, `LMS / Numbered Step`, `LMS / Inline Alert`,
 Topic-Status-Badge, the Course header with its Progress card, and the DS `Modal` (Horizontal) for the IBM dialog.
 
-Three things are stand-ins and say so in their layer names:
+**The launch card is a design system component since 8 Oct:** `LMS / Lab · Launch Card` (Ready, Opened, Completed,
+Unavailable, with the partner's badge), on all 32 places a Lab screen has one (library request 27, closed).
 
-- **The launch card** is `LMS / Activity · SCORM Frame` (Idle and Error) with its texts overridden. Its own
-  component exists in the DS since 8 Oct, `LMS / Lab · Launch Card` (Ready, Opened, Completed, Unavailable;
-  library request 27). The screens take it after the DS is published.
+Two things are still stand-ins and say so in their layer names:
+
 - **The inline frame and the modal** (E1, E2) are local frames on DS colour and radius tokens, with a placeholder
   where the third-party page would be. No component until the Studio test says they are possible.
 - **The IBM screens** are the Course Detail header cropped to 500 px, with the Progress card's percentage

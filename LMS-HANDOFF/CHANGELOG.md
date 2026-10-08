@@ -87,6 +87,18 @@ Read only; nothing written to Figma in this pass.
   was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
   pages* → *Update all*.
 
+## 2026-10-08 (late night) · Lab screens on `LMS / Lab · Launch Card`
+
+After Nelson's publish and accepted update. [Library request 27](library-requests.md) is closed.
+
+- **32 stand-ins swapped** for the DS component: 8 discovery sources and 24 handoff cards (desktop, tablet,
+  mobile). No SCORM Frame is left on a Lab screen. States: Ready 12, Opened 8, Completed 8, Unavailable 4.
+- **What the learner now sees that the stand-in did not show:** the partner's name on the card (Google Cloud or
+  Microsoft), a success icon when the lab is complete, and two stacked buttons on a phone when the frame is refused.
+- **Heights:** the card hugs its content, so each screen is a little shorter than before; frames, home indicators
+  and backdrops were read back and fit.
+- Still sketches: the inline frame and the modal of the Embedded rows.
+
 ## 2026-10-08 (late night) · DS: `LMS / Lab · Launch Card`
 
 Asked by Nelson. **Not published yet.** Details in [library request 27](library-requests.md).

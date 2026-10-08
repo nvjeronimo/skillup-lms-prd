@@ -884,3 +884,19 @@ existing was changed, so no named version was saved first.
 texts, and drop the forced height. Expected count, to be read back when it is done: 32 instances, on eight of the
 nine topic screens (E1 holds the inline frame instead; the IBM screens have no launch card) × the discovery
 sources and the desktop, tablet and mobile cards. Request 27 closes when no Lab screen holds a SCORM Frame.
+
+**Closed, 8 Oct (late night).** Nelson published the DS and accepted the update in the product file. The stand-in
+was swapped for `LMS / Lab · Launch Card` on **32 instances, counted as they were replaced**: 8 on the discovery
+sources and 24 on the handoff cards (8 topic screens × desktop, tablet, mobile; E1 holds the inline frame and the
+IBM screens have no launch card). Read back afterwards: no instance named *Lab launch* is left on either page.
+
+- `State` set from what each stand-in showed: Ready 12, Opened 8, Completed 8, Unavailable 4.
+- Title, Description and button labels carried over; the provider is `Microsoft` on the twelve Microsoft Learn
+  cards and `Google Cloud` on the others; the trailing icon is off on the four modal screens (E2), where the lab
+  opens inside the page.
+- The forced 240 height is gone: the card hugs (212–244 on desktop, 196–228 on tablet, 180–288 on mobile; the
+  padding token is smaller below desktop and the texts wrap). On mobile E3 the second button reads *Skip for now* again, because
+  the two buttons now stack.
+- The screen frames, the mobile home indicator and the modal backdrops were checked against the new content
+  heights: none was off.
+
