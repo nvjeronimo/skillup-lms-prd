@@ -723,6 +723,12 @@ of the DS were read; a badge counts when its label is on:
 these components is used without setting the badge. The original texts are the Untitled UI defaults and are not
 on record here; repairing them is a decision for Nelson, and the other kit pages were not read.
 
+**Decided 8 Oct: repair them. Blocked on a source, two tried the same night.** The September clone of the DS
+(`❖ SKO Design System (OptionC-Material)`) was trimmed to the LMS and Mobile pages: the three kit pages are not
+in it. The live file's version history is reachable only through the REST API, and the token has expired. Either
+a duplicate of a version from before 7 Oct (File → Show version history → Duplicate) or a renewed token gives the
+texts node by node.
+
 ---
 
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3

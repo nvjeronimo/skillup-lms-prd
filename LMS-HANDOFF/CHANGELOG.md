@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Platform pages: what is left after the covers, measured
+
+Mostly read-only; one text changed in Figma after a named version.
+
+- **Handoff header, My Learning & Dashboard:** the line on what it costs listed *streak* among the learner data
+  to confirm. The streak card left the screens on 7 Oct; the word is gone. The other handoff texts of the two
+  platform frames were read for things the Open edX pass removed (streak, cohort, live session, mentor, time left,
+  *You left off*): only dated changelog entries mention them, as history.
+- **Screens after the row and header changes:** every screen copy in the two handoff frames is an auto-layout
+  frame whose content ends at its own height (tablet Program screens keep their 48 bottom padding); no gap, no
+  overflow.
+- **`Program-Card`, measured for the decision in §37.6 item 4:** 16 instances in the product file (8 sources,
+  8 handoff copies); `Show cohort` is off on all 16 and neither `Week` nor `Lessons` is visible on any. The three
+  properties are unused. Removing them is a DS change, waiting for Nelson.
+- **Kit badges (457 reading *Label* in the DS), still without a source.** Two sources tried: the September clone
+  of the DS (`…OptionC-Material`) does not have the *Application navigation*, *Tables* or *Card headers* pages,
+  and the file's version history needs a REST token, which has expired (401). What unblocks it: a duplicate of a
+  DS version from before 7 Oct, or a renewed token; both are Nelson's.
+
 ## 2026-10-08 (night) · Six loose ends: DS labels and links, prototype type names, quizzes, second critique
 
 Decided by Nelson on 8 Oct ("yes to all").
