@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (later) · After another publish: badges read *Label* again in the product file
+
+- Recount after Nelson published the DS and accepted the update. Visible `Badge v2` reading *Label*: Video 153
+  of 212, Quizzes 474 of 483, Reading 76 of 78, Platform Ready for Dev 105 of 425, V8 WIP 150 of 498. The count
+  was 0 on all five earlier the same day. Read twice from the server session and once from the desktop app
+  (Reading: 76 of 78 in both).
+- **Where:** inside the wrappers: `LMS / Topic-Types Badge`, `LMS / Provider-Partner Badge`,
+  `LMS / Delivery Mode Badge`, `LMS / Difficulty Badge`, the three quiz sets, `Message`, `Due-Item`,
+  `Program-Card`. The product file's own copies of those wrappers (new node ids `6735:…`) read *Label* in their
+  main component.
+- **DS side:** the same wrappers read right (*Video*, *IBM*, *Flexible Learning*…), all `CURRENT`. `Badge v2` has
+  been rebuilt since the last good state: 540 variants, a new `Icon Only` variant property, property ids
+  `#22100:…`, default text *Label*. The wrappers set the text through that property. So the file is again
+  holding a `Badge v2` and wrappers that do not match.
+- **Not caused by this session's DS writes** (tab count default, certificate, Course Card thumbnail, Program
+  icon): none of them touches a wrapper or `Badge v2`.
+- **What did arrive:** tab counts read *2*, *4* and *5*; the Program icon is on the three opaque tokens on Ready
+  for Dev (12 of 12) and on 12 of 17 on WIP (5 still raw); grids read P S S S S and rows P S S.
+- Nothing patched in the screens. Accepting the update is Nelson's click; if the panel offers nothing, the
+  wrappers need to be touched in the DS and published again.
+
 ## 2026-10-08 · Dashboard: the glance card is four in a line on desktop and tablet
 
 Named version first: *Before fitting the glance card height on the Dashboards*.
