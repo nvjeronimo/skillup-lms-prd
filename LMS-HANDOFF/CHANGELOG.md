@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card
+
+Named versions first. On Nelson's go-ahead. **Nothing here is published yet.**
+
+- **Defaults moved to what the screens show since the edX pass** (§37.6, item 4):
+  - `Today-at-a-glance`: *Your learning at a glance* · Courses in progress 3 · Courses completed 1 ·
+    Certificates 1 · Programs 2, in both variants.
+  - `Stat`: *In progress* · 3 · *courses*.
+  - `Due-Item`: an assignment deadline (*Persona research draft (Peer Assessment)*, *Tonight*); Today reads
+    *Due 11:59* on Warning, without the dot, instead of *Live*.
+  - `Program-Card`: *Program · 7 courses*, *1 of 7 courses complete*, 14 % with the bar at 10 %, *Course 2 ·
+    SEO & Organic Search*, *Flexible Learning*; `Show cohort` off, `Week` and `Lessons` hidden.
+  - `Jump-Tile`: *12 unread updates in your courses*. `Resume-Row` and `LMS / Course Row`: *Flexible Learning*.
+  - `LMS / Course Card`: the line that read *3h 20m left* reads *8 hours total* (layer `Effort`).
+  - `Streak-Card`: not changed; its description says nothing in Open edX backs it.
+- **`LMS / Course Card` takes an image**: a new boolean `Show image` shows an `Image` layer over the initials, in
+  both variants. Library request 26.
+- **This morning the badges read *Label* again and were back to 0 a minute later** (all platform frames, read in
+  the desktop app at 08:05 and 08:08 UTC). `Badge v2` was rebuilt in the library a second time; the entry below,
+  from the other session, has the cause. Traps 41 and 42 added to `figma-api-traps.md`.
+
 ## 2026-10-08 (later) · After another publish: badges read *Label* again in the product file
 
 - Recount after Nelson published the DS and accepted the update. Visible `Badge v2` reading *Label*: Video 153

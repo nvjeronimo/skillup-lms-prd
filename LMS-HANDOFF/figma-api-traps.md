@@ -174,3 +174,14 @@ The rule they all point at: **after any structural mutation, read the state back
     library arrived with the same names and **different keys** — nothing in the source file points to it, and
     publishing it links nothing. Compare `component.key` on both sides before calling a move done.
 
+41. **A component `description` comes back HTML-escaped; writing it back escapes it again.** Reading
+    `node.description` returns `&quot;` for a quote. Appending to that string and assigning it stores
+    `&amp;quot;`. Decode the entities (`&amp;`, `&quot;`, `&#39;`, `&lt;`, `&gt;`) before writing, then read it
+    back.
+
+42. **A script cannot accept a library update, and one publish can undo what the file showed.** Swapping an
+    instance to the copy `importComponentByKeyAsync` returns looks right and falls back. And when a base component
+    is rebuilt in the library (`Badge v2`, twice in two days: new property ids), every component that wraps it is
+    out of step in the consuming file until that file accepts the wrappers again; a count that read 0 can read
+    hundreds the next morning with nothing touched. After any publish, recount; do not trust yesterday's 0.
+

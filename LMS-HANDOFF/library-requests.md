@@ -767,3 +767,10 @@ production the image is the course's own (`course_image`; Learner Home returns i
 
 **Ask:** give the card a thumbnail that takes an image (a boolean or a swap, initials as the fallback when a
 course has none); then the screens drop their overrides.
+
+**Done in the DS, 8 Oct**, on Nelson's go-ahead, after a named version: both variants have an `Image` layer that
+fills the thumbnail (absolute, stretched, clipped to the thumbnail's radius), shown by a new boolean **`Show
+image`**, off by default; the initials stay underneath as the fallback. Same vocabulary as `Course-Header`
+(`Show image`). Checked with temporary instances, image on and off; card sizes unchanged (380 × 358, 1 200 × 120).
+**Needs a DS publish.** Then, on the 63 thumbnails: `Show image` on, the cover moved from the thumbnail's fill to
+the `Image` layer, the thumbnail back on its token.
