@@ -22,6 +22,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   for Dev (12 of 12) and on 12 of 17 on WIP (5 still raw); grids read P S S S S and rows P S S.
 - Nothing patched in the screens. Accepting the update is Nelson's click; if the panel offers nothing, the
   wrappers need to be touched in the DS and published again.
+- **After Nelson accepted everything in Libraries → Updates:** 0 visible badges read *Label* on all five pages
+  (212, 483, 78, 425, 498). Video tabs read *Transcript · Notes 2 · Downloads 4* on the 29 bars. The Program icon
+  is on the three tokens on Ready for Dev (12 of 12); on WIP 5 of 17 are still raw. The first acceptance had
+  been partial; nothing was changed in the screens between the two counts.
 
 ## 2026-10-08 · Dashboard: the glance card is four in a line on desktop and tablet
 
