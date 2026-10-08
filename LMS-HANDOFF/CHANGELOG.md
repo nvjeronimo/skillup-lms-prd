@@ -2,6 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (evening) · DS: the Program header matches Desktop on Tablet and Mobile
+
+Two named versions first. On Nelson's go-ahead for each change. **Not published yet.**
+
+- **Background:** `Course-Header` · `Kind=Program` on Tablet (`22219:3301`) and Mobile (`22219:3961`) is bound to
+  `bg/subtle`, as the Desktop Program variant is (it was `bg/primary-soft`, kept from the Course variant). Read
+  back in the variants' dark mode: 18,34,40 on all three; sizes unchanged (960 × 321, 375 × 546).
+- **Partner logos:** the two placeholder logos take the paints Desktop has: the Microsoft wordmark white
+  (it was grey 115), the 38 IBM vectors on `icon/on-media` (they were a raw blue). 39 paints per variant, matched
+  to Desktop one to one by position and layer name. The Microsoft wordmark is a raw white on all three variants.
+- **How the gap was found, and that nothing else is left:** the Course and Program variants were compared layer by
+  layer on each breakpoint (fills with raw colours, strokes, text styles, effects, modes, layout values, sizes,
+  nested variant and text properties; about 335 layers each). After the two changes the differences are the same
+  set on Desktop, Tablet and Mobile. When the variants were built on 8 Oct the differences had been listed by eye:
+  five found, these two missed.
+- **After the publish:** accept `Course-Header` in the product file's Libraries → Updates. The 16 tablet and mobile
+  headers do not override the background, so they follow; the partner chips are hidden on the Program screens.
+
 ## 2026-10-08 (evening) · DS clean-up, Program icon closed, prototype course-complete gate
 
 Decided by Nelson on 8 Oct.

@@ -2767,8 +2767,10 @@ component and on one Dashboard screen (§33).
 - **Header:** the 8 screens use `Kind=Program` on their breakpoint; texts and sizes unchanged (960 × 321,
   375 × 525). The variant carries the dark semantics mode itself. The instance carries the same two modes as its
   variant: clearing the mode on the instance left an empty override that cancelled the variant's, and the headers
-  rendered light for a few hours on 8 Oct (trap 45 in `figma-api-traps.md`). **One token differs from desktop:**
-  the background is `bg/primary-soft` here and `bg/subtle` on the Desktop Program variant — open in request 19.
+  rendered light for a few hours on 8 Oct (trap 45 in `figma-api-traps.md`). **One token differed from desktop:**
+  the background was `bg/primary-soft` here and `bg/subtle` on the Desktop Program variant. Changed in the DS
+  the same evening (request 19); the screens show it once the DS is published and `Course-Header` is accepted in
+  this file.
 - **Rows:** the 14 rows on the tablet and mobile Courses screens are the DS `Course-Row` on `Breakpoint=Compact`,
   same properties, no text difference. The mobile expanded row is 942 high (962 before: the detail fits one
   line). The local `Course-Row-Compact` and its section are removed; `topics-done` went with it.
@@ -2820,8 +2822,8 @@ every piece is the design system's handoff component. The outer frame and the ro
 the same token bindings (`bg/page`, `Spacing/7xl`, `Spacing/8xl`), read back.
 
 **Open, before this can be marked ready:** where the program's data comes from and the program certificate
-(vendor, §35.1, §35.4); the marketing-only content on About (§37.3); navigation (§33); the header's background token below
-desktop (request 19). ~~The two stand-ins below desktop~~ are gone since 8 Oct, and the copies in this frame were
+(vendor, §35.1, §35.4); the marketing-only content on About (§37.3); navigation (§33); the header's background below
+desktop, fixed in the DS and waiting for a publish (request 19). ~~The two stand-ins below desktop~~ are gone since 8 Oct, and the copies in this frame were
 updated in place the same day (rows, covers, header mode), not copied again.
 
 ## 36. The local components move to the DS — in progress — 6 Oct

@@ -457,9 +457,18 @@ mistake: an empty mode override stayed behind and cancelled the variant's own mo
 (trap 45). Corrected the same day: each instance carries the two modes of its variant again and resolves to dark,
 read back on all 16.
 
-**Still open — one token.** The Desktop Program variant's background is `bg/subtle`; the Tablet and Mobile
-variants built on 8 Oct kept the Course variant's `bg/primary-soft` (in dark: 18,34,40 against 15,44,56). Ask:
-`bg/subtle` on both, then a publish. Not changed without Nelson's go-ahead.
+**Two gaps against the Desktop Program variant, closed in the DS on 8 Oct (evening)**, on Nelson's go-ahead,
+after named versions. The Tablet and Mobile variants built that morning had kept two things from the Course
+variant:
+
+| What | Was | Now, as on Desktop |
+|---|---|---|
+| Background | `bg/primary-soft` (15,44,56 in dark) | `bg/subtle` (18,34,40) |
+| Placeholder partner logos | Microsoft wordmark grey 115, IBM a raw blue | wordmark white, IBM on `icon/on-media` (39 paints per variant) |
+
+Found by comparing the Course and Program variants layer by layer on each breakpoint, raw colours included; the
+remaining differences are now the same set on the three breakpoints. **Needs a DS publish**, then `Course-Header`
+accepted in the product file. The screens' headers do not override the background and will follow.
 
 ---
 
