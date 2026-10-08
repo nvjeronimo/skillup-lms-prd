@@ -2,6 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late night) · Buttons: the screens are on the previous generation, not on Button V2
+
+Asked by Nelson: close the question of how `Buttons/Button`, `Button utility` and `Button close X` map to the
+register's `Button`, `Link Button` and `Icon Button`. Read-only in both files.
+
+- **They are not the same components.** The screens use the previous generation (`Buttons/Button` 1 559,
+  `Buttons/Button utility` 342, `Buttons/Button close X` 185 on the ten pages counted). Button V2 (`Button`,
+  `Link Button`, `Icon Button`) has other keys and other properties, and no instance on those pages uses it.
+- **The previous generation is no longer in the library:** importing `Buttons/Button` and `Buttons/Button utility`
+  by key fails, while a published component imports in the same test. The instances work but cannot be updated.
+- **Three cases have no V2 equivalent** (already in the 24 Sep review): the neutral grey-outline Tertiary, the
+  utility button with its Active state, and the close button.
+- **Docs:** `component-versions.md` has a new section *Buttons: two generations* with the mapping table, the V2
+  rows read *on no screen yet*, and three legacy rows were added; the components-used list no longer says the
+  two families are the same. The ICP Hub rows follow.
+- **Open, for Nelson:** migrate the screens to V2 (and add the three missing cases to V2 first), or keep the
+  screens as the visual reference for now. Engineering was sent Button V2 as batch 1.
+
 ## 2026-10-08 (late night) · Components-used list recounted with the current names; the Lab page added
 
 `03-design-system/ds-components-used-icp-lms.md`, read-only in Figma, one read per page, every instance resolved
