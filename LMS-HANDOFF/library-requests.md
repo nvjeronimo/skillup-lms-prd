@@ -451,6 +451,26 @@ the breadcrumb, the Program type badge, the title and the structure line. **Need
 tablet and mobile Program screens and their handoff copies switch `Kind` to Program and drop the dark mode set on
 the instance.
 
+**On the screens, 8 Oct**, after the publish: the 16 tablet and mobile headers (8 sources, 8 handoff copies) are
+on `Kind=Program`. Same texts, same sizes. The dark mode set on the instance was cleared first, and that was a
+mistake: an empty mode override stayed behind and cancelled the variant's own mode, so the headers rendered light
+(trap 45). Corrected the same day: each instance carries the two modes of its variant again and resolves to dark,
+read back on all 16.
+
+**Two gaps against the Desktop Program variant, closed in the DS on 8 Oct (evening)**, on Nelson's go-ahead,
+after named versions. The Tablet and Mobile variants built that morning had kept two things from the Course
+variant:
+
+| What | Was | Now, as on Desktop |
+|---|---|---|
+| Background | `bg/primary-soft` (15,44,56 in dark) | `bg/subtle` (18,34,40) |
+| Placeholder partner logos | Microsoft wordmark grey 115, IBM a raw blue | wordmark white, IBM on `icon/on-media` (39 paints per variant) |
+
+Found by comparing the Course and Program variants layer by layer on each breakpoint, raw colours included; the
+remaining differences are now the same set on the three breakpoints. ~~Needs a DS publish, then `Course-Header`
+accepted in the product file.~~ **Published and accepted the same evening. Closed:** the 24 Program headers of
+the screens and handoff copies read `bg/subtle`, 18,34,40, dark, on the library's current version.
+
 ---
 
 ## 20 · `LMS/Platform/Program-Detail/Course-Row` — no layout below desktop
@@ -472,6 +492,17 @@ the card in its grid layout with a full-width button and a truncating *Up next* 
 override that only the local `Expanded=True` had on the *Up next* row (no visible effect). **Needs a DS
 publish.** Then the 28 compact rows on the tablet and mobile screens and handoff copies are swapped to the DS
 variant and the local component is removed.
+
+**Corrected the same day:** the two Compact variants had lost their property links when cloned — *Position*,
+*Detail* and the *Modules* slot did not follow the set's properties. Linked again and tested with a temporary
+instance. The first publish carried the unlinked variants; **one more publish is needed** before the rows are
+swapped.
+
+**On the screens, 8 Oct**, after the second publish: the 28 compact rows (tablet `6666:24197`, mobile
+`6668:32886`, handoff copies `6729:21404`, `6729:25817`) are the DS row on `Breakpoint=Compact`, with no text
+difference. The mobile expanded row is 942 high (962 with the local component: the detail now fits one line).
+The local `Course-Row-Compact` (`6665:4206`) and its section are removed. **Closed.** `topics-done` went with the
+local component; nothing was linked to it.
 
 ---
 
@@ -791,3 +822,20 @@ image`**, off by default; the initials stay underneath as the fallback. Same voc
 (`Show image`). Checked with temporary instances, image on and off; card sizes unchanged (380 × 358, 1 200 × 120).
 **Needs a DS publish.** Then, on the 63 thumbnails: `Show image` on, the cover moved from the thumbnail's fill to
 the `Image` layer, the thumbnail back on its token.
+
+**On the screens, 8 Oct — done for the Program page, not for My Learning.**
+
+| Where | Thumbnails | State, read back |
+|---|---|---|
+| Program page, sources and handoff copies | 42 (7 courses × desktop, tablet, mobile × 2) | `Show image` on, cover on `Image`, thumbnail on its token, initials underneath |
+| My Learning, sources and handoff copies | 40 | cover as a fill on the thumbnail, initials hidden; the card has no `Show image` |
+
+The 42 sit inside `Course-Row`, which arrived in its published version. The 40 are direct instances of the card:
+moved by script to the published copy, they fell back to the version this file holds (trap 42) and lost the cover,
+which was put back the 7 Oct way. **Open until the Course Card update is accepted in this file** (Libraries →
+Updates); then the 40 take `Show image` and the thumbnail goes back on its token.
+
+**8 Oct (evening), after another publish and accepted updates: unchanged.** `Course-Header` came in; the Course
+Card did not, in the server read and in the desktop app. The 40 cards point to a copy of the set with `Layout`
+only. Figma's Updates tab lists the current page's assets unless *Show updates for all pages* is on, and an
+update taken from one selected instance updates that instance only; one of the two is the likely reason.

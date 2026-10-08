@@ -34,3 +34,16 @@ Status: 🔴 blocked · 🟠 discussing · ⚪ not started · ✅ answered
 | Q | Question | Owner | Status |
 |---|---|---|---|
 | Q9-enum | **Enumeration prefix** — manual vs automatic numbering of answer options / ORA steps. | Rupali / Nelson | ⚪ |
+
+## New (surfaced 2026-10-08) — Lab on third-party platforms
+
+Asked to Kirti Mishra / Simran Jindal in the *ICP Labs discussions* chat. Context and what was verified:
+[`../LMS-HANDOFF/lab-third-party-platforms.md`](../LMS-HANDOFF/lab-third-party-platforms.md).
+
+| Q | Question | Owner | Status |
+|---|---|---|---|
+| Q-lab-1 | **Google (LTI)** — with *Open tool in* set to *Inline* or *Modal* on one lab in staging, does the lab load? | Simran / content team | ⚪ |
+| Q-lab-2 | **Google (LTI)** — does the score come back for every lab when the learner ends it, and how long does it take? | Simran / content team | ⚪ |
+| Q-lab-3 | **Microsoft (link)** — keep Open edX's *complete on view*, or have the learner mark the topic complete after the lab? | Navdeep / Nelson | ⚪ |
+| Q-lab-4 | **IBM** — which page does the learner land on after *Start course*, and is the whole course on IBM's side or only the labs? | Kirti / content team | ⚪ |
+| Q-lab-5 | **IBM** — how do we know today that a learner completed the course on IBM (report, certificate, nothing)? | Kirti / content team | ⚪ |

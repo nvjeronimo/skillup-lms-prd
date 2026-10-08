@@ -184,4 +184,25 @@ The rule they all point at: **after any structural mutation, read the state back
     is rebuilt in the library (`Badge v2`, twice in two days: new property ids), every component that wraps it is
     out of step in the consuming file until that file accepts the wrappers again; a count that read 0 can read
     hundreds the next morning with nothing touched. After any publish, recount; do not trust yesterday's 0.
+    "Updates accepted" is not all-or-nothing either: Figma's Updates tab lists the assets of the current page
+    unless *Show updates for all pages* is on, and *Update selected instance* updates one instance. After an
+    accepted update, group the instances by main component and name the sets still on an old copy.
+
+43. **Cloning a variant drops its property links.** `variant.clone()` inside a component set keeps the layers and
+    loses `componentPropertyReferences`: texts no longer follow their TEXT property and a slot comes back as a
+    plain frame. The clone looks identical, and an instance of it ignores `setProperties` without an error. After
+    cloning, set the references again (`{characters: key}`, `{slotContentId: key}`, `{visible: key}`) and test
+    with a temporary instance.
+
+44. **`swapComponent` carries overrides by layer name, not by node id.** Moving an instance to a newer copy of its
+    own component kept every override except the one on a layer that had been renamed in between (`Time-Left` →
+    `Effort`): that text fell back to the default. A library update accepted in the UI keeps it. Before a swap,
+    read the texts; after it, compare and restore — and throw on any other difference, so the call rolls back.
+
+45. **Clearing a mode on an instance does not hand it back to the component.** A variant can carry its own
+    explicit mode (the Program header is dark that way). `clearExplicitVariableModeForCollection` on an instance
+    of it leaves an **empty mode override**, which cancels the variant's mode: the instance resolves to the page's
+    mode and renders light, with the same texts and the same size, so a text-and-size comparison passes. To follow
+    the variant, set the variant's modes on the instance (`main.explicitVariableModes`) — and after any mode
+    change read `resolvedVariableModes` and look at the render.
 

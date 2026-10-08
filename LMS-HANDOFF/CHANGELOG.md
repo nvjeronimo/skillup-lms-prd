@@ -2,6 +2,154 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (evening) · After the publish: the Program headers are in; the Course Card is still not
+
+Read only; nothing written to Figma in this pass.
+
+- **Program header, closed.** The 24 headers (12 sources, 12 handoff copies; Desktop, Tablet, Mobile) are on the
+  library's current version: background `bg/subtle`, 18,34,40, semantics resolved to dark, sizes unchanged
+  (1 280 × 352, 960 × 321, 375 × 525). Checked by eye on tablet and mobile. 0 visible *Label* texts in the two WIP
+  platform sections and the two handoff frames.
+- **`LMS / Course Card`, still the previous version in this file**, in the server read and in Nelson's desktop
+  app alike: the 40 My Learning cards point to a copy with `Layout` only (no `Show image`, layer `Time-Left`),
+  while the cards nested in the program rows are on the current one. The covers stay on the thumbnail fill.
+- **Still behind the library** (direct instances, two WIP platform sections): `Dashboard/Stat` ×24,
+  `LMS / Course Card` ×20, `Input field` ×8, `Button group` ×8, `Program-Card` ×8, `Due-Item` ×6,
+  `LMS / Course Row` ×6, `Today-at-a-glance` ×3, `Resume-Row` ×3. `Course-Header` left the list. All are
+  published in the DS (`CURRENT`).
+- **Likely why, from Figma's own help page** (*Review and accept library updates*): the Updates tab lists the
+  assets of the **current page** unless *Show updates for all pages* is on, and *Update selected instance*
+  updates one instance. Either leaves other components, or other instances, on the old version after an update
+  was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
+  pages* → *Update all*.
+
+## 2026-10-08 (night) · Lab on third-party platforms: handoff page, ready for review
+
+Asked by Nelson on 8 Oct.
+
+- **New page** in *LMS ICP Phase 1*: `↳ Lab · Third-party platforms - Ready for Review 🟠` (`6789:325`), placed after
+  *Topic Content Types Discovery*. One frame, the header block and eleven cards in four rows (Google, Microsoft,
+  embedded alternatives, IBM), built from the Reading page's card.
+- **The nine topic screens are now full course-player screens** (1 440 wide): top bar, sidebar with the lab as the
+  current topic (type *Lab*, a course outline that matches the partner), content and footer navigation. Their
+  content is a copy of the discovery screens; padding and gap are bound to `Spacing/lg` and `Spacing/xl`, as on
+  the Reading screens. On E2 the backdrop covers the whole player and the modal is 80% of the window.
+- **The two IBM cards** hold the Course Detail header screens as they were.
+- **Status tag:** *Ready for review* on all eleven. It is the kit's *In progress* tag with its text changed; the
+  kit has no review tag.
+- **Still desktop only**, still a first pass: the launch card is the SCORM Frame as a stand-in, the inline frame
+  and the modal are local sketches, and the five questions to the content team are open.
+
+## 2026-10-08 · Lab on third-party platforms (Google, Microsoft, IBM): first pass
+
+From the content team's messages of 8 Oct (Kirti Mishra, Simran Jindal). Discovery only; the answers asked for
+are pending. Full write-up: [`lab-third-party-platforms.md`](lab-third-party-platforms.md).
+
+- **Embedding checked on the response headers:** `learn.microsoft.com`, `skills.google` (pages and a lab page),
+  `console.cloud.google.com` and the IBM SkillsBuild sign-in pages all refuse to be framed by another site
+  (`X-Frame-Options: SAMEORIGIN` or `DENY`). The Google LTI launch address itself was not testable.
+- **Open edX already offers Inline, Modal and New Window** on the LTI component (*Open tool in*); a Studio test on
+  one Google lab settles whether Google accepts the first two.
+- **Completion, read in `openedx/completion`:** a graded LTI component completes only when the tool sends a score
+  back; a Text component completes 5 s after it is viewed. So Google can complete by itself and Microsoft cannot.
+- **Figma:** new section `05b · Lab — third-party platforms` (`6776:8711`) on *Topic Content Types Discovery*,
+  eleven desktop screens in four rows (Google, Microsoft, embedded alternatives, IBM). The launch card is the
+  SCORM Frame as a stand-in; the inline frame and the modal are local sketches.
+- **Not done:** tablet and mobile, the score-never-arrives case, the meeting recordings (transcripts are not
+  readable through Microsoft Graph for this organisation).
+
+## 2026-10-08 (evening) · DS: the Program header matches Desktop on Tablet and Mobile
+
+Two named versions first. On Nelson's go-ahead for each change. **Not published yet.**
+
+- **Background:** `Course-Header` · `Kind=Program` on Tablet (`22219:3301`) and Mobile (`22219:3961`) is bound to
+  `bg/subtle`, as the Desktop Program variant is (it was `bg/primary-soft`, kept from the Course variant). Read
+  back in the variants' dark mode: 18,34,40 on all three; sizes unchanged (960 × 321, 375 × 546).
+- **Partner logos:** the two placeholder logos take the paints Desktop has: the Microsoft wordmark white
+  (it was grey 115), the 38 IBM vectors on `icon/on-media` (they were a raw blue). 39 paints per variant, matched
+  to Desktop one to one by position and layer name. The Microsoft wordmark is a raw white on all three variants.
+- **How the gap was found, and that nothing else is left:** the Course and Program variants were compared layer by
+  layer on each breakpoint (fills with raw colours, strokes, text styles, effects, modes, layout values, sizes,
+  nested variant and text properties; about 335 layers each). After the two changes the differences are the same
+  set on Desktop, Tablet and Mobile. When the variants were built on 8 Oct the differences had been listed by eye:
+  five found, these two missed.
+- **After the publish:** accept `Course-Header` in the product file's Libraries → Updates. The 16 tablet and mobile
+  headers do not override the background, so they follow; the partner chips are hidden on the Program screens.
+
+## 2026-10-08 (evening) · DS clean-up, Program icon closed, prototype course-complete gate
+
+Decided by Nelson on 8 Oct.
+
+- **DS, named version first, not published:** the footer set named `LMS` (`20053:3286`) renamed
+  `LMS / Topic Footer Nav`; its key is unchanged, so instances keep their link and show the new name after the
+  update. `_Remove · LMS / Quiz · Results Summary` and `_Remove · LMS / Quiz · Score Ring` deleted: both
+  unpublished, the Score Ring used only inside the Results Summary (4 instances), and no instance of either in
+  the product file (36 pages read).
+- **`LMS / Course Card_Remove`, survey only:** 5 instances in the product file, all on the older screen
+  *My Learning - Courses - List View* (V8 WIP, *1 · Core Learning Journey - LMS DS*). Nothing deleted. To
+  retire it: rebuild that screen on `LMS / Course Card · Layout=List`, or archive the screen.
+- **Program icon:** accepted as published, back card faint in SKO Light. The open question left the ICP Hub
+  (version 13), with a decision entry.
+- **Prototype:** PR 69 (merged) fixed a regression of PR 68: on a last topic that cannot be completed, *Next*
+  stayed disabled and the course-complete dialog could not be reached. PR 70 (open): the dialog opens only when
+  every topic the learner can finish in the prototype is finished; locked topics, unavailable types, VILT and
+  quizzes are left out of the count.
+
+## 2026-10-08 · Screens: the 28 compact course rows on the DS row; the local component is gone
+
+Named version first: *Before the compact course rows move to the DS variant*. After Nelson's second publish.
+
+- **The 28 compact rows** (tablet and mobile Courses, sources and handoff copies) are the DS `Course-Row` on
+  `Breakpoint=Compact`. Texts compared before and after each swap: no difference. *Position*, *Detail* and the
+  effort line were set again after the swap (trap 44). Covers sit on the card's `Image` layer. The mobile expanded
+  row went from 962 to 942 high: the detail fits one line in the DS variant.
+- **The local `Course-Row-Compact` is removed** (`6665:4206` and its section `6664:7091`), after two counts found
+  0 instances.
+- **Program Page handoff frame:** 12 texts updated. Below desktop the header is the Program variant and the rows
+  are the DS compact row; no library request is quoted as open there any more.
+- **Read back after the pass**, sources and handoff copies: 42 program rows on the DS component (14 Desktop,
+  28 Compact), 42 covers on `Image` with `Show image` on; 0 badges read *Label* on the two WIP platform sections
+  (121 and 131 badges) and 0 visible *Label* texts in the two handoff frames.
+- ⚠︎ **Correction to the entry below — the 16 tablet and mobile Program headers were rendering light.** Clearing
+  the dark mode on the instance did not hand it back to the variant: it left an empty mode override, which
+  cancelled the variant's own dark mode (trap 45). Nobody had looked at the render. Named version first (*Before
+  the tablet and mobile Program headers get their dark mode back*), then each instance was given the two modes its
+  variant carries. Read back on all 16: semantics resolve to dark (`19547:2`), background 15,44,56, same texts,
+  same sizes (960 × 321, 375 × 525). The mode still counts as an override on the instance.
+- **Found while checking, not changed:** the Program header's background is `bg/subtle` on Desktop and
+  `bg/primary-soft` on Tablet and Mobile (18,34,40 against 15,44,56 in dark). The two variants built on 8 Oct kept
+  the Course variant's token; a sixth difference missed then. A one-token change in the DS, waiting for Nelson.
+- ⚠︎ **Correction to the entry below — the 40 My Learning cards did not keep the new Course Card.** They had been
+  moved by script to the published copy of the same component and fell back to the version this file holds
+  (trap 42), losing `Show image` and the cover with it. Their covers are back as a fill on the thumbnail with the
+  initials hidden (the 7 Oct state), and the completed course's effort line was set to *8 hours total* by hand
+  (8 instances). They move to the `Image` layer once this file accepts the Course Card update in
+  Libraries → Updates.
+- **Still behind the library in this file** (direct instances in the two WIP platform sections whose main
+  component is not the copy the library returns, read 8 Oct): `Dashboard/Stat` ×24, `LMS / Course Card` ×20,
+  `Input field` ×8, `Program-Card` ×8, `Due-Item` ×6, `LMS / Course Row` ×6, `Course-Header` ×4,
+  `Today-at-a-glance` ×3, `Resume-Row` ×3. Only accepting them in the Libraries panel brings them in.
+
+## 2026-10-08 · Screens: covers on the card's Image layer, Program header below desktop, rows on the published version
+
+Named version first: *Before the screens pass: covers on the Image layer, Program header and DS compact row*.
+
+> **Corrected the same day (entry above):** the 40 My Learning cards fell back to the previous Course Card; their
+> covers are on the thumbnail fill again. The 16 headers stayed on `Kind=Program` but rendered light until their
+> mode was set again. The 14 desktop program rows held.
+
+- The published DS was not in the product file's instances yet, so each instance was moved to the copy the
+  library returns, with its texts compared before and after (a difference rolls the call back).
+- **Covers:** on the 40 My Learning cards and the 14 desktop program rows (sources and handoff copies),
+  `Show image` is on, the cover sits on the `Image` layer, and the thumbnail is back on its token. The effort line
+  was restored where the swap dropped it (trap 44).
+- **Program header:** the 16 tablet and mobile screens (8 sources, 8 handoff copies) use `Kind=Program`; the dark
+  mode set on the instance is gone. Same texts, same sizes.
+- **Desktop program rows** read *Flexible Learning* (the new default) instead of *Flexible + Live*.
+- **Not done yet: the 28 compact rows.** The Compact variants built in the DS had lost their property links when
+  cloned (trap 43): *Position*, *Detail* and the *Modules* slot did not follow the properties. Fixed in the DS;
+  **it needs one more publish**, then the rows are swapped and the local component removed.
+
 ## 2026-10-08 · DS: Program header below desktop, compact course row
 
 Named version first. On Nelson's go-ahead. **Not published yet.**
