@@ -2774,8 +2774,8 @@ component and on one Dashboard screen (§33).
   same properties, no text difference. The mobile expanded row is 942 high (962 before: the detail fits one
   line). The local `Course-Row-Compact` and its section are removed; `topics-done` went with it.
 - **Covers on this page** sit on the card's `Image` layer with `Show image` on (21 thumbnails: 7 courses ×
-  desktop, tablet, mobile), the thumbnail on its token. **On My Learning they are still a fill on the thumbnail**:
-  those 20 cards are direct instances of a Course Card version this file has not accepted yet (request 26).
+  desktop, tablet, mobile), the thumbnail on its token. On My Learning the 20 cards (and their 20 handoff
+  copies) followed the same day, once the Course Card update was accepted in this file (request 26, closed).
 
 **Read back on the eight screens:** every text visible on desktop is present on tablet and on mobile, except badge
 labels (next paragraph); 0 raw fills, strokes, spacing or radii, 0 unstyled texts, 0 generic layer names outside

@@ -828,7 +828,7 @@ the `Image` layer, the thumbnail back on its token.
 | Where | Thumbnails | State, read back |
 |---|---|---|
 | Program page, sources and handoff copies | 42 (7 courses × desktop, tablet, mobile × 2) | `Show image` on, cover on `Image`, thumbnail on its token, initials underneath |
-| My Learning, sources and handoff copies | 40 | cover as a fill on the thumbnail, initials hidden; the card has no `Show image` |
+| My Learning, sources and handoff copies | 40 | ~~cover as a fill on the thumbnail, initials hidden; the card has no `Show image`~~ since 8 Oct (late): the same as the Program page |
 
 The 42 sit inside `Course-Row`, which arrived in its published version. The 40 are direct instances of the card:
 moved by script to the published copy, they fell back to the version this file holds (trap 42) and lost the cover,
@@ -839,3 +839,9 @@ Updates); then the 40 take `Show image` and the thumbnail goes back on its token
 Card did not, in the server read and in the desktop app. The 40 cards point to a copy of the set with `Layout`
 only. Figma's Updates tab lists the current page's assets unless *Show updates for all pages* is on, and an
 update taken from one selected instance updates that instance only; one of the two is the likely reason.
+
+**Closed, 8 Oct (late).** Neither was the reason: the product file's tab held an old library state (the desktop
+app returned the old card as the library's own), and a reload of the tab made the update available. After it,
+the 40 cards took `Show image`, the cover on `Image`, the thumbnail on `bg/primary-soft` and the initials
+underneath; no text or size difference. **All 82 course thumbnails use the image option; no cover is a fill
+override any more.** The images are still placeholders.

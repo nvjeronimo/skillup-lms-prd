@@ -56,19 +56,39 @@ Design consequence: Google needs **no manual button** (if the score really arriv
 between *complete on view* (what happens today, and it is not true to what the learner did) and *the learner marks
 it complete* (the rule the download Lab already follows).
 
-## 4. Screens (Figma, desktop only)
+## 4. Screens (Figma: desktop, tablet and mobile)
 
 **Handoff page, ready for review since 8 Oct 2026:** *LMS ICP Phase 1* → page
 **`↳ Lab · Third-party platforms - Ready for Review 🟠`** (`6789:325`), frame
-`ICP - Lab · Third-party platforms - Light - Ready for Review` (`6789:326`). Eleven cards in four rows, built like
-the Reading page: card header, the screen, description and changelog. The nine topic screens sit in the full course
+`ICP - Lab · Third-party platforms - Light - Ready for Review` (`6789:326`). Thirty-three cards: the eleven screens on
+desktop, tablet (960) and mobile (375), in twelve rows (per partner: desktop, tablet, mobile). Built like the
+Reading page: card header, the screen, description and changelog. The nine topic screens sit in the full course
 player (top bar, sidebar with the lab as the current topic, content, footer navigation); the two IBM screens are
-the Course Detail header. Every card's status tag reads *Ready for review*: it is the *In progress* tag with its
-text changed, because the handoff kit has only *In progress* and *Ready for DEV*. Cards G1–G3
+the Course Detail header. Every card's status tag reads *In review*: it is the *In progress* tag with its text
+changed, because the handoff kit has only *In progress* and *Ready for DEV* (a longer label is cut on the mobile
+cards). Cards G1–G3
 (`6789:901`, `6789:1426`, `6789:1816`), M1–M3 (`6792:1917`, `6792:2412`, `6792:2804`), E1–E3
 (`6792:3199`, `6792:3595`, `6792:3995`), I1–I2 (`6792:139729`, `6792:139888`).
 
-**The cards are copies.** The sources are the content-only screens below; when a source changes, copy it again.
+**The desktop cards are copies.** Their sources are the content-only screens below; when a source changes, copy it
+again. The tablet and mobile cards have no separate source: they were built on the handoff page from the same
+sources and are the originals for their breakpoint.
+
+**Tablet and mobile (8 Oct 2026):** rows `Row n.2 · … · Tablet` and `Row n.3 · … · Mobile`, cards numbered
+`G1.2`, `G1.3` and so on. Tablet keeps the sidebar and a 632 px content column; mobile is one column with the
+outline behind the menu. What differs from desktop:
+
+- **A warning above the launch on the Google screens where the lab has not been opened** (G1, E1, E2, E3), tablet
+  and mobile: *This lab needs a computer*. Google's own help says phones and tablets are not recommended for labs
+  and that labs using the Cloud console might not work on them at all
+  ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
+- **E2 on mobile:** the modal is 80% of the window (300 px wide) and *Open in a new tab* becomes an icon button.
+- **E3 on mobile:** the second button reads *Skip* so the two fit.
+- **IBM on mobile:** the dialog is the mobile layout of the design system modal (buttons stacked).
+
+**No tab bar.** The first pass showed a bar with a single *Instructions* tab. It was removed on every screen,
+sources included, and replaced by the divider Reading uses: with one option the tab bar is hidden (decision of
+17 Sep 2026).
 
 Sources: *Topic Content Types Discovery — Ready for Review* → section
 **`05b · Lab — third-party platforms (Google · Microsoft · IBM)`** (`6776:8711`), to the right of the page.
@@ -113,8 +133,8 @@ access through Microsoft Graph is switched off for the organisation.
 
 ## 6. Not covered yet
 
-- Tablet and mobile. The Google lab is not usable in the mobile app (it needs a desktop browser and a second
-  window); the screens say so in *Before you start* but there is no mobile state.
+- Whether the mobile app should offer *Open lab* at all for a Google lab, or only the instructions. The screens
+  keep the button and warn.
 - What the learner sees when the score never arrives, or arrives as zero.
 - Pop-up blocked by the browser when the lab opens in a new tab.
 - The consent Open edX can ask for before sending username and email to the tool

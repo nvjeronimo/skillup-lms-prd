@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late) · My Learning: the 40 covers on the card's Image layer; why the update had not come in
+
+Named version first: *Before the My Learning covers move to the card's Image layer*.
+
+- **The Course Card update is in.** After Nelson reloaded the product file's tab and accepted again, the 40
+  My Learning cards (20 sources, 20 handoff copies) are on the current `LMS / Course Card`, read the same from the
+  server and from the desktop app. The effort lines came through the update unchanged (layer now `Effort`).
+- **Covers moved.** On the 40 cards: `Show image` on, the cover on the `Image` layer, the thumbnail back on
+  `bg/primary-soft`, the initials visible underneath as the fallback. Texts and card sizes compared before and
+  after: no difference. Thumbnail 86 × 86 on Grid, 118 × 118 on List. With the 42 of the Program page, all 82
+  course thumbnails now use the card's image option. Library request 26 closed.
+- **Behind the library now:** only `Input field` ×8 and `Button group` ×8 (Untitled UI kit, no visible
+  difference). The seven platform components listed earlier came in with the same accepted update. 0 visible
+  *Label* texts on the two WIP sections and the My Learning handoff frame.
+- **Correction to the entry below — the cause was not the page filter.** The product file's tab had been open
+  since before the morning publish and still held the old library state: asked for the library's Course Card, the
+  desktop app returned the old copy, so its Updates list had nothing to offer and *Update all* did nothing for
+  those components. A reload of the tab fixed it. Trap 42 has the check.
+
 ## 2026-10-08 (evening) · After the publish: the Program headers are in; the Course Card is still not
 
 Read only; nothing written to Figma in this pass.
@@ -22,6 +41,23 @@ Read only; nothing written to Figma in this pass.
   updates one instance. Either leaves other components, or other instances, on the old version after an update
   was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
   pages* → *Update all*.
+
+## 2026-10-08 (late night) · Lab on third-party platforms: tablet and mobile
+
+Asked by Nelson on 8 Oct. Page `↳ Lab · Third-party platforms - Ready for Review 🟠` (`6789:325`).
+
+- **22 new cards:** the eleven screens at 960 and at 375, in rows under each partner's desktop row
+  (`Row n.2 · … · Tablet`, `Row n.3 · … · Mobile`; cards `G1.2`, `G1.3`, …). 33 cards in all. Built from the
+  Reading tablet and mobile cards and, for IBM, from the Course Detail tablet and mobile screens.
+- **Google on tablet and mobile:** a warning, *This lab needs a computer*, above the launch on the four screens
+  where the lab has not been opened yet. Source: Google's *Supported devices and browsers* help page (phones and
+  tablets not recommended; Cloud console labs might not work on them).
+- **Mobile adjustments:** the LTI modal at 80% of the window with *Open in a new tab* as an icon button; *Skip* as
+  the second button of the refused-frame state; the IBM dialog on the mobile layout of the DS modal.
+- **Tab bar removed on all screens**, desktop cards and discovery sources included: it held one tab,
+  *Instructions*, and the one-option rule hides it (17 Sep). The Reading divider takes its place.
+- **Status tag reads *In review*** on the 33 cards (it read *Ready for review*, which is cut on mobile cards).
+- Not changed: the stand-ins (launch card, inline frame, modal) and the five open questions.
 
 ## 2026-10-08 (night) · Lab on third-party platforms: handoff page, ready for review
 
