@@ -2,6 +2,26 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · DS: `Program-Card` without the cohort, week and lesson counters
+
+Two named versions first. On Nelson's go-ahead for each step. **Not published yet.**
+
+- **Properties deleted:** `Week`, `Lessons` and `Show cohort` on `LMS/Platform/My-Learning/Program-Card`
+  (`22009:22808`). The set keeps `Title`, `Eyebrow`, `Courses`, `Percent`, `Up next`, `Layout`, `State`; every
+  remaining property is used by a layer, so the set publishes.
+- **Layers removed:** the 12 hidden layers those properties drove — the `Cohort` badge and the `Week` and
+  `Lessons` texts in each of the four variants. `Tags` holds the delivery badge alone, `Stats` the courses line
+  alone.
+- **Read back:** visible texts and sizes of the four variants unchanged (473 × 370, 473 × 366, 1 200 × 280 twice);
+  the render is the same before and after. The description says what was removed and why.
+- **Why:** nothing in Open edX backs a cohort, a week counter or a lesson counter for a program (§37), and none of
+  the 16 instances in the product file showed them.
+- **After the publish:** accept `Program-Card` in the product file (reload the tab first if Updates does not
+  offer it). The 16 instances should keep their texts and sizes: 384 × 370 · 384 × 404 · 1 200 × 280 ×2 ·
+  438 × 354 · 438 × 350 · 327 × 340 · 327 × 348, on the sources and on the handoff copies alike.
+- **Left as it is:** one `Percent` default (*14%*) serves both states, so a fresh *Not started* card reads 14 %
+  until it is set. A text property has one default per set.
+
 ## 2026-10-08 (night) · Platform pages: what is left after the covers, measured
 
 Mostly read-only; one text changed in Figma after a named version.
