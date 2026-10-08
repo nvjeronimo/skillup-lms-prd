@@ -2,6 +2,20 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Component versions: a convention and a register; the Hub lists the components
+
+Asked by Nelson, after the engineering team asked for the final component list for Storybook.
+
+- **New `03-design-system/component-versions.md`:** every component the ICP and LMS screens use has a version,
+  `MAJOR.MINOR`. MAJOR when a property, a variant or the structure changes in a way that breaks what was built;
+  MINOR when something is added or the look changes; nothing for descriptions, links and layer names. A version
+  moves only on a publish, with a changelog entry that names the component and the new version.
+- **Baseline, 8 Oct 2026:** `1.0` for all 137 (79 LMS product, 35 LMS platform, 23 base), `2.0` for `Badge v2`
+  and the `Button` family. Earlier history stays in this changelog.
+- **ICP Hub:** a new *Components* section lists the 137 with Figma links, usage and version.
+- **Not done:** the version is not written in the Figma component descriptions (a DS write, waits for the
+  go-ahead). Figma links for 21 of the 23 base components go to the component's page, not the component.
+
 ## 2026-10-08 (night) · Partner labs in the prototype (PR 74); critique leftovers (PR 75)
 
 Prototype `nvjeronimo/skillup-lms-prototype`, PRs 73, 74 and 75 merged by Nelson on 8 Oct. Built from the handoff page
