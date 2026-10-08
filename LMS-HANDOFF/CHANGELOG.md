@@ -2,6 +2,20 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late night) · Navigation flow, first pass: the rule, the map and what is open
+
+Asked by Nelson: start defining the correct flow across navigation, Dashboard, My Learning, course and program
+pages. New `LMS-HANDOFF/platform-navigation-flow.md`; prototype PR 80, open.
+
+- **The rule**, from the three addresses Open edX gives an enrolment (`homeUrl`, `resumeUrl`, `progressUrl`):
+  a title opens the course page, a button opens the player, and leaving the player goes back to the course page.
+- **Wired in the prototype (PR 80):** the site root opens the Dashboard; the player's exit goes to the course
+  page and its logo to the Dashboard; the course-complete dialog and the certificate go back to the course page;
+  the *Programs* crumb opens My Learning's Programs tab; *Review* on a finished course opens its page; the
+  Dashboard's course titles are links.
+- **Open, seven questions in §4 of the document.** The first: every card opens the same sample course, whatever
+  its title. The shell (sidebar or top bar) is not part of this: still undecided.
+
 ## 2026-10-08 (night) · Button V2 gains Neutral, Utility Button and Close Button
 
 Decided by Nelson: the screens move to Button V2, V2 is completed first, and only the components we use are
