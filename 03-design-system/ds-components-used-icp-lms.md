@@ -1,5 +1,9 @@
 # SKO DS components used in the ICP and LMS screens
 
+> **Names changed on 8 Oct 2026.** This list uses the names the components had when it was counted. 74 LMS
+> components are now `LMS/ICP/<Group>/<Component>` or `LMS/Platform/<Group>/<Component>`: the map from old to new is
+> at the end of [`component-versions.md`](component-versions.md). The counts are not affected.
+
 Source: Figma file "LMS-ICP Phase 1" (`Wz2TCYFVr0hD8tJNiLajLt`), first read on 6 Oct 2026. Sections 1 to 5 and the Summary were recounted on 7 Oct 2026, one read per page with the Figma Plugin API; section 1b and section 7 were checked against the same read. Every instance on the pages below was resolved to its main component; "DS" means the main component comes from the published library (remote), not from this file.
 
 **Pages counted**
