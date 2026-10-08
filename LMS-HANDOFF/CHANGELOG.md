@@ -60,6 +60,11 @@ Named versions first. On Nelson's go-ahead. **Nothing here is published yet.**
   (212, 483, 78, 425, 498). Video tabs read *Transcript · Notes 2 · Downloads 4* on the 29 bars. The Program icon
   is on the three tokens on Ready for Dev (12 of 12); on WIP 5 of 17 are still raw. The first acceptance had
   been partial; nothing was changed in the screens between the two counts.
+- **The five raw Program icons on WIP, located:** all inside `LMS / Course Card_Remove`, the DS card marked for
+  removal, on the older screen *My Learning - Courses - List View* under *1 · Core Learning Journey - LMS DS*.
+  That card still bundles an older copy of `LMS / Course Type Badge`, so its badges keep the original blues
+  (#b2c7f2, #80a1e5, #4078d9, back to front). They go when the `_Remove` card is retired or the screen is
+  rebuilt on `LMS / Course Card`; nothing to fix in the badge itself.
 
 ## 2026-10-08 · Dashboard: the glance card is four in a line on desktop and tablet
 
