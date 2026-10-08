@@ -717,6 +717,10 @@ option each.
 variant keys do not change). The defaults are still the pre-edX sample (*Today at a glance*, XP, attendance —
 §37.6, item 4).
 
+**Done 8 Oct**, on Nelson's go-ahead, after a named version: the two variants are named `Breakpoint=Desktop` and
+`Breakpoint=Mobile`, and the set's properties are `Title` and `Breakpoint` only. Set key and both variant keys
+unchanged, sizes unchanged (806 × 168, 806 × 274). **Needs a DS publish.** The defaults were not touched.
+
 ---
 
 ## 25 · Dev Mode notes go once on the main component and on one screen

@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · DS: the glance card keeps one variant property
+
+Named version first: *Before removing the stray variant properties of Today-at-a-glance*. On Nelson's go-ahead.
+
+- `LMS/Platform/Dashboard/Today-at-a-glance`: the variants are now `Breakpoint=Desktop` and `Breakpoint=Mobile`.
+  `Property 1`, `Property 2` and `Property 3`, left by the old slash name when the variants were combined, are
+  gone. Keys and sizes unchanged, so instances keep their link. Library request 24.
+- **Needs a DS publish**, then the update accepted in the product file. The Dashboard at 1 280 and 960 is still
+  waiting for the Desktop variant from the earlier publish.
+
 ## 2026-10-08 · Program Page: the handoff frame, in progress
 
 Named version first: *Before Program Page handoff frame*.
