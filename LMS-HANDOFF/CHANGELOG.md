@@ -28,6 +28,9 @@ to its main component (27 832 instances on ten pages, hidden ones included).
 - **Local:** 94 instances: the platform sidebar set `LMS` (`6207:256263`, 11), device chrome (58) and
   `Worklist checkbox` (25).
 - **Seen, not changed:** the 33 handoff cards of the Lab page have no `Handoff / Phase Badge`.
+- **Corrected in `component-versions.md`:** it said the five components moved to *In review* besides `AI-Panel`
+  were on no screen. The count shows `Certificate-Document-demo` is placed (on the certificate screens); the
+  other four are on no screen.
 
 ## 2026-10-08 (late night) · Content search section moved to Ready for Dev; two banners corrected
 
