@@ -56,9 +56,21 @@ Design consequence: Google needs **no manual button** (if the score really arriv
 between *complete on view* (what happens today, and it is not true to what the learner did) and *the learner marks
 it complete* (the rule the download Lab already follows).
 
-## 4. Screens (Figma, discovery, desktop only)
+## 4. Screens (Figma, desktop only)
 
-*LMS ICP Phase 1* → *Topic Content Types Discovery — Ready for Review* → section
+**Handoff page, ready for review since 8 Oct 2026:** *LMS ICP Phase 1* → page
+**`↳ Lab · Third-party platforms - Ready for Review 🟠`** (`6789:325`), frame
+`ICP - Lab · Third-party platforms - Light - Ready for Review` (`6789:326`). Eleven cards in four rows, built like
+the Reading page: card header, the screen, description and changelog. The nine topic screens sit in the full course
+player (top bar, sidebar with the lab as the current topic, content, footer navigation); the two IBM screens are
+the Course Detail header. Every card's status tag reads *Ready for review*: it is the *In progress* tag with its
+text changed, because the handoff kit has only *In progress* and *Ready for DEV*. Cards G1–G3
+(`6789:901`, `6789:1426`, `6789:1816`), M1–M3 (`6792:1917`, `6792:2412`, `6792:2804`), E1–E3
+(`6792:3199`, `6792:3595`, `6792:3995`), I1–I2 (`6792:139729`, `6792:139888`).
+
+**The cards are copies.** The sources are the content-only screens below; when a source changes, copy it again.
+
+Sources: *Topic Content Types Discovery — Ready for Review* → section
 **`05b · Lab — third-party platforms (Google · Microsoft · IBM)`** (`6776:8711`), to the right of the page.
 
 | Row | Screen | Node |

@@ -23,6 +23,23 @@ Read only; nothing written to Figma in this pass.
   was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
   pages* → *Update all*.
 
+## 2026-10-08 (night) · Lab on third-party platforms: handoff page, ready for review
+
+Asked by Nelson on 8 Oct.
+
+- **New page** in *LMS ICP Phase 1*: `↳ Lab · Third-party platforms - Ready for Review 🟠` (`6789:325`), placed after
+  *Topic Content Types Discovery*. One frame, the header block and eleven cards in four rows (Google, Microsoft,
+  embedded alternatives, IBM), built from the Reading page's card.
+- **The nine topic screens are now full course-player screens** (1 440 wide): top bar, sidebar with the lab as the
+  current topic (type *Lab*, a course outline that matches the partner), content and footer navigation. Their
+  content is a copy of the discovery screens; padding and gap are bound to `Spacing/lg` and `Spacing/xl`, as on
+  the Reading screens. On E2 the backdrop covers the whole player and the modal is 80% of the window.
+- **The two IBM cards** hold the Course Detail header screens as they were.
+- **Status tag:** *Ready for review* on all eleven. It is the kit's *In progress* tag with its text changed; the
+  kit has no review tag.
+- **Still desktop only**, still a first pass: the launch card is the SCORM Frame as a stand-in, the inline frame
+  and the modal are local sketches, and the five questions to the content team are open.
+
 ## 2026-10-08 · Lab on third-party platforms (Google, Microsoft, IBM): first pass
 
 From the content team's messages of 8 Oct (Kirti Mishra, Simran Jindal). Discovery only; the answers asked for
