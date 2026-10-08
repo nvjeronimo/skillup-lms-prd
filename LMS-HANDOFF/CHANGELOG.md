@@ -27,6 +27,11 @@ Decided by Nelson on 8 Oct.
 - **`LMS / Course Type Badge`, rendered at 8×** from a temporary copy (removed): the Course icon reads as a dark
   card with three light lines. The Program icon reads as one flat teal shape: the three stacked cards are the
   same solid colour, so the opacity steps set on 7 Oct do not show. Shown to Nelson; no change made.
+- **Program icon redone (DS, not published), on Nelson's request:** the three stacked cards sit on three opaque
+  tokens, back to front `bg/primary-soft`, `border/primary-soft`, `icon/primary`. Named version first. Rendered at
+  8× in SKO Light, SKO Dark, Gold Light and Red Light from a temporary frame (removed): the stack reads in all
+  four; in SKO Light the back card is faint (#ebf8ff on white). Two of the three tokens are a background and a
+  border token used on an icon shape: no icon token exists in those lightness steps.
 
 ## 2026-10-08 · DS: the glance card keeps one variant property
 
