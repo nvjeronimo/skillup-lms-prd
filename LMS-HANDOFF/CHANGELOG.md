@@ -2,10 +2,10 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-08 (late night) · Prototype: the course search works (PR 79, open)
+## 2026-10-08 (late night) · Prototype: the course search works (PR 79)
 
 Nelson tried the search on the live Course Detail and it did nothing: PR 77 had shipped the field without
-behaviour. Prototype PR 79, not merged.
+behaviour. Prototype PR 79, merged by Nelson the same night.
 
 - **Built from the eight screens of section `6837:27914` and §39 of the metadata map:** hint while typing, search
   on submit only, *Searching…*, results in a popup under the field (type tabs with counts, excerpt with the
