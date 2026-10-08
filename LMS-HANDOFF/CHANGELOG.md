@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Program Page: the handoff frame, in progress
+
+Named version first: *Before Program Page handoff frame*.
+
+- **`Platform Pages - Program Page - Light`** (`6728:15050`) on *Platform Pages - Ready for Dev*, under a WIP
+  banner: twelve cards, Courses · Certificates · FAQs · About on desktop, tablet and mobile. Every card is
+  `Status/In progress`; only Nelson marks it ready.
+- The screens are copies of the twelve sources on the WIP page, same sizes, 0 annotations in the frame. Each card
+  has its description and a first changelog entry dated 2026-10-08.
+- What still stands between this frame and *Ready for DEV* is listed in the metadata map, §35.8: the source of
+  the program's data and its certificate, the marketing-only content, navigation, and the two stand-ins below
+  desktop.
+
 ## 2026-10-08 · Three decisions applied: certificate, Course Card thumbnail, first grid card
 
 Decided by Nelson on 8 Oct. Named versions first, in both files.
