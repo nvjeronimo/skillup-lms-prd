@@ -25,7 +25,7 @@ to its main component (27 832 instances on ten pages, hidden ones included).
   `LMS/Platform/Completion/Certificate-Document-demo` 11.
 - **Platform components on ICP pages:** 21 of the 40, 601 instances (provider badge in the player sidebar, the
   IBM Course Detail screens on the Lab and Discovery pages). Table 1b has an *ICP pages* column for it.
-- **Local:** 94 instances: the platform sidebar set `LMS` (`6207:256263`, 11), device chrome (59) and
+- **Local:** 94 instances: the platform sidebar set `LMS` (`6207:256263`, 11), device chrome (58) and
   `Worklist checkbox` (25).
 - **Seen, not changed:** the 33 handoff cards of the Lab page have no `Handoff / Phase Badge`.
 

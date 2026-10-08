@@ -303,7 +303,7 @@ These sit inside the public components above (Checkbox, tabs, video player, brea
 94 instances on these pages point to a local main. No `LMS/ICP/…` or `LMS/Platform/…` component is local.
 
 - A local set named `LMS` (`6207:256263`): 11 uses, Platform Pages V8 (WIP), all on Course Detail frames (10 in the "Course Detail V10" section, 1 in the "Technical" section). It is the **platform sidebar** (variants `Sidebar-LMS`, `Sidebar-Empty`), and has no `LMS/Platform/…` name yet.
-- `_iPhone mockup home` (58, five local copies; one of them, `3785:11586`, has 51) and one local `_iPhone mockup status bar` (Quizzes): device chrome, not product UI.
+- `_iPhone mockup home` (57, five local copies; one of them, `3785:11586`, has 51) and one local `_iPhone mockup status bar` (Quizzes): device chrome, not product UI.
 - `Worklist checkbox` (25, Topic Content Types Discovery).
 
 ## Things this list shows
