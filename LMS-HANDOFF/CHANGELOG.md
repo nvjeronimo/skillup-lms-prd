@@ -2,6 +2,32 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Six loose ends: DS labels and links, prototype type names, quizzes, second critique
+
+Decided by Nelson on 8 Oct ("yes to all").
+
+- **`LMS / Course Card_Remove`:** nothing to delete. No component of that name is left in the DS file (every page
+  read); the five instances on the archived screen point to a component that is already gone.
+- **`LMS / Course Type Badge` labels (DS, not published):** *COURSE* and *PROGRAM* on `body-small/Semibold`.
+  Both variants go from 16 to 18 high (73 × 18, 86 × 18). Named version first.
+- **Documentation links (DS, not published):** all 82 components on `❖ LMS COMPONENTS ✅` had none. Each now
+  links to the handoff document for its family: 53 to `components-inventory.md`, 21 quiz, ORA and drag-and-drop
+  components to `quizzes/09-handoff-map.md`, 8 reading-content components to `reading-screen-matrix.md`.
+  A link per family, not per component section.
+- **Prototype PR 71 (open):** quizzes count towards the course being complete. PR 70 had left them out on the
+  wrong assumption that the prototype cannot complete a quiz; submitting one does.
+- **Prototype PR 72 (open):** the type classes carry the DS text-style names (`sk-text-body-large-semibold`
+  instead of `sk-text-md-semibold`): 748 occurrences in 121 files, no size changed, 528 elements read back at
+  the size of their DS style on five pages.
+- **Second critique, measured:** Lab, Activity, Podcast, VILT live and VILT recording at 1280 and 375, light and
+  dark: no contrast failure, one `h1`, no unnamed control, no horizontal scroll. Tablet (834) on video,
+  Dashboard, My Learning and Program: no horizontal scroll.
+- **Second critique, findings (not fixed):** a completed Activity still offers a primary *Start activity* next
+  to *Go to next Module*; the Lab shows three primary *Download* buttons at once; the podcast seek bar is 16 px
+  high on mobile and the recording's 24; on tablet the player top bar keeps 32 px targets and the Dashboard has
+  24 px links; the prototype Dashboard still shows the streak and the glance figures that the Figma screens
+  dropped on 7 Oct when they were cut back to what Open edX serves.
+
 ## 2026-10-08 (late) · My Learning: the 40 covers on the card's Image layer; why the update had not come in
 
 Named version first: *Before the My Learning covers move to the card's Image layer*.
