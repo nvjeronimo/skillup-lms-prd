@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Content search (feature 33): the learner's experience, eight screens
+
+Asked by the dev team. New section `Content search (feature 33) — sources (in progress)` (`6837:27914`) on the WIP
+page. Metadata map §39.
+
+- **Checked first in the Open edX source (Sumac):** the search runs on submit, 20 results a page, each with its
+  type, title, an excerpt with the matches marked, its location and a link; totals and the number of results the
+  learner cannot open come with the page. No suggestions, no recent searches.
+- **Nelson's two decisions:** the search runs only on submit; results open in a popup under the field, full
+  screen on mobile.
+- **Screens:** typing, searching, results, results filtered by type, no results, error (desktop), and typing and
+  results on mobile. Built from the Course Detail screens with DS components, text styles and tokens.
+- **Open:** the type names, whether search is on in SkillUp's environment, DS components for the popup and the
+  result row, the handoff frame.
+
 ## 2026-10-08 (night) · Course-Header backgrounds, ready to export two ways
 
 Asked by Komal (dev team). New frame `Platform Pages - Course-Header backgrounds - Export` (`6831:22084`) on

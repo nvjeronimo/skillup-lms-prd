@@ -3249,3 +3249,73 @@ decoration.
 **Not done:** no named version could be saved before this frame was added (the desktop plugin was not connected,
 and the server session cannot save one). The frame only adds; nothing existing was changed.
 
+## 39. Content search (feature 33) — what the learner sees — 8 Oct
+
+Asked by the dev team through Nelson: the whole experience from the first key. Until now only the field existed
+(*Search this course*, right of the tab bar, §13). Sources: section **`Content search (feature 33) — sources (in
+progress)`** (`6837:27914`) on the WIP page, right of the Program Detail section. Eight screens, no handoff frame
+yet.
+
+### 39.1 What Open edX returns
+
+Read in the Learning MFE source, `open-release/sumac.master` (`src/course-home/courseware-search/`, `data/api.js`)
+and its test response. Not probed on the dev environment: whether search is switched on there is open.
+
+| Fact | Where it comes from |
+|---|---|
+| The request goes out **on submit**, never while typing | `CoursewareSearch.jsx`: `handleSubmit`; `handleOnChange` only clears when the field is emptied |
+| `POST {LMS}/search/{course_id}` with `search_string`, `page_size` (20), `page_index` | `searchCourseContentFromAPI` |
+| The page brings `total`, `took`, `max_score`, `access_denied_count` | test response: 29 in total, 21 on the page |
+| Each result: `content_type`, `content.display_name`, **`excerpt`** with the matches in `<b>`, `location[]`, `url`, `id` | test response. The stock MFE ignores the excerpt and counts matches itself |
+| Types: `Text`, `Video`, `CAPA` (problems), `Sequence`, others | test response. The MFE's tabs: All content · Text · Video · Section · Other, shown only when there is more than one type, counting the loaded results |
+| Videos are found through their English transcript | `transcript_en` |
+| Results the learner cannot open are removed and counted | `access_denied_count` |
+| Keyword and type stay in the URL (`q`, `f`); a URL with `q` reopens the search | `hooks.js`, `CoursewareSearchToggle.jsx` |
+| A course can have search off | `courseware-search/enabled` |
+
+There are no suggestions, no recent searches and no typo correction in what the platform returns; none is drawn.
+
+### 39.2 Decisions (Nelson, 8 Oct)
+
+- **The search runs only on submit** — Enter, the Search key on a phone. One request per search, as Open edX does.
+- **Results open in a popup under the field** on desktop and tablet (the workbook's word), not the MFE's
+  full-width panel; **full screen on mobile**.
+
+### 39.3 The states
+
+| # | Screen | What it shows |
+|---|---|---|
+| 1 | `…search-typing-desktop` | field focused with the text; the popup says *Search this course for “control chart”* with an *Enter ↵* badge, and that results show after Enter. Nothing is requested |
+| 2 | `…search-loading-desktop` | DS `Loading indicator`, *Searching…* |
+| 3 | `…search-results-desktop` | *20 of 29 results for “control chart”*; type tabs with counts; each result: type badge, title, excerpt with the match in semibold, location (module › lesson › topic), matches; *Showing 20 of 29* · *Show more results*; *2 more results are in content that is not open to you yet* |
+| 4 | `…search-filtered-desktop` | the *Video* tab: two results from transcripts |
+| 5 | `…search-empty-desktop` | *No results for “kanbam”* and what to try |
+| 6 | `…search-error-desktop` | DS `LMS / Inline Alert` · Error: *The search did not work* · *Try again* |
+| 7 | `…search-typing-mobile` | the search as a full-screen sheet: field, *Cancel*, the same hint |
+| 8 | `…search-results-mobile` | the sheet with results; the tabs become the DS `LMS / Mobile Tab Select` (*All 20*) |
+
+Rules that have no screen (in the dev note of the section): clearing the field clears the results; Esc or a
+click outside closes the popup and keeps the text; a result opens its topic, and Back restores the search from
+the URL; tablet uses the desktop popup.
+
+### 39.4 How it is built
+
+Copies of the Course Detail desktop and mobile screens, cropped (1 280 × 1 340, 375 × 812). The field is the DS
+`Input field` · Search in *Focused* or *Filled*. The popup (560 wide, 8 px under the field, right-aligned with
+it) and the sheet are **local compositions**: no DS component exists for a search popup or a result row. Inside
+them: DS `Horizontal tabs` (Underline, sm), `Badge v2`, `Loading indicator`, `LMS / Inline Alert`, `Buttons/Button`
+· Link, `LMS / Mobile Tab Select`; DS text styles and tokens only (0 raw fills, strokes or spacing, 0 unstyled
+texts, read back). Shadow `Shadows/shadow-2xl`: the DS has no lighter step for a floating panel.
+
+### 39.5 Open
+
+| # | What | Whose |
+|---|---|---|
+| 1 | **The type names.** The screens say *Text · Video · Quiz · Lesson* for `Text · Video · CAPA · Sequence`. The MFE says *Section* and puts problems under *Other* | Nelson |
+| 2 | **Is search on in SkillUp's environment?** A flag per course, and an index behind it | Vendor |
+| 3 | A result row and a search popup as DS components, if this goes ahead; the DS search field has no clear button | Nelson / DS |
+| 4 | A lighter shadow step for floating panels (`shadow-lg` does not exist in the DS) | Nelson / DS |
+| 5 | The handoff frame | after review |
+
+No named version could be saved before the section was added (desktop plugin not connected); it only adds.
+
