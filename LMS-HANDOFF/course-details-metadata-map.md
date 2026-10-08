@@ -3207,3 +3207,45 @@ on each source screen and on its handoff copy — 22 screens — and every value
 | 5 | **The prototype** (`/platform/*`) still shows the earlier data, marked *SAMPLE* | prototype session |
 | 6 | `PRODUCT.md` says there is *no API today for due dates*. More exactly: there is one per course and none across courses, and no SkillUp content has due dates yet | Nelson |
 | 7 | ~~Tablet and mobile for the Program page~~ done 7 Oct (§35.7); ~~its handoff frame~~ built 8 Oct, in progress (§35.8) | — |
+
+## 38. Course-Header backgrounds for export — 8 Oct
+
+Asked by Komal (dev team) through Nelson. **`Platform Pages - Course-Header backgrounds - Export`** (`6831:22084`)
+on *Platform Pages - Ready for Dev*, to the right of the Program Page frame, under a **WIP** banner. Two ways to
+build the same background, so the team can try both.
+
+**What the background is, in `LMS/Platform/Course-Detail/Course-Header`** (all six variants): a fill, and two
+decorative circles that the header clips.
+
+| Layer | What | Token |
+|---|---|---|
+| Fill | the header colour | `bg/primary-soft` (Course) · `bg/subtle` on the dark theme (Program: the variant is always dark) |
+| `Big Circle decoration` | a circle of diagonal 1 px lines, the whole circle at 35 % | `border/primary` |
+| `Small Circle decoration` | a plain circle at 12 % | `bg/primary` |
+
+**A · One image per device** — six frames named as the files, each with SVG, PNG 1x and PNG 2x export settings:
+`course-header-bg-{course|program}-{desktop|tablet|mobile}` at 1 280 × 352, 960 × 321 and 375 × 546. Made from
+the DS variant itself with its content removed, so layers, tokens and opacities are the component's. Fixed
+sizes: a wider viewport or a taller header (a longer title) needs another export or a crop, and each kind and
+theme is its own file.
+
+**B · Pieces apart** — the colour comes from the token and the circles are SVG files placed with CSS. Eight SVG
+frames: `course-header-circle-hatch-360`, `-hatch-273`, `-solid-220`, `-solid-147`, and the same four with
+`-dark` (the dark theme colours, for the Program header). Exported, the hatch is 1.4 KB and the plain circle
+0.3 KB; the colour is one hex in each file (`#26708E` light, `#4AA3C7` dark) and the opacity is in the file.
+With the colour replaced by `currentColor` or a CSS variable, the four light files serve both themes.
+
+| Piece | Desktop · 1 280 × 352 | Tablet · 960 × 321 | Mobile · 375 × 546 |
+|---|---|---|---|
+| Hatch circle | 360 × 360 · top −100 · right −100 | 273 × 271 · top −110 · right −73 | 273 × 271 · top −100 · right −103 |
+| Solid circle | 220 × 220 · top 60 · right 280 | 220 × 220 · top 29 · right 205 | 147 × 147 · top 256 · left −56 |
+| Anchoring | top and right edges | top and right edges | hatch: top and right · solid: top and left |
+
+Offsets are px from the header's edges, negative meaning outside the edge; they are the component's own
+constraints, read from the variants (on desktop the component is 1 040 wide and the circles keep their distance
+to the right edge, which is how they sit at 1 280 on the screens). The header clips its content. Both circles are
+decoration.
+
+**Not done:** no named version could be saved before this frame was added (the desktop plugin was not connected,
+and the server session cannot save one). The frame only adds; nothing existing was changed.
+

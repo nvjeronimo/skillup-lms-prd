@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Course-Header backgrounds, ready to export two ways
+
+Asked by Komal (dev team). New frame `Platform Pages - Course-Header backgrounds - Export` (`6831:22084`) on
+*Platform Pages - Ready for Dev*, right of the Program Page frame, under a WIP banner. Metadata map §38.
+
+- **A · one image per device:** six backgrounds with the two circles in them (Course and Program × desktop,
+  tablet, mobile), each exporting as SVG, PNG 1x and 2x.
+- **B · pieces apart:** the colour from its token, the two circles as eight small SVG files (two sizes each,
+  light and dark), and a table of sizes and offsets per device. One set of pieces serves every width.
+- Built from the DS header variants with their content removed: same layers, tokens and opacities. The SVG
+  export was checked on four assets (sizes, one colour each, opacity in the file).
+- No named version before it: the desktop plugin was not connected. The frame only adds.
+
 ## 2026-10-08 (night) · DS: `Program-Card` without the cohort, week and lesson counters
 
 Two named versions first. On Nelson's go-ahead for each step. **Not published yet.**
