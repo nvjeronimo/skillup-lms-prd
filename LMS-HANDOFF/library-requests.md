@@ -658,6 +658,23 @@ To confirm.
 
 **Not checked:** Nelson's discovery pages and the archive, by rule.
 
+### Outside the two LMS pages — sampled 8 Oct, nothing changed
+
+`Badge v2` nested in the Untitled UI kit components lost its text in the same restructure. Six component pages
+of the DS were read; a badge counts when its label is on:
+
+| DS page | Nested badges | Reading *Label* | Where |
+|---|---:|---:|---|
+| Application navigation | 177 | 177 | `Sidebar navigation`, `Header navigation`, `_Nav item base`, `_Nav item dropdown base`, `_Nav featured card` |
+| Tables | 276 | 276 | `Table`, `Table cell` |
+| Card headers | 4 | 4 | `Card header` |
+| Tabs | 472 | 0 | all read *2* since the default was set on `_Tab button base` |
+| Page headers · Dropdowns | 0 | — | no nested badge |
+
+**None of this shows on a working screen**: the seven pages counted above read 0. It will show the day one of
+these components is used without setting the badge. The original texts are the Untitled UI defaults and are not
+on record here; repairing them is a decision for Nelson, and the other kit pages were not read.
+
 ---
 
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
