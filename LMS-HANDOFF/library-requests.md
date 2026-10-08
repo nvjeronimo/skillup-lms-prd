@@ -721,6 +721,12 @@ variant keys do not change). The defaults are still the pre-edX sample (*Today a
 `Breakpoint=Mobile`, and the set's properties are `Title` and `Breakpoint` only. Set key and both variant keys
 unchanged, sizes unchanged (806 × 168, 806 × 274). **Needs a DS publish.** The defaults were not touched.
 
+**Published and accepted the same day; read on the six Dashboard screens from both the desktop app and the
+server.** Every glance card is an instance of `Today-at-a-glance` with `Title` and `Breakpoint` only: Desktop
+(four stats in a line) at 1 280 and 960, Mobile (2 × 2) at 375; the four totals are intact. The four desktop and
+tablet instances had kept the fixed height of the old card (274 and 262) and showed an empty band; they now hug
+their content (168 and 160), and the screens are shorter by the same amount.
+
 ---
 
 ## 25 · Dev Mode notes go once on the main component and on one screen

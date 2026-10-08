@@ -2,6 +2,18 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Dashboard: the glance card is four in a line on desktop and tablet
+
+Named version first: *Before fitting the glance card height on the Dashboards*.
+
+- **Confirmed after Nelson's publish and update**, from the desktop app and from the server: the six glance cards
+  are instances of `Today-at-a-glance` with `Title` and `Breakpoint` only. Desktop variant at 1 280 and 960,
+  Mobile at 375; the four totals unchanged.
+- **Height fitted on four screens** (desktop and tablet, sources and handoff copies): the instances had kept the
+  old card's fixed height and left an empty band under the stats. They now hug: 168 px on desktop, 160 on tablet.
+  The handoff screens are 955 and 1 110 px high.
+- The two Dashboard handoff cards (desktop, tablet) have a changelog entry dated 2026-10-08.
+
 ## 2026-10-08 · Tab count default, prototype sample and labels, Course Type Badge render
 
 Decided by Nelson on 8 Oct.
