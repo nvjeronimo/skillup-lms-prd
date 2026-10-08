@@ -94,6 +94,10 @@ Decided by Nelson on 8 Oct.
   stayed disabled and the course-complete dialog could not be reached. PR 70 (open): the dialog opens only when
   every topic the learner can finish in the prototype is finished; locked topics, unavailable types, VILT and
   quizzes are left out of the count.
+- **After the publish and the accepted update, read back:** 0 visible badges read *Label* on Video (212),
+  Quizzes (483), Reading (78), Platform Ready for Dev (425) and V8 WIP (498). The footer instances carry the new
+  name `LMS / Topic Footer Nav`: 33 on Video, 66 on Quizzes, 20 on Reading, 2 on WIP. Video tabs read
+  *Transcript · Notes 2 · Downloads 4*; grids P S S S S and rows P S S. PR 70 merged.
 
 ## 2026-10-08 · Screens: the 28 compact course rows on the DS row; the local component is gone
 
