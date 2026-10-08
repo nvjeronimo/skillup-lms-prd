@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Button V2 gains Neutral, Utility Button and Close Button
+
+Decided by Nelson: the screens move to Button V2, V2 is completed first, and only the components we use are
+migrated. Named version first. **Not published yet. Nothing is swapped on any screen.**
+
+- **`Button` v2.1 and `Icon Button` v2.1:** a fourth `Type`, *Neutral*, as Secondary only, in the five states (40
+  variants each). It is the grey outline the screens use about 340 times: outline `border/default`, label
+  `text/subtle`, icon `icon/subtle`, no fill. Existing variants untouched; each new one tested with an instance.
+- **`Utility Button` and `Close Button` v1.0:** the previous `Buttons/Button utility` and `Buttons/Button close X`
+  were still in the DS file but on no page and unpublished. They are back on the Buttons page under the new
+  names, **with the same keys**, so the instances on the screens reconnect with the publish and need no swap.
+  The close button's six raw hover and focus fills on dark are on `bg/on-media` at 20 %.
+- **Measured in the DS:** 3 305 previous-generation buttons live inside the DS itself (3 058 `Buttons/Button` in
+  142 components, 134 close in 13, 113 utility in 15), most in Untitled UI marketing blocks that stay as they are.
+- **Next:** the buttons nested in the LMS and base components move to V2 in the DS; a publish; then the direct
+  instances on the screens, page by page. Register: `03-design-system/component-versions.md`.
+- Two traps recorded (46, 47): a bound paint that kept a black colour, and a binding that reset an opacity. Both
+  were caught on the render and corrected before this entry.
+
 ## 2026-10-08 (late night) · Prototype: the course search works (PR 79)
 
 Nelson tried the search on the live Course Detail and it did nothing: PR 77 had shipped the field without

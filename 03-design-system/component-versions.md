@@ -272,7 +272,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Certificate-Document-demo](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
 
-### Base components: 23
+### Base components: 25
 
 A link marked *(page)* goes to the component's page in the library.
 
@@ -283,7 +283,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
 | [Badge v2](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v2.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
-| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.1 | 2026-10-08 | Published, on no screen yet | 40 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (v2.1: Type=Neutral added; ships with the next publish) |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
@@ -291,7 +291,9 @@ A link marked *(page)* goes to the component's page in the library.
 | [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.0 | 2026-10-08 | Published |  | 2026-09-22 · ORA on tablet and mobile; the all-content example covers the whole catalogue |
 | [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.0 | 2026-10-08 | Published |  | 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited |
 | [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
-| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v2.1 | 2026-10-08 | Published, on no screen yet | 40 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (v2.1: Type=Neutral added; ships with the next publish) |
+| [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
+| [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button utility`, same key) |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
 | [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
@@ -336,12 +338,27 @@ How one maps to the other (from the Button V2 review of 24 Sep 2026):
 \* Instances whose layer still carries the component's name on Video, Quizzes, Reading and Platform Pages Ready
 for Dev; buttons nested under another layer name (for example inside a card) are not in this column.
 
+**Decided by Nelson on 8 Oct 2026 (night): the screens move to Button V2**, and V2 is completed first. Done in the
+DS the same night, not published when written:
+
+| Gap | How V2 covers it now |
+|---|---|
+| Grey-outline Tertiary | `Button` and `Icon Button` have a fourth `Type`, **Neutral**, as Secondary only (five states each): outline `border/default`, label `text/subtle`, icon `icon/subtle`, no fill; hover as the previous button (`bg/primary-soft`, `border/primary`). Both sets go to **v2.1** |
+| `Buttons/Button utility` | back on the Buttons page as **`Utility Button`**: the same set, the same key, a new name. Its instances reconnect with the publish; nothing to swap |
+| `Buttons/Button close X` | back on the Buttons page as **`Close Button`**, same key. Its six untokenised hover and focus fills on dark are on `bg/on-media` at 20 % |
+
+Still to do, in this order: the buttons nested in the LMS and base components of this register move to V2 in the
+DS (the Untitled UI marketing blocks stay on the previous button); a publish; then the direct instances on the
+screens, page by page. `Buttons/Button` itself stays off the page until nothing in scope uses it.
+
 **What this means for engineering:** a story built from Button V2 does not match what the Ready for Dev screens
 show wherever the screen has a grey-outline Tertiary, a utility button or a close button. Until the screens are
 migrated or V2 gains those cases, the screens are the reference for how a button looks; V2 is the reference for
 the property names. The migration itself is not planned yet: it is a decision for Nelson.
 
 ## History
+
+- **2026-10-08 (night)** · `Button` v2.0 → v2.1, `Icon Button` v2.0 → v2.1 (`Type=Neutral` added, Secondary only). `Utility Button` and `Close Button` enter at v1.0: the previous utility and close sets under new names, same keys. All four ship with the next publish.
 
 | Date | Component | Version | What changed |
 |---|---|---|---|
