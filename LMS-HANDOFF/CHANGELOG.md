@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (late night) · Content search section moved to Ready for Dev; two banners corrected
+
+- **Nelson moved the Content search section** (`6837:27914`) from the WIP page to *Platform Pages - Ready for
+  Dev*, right of the Course-Header backgrounds frame. Read back there: eight screens, eight popups and sheets and
+  the dev note, nothing overlapping. A **WIP** banner was added above it (`6862:54201`), as the other frames on
+  that page have. Its name still ends *sources (in progress)*.
+- **Banner text corrected.** The WIP banner added earlier over the Course-Header backgrounds frame had kept the
+  subtitle of the Program Page banner it was copied from. Both new banners now carry their own subtitle; the
+  Program Page banner is unchanged.
+
 ## 2026-10-08 (late night) · Prototype: Course Detail, the platform pages in line with Figma, IBM as a hosted course
 
 Prototype `nvjeronimo/skillup-lms-prototype`. PRs 76 and 77 merged by Nelson; PR 78 open.

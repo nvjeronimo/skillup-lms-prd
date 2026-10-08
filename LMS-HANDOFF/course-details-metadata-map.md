@@ -3252,9 +3252,10 @@ and the server session cannot save one). The frame only adds; nothing existing w
 ## 39. Content search (feature 33) — what the learner sees — 8 Oct
 
 Asked by the dev team through Nelson: the whole experience from the first key. Until now only the field existed
-(*Search this course*, right of the tab bar, §13). Sources: section **`Content search (feature 33) — sources (in
-progress)`** (`6837:27914`) on the WIP page, right of the Program Detail section. Eight screens, no handoff frame
-yet.
+(*Search this course*, right of the tab bar, §13). Section **`Content search (feature 33) — sources (in
+progress)`** (`6837:27914`). Built on the WIP page; **moved by Nelson the same evening to *Platform Pages - Ready
+for Dev***, right of the Course-Header backgrounds frame, where it sits under a **WIP** banner (`6862:54201`).
+Eight screens, no handoff frame yet: being on that page does not make it ready for dev.
 
 ### 39.1 What Open edX returns
 
