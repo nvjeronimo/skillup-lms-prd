@@ -723,6 +723,12 @@ of the DS were read; a badge counts when its label is on:
 these components is used without setting the badge. The original texts are the Untitled UI defaults and are not
 on record here; repairing them is a decision for Nelson, and the other kit pages were not read.
 
+**Decided 8 Oct: repair them. Blocked on a source, two tried the same night.** The September clone of the DS
+(`❖ SKO Design System (OptionC-Material)`) was trimmed to the LMS and Mobile pages: the three kit pages are not
+in it. The live file's version history is reachable only through the REST API, and the token has expired. Either
+a duplicate of a version from before 7 Oct (File → Show version history → Duplicate) or a renewed token gives the
+texts node by node.
+
 ---
 
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
@@ -845,3 +851,52 @@ app returned the old card as the library's own), and a reload of the tab made th
 the 40 cards took `Show image`, the cover on `Image`, the thumbnail on `bg/primary-soft` and the initials
 underneath; no text or size difference. **All 82 course thumbnails use the image option; no cover is a fill
 override any more.** The images are still placeholders.
+
+## 27 · `LMS / Lab · Launch Card` — a lab on a partner's platform had no launch component
+
+The Lab screens for Google, Microsoft and IBM (8 Oct) used `LMS / Activity · SCORM Frame` as a stand-in for the
+card that opens the lab: its Idle and Error states with the texts overridden and the height forced from 360 to 240.
+It has no place for the provider, no completed state, a fixed height, and its buttons do not wrap on a phone.
+
+**Done in the DS, 8 Oct**, asked by Nelson. New set **`LMS / Lab · Launch Card`** (`22251:6427`, key
+`360cadf02d6b288bef452183a2d10f82bb4c886c`) in *Group · Lab*, below `LMS / Lab · Prerequisites`. Additive: nothing
+existing was changed, so no named version was saved first.
+
+| Property | Values |
+|---|---|
+| `State` | `Ready` · `Opened` · `Completed` · `Unavailable` |
+| `Show provider` | boolean, on by default |
+
+- **Layers:** `Provider` (the nested `LMS / Provider-Partner Badge`, exposed: set its `Type`), `Status icon`
+  (`check-circle` on `icon/success`, Completed only), `Title`, `Description`, `Actions` with `Action` and, in
+  Unavailable, `Secondary action` (DS Buttons, exposed). Title and Description are edited on the instance, as on
+  the SCORM Frame and the Inline Alert: the set has no text properties.
+- **Tokens, read back on the four variants:** fill `bg/subtle`, stroke `border/subtle`, radius `Radius/fixed-xl`,
+  the card shadow style, gap `Spacing/md`, padding `Spacing/5xl` on the four sides; Unavailable on
+  `bg/error-soft`, `border/error`, `text/error`. Title `body-large/Bold`, Description `body-medium/Regular`, on
+  `text/default`.
+- **Sizing:** 640 wide in the set, fills its container in use; the height hugs (212, 212, 244, 232). `Actions`
+  wraps: checked with temporary instances at 311 wide, where the two buttons of Unavailable stack.
+- **Buttons:** Primary in Ready and Unavailable, Secondary in Opened and Completed, so a screen keeps one primary
+  action. The trailing icon is `link-external-01`; switch it off when the lab opens inside the page.
+
+**Needs a DS publish.** Then, in the product file: swap the stand-in on the Lab screens, set `State`, the provider and the
+texts, and drop the forced height. Expected count, to be read back when it is done: 32 instances, on eight of the
+nine topic screens (E1 holds the inline frame instead; the IBM screens have no launch card) × the discovery
+sources and the desktop, tablet and mobile cards. Request 27 closes when no Lab screen holds a SCORM Frame.
+
+**Closed, 8 Oct (late night).** Nelson published the DS and accepted the update in the product file. The stand-in
+was swapped for `LMS / Lab · Launch Card` on **32 instances, counted as they were replaced**: 8 on the discovery
+sources and 24 on the handoff cards (8 topic screens × desktop, tablet, mobile; E1 holds the inline frame and the
+IBM screens have no launch card). Read back afterwards: no instance named *Lab launch* is left on either page.
+
+- `State` set from what each stand-in showed: Ready 12, Opened 8, Completed 8, Unavailable 4.
+- Title, Description and button labels carried over; the provider is `Microsoft` on the twelve Microsoft Learn
+  cards and `Google Cloud` on the others; the trailing icon is off on the four modal screens (E2), where the lab
+  opens inside the page.
+- The forced 240 height is gone: the card hugs (212–244 on desktop, 196–228 on tablet, 180–288 on mobile; the
+  padding token is smaller below desktop and the texts wrap). On mobile E3 the second button reads *Skip for now* again, because
+  the two buttons now stack.
+- The screen frames, the mobile home indicator and the modal backdrops were checked against the new content
+  heights: none was off.
+

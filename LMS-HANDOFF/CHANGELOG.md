@@ -2,6 +2,146 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Component versions: a convention and a register; the Hub lists the components
+
+Asked by Nelson, after the engineering team asked for the final component list for Storybook.
+
+- **New `03-design-system/component-versions.md`:** every component the ICP and LMS screens use has a version,
+  `MAJOR.MINOR`. MAJOR when a property, a variant or the structure changes in a way that breaks what was built;
+  MINOR when something is added or the look changes; nothing for descriptions, links and layer names. A version
+  moves only on a publish, with a changelog entry that names the component and the new version.
+- **Baseline, 8 Oct 2026:** `1.0` for all 137 (79 LMS product, 35 LMS platform, 23 base), `2.0` for `Badge v2`
+  and the `Button` family. Earlier history stays in this changelog.
+- **ICP Hub:** a new *Components* section lists the 137 with Figma links, usage and version.
+- **Not done:** the version is not written in the Figma component descriptions (a DS write, waits for the
+  go-ahead). Figma links for 21 of the 23 base components go to the component's page, not the component.
+
+## 2026-10-08 (night) · Partner labs in the prototype (PR 74); critique leftovers (PR 75)
+
+Prototype `nvjeronimo/skillup-lms-prototype`, PRs 73, 74 and 75 merged by Nelson on 8 Oct. Built from the handoff page
+`↳ Lab · Third-party platforms` (`6789:325`) and `lab-third-party-platforms.md`.
+
+- **Two new topics** in the Six Sigma course, after the download lab, which is unchanged: a Google lab (LTI,
+  scored) and a Microsoft lab (a link, nothing comes back).
+- **Screens covered:** G1–G3 and M1–M3 as the default behaviour; E1–E3 (inline, modal, frame refused) behind a
+  *Lab launch* switch in the demo menu, on a Google lab only, because they wait for the Studio test.
+- **`LMS / Lab · Launch Card`** exists as a prototype component, four states. Measured at 212 px (244 completed),
+  padding 40 / 32 / 24, the same as Figma.
+- **The partner's site is a stand-in** (`/partner/google`, `/partner/microsoft`), marked as such on screen. *End
+  lab* on the Google one sends the score back.
+- **Found while building:** on screen E2 (modal), step 1 still reads *It starts in a new tab*. The prototype says
+  *It opens in a window over this page*. The Figma text is not changed yet.
+- **Not built:** the two IBM screens. They sit on Course Detail, a page the prototype does not have.
+- **Second critique, three findings closed:** the download lab has one Primary, *Download all*, and Secondary
+  rows (PR 74); a completed Activity reads *Open activity again*, Secondary (PR 75); with larger touch targets on,
+  the podcast slider is 44 px high and the video seek bar has a 44 px hit area on an 8 px track (PR 75).
+- **Still open from that critique:** 32 px targets on the player top bar on tablet and 24 px Dashboard links
+  (larger targets default on at 767 px and below only): a decision, not a fix.
+
+## 2026-10-08 (night) · Content search (feature 33): the learner's experience, eight screens
+
+Asked by the dev team. New section `Content search (feature 33) — sources (in progress)` (`6837:27914`) on the WIP
+page. Metadata map §39.
+
+- **Checked first in the Open edX source (Sumac):** the search runs on submit, 20 results a page, each with its
+  type, title, an excerpt with the matches marked, its location and a link; totals and the number of results the
+  learner cannot open come with the page. No suggestions, no recent searches.
+- **Nelson's two decisions:** the search runs only on submit; results open in a popup under the field, full
+  screen on mobile.
+- **Screens:** typing, searching, results, results filtered by type, no results, error (desktop), and typing and
+  results on mobile. Built from the Course Detail screens with DS components, text styles and tokens.
+- **Open:** the type names, whether search is on in SkillUp's environment, DS components for the popup and the
+  result row, the handoff frame.
+
+## 2026-10-08 (night) · Course-Header backgrounds, ready to export two ways
+
+Asked by Komal (dev team). New frame `Platform Pages - Course-Header backgrounds - Export` (`6831:22084`) on
+*Platform Pages - Ready for Dev*, right of the Program Page frame, under a WIP banner. Metadata map §38.
+
+- **A · one image per device:** six backgrounds with the two circles in them (Course and Program × desktop,
+  tablet, mobile), each exporting as SVG, PNG 1x and 2x.
+- **B · pieces apart:** the colour from its token, the two circles as eight small SVG files (two sizes each,
+  light and dark), and a table of sizes and offsets per device. One set of pieces serves every width.
+- Built from the DS header variants with their content removed: same layers, tokens and opacities. The SVG
+  export was checked on four assets (sizes, one colour each, opacity in the file).
+- No named version before it: the desktop plugin was not connected. The frame only adds.
+
+## 2026-10-08 (night) · DS: `Program-Card` without the cohort, week and lesson counters
+
+Two named versions first. On Nelson's go-ahead for each step. **Not published yet.**
+
+- **Properties deleted:** `Week`, `Lessons` and `Show cohort` on `LMS/Platform/My-Learning/Program-Card`
+  (`22009:22808`). The set keeps `Title`, `Eyebrow`, `Courses`, `Percent`, `Up next`, `Layout`, `State`; every
+  remaining property is used by a layer, so the set publishes.
+- **Layers removed:** the 12 hidden layers those properties drove — the `Cohort` badge and the `Week` and
+  `Lessons` texts in each of the four variants. `Tags` holds the delivery badge alone, `Stats` the courses line
+  alone.
+- **Read back:** visible texts and sizes of the four variants unchanged (473 × 370, 473 × 366, 1 200 × 280 twice);
+  the render is the same before and after. The description says what was removed and why.
+- **Why:** nothing in Open edX backs a cohort, a week counter or a lesson counter for a program (§37), and none of
+  the 16 instances in the product file showed them.
+- **After the publish:** accept `Program-Card` in the product file (reload the tab first if Updates does not
+  offer it). The 16 instances should keep their texts and sizes: 384 × 370 · 384 × 404 · 1 200 × 280 ×2 ·
+  438 × 354 · 438 × 350 · 327 × 340 · 327 × 348, on the sources and on the handoff copies alike.
+- **Confirmed after Nelson's publish, the same night** (server read; the desktop bridge was not connected): the
+  16 instances are on the library's current version, 16 of 16 with the recorded size and visible texts; their
+  properties are `Title`, `Eyebrow`, `Courses`, `Percent`, `Up next`, `Layout`, `State`; none carries a `Cohort`,
+  `Week` or `Lessons` layer. 0 visible *Label* texts on the two WIP sections and the two handoff frames. Behind
+  the library: `Input field` ×8 only.
+- **Left as it is:** one `Percent` default (*14%*) serves both states, so a fresh *Not started* card reads 14 %
+  until it is set. A text property has one default per set.
+
+## 2026-10-08 (night) · Platform pages: what is left after the covers, measured
+
+Mostly read-only; one text changed in Figma after a named version.
+
+- **Handoff header, My Learning & Dashboard:** the line on what it costs listed *streak* among the learner data
+  to confirm. The streak card left the screens on 7 Oct; the word is gone. The other handoff texts of the two
+  platform frames were read for things the Open edX pass removed (streak, cohort, live session, mentor, time left,
+  *You left off*): only dated changelog entries mention them, as history.
+- **Screens after the row and header changes:** every screen copy in the two handoff frames is an auto-layout
+  frame whose content ends at its own height (tablet Program screens keep their 48 bottom padding); no gap, no
+  overflow.
+- **`Program-Card`, measured for the decision in §37.6 item 4:** 16 instances in the product file (8 sources,
+  8 handoff copies); `Show cohort` is off on all 16 and neither `Week` nor `Lessons` is visible on any. The three
+  properties are unused. Removing them is a DS change, waiting for Nelson.
+- **Kit badges (457 reading *Label* in the DS), still without a source.** Two sources tried: the September clone
+  of the DS (`…OptionC-Material`) does not have the *Application navigation*, *Tables* or *Card headers* pages,
+  and the file's version history needs a REST token, which has expired (401). What unblocks it: a duplicate of a
+  DS version from before 7 Oct, or a renewed token; both are Nelson's.
+
+## 2026-10-08 (night) · Six loose ends: DS labels and links, prototype type names, quizzes, second critique
+
+Decided by Nelson on 8 Oct ("yes to all").
+
+- **`LMS / Course Card_Remove`:** nothing to delete. No component of that name is left in the DS file (every page
+  read); the five instances on the archived screen point to a component that is already gone.
+- **`LMS / Course Type Badge` labels (DS, not published):** *COURSE* and *PROGRAM* on `body-small/Semibold`.
+  Both variants go from 16 to 18 high (73 × 18, 86 × 18). Named version first.
+- **Documentation links (DS, not published):** all 82 components on `❖ LMS COMPONENTS ✅` had none. Each now
+  links to the handoff document for its family: 53 to `components-inventory.md`, 21 quiz, ORA and drag-and-drop
+  components to `quizzes/09-handoff-map.md`, 8 reading-content components to `reading-screen-matrix.md`.
+  A link per family, not per component section.
+- **Prototype PR 71 (open):** quizzes count towards the course being complete. PR 70 had left them out on the
+  wrong assumption that the prototype cannot complete a quiz; submitting one does.
+- **Prototype PR 72 (open):** the type classes carry the DS text-style names (`sk-text-body-large-semibold`
+  instead of `sk-text-md-semibold`): 748 occurrences in 121 files, no size changed, 528 elements read back at
+  the size of their DS style on five pages.
+- **Second critique, measured:** Lab, Activity, Podcast, VILT live and VILT recording at 1280 and 375, light and
+  dark: no contrast failure, one `h1`, no unnamed control, no horizontal scroll. Tablet (834) on video,
+  Dashboard, My Learning and Program: no horizontal scroll.
+- **Second critique, findings (not fixed):** a completed Activity still offers a primary *Start activity* next
+  to *Go to next Module*; the Lab shows three primary *Download* buttons at once; the podcast seek bar is 16 px
+  high on mobile and the recording's 24; on tablet the player top bar keeps 32 px targets and the Dashboard has
+  24 px links; the prototype Dashboard still shows the streak and the glance figures that the Figma screens
+  dropped on 7 Oct when they were cut back to what Open edX serves.
+- **After the publish and the accepted update, read back:** 0 visible badges read *Label* on Video (212),
+  Quizzes (483), Reading (78), Platform Ready for Dev (425) and V8 WIP (498). The 65 `Course Type Badge`
+  instances on Ready for Dev are 18 high on `body-small/Semibold`. PRs 71 and 72 merged.
+- **Side effect of the taller badge:** every grid course card grew 2 px: 384 × 360, 438 × 352, 327 × 340 (368
+  with a three-line title). Prototype PR 73 (open) follows: full DS padding with the border added, measured at
+  the same three sizes.
+
 ## 2026-10-08 (late) · My Learning: the 40 covers on the card's Image layer; why the update had not come in
 
 Named version first: *Before the My Learning covers move to the card's Image layer*.
@@ -41,6 +181,29 @@ Read only; nothing written to Figma in this pass.
   updates one instance. Either leaves other components, or other instances, on the old version after an update
   was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
   pages* → *Update all*.
+
+## 2026-10-08 (late night) · Lab screens on `LMS / Lab · Launch Card`
+
+After Nelson's publish and accepted update. [Library request 27](library-requests.md) is closed.
+
+- **32 stand-ins swapped** for the DS component: 8 discovery sources and 24 handoff cards (desktop, tablet,
+  mobile). No SCORM Frame is left on a Lab screen. States: Ready 12, Opened 8, Completed 8, Unavailable 4.
+- **What the learner now sees that the stand-in did not show:** the partner's name on the card (Google Cloud or
+  Microsoft), a success icon when the lab is complete, and two stacked buttons on a phone when the frame is refused.
+- **Heights:** the card hugs its content, so each screen is a little shorter than before; frames, home indicators
+  and backdrops were read back and fit.
+- Still sketches: the inline frame and the modal of the Embedded rows.
+
+## 2026-10-08 (late night) · DS: `LMS / Lab · Launch Card`
+
+Asked by Nelson. **Not published yet.** Details in [library request 27](library-requests.md).
+
+- **New component set** `LMS / Lab · Launch Card` (`22251:6427`) in the DS, *Group · Lab*: the card that opens a
+  lab on a partner's platform. `State` = Ready · Opened · Completed · Unavailable, and a `Show provider` boolean.
+  It carries the nested Provider-Partner Badge, a success icon when completed, and DS Buttons that wrap on a phone.
+- **On existing tokens and styles only** (the SCORM Frame's: `bg/subtle`, `border/subtle`, `Radius/fixed-xl`,
+  `Spacing/md`, `Spacing/5xl`, `body-large/Bold`, `body-medium/Regular`); no new token.
+- **The Lab screens still hold the stand-in** (`LMS / Activity · SCORM Frame`). They change after the publish.
 
 ## 2026-10-08 (late night) · Lab on third-party platforms: tablet and mobile
 
