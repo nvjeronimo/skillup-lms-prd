@@ -187,6 +187,10 @@ The rule they all point at: **after any structural mutation, read the state back
     "Updates accepted" is not all-or-nothing either: Figma's Updates tab lists the assets of the current page
     unless *Show updates for all pages* is on, and *Update selected instance* updates one instance. After an
     accepted update, group the instances by main component and name the sets still on an old copy.
+    **A tab left open can hold an old library state** (8 Oct): three accepted updates did nothing for nine
+    components published that morning. The check: run `importComponentByKeyAsync(main.key)` through the desktop
+    bridge and through the server session; if the desktop returns the instance's own old main and the server a
+    newer copy, the app does not know the publish. Reloading the file's tab, then accepting, brought them in.
 
 43. **Cloning a variant drops its property links.** `variant.clone()` inside a component set keeps the layers and
     loses `componentPropertyReferences`: texts no longer follow their TEXT property and a slot comes back as a
