@@ -444,6 +444,13 @@ centres the type badge. The screens hide the two chips and keep the container.
 
 **Ask:** `Kind=Program` × `Breakpoint=Tablet` and `Mobile`.
 
+**Done in the DS, 8 Oct**, on Nelson's go-ahead, after a named version: `Kind=Program, Breakpoint=Tablet`
+(960 × 321) and `Kind=Program, Breakpoint=Mobile` (375 × 546), each cloned from the Course variant of its
+breakpoint with the five differences the desktop Program variant has — the dark semantics mode on the variant,
+the breadcrumb, the Program type badge, the title and the structure line. **Needs a DS publish.** Then the eight
+tablet and mobile Program screens and their handoff copies switch `Kind` to Program and drop the dark mode set on
+the instance.
+
 ---
 
 ## 20 · `LMS/Platform/Program-Detail/Course-Row` — no layout below desktop
@@ -455,6 +462,16 @@ on tablet and mobile: the card in its Grid layout, the modules bar wrapping, the
 
 **Ask:** fold it into the DS row as `Breakpoint` = Desktop · Compact (the top bar's own vocabulary), and retire
 the local one.
+
+**Done in the DS, 8 Oct**, on Nelson's go-ahead, after a named version: `Course-Row` has `Breakpoint` = Desktop ·
+Compact. The two existing variants were renamed (`Expanded=…, Breakpoint=Desktop`; keys unchanged, so instances
+keep their link), and two Compact variants were built from them to match the local component as Nelson left it:
+the card in its grid layout with a full-width button and a truncating *Up next* title, the modules bar wrapping,
+400 wide. Read back: **400 × 425 and 400 × 886, the local component's own sizes**; card 398 × 356, button
+350 × 48, bar 398 × 67. Not carried over: the `topics-done` boolean (linked to nothing), and one alignment
+override that only the local `Expanded=True` had on the *Up next* row (no visible effect). **Needs a DS
+publish.** Then the 28 compact rows on the tablet and mobile screens and handoff copies are swapped to the DS
+variant and the local component is removed.
 
 ---
 

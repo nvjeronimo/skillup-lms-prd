@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · DS: Program header below desktop, compact course row
+
+Named version first. On Nelson's go-ahead. **Not published yet.**
+
+- **`Course-Header`**: `Kind=Program` now exists on Tablet and Mobile as well as Desktop (library request 19).
+- **`Program-Detail/Course-Row`**: new property `Breakpoint` = Desktop · Compact (library request 20). The Compact
+  variants match the local `Course-Row-Compact` in size (400 × 425, 400 × 886) and content. All four variants
+  default to *Flexible Learning*.
+- **After the publish**, on the screens: the tablet and mobile Program screens take the Program header and the DS
+  compact row, the local component goes, and the 63 course covers move to the card's new `Image` layer.
+- **Kit badges not repaired.** Their original texts are not on record. A duplicate of a DS version from before
+  7 Oct would give them, node by node.
+
 ## 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card
 
 Named versions first. On Nelson's go-ahead. **Nothing here is published yet.**
