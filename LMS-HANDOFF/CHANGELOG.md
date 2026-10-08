@@ -68,6 +68,17 @@ Read only; nothing written to Figma in this pass.
   was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
   pages* → *Update all*.
 
+## 2026-10-08 (late night) · DS: `LMS / Lab · Launch Card`
+
+Asked by Nelson. **Not published yet.** Details in [library request 27](library-requests.md).
+
+- **New component set** `LMS / Lab · Launch Card` (`22251:6427`) in the DS, *Group · Lab*: the card that opens a
+  lab on a partner's platform. `State` = Ready · Opened · Completed · Unavailable, and a `Show provider` boolean.
+  It carries the nested Provider-Partner Badge, a success icon when completed, and DS Buttons that wrap on a phone.
+- **On existing tokens and styles only** (the SCORM Frame's: `bg/subtle`, `border/subtle`, `Radius/fixed-xl`,
+  `Spacing/md`, `Spacing/5xl`, `body-large/Bold`, `body-medium/Regular`); no new token.
+- **The Lab screens still hold the stand-in** (`LMS / Activity · SCORM Frame`). They change after the publish.
+
 ## 2026-10-08 (late night) · Lab on third-party platforms: tablet and mobile
 
 Asked by Nelson on 8 Oct. Page `↳ Lab · Third-party platforms - Ready for Review 🟠` (`6789:325`).

@@ -112,8 +112,9 @@ Topic-Status-Badge, the Course header with its Progress card, and the DS `Modal`
 
 Three things are stand-ins and say so in their layer names:
 
-- **The launch card** is `LMS / Activity · SCORM Frame` (Idle and Error) with its texts overridden. A lab launch
-  needs its own component (provider, how it opens, graded or not, score, the three states).
+- **The launch card** is `LMS / Activity · SCORM Frame` (Idle and Error) with its texts overridden. Its own
+  component exists in the DS since 8 Oct, `LMS / Lab · Launch Card` (Ready, Opened, Completed, Unavailable;
+  library request 27). The screens take it after the DS is published.
 - **The inline frame and the modal** (E1, E2) are local frames on DS colour and radius tokens, with a placeholder
   where the third-party page would be. No component until the Studio test says they are possible.
 - **The IBM screens** are the Course Detail header cropped to 500 px, with the Progress card's percentage

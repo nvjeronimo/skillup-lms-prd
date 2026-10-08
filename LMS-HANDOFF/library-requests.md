@@ -845,3 +845,35 @@ app returned the old card as the library's own), and a reload of the tab made th
 the 40 cards took `Show image`, the cover on `Image`, the thumbnail on `bg/primary-soft` and the initials
 underneath; no text or size difference. **All 82 course thumbnails use the image option; no cover is a fill
 override any more.** The images are still placeholders.
+
+## 27 · `LMS / Lab · Launch Card` — a lab on a partner's platform had no launch component
+
+The Lab screens for Google, Microsoft and IBM (8 Oct) used `LMS / Activity · SCORM Frame` as a stand-in for the
+card that opens the lab: its Idle and Error states with the texts overridden and the height forced from 360 to 240.
+It has no place for the provider, no completed state, a fixed height, and its buttons do not wrap on a phone.
+
+**Done in the DS, 8 Oct**, asked by Nelson. New set **`LMS / Lab · Launch Card`** (`22251:6427`, key
+`360cadf02d6b288bef452183a2d10f82bb4c886c`) in *Group · Lab*, below `LMS / Lab · Prerequisites`. Additive: nothing
+existing was changed, so no named version was saved first.
+
+| Property | Values |
+|---|---|
+| `State` | `Ready` · `Opened` · `Completed` · `Unavailable` |
+| `Show provider` | boolean, on by default |
+
+- **Layers:** `Provider` (the nested `LMS / Provider-Partner Badge`, exposed: set its `Type`), `Status icon`
+  (`check-circle` on `icon/success`, Completed only), `Title`, `Description`, `Actions` with `Action` and, in
+  Unavailable, `Secondary action` (DS Buttons, exposed). Title and Description are edited on the instance, as on
+  the SCORM Frame and the Inline Alert: the set has no text properties.
+- **Tokens, read back on the four variants:** fill `bg/subtle`, stroke `border/subtle`, radius `Radius/fixed-xl`,
+  the card shadow style, gap `Spacing/md`, padding `Spacing/5xl` on the four sides; Unavailable on
+  `bg/error-soft`, `border/error`, `text/error`. Title `body-large/Bold`, Description `body-medium/Regular`, on
+  `text/default`.
+- **Sizing:** 640 wide in the set, fills its container in use; the height hugs (212, 212, 244, 232). `Actions`
+  wraps: checked with temporary instances at 311 wide, where the two buttons of Unavailable stack.
+- **Buttons:** Primary in Ready and Unavailable, Secondary in Opened and Completed, so a screen keeps one primary
+  action. The trailing icon is `link-external-01`; switch it off when the lab opens inside the page.
+
+**Needs a DS publish.** Then, in the product file: swap the stand-in on the Lab screens (42 instances: 9 discovery
+sources and 33 handoff cards, less the two IBM rows, which have none), set `State`, the provider and the texts,
+and drop the forced height. Request 27 closes when no Lab screen holds a SCORM Frame.
