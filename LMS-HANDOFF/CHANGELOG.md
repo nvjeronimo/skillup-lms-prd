@@ -42,6 +42,23 @@ Read only; nothing written to Figma in this pass.
   was accepted. Not verified on Nelson's screen. To take everything: Libraries → Updates → *Show updates for all
   pages* → *Update all*.
 
+## 2026-10-08 (late night) · Lab on third-party platforms: tablet and mobile
+
+Asked by Nelson on 8 Oct. Page `↳ Lab · Third-party platforms - Ready for Review 🟠` (`6789:325`).
+
+- **22 new cards:** the eleven screens at 960 and at 375, in rows under each partner's desktop row
+  (`Row n.2 · … · Tablet`, `Row n.3 · … · Mobile`; cards `G1.2`, `G1.3`, …). 33 cards in all. Built from the
+  Reading tablet and mobile cards and, for IBM, from the Course Detail tablet and mobile screens.
+- **Google on tablet and mobile:** a warning, *This lab needs a computer*, above the launch on the four screens
+  where the lab has not been opened yet. Source: Google's *Supported devices and browsers* help page (phones and
+  tablets not recommended; Cloud console labs might not work on them).
+- **Mobile adjustments:** the LTI modal at 80% of the window with *Open in a new tab* as an icon button; *Skip* as
+  the second button of the refused-frame state; the IBM dialog on the mobile layout of the DS modal.
+- **Tab bar removed on all screens**, desktop cards and discovery sources included: it held one tab,
+  *Instructions*, and the one-option rule hides it (17 Sep). The Reading divider takes its place.
+- **Status tag reads *In review*** on the 33 cards (it read *Ready for review*, which is cut on mobile cards).
+- Not changed: the stand-ins (launch card, inline frame, modal) and the five open questions.
+
 ## 2026-10-08 (night) · Lab on third-party platforms: handoff page, ready for review
 
 Asked by Nelson on 8 Oct.
