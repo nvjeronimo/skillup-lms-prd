@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 (night) · Partner labs in the prototype (PR 74, open)
+
+Prototype `nvjeronimo/skillup-lms-prototype`, PR 74, not merged. Built from the handoff page
+`↳ Lab · Third-party platforms` (`6789:325`) and `lab-third-party-platforms.md`.
+
+- **Two new topics** in the Six Sigma course, after the download lab, which is unchanged: a Google lab (LTI,
+  scored) and a Microsoft lab (a link, nothing comes back).
+- **Screens covered:** G1–G3 and M1–M3 as the default behaviour; E1–E3 (inline, modal, frame refused) behind a
+  *Lab launch* switch in the demo menu, on a Google lab only, because they wait for the Studio test.
+- **`LMS / Lab · Launch Card`** exists as a prototype component, four states. Measured at 212 px (244 completed),
+  padding 40 / 32 / 24, the same as Figma.
+- **The partner's site is a stand-in** (`/partner/google`, `/partner/microsoft`), marked as such on screen. *End
+  lab* on the Google one sends the score back.
+- **Found while building:** on screen E2 (modal), step 1 still reads *It starts in a new tab*. The prototype says
+  *It opens in a window over this page*. The Figma text is not changed yet.
+- **Not built:** the two IBM screens. They sit on Course Detail, a page the prototype does not have.
+
 ## 2026-10-08 (night) · Content search (feature 33): the learner's experience, eight screens
 
 Asked by the dev team. New section `Content search (feature 33) — sources (in progress)` (`6837:27914`) on the WIP
