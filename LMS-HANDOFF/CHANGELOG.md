@@ -2,6 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-08 · Lab on third-party platforms (Google, Microsoft, IBM): first pass
+
+From the content team's messages of 8 Oct (Kirti Mishra, Simran Jindal). Discovery only; the answers asked for
+are pending. Full write-up: [`lab-third-party-platforms.md`](lab-third-party-platforms.md).
+
+- **Embedding checked on the response headers:** `learn.microsoft.com`, `skills.google` (pages and a lab page),
+  `console.cloud.google.com` and the IBM SkillsBuild sign-in pages all refuse to be framed by another site
+  (`X-Frame-Options: SAMEORIGIN` or `DENY`). The Google LTI launch address itself was not testable.
+- **Open edX already offers Inline, Modal and New Window** on the LTI component (*Open tool in*); a Studio test on
+  one Google lab settles whether Google accepts the first two.
+- **Completion, read in `openedx/completion`:** a graded LTI component completes only when the tool sends a score
+  back; a Text component completes 5 s after it is viewed. So Google can complete by itself and Microsoft cannot.
+- **Figma:** new section `05b · Lab — third-party platforms` (`6776:8711`) on *Topic Content Types Discovery*,
+  eleven desktop screens in four rows (Google, Microsoft, embedded alternatives, IBM). The launch card is the
+  SCORM Frame as a stand-in; the inline frame and the modal are local sketches.
+- **Not done:** tablet and mobile, the score-never-arrives case, the meeting recordings (transcripts are not
+  readable through Microsoft Graph for this organisation).
+
 ## 2026-10-08 (evening) · DS: the Program header matches Desktop on Tablet and Mobile
 
 Two named versions first. On Nelson's go-ahead for each change. **Not published yet.**
