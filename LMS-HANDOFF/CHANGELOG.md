@@ -2,7 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-10 · Nelson's answers of 10 Oct, built: data, proposals, topic types, more bodies (PRs 88 to 91 merged, 92 open)
+## 2026-10-10 · Cards open their page as a whole (prototype PR 93, open); PR 92 merged
+
+- **Asked by Nelson on 10 Oct:** the cards of courses and programs are clickable to the details page,
+  independently of the Resume button.
+- **Built:** My Learning course cards, program cards, the course rows of a program page and the Dashboard
+  resume rows. Card → course or program page; button → player. The program card's *Continue* now opens the
+  player of the course in progress.
+- **Flow document updated** (`platform-navigation-flow.md` §1 and *Still open*).
+- **Not done:** no annotation on the Figma screens yet; the DS components have no hover state for the card.
+
+## 2026-10-10 · Nelson's answers of 10 Oct, built: data, proposals, topic types, more bodies (PRs 88 to 91 merged, 92)
 
 - **Decided by Nelson on 10 Oct** (answers to the open questions): fix the four remaining data
   disagreements; write labs and podcasts per course, the video caption and length, and more topic bodies;
