@@ -2,7 +2,42 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-09 · Prototype: each course searched in its own content (PR 88, open); PRs 85 and 87 merged
+## 2026-10-10 · Nelson's answers of 10 Oct, built: data, proposals, topic types, more bodies (PRs 88 to 91 merged, 92 open)
+
+- **Decided by Nelson on 10 Oct** (answers to the open questions): fix the four remaining data
+  disagreements; write labs and podcasts per course, the video caption and length, and more topic bodies;
+  propose the passed course, the program certificate and the long title in a resume row; the mobile menu
+  follows the desktop order; a program course always shows the program path.
+- **Data, prototype PR 91 and Figma** (source screens and handoff copies, named version saved first):
+  - AI program: *10 months* (was *4 months*); *What's included* counted from the seven outlines.
+  - Dashboard and My Learning: 4 in progress, 2 completed, 2 certificates, *of 7 enrolled*. The 7 is the five
+    single courses plus the two program courses already started; an assumption, open for Nelson.
+  - *Business Analytics with Python*: *Starts Oct 14* (was *Apr 28*). Cybersecurity card: *Starts Oct 5*.
+  - Renders seen: Dashboard desktop, My Learning Courses desktop, program Certificates desktop. Tablet and
+    mobile by text read-back only.
+- **Proposals, PR 89 (not designed; each carries a visible note):**
+  - *Passed course:* success colours for grade, alert and header line; issued certificate card with View and
+    Download; no weekly goal. For a designer: the colour of section scores, the pass icon, the certificate
+    sheet without a partner.
+  - *Program certificate:* page `/platform/certificate/program/<slug>`, linked from the program's
+    Certificates tab. No sample program is complete, so only the not-earned state is reachable.
+  - *Download* on certificate cards and pages only shows a toast.
+- **Resume rows on the Dashboard, PR 89:** a long title wraps to two lines, nothing clipped. Between 1024 and
+  about 1250 wide the list uses the stacked row, because the one-line row does not fit: new behaviour, for
+  Nelson to see. The DS `Course-Row` is unchanged in Figma.
+- **Navigation:** mobile menu order and the program path were already as decided; nothing visible changed.
+- **Topic types, PR 90:** Lab, Podcast, Lesson Page and live session take per-course content; the video
+  caption follows the topic's transcript and the length its duration. Six Sigma: videos without a seeded
+  transcript show their own first line and length; the players embedded in the lesson page and the session
+  recording lose their caption.
+- **More bodies, PR 92 (open):** 191 topics gain a written body; each course has 18 to 20. Activity topics
+  still show neutral steps.
+- **Course search, PR 88:** merged.
+- **Found, not changed:** the prototype's learner is *Olivia Rhye* while the Figma screens say *John Smith*;
+  some older assignment briefs ask for XLSX, which the uploader does not accept; transcripts cover about two
+  minutes of longer videos.
+
+## 2026-10-09 · Prototype: each course searched in its own content (PR 88); PRs 85 and 87 merged
 
 - **Merged:** PR 85 (structure) and PR 87 (content). PR 87 replaced PR 86, which GitHub closed when its base
   branch was deleted on the merge of 85; same content. Live on the prototype site.
