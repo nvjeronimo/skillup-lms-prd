@@ -100,16 +100,15 @@ falls back to My Learning.
 | 4 | *Go to next course* | **The next course of the program** | Opens that course's page; My Learning for the last course or a course of no program |
 | 5 | Due items on the Dashboard | **They open the work** | The title opens the assignment in the player (the Dates API gives each item its link) |
 | 6 | The program's certificates | **Propose a sample page, and say it is one** | *View* opens `/platform/certificate/<slug>`. **Not designed:** no Figma screen; the page says so at its top |
-| 7 | The old course hub at `/` | Asked which page it is | Not removed. It is the first *My Learning* of the prototype (three course cards, *Pick up where you left off*); the root now opens the Dashboard |
+| 7 | The old course hub at `/` | **Remove it** (9 Oct, after seeing which page it was) | Removed in PR 82. It was the first *My Learning* of the prototype; the root opens the Dashboard |
 
 ### Still open
 
 | # | Question |
 |---|---|
-| 1 | Keep or remove the old hub's code (`components/views/CourseHub.tsx`) |
-| 2 | The certificate page needs a design; and whether a program has a certificate of its own besides its courses' |
-| 3 | Should a course of a program opened from *My Learning › Courses* show the program path or the Courses path? Today: the program path |
-| 4 | The sample content: every course page and player shows the Six Sigma modules under its own title |
+| 1 | The certificate page needs a design; and whether a program has a certificate of its own besides its courses' |
+| 2 | Should a course of a program opened from *My Learning › Courses* show the program path or the Courses path? Today: the program path |
+| 3 | The sample content: Nelson asked for own content for some courses (9 Oct). In progress for two: *AI-Driven Content and Brand Communication* and *UX Research and Design Thinking*. The others still show the Six Sigma sample under their own title |
 
 ## 5. Not in this pass
 

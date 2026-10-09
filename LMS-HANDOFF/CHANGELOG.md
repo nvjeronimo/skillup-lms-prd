@@ -2,6 +2,30 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-09 · Prototype: two courses with their own content (PR 83, open); Hub on navigation
+
+- **Own content, asked by Nelson:** *AI-Driven Content and Brand Communication* (course 2 of the program) and
+  *UX Research and Design Thinking* (My Learning) have their own course page on all four tabs and their own
+  player outline, with a few topic bodies written for them. The other courses still show the sample body under
+  their own title. Prototype PR 83.
+- ***Go to next course* tested:** finishing course 2 of the program opens the page of course 3.
+- **Found in the sample data, for Nelson:** the program's Certificates tab says *14 of 35 topics* for course 2
+  while its module rows add up to 38; the Dashboard's *24 Tonight* and *26 Fri* cannot both hold in Sep 2026; its
+  first row shows the program at 38% (the program is 14%); the My Learning program card differs from the
+  program page in title and *Up next*.
+- **ICP Hub, versions 30 and 31:** the navigation rule as a decision, the flow document, the search working on
+  Course Detail, the certificate page as an open question.
+
+## 2026-10-09 · Prototype: what to search, and the old hub removed (PR 82); PRs 81 and 82 merged
+
+- **Asked by the dev team (Komal):** what the results look like after Enter, and which text can be searched. The
+  results view was already live (PR 79); checked on the live site, *control chart* gives *20 of 29 results*.
+- **New in the prototype:** focusing the empty search field opens a note, labelled *Prototype note · sample
+  content*, with six searches and what each shows (`control chart`, `DMAIC`, `Pareto`, `baseline`, `kanbam` for
+  no results, `fail` for a failed search). Not part of the design: in the product an empty field shows nothing.
+- **The old course hub is removed** (`components/views/CourseHub.tsx`), decided by Nelson on 9 Oct.
+- **Own content for some courses**, asked by Nelson on 9 Oct: in progress for two courses; not merged yet.
+
 ## 2026-10-09 · Navigation flow, second pass: Nelson's six answers built (prototype PR 81, open)
 
 - **A course shows its own title.** Every course of Dashboard, My Learning and the program has its own page and
