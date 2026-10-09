@@ -2,7 +2,57 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-09 · Prototype: two courses with their own content (PR 83, open); Hub on navigation
+## 2026-10-09 · Prototype: own content for every course and both programs (PRs 85 and 86, open)
+
+- **Asked by Nelson on 9 Oct:** own content for all courses and programs.
+- **PR 85, structure only:** one folder per course (`lib/courses/<slug>`), one file per program
+  (`lib/programs/<slug>.ts`), a registry for each and an authoring guide (`lib/courses/README.md`). 42 pages
+  captured before and after: no difference. Stored progress is kept.
+- **PR 86, content (stacked on 85):** 15 more courses with their own outline, course page on four tabs and
+  topic bodies: the four other My Learning courses, courses 1 and 3 to 7 of the AI program, and five courses of
+  the second program. 17 courses in all now have their own content.
+- **Second program:** *Cybersecurity Fundamentals Certificate* has a program page; its My Learning card opens
+  it. Course titles were proposed for the prototype (only the card existed). Its start moved from *May 12*, in
+  the past, to *5 Oct 2026*.
+- **AI program page:** no *Content to be provided* left. Module lists for all seven courses, and bodies for
+  the FAQ and About items the design draws closed. This is sample content for the prototype and differs from
+  the Figma frames, which keep those items closed; the vendor's content replaces it when it arrives.
+- **Dates invented for the sample:** suggested start and due dates of the courses not started, a 91% grade
+  for course 1, 88% for *Intro to Product Analytics*.
+- **Found, for Nelson, not changed:**
+  - the AI program says *4 months* while its dates run 27 Jun 2026 to 31 Oct 2027;
+  - *Starts Apr 28* on *Business Analytics with Python* has no year and is in the past;
+  - Dashboard and My Learning count *3 of 5 enrolled* and *1 completed* without the program's courses;
+  - a completed course has no passed state on the course page (grade in warning and error colours, no
+    certificate preview): not designed;
+  - *What's included* counts podcasts and labs, which no course outline has.
+- **Still generic:** course search (Six Sigma sample on every course), the video caption and length, the
+  Lab, Podcast, Lesson Page and live-session bodies, topics without a written body.
+- **Not checked:** a visual pass of the merged branch, tablet width, dark mode, submitting a quiz or an
+  assignment, the bodies of locked final projects.
+
+## 2026-10-09 · Sample data made consistent, in the prototype (PR 84) and in Figma; PRs 83 and 84 merged
+
+- **Decided by Nelson on 9 Oct:** fix the four disagreements in both places.
+- **Program, Certificates tab:** course 2 reads *15 of 38 topics · 40%* (was *14 of 35*).
+- **Dashboard, due item:** *26 Sat*, *Due Sat*, under *AI-Driven Content and Brand Communication · Homework*
+  (was *Fri*, under *AI-Driven Digital Marketing*).
+- **Dashboard, first resume row:** the course *AI-Driven Content and Brand Communication* at 40% (was the
+  program name at 38%). On desktop the longer title wraps to two lines so the delivery badge is not clipped;
+  the row is 80 high instead of 68. The DS `Course-Row` itself is unchanged: a long title does not fit on one
+  line at 728 wide, open for Nelson.
+- **My Learning, program card:** *Certificate Program in AI Augmented Digital Marketing*, *Up next · Course 2 ·
+  AI-Driven Content and Brand Communication* (was *AI-Driven Digital Marketing Certificate*, *SEO & Organic
+  Search*). The hidden intro sentence on the My Learning screens carries the same program name.
+- **Where in Figma:** the current source screens on the WIP page and the handoff copies `6408:35150` and
+  `6728:15050`, desktop, tablet and mobile. Named version saved first. The earlier explorations on the WIP page
+  keep the old wording.
+- **Not checked by render:** Certificates tab on tablet and mobile, Programs on tablet (text read back only).
+  PR 84 was not opened in a browser before the merge.
+- **Next:** own content for every course and program, asked by Nelson on 9 Oct; the content files are being
+  split to one per course first.
+
+## 2026-10-09 · Prototype: two courses with their own content (PR 83); Hub on navigation
 
 - **Own content, asked by Nelson:** *AI-Driven Content and Brand Communication* (course 2 of the program) and
   *UX Research and Design Thinking* (My Learning) have their own course page on all four tabs and their own
