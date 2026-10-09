@@ -2,6 +2,18 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-09 · Navigation flow, second pass: Nelson's six answers built (prototype PR 81, open)
+
+- **A course shows its own title.** Every course of Dashboard, My Learning and the program has its own page and
+  player address; it used to land on the one sample course. The body and the topics are still that sample.
+- **In a program** a course's title opens its page, and the course page shows the path *My Learning › Programs ›
+  the program*. ***Go to next course*** opens the next course of the program.
+- **Due items** on the Dashboard open the assignment in the player.
+- ***View* on an issued certificate** opens a certificate page. **It is a proposal: no Figma screen exists**, and
+  the page says so.
+- `platform-navigation-flow.md` §4 now lists the decisions and what is still open (the old hub's code, a design
+  for the certificate page, which path a program course shows when opened from Courses, the sample content).
+
 ## 2026-10-08 (late night) · Navigation flow, first pass: the rule, the map and what is open
 
 Asked by Nelson: start defining the correct flow across navigation, Dashboard, My Learning, course and program
