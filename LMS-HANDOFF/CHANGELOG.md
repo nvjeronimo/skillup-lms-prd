@@ -2,7 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-09 · Prototype: own content for every course and both programs (PRs 85 and 86, open)
+## 2026-10-09 · Prototype: each course searched in its own content (PR 88, open); PRs 85 and 87 merged
+
+- **Merged:** PR 85 (structure) and PR 87 (content). PR 87 replaced PR 86, which GitHub closed when its base
+  branch was deleted on the merge of 85; same content. Live on the prototype site.
+- **Course search, PR 88:** a course with its own content is searched in that content (lesson and topic
+  titles, and the topic bodies written for it). Each result opens its own topic; results in locked topics are
+  left out and counted. Six Sigma keeps the sample of the screens (*control chart*, 20 of 29).
+- **Still generic after PR 88:** the video caption and length, the Lab, Podcast, Lesson Page and live-session
+  bodies, topics without a written body.
+
+## 2026-10-09 · Prototype: own content for every course and both programs (PRs 85 and 87)
 
 - **Asked by Nelson on 9 Oct:** own content for all courses and programs.
 - **PR 85, structure only:** one folder per course (`lib/courses/<slug>`), one file per program
