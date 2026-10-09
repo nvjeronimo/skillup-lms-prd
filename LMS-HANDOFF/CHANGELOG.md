@@ -2,6 +2,35 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-09 · Prototype: own content for every course and both programs (PRs 85 and 86, open)
+
+- **Asked by Nelson on 9 Oct:** own content for all courses and programs.
+- **PR 85, structure only:** one folder per course (`lib/courses/<slug>`), one file per program
+  (`lib/programs/<slug>.ts`), a registry for each and an authoring guide (`lib/courses/README.md`). 42 pages
+  captured before and after: no difference. Stored progress is kept.
+- **PR 86, content (stacked on 85):** 15 more courses with their own outline, course page on four tabs and
+  topic bodies: the four other My Learning courses, courses 1 and 3 to 7 of the AI program, and five courses of
+  the second program. 17 courses in all now have their own content.
+- **Second program:** *Cybersecurity Fundamentals Certificate* has a program page; its My Learning card opens
+  it. Course titles were proposed for the prototype (only the card existed). Its start moved from *May 12*, in
+  the past, to *5 Oct 2026*.
+- **AI program page:** no *Content to be provided* left. Module lists for all seven courses, and bodies for
+  the FAQ and About items the design draws closed. This is sample content for the prototype and differs from
+  the Figma frames, which keep those items closed; the vendor's content replaces it when it arrives.
+- **Dates invented for the sample:** suggested start and due dates of the courses not started, a 91% grade
+  for course 1, 88% for *Intro to Product Analytics*.
+- **Found, for Nelson, not changed:**
+  - the AI program says *4 months* while its dates run 27 Jun 2026 to 31 Oct 2027;
+  - *Starts Apr 28* on *Business Analytics with Python* has no year and is in the past;
+  - Dashboard and My Learning count *3 of 5 enrolled* and *1 completed* without the program's courses;
+  - a completed course has no passed state on the course page (grade in warning and error colours, no
+    certificate preview): not designed;
+  - *What's included* counts podcasts and labs, which no course outline has.
+- **Still generic:** course search (Six Sigma sample on every course), the video caption and length, the
+  Lab, Podcast, Lesson Page and live-session bodies, topics without a written body.
+- **Not checked:** a visual pass of the merged branch, tablet width, dark mode, submitting a quiz or an
+  assignment, the bodies of locked final projects.
+
 ## 2026-10-09 · Sample data made consistent, in the prototype (PR 84) and in Figma; PRs 83 and 84 merged
 
 - **Decided by Nelson on 9 Oct:** fix the four disagreements in both places.
