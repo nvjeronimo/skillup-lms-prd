@@ -2,6 +2,66 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-09 · Navigation flow, second pass: Nelson's six answers built (prototype PR 81, open)
+
+- **A course shows its own title.** Every course of Dashboard, My Learning and the program has its own page and
+  player address; it used to land on the one sample course. The body and the topics are still that sample.
+- **In a program** a course's title opens its page, and the course page shows the path *My Learning › Programs ›
+  the program*. ***Go to next course*** opens the next course of the program.
+- **Due items** on the Dashboard open the assignment in the player.
+- ***View* on an issued certificate** opens a certificate page. **It is a proposal: no Figma screen exists**, and
+  the page says so.
+- `platform-navigation-flow.md` §4 now lists the decisions and what is still open (the old hub's code, a design
+  for the certificate page, which path a program course shows when opened from Courses, the sample content).
+
+## 2026-10-08 (late night) · Navigation flow, first pass: the rule, the map and what is open
+
+Asked by Nelson: start defining the correct flow across navigation, Dashboard, My Learning, course and program
+pages. New `LMS-HANDOFF/platform-navigation-flow.md`; prototype PR 80, open.
+
+- **The rule**, from the three addresses Open edX gives an enrolment (`homeUrl`, `resumeUrl`, `progressUrl`):
+  a title opens the course page, a button opens the player, and leaving the player goes back to the course page.
+- **Wired in the prototype (PR 80):** the site root opens the Dashboard; the player's exit goes to the course
+  page and its logo to the Dashboard; the course-complete dialog and the certificate go back to the course page;
+  the *Programs* crumb opens My Learning's Programs tab; *Review* on a finished course opens its page; the
+  Dashboard's course titles are links.
+- **Open, seven questions in §4 of the document.** The first: every card opens the same sample course, whatever
+  its title. The shell (sidebar or top bar) is not part of this: still undecided.
+
+## 2026-10-08 (night) · Button V2 gains Neutral, Utility Button and Close Button
+
+Decided by Nelson: the screens move to Button V2, V2 is completed first, and only the components we use are
+migrated. Named version first. **Not published yet. Nothing is swapped on any screen.**
+
+- **`Button` v2.1 and `Icon Button` v2.1:** a fourth `Type`, *Neutral*, as Secondary only, in the five states (40
+  variants each). It is the grey outline the screens use about 340 times: outline `border/default`, label
+  `text/subtle`, icon `icon/subtle`, no fill. Existing variants untouched; each new one tested with an instance.
+- **`Utility Button` and `Close Button` v1.0:** the previous `Buttons/Button utility` and `Buttons/Button close X`
+  were still in the DS file but on no page and unpublished. They are back on the Buttons page under the new
+  names, **with the same keys**, so the instances on the screens reconnect with the publish and need no swap.
+  The close button's six raw hover and focus fills on dark are on `bg/on-media` at 20 %.
+- **Measured in the DS:** 3 305 previous-generation buttons live inside the DS itself (3 058 `Buttons/Button` in
+  142 components, 134 close in 13, 113 utility in 15), most in Untitled UI marketing blocks that stay as they are.
+- **Next:** the buttons nested in the LMS and base components move to V2 in the DS; a publish; then the direct
+  instances on the screens, page by page. Register: `03-design-system/component-versions.md`.
+- Two traps recorded (46, 47): a bound paint that kept a black colour, and a binding that reset an opacity. Both
+  were caught on the render and corrected before this entry.
+
+## 2026-10-08 (late night) · Prototype: the course search works (PR 79)
+
+Nelson tried the search on the live Course Detail and it did nothing: PR 77 had shipped the field without
+behaviour. Prototype PR 79, merged by Nelson the same night.
+
+- **Built from the eight screens of section `6837:27914` and §39 of the metadata map:** hint while typing, search
+  on submit only, *Searching…*, results in a popup under the field (type tabs with counts, excerpt with the
+  matches marked, location, match count, *Show more results*, the count of results not open yet), no results,
+  failed search; on mobile a full screen with the field and *Cancel*.
+- **Measured at 1280:** popup 560 wide, 8 under the field; 104 typing, 102 searching, 794 results, 110 no results,
+  150 failed (148 in Figma). *control chart* gives *20 of 29* and *All 20 · Text 9 · Video 2 · Quiz 7 · Lesson 2*.
+- **Wider than the screens, asked by Nelson:** on mobile the field sits above every tab, not only Course.
+- **Sample content, not an index;** typing `fail` shows the failed state. Every result opens the same topic.
+- **Not read layer by layer:** the two mobile screens; the sheet follows §39.3.
+
 ## 2026-10-08 (late night) · Buttons: the screens are on the previous generation, not on Button V2
 
 Asked by Nelson: close the question of how `Buttons/Button`, `Button utility` and `Button close X` map to the

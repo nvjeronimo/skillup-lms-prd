@@ -210,3 +210,11 @@ The rule they all point at: **after any structural mutation, read the state back
     the variant, set the variant's modes on the instance (`main.explicitVariableModes`) — and after any mode
     change read `resolvedVariableModes` and look at the render.
 
+46. **A bound paint keeps the colour you passed when the binding does not change.** Writing
+    `setBoundVariableForPaint({color: {r:0,g:0,b:0}}, 'color', v)` over a paint already bound to the same variable
+    left the stored colour at 0,0,0: the token read back right and the outline rendered black. A different
+    variable resolved fine. Build the base paint with the variable's own value (`v.resolveForConsumer(node).value`).
+
+47. **`setBoundVariableForPaint` returns the paint at full opacity.** A hover fill at 20 % came back opaque after it
+    was bound. Set the opacity again on the returned paint (`Object.assign({}, p, {opacity: 0.2})`) and read it back.
+
