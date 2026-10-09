@@ -17,6 +17,12 @@ Open edX gives every enrolment three addresses (Learner Home, `GET /api/learner_
 So: **a title opens the course page, a button opens the player, and leaving the player goes back to the course
 page it was opened for.** A finished course has nothing to resume: *Review* opens its course page.
 
+**Since 10 Oct 2026 (Nelson): the whole card is the title's target.** A click anywhere on a course card, a
+program card, a course row of a program page or a Dashboard resume row opens the course or program page; the
+button stays a separate control and opens the player. On the program card, *Continue* opens the player of the
+course in progress and *Details* (program not started) opens the program page. One link per card for keyboard
+and screen readers (the title), no extra tab stop. Prototype PR 93; not annotated on the Figma screens yet.
+
 ## 2. The map
 
 ```mermaid
@@ -106,9 +112,11 @@ falls back to My Learning.
 
 | # | Question |
 |---|---|
-| 1 | The certificate page needs a design; and whether a program has a certificate of its own besides its courses' |
-| 2 | Should a course of a program opened from *My Learning › Courses* show the program path or the Courses path? Today: the program path |
-| 3 | The sample content: Nelson asked for own content for some courses (9 Oct). In progress for two: *AI-Driven Content and Brand Communication* and *UX Research and Design Thinking*. The others still show the Six Sigma sample under their own title |
+| 1 | The certificate page needs a design. A program certificate is proposed in the prototype since 10 Oct (PR 89), marked as a proposal |
+| 2 | Where *Calendar*, *Discussion* and *Services* lead |
+
+Closed on 10 Oct 2026: a program course always shows the program path; the mobile menu follows the desktop
+order; every course and both programs have content of their own (PRs 87, 90, 92).
 
 ## 5. Not in this pass
 

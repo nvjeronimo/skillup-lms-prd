@@ -2,7 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-10 · Nelson's answers of 10 Oct, built: data, proposals, topic types, more bodies (PRs 88 to 91 merged, 92 open)
+## 2026-10-10 · Cards open their page as a whole (prototype PR 93, open); PR 92 merged
+
+- **Asked by Nelson on 10 Oct:** the cards of courses and programs are clickable to the details page,
+  independently of the Resume button.
+- **Built:** My Learning course cards, program cards, the course rows of a program page and the Dashboard
+  resume rows. Card → course or program page; button → player. The program card's *Continue* now opens the
+  player of the course in progress.
+- **Flow document updated** (`platform-navigation-flow.md` §1 and *Still open*).
+- **Not done:** no annotation on the Figma screens yet; the DS components have no hover state for the card.
+
+## 2026-10-10 · Nelson's answers of 10 Oct, built: data, proposals, topic types, more bodies (PRs 88 to 91 merged, 92)
 
 - **Decided by Nelson on 10 Oct** (answers to the open questions): fix the four remaining data
   disagreements; write labs and podcasts per course, the video caption and length, and more topic bodies;
@@ -36,6 +46,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Found, not changed:** the prototype's learner is *Olivia Rhye* while the Figma screens say *John Smith*;
   some older assignment briefs ask for XLSX, which the uploader does not accept; transcripts cover about two
   minutes of longer videos.
+
+## 2026-10-09 · Lab: what the two meetings established; *Complete and continue* proposed
+
+Details in [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7. **Nothing decided; no screen of the
+handoff changed.**
+
+- **From the meetings of 9 Oct:** new tab for every partner in phase 1; Google labs are not graded or recorded
+  and nothing is tracked after the launch; today the LMS completes the topic on the click that launches the lab;
+  the certificate depends on quiz scores, not on completion; the button reads *Open lab*.
+- **Open, to be closed by Navdeep on 12–13 Oct:** complete on launch, or the learner says so.
+- **Proposal sent to Navdeep:** on topics the platform cannot measure, the footer's forward button reads
+  *Complete and continue* and replaces Mark as Complete. Board `6926:14403` on the Lab page: four footer states on
+  desktop and mobile, and Reading and Lab screens in context. Built from the DS footer as it is.
+- **Now known to be out of date on the Lab page:** the Embedded rows (out of phase 1) and the two Google screens
+  that wait for and receive a score. They stay as they are until the decision.
 
 ## 2026-10-09 · Prototype: each course searched in its own content (PR 88); PRs 85 and 87 merged
 
