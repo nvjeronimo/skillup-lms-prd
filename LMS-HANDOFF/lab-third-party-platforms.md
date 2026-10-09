@@ -142,3 +142,53 @@ access through Microsoft Graph is switched off for the organisation.
   (`ask_to_send_username`, `ask_to_send_email`): shown here as an information line, not as a consent step.
 - The Microsoft Learn LTI application (Microsoft's own tool for LMS integration). It sends learners to Learn
   too; whether it reports completion back to Open edX was not checked.
+
+## 7. The two meetings of 9 Oct 2026, and the completion proposal
+
+*ICP LAB - Questions regarding the current experience* (Simran, Kirti, Nelson, Navdeep, Nilesh) and
+*ICP - Lab - Tech Feasibility* (Kirti, Vikas, Navdeep, Jaspinder, Nilesh, Janvi). Read from the transcripts.
+
+**What they established**
+
+- **New tab for every partner in phase 1.** An iframe gives no completion either, the lab needs the whole
+  screen, and inside the player a click on another topic would lose it. The Embedded rows (E1–E3) are out of
+  phase 1.
+- **Nothing is tracked after the launch.** Google labs are not graded or recorded anywhere (Simran); once the lab
+  is open it is "completely not in our control" (Vikas). The G2 and G3 screens (*waiting for your score*, *score
+  received*) do not describe today's behaviour. §3 above describes what Open edX can do with a graded LTI
+  component; it is not what our courses do today.
+- **Today the LMS marks the topic complete when the learner clicks the launch button.** No learner has complained.
+- **Timers:** not every Google lab is timed; some run 45 minutes and close by themselves. Whether a timed lab
+  resumes where it stopped is unchecked. Microsoft has no time limit; its labs are mostly reading plus a prompt.
+- **Google needs a Google account** (any address), terms and a date of birth. SkillUp is charged when the learner
+  presses *Start lab* on Google's page. A lab can be redone any number of times.
+- **The certificate depends on the quiz scores, not on completion.** Completion is the percentage of the course done.
+- **The button says *Open lab*.** *Open lab again* adds nothing (Navdeep; Nilesh agreed).
+
+**What is not decided** (Navdeep: by Monday 12 or Tuesday 13 Oct; Kirti wants the design signed off then): how a
+lab completes. The first meeting ended on *keep it as it is*: launching the lab completes the topic, with no Mark
+as Complete button. The second reopened it: complete on launch, or leave it to the learner.
+
+**Proposal sent to Navdeep on 9 Oct: *Complete and continue*.** On a topic the platform cannot measure (Reading,
+Lab), the forward button of the footer marks the topic complete and goes to the next one; the separate Mark as
+Complete button goes away. On video and quiz it stays *Next*.
+
+- It answers both worries: opening a lab does not complete it, and nobody finishes a lab and finds it incomplete a
+  week later, because moving on is the confirmation.
+- Two states only, one way of confirming, nothing to store on the server.
+- To move on without completing, the learner uses the sidebar.
+- Set aside, with the reason: a *Did you finish?* pop-up on return (needs server state, and a lab already shown as
+  complete is never reopened); a third *in progress* status (removed early on); Mark as Complete disabled until
+  the lab is opened (breaks the pattern: a video can be marked without playing); Mark as Complete fixed in the
+  footer (still a separate click); a clickable tick in the sidebar (marks without opening, hidden on mobile).
+
+**In Figma:** board `Proposal · Complete and continue (not decided)` (`6926:14403`) on the Lab page, to the right
+of the handoff frame. Four footer states on desktop (1 112) and mobile (343): not completed (*Complete and
+continue*), completed (*Marked as completed* + *Next*), measured topic (*Next*), last topic (*Complete*); and four
+screens in context, Reading and Lab on desktop and mobile, without the Mark as Complete row. Built from the DS
+footer as it is (`Topic-Footer-Nav`, with `Course-Progression-Button` on `Milestone=Continue` and its text
+changed): **no DS change, and the handoff cards are untouched until the decision.**
+
+**Open in the proposal:** on a Lab screen the page then has two primary buttons, *Open lab* in the card and
+*Complete and continue* in the footer; and the label itself (*Complete and continue* or shorter).
+
