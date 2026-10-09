@@ -189,6 +189,9 @@ screens in context, Reading and Lab on desktop and mobile, without the Mark as C
 footer as it is (`Topic-Footer-Nav`, with `Course-Progression-Button` on `Milestone=Continue` and its text
 changed): **no DS change, and the handoff cards are untouched until the decision.**
 
-**Open in the proposal:** on a Lab screen the page then has two primary buttons, *Open lab* in the card and
-*Complete and continue* in the footer; and the label itself (*Complete and continue* or shorter).
+**On a Lab the footer button is secondary** (Nelson, 9 Oct): *Open lab* in the card is the primary action of the
+page, so *Complete and continue* takes the secondary style there; on a Reading it stays primary. The board shows
+it as state *1b* and on the two Lab screens (`Course-Progression-Button` on `Milestone=Next-Topic`, text changed).
+
+**Open in the proposal:** the label itself (*Complete and continue* or shorter).
 
