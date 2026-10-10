@@ -2,7 +2,32 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-10 · Cards open their page as a whole (prototype PR 93, open); PR 92 merged
+## 2026-10-10 · Prototype follows three Figma changes; search on real topics; activities (PRs 93 to 98 merged, 99 open)
+
+- **Course search, decided by Nelson on 10 Oct:** the search content is the real topics of the player, on
+  every course, Six Sigma included (PR 98). Six Sigma no longer searches the sample written to match the Figma
+  screens: *control chart* gives 3 results in the prototype, where the screens draw *20 of 29*. The screens
+  keep their figures. *Show more results* cannot be reached in the prototype now (no search gives more than
+  20). Every result opens its own topic; results in locked topics are left out and counted.
+- **Course Detail, Progress tab on desktop (PR 94):** Nelson changed screen `6406:41528`: main column 840,
+  sidebar 320. The prototype split the row in two equal columns.
+- **Program card (PR 95):** Nelson changed `LMS/Platform/My-Learning/Program-Card` in the DS. Grid: the title
+  keeps the height of three lines and is cut at the third. List: the title is cut at two lines and the body
+  spreads top to bottom. Read from the component; the DS variant is 473 wide and the prototype's grid cell
+  384, not changed.
+- **Activities per course (PR 96):** 54 activities written, the last topic type that was generic. Three
+  briefs asked for XLSX, which the uploader does not accept: now PDF or DOCX. Seven quiz review links
+  repointed to written topics.
+- **Cards open their page as a whole (PR 93):** merged. A dev note is on the screen description of
+  My Learning · Courses (grid, desktop) on the handoff; not on the DS component.
+- **ICP Hub, version 33:** the decisions of 9 and 10 Oct and five open questions.
+- **Not found:** Nelson pointed at node `6875:17009` for another change; it does not exist in the file. Waiting
+  for a new link.
+- **Open for Nelson:** *of 7 enrolled* or 12; *Olivia Rhye* or *John Smith*; the caption on the two embedded
+  Six Sigma players; the fictional brand *Brightwell Refill*; the byline of the 12 program courses (program
+  name today, course title on the five single courses); the dev note on the DS component.
+
+## 2026-10-10 · Cards open their page as a whole (prototype PR 93); PR 92 merged
 
 - **Asked by Nelson on 10 Oct:** the cards of courses and programs are clickable to the details page,
   independently of the Resume button.
