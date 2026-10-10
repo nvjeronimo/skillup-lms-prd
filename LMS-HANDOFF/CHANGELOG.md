@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-10 · The 44 px touch-target rule is stated once per handoff page
+
+- **Decided by Nelson on 10 Oct:** the *Accessibility* annotation "Touch target ≥44×44 on mobile" was
+  repeated on every control of every mobile screen. It now sits once per handoff page.
+- **Removed:** 144 annotations on instances: 66 on Video Lessons, 45 on Quizzes, 26 on Reading, 7 on Lab.
+  Named version saved first. The other annotations of those pages are untouched (3 on Video Lessons).
+- **Left:** one annotation per page, on a mobile screen, worded for every interactive control of the page.
+  The ids are in `phase1-readiness.md`.
+- **Exception, on the component:** the description of `_Video action button` in the DS says its hit area is
+  34×44 in the Video actions bar. Not published.
+- **Not done:** no page was added to the DS foundations for the rule; it is in `PRODUCT.md` and
+  `phase1-readiness.md`.
+
 ## 2026-10-10 · Nelson's second round of answers: learner, enrolled total, cards, video bar (PRs 99 to 102 merged, 103 open)
 
 - **Decided by Nelson on 10 Oct:**
