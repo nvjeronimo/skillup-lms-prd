@@ -2,7 +2,48 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-10 · Prototype follows three Figma changes; search on real topics; activities (PRs 93 to 98 merged, 99 open)
+## 2026-10-10 · The 44 px touch-target rule is stated once per handoff page
+
+- **Decided by Nelson on 10 Oct:** the *Accessibility* annotation "Touch target ≥44×44 on mobile" was
+  repeated on every control of every mobile screen. It now sits once per handoff page.
+- **Removed:** 144 annotations on instances: 66 on Video Lessons, 45 on Quizzes, 26 on Reading, 7 on Lab.
+  Named version saved first. The other annotations of those pages are untouched (3 on Video Lessons).
+- **Left:** one annotation per page, on a mobile screen, worded for every interactive control of the page.
+  The ids are in `phase1-readiness.md`.
+- **Exception, on the component:** the description of `_Video action button` in the DS says its hit area is
+  34×44 in the Video actions bar. Not published.
+- **Not done:** no page was added to the DS foundations for the rule; it is in `PRODUCT.md` and
+  `phase1-readiness.md`.
+
+## 2026-10-10 · Nelson's second round of answers: learner, enrolled total, cards, video bar (PRs 99 to 102 merged, 103 open)
+
+- **Decided by Nelson on 10 Oct:**
+  - the learner is *John Smith* in the prototype too (PR 101);
+  - the Dashboard says *of 17 enrolled*: five single courses, seven of the AI program, five of Cybersecurity
+    (PR 101, and Figma: three source screens and three handoff copies, named version saved first);
+  - the 12 program courses sign their bylines with the course's own title (PR 101);
+  - the two embedded Six Sigma players get their caption back, from a transcript of their own (PR 101);
+  - course cards and program cards always keep the same height (PR 100);
+  - program cards stay three per row; the fictional brand *Brightwell Refill* stays.
+- **Cards, one height (PR 100):** a course card keeps the height of a two-line title and cuts a longer one; the
+  program card's footer has one height in both states. The DS `Course-Card` has no fixed title height and the
+  DS `Program-Card` is 408 or 404 by state: the rule is not in the DS components yet.
+- **Video actions bar (PR 102):** Nelson reported it did not match Figma. Compared with the DS
+  `_Video actions bar` (`9264:576129`): one row on tablet with skip and volume, a small size for phones,
+  filled icons, two-digit timestamps, a white progress line. Open for Nelson:
+  - the progress line is `bg/on-media` as the DS draws it, against the rule that progress is `bg/info`;
+  - the prototype keeps the progress slider on phones, and Speed and CC on tablet and phone; Figma draws
+    none of them at those sizes;
+  - the end timestamp shows the total; Figma shows the time left.
+- **DS, not published:** the descriptions of `LMS/Platform/Discovery/Course-Card` and
+  `LMS/Platform/My-Learning/Program-Card` carry the clickable-card dev note (Nelson's go-ahead of 10 Oct;
+  named version saved first; no visual change).
+- **Caption on a short player (PR 103, open):** the caption sat too high after the bar changed and was cut on
+  the session recording at 375.
+- **Left:** an instructor named *Olivia Rhye* on the Six Sigma course page and a host in the `/lab` personas,
+  other people who share the old placeholder name.
+
+## 2026-10-10 · Prototype follows three Figma changes; search on real topics; activities (PRs 93 to 98 merged, 99)
 
 - **Course search, decided by Nelson on 10 Oct:** the search content is the real topics of the player, on
   every course, Six Sigma included (PR 98). Six Sigma no longer searches the sample written to match the Figma

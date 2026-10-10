@@ -210,6 +210,15 @@ The Transcript tab list should automatically scroll to keep the currently-playin
 ### Touch targets
 
 - All buttons + icon buttons ≥ 44×44px on mobile (Footer Nav buttons are 40h — bump padding to 44 on mobile or accept 40 with at least 44 horizontal hit area).
+  - **How it is built:** the visual keeps the size drawn (32×32, 24×24, …); the hit area is extended with padding
+    or a pseudo-element, without overlapping a neighbour. It applies to every interactive control: buttons, tabs,
+    icons, links, sliders.
+  - **Where it is stated in Figma (since 10 Oct 2026):** once per handoff page, as one *Accessibility* annotation
+    on a mobile screen, not on each control. Video Lessons: `ICP-Video-transcript-mobile` (`3985:61038`). Quizzes:
+    `ICP-Quiz-A-practice-mobile` (`5155:53481`). Reading: `ICP-Reading-article-mobile` (`5685:171926`). Lab:
+    `ICP-Lab-google-ready-mobile` (`6806:178104`). A new handoff page gets one such annotation; a control does not.
+  - **Exceptions go on the component**, in its description in the DS. One today: `_Video action button`, whose
+    buttons sit 2 px apart in the Video actions bar, so the hit area is 34×44.
 - Topic Row ≥ 56h ✓.
 
 ### Reduced motion
