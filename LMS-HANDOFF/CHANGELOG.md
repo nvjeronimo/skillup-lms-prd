@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-11 · Button group: a track with a pill for the current segment
+
+- **Decided by Nelson on 11 Oct:** of six options for the selected state of the Grid / List toggle he chose
+  the track with a pill. The soft blue fill of 10 Oct (1.07:1 against the page) did not show which one is on.
+- **DS, not published:** `Button group` v2.0 and its 32 `_Button group base` variants. The group is a
+  bg/muted track (padding Spacing/xs, gap Spacing/xxs, radius fixed-md), with no border, no shadow and no
+  rules between segments. The current segment is a pill: bg/page, 1px border/subtle, radius fixed-sm,
+  text/primary or icon/primary. The others have no fill (bg/subtle on hover) and text/subtle or
+  icon/subtle. Still 40 tall; segments are 32. Existing variables only. Named version saved first.
+- **It is the whole component:** text groups (the Q&A filter) change with the icon ones. A group grows 8px
+  wide, plus 2px per gap.
+- **Screens, not done:** they change when the library is published and the update accepted. The 11 groups
+  on *Platform Pages - Ready for Dev* carry fill and stroke overrides on their segments (from 10 Oct) that
+  will survive the update and have to be cleared after it; the WIP page was not counted.
+- **Prototype (PR 108, open):** the My Learning view toggle and the Q&A filter. Measured on My Learning:
+  98 × 40, segments 44 × 32. The Q&A filter and the dark theme were not opened in the browser.
+
 ## 2026-10-11 · The platform top bar shows its sections as underline tabs
 
 - **Decided by Nelson on 11 Oct:** the top bar navigation uses the DS `Horizontal tabs`, Type=Underline,
@@ -16,7 +33,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   per-item overrides do not carry over.
 - **Found in the DS, not changed:** in `Horizontal tabs` the booleans *Tab 3* to *Tab 10* are wired to
   nothing in the Underline md Desktop variant; the extra tabs are hidden by hand.
-- **Prototype (PR 107, open):** the desktop bar draws the same tabs. They stay links in a `nav` with
+- **Prototype (PR 107, merged):** the desktop bar draws the same tabs. They stay links in a `nav` with
   `aria-current`, not an ARIA tablist. The compact menu is unchanged.
 - **Not decided here:** sidebar or top bar for the platform is still open.
 
