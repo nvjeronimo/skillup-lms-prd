@@ -196,7 +196,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-07 · Platform screens: course covers, short course-row copy, DS writes — and the badges still read *Label* |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.1 | 2026-10-11 | Changed, not published | 2 | 2026-10-11 · Desktop: the five sections are one `Horizontal tabs` instance (Underline, md), no longer five `Topbar-Item` |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed |
 
 **Dashboard**

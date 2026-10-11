@@ -2,6 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-11 · The platform top bar shows its sections as underline tabs
+
+- **Decided by Nelson on 11 Oct:** the top bar navigation uses the DS `Horizontal tabs`, Type=Underline,
+  Size=md (the component of the *Programs / Courses* tabs on My Learning), on every screen.
+- **DS, not published:** `LMS/Platform/Navigation/Topbar`, Desktop, v1.1. The five `Topbar-Item` instances
+  left the bar; one `Horizontal tabs` instance holds *Dashboard, My Learning, Calendar, Discussion, Services*,
+  with the count as the tab's Badge (4 on My Learning, 3 on Calendar) and *My Learning* current by default.
+  The bar stays 72 tall with its padding tokens; the tabs are 48 tall, centred. Named version saved first.
+  Compact (tablet and mobile) has no section list and did not change. `Topbar-Item` is still in the library.
+- **Screens:** they take the change when the library is published and the update accepted. After that the
+  current tab has to be set again on the screens where it is not *My Learning* (the Dashboard ones): the old
+  per-item overrides do not carry over.
+- **Found in the DS, not changed:** in `Horizontal tabs` the booleans *Tab 3* to *Tab 10* are wired to
+  nothing in the Underline md Desktop variant; the extra tabs are hidden by hand.
+- **Prototype (PR 107, open):** the desktop bar draws the same tabs. They stay links in a `nav` with
+  `aria-current`, not an ARIA tablist. The compact menu is unchanged.
+- **Not decided here:** sidebar or top bar for the platform is still open.
+
 ## 2026-10-10 · The 44 px touch-target rule is stated once per handoff page
 
 - **Decided by Nelson on 10 Oct:** the *Accessibility* annotation "Touch target ≥44×44 on mobile" was
