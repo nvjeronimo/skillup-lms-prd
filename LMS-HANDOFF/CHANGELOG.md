@@ -2,6 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Prototype: an Open Response completes by itself, no Mark as complete button
+
+Prototype pull request 124. No screen and no rule changed: the prototype is brought to the rule already written.
+
+- **Decided by Nelson on 12 Oct:** follow the written rule (`topic-types-inventory.md` §5, `footer-contract.md`
+  row 8). An ORA has no manual completion: the topic completes by itself once the learner has submitted their
+  response and given the required peer reviews. It does not wait for the grade.
+- **Prototype:** the *Mark as complete* button on the grade panel is removed; the topic completes when the review
+  quota is met, and the header then reads *Completed*. Checked in the browser.
+- **Figma:** no ORA screen carries such a button (the file was scanned for it); nothing to change.
+
 ## 2026-10-12 · Prototype audited against the Lab screens and the rules of the day
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Prototype pull request 123.
@@ -248,6 +259,29 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-13 · Design system reorganisation: decisions, a pilot page, the page list
+
+- **Decided by Nelson on 13 Oct**, for anyone who opens the DS to find what they need: the pages are written
+  for **developers** first; **one page per group** (the group is already in every name, `LMS/ICP/<Group>/…`,
+  `LMS/Platform/<Group>/…`); Figma shows anatomy, variants and one line, and **the rules stay in the ICP Hub**;
+  the Untitled UI pages we do not use **move to an archive** at the bottom; **every component gets an
+  anatomy**; no component is renamed.
+- **Pilot, built:** page *↳ Navigation*, right after *LMS Platform Components*, with `Topbar-Item` and
+  `Topbar` moved onto it (same nodes, same keys) and their old section removed. One documentation frame:
+  a page header, then one block per component, smallest first: name, version, since when; the full path;
+  **Anatomy** (the richest variant with numbered markers and a legend that names each part, its text style
+  and colour token, or the component it is an instance of); **Properties** (name, type, values, default,
+  read from the component); the component itself; **Measures** per variant; what it is and its rules (the
+  component's description). Built on DS text styles and variables. One private component,
+  `.Doc/Anatomy-Marker`. Named version saved first. **Not published.**
+- **Page list:** an *Archive · Untitled UI kit, not used by the LMS* block near the bottom holds 70 pages
+  (getting started, variables, shared assets, marketing and application examples and components). Four
+  application pages our screens do use (*Breadcrumbs*, *Alerts & notifications*, *Content dividers*,
+  *Loading indicators*) moved to the end of the Base components group. Which pages are used was read from
+  the instances inside the LMS components. Page order only: nothing on any canvas changed.
+- **Next, after Nelson has looked at the pilot:** the other groups of LMS Platform and LMS ICP, page by page;
+  a *Start here* page with the index; the Base pages we use.
+
 ## 2026-10-12 · `Lab-Prerequisites` deleted; one sentence for the Studio and LMS relation
 
 - **`LMS/ICP/Topics/Lab-Prerequisites` deleted from the DS** (asked by Nelson). The DS `Alert` had replaced it on
@@ -259,6 +293,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   apresentação e consumo.* In English, as it opens the ICP Hub: *Open edX Studio is in charge of the facts;
   the LMS and the ICP are in charge of how they are presented and consumed.* Use it when explaining why a
   design follows what Studio authors and what the platform returns, and only decides how it is shown.
+  It is also at the top of `LMS-HANDOFF/README.md` and opens *Operating Context* in `PRODUCT.md`.
 - **ICP Hub, versions 48, 51 and 52:** the decisions of 12 Oct on buttons, the lab Alert and the overlay; the
   component rows tidied; the sentence above at the top of the intro; the `Lab-Prerequisites` row and its
   open question removed.
