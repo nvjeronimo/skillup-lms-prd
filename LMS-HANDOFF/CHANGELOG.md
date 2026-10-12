@@ -2,6 +2,38 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · No version in component names; Badge icons follow the label colour
+
+- **Decided by Nelson on 12 Oct:** Buttons and Badges are the current components by default, V1 goes, and no
+  name carries *V1* or *V2*. The version stays in the Figma description only. Older entries below that say
+  `Badge v2` or *Button V2* mean `Badge` and `Button`.
+- **DS, not published:** the sets were already named `Button`, `Link Button`, `Icon Button`, `Badge`. Renamed:
+  the showcase frame and its three group titles on the Badges page, three notes on the Buttons page, one text
+  on the LMS Platform page, and the descriptions of seven components. Named version saved first.
+- **V1 count:** no direct instance of `Badge-V1_to-remove` or of the old `Buttons/Button` in the LMS ICP, LMS
+  Platform, In review, Badges and Buttons pages of the DS, and none on the Quizzes page of the product file.
+  The other product pages and the base components outside the LMS pages were not counted. Nothing deleted.
+- **Badge v2.1, not published:** dot, icons and close did not follow the label colour in three places. Extra
+  hues (Cyan to Orange) sat on the teal icon token in Outline, Modern and Plain; they now use the variable of
+  their label (`text/accent-<hue>`, or the `Colors/<Hue>/700` primitive where the label uses it: there is no
+  `icon/accent-<hue>` token for those eight). In Soft Light the accents and extras had white (on-accent)
+  icons on a light fill; they now use the label's variable. Four Modern Info variants had `icon/primary`.
+  The white leading icon on its filled disc in Plain is unchanged.
+- **Prototype (PR 109, open):** the same wording in 35 files of comments. No code change.
+
+## 2026-10-12 · Top bar tabs and Button group on the screens, after the DS update
+
+- **Nelson published the DS and accepted the update on 12 Oct** (`Topbar` v1.1, `Button group` v2.0).
+  Prototype PR 108 and docs PR 41 merged. Named version saved in the product file first.
+- **Top bar:** the 19 desktop bars on *Platform Pages - Ready for Dev* and the 14 on the WIP page show the
+  tabs. *My Learning* is current everywhere except the two Dashboard desktop screens, set to *Dashboard*.
+- **Button group:** 7 visible groups per page (3 Q&A filters, 4 Grid / List toggles) are a track with a
+  pill. The colour overrides of 10 Oct are gone. Several current segments were still tied to an older
+  library state of `_Button group base`; they were swapped to the current variant through a fresh
+  `Button group` instance (the base is private, so it cannot be imported by key), labels and icons kept.
+- **Not touched:** 4 hidden toggles per page (tablet and mobile, where the collection is Grid only).
+- **Seen, not changed:** the top bar instances on the screens are 53 tall, the DS component is 72.
+
 ## 2026-10-11 · Button group: a track with a pill for the current segment
 
 - **Decided by Nelson on 11 Oct:** of six options for the selected state of the Grid / List toggle he chose
@@ -16,7 +48,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Screens, not done:** they change when the library is published and the update accepted. The 11 groups
   on *Platform Pages - Ready for Dev* carry fill and stroke overrides on their segments (from 10 Oct) that
   will survive the update and have to be cleared after it; the WIP page was not counted.
-- **Prototype (PR 108, open):** the My Learning view toggle and the Q&A filter. Measured on My Learning:
+- **Prototype (PR 108, merged):** the My Learning view toggle and the Q&A filter. Measured on My Learning:
   98 × 40, segments 44 × 32. The Q&A filter and the dark theme were not opened in the browser.
 
 ## 2026-10-11 · The platform top bar shows its sections as underline tabs
