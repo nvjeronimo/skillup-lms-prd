@@ -205,9 +205,10 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 2. `Lab-Launch-Card` **v2.0, published by Nelson on 12 Oct and accepted in the ICP file**: `Completed` removed,
    `Opened` with the *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. Read
    back on the 21 instances of the Lab page (6 Ready, 12 Opened, 3 Unavailable). Its default button text is
-   *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change. **To publish:** on
-   12 Oct (evening) its description and the default text of `Unavailable` were rewritten for *Next asks* (they
-   said *Complete and continue*); no property or variant changed, so no version bump.
+   *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change. On 12 Oct (evening) its
+   description and the default text of `Unavailable` were rewritten for *Next asks* (they said *Complete and
+   continue*); no property or variant changed, so no version bump. **Published by Nelson and accepted in the ICP
+   file the same evening**; read back on the 27 instances of the Lab page (6 Ready, 18 Opened, 3 Unavailable).
 3. `Topic-Header` on mobile with the status badge: the title is squeezed to half the width (157 px of 311) and the
    duration runs under the badge. Same on the Reading mobile screen already in Ready for Dev (`5685:175610`), so
    it was left as the component gives it.
