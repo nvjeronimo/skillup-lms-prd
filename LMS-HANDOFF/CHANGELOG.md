@@ -2,6 +2,35 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Navdeep's comments applied: Mark as Complete is back, *Next* still asks, new dialog copy
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4 and §9, [`reading-screen-matrix.md`](reading-screen-matrix.md) §4.
+
+- **Navdeep, four comments on the Figma frame `7070:14832`, 12 Oct 18:07–18:25**, applied on Nelson's
+  instruction:
+  1. **Copy of the dialog:** *Have you completed this lab?* / *Your progress on Google Skills isn't tracked
+     automatically. Please confirm whether you've completed this lab. You can move to the next topic either way
+     and return to this lab anytime.* / *Not yet* · *Yes, completed*. Applied to every dialog, with the same
+     sentence adapted for Microsoft Learn, a reading and a video.
+  2. **Three behaviours:** *Yes, completed* marks the lab as completed and advances; *Not yet* keeps it incomplete
+     and advances; *Close* changes nothing and stays. Already what was drawn and built.
+  3. **"Introduce the mark as complete button also"**, for the learner who finishes the lab and closes the course
+     without *Next*. The button is back at the end of the content on every screen that is not completed.
+- **The rule now:** Mark as Complete at the end of the content; the usual *Previous* and *Next*; *Next* on a topic
+  that is not completed asks. Two ways of completing, the question being the safety net.
+- **Figma:** Lab page (30 topic cards and both flow frames), Reading page (19 not-completed and question cards),
+  the eight canonical pages of the discovery page, card 8 of the Video page. Card counts unchanged: Lab 36,
+  Reading 21.
+- **Fixed on the way:** the mobile forward button showed an empty placeholder instead of the arrow since the
+  footer went back to *Next* earlier that day. Corrected on every mobile screen of the Lab and Reading pages.
+- **DS, descriptions and one default text, to publish:** `Lab-Launch-Card` (description, and `Unavailable` now ends
+  *select Mark as Complete*), `Topic-Header`, `Topic-Status-Badge`. The line added to `Lab-File-Row` that day was
+  taken back. No property or variant changed.
+- **Documents:** the rule in `footer-contract.md`, `BA/03-business-rules.md`, story P1-47 (seven scenarios),
+  `BA/06-glossary.md`, `topic-types-inventory.md`, `screens-spec.md`; Q-lab-3 closed, Q-lab-8 added (the download
+  lab's disabled button).
+- **Comments were read through the Figma API** with a token Nelson generated; they are still open in Figma.
+
 ## 2026-10-12 · *Next* asks also on Podcast, Activity and the Video fallback
 
 [`screens-spec.md`](screens-spec.md) (Completion), [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4.

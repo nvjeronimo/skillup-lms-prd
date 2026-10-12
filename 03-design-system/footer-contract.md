@@ -44,7 +44,7 @@ The right slot renders one of these states. Same enum for every content type.
 
 | State | Right slot renders | When |
 |---|---|---|
-| `idle-passive` | `Mark as Complete` (primary) — optional if `auto`. **Since 12 Oct 2026, on topics completed by hand: plain `Next`, which asks**, see the note under the type table below | Passive topic, not yet complete |
+| `idle-passive` | Plain `Next`. `Mark as Complete` (primary) sits at the end of the content, not in the footer; if the learner selects `Next` without it, `Next` asks (12 Oct 2026, note under the type table below) | Passive topic, not yet complete |
 | `idle-action` | `<actionVerb>` (primary), e.g. "Submit answers" | Action topic, not yet submitted |
 | `live` | `Join session` (primary) | VILT live, before/during session |
 | `submitted` | `Under Review` badge + `Continue` | Submitted, awaiting grade/peer review |
@@ -65,27 +65,29 @@ The right slot renders one of these states. Same enum for every content type.
 
 | # | Topic type | Completion model | Footer idle action | Completion trigger (BR-01) | Post-action state | Duration |
 |---|---|---|---|---|---|---|
-| 1 | Video | auto | none (auto). If playback cannot be measured: the usual Next, which asks | playback ≥ 90%, or "Yes, I've finished" when it cannot be measured | completed | exact |
+| 1 | Video | auto | none (auto). If playback cannot be measured: Mark as Complete at the end of the content, and Next asks | playback ≥ 90%, or Mark as Complete / "Yes, completed" when it cannot be measured | completed | exact |
 | 2 | Recording | auto | none (auto) | playback ≥ 90% | completed | exact |
-| 3 | Podcast | auto | none (auto). If playback cannot be measured: the usual Next, which asks (same rule as Video) | audio ≥ 90%, or "Yes, I've finished" when it cannot be measured | completed | exact |
-| 4 | Reading | manual | none: the usual Next, which asks | answers "Yes, I've finished" to the question Next opens | completed, and the learner is on the next topic | approx (words ÷ 250) |
+| 3 | Podcast | auto | none (auto). If playback cannot be measured: as Video | audio ≥ 90%, or Mark as Complete / "Yes, completed" when it cannot be measured | completed | exact |
+| 4 | Reading | manual | Mark as Complete at the end of the content; the footer's Next asks if it was not used | clicks "Mark as Complete", or answers "Yes, completed" to the question Next opens | completed (after "Yes, completed" the learner is also on the next topic) | approx (words ÷ 250) |
 | 5 | Live Session (VILT) | attendance | Join session (in window) | attended (join + ≥ 50%) OR recording ≥ 90% | completed | scheduled |
 | 6 | Practice Quiz | submit | Submit answers | submitted (any score) | completed | exact if timed, else hide |
 | 7 | Graded Assignment | submit | Submit assignment | submitted (grade separate, doesn't block) | completed · grade → Under Review/Graded badge | exact if timed |
 | 8 | Peer-graded Assignment | submit + review | Submit for review → Review peers | submitted own work AND reviewed N peers | completed (after reviews) | approx |
 | 9 | Discussion Prompt | post | Post response | posted ≥ 1 message | completed | n/a |
-| 10 | Lab | manual | none: the usual Next, which asks | answers "Yes, I've finished" | completed | approx |
-| 11 | Activity | manual | none: the usual Next, which asks | answers "Yes, I've finished" | completed | approx |
+| 10 | Lab | manual | as Reading | clicks "Mark as Complete", or answers "Yes, completed" | completed | approx |
+| 11 | Activity | manual | as Reading | clicks "Mark as Complete", or answers "Yes, completed" | completed | approx |
 | 12 | Project | submit | Submit project | submitted | completed · grade → badge | approx (hours) |
 
-> **12 Oct 2026, topics completed by hand: *Next* asks.** Our default (Nelson). The footer is the same on every
-> topic, *Previous* and *Next*, and there is no Mark as Complete button. On a topic that is not completed, *Next*
-> opens a dialog: *Have you finished this reading / lab?* *Yes, I've finished* completes the topic and goes to the
-> next one; *Not yet* goes to the next one and leaves it open; closing the dialog stays on the page. On a completed
-> topic *Next* goes straight on, and the footer shows no status (it is in the Topic Header and on the sidebar row).
-> It covers Reading, Lesson Page, Lab and Activity, and Video and Podcast when playback cannot be measured (when it
-> can, they complete by themselves at 90% and *Next* never asks). No screen shows Mark as Complete. For a few hours the same day the forward button read
-> *Complete and continue*; that was replaced. Source: `LMS-HANDOFF/lab-third-party-platforms.md` §4 and §9,
+> **12 Oct 2026, topics the platform cannot measure: Mark as Complete, and *Next* asks.** The rule after Navdeep's
+> Figma comments of that day. **Mark as Complete** sits at the end of the content, never in the header and not in
+> the footer. The footer is the same on every topic, *Previous* and *Next*. If the learner selects *Next* on a
+> topic that is not completed, a dialog asks *Have you completed this reading / lab?* *Yes, completed*: mark it as
+> completed and advance to the next topic. *Not yet*: keep it incomplete and advance. *Close*: no change, remain on
+> the topic. On a completed topic there is no button, *Next* goes straight on, and the footer shows no status (it
+> is in the Topic Header and on the sidebar row). It covers Reading, Lesson Page, Lab and Activity, and Video and
+> Podcast when playback cannot be measured (when it can, they complete by themselves at 90%, with no button and no
+> question). Earlier the same day the forward button read *Complete and continue*, then the question stood alone
+> without the button; both were replaced. Source: `LMS-HANDOFF/lab-third-party-platforms.md` §4 and §9,
 > `LMS-HANDOFF/reading-screen-matrix.md` §4.
 
 Notes:
