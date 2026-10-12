@@ -90,6 +90,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Lab screens: the prerequisites block is the DS Alert
+
+- **Asked by Nelson on 12 Oct**, with an example on *microsoft-ready-desktop*: `LMS/ICP/Topics/Lab-Prerequisites`
+  is replaced by the DS `Alert` (Color=Brand, Size=Floating, Breakpoint=Mobile; no dismiss, no actions, no
+  close; the info icon), with *BEFORE YOU START* as its text and the requirements as its supporting text,
+  a bulleted list.
+- **36 replaced**, each a copy of his example, in the same place and with the same sizing: 26 on the Lab page
+  (his own screen included: the old block removed, his Alert kept) and 10 on *Topic Content Types Discovery*.
+  Every block kept its own lines. Named version saved first. Two renders checked (desktop and mobile).
+- **Heights:** desktop blocks are 116 (were 146), in-page ones 96 (were 112); on mobile a three-line Google
+  block is 256 (was 226) because the Alert's text column is narrower.
+- **Not changed:** the `Lab-Prerequisites` component itself, still in the library with no instance left on
+  these two pages; the prototype's Lab screens; the ICP Hub row of the component (it still says ICP 37).
+- **To know:** the Alert is on its *Breakpoint=Mobile* variant on desktop and tablet too, as in the example.
+
 ## 2026-10-12 · Two DS changes of Nelson's followed in the prototype; ICP Hub version 39
 
 - **Found in the library on 12 Oct** by comparing it with what the prototype records (the Figma version
