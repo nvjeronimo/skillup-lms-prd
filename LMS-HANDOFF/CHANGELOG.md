@@ -32,6 +32,28 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Course-Row and Resume-Row on the screens
+
+- **Nelson published the DS and accepted the update.** Prototype PR 111 and docs PR 45 merged.
+- **The rows were still on an older local copy** of both components (68 tall, no `Context`), although the
+  keys had not changed. All 24 were swapped to the current version imported by key, same state, same width:
+  9 on *Platform Pages - Ready for Dev* (the three Dashboard screens) and 15 on the WIP page. Progress and
+  button text compared before and after: no difference. Named version saved first.
+- **Texts rewritten on 22 rows**, as the prototype has them:
+
+  | Course | Topic | Headline | Context |
+  |---|---|---|---|
+  | AI-Driven Content and Brand Communication | Reading · 15 min | Module 2 · AI-Assisted Content Development | the course · Certificate Program in AI Augmented Digital Marketing |
+  | UX Research and Design Thinking | Video · 14 min | Module 1 · Empathize: Understanding Users | the course |
+  | Leadership in Remote Teams | Video · 10 min | Module 3 · Meetings, Rituals and Async Work | the course |
+
+- **Left as they were, 2 rows on the WIP page** titled *AI-Driven Digital Marketing* (`6207:248977`,
+  `6207:250779`): that is a program name, with no module known. They show the component's sample meta row
+  and context.
+- **`Resume-Row`** as published has the meta row too and no delivery badge, 172 tall. Prototype PR 112
+  (open) follows.
+- Two renders checked: one desktop row and one mobile row.
+
 ## 2026-10-12 · Course-Row and Resume-Row lead with the module the learner left off in
 
 - **Decided by Nelson on 12 Oct:** in the simple course row the point is to tell the learner where they
@@ -48,7 +70,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   are kept by the update: they will read as course names in the headline until they are rewritten.
 - **Screens, to do after publish and accept:** 9 rows on *Platform Pages - Ready for Dev* (the three
   Dashboard screens) and 15 on the WIP page: headline to the module, `Context` to the course and program.
-- **Prototype (PR 111, open):** the Dashboard rows show the topic type and length, the module and the
+- **Prototype (PR 111, merged):** the Dashboard rows show the topic type and length, the module and the
   course; all three are read from each course's own page and outline. Rows measured 728 × 96.
 - **Seen in the DS, not changed:** in `State=Active` the unnamed frame around the meta row and the title
   (*Frame 4*) has a white fill that is not bound to a variable; *Frame 4/5/6* have no layer names; the

@@ -207,7 +207,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Due-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22752) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · After the publish: the Program headers are in; the Course Card is still not |
 | [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
-| [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.1 | 2026-10-12 | Changed, not published | 1 | 2026-10-12 · The module is the title; new `Context` property (course · program) under it |
+| [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.1 | 2026-10-12 | Published | 1 | 2026-10-12 · The module is the title; new `Context` property (course · program) under it |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
@@ -226,7 +226,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
 | [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Card” |
-| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v2.0 | 2026-10-12 | Changed, not published | 3 | 2026-10-12 · Topic type and length, the module as headline, new `Context` property (course · program); no delivery badge; 96 tall |
+| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v2.0 | 2026-10-12 | Published | 3 | 2026-10-12 · Topic type and length, the module as headline, new `Context` property (course · program); no delivery badge; 96 tall |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Type Badge” |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
