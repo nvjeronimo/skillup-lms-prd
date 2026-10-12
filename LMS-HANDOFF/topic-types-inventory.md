@@ -202,9 +202,9 @@ Several types share the same player chrome and differ only by badge, copy and co
 Mark as Complete button and no special footer button: the footer is *Previous* and *Next* on every topic, and
 *Next* on a topic that is not completed opens a question, *Have you finished this reading / lab?* *Yes* completes
 the topic and moves on; *Not yet* moves on and leaves it open. Once completed, the status shows in the Topic
-Header and on the topic's row in the sidebar, **not in the footer**. Drawn for Reading and for labs on a partner's
-platform; the paragraph above still describes the screens not yet redrawn (download Lab, Activity, the Video
-fallback). Details:
+Header and on the topic's row in the sidebar, **not in the footer**. It covers Reading, Lesson Page, Lab and
+Activity, and Video and Podcast when playback cannot be measured; the paragraph above is kept as the record of
+the rule before that date. Details:
 `reading-screen-matrix.md` §4, `lab-third-party-platforms.md` §4.
 
 Per-type completion handling:

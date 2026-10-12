@@ -220,11 +220,12 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 - **Navdeep's answer.** The proposal of 9 Oct (*Complete and continue*) had no recorded answer; a message with
   both options and the links was drafted for him on 12 Oct, and Nelson made *Next asks* the default the same
   evening.
-- **The other manual topics.** The rule is the default for every topic completed by hand. Drawn: Lab (this page)
-  and Reading (21 screens, `reading-screen-matrix.md` §4). On the *Topic Content Types Discovery* page the Mark as
-  Complete button was removed from the download Lab, Reading and Lesson Page canonical pages (12 Oct). **Podcast,
-  Activity and the Video fallback still show it**: whether they count as completed by hand is the open point
-  (Q-lab-7).
+- **The other topics the platform cannot measure.** The rule covers them all (Nelson, 12 Oct): Reading, Lesson
+  Page, Lab and Activity always; Video and Podcast when playback cannot be measured (when it can, they complete by
+  themselves at 90% and *Next* never asks). No screen shows a Mark as Complete button any more: it was removed
+  from the canonical pages of the *Topic Content Types Discovery* page, and card 8 of the Video page was redrawn
+  (not completed, the question, completed). Only the button was removed on the discovery page; the body copy of
+  those pages was not reviewed. Open: a Reading that holds an Open Response (Q-lab-7).
 
 ## 5. Asked to the content team (8 Oct 2026, pending)
 

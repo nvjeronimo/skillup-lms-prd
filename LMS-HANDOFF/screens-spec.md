@@ -187,20 +187,23 @@ Mutually exclusive. Backdrop click + Esc closes. See `overlay-panels-spec.md` fo
 
 ---
 
-## Completion (Mark as Complete)
+## Completion (when playback cannot be measured)
 
-Video **auto-completes at ≥90% watched** whenever the platform can report the learner's watch-%. In that case **no button is shown** — completion is automatic.
+Video **auto-completes at ≥90% watched** whenever the platform can report the learner's watch-%. In that case
+nothing is asked: completion is automatic, and *Next* never asks.
 
-The manual **Mark as Complete** action is an **optional fallback**, rendered **only when watch-% can't be tracked**. So for Video the action is optional per topic type, not guaranteed.
+**When watch-% cannot be tracked, *Next* asks** (Nelson, 12 Oct 2026: the default for every topic the platform
+cannot measure). There is no Mark as Complete button. The footer is the usual *Previous* and *Next*; on a video
+that is not completed, *Next* opens a dialog, *Have you finished this video?* **Yes, I've finished** completes
+the topic and goes to the next one; **Not yet** goes to the next one and leaves it open; closing the dialog stays
+on the page.
 
-Placement follows the shared shell rule:
-- The action button lives in the **footer only** — never in the header.
-- Once complete, a **"✓ Marked as completed" status badge** shows in **both** the header and the footer (status, not an action), and the sidebar topic row flips to its completed (check) state.
-- The button uses the **Primary** hierarchy (DS `Mark as Complete`).
+Once complete, a **"Marked as completed" status badge** shows in the header, and the sidebar topic row flips to
+its completed (check) state. **Nothing shows in the footer or under the content.**
 
-See `topic-types-inventory.md` §5 for the cross-type rule and the "Mark as Completed Behaviour" row on the Figma *Phase 1 – Video Lesson* page.
+See `topic-types-inventory.md` §5 for the cross-type rule and Row 8, *Completion when playback cannot be measured
+(Next asks)*, on the Figma *Phase 1 – Video Lesson* page: card 8 shows not completed, the question and completed.
 
-*12 Oct 2026: topics the learner completes by hand no longer have this button. Their footer is the usual
-Previous / Next, and Next on a topic that is not completed asks whether the learner has finished; the completed
-status shows in the header and the sidebar only (`reading-screen-matrix.md` §4). Drawn for Reading and for labs on
+*Until 12 Oct 2026 this section described a Mark as Complete button in the footer as the fallback, with the status
+badge in both header and footer once complete.*
 a partner's platform. The Video screens were not changed.*
