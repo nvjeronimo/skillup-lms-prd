@@ -248,6 +248,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · `Lab-Prerequisites` deleted; one sentence for the Studio and LMS relation
+
+- **`LMS/ICP/Topics/Lab-Prerequisites` deleted from the DS** (asked by Nelson). The DS `Alert` had replaced it on
+  the 36 screens that used it; no instance was left on the LMS ICP components page. Named version saved first.
+  **Not published.** Its description held a rule, kept here: what the learner needs goes **above** the
+  download, not below it, because a learner who downloads first and finds the runtime missing afterwards
+  abandons the lab.
+- **The sentence Nelson uses to explain the relation:** *o edX Studio manda nos factos, o LMS/ICP manda na
+  apresentação e consumo.* In English, as it opens the ICP Hub: *Open edX Studio is in charge of the facts;
+  the LMS and the ICP are in charge of how they are presented and consumed.* Use it when explaining why a
+  design follows what Studio authors and what the platform returns, and only decides how it is shown.
+- **ICP Hub, versions 48, 51 and 52:** the decisions of 12 Oct on buttons, the lab Alert and the overlay; the
+  component rows tidied; the sentence above at the top of the intro; the `Lab-Prerequisites` row and its
+  open question removed.
+
 ## 2026-10-12 · `bg/overlay` is 70%
 
 - **Asked by Nelson on 12 Oct**, in the variables. `bg/overlay`, the dim layer behind a modal or over a video,
