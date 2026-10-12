@@ -201,8 +201,9 @@ to mark it complete*). The in-page row lost the modal, so messages before 12 Oct
 - **Whether the in-page Microsoft lab returns a score.** If it does, E1 could complete by itself. The screens use
   the same confirmation as every other lab, which is right if nothing comes back and harmless if something does.
 - **Navdeep's answer** to the proposal of 9 Oct. The Lab screens adopt it on Nelson's decision.
-- **The Reading screens** (22, Ready for Dev) still have the Mark as Complete row. The flow is meant for every
-  topic the platform cannot measure; they were not touched.
+- **The Reading screens took the same flow on 12 Oct** (19 screens, `reading-screen-matrix.md` §4): no Mark as
+  Complete button, *Complete and continue* primary in the footer. Still on Mark as Complete: the download Lab,
+  Activity and the Video fallback.
 
 ## 5. Asked to the content team (8 Oct 2026, pending)
 

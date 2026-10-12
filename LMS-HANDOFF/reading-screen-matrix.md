@@ -7,7 +7,8 @@ same bar.*
 
 **Where it lives:** page `↳ Phase 1 · Reading - Ready for Dev 🟢`, frame
 `ICP Phase 1 - Reading - Light - Ready  ✅` (`5685:170871`).
-**20 screens across 7 rows** — 11 desktop · 3 tablet · 6 mobile (§18).
+**19 screens across 7 rows** — 10 desktop · 3 tablet · 6 mobile (§18). *20 until 12 Oct 2026: the Review card
+(3.3) was removed when the screens took Complete and continue, see §4.*
 
 ---
 
@@ -101,13 +102,13 @@ fills, with the nav as a sibling below it.
 
 ---
 
-## 3 · The 20 screens
+## 3 · The 19 screens
 
 | Row | Screen | What it settles |
 |---|---|---|
 | **1 · Article** | desktop · tablet · mobile | The default read at all three widths |
 | **2 · Attachments** | desktop · tablet · mobile | Files in the body, no tab |
-| **3 · Completion** | not completed · completed · review · completed-mobile | The manual-completion loop |
+| **3 · Completion** | not completed (3) · completed (3.2) · completed-mobile (3.4) | Completion from the footer: *Complete and continue* |
 | **4 · Long-form** | desktop · mobile | Every stackable primitive in one page, and the sidebar at full page length |
 | **5 · Edge cases** | no author · minimal content · no Downloads tab | The states that are normal, not failures |
 | **6 · Open Response** | desktop · tablet · mobile | An ORA inside a Reading, text only (§15) |
@@ -121,13 +122,34 @@ fills, with the nav as a sibling below it.
 
 ## 4 · The rules the screens encode
 
-**Completion is manual, and the action sits only at the bottom.** A top CTA invites the learner to mark a
-page complete before reading it. Once complete, the ✓ badge appears in **both** header and footer — there it
-is status, not an action. `Show Mark-Status-Badge` is false until completion, true after.
+**Completion is manual, and it happens in the footer: *Complete and continue*** (Nelson, 12 Oct 2026; applied
+to all 19 screens the same day). The forward button of the footer marks the topic complete and goes to the next
+one. It is the primary action of the page, because a Reading has no other. There is **no separate Mark as
+Complete button**: the row that held it at the end of the content is gone from every screen. To move on without
+completing, the learner uses the sidebar.
+
+Once complete, the status shows in two places: *Marked as completed* in the Topic Header
+(`Show Mark-Status-Badge` false until completion, true after) and the topic's row in the sidebar, which becomes
+*Completed*. **The footer shows no status**, and its button is *Next* again.
+
+*Until 12 Oct the rule read: the action sits only at the bottom of the content (a Mark as Complete button), and
+once complete the ✓ badge appears in both header and footer. Why it changed, and what was set aside:
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7 and §4.*
+
+**How the footer is built on the screens:** local overrides on the DS instance, the same as on the Lab screens,
+until `Topic-Footer-Nav` has a state for it: `Course-Progression-Button` on `Milestone=Next-Topic`, its nested
+`Button` on `Hierarchy=Primary` with the label changed; on mobile the icon-only forward button is swapped for
+the labelled `Button`; on tablet the two side columns hug their content.
+
+**Not settled for Row 6 (an Open Response inside a Reading):** the screens take *Complete and continue* like
+every other Reading, because they had the Mark as Complete button before. Whether a Reading that holds a block
+the learner submits should complete from the footer or from the submission was not asked.
 
 **`Topic-Status-Badge` ships a third state nobody has specified.** Alongside `Mark as Complete` and
-`Completed` there is **`Review`**. It is drawn (Row 3.3) because the DS has it, but *when* a Reading enters
-review is not defined anywhere. Either it earns a rule or it should come out of the component.
+`Completed` there is **`Review`**. It was drawn as Row 3.3 because the DS has it, but *when* a Reading enters
+review is not defined anywhere. **The card was removed on 12 Oct 2026:** it showed the Mark as Complete button
+and nothing else, so without the button it was a copy of card 3. The question stays for the component, and
+there is a second one now: its `Mark as Complete` state is no longer on any Reading or Lab screen.
 
 **Attachments are optional, so an empty Downloads tab is a normal state.** Row 5 draws it with
 `LMS / Empty State · Kind=Downloads` and the count at 0. It must not read as an error.

@@ -12,13 +12,13 @@ A topic transitions to **Completed** based on its type:
 | Video | Video playback reaches ≥ 90% of total duration in a single session OR cumulative across sessions |
 | Recording | Same as Video |
 | Podcast | Audio reaches ≥ 90% |
-| Reading | User clicks "Mark as complete" |
+| Reading | User clicks "Complete and continue", the forward button of the footer (12 Oct 2026; before: "Mark as complete") |
 | Live Session (VILT) | Attended live (system detects join + ≥ 50% session duration) OR watched recording to ≥ 90% post-event |
 | Practice Quiz | Submitted, regardless of score |
 | Graded Assignment | Submitted (grade calculated separately, doesn't block completion) |
 | Peer-graded | Submitted own work AND reviewed required N peer submissions |
 | Discussion Prompt | Posted ≥ 1 message to the thread |
-| Lab / Activity / Project | User clicks "Mark as complete" |
+| Lab / Activity / Project | User clicks "Mark as complete". A lab on a partner's platform (Google, Microsoft): "Complete and continue" in the footer, as Reading (12 Oct 2026) |
 
 Completion is **idempotent** — re-triggering does not double-count. Once Completed, a topic stays Completed unless explicitly reset by admin.
 

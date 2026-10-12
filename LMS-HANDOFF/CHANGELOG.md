@@ -2,6 +2,30 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Reading: Complete and continue on the 19 screens, the Mark as Complete button is gone
+
+[`reading-screen-matrix.md`](reading-screen-matrix.md) §3 and §4. Figma page *Phase 1 · Reading - Ready for Dev*.
+
+- **Asked by Nelson on 12 Oct:** apply *Complete and continue* to the Reading screens.
+- **Every screen:** the Mark as Complete row at the end of the content is removed. The footer's forward button
+  reads *Complete and continue*, primary (a Reading has no other action). Each card is at r2 with a changelog
+  line.
+- **Row 3 is now *Completion (Complete and continue)*:** card 3 not completed, 3.2 completed, 3.4 completed on
+  mobile, with new descriptions. Completed: *Marked as completed* in the Topic Header, the sidebar row
+  *Completed*, *Next* in the footer and no status there.
+- **Card 3.3 (*Completion · Review*) is removed:** it showed the Mark as Complete button and nothing else, so it
+  had become a copy of card 3. 20 screens → 19 (10 desktop, 3 tablet, 6 mobile). Numbers 3.2 and 3.4 are kept.
+- **Same local overrides on the DS footer as on the Lab screens** (label, labelled button on mobile, hugging
+  columns on tablet).
+- **Documents brought in line:** the completion rule in `reading-screen-matrix.md`, `footer-contract.md`
+  (rows Reading and Lab, with a note), `BA/03-business-rules.md`, story P1-47 in `BA/02-user-stories-phase1.md`
+  (three scenarios), `BA/06-glossary.md`, and dated amendments in `topic-types-inventory.md` and
+  `screens-spec.md`.
+- **Not changed:** Video, download Lab, Activity and Podcast screens. Asked as Q-lab-7, with the Open Response
+  inside a Reading (Row 6), which took the flow because it had the button.
+- **For the design system:** `Topic-Status-Badge` has no screen left for its `Mark as Complete` state on Reading
+  or Lab, and `Review` is still unspecified.
+
 ## 2026-10-12 · Lab: completed status in the header and the sidebar only; `Lab-Launch-Card` v2.0 published
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
@@ -65,6 +89,37 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - Kirti: the design goes with the new tab for every lab; the iframe is revisited later.
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
+
+## 2026-10-12 · Lab screens: the prerequisites block is the DS Alert
+
+- **Asked by Nelson on 12 Oct**, with an example on *microsoft-ready-desktop*: `LMS/ICP/Topics/Lab-Prerequisites`
+  is replaced by the DS `Alert` (Color=Brand, Size=Floating, Breakpoint=Mobile; no dismiss, no actions, no
+  close; the info icon), with *BEFORE YOU START* as its text and the requirements as its supporting text,
+  a bulleted list.
+- **36 replaced**, each a copy of his example, in the same place and with the same sizing: 26 on the Lab page
+  (his own screen included: the old block removed, his Alert kept) and 10 on *Topic Content Types Discovery*.
+  Every block kept its own lines. Named version saved first. Two renders checked (desktop and mobile).
+- **Heights:** desktop blocks are 116 (were 146), in-page ones 96 (were 112); on mobile a three-line Google
+  block is 256 (was 226) because the Alert's text column is narrower.
+- **Not changed:** the `Lab-Prerequisites` component itself, still in the library with no instance left on
+  these two pages; the prototype's Lab screens; the ICP Hub row of the component (it still says ICP 37).
+- **To know:** the Alert is on its *Breakpoint=Mobile* variant on desktop and tablet too, as in the example.
+
+## 2026-10-12 · Two DS changes of Nelson's followed in the prototype; ICP Hub version 39
+
+- **Found in the library on 12 Oct** by comparing it with what the prototype records (the Figma version
+  history could not be read: the API token had expired, so other changes may exist):
+  - `Button`, Secondary, Hover: the fill is Brand `bg/primary-hover`, Destructive `bg/error-soft`, Success
+    `bg/accent-green-soft` (it was `bg/faint` for the three). `Icon Button` Secondary Hover is still `bg/faint`.
+  - `LMS/Platform/Navigation/Topbar`, Desktop: the sections are 24 apart (were 12).
+- **Prototype (PR 113, open):** both applied. Measured: gaps of 24 in the top bar.
+- **To decide:** in the dark theme the Brand Secondary on hover is `text/primary` on `bg/primary-hover`,
+  1.29:1 (5.09:1 in light). The Primary button uses `text/on-primary-hover` there.
+- **ICP Hub, version 39:** everything of 10 to 12 Oct from this work: nine decisions, the My Learning and
+  Dashboard row, twelve component rows (versions, names without a version, counts of 12 Oct), three open
+  questions added, two removed (already decided), three reworded.
+- **Open:** the V1 badge was deleted without checking the Mobile App file, which a decision of 24 Sep said
+  had to move first. A named version of the DS from before the deletion exists.
 
 ## 2026-10-12 · Row durations follow decision 004 (`approx.` on readings)
 
