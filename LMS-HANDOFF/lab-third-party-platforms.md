@@ -166,7 +166,10 @@ the lab was opened, and when for the first time.
   note under them: *SkillUp can't see your progress on Google Skills. Nothing is sent back when you finish. Select
   Mark as Complete when you are done; if you select Next first, we ask you.*
 - **Microsoft:** a Microsoft account for Microsoft Learn; same third step and the same note.
-- **Tablet and mobile, Google not completed (G1 and G2, `.2` and `.3`):** the warning *This lab needs a computer*, from Google's
+- **Only until the lab has been opened** (Nelson, 12 Oct): the *Before you start* block and the warning below.
+  Once the learner has opened the lab at least once, they have seen what it needs, so the Opened, question and
+  Completed screens show neither. The page then goes from the lead line straight to the launch card.
+- **Tablet and mobile, Google never opened (G1, `.2` and `.3`):** the warning *This lab needs a computer*, from Google's
   own help ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
 - **Mobile, in the page (E1.3, E2.3):** *This lab works best on a computer*. A design call (a third-party frame
   800 px high on a phone), not a provider statement. Not shown on tablet.
@@ -216,10 +219,11 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
    `Opened` with the *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. Read
    back on the 21 instances of the Lab page (6 Ready, 12 Opened, 3 Unavailable). Its default button text is
    *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change. On 12 Oct (evening) its
-   description and the default text of `Unavailable` were rewritten for *Next asks* and published by Nelson. **To
-   publish again:** after Navdeep's comments both say *Mark as Complete* (the default text now ends *come back to
-   this page and select Mark as Complete*), and `Topic-Header` and `Topic-Status-Badge` carry a dated line with
-   the rule. Descriptions and one default text only: no property or variant changed, no version bump.
+   description and the default text of `Unavailable` were rewritten for *Next asks* and published by Nelson. After
+   Navdeep's comments both say *Mark as Complete* (the default text now ends *come back to this page and select
+   Mark as Complete*), and `Topic-Header` and `Topic-Status-Badge` carry a dated line with the rule; **published
+   and accepted in the ICP file that night**. Descriptions and one default text only: no property or variant
+   changed, no version bump.
 3. `Topic-Header` on mobile with the status badge: the title is squeezed to half the width (157 px of 311) and the
    duration runs under the badge. Same on the Reading mobile screen already in Ready for Dev (`5685:175610`), so
    it was left as the component gives it.

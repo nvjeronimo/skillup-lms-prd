@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: fewer alerts once the lab has been opened
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4, *What the learner is told*.
+
+- **Decided by Nelson on 12 Oct:** when the learner has already opened the lab once, the *Before you start* block
+  and the *This lab needs a computer* warning are no longer shown.
+- **Figma:** removed from the Google cards G2, G3 and G4 on desktop, tablet and mobile (the Microsoft ones already
+  had no block there), and from the Lab flow frame. Ready (G1, M1) and the in-page rows keep them.
+- **Prototype:** the prerequisites block of a partner lab hides once the lab is opened or completed; the computer
+  warning already did.
+- **DS:** the `Lab-Launch-Card`, `Topic-Header` and `Topic-Status-Badge` texts for *Mark as Complete, and Next asks*
+  are published and accepted in the ICP file (read back: 6 Ready, 18 Opened, 3 Unavailable on the Lab page).
+
 ## 2026-10-12 · Navdeep's comments applied: Mark as Complete is back, *Next* still asks, new dialog copy
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4 and §9, [`reading-screen-matrix.md`](reading-screen-matrix.md) §4.
