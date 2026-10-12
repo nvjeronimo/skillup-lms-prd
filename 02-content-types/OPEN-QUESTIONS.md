@@ -42,8 +42,8 @@ Asked to Kirti Mishra / Simran Jindal in the *ICP Labs discussions* chat. Contex
 
 | Q | Question | Owner | Status |
 |---|---|---|---|
-| Q-lab-1 | **Google (LTI)** — with *Open tool in* set to *Inline* or *Modal* on one lab in staging, does the lab load? | Simran / content team | ⚪ |
-| Q-lab-2 | **Google (LTI)** — does the score come back for every lab when the learner ends it, and how long does it take? | Simran / content team | ⚪ |
-| Q-lab-3 | **Microsoft (link)** — keep Open edX's *complete on view*, or have the learner mark the topic complete after the lab? | Navdeep / Nelson | ⚪ |
+| Q-lab-1 | **Google (LTI)** — with *Open tool in* set to *Inline* or *Modal* on one lab in staging, does the lab load? | Simran / content team | ✅ Closed without a test, 9 Oct: new tab for every partner. Two Microsoft courses do open the lab in the page and it does not load (12 Oct). |
+| Q-lab-2 | **Google (LTI)** — does the score come back for every lab when the learner ends it, and how long does it take? | Simran / content team | ✅ 9 Oct: no. Google labs are not graded or recorded; nothing is tracked after the launch. |
+| Q-lab-3 | **Microsoft (link)** — keep Open edX's *complete on view*, or have the learner mark the topic complete after the lab? | Navdeep / Nelson | 🟠 Screens adopt *Complete and continue* (Nelson, 12 Oct): the footer button completes and moves on, for every lab. Navdeep's answer to the proposal of 9 Oct not seen. |
 | Q-lab-4 | **IBM** — which page does the learner land on after *Start course*, and is the whole course on IBM's side or only the labs? | Kirti / content team | ⚪ |
 | Q-lab-5 | **IBM** — how do we know today that a learner completed the course on IBM (report, certificate, nothing)? | Kirti / content team | ⚪ |

@@ -2,6 +2,26 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab screens: Complete and continue adopted, 33 cards down to 24
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4, rewritten. Figma page `6789:325`.
+
+- **Decided by Nelson on 12 Oct:** both ways of opening a lab are drawn, the new tab is the default; the screens
+  adopt the *Complete and continue* flow of the proposal; what was wrong is removed.
+- **Removed, 9 cards** (desktop, tablet, mobile): Google *waiting for the score*, Microsoft *asked to mark it
+  complete*, and the modal. G3, M3 and E3 are now G2, M2 and E2.
+- **Google and Microsoft (12 cards):** no Mark as Complete row; the footer button is *Complete and continue*,
+  secondary; completed shows *Marked as completed* in header and footer and *Next*. Copy corrected to the facts of
+  9 Oct: a Google account, some labs timed, nothing sent back. No text about a score is left.
+- **In the page (6 cards):** redrawn on the real case of the two Microsoft courses. E1 the lab inside the page
+  (*Complete and continue* primary), E2 the frame not loading with *Open in a new tab*.
+- **IBM (6 cards):** unchanged.
+- **Local overrides on the DS footer**, listed in §4 with what the design system needs: the button label, the
+  labelled button on mobile, the side columns hugging on tablet.
+- The proposal board is renamed *Complete and continue · adopted on the Lab screens (12 Oct 2026)*; the discovery
+  section `6776:8711` is marked superseded.
+- **Not done:** the Reading screens still have the Mark as Complete row; Navdeep's answer was not seen.
+
 ## 2026-10-12 · Lab: two Microsoft courses load the lab in the page, and it does not load
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §8. No screen changed.
