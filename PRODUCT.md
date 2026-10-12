@@ -29,6 +29,8 @@ Success: learners always know where they are and what is next (and, once the dat
 Undecided — not yet confirmed with the product owner. Do not invent a differentiating claim.
 
 ## Operating Context
+**Open edX Studio is in charge of the facts; the LMS and the ICP are in charge of how they are presented and consumed.** The content team authors in Studio and the platform returns what it returns; the design work decides how that is shown and used, never what is true. (Nelson, 12 Oct 2026: *o edX Studio manda nos factos, o LMS/ICP manda na apresentação e consumo.*)
+
 - Built on Open edX. Content is authored by a content team in Studio; each content type maps to an edX XBlock (`LMS-HANDOFF/topic-types-inventory.md`, `LMS-HANDOFF/studio-authoring-parity.md`).
 - Figma is the design source of truth: the SKO Design System library (`c7EUDrQwP8si08aPipDSIV`) plus product files. The live prototype (https://lms-prototype-mu.vercel.app/, deployed from the separate repo `nvjeronimo/skillup-lms-prototype`), Storybook and this hub repo must stay in sync (`SYNC-PLAYBOOK.md`).
 - Decisions are logged as ADRs in `00-decisions/`. Meeting claims about platform capability are tagged CONFIRMED / ASSERTED / CONFLICT / UNVERIFIED in `LMS-HANDOFF/session-log.md`. Check it before designing against a claimed capability.

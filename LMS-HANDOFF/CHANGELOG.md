@@ -259,6 +259,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   apresentação e consumo.* In English, as it opens the ICP Hub: *Open edX Studio is in charge of the facts;
   the LMS and the ICP are in charge of how they are presented and consumed.* Use it when explaining why a
   design follows what Studio authors and what the platform returns, and only decides how it is shown.
+  It is also at the top of `LMS-HANDOFF/README.md` and opens *Operating Context* in `PRODUCT.md`.
 - **ICP Hub, versions 48, 51 and 52:** the decisions of 12 Oct on buttons, the lab Alert and the overlay; the
   component rows tidied; the sentence above at the top of the intro; the `Lab-Prerequisites` row and its
   open question removed.
