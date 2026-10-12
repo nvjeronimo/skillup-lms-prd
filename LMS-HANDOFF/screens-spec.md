@@ -200,6 +200,7 @@ Placement follows the shared shell rule:
 
 See `topic-types-inventory.md` §5 for the cross-type rule and the "Mark as Completed Behaviour" row on the Figma *Phase 1 – Video Lesson* page.
 
-*12 Oct 2026: Reading and labs on a partner's platform no longer have this button. Their footer's forward button
-reads* Complete and continue *and the completed status shows in the header and the sidebar only
-(`reading-screen-matrix.md` §4). The Video screens were not changed.*
+*12 Oct 2026: topics the learner completes by hand no longer have this button. Their footer is the usual
+Previous / Next, and Next on a topic that is not completed asks whether the learner has finished; the completed
+status shows in the header and the sidebar only (`reading-screen-matrix.md` §4). Drawn for Reading and for labs on
+a partner's platform. The Video screens were not changed.*

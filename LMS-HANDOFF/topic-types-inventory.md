@@ -198,11 +198,13 @@ Several types share the same player chrome and differ only by badge, copy and co
 
 **Mark-as-Complete placement (shared shell rule).** The manual *action* button "Mark as complete" renders **only in the footer**, never in the header — a header CTA invites premature completion and duplicates the footer action. Once the topic is completed, the **✓ "Marked as Completed" status badge** may appear in **both** the header and the footer (it is *status*, not an action). This is baked into the DS `LMS / Topic Header`: the top status-badge slot is **off by default** and turns on **only in the completed state**. The button itself uses the **Primary** hierarchy (DS `Mark as Complete`).
 
-**Amended on 12 Oct 2026 for Reading and for labs on a partner's platform.** On these two the completion action is
-the footer's forward button, *Complete and continue*: it marks the topic complete and goes to the next one, and
-the separate Mark as Complete button is gone from their screens. Once completed, the status shows in the Topic
-Header and on the topic's row in the sidebar, **not in the footer**. The paragraph above still describes the
-screens that were not changed (download Lab, Activity, the Video fallback). Details:
+**Replaced on 12 Oct 2026 for every topic the learner completes by hand** (Nelson: our default). There is no
+Mark as Complete button and no special footer button: the footer is *Previous* and *Next* on every topic, and
+*Next* on a topic that is not completed opens a question, *Have you finished this reading / lab?* *Yes* completes
+the topic and moves on; *Not yet* moves on and leaves it open. Once completed, the status shows in the Topic
+Header and on the topic's row in the sidebar, **not in the footer**. Drawn for Reading and for labs on a partner's
+platform; the paragraph above still describes the screens not yet redrawn (download Lab, Activity, the Video
+fallback). Details:
 `reading-screen-matrix.md` §4, `lab-third-party-platforms.md` §4.
 
 Per-type completion handling:

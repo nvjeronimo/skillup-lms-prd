@@ -7,8 +7,8 @@ same bar.*
 
 **Where it lives:** page `↳ Phase 1 · Reading - Ready for Dev 🟢`, frame
 `ICP Phase 1 - Reading - Light - Ready  ✅` (`5685:170871`).
-**19 screens across 7 rows** — 10 desktop · 3 tablet · 6 mobile (§18). *20 until 12 Oct 2026: the Review card
-(3.3) was removed when the screens took Complete and continue, see §4.*
+**21 screens across 7 rows** — 11 desktop · 3 tablet · 7 mobile (§18). *20 until 12 Oct 2026: that day the Review
+card (3.3) was removed and the two question cards (3.5, 3.6) were added, see §4.*
 
 ---
 
@@ -102,13 +102,13 @@ fills, with the nav as a sibling below it.
 
 ---
 
-## 3 · The 19 screens
+## 3 · The 21 screens
 
 | Row | Screen | What it settles |
 |---|---|---|
 | **1 · Article** | desktop · tablet · mobile | The default read at all three widths |
 | **2 · Attachments** | desktop · tablet · mobile | Files in the body, no tab |
-| **3 · Completion** | not completed (3) · completed (3.2) · completed-mobile (3.4) | Completion from the footer: *Complete and continue* |
+| **3 · Completion** | not completed (3) · completed (3.2) · completed-mobile (3.4) · the question (3.5) · the question-mobile (3.6) | Completion by a question: *Next* asks |
 | **4 · Long-form** | desktop · mobile | Every stackable primitive in one page, and the sidebar at full page length |
 | **5 · Edge cases** | no author · minimal content · no Downloads tab | The states that are normal, not failures |
 | **6 · Open Response** | desktop · tablet · mobile | An ORA inside a Reading, text only (§15) |
@@ -122,34 +122,42 @@ fills, with the nav as a sibling below it.
 
 ## 4 · The rules the screens encode
 
-**Completion is manual, and it happens in the footer: *Complete and continue*** (Nelson, 12 Oct 2026; applied
-to all 19 screens the same day). The forward button of the footer marks the topic complete and goes to the next
-one. It is the primary action of the page, because a Reading has no other. There is **no separate Mark as
-Complete button**: the row that held it at the end of the content is gone from every screen. To move on without
-completing, the learner uses the sidebar.
+**Completion is manual, and *Next* asks for it** (Nelson, 12 Oct 2026: our default on every topic the learner
+completes by hand; applied to the Reading screens the same day). There is **no Mark as Complete button** and no
+special footer button: the footer is the design system footer, *Previous* and *Next*, the same on every topic.
+
+- ***Next* on a Reading that is not completed opens a question** (DS `Modal`, `Type=Horizontal`, cards 3.5 and
+  3.6): *Have you finished this reading?* **Yes, I've finished** completes the topic and goes to the next one.
+  **Not yet** goes to the next one and leaves the reading not completed. Closing the dialog, Esc or a click outside
+  keep the learner on the page.
+- **On a completed Reading, *Next* goes straight on.**
+- Leaving by the sidebar, the top bar or the browser does not ask; the reading stays not completed.
 
 Once complete, the status shows in two places: *Marked as completed* in the Topic Header
 (`Show Mark-Status-Badge` false until completion, true after) and the topic's row in the sidebar, which becomes
-*Completed*. **The footer shows no status**, and its button is *Next* again.
+*Completed*. **The footer shows no status.**
 
-*Until 12 Oct the rule read: the action sits only at the bottom of the content (a Mark as Complete button), and
-once complete the ✓ badge appears in both header and footer. Why it changed, and what was set aside:
-[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7 and §4.*
+**Known trade-offs:** one more click on every unfinished Reading the learner passes with *Next* (84 topics, 30% of
+the program); *Not yet* brings the question back each time; the question does not know how far the learner read.
 
-**How the footer is built on the screens:** local overrides on the DS instance, the same as on the Lab screens,
-until `Topic-Footer-Nav` has a state for it: `Course-Progression-Button` on `Milestone=Next-Topic`, its nested
-`Button` on `Hierarchy=Primary` with the label changed; on mobile the icon-only forward button is swapped for
-the labelled `Button`; on tablet the two side columns hug their content.
+*How the rule got here, all on 12 Oct 2026: until that morning the action was a Mark as Complete button at the end
+of the content, with the ✓ badge in both header and footer once complete; for a few hours the footer's forward
+button read* Complete and continue*; in the evening Nelson replaced it with the question. The reasons and what was
+set aside: [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7, §9 and §4.*
 
-**Not settled for Row 6 (an Open Response inside a Reading):** the screens take *Complete and continue* like
-every other Reading, because they had the Mark as Complete button before. Whether a Reading that holds a block
-the learner submits should complete from the footer or from the submission was not asked.
+**How it is built on the screens:** the DS `Topic-Footer-Nav` with no override, and the DS `Modal` over the screen
+on the two question cards.
+
+**Not settled for Row 6 (an Open Response inside a Reading):** the screens follow the rule like every other
+Reading, because they had the Mark as Complete button before. Whether a Reading that holds a block the learner
+submits should complete by the question or by the submission was not asked.
 
 **`Topic-Status-Badge` ships a third state nobody has specified.** Alongside `Mark as Complete` and
 `Completed` there is **`Review`**. It was drawn as Row 3.3 because the DS has it, but *when* a Reading enters
 review is not defined anywhere. **The card was removed on 12 Oct 2026:** it showed the Mark as Complete button
 and nothing else, so without the button it was a copy of card 3. The question stays for the component, and
-there is a second one now: its `Mark as Complete` state is no longer on any Reading or Lab screen.
+there is a second one now: its `Mark as Complete` state is no longer on any Reading or Lab screen. (3.3 was not
+reused: the question cards are 3.5 and 3.6.)
 
 **Attachments are optional, so an empty Downloads tab is a normal state.** Row 5 draws it with
 `LMS / Empty State · Kind=Downloads` and the count at 0. It must not read as an error.

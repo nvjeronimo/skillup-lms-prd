@@ -44,7 +44,7 @@ The right slot renders one of these states. Same enum for every content type.
 
 | State | Right slot renders | When |
 |---|---|---|
-| `idle-passive` | `Mark as Complete` (primary) — optional if `auto`. **Reading and partner labs since 12 Oct 2026: `Complete and continue`**, see the note under the type table below | Passive topic, not yet complete |
+| `idle-passive` | `Mark as Complete` (primary) — optional if `auto`. **Since 12 Oct 2026, on topics completed by hand: plain `Next`, which asks**, see the note under the type table below | Passive topic, not yet complete |
 | `idle-action` | `<actionVerb>` (primary), e.g. "Submit answers" | Action topic, not yet submitted |
 | `live` | `Join session` (primary) | VILT live, before/during session |
 | `submitted` | `Under Review` badge + `Continue` | Submitted, awaiting grade/peer review |
@@ -68,22 +68,24 @@ The right slot renders one of these states. Same enum for every content type.
 | 1 | Video | auto | none (auto) | playback ≥ 90% | completed | exact |
 | 2 | Recording | auto | none (auto) | playback ≥ 90% | completed | exact |
 | 3 | Podcast | auto | none (auto) | audio ≥ 90% | completed | exact |
-| 4 | Reading | manual | Complete and continue (the forward button) | clicks "Complete and continue" | completed, and the learner is on the next topic | approx (words ÷ 250) |
+| 4 | Reading | manual | none: the usual Next, which asks | answers "Yes, I've finished" to the question Next opens | completed, and the learner is on the next topic | approx (words ÷ 250) |
 | 5 | Live Session (VILT) | attendance | Join session (in window) | attended (join + ≥ 50%) OR recording ≥ 90% | completed | scheduled |
 | 6 | Practice Quiz | submit | Submit answers | submitted (any score) | completed | exact if timed, else hide |
 | 7 | Graded Assignment | submit | Submit assignment | submitted (grade separate, doesn't block) | completed · grade → Under Review/Graded badge | exact if timed |
 | 8 | Peer-graded Assignment | submit + review | Submit for review → Review peers | submitted own work AND reviewed N peers | completed (after reviews) | approx |
 | 9 | Discussion Prompt | post | Post response | posted ≥ 1 message | completed | n/a |
-| 10 | Lab | manual | Mark as complete. On a partner's platform (Google, Microsoft): Complete and continue | clicks it | completed | approx |
+| 10 | Lab | manual | none: the usual Next, which asks (drawn for labs on a partner's platform; the download lab screens still show Mark as complete) | answers "Yes, I've finished" | completed | approx |
 | 11 | Activity | manual | Mark as complete | clicks "Mark as complete" | completed | approx |
 | 12 | Project | submit | Submit project | submitted | completed · grade → badge | approx (hours) |
 
-> **12 Oct 2026, Reading and partner labs: *Complete and continue*.** On these two the forward button of the
-> footer is the completion action: it marks the topic complete and goes to the next one, and there is no separate
-> Mark as Complete button. Primary on a Reading; on a lab with a launch card, secondary until the lab has been
-> opened, then primary. Once completed the button is *Next* and the footer shows no status (the status is in the
-> Topic Header and on the sidebar row). The screens of the download Lab, Activity and the Video fallback were not
-> changed and still describe Mark as Complete. Source: `LMS-HANDOFF/lab-third-party-platforms.md` §4 and §7,
+> **12 Oct 2026, topics completed by hand: *Next* asks.** Our default (Nelson). The footer is the same on every
+> topic, *Previous* and *Next*, and there is no Mark as Complete button. On a topic that is not completed, *Next*
+> opens a dialog: *Have you finished this reading / lab?* *Yes, I've finished* completes the topic and goes to the
+> next one; *Not yet* goes to the next one and leaves it open; closing the dialog stays on the page. On a completed
+> topic *Next* goes straight on, and the footer shows no status (it is in the Topic Header and on the sidebar row).
+> Drawn for Reading and for labs on a partner's platform; the screens of the download Lab, Activity and the Video
+> fallback were not redrawn and still show Mark as Complete. For a few hours the same day the forward button read
+> *Complete and continue*; that was replaced. Source: `LMS-HANDOFF/lab-third-party-platforms.md` §4 and §9,
 > `LMS-HANDOFF/reading-screen-matrix.md` §4.
 
 Notes:

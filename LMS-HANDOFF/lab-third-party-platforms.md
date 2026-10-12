@@ -60,7 +60,7 @@ it complete* (the rule the download Lab already follows).
 ## 4. Screens (Figma: desktop, tablet and mobile)
 
 **State of 12 Oct 2026.** *LMS ICP Phase 1* → page **`↳ Lab · Third-party platforms - Ready for Review 🟠`**
-(`6789:325`), frame `6789:326`. **Thirty cards: ten screens on desktop, tablet (960) and mobile (375).**
+(`6789:325`), frame `6789:326`. **Thirty-six cards: twelve screens on desktop, tablet (960) and mobile (375).**
 Built like the Reading page: card header, the screen, description and changelog. Every card's status tag reads
 *In review* (the *In progress* tag with its text changed; a longer label is cut on the mobile cards).
 
@@ -68,10 +68,12 @@ Built like the Reading page: card header, the screen, description and changelog.
 |---|---|---|---|
 | **Google** · new tab (default) | G1 | Ready to start | `6789:901` |
 | | G2 | Opened at least once, topic not completed | `7053:13179` |
-| | G3 | Completed by the learner | `6789:1816` |
+| | G3 | *Next* on a lab that is not completed: the question | `7079:164755` |
+| | G4 | Completed by the learner | `6789:1816` |
 | **Microsoft** · new tab (default) | M1 | Ready to start | `6792:1917` |
 | | M2 | Opened at least once, topic not completed | `7053:14541` |
-| | M3 | Completed by the learner | `6792:2804` |
+| | M3 | *Next* on a lab that is not completed: the question | `7079:166018` |
+| | M4 | Completed by the learner | `6792:2804` |
 | **In the page** · option | E1 | The lab runs inside the page (LTI inline frame) | `6792:3199` |
 | | E2 | The frame does not load: falls back to a new tab | `6792:3995` |
 | **IBM** · the whole course on IBM | I1 | *Start course*, dialog before leaving SkillUp | `6792:139729` |
@@ -93,26 +95,40 @@ Tablet and mobile cards carry the same number with `.2` and `.3` (`G1.2`, `G1.3`
 
 There is no modal. The modal card (old E2) was removed with the two states that described a score coming back.
 
-### How the topic completes: *Complete and continue*
+### How the topic completes: *Next* asks
 
-Adopted on these screens by Nelson on 12 Oct 2026 (the proposal of §7). Nothing comes back from the partner, so
-opening the lab does not complete the topic and there is **no Mark as Complete row**.
+**Our default on every topic the learner completes by hand** (Nelson, 12 Oct 2026, evening). It replaced
+*Complete and continue*, which these screens carried for a few hours the same day (§7 and §9 keep the record).
+Nothing comes back from the partner, so opening the lab does not complete the topic, and there is **no Mark as
+Complete row**.
 
-| State | Launch card | Footer forward button | Topic status |
+- **The footer is the design system footer as it is:** *Previous* and *Next*, the same on every topic.
+- ***Next* on a topic that is not completed opens a question** (DS `Modal`, `Type=Horizontal`): *Have you
+  finished this lab?* **Yes, I've finished** completes the topic and goes to the next one. **Not yet** goes to the
+  next one and leaves the topic not completed. Closing the dialog, Esc or a click outside keep the learner on the
+  page.
+- **It asks whenever the topic is not completed**, also when the lab was never opened.
+- **On a completed topic, *Next* goes straight on.**
+- Leaving by the sidebar, the top bar or the browser does not ask; the topic stays not completed.
+
+| State | Launch card | Footer | Topic status |
 |---|---|---|---|
-| **Ready** (G1, M1): never opened | *Ready*, button primary | **Complete and continue**, secondary | no status |
-| **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Complete and continue**, primary | no status |
-| **Completed** (G3, M3) | *Opened*, unchanged | **Next**, secondary | *Marked as completed* in the Topic Header; the topic's row in the sidebar becomes *Completed*. Nothing in the footer |
-| Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | **Complete and continue**, secondary | no status |
-| Lab inside the page (E1) | none | **Complete and continue**, primary (there is no other action) | no status |
+| **Ready** (G1, M1): never opened | *Ready*, button primary | *Previous* · *Next* | no status |
+| **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | *Previous* · *Next* | no status |
+| **The question** (G3, M3) | under the dialog | under the dialog | no status |
+| **Completed** (G4, M4) | *Opened*, unchanged | *Previous* · *Next*, which goes straight on | *Marked as completed* in the Topic Header; the topic's row in the sidebar becomes *Completed*. Nothing in the footer |
+| Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | *Previous* · *Next* | no status |
+| Lab inside the page (E1) | none | *Previous* · *Next* | no status |
 
-The button marks the topic complete and goes to the next one. To move on without completing, the learner uses the
-sidebar: there is no Skip action anywhere.
+The in-page rows have no question card of their own: the dialog is the one of G3 and M3.
 
-**What changes on the click** (Nelson, 12 Oct): the topic's row in the sidebar becomes *Completed* (`Topic-Row`,
-`Topic Status=Completed`) and the Topic Header shows *Marked as completed*. **The footer shows no status**: the
-badge that sat beside *Next* was removed the same day, so the status is in the header and the sidebar only
+**What changes on *Yes*:** the topic's row in the sidebar becomes *Completed* (`Topic-Row`,
+`Topic Status=Completed`) and the Topic Header shows *Marked as completed*. **The footer shows no status**
 (`Topic-Footer-Nav`, `Show Badge` off). On mobile the sidebar row is in the outline, behind the menu.
+
+**Known trade-offs** (written on the Figma frames too): one more click on every unfinished topic of this kind;
+*Not yet* brings the question back each time the learner passes through with *Next*; the question does not know
+whether the lab was opened or how far a reading was read.
 
 ### The launch card says *opened*, never *complete*
 
@@ -123,9 +139,8 @@ the lab was opened, and when for the first time.
 - **Ready → Opened** on the first click on the launch button. The card keeps its title and its partner line and
   adds *First opened on {date}*. It stays *Opened* from then on, also after the topic is completed; the button
   keeps opening the lab, which can be redone any number of times.
-- **The primary action moves with it.** Before the lab is opened the launch button is the primary action and the
-  footer button is secondary. Once it has been opened the launch button becomes secondary and *Complete and
-  continue* becomes primary. Nothing is disabled in either state.
+- **The launch button is primary until the lab has been opened, secondary after.** The footer does not change with
+  it, and nothing is disabled in either state.
 - **Completion lives in one place:** the topic's status (Topic Header and sidebar row). A learner who completes
   without ever opening the lab gets a completed topic and a card still in *Ready*. That is what happened, so the
   screens do not hide it.
@@ -140,8 +155,8 @@ the lab was opened, and when for the first time.
 
 - **Google:** needs a Google account to sign in to Google Skills and accept its terms; a desktop or laptop with
   Chrome; time to finish in one sitting, because some labs are timed and close by themselves. The launch card says
-  the lab shares the username and email. The three steps end on *Come back to this page and select Complete and
-  continue*. The note under them: *SkillUp can't see your progress on Google Skills*.
+  the lab shares the username and email. The three steps end on *Come back to this page. When you select Next, we ask if
+  you have finished.* The note under them: *SkillUp can't see your progress on Google Skills*.
 - **Microsoft:** a Microsoft account for Microsoft Learn; same third step and the same note.
 - **Tablet and mobile, Google not completed (G1 and G2, `.2` and `.3`):** the warning *This lab needs a computer*, from Google's
   own help ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
@@ -162,19 +177,19 @@ the lab was opened, and when for the first time.
 - **The *Completed* state of the launch card** (*Lab complete · Completed on …*), the same day, for the reason
   above.
 
-Numbers: Google and Microsoft are again 1, 2, 3, but 2 is now *Opened* (it was *waiting for the score* and *asked
-to mark it complete*). The in-page row lost the modal, so messages before 12 Oct that say *E3* mean today's E2.
+Numbers: Google and Microsoft are 1 *Ready*, 2 *Opened*, 3 *the question*, 4 *Completed* (4 was 3 until the
+evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete* before that day). The in-page row lost the modal, so messages before 12 Oct that say *E3* mean today's E2.
 
 ### How the screens are built (for whoever edits them)
 
 - DS components: Topic Header, `Lab-Launch-Card`, `Lab-Prerequisites`, `Numbered-Step`, `LMS / Inline Alert`,
   `Topic-Footer-Nav`, the Course header with its Progress card, and the DS `Modal` for the IBM dialog.
-- **The footer button is a local override, not a DS variant.** `Course-Progression-Button` on
-  `Milestone=Next-Topic`, with the label of its nested `Button` changed to *Complete and continue* (and
-  `Hierarchy=Primary` on E1). On mobile the DS forward control is an icon-only button, so it is swapped for the
-  labelled `Button`. On tablet the two side columns of the footer are set to hug their content on the cards where the
-  button reads *Complete and continue*: with three equal columns of 189 px the wider button ran over the centre
-  label. The completed cards (*Next*) keep the equal columns.
+- **The footer is the DS `Topic-Footer-Nav` with no override:** `Course-Progression-Button` on
+  `Milestone=Next-Topic`, the icon-only forward button on mobile, three equal columns on tablet. The overrides
+  that *Complete and continue* needed were removed.
+- **The question** is the DS `Modal` (`Type=Horizontal`; `Breakpoint=Desktop` on desktop and tablet, `Mobile` on
+  mobile), laid over the screen, with a help icon, the checkbox off and no icon on its buttons. On the mobile
+  cards the screen is cut to one viewport (812) so the dialog sits where the learner sees it.
 - **The inline frame of E1** is still a local frame on DS colour and radius tokens, with a placeholder where the
   third-party page would be, and says so in its layer name.
 - **The IBM screens** are the Course Detail header cropped to 500 px, with the Progress card's percentage
@@ -186,12 +201,13 @@ to mark it complete*). The in-page row lost the modal, so messages before 12 Oct
 
 ### For the design system (not done, needs Nelson)
 
-1. `Topic-Footer-Nav` needs a real *Complete and continue* state: a labelled button on mobile, and side columns
-   that hug on tablet. Until then every screen carries the three overrides above.
+1. `Topic-Footer-Nav` needs nothing: the flow uses it as it is. The dialog is the DS `Modal` as it is.
 2. `Lab-Launch-Card` **v2.0, published by Nelson on 12 Oct and accepted in the ICP file**: `Completed` removed,
    `Opened` with the *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. Read
    back on the 21 instances of the Lab page (6 Ready, 12 Opened, 3 Unavailable). Its default button text is
-   *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change.
+   *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change. **To publish:** on
+   12 Oct (evening) its description and the default text of `Unavailable` were rewritten for *Next asks* (they
+   said *Complete and continue*); no property or variant changed, so no version bump.
 3. `Topic-Header` on mobile with the status badge: the title is squeezed to half the width (157 px of 311) and the
    duration runs under the badge. Same on the Reading mobile screen already in Ready for Dev (`5685:175610`), so
    it was left as the component gives it.
@@ -199,11 +215,13 @@ to mark it complete*). The in-page row lost the modal, so messages before 12 Oct
 ### Not checked
 
 - **Whether the in-page Microsoft lab returns a score.** If it does, E1 could complete by itself. The screens use
-  the same confirmation as every other lab, which is right if nothing comes back and harmless if something does.
-- **Navdeep's answer** to the proposal of 9 Oct. The Lab screens adopt it on Nelson's decision.
-- **The Reading screens took the same flow on 12 Oct** (19 screens, `reading-screen-matrix.md` §4): no Mark as
-  Complete button, *Complete and continue* primary in the footer. Still on Mark as Complete: the download Lab,
-  Activity and the Video fallback.
+  the same question as every other lab, which is right if nothing comes back and harmless if something does.
+- **Navdeep's answer.** The proposal of 9 Oct (*Complete and continue*) had no recorded answer; a message with
+  both options and the links was drafted for him on 12 Oct, and Nelson made *Next asks* the default the same
+  evening.
+- **The other manual topics.** The rule is the default for every topic completed by hand. Drawn so far: Lab (this
+  page) and Reading (21 screens, `reading-screen-matrix.md` §4). The screens of the download Lab, Activity,
+  Podcast and the Video fallback still show a Mark as Complete button and were not redrawn.
 
 ## 5. Asked to the content team (8 Oct 2026, pending)
 
@@ -254,7 +272,8 @@ access through Microsoft Graph is switched off for the organisation.
 lab completes. The first meeting ended on *keep it as it is*: launching the lab completes the topic, with no Mark
 as Complete button. The second reopened it: complete on launch, or leave it to the learner.
 
-**Proposal sent to Navdeep on 9 Oct: *Complete and continue*.** On a topic the platform cannot measure (Reading,
+**Proposal sent to Navdeep on 9 Oct: *Complete and continue*** (on the screens for part of 12 Oct, then replaced
+by *Next asks*, §4 and §9)**.** On a topic the platform cannot measure (Reading,
 Lab), the forward button of the footer marks the topic complete and goes to the next one; the separate Mark as
 Complete button goes away. On video and quiz it stays *Next*.
 
@@ -267,7 +286,7 @@ Complete button goes away. On video and quiz it stays *Next*.
   the lab is opened (breaks the pattern: a video can be marked without playing); Mark as Complete fixed in the
   footer (still a separate click); a clickable tick in the sidebar (marks without opening, hidden on mobile).
 
-**In Figma:** board `Complete and continue · adopted on the Lab screens (12 Oct 2026)` (`6926:14403`, named
+**In Figma:** board `Complete and continue · superseded by Next asks (12 Oct 2026)` (`6926:14403`, named
 *Proposal · Complete and continue (not decided)* until 12 Oct) on the Lab page, to the right of the handoff frame. Four footer states on desktop (1 112) and mobile (343): not completed (*Complete and
 continue*), completed (*Marked as completed* + *Next*), measured topic (*Next*), last topic (*Complete*); and four
 screens in context, Reading and Lab on desktop and mobile, without the Mark as Complete row. Built from the DS
@@ -300,30 +319,30 @@ as the default**. The in-page row is drawn on this real case (AZ-900, *Create a 
 the lab working inside the page, and the frame not loading with the way out to a new tab. Moving the two courses
 to the new tab for good is a Studio setting on the component (*Open tool in* → *New Window*), not development.
 
-## 9. Test, not decided (12 Oct 2026): *Next* asks if the lab is done
+## 9. *Next* asks: from test to default (12 Oct 2026)
 
-Nelson asked for a variant to compare with *Complete and continue*: the navigation goes back to the usual
-*Previous* and *Next*, and *Next* opens a dialog asking whether the learner has done the lab. It is a test in its
-own frame; **the handoff cards of §4 are unchanged and §4 still stands.**
+Nelson first asked for it as a variant to compare with *Complete and continue*: the navigation back to the usual
+*Previous* and *Next*, and *Next* opening a dialog that asks whether the learner has done the lab. After the
+Reading version and the prototype, **he made it the default for every topic completed by hand the same evening**
+("aplica a option B no geral … passa a ser o nosso default em manual topics"). The current rule is in §4; this
+section keeps how it was explored.
 
-**In Figma:** two frames on the Lab page, under the *Complete and continue* board, one per kind of topic the
-platform cannot measure. **Desktop and mobile only for now** (Nelson, 12 Oct); tablet is not drawn.
+**In Figma:** two frames on the Lab page, to the right of the handoff frame, with the superseded *Complete and
+continue* board under them. Desktop and mobile only; tablet is on the handoff cards.
 
 | Frame | Steps |
 |---|---|
-| `Test · Next asks if the lab is done (not decided)` (`7070:14832`): Google lab, desktop and mobile | 1 never opened · 2 opened, not completed · 3 *Next*: the question · 4 completed |
-| `Test · Next asks if the reading is done (not decided)` (`7077:18132`), to its right: Reading, desktop and mobile | 1 not completed · 2 *Next*: the question · 3 completed |
-
-The Reading version sits on the Lab page, not on the Reading page, because the Reading page is *Ready for Dev* and
-this is a test.
+| `Next asks if the lab is done · our default on manual topics (12 Oct 2026)` (`7070:14832`): Google lab | 1 never opened · 2 opened, not completed · 3 *Next*: the question · 4 completed |
+| `Next asks if the reading is done · our default on manual topics (12 Oct 2026)` (`7077:18132`): Reading | 1 not completed · 2 *Next*: the question · 3 completed |
+| `Complete and continue · superseded by Next asks (12 Oct 2026)` (`6926:14403`) | kept as a record |
 
 **In the prototype:** pull request 115 of `nvjeronimo/skillup-lms-prototype`, merged on 12 Oct and live on
-`lms-prototype-mu.vercel.app` (checked on a Reading). Reading, Lesson Page, the
-download lab and the Microsoft lab ask on *Next* and have no Mark as Complete button; the demo menu has a switch
-back to the button (*Completion (test)*). The Google lab of the prototype still simulates a score coming back, so
-it does not ask: the prototype's partner labs are not yet on the screens of §4.
+`lms-prototype-mu.vercel.app` (checked on a Reading). Reading, Lesson Page, the download lab and the Microsoft lab
+ask on *Next* and have no Mark as Complete button; the demo menu still has the switch back to the button
+(*Completion (test)*), written before the decision. The Google lab of the prototype still simulates a score coming
+back, so it does not ask: the prototype's partner labs are not yet on the screens of §4.
 
-**How it works in the test**
+**How it works** (as first written for the test; §4 has the rule)
 
 - The footer is the design system footer as it is. No *Complete and continue*, no Mark as Complete row.
 - *Next* on a topic that is not completed opens the question *Have you finished this lab?* (or *this reading?*;
@@ -334,7 +353,7 @@ it does not ask: the prototype's partner labs are not yet on the screens of §4.
 - The rest is as in §4: the launch card goes from *Ready* to *Opened*; the status shows in the Topic Header and on
   the sidebar row.
 
-**To check before deciding** (written on the frame too)
+**The trade-offs weighed** (written on the frames too)
 
 - Leaving by the sidebar, the top bar or the browser does not ask; the lab stays not completed.
 - Reading asks the same question (Nelson, 12 Oct, for the test): one way of confirming for every topic the
