@@ -177,6 +177,20 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Secondary buttons: one hover rule, the soft fill
+
+- **Decided by Nelson on 12 Oct**, after a yellow fill and then a solid one for Brand the same day: on hover
+  every Secondary fills with its own soft colour and keeps its text and icon colours.
+- **DS `Button`, not published:** *Brand · Secondary · Hover* fills with `bg/primary-soft`, the label is
+  `text/primary` and the icons `icon/primary`; the stroke stays `border/primary`. Destructive
+  (`bg/error-soft`), Success (`bg/accent-green-soft`) and Neutral (`bg/primary-soft`) were already soft.
+  Label on the fill: 7.47:1 in light, 7.13:1 in dark. Named version saved first.
+- **Prototype (PR 118, open):** Brand Secondary hover on `bg/primary-soft`. It replaces PRs 113 and 116.
+- **Seen, not changed:** `Icon Button` Secondary still hovers on `bg/faint` in the three types; Success uses
+  `bg/accent-green-soft` where a `bg/success-soft` token exists (same colour in light, darker in dark); the
+  Secondary icons of Destructive and Success sit on background tokens (`bg/error`, `bg/success`).
+- The *Open* line of the entry below (Brand the only type that fills solid) is closed by this.
+
 ## 2026-10-12 · Button hover states: Brand Primary fixed, Brand Secondary as Nelson redrew it
 
 - **Brand Primary Hover (asked by Nelson):** in `Button` the label and both icons, and in `Icon Button` the
