@@ -180,14 +180,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 ## 2026-10-12 · Secondary buttons: three corrections in the DS and the prototype
 
 - **Asked by Nelson on 12 Oct**, from the three points left open in the entry below. DS `Button` and
-  `Icon Button`, **not published**; named version saved first.
+  `Icon Button`, published by Nelson the same day; named version saved first.
   - `Icon Button`, Secondary, Hover: the fill is the soft colour of the type (Brand `bg/primary-soft`,
     Destructive `bg/error-soft`, Success `bg/success-soft`). It was `bg/faint` in the three.
   - `Button`, Success, Secondary, Hover: `bg/success-soft` instead of `bg/accent-green-soft` (same colour in
     light; #102b1d in dark, was #17523a).
   - Destructive and Success, Secondary, in Default, Focused and Hover of both sets: the icons are bound to
     `icon/error` and `icon/success` (18 icons; they were on `bg/error` and `bg/success`).
-- **Prototype (PR 119, open):** the same three. The icon tokens have the colours of the text ones in the
+- **Checked after the publish:** the library gives the four variants read (Button Success Hover, Button
+  Destructive Default, Icon Button Brand Hover, Icon Button Success Hover) with the new fills and icon
+  tokens. The instances on the screens were not recounted this time.
+- **Prototype (PR 119, merged):** the same three. The icon tokens have the colours of the text ones in the
   prototype, so that part changes nothing on screen.
 - **Still as they were:** the strokes of the Destructive and Success Secondary are on `bg/error` and
   `bg/success`; the Brand Secondary icons of `Button` in Default and Focused are on `bg/primary`; the
