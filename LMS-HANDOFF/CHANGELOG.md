@@ -20,15 +20,19 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **DS, not published:** `LMS/Platform/Discovery/Course-Row` v2.0. The `Title` layer is now the headline
   (the module) inside a *Titles* block, with a new `Context` text property under it: "Course · Program",
   body-small Regular, text/subtle, one line. Active: the module left off in. Available: the first module.
-  Locked: the course stays the headline and `Context` is the program. The delivery badge sits after the
-  text block. 76 tall (was 68). `LMS/Platform/Dashboard/Resume-Row` v1.1: same two lines above its badge;
+  Locked: the course stays the headline and `Context` is the program. **Nelson then updated the row
+  himself, and this is what stands:** a meta row above the headline with the Topic-Types-Badge and the
+  length of the topic the action opens ("Quiz · 8 min"), and no delivery badge. 96 tall (was 68). `LMS/Platform/Dashboard/Resume-Row` v1.1: same two lines above its badge;
   its title wraps, 180 tall with a two-line module name (was 136). Named version saved first.
 - **`Title` is still a layer override on Course-Row**, not a property, so the texts already on the screens
   are kept by the update: they will read as course names in the headline until they are rewritten.
 - **Screens, to do after publish and accept:** 9 rows on *Platform Pages - Ready for Dev* (the three
   Dashboard screens) and 15 on the WIP page: headline to the module, `Context` to the course and program.
-- **Prototype (PR 111, open):** the Dashboard rows show the module and the course; the module is read from
-  each course's own page and outline. In the 728px desktop list a long module name wraps to two lines.
+- **Prototype (PR 111, open):** the Dashboard rows show the topic type and length, the module and the
+  course; all three are read from each course's own page and outline. Rows measured 728 × 96.
+- **Seen in the DS, not changed:** in `State=Active` the unnamed frame around the meta row and the title
+  (*Frame 4*) has a white fill that is not bound to a variable; *Frame 4/5/6* have no layer names; the
+  `Resume-Row` has no meta row and still shows the delivery badge.
 - **Not checked:** whether Open edX returns the module of the resume block in one call. The big program
   Course-Row already assumes it ("Module 2 of 4").
 
