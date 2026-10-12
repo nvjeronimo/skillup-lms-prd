@@ -32,6 +32,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Course-Row: the unbound fill is gone, the proposal frame is deleted
+
+- **Asked by Nelson.** In `LMS/Platform/Discovery/Course-Row`, `State=Active`, the frame around the meta row
+  and the title had a white fill not bound to a variable (a white box in the dark theme). The fill is
+  removed, as in the other two states. The three frames (*Frame 4*, *5*, *6*) are now named *Headline*.
+  No size changed. Named version saved first. **Not published.**
+- The proposal frame on the DS *In review* page (`22401:1103`) is deleted: the component carries it now.
+- Prototype PR 112 and docs PR 46 merged.
+
 ## 2026-10-12 · Course-Row and Resume-Row on the screens
 
 - **Nelson published the DS and accepted the update.** Prototype PR 111 and docs PR 45 merged.
@@ -51,7 +60,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   `6207:250779`): that is a program name, with no module known. They show the component's sample meta row
   and context.
 - **`Resume-Row`** as published has the meta row too and no delivery badge, 172 tall. Prototype PR 112
-  (open) follows.
+  (merged) follows.
 - Two renders checked: one desktop row and one mobile row.
 
 ## 2026-10-12 · Course-Row and Resume-Row lead with the module the learner left off in
