@@ -2,6 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Prototype: an Open Response completes by itself, no Mark as complete button
+
+Prototype pull request 124. No screen and no rule changed: the prototype is brought to the rule already written.
+
+- **Decided by Nelson on 12 Oct:** follow the written rule (`topic-types-inventory.md` §5, `footer-contract.md`
+  row 8). An ORA has no manual completion: the topic completes by itself once the learner has submitted their
+  response and given the required peer reviews. It does not wait for the grade.
+- **Prototype:** the *Mark as complete* button on the grade panel is removed; the topic completes when the review
+  quota is met, and the header then reads *Completed*. Checked in the browser.
+- **Figma:** no ORA screen carries such a button (the file was scanned for it); nothing to change.
+
 ## 2026-10-12 · Prototype audited against the Lab screens and the rules of the day
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Prototype pull request 123.

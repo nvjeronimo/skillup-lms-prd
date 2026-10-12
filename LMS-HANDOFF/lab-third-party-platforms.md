@@ -370,9 +370,10 @@ on every topic the platform cannot measure (pull requests 115, 117, 120, 122, me
 the Figma Lab page the same night (pull request 123):** the partner labs were still on the model of 8 Oct, with the
 Google lab simulating a score. They now match the cards: nothing comes back, the launch card has three states and
 shows *First opened on …*, labels and copy as drawn, and the demo menu's *Lab launch* offers *In the page* and *Not
-loading* on the Microsoft lab (no modal). Two things the audit found and left alone: the ORA results panel ends on a
-*Mark as complete* button although an ORA has no manual completion, and the download lab's button is disabled
-until the files are downloaded (Q-lab-8).
+loading* on the Microsoft lab (no modal). Two things the audit found: the ORA results panel ended on a *Mark as complete*
+button although an ORA has no manual completion (fixed the same night on Nelson's decision, prototype pull request
+124: the topic completes by itself once the response is submitted and the reviews are given, and the button is
+gone), and the download lab's button is disabled until the files are downloaded (Q-lab-8, open).
 
 **How it worked in the first version, without the button** (§4 has the rule)
 
