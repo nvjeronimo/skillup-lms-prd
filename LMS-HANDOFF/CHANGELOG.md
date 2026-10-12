@@ -181,11 +181,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 - **Decided by Nelson on 12 Oct**, after a yellow fill and then a solid one for Brand the same day: on hover
   every Secondary fills with its own soft colour and keeps its text and icon colours.
-- **DS `Button`, not published:** *Brand · Secondary · Hover* fills with `bg/primary-soft`, the label is
+- **DS `Button`, published by Nelson the same day:** *Brand · Secondary · Hover* fills with `bg/primary-soft`, the label is
   `text/primary` and the icons `icon/primary`; the stroke stays `border/primary`. Destructive
   (`bg/error-soft`), Success (`bg/accent-green-soft`) and Neutral (`bg/primary-soft`) were already soft.
   Label on the fill: 7.47:1 in light, 7.13:1 in dark. Named version saved first.
-- **Prototype (PR 118, open):** Brand Secondary hover on `bg/primary-soft`. It replaces PRs 113 and 116.
+- **Prototype (PR 118, merged):** Brand Secondary hover on `bg/primary-soft`. It replaces PRs 113 and 116.
+- **Checked after the publish:** the library gives the soft Secondary hover and the corrected Primary hover.
+  On *Platform Pages - Ready for Dev*, 75 of the 132 Button instances are on the current set and 57 still on
+  an older local copy; no screen uses a Hover variant, no label reads the default, and no badge shows the
+  all-on defaults (570 read).
 - **Seen, not changed:** `Icon Button` Secondary still hovers on `bg/faint` in the three types; Success uses
   `bg/accent-green-soft` where a `bg/success-soft` token exists (same colour in light, darker in dark); the
   Secondary icons of Destructive and Success sit on background tokens (`bg/error`, `bg/success`).
