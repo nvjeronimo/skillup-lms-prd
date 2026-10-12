@@ -66,6 +66,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Row durations follow decision 004 (`approx.` on readings)
+
+- I had written *15 min* on the six reading rows of the two platform pages and asked Nelson which format to
+  use. **It was already decided** (decision 004, BR-33): `approx.` on the types whose time cannot be
+  measured (Reading, Lab, Activity, Project…), never on Video, Recording, Live or a timed Quiz. The
+  prototype was right. The six rows now read *approx. 15 min read*, as the prototype prints it; the video
+  rows keep *14 min* and *10 min*. Named version saved first.
+
 ## 2026-10-12 · Course-Row: the unbound fill is gone, the proposal frame is deleted
 
 - **Asked by Nelson.** In `LMS/Platform/Discovery/Course-Row`, `State=Active`, the frame around the meta row
@@ -87,7 +95,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
   | Course | Topic | Headline | Context |
   |---|---|---|---|
-  | AI-Driven Content and Brand Communication | Reading · 15 min | Module 2 · AI-Assisted Content Development | the course · Certificate Program in AI Augmented Digital Marketing |
+  | AI-Driven Content and Brand Communication | Reading · approx. 15 min read | Module 2 · AI-Assisted Content Development | the course · Certificate Program in AI Augmented Digital Marketing |
   | UX Research and Design Thinking | Video · 14 min | Module 1 · Empathize: Understanding Users | the course |
   | Leadership in Remote Teams | Video · 10 min | Module 3 · Meetings, Rituals and Async Work | the course |
 
