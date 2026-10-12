@@ -2,6 +2,20 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Test "Next asks": Reading asks too, complete flow in Figma, in the prototype
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Still a test, not a decision.
+
+- **Asked by Nelson on 12 Oct:** in the test, a Reading (or any other topic completed by hand) asks the same
+  question on *Next*; update the prototype, then the complete flow in the test frame, desktop and mobile only.
+- **Figma, frame `7070:14832`:** Lab rows start at *never opened* (four steps), and two Reading rows are added
+  (three steps), each on desktop and mobile. Header and notes rewritten for "every topic the platform cannot
+  measure".
+- **Prototype, pull request 115 (open):** Reading, Lesson Page, the download lab and the Microsoft lab ask on
+  *Next* and lose the Mark as Complete button; a switch in the demo menu brings the button back to compare.
+- **Not done:** tablet; the prototype's Google lab (it still simulates a score); the handoff cards of §4 and the
+  Reading page keep *Complete and continue*.
+
 ## 2026-10-12 · Lab: a test frame, *Next* asks if the lab is done (not decided)
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Figma frame `7070:14832` on the Lab page.

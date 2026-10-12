@@ -307,26 +307,36 @@ Nelson asked for a variant to compare with *Complete and continue*: the navigati
 own frame; **the handoff cards of §4 are unchanged and §4 still stands.**
 
 **In Figma:** frame `Test · Next asks if the lab is done (not decided)` (`7070:14832`) on the Lab page, under the
-*Complete and continue* board. Three steps on desktop and on mobile, on the Google lab: the lab opened with the
-usual footer, the question over the page, the lab once completed.
+*Complete and continue* board. **Desktop and mobile only for now** (Nelson, 12 Oct); tablet is not drawn. Since the
+evening of 12 Oct it holds the complete flow, for the two kinds of topic the platform cannot measure:
+
+| Row | Steps |
+|---|---|
+| Lab (Google), desktop and mobile | 1 never opened · 2 opened, not completed · 3 *Next*: the question · 4 completed |
+| Reading, desktop and mobile | 1 not completed · 2 *Next*: the question · 3 completed |
+
+**In the prototype:** pull request 115 of `nvjeronimo/skillup-lms-prototype` (open). Reading, Lesson Page, the
+download lab and the Microsoft lab ask on *Next* and have no Mark as Complete button; the demo menu has a switch
+back to the button (*Completion (test)*). The Google lab of the prototype still simulates a score coming back, so
+it does not ask: the prototype's partner labs are not yet on the screens of §4.
 
 **How it works in the test**
 
 - The footer is the design system footer as it is. No *Complete and continue*, no Mark as Complete row.
-- *Next* on a lab that is not completed opens the question *Have you finished this lab?* (DS `Modal`,
-  `Type=Horizontal`). *Yes, I've finished*: the topic is completed and the learner goes to the next topic.
-  *Not yet*: the learner goes to the next topic and the lab stays not completed. Closing the dialog keeps the
+- *Next* on a topic that is not completed opens the question *Have you finished this lab?* (or *this reading?*;
+  DS `Modal`, `Type=Horizontal`). *Yes, I've finished*: the topic is completed and the learner goes to the next topic.
+  *Not yet*: the learner goes to the next topic and the topic stays not completed. Closing the dialog keeps the
   learner on the page.
-- On a completed lab, *Next* goes straight on.
+- On a completed topic, *Next* goes straight on.
 - The rest is as in §4: the launch card goes from *Ready* to *Opened*; the status shows in the Topic Header and on
   the sidebar row.
 
 **To check before deciding** (written on the frame too)
 
 - Leaving by the sidebar, the top bar or the browser does not ask; the lab stays not completed.
-- Reading: either it keeps *Complete and continue* (two ways of confirming, which the rule of 12 Oct avoided), or
-  every Reading asks the same question on *Next*.
-- A lab never opened: drawn as asking whenever the topic is not completed. The alternative is to skip the question
+- Reading asks the same question (Nelson, 12 Oct, for the test): one way of confirming for every topic the
+  platform cannot measure, at the price of one more click on the most common topic type.
+- A lab never opened (Lab step 1): the question shows whenever the topic is not completed, so it shows there too. The alternative is to skip the question
   until the lab has been opened once, which needs the date of the first opening (Q-lab-6).
 - *Not yet* repeats every time the learner passes through the lab with *Next*.
 - The dialog interrupts a navigation the learner already chose; *Complete and continue* puts the same decision in
