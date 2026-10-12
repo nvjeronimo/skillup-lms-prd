@@ -155,6 +155,19 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Button Brand Secondary: the hover text is `text/on-primary-hover`
+
+- **Decided by Nelson on 12 Oct.** On hover the Brand Secondary fills with `bg/primary-hover` (yellow), and its
+  label was `text/primary` there: 5.09:1 in the light theme, 1.29:1 in the dark one.
+- **DS `Button` v2.2, not published:** in *Type=Brand, Hierarchy=Secondary, State=Hover* the label and both
+  icons are bound to `text/on-primary-hover`. Named version saved first. There is no icon token for this
+  state, so the icons use the text one. 7.05:1 in light, about 11:1 in dark.
+- **Prototype (PR 115, open):** the same on hover.
+- **Seen, not changed:** *Brand Primary Hover* in the DS has its label on `text/primary` over the same yellow
+  fill (the prototype already uses `text/on-primary-hover` there), and *Brand Tertiary* icons sit on
+  `bg/primary`. I had told Nelson the Primary already used `text/on-primary-hover`: true in the prototype,
+  not in the DS.
+
 ## 2026-10-12 · Lab screens: the prerequisites block is the DS Alert
 
 - **Asked by Nelson on 12 Oct**, with an example on *microsoft-ready-desktop*: `LMS/ICP/Topics/Lab-Prerequisites`
@@ -166,7 +179,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   Every block kept its own lines. Named version saved first. Two renders checked (desktop and mobile).
 - **Heights:** desktop blocks are 116 (were 146), in-page ones 96 (were 112); on mobile a three-line Google
   block is 256 (was 226) because the Alert's text column is narrower.
-- **Prototype (PR 114, open):** a new `Alert` molecule in that configuration, used by both lab families.
+- **Prototype (PR 114, merged):** a new `Alert` molecule in that configuration, used by both lab families.
   Measured on a download lab: same colours, radius, padding and type sizes as the Figma Alert.
 - **Not changed:** the `Lab-Prerequisites` component itself, still in the library with no instance left on
   these two pages; the ICP Hub row of the component (it still says ICP 37).
