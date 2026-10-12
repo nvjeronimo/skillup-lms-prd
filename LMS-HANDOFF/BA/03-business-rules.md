@@ -19,7 +19,7 @@ A topic transitions to **Completed** based on its type:
 | Peer-graded | Submitted own work AND reviewed required N peer submissions |
 | Discussion Prompt | Posted ≥ 1 message to the thread |
 | Lab / Activity | As Reading: the question on Next (12 Oct 2026, the default for every topic completed by hand) |
-| Project | Submitted |
+| Project | User clicks "Mark as complete" (as written before 12 Oct 2026 and not reviewed that day; `footer-contract.md` lists Project as completed on submit) |
 
 Completion is **idempotent** — re-triggering does not double-count. Once Completed, a topic stays Completed unless explicitly reset by admin.
 
