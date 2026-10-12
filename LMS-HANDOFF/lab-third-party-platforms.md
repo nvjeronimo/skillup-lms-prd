@@ -365,11 +365,14 @@ continue* board under them. Desktop and mobile only; tablet is on the handoff ca
 | `Next asks if the reading is done · our default on manual topics (12 Oct 2026)` (`7077:18132`): Reading | 1 not completed · 2 *Next*: the question · 3 completed |
 | `Complete and continue · superseded by Next asks (12 Oct 2026)` (`6926:14403`) | kept as a record |
 
-**In the prototype:** pull request 115 of `nvjeronimo/skillup-lms-prototype`, merged on 12 Oct and live on
-`lms-prototype-mu.vercel.app` (checked on a Reading). Reading, Lesson Page, the download lab and the Microsoft lab
-ask on *Next* and have no Mark as Complete button; the demo menu still has the switch back to the button
-(*Completion (test)*), written before the decision. The Google lab of the prototype still simulates a score coming
-back, so it does not ask: the prototype's partner labs are not yet on the screens of §4.
+**In the prototype** (`nvjeronimo/skillup-lms-prototype`, live on `lms-prototype-mu.vercel.app`): the rule of §4
+on every topic the platform cannot measure (pull requests 115, 117, 120, 122, merged on 12 Oct). **Audited against
+the Figma Lab page the same night (pull request 123):** the partner labs were still on the model of 8 Oct, with the
+Google lab simulating a score. They now match the cards: nothing comes back, the launch card has three states and
+shows *First opened on …*, labels and copy as drawn, and the demo menu's *Lab launch* offers *In the page* and *Not
+loading* on the Microsoft lab (no modal). Two things the audit found and left alone: the ORA results panel ends on a
+*Mark as complete* button although an ORA has no manual completion, and the download lab's button is disabled
+until the files are downloaded (Q-lab-8).
 
 **How it worked in the first version, without the button** (§4 has the rule)
 

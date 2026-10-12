@@ -2,6 +2,23 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Prototype audited against the Lab screens and the rules of the day
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Prototype pull request 123.
+
+- **Asked by Nelson on 12 Oct:** make sure the prototype follows the Figma and what was defined.
+- **What did not match:** the partner labs. The Google lab still simulated a score coming back (*waiting for your
+  score*, *Score 1 / 1*, *End lab* on the stand-in page); the launch card had a *Completed* state and read *Open
+  the lab again*; the demo menu still offered a *Modal*; the unavailable card had *Skip for now*.
+- **Now:** nothing comes back; the card has Ready, Opened (*First opened on …*) and Unavailable; copy, labels and
+  steps as on the cards; *In the page* and *Not loading* on the Microsoft lab. Checked in the browser on the Google
+  and Microsoft labs.
+- **What already matched:** Mark as Complete at the end of the content and secondary until the lab is opened, the
+  question on *Next* with Navdeep's copy and three behaviours, no alerts repeated once the lab is opened, the
+  completed status in the header and the sidebar, on Reading, Lesson Page, Activity, Video and Podcast too.
+- **Found and left alone:** the ORA results panel ends on a *Mark as complete* button (an ORA has no manual
+  completion); the download lab's button is disabled until the files are downloaded (Q-lab-8).
+
 ## 2026-10-12 · Lab: Mark as Complete is secondary until the lab has been opened
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4.
