@@ -90,6 +90,22 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Two DS changes of Nelson's followed in the prototype; ICP Hub version 39
+
+- **Found in the library on 12 Oct** by comparing it with what the prototype records (the Figma version
+  history could not be read: the API token had expired, so other changes may exist):
+  - `Button`, Secondary, Hover: the fill is Brand `bg/primary-hover`, Destructive `bg/error-soft`, Success
+    `bg/accent-green-soft` (it was `bg/faint` for the three). `Icon Button` Secondary Hover is still `bg/faint`.
+  - `LMS/Platform/Navigation/Topbar`, Desktop: the sections are 24 apart (were 12).
+- **Prototype (PR 113, open):** both applied. Measured: gaps of 24 in the top bar.
+- **To decide:** in the dark theme the Brand Secondary on hover is `text/primary` on `bg/primary-hover`,
+  1.29:1 (5.09:1 in light). The Primary button uses `text/on-primary-hover` there.
+- **ICP Hub, version 39:** everything of 10 to 12 Oct from this work: nine decisions, the My Learning and
+  Dashboard row, twelve component rows (versions, names without a version, counts of 12 Oct), three open
+  questions added, two removed (already decided), three reworded.
+- **Open:** the V1 badge was deleted without checking the Mobile App file, which a decision of 24 Sep said
+  had to move first. A named version of the DS from before the deletion exists.
+
 ## 2026-10-12 · Row durations follow decision 004 (`approx.` on readings)
 
 - I had written *15 min* on the six reading rows of the two platform pages and asked Nelson which format to
