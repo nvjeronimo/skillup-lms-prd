@@ -2,6 +2,22 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Topbar v2.0 on the screens: instances moved to the new variants
+
+- **Nelson published the DS and accepted the update.** Prototype PR 110 and docs PR 43 merged.
+- **The update had landed only in part:** the two Topbar variants were recreated in the DS, so their keys
+  changed and the screen instances stayed tied to the deleted ones (new padding, old nav). All 81 top bars
+  were swapped to the current variants by key: 44 on *Platform Pages - Ready for Dev* (19 Desktop, 25 Compact)
+  and 37 on the WIP page (14 Desktop, 23 Compact). Named version saved first.
+- **Current item:** *My Learning* is On on every Desktop bar, except the two Dashboard screens, where
+  *Dashboard* is On. Counts read back as 4 and 3. One render checked (My Learning, list).
+- **Height:** the Desktop bars that hugged their content (37 tall after the update, 53 before it) are now
+  72, the height of the component and of the prototype. The Compact bars stay 49 on the screens; the
+  component is 64. Not changed.
+- **Badges recounted** on Platform Ready for Dev, Quizzes, Video and WIP: none shows the all-on defaults
+  after this update, and none is on an older library state.
+- `Topbar` and `Topbar-Item` v2.0 and the removal of the V1 badge are published.
+
 ## 2026-10-12 · Topbar: the active section is set on its item; Topbar-Item rebuilt as a tab
 
 - **Asked by Nelson on 12 Oct:** choose on the component which tab (page) is active. I rebuilt the atom and
@@ -19,7 +35,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **DS:** descriptions of both components updated to say this. Not published when written.
 - **After publish and accept:** check which item is On on every screen (the default is Dashboard, most
   screens need My Learning).
-- **Prototype (PR 110, open):** items fill the bar, 3px bar on the rule, no group rule. Measured at 1280.
+- **Prototype (PR 110, merged):** items fill the bar, 3px bar on the rule, no group rule. Measured at 1280.
 
 ## 2026-10-12 · Badge V1 deleted; badges inside LMS components repaired after the library update
 
