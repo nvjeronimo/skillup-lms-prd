@@ -28,7 +28,7 @@ The topic type drives icon, duration prefix, completion logic, and behavior. **T
 | Type | Icon | Player chrome | Completion | Duration prefix |
 |---|---|---|---|---|
 | **Video** | video-recorder | Video player + transcript/notes/downloads tabs | Auto when video ends ≥ 90% | exact (e.g., "3m 20s") |
-| **Reading** | book-open-01 | Text + downloads | Manual "Mark as complete" | "approx. 8 min" |
+| **Reading** | book-open-01 | Text + downloads | Manual: "Complete and continue" in the footer (12 Oct 2026) | "approx. 8 min" |
 | **Podcast** | headphones-01 | Audio player + transcript | Auto when audio ends ≥ 90% | exact |
 | **Live Session (VILT)** | video-recorder + LIVE dot | Pre-live / Live / Recording chrome | Attendance OR watch recording | scheduled time |
 | **Recording** | video-recorder | Recorded VILT replay | Auto on 90% watched | exact |

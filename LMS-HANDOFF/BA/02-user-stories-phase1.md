@@ -855,14 +855,30 @@ Scenario: Already Completed video
 ```
 
 ### P1-47 · Manual completion for Reading-like types
-**As a** learner, **I want** a Mark Complete button on text-based topics.
+**As a** learner, **I want** a text-based topic to be completed when I say I am done and move on.
+
+*Changed on 12 Oct 2026: the separate "Mark as complete" button became the footer's forward button,
+"Complete and continue" (`reading-screen-matrix.md` §4). The scenario before read: "When I scroll to the bottom
+and click Mark as complete".*
 
 ```gherkin
-Scenario: Mark Reading complete
-  Given I am on a Reading topic
-  When I scroll to the bottom and click "Mark as complete"
+Scenario: Complete a Reading and continue
+  Given I am on a Reading topic that is not completed
+  When I click "Complete and continue" in the footer
   Then the topic is marked Completed
   And `topic_complete` fires with topicType=reading
+  And I am on the next topic
+
+Scenario: Move on without completing
+  Given I am on a Reading topic that is not completed
+  When I open another topic from the sidebar
+  Then the Reading topic stays not completed
+
+Scenario: A completed Reading
+  Given I am on a Reading topic that is Completed
+  Then the footer button reads "Next"
+  And the Topic Header shows "Marked as completed"
+  And the topic's row in the sidebar is Completed
 ```
 
 ### P1-48 · Module progress updates on topic complete

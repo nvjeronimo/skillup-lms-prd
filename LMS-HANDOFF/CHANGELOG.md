@@ -2,6 +2,30 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Reading: Complete and continue on the 19 screens, the Mark as Complete button is gone
+
+[`reading-screen-matrix.md`](reading-screen-matrix.md) §3 and §4. Figma page *Phase 1 · Reading - Ready for Dev*.
+
+- **Asked by Nelson on 12 Oct:** apply *Complete and continue* to the Reading screens.
+- **Every screen:** the Mark as Complete row at the end of the content is removed. The footer's forward button
+  reads *Complete and continue*, primary (a Reading has no other action). Each card is at r2 with a changelog
+  line.
+- **Row 3 is now *Completion (Complete and continue)*:** card 3 not completed, 3.2 completed, 3.4 completed on
+  mobile, with new descriptions. Completed: *Marked as completed* in the Topic Header, the sidebar row
+  *Completed*, *Next* in the footer and no status there.
+- **Card 3.3 (*Completion · Review*) is removed:** it showed the Mark as Complete button and nothing else, so it
+  had become a copy of card 3. 20 screens → 19 (10 desktop, 3 tablet, 6 mobile). Numbers 3.2 and 3.4 are kept.
+- **Same local overrides on the DS footer as on the Lab screens** (label, labelled button on mobile, hugging
+  columns on tablet).
+- **Documents brought in line:** the completion rule in `reading-screen-matrix.md`, `footer-contract.md`
+  (rows Reading and Lab, with a note), `BA/03-business-rules.md`, story P1-47 in `BA/02-user-stories-phase1.md`
+  (three scenarios), `BA/06-glossary.md`, and dated amendments in `topic-types-inventory.md` and
+  `screens-spec.md`.
+- **Not changed:** Video, download Lab, Activity and Podcast screens. Asked as Q-lab-7, with the Open Response
+  inside a Reading (Row 6), which took the flow because it had the button.
+- **For the design system:** `Topic-Status-Badge` has no screen left for its `Mark as Complete` state on Reading
+  or Lab, and `Review` is still unspecified.
+
 ## 2026-10-12 · Lab: completed status in the header and the sidebar only; `Lab-Launch-Card` v2.0 published
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
