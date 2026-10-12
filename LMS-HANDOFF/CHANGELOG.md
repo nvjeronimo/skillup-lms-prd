@@ -2,6 +2,36 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-13 · Design system reorganisation: one page per group, 13 pages, 109 components
+
+Follows the entry *Design system reorganisation: decisions, a pilot page, the page list* further down.
+Script: [`03-design-system/tools/ds-group-page.js`](../03-design-system/tools/ds-group-page.js).
+
+- **Nelson's adjustments to the pilot (13 Oct), now the template:** inside each block the order is the
+  component, properties, measures, what it is and its rules, and the **anatomy last**; the anatomy marker is
+  on `bg/strong`; the documentation frame has a `border/default` stroke; the anatomy stage has no fill, a
+  `border/subtle` stroke and fills the width of the block; component sets carry a `border/default` stroke with
+  radius 5.
+- **LMS ICP, seven pages** after *LMS ICP Components*: Player (4), Sidebar (11), Content (13), Topics (14),
+  Assessment (14), Live (6), Shared (6: Progress Circle, Footnote, Autosave Status, Inline Alert, Empty State,
+  Discussion Prompt).
+- **LMS Platform, six new pages** after *Navigation*: Dashboard (6), My Learning (2), Discovery (8), Program
+  Detail (1), Course Detail (21), Completion (3).
+- **How:** every component was moved, not copied (same nodes, same keys, no rename), smallest first. The
+  anatomy shows the variant with the most visible layers, every boolean on, with up to 12 numbered parts.
+  Properties, measures and rules are read from the component; they are a snapshot of 13 Oct and do not update
+  by themselves: run the script again with `REBUILD` after a component changes.
+- **Checked:** no component is left on the two old pages; 109 blocks, no script error; no anatomy wider than
+  its stage; five blocks looked at as images. Not every block was looked at.
+- **Left as it was:** on *LMS ICP Components* and *LMS Platform Components*, the now empty group frames, the
+  notes, the Playground, the *how to configure* guide and the responsive proofs. `Discussion Prompt` sat in the
+  Assessments frame and is on *Shared* because of its name (`LMS / Discussion Prompt`).
+- **Known rough edges:** a marker can sit on the corner of the part it names; in the Sidebar anatomy every
+  module is open (every boolean on), which no screen shows.
+- Named versions saved before and after. **Not published.**
+- **Next:** a *Start here* index page; the two old pages as indexes or removed (Nelson to say); the Base pages
+  we use; the Figma links in the ICP Hub.
+
 ## 2026-10-12 · Prototype: an Open Response completes by itself, no Mark as complete button
 
 Prototype pull request 124. No screen and no rule changed: the prototype is brought to the rule already written.
