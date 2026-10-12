@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: a test frame, *Next* asks if the lab is done (not decided)
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Figma frame `7070:14832` on the Lab page.
+
+- **Asked by Nelson on 12 Oct, as a test:** the navigation back to *Previous* and *Next* only, and a dialog on
+  *Next* asking whether the learner has done the lab. Drawn on the Google lab, desktop and mobile, three steps each.
+- **Nothing else changed:** the 30 Lab cards and the 19 Reading screens keep *Complete and continue*.
+- The frame lists what to check before choosing between the two (Reading, a lab never opened, the repeated
+  question, leaving by the sidebar).
+
 ## 2026-10-12 · Reading: Complete and continue on the 19 screens, the Mark as Complete button is gone
 
 [`reading-screen-matrix.md`](reading-screen-matrix.md) §3 and §4. Figma page *Phase 1 · Reading - Ready for Dev*.
