@@ -16,8 +16,9 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   3.6 mobile); Row 3 is *Completion (Next asks)*.
 - **No local override left on the footer.** The dialog is the DS `Modal` as it is. Nothing to add to the design
   system for this flow.
-- **DS, to publish:** the description of `Lab-Launch-Card` and the default text of its `Unavailable` state said
-  *Complete and continue*; rewritten. No property or variant changed, no version bump.
+- **DS, published the same evening:** the description of `Lab-Launch-Card` and the default text of its
+  `Unavailable` state said *Complete and continue*; rewritten. No property or variant changed, no version bump.
+  Read back in the ICP file on the 27 instances of the Lab page.
 - **Figma boards:** the two test frames are renamed *… our default on manual topics (12 Oct 2026)* and sit to the
   right of the handoff frame; the *Complete and continue* board is marked superseded and kept as a record.
 - **Documents:** the rule in `footer-contract.md`, `BA/03-business-rules.md`, story P1-47 (six scenarios),
