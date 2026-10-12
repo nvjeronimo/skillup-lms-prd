@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: a test frame, *Next* asks if the lab is done (not decided)
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Figma frame `7070:14832` on the Lab page.
+
+- **Asked by Nelson on 12 Oct, as a test:** the navigation back to *Previous* and *Next* only, and a dialog on
+  *Next* asking whether the learner has done the lab. Drawn on the Google lab, desktop and mobile, three steps each.
+- **Nothing else changed:** the 30 Lab cards and the 19 Reading screens keep *Complete and continue*.
+- The frame lists what to check before choosing between the two (Reading, a lab never opened, the repeated
+  question, leaving by the sidebar).
+
 ## 2026-10-12 · Reading: Complete and continue on the 19 screens, the Mark as Complete button is gone
 
 [`reading-screen-matrix.md`](reading-screen-matrix.md) §3 and §4. Figma page *Phase 1 · Reading - Ready for Dev*.
@@ -101,8 +111,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   Every block kept its own lines. Named version saved first. Two renders checked (desktop and mobile).
 - **Heights:** desktop blocks are 116 (were 146), in-page ones 96 (were 112); on mobile a three-line Google
   block is 256 (was 226) because the Alert's text column is narrower.
+- **Prototype (PR 114, open):** a new `Alert` molecule in that configuration, used by both lab families.
+  Measured on a download lab: same colours, radius, padding and type sizes as the Figma Alert.
 - **Not changed:** the `Lab-Prerequisites` component itself, still in the library with no instance left on
-  these two pages; the prototype's Lab screens; the ICP Hub row of the component (it still says ICP 37).
+  these two pages; the ICP Hub row of the component (it still says ICP 37).
 - **To know:** the Alert is on its *Breakpoint=Mobile* variant on desktop and tablet too, as in the example.
 
 ## 2026-10-12 · Two DS changes of Nelson's followed in the prototype; ICP Hub version 39
@@ -112,7 +124,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   - `Button`, Secondary, Hover: the fill is Brand `bg/primary-hover`, Destructive `bg/error-soft`, Success
     `bg/accent-green-soft` (it was `bg/faint` for the three). `Icon Button` Secondary Hover is still `bg/faint`.
   - `LMS/Platform/Navigation/Topbar`, Desktop: the sections are 24 apart (were 12).
-- **Prototype (PR 113, open):** both applied. Measured: gaps of 24 in the top bar.
+- **Prototype (PR 113, merged):** both applied. Measured: gaps of 24 in the top bar.
 - **To decide:** in the dark theme the Brand Secondary on hover is `text/primary` on `bg/primary-hover`,
   1.29:1 (5.09:1 in light). The Primary button uses `text/on-primary-hover` there.
 - **ICP Hub, version 39:** everything of 10 to 12 Oct from this work: nine decisions, the My Learning and

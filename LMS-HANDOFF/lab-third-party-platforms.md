@@ -299,3 +299,36 @@ What it meant for the screens, done the same day (§4): Nelson kept **both ways 
 as the default**. The in-page row is drawn on this real case (AZ-900, *Create a virtual machine in the portal*):
 the lab working inside the page, and the frame not loading with the way out to a new tab. Moving the two courses
 to the new tab for good is a Studio setting on the component (*Open tool in* → *New Window*), not development.
+
+## 9. Test, not decided (12 Oct 2026): *Next* asks if the lab is done
+
+Nelson asked for a variant to compare with *Complete and continue*: the navigation goes back to the usual
+*Previous* and *Next*, and *Next* opens a dialog asking whether the learner has done the lab. It is a test in its
+own frame; **the handoff cards of §4 are unchanged and §4 still stands.**
+
+**In Figma:** frame `Test · Next asks if the lab is done (not decided)` (`7070:14832`) on the Lab page, under the
+*Complete and continue* board. Three steps on desktop and on mobile, on the Google lab: the lab opened with the
+usual footer, the question over the page, the lab once completed.
+
+**How it works in the test**
+
+- The footer is the design system footer as it is. No *Complete and continue*, no Mark as Complete row.
+- *Next* on a lab that is not completed opens the question *Have you finished this lab?* (DS `Modal`,
+  `Type=Horizontal`). *Yes, I've finished*: the topic is completed and the learner goes to the next topic.
+  *Not yet*: the learner goes to the next topic and the lab stays not completed. Closing the dialog keeps the
+  learner on the page.
+- On a completed lab, *Next* goes straight on.
+- The rest is as in §4: the launch card goes from *Ready* to *Opened*; the status shows in the Topic Header and on
+  the sidebar row.
+
+**To check before deciding** (written on the frame too)
+
+- Leaving by the sidebar, the top bar or the browser does not ask; the lab stays not completed.
+- Reading: either it keeps *Complete and continue* (two ways of confirming, which the rule of 12 Oct avoided), or
+  every Reading asks the same question on *Next*.
+- A lab never opened: drawn as asking whenever the topic is not completed. The alternative is to skip the question
+  until the lab has been opened once, which needs the date of the first opening (Q-lab-6).
+- *Not yet* repeats every time the learner passes through the lab with *Next*.
+- The dialog interrupts a navigation the learner already chose; *Complete and continue* puts the same decision in
+  the label of the button, before the click.
+
