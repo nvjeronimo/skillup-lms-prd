@@ -23,8 +23,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Documents:** the rule in `footer-contract.md`, `BA/03-business-rules.md`, story P1-47 (six scenarios),
   `BA/06-glossary.md`, `topic-types-inventory.md`, `screens-spec.md`; Q-lab-3 closed, Q-lab-7 rewritten.
 - **Prototype:** already the default there since pull request 115.
-- **Not done:** the other manual topics (download Lab, Activity, the Video fallback) still show a Mark as Complete
-  button on their screens; the prototype's Google lab still simulates a score; Navdeep's answer was not seen.
+- **Topic Content Types Discovery page:** the Mark as Complete button is removed from the seven manual-topic
+  screens that still had it: the download Lab, the Reading and the three Lesson Page canonical pages, and the two
+  superseded Microsoft sources. Only the button was removed; their body copy was not reviewed.
+- **Left with a Mark as Complete button, to decide:** Podcast and Activity (one screen each on that page: the
+  documents disagree on whether they complete by hand) and the Video fallback (one screen there, one on the Video
+  page). Asked as Q-lab-7.
+- **Not done:** the prototype's Google lab still simulates a score; Navdeep's answer was not seen.
 
 ## 2026-10-12 · Test "Next asks": the Reading version has its own frame
 
