@@ -196,7 +196,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.1 | 2026-10-11 | Changed, not published | 2 | 2026-10-11 · Desktop: the five sections are one `Horizontal tabs` instance (Underline, md), no longer five `Topbar-Item` |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.1 | 2026-10-11 | Published | 2 | 2026-10-11 · Desktop: the five sections are one `Horizontal tabs` instance (Underline, md), no longer five `Topbar-Item` |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed |
 
 **Dashboard**
@@ -287,7 +287,7 @@ A link marked *(page)* goes to the component's page in the library.
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
-| [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v2.0 | 2026-10-11 | Changed, not published |  | 2026-10-11 · A bg/muted track with a pill for the current segment; the segments are no longer joined |
+| [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v2.0 | 2026-10-11 | Published |  | 2026-10-11 · A bg/muted track with a pill for the current segment; the segments are no longer joined |
 | [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.0 | 2026-10-08 | Published |  | 2026-09-22 · ORA on tablet and mobile; the all-content example covers the whole catalogue |
 | [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.0 | 2026-10-08 | Published |  | 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited |
 | [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |

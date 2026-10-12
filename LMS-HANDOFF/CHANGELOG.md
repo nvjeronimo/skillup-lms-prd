@@ -2,6 +2,19 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Top bar tabs and Button group on the screens, after the DS update
+
+- **Nelson published the DS and accepted the update on 12 Oct** (`Topbar` v1.1, `Button group` v2.0).
+  Prototype PR 108 and docs PR 41 merged. Named version saved in the product file first.
+- **Top bar:** the 19 desktop bars on *Platform Pages - Ready for Dev* and the 14 on the WIP page show the
+  tabs. *My Learning* is current everywhere except the two Dashboard desktop screens, set to *Dashboard*.
+- **Button group:** 7 visible groups per page (3 Q&A filters, 4 Grid / List toggles) are a track with a
+  pill. The colour overrides of 10 Oct are gone. Several current segments were still tied to an older
+  library state of `_Button group base`; they were swapped to the current variant through a fresh
+  `Button group` instance (the base is private, so it cannot be imported by key), labels and icons kept.
+- **Not touched:** 4 hidden toggles per page (tablet and mobile, where the collection is Grid only).
+- **Seen, not changed:** the top bar instances on the screens are 53 tall, the DS component is 72.
+
 ## 2026-10-11 · Button group: a track with a pill for the current segment
 
 - **Decided by Nelson on 11 Oct:** of six options for the selected state of the Grid / List toggle he chose
@@ -16,7 +29,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Screens, not done:** they change when the library is published and the update accepted. The 11 groups
   on *Platform Pages - Ready for Dev* carry fill and stroke overrides on their segments (from 10 Oct) that
   will survive the update and have to be cleared after it; the WIP page was not counted.
-- **Prototype (PR 108, open):** the My Learning view toggle and the Q&A filter. Measured on My Learning:
+- **Prototype (PR 108, merged):** the My Learning view toggle and the Q&A filter. Measured on My Learning:
   98 × 40, segments 44 × 32. The Q&A filter and the dark theme were not opened in the browser.
 
 ## 2026-10-11 · The platform top bar shows its sections as underline tabs
