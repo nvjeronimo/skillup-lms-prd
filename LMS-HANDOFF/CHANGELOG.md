@@ -206,6 +206,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · `bg/overlay` is 70%
+
+- **Asked by Nelson on 12 Oct**, in the variables. `bg/overlay`, the dim layer behind a modal or over a video,
+  goes from 50% to 70%: rgba(14, 26, 31, 0.7) in the six modes.
+- **How:** `bg/overlay` aliases one primitive that nothing else aliases. Its alpha was changed and it was
+  renamed to say what it is, `Colors/SKO-Brand/Dark-Neutral/950-alpha-70` (was `…950-alpha-50`). No token
+  was added. Named version saved first. **Not published.**
+- **Not changed:** `bg/overlay-soft` (20%); the prototype, whose `--color-bg-overlay` is still #0e1a1f80
+  (50%), used by the modal backdrop, the video caption and the gradient under the player controls.
+- **Not checked:** layers bound straight to the primitive instead of to `bg/overlay`, if any.
+
 ## 2026-10-12 · Buttons: the last three tokens out of place
 
 - **Asked by Nelson on 12 Oct.** DS `Button` and `Icon Button`, **not published**; named version saved first.
