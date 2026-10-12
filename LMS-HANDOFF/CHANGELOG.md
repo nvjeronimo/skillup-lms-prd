@@ -2,6 +2,17 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Test "Next asks": the Reading version has its own frame
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Figma frame `7077:18132` on the Lab page.
+
+- **Asked by Nelson on 12 Oct:** the Reading version of the test flow. The two Reading rows moved out of the Lab
+  test frame into `Test · Next asks if the reading is done (not decided)`, to its right, with its own header and
+  notes (one more click on 30% of the program; the question does not know how far the learner read; an Open
+  Response inside a Reading is not drawn).
+- It stays on the Lab page: the Reading page is *Ready for Dev* and this is a test.
+- The prototype change (pull request 115) is merged and live.
+
 ## 2026-10-12 · Test "Next asks": Reading asks too, complete flow in Figma, in the prototype
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Still a test, not a decision.

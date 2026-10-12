@@ -306,16 +306,19 @@ Nelson asked for a variant to compare with *Complete and continue*: the navigati
 *Previous* and *Next*, and *Next* opens a dialog asking whether the learner has done the lab. It is a test in its
 own frame; **the handoff cards of §4 are unchanged and §4 still stands.**
 
-**In Figma:** frame `Test · Next asks if the lab is done (not decided)` (`7070:14832`) on the Lab page, under the
-*Complete and continue* board. **Desktop and mobile only for now** (Nelson, 12 Oct); tablet is not drawn. Since the
-evening of 12 Oct it holds the complete flow, for the two kinds of topic the platform cannot measure:
+**In Figma:** two frames on the Lab page, under the *Complete and continue* board, one per kind of topic the
+platform cannot measure. **Desktop and mobile only for now** (Nelson, 12 Oct); tablet is not drawn.
 
-| Row | Steps |
+| Frame | Steps |
 |---|---|
-| Lab (Google), desktop and mobile | 1 never opened · 2 opened, not completed · 3 *Next*: the question · 4 completed |
-| Reading, desktop and mobile | 1 not completed · 2 *Next*: the question · 3 completed |
+| `Test · Next asks if the lab is done (not decided)` (`7070:14832`): Google lab, desktop and mobile | 1 never opened · 2 opened, not completed · 3 *Next*: the question · 4 completed |
+| `Test · Next asks if the reading is done (not decided)` (`7077:18132`), to its right: Reading, desktop and mobile | 1 not completed · 2 *Next*: the question · 3 completed |
 
-**In the prototype:** pull request 115 of `nvjeronimo/skillup-lms-prototype` (open). Reading, Lesson Page, the
+The Reading version sits on the Lab page, not on the Reading page, because the Reading page is *Ready for Dev* and
+this is a test.
+
+**In the prototype:** pull request 115 of `nvjeronimo/skillup-lms-prototype`, merged on 12 Oct and live on
+`lms-prototype-mu.vercel.app` (checked on a Reading). Reading, Lesson Page, the
 download lab and the Microsoft lab ask on *Next* and have no Mark as Complete button; the demo menu has a switch
 back to the button (*Completion (test)*). The Google lab of the prototype still simulates a score coming back, so
 it does not ask: the prototype's partner labs are not yet on the screens of §4.
