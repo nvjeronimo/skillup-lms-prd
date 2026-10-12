@@ -177,6 +177,23 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Buttons: the last three tokens out of place
+
+- **Asked by Nelson on 12 Oct.** DS `Button` and `Icon Button`, **not published**; named version saved first.
+  - **Strokes of the Destructive and Success Secondary** (Default, Hover, Focused, Loading; 16 variants):
+    `bg/error` → `border/error`, `bg/success` → `border/success`. It shows: the Destructive outline goes
+    from #da3336 to #b62226 in light (the colour of its label) and from #e26567 to #f3afb0 in dark; the
+    Success one is the same in light and goes from #2d9c5b to #72d99a in dark.
+  - **Brand icons on `bg/primary`** → `icon/primary`: Secondary Default and Focused, and the three Tertiary
+    states that had the same binding (10 icons). Same colour in both themes: nothing changes on screen.
+  - **Destructive and Success Primary Hover:** the fill goes from the border token to the background one
+    (`border/error-soft` → `bg/error-soft`, `border/success-soft` → `bg/success-soft`) and the icons from
+    `bg/error`, `bg/success` to `icon/error`, `icon/success`. It shows: the hover fill is lighter (#f3afb0 →
+    #fce8e8 and #aaedc2 → #e4fced in light).
+- **Prototype:** no change needed. It already used `border/error`, `border/success`, `icon/primary`,
+  `bg/error-soft` and `bg/success-soft` in these places.
+- PRs 119 (prototype) and 59, 60 (docs) merged.
+
 ## 2026-10-12 · Secondary buttons: three corrections in the DS and the prototype
 
 - **Asked by Nelson on 12 Oct**, from the three points left open in the entry below. DS `Button` and
