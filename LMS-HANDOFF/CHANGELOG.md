@@ -56,9 +56,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Asked by Nelson.** In `LMS/Platform/Discovery/Course-Row`, `State=Active`, the frame around the meta row
   and the title had a white fill not bound to a variable (a white box in the dark theme). The fill is
   removed, as in the other two states. The three frames (*Frame 4*, *5*, *6*) are now named *Headline*.
-  No size changed. Named version saved first. **Not published.**
+  No size changed. Named version saved first. Published and accepted by Nelson the same day; checked
+  after: the 24 rows on the two platform pages are on the current version, 96 and 172 tall, texts intact.
 - The proposal frame on the DS *In review* page (`22401:1103`) is deleted: the component carries it now.
-- Prototype PR 112 and docs PR 46 merged.
+- Prototype PR 112 and docs PRs 46 and 47 merged.
 
 ## 2026-10-12 · Course-Row and Resume-Row on the screens
 
