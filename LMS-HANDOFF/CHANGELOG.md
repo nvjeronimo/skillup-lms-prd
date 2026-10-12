@@ -2,6 +2,26 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Badge V1 deleted; badges inside LMS components repaired after the library update
+
+- **Nelson published the DS and accepted the update** (Badge v2.1, names without a version). Prototype PR 109
+  and docs PR 42 merged.
+- **Badge V1 deleted** (Nelson's go-ahead): `Badge-V1_to-remove`, 453 variants, removed from the Badges page
+  of the DS. Named version saved first. **Not published yet.** The count before deleting: no instance on the
+  five DS pages we use nor on the ten product pages outside Discovery and Archive.
+- **Regression found after the update, repaired:** on the screens, the `Badge` nested in the LMS wrappers
+  (`Topic-Types-Badge`, `Topic-Status-Badge`, `Provider-Partner-Badge`, `Delivery-Mode-Badge`,
+  `Difficulty-Badge`, `Program-Card`) fell back to the Badge defaults and showed a dot, a trailing arrow and
+  a close icon. In the DS the wrappers are right. Set back to what the DS wrappers define on 994 badges:
+  Quizzes 352, WIP 223, Platform Ready for Dev 211, Video 148, Lab 38, Reading 16, Topic Content Types 6;
+  none on Overlay Panels, Completion and Course Detail Components. Texts and icons had survived. One render
+  checked (the sidebar on the WIP page). **Why it happened is not established**: `Badge` defaults are
+  all-on, so any wrapper that loses its overrides shows them.
+- **43 badges on an older library state** (10 on Platform Ready for Dev, 12 on Video, 21 on WIP) re-pointed
+  to the current `Badge`, texts and sizes compared before and after. Eight of them, inside four instances of
+  the old `LMS / Course Card_Remove` on the WIP page, lost their leading icon in the swap and got it back
+  from the same badge elsewhere on the page.
+
 ## 2026-10-12 · No version in component names; Badge icons follow the label colour
 
 - **Decided by Nelson on 12 Oct:** Buttons and Badges are the current components by default, V1 goes, and no
@@ -19,7 +39,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
   `icon/accent-<hue>` token for those eight). In Soft Light the accents and extras had white (on-accent)
   icons on a light fill; they now use the label's variable. Four Modern Info variants had `icon/primary`.
   The white leading icon on its filled disc in Plain is unchanged.
-- **Prototype (PR 109, open):** the same wording in 35 files of comments. No code change.
+- **Prototype (PR 109, merged):** the same wording in 35 files of comments. No code change.
 
 ## 2026-10-12 · Top bar tabs and Button group on the screens, after the DS update
 
