@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: the launch card says opened, never complete (`Lab-Launch-Card` v2.0), 30 cards
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
+
+- **Decided by Nelson on 12 Oct:** the card has no *Completed* state, because nothing comes back from the partner.
+  It goes from *Ready* to *Opened* on the first click and shows the date of the first opening. The topic completes
+  only with *Complete and continue*. To skip, the learner uses the sidebar.
+- **`LMS/ICP/Topics/Lab-Launch-Card` v2.0 (MAJOR: a variant is removed).** `State` = Ready · Opened · Unavailable.
+  `Opened` carries the layer *Opened date* (*First opened on 12 Oct 2026*) and keeps the lab title and the
+  partner line; `Unavailable` loses *Skip for now*; default texts no longer mention a score. Nelson built and
+  published the new `Opened`; the text corrections, the layer name and the two removals are in the DS file and
+  ship with the next publish.
+- **Screens, 6 new cards:** *Opened* for Google and Microsoft on desktop, tablet and mobile (G2, M2). The launch
+  button is secondary there and *Complete and continue* is primary. The completed cards are G3 and M3 again and
+  their launch card stays *Opened*.
+- **To build:** the date of the first opening is kept per learner and topic on the server (Q-lab-6).
+- No instance of *Completed* is left on the Lab page or on the discovery page (the two superseded sources were
+  moved to *Opened*). Other pages were not scanned: on 8 Oct the card was only on these two.
+
 ## 2026-10-12 · Lab screens: Complete and continue adopted, 33 cards down to 24
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4, rewritten. Figma page `6789:325`.

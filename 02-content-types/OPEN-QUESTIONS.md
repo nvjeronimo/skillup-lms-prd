@@ -47,3 +47,4 @@ Asked to Kirti Mishra / Simran Jindal in the *ICP Labs discussions* chat. Contex
 | Q-lab-3 | **Microsoft (link)** — keep Open edX's *complete on view*, or have the learner mark the topic complete after the lab? | Navdeep / Nelson | 🟠 Screens adopt *Complete and continue* (Nelson, 12 Oct): the footer button completes and moves on, for every lab. Navdeep's answer to the proposal of 9 Oct not seen. |
 | Q-lab-4 | **IBM** — which page does the learner land on after *Start course*, and is the whole course on IBM's side or only the labs? | Kirti / content team | ⚪ |
 | Q-lab-5 | **IBM** — how do we know today that a learner completed the course on IBM (report, certificate, nothing)? | Kirti / content team | ⚪ |
+| Q-lab-6 | **Launch card, *First opened on …*** — where is the launch click recorded today, and can it keep the date of the first opening per learner and topic on the server (instead of marking the topic complete)? | Vikas / engineering | ⚪ |
