@@ -118,12 +118,12 @@ opening the lab does not complete the topic.
 
 | State | Launch card | End of the content | Footer | Topic status |
 |---|---|---|---|---|
-| **Ready** (G1, M1): never opened | *Ready*, button primary | **Mark as Complete** | *Previous* · *Next* | no status |
-| **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Mark as Complete** | *Previous* · *Next* | no status |
+| **Ready** (G1, M1): never opened | *Ready*, button primary | **Mark as Complete**, secondary | *Previous* · *Next* | no status |
+| **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Mark as Complete**, primary | *Previous* · *Next* | no status |
 | **The question** (G3, M3): *Next* without Mark as Complete | under the dialog | under the dialog | under the dialog | no status |
 | **Completed** (G4, M4) | *Opened*, unchanged | nothing | *Previous* · *Next*, which goes straight on | *Marked as completed* in the Topic Header; the topic's row in the sidebar becomes *Completed*. Nothing in the footer |
-| Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | **Mark as Complete** | *Previous* · *Next* | no status |
-| Lab inside the page (E1) | none | **Mark as Complete** | *Previous* · *Next* | no status |
+| Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | **Mark as Complete**, secondary | *Previous* · *Next* | no status |
+| Lab inside the page (E1) | none | **Mark as Complete**, primary | *Previous* · *Next* | no status |
 
 The in-page rows have no question card of their own: the dialog is the one of G3 and M3.
 
@@ -132,10 +132,15 @@ The in-page rows have no question card of their own: the dialog is the one of G3
 **The footer shows no status** (`Topic-Footer-Nav`, `Show Badge` off). On mobile the sidebar row is in the outline,
 behind the menu.
 
+**One primary action at a time** (Nelson, 12 Oct): while the lab has not been opened, the launch button is the
+primary action and Mark as Complete is secondary. Once the lab has been opened they swap: the launch button is
+secondary and Mark as Complete is primary. Where there is no launch card (E1) Mark as Complete is primary from the
+start. On the screens this is a local override of the `Button` nested in `Topic-Status-Badge`
+(`Hierarchy=Secondary`); the DS component has no property for it.
+
 **Worth knowing:** there are now two ways of completing, the button and the question. Nelson's rule earlier the
 same day was one way only; the question is kept as the safety net for the learner who moves on without the
-button. A lab's page has two primary buttons until the lab is opened (the launch button and Mark as Complete);
-not reviewed.
+button.
 
 ### The launch card says *opened*, never *complete*
 
@@ -146,8 +151,8 @@ the lab was opened, and when for the first time.
 - **Ready → Opened** on the first click on the launch button. The card keeps its title and its partner line and
   adds *First opened on {date}*. It stays *Opened* from then on, also after the topic is completed; the button
   keeps opening the lab, which can be redone any number of times.
-- **The launch button is primary until the lab has been opened, secondary after.** The footer does not change with
-  it, and nothing is disabled in either state.
+- **The launch button is primary until the lab has been opened, secondary after; Mark as Complete is the
+  reverse.** The footer does not change with it, and nothing is disabled in either state.
 - **Completion lives in one place:** the topic's status (Topic Header and sidebar row). A learner who completes
   without ever opening the lab gets a completed topic and a card still in *Ready*. That is what happened, so the
   screens do not hide it.

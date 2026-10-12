@@ -2,6 +2,18 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: Mark as Complete is secondary until the lab has been opened
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4.
+
+- **Decided by Nelson on 12 Oct:** one primary action at a time. Never opened: the launch button is primary and
+  Mark as Complete secondary. Opened: they swap. No launch card (lab inside the page): Mark as Complete is primary.
+- **Figma:** secondary on G1, M1 and E2 (desktop, tablet, mobile) and on the first step of the Lab flow frame; a
+  local override of the `Button` nested in `Topic-Status-Badge`. Descriptions of the Ready, Opened and
+  not-loading cards say so.
+- **Prototype:** `TopicActionBar` takes `secondary`; the shell sets it on a partner lab that has not been opened.
+- **For the design system:** `Topic-Status-Badge` has no property for the hierarchy of Mark as Complete.
+
 ## 2026-10-12 · Lab: fewer alerts once the lab has been opened
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4, *What the learner is told*.
