@@ -855,21 +855,29 @@ Scenario: Already Completed video
 ```
 
 ### P1-47 · Manual completion for Reading-like types
-**As a** learner, **I want** to be asked whether I have finished a text-based topic when I move on.
+**As a** learner, **I want** a Mark as Complete button on text-based topics, and to be asked if I move on without it.
 
-*Changed on 12 Oct 2026: the separate "Mark as complete" button is gone. The footer is the usual Previous / Next,
-and Next asks (`reading-screen-matrix.md` §4). The scenario before read: "When I scroll to the bottom and click
-Mark as complete". The same applies to every topic completed by hand (a lab, a lesson page).*
+*Changed on 12 Oct 2026 after Navdeep's Figma comments: the "Mark as Complete" button stays at the end of the
+content, and Next on a topic that is not completed asks whether the learner has completed it
+(`reading-screen-matrix.md` §4). The same applies to every topic the platform cannot measure (a lab, a lesson page,
+an activity; a video or a podcast when playback cannot be measured).*
 
 ```gherkin
+Scenario: Mark Reading complete
+  Given I am on a Reading topic that is not completed
+  When I scroll to the bottom and click "Mark as Complete"
+  Then the topic is marked Completed
+  And `topic_complete` fires with topicType=reading
+  And I stay on the topic, without the button
+
 Scenario: Next asks on a Reading that is not completed
   Given I am on a Reading topic that is not completed
   When I click "Next" in the footer
-  Then a dialog asks "Have you finished this reading?"
+  Then a dialog asks "Have you completed this reading?"
 
-Scenario: Yes, I've finished
+Scenario: Yes, completed
   Given the dialog is open
-  When I click "Yes, I've finished"
+  When I click "Yes, completed"
   Then the topic is marked Completed
   And `topic_complete` fires with topicType=reading
   And I am on the next topic
@@ -887,10 +895,11 @@ Scenario: Closing the dialog
 
 Scenario: A completed Reading
   Given I am on a Reading topic that is Completed
-  When I click "Next" in the footer
-  Then I am on the next topic, without a question
+  Then there is no "Mark as Complete" button
   And the Topic Header shows "Marked as completed"
   And the topic's row in the sidebar is Completed
+  When I click "Next" in the footer
+  Then I am on the next topic, without a question
 
 Scenario: Leaving by the sidebar
   Given I am on a Reading topic that is not completed

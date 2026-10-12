@@ -9,16 +9,16 @@ A topic transitions to **Completed** based on its type:
 
 | Topic type | Trigger |
 |---|---|
-| Video | Video playback reaches ≥ 90% of total duration in a single session OR cumulative across sessions. If playback cannot be measured: as Reading, the question on Next (12 Oct 2026) |
+| Video | Video playback reaches ≥ 90% of total duration in a single session OR cumulative across sessions. If playback cannot be measured: as Reading (12 Oct 2026) |
 | Recording | Same as Video |
-| Podcast | Audio reaches ≥ 90%. If it cannot be measured: as Reading, the question on Next (12 Oct 2026) |
-| Reading | User answers "Yes, I've finished" to the question Next opens on a topic that is not completed (12 Oct 2026; before: "Mark as complete") |
+| Podcast | Audio reaches ≥ 90%. If it cannot be measured: as Reading (12 Oct 2026) |
+| Reading | User clicks "Mark as Complete" at the end of the content, or answers "Yes, completed" to the question Next opens on a topic that is not completed (12 Oct 2026) |
 | Live Session (VILT) | Attended live (system detects join + ≥ 50% session duration) OR watched recording to ≥ 90% post-event |
 | Practice Quiz | Submitted, regardless of score |
 | Graded Assignment | Submitted (grade calculated separately, doesn't block completion) |
 | Peer-graded | Submitted own work AND reviewed required N peer submissions |
 | Discussion Prompt | Posted ≥ 1 message to the thread |
-| Lab / Activity | As Reading: the question on Next (12 Oct 2026, the default for every topic completed by hand) |
+| Lab / Activity | As Reading (12 Oct 2026) |
 | Project | User clicks "Mark as complete" (as written before 12 Oct 2026 and not reviewed that day; `footer-contract.md` lists Project as completed on submit) |
 
 Completion is **idempotent** — re-triggering does not double-count. Once Completed, a topic stays Completed unless explicitly reset by admin.

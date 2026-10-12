@@ -2,6 +2,35 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Navdeep's comments applied: Mark as Complete is back, *Next* still asks, new dialog copy
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4 and §9, [`reading-screen-matrix.md`](reading-screen-matrix.md) §4.
+
+- **Navdeep, four comments on the Figma frame `7070:14832`, 12 Oct 18:07–18:25**, applied on Nelson's
+  instruction:
+  1. **Copy of the dialog:** *Have you completed this lab?* / *Your progress on Google Skills isn't tracked
+     automatically. Please confirm whether you've completed this lab. You can move to the next topic either way
+     and return to this lab anytime.* / *Not yet* · *Yes, completed*. Applied to every dialog, with the same
+     sentence adapted for Microsoft Learn, a reading and a video.
+  2. **Three behaviours:** *Yes, completed* marks the lab as completed and advances; *Not yet* keeps it incomplete
+     and advances; *Close* changes nothing and stays. Already what was drawn and built.
+  3. **"Introduce the mark as complete button also"**, for the learner who finishes the lab and closes the course
+     without *Next*. The button is back at the end of the content on every screen that is not completed.
+- **The rule now:** Mark as Complete at the end of the content; the usual *Previous* and *Next*; *Next* on a topic
+  that is not completed asks. Two ways of completing, the question being the safety net.
+- **Figma:** Lab page (30 topic cards and both flow frames), Reading page (19 not-completed and question cards),
+  the eight canonical pages of the discovery page, card 8 of the Video page. Card counts unchanged: Lab 36,
+  Reading 21.
+- **Fixed on the way:** the mobile forward button showed an empty placeholder instead of the arrow since the
+  footer went back to *Next* earlier that day. Corrected on every mobile screen of the Lab and Reading pages.
+- **DS, descriptions and one default text, to publish:** `Lab-Launch-Card` (description, and `Unavailable` now ends
+  *select Mark as Complete*), `Topic-Header`, `Topic-Status-Badge`. The line added to `Lab-File-Row` that day was
+  taken back. No property or variant changed.
+- **Documents:** the rule in `footer-contract.md`, `BA/03-business-rules.md`, story P1-47 (seven scenarios),
+  `BA/06-glossary.md`, `topic-types-inventory.md`, `screens-spec.md`; Q-lab-3 closed, Q-lab-8 added (the download
+  lab's disabled button).
+- **Comments were read through the Figma API** with a token Nelson generated; they are still open in Figma.
+
 ## 2026-10-12 · *Next* asks also on Podcast, Activity and the Video fallback
 
 [`screens-spec.md`](screens-spec.md) (Completion), [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4.
@@ -176,6 +205,34 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - Kirti: the design goes with the new tab for every lab; the iframe is revisited later.
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
+
+## 2026-10-12 · `bg/overlay` is 70%
+
+- **Asked by Nelson on 12 Oct**, in the variables. `bg/overlay`, the dim layer behind a modal or over a video,
+  goes from 50% to 70%: rgba(14, 26, 31, 0.7) in the six modes.
+- **How:** `bg/overlay` aliases one primitive that nothing else aliases. Its alpha was changed and it was
+  renamed to say what it is, `Colors/SKO-Brand/Dark-Neutral/950-alpha-70` (was `…950-alpha-50`). No token
+  was added. Named version saved first. **Not published.**
+- **Not changed:** `bg/overlay-soft` (20%); the prototype, whose `--color-bg-overlay` is still #0e1a1f80
+  (50%), used by the modal backdrop, the video caption and the gradient under the player controls.
+- **Not checked:** layers bound straight to the primitive instead of to `bg/overlay`, if any.
+
+## 2026-10-12 · Buttons: the last three tokens out of place
+
+- **Asked by Nelson on 12 Oct.** DS `Button` and `Icon Button`, **not published**; named version saved first.
+  - **Strokes of the Destructive and Success Secondary** (Default, Hover, Focused, Loading; 16 variants):
+    `bg/error` → `border/error`, `bg/success` → `border/success`. It shows: the Destructive outline goes
+    from #da3336 to #b62226 in light (the colour of its label) and from #e26567 to #f3afb0 in dark; the
+    Success one is the same in light and goes from #2d9c5b to #72d99a in dark.
+  - **Brand icons on `bg/primary`** → `icon/primary`: Secondary Default and Focused, and the three Tertiary
+    states that had the same binding (10 icons). Same colour in both themes: nothing changes on screen.
+  - **Destructive and Success Primary Hover:** the fill goes from the border token to the background one
+    (`border/error-soft` → `bg/error-soft`, `border/success-soft` → `bg/success-soft`) and the icons from
+    `bg/error`, `bg/success` to `icon/error`, `icon/success`. It shows: the hover fill is lighter (#f3afb0 →
+    #fce8e8 and #aaedc2 → #e4fced in light).
+- **Prototype:** no change needed. It already used `border/error`, `border/success`, `icon/primary`,
+  `bg/error-soft` and `bg/success-soft` in these places.
+- PRs 119 (prototype) and 59, 60 (docs) merged.
 
 ## 2026-10-12 · Secondary buttons: three corrections in the DS and the prototype
 

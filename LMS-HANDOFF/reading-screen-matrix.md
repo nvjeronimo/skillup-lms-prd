@@ -108,7 +108,7 @@ fills, with the nav as a sibling below it.
 |---|---|---|
 | **1 · Article** | desktop · tablet · mobile | The default read at all three widths |
 | **2 · Attachments** | desktop · tablet · mobile | Files in the body, no tab |
-| **3 · Completion** | not completed (3) · completed (3.2) · completed-mobile (3.4) · the question (3.5) · the question-mobile (3.6) | Completion by a question: *Next* asks |
+| **3 · Completion** | not completed (3) · completed (3.2) · completed-mobile (3.4) · the question (3.5) · the question-mobile (3.6) | Mark as Complete, and the question on *Next* |
 | **4 · Long-form** | desktop · mobile | Every stackable primitive in one page, and the sidebar at full page length |
 | **5 · Edge cases** | no author · minimal content · no Downloads tab | The states that are normal, not failures |
 | **6 · Open Response** | desktop · tablet · mobile | An ORA inside a Reading, text only (§15) |
@@ -122,42 +122,41 @@ fills, with the nav as a sibling below it.
 
 ## 4 · The rules the screens encode
 
-**Completion is manual, and *Next* asks for it** (Nelson, 12 Oct 2026: our default on every topic the learner
-completes by hand; applied to the Reading screens the same day). There is **no Mark as Complete button** and no
-special footer button: the footer is the design system footer, *Previous* and *Next*, the same on every topic.
+**Completion is manual: Mark as Complete, and *Next* asks if it was not used** (the rule after Navdeep's Figma
+comments of 12 Oct 2026, applied on Nelson's instruction).
 
-- ***Next* on a Reading that is not completed opens a question** (DS `Modal`, `Type=Horizontal`, cards 3.5 and
-  3.6): *Have you finished this reading?* **Yes, I've finished** completes the topic and goes to the next one.
-  **Not yet** goes to the next one and leaves the reading not completed. Closing the dialog, Esc or a click outside
-  keep the learner on the page.
-- **On a completed Reading, *Next* goes straight on.**
-- Leaving by the sidebar, the top bar or the browser does not ask; the reading stays not completed.
+- **Mark as Complete sits at the end of the content**, right-aligned, on every screen that is not completed. It
+  never appears in the header: a top CTA invites the learner to mark a page complete before reading it.
+- **The footer is the design system footer:** *Previous* and *Next*, the same on every topic.
+- ***Next* on a Reading that is not completed opens a question** (DS `Modal`, cards 3.5 and 3.6): *Have you
+  completed this reading?* **Yes, completed** marks it as completed and goes to the next topic. **Not yet** keeps
+  it incomplete and goes to the next topic. **Close**: no change, the learner stays on the topic.
+- **On a completed Reading there is no button and *Next* goes straight on.**
+- Leaving by the sidebar, the top bar or the browser does not ask: that is what the button is for.
 
 Once complete, the status shows in two places: *Marked as completed* in the Topic Header
 (`Show Mark-Status-Badge` false until completion, true after) and the topic's row in the sidebar, which becomes
 *Completed*. **The footer shows no status.**
 
-**Known trade-offs:** one more click on every unfinished Reading the learner passes with *Next* (84 topics, 30% of
-the program); *Not yet* brings the question back each time; the question does not know how far the learner read.
+*How the rule got here, all on 12 Oct 2026: a Mark as Complete button at the end of the content, with the ✓ badge
+in both header and footer once complete (until that morning); the footer's forward button reading* Complete and
+continue *(midday); the question on Next with no button (evening); then, after Navdeep's comments, the button
+back with the question kept. The reasons: [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7, §9
+and §4.*
 
-*How the rule got here, all on 12 Oct 2026: until that morning the action was a Mark as Complete button at the end
-of the content, with the ✓ badge in both header and footer once complete; for a few hours the footer's forward
-button read* Complete and continue*; in the evening Nelson replaced it with the question. The reasons and what was
-set aside: [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7, §9 and §4.*
-
-**How it is built on the screens:** the DS `Topic-Footer-Nav` with no override, and the DS `Modal` over the screen
-on the two question cards.
+**How it is built on the screens:** the frame `Mark-As-Completed-row` at the end of the content with the DS
+`Topic-Status-Badge` (`Mark as Complete`), the DS `Topic-Footer-Nav` with no override, and the DS `Modal` over the
+screen on the two question cards.
 
 **Not settled for Row 6 (an Open Response inside a Reading):** the screens follow the rule like every other
-Reading, because they had the Mark as Complete button before. Whether a Reading that holds a block the learner
-submits should complete by the question or by the submission was not asked.
+Reading. Whether a Reading that holds a block the learner submits should complete by the button or by the
+submission was not asked.
 
 **`Topic-Status-Badge` ships a third state nobody has specified.** Alongside `Mark as Complete` and
 `Completed` there is **`Review`**. It was drawn as Row 3.3 because the DS has it, but *when* a Reading enters
 review is not defined anywhere. **The card was removed on 12 Oct 2026:** it showed the Mark as Complete button
 and nothing else, so without the button it was a copy of card 3. The question stays for the component, and
-there is a second one now: its `Mark as Complete` state is no longer on any Reading or Lab screen. (3.3 was not
-reused: the question cards are 3.5 and 3.6.)
+(3.3 was not reused: the question cards are 3.5 and 3.6.)
 
 **Attachments are optional, so an empty Downloads tab is a normal state.** Row 5 draws it with
 `LMS / Empty State · Kind=Downloads` and the count at 0. It must not read as an error.
