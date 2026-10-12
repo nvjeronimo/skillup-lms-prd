@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: completed status in the header and the sidebar only; `Lab-Launch-Card` v2.0 published
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
+
+- **Decided by Nelson on 12 Oct:** when the learner clicks *Complete and continue*, the topic's row in the sidebar
+  becomes *Completed* and the Topic Header shows *Marked as completed*. The footer shows no status: the badge
+  beside *Next* is removed.
+- **Screens:** the six completed cards (G3, M3 on desktop, tablet, mobile) have `Show Badge` off in the footer; the
+  sidebar row was already *Completed* on desktop and tablet. The board of footer states shows the same (state 2
+  without the badge, state 1b says the button turns primary once the lab is opened).
+- **`Lab-Launch-Card` v2.0 is published** and accepted in the ICP file: read back on the 21 instances of the Lab
+  page (Ready 6, Opened 12, Unavailable 3; the set has three states).
+- **For the Reading screens when they take this flow:** the same rule would remove the footer badge there too.
+  Not done.
+
 ## 2026-10-12 · Lab: the launch card says opened, never complete (`Lab-Launch-Card` v2.0), 30 cards
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
@@ -51,14 +66,23 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Row durations follow decision 004 (`approx.` on readings)
+
+- I had written *15 min* on the six reading rows of the two platform pages and asked Nelson which format to
+  use. **It was already decided** (decision 004, BR-33): `approx.` on the types whose time cannot be
+  measured (Reading, Lab, Activity, Project…), never on Video, Recording, Live or a timed Quiz. The
+  prototype was right. The six rows now read *approx. 15 min read*, as the prototype prints it; the video
+  rows keep *14 min* and *10 min*. Named version saved first.
+
 ## 2026-10-12 · Course-Row: the unbound fill is gone, the proposal frame is deleted
 
 - **Asked by Nelson.** In `LMS/Platform/Discovery/Course-Row`, `State=Active`, the frame around the meta row
   and the title had a white fill not bound to a variable (a white box in the dark theme). The fill is
   removed, as in the other two states. The three frames (*Frame 4*, *5*, *6*) are now named *Headline*.
-  No size changed. Named version saved first. **Not published.**
+  No size changed. Named version saved first. Published and accepted by Nelson the same day; checked
+  after: the 24 rows on the two platform pages are on the current version, 96 and 172 tall, texts intact.
 - The proposal frame on the DS *In review* page (`22401:1103`) is deleted: the component carries it now.
-- Prototype PR 112 and docs PR 46 merged.
+- Prototype PR 112 and docs PRs 46 and 47 merged.
 
 ## 2026-10-12 · Course-Row and Resume-Row on the screens
 
@@ -71,7 +95,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
   | Course | Topic | Headline | Context |
   |---|---|---|---|
-  | AI-Driven Content and Brand Communication | Reading · 15 min | Module 2 · AI-Assisted Content Development | the course · Certificate Program in AI Augmented Digital Marketing |
+  | AI-Driven Content and Brand Communication | Reading · approx. 15 min read | Module 2 · AI-Assisted Content Development | the course · Certificate Program in AI Augmented Digital Marketing |
   | UX Research and Design Thinking | Video · 14 min | Module 1 · Empathize: Understanding Users | the course |
   | Leadership in Remote Teams | Video · 10 min | Module 3 · Meetings, Rituals and Async Work | the course |
 
