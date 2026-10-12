@@ -285,7 +285,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
 | [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v2.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
-| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Brand Secondary Hover: label and icons on `text/on-primary-hover`; Secondary Hover fills by type |
+| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.2 | 2026-10-12 | Published | 40 | 2026-10-12 · Brand Secondary Hover: label and icons on `text/on-primary-hover`; Secondary Hover fills by type |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |

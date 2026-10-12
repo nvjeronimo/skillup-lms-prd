@@ -181,10 +181,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 - **Decided by Nelson on 12 Oct.** On hover the Brand Secondary fills with `bg/primary-hover` (yellow), and its
   label was `text/primary` there: 5.09:1 in the light theme, 1.29:1 in the dark one.
-- **DS `Button` v2.2, not published:** in *Type=Brand, Hierarchy=Secondary, State=Hover* the label and both
+- **DS `Button` v2.2, published by Nelson the same day:** in *Type=Brand, Hierarchy=Secondary, State=Hover* the label and both
   icons are bound to `text/on-primary-hover`. Named version saved first. There is no icon token for this
   state, so the icons use the text one. 7.05:1 in light, about 11:1 in dark.
-- **Prototype (PR 116, open):** the same on hover.
+- **Prototype (PR 116, merged):** the same on hover.
+- **Checked after the publish:** the library gives v2.2 with the label on `text/on-primary-hover`. The 132
+  Button instances on *Platform Pages - Ready for Dev* are still on an older local copy of the set: the
+  update had not reached the product file when read. No badge shows the all-on defaults (570 read).
 - **Seen, not changed:** *Brand Primary Hover* in the DS has its label on `text/primary` over the same yellow
   fill (the prototype already uses `text/on-primary-hover` there), and *Brand Tertiary* icons sit on
   `bg/primary`. I had told Nelson the Primary already used `text/on-primary-hover`: true in the prototype,
