@@ -2,20 +2,24 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
-## 2026-10-12 · Topbar: a Current property picks the active section; Topbar-Item rebuilt as a tab
+## 2026-10-12 · Topbar: the active section is set on its item; Topbar-Item rebuilt as a tab
 
-- **Asked by Nelson on 12 Oct:** choose on the component which tab (page) is active. His idea: rebuild the atom.
-- **DS, not published:** `LMS/Platform/Navigation/Topbar-Item` v2.0 is now an underline tab (the layers of
-  `_Tab button base`, Underline md: 48 tall, body-large Semibold, a 2px bg/primary bar when `State=Current`).
-  Same key, same properties (`Label`, `Show count`, `State`); the count badge is exposed as *Count*.
-- **`LMS/Platform/Navigation/Topbar` v2.0:** a new variant property `Current` (Dashboard, My Learning,
-  Calendar, Discussion, Services) on both breakpoints, ten variants. The Desktop nav holds five exposed
-  `Topbar-Item` again, 12 apart; the `Horizontal tabs` instance of 11 Oct is gone, and with it the grey rule
-  under the group. Compact looks the same in its five variants: its menu is closed. Named version saved first.
-- **Existing instances** keep the variant they were on, which is now *Current = My Learning*.
-- **After publish and accept:** set `Current = Dashboard` on the Dashboard screens; the per-tab overrides of
-  12 Oct on the screens go away with the old structure.
-- **Prototype:** no change; it already draws this look and takes `current` as a prop.
+- **Asked by Nelson on 12 Oct:** choose on the component which tab (page) is active. I rebuilt the atom and
+  added a `Current` property with five values to the Topbar. **Nelson then simplified it, and this is what
+  stands:**
+- **`LMS/Platform/Navigation/Topbar-Item` v2.0:** an underline tab (body-large Semibold, padding 12/4, 48
+  tall on its own). Variant property **`Current` = Off | On** (it was `State` = Default | Current). On: label
+  in text/primary and a **3px** bg/primary bar along the bottom, top corners rounded 2. Off: text/subtle.
+  `Label` and `Show count` as before; the count badge is exposed as *Count* (Brand when On, Gray when Off).
+- **`LMS/Platform/Navigation/Topbar` v2.0:** two variants again, **`Breakpoint` = Desktop | Compact**. There
+  is **no `Current` property on the Topbar**: the page is marked by setting `Current=On` on its exposed item
+  and Off on the others. Desktop has no vertical padding; the nav and its five items fill the height of the
+  bar (71 under the 1px rule), 12 apart, so the bar of the current item sits on the rule. No grey rule under
+  the group. Dashboard is On by default.
+- **DS:** descriptions of both components updated to say this. Not published when written.
+- **After publish and accept:** check which item is On on every screen (the default is Dashboard, most
+  screens need My Learning).
+- **Prototype (PR 110, open):** items fill the bar, 3px bar on the rule, no group rule. Measured at 1280.
 
 ## 2026-10-12 · Badge V1 deleted; badges inside LMS components repaired after the library update
 
