@@ -60,16 +60,18 @@ it complete* (the rule the download Lab already follows).
 ## 4. Screens (Figma: desktop, tablet and mobile)
 
 **State of 12 Oct 2026.** *LMS ICP Phase 1* → page **`↳ Lab · Third-party platforms - Ready for Review 🟠`**
-(`6789:325`), frame `6789:326`. **Twenty-four cards: eight screens on desktop, tablet (960) and mobile (375).**
+(`6789:325`), frame `6789:326`. **Thirty cards: ten screens on desktop, tablet (960) and mobile (375).**
 Built like the Reading page: card header, the screen, description and changelog. Every card's status tag reads
 *In review* (the *In progress* tag with its text changed; a longer label is cut on the mobile cards).
 
 | Row | Card | Screen | Desktop card |
 |---|---|---|---|
 | **Google** · new tab (default) | G1 | Ready to start | `6789:901` |
-| | G2 | Completed by the learner | `6789:1816` |
+| | G2 | Opened at least once, topic not completed | `7053:13179` |
+| | G3 | Completed by the learner | `6789:1816` |
 | **Microsoft** · new tab (default) | M1 | Ready to start | `6792:1917` |
-| | M2 | Completed by the learner | `6792:2804` |
+| | M2 | Opened at least once, topic not completed | `7053:14541` |
+| | M3 | Completed by the learner | `6792:2804` |
 | **In the page** · option | E1 | The lab runs inside the page (LTI inline frame) | `6792:3199` |
 | | E2 | The frame does not load: falls back to a new tab | `6792:3995` |
 | **IBM** · the whole course on IBM | I1 | *Start course*, dialog before leaving SkillUp | `6792:139729` |
@@ -81,8 +83,8 @@ Tablet and mobile cards carry the same number with `.2` and `.3` (`G1.2`, `G1.3`
 ### The two ways a lab opens
 
 1. **New tab: the default, for every partner.** The launch card (`LMS/ICP/Topics/Lab-Launch-Card`) holds the
-   primary action of the page: *Open Lab* on Google, *Open on Microsoft Learn* on Microsoft (labels as Nelson set
-   them on 12 Oct).
+   primary action of the page until the lab has been opened: *Open Lab* on Google, *Open on Microsoft Learn* on
+   Microsoft (labels as Nelson set them on 12 Oct).
 2. **Inside the page: an option, only for the courses whose lab already loads there.** Two Microsoft courses
    today (§8). E1 shows it working: no launch card, the lab in the inline frame of the LTI component (800 px high
    by default) with *Open in a new tab* in its bar. E2 shows what those courses display today, the frame not
@@ -96,15 +98,38 @@ There is no modal. The modal card (old E2) was removed with the two states that 
 Adopted on these screens by Nelson on 12 Oct 2026 (the proposal of §7). Nothing comes back from the partner, so
 opening the lab does not complete the topic and there is **no Mark as Complete row**.
 
-| State | Footer forward button | Header and footer |
-|---|---|---|
-| Not completed, page has a launch card (G1, M1, E2) | **Complete and continue**, secondary (the launch button is the primary action) | no status |
-| Not completed, lab inside the page (E1) | **Complete and continue**, primary (there is no other action) | no status |
-| Completed (G2, M2) | **Next**, secondary | *Marked as completed* in the Topic Header and in the footer |
+| State | Launch card | Footer forward button | Header and footer |
+|---|---|---|---|
+| **Ready** (G1, M1): never opened | *Ready*, button primary | **Complete and continue**, secondary | no status |
+| **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Complete and continue**, primary | no status |
+| **Completed** (G3, M3) | *Opened*, unchanged | **Next**, secondary | *Marked as completed* in the Topic Header and in the footer |
+| Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | **Complete and continue**, secondary | no status |
+| Lab inside the page (E1) | none | **Complete and continue**, primary (there is no other action) | no status |
 
 The button marks the topic complete and goes to the next one. To move on without completing, the learner uses the
-sidebar. After completion the launch card reads *Lab complete · Completed on 12 Oct 2026* and still opens the lab:
-a lab can be redone any number of times.
+sidebar: there is no Skip action anywhere.
+
+### The launch card says *opened*, never *complete*
+
+Decided by Nelson on 12 Oct 2026, after the screens above were first drawn with a *Completed* card. We get no
+feedback from the partner, so the card cannot know the lab is done. It records one fact the platform does know:
+the lab was opened, and when for the first time.
+
+- **Ready → Opened** on the first click on the launch button. The card keeps its title and its partner line and
+  adds *First opened on {date}*. It stays *Opened* from then on, also after the topic is completed; the button
+  keeps opening the lab, which can be redone any number of times.
+- **The primary action moves with it.** Before the lab is opened the launch button is the primary action and the
+  footer button is secondary. Once it has been opened the launch button becomes secondary and *Complete and
+  continue* becomes primary. Nothing is disabled in either state.
+- **Completion lives in one place:** the topic's status (Topic Header, sidebar, footer). A learner who completes
+  without ever opening the lab gets a completed topic and a card still in *Ready*. That is what happened, so the
+  screens do not hide it.
+- **To build: the date of the first opening has to be kept per learner and topic, on the server.** Kept only in
+  the browser, the card would read *Ready* again on another device. How the launch click is recorded today (it is
+  what marks the topic complete, §7) was not checked; if it already reaches the server, this changes what it
+  writes, from *complete* to *opened on*. Asked as Q-lab-6.
+- If the date cannot be read, the page falls back to *Ready*. Nothing breaks: the learner can still open the lab
+  and complete the topic.
 
 ### What the learner is told
 
@@ -113,7 +138,7 @@ a lab can be redone any number of times.
   the lab shares the username and email. The three steps end on *Come back to this page and select Complete and
   continue*. The note under them: *SkillUp can't see your progress on Google Skills*.
 - **Microsoft:** a Microsoft account for Microsoft Learn; same third step and the same note.
-- **Tablet and mobile, Google not completed (G1.2, G1.3):** the warning *This lab needs a computer*, from Google's
+- **Tablet and mobile, Google not completed (G1 and G2, `.2` and `.3`):** the warning *This lab needs a computer*, from Google's
   own help ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
 - **Mobile, in the page (E1.3, E2.3):** *This lab works best on a computer*. A design call (a third-party frame
   800 px high on a phone), not a provider statement. Not shown on tablet.
@@ -127,9 +152,13 @@ a lab can be redone any number of times.
 - **Old E2, the modal** (three cards): not one of the two options kept.
 - Every text about a score: *Score 1 / 1*, *your score comes back*, *Topic marked complete for you*, the lab timer
   that "can't be paused", the Incognito window.
-- The *Skip for now* action of the Unavailable launch card (hidden on E2): the footer already moves on.
+- The *Skip for now* action of the Unavailable launch card: to move on without completing, the learner uses the
+  sidebar. Gone from the component since v2.0.
+- **The *Completed* state of the launch card** (*Lab complete · Completed on …*), the same day, for the reason
+  above.
 
-The old numbers moved up: G3 → G2, M3 → M2, E3 → E2. Messages before 12 Oct that say *E3* mean today's E2.
+Numbers: Google and Microsoft are again 1, 2, 3, but 2 is now *Opened* (it was *waiting for the score* and *asked
+to mark it complete*). The in-page row lost the modal, so messages before 12 Oct that say *E3* mean today's E2.
 
 ### How the screens are built (for whoever edits them)
 
@@ -147,13 +176,16 @@ The old numbers moved up: G3 → G2, M3 → M2, E3 → E2. Messages before 12 Oc
 - **No tab bar:** with one option the tab bar is hidden (decision of 17 Sep 2026).
 - **The discovery sources are superseded.** Section `05b · Lab — third-party platforms` (`6776:8711`) still holds
   the eleven screens of 8 Oct and was not updated; its name says so. The handoff cards are the originals now.
+  Only its two *Completed* launch cards were moved to *Opened*, so that the variant could be removed.
 
 ### For the design system (not done, needs Nelson)
 
 1. `Topic-Footer-Nav` needs a real *Complete and continue* state: a labelled button on mobile, and side columns
    that hug on tablet. Until then every screen carries the three overrides above.
-2. `Lab-Launch-Card`: the `Opened` state is no longer on any screen, and the default button text of `Completed`
-   is still *Open the lab again*.
+2. `Lab-Launch-Card` **v2.0, done in the DS file on 12 Oct**: `Completed` removed, `Opened` with the
+   *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. The `Opened` variant with
+   the date line was already published by Nelson; the rest ships with the next publish. Its default button text is
+   *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change.
 3. `Topic-Header` on mobile with the status badge: the title is squeezed to half the width (157 px of 311) and the
    duration runs under the badge. Same on the Reading mobile screen already in Ready for Dev (`5685:175610`), so
    it was left as the component gives it.

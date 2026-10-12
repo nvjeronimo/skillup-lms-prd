@@ -128,7 +128,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Activity-SCORM-Frame](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3488) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Activity · SCORM Frame” |
 | [Lab-File-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3330) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Lab · File Row” |
-| [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Lab · Launch Card” |
+| [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v2.0 | 2026-10-12 | Published in part: the rest ships with the next publish | 3 | 2026-10-12 · `Completed` removed; `Opened` shows the date of the first opening; *Skip* removed from `Unavailable`; no score wording |
 | [Lab-Prerequisites](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3331) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Lab · Prerequisites” |
 | [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.0 | 2026-10-08 | Published | 12 | 2026-10-08 · Renamed from “LMS / Lesson Block” |
 | [ORA-Grade-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3634) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / ORA · Grade Panel” |
@@ -367,6 +367,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-08 | all | baseline | Versions start here: `1.0`, and `2.0` for `Badge v2` and the `Button` family (`Button`, `Link Button`, `Icon Button`). |
 | 2026-10-08 | Button family | no bump | Register corrected: the screens use the previous generation (`Buttons/Button`), not Button V2. See *Buttons: two generations*. |
 | 2026-10-08 | 74 LMS components | no bump | Renamed to `LMS/ICP/…` and `LMS/Platform/…`; Discovery and course-end components moved to the platform page; six components moved to *In review*. |
+| 2026-10-12 | `Lab-Launch-Card` | v1.0 → v2.0 | `State=Completed` removed (nothing comes back from the partner); `Opened` carries the date of the first opening; `Unavailable` loses *Skip for now*. |
 
 ## Rename map (8 Oct 2026)
 
