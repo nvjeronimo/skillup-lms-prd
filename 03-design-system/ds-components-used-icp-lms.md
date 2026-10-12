@@ -151,7 +151,7 @@ Names as the instances report them. `Buttons/Button`, `Buttons/Button utility` a
 
 | Component | Used in | ICP | LMS | Placed directly | Nested in another component |
 |---|---|---:|---:|---:|---:|
-| Badge v2 | ICP + LMS | 1182 | 1077 | 51 | 2208 |
+| Badge | ICP + LMS | 1182 | 1077 | 51 | 2208 |
 | Buttons/Button | ICP + LMS | 1134 | 425 | 106 | 1453 |
 | Checkbox | ICP | 919 | 0 | 2 | 917 |
 | Avatar | ICP + LMS | 238 | 161 | 0 | 399 |

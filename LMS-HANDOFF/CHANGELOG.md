@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · No version in component names; Badge icons follow the label colour
+
+- **Decided by Nelson on 12 Oct:** Buttons and Badges are the current components by default, V1 goes, and no
+  name carries *V1* or *V2*. The version stays in the Figma description only. Older entries below that say
+  `Badge v2` or *Button V2* mean `Badge` and `Button`.
+- **DS, not published:** the sets were already named `Button`, `Link Button`, `Icon Button`, `Badge`. Renamed:
+  the showcase frame and its three group titles on the Badges page, three notes on the Buttons page, one text
+  on the LMS Platform page, and the descriptions of seven components. Named version saved first.
+- **V1 count:** no direct instance of `Badge-V1_to-remove` or of the old `Buttons/Button` in the LMS ICP, LMS
+  Platform, In review, Badges and Buttons pages of the DS, and none on the Quizzes page of the product file.
+  The other product pages and the base components outside the LMS pages were not counted. Nothing deleted.
+- **Badge v2.1, not published:** dot, icons and close did not follow the label colour in three places. Extra
+  hues (Cyan to Orange) sat on the teal icon token in Outline, Modern and Plain; they now use the variable of
+  their label (`text/accent-<hue>`, or the `Colors/<Hue>/700` primitive where the label uses it: there is no
+  `icon/accent-<hue>` token for those eight). In Soft Light the accents and extras had white (on-accent)
+  icons on a light fill; they now use the label's variable. Four Modern Info variants had `icon/primary`.
+  The white leading icon on its filled disc in Plain is unchanged.
+- **Prototype (PR 109, open):** the same wording in 35 files of comments. No code change.
+
 ## 2026-10-12 · Top bar tabs and Button group on the screens, after the DS update
 
 - **Nelson published the DS and accepted the update on 12 Oct** (`Topbar` v1.1, `Button group` v2.0).
