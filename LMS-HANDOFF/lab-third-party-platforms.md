@@ -98,16 +98,21 @@ There is no modal. The modal card (old E2) was removed with the two states that 
 Adopted on these screens by Nelson on 12 Oct 2026 (the proposal of §7). Nothing comes back from the partner, so
 opening the lab does not complete the topic and there is **no Mark as Complete row**.
 
-| State | Launch card | Footer forward button | Header and footer |
+| State | Launch card | Footer forward button | Topic status |
 |---|---|---|---|
 | **Ready** (G1, M1): never opened | *Ready*, button primary | **Complete and continue**, secondary | no status |
 | **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Complete and continue**, primary | no status |
-| **Completed** (G3, M3) | *Opened*, unchanged | **Next**, secondary | *Marked as completed* in the Topic Header and in the footer |
+| **Completed** (G3, M3) | *Opened*, unchanged | **Next**, secondary | *Marked as completed* in the Topic Header; the topic's row in the sidebar becomes *Completed*. Nothing in the footer |
 | Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | **Complete and continue**, secondary | no status |
 | Lab inside the page (E1) | none | **Complete and continue**, primary (there is no other action) | no status |
 
 The button marks the topic complete and goes to the next one. To move on without completing, the learner uses the
 sidebar: there is no Skip action anywhere.
+
+**What changes on the click** (Nelson, 12 Oct): the topic's row in the sidebar becomes *Completed* (`Topic-Row`,
+`Topic Status=Completed`) and the Topic Header shows *Marked as completed*. **The footer shows no status**: the
+badge that sat beside *Next* was removed the same day, so the status is in the header and the sidebar only
+(`Topic-Footer-Nav`, `Show Badge` off). On mobile the sidebar row is in the outline, behind the menu.
 
 ### The launch card says *opened*, never *complete*
 
@@ -121,7 +126,7 @@ the lab was opened, and when for the first time.
 - **The primary action moves with it.** Before the lab is opened the launch button is the primary action and the
   footer button is secondary. Once it has been opened the launch button becomes secondary and *Complete and
   continue* becomes primary. Nothing is disabled in either state.
-- **Completion lives in one place:** the topic's status (Topic Header, sidebar, footer). A learner who completes
+- **Completion lives in one place:** the topic's status (Topic Header and sidebar row). A learner who completes
   without ever opening the lab gets a completed topic and a card still in *Ready*. That is what happened, so the
   screens do not hide it.
 - **To build: the date of the first opening has to be kept per learner and topic, on the server.** Kept only in
@@ -167,8 +172,9 @@ to mark it complete*). The in-page row lost the modal, so messages before 12 Oct
 - **The footer button is a local override, not a DS variant.** `Course-Progression-Button` on
   `Milestone=Next-Topic`, with the label of its nested `Button` changed to *Complete and continue* (and
   `Hierarchy=Primary` on E1). On mobile the DS forward control is an icon-only button, so it is swapped for the
-  labelled `Button`. On tablet the two side columns of the footer are set to hug their content: with three equal
-  columns of 189 px the wider button ran over the centre label.
+  labelled `Button`. On tablet the two side columns of the footer are set to hug their content on the cards where the
+  button reads *Complete and continue*: with three equal columns of 189 px the wider button ran over the centre
+  label. The completed cards (*Next*) keep the equal columns.
 - **The inline frame of E1** is still a local frame on DS colour and radius tokens, with a placeholder where the
   third-party page would be, and says so in its layer name.
 - **The IBM screens** are the Course Detail header cropped to 500 px, with the Progress card's percentage
@@ -182,9 +188,9 @@ to mark it complete*). The in-page row lost the modal, so messages before 12 Oct
 
 1. `Topic-Footer-Nav` needs a real *Complete and continue* state: a labelled button on mobile, and side columns
    that hug on tablet. Until then every screen carries the three overrides above.
-2. `Lab-Launch-Card` **v2.0, done in the DS file on 12 Oct**: `Completed` removed, `Opened` with the
-   *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. The `Opened` variant with
-   the date line was already published by Nelson; the rest ships with the next publish. Its default button text is
+2. `Lab-Launch-Card` **v2.0, published by Nelson on 12 Oct and accepted in the ICP file**: `Completed` removed,
+   `Opened` with the *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. Read
+   back on the 21 instances of the Lab page (6 Ready, 12 Opened, 3 Unavailable). Its default button text is
    *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change.
 3. `Topic-Header` on mobile with the status badge: the title is squeezed to half the width (157 px of 311) and the
    duration runs under the badge. Same on the Reading mobile screen already in Ready for Dev (`5685:175610`), so

@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: completed status in the header and the sidebar only; `Lab-Launch-Card` v2.0 published
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
+
+- **Decided by Nelson on 12 Oct:** when the learner clicks *Complete and continue*, the topic's row in the sidebar
+  becomes *Completed* and the Topic Header shows *Marked as completed*. The footer shows no status: the badge
+  beside *Next* is removed.
+- **Screens:** the six completed cards (G3, M3 on desktop, tablet, mobile) have `Show Badge` off in the footer; the
+  sidebar row was already *Completed* on desktop and tablet. The board of footer states shows the same (state 2
+  without the badge, state 1b says the button turns primary once the lab is opened).
+- **`Lab-Launch-Card` v2.0 is published** and accepted in the ICP file: read back on the 21 instances of the Lab
+  page (Ready 6, Opened 12, Unavailable 3; the set has three states).
+- **For the Reading screens when they take this flow:** the same rule would remove the footer badge there too.
+  Not done.
+
 ## 2026-10-12 · Lab: the launch card says opened, never complete (`Lab-Launch-Card` v2.0), 30 cards
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
