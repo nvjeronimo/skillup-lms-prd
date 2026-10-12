@@ -259,6 +259,29 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-13 · Design system reorganisation: decisions, a pilot page, the page list
+
+- **Decided by Nelson on 13 Oct**, for anyone who opens the DS to find what they need: the pages are written
+  for **developers** first; **one page per group** (the group is already in every name, `LMS/ICP/<Group>/…`,
+  `LMS/Platform/<Group>/…`); Figma shows anatomy, variants and one line, and **the rules stay in the ICP Hub**;
+  the Untitled UI pages we do not use **move to an archive** at the bottom; **every component gets an
+  anatomy**; no component is renamed.
+- **Pilot, built:** page *↳ Navigation*, right after *LMS Platform Components*, with `Topbar-Item` and
+  `Topbar` moved onto it (same nodes, same keys) and their old section removed. One documentation frame:
+  a page header, then one block per component, smallest first: name, version, since when; the full path;
+  **Anatomy** (the richest variant with numbered markers and a legend that names each part, its text style
+  and colour token, or the component it is an instance of); **Properties** (name, type, values, default,
+  read from the component); the component itself; **Measures** per variant; what it is and its rules (the
+  component's description). Built on DS text styles and variables. One private component,
+  `.Doc/Anatomy-Marker`. Named version saved first. **Not published.**
+- **Page list:** an *Archive · Untitled UI kit, not used by the LMS* block near the bottom holds 70 pages
+  (getting started, variables, shared assets, marketing and application examples and components). Four
+  application pages our screens do use (*Breadcrumbs*, *Alerts & notifications*, *Content dividers*,
+  *Loading indicators*) moved to the end of the Base components group. Which pages are used was read from
+  the instances inside the LMS components. Page order only: nothing on any canvas changed.
+- **Next, after Nelson has looked at the pilot:** the other groups of LMS Platform and LMS ICP, page by page;
+  a *Start here* page with the index; the Base pages we use.
+
 ## 2026-10-12 · `Lab-Prerequisites` deleted; one sentence for the Studio and LMS relation
 
 - **`LMS/ICP/Topics/Lab-Prerequisites` deleted from the DS** (asked by Nelson). The DS `Alert` had replaced it on
