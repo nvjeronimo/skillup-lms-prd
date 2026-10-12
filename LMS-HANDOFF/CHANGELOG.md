@@ -2,6 +2,21 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Topbar: a Current property picks the active section; Topbar-Item rebuilt as a tab
+
+- **Asked by Nelson on 12 Oct:** choose on the component which tab (page) is active. His idea: rebuild the atom.
+- **DS, not published:** `LMS/Platform/Navigation/Topbar-Item` v2.0 is now an underline tab (the layers of
+  `_Tab button base`, Underline md: 48 tall, body-large Semibold, a 2px bg/primary bar when `State=Current`).
+  Same key, same properties (`Label`, `Show count`, `State`); the count badge is exposed as *Count*.
+- **`LMS/Platform/Navigation/Topbar` v2.0:** a new variant property `Current` (Dashboard, My Learning,
+  Calendar, Discussion, Services) on both breakpoints, ten variants. The Desktop nav holds five exposed
+  `Topbar-Item` again, 12 apart; the `Horizontal tabs` instance of 11 Oct is gone, and with it the grey rule
+  under the group. Compact looks the same in its five variants: its menu is closed. Named version saved first.
+- **Existing instances** keep the variant they were on, which is now *Current = My Learning*.
+- **After publish and accept:** set `Current = Dashboard` on the Dashboard screens; the per-tab overrides of
+  12 Oct on the screens go away with the old structure.
+- **Prototype:** no change; it already draws this look and takes `current` as a prop.
+
 ## 2026-10-12 · Badge V1 deleted; badges inside LMS components repaired after the library update
 
 - **Nelson published the DS and accepted the update** (Badge v2.1, names without a version). Prototype PR 109
