@@ -2,6 +2,46 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · *Next* asks: the default on every topic completed by hand
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4 and §9, [`reading-screen-matrix.md`](reading-screen-matrix.md) §4.
+
+- **Decided by Nelson on 12 Oct (evening):** the option tested that afternoon becomes the default for manual
+  topics. The footer is *Previous* and *Next* on every topic; *Next* on a topic that is not completed asks *Have
+  you finished this lab / reading?* *Yes, I've finished* completes it and moves on, *Not yet* moves on and leaves
+  it open. It replaces *Complete and continue*, which the screens carried for a few hours the same day.
+- **Lab page, 36 cards** (was 30): every topic card has the usual footer and its copy says *Next asks*; a question
+  card per partner and breakpoint (G3, M3, with `.2` and `.3`); the completed cards are G4 and M4.
+- **Reading page, 21 cards** (was 19): the usual footer on every screen; two question cards in Row 3 (3.5 desktop,
+  3.6 mobile); Row 3 is *Completion (Next asks)*.
+- **No local override left on the footer.** The dialog is the DS `Modal` as it is. Nothing to add to the design
+  system for this flow.
+- **DS, to publish:** the description of `Lab-Launch-Card` and the default text of its `Unavailable` state said
+  *Complete and continue*; rewritten. No property or variant changed, no version bump.
+- **Figma boards:** the two test frames are renamed *… our default on manual topics (12 Oct 2026)* and sit to the
+  right of the handoff frame; the *Complete and continue* board is marked superseded and kept as a record.
+- **Documents:** the rule in `footer-contract.md`, `BA/03-business-rules.md`, story P1-47 (six scenarios),
+  `BA/06-glossary.md`, `topic-types-inventory.md`, `screens-spec.md`; Q-lab-3 closed, Q-lab-7 rewritten.
+- **Prototype:** already the default there since pull request 115.
+- **Topic Content Types Discovery page:** the Mark as Complete button is removed from the seven manual-topic
+  screens that still had it: the download Lab, the Reading and the three Lesson Page canonical pages, and the two
+  superseded Microsoft sources. Only the button was removed; their body copy was not reviewed.
+- **Left with a Mark as Complete button, to decide:** Podcast and Activity (one screen each on that page: the
+  documents disagree on whether they complete by hand) and the Video fallback (one screen there, one on the Video
+  page). Asked as Q-lab-7.
+- **Not done:** the prototype's Google lab still simulates a score; Navdeep's answer was not seen.
+
+## 2026-10-12 · Test "Next asks": the Reading version has its own frame
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Figma frame `7077:18132` on the Lab page.
+
+- **Asked by Nelson on 12 Oct:** the Reading version of the test flow. The two Reading rows moved out of the Lab
+  test frame into `Test · Next asks if the reading is done (not decided)`, to its right, with its own header and
+  notes (one more click on 30% of the program; the question does not know how far the learner read; an Open
+  Response inside a Reading is not drawn).
+- It stays on the Lab page: the Reading page is *Ready for Dev* and this is a test.
+- The prototype change (pull request 115) is merged and live.
+
 ## 2026-10-12 · Test "Next asks": Reading asks too, complete flow in Figma, in the prototype
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §9. Still a test, not a decision.

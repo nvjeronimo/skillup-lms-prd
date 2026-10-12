@@ -855,30 +855,47 @@ Scenario: Already Completed video
 ```
 
 ### P1-47 · Manual completion for Reading-like types
-**As a** learner, **I want** a text-based topic to be completed when I say I am done and move on.
+**As a** learner, **I want** to be asked whether I have finished a text-based topic when I move on.
 
-*Changed on 12 Oct 2026: the separate "Mark as complete" button became the footer's forward button,
-"Complete and continue" (`reading-screen-matrix.md` §4). The scenario before read: "When I scroll to the bottom
-and click Mark as complete".*
+*Changed on 12 Oct 2026: the separate "Mark as complete" button is gone. The footer is the usual Previous / Next,
+and Next asks (`reading-screen-matrix.md` §4). The scenario before read: "When I scroll to the bottom and click
+Mark as complete". The same applies to every topic completed by hand (a lab, a lesson page).*
 
 ```gherkin
-Scenario: Complete a Reading and continue
+Scenario: Next asks on a Reading that is not completed
   Given I am on a Reading topic that is not completed
-  When I click "Complete and continue" in the footer
+  When I click "Next" in the footer
+  Then a dialog asks "Have you finished this reading?"
+
+Scenario: Yes, I've finished
+  Given the dialog is open
+  When I click "Yes, I've finished"
   Then the topic is marked Completed
   And `topic_complete` fires with topicType=reading
   And I am on the next topic
 
-Scenario: Move on without completing
-  Given I am on a Reading topic that is not completed
-  When I open another topic from the sidebar
-  Then the Reading topic stays not completed
+Scenario: Not yet
+  Given the dialog is open
+  When I click "Not yet"
+  Then the topic stays not completed
+  And I am on the next topic
+
+Scenario: Closing the dialog
+  Given the dialog is open
+  When I close it, press Esc or click outside it
+  Then I stay on the Reading topic and nothing changes
 
 Scenario: A completed Reading
   Given I am on a Reading topic that is Completed
-  Then the footer button reads "Next"
+  When I click "Next" in the footer
+  Then I am on the next topic, without a question
   And the Topic Header shows "Marked as completed"
   And the topic's row in the sidebar is Completed
+
+Scenario: Leaving by the sidebar
+  Given I am on a Reading topic that is not completed
+  When I open another topic from the sidebar
+  Then no question is asked and the Reading topic stays not completed
 ```
 
 ### P1-48 · Module progress updates on topic complete
