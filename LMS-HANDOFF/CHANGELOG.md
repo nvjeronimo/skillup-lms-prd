@@ -2,6 +2,60 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab screens: Complete and continue adopted, 33 cards down to 24
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4, rewritten. Figma page `6789:325`.
+
+- **Decided by Nelson on 12 Oct:** both ways of opening a lab are drawn, the new tab is the default; the screens
+  adopt the *Complete and continue* flow of the proposal; what was wrong is removed.
+- **Removed, 9 cards** (desktop, tablet, mobile): Google *waiting for the score*, Microsoft *asked to mark it
+  complete*, and the modal. G3, M3 and E3 are now G2, M2 and E2.
+- **Google and Microsoft (12 cards):** no Mark as Complete row; the footer button is *Complete and continue*,
+  secondary; completed shows *Marked as completed* in header and footer and *Next*. Copy corrected to the facts of
+  9 Oct: a Google account, some labs timed, nothing sent back. No text about a score is left.
+- **In the page (6 cards):** redrawn on the real case of the two Microsoft courses. E1 the lab inside the page
+  (*Complete and continue* primary), E2 the frame not loading with *Open in a new tab*.
+- **IBM (6 cards):** unchanged.
+- **Local overrides on the DS footer**, listed in §4 with what the design system needs: the button label, the
+  labelled button on mobile, the side columns hugging on tablet.
+- The proposal board is renamed *Complete and continue · adopted on the Lab screens (12 Oct 2026)*; the discovery
+  section `6776:8711` is marked superseded.
+- **Not done:** the Reading screens still have the Mark as Complete row; Navdeep's answer was not seen.
+
+## 2026-10-12 · Lab: two Microsoft courses load the lab in the page, and it does not load
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §8. No screen changed.
+
+- Jaspinder found the courses with an in-page lab: AZ-900 Batch 7 and SC-900 2021 Q3, an LTI component opened
+  inline. The frame is empty today (*"currently not working"*).
+- Kirti: the design goes with the new tab for every lab; the iframe is revisited later.
+- The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
+  Studio setting.
+
+## 2026-10-12 · Course-Row and Resume-Row lead with the module the learner left off in
+
+- **Decided by Nelson on 12 Oct:** in the simple course row the point is to tell the learner where they
+  stopped and let them resume: the module is the headline, the course and the program go under it. He saw
+  the proposal on the DS *In review* page (frame `22401:1103`) and said to apply it.
+- **DS, not published:** `LMS/Platform/Discovery/Course-Row` v2.0. The `Title` layer is now the headline
+  (the module) inside a *Titles* block, with a new `Context` text property under it: "Course · Program",
+  body-small Regular, text/subtle, one line. Active: the module left off in. Available: the first module.
+  Locked: the course stays the headline and `Context` is the program. **Nelson then updated the row
+  himself, and this is what stands:** a meta row above the headline with the Topic-Types-Badge and the
+  length of the topic the action opens ("Quiz · 8 min"), and no delivery badge. 96 tall (was 68). `LMS/Platform/Dashboard/Resume-Row` v1.1: same two lines above its badge;
+  its title wraps, 180 tall with a two-line module name (was 136). Named version saved first.
+- **`Title` is still a layer override on Course-Row**, not a property, so the texts already on the screens
+  are kept by the update: they will read as course names in the headline until they are rewritten.
+- **Screens, to do after publish and accept:** 9 rows on *Platform Pages - Ready for Dev* (the three
+  Dashboard screens) and 15 on the WIP page: headline to the module, `Context` to the course and program.
+- **Prototype (PR 111, open):** the Dashboard rows show the topic type and length, the module and the
+  course; all three are read from each course's own page and outline. Rows measured 728 × 96.
+- **Seen in the DS, not changed:** in `State=Active` the unnamed frame around the meta row and the title
+  (*Frame 4*) has a white fill that is not bound to a variable; *Frame 4/5/6* have no layer names; the
+  `Resume-Row` has no meta row and still shows the delivery badge.
+- **Not checked:** whether Open edX returns the module of the resume block in one call. The big program
+  Course-Row already assumes it ("Module 2 of 4").
+
 ## 2026-10-12 · Topbar v2.0 on the screens: instances moved to the new variants
 
 - **Nelson published the DS and accepted the update.** Prototype PR 110 and docs PR 43 merged.

@@ -1,8 +1,9 @@
 # Lab on third-party platforms (Google, Microsoft, IBM)
 
 First pass, 8 Oct 2026. Started from the content team's messages in the *ICP Labs discussions* chat
-(Kirti Mishra forwarding Simran Jindal, 8 Oct 2026). **Nothing here is decided**: the answers asked for in §5
-are pending.
+(Kirti Mishra forwarding Simran Jindal, 8 Oct 2026). **Current state of the screens: §4** (rewritten on
+12 Oct 2026). §1–§3 and §5–§8 are the record of how we got there, in date order; where they disagree with §4,
+§4 stands.
 
 The Lab documented until now is the download lab (notebook + PDF, `topic-types-inventory.md` §2). This is a
 second family: the lab runs on the partner's own platform and the learner leaves ours to do it.
@@ -58,67 +59,112 @@ it complete* (the rule the download Lab already follows).
 
 ## 4. Screens (Figma: desktop, tablet and mobile)
 
-**Handoff page, ready for review since 8 Oct 2026:** *LMS ICP Phase 1* → page
-**`↳ Lab · Third-party platforms - Ready for Review 🟠`** (`6789:325`), frame
-`ICP - Lab · Third-party platforms - Light - Ready for Review` (`6789:326`). Thirty-three cards: the eleven screens on
-desktop, tablet (960) and mobile (375), in twelve rows (per partner: desktop, tablet, mobile). Built like the
-Reading page: card header, the screen, description and changelog. The nine topic screens sit in the full course
-player (top bar, sidebar with the lab as the current topic, content, footer navigation); the two IBM screens are
-the Course Detail header. Every card's status tag reads *In review*: it is the *In progress* tag with its text
-changed, because the handoff kit has only *In progress* and *Ready for DEV* (a longer label is cut on the mobile
-cards). Cards G1–G3
-(`6789:901`, `6789:1426`, `6789:1816`), M1–M3 (`6792:1917`, `6792:2412`, `6792:2804`), E1–E3
-(`6792:3199`, `6792:3595`, `6792:3995`), I1–I2 (`6792:139729`, `6792:139888`).
+**State of 12 Oct 2026.** *LMS ICP Phase 1* → page **`↳ Lab · Third-party platforms - Ready for Review 🟠`**
+(`6789:325`), frame `6789:326`. **Twenty-four cards: eight screens on desktop, tablet (960) and mobile (375).**
+Built like the Reading page: card header, the screen, description and changelog. Every card's status tag reads
+*In review* (the *In progress* tag with its text changed; a longer label is cut on the mobile cards).
 
-**The desktop cards are copies.** Their sources are the content-only screens below; when a source changes, copy it
-again. The tablet and mobile cards have no separate source: they were built on the handoff page from the same
-sources and are the originals for their breakpoint.
+| Row | Card | Screen | Desktop card |
+|---|---|---|---|
+| **Google** · new tab (default) | G1 | Ready to start | `6789:901` |
+| | G2 | Completed by the learner | `6789:1816` |
+| **Microsoft** · new tab (default) | M1 | Ready to start | `6792:1917` |
+| | M2 | Completed by the learner | `6792:2804` |
+| **In the page** · option | E1 | The lab runs inside the page (LTI inline frame) | `6792:3199` |
+| | E2 | The frame does not load: falls back to a new tab | `6792:3995` |
+| **IBM** · the whole course on IBM | I1 | *Start course*, dialog before leaving SkillUp | `6792:139729` |
+| | I2 | Course started, *Continue on IBM* | `6792:139888` |
 
-**Tablet and mobile (8 Oct 2026):** rows `Row n.2 · … · Tablet` and `Row n.3 · … · Mobile`, cards numbered
-`G1.2`, `G1.3` and so on. Tablet keeps the sidebar and a 632 px content column; mobile is one column with the
-outline behind the menu. What differs from desktop:
+Tablet and mobile cards carry the same number with `.2` and `.3` (`G1.2`, `G1.3`), in rows
+`Row n.2 · … · Tablet` and `Row n.3 · … · Mobile`.
 
-- **A warning above the launch on the Google screens where the lab has not been opened** (G1, E1, E2, E3), tablet
-  and mobile: *This lab needs a computer*. Google's own help says phones and tablets are not recommended for labs
-  and that labs using the Cloud console might not work on them at all
-  ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
-- **E2 on mobile:** the modal is 80% of the window (300 px wide) and *Open in a new tab* becomes an icon button.
-- **E3 on mobile:** the second button reads *Skip* so the two fit.
+### The two ways a lab opens
+
+1. **New tab: the default, for every partner.** The launch card (`LMS/ICP/Topics/Lab-Launch-Card`) holds the
+   primary action of the page: *Open Lab* on Google, *Open on Microsoft Learn* on Microsoft (labels as Nelson set
+   them on 12 Oct).
+2. **Inside the page: an option, only for the courses whose lab already loads there.** Two Microsoft courses
+   today (§8). E1 shows it working: no launch card, the lab in the inline frame of the LTI component (800 px high
+   by default) with *Open in a new tab* in its bar. E2 shows what those courses display today, the frame not
+   loading: the launch card in its *Unavailable* state with one action, *Open in a new tab*. Its text does not
+   blame the provider, because why the frame is empty was not established.
+
+There is no modal. The modal card (old E2) was removed with the two states that described a score coming back.
+
+### How the topic completes: *Complete and continue*
+
+Adopted on these screens by Nelson on 12 Oct 2026 (the proposal of §7). Nothing comes back from the partner, so
+opening the lab does not complete the topic and there is **no Mark as Complete row**.
+
+| State | Footer forward button | Header and footer |
+|---|---|---|
+| Not completed, page has a launch card (G1, M1, E2) | **Complete and continue**, secondary (the launch button is the primary action) | no status |
+| Not completed, lab inside the page (E1) | **Complete and continue**, primary (there is no other action) | no status |
+| Completed (G2, M2) | **Next**, secondary | *Marked as completed* in the Topic Header and in the footer |
+
+The button marks the topic complete and goes to the next one. To move on without completing, the learner uses the
+sidebar. After completion the launch card reads *Lab complete · Completed on 12 Oct 2026* and still opens the lab:
+a lab can be redone any number of times.
+
+### What the learner is told
+
+- **Google:** needs a Google account to sign in to Google Skills and accept its terms; a desktop or laptop with
+  Chrome; time to finish in one sitting, because some labs are timed and close by themselves. The launch card says
+  the lab shares the username and email. The three steps end on *Come back to this page and select Complete and
+  continue*. The note under them: *SkillUp can't see your progress on Google Skills*.
+- **Microsoft:** a Microsoft account for Microsoft Learn; same third step and the same note.
+- **Tablet and mobile, Google not completed (G1.2, G1.3):** the warning *This lab needs a computer*, from Google's
+  own help ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
+- **Mobile, in the page (E1.3, E2.3):** *This lab works best on a computer*. A design call (a third-party frame
+  800 px high on a phone), not a provider statement. Not shown on tablet.
 - **IBM on mobile:** the dialog is the mobile layout of the design system modal (buttons stacked).
 
-**No tab bar.** The first pass showed a bar with a single *Instructions* tab. It was removed on every screen,
-sources included, and replaced by the divider Reading uses: with one option the tab bar is hidden (decision of
-17 Sep 2026).
+### Removed on 12 Oct, and why
 
-Sources: *Topic Content Types Discovery — Ready for Review* → section
-**`05b · Lab — third-party platforms (Google · Microsoft · IBM)`** (`6776:8711`), to the right of the page.
+- **Old G2, *lab open in another tab, waiting for the score*** and **old M2, *back from the lab, asked to mark it
+  complete*** (desktop, tablet, mobile): nothing is tracked after the launch (§7), and the Mark as Complete step
+  is replaced by the footer button.
+- **Old E2, the modal** (three cards): not one of the two options kept.
+- Every text about a score: *Score 1 / 1*, *your score comes back*, *Topic marked complete for you*, the lab timer
+  that "can't be paused", the Incognito window.
+- The *Skip for now* action of the Unavailable launch card (hidden on E2): the footer already moves on.
 
-| Row | Screen | Node |
-|---|---|---|
-| Google | G1 ready to start (new tab) | `6776:8724` |
-| | G2 lab open in another tab, waiting for the score | `6777:8801` |
-| | G3 completed, score received (no manual action) | `6777:8921` |
-| Microsoft | M1 ready to start (new tab) | `6777:9130` |
-| | M2 back from the lab, asked to mark it complete | `6777:9249` |
-| | M3 completed by the learner | `6777:9373` |
-| Embedded alternatives | E1 inline in the page (LTI *Inline*) | `6778:9442` |
-| | E2 modal over the page (LTI *Modal*) | `6778:9577` |
-| | E3 the provider refuses the frame: fallback to a new tab | `6778:9721` |
-| IBM | I1 *Start course*, dialog before leaving SkillUp | `6779:9601` |
-| | I2 course started, *Continue on IBM* | `6779:22733` |
+The old numbers moved up: G3 → G2, M3 → M2, E3 → E2. Messages before 12 Oct that say *E3* mean today's E2.
 
-Built from DS components: Topic Header, `LMS / Lab · Launch Card`, `LMS / Lab · Prerequisites`, `LMS / Numbered Step`, `LMS / Inline Alert`,
-Topic-Status-Badge, the Course header with its Progress card, and the DS `Modal` (Horizontal) for the IBM dialog.
+### How the screens are built (for whoever edits them)
 
-**The launch card is a design system component since 8 Oct:** `LMS / Lab · Launch Card` (Ready, Opened, Completed,
-Unavailable, with the partner's badge), on all 32 places a Lab screen has one (library request 27, closed).
-
-Two things are still stand-ins and say so in their layer names:
-
-- **The inline frame and the modal** (E1, E2) are local frames on DS colour and radius tokens, with a placeholder
-  where the third-party page would be. No component until the Studio test says they are possible.
+- DS components: Topic Header, `Lab-Launch-Card`, `Lab-Prerequisites`, `Numbered-Step`, `LMS / Inline Alert`,
+  `Topic-Footer-Nav`, the Course header with its Progress card, and the DS `Modal` for the IBM dialog.
+- **The footer button is a local override, not a DS variant.** `Course-Progression-Button` on
+  `Milestone=Next-Topic`, with the label of its nested `Button` changed to *Complete and continue* (and
+  `Hierarchy=Primary` on E1). On mobile the DS forward control is an icon-only button, so it is swapped for the
+  labelled `Button`. On tablet the two side columns of the footer are set to hug their content: with three equal
+  columns of 189 px the wider button ran over the centre label.
+- **The inline frame of E1** is still a local frame on DS colour and radius tokens, with a placeholder where the
+  third-party page would be, and says so in its layer name.
 - **The IBM screens** are the Course Detail header cropped to 500 px, with the Progress card's percentage
-  replaced by a dash and its fill hidden, because we do not know whether IBM reports progress.
+  replaced by a dash, because we do not know whether IBM reports progress.
+- **No tab bar:** with one option the tab bar is hidden (decision of 17 Sep 2026).
+- **The discovery sources are superseded.** Section `05b · Lab — third-party platforms` (`6776:8711`) still holds
+  the eleven screens of 8 Oct and was not updated; its name says so. The handoff cards are the originals now.
+
+### For the design system (not done, needs Nelson)
+
+1. `Topic-Footer-Nav` needs a real *Complete and continue* state: a labelled button on mobile, and side columns
+   that hug on tablet. Until then every screen carries the three overrides above.
+2. `Lab-Launch-Card`: the `Opened` state is no longer on any screen, and the default button text of `Completed`
+   is still *Open the lab again*.
+3. `Topic-Header` on mobile with the status badge: the title is squeezed to half the width (157 px of 311) and the
+   duration runs under the badge. Same on the Reading mobile screen already in Ready for Dev (`5685:175610`), so
+   it was left as the component gives it.
+
+### Not checked
+
+- **Whether the in-page Microsoft lab returns a score.** If it does, E1 could complete by itself. The screens use
+  the same confirmation as every other lab, which is right if nothing comes back and harmless if something does.
+- **Navdeep's answer** to the proposal of 9 Oct. The Lab screens adopt it on Nelson's decision.
+- **The Reading screens** (22, Ready for Dev) still have the Mark as Complete row. The flow is meant for every
+  topic the platform cannot measure; they were not touched.
 
 ## 5. Asked to the content team (8 Oct 2026, pending)
 
@@ -182,12 +228,12 @@ Complete button goes away. On video and quiz it stays *Next*.
   the lab is opened (breaks the pattern: a video can be marked without playing); Mark as Complete fixed in the
   footer (still a separate click); a clickable tick in the sidebar (marks without opening, hidden on mobile).
 
-**In Figma:** board `Proposal · Complete and continue (not decided)` (`6926:14403`) on the Lab page, to the right
-of the handoff frame. Four footer states on desktop (1 112) and mobile (343): not completed (*Complete and
+**In Figma:** board `Complete and continue · adopted on the Lab screens (12 Oct 2026)` (`6926:14403`, named
+*Proposal · Complete and continue (not decided)* until 12 Oct) on the Lab page, to the right of the handoff frame. Four footer states on desktop (1 112) and mobile (343): not completed (*Complete and
 continue*), completed (*Marked as completed* + *Next*), measured topic (*Next*), last topic (*Complete*); and four
 screens in context, Reading and Lab on desktop and mobile, without the Mark as Complete row. Built from the DS
 footer as it is (`Topic-Footer-Nav`, with `Course-Progression-Button` on `Milestone=Continue` and its text
-changed): **no DS change, and the handoff cards are untouched until the decision.**
+changed): **no DS change.** The handoff cards took the flow on 12 Oct (§4).
 
 **On a Lab the footer button is secondary** (Nelson, 9 Oct): *Open lab* in the card is the primary action of the
 page, so *Complete and continue* takes the secondary style there; on a Reading it stays primary. The board shows
@@ -195,3 +241,22 @@ it as state *1b* and on the two Lab screens (`Course-Progression-Button` on `Mil
 
 **Open in the proposal:** the label itself (*Complete and continue* or shorter).
 
+## 8. 12 Oct 2026: the Microsoft courses that load the lab in the page
+
+From the *ICP Labs discussions* chat (Jaspinder Kaur Sehmi, Kirti Mishra), read from a screenshot Nelson shared.
+
+- **Two courses found with the lab inside the page:** AZ-900 Batch 7 (`course-v1:SkillUp+SKOAZ900ILT-TMDSAI+2024_B7`,
+  *Lab 1 - Create a virtual machine in the portal*) and `course-v1:SkillUp+SKOSC900ILT+2021_Q3`. The unit shows
+  *Create a virtual machine in the portal (External resource)*, which is the LTI component set to open inline. So
+  a Microsoft lab is not always a text link (§1): in these courses it is an LTI component.
+- **It does not load.** Jaspinder: *"Lab loads here - currently not working"*. Her screenshot shows an empty grey
+  frame with a blocked mark where the lab should be. Why it is blocked was not established (the provider refusing
+  the frame, as in §2, or the integration itself); either way the learner sees an empty box today.
+- **Kirti's call:** only one or two courses show the lab in an iframe, all other Microsoft and Google labs open in
+  a new tab, so the new design goes with the new tab and the question is revisited later.
+- **Jaspinder's opinion, not adopted:** keep each lab as it is today, in the page where it is in the page.
+
+What it meant for the screens, done the same day (§4): Nelson kept **both ways of opening a lab, with the new tab
+as the default**. The in-page row is drawn on this real case (AZ-900, *Create a virtual machine in the portal*):
+the lab working inside the page, and the frame not loading with the way out to a new tab. Moving the two courses
+to the new tab for good is a Studio setting on the component (*Open tool in* → *New Window*), not development.
