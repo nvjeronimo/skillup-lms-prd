@@ -65,17 +65,17 @@ The right slot renders one of these states. Same enum for every content type.
 
 | # | Topic type | Completion model | Footer idle action | Completion trigger (BR-01) | Post-action state | Duration |
 |---|---|---|---|---|---|---|
-| 1 | Video | auto | none (auto) | playback ≥ 90% | completed | exact |
+| 1 | Video | auto | none (auto). If playback cannot be measured: the usual Next, which asks | playback ≥ 90%, or "Yes, I've finished" when it cannot be measured | completed | exact |
 | 2 | Recording | auto | none (auto) | playback ≥ 90% | completed | exact |
-| 3 | Podcast | auto | none (auto) | audio ≥ 90% | completed | exact |
+| 3 | Podcast | auto | none (auto). If playback cannot be measured: the usual Next, which asks (same rule as Video) | audio ≥ 90%, or "Yes, I've finished" when it cannot be measured | completed | exact |
 | 4 | Reading | manual | none: the usual Next, which asks | answers "Yes, I've finished" to the question Next opens | completed, and the learner is on the next topic | approx (words ÷ 250) |
 | 5 | Live Session (VILT) | attendance | Join session (in window) | attended (join + ≥ 50%) OR recording ≥ 90% | completed | scheduled |
 | 6 | Practice Quiz | submit | Submit answers | submitted (any score) | completed | exact if timed, else hide |
 | 7 | Graded Assignment | submit | Submit assignment | submitted (grade separate, doesn't block) | completed · grade → Under Review/Graded badge | exact if timed |
 | 8 | Peer-graded Assignment | submit + review | Submit for review → Review peers | submitted own work AND reviewed N peers | completed (after reviews) | approx |
 | 9 | Discussion Prompt | post | Post response | posted ≥ 1 message | completed | n/a |
-| 10 | Lab | manual | none: the usual Next, which asks (drawn for labs on a partner's platform; the download lab screens still show Mark as complete) | answers "Yes, I've finished" | completed | approx |
-| 11 | Activity | manual | Mark as complete | clicks "Mark as complete" | completed | approx |
+| 10 | Lab | manual | none: the usual Next, which asks | answers "Yes, I've finished" | completed | approx |
+| 11 | Activity | manual | none: the usual Next, which asks | answers "Yes, I've finished" | completed | approx |
 | 12 | Project | submit | Submit project | submitted | completed · grade → badge | approx (hours) |
 
 > **12 Oct 2026, topics completed by hand: *Next* asks.** Our default (Nelson). The footer is the same on every
@@ -83,8 +83,8 @@ The right slot renders one of these states. Same enum for every content type.
 > opens a dialog: *Have you finished this reading / lab?* *Yes, I've finished* completes the topic and goes to the
 > next one; *Not yet* goes to the next one and leaves it open; closing the dialog stays on the page. On a completed
 > topic *Next* goes straight on, and the footer shows no status (it is in the Topic Header and on the sidebar row).
-> Drawn for Reading and for labs on a partner's platform; the screens of the download Lab, Activity and the Video
-> fallback were not redrawn and still show Mark as Complete. For a few hours the same day the forward button read
+> It covers Reading, Lesson Page, Lab and Activity, and Video and Podcast when playback cannot be measured (when it
+> can, they complete by themselves at 90% and *Next* never asks). No screen shows Mark as Complete. For a few hours the same day the forward button read
 > *Complete and continue*; that was replaced. Source: `LMS-HANDOFF/lab-third-party-platforms.md` §4 and §9,
 > `LMS-HANDOFF/reading-screen-matrix.md` §4.
 

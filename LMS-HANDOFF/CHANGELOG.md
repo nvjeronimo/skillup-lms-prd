@@ -2,6 +2,28 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · *Next* asks also on Podcast, Activity and the Video fallback
+
+[`screens-spec.md`](screens-spec.md) (Completion), [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4.
+
+- **Decided by Nelson on 12 Oct:** the rule applies to Podcast, Activity and the Video fallback too. Podcast
+  follows Video (the DS says *same chrome and completion rule as Video*): both complete by themselves at 90%, and
+  **only when playback cannot be measured does *Next* ask**. Activity is completed by hand, so *Next* asks.
+- **Video page, card 8** (Row 8, now *Completion when playback cannot be measured (Next asks)*): the Mark as
+  Complete button and the status row under the content are gone; three screens, not completed, the question
+  (*Have you finished this video?*) and completed.
+- **Topic Content Types Discovery page:** the Mark as Complete button removed from the Podcast, Activity and Video
+  canonical pages. No screen of the file shows it any more.
+- **DS, descriptions only, to publish:** `Topic-Header`, `Topic-Status-Badge` and `Lab-File-Row` each get a dated
+  line saying the Mark as Complete action is no longer used. No property or variant changed. The `Mark as
+  Complete` state of `Topic-Status-Badge` and the `Mark as Completed` milestone of `Course-Progression-Button` are
+  now unused on the screens: remove or keep is Nelson's call.
+- **Documents:** the Video completion section of `screens-spec.md` rewritten; `footer-contract.md` rows Video,
+  Podcast, Activity and Lab; `BA/03-business-rules.md`; `topic-types-inventory.md`; Q-lab-7 reduced to the Open
+  Response inside a Reading.
+- **Not checked:** whether a SCORM Activity reports its own completion. If it does, it would complete by itself
+  and *Next* would not need to ask.
+
 ## 2026-10-12 · *Next* asks: the default on every topic completed by hand
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4 and §9, [`reading-screen-matrix.md`](reading-screen-matrix.md) §4.
