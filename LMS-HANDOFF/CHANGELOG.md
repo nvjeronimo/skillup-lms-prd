@@ -177,6 +177,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
   Studio setting.
 
+## 2026-10-12 · Button hover states: Brand Primary fixed, Brand Secondary as Nelson redrew it
+
+- **Brand Primary Hover (asked by Nelson):** in `Button` the label and both icons, and in `Icon Button` the
+  icon, are bound to `text/on-primary-hover` over `bg/primary-hover`. Before: the label was `text/primary`
+  (5.09:1 in light, and 1.0:1 in dark, where the fill and the text were the same colour) and the Button's
+  icons were `icon/on-primary` (white on yellow, 1.59:1 in light). Now 7.05:1 in light and 8.64:1 in dark.
+  `Icon Button` v2.2. Named version saved first. **Not published.**
+- **Brand Secondary Hover, redrawn by Nelson:** the fill is `bg/primary`, the label `text/on-primary`: the
+  outline button fills in on hover. 5.54:1 in light, 6.2:1 in dark. Its icons had stayed on the token of
+  the earlier change (dark on teal); they were set to `icon/on-primary` to match his label.
+- **Correction:** the dark-theme figures written earlier today for the yellow hover (1.29:1, about 11:1)
+  were computed with the light value of `bg/primary-hover`. In dark it is #6cc0e0, not yellow.
+- **Open:** Destructive and Success Secondary still fill with their soft colours on hover, so Brand is now
+  the only type that fills solid. The prototype still has the yellow Secondary hover of PR 116.
+
 ## 2026-10-12 · Button Brand Secondary: the hover text is `text/on-primary-hover`
 
 - **Decided by Nelson on 12 Oct.** On hover the Brand Secondary fills with `bg/primary-hover` (yellow), and its
