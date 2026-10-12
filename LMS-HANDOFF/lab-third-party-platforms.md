@@ -195,3 +195,22 @@ it as state *1b* and on the two Lab screens (`Course-Progression-Button` on `Mil
 
 **Open in the proposal:** the label itself (*Complete and continue* or shorter).
 
+## 8. 12 Oct 2026: the Microsoft courses that load the lab in the page
+
+From the *ICP Labs discussions* chat (Jaspinder Kaur Sehmi, Kirti Mishra), read from a screenshot Nelson shared.
+
+- **Two courses found with the lab inside the page:** AZ-900 Batch 7 (`course-v1:SkillUp+SKOAZ900ILT-TMDSAI+2024_B7`,
+  *Lab 1 - Create a virtual machine in the portal*) and `course-v1:SkillUp+SKOSC900ILT+2021_Q3`. The unit shows
+  *Create a virtual machine in the portal (External resource)*, which is the LTI component set to open inline. So
+  a Microsoft lab is not always a text link (§1): in these courses it is an LTI component.
+- **It does not load.** Jaspinder: *"Lab loads here - currently not working"*. Her screenshot shows an empty grey
+  frame with a blocked mark where the lab should be. Why it is blocked was not established (the provider refusing
+  the frame, as in §2, or the integration itself); either way the learner sees an empty box today.
+- **Kirti's call:** only one or two courses show the lab in an iframe, all other Microsoft and Google labs open in
+  a new tab, so the new design goes with the new tab and the question is revisited later.
+- **Jaspinder's opinion, not adopted:** keep each lab as it is today, in the page where it is in the page.
+
+What it means for the screens: the Embedded rows stay out of phase 1; **E3 (the frame is refused, open in a new
+tab) is no longer hypothetical**, it is what these two courses need today. Moving them to the new tab is a Studio
+setting on the component (*Open tool in* → *New Window*), not development.
+

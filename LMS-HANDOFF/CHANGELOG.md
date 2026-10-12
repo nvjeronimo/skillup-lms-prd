@@ -2,6 +2,16 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-12 · Lab: two Microsoft courses load the lab in the page, and it does not load
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §8. No screen changed.
+
+- Jaspinder found the courses with an in-page lab: AZ-900 Batch 7 and SC-900 2021 Q3, an LTI component opened
+  inline. The frame is empty today (*"currently not working"*).
+- Kirti: the design goes with the new tab for every lab; the iframe is revisited later.
+- The refused-frame state (E3) now has a real case behind it; the two courses can move to the new tab with a
+  Studio setting.
+
 ## 2026-10-12 · Course-Row and Resume-Row lead with the module the learner left off in
 
 - **Decided by Nelson on 12 Oct:** in the simple course row the point is to tell the learner where they
