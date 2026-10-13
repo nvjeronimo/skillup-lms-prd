@@ -130,7 +130,7 @@ The in-page rows have no question card of their own: the dialog is the one of G3
 
 **What changes on completion:** the topic's row in the sidebar becomes *Completed* (`Topic-Row`,
 `Topic Status=Completed`), the Topic Header shows *Marked as completed* and the Mark as Complete button is gone.
-**The footer shows no status** (`Topic-Footer-Nav`, `Show Badge` off). On mobile the sidebar row is in the outline,
+**The footer shows no status** (`Topic-Footer-Nav`; since v1.1 it has no badge to show). On mobile the sidebar row is in the outline,
 behind the menu.
 
 **One primary action at a time** (Nelson, 12 Oct): while the lab has not been opened, the launch button is the

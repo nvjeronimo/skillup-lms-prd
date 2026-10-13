@@ -88,7 +88,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Course-Progression-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537755) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Course Progression Button” |
 | [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-08 · Renamed from “LMS / Course Player Topbar” |
-| [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Topic Footer Nav” |
+| [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Changed, not published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
 | [Vertical-Scroll](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537649) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “Vertical Scroll” |
 
 **Sidebar**
@@ -374,6 +374,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-12 | `Lab-Launch-Card` | v1.0 → v1.1 | `State=Completed` removed (nothing comes back from the partner); `Opened` carries the date of the first opening; `Unavailable` loses *Skip for now*. |
 | 2026-10-13 | nine components | renumbered | Nothing is at `2.x` before it is built (rule 8). Old → new: `Button` 2.2 → 1.2 · `Icon Button` 2.2 → 1.2 · `Link Button` 2.0 → 1.0 · `Badge` 2.1 → 1.1 · `Button group` 2.0 → 1.1 · `Topbar` 2.0 → 1.2 (it already had a 1.1) · `Topbar-Item` 2.0 → 1.1 · `Course-Row` 2.0 → 1.1 · `Lab-Launch-Card` 2.0 → 1.1. Nothing else about the components changed. |
 | 2026-10-13 | `Topic-Row`, `Sidebar`, `Topic-Flyout` | v1.0 → v1.1, v1.0 → v1.1, new at v1.0 | The collapsed sidebar: a small bookmark on the rail row of a saved topic (`Show rail bookmark`), and the card that opens beside the rail. Ships with the next publish. |
+| 2026-10-13 | `Topic-Footer-Nav` | v1.0 → v1.1 | The property `Show Badge` and the `Topic-Status-Badge` it showed are removed (a property is removed: counted as 1.1 under rule 8; no screen had it on). Mark as Complete sits in the feedback row; Completed shows in the Topic Header. |
 
 ## Rename map (8 Oct 2026)
 

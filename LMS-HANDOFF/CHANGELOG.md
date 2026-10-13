@@ -7,6 +7,22 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > rewritten to the new numbers. Where an older entry says `Badge v2` or *Button V2*, it is the name those
 > components had then: they are today's `Badge` and `Button`.
 
+
+## 2026-10-13 · Topic-Footer-Nav: the status badge is removed from the component
+
+Nelson, on the anatomy of the component: *Mark as Complete does not belong to the footer navigation; it is in the
+feedback row, as defined today.* Named versions saved before and after. **Not published.**
+
+- **`LMS/ICP/Player/Topic-Footer-Nav` v1.1:** the property `Show Badge` and the `Topic-Status-Badge` it showed
+  are removed. The footer is Previous, the position (n of total and the title) and Next. No screen had the badge
+  on (183 footers counted on the Video, Quizzes, Reading, Lab and Platform WIP pages, 0 with it on).
+- **`Topic-Status-Badge`, description only:** *Use once per topic, in the feedback row at the end of the
+  content, never beside the footer navigation.*
+- **The block on the Player page** shows it: no `Show Badge` row, four parts in the anatomy.
+- **Open:** the variant of the footer is still named `Topic Footer Nav Default (V1)` (a name with a version, for
+  Nelson); `Content-Feedback` still has no place for Mark as Complete in the design system, the 63 screens use a
+  local frame `Feedback-Mark`.
+
 ## 2026-10-13 · Mark as Complete moves into the feedback row, on every screen
 
 Nelson's placement, from his two reference frames on the Lab page (`7124:49482`). The rule does not change: Mark
