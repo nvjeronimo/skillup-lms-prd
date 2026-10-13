@@ -16,7 +16,7 @@ Two things asked by Nelson on 13 Oct. Named versions saved before and after in b
 
 - **Checked in the design system:** the base `Progress bar` already draws track and fill with no radius, and so
   do the 18 places the LMS components use it. The one rounded bar was the hand-built bar of `Course-Card`.
-- **`LMS/Platform/Discovery/Course-Card` v1.1, not published:** radius 0 on its bar and fill, both layouts.
+- **`LMS/Platform/Discovery/Course-Card` v1.1, published by Nelson and accepted the same day:** radius 0 on its bar and fill, both layouts.
 - **`Progress bar`, no bump:** an inert radius 8 on the bar frame of the 55 labelled variants is removed (the
   frame does not clip, so nothing changes on screen); its description states the rule.
 - **Prototype, [pull request 132](https://github.com/nvjeronimo/skillup-lms-prototype/pull/132):** the course
