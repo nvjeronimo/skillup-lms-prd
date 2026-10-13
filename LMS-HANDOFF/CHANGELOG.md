@@ -8,6 +8,23 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · My Learning: the figures at the top also count programs
+
+Prototype [pull request 133](https://github.com/nvjeronimo/skillup-lms-prototype/pull/133).
+
+- **Decided by Nelson on 13 Oct:** the three figures at the top of My Learning count programs too.
+- **How it reads:** the figure stays the number of courses, the total Learner Home returns; the line under it
+  names the programs in that state: *In progress · 4 · courses · 1 program*. With no program in that state the
+  line reads *courses*. *Certificates* is unchanged. Program states come from `progress_details` (map §37).
+- **Figma:** the line under *In progress* on the eight My Learning screens of Ready for Dev, and under
+  *In progress* and *Completed* on the four proposal frames (they show a completed program). No design system
+  change: it is the `Detail` text of `Stat`. On mobile the line wraps to two, so the first stat is 134 tall
+  beside two of 116, aligned at the top; the two mobile screens are 18 taller.
+- **Prototype:** the same, with the program count read from the program cards; the stats align at the top.
+  Checked in the browser at 1440 and 375.
+- **To decide:** whether the figure itself should include programs, or stay courses with programs named under
+  it as now.
+
 ## 2026-10-13 · The completed state is in the design system: Program-Card and Course-Card
 
 Nelson accepted the proposal of the entry below (My Learning in sections, a completed state for the cards) and
