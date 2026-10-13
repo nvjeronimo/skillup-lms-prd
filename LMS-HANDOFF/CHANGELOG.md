@@ -8,6 +8,33 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Content-Feedback can carry Mark as Complete in the design system
+
+Agreed with Nelson on 13 Oct, to close the open point of the entry *Mark as Complete moves into the feedback row*:
+the 63 screens use a local frame `Feedback-Mark` because the component had no place for the action. Named versions
+saved before and after. **Not published.**
+
+- **`LMS/ICP/Content/Content-Feedback` v1.1:** new boolean **`Show Mark as Complete`**, off by default. On, the
+  nested `Topic-Status-Badge` (on *Mark as Complete*, exposed) sits at the right end of the row. With it off the
+  component looks as before.
+- **How it is built:** the feedback items and the licence are inside a new group `Feedback` that fills the row
+  and is never narrower than the three items (265); the action hugs. The row wraps: when both do not fit, the
+  action drops under the feedback, 24 apart on desktop, 20 on tablet and 16 on mobile (`Spacing/3xl`).
+- **Measured on test instances, then removed:** 1080 and 600 wide, one row, 60 high, the action at the right;
+  311 wide, the action under the feedback (102 high in the desktop mode of the token). The same sizes as the
+  local frames on the screens.
+- **The block on the Content page** shows the new property, the measures and a three-part anatomy.
+- **Not the same as the local frame:** the rule above and below the row and the page background are on the
+  local frame, not in the component (the component never had them).
+- **Published by Nelson and accepted in the product file the same day. The local frames are replaced:** 64
+  `Feedback-Mark` frames are now the component with `Show Mark as Complete` on: Lab 35, Reading 19, Video 2,
+  Topic Content Types Discovery 8 (the entry of the morning counted 63). Every one keeps its size (1080 × 60,
+  600 × 60, 311 × 94 or 102, 1112 × 60) and its parent's height; the rules, the background, the side padding of
+  the Video and the licence option were carried to the instance, and the *Secondary* button on the ten Lab
+  screens that had it. Nelson's reference frame `7124:49482` was left as it is. Two looked at as images
+  (Lab desktop, Video); a mobile one would not render in the capture and was checked by its measures only.
+  Named versions before and after.
+
 ## 2026-10-13 · Topic-Footer-Nav: the status badge is removed from the component
 
 Nelson, on the anatomy of the component: *Mark as Complete does not belong to the footer navigation; it is in the
