@@ -202,8 +202,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.0 | 2026-10-13 | In review | 4 | 2026-10-13 · New: the floating chat of the assistant (Size Desktop/Mobile, State Empty/Conversation/Answering). Built from the prototype (PR 127). Not published. |
-| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.0 | 2026-10-13 | In review | 2 | 2026-10-13 · New: the button that opens the chat (State Closed/Open). Closed is the assistant mark drawn by Nelson (SkillUp ball and plane, AI sparkles in place of the trail lines). Not published. |
+| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.1 | 2026-10-13 | In review | 6 | 2026-10-13 · Two states added for first steps (`First steps`, `First steps done`); `Empty` starts with the next step. Not published at v1.1. |
+| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.1 | 2026-10-13 | In review | 3 | 2026-10-13 · 48 px; closed is the assistant mark; `Closed with count` added (first steps left). Not published at v1.1. |
 
 **Navigation**
 
@@ -386,6 +386,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | `Button`, `Link Button` | v1.2 → v1.3, v1.0 → v1.1 | The variants hug their content (they were fixed at 79 and 93 wide, so an icon turned on in the nested part was clipped). Sizes at rest unchanged. |
 | 2026-10-13 | three names | no bump | Names that carried a version, same keys: the only variant of `Topic-Footer-Nav` is `Default` (was *Topic Footer Nav Default (V1)*); `Empty state - V2` is `Empty state responsive`; `._Progress bar-V2` is `._Progress bar plain`. |
 | 2026-10-13 | Assistant-Chat, Assistant-Launcher | v1.0 | New, in review, not published: the floating chat that replaces the docked AI Panel in the prototype. `AI-Panel` itself is unchanged. |
+| 2026-10-13 | Assistant-Chat | v1.0 → v1.1 | First steps: states `First steps` and `First steps done`; the `Empty` state starts with the next step (one sentence, one button). |
+| 2026-10-13 | Assistant-Launcher | v1.0 → v1.1 | Variant `Closed with count`: the number of first steps left on the mark. |
 | 2026-10-13 | `Course-Card` | v1.0 → v1.1 | The hand-built progress bar ends straight (radius 0 on track and fill), as every progress bar. `Progress bar` itself: an inert radius 8 removed from the bar frame of the labelled variants, no visual change, no bump. |
 | 2026-10-13 | `Program-Card`, `Course-Card` | v1.0 → v1.1, v1.1 → v1.2 | The completed state. `Program-Card`: `State=Completed` and the text property `Certificate date`. `Course-Card`: a new variant property `State` (Default, Completed); the two existing variants are now `State=Default`, same keys. A progress fill is `bg/info` while it runs and `bg/success` only when it is done. |
 | 2026-10-13 | `Program-Card`, `Course-Card` | no change | Repairs to the Completed variants, published the same day: `Title` and `Courses` linked to their text properties again on `Program-Card`; the `Image` layer of the thumbnail added and linked to `Show image` on `Course-Card`. |
