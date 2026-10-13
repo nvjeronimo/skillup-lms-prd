@@ -202,13 +202,13 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 
 - DS components: Topic Header, `Lab-Launch-Card`, `Lab-Prerequisites`, `Numbered-Step`, `LMS / Inline Alert`,
   `Topic-Footer-Nav`, the Course header with its Progress card, and the DS `Modal` for the IBM dialog.
-- **Mark as Complete** shares a row with the feedback since 13 Oct 2026: the frame `Feedback-Mark` (horizontal,
-  space-between, wrap, 12 of padding above and below, a rule above and below) holds the DS `Content-Feedback`
-  instance on the left and the frame `Mark-As-Completed-row` on the right, with the DS `Topic-Status-Badge` on
-  `Topic-Marked-Status=Mark as Complete`. The wrap puts the button under the feedback when the row is too narrow
-  (a phone), 16 apart there and 24 on the wider breakpoints, through the spacing token. Nelson's two reference
-  frames are `7124:49482` on the Lab page. `Feedback-Mark` is a local frame: `Content-Feedback` has no slot for an
-  action in the design system. Completed screens keep the plain `Content-Feedback` instance.
+- **Mark as Complete** shares a row with the feedback since 13 Oct 2026. It is the DS `Content-Feedback` (v1.1)
+  with `Show Mark as Complete` on: the feedback on the left, the nested `Topic-Status-Badge` on *Mark as Complete*
+  on the right; when the row is too narrow (a phone) the button drops under the feedback, 16 apart there, 20 on
+  tablet and 24 on desktop, through the spacing token. On the instance: a rule above and below (`border/subtle`),
+  the page background, and on the three never-opened screens the button on *Secondary*. Until 13 Oct this was a
+  local frame `Feedback-Mark`; Nelson's reference frame `7124:49482` on the Lab page is the only one left.
+  Completed screens have `Show Mark as Complete` off.
 - **The footer is the DS `Topic-Footer-Nav` with no override:** `Course-Progression-Button` on
   `Milestone=Next-Topic`, the icon-only forward button on mobile (arrow-right), three equal columns on tablet. The
   overrides that *Complete and continue* needed were removed.

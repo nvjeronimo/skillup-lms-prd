@@ -26,8 +26,14 @@ saved before and after. **Not published.**
 - **The block on the Content page** shows the new property, the measures and a three-part anatomy.
 - **Not the same as the local frame:** the rule above and below the row and the page background are on the
   local frame, not in the component (the component never had them).
-- **Next, after Nelson publishes and the product file accepts the update:** replace the 63 local `Feedback-Mark`
-  frames with the component, `Show Mark as Complete` on.
+- **Published by Nelson and accepted in the product file the same day. The local frames are replaced:** 64
+  `Feedback-Mark` frames are now the component with `Show Mark as Complete` on: Lab 35, Reading 19, Video 2,
+  Topic Content Types Discovery 8 (the entry of the morning counted 63). Every one keeps its size (1080 × 60,
+  600 × 60, 311 × 94 or 102, 1112 × 60) and its parent's height; the rules, the background, the side padding of
+  the Video and the licence option were carried to the instance, and the *Secondary* button on the ten Lab
+  screens that had it. Nelson's reference frame `7124:49482` was left as it is. Two looked at as images
+  (Lab desktop, Video); a mobile one would not render in the capture and was checked by its measures only.
+  Named versions before and after.
 
 ## 2026-10-13 · Topic-Footer-Nav: the status badge is removed from the component
 
