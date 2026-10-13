@@ -8,6 +8,31 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · My Learning: one ordered list and a status filter (the three sections are withdrawn)
+
+Nelson, 13 Oct, evening: the three sections spread the cards and make the learner scroll. Approved instead: a
+filter. Named version saved before the write.
+
+- **The rule:** each tab of My Learning (Courses, Programs) is ONE list, always ordered *In progress*, *Not
+  started*, *Completed*. Under the toolbar a DS `Button group` filters by state: *All* (default), *In progress*,
+  *Not started*, *Completed*. It works together with the search and the Grid / List view. The state is the one
+  Open edX gives (course: `hasStarted`, `certificate.isEarned`; program: `progress_details`). This replaces the
+  entry *My Learning in three sections* below: the sections and their headers are gone; the completed state of
+  the cards stays.
+- **Mobile:** the four segments (404) are wider than the screen (327), so the filter scrolls sideways.
+- **Browse catalog** stays hidden.
+- **Figma, Ready for Dev:** the eight screens (`6408:73284` … `6408:76383`) rebuilt that way; each handoff card
+  carries a *Recent changes* line of 13 Oct. The desktop Courses grid went from 1920 to 1338 tall. On the WIP
+  page the sections proposal (`7154:25789`) is marked superseded and the filter proposal (`7184:28158`) approved.
+- **Prototype:** PR 138.
+- **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
+  the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
+  completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
+  nested card falls back to an older copy of the variant) and has to be re-pointed by key; Nelson's reworked
+  `Section-Header` (count on the right, a rule) and the reworked *Not started* program card are not in the
+  prototype yet.
+
+
 ## 2026-10-13 · My Learning in three sections; the completed state on the screens; video sliders end straight
 
 Nelson, 13 Oct: the proposal of the morning is approved. Named versions saved before the writes in both Figma
