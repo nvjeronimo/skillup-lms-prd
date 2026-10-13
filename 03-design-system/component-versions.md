@@ -388,6 +388,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | Assistant-Chat, Assistant-Launcher | v1.0 | New, in review, not published: the floating chat that replaces the docked AI Panel in the prototype. `AI-Panel` itself is unchanged. |
 | 2026-10-13 | `Course-Card` | v1.0 → v1.1 | The hand-built progress bar ends straight (radius 0 on track and fill), as every progress bar. `Progress bar` itself: an inert radius 8 removed from the bar frame of the labelled variants, no visual change, no bump. |
 | 2026-10-13 | `Program-Card`, `Course-Card` | v1.0 → v1.1, v1.1 → v1.2 | The completed state. `Program-Card`: `State=Completed` and the text property `Certificate date`. `Course-Card`: a new variant property `State` (Default, Completed); the two existing variants are now `State=Default`, same keys. A progress fill is `bg/info` while it runs and `bg/success` only when it is done. |
+| 2026-10-13 | `Program-Card`, `Course-Card` | no change | Repairs to the Completed variants, waiting for publish: `Title` and `Courses` linked to their text properties again on `Program-Card`; the `Image` layer of the thumbnail added and linked to `Show image` on `Course-Card`. |
 
 ## Rename map (8 Oct 2026)
 
