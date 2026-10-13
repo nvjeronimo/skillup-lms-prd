@@ -8,6 +8,34 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Buttons: hug or fill, never a fixed width; a regression of the same day repaired
+
+Nelson, 13 Oct, on a Modal whose *Cancel* was 79 wide and fixed: *a button either hugs its content or fills
+(mobile). Never a fixed 79.* Named versions saved before and after in both Figma files.
+
+- **The rule:** a `Button` or `Link Button` hugs its content or fills its container. Never a fixed width. For a
+  full-width button BOTH the instance and its nested structure are on Fill; with only the instance on Fill the
+  visible button stays narrow inside it. Written in the two descriptions and on the Buttons page.
+- **What was wrong, and why:** two things. Old overrides that pinned the nested structure at 79 (the Modal
+  buttons, `Empty state responsive`, the progress cards). And a regression of this morning: making the `Button`
+  variants hug (v1.3) moved their nested structure from Fill to Hug, so every full-width button that relied on
+  the variant's Fill was left with a narrow structure. The check made then looked only at buttons placed
+  directly on the screens (all on hug) and missed the buttons nested in other components. The error was in that
+  check, not in the screens.
+- **Design system, not published:** 63 buttons inside components corrected (20 in `_Modal actions`, 8 in
+  `Entry-Header`, 12 in `Empty state responsive`, 4 each in `Results` and `Progress-Card`, 3 each in
+  `Sidebar-Card` and `Course-Complete-Modal`, 2 each in `Note-Editor`, `Certificate-Card`, `._Card footer`, and
+  3 hugging Modal buttons freed from 79). Audit after: 113 on hug and hug, 56 on fill and fill, none fixed, none
+  narrower. Two hidden *Book a call* buttons in `Sidebar-Card` still read fixed 140: an instance cannot be
+  resized while hidden.
+- **Screens, done without waiting for the publish:** 250 buttons corrected on the handoff pages (Platform Ready
+  for Dev 91, Platform WIP 80, Quizzes 37, Lab 27, Completion 9, Video 4, Reading 2). Audit after: none left on
+  those seven pages. Seen as an image: the *Resume*, *Review* and *Start* of the My Learning course cards span
+  the card again.
+- **Limit of the component, for a decision:** the visible button is a nested structure, so no default serves
+  both uses: with hug as the default, a full-width button needs the second Fill by hand. Two ways out: a `Width`
+  property on `Button` (Hug, Fill), or drawing the button on the component itself with no nested structure.
+
 ## 2026-10-13 · My Learning: the figures at the top also count programs
 
 Prototype [pull request 133](https://github.com/nvjeronimo/skillup-lms-prototype/pull/133).
