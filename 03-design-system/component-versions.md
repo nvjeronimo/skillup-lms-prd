@@ -11,11 +11,11 @@ component, so it needs to know, per component, whether what it built is still cu
 
 ## The convention
 
-A version is two numbers, `MAJOR.MINOR`, written `v2.1`.
+A version is two numbers, `MAJOR.MINOR`, written `v1.2`.
 
 | The change | Bump | Examples |
 |---|---|---|
-| **Breaks what was built from the previous version.** A property or a variant is removed or renamed, a property changes type, the structure changes so that the code has to be rewritten, a behaviour changes. | **MAJOR** (`1.3` → `2.0`) | `Program-Card` loses `Week`, `Lessons` and `Show cohort`; `Badge` rebuilt as `Badge v2`. |
+| **Breaks what was built from the previous version.** A property or a variant is removed or renamed, a property changes type, the structure changes so that the code has to be rewritten, a behaviour changes. | **MAJOR** (`1.3` → `2.0`) | `Program-Card` loses `Week`, `Lessons` and `Show cohort`. |
 | **Adds to it or changes how it looks, and the previous code still works.** A new variant, a new property with a default that keeps the old look, a new state, another token, text style, size, spacing or radius. | **MINOR** (`1.3` → `1.4`) | `Course Card` gains `Show image`; `Course Type Badge` labels go to `body-small/Semibold` and the badge to 18 high. |
 | **Changes nothing a developer builds.** Description, documentation link, layer names, position on the page, a fix that makes the component match what its version already said. | none | The 82 documentation links added on 8 Oct. |
 
@@ -33,8 +33,11 @@ Rules:
    the components that show it.
 7. **No component name carries a version** (Nelson, 12 Oct 2026). `Button`, `Link Button`, `Icon Button` and
    `Badge` are the current components; the version is in the first line of the Figma description and in this
-   register, never in a name, a Storybook title or a message. Older text in these docs that says `Badge v2` or
-   *Button V2* means these same components.
+   register, never in a name, a Storybook title or a message.
+8. **Every component is at `1.x` until engineering has built it** (Nelson, 13 Oct 2026). Design and engineering
+   start the design system and Storybook now, so nothing starts at 2. The nine components that carried a `2.x`
+   were renumbered on 13 Oct (table in *History*). A MAJOR bump is first used on a component that has a story
+   built from it; until then a breaking change is a MINOR bump with the break named in the changelog.
 
 **For engineering:** a MINOR bump means "check the story against Figma"; a MAJOR bump means "the story's
 properties or structure have to change". A story records the version it was built from.
@@ -44,7 +47,7 @@ properties or structure have to change". A story records the version it was buil
 On 8 Oct 2026 every component got a starting version, because no versions had been kept until then:
 
 - `1.0` for every component, as published that day.
-- `2.0` for `Badge` and the `Button` family, which are rebuilds of an earlier component.
+- `1.0` as well for `Badge` and the `Button` family (they carried `2.0` until the renumbering of 13 Oct 2026).
 
 What happened to a component before the baseline is in `LMS-HANDOFF/CHANGELOG.md`; the column *Last named in
 changelog* points to the latest entry that names it. It is a pointer, not part of the version.
@@ -128,7 +131,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Activity-SCORM-Frame](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3488) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Activity · SCORM Frame” |
 | [Lab-File-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3330) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Lab · File Row” |
-| [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v2.0 | 2026-10-12 | Published | 3 | 2026-10-12 · `Completed` removed; `Opened` shows the date of the first opening; *Skip* removed from `Unavailable`; no score wording |
+| [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · `Completed` removed; `Opened` shows the date of the first opening; *Skip* removed from `Unavailable`; no score wording |
 | [Lab-Prerequisites](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3331) | v1.0 | 2026-10-12 | Deleted | 1 | 2026-10-12 · Deleted from the library: the DS `Alert` replaced it on the 36 screens that used it |
 | [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.0 | 2026-10-08 | Published | 12 | 2026-10-08 · Renamed from “LMS / Lesson Block” |
 | [ORA-Grade-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3634) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / ORA · Grade Panel” |
@@ -198,8 +201,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v2.0 | 2026-10-12 | Published | 2 | 2026-10-12 · The nav holds five exposed `Topbar-Item` that fill the bar; the page is marked on the item, no property on the Topbar |
-| [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v2.0 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.2 | 2026-10-12 | Published | 2 | 2026-10-12 · The nav holds five exposed `Topbar-Item` that fill the bar; the page is marked on the item, no property on the Topbar |
+| [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 
 **Dashboard**
 
@@ -226,7 +229,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
 | [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Card” |
-| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v2.0 | 2026-10-12 | Published | 3 | 2026-10-12 · Topic type and length, the module as headline, new `Context` property (course · program); no delivery badge; 96 tall |
+| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · Topic type and length, the module as headline, new `Context` property (course · program); no delivery badge; 96 tall |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Type Badge” |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
@@ -283,21 +286,21 @@ A link marked *(page)* goes to the component's page in the library.
 | [Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1130-81134) | v1.0 | 2026-10-08 | Published |  | 2026-09-23 · Course Detail: known inconsistencies fixed |
 | [Avatar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19-1012) | v1.0 | 2026-10-08 | Published |  | 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card |
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
-| [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v2.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
+| [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v1.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
-| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v2.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
+| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
-| [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v2.0 | 2026-10-11 | Published |  | 2026-10-11 · A bg/muted track with a pill for the current segment; the segments are no longer joined |
+| [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v1.1 | 2026-10-11 | Published |  | 2026-10-11 · A bg/muted track with a pill for the current segment; the segments are no longer joined |
 | [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.0 | 2026-10-08 | Published |  | 2026-09-22 · ORA on tablet and mobile; the all-content example covers the whole catalogue |
 | [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.0 | 2026-10-08 | Published |  | 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited |
-| [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
-| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v2.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
+| [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge, Course Card measured |
+| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v1.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
 | [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button utility`, same key) |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
-| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v2.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
 | [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1085-57382) | v1.0 | 2026-10-08 | Published |  | 2026-08-05 · The quiz nav adopted across the sections |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
@@ -317,20 +320,20 @@ library's Buttons page.
 - **The screens use the previous generation**: `Buttons/Button` (1 559 instances on the ten pages counted),
   `Buttons/Button utility` (342) and `Buttons/Button close X` (185). Its properties are `Size`, `Hierarchy`
   (Primary, Secondary, Tertiary, Link color, Link gray), `State` and `Icon only`.
-- **The library has Button V2**: `Button`, `Link Button` and `Icon Button` (`Type` Brand / Destructive / Success ×
+- **The library has the current buttons**: `Button`, `Link Button` and `Icon Button` (`Type` Brand / Destructive / Success ×
   `Hierarchy` × `State`, size on a nested structure). They are different components, with different keys, and
   **no instance on the ten pages uses them**.
 - **The previous generation is no longer served by the library**: importing `Buttons/Button` and
   `Buttons/Button utility` by key fails (a published component imports fine in the same test). The instances keep
   working, but they cannot receive an update. `Buttons/Button close X` was not tested.
 
-How one maps to the other (from the Button V2 review of 24 Sep 2026):
+How one maps to the other (from the button review of 24 Sep 2026):
 
-| On the screens (previous generation) | In Button V2 | Seen on the four Ready for Dev pages* |
+| On the screens (previous generation) | In the current buttons | Seen on the four Ready for Dev pages* |
 |---|---|---:|
 | `Buttons/Button`, Hierarchy Primary | `Button`, Brand, Primary | 219 |
 | `Buttons/Button`, Hierarchy Secondary | `Button`, Brand, Secondary | 182 |
-| `Buttons/Button`, Hierarchy Tertiary (neutral grey outline) | **no equivalent**: V2 Tertiary is a brand ghost button | 89 |
+| `Buttons/Button`, Hierarchy Tertiary (neutral grey outline) | **no equivalent**: the current Tertiary is a brand ghost button | 89 |
 | `Buttons/Button`, Link color | `Link Button`, Primary | 21 |
 | `Buttons/Button`, Link gray | `Link Button`, Secondary | 9 |
 | `Buttons/Button`, Icon only = True | `Icon Button` (Secondary 31; the 31 Tertiary have the same gap as above) | 62 |
@@ -340,34 +343,36 @@ How one maps to the other (from the Button V2 review of 24 Sep 2026):
 \* Instances whose layer still carries the component's name on Video, Quizzes, Reading and Platform Pages Ready
 for Dev; buttons nested under another layer name (for example inside a card) are not in this column.
 
-**Decided by Nelson on 8 Oct 2026 (night): the screens move to Button V2**, and V2 is completed first. Done in the
+**Decided by Nelson on 8 Oct 2026 (night): the screens move to the current buttons**, which are completed first. Done in the
 DS the same night, not published when written:
 
-| Gap | How V2 covers it now |
+| Gap | How the current buttons cover it |
 |---|---|
-| Grey-outline Tertiary | `Button` and `Icon Button` have a fourth `Type`, **Neutral**, as Secondary only (five states each): outline `border/default`, label `text/subtle`, icon `icon/subtle`, no fill; hover as the previous button (`bg/primary-soft`, `border/primary`). Both sets go to **v2.1** |
+| Grey-outline Tertiary | `Button` and `Icon Button` have a fourth `Type`, **Neutral**, as Secondary only (five states each): outline `border/default`, label `text/subtle`, icon `icon/subtle`, no fill; hover as the previous button (`bg/primary-soft`, `border/primary`). Both sets go to **v1.1** |
 | `Buttons/Button utility` | back on the Buttons page as **`Utility Button`**: the same set, the same key, a new name. Its instances reconnect with the publish; nothing to swap |
 | `Buttons/Button close X` | back on the Buttons page as **`Close Button`**, same key. Its six untokenised hover and focus fills on dark are on `bg/on-media` at 20 % |
 
-Still to do, in this order: the buttons nested in the LMS and base components of this register move to V2 in the
+Still to do, in this order: the buttons nested in the LMS and base components of this register move to the current buttons in the
 DS (the Untitled UI marketing blocks stay on the previous button); a publish; then the direct instances on the
 screens, page by page. `Buttons/Button` itself stays off the page until nothing in scope uses it.
 
-**What this means for engineering:** a story built from Button V2 does not match what the Ready for Dev screens
+**What this means for engineering:** a story built from the current buttons does not match what the Ready for Dev screens
 show wherever the screen has a grey-outline Tertiary, a utility button or a close button. Until the screens are
-migrated or V2 gains those cases, the screens are the reference for how a button looks; V2 is the reference for
+migrated or the current buttons gain those cases, the screens are the reference for how a button looks; the current buttons are the reference for
 the property names. The migration itself is not planned yet: it is a decision for Nelson.
 
 ## History
 
-- **2026-10-08 (night)** · `Button` v2.0 → v2.1, `Icon Button` v2.0 → v2.1 (`Type=Neutral` added, Secondary only). `Utility Button` and `Close Button` enter at v1.0: the previous utility and close sets under new names, same keys. All four ship with the next publish.
+- **2026-10-08 (night)** · `Button` v1.0 → v1.1, `Icon Button` v1.0 → v1.1 (`Type=Neutral` added, Secondary only). `Utility Button` and `Close Button` enter at v1.0: the previous utility and close sets under new names, same keys. All four ship with the next publish.
 
 | Date | Component | Version | What changed |
 |---|---|---|---|
-| 2026-10-08 | all | baseline | Versions start here: `1.0`, and `2.0` for `Badge v2` and the `Button` family (`Button`, `Link Button`, `Icon Button`). |
-| 2026-10-08 | Button family | no bump | Register corrected: the screens use the previous generation (`Buttons/Button`), not Button V2. See *Buttons: two generations*. |
+| 2026-10-08 | all | baseline | Versions start here: `1.0` for every component (`Badge` and the `Button` family carried `2.0` until 13 Oct 2026). |
+| 2026-10-08 | Button family | no bump | Register corrected: the screens use the previous generation (`Buttons/Button`), not the current `Button` family. See *Buttons: two generations*. |
 | 2026-10-08 | 74 LMS components | no bump | Renamed to `LMS/ICP/…` and `LMS/Platform/…`; Discovery and course-end components moved to the platform page; six components moved to *In review*. |
-| 2026-10-12 | `Lab-Launch-Card` | v1.0 → v2.0 | `State=Completed` removed (nothing comes back from the partner); `Opened` carries the date of the first opening; `Unavailable` loses *Skip for now*. |
+| 2026-10-12 | `Lab-Launch-Card` | v1.0 → v1.1 | `State=Completed` removed (nothing comes back from the partner); `Opened` carries the date of the first opening; `Unavailable` loses *Skip for now*. |
+| 2026-10-13 | nine components | renumbered | Nothing is at `2.x` before it is built (rule 8). Old → new: `Button` 2.2 → 1.2 · `Icon Button` 2.2 → 1.2 · `Link Button` 2.0 → 1.0 · `Badge` 2.1 → 1.1 · `Button group` 2.0 → 1.1 · `Topbar` 2.0 → 1.2 (it already had a 1.1) · `Topbar-Item` 2.0 → 1.1 · `Course-Row` 2.0 → 1.1 · `Lab-Launch-Card` 2.0 → 1.1. Nothing else about the components changed. |
+
 
 ## Rename map (8 Oct 2026)
 

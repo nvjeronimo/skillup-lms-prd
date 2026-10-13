@@ -328,9 +328,9 @@ follows it. Until then, `LMS / Course Detail / Completion card` documents the tw
 
 ---
 
-## 11 · `Badge v2` — no filled (strong) style
+## 11 · `Badge` — no filled (strong) style
 
-`Badge v2` has Soft, Outline, Modern and Plain. None fills with the strong colour and white text. The Course Detail
+`Badge` has Soft, Outline, Modern and Plain. None fills with the strong colour and white text. The Course Detail
 Dates tab used exactly that for its **today marker** (*TODAY · 18 Sep 2026*, `bg/primary` + `text/on-primary`) — a
 chip that has to stand out from every other chip on the timeline. With no such style it became a DS `Content divider`
 (Type=Text), which is the DS's own "Today" pattern but loses the emphasis.
@@ -508,10 +508,10 @@ local component; nothing was linked to it.
 
 ## 21 · Delivery, difficulty and topic-type badges read *Label* — 7 Oct
 
-**What is wrong.** `Badge v2` was restructured: no nested `_Badge base` any more, its properties (`Text`, `Icon
-leading`…) sit on `Badge v2` itself. The components that wrap it kept none of their overrides. In the DS, **every
+**What is wrong.** `Badge` was restructured: no nested `_Badge base` any more, its properties (`Text`, `Icon
+leading`…) sit on `Badge` itself. The components that wrap it kept none of their overrides. In the DS, **every
 variant** of `LMS / Delivery Mode Badge` (3), `LMS / Difficulty Badge` (3) and `LMS / Topic-Types Badge` (14) is
-now the same thing: a `Badge v2` with `Text = Label` and `Icon leading = false`, 50 × 22 or 34 × 18. The same
+now the same thing: a `Badge` with `Text = Label` and `Icon leading = false`, 50 × 22 or 34 × 18. The same
 happens to badges nested in other components: the provider badge of the Course Card, the *You left off here* of
 `Course-Row`, the relative date of `Sidebar-Card` · Dates.
 
@@ -531,12 +531,12 @@ The ten that still read correctly on the WIP page are older instances that kept 
 again. The screens heal when the three sets are repaired and the library is published.
 
 **Ask:** in each variant of the three sets, set `Text` to the variant's label and `Icon leading` back on with its
-icon; check the other components that nest a `Badge v2`; publish.
+icon; check the other components that nest a `Badge`; publish.
 
 ### Repaired in the DS, 7 Oct (evening) — the three sets, 20 variants; published the same night
 
 On Nelson's go-ahead, after a named version (*Before badge repair: Delivery Mode, Difficulty and Topic-Types
-badges*). On the nested `Badge v2` of each variant: `Text`, `Icon leading = true`, `Icon leading swap`; on the
+badges*). On the nested `Badge` of each variant: `Text`, `Icon leading = true`, `Icon leading swap`; on the
 topic-type badge also the label on `text/subtle` and the icon container's fill hidden, as before. Every variant
 read back; sizes are the old ones where an old one was on record (*Flexible Learning* 137 × 22, *Flexible + Live*
 117 × 22, *Beginner* 89 × 22, *Video* 61 × 20, *Reading* 78 × 20, *Live Session* 100 × 20); each set checked by eye.
@@ -558,7 +558,7 @@ screens with the badges and had no other owner; the prototype has no record of i
 ### The other 15 sets — 94 nested badges, repaired 7 Oct (night); published the same night
 
 On Nelson's second go-ahead, after a named version (*Before badge repair 2: nested badges in 15 LMS component
-sets*). Counted the same day on the two LMS pages: all 114 `Badge v2` nested in a component read *Label*; the
+sets*). Counted the same day on the two LMS pages: all 114 `Badge` nested in a component read *Label*; the
 three wrapper sets were 20 of them, these are the other 94. `Text` restored on each, and `Dot` on the one that had
 it. Style, size and colour had survived and were not touched. All 94 read back; `Quiz · Entry Header` and
 `Program-Card` checked by eye.
@@ -589,7 +589,7 @@ prototype, not from the DS).
 a cohort: both are defaults the edX pass of §37 took off the screens (§37.6, item 4). A repair is not the place to
 change a component's defaults; that item stays open.
 
-**Not checked:** `Badge v2` nested in components outside the two LMS pages (the Untitled UI pages, tabs,
+**Not checked:** `Badge` nested in components outside the two LMS pages (the Untitled UI pages, tabs,
 navigation, tables). The same loss is likely there.
 
 **And in the product file,** a badge whose text was set on a screen (*In 13 months*, *Due 11:59*, *QUESTION*, a
@@ -622,7 +622,7 @@ both platform pages, each read back and the result checked by eye:
 
 | What | Badges | Text |
 |---|---:|---|
-| `Badge v2` placed directly on the technical frames | 28 | *Counts* 8 · *No* 14 · *Not required* 4 · *Self-paced* 1 · *Professional* 1 — the layer name carries the text; the two chips from the 1 Oct replacement log |
+| `Badge` placed directly on the technical frames | 28 | *Counts* 8 · *No* 14 · *Not required* 4 · *Self-paced* 1 · *Professional* 1 — the layer name carries the text; the two chips from the 1 Oct replacement log |
 | Tab counts on the eight *Programs* screens | 16 | *Programs* **2** · *Courses* **5** |
 | `Sidebar-Card` · Dates on the Course tab (7 cards) | 14 | *Tomorrow* · *In 15 days* |
 | `Sidebar-Card` · Program dates (9 cards) | 18 | *Started* · *In 13 months* |
@@ -708,7 +708,7 @@ To confirm.
 
 ### Outside the two LMS pages — sampled 8 Oct, nothing changed
 
-`Badge v2` nested in the Untitled UI kit components lost its text in the same restructure. Six component pages
+`Badge` nested in the Untitled UI kit components lost its text in the same restructure. Six component pages
 of the DS were read; a badge counts when its label is on:
 
 | DS page | Nested badges | Reading *Label* | Where |
@@ -734,7 +734,7 @@ texts node by node.
 ## 22 · `LMS/Platform/Navigation/Topbar` — *Calendar* counts 4, it was 3
 
 The top bar was built with *My Learning* **4** and *Calendar* **3**. The 3 was an override two levels down, set in
-the `Topbar` master on the count badge of its *Calendar* item. The `Badge v2` restructure dropped it, and the
+the `Topbar` master on the count badge of its *Calendar* item. The `Badge` restructure dropped it, and the
 repair of request 21 did not see it: that pass looked for badges reading *Label*, and this one reads the item's
 default, *4*. Every desktop platform screen now shows *Calendar 4* (23 top bars on the two pages).
 

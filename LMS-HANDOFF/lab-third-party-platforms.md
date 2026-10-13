@@ -191,7 +191,7 @@ the lab was opened, and when for the first time.
 - Every text about a score: *Score 1 / 1*, *your score comes back*, *Topic marked complete for you*, the lab timer
   that "can't be paused", the Incognito window.
 - The *Skip for now* action of the Unavailable launch card: to move on without completing, the learner uses the
-  sidebar. Gone from the component since v2.0.
+  sidebar. Gone from the component since v1.1.
 - **The *Completed* state of the launch card** (*Lab complete · Completed on …*), the same day, for the reason
   above.
 
@@ -228,7 +228,7 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 ### For the design system (not done, needs Nelson)
 
 1. `Topic-Footer-Nav`, `Topic-Status-Badge` and `Modal` are used as they are: nothing to add for this flow.
-2. `Lab-Launch-Card` **v2.0, published by Nelson on 12 Oct and accepted in the ICP file**: `Completed` removed,
+2. `Lab-Launch-Card` **v1.1, published by Nelson on 12 Oct and accepted in the ICP file**: `Completed` removed,
    `Opened` with the *Opened date* line, *Skip* removed from `Unavailable`, default texts without a score. Read
    back on the 21 instances of the Lab page (6 Ready, 12 Opened, 3 Unavailable). Its default button text is
    *Open Google Cloud Lab* while the screens say *Open Lab*: one of the two should change. On 12 Oct (evening) its

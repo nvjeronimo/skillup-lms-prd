@@ -127,7 +127,7 @@ const breakpoints = {
 Sidebar behavior by breakpoint:
 - **Desktop**: Sidebar v2 State=Expanded (in-flow, 280w). User can collapse to State=Collapsed (72w).
 - **Tablet**: Sidebar v2 State=Collapsed (in-flow). No expand by default.
-- **Mobile**: Sidebar hidden by default. Topbar ☰ button opens drawer (Sidebar v2 State=Mobile, 320w, overlay with backdrop).
+- **Mobile**: Sidebar hidden by default. Topbar ☰ button opens drawer (Sidebar State=Mobile, 320w, overlay with backdrop).
 
 Topbar by breakpoint:
 - **Desktop**: full topbar with breadcrumb

@@ -11,7 +11,7 @@ The Video lesson flow + the surrounding chrome the learner needs to actually use
 | Epic | Stories | Notes |
 |---|---|---|
 | **E1 · Dashboard + course entry** | 4 | My Learning page, course cards, enrollment status |
-| **E2 · Course Player chrome** | 5 | Topbar, Sidebar v2 (Expanded/Collapsed/Mobile), breadcrumb |
+| **E2 · Course Player chrome** | 5 | Topbar, Sidebar (Expanded/Collapsed/Mobile), breadcrumb |
 | **E3 · Video playback** | 8 | Play/pause/seek/speed/CC/lang/fullscreen/download transcript |
 | **E4 · Transcript + auto-scroll** | 4 | Active line follow, click-to-seek, pause on user scroll, Resume pill |
 | **E5 · Notes (transcript-anchored)** | 7 | Add, edit, delete, tags, list view, Note Editor modal, orphaned handling |
