@@ -8,6 +8,40 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Progress bars end straight; a proposal for My Learning sections and the completed state
+
+Two things asked by Nelson on 13 Oct. Named versions saved before and after in both Figma files.
+
+**Progress bars end straight (rule restated by Nelson).** A progress bar has no rounded ends, track or fill.
+
+- **Checked in the design system:** the base `Progress bar` already draws track and fill with no radius, and so
+  do the 18 places the LMS components use it. The one rounded bar was the hand-built bar of `Course-Card`.
+- **`LMS/Platform/Discovery/Course-Card` v1.1, published by Nelson and accepted the same day:** radius 0 on its bar and fill, both layouts.
+- **`Progress bar`, no bump:** an inert radius 8 on the bar frame of the 55 labelled variants is removed (the
+  frame does not clip, so nothing changes on screen); its description states the rule.
+- **Prototype, [pull request 132](https://github.com/nvjeronimo/skillup-lms-prototype/pull/132):** the course
+  card and course row bars were fully rounded; they end straight now. The quiz and program bars already did.
+- Sliders the learner drags (video progress, volume) stay rounded, as in the design system.
+
+**Proposal, not for build: My Learning in sections and a completed state for the cards.** On the Platform WIP
+page, section `7154:25789`, four screens (courses and programs, desktop and mobile) and four notes.
+
+- **Sections:** In progress, Not started, Completed, in that order; an empty section is not shown; tabs, search
+  and the Grid or List switch stay; the three figures at the top become shortcuts to their section.
+- **Completed card:** the bar is full and green (`bg/success`), the label reads *Completed*, the footer shows
+  the certificate and its date; course *Review*, program *View certificate*. Blue while it runs, green only
+  when done: an exception to the rule that a progress fill is `bg/info`, to be written if the proposal is kept.
+- **Facts:** every status comes from what Open edX returns (map §37): `hasStarted`, `startDate`, the
+  certificate and its date, and `progress_details` for programs. There is no completion date other than the
+  certificate's.
+- **How it is built:** clones of the Ready for Dev screens with overrides only. `Program-Card` has no Completed
+  variant, so the completed program is an In progress card with its texts, bar and button changed; the check
+  icon the proposal describes cannot be shown in an instance.
+- **Seen while building:** on mobile, *View certificate* leaves room for *Issued 30 Sep…* only; the tabs and the
+  figures at the top still show the old totals.
+- **Next, if Nelson keeps it:** `State=Completed` on `Program-Card`, a completed look on `Course-Card`, the rule
+  for green, then the screens and the prototype.
+
 ## 2026-10-13 · Prototype: the video player, the completed badge and the course card brought to Figma
 
 Asked by Nelson on 13 Oct. Prototype pull requests
