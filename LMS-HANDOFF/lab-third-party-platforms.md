@@ -159,7 +159,8 @@ the lab was opened, and when for the first time.
 - **To build: the date of the first opening has to be kept per learner and topic, on the server.** Kept only in
   the browser, the card would read *Ready* again on another device. How the launch click is recorded today (it is
   what marks the topic complete, §7) was not checked; if it already reaches the server, this changes what it
-  writes, from *complete* to *opened on*. Asked as Q-lab-6.
+  writes, from *complete* to *opened on*. **Engineering confirmed on 13 Oct that it can be stored on the server
+  per learner (Vikas, §10).**
 - If the date cannot be read, the page falls back to *Ready*. Nothing breaks: the learner can still open the lab
   and complete the topic.
 
@@ -211,7 +212,8 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 - **The inline frame of E1** is still a local frame on DS colour and radius tokens, with a placeholder where the
   third-party page would be, and says so in its layer name.
 - **The IBM screens** are the Course Detail header cropped to 500 px, with the Progress card's percentage
-  replaced by a dash, because we do not know whether IBM reports progress.
+  replaced by a dash. Since 13 Oct we know why the dash is right: IBM does not share the learner's progress with
+  our platform (§10).
 - **No tab bar:** with one option the tab bar is hidden (decision of 17 Sep 2026).
 - **The discovery sources are superseded.** Section `05b · Lab — third-party platforms` (`6776:8711`) still holds
   the eleven screens of 8 Oct and was not updated; its name says so. The handoff cards are the originals now.
@@ -248,7 +250,7 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 - **The download lab's gate.** `Lab-File-Row` says Mark as Complete stays disabled until every file is fetched.
   Navdeep objected to a disabled Mark as Complete on 9 Oct; nobody revisited this one.
 
-## 5. Asked to the content team (8 Oct 2026, pending)
+## 5. Asked to the content team (8 Oct 2026; answers in §10)
 
 1. **Google:** switch one lab's *Open tool in* to *Inline* or *Modal* on staging: does the lab load?
 2. **Google:** does the score come back for every lab when the learner ends it, and how long does it take?
@@ -396,4 +398,34 @@ gone), and the download lab's button is disabled until the files are downloaded 
 - *Not yet* repeats every time the learner passes through the lab with *Next*.
 - The dialog interrupts a navigation the learner already chose; *Complete and continue* puts the same decision in
   the label of the button, before the click.
+
+## 10. 13 Oct 2026: answers from the content team and engineering
+
+From the *ICP Labs discussions* chat, read from a screenshot Nelson shared. Kirti Mishra answered Nelson's update of
+12 Oct at 06:05; Vikas Goyal answered her at 06:09.
+
+| Asked | Answer | By |
+|---|---|---|
+| IBM: where does the learner land after *Start course*, and is the whole course on IBM's side? | *"As soon as the learner clicks on start course for an IBM course, the learner is redirected to IBM's platform and the entire learning happens on the IBM platform."* | Kirti |
+| IBM: how do we know a learner completed the course there? | *"The learner progress isn't normally shared with our platform but we can fetch the progress report from IBM's dashboard. The certificate is also generated on the IBM platform once learner completed the course."* | Kirti |
+| The two Microsoft courses with the lab inside the page: can they move to *New Window*, and does that lab send a score back? | To be checked with Simran. **Pending.** | Kirti |
+| Can the date of the first opening of a lab be stored on the server for each learner? | *"We can."* | Vikas |
+
+**What it settles**
+
+- **The IBM screens are right as drawn** (I1, I2): the whole course is on IBM, so *Start course* leaves SkillUp
+  after the dialog and the course page then reads *Continue on IBM*. The Progress card keeps its dash: IBM does not
+  send progress to us.
+- **The launch card's *First opened on …* can be built** as designed, with the date kept on the server.
+
+**What it opens** (not designed, not decided)
+
+- **Progress of an IBM course on SkillUp.** It is not shared automatically; a report can be fetched from IBM's
+  dashboard. Nobody said how often, by whom, or whether the result should show on the course page, in My Learning
+  or in the program's progress. Until then the dash stands, and an IBM course cannot count towards a program's
+  percentage.
+- **The certificate of an IBM course is IBM's.** It is generated on IBM's platform when the learner completes the
+  course. The SkillUp course page and the Certificates page say nothing about it today: the learner is not told
+  where their certificate will be.
+- The landing address on IBM (one URL) was not given; the design does not need it.
 
