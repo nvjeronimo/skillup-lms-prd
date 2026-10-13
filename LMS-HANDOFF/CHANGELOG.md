@@ -2,6 +2,20 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-13 · Lab: answers from Kirti and Vikas on IBM and on the first-opening date
+
+[`lab-third-party-platforms.md`](lab-third-party-platforms.md) §10. No screen changed.
+
+- **IBM (Kirti):** on *Start course* the learner is redirected to IBM's platform and the entire learning happens
+  there. Progress is not normally shared with our platform, though a progress report can be fetched from IBM's
+  dashboard; the certificate is generated on IBM's platform. Q-lab-4 and Q-lab-5 closed.
+- **First-opening date (Vikas):** it can be stored on the server for each learner. Q-lab-6 closed.
+- **Pending:** whether the two Microsoft in-page courses can move to *New Window* and whether that lab sends a
+  score back (Kirti is checking with Simran, Q-lab-10).
+- **The IBM screens stand as drawn**, the dash for progress included.
+- **Opened, not designed:** what SkillUp shows for the progress and the certificate of an IBM course, and whether
+  it counts in a program's progress (Q-lab-9).
+
 ## 2026-10-13 · Design system reorganisation: one page per group, 13 pages, 109 components
 
 Follows the entry *Design system reorganisation: decisions, a pilot page, the page list* further down.
