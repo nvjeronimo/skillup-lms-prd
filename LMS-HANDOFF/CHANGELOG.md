@@ -8,6 +8,31 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Prototype: the video player, the completed badge and the course card brought to Figma
+
+Asked by Nelson on 13 Oct. Prototype pull requests
+[130](https://github.com/nvjeronimo/skillup-lms-prototype/pull/130) and
+[131](https://github.com/nvjeronimo/skillup-lms-prototype/pull/131). No design system change.
+
+- **Completed badge, decided by Nelson:** it always reads *Marked as completed*, label only, as
+  `Topic-Status-Badge` in the design system and the 27 topic headers on the Video page. The prototype wrote
+  *Completed* with a check icon on the types that complete by themselves (Video, Quiz, ORA, VILT). This replaces
+  the wording rule the prototype took from `reading-screen-matrix.md` §4.
+- **Video player (130), against the player on the Video screens:** the ground is `bg/subtle` and the picture is
+  fitted 16:9 and centred (the prototype painted a teal gradient over the whole player); paused, the scrim is
+  `bg/overlay` and the centre button has the Solid play icon, blur 16 and a light edge; the end timestamp is the
+  time left with a minus; radius 6, and 8 on a phone. Measured in the browser: 1286 × 405 with the picture
+  720 × 405, against 1288 × 405 in Figma.
+- **Left as it is on the player, to decide:** the CC button turns white while captions are on, and the design
+  system has no on-state for it (Default and Hover only); captions are on by default in the prototype and the
+  screens show none; the bar's gradient ends on `bg/overlay` where the component uses plain black.
+- **Course card (131), against `Course-Card` and the Platform Ready for Dev screens:** the *UP NEXT* overline is
+  body-small/Semibold without letter spacing; in List the progress block hugs its line (24 between percentage
+  and effort) and the up-next block is 250 wide with a one-line title; in a course row the title is one line
+  too. Measured: grid 382 × 346 and list 1198 × 118, as on the screens.
+- **Found, not changed:** the course row around the list card is 165 tall in the prototype and 173 on the
+  screens (the modules bar of `Program-Detail/Course-Row` is 8 shorter).
+
 ## 2026-10-13 · Prototype: the program card matches the design system component
 
 Prototype [pull request 129](https://github.com/nvjeronimo/skillup-lms-prototype/pull/129). Asked by Nelson on
