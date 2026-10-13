@@ -5,12 +5,20 @@
     "Molecule: a few atoms and base components working as one unit; nests no other LMS molecule.",
     "Organism: a whole section of a screen, built from molecules and atoms.",
     "A level written at the start of a component description (Atom:, Molecule:, Organism:) wins.",
-    "Judgement calls, not given by the rule: Course-Card and the player Topbar are organisms (as Program-Card and the platform Topbar); Course Detail / Topic-Row is a molecule although it nests Lock; Certificate and Course-Complete-Modal are organisms."
+    "Judgement calls, not given by the rule: Course-Card and the player Topbar are organisms (as Program-Card and the platform Topbar); Course Detail / Topic-Row is a molecule although it nests Lock; Certificate and Course-Complete-Modal are organisms.",
+    "Base components were classified by name, not by what they nest: single controls are atoms; controls with a label, a list or several controls are molecules; Modal, Text editor and Video player are organisms. Names that start with _ or . are internal parts and sit with the level of what they are."
   ],
   "_totals": {
-    "Atoms": 45,
-    "Molecules": 50,
-    "Organisms": 17
+    "LMS": {
+      "Atoms": 45,
+      "Molecules": 50,
+      "Organisms": 17
+    },
+    "Base components": {
+      "Atoms": 54,
+      "Molecules": 33,
+      "Organisms": 3
+    }
   },
   "levels": {
     "LMS ICP": {
@@ -230,6 +238,258 @@
           "Course-Complete-Modal",
           "Certificate"
         ]
+      }
+    },
+    "Base components": {
+      "Buttons": {
+        "Atoms": [
+          "Button",
+          "Icon Button",
+          "Close Button",
+          "Link Button",
+          "Utility Button",
+          "Social button",
+          "Mobile app store badge",
+          "Buttons/Button loading icon",
+          "._Button_Structure",
+          "._Link Button_Structure",
+          "._Icon Button_Structure"
+        ],
+        "Molecules": [
+          "Social button groups"
+        ],
+        "Organisms": []
+      },
+      "Button groups": {
+        "Atoms": [
+          "_Button group base"
+        ],
+        "Molecules": [
+          "Button group",
+          "Action Row"
+        ],
+        "Organisms": []
+      },
+      "Badges": {
+        "Atoms": [
+          "Badge",
+          "_Badge close X",
+          "_Badge base"
+        ],
+        "Molecules": [
+          "Badge group"
+        ],
+        "Organisms": []
+      },
+      "Tags": {
+        "Atoms": [
+          "Tag",
+          "._Tag_main"
+        ],
+        "Molecules": [],
+        "Organisms": []
+      },
+      "Toast Notifications": {
+        "Atoms": [],
+        "Molecules": [
+          "Toast"
+        ],
+        "Organisms": []
+      },
+      "Progress steps": {
+        "Atoms": [
+          "_Step icon base"
+        ],
+        "Molecules": [
+          "_Step base",
+          "Progress steps / Progress minimal icons connected",
+          "Progress steps / Progress minimal icons",
+          "Progress steps / Progress text with line",
+          "Progress steps / Progress icons centered",
+          "Progress steps / Progress icons with text"
+        ],
+        "Organisms": []
+      },
+      "Dropdowns": {
+        "Atoms": [
+          "_Dropdown list item",
+          "_Dropdown list header",
+          "_Select menu item",
+          "_Scroll bar (control fill with bottom padding)"
+        ],
+        "Molecules": [
+          "Dropdown",
+          "Select"
+        ],
+        "Organisms": []
+      },
+      "Empty states": {
+        "Atoms": [
+          "Illustration"
+        ],
+        "Molecules": [
+          "Empty state",
+          "Empty state responsive"
+        ],
+        "Organisms": []
+      },
+      "Inputs": {
+        "Atoms": [
+          "_Mega input field base"
+        ],
+        "Molecules": [
+          "Input field",
+          "Verification code input field",
+          "Textarea input field"
+        ],
+        "Organisms": []
+      },
+      "Modals": {
+        "Atoms": [],
+        "Molecules": [
+          "_Modal actions",
+          "_Modal header"
+        ],
+        "Organisms": [
+          "Modal"
+        ]
+      },
+      "Tabs": {
+        "Atoms": [
+          "_Tab button base"
+        ],
+        "Molecules": [
+          "Horizontal tabs",
+          "Vertical tabs"
+        ],
+        "Organisms": []
+      },
+      "Text editors": {
+        "Atoms": [
+          "_Text editor icon",
+          "_Color select",
+          "Text editor tooltip",
+          "Text highlight"
+        ],
+        "Molecules": [
+          "Text editor toolbar"
+        ],
+        "Organisms": [
+          "Text editor"
+        ]
+      },
+      "Toggles": {
+        "Atoms": [
+          "Toggle",
+          "_Toggle base"
+        ],
+        "Molecules": [],
+        "Organisms": []
+      },
+      "Checkboxes": {
+        "Atoms": [
+          "Checkbox",
+          "_Checkbox base"
+        ],
+        "Molecules": [],
+        "Organisms": []
+      },
+      "Radio groups": {
+        "Atoms": [],
+        "Molecules": [
+          "Radio group item",
+          "Radio group"
+        ],
+        "Organisms": []
+      },
+      "Avatars": {
+        "Atoms": [
+          "Avatar",
+          "Avatar profile photo",
+          "Verified tick",
+          "_Avatar image",
+          "_Avatar online indicator",
+          "_Avatar company icon",
+          "_Avatar add button"
+        ],
+        "Molecules": [
+          "Avatar label group",
+          "Avatar group"
+        ],
+        "Organisms": []
+      },
+      "Tooltips": {
+        "Atoms": [
+          "Tooltip"
+        ],
+        "Molecules": [
+          "Help icon"
+        ],
+        "Organisms": []
+      },
+      "Progress indicators": {
+        "Atoms": [
+          "Progress bar",
+          "Progress circle",
+          "._Progress bar plain"
+        ],
+        "Molecules": [],
+        "Organisms": []
+      },
+      "Sliders": {
+        "Atoms": [
+          "Slider",
+          "_Control handle"
+        ],
+        "Molecules": [],
+        "Organisms": []
+      },
+      "Video players": {
+        "Atoms": [
+          "_Video volume slider handle",
+          "_Video action button",
+          "_Video timestamp indicator",
+          "_Video overlay action",
+          "_Video action tooltip"
+        ],
+        "Molecules": [
+          "_Video volume slider",
+          "_Video actions bar"
+        ],
+        "Organisms": [
+          "Video player 16:9"
+        ]
+      },
+      "Breadcrumbs": {
+        "Atoms": [
+          "_Breadcrumb button base"
+        ],
+        "Molecules": [
+          "Breadcrumbs"
+        ],
+        "Organisms": []
+      },
+      "Alerts & notifications": {
+        "Atoms": [],
+        "Molecules": [
+          "Alert",
+          "Notification"
+        ],
+        "Organisms": []
+      },
+      "Content dividers": {
+        "Atoms": [
+          "Content divider"
+        ],
+        "Molecules": [],
+        "Organisms": []
+      },
+      "Loading indicators": {
+        "Atoms": [
+          "Loading indicator"
+        ],
+        "Molecules": [],
+        "Organisms": []
       }
     }
   }

@@ -25,8 +25,16 @@ before the write.
   what they nest, plus five judgement calls.
 - **The classification** is in `03-design-system/tools/ds-levels.json`, with the judgement calls. It is a first
   pass for Nelson to correct: moving a block to another frame is a drag.
+- **Base components, the same evening (Nelson):** the 24 pages under *BASE COMPONENTS (Shared)* got the same
+  frames. There the components lay loose on the canvas, so the component sets themselves were moved into the
+  frame of their level (same nodes, same keys); on the four pages with full write-ups the blocks moved as on
+  the LMS pages. 90 components and parts: 54 atoms, 33 molecules, 3 organisms
+  (`Modal`, `Text editor`, `Video player 16:9`). They were classified by name, not by what they nest; the list
+  is in the same file. The kit's 43 *Design system header* banners, which titled the old columns, were moved to
+  the archive notes page (nothing deleted). Left where they were: the documentation, changelog, showcase and
+  example frames, loose example instances, and the `SKO / Keyboard key` section on Inputs.
 - **Not done:** the level is not written into the component descriptions (that would change 100+ components
-  and need a publish); the Base component pages were not touched; `ds-group-page.js` still builds one frame, so
+  and need a publish); `ds-group-page.js` still builds one frame, so
   after a rebuild the blocks have to be split again with the map.
 
 
