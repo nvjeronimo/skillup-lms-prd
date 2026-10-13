@@ -2,6 +2,27 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+> **Version numbers, 13 Oct 2026.** No component is at `2.x` any more: the nine that were have been renumbered
+> to `1.x` (table in `03-design-system/component-versions.md`, *History*). The entries of 8 to 12 Oct below were
+> rewritten to the new numbers. Where an older entry says `Badge v2` or *Button V2*, it is the name those
+> components had then: they are today's `Badge` and `Button`.
+
+
+## 2026-10-13 · Topic-Footer-Nav: the status badge is removed from the component
+
+Nelson, on the anatomy of the component: *Mark as Complete does not belong to the footer navigation; it is in the
+feedback row, as defined today.* Named versions saved before and after. **Not published.**
+
+- **`LMS/ICP/Player/Topic-Footer-Nav` v1.1:** the property `Show Badge` and the `Topic-Status-Badge` it showed
+  are removed. The footer is Previous, the position (n of total and the title) and Next. No screen had the badge
+  on (183 footers counted on the Video, Quizzes, Reading, Lab and Platform WIP pages, 0 with it on).
+- **`Topic-Status-Badge`, description only:** *Use once per topic, in the feedback row at the end of the
+  content, never beside the footer navigation.*
+- **The block on the Player page** shows it: no `Show Badge` row, four parts in the anatomy.
+- **Open:** the variant of the footer is still named `Topic Footer Nav Default (V1)` (a name with a version, for
+  Nelson); `Content-Feedback` still has no place for Mark as Complete in the design system, the 63 screens use a
+  local frame `Feedback-Mark`.
+
 ## 2026-10-13 · Mark as Complete moves into the feedback row, on every screen
 
 Nelson's placement, from his two reference frames on the Lab page (`7124:49482`). The rule does not change: Mark
@@ -34,6 +55,62 @@ as Complete at the end of the content, and *Next* asks.
 - **The IBM screens stand as drawn**, the dash for progress included.
 - **Opened, not designed:** what SkillUp shows for the progress and the certificate of an IBM course, and whether
   it counts in a program's progress (Q-lab-9).
+
+## 2026-10-13 · Collapsed sidebar: a bookmark on the rail and the card beside it, now in the design system
+
+Asked by Nelson on 13 Oct with two captures of the prototype: the prototype already had both, the design system
+had neither. Named versions saved before and after. **Not published.**
+
+- **`LMS/ICP/Sidebar/Topic-Row` v1.1:** new boolean **`Show rail bookmark`**, off by default. A 12px filled
+  bookmark (the `Bookmark` component, `Bookmarked=Yes`) sits 6px from the right and 4px from the top of the row,
+  placed over it. For the 72px rail row only: it marks a saved topic where there is no room for the bookmark
+  button. Never on the expanded row, which has `Show bookmark`.
+- **`LMS/ICP/Sidebar/Topic-Flyout` v1.0, new:** the card that opens beside the collapsed rail on a rail row:
+  the title on one line (`body-medium/Medium`, `text/default`), the `Topic-Types-Badge` and a 24 × 24 button
+  with the `Bookmark`. Row, gap 8, padding 6 / 6 / 6 / 12, radius 8, `bg/page`, `border/subtle`, effect style
+  `Elevation/level3`. Properties: `Title`; the type and `Bookmarked` on the two nested components. It opens 6px
+  to the right of the rail, aligned with the row, and closes 140 ms after the pointer leaves the row and the card.
+- **`LMS/ICP/Sidebar/Sidebar` v1.1:** in the two collapsed variants the third topic of Module 03 shows the rail
+  bookmark, the same topic that is saved in the expanded variant. The flyout is an overlay, not a layer of the
+  Sidebar; the description says so.
+- **The Sidebar group page was rebuilt:** 12 components, each with its anatomy, the flyout included. *Start
+  here* and the ICP index say 69 components.
+- **Differences from the prototype, left for a decision:** the rail bookmark is 11px in the prototype and 12 in
+  Figma; the prototype's card uses Tailwind's `shadow-lg`, which is not a design system effect, Figma uses
+  `Elevation/level3`; the prototype opens the card on pointer hover only, so a keyboard user cannot reach the
+  bookmark from the collapsed rail.
+- **Not checked:** the collapsed sidebars on the screens of the product file after the publish (one rail row
+  will show the bookmark by default).
+
+## 2026-10-13 · Every component version is 1.x: nine renumbered; the LMS pages rebuilt
+
+Register: [`03-design-system/component-versions.md`](../03-design-system/component-versions.md), rule 8 and
+*History*.
+
+- **Decided by Nelson on 13 Oct:** designers and engineering start the design system and Storybook now, so no
+  component starts at version 2. Every `v2` or `v2.x` becomes `v1.x`, everywhere.
+- **Old → new:** `Button` 2.2 → 1.2 · `Icon Button` 2.2 → 1.2 · `Link Button` 2.0 → 1.0 · `Badge` 2.1 → 1.1 ·
+  `Button group` 2.0 → 1.1 · `Topbar` 2.0 → 1.2 (it already had a 1.1) · `Topbar-Item` 2.0 → 1.1 ·
+  `Course-Row` 2.0 → 1.1 · `Lab-Launch-Card` 2.0 → 1.1. The minor number is kept where the component started
+  at 2.0; a component that went from 1.x to 2.0 takes the next 1.x. Nothing else about them changed.
+- **Rule 8 of the register:** everything is `1.x` until engineering has built it. A MAJOR bump is first used on
+  a component that has a story.
+- **Figma (DS), not published:** the first line of the nine descriptions, and two sentences inside them
+  (`Button`, `Icon Button`: *v1.1 added Type=Neutral*; `Lab-Launch-Card`). The pages that print the version
+  were rebuilt or corrected.
+- **The 13 LMS group pages were rebuilt** with the three additions made for the Base pages (properties and
+  measures of a nested part, measures grouped, small components drawn enlarged), and the four Base write-ups
+  again for the new numbers. The frames have new ids, so the links on *Start here* and on the two indexes now
+  point to the pages.
+- **Docs:** the register (rows, baseline, history, the buttons section reworded without *V2*), the Lab note, and
+  the name `Badge v2` → `Badge`, `Sidebar v2` → `Sidebar` in the living docs. This changelog: note at the top,
+  numbers rewritten in the entries of 8 to 12 Oct. The ICP Hub.
+- **Looked for and found clean:** the prototype (no mention), the handoff pages of the product file (the only
+  `v2` there are Open edX API names and the old exploration pages).
+- **Left as they are, for Nelson:** three names in the DS that contain *V2* (`Empty state - V2`,
+  `._Progress bar-V2`, a `Property 1=V2` variant on the Mobile App page): a rename is his call; two labels on
+  the *DS Structure discussion* page; the token export called *v2.0* in three HTML pages (tokens, not a
+  component); *V1* where an entry tells the story of the old badge and button.
 
 ## 2026-10-13 · Design system: the Base components we use, written up
 
@@ -309,7 +386,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 - **For the design system:** `Topic-Status-Badge` has no screen left for its `Mark as Complete` state on Reading
   or Lab, and `Review` is still unspecified.
 
-## 2026-10-12 · Lab: completed status in the header and the sidebar only; `Lab-Launch-Card` v2.0 published
+## 2026-10-12 · Lab: completed status in the header and the sidebar only; `Lab-Launch-Card` v1.1 published
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
 
@@ -319,19 +396,19 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 - **Screens:** the six completed cards (G3, M3 on desktop, tablet, mobile) have `Show Badge` off in the footer; the
   sidebar row was already *Completed* on desktop and tablet. The board of footer states shows the same (state 2
   without the badge, state 1b says the button turns primary once the lab is opened).
-- **`Lab-Launch-Card` v2.0 is published** and accepted in the ICP file: read back on the 21 instances of the Lab
+- **`Lab-Launch-Card` v1.1 is published** and accepted in the ICP file: read back on the 21 instances of the Lab
   page (Ready 6, Opened 12, Unavailable 3; the set has three states).
 - **For the Reading screens when they take this flow:** the same rule would remove the footer badge there too.
   Not done.
 
-## 2026-10-12 · Lab: the launch card says opened, never complete (`Lab-Launch-Card` v2.0), 30 cards
+## 2026-10-12 · Lab: the launch card says opened, never complete (`Lab-Launch-Card` v1.1), 30 cards
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4. Figma page `6789:325`.
 
 - **Decided by Nelson on 12 Oct:** the card has no *Completed* state, because nothing comes back from the partner.
   It goes from *Ready* to *Opened* on the first click and shows the date of the first opening. The topic completes
   only with *Complete and continue*. To skip, the learner uses the sidebar.
-- **`LMS/ICP/Topics/Lab-Launch-Card` v2.0 (MAJOR: a variant is removed).** `State` = Ready · Opened · Unavailable.
+- **`LMS/ICP/Topics/Lab-Launch-Card` v1.1 (a variant is removed).** `State` = Ready · Opened · Unavailable.
   `Opened` carries the layer *Opened date* (*First opened on 12 Oct 2026*) and keeps the lab title and the
   partner line; `Unavailable` loses *Skip for now*; default texts no longer mention a score. Nelson built and
   published the new `Opened`; the text corrections, the layer name and the two removals are in the DS file and
@@ -485,7 +562,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
   icon, are bound to `text/on-primary-hover` over `bg/primary-hover`. Before: the label was `text/primary`
   (5.09:1 in light, and 1.0:1 in dark, where the fill and the text were the same colour) and the Button's
   icons were `icon/on-primary` (white on yellow, 1.59:1 in light). Now 7.05:1 in light and 8.64:1 in dark.
-  `Icon Button` v2.2. Named version saved first. **Not published.**
+  `Icon Button` v1.2. Named version saved first. **Not published.**
 - **Brand Secondary Hover, redrawn by Nelson:** the fill is `bg/primary`, the label `text/on-primary`: the
   outline button fills in on hover. 5.54:1 in light, 6.2:1 in dark. Its icons had stayed on the token of
   the earlier change (dark on teal); they were set to `icon/on-primary` to match his label.
@@ -498,11 +575,11 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 
 - **Decided by Nelson on 12 Oct.** On hover the Brand Secondary fills with `bg/primary-hover` (yellow), and its
   label was `text/primary` there: 5.09:1 in the light theme, 1.29:1 in the dark one.
-- **DS `Button` v2.2, published by Nelson the same day:** in *Type=Brand, Hierarchy=Secondary, State=Hover* the label and both
+- **DS `Button` v1.2, published by Nelson the same day:** in *Type=Brand, Hierarchy=Secondary, State=Hover* the label and both
   icons are bound to `text/on-primary-hover`. Named version saved first. There is no icon token for this
   state, so the icons use the text one. 7.05:1 in light, about 11:1 in dark.
 - **Prototype (PR 116, merged):** the same on hover.
-- **Checked after the publish:** the library gives v2.2 with the label on `text/on-primary-hover`. The 132
+- **Checked after the publish:** the library gives v1.2 with the label on `text/on-primary-hover`. The 132
   Button instances on *Platform Pages - Ready for Dev* are still on an older local copy of the set: the
   update had not reached the product file when read. No badge shows the all-on defaults (570 read).
 - **Seen, not changed:** *Brand Primary Hover* in the DS has its label on `text/primary` over the same yellow
@@ -588,7 +665,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 - **Decided by Nelson on 12 Oct:** in the simple course row the point is to tell the learner where they
   stopped and let them resume: the module is the headline, the course and the program go under it. He saw
   the proposal on the DS *In review* page (frame `22401:1103`) and said to apply it.
-- **DS, not published:** `LMS/Platform/Discovery/Course-Row` v2.0. The `Title` layer is now the headline
+- **DS, not published:** `LMS/Platform/Discovery/Course-Row` v1.1. The `Title` layer is now the headline
   (the module) inside a *Titles* block, with a new `Context` text property under it: "Course · Program",
   body-small Regular, text/subtle, one line. Active: the module left off in. Available: the first module.
   Locked: the course stays the headline and `Context` is the program. **Nelson then updated the row
@@ -607,7 +684,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 - **Not checked:** whether Open edX returns the module of the resume block in one call. The big program
   Course-Row already assumes it ("Module 2 of 4").
 
-## 2026-10-12 · Topbar v2.0 on the screens: instances moved to the new variants
+## 2026-10-12 · Topbar v1.2 on the screens: instances moved to the new variants
 
 - **Nelson published the DS and accepted the update.** Prototype PR 110 and docs PR 43 merged.
 - **The update had landed only in part:** the two Topbar variants were recreated in the DS, so their keys
@@ -621,18 +698,18 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
   component is 64. Not changed.
 - **Badges recounted** on Platform Ready for Dev, Quizzes, Video and WIP: none shows the all-on defaults
   after this update, and none is on an older library state.
-- `Topbar` and `Topbar-Item` v2.0 and the removal of the V1 badge are published.
+- `Topbar` v1.2 and `Topbar-Item` v1.1 and the removal of the V1 badge are published.
 
 ## 2026-10-12 · Topbar: the active section is set on its item; Topbar-Item rebuilt as a tab
 
 - **Asked by Nelson on 12 Oct:** choose on the component which tab (page) is active. I rebuilt the atom and
   added a `Current` property with five values to the Topbar. **Nelson then simplified it, and this is what
   stands:**
-- **`LMS/Platform/Navigation/Topbar-Item` v2.0:** an underline tab (body-large Semibold, padding 12/4, 48
+- **`LMS/Platform/Navigation/Topbar-Item` v1.1:** an underline tab (body-large Semibold, padding 12/4, 48
   tall on its own). Variant property **`Current` = Off | On** (it was `State` = Default | Current). On: label
   in text/primary and a **3px** bg/primary bar along the bottom, top corners rounded 2. Off: text/subtle.
   `Label` and `Show count` as before; the count badge is exposed as *Count* (Brand when On, Gray when Off).
-- **`LMS/Platform/Navigation/Topbar` v2.0:** two variants again, **`Breakpoint` = Desktop | Compact**. There
+- **`LMS/Platform/Navigation/Topbar` v1.2:** two variants again, **`Breakpoint` = Desktop | Compact**. There
   is **no `Current` property on the Topbar**: the page is marked by setting `Current=On` on its exposed item
   and Off on the others. Desktop has no vertical padding; the nav and its five items fill the height of the
   bar (71 under the 1px rule), 12 apart, so the bar of the current item sits on the rule. No grey rule under
@@ -644,7 +721,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 
 ## 2026-10-12 · Badge V1 deleted; badges inside LMS components repaired after the library update
 
-- **Nelson published the DS and accepted the update** (Badge v2.1, names without a version). Prototype PR 109
+- **Nelson published the DS and accepted the update** (Badge v1.1, names without a version). Prototype PR 109
   and docs PR 42 merged.
 - **Badge V1 deleted** (Nelson's go-ahead): `Badge-V1_to-remove`, 453 variants, removed from the Badges page
   of the DS. Named version saved first. **Not published yet.** The count before deleting: no instance on the
@@ -673,7 +750,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 - **V1 count:** no direct instance of `Badge-V1_to-remove` or of the old `Buttons/Button` in the LMS ICP, LMS
   Platform, In review, Badges and Buttons pages of the DS, and none on the Quizzes page of the product file.
   The other product pages and the base components outside the LMS pages were not counted. Nothing deleted.
-- **Badge v2.1, not published:** dot, icons and close did not follow the label colour in three places. Extra
+- **Badge v1.1, not published:** dot, icons and close did not follow the label colour in three places. Extra
   hues (Cyan to Orange) sat on the teal icon token in Outline, Modern and Plain; they now use the variable of
   their label (`text/accent-<hue>`, or the `Colors/<Hue>/700` primitive where the label uses it: there is no
   `icon/accent-<hue>` token for those eight). In Soft Light the accents and extras had white (on-accent)
@@ -683,7 +760,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 
 ## 2026-10-12 · Top bar tabs and Button group on the screens, after the DS update
 
-- **Nelson published the DS and accepted the update on 12 Oct** (`Topbar` v1.1, `Button group` v2.0).
+- **Nelson published the DS and accepted the update on 12 Oct** (`Topbar` v1.1, `Button group` v1.1).
   Prototype PR 108 and docs PR 41 merged. Named version saved in the product file first.
 - **Top bar:** the 19 desktop bars on *Platform Pages - Ready for Dev* and the 14 on the WIP page show the
   tabs. *My Learning* is current everywhere except the two Dashboard desktop screens, set to *Dashboard*.
@@ -698,7 +775,7 @@ Prototype pull request 124. No screen and no rule changed: the prototype is brou
 
 - **Decided by Nelson on 11 Oct:** of six options for the selected state of the Grid / List toggle he chose
   the track with a pill. The soft blue fill of 10 Oct (1.07:1 against the page) did not show which one is on.
-- **DS, not published:** `Button group` v2.0 and its 32 `_Button group base` variants. The group is a
+- **DS, not published:** `Button group` v1.1 and its 32 `_Button group base` variants. The group is a
   bg/muted track (padding Spacing/xs, gap Spacing/xxs, radius fixed-md), with no border, no shadow and no
   rules between segments. The current segment is a pill: bg/page, 1px border/subtle, radius fixed-sm,
   text/primary or icon/primary. The others have no fill (bg/subtle on hover) and text/subtle or
@@ -970,7 +1047,7 @@ pages. New `LMS-HANDOFF/platform-navigation-flow.md`; prototype PR 80, open.
 Decided by Nelson: the screens move to Button V2, V2 is completed first, and only the components we use are
 migrated. Named version first. **Not published yet. Nothing is swapped on any screen.**
 
-- **`Button` v2.1 and `Icon Button` v2.1:** a fourth `Type`, *Neutral*, as Secondary only, in the five states (40
+- **`Button` v1.1 and `Icon Button` v1.1:** a fourth `Type`, *Neutral*, as Secondary only, in the five states (40
   variants each). It is the grey outline the screens use about 340 times: outline `border/default`, label
   `text/subtle`, icon `icon/subtle`, no fill. Existing variants untouched; each new one tested with an instance.
 - **`Utility Button` and `Close Button` v1.0:** the previous `Buttons/Button utility` and `Buttons/Button close X`

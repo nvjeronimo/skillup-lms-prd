@@ -2223,7 +2223,7 @@ Desktop and 16 on Mobile. Mobile frames and Mobile variants got the token that g
 
 **Existing components instead of drawn ones:**
 - Dates: *Past*, *Upcoming* and the today marker → DS **`Content divider`** (Text, Single line) — the DS's own
-  "Today" pattern; the filled chip is gone (`Badge v2` has no strong style).
+  "Today" pattern; the filled chip is gone (`Badge` has no strong style).
 - `Date row` link → DS **`Button`** (Link color, sm, `arrow-right`) instead of text with "→".
 - `Course stats` icons → DS **`book-open-01`** (modules · topics — it was a clock) and **`building-07`** (organisation,
   hidden as before) instead of drawn vectors.
@@ -2240,7 +2240,7 @@ wrong role — the ICP handoff pages carry the same raw palette).
 
 1. **`Badge-V1-to-remove` is gone from Course Detail.** 43 instances inside four local components — `Date row`
    (type, assignment type, status), `Thread row` (question, answered, following), `Message` (staff, accepted answer),
-   `Sidebar card` (relative date) — are now **`Badge v2`, Style=Outline, sm**, same colour, same visibility binding.
+   `Sidebar card` (relative date) — are now **`Badge`, Style=Outline, sm**, same colour, same visibility binding.
    The 62 text overrides on the screens were recorded before and re-applied after (the Upcoming dates card now reads
    *Tomorrow · In 15 days* again). The `Date row` default chip is *DUE DATE*, no longer the raw literal.
 2. **`Date row` instances hug their height** — six desktop rows were fixed at 106/128, and the DS link button is taller
@@ -2248,7 +2248,7 @@ wrong role — the ICP handoff pages carry the same raw palette).
 3. **`★ ENTRY` follows the Technical Course tab:** alert, section intro and the seven sidebar cards are copies of
    the Technical ones (Weekly goal *Met*, the same Mentor card); the header already matched. No annotations.
 4. **Handoff header meta labels** moved from `text/disabled` (wrong role) to `text/on-primary`.
-5. **Library requests 11 and 12:** a filled `Badge v2` style for the today marker; a 12px overline.
+5. **Library requests 11 and 12:** a filled `Badge` style for the today marker; a 12px overline.
 6. **Handoff re-copied** (all nine screens) and re-audited: 0 unbound colours, spacing, radii, 0 unstyled text, 0
    annotations, 0 old badges. Annotations inside instances needed a second pass after the copy (trap 28).
 
@@ -2363,7 +2363,7 @@ the DS `LMS / Course Card`.
 
 **`LMS / Platform / Topbar`** (`6374:3608`, components page) — Breakpoint = Desktop · Compact. Desktop: logo, the
 five sections, notifications and the learner; Compact (tablet, mobile): logo, notifications, menu. Built from DS
-atoms (`Skillup_logo`, `bell-01`, `chevron-down`, `Avatar`, `Badge v2`) and the atom **`LMS / Platform / Topbar
+atoms (`Skillup_logo`, `bell-01`, `chevron-down`, `Avatar`, `Badge`) and the atom **`LMS / Platform / Topbar
 item`** (`6373:3313`, State = Default · Current, Label, Show count). The experiment's bar was drawn with raw values
 and off-scale type (13.5 / 12.5 / 10.5); the component is on tokens (`bg/inverse`, `text/on-inverse`) and DS styles.
 
@@ -2386,11 +2386,11 @@ built from DS atoms, on tokens and DS text styles, and replaces what was drawn o
 |---|---|---|---|
 | `Stat` | `6378:3299` | Theme Default · Inverse; Label, Value, Detail, Show divider. Content bottom-aligned, so values share a baseline when a label wraps | 12 My Learning stats, 4 Dashboard KPIs |
 | `Section header` | `6382:3172` | Title + Emphasis (headline-small/Bold, text/default + text/subtle), optional DS `Buttons/Button` sm · Link gray + arrow-right | *Due this week*, *Pick up where you left off*, *Jump somewhere* |
-| `Due item` | `6382:3495` | Urgency Today (day in text/error) · Upcoming; Day, When, Title, Meta; status = exposed `Badge v2` Soft sm (Error + dot for Live, Warning for Due) | 3 rows of *Due this week* |
+| `Due item` | `6382:3495` | Urgency Today (day in text/error) · Upcoming; Day, When, Title, Meta; status = exposed `Badge` Soft sm (Error + dot for Live, Warning for Due) | 3 rows of *Due this week* |
 | `Jump tile` | `6382:3302` | Icon (swap, DS icon in icon/primary on bg/primary-soft), Title, Description | 4 tiles (message-chat-circle, calendar, award-01, user-01) |
 | `Glance card` (since 8 Oct the DS set `Today-at-a-glance`: `Breakpoint` Desktop = four in a line, Mobile = 2×2) | `6384:17651` | Title + 4 `Stat` · Inverse in a 2×2 grid on bg/inverse; two decorative circles (bg/info, bg/primary at 12 % layer opacity) | *Today at a glance* |
 | `Streak card` | `6384:17785` | Count (display-large/Bold, the one hero figure per screen), Label, 7 `LMS / Course Detail / Week day`, Message | the streak card |
-| `Program card` | `6388:3858` | Layout Grid · List × State In progress · Not started; DS `LMS / Delivery Mode Badge`, `Badge v2` Gray (cohort, status), DS `Progress bar`, `Buttons/Button` Primary *Continue* / Secondary *Details* | 2 programs × grid and list |
+| `Program card` | `6388:3858` | Layout Grid · List × State In progress · Not started; DS `LMS / Delivery Mode Badge`, `Badge` Gray (cohort, status), DS `Progress bar`, `Buttons/Button` Primary *Continue* / Secondary *Details* | 2 programs × grid and list |
 | `Browse tile` | `6388:116426` | Dashed border/default on bg/faint, DS `plus`, Title, Subtitle | *Browse catalog* in Courses grid |
 
 What changed on the way (design vs the drawn experiment):
@@ -2547,13 +2547,13 @@ On Tablet and Mobile the circles moved to the desktop composition — hatched ci
 content — they had been sitting under the progress card, and the tablet's small circle outside the header.
 29 instances (17 in the sources, 12 in the handoffs) changed with the component.
 
-**8. Badges: only `Badge v2`** (Nelson, 1 Oct). Checked on all 40 pages: `_Badge base` is never placed on its
+**8. Badges: only `Badge`** (Nelson, 1 Oct). Checked on all 40 pages: `_Badge base` is never placed on its
 own — every one (629 on Ready for Dev, 988 on WIP 2, 142 on the components page) is the layer inside a
-`Badge v2`. `Badge v2` has no text property of its own, so a badge's label and dot are set on that nested layer
+`Badge`. `Badge` has no text property of its own, so a badge's label and dot are set on that nested layer
 (`Text#21889:56`, `Dot#21889:7`); that is the component working as built, not the base being used.
 What did turn up: **28 instances of the old badge, `Badge-V1-to-remove`**, placed directly — the *What counts as a
 day* table (*Counts*, *Not required*, *No*) in the Weekly goal handoff and in the Technical section, plus
-*Self-paced* and *Professional* there. All replaced with `Badge v2` · Soft, same size, colour and text. 18 more V1
+*Self-paced* and *Professional* there. All replaced with `Badge` · Soft, same size, colour and text. 18 more V1
 badges remain, all hidden and all inside the DS `_Tab button base` — the library's to remove.
 
 ## 35. Program Page — what the data allows — 1 Oct
@@ -2693,7 +2693,7 @@ review) — `Expanded` = False · True.
 |---|---|---|
 | Card | the DS `LMS / Course Card` · List — same card as My Learning; its border and shadow moved to the row's container (`bg/page`, `border/subtle`, `Radius/fixed-xl`, `Shadows/shadow-card`) | as §35.5: progress, total effort, *Up next*, CTA |
 | Modules bar | `Position` (body-medium/Semibold) + `Detail` (body-medium/Regular, text/subtle), and a DS `Buttons/Button` sm · Link gray *Show modules* / *Hide modules* with chevron-down / chevron-up | in progress: *You left off in Module 2 of 4* · *module name · 3 of 10 topics done*; not started: *4 modules* · *43 topics*; complete: *4 modules* · *All complete · 36 topics* |
-| Modules (Expanded=True, a **slot**) | one `LMS / Course Detail / Module row` per module, collapsed, no chevron — a module opens the course page at that module; the current one sat under a `Badge v2` · Soft · Brand *You left off here* until 7 Oct, when Nelson took the badge out (the modules bar already says it; library request 23); on `bg/faint` | the course outline: modules, their completion and the resume position — fetched **when the row is expanded**, one call per course |
+| Modules (Expanded=True, a **slot**) | one `LMS / Course Detail / Module row` per module, collapsed, no chevron — a module opens the course page at that module; the current one sat under a `Badge` · Soft · Brand *You left off here* until 7 Oct, when Nelson took the badge out (the modules bar already says it; library request 23); on `bg/faint` | the course outline: modules, their completion and the resume position — fetched **when the row is expanded**, one call per course |
 
 `Program Detail · Courses tab · Desktop` (`6443:18722`) now uses it: seven rows at 1 200, course 2 expanded, real
 module names, topic counts and durations from the syllabus. **No sidebar on this tab** — the List card needs the
@@ -2933,7 +2933,7 @@ travels with the components. The page's top level is that section and `Docs and 
 | Tokens only | 8 344 nodes: every solid fill and stroke is bound, except what belongs to DS instances — the gradient stroke of `Buttons/Button` (8) and the logo artwork (3) |
 | Text by style | 323 texts, all styled (one, `Streak-Card` · *Message*, mixes Regular and Semibold — both DS styles) |
 | Nothing under 12 px | true of what was built here. Two exceptions, neither a local text: the certificate thumbnail in `Certificate-Card` (a scaled picture of the document, 3–8 px) and the *UP NEXT* overline **inside the DS `LMS / Course Card`** — 11 px, no text style — which `Program-Detail/Course-Row` nests. Library request 18 |
-| Reuse before build | DS instances inside the 35: `Badge v2` 54, `Buttons/Button` 35, `Progress bar` 12, `LMS / Completion Status` 12, `LMS / Delivery Mode Badge` 10, `Avatar` 8, `LMS / Topic-Types Badge` 6, `LMS / Difficulty Badge` 5, and others |
+| Reuse before build | DS instances inside the 35: `Badge` 54, `Buttons/Button` 35, `Progress bar` 12, `LMS / Completion Status` 12, `LMS / Delivery Mode Badge` 10, `Avatar` 8, `LMS / Topic-Types Badge` 6, `LMS / Difficulty Badge` 5, and others |
 
 ### 36.4 After the paste — read back 6 Oct (evening)
 
@@ -3304,7 +3304,7 @@ the URL; tablet uses the desktop popup.
 Copies of the Course Detail desktop and mobile screens, cropped (1 280 × 1 340, 375 × 812). The field is the DS
 `Input field` · Search in *Focused* or *Filled*. The popup (560 wide, 8 px under the field, right-aligned with
 it) and the sheet are **local compositions**: no DS component exists for a search popup or a result row. Inside
-them: DS `Horizontal tabs` (Underline, sm), `Badge v2`, `Loading indicator`, `LMS / Inline Alert`, `Buttons/Button`
+them: DS `Horizontal tabs` (Underline, sm), `Badge`, `Loading indicator`, `LMS / Inline Alert`, `Buttons/Button`
 · Link, `LMS / Mobile Tab Select`; DS text styles and tokens only (0 raw fills, strokes or spacing, 0 unstyled
 texts, read back). Shadow `Shadows/shadow-2xl`: the DS has no lighter step for a floating panel.
 
