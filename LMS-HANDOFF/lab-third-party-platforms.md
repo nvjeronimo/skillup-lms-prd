@@ -101,8 +101,9 @@ There is no modal. The modal card (old E2) was removed with the two states that 
 frame (12 Oct 2026, 18:07–18:25) and Nelson's instruction to apply them. Nothing comes back from the partner, so
 opening the lab does not complete the topic.
 
-- **Mark as Complete** sits at the end of the content, right-aligned (DS `Topic-Status-Badge`, never in the
-  header). It is the main way to complete the topic, and the answer to Navdeep's case: *the learner finishes the
+- **Mark as Complete** sits at the end of the content, in the same row as the feedback: feedback on the left,
+  the button on the right; on a phone it drops under the feedback (DS `Topic-Status-Badge`, never in the header;
+  placement set by Nelson on 13 Oct 2026). It is the main way to complete the topic, and the answer to Navdeep's case: *the learner finishes the
   lab, comes back to SkillUp and closes the course without selecting Next*.
 - **The footer is the design system footer as it is:** *Previous* and *Next*.
 - **If the learner selects *Next* on a topic that is not completed, a question opens** (DS `Modal`,
@@ -201,8 +202,13 @@ evening of 12 Oct; 2 was *waiting for the score* and *asked to mark it complete*
 
 - DS components: Topic Header, `Lab-Launch-Card`, `Lab-Prerequisites`, `Numbered-Step`, `LMS / Inline Alert`,
   `Topic-Footer-Nav`, the Course header with its Progress card, and the DS `Modal` for the IBM dialog.
-- **Mark as Complete** is the frame `Mark-As-Completed-row` at the end of the content (after the feedback row),
-  holding the DS `Topic-Status-Badge` on `Topic-Marked-Status=Mark as Complete`, right-aligned.
+- **Mark as Complete** shares a row with the feedback since 13 Oct 2026: the frame `Feedback-Mark` (horizontal,
+  space-between, wrap, 12 of padding above and below, a rule above and below) holds the DS `Content-Feedback`
+  instance on the left and the frame `Mark-As-Completed-row` on the right, with the DS `Topic-Status-Badge` on
+  `Topic-Marked-Status=Mark as Complete`. The wrap puts the button under the feedback when the row is too narrow
+  (a phone), 16 apart there and 24 on the wider breakpoints, through the spacing token. Nelson's two reference
+  frames are `7124:49482` on the Lab page. `Feedback-Mark` is a local frame: `Content-Feedback` has no slot for an
+  action in the design system. Completed screens keep the plain `Content-Feedback` instance.
 - **The footer is the DS `Topic-Footer-Nav` with no override:** `Course-Progression-Button` on
   `Milestone=Next-Topic`, the icon-only forward button on mobile (arrow-right), three equal columns on tablet. The
   overrides that *Complete and continue* needed were removed.

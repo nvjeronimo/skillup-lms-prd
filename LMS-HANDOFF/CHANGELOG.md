@@ -2,6 +2,25 @@
 
 Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
 
+## 2026-10-13 · Mark as Complete moves into the feedback row, on every screen
+
+Nelson's placement, from his two reference frames on the Lab page (`7124:49482`). The rule does not change: Mark
+as Complete at the end of the content, and *Next* asks.
+
+- **Where it sits now:** in the same row as the feedback, feedback on the left and the button on the right. When
+  the row is too narrow (a phone) the button drops under the feedback. It no longer has a row of its own.
+- **Figma, 63 screens:** Lab page 34 (the 24 handoff cards with the button and the two flow frames), Reading page
+  19, Topic Content Types Discovery 8 (Lab, Podcast, Activity, Reading, Lesson Page x3, Video), Video card 8 two.
+  Desktop screens are 30 shorter, the two Video screens 42; frames and dialog overlays refitted. On the Video the
+  licence now follows the feedback items, because the right end belongs to the button.
+- **Annotations:** *Recent changes* dated 2026-10-13 on the 42 cards concerned; the placement stated once on Lab
+  G1, Reading 3 and Video 8.
+- **How it is built:** a local frame `Feedback-Mark` around the DS `Content-Feedback` instance and the button row
+  ([`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4). `Content-Feedback` has no action slot in the
+  design system: open point for the DS.
+- **Prototype:** [skillup-lms-prototype#125](https://github.com/nvjeronimo/skillup-lms-prototype/pull/125), same
+  placement on every topic with the button; once completed the row is feedback only.
+
 ## 2026-10-13 · Lab: answers from Kirti and Vikas on IBM and on the first-opening date
 
 [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §10. No screen changed.
@@ -15,6 +34,34 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **The IBM screens stand as drawn**, the dash for progress included.
 - **Opened, not designed:** what SkillUp shows for the progress and the certificate of an IBM course, and whether
   it counts in a program's progress (Q-lab-9).
+
+## 2026-10-13 · Design system: the Base components we use, written up
+
+Agreed with Nelson on 13 Oct: full pages for Buttons, Button groups, Badges and Alerts; a list for the other
+Base pages. Named versions saved before and after. **Not published.**
+Script: [`03-design-system/tools/ds-group-page.js`](../03-design-system/tools/ds-group-page.js), now with
+`TITLE` and `ANATOMY`.
+
+- **Full write-up, on the page each component already lived on**, to the left of what was there: *Buttons*
+  (Utility Button, Icon Button, Close Button, Link Button, Button), *Button groups* (Button group, Action Row),
+  *Badges* (Badge, with its Brand / Alerts / Extra column labels kept above the set), *Alerts* (Alert). Same
+  five parts as the LMS pages. The components were moved into the frame: same nodes, same keys, no rename.
+- **Three additions for components built on a nested part** (the buttons): the properties table also lists the
+  properties of the nested part (Size, Label, the icons), marked *on the nested part*; padding, gap and radius
+  are read from the nested part; variants with the same measures are grouped on one line.
+- **Small components are drawn enlarged** in the anatomy (up to 4×, stated under the stage), with the parts read
+  at real size first. The anatomy of Buttons and Badge starts from the default variant with every option on.
+- **Left beside the frames, untouched:** the private parts (`._Button_Structure`, `_Badge base`, `_Button group
+  base`…), and the kit's sets the LMS does not use (Social button, Mobile app store badge, Badge group,
+  Notification).
+- **A list frame on the other 20 Base pages** (Tags to Loading indicators): each public component as a link,
+  its number of variants, its version when it has one, and the first line of its description.
+- **Start here:** the Base components line links to the four full pages.
+- **Found, not changed:** every `Button` variant has a fixed width (79), so an instance does not grow when an
+  icon is turned on in the nested part: the content is clipped until the instance is resized by hand. The
+  anatomy sets the instance to hug. For Nelson to decide whether the variants should hug.
+- **Not done:** the LMS group pages were not rebuilt with the three additions; which Base components the LMS
+  screens really use was not measured.
 
 ## 2026-10-13 · Design system: a Start here page, product indexes, Foundations tidied
 

@@ -125,8 +125,9 @@ fills, with the nav as a sibling below it.
 **Completion is manual: Mark as Complete, and *Next* asks if it was not used** (the rule after Navdeep's Figma
 comments of 12 Oct 2026, applied on Nelson's instruction).
 
-- **Mark as Complete sits at the end of the content**, right-aligned, on every screen that is not completed. It
-  never appears in the header: a top CTA invites the learner to mark a page complete before reading it.
+- **Mark as Complete sits at the end of the content**, in the same row as the feedback, on every screen that is
+  not completed: feedback on the left, the button on the right; on a phone it drops under the feedback (placement
+  set by Nelson on 13 Oct 2026). It never appears in the header: a top CTA invites the learner to mark a page complete before reading it.
 - **The footer is the design system footer:** *Previous* and *Next*, the same on every topic.
 - ***Next* on a Reading that is not completed opens a question** (DS `Modal`, cards 3.5 and 3.6): *Have you
   completed this reading?* **Yes, completed** marks it as completed and goes to the next topic. **Not yet** keeps
@@ -144,8 +145,9 @@ continue *(midday); the question on Next with no button (evening); then, after N
 back with the question kept. The reasons: [`lab-third-party-platforms.md`](lab-third-party-platforms.md) §7, §9
 and §4.*
 
-**How it is built on the screens:** the frame `Mark-As-Completed-row` at the end of the content with the DS
-`Topic-Status-Badge` (`Mark as Complete`), the DS `Topic-Footer-Nav` with no override, and the DS `Modal` over the
+**How it is built on the screens:** the frame `Feedback-Mark` at the end of the content (horizontal,
+space-between, wrap, a rule above and below), holding the DS `Content-Feedback` instance and the frame
+`Mark-As-Completed-row` with the DS `Topic-Status-Badge` (`Mark as Complete`); the DS `Topic-Footer-Nav` with no override, and the DS `Modal` over the
 screen on the two question cards.
 
 **Not settled for Row 6 (an Open Response inside a Reading):** the screens follow the rule like every other

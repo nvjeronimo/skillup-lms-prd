@@ -195,7 +195,8 @@ there is no button and nothing is asked: completion is automatic.
 **When watch-% cannot be tracked, the learner completes the topic** (the rule for every topic the platform cannot
 measure, after Navdeep's Figma comments of 12 Oct 2026):
 
-- **Mark as Complete** sits at the end of the content, never in the header. It uses the **Primary** hierarchy (DS
+- **Mark as Complete** sits at the end of the content, in the same row as the feedback (feedback on the left, the
+  button on the right; under the feedback on a phone; 13 Oct 2026), never in the header. It uses the **Primary** hierarchy (DS
   `Topic-Status-Badge`, `Mark as Complete`).
 - The footer is the usual *Previous* and *Next*. If the learner selects *Next* on a video that is not completed,
   a dialog asks *Have you completed this video?* **Yes, completed** marks it as completed and goes to the next
