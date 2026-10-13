@@ -16,6 +16,29 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Opened, not designed:** what SkillUp shows for the progress and the certificate of an IBM course, and whether
   it counts in a program's progress (Q-lab-9).
 
+## 2026-10-13 · Design system: a Start here page, product indexes, Foundations tidied
+
+Asked by Nelson on 13 Oct, after the group pages below. Named versions saved before and after. **Not published.**
+
+- **Start here**, first page of the file: how the file is organised (eight areas, each a link), the group pages
+  of LMS ICP (7 pages, 68 components) and LMS Platform (7 pages, 43 components) with what is on each, how to read
+  a component page, and where names, versions and rules are. It opens with the Studio and LMS sentence and links
+  to the ICP Hub.
+- **The two old component pages are now indexes.** Each has an index frame with its group pages as links.
+  Removed, as agreed: the empty group frames (*1 · Shared*, *2 · Player shell*, *3 · Content & Notes* on the ICP
+  page; *Discovery · WIP*, *Completion* and the loose *WIP* label on the Platform page). Kept: the Platform cover
+  with its notes; on the ICP page the notes of *4 · Topic content types* and *5 · Assessments*, the Playground,
+  the Question Card guide, the two responsive proofs and the *To be removed* section.
+- **Foundations, eight pages** (Colors, Typography, Logos, Icons, Misc icons, Effect styles, Spacing, radius &
+  grids, Design annotations): each has a guide frame to the left of its content: what the page is, where the
+  values live (variable collections, text, effect and grid styles) and a linked list of what is on the page. On
+  Colors and Typography the SKO frame is marked *read this one first*.
+- **Moved to the Archive, nothing deleted:** the kit's six *Notes and documentation (you can delete this)*
+  frames, an empty *Colors · Model C* shell that sat on top of the Typography header, and 15 stray images from
+  Misc icons, all on a new page *Foundations · kit notes and leftovers*; and the page *Portfolio mockups*.
+- **Not done:** the kit's own frames inside Foundations were not redrawn or re-laid out; whether they still
+  match the SKO variables was not checked. The links were set, not clicked.
+
 ## 2026-10-13 · Design system reorganisation: one page per group, 13 pages, 109 components
 
 Follows the entry *Design system reorganisation: decisions, a pilot page, the page list* further down.
