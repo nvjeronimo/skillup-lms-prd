@@ -8,6 +8,28 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Design system: the LMS group pages split by level (Atoms, Molecules, Organisms)
+
+Nelson, 13 Oct: separate the atoms from the molecules and the organisms, one frame for each. Named version saved
+before the write.
+
+- **What changed:** on the 14 LMS group pages (7 of the ICP, 7 of the Platform) the single documentation frame
+  became up to three frames side by side, *Atoms*, *Molecules*, *Organisms*, each with its own header and the
+  component blocks of that level. The first frame keeps the page header with the count per level. The blocks
+  were moved, not rebuilt: same components, same keys, nothing to publish. 112 components:
+  45 atoms, 50 molecules, 17 organisms.
+- **The rule used** (written in each frame header): an atom is one element with one job and nests no other LMS
+  component (a thin wrapper around one base component counts as an atom); a molecule joins atoms and base
+  components and nests no other LMS molecule; an organism is a whole section of a screen. A level written at
+  the start of a component description wins. Only 13 components declared one; the others were classified from
+  what they nest, plus five judgement calls.
+- **The classification** is in `03-design-system/tools/ds-levels.json`, with the judgement calls. It is a first
+  pass for Nelson to correct: moving a block to another frame is a drag.
+- **Not done:** the level is not written into the component descriptions (that would change 100+ components
+  and need a publish); the Base component pages were not touched; `ds-group-page.js` still builds one frame, so
+  after a rebuild the blocks have to be split again with the map.
+
+
 ## 2026-10-13 · My Learning: one ordered list and a status filter (the three sections are withdrawn)
 
 Nelson, 13 Oct, evening: the three sections spread the cards and make the learner scroll. Approved instead: a
@@ -25,6 +47,15 @@ filter. Named version saved before the write.
   carries a *Recent changes* line of 13 Oct. The desktop Courses grid went from 1920 to 1338 tall. On the WIP
   page the sections proposal (`7154:25789`) is marked superseded and the filter proposal (`7184:28158`) approved.
 - **Prototype:** PR 138.
+- **Toolbar in two rows (Nelson, later the same evening, drawn by him on `6408:73284`):** the tabs alone on the
+  first row, on their rule across the whole width; on the second row the status filter on the left and the
+  search (320) with the Grid / List toggle on the right, `Spacing/3xl` apart. Nelson did the three Courses
+  screens of desktop and tablet; the three Programs screens were brought to the same layout. Mobile keeps tabs,
+  search, filter. Prototype PR 140, which also brings his two component changes: `Program-Card`
+  `State=Not started` reads *Not started* where *0%* was, over the caption *START DATE*, with the footer box on
+  bg/subtle; `Section-Header` has 12 under the title and a 1px border/subtle rule (seen on the Dashboard).
+  Not confirmed with Nelson: the Grid / List toggle is visible on the Courses tablet screen (`6408:74498`),
+  where the rule so far is Grid only below desktop.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the

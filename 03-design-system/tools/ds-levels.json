@@ -1,0 +1,236 @@
+{
+  "_about": "Level of every LMS component in the design system (13 Oct 2026). Each LMS group page in Figma has one frame per level; after a rebuild with ds-group-page.js the blocks have to be split again with this map.",
+  "_rule": [
+    "Atom: one element with one job; nests no other LMS component. A thin wrapper around one base component (a badge, a button) is an atom too.",
+    "Molecule: a few atoms and base components working as one unit; nests no other LMS molecule.",
+    "Organism: a whole section of a screen, built from molecules and atoms.",
+    "A level written at the start of a component description (Atom:, Molecule:, Organism:) wins.",
+    "Judgement calls, not given by the rule: Course-Card and the player Topbar are organisms (as Program-Card and the platform Topbar); Course Detail / Topic-Row is a molecule although it nests Lock; Certificate and Course-Complete-Modal are organisms."
+  ],
+  "_totals": {
+    "Atoms": 45,
+    "Molecules": 50,
+    "Organisms": 17
+  },
+  "levels": {
+    "LMS ICP": {
+      "Player": {
+        "Atoms": [
+          "Vertical-Scroll",
+          "Course-Progression-Button"
+        ],
+        "Molecules": [
+          "Topic-Footer-Nav"
+        ],
+        "Organisms": [
+          "Topbar"
+        ]
+      },
+      "Sidebar": {
+        "Atoms": [
+          "Bookmark",
+          "Completion-Status",
+          "Collapse-Toggle",
+          "Module-Info",
+          "Section-Header",
+          "Lesson-Header"
+        ],
+        "Molecules": [
+          "Topic-Flyout",
+          "Topic-Row",
+          "Overall-Progress",
+          "Module-Header",
+          "Course-Header"
+        ],
+        "Organisms": [
+          "Sidebar"
+        ]
+      },
+      "Content": {
+        "Atoms": [
+          "Topic-Types-Badge",
+          "Topic-Status-Badge",
+          "Sync-to-Video-Button",
+          "Mobile-Tab-Select",
+          "Numbered-Step",
+          "Transcript-Line",
+          "File-Item",
+          "Thread-Item",
+          "Note-Item"
+        ],
+        "Molecules": [
+          "Content-Feedback",
+          "Author-and-Updated-Date",
+          "Topic-Header",
+          "Note-Editor"
+        ],
+        "Organisms": []
+      },
+      "Topics": {
+        "Atoms": [
+          "Podcast-Chapter-Row",
+          "ORA-Stepper",
+          "ORA-Waiting-Panel",
+          "Zooming-Image",
+          "ORA-Grade-Panel"
+        ],
+        "Molecules": [
+          "Lab-File-Row",
+          "ORA-Upload",
+          "Lab-Launch-Card",
+          "ORA-Text-Response",
+          "ORA-Submit-Gate",
+          "Activity-SCORM-Frame"
+        ],
+        "Organisms": [
+          "Lesson-Block",
+          "Podcast-Player",
+          "ORA-Rubric-Criterion"
+        ]
+      },
+      "Assessment": {
+        "Atoms": [
+          "Drag-and-Drop-Item",
+          "Stat-Tile",
+          "Gate"
+        ],
+        "Molecules": [
+          "Drag-and-Drop-Zone",
+          "Footer-Actions",
+          "Option-Row",
+          "Answer-Input",
+          "Stepper-Bar",
+          "Exam-Timer",
+          "Results",
+          "Grade-Summary"
+        ],
+        "Organisms": [
+          "Entry-Header",
+          "Drag-and-Drop-Card",
+          "Question-Card"
+        ]
+      },
+      "Live": {
+        "Atoms": [
+          "VILT-Stage-Stepper",
+          "VILT-Session-Meta"
+        ],
+        "Molecules": [
+          "Live-Control-Bar",
+          "Live-Now-Banner",
+          "VILT-Stage-Surface",
+          "VILT-Session-Card"
+        ],
+        "Organisms": []
+      },
+      "Shared": {
+        "Atoms": [
+          "Progress Circle",
+          "Footnote",
+          "Autosave Status"
+        ],
+        "Molecules": [
+          "Inline Alert",
+          "Empty State",
+          "Discussion Prompt"
+        ],
+        "Organisms": []
+      }
+    },
+    "LMS Platform": {
+      "Navigation": {
+        "Atoms": [
+          "Topbar-Item"
+        ],
+        "Molecules": [],
+        "Organisms": [
+          "Topbar"
+        ]
+      },
+      "Dashboard": {
+        "Atoms": [
+          "Stat"
+        ],
+        "Molecules": [
+          "Section-Header",
+          "Jump-Tile",
+          "Due-Item",
+          "Resume-Row",
+          "Today-at-a-glance"
+        ],
+        "Organisms": []
+      },
+      "My Learning": {
+        "Atoms": [],
+        "Molecules": [
+          "Browse-Tile"
+        ],
+        "Organisms": [
+          "Program-Card"
+        ]
+      },
+      "Discovery": {
+        "Atoms": [
+          "Provider-Partner-Badge",
+          "Difficulty-Level-Icon",
+          "Course-Type-Badge",
+          "Difficulty-Badge",
+          "Delivery-Mode-Badge",
+          "Card-Overflow-Menu"
+        ],
+        "Molecules": [
+          "Course-Row"
+        ],
+        "Organisms": [
+          "Course-Card"
+        ]
+      },
+      "Program Detail": {
+        "Atoms": [],
+        "Molecules": [],
+        "Organisms": [
+          "Course-Row"
+        ]
+      },
+      "Course Detail": {
+        "Atoms": [
+          "Module-Number",
+          "Week-Day",
+          "Meta",
+          "Score-Row",
+          "Grade-Summary-Row",
+          "Section-Intro",
+          "Course-Stats"
+        ],
+        "Molecules": [
+          "Lock",
+          "Card-Shell",
+          "Topic-Row",
+          "Sidebar-Card",
+          "Thread-Row",
+          "Course-Title",
+          "Message",
+          "Progress-Card",
+          "Grade-Meter",
+          "Date-Row",
+          "Weekly-Goal-Card"
+        ],
+        "Organisms": [
+          "Module-Row",
+          "Completion-Card",
+          "Course-Header"
+        ]
+      },
+      "Completion": {
+        "Atoms": [],
+        "Molecules": [
+          "Certificate-Card"
+        ],
+        "Organisms": [
+          "Course-Complete-Modal",
+          "Certificate"
+        ]
+      }
+    }
+  }
+}
