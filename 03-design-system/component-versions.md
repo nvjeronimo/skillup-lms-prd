@@ -203,7 +203,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.0 | 2026-10-13 | In review | 4 | 2026-10-13 · New: the floating chat of the assistant (Size Desktop/Mobile, State Empty/Conversation/Answering). Built from the prototype (PR 127). Not published. |
-| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.0 | 2026-10-13 | In review | 2 | 2026-10-13 · New: the round button that opens the chat (State Closed/Open). Not published. |
+| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.0 | 2026-10-13 | In review | 2 | 2026-10-13 · New: the button that opens the chat (State Closed/Open). Closed is the assistant mark drawn by Nelson (SkillUp ball and plane, AI sparkles in place of the trail lines). Not published. |
 
 **Navigation**
 
