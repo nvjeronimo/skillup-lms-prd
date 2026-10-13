@@ -23,9 +23,12 @@ Asked by Nelson on 13 Oct. Prototype pull requests
   `bg/overlay` and the centre button has the Solid play icon, blur 16 and a light edge; the end timestamp is the
   time left with a minus; radius 6, and 8 on a phone. Measured in the browser: 1286 × 405 with the picture
   720 × 405, against 1288 × 405 in Figma.
-- **Left as it is on the player, to decide:** the CC button turns white while captions are on, and the design
-  system has no on-state for it (Default and Hover only); captions are on by default in the prototype and the
-  screens show none; the bar's gradient ends on `bg/overlay` where the component uses plain black.
+- **The white CC button is the design system's on-state.** `_Video action button` has `State=Active` on its 18
+  types (`bg/on-media`, icon on `icon/on-fixed`, label on `text/on-fixed`), and the prototype uses those tokens
+  while captions are on. This entry first said the design system had only Default and Hover: that was a
+  misreading of the variant list. The component's description now explains the three states.
+- **Left as it is on the player, to decide:** captions are on by default in the prototype and the screens show
+  none; the bar's gradient ends on `bg/overlay` where the component uses plain black.
 - **Course card (131), against `Course-Card` and the Platform Ready for Dev screens:** the *UP NEXT* overline is
   body-small/Semibold without letter spacing; in List the progress block hugs its line (24 between percentage
   and effort) and the up-next block is 250 wide with a one-line title; in a course row the title is one line
