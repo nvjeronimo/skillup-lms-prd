@@ -50,6 +50,10 @@ filter. Named version saved before the write.
   entry *My Learning in three sections* below: the sections and their headers are gone; the completed state of
   the cards stays.
 - **Mobile:** the four segments (404) are wider than the screen (327), so the filter scrolls sideways.
+  Corrected by Nelson the same night (`7187:37067`): the `Button group` itself fills the width and clips, so
+  the track spans the screen and stays put while the segments scroll inside it; the last one is cut at the
+  track's right edge. Both mobile screens are that way; prototype PR 143. The prototype keeps its segments 44
+  tall on mobile (target size), Figma draws 32.
 - **Browse catalog** stays hidden.
 - **Figma, Ready for Dev:** the eight screens (`6408:73284` … `6408:76383`) rebuilt that way; each handoff card
   carries a *Recent changes* line of 13 Oct. The desktop Courses grid went from 1920 to 1338 tall. On the WIP
