@@ -8,6 +8,27 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · The open points of the day closed: buttons hug, names without a version, the rail card from the keyboard
+
+Nelson, 13 Oct: fix what was left open. Named versions saved before and after in the design system.
+**The design system changes are not published.**
+
+- **`Button` v1.3 and `Link Button` v1.1:** every variant hugs its content. They were fixed (79 and 93 wide), so
+  turning an icon on in the nested part clipped the content until the instance was resized by hand. Sizes at rest
+  are the same; a test instance with both icons goes from 79 to 127. On the handoff pages the 86 direct `Button`
+  instances were already set to hug and none was clipped, so nothing moves there.
+- **Names without a version, same keys:** the only variant of `Topic-Footer-Nav` is `Default`; `Empty state - V2`
+  is `Empty state responsive` (it is the one with a `Device` property); `._Progress bar-V2` is
+  `._Progress bar plain` (the bar without a label). None of the three is used inside another DS component.
+- **Not renamed:** `Property 1=V1 | V2` on `Event_card_atom`, Mobile App page. The two variants look the same and
+  the component belongs to the mobile app: for its owner to name.
+- **Prototype, [skillup-lms-prototype#126](https://github.com/nvjeronimo/skillup-lms-prototype/pull/126):** the
+  card of the collapsed rail opens on keyboard focus of a rail row; arrow right moves into it, Escape or arrow
+  left returns to the row. The saved mark is 12px (was 11) and the card uses the DS effect `Elevation/level3`
+  through a new CSS variable, `--sk-shadow-elevation-3`, instead of Tailwind's `shadow-lg`. Checked in the browser.
+  `Topic-Flyout`'s description now states the keyboard behaviour.
+- **Still open:** the arrow-key way into the card is not announced to a screen reader user; not tested with one.
+
 ## 2026-10-13 · Content-Feedback can carry Mark as Complete in the design system
 
 Agreed with Nelson on 13 Oct, to close the open point of the entry *Mark as Complete moves into the feedback row*:

@@ -289,7 +289,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
 | [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v1.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
-| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.2 | 2026-10-12 | Published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
+| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.3 | 2026-10-13 | Changed, not published | 40 | 2026-10-13 · Every variant hugs its content: the button grows with an icon or a longer label |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
@@ -301,7 +301,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button utility`, same key) |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
-| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.0 | 2026-10-08 | Published, on no screen yet |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.1 | 2026-10-13 | Changed, not published |  | 2026-10-13 · Every variant hugs its content |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
 | [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1085-57382) | v1.0 | 2026-10-08 | Published |  | 2026-08-05 · The quiz nav adopted across the sections |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
@@ -376,6 +376,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | `Topic-Row`, `Sidebar`, `Topic-Flyout` | v1.0 → v1.1, v1.0 → v1.1, new at v1.0 | The collapsed sidebar: a small bookmark on the rail row of a saved topic (`Show rail bookmark`), and the card that opens beside the rail. Ships with the next publish. |
 | 2026-10-13 | `Topic-Footer-Nav` | v1.0 → v1.1 | The property `Show Badge` and the `Topic-Status-Badge` it showed are removed (a property is removed: counted as 1.1 under rule 8; no screen had it on). Mark as Complete sits in the feedback row; Completed shows in the Topic Header. |
 | 2026-10-13 | `Content-Feedback` | v1.0 → v1.1 | New boolean `Show Mark as Complete`, off by default: the nested `Topic-Status-Badge` on *Mark as Complete* at the right end of the row; it drops under the feedback when the row is narrow. The feedback items and the licence are now inside a `Feedback` group. |
+| 2026-10-13 | `Button`, `Link Button` | v1.2 → v1.3, v1.0 → v1.1 | The variants hug their content (they were fixed at 79 and 93 wide, so an icon turned on in the nested part was clipped). Sizes at rest unchanged. |
+| 2026-10-13 | three names | no bump | Names that carried a version, same keys: the only variant of `Topic-Footer-Nav` is `Default` (was *Topic Footer Nav Default (V1)*); `Empty state - V2` is `Empty state responsive`; `._Progress bar-V2` is `._Progress bar plain`. |
 
 ## Rename map (8 Oct 2026)
 
