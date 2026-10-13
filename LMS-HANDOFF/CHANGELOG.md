@@ -50,6 +50,10 @@ filter. Named version saved before the write.
   entry *My Learning in three sections* below: the sections and their headers are gone; the completed state of
   the cards stays.
 - **Mobile:** the four segments (404) are wider than the screen (327), so the filter scrolls sideways.
+  Corrected by Nelson the same night (`7187:37067`): the `Button group` itself fills the width and clips, so
+  the track spans the screen and stays put while the segments scroll inside it; the last one is cut at the
+  track's right edge. Both mobile screens are that way; prototype PR 143. The prototype keeps its segments 44
+  tall on mobile (target size), Figma draws 32.
 - **Browse catalog** stays hidden.
 - **Figma, Ready for Dev:** the eight screens (`6408:73284` … `6408:76383`) rebuilt that way; each handoff card
   carries a *Recent changes* line of 13 Oct. The desktop Courses grid went from 1920 to 1338 tall. On the WIP
@@ -68,6 +72,13 @@ filter. Named version saved before the write.
   *Completed*, *Certificates*) are hidden on the eight screens and removed from the prototype (PR 141): the
   Dashboard already shows them. The header is the page title alone. This also closes the question of whether
   those figures should count the courses of the completed sample program, as far as My Learning goes.
+- **`Section-Header` rectified by Nelson (the same night):** the rule under the header and its 12 of padding
+  are withdrawn; the action is the DS `Link Button` (Brand, Secondary) with a 16 arrow and a 1px icon/subtle
+  rule under it. Prototype PR 142. In the design system the component showed unpublished changes when read.
+- **`Course-Card`, the provider (Nelson, the same night):** in `Layout=Grid, State=Default` the provider or
+  partner badge sits at the right end of the Course Type line, not under the title. Prototype PR 144 (grid
+  card, both states). In the design system only that one variant had it when read, and the change was not
+  published: `Layout=Grid, State=Completed` still has the badge under the title.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
