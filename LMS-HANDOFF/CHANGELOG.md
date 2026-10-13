@@ -25,18 +25,26 @@ files.
   certificate of 30 Sep 2026) is `Program-Card` `State=Completed`. The Programs tab counts 3 and the *Completed*
   figure reads *courses · 1 program*. The proposal frames on the WIP page (`7154:25789`) now use the same
   variants instead of overrides.
-- **Design system, three repairs to the Completed variants built this morning (not published yet):**
+- **Design system, three repairs to the Completed variants built this morning (published by Nelson the same day):**
   `Program-Card` `State=Completed`: `Title` and `Courses` had lost their link to the text properties, so every
   completed card showed the default title. Linked again; `Percent` stays a fixed 100%. `Course-Card`
   `State=Completed`: the `Image` layer of the thumbnail was missing, so `Show image` did nothing. Added and
-  linked. Until the library is published and accepted, the completed course on the screens shows its initials
-  and the program texts are set by hand. No version change: the variants now do what v1.1 and v1.2 said.
+  linked. No version change: the variants now do what v1.1 and v1.2 said. After the publish the ten completed
+  cards (eight on Ready for Dev, plus the proposal) still pointed at the earlier copy of the variants, so they
+  were swapped to the current ones by key; the completed course now shows its cover and the program texts come
+  from the properties.
 - **Video sliders end straight.** Nelson changed `_Video actions bar` and `_Video volume slider handle`: the
   progress and the volume tracks have no radius; only the 12px volume handle is round. One variant he had
   missed (`Volume=100%`) was squared, and the sentence in the `Course-Card` description that said sliders stay
   rounded was corrected.
 - **Prototype:** PR 134 (the two video sliders, merged) and PR 135 (the three sections, the completed state of
   the course and program cards, `PlatformProgressBar` `tone="complete"`, a completed sample program).
+- **Later the same day (Nelson):** the *Browse catalog* tile is hidden on the screens and in the prototype
+  (PR 137): that option has not been discussed yet. Nelson also reworked the `Section-Header` (count on the
+  right, a rule under it) and finds that the three sections spread the cards and make the learner scroll. A
+  second proposal is on the WIP page (`7184:28158`, Courses desktop and mobile, not for build): one list per tab,
+  always ordered In progress, Not started, Completed, with a status filter (DS `Button group`: All, In progress,
+  Not started, Completed) under the toolbar. **The three sections are therefore under review, not final.**
 - **Open:** the completed sample program has no program page and no certificate page; the big figures (4, 2, 2
   and *of 17 enrolled*) do not count its five courses; tablet, mobile, dark and list view of PR 135 were not
   looked at in the browser; the first row of the Courses screens still carries a Primary *Resume* in Figma.
