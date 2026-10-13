@@ -11,7 +11,7 @@ phase: 1
 
 **Decision** — The AI Panel is built into the player with three modes — Ask (single question), Chat (conversation), Related (recommendations) — each contextualized to the current topic.
 
-**13 Oct 2026: widened, not reversed.** One assistant covers the platform and the learner's courses as a floating chat; in the player it adds the topic context. In the prototype the docked panel (`AIPanel`) is removed and replaced by it (Nelson, 13 Oct). Key Takeaways and Related have no surface there any more. The Figma `LMS/ICP/AI/AI-Panel` is untouched and still on 117 screens: what happens to it is open. Spec: prototype `docs/superpowers/specs/2026-10-13-assistant-design.md` (PR 127).
+**13 Oct 2026: widened, not reversed.** One assistant covers the platform and the learner's courses as a floating chat; in the player it adds the topic context. In the prototype the docked panel (`AIPanel`) is removed and replaced by it (Nelson, 13 Oct). Key Takeaways and Related have no surface there any more. In Figma (13 Oct 2026, later): the 165 hidden `AI-Panel` instances were removed from the Video, Quizzes, Reading and Lab screens, and **no screen carries the assistant for now**. It is shown only on its own page of the ICP file, *Assistant · floating chat - Feature preview* (`7166:328`), under Ready for review. The prototype keeps it, to see and test. Spec: prototype `docs/superpowers/specs/2026-10-13-assistant-design.md` (PR 127).
 
 **Why**
 - "Not bolted on. Three modes contextualized to current topic."
