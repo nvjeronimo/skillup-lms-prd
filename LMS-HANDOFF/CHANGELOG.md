@@ -77,8 +77,10 @@ filter. Named version saved before the write.
   rule under it. Prototype PR 142. In the design system the component showed unpublished changes when read.
 - **`Course-Card`, the provider (Nelson, the same night):** in `Layout=Grid, State=Default` the provider or
   partner badge sits at the right end of the Course Type line, not under the title. Prototype PR 144 (grid
-  card, both states). In the design system only that one variant had it when read, and the change was not
-  published: `Layout=Grid, State=Completed` still has the badge under the title.
+  card, both states) and PR 145 (list row). In the design system Nelson then gave `Layout=List, State=Default`
+  the same line, and the two `State=Completed` variants were brought to the same structure (their titles block
+  is a copy of the Default one). Not published yet when written. To watch after the publish: the title and
+  provider overrides of the course cards on the screens, because the layers moved inside new frames.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
