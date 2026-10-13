@@ -39,6 +39,12 @@ files.
   rounded was corrected.
 - **Prototype:** PR 134 (the two video sliders, merged) and PR 135 (the three sections, the completed state of
   the course and program cards, `PlatformProgressBar` `tone="complete"`, a completed sample program).
+- **Later the same day (Nelson):** the *Browse catalog* tile is hidden on the screens and in the prototype
+  (PR 137): that option has not been discussed yet. Nelson also reworked the `Section-Header` (count on the
+  right, a rule under it) and finds that the three sections spread the cards and make the learner scroll. A
+  second proposal is on the WIP page (`7184:28158`, Courses desktop and mobile, not for build): one list per tab,
+  always ordered In progress, Not started, Completed, with a status filter (DS `Button group`: All, In progress,
+  Not started, Completed) under the toolbar. **The three sections are therefore under review, not final.**
 - **Open:** the completed sample program has no program page and no certificate page; the big figures (4, 2, 2
   and *of 17 enrolled*) do not count its five courses; tablet, mobile, dark and list view of PR 135 were not
   looked at in the browser; the first row of the Courses screens still carries a Primary *Resume* in Figma.
