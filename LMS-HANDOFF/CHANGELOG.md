@@ -81,6 +81,13 @@ filter. Named version saved before the write.
   the same line, and the two `State=Completed` variants were brought to the same structure (their titles block
   is a copy of the Default one). Not published yet when written. To watch after the publish: the title and
   provider overrides of the course cards on the screens, because the layers moved inside new frames.
+- **`Course-Card`, more changes by Nelson (later the same night), prototype PR 146:** in `Layout=List` the
+  provider sits right after the Course Type badge, 16 apart (at the right end only in the grid card);
+  `Layout=Grid, State=Completed` has two actions, *Review* (Secondary) and a Primary *View Certificate*; the
+  list footer hugs its content (86, and 60 when completed). When read, the component still showed unpublished
+  changes, and the My Learning screens still drew the earlier card (provider under the title, one action): they
+  will follow once the library is published and accepted. Label to settle: *View Certificate* in the DS,
+  *View certificate* on the program card and in the prototype.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
