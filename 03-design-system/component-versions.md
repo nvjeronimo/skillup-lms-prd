@@ -113,7 +113,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Author-and-Updated-Date](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20454-705641) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Topic · Author & Updated Date” |
-| [Content-Feedback](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537661) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Content Feedback” |
+| [Content-Feedback](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537661) | v1.1 | 2026-10-13 | Changed, not published | 1 | 2026-10-13 · New `Show Mark as Complete` (off by default): the Mark as Complete action at the right end of the row |
 | [File-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537612) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / File Item” |
 | [Mobile-Tab-Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19995-7247) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Mobile Tab Select” |
 | [Note-Editor](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22071-6813) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Note Editor” |
@@ -375,6 +375,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | nine components | renumbered | Nothing is at `2.x` before it is built (rule 8). Old → new: `Button` 2.2 → 1.2 · `Icon Button` 2.2 → 1.2 · `Link Button` 2.0 → 1.0 · `Badge` 2.1 → 1.1 · `Button group` 2.0 → 1.1 · `Topbar` 2.0 → 1.2 (it already had a 1.1) · `Topbar-Item` 2.0 → 1.1 · `Course-Row` 2.0 → 1.1 · `Lab-Launch-Card` 2.0 → 1.1. Nothing else about the components changed. |
 | 2026-10-13 | `Topic-Row`, `Sidebar`, `Topic-Flyout` | v1.0 → v1.1, v1.0 → v1.1, new at v1.0 | The collapsed sidebar: a small bookmark on the rail row of a saved topic (`Show rail bookmark`), and the card that opens beside the rail. Ships with the next publish. |
 | 2026-10-13 | `Topic-Footer-Nav` | v1.0 → v1.1 | The property `Show Badge` and the `Topic-Status-Badge` it showed are removed (a property is removed: counted as 1.1 under rule 8; no screen had it on). Mark as Complete sits in the feedback row; Completed shows in the Topic Header. |
+| 2026-10-13 | `Content-Feedback` | v1.0 → v1.1 | New boolean `Show Mark as Complete`, off by default: the nested `Topic-Status-Badge` on *Mark as Complete* at the right end of the row; it drops under the feedback when the row is narrow. The feedback items and the licence are now inside a `Feedback` group. |
 
 ## Rename map (8 Oct 2026)
 
