@@ -25,12 +25,14 @@ files.
   certificate of 30 Sep 2026) is `Program-Card` `State=Completed`. The Programs tab counts 3 and the *Completed*
   figure reads *courses · 1 program*. The proposal frames on the WIP page (`7154:25789`) now use the same
   variants instead of overrides.
-- **Design system, three repairs to the Completed variants built this morning (not published yet):**
+- **Design system, three repairs to the Completed variants built this morning (published by Nelson the same day):**
   `Program-Card` `State=Completed`: `Title` and `Courses` had lost their link to the text properties, so every
   completed card showed the default title. Linked again; `Percent` stays a fixed 100%. `Course-Card`
   `State=Completed`: the `Image` layer of the thumbnail was missing, so `Show image` did nothing. Added and
-  linked. Until the library is published and accepted, the completed course on the screens shows its initials
-  and the program texts are set by hand. No version change: the variants now do what v1.1 and v1.2 said.
+  linked. No version change: the variants now do what v1.1 and v1.2 said. After the publish the ten completed
+  cards (eight on Ready for Dev, plus the proposal) still pointed at the earlier copy of the variants, so they
+  were swapped to the current ones by key; the completed course now shows its cover and the program texts come
+  from the properties.
 - **Video sliders end straight.** Nelson changed `_Video actions bar` and `_Video volume slider handle`: the
   progress and the volume tracks have no radius; only the 12px volume handle is round. One variant he had
   missed (`Volume=100%`) was squared, and the sentence in the `Course-Card` description that said sliders stay
