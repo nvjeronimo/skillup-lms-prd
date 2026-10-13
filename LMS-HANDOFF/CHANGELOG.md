@@ -25,6 +25,15 @@ filter. Named version saved before the write.
   carries a *Recent changes* line of 13 Oct. The desktop Courses grid went from 1920 to 1338 tall. On the WIP
   page the sections proposal (`7154:25789`) is marked superseded and the filter proposal (`7184:28158`) approved.
 - **Prototype:** PR 138.
+- **Toolbar in two rows (Nelson, later the same evening, drawn by him on `6408:73284`):** the tabs alone on the
+  first row, on their rule across the whole width; on the second row the status filter on the left and the
+  search (320) with the Grid / List toggle on the right, `Spacing/3xl` apart. Nelson did the three Courses
+  screens of desktop and tablet; the three Programs screens were brought to the same layout. Mobile keeps tabs,
+  search, filter. Prototype PR 140, which also brings his two component changes: `Program-Card`
+  `State=Not started` reads *Not started* where *0%* was, over the caption *START DATE*, with the footer box on
+  bg/subtle; `Section-Header` has 12 under the title and a 1px border/subtle rule (seen on the Dashboard).
+  Not confirmed with Nelson: the Grid / List toggle is visible on the Courses tablet screen (`6408:74498`),
+  where the rule so far is Grid only below desktop.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
