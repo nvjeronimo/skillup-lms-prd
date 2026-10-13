@@ -8,6 +8,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Prototype: the program card matches the design system component
+
+Prototype [pull request 129](https://github.com/nvjeronimo/skillup-lms-prototype/pull/129). Asked by Nelson on
+13 Oct against `LMS/Platform/My-Learning/Program-Card`. No design system change.
+
+- **Partner logos:** the chips on the dark hero showed JPGs on a white ground. They are now the component's
+  light-on-dark drawings, exported from Figma as SVG, at their own size inside the 77 × 36 chip.
+- **Delivery Mode badge:** the prototype drew Badge Soft / Info; `Delivery-Mode-Badge` is Badge Modern / Info on
+  its three types. Corrected in the badge itself, so it changes wherever the badge is shown: course cards, the
+  course and program headers, the My Learning course card.
+- **Type icon:** *Program* and *Course* carry the design system's own 16px icons instead of stand-ins.
+- **Checked** in the browser by computed values against the component in its dark mode (sizes and colours
+  match; the badge is 136 wide against 137). No image comparison.
+- **Not done:** the course and program headers still use the JPG logos.
+
 ## 2026-10-13 · Dashboard: Resume is Secondary on every row of Continue learning
 
 Prototype [pull request 128](https://github.com/nvjeronimo/skillup-lms-prototype/pull/128).
