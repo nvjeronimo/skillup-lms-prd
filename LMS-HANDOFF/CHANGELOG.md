@@ -8,6 +8,40 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · My Learning in three sections; the completed state on the screens; video sliders end straight
+
+Nelson, 13 Oct: the proposal of the morning is approved. Named versions saved before the writes in both Figma
+files.
+
+- **The rule:** both tabs of My Learning (Courses, Programs) are split in three sections, in this order:
+  *In progress*, *Not started*, *Completed*. Each sits under the `Section-Header` of the Dashboard with its
+  count (*3 courses*, *1 program*). A section without cards is not shown. `Spacing/xl` between a header and its
+  cards, `Spacing/4xl` (32 / 24 / 20) between sections. On Courses the Browse tile closes the page in a line of
+  its own. The state is the one Open edX gives: a course from `hasStarted` and `certificate.isEarned`, a program
+  from `progress_details` (map §37).
+- **Figma, Ready for Dev:** the eight My Learning screens (`6408:73284`, `73888`, `74498`, `75046`, `75613`,
+  `75885`, `76167`, `76383`) rebuilt that way. The completed course is now `Course-Card` `State=Completed`
+  inside its `Course-Row`; a completed sample program (*Data Analytics Foundations Certificate*, 5 of 5,
+  certificate of 30 Sep 2026) is `Program-Card` `State=Completed`. The Programs tab counts 3 and the *Completed*
+  figure reads *courses · 1 program*. The proposal frames on the WIP page (`7154:25789`) now use the same
+  variants instead of overrides.
+- **Design system, three repairs to the Completed variants built this morning (not published yet):**
+  `Program-Card` `State=Completed`: `Title` and `Courses` had lost their link to the text properties, so every
+  completed card showed the default title. Linked again; `Percent` stays a fixed 100%. `Course-Card`
+  `State=Completed`: the `Image` layer of the thumbnail was missing, so `Show image` did nothing. Added and
+  linked. Until the library is published and accepted, the completed course on the screens shows its initials
+  and the program texts are set by hand. No version change: the variants now do what v1.1 and v1.2 said.
+- **Video sliders end straight.** Nelson changed `_Video actions bar` and `_Video volume slider handle`: the
+  progress and the volume tracks have no radius; only the 12px volume handle is round. One variant he had
+  missed (`Volume=100%`) was squared, and the sentence in the `Course-Card` description that said sliders stay
+  rounded was corrected.
+- **Prototype:** PR 134 (the two video sliders, merged) and PR 135 (the three sections, the completed state of
+  the course and program cards, `PlatformProgressBar` `tone="complete"`, a completed sample program).
+- **Open:** the completed sample program has no program page and no certificate page; the big figures (4, 2, 2
+  and *of 17 enrolled*) do not count its five courses; tablet, mobile, dark and list view of PR 135 were not
+  looked at in the browser; the first row of the Courses screens still carries a Primary *Resume* in Figma.
+
+
 ## 2026-10-13 · Buttons: hug or fill, never a fixed width; a regression of the same day repaired
 
 Nelson, 13 Oct, on a Modal whose *Cancel* was 79 wide and fixed: *a button either hugs its content or fills
@@ -89,7 +123,7 @@ Two things asked by Nelson on 13 Oct. Named versions saved before and after in b
   frame does not clip, so nothing changes on screen); its description states the rule.
 - **Prototype, [pull request 132](https://github.com/nvjeronimo/skillup-lms-prototype/pull/132):** the course
   card and course row bars were fully rounded; they end straight now. The quiz and program bars already did.
-- Sliders the learner drags (video progress, volume) stay rounded, as in the design system.
+- Sliders the learner drags (video progress, volume) stayed rounded on that day. **Superseded the same day:** Nelson made them straight too, see the entry *My Learning in three sections* above.
 
 **Proposal, not for build: My Learning in sections and a completed state for the cards.** On the Platform WIP
 page, section `7154:25789`, four screens (courses and programs, desktop and mobile) and four notes.
