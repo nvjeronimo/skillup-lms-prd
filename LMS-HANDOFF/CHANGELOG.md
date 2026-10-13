@@ -10,7 +10,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-13 · Dashboard: Resume is Secondary on every row of Continue learning
 
-Prototype pull request 127.
+Prototype [pull request 128](https://github.com/nvjeronimo/skillup-lms-prototype/pull/128).
 
 - **Decided by Nelson on 13 Oct:** the *Resume* button of a course row is the second hierarchy. This replaces
   *one primary per list* of 7 Oct for these rows, where the first row kept a Primary *Resume*.
