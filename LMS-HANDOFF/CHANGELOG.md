@@ -30,7 +30,7 @@ before the write.
   frame of their level (same nodes, same keys); on the four pages with full write-ups the blocks moved as on
   the LMS pages. 90 components and parts: 54 atoms, 33 molecules, 3 organisms
   (`Modal`, `Text editor`, `Video player 16:9`). They were classified by name, not by what they nest; the list
-  is in the same file. The kit's 43 *Design system header* banners, which titled the old columns, were moved to
+  is in the same file. The kit's 49 *Design system header* banners, which titled the old columns, were moved to
   the archive notes page (nothing deleted). Left where they were: the documentation, changelog, showcase and
   example frames, loose example instances, and the `SKO / Keyboard key` section on Inputs.
 - **Not done:** the level is not written into the component descriptions (that would change 100+ components
