@@ -11,7 +11,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 ## 2026-10-13 · The open points of the day closed: buttons hug, names without a version, the rail card from the keyboard
 
 Nelson, 13 Oct: fix what was left open. Named versions saved before and after in the design system.
-**The design system changes are not published.**
+**Published by Nelson and accepted in the product file the same day.**
 
 - **`Button` v1.3 and `Link Button` v1.1:** every variant hugs its content. They were fixed (79 and 93 wide), so
   turning an icon on in the nested part clipped the content until the instance was resized by hand. Sizes at rest
