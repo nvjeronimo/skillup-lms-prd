@@ -104,8 +104,9 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Info” |
 | [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Overall Progress” |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
-| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.0 | 2026-10-08 | Published | 5 | 2026-10-08 · Renamed from “LMS / Sidebar-ICP” |
-| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.0 | 2026-10-08 | Published | 9 | 2026-10-08 · Renamed from “LMS / Topic Row” |
+| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.1 | 2026-10-13 | Changed, not published | 5 | 2026-10-13 · The collapsed variants show the rail bookmark on the saved topic; the description names the flyout |
+| [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.0 | 2026-10-13 | New, not published | 1 | 2026-10-13 · The card beside the collapsed rail: title, topic type, bookmark button |
+| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.1 | 2026-10-13 | Changed, not published | 9 | 2026-10-13 · New `Show rail bookmark` (off by default): a 12px filled bookmark at the top right of the rail row |
 
 **Content**
 
@@ -372,7 +373,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-08 | 74 LMS components | no bump | Renamed to `LMS/ICP/…` and `LMS/Platform/…`; Discovery and course-end components moved to the platform page; six components moved to *In review*. |
 | 2026-10-12 | `Lab-Launch-Card` | v1.0 → v1.1 | `State=Completed` removed (nothing comes back from the partner); `Opened` carries the date of the first opening; `Unavailable` loses *Skip for now*. |
 | 2026-10-13 | nine components | renumbered | Nothing is at `2.x` before it is built (rule 8). Old → new: `Button` 2.2 → 1.2 · `Icon Button` 2.2 → 1.2 · `Link Button` 2.0 → 1.0 · `Badge` 2.1 → 1.1 · `Button group` 2.0 → 1.1 · `Topbar` 2.0 → 1.2 (it already had a 1.1) · `Topbar-Item` 2.0 → 1.1 · `Course-Row` 2.0 → 1.1 · `Lab-Launch-Card` 2.0 → 1.1. Nothing else about the components changed. |
-
+| 2026-10-13 | `Topic-Row`, `Sidebar`, `Topic-Flyout` | v1.0 → v1.1, v1.0 → v1.1, new at v1.0 | The collapsed sidebar: a small bookmark on the rail row of a saved topic (`Show rail bookmark`), and the card that opens beside the rail. Ships with the next publish. |
 
 ## Rename map (8 Oct 2026)
 

@@ -40,6 +40,32 @@ as Complete at the end of the content, and *Next* asks.
 - **Opened, not designed:** what SkillUp shows for the progress and the certificate of an IBM course, and whether
   it counts in a program's progress (Q-lab-9).
 
+## 2026-10-13 · Collapsed sidebar: a bookmark on the rail and the card beside it, now in the design system
+
+Asked by Nelson on 13 Oct with two captures of the prototype: the prototype already had both, the design system
+had neither. Named versions saved before and after. **Not published.**
+
+- **`LMS/ICP/Sidebar/Topic-Row` v1.1:** new boolean **`Show rail bookmark`**, off by default. A 12px filled
+  bookmark (the `Bookmark` component, `Bookmarked=Yes`) sits 6px from the right and 4px from the top of the row,
+  placed over it. For the 72px rail row only: it marks a saved topic where there is no room for the bookmark
+  button. Never on the expanded row, which has `Show bookmark`.
+- **`LMS/ICP/Sidebar/Topic-Flyout` v1.0, new:** the card that opens beside the collapsed rail on a rail row:
+  the title on one line (`body-medium/Medium`, `text/default`), the `Topic-Types-Badge` and a 24 × 24 button
+  with the `Bookmark`. Row, gap 8, padding 6 / 6 / 6 / 12, radius 8, `bg/page`, `border/subtle`, effect style
+  `Elevation/level3`. Properties: `Title`; the type and `Bookmarked` on the two nested components. It opens 6px
+  to the right of the rail, aligned with the row, and closes 140 ms after the pointer leaves the row and the card.
+- **`LMS/ICP/Sidebar/Sidebar` v1.1:** in the two collapsed variants the third topic of Module 03 shows the rail
+  bookmark, the same topic that is saved in the expanded variant. The flyout is an overlay, not a layer of the
+  Sidebar; the description says so.
+- **The Sidebar group page was rebuilt:** 12 components, each with its anatomy, the flyout included. *Start
+  here* and the ICP index say 69 components.
+- **Differences from the prototype, left for a decision:** the rail bookmark is 11px in the prototype and 12 in
+  Figma; the prototype's card uses Tailwind's `shadow-lg`, which is not a design system effect, Figma uses
+  `Elevation/level3`; the prototype opens the card on pointer hover only, so a keyboard user cannot reach the
+  bookmark from the collapsed rail.
+- **Not checked:** the collapsed sidebars on the screens of the product file after the publish (one rail row
+  will show the bookmark by default).
+
 ## 2026-10-13 · Every component version is 1.x: nine renumbered; the LMS pages rebuilt
 
 Register: [`03-design-system/component-versions.md`](../03-design-system/component-versions.md), rule 8 and
