@@ -88,7 +88,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Course-Progression-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537755) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Course Progression Button” |
 | [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-08 · Renamed from “LMS / Course Player Topbar” |
-| [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Changed, not published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
+| [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
 | [Vertical-Scroll](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537649) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “Vertical Scroll” |
 
 **Sidebar**
@@ -104,16 +104,16 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Info” |
 | [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Overall Progress” |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
-| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.1 | 2026-10-13 | Changed, not published | 5 | 2026-10-13 · The collapsed variants show the rail bookmark on the saved topic; the description names the flyout |
-| [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.0 | 2026-10-13 | New, not published | 1 | 2026-10-13 · The card beside the collapsed rail: title, topic type, bookmark button |
-| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.1 | 2026-10-13 | Changed, not published | 9 | 2026-10-13 · New `Show rail bookmark` (off by default): a 12px filled bookmark at the top right of the rail row |
+| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.1 | 2026-10-13 | Published | 5 | 2026-10-13 · The collapsed variants show the rail bookmark on the saved topic; the description names the flyout |
+| [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.0 | 2026-10-13 | Published | 1 | 2026-10-13 · The card beside the collapsed rail: title, topic type, bookmark button |
+| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.1 | 2026-10-13 | Published | 9 | 2026-10-13 · New `Show rail bookmark` (off by default): a 12px filled bookmark at the top right of the rail row |
 
 **Content**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Author-and-Updated-Date](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20454-705641) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Topic · Author & Updated Date” |
-| [Content-Feedback](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537661) | v1.1 | 2026-10-13 | Changed, not published | 1 | 2026-10-13 · New `Show Mark as Complete` (off by default): the Mark as Complete action at the right end of the row |
+| [Content-Feedback](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537661) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · New `Show Mark as Complete` (off by default): the Mark as Complete action at the right end of the row |
 | [File-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537612) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / File Item” |
 | [Mobile-Tab-Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19995-7247) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Mobile Tab Select” |
 | [Note-Editor](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22071-6813) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Note Editor” |
@@ -289,7 +289,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
 | [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v1.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
-| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
+| [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.2 | 2026-10-12 | Published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
@@ -297,7 +297,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.0 | 2026-10-08 | Published |  | 2026-09-22 · ORA on tablet and mobile; the all-content example covers the whole catalogue |
 | [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.0 | 2026-10-08 | Published |  | 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited |
 | [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge, Course Card measured |
-| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v1.2 | 2026-10-12 | Changed, not published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
+| [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v1.2 | 2026-10-12 | Published | 40 | 2026-10-12 · Tokens by role: Destructive and Success strokes on border tokens, Brand icons on `icon/primary`, Primary Hover fills on background tokens |
 | [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button utility`, same key) |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
