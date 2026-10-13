@@ -22,7 +22,7 @@ Nelson, 13 Oct, on a Modal whose *Cancel* was 79 wide and fixed: *a button eithe
   the variant's Fill was left with a narrow structure. The check made then looked only at buttons placed
   directly on the screens (all on hug) and missed the buttons nested in other components. The error was in that
   check, not in the screens.
-- **Design system, not published:** 63 buttons inside components corrected (20 in `_Modal actions`, 8 in
+- **Design system, published by Nelson the same day:** 63 buttons inside components corrected (20 in `_Modal actions`, 8 in
   `Entry-Header`, 12 in `Empty state responsive`, 4 each in `Results` and `Progress-Card`, 3 each in
   `Sidebar-Card` and `Course-Complete-Modal`, 2 each in `Note-Editor`, `Certificate-Card`, `._Card footer`, and
   3 hugging Modal buttons freed from 79). Audit after: 113 on hug and hug, 56 on fill and fill, none fixed, none
@@ -56,7 +56,7 @@ Prototype [pull request 133](https://github.com/nvjeronimo/skillup-lms-prototype
 ## 2026-10-13 · The completed state is in the design system: Program-Card and Course-Card
 
 Nelson accepted the proposal of the entry below (My Learning in sections, a completed state for the cards) and
-asked for the variants. Named versions saved before and after. **Not published.**
+asked for the variants. Named versions saved before and after. **Published by Nelson and accepted the same day.**
 
 - **Rule, decided by Nelson on 13 Oct:** a progress fill is `bg/info` while the course or program runs and
   **green (`bg/success`) only when it is done**. The state never depends on the colour alone: a check icon and
