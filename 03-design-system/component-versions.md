@@ -196,7 +196,14 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Progress Circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.0 | 2026-10-08 | Published | 3 | — |
 
-### LMS · Platform (`LMS/Platform/…`): 45
+### LMS · Platform (`LMS/Platform/…`): 47
+
+**Assistant** (on the page `❖ LMS · IN REVIEW / NOT FOR BUILD`, frame *Assistant · floating chat · WIP*)
+
+| Component | Version | Since | Status | Variants | Last change recorded |
+|---|---|---|---|---:|---|
+| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.0 | 2026-10-13 | In review | 4 | 2026-10-13 · New: the floating chat of the assistant (Size Desktop/Mobile, State Empty/Conversation/Answering). Built from the prototype (PR 127). Not published. |
+| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.0 | 2026-10-13 | In review | 2 | 2026-10-13 · New: the round button that opens the chat (State Closed/Open). Not published. |
 
 **Navigation**
 
@@ -378,6 +385,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | `Content-Feedback` | v1.0 → v1.1 | New boolean `Show Mark as Complete`, off by default: the nested `Topic-Status-Badge` on *Mark as Complete* at the right end of the row; it drops under the feedback when the row is narrow. The feedback items and the licence are now inside a `Feedback` group. |
 | 2026-10-13 | `Button`, `Link Button` | v1.2 → v1.3, v1.0 → v1.1 | The variants hug their content (they were fixed at 79 and 93 wide, so an icon turned on in the nested part was clipped). Sizes at rest unchanged. |
 | 2026-10-13 | three names | no bump | Names that carried a version, same keys: the only variant of `Topic-Footer-Nav` is `Default` (was *Topic Footer Nav Default (V1)*); `Empty state - V2` is `Empty state responsive`; `._Progress bar-V2` is `._Progress bar plain`. |
+| 2026-10-13 | Assistant-Chat, Assistant-Launcher | v1.0 | New, in review, not published: the floating chat that replaces the docked AI Panel in the prototype. `AI-Panel` itself is unchanged. |
 
 ## Rename map (8 Oct 2026)
 
