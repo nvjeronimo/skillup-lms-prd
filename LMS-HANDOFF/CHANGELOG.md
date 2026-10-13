@@ -16,6 +16,34 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 - **Opened, not designed:** what SkillUp shows for the progress and the certificate of an IBM course, and whether
   it counts in a program's progress (Q-lab-9).
 
+## 2026-10-13 · Design system: the Base components we use, written up
+
+Agreed with Nelson on 13 Oct: full pages for Buttons, Button groups, Badges and Alerts; a list for the other
+Base pages. Named versions saved before and after. **Not published.**
+Script: [`03-design-system/tools/ds-group-page.js`](../03-design-system/tools/ds-group-page.js), now with
+`TITLE` and `ANATOMY`.
+
+- **Full write-up, on the page each component already lived on**, to the left of what was there: *Buttons*
+  (Utility Button, Icon Button, Close Button, Link Button, Button), *Button groups* (Button group, Action Row),
+  *Badges* (Badge, with its Brand / Alerts / Extra column labels kept above the set), *Alerts* (Alert). Same
+  five parts as the LMS pages. The components were moved into the frame: same nodes, same keys, no rename.
+- **Three additions for components built on a nested part** (the buttons): the properties table also lists the
+  properties of the nested part (Size, Label, the icons), marked *on the nested part*; padding, gap and radius
+  are read from the nested part; variants with the same measures are grouped on one line.
+- **Small components are drawn enlarged** in the anatomy (up to 4×, stated under the stage), with the parts read
+  at real size first. The anatomy of Buttons and Badge starts from the default variant with every option on.
+- **Left beside the frames, untouched:** the private parts (`._Button_Structure`, `_Badge base`, `_Button group
+  base`…), and the kit's sets the LMS does not use (Social button, Mobile app store badge, Badge group,
+  Notification).
+- **A list frame on the other 20 Base pages** (Tags to Loading indicators): each public component as a link,
+  its number of variants, its version when it has one, and the first line of its description.
+- **Start here:** the Base components line links to the four full pages.
+- **Found, not changed:** every `Button` variant has a fixed width (79), so an instance does not grow when an
+  icon is turned on in the nested part: the content is clipped until the instance is resized by hand. The
+  anatomy sets the instance to hug. For Nelson to decide whether the variants should hug.
+- **Not done:** the LMS group pages were not rebuilt with the three additions; which Base components the LMS
+  screens really use was not measured.
+
 ## 2026-10-13 · Design system: a Start here page, product indexes, Foundations tidied
 
 Asked by Nelson on 13 Oct, after the group pages below. Named versions saved before and after. **Not published.**
