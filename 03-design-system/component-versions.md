@@ -180,7 +180,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [AI-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538166) | v1.0 | 2026-10-08 | In review | 4 | 2026-10-08 · Renamed from “LMS / AI Panel” |
+| [AI-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538166) | v1.0 | 2026-10-08 | In review | 4 | 2026-10-13 · Its 165 hidden instances were removed from the ICP screens: it is on no screen. Renamed from “LMS / AI Panel” on 2026-10-08. |
 
 **Not renamed yet**
 
@@ -202,8 +202,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.1 | 2026-10-13 | In review | 6 | 2026-10-13 · Two states added for first steps (`First steps`, `First steps done`); `Empty` starts with the next step. Not published at v1.1. |
-| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.1 | 2026-10-13 | In review | 3 | 2026-10-13 · 48 px; closed is the assistant mark; `Closed with count` added (first steps left). Not published at v1.1. |
+| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.1 | 2026-10-13 | Published | 6 | 2026-10-13 · Two states added for first steps (`First steps`, `First steps done`); `Empty` starts with the next step. Used on the ICP feature preview page only. |
+| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.1 | 2026-10-13 | Published | 3 | 2026-10-13 · 48 px; closed is the assistant mark; `Closed with count` added (first steps left). Used on the ICP feature preview page only. |
 
 **Navigation**
 
