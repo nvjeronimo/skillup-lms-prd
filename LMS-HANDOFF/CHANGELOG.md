@@ -86,8 +86,10 @@ filter. Named version saved before the write.
   `Layout=Grid, State=Completed` has two actions, *Review* (Secondary) and a Primary *View Certificate*; the
   list footer hugs its content (86, and 60 when completed). When read, the component still showed unpublished
   changes, and the My Learning screens still drew the earlier card (provider under the title, one action): they
-  will follow once the library is published and accepted. Label to settle: *View Certificate* in the DS,
-  *View certificate* on the program card and in the prototype.
+  will follow once the library is published and accepted. Label settled by Nelson: *View Certificate*. The
+  prototype uses it on the course card and on the completed program card, and the two `State=Completed`
+  variants of `Program-Card` in the design system were changed to it (to publish). Other places still write
+  *View certificate* (the Certificates tab of the program page, the course-complete modal): not touched.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
