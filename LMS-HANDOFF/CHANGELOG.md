@@ -64,6 +64,10 @@ filter. Named version saved before the write.
   bg/subtle; `Section-Header` has 12 under the title and a 1px border/subtle rule (seen on the Dashboard).
   Not confirmed with Nelson: the Grid / List toggle is visible on the Courses tablet screen (`6408:74498`),
   where the rule so far is Grid only below desktop.
+- **The stats leave My Learning (Nelson, the same night):** the three figures at the top (*In progress*,
+  *Completed*, *Certificates*) are hidden on the eight screens and removed from the prototype (PR 141): the
+  Dashboard already shows them. The header is the page title alone. This also closes the question of whether
+  those figures should count the courses of the completed sample program, as far as My Learning goes.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
