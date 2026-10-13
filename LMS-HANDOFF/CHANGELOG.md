@@ -8,6 +8,74 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Buttons: hug or fill, never a fixed width; a regression of the same day repaired
+
+Nelson, 13 Oct, on a Modal whose *Cancel* was 79 wide and fixed: *a button either hugs its content or fills
+(mobile). Never a fixed 79.* Named versions saved before and after in both Figma files.
+
+- **The rule:** a `Button` or `Link Button` hugs its content or fills its container. Never a fixed width. For a
+  full-width button BOTH the instance and its nested structure are on Fill; with only the instance on Fill the
+  visible button stays narrow inside it. Written in the two descriptions and on the Buttons page.
+- **What was wrong, and why:** two things. Old overrides that pinned the nested structure at 79 (the Modal
+  buttons, `Empty state responsive`, the progress cards). And a regression of this morning: making the `Button`
+  variants hug (v1.3) moved their nested structure from Fill to Hug, so every full-width button that relied on
+  the variant's Fill was left with a narrow structure. The check made then looked only at buttons placed
+  directly on the screens (all on hug) and missed the buttons nested in other components. The error was in that
+  check, not in the screens.
+- **Design system, published by Nelson the same day:** 63 buttons inside components corrected (20 in `_Modal actions`, 8 in
+  `Entry-Header`, 12 in `Empty state responsive`, 4 each in `Results` and `Progress-Card`, 3 each in
+  `Sidebar-Card` and `Course-Complete-Modal`, 2 each in `Note-Editor`, `Certificate-Card`, `._Card footer`, and
+  3 hugging Modal buttons freed from 79). Audit after: 113 on hug and hug, 56 on fill and fill, none fixed, none
+  narrower. Two hidden *Book a call* buttons in `Sidebar-Card` still read fixed 140: an instance cannot be
+  resized while hidden.
+- **Screens, done without waiting for the publish:** 250 buttons corrected on the handoff pages (Platform Ready
+  for Dev 91, Platform WIP 80, Quizzes 37, Lab 27, Completion 9, Video 4, Reading 2). Audit after: none left on
+  those seven pages. Seen as an image: the *Resume*, *Review* and *Start* of the My Learning course cards span
+  the card again.
+- **Limit of the component, for a decision:** the visible button is a nested structure, so no default serves
+  both uses: with hug as the default, a full-width button needs the second Fill by hand. Two ways out: a `Width`
+  property on `Button` (Hug, Fill), or drawing the button on the component itself with no nested structure.
+
+## 2026-10-13 · My Learning: the figures at the top also count programs
+
+Prototype [pull request 133](https://github.com/nvjeronimo/skillup-lms-prototype/pull/133).
+
+- **Decided by Nelson on 13 Oct:** the three figures at the top of My Learning count programs too.
+- **How it reads:** the figure stays the number of courses, the total Learner Home returns; the line under it
+  names the programs in that state: *In progress · 4 · courses · 1 program*. With no program in that state the
+  line reads *courses*. *Certificates* is unchanged. Program states come from `progress_details` (map §37).
+- **Figma:** the line under *In progress* on the eight My Learning screens of Ready for Dev, and under
+  *In progress* and *Completed* on the four proposal frames (they show a completed program). No design system
+  change: it is the `Detail` text of `Stat`. On mobile the line wraps to two, so the first stat is 134 tall
+  beside two of 116, aligned at the top; the two mobile screens are 18 taller.
+- **Prototype:** the same, with the program count read from the program cards; the stats align at the top.
+  Checked in the browser at 1440 and 375.
+- **To decide:** whether the figure itself should include programs, or stay courses with programs named under
+  it as now.
+
+## 2026-10-13 · The completed state is in the design system: Program-Card and Course-Card
+
+Nelson accepted the proposal of the entry below (My Learning in sections, a completed state for the cards) and
+asked for the variants. Named versions saved before and after. **Published by Nelson and accepted the same day.**
+
+- **Rule, decided by Nelson on 13 Oct:** a progress fill is `bg/info` while the course or program runs and
+  **green (`bg/success`) only when it is done**. The state never depends on the colour alone: a check icon and
+  the word *Completed* come with it. This completes the rule of 25 Sep (never `bg/primary`).
+- **`LMS/Platform/My-Learning/Program-Card` v1.1:** `State=Completed` for Grid and List. 100%, a full green
+  bar, a check icon before *PROGRAM COMPLETED*, the footer *Certificate issued* with its date (new text property
+  `Certificate date`) and a secondary *View certificate*. The date sits under its label, so it is not cut on a
+  phone as it was in the proposal.
+- **`LMS/Platform/Discovery/Course-Card` v1.2:** a new variant property `State` (Default, Completed), Grid and
+  List. Completed: a full green bar, a check icon before *Completed*, the strip reads *CERTIFICATE · Issued …*
+  with no topic type, the action is *Review*. The two existing variants became `State=Default` with the same
+  keys, so every instance keeps working; Default covers in progress and not started, which differ by their texts.
+- **The date is the certificate's:** Open edX gives no other completion date (map §37).
+- **The My Learning and Discovery group pages** were rebuilt and document the new variants.
+- **To set by hand on a completed program:** `Courses` ("5 of 5 courses complete"); the property is shared by
+  the three states, so its default still reads *1 of 7*.
+- **Next, after the publish:** the proposal frames on the WIP page move from overrides to the variants; then the
+  My Learning screens on Ready for Dev and the prototype (sections and the completed state).
+
 ## 2026-10-13 · Progress bars end straight; a proposal for My Learning sections and the completed state
 
 Two things asked by Nelson on 13 Oct. Named versions saved before and after in both Figma files.

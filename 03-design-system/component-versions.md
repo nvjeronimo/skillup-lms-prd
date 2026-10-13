@@ -229,14 +229,14 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.1 | 2026-10-13 | Published | 6 | 2026-10-13 · New `State=Completed` (Grid and List): 100%, green bar, check icon, certificate footer, *View certificate*; new text property `Certificate date` |
 
 **Discovery**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.1 | 2026-10-13 | Published | 2 | 2026-10-13 · The progress bar ends straight, track and fill (it was fully rounded) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.2 | 2026-10-13 | Published | 4 | 2026-10-13 · New property `State` (Default, Completed): green full bar, check icon and *Completed*, certificate strip, *Review* |
 | [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · Topic type and length, the module as headline, new `Context` property (course · program); no delivery badge; 96 tall |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Type Badge” |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
@@ -387,6 +387,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | three names | no bump | Names that carried a version, same keys: the only variant of `Topic-Footer-Nav` is `Default` (was *Topic Footer Nav Default (V1)*); `Empty state - V2` is `Empty state responsive`; `._Progress bar-V2` is `._Progress bar plain`. |
 | 2026-10-13 | Assistant-Chat, Assistant-Launcher | v1.0 | New, in review, not published: the floating chat that replaces the docked AI Panel in the prototype. `AI-Panel` itself is unchanged. |
 | 2026-10-13 | `Course-Card` | v1.0 → v1.1 | The hand-built progress bar ends straight (radius 0 on track and fill), as every progress bar. `Progress bar` itself: an inert radius 8 removed from the bar frame of the labelled variants, no visual change, no bump. |
+| 2026-10-13 | `Program-Card`, `Course-Card` | v1.0 → v1.1, v1.1 → v1.2 | The completed state. `Program-Card`: `State=Completed` and the text property `Certificate date`. `Course-Card`: a new variant property `State` (Default, Completed); the two existing variants are now `State=Default`, same keys. A progress fill is `bg/info` while it runs and `bg/success` only when it is done. |
 
 ## Rename map (8 Oct 2026)
 
