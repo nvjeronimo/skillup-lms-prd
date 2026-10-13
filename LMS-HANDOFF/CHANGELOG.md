@@ -8,6 +8,28 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · Design system: the LMS group pages split by level (Atoms, Molecules, Organisms)
+
+Nelson, 13 Oct: separate the atoms from the molecules and the organisms, one frame for each. Named version saved
+before the write.
+
+- **What changed:** on the 14 LMS group pages (7 of the ICP, 7 of the Platform) the single documentation frame
+  became up to three frames side by side, *Atoms*, *Molecules*, *Organisms*, each with its own header and the
+  component blocks of that level. The first frame keeps the page header with the count per level. The blocks
+  were moved, not rebuilt: same components, same keys, nothing to publish. 112 components:
+  45 atoms, 50 molecules, 17 organisms.
+- **The rule used** (written in each frame header): an atom is one element with one job and nests no other LMS
+  component (a thin wrapper around one base component counts as an atom); a molecule joins atoms and base
+  components and nests no other LMS molecule; an organism is a whole section of a screen. A level written at
+  the start of a component description wins. Only 13 components declared one; the others were classified from
+  what they nest, plus five judgement calls.
+- **The classification** is in `03-design-system/tools/ds-levels.json`, with the judgement calls. It is a first
+  pass for Nelson to correct: moving a block to another frame is a drag.
+- **Not done:** the level is not written into the component descriptions (that would change 100+ components
+  and need a publish); the Base component pages were not touched; `ds-group-page.js` still builds one frame, so
+  after a rebuild the blocks have to be split again with the map.
+
+
 ## 2026-10-13 · My Learning: one ordered list and a status filter (the three sections are withdrawn)
 
 Nelson, 13 Oct, evening: the three sections spread the cards and make the learner scroll. Approved instead: a
