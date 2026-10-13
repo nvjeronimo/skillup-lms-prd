@@ -8,6 +8,29 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-13 · The completed state is in the design system: Program-Card and Course-Card
+
+Nelson accepted the proposal of the entry below (My Learning in sections, a completed state for the cards) and
+asked for the variants. Named versions saved before and after. **Not published.**
+
+- **Rule, decided by Nelson on 13 Oct:** a progress fill is `bg/info` while the course or program runs and
+  **green (`bg/success`) only when it is done**. The state never depends on the colour alone: a check icon and
+  the word *Completed* come with it. This completes the rule of 25 Sep (never `bg/primary`).
+- **`LMS/Platform/My-Learning/Program-Card` v1.1:** `State=Completed` for Grid and List. 100%, a full green
+  bar, a check icon before *PROGRAM COMPLETED*, the footer *Certificate issued* with its date (new text property
+  `Certificate date`) and a secondary *View certificate*. The date sits under its label, so it is not cut on a
+  phone as it was in the proposal.
+- **`LMS/Platform/Discovery/Course-Card` v1.2:** a new variant property `State` (Default, Completed), Grid and
+  List. Completed: a full green bar, a check icon before *Completed*, the strip reads *CERTIFICATE · Issued …*
+  with no topic type, the action is *Review*. The two existing variants became `State=Default` with the same
+  keys, so every instance keeps working; Default covers in progress and not started, which differ by their texts.
+- **The date is the certificate's:** Open edX gives no other completion date (map §37).
+- **The My Learning and Discovery group pages** were rebuilt and document the new variants.
+- **To set by hand on a completed program:** `Courses` ("5 of 5 courses complete"); the property is shared by
+  the three states, so its default still reads *1 of 7*.
+- **Next, after the publish:** the proposal frames on the WIP page move from overrides to the variants; then the
+  My Learning screens on Ready for Dev and the prototype (sections and the completed state).
+
 ## 2026-10-13 · Progress bars end straight; a proposal for My Learning sections and the completed state
 
 Two things asked by Nelson on 13 Oct. Named versions saved before and after in both Figma files.
