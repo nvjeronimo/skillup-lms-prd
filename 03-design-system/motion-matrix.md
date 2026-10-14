@@ -7,7 +7,7 @@
 | **Status** | 🟢 **Contract — built and merged** (v2, 14 Oct 2026; prototype PRs #153–#160 merged the same day). The tokens themselves stay *proposed* until the team approves them (Q6). v1 was the August draft from the "Microinterações no LMS" session. |
 | **Decisions** | Q1–Q4 answered by Nelson on 14 Oct 2026 (§9). Record: [`../00-decisions/024-motion-scale.md`](../00-decisions/024-motion-scale.md). |
 | **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in six PRs (§8). |
-| **Documented in** | this file · ADR 024 · Figma DS: `Motion` collection (13 variables, unpublished) + [doc frame `22639-583252`](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22639-583252) · ICP Hub (Motion section). |
+| **Documented in** | this file · ADR 024 · Figma DS: `Motion` collection (13 variables, published 14 Oct 2026) + [doc frame `22639-583252`](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22639-583252) · ICP Hub (Motion section). |
 
 > Anything marked **⚠︎ open** is not agreed yet. Do not build from a ⚠︎ line without confirming.
 
@@ -322,5 +322,5 @@ All six merged to `main` on 14 Oct 2026, in order. They were built as a **stack*
 | Q3 | Where do the Figma variables live? | **Own `Motion` collection.** (Nelson, 14 Oct) |
 | Q4 | Accept small value changes without a side-by-side? | **Yes.** (Nelson, 14 Oct) Covers 220 → 200, ring 600 → 500, 80 → 100, 120 → 150 |
 | Q5 | Storybook: interaction tests for the reduced-motion path, or by hand? | ⚠︎ open; this block verifies by hand in the preview + a vitest on `useExitTransition` |
-| Q6 | Team approval for 13 new tokens (21 Sep rule) | ⚠︎ open: the Figma collection stays unpublished until the team agrees |
+| Q6 | Team approval for 13 new tokens (21 Sep rule) | ⚠︎ open: the collection was published on 14 Oct 2026 at Nelson's request; the team still has to agree the tokens (ADR 024 stays proposed until then) |
 | Q7 | Material names instead of the v1 names (`instant/fast/base/slow/narrative`) | proposed here, from the 17 Sep rule; confirm with this spec |
