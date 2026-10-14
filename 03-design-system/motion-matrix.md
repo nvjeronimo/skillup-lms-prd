@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **Spec for review** (v2, 14 Oct 2026). v1 was the August draft from the "Microinterações no LMS" session. |
+| **Status** | 🟢 **Contract — built and merged** (v2, 14 Oct 2026; prototype PRs #153–#160 merged the same day). The tokens themselves stay *proposed* until the team approves them (Q6). v1 was the August draft from the "Microinterações no LMS" session. |
 | **Decisions** | Q1–Q4 answered by Nelson on 14 Oct 2026 (§9). Record: [`../00-decisions/024-motion-scale.md`](../00-decisions/024-motion-scale.md). |
 | **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in six PRs (§8). |
 | **Documented in** | this file · ADR 024 · Figma DS: `Motion` collection (13 variables, unpublished) + [doc frame `22639-583252`](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22639-583252) · ICP Hub (Motion section). |
@@ -298,7 +298,7 @@ on, with the OS reduced-motion setting, and with the Accessibility panel switch.
 | **5 · Assistant** — [#158](https://github.com/nvjeronimo/skillup-lms-prototype/pull/158) | §7.4 | the window grows from and returns to the launcher; thinking, streaming, actions and scroll behave as specced |
 | **6 · Smoothness** — [#160](https://github.com/nvjeronimo/skillup-lms-prototype/pull/160) | §7.5 | pages and topics enter, in-page scroll glides, filters cross-fade, every hover colour eases on the scale |
 
-PR 1 blocks the rest. The six were built on 14 Oct 2026 as a **stack** (each PR targets the previous branch): retarget each to `main` before merging the one below it, or merge them in order #153 → #160.
+All six merged to `main` on 14 Oct 2026, in order. They were built as a **stack** (each PR targets the previous branch): retarget each to `main` before merging the one below it, or merge them in order #153 → #160.
 
 ### 8.1 Documentation, same block
 
