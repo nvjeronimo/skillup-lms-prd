@@ -194,7 +194,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.0 | 2026-10-08 | Published | 6 | 2026-09-10 · Blockquote and Key Takeaways become Lesson Block Kinds |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Progress Circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.0 | 2026-10-08 | Published | 3 | — |
+| [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
 
 ### LMS · Platform (`LMS/Platform/…`): 47
 
@@ -395,6 +395,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-14 | `Program-Card` | v1.1 → v1.2 | `State=Not started` reads *Not started* where the percent was, over *START DATE*; its footer box on bg/subtle with its border. The `State=Completed` action reads *View Certificate*. |
 | 2026-10-14 | `Course-Card` | v1.2 → v1.3 | The provider badge moves onto the Course Type line (right end in Grid, right after the badge in List). `State=Completed` Grid has two actions, *Review* (Secondary) and *View Certificate* (Primary). The List footer hugs its content. Layers moved into new frames: instances nested in `Course-Row` had to be re-pointed by key after the publish. |
 | 2026-10-14 | `Overall-Progress` | v1.0 → v1.1 | `Device=Mobile` drops its own drawn ring and percentage for an instance of `LMS / Progress Circle` (Status=InProgress), as `Device=Desktop` already did. Instances keep showing 67%; none in the product file used this variant. |
+| 2026-10-14 | `Progress circle` (was `LMS / Progress Circle`) | v1.0 → v1.1 | Moved to the Base page *Progress indicators* and renamed; it is now the only progress circle (the Untitled UI kit `Progress circle` was archived). Same component and key. The ring part `._Progress circle_Ring` sits beside it. |
 
 ## Rename map (8 Oct 2026)
 

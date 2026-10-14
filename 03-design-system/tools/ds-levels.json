@@ -429,10 +429,9 @@
       "Progress indicators": {
         "Atoms": [
           "Progress bar",
-          "Progress circle",
           "._Progress bar plain",
-          "LMS / Progress Circle",
-          "_Progress circle_Ring"
+          "Progress circle",
+          "._Progress circle_Ring"
         ],
         "Molecules": [],
         "Organisms": []
