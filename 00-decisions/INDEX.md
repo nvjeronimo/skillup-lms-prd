@@ -1,6 +1,6 @@
 # Decision Records — Index
 
-23 Architecture / Design Decision Records for the SkillUp LMS. One file per decision.
+24 Architecture / Design Decision Records for the SkillUp LMS. One file per decision.
 
 ## ADR format
 
@@ -37,6 +37,7 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 021 | 10-point registration rule for a new Topic Content Type | ICP | 1 | accepted | designer, dev | [021](021-topic-type-10-point-registration-rule.md) |
 | 022 | Unit-renderer architecture; Practice/Graded/Final = subsection metadata | ICP | 1 | accepted | dev, designer | [022](022-unit-renderer-architecture.md) |
 | 023 | SCORM + ORA hard limits (edX-sourced) | ICP | 1 | accepted | dev | [023](023-scorm-ora-hard-limits.md) |
+| 024 | Motion scale — Material names, one mode, reduced motion keeps feedback | Foundations | 1 | proposed | designer, dev | [024](024-motion-scale.md) |
 
 ## Filter by track
 
