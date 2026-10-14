@@ -23,6 +23,10 @@ the links where it is used, then organise the page as the others. Named version 
   *LMS · Shared components* was rebuilt without it (2 atoms, 3 molecules). `ds-levels.json` updated.
 - **Left in place on the Progress indicators page:** the work in progress that was there (`_Progress circle_Ring`
   is documented; the loose *Progress bar* and *Progress circle* instances and *Frame 1* were not touched).
+- **Progress circles end straight too (Nelson, 14 Oct):** the kit `Progress circle` (22 ring strokes) and
+  `_Progress circle_Ring` (21) had round caps; they are now square (stroke cap None). `LMS / Progress Circle` draws
+  its ring as a filled arc, so its ends were already straight. Each description says so. To publish. The
+  prototype already drew its rings with square ends (`OverallProgress`, the course Progress tab).
 - **Open:** the name still starts with `LMS /` while it now sits with the Base components, next to the kit's
   `Progress circle` (12 uses in the DS). A rename keeps every link; it waits for Nelson.
 
