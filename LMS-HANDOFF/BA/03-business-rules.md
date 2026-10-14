@@ -200,6 +200,14 @@ Every course has 1 Provider (org delivering). Displayed on Course Card + Course 
 ### BR-30 · Course type
 2 types: Single Course / Program (multi-course). Badge on Course Card distinguishes.
 
+## Navigation
+
+### BR-47 · Program courses are reached through the program
+A course that belongs to a program is not listed on its own: My Learning's course list shows single courses only.
+The learner opens it from the program page or from the Dashboard's *Pick up where you left off*. Exceptions kept
+(Nelson, 14 Oct 2026): the program card's *Continue* opens the player of the course in progress; a due item opens
+its work; the program certificate page links to its courses. Decision 025.
+
 ## Display rules
 
 ### BR-31 · Next-live rule

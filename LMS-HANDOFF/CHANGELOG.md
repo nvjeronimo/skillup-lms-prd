@@ -8,6 +8,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · A course of a program is reached through its program
+
+Nelson, 14 Oct: the courses of a program are reached only from the program page or from the Dashboard's *Pick up
+where you left off*. Decision **025** (accepted), **BR-47**, and a paragraph in `platform-navigation-flow.md` §1.
+
+- Asked the same day and **kept**: the program card's *Continue* opens the player of the course in progress; a due
+  item opens its work; the program certificate page links to its courses.
+- **Prototype:** already so (My Learning lists the five single courses only). PR 163 adds a test that keeps it so.
+- **Figma:** the eight My Learning screens checked: the course tab shows the same five single courses. Nothing
+  changed. The DS publish of the Toast v1.1 and the five rebuilt pages was done by Nelson the same day.
+
 ## 2026-10-14 · Toast icons on icon tokens; five DS pages rebuilt
 
 - **Toast v1.1 (DS, Nelson's go-ahead):** the tone icons were bound to tokens meant for other things. Now:
