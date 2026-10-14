@@ -39,6 +39,10 @@ Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "appro
   hidden on their screens). The temporary record page was deleted. A defect of the swap seen on the render: in
   `Topic-Header` the `Duration` instance filled the row, so "approx." sat at the far right; it now hugs its
   content (to publish again).
+- **After the second publish (14 Oct):** the 217 `Topic-Header` instances on the product screens had stayed on an
+  older copy of the component; they were re-pointed by key (properties, texts and duration values checked, none
+  lost). The headers now read "8 min read approx." with "approx." right after the time, desktop and mobile
+  (checked on the render). Nelson's discovery pages (V7, Complementary) were not touched.
 
 ## 2026-10-14 · One progress circle: the two merged
 
