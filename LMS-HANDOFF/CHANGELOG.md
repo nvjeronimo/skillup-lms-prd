@@ -30,8 +30,9 @@ Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "appro
   variants. It is now an instance of `Transcript-Line` (State=Active): the note is anchored to a line of the
   transcript, so it shows as that line (Show duration off, the Note button hidden). `Note-Editor` v1.1, its *Quote*
   property removed. An `LMS / Anchor Quote` atom made first was deleted before any publish. Prototype PR 159:
-  `TranscriptLine` read-only in the note editor. `Note-Item` draws its anchor with a left rule only and was not
-  changed.
+  `TranscriptLine` read-only in the note editor and in the note item. Then, on Nelson's question, `Note-Item` too
+  (v1.1): its anchor, a bare left rule until now, is the same `Transcript-Line`; its 19 anchor texts on the screens
+  were recorded and are put back after the publish. `SavedNoteItem` in the prototype's Saved panel is unchanged.
 
 ## 2026-10-14 · One progress circle: the two merged
 
