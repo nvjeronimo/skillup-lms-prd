@@ -24,7 +24,7 @@ Status: 🔴 blocked · 🟠 in progress · ⚪ not started · ✅ done (kept fo
 | 13 | **The 12 open questions** in `topic-types-inventory.md` §7 (8 for content, 4 for devs, 1 for Navdeep). Tracked individually in `02-content-types/OPEN-QUESTIONS.md`. | Rupali (content) · Rashid (devs) · Navdeep | 🟠 | `topic-types-inventory.md` §7 |
 | 14 | **5 open product questions** (BA exec summary): assignment grading/rubric · module completion gate (strict-sequential vs unlock-all) · mentor SLA · certificate verification (public-hash URL vs QR) · i18n timing. `status: proposed` in the decision log. | Nelson / BA | ⚪ | `00-decisions/INDEX.md` |
 | 15 | **BR-39 amendment (reduced motion):** "use instant transitions" → remove travel, keep opacity/colour feedback, stop loops, progress jumps (motion-matrix §6). Proposed, not applied. | BA | ⚪ | `03-design-system/motion-matrix.md` §6 · ADR 024 (14 Oct 2026) |
-| 16 | **Team approval of the 13 motion tokens** (Material names, our values) before the Figma `Motion` collection is published (21 Sep rule for new tokens). Also confirm Q7 (Material names over the v1 draft names). | Nelson / team | ⚪ | motion-matrix §9 Q6–Q7 · ADR 024 proposed |
+| 16 | **Team approval of the 13 motion tokens** (Material names, our values) (21 Sep rule for new tokens); the Figma `Motion` collection is already published (14 Oct 2026, Nelson's request). Also confirm Q7 (Material names over the v1 draft names). | Nelson / team | ⚪ | motion-matrix §9 Q6–Q7 · ADR 024 proposed |
 | 17 | ~~Merge the six motion PRs~~ → **merged 14 Oct 2026** (#153–#160). Still open: the phone progress signal asked in #155. | Nelson | 🟠 | motion-matrix §8 |
 
 ## Optional / non-blocking

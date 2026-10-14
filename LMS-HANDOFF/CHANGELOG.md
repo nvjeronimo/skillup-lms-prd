@@ -8,6 +8,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · Toast icons on icon tokens; five DS pages rebuilt
+
+- **Toast v1.1 (DS, Nelson's go-ahead):** the tone icons were bound to tokens meant for other things. Now:
+  Neutral `icon/muted` (was `border/default`), Success `icon/success` (was `icon/success-strong`, 2.81:1 on
+  `bg/success-soft`), Warning `icon/warning` (was `bg/warning`), Critical `icon/error` (was `bg/error`); Info stays
+  `icon/primary`. A row was added to the Toast changelog frame and the page header reads v1.1. The prototype already
+  used these tokens: PR 162 only removes its "DS rebind pending" note.
+- **DS pages rebuilt with the generator** (one frame per level), so the documentation shows today's components:
+  Content (`Note-Editor`, `Note-Item`, `Topic-Header`), Sidebar (`Topic-Row`), Dashboard (`Resume-Row`), Discovery
+  (`Course-Row`) and LMS · Shared components, where `Duration` is now a normal atom block (the provisional block
+  is gone) and the intro names the duration instead of the progress circle, which moved to Base.
+- **Levels:** `Note-Item` is now a molecule, since it nests `Transcript-Line`; `Duration` is an atom of the Shared
+  page (`03-design-system/tools/ds-levels.json`).
+- Nothing published: Nelson publishes the DS.
+
 ## 2026-10-14 · "approx." goes after the time; a Duration atom
 
 Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "approx. 8 min read" (it was cut to
