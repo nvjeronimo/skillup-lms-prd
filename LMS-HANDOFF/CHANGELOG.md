@@ -18,6 +18,9 @@ Nelson, 14 Oct: bump the versions and update the DS pages. Named version saved b
 - **Group pages rebuilt:** Dashboard, My Learning and Discovery were rebuilt with the generator so that their
   blocks show the components as they are now (new chips, properties, measures, rules and anatomy), and split
   again into *Atoms*, *Molecules*, *Organisms*.
+- **Rule, two buttons side by side (Nelson, 14 Oct):** when two buttons stand together, both fill and share the
+  width, except on a large screen or in a list, where they hug their label. The completed course card in a row
+  already follows it (*Review* and *View Certificate*). Not yet audited across the other screens.
 - **Generator:** `03-design-system/tools/ds-group-page.js` takes a new `LEVELS` constant (the map from
   `ds-levels.json`); with it the rebuild splits the blocks by level itself, so a rebuild no longer undoes the
   split. A component missing from the map stops the split and is reported.
