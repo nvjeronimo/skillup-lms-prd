@@ -33,6 +33,12 @@ Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "appro
   `TranscriptLine` read-only in the note editor and in the note item. Then, on Nelson's question, `Note-Item` too
   (v1.1): its anchor, a bare left rule until now, is the same `Transcript-Line`; its 19 anchor texts on the screens
   were recorded and are put back after the publish. `SavedNoteItem` in the prototype's Saved panel is unchanged.
+- **After the publish (14 Oct):** the 215 durations are back on the screens (182 set, 33 already right; Approx on
+  wherever the text carried "approx."), and the 19 `Note-Item` instances were re-pointed to the current version
+  (they had stayed on an older copy) with their anchor quotes put back (7 differed from the default; 6 items are
+  hidden on their screens). The temporary record page was deleted. A defect of the swap seen on the render: in
+  `Topic-Header` the `Duration` instance filled the row, so "approx." sat at the far right; it now hugs its
+  content (to publish again).
 
 ## 2026-10-14 · One progress circle: the two merged
 
