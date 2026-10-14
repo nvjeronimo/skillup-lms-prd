@@ -8,6 +8,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · The two-button rule applied
+
+Nelson, 14 Oct: review the buttons in Figma and in the prototype against the rule *two buttons side by side both
+fill, except on a large screen or in a list*. Named version saved before the write.
+
+- **Design system** (23 pairs found): already following it: `Note-Editor` Mobile, `Results`, `Entry-Header`,
+  `Certificate-Card`, `_Modal actions` (fill container). Hugging on purpose (desktop or wide): `Note-Editor`
+  Desktop and Tablet, `Live-Control-Bar`, `VILT-Session-Card` (1276 wide), `Empty state responsive` Desktop,
+  `_Modal actions` right aligned. Changed: `Course-Card` `Layout=Grid, State=Completed`, *Review* and
+  *View Certificate* now fill (to publish). Left as they are, to decide: `ORA-Submit-Gate` and
+  `Activity-SCORM-Frame` (Error) have one variant for every width and hug.
+- **Screens** (the eight handoff pages, 68 pairs): Quizzes 15 of 15 already fill. Fixed: the completed course card
+  on the Courses tablet and mobile screens. Kept hugging (desktop dialogs and panels): *Not yet* / *Yes,
+  completed* (Video, Reading, Lab: 7), *Cancel* / *Save note* on desktop and tablet (4), *Cancel* / *Continue to
+  IBM* on the Lab page (2). The Topic Content Types discovery page was not changed.
+- **Prototype** PR 148: on mobile the ORA confirmation, the SCORM error, the VILT session and the quiz results
+  share the width; the note editor, the completion dialog and the certificate page already did.
+
 ## 2026-10-14 · Versions caught up; three group pages rebuilt and split by level
 
 Nelson, 14 Oct: bump the versions and update the DS pages. Named version saved before the write.
