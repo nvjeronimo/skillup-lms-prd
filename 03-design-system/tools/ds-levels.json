@@ -133,7 +133,6 @@
       },
       "Shared": {
         "Atoms": [
-          "Progress Circle",
           "Footnote",
           "Autosave Status"
         ],
@@ -431,7 +430,9 @@
         "Atoms": [
           "Progress bar",
           "Progress circle",
-          "._Progress bar plain"
+          "._Progress bar plain",
+          "LMS / Progress Circle",
+          "_Progress circle_Ring"
         ],
         "Molecules": [],
         "Organisms": []

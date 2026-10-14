@@ -8,6 +8,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · LMS / Progress Circle promoted to the Base components
+
+Nelson, 14 Oct: move `LMS / Progress Circle` to the shared Base components (*Progress indicators*) without losing
+the links where it is used, then organise the page as the others. Named version saved before the write.
+
+- **Moved, not copied:** the component itself (same node, same key `ec8fdecc…`) now lives on
+  *↳ Progress indicators (WIP)*. Every instance keeps its link: the `Sidebar` (4) and the `Overall-Progress`
+  documentation (5) still point at it, checked after the move. Its name is unchanged.
+- **A duplicate was found and archived:** someone had pasted a copy onto the Progress indicators page (new key,
+  no instance used it). It was moved to the archive notes page, renamed *duplicate copy, unused*, not deleted.
+- **Pages rebuilt with the generator:** *Progress indicators* now has the full write-up (Progress bar, Progress
+  circle, `._Progress bar plain`, `LMS / Progress Circle`, `_Progress circle_Ring`), in an *Atoms* frame.
+  *LMS · Shared components* was rebuilt without it (2 atoms, 3 molecules). `ds-levels.json` updated.
+- **Left in place on the Progress indicators page:** the work in progress that was there (`_Progress circle_Ring`
+  is documented; the loose *Progress bar* and *Progress circle* instances and *Frame 1* were not touched).
+- **Open:** the name still starts with `LMS /` while it now sits with the Base components, next to the kit's
+  `Progress circle` (12 uses in the DS). A rename keeps every link; it waits for Nelson.
+
 ## 2026-10-14 · The two-button rule applied
 
 Nelson, 14 Oct: review the buttons in Figma and in the prototype against the rule *two buttons side by side both
