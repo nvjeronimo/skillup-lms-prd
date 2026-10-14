@@ -10,6 +10,9 @@
 //   NAMES         exact component names (or null with PREFIX)
 //   REBUILD       true to rebuild the documentation of an existing group page in place
 //   INTRO         one or two sentences under the title
+//   LEVELS        { 'Short-Name': 'A' | 'M' | 'O' } from ds-levels.json, or null to keep one frame. With it, the
+//                 blocks are split into one frame per level (Atoms, Molecules, Organisms) below the page header
+//                 frame, as decided by Nelson on 13 Oct 2026. A component missing from the map stops the split.
 // Components are moved (appendChild): same nodes, same keys. Nothing is renamed.
 // Needs the '.Doc/Anatomy-Marker' component on the '↳ Navigation' page.
 // With REBUILD on a page that holds other content (the Base pages), the frame is placed to its left.
@@ -92,5 +95,16 @@ for (const set of sets) { try { const isSet = set.type === 'COMPONENT_SET'; cons
 out.leftEmpty = []; for (const p of oldParents) { if (p && p.type !== 'PAGE' && 'children' in p && p.children.length === 0) { out.leftEmpty.push(p.type + ' ' + p.name); if (p.type === 'SECTION') p.remove(); } }
 out.removedOld = 0; for (const d of oldDocs) { if (d.findAllWithCriteria({types: ['COMPONENT_SET', 'COMPONENT']}).length === 0) { d.remove(); out.removedOld++; } }
 if (REBUILD) { const others = page.children.filter(c => c.id !== doc.id); if (others.length) { doc.x = Math.round(Math.min(...others.map(c => c.x)) - doc.width - 200); doc.y = Math.round(Math.min(...others.map(c => c.y))); } }
+if (LEVELS) { const DEF = {A: ['Atoms', 'The smallest parts: one element with one job. An atom nests no other LMS component; a thin wrapper around one base component (a badge, a button) is an atom too.'], M: ['Molecules', 'A few atoms and base components working as one unit. A molecule nests no other LMS molecule.'], O: ['Organisms', 'A whole section of a screen, built from molecules and atoms.']};
+  const setT = async (t, v) => { await Promise.all(t.getRangeAllFontNames(0, t.characters.length).map(f => figma.loadFontAsync(f))); t.characters = v; }; const pl = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
+  const blocks = doc.children.filter(c => /^Component · /.test(c.name)); const by = {A: [], M: [], O: []}; const missing = [];
+  for (const b of blocks) { const nm = b.name.replace('Component · ', ''); if (LEVELS[nm]) by[LEVELS[nm]].push(b); else missing.push(nm); }
+  if (missing.length) out.errors.push('no level for: ' + missing.join(', ') + ' (not split)'); else {
+    const header = doc.children[0]; const kick = header.children[0].characters; const tail = 'Each block: the component, its properties, its measures, what it is and its rules, and its anatomy. Decisions and open questions live in the ICP Hub.'; const made = [];
+    for (const L of ['A', 'M', 'O']) { if (!by[L].length) continue; const f = AL('VERTICAL', doc.name + ' · ' + DEF[L][0], 48); page.appendChild(f); f.paddingTop = f.paddingBottom = f.paddingLeft = f.paddingRight = 64; f.fills = [P('bg/subtle')]; f.strokes = [P('border/default')]; f.strokeWeight = 1; f.counterAxisSizingMode = 'FIXED'; f.resize(doc.width, 100); f.primaryAxisSizingMode = 'AUTO';
+      const h = header.clone(); f.appendChild(h); fill(h); const [k, t, i, m] = h.children; await setT(k, kick + ' · ' + TT.toUpperCase()); await setT(t, DEF[L][0]); await setT(i, DEF[L][1]); await setT(m, (by[L].length === 1 ? '1 component. ' : by[L].length + ' components, from the smallest to the largest. ') + tail);
+      for (const b of by[L]) { f.appendChild(b); fill(b); } made.push(f); }
+    await setT(header.children[3], pl(blocks.length, 'component') + ' in the frames below, by level: ' + pl(by.A.length, 'atom') + ', ' + pl(by.M.length, 'molecule') + ', ' + pl(by.O.length, 'organism') + '. ' + tail);
+    let x = doc.x; const y = doc.y + doc.height + 120; for (const f of made) { f.x = x; f.y = y; x += f.width + 160; } out.levels = made.map(f => f.name.split(' · ').pop() + ' ' + (f.children.length - 1)); } }
 out.doc = doc.id; out.size = [Math.round(doc.width), Math.round(doc.height)]; out.n = sets.length;
 return out;
