@@ -8,6 +8,25 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · One progress circle: the two merged
+
+Bruno (via Nelson, 14 Oct): the design system had two symbols that drew the same thing. *We have to merge them.*
+Named version saved before the write.
+
+- **Kept:** the former `LMS / Progress Circle`, now named **`Progress circle`**, v1.0 → v1.1. Same component and key,
+  so the `Sidebar`, `Overall-Progress` and every screen keep their link. It has the three states (Not started,
+  In progress, Completed in green) and ends straight.
+- **Archived, not deleted:** the Untitled UI kit `Progress circle` (sizes and a half-circle shape). Nothing in the LMS
+  used it, in the design system or on the product screens; only the kit's example pages (Dashboards 01 and 02,
+  Application navigation) did, and they keep their link. It now lives on the archive notes page with a name that
+  says it was replaced.
+- **Page rebuilt:** *Progress indicators* documents four components in its *Atoms* frame: `._Progress circle_Ring`
+  (Nelson's ring part with the steps of 10 and a Percentage label), `Progress circle`, `Progress bar` and
+  `._Progress bar plain`. Three old block frames left loose on the canvas were removed (they held no component);
+  the loose test instances next to the documentation were not touched.
+- **To publish.** Open: whether `Progress circle` should take over the sizes of the kit circle, or be built on
+  `._Progress circle_Ring` to show any step of 10.
+
 ## 2026-10-14 · LMS / Progress Circle promoted to the Base components
 
 Nelson, 14 Oct: move `LMS / Progress Circle` to the shared Base components (*Progress indicators*) without losing
