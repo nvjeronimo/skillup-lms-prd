@@ -90,6 +90,12 @@ filter. Named version saved before the write.
   prototype uses it on the course card and on the completed program card, and the two `State=Completed`
   variants of `Program-Card` in the design system were changed to it (to publish). Other places still write
   *View certificate* (the Certificates tab of the program page, the course-complete modal): not touched.
+- **14 Oct, after Nelson's publish:** the course cards on the four Courses screens still pointed at an older copy
+  of `Course-Card` (the nested card inside `Course-Row` does not follow the library update by itself). All 20 were
+  re-pointed by key to the current variant, keeping their texts, covers and topic types: the provider is now on
+  the Course Type line and the completed card shows *Review* and *View Certificate*. The program cards had
+  updated on their own. Prototype PR 147: in a row the two actions share the width, and the certificate date
+  sits at the right end of the strip, as on the screens.
 - **Open:** no counts on the segments (the `Button group` segment only has a text); the filter is not kept in
   the URL in the prototype; the label is *Not started*, as the card says (Nelson also said *coming soon*); the
   completed course loses its cover whenever a library update of `Course-Row` or `Course-Card` comes in (the
