@@ -187,7 +187,7 @@ are the token names of §5. A blank reduced-motion cell means §6 handles it wit
 
 The mechanism: a small hook `useExitTransition(open)` returns `{ mounted, state }`. On close it sets
 `data-state="closed"`, waits for `animationend` (or a timeout of the exit duration + 50 ms, so it never hangs), then
-unmounts. Focus returns to the opener **after** the exit.
+unmounts. Focus returns to the opener and the page un-inerts at the **start** of the exit (no wait for keyboard users); the leaving surface is `inert`, `aria-hidden` and click-through. A dialog keeps what it showed while it leaves (`useFrozenWhileClosed`). Built: PR #154.
 
 | Component | Transition | Property | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
@@ -207,15 +207,15 @@ Today Mark as Complete changes one control. The chain makes the consequence visi
 
 | t | Component | What happens | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
-| 0 | `ContentFeedback` / `TopicActionBar` Mark as Complete | label + icon → "Completed" with a check that **draws** (`stroke-dashoffset`); **button width locked** during the swap | short4 | standard-decelerate | check appears, no draw |
+| 0 | `ContentFeedback` / `TopicActionBar` Mark as Complete | the button is replaced by the label-only badge "Marked as completed", which **pops** in (no check on the badge: the DS badge is label-only) | short4 | standard-decelerate | badge appears |
 | +100 ms | `TopicRow` in the sidebar (if visible) | status icon draws its check; row background tints once and settles | short4 | standard-decelerate | icon swaps |
 | +200 ms | `OverallProgress` ring (sidebar / topbar) and `ProgressRail` | arc / bar advance **from the old value** to the new | long2 | standard-decelerate | jumps |
-| +200 ms | screen reader | one `aria-live="polite"` message: "Topic completed. Course 42% complete." | — | — | same |
+| +200 ms | screen reader | the existing toast "Marked as complete · {title}" is the one announcement; nothing is added | — | — | same |
 
 Same chain for the two other ways a topic completes: the video's ≥90% auto-complete (`VideoPlayer`: the learner
 sees the system decide), and Mark as Complete from the Next dialog (`CompletionQuestionModal`: the chain plays
 after the dialog's exit). Undo (if the learner un-marks) reverses with no stagger at short3.
-When the sidebar is collapsed or on a phone, the ring in the topbar carries the signal; nothing is opened to show it.
+The collapsed rail plays the same beats. On a phone there is no ring outside the drawer, so the toast carries the signal (⚠︎ open: a phone progress signal, asked in PR #155). The video ≥90% auto-complete does not exist yet in the prototype; when built, it calls `markComplete` and gets the chain. A passed quiz plays it too (PR #157). Built: PR #155.
 
 ### 7.3 Quiz (PR 4)
 
@@ -227,8 +227,8 @@ When the sidebar is collapsed or on a phone, the ring in the topbar carries the 
 | `QuizCard` rationale | hidden → shown | `grid-template-rows: 0fr → 1fr` + `opacity` | medium2 | standard-decelerate | opacity only |
 | `QuizCard` question N → N+1 | swap | outgoing `opacity` + `translateX(-distance/enter)`, incoming from `+distance/enter`; reversed for Previous (direction = progression) | short4 | standard | fade only |
 | `QuizNav` stepper | current step moves | fill `scaleX` along the track | short4 | standard | jumps |
-| Submit button | idle → submitting → result | width locked; label → spinner → result label | short4 | standard | spinner breathes |
-| Results | score appears | ring fills + percentage counts up from 0 | long2 | standard-decelerate | final value + `aria-live` |
+| Submit button | idle → submitting → result | width locked; label → spinner → result label — *not built: the quiz Submit has no loading state yet* | short4 | standard | spinner breathes |
+| Results | score appears | percentage counts up from 0 (no ring on the results screen); screen readers get the final value only. Revisited answers render still; only the question body re-mounts, so Back/Skip keep focus. Built: PR #157 | long2 | standard-decelerate | final value at once |
 
 ### 7.4 AI Assistant (PR 5)
 
