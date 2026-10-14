@@ -23,6 +23,12 @@ button stays a separate control and opens the player. On the program card, *Cont
 course in progress and *Details* (program not started) opens the program page. One link per card for keyboard
 and screen readers (the title), no extra tab stop. Prototype PR 93; not annotated on the Figma screens yet.
 
+**Since 14 Oct 2026 (Nelson, decision 025): a course of a program is reached through the program.** It never has a
+card of its own in My Learning's course list; the learner opens it from the program page or from the Dashboard's
+*Pick up where you left off*. Kept by Nelson the same day: the program card's *Continue* still opens the player of
+the course in progress, a due item still opens its work, and the program certificate page links to its courses.
+The prototype already behaved so; nothing was rewired.
+
 ## 2. The map
 
 ```mermaid
