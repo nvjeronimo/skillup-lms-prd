@@ -24,6 +24,15 @@ Named version saved before the write.
   (Nelson's ring part with the steps of 10 and a Percentage label), `Progress circle`, `Progress bar` and
   `._Progress bar plain`. Three old block frames left loose on the canvas were removed (they held no component);
   the loose test instances next to the documentation were not touched.
+- **Values in a logical order (Nelson, 14 Oct):** the property tables of the documentation list numbers and sizes
+  in ascending order (two tables corrected: `Lock` and `._Progress bar plain`), and the page generator now sorts
+  them itself. The order of the values inside the components (the properties panel) and the order of the
+  variables in their collections **cannot be changed by a script**: the Figma plugin API has no way to reorder
+  them; it is a drag in the panel. To do by hand: variant values of `Lock` (sm, md), `_Mega input field base`
+  (sm, md, lg), `._Progress bar plain` (70% before 80%), `Loading indicator` (sm, md, lg, xl); variables in
+  `_Primitives` › Numeric (2.5 after 2), Colors/SKO-Brand/Neutral, Dark-Teal and Dark-Neutral (ascending), and
+  `3. Responsive` › Type/line-height (text-2xs first). The variant layers of those four sets were put in order
+  in the layers list.
 - **To publish.** Open: whether `Progress circle` should take over the sizes of the kit circle, or be built on
   `._Progress circle_Ring` to show any step of 10.
 
