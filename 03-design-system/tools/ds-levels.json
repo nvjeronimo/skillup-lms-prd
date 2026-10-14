@@ -11,7 +11,7 @@
   "_totals": {
     "LMS": {
       "Atoms": 45,
-      "Molecules": 50,
+      "Molecules": 51,
       "Organisms": 17
     },
     "Base components": {
@@ -63,13 +63,13 @@
           "Numbered-Step",
           "Transcript-Line",
           "File-Item",
-          "Thread-Item",
-          "Note-Item"
+          "Thread-Item"
         ],
         "Molecules": [
           "Content-Feedback",
           "Author-and-Updated-Date",
           "Topic-Header",
+          "Note-Item",
           "Note-Editor"
         ],
         "Organisms": []
@@ -134,7 +134,8 @@
       "Shared": {
         "Atoms": [
           "Footnote",
-          "Autosave Status"
+          "Autosave Status",
+          "Duration"
         ],
         "Molecules": [
           "Inline Alert",
