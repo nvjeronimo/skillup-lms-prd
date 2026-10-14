@@ -21,7 +21,7 @@ fill, except on a large screen or in a list*. Named version saved before the wri
   `Activity-SCORM-Frame` (Error) have one variant for every width and hug.
 - **Screens** (the eight handoff pages, 68 pairs): Quizzes 15 of 15 already fill. Fixed: the completed course card
   on the Courses tablet and mobile screens. Kept hugging (desktop dialogs and panels): *Not yet* / *Yes,
-  completed* (Video, Reading, Lab: 7), *Cancel* / *Save note* on desktop and tablet (4), *Cancel* / *Continue to
+  completed* (Video, Reading, Lab: 8), *Cancel* / *Save note* on desktop and tablet (4), *Cancel* / *Continue to
   IBM* on the Lab page (2). The Topic Content Types discovery page was not changed.
 - **Prototype** PR 148: on mobile the ORA confirmation, the SCORM error, the VILT session and the quiz results
   share the width; the note editor, the completion dialog and the certificate page already did.
