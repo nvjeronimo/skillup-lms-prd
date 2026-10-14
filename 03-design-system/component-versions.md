@@ -102,7 +102,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Lesson-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536863) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Lesson Header” |
 | [Module-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536844) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Header” |
 | [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Info” |
-| [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Overall Progress” |
+| [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · `Device=Mobile` uses an instance of `LMS / Progress Circle`, as Desktop does |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
 | [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.1 | 2026-10-13 | Published | 5 | 2026-10-13 · The collapsed variants show the rail bookmark on the saved topic; the description names the flyout |
 | [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.0 | 2026-10-13 | Published | 1 | 2026-10-13 · The card beside the collapsed rail: title, topic type, bookmark button |
@@ -394,6 +394,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | `Section-Header` (Platform) | v1.0 → v1.1 | The action becomes the DS `Link Button` (Brand, Secondary): text/subtle, a 16 arrow, a 1px icon/subtle underline. A rule under the header was tried and withdrawn the same day. |
 | 2026-10-14 | `Program-Card` | v1.1 → v1.2 | `State=Not started` reads *Not started* where the percent was, over *START DATE*; its footer box on bg/subtle with its border. The `State=Completed` action reads *View Certificate*. |
 | 2026-10-14 | `Course-Card` | v1.2 → v1.3 | The provider badge moves onto the Course Type line (right end in Grid, right after the badge in List). `State=Completed` Grid has two actions, *Review* (Secondary) and *View Certificate* (Primary). The List footer hugs its content. Layers moved into new frames: instances nested in `Course-Row` had to be re-pointed by key after the publish. |
+| 2026-10-14 | `Overall-Progress` | v1.0 → v1.1 | `Device=Mobile` drops its own drawn ring and percentage for an instance of `LMS / Progress Circle` (Status=InProgress), as `Device=Desktop` already did. Instances keep showing 67%; none in the product file used this variant. |
 
 ## Rename map (8 Oct 2026)
 

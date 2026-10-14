@@ -27,6 +27,11 @@ the links where it is used, then organise the page as the others. Named version 
   `_Progress circle_Ring` (21) had round caps; they are now square (stroke cap None). `LMS / Progress Circle` draws
   its ring as a filled arc, so its ends were already straight. Each description says so. To publish. The
   prototype already drew its rings with square ends (`OverallProgress`, the course Progress tab).
+- **`Overall-Progress` Mobile now uses `LMS / Progress Circle` (Nelson, 14 Oct), v1.0 → v1.1:** the variant drew
+  its own ring and percentage; it now holds an instance of the component, as Desktop does. Its six instances in
+  the DS (collapsed and mobile `Sidebar` states and their documentation) show 67% as before; no instance in the
+  product file used the variant. To publish. Prototype PR 150 also merged the same day: the assistant button
+  stays fixed at the bottom of the screen again.
 - **Open:** the name still starts with `LMS /` while it now sits with the Base components, next to the kit's
   `Progress circle` (12 uses in the DS). A rename keeps every link; it waits for Nelson.
 
