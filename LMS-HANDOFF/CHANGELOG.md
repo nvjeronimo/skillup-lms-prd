@@ -8,6 +8,23 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · Versions caught up; three group pages rebuilt and split by level
+
+Nelson, 14 Oct: bump the versions and update the DS pages. Named version saved before the write.
+
+- **Versions** (descriptions in Figma, register in `03-design-system/component-versions.md`): `Course-Card` 1.2 → 1.3,
+  `Program-Card` 1.1 → 1.2, `Section-Header` (Platform) 1.0 → 1.1. Each description gained a dated paragraph
+  saying what changed. To publish.
+- **Group pages rebuilt:** Dashboard, My Learning and Discovery were rebuilt with the generator so that their
+  blocks show the components as they are now (new chips, properties, measures, rules and anatomy), and split
+  again into *Atoms*, *Molecules*, *Organisms*.
+- **Rule, two buttons side by side (Nelson, 14 Oct):** when two buttons stand together, both fill and share the
+  width, except on a large screen or in a list, where they hug their label. The completed course card in a row
+  already follows it (*Review* and *View Certificate*). Not yet audited across the other screens.
+- **Generator:** `03-design-system/tools/ds-group-page.js` takes a new `LEVELS` constant (the map from
+  `ds-levels.json`); with it the rebuild splits the blocks by level itself, so a rebuild no longer undoes the
+  split. A component missing from the map stops the split and is reported.
+
 ## 2026-10-13 · Design system: the LMS group pages split by level (Atoms, Molecules, Organisms)
 
 Nelson, 13 Oct: separate the atoms from the molecules and the organisms, one frame for each. Named version saved

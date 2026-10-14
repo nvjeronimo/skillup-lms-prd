@@ -219,7 +219,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Due-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22752) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · After the publish: the Program headers are in; the Course Card is still not |
 | [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.1 | 2026-10-12 | Published | 1 | 2026-10-12 · The module is the title; new `Context` property (course · program) under it |
-| [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
+| [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · After the publish: the Program headers are in; the Course Card is still not |
@@ -229,14 +229,14 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.1 | 2026-10-13 | Published | 6 | 2026-10-13 · New `State=Completed` (Grid and List): 100%, green bar, check icon, certificate footer, *View certificate*; new text property `Certificate date` |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.2 | 2026-10-14 | Published | 6 | 2026-10-14 · `State=Not started` reads *Not started* over *START DATE*, its footer on bg/subtle; the certificate action reads *View Certificate* |
 
 **Discovery**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.2 | 2026-10-13 | Published | 4 | 2026-10-13 · New property `State` (Default, Completed): green full bar, check icon and *Completed*, certificate strip, *Review* |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.3 | 2026-10-14 | Published | 4 | 2026-10-14 · The provider badge moves onto the Course Type line (right end in Grid, after the badge in List); `State=Completed` Grid has two actions, *Review* and *View Certificate*; the List footer hugs its content |
 | [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · Topic type and length, the module as headline, new `Context` property (course · program); no delivery badge; 96 tall |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Type Badge” |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
@@ -391,6 +391,9 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-13 | `Course-Card` | v1.0 → v1.1 | The hand-built progress bar ends straight (radius 0 on track and fill), as every progress bar. `Progress bar` itself: an inert radius 8 removed from the bar frame of the labelled variants, no visual change, no bump. |
 | 2026-10-13 | `Program-Card`, `Course-Card` | v1.0 → v1.1, v1.1 → v1.2 | The completed state. `Program-Card`: `State=Completed` and the text property `Certificate date`. `Course-Card`: a new variant property `State` (Default, Completed); the two existing variants are now `State=Default`, same keys. A progress fill is `bg/info` while it runs and `bg/success` only when it is done. |
 | 2026-10-13 | `Program-Card`, `Course-Card` | no change | Repairs to the Completed variants, published the same day: `Title` and `Courses` linked to their text properties again on `Program-Card`; the `Image` layer of the thumbnail added and linked to `Show image` on `Course-Card`. |
+| 2026-10-13 | `Section-Header` (Platform) | v1.0 → v1.1 | The action becomes the DS `Link Button` (Brand, Secondary): text/subtle, a 16 arrow, a 1px icon/subtle underline. A rule under the header was tried and withdrawn the same day. |
+| 2026-10-14 | `Program-Card` | v1.1 → v1.2 | `State=Not started` reads *Not started* where the percent was, over *START DATE*; its footer box on bg/subtle with its border. The `State=Completed` action reads *View Certificate*. |
+| 2026-10-14 | `Course-Card` | v1.2 → v1.3 | The provider badge moves onto the Course Type line (right end in Grid, right after the badge in List). `State=Completed` Grid has two actions, *Review* (Secondary) and *View Certificate* (Primary). The List footer hugs its content. Layers moved into new frames: instances nested in `Course-Row` had to be re-pointed by key after the publish. |
 
 ## Rename map (8 Oct 2026)
 
