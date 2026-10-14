@@ -28,17 +28,17 @@ The topic type drives icon, duration prefix, completion logic, and behavior. **T
 | Type | Icon | Player chrome | Completion | Duration prefix |
 |---|---|---|---|---|
 | **Video** | video-recorder | Video player + transcript/notes/downloads tabs | Auto when video ends ≥ 90% | exact (e.g., "3m 20s") |
-| **Reading** | book-open-01 | Text + downloads | Manual: "Mark as Complete" at the end of the content; Next asks if it was not used (12 Oct 2026) | "approx. 8 min" |
+| **Reading** | book-open-01 | Text + downloads | Manual: "Mark as Complete" at the end of the content; Next asks if it was not used (12 Oct 2026) | "8 min approx." |
 | **Podcast** | headphones-01 | Audio player + transcript | Auto when audio ends ≥ 90% | exact |
 | **Live Session (VILT)** | video-recorder + LIVE dot | Pre-live / Live / Recording chrome | Attendance OR watch recording | scheduled time |
 | **Recording** | video-recorder | Recorded VILT replay | Auto on 90% watched | exact |
-| **Practice Quiz** | edit | Quiz UI, no grading impact | On submit | "approx. 6 min" |
-| **Graded Assignment** | award-01 | Quiz UI, counts toward grade | On submit | "approx. X min" |
-| **Peer-graded Assignment** | users | Submission + peer review | After submission + review of N peers | "approx. X min" |
+| **Practice Quiz** | edit | Quiz UI, no grading impact | On submit | "6 min approx." |
+| **Graded Assignment** | award-01 | Quiz UI, counts toward grade | On submit | "X min approx." |
+| **Peer-graded Assignment** | users | Submission + peer review | After submission + review of N peers | "X min approx." |
 | **Discussion Prompt** | message-circle-01 | Thread UI | After participating (1 post) | n/a |
-| **Lab** | flask | Hands-on activity | Manual mark complete | "approx. X min" |
-| **Activity** | clipboard | Worksheet/exercise | Manual mark complete | "approx. X min" |
-| **Project** | folder | Multi-step project | Submission | "approx. X hours" |
+| **Lab** | flask | Hands-on activity | Manual mark complete | "X min approx." |
+| **Activity** | clipboard | Worksheet/exercise | Manual mark complete | "X min approx." |
+| **Project** | folder | Multi-step project | Submission | "X hours approx." |
 
 **`approx.` rule**: Use only on topic types where the system cannot measure exact time (Reading, Lab, Activity, Practice, etc.). Never on Video, Recording, Live Sessions (scheduled), or timed Quizzes.
 

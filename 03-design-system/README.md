@@ -58,7 +58,7 @@ pending): [`components-inventory.md`](../LMS-HANDOFF/components-inventory.md). R
 | [`footer-contract.md`](footer-contract.md) | The footer spec/contract. |
 | [`ds-components-used-icp-lms.md`](ds-components-used-icp-lms.md) | Which DS components the ICP and LMS screens use, with counts per area (read from Figma, 6 Oct 2026), and the 35 components still local to the file. |
 | [`component-versions.md`](component-versions.md) | The version of each of the 141 components the screens use (`MAJOR.MINOR`, baseline 8 Oct 2026), the rule for bumping it, the register with Figma links, and the map from the old LMS component names to `LMS/ICP/…` and `LMS/Platform/…`. |
-| [`motion-matrix.md`](motion-matrix.md) | 🟡 **Spec for review (v2, 14 Oct 2026).** Microinteractions contract: the Material-named `--motion-*` scale (5 durations, 5 easings, 3 distances), R1–R10, reduced motion, and the matrix for surfaces, the completion chain, the quiz and the AI Assistant, built in five prototype PRs. Decision record: ADR 024 (proposed). |
+| [`motion-matrix.md`](motion-matrix.md) | 🟡 **Spec for review (v2, 14 Oct 2026).** Microinteractions contract: the Material-named `--motion-*` scale (5 durations, 5 easings, 3 distances), R1–R10, reduced motion, and the matrix for surfaces, the completion chain, the quiz and the AI Assistant, built in six prototype PRs. Decision record: ADR 024 (proposed). |
 
 ## Pointers into the handoff package
 

@@ -6,8 +6,8 @@
 |---|---|
 | **Status** | 🟡 **Spec for review** (v2, 14 Oct 2026). v1 was the August draft from the "Microinterações no LMS" session. |
 | **Decisions** | Q1–Q4 answered by Nelson on 14 Oct 2026 (§9). Record: [`../00-decisions/024-motion-scale.md`](../00-decisions/024-motion-scale.md). |
-| **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in five PRs (§8). |
-| **Documented in** | this file · ADR 024 · Figma DS (`Motion` collection + doc frame) · ICP Hub (Motion section). |
+| **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in six PRs (§8). |
+| **Documented in** | this file · ADR 024 · Figma DS: `Motion` collection (13 variables, unpublished) + [doc frame `22639-583252`](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22639-583252) · ICP Hub (Motion section). |
 
 > Anything marked **⚠︎ open** is not agreed yet. Do not build from a ⚠︎ line without confirming.
 
@@ -187,7 +187,7 @@ are the token names of §5. A blank reduced-motion cell means §6 handles it wit
 
 The mechanism: a small hook `useExitTransition(open)` returns `{ mounted, state }`. On close it sets
 `data-state="closed"`, waits for `animationend` (or a timeout of the exit duration + 50 ms, so it never hangs), then
-unmounts. Focus returns to the opener **after** the exit.
+unmounts. Focus returns to the opener and the page un-inerts at the **start** of the exit (no wait for keyboard users); the leaving surface is `inert`, `aria-hidden` and click-through. A dialog keeps what it showed while it leaves (`useFrozenWhileClosed`). Built: PR #154.
 
 | Component | Transition | Property | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
@@ -207,15 +207,15 @@ Today Mark as Complete changes one control. The chain makes the consequence visi
 
 | t | Component | What happens | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
-| 0 | `ContentFeedback` / `TopicActionBar` Mark as Complete | label + icon → "Completed" with a check that **draws** (`stroke-dashoffset`); **button width locked** during the swap | short4 | standard-decelerate | check appears, no draw |
+| 0 | `ContentFeedback` / `TopicActionBar` Mark as Complete | the button is replaced by the label-only badge "Marked as completed", which **pops** in (no check on the badge: the DS badge is label-only) | short4 | standard-decelerate | badge appears |
 | +100 ms | `TopicRow` in the sidebar (if visible) | status icon draws its check; row background tints once and settles | short4 | standard-decelerate | icon swaps |
 | +200 ms | `OverallProgress` ring (sidebar / topbar) and `ProgressRail` | arc / bar advance **from the old value** to the new | long2 | standard-decelerate | jumps |
-| +200 ms | screen reader | one `aria-live="polite"` message: "Topic completed. Course 42% complete." | — | — | same |
+| +200 ms | screen reader | the existing toast "Marked as complete · {title}" is the one announcement; nothing is added | — | — | same |
 
 Same chain for the two other ways a topic completes: the video's ≥90% auto-complete (`VideoPlayer`: the learner
 sees the system decide), and Mark as Complete from the Next dialog (`CompletionQuestionModal`: the chain plays
 after the dialog's exit). Undo (if the learner un-marks) reverses with no stagger at short3.
-When the sidebar is collapsed or on a phone, the ring in the topbar carries the signal; nothing is opened to show it.
+The collapsed rail plays the same beats. On a phone there is no ring outside the drawer, so the toast carries the signal (⚠︎ open: a phone progress signal, asked in PR #155). The video ≥90% auto-complete does not exist yet in the prototype; when built, it calls `markComplete` and gets the chain. A passed quiz plays it too (PR #157). Built: PR #155.
 
 ### 7.3 Quiz (PR 4)
 
@@ -227,8 +227,8 @@ When the sidebar is collapsed or on a phone, the ring in the topbar carries the 
 | `QuizCard` rationale | hidden → shown | `grid-template-rows: 0fr → 1fr` + `opacity` | medium2 | standard-decelerate | opacity only |
 | `QuizCard` question N → N+1 | swap | outgoing `opacity` + `translateX(-distance/enter)`, incoming from `+distance/enter`; reversed for Previous (direction = progression) | short4 | standard | fade only |
 | `QuizNav` stepper | current step moves | fill `scaleX` along the track | short4 | standard | jumps |
-| Submit button | idle → submitting → result | width locked; label → spinner → result label | short4 | standard | spinner breathes |
-| Results | score appears | ring fills + percentage counts up from 0 | long2 | standard-decelerate | final value + `aria-live` |
+| Submit button | idle → submitting → result | width locked; label → spinner → result label — *not built: the quiz Submit has no loading state yet* | short4 | standard | spinner breathes |
+| Results | score appears | percentage counts up from 0 (no ring on the results screen); screen readers get the final value only. Revisited answers render still; only the question body re-mounts, so Back/Skip keep focus. Built: PR #157 | long2 | standard-decelerate | final value at once |
 
 ### 7.4 AI Assistant (PR 5)
 
@@ -255,7 +255,23 @@ lives in that button*.
 | First steps | all five done | the list settles to its finished state; no celebration (R9) | short4 | standard | — |
 | Error | an answer fails | bubble enters with its Retry button; nothing shakes | short4 | standard-decelerate | fade only |
 
-### 7.5 Later (not in this block)
+### 7.5 Smoothness — pages, scroll, filters, defaults (PR 6, added by Nelson 14 Oct)
+
+"Transições entre páginas, smooth scroll, filters mais suaves, no geral tudo mais suave."
+
+| Where | Transition | Property | Duration | Easing | Reduced motion |
+|---|---|---|---|---|---|
+| Platform pages (`app/platform/*`: Dashboard, My Learning, Program, Course, Certificate) | route → route | the page's main content enters: `opacity` + `translateY(distance/nudge → 0)`; the top bar does **not** animate (it stays, it is chrome) | short4 | standard-decelerate | fade only |
+| Player, topic → topic | Next / Previous / a rail row | only the topic body enters (as above); topbar, sidebar and footer stay still. No exit animation: the learner must never wait for the old topic to leave | short4 | standard-decelerate | fade only |
+| Loading → content (`app/platform/loading.tsx`) | spinner → page | the page entrance above replaces the pop | short4 | standard-decelerate | fade only |
+| In-page scroll (anchors, "jump to", scroll-into-view, the assistant, transcript) | jump → glide | `scroll-behavior: smooth` on the scroll containers (`.sk-scroll`, the content column) and a `scrollToElement` helper; **not** on `<html>`, so route changes still land at the top instantly | browser | browser | `auto` |
+| `FilterChip` (My Learning status, Notes, panel filters) | off ⇄ on | background, border, text colour together; count badge colour | short3 | standard | — |
+| Filtered list | filter A → B | the list cross-fades (`opacity`, keyed on the filter); up to 8 rows rise one after another (`distance/nudge`, `short2 / 2` apart), more than 8 enter together | short4 | standard-decelerate | fade, no stagger |
+| Result count ("12 courses") | value change | the number swaps with a fade, no count-up (it is not progress) | short3 | standard | — |
+| Every hover / focus / pressed colour in the product | rest ⇄ hover/focus | Tailwind's default `transition-*` duration and easing now **are** `short3` + `standard`, so every `transition-colors` is on the scale; interactive elements that change colour on hover without any transition get `transition-colors` | short3 | standard | — |
+| Focus ring | → visible | `outline-color` / `box-shadow` fade, never the offset | short3 | standard | — |
+
+### 7.6 Later (not in this block)
 
 Kept from v1 for the next block: `Button` press scale and loading → done; `Bookmark` fill; tab indicator slide;
 `TranscriptLine` active + auto-scroll; `TopicRow` locked nudge + tooltip; `TopicFooterNav` "n of N" digit roll;
@@ -275,13 +291,14 @@ on, with the OS reduced-motion setting, and with the Accessibility panel switch.
 
 | PR | Scope | Done when |
 |---|---|---|
-| **1 · Foundation** | `tokens/motion.css`, Tailwind theme, reduced motion moved onto the variables, `raw-motion` lint rule, the ~20 hand-typed sites migrated, `useExitTransition` + vitest | 0 raw `ms` / curves in `components` + `app`; behaviour unchanged |
-| **2 · Surfaces** | §7.1 | every surface in §7.1 leaves the way it came; focus returns after the exit |
-| **3 · Completion chain** | §7.2 | a completion is visible in three places in order, and announced once |
-| **4 · Quiz** | §7.3 | every quiz state has an onset; no shake anywhere |
-| **5 · Assistant** | §7.4 | the window grows from and returns to the launcher; thinking, streaming, actions and scroll behave as specced |
+| **1 · Foundation** — [#153](https://github.com/nvjeronimo/skillup-lms-prototype/pull/153) | `tokens/motion.css`, Tailwind theme, reduced motion moved onto the variables, `raw-motion` lint rule, the ~20 hand-typed sites migrated, `useExitTransition` + vitest | 0 raw `ms` / curves in `components` + `app`; behaviour unchanged |
+| **2 · Surfaces** — [#154](https://github.com/nvjeronimo/skillup-lms-prototype/pull/154) | §7.1 | every surface in §7.1 leaves the way it came; focus returns after the exit |
+| **3 · Completion chain** — [#155](https://github.com/nvjeronimo/skillup-lms-prototype/pull/155) | §7.2 | a completion is visible in three places in order, and announced once |
+| **4 · Quiz** — [#157](https://github.com/nvjeronimo/skillup-lms-prototype/pull/157) | §7.3 | every quiz state has an onset; no shake anywhere |
+| **5 · Assistant** — [#158](https://github.com/nvjeronimo/skillup-lms-prototype/pull/158) | §7.4 | the window grows from and returns to the launcher; thinking, streaming, actions and scroll behave as specced |
+| **6 · Smoothness** — [#160](https://github.com/nvjeronimo/skillup-lms-prototype/pull/160) | §7.5 | pages and topics enter, in-page scroll glides, filters cross-fade, every hover colour eases on the scale |
 
-PR 1 blocks the rest. 2–5 can run in any order once it merges.
+PR 1 blocks the rest. The six were built on 14 Oct 2026 as a **stack** (each PR targets the previous branch): retarget each to `main` before merging the one below it, or merge them in order #153 → #160.
 
 ### 8.1 Documentation, same block
 

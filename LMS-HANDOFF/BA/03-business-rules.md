@@ -54,7 +54,7 @@ For each remaining topic:
 - Quiz (timed): use time limit
 - Reading/Lab/Activity/Project: use `approx.` estimate
 
-Aggregate to module + course level. Display as "approx. 2h 30m remaining" when any approx. topic is in the sum. Drop "approx." only if every remaining topic is exact-time.
+Aggregate to module + course level. Display as "2h 30m remaining approx." when any approx. topic is in the sum (approx. after the time since 14 Oct 2026). Drop "approx." only if every remaining topic is exact-time.
 
 ## Locks + prerequisites
 

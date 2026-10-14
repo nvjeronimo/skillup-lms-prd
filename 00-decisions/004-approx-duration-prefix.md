@@ -24,3 +24,7 @@ phase: 1
 **Dev impact** — BR-33; Topic Header, Topic Row badge.
 
 **Alternatives rejected** — `approx.` on all durations: rejected — misrepresents exact-time content (video/quiz) as estimated.
+
+**Amended 14 Oct 2026 (Nelson)** — `approx.` goes **after** the time, never before it: "8 min read approx.", "60 min
+approx.", "2h 30m remaining approx.". When it appears is unchanged. In the design system the atom `LMS / Duration`
+carries it: a *Time* text and an *Approx* boolean that shows "approx." after the time.

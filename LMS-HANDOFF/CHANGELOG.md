@@ -8,6 +8,38 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · "approx." goes after the time; a Duration atom
+
+Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "approx. 8 min read" (it was cut to
+"approx…" on a phone). Then: make it a component, with a boolean for approx.
+
+- **Rule:** decision 004 amended: `approx.` after the time; when it appears is unchanged. BA rules and glossary
+  updated.
+- **Design system:** new atom `LMS / Duration` (v1.0) on the LMS Shared components page: *Size* sm
+  (body-small/Medium) and md (body-medium/Medium), a *Time* text, an *Approx* boolean that shows "approx." after
+  it, text/subtle, 4 apart. Not yet used inside `Topic-Row`, `Topic-Header` and the other components that print a
+  duration. Then, with Nelson's go-ahead, it replaced the duration text in `Topic-Row` (sidebar), `Topic-Header`,
+  `Resume-Row`, `Course-Row` (Discovery) and `Discussion Prompt` (an exposed instance, same place, same visibility
+  link; each +0.1). The time is cut with an ellipsis when space is short and "approx." stays whole. Before the
+  swap the duration texts were recorded: 70 instances inside the DS (put back at once) and 215 on the product
+  screens (put back after the publish, with Approx on wherever the text carried "approx.").
+- **Product file:** the seven durations that carried the prefix (Overlay Panels 6, Topic Content Types 1) and the
+  two rule titles on the Diagram Flows page now put it after the time. Nelson's V7 discovery page was not touched.
+- **Prototype:** PR 151, 443 duration strings and the code that adds or strips it.
+- **The anchor quote of `Note-Editor` (Nelson, the same afternoon):** it was a local frame in each of the three
+  variants. It is now an instance of `Transcript-Line` (State=Active): the note is anchored to a line of the
+  transcript, so it shows as that line (Show duration off, the Note button hidden). `Note-Editor` v1.1, its *Quote*
+  property removed. An `LMS / Anchor Quote` atom made first was deleted before any publish. Prototype PR 159:
+  `TranscriptLine` read-only in the note editor and in the note item. Then, on Nelson's question, `Note-Item` too
+  (v1.1): its anchor, a bare left rule until now, is the same `Transcript-Line`; its 19 anchor texts on the screens
+  were recorded and are put back after the publish. `SavedNoteItem` in the prototype's Saved panel is unchanged.
+- **After the publish (14 Oct):** the 215 durations are back on the screens (182 set, 33 already right; Approx on
+  wherever the text carried "approx."), and the 19 `Note-Item` instances were re-pointed to the current version
+  (they had stayed on an older copy) with their anchor quotes put back (7 differed from the default; 6 items are
+  hidden on their screens). The temporary record page was deleted. A defect of the swap seen on the render: in
+  `Topic-Header` the `Duration` instance filled the row, so "approx." sat at the far right; it now hugs its
+  content (to publish again).
+
 ## 2026-10-14 · One progress circle: the two merged
 
 Bruno (via Nelson, 14 Oct): the design system had two symbols that drew the same thing. *We have to merge them.*
