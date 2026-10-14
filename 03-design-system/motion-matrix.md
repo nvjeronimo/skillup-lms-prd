@@ -6,7 +6,7 @@
 |---|---|
 | **Status** | 🟡 **Spec for review** (v2, 14 Oct 2026). v1 was the August draft from the "Microinterações no LMS" session. |
 | **Decisions** | Q1–Q4 answered by Nelson on 14 Oct 2026 (§9). Record: [`../00-decisions/024-motion-scale.md`](../00-decisions/024-motion-scale.md). |
-| **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in five PRs (§8). |
+| **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in six PRs (§8). |
 | **Documented in** | this file · ADR 024 · Figma DS (`Motion` collection + doc frame) · ICP Hub (Motion section). |
 
 > Anything marked **⚠︎ open** is not agreed yet. Do not build from a ⚠︎ line without confirming.
@@ -255,7 +255,23 @@ lives in that button*.
 | First steps | all five done | the list settles to its finished state; no celebration (R9) | short4 | standard | — |
 | Error | an answer fails | bubble enters with its Retry button; nothing shakes | short4 | standard-decelerate | fade only |
 
-### 7.5 Later (not in this block)
+### 7.5 Smoothness — pages, scroll, filters, defaults (PR 6, added by Nelson 14 Oct)
+
+"Transições entre páginas, smooth scroll, filters mais suaves, no geral tudo mais suave."
+
+| Where | Transition | Property | Duration | Easing | Reduced motion |
+|---|---|---|---|---|---|
+| Platform pages (`app/platform/*`: Dashboard, My Learning, Program, Course, Certificate) | route → route | the page's main content enters: `opacity` + `translateY(distance/nudge → 0)`; the top bar does **not** animate (it stays, it is chrome) | short4 | standard-decelerate | fade only |
+| Player, topic → topic | Next / Previous / a rail row | only the topic body enters (as above); topbar, sidebar and footer stay still. No exit animation: the learner must never wait for the old topic to leave | short4 | standard-decelerate | fade only |
+| Loading → content (`app/platform/loading.tsx`) | spinner → page | the page entrance above replaces the pop | short4 | standard-decelerate | fade only |
+| In-page scroll (anchors, "jump to", scroll-into-view, the assistant, transcript) | jump → glide | `scroll-behavior: smooth` on the scroll containers (`.sk-scroll`, the content column) and a `scrollToElement` helper; **not** on `<html>`, so route changes still land at the top instantly | browser | browser | `auto` |
+| `FilterChip` (My Learning status, Notes, panel filters) | off ⇄ on | background, border, text colour together; count badge colour | short3 | standard | — |
+| Filtered list | filter A → B | the list cross-fades (`opacity`, keyed on the filter); up to 8 rows rise one after another (`distance/nudge`, `short2 / 2` apart), more than 8 enter together | short4 | standard-decelerate | fade, no stagger |
+| Result count ("12 courses") | value change | the number swaps with a fade, no count-up (it is not progress) | short3 | standard | — |
+| Every hover / focus / pressed colour in the product | rest ⇄ hover/focus | Tailwind's default `transition-*` duration and easing now **are** `short3` + `standard`, so every `transition-colors` is on the scale; interactive elements that change colour on hover without any transition get `transition-colors` | short3 | standard | — |
+| Focus ring | → visible | `outline-color` / `box-shadow` fade, never the offset | short3 | standard | — |
+
+### 7.6 Later (not in this block)
 
 Kept from v1 for the next block: `Button` press scale and loading → done; `Bookmark` fill; tab indicator slide;
 `TranscriptLine` active + auto-scroll; `TopicRow` locked nudge + tooltip; `TopicFooterNav` "n of N" digit roll;
@@ -280,8 +296,9 @@ on, with the OS reduced-motion setting, and with the Accessibility panel switch.
 | **3 · Completion chain** | §7.2 | a completion is visible in three places in order, and announced once |
 | **4 · Quiz** | §7.3 | every quiz state has an onset; no shake anywhere |
 | **5 · Assistant** | §7.4 | the window grows from and returns to the launcher; thinking, streaming, actions and scroll behave as specced |
+| **6 · Smoothness** | §7.5 | pages and topics enter, in-page scroll glides, filters cross-fade, every hover colour eases on the scale |
 
-PR 1 blocks the rest. 2–5 can run in any order once it merges.
+PR 1 blocks the rest. 2–6 can run in any order once it merges.
 
 ### 8.1 Documentation, same block
 
