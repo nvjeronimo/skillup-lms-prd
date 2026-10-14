@@ -18,7 +18,11 @@ Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "appro
 - **Design system:** new atom `LMS / Duration` (v1.0) on the LMS Shared components page: *Size* sm
   (body-small/Medium) and md (body-medium/Medium), a *Time* text, an *Approx* boolean that shows "approx." after
   it, text/subtle, 4 apart. Not yet used inside `Topic-Row`, `Topic-Header` and the other components that print a
-  duration: that swap would reset the duration texts set on the screens, so it waits for Nelson's go-ahead.
+  duration. Then, with Nelson's go-ahead, it replaced the duration text in `Topic-Row` (sidebar), `Topic-Header`,
+  `Resume-Row`, `Course-Row` (Discovery) and `Discussion Prompt` (an exposed instance, same place, same visibility
+  link; each +0.1). The time is cut with an ellipsis when space is short and "approx." stays whole. Before the
+  swap the duration texts were recorded: 70 instances inside the DS (put back at once) and 215 on the product
+  screens (put back after the publish, with Approx on wherever the text carried "approx.").
 - **Product file:** the seven durations that carried the prefix (Overlay Panels 6, Topic Content Types 1) and the
   two rule titles on the Diagram Flows page now put it after the time. Nelson's V7 discovery page was not touched.
 - **Prototype:** PR 151, 443 duration strings and the code that adds or strips it.
