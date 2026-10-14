@@ -215,7 +215,7 @@ Today Mark as Complete changes one control. The chain makes the consequence visi
 Same chain for the two other ways a topic completes: the video's ≥90% auto-complete (`VideoPlayer`: the learner
 sees the system decide), and Mark as Complete from the Next dialog (`CompletionQuestionModal`: the chain plays
 after the dialog's exit). Undo (if the learner un-marks) reverses with no stagger at short3.
-The collapsed rail plays the same beats. On a phone there is no ring outside the drawer, so the toast carries the signal (⚠︎ open: a phone progress signal, asked in PR #155). The video ≥90% auto-complete does not exist yet in the prototype; when built, it calls `markComplete` and gets the chain. A passed quiz plays it too (PR #157). Built: PR #155.
+The collapsed rail plays the same beats. On a phone the mobile topbar carries a 28 px course ring after the logo (Nelson, 14 Oct; prototype PR #164, DS `Topbar` v1.1), so the third beat shows there too. The video ≥90% auto-complete does not exist yet in the prototype; when built, it calls `markComplete` and gets the chain. A passed quiz plays it too (PR #157). Built: PR #155.
 
 ### 7.3 Quiz (PR 4)
 
