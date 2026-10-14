@@ -7,7 +7,7 @@
 | **Status** | 🟡 **Spec for review** (v2, 14 Oct 2026). v1 was the August draft from the "Microinterações no LMS" session. |
 | **Decisions** | Q1–Q4 answered by Nelson on 14 Oct 2026 (§9). Record: [`../00-decisions/024-motion-scale.md`](../00-decisions/024-motion-scale.md). |
 | **Builds in** | the prototype `nvjeronimo/skillup-lms-prototype` (Next 14 + Tailwind), in six PRs (§8). |
-| **Documented in** | this file · ADR 024 · Figma DS (`Motion` collection + doc frame) · ICP Hub (Motion section). |
+| **Documented in** | this file · ADR 024 · Figma DS: `Motion` collection (13 variables, unpublished) + [doc frame `22639-583252`](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22639-583252) · ICP Hub (Motion section). |
 
 > Anything marked **⚠︎ open** is not agreed yet. Do not build from a ⚠︎ line without confirming.
 
