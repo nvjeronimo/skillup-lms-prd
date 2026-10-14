@@ -26,10 +26,12 @@ Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "appro
 - **Product file:** the seven durations that carried the prefix (Overlay Panels 6, Topic Content Types 1) and the
   two rule titles on the Diagram Flows page now put it after the time. Nelson's V7 discovery page was not touched.
 - **Prototype:** PR 151, 443 duration strings and the code that adds or strips it.
-- **Anchor Quote atom (Nelson, the same afternoon):** the quote above a note in `Note-Editor` was a local frame in
-  each of its three variants. It is now `LMS / Anchor Quote` (v1.0), used in the three variants (Note-Editor
-  v1.1, its *Quote* property removed because the atom carries it). `Note-Item` draws its anchor differently (a
-  left rule, no fill, no radius) and was not changed: to decide whether it should use the atom too.
+- **The anchor quote of `Note-Editor` (Nelson, the same afternoon):** it was a local frame in each of the three
+  variants. It is now an instance of `Transcript-Line` (State=Active): the note is anchored to a line of the
+  transcript, so it shows as that line (Show duration off, the Note button hidden). `Note-Editor` v1.1, its *Quote*
+  property removed. An `LMS / Anchor Quote` atom made first was deleted before any publish. Prototype PR 152:
+  `TranscriptLine` read-only in the note editor. `Note-Item` draws its anchor with a left rule only and was not
+  changed.
 
 ## 2026-10-14 · One progress circle: the two merged
 
