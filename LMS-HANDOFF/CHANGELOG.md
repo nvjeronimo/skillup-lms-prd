@@ -8,6 +8,21 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 · "approx." goes after the time; a Duration atom
+
+Nelson, 14 Oct: an estimated duration reads **"8 min read approx."**, not "approx. 8 min read" (it was cut to
+"approx…" on a phone). Then: make it a component, with a boolean for approx.
+
+- **Rule:** decision 004 amended: `approx.` after the time; when it appears is unchanged. BA rules and glossary
+  updated.
+- **Design system:** new atom `LMS / Duration` (v1.0) on the LMS Shared components page: *Size* sm
+  (body-small/Medium) and md (body-medium/Medium), a *Time* text, an *Approx* boolean that shows "approx." after
+  it, text/subtle, 4 apart. Not yet used inside `Topic-Row`, `Topic-Header` and the other components that print a
+  duration: that swap would reset the duration texts set on the screens, so it waits for Nelson's go-ahead.
+- **Product file:** the seven durations that carried the prefix (Overlay Panels 6, Topic Content Types 1) and the
+  two rule titles on the Diagram Flows page now put it after the time. Nelson's V7 discovery page was not touched.
+- **Prototype:** PR 151, 443 duration strings and the code that adds or strips it.
+
 ## 2026-10-14 · One progress circle: the two merged
 
 Bruno (via Nelson, 14 Oct): the design system had two symbols that drew the same thing. *We have to merge them.*
