@@ -291,14 +291,14 @@ on, with the OS reduced-motion setting, and with the Accessibility panel switch.
 
 | PR | Scope | Done when |
 |---|---|---|
-| **1 · Foundation** | `tokens/motion.css`, Tailwind theme, reduced motion moved onto the variables, `raw-motion` lint rule, the ~20 hand-typed sites migrated, `useExitTransition` + vitest | 0 raw `ms` / curves in `components` + `app`; behaviour unchanged |
-| **2 · Surfaces** | §7.1 | every surface in §7.1 leaves the way it came; focus returns after the exit |
-| **3 · Completion chain** | §7.2 | a completion is visible in three places in order, and announced once |
-| **4 · Quiz** | §7.3 | every quiz state has an onset; no shake anywhere |
-| **5 · Assistant** | §7.4 | the window grows from and returns to the launcher; thinking, streaming, actions and scroll behave as specced |
-| **6 · Smoothness** | §7.5 | pages and topics enter, in-page scroll glides, filters cross-fade, every hover colour eases on the scale |
+| **1 · Foundation** — [#153](https://github.com/nvjeronimo/skillup-lms-prototype/pull/153) | `tokens/motion.css`, Tailwind theme, reduced motion moved onto the variables, `raw-motion` lint rule, the ~20 hand-typed sites migrated, `useExitTransition` + vitest | 0 raw `ms` / curves in `components` + `app`; behaviour unchanged |
+| **2 · Surfaces** — [#154](https://github.com/nvjeronimo/skillup-lms-prototype/pull/154) | §7.1 | every surface in §7.1 leaves the way it came; focus returns after the exit |
+| **3 · Completion chain** — [#155](https://github.com/nvjeronimo/skillup-lms-prototype/pull/155) | §7.2 | a completion is visible in three places in order, and announced once |
+| **4 · Quiz** — [#157](https://github.com/nvjeronimo/skillup-lms-prototype/pull/157) | §7.3 | every quiz state has an onset; no shake anywhere |
+| **5 · Assistant** — [#158](https://github.com/nvjeronimo/skillup-lms-prototype/pull/158) | §7.4 | the window grows from and returns to the launcher; thinking, streaming, actions and scroll behave as specced |
+| **6 · Smoothness** — [#160](https://github.com/nvjeronimo/skillup-lms-prototype/pull/160) | §7.5 | pages and topics enter, in-page scroll glides, filters cross-fade, every hover colour eases on the scale |
 
-PR 1 blocks the rest. 2–6 can run in any order once it merges.
+PR 1 blocks the rest. The six were built on 14 Oct 2026 as a **stack** (each PR targets the previous branch): retarget each to `main` before merging the one below it, or merge them in order #153 → #160.
 
 ### 8.1 Documentation, same block
 
