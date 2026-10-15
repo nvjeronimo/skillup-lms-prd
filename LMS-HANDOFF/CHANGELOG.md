@@ -15,8 +15,11 @@ Nelson, 15 Oct: one responsive token for the padding of the content section of t
 - **DS:** `Container/content-padding` in `3. Responsive 📐` (Desktop 24, Tablet 20, Mobile 16; aliases `Spacing/3xl`;
   scope gap/padding; WEB `var(--container-content-padding)`). Documented in a new *Container tokens* block on the
   Foundations · Spacing, radius & grids page (with `gutter`, `gap`, `max-width`). To publish (Nelson).
-- **Product file:** after the publish, the `content` frames of the ICP topic screens (and `scroll-area` on mobile)
-  are bound to it (they had 12 / 16).
+- **Product file (after the publish, same day):** 88 `content` / `scroll-area` frames bound on all four sides
+  (Reading 21, Lab 48, Topic Content Types 19; they had 12 / 16). Nine mobile Lab/Reading frames resolved the Desktop
+  mode (24): set to Mobile, now 16. Quiz (66 screens) pads block by block: the side padding of *Topic header*,
+  *Questions List* and *Content Feedback* and the header's top are on the token. **Video not done yet:** its side
+  inset lives in many nested blocks, down to the full-width `Transcript-Line` rows (question to Nelson).
 - **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
 - **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
 
