@@ -37,6 +37,8 @@ const oldParents = REBUILD ? [] : [...new Set(sets.map(s => s.parent))];
 const oldDocs = REBUILD ? srcPage.children.filter(c => c.name.startsWith('Doc · ')) : [];
 let page = existing; if (!page) { page = figma.createPage(); page.name = ' '.repeat(6) + '↳ ' + GROUP; root.insertChild(at, page); }
 const vars = await figma.variables.getLocalVariablesAsync('COLOR'); const V = n => { const v = vars.find(x => x.name === n); if (!v) throw new Error('no var ' + n); return v; };
+// Every component set has a 16 px padding, bound to Spacing/xl (Nelson, 15 Oct 2026). A set without auto-layout gets the same margin by hand.
+const XL = (await figma.variables.getLocalVariablesAsync('FLOAT')).find(v => v.name === 'Spacing/xl');
 const P = n => figma.variables.setBoundVariableForPaint({type: 'SOLID', color: {r: 0.5, g: 0.5, b: 0.5}}, 'color', V(n));
 const styles = await figma.getLocalTextStylesAsync(); const S = n => { const s = styles.find(x => x.name === n); if (!s) throw new Error('no style ' + n); return s; };
 const T = async (chars, style, color, name) => { const st = S(style); await figma.loadFontAsync(st.fontName); const t = figma.createText(); t.fontName = st.fontName; await t.setTextStyleIdAsync(st.id); t.characters = chars || ' '; t.fills = [P(color)]; if (name) t.name = name; return t; };
@@ -68,7 +70,7 @@ for (const set of sets) { try { const isSet = set.type === 'COMPONENT_SET'; cons
   const ver = (/v\d+\.\d+/.exec(vline) || [''])[0]; if (ver) titleRow.appendChild(await chip(ver, true)); const since = (/since (.+)$/.exec(vline) || [])[1]; if (since) titleRow.appendChild(await chip('since ' + since, false));
   block.appendChild(await T(set.name, 'body-medium/Medium', 'text/subtle', 'Path'));
   // the component
-  const cs = await sub(block, isSet ? 'Variants · the component' : 'The component'); cs.appendChild(set); if (isSet) { set.strokes = [P('border/default')]; set.strokeWeight = 1; set.cornerRadius = 5; }
+  const cs = await sub(block, isSet ? 'Variants · the component' : 'The component'); cs.appendChild(set); if (isSet) { set.strokes = [P('border/default')]; set.strokeWeight = 1; set.cornerRadius = 5; if (set.layoutMode !== 'NONE' && XL) for (const k of ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft']) set.setBoundVariable(k, XL); }
   // properties
   const pr = await sub(block, 'Properties'); const table = AL('VERTICAL', 'Table', 0); pr.appendChild(table); fill(table); table.cornerRadius = 8; table.strokes = [P('border/subtle')]; table.strokeWeight = 1; table.clipsContent = true;
   const COLS = [260, 150, 520, 260]; const mkRow = async (cells, header) => { const r = AL('HORIZONTAL', header ? 'Header row' : 'Row', 0); table.appendChild(r); fill(r); r.paddingLeft = r.paddingRight = 16; r.paddingTop = r.paddingBottom = 10; if (header) r.fills = [P('bg/subtle')]; else { r.strokes = [P('border/subtle')]; r.strokeTopWeight = 1; r.strokeBottomWeight = 0; r.strokeLeftWeight = 0; r.strokeRightWeight = 0; } for (let i = 0; i < cells.length; i++) { const t = await T(cells[i], header ? 'body-small/Semibold' : (i === 0 ? 'body-medium/Semibold' : 'body-medium/Regular'), header ? 'text/subtle' : (i === 0 ? 'text/default' : 'text/muted')); r.appendChild(t); t.resize(COLS[i], t.height); t.textAutoResize = 'HEIGHT'; } };
