@@ -18,8 +18,12 @@ Nelson, 15 Oct: one responsive token for the padding of the content section of t
 - **Product file (after the publish, same day):** 88 `content` / `scroll-area` frames bound on all four sides
   (Reading 21, Lab 48, Topic Content Types 19; they had 12 / 16). Nine mobile Lab/Reading frames resolved the Desktop
   mode (24): set to Mobile, now 16. Quiz (66 screens) pads block by block: the side padding of *Topic header*,
-  *Questions List* and *Content Feedback* and the header's top are on the token. **Video not done yet:** its side
-  inset lives in many nested blocks, down to the full-width `Transcript-Line` rows (question to Nelson).
+  *Questions List* and *Content Feedback* and the header's top are on the token. **Video (Nelson chose option 2 the
+  same day):** the side padding of *Video player* (and its top; not on mobile, where it is full-bleed), *Topic header*,
+  *Horizontal tabs*, *Controlers*, *Auto-scroll status*, *Feedback* / *Content Feedback* on the token, on the 30 video
+  screens and the 4 of the AI Assistant preview (2 mobile frames given the Mobile mode). **`Transcript-Line` 1.1:**
+  its side padding is on the token, so the line text lines up with the title while the row stays full width; inside
+  `Note-Item` / `Note-Editor` it keeps 16 (override). The screens pick it up after the publish. Prototype PR 173.
 - **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
 - **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
 
