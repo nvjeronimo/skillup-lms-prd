@@ -8,6 +8,88 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Course-Card 1.8 (new Grid header) and green certificate strips (Program-Card 1.6)
+
+Nelson finished both cards. **Course-Card 1.8:** a new Grid header — the Course Type line across the card, then a 64 px
+thumb beside the title, then the badges — drawn on Default and applied to Not started and Completed; the Grid action
+fills the width; the certificate strip of a completed course is green, and the List offers *View Certificate* only.
+**Program-Card 1.6:** the certificate footer is green. On the green the label uses text/default (text/subtle is 3.3:1 in
+dark). **Prototype:** PR 168 (axe wcag2aa clean, light and dark).
+
+**After the publish:** the header rebuild resets the header overrides of every Grid instance in other files. The 77 in
+the ICP file were captured first (`03-design-system/restore/course-card-grid-overrides-2026-10-15.json`); once Nelson
+accepts the update there, they are reapplied from that table. To publish (Nelson).
+
+## 2026-10-15 · Cards: footer by action (Course-Card 1.7, Program-Card 1.5); Assistant 1.2 with a moving ring
+
+Nelson changed the two My Learning cards and the assistant in the DS. Checked layer by layer (the version API was
+unavailable, token expired) and recorded:
+
+- **Footer by action.** The footer box is grey (bg/subtle) beside the Primary *Resume* and white with a 1px
+  border/subtle beside a Secondary action (Not started, Completed), on both cards. `Course-Card` Grid: *UP NEXT* stacks
+  over the title, topic type at the top right; the certificate strip is one line. **Course-Card 1.7, Program-Card 1.5.**
+- **Assistant 1.2** (chat and launcher, in review): header on bg/subtle with the sparkles in a primary-soft tile; *ME*
+  and *ASSISTANT* above each message; answers on bg/primary; the AI notice under the input. The launcher ball has a
+  2px gradient stroke in the logo blues; in the prototype it turns slowly round the ball (3.6 s) and stands still
+  under reduced motion.
+- **Prototype:** PR 167 (cards, program progress said once, hierarchy by action, assistant, ring). The count badge
+  stays on bg/primary there: bg/info with white is 4.0:1, under AA.
+- **Fixed in the DS the same day:** `Course-Card` List footers (Not started, Completed) white with border/subtle;
+  `Program-Card` Body texts on `title-medium/Semibold`; the launcher's 14 bindings to the old `1. Color Modes`
+  collection moved to the logo primitives (#51bffc ball, #044150 plane); the *Assistant* labels on
+  `body-small/Regular`. Prototype PR 167 merged. **Open:** the count badge contrast (bg/info + white 4.0:1). To publish
+  (Nelson).
+
+## 2026-10-15 · Link Button 1.2: hover darkens, no fill
+
+Nelson changed the DS `Link Button`. Checked variant by variant and recorded as **v1.2** (description, register):
+hover no longer fills with bg/faint; the label and its 1px bottom line darken (Brand text/on-primary-soft +
+icon/default, Destructive text/accent-red + icon/accent-red, Success text/accent-green + icon/accent-green, the grey
+Secondary text/muted + icon/muted). The line uses the icon token of its tone (icon/primary, icon/error, icon/success,
+icon/subtle; border/disabled when Disabled). Focused: bg/faint, radius 6. **Prototype:** PR 166
+(`components/atoms/Button.tsx`). To publish (Nelson).
+
+## 2026-10-15 · Course-Card moves to the My Learning page
+
+Nelson, 15 Oct: the course cards belong with My Learning. In the DS, `Course-Card` (v1.6) left the Discovery page for
+the My Learning page and is now `LMS/Platform/My-Learning/Course-Card` (was `LMS/Platform/Discovery/Course-Card`).
+Same node, same key: instances and overrides are untouched, no version bump. Both pages were rebuilt with the
+generator: My Learning has 1 molecule (`Browse-Tile`) and 2 organisms (`Course-Card`, `Program-Card`); Discovery keeps
+6 atoms and `Course-Row`. `ds-levels.json`, the register and the rename map follow. To publish (Nelson).
+
+## 2026-10-14 → 15 · Course and program cards reviewed; three DS side stripes replaced
+
+Nelson's review of the My Learning cards in their three states (started, not started, completed), and his call on the
+three DS components that carried a coloured side stripe. Compared side by side first in the prototype
+(`/lab/stripes`, PR 161). Three DS publishes (14 Oct evening, 14 Oct late, 15 Oct), each accepted in the product file.
+
+- **New token `bg/warning-muted`** (`🎨 SKO-Semantics`): a deeper, "toasted" warning surface. Light `Yellow/100`
+  (#ffebbd), Dark `Yellow/950` (#85580e), the same in every skin; fill scopes; WEB `var(--color-bg-warning-muted)`.
+  Text on it is `text/default`: `text/muted` fails AA on it in dark. Approved by Nelson, 14 Oct.
+- **`Live-Now-Banner` v1.1:** no side stripe. Live = `bg/success-soft`, Upcoming = `bg/warning-muted` with a 1px
+  `border/accent-yellow`. The Live badge was still red in Figma: green now, per ADR 012 and the code. The Upcoming
+  badge was white text on yellow (fails AA in dark): `bg/warning` + `text/on-warning`, as in the code.
+- **`Lesson-Block` v1.1, `Kind=HTML (Blockquote)`:** a typographic pull quote, no box and no stripe; Quote icon in
+  `icon/primary`. Presentation only: the Studio blockquote is unchanged.
+- **`LMS / Inline Alert` v1.1, `Tone=Answer`:** keeps its 2px top rule (the family's rule: every tone has one, Hint
+  none) but draws it like Success and Error: straight, square, on `bg/faint`, in `border/primary` instead of grey.
+- **`Program-Card` v1.3 → v1.4:** progress is said once (*1 of 7 courses complete* over the bar; the big percent, its
+  caption and the repeated header line removed, with the `Percent` property: a break, counted as a minor under rule
+  8). Not started: the orphan *START DATE* is gone, the badge carries the date only, the action is *Start*.
+  Completed: *Program completed*. Verb *Resume* (was *Continue*), as on the course card.
+- **`Course-Card` v1.4 → v1.6:** new `State=Not started`: no empty 0% bar, *STARTS WITH* + the first topic, *Start*.
+  Up next wraps to 2 lines. Dev note: *Starts <date>* only when the course `start` is in the future.
+- **Button rule (Nelson, 15 Oct):** *Resume* is always Primary; every other card action (*Start*, *Review*,
+  *View Certificate*) is Secondary. The solid button marks the courses in progress when scanning a grid.
+- **Product file, Platform Pages - Ready for Dev, My Learning screens 04–11:** the not-started course on the new
+  variant (first topic *Python environment setup* · Reading), old instance overrides cleared (an Up next row at
+  opacity 0, titles held to 1 line, a hand-typed *Details*, a stray border), cards in a row at one height. Three dev
+  annotations on the program cards: the program certificate is **not MVP** (Credentials service not configured);
+  the program start date has no confirmed field yet; the partner logos are sample data. RECENT CHANGES updated on
+  the eight screens (2026-10-15).
+- **Kept as they were (Nelson):** the COURSE / PROGRAM label above the title.
+- **Not yet in the prototype:** the token, the three components and the card changes.
+
 ## 2026-10-15 · Navigation notes in Figma; test-build note in the footer
 
 - **Figma (product file, Platform Pages - Ready for Dev page):** one `LMS / Footnote` dev note (Dev Notes + Purpose)
