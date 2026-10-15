@@ -230,7 +230,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
 | [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.8 | 2026-10-15 | Published | 6 | 2026-10-15 · New Grid header (Course Type line, 64 thumb beside the title, badges); Grid action fills; Completed strip green, List Completed offers View Certificate only (1.7: strip white with a border beside a Secondary action, Up next stacked; 1.6: *Resume* is Primary, every other action Secondary; 1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.8 | 2026-10-15 | To publish | 6 | 2026-10-15 · Program image thumb beside the title, next deadline badge, details line (1.7: number of courses in every state; 1.6: Completed footer green; 1.5: footer white with a border beside a Secondary action; 1.4: *Resume* is Primary, every other action Secondary; 1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.8 | 2026-10-15 | Published | 6 | 2026-10-15 · Program image thumb beside the title, next deadline badge, details line (1.7: number of courses in every state; 1.6: Completed footer green; 1.5: footer white with a border beside a Secondary action; 1.4: *Resume* is Primary, every other action Secondary; 1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
 
 **Discovery**
 
