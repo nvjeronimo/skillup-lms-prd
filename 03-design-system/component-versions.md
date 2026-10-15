@@ -229,8 +229,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.8 | 2026-10-15 | To publish | 6 | 2026-10-15 · New Grid header (Course Type line, 64 thumb beside the title, badges); Grid action fills; Completed strip green, List Completed offers View Certificate only (1.7: strip white with a border beside a Secondary action, Up next stacked; 1.6: *Resume* is Primary, every other action Secondary; 1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.6 | 2026-10-15 | To publish | 6 | 2026-10-15 · Completed footer green (1.5: footer white with a border beside a Secondary action; 1.4: *Resume* is Primary, every other action Secondary; 1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.8 | 2026-10-15 | Published | 6 | 2026-10-15 · New Grid header (Course Type line, 64 thumb beside the title, badges); Grid action fills; Completed strip green, List Completed offers View Certificate only (1.7: strip white with a border beside a Secondary action, Up next stacked; 1.6: *Resume* is Primary, every other action Secondary; 1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.6 | 2026-10-15 | Published | 6 | 2026-10-15 · Completed footer green (1.5: footer white with a border beside a Secondary action; 1.4: *Resume* is Primary, every other action Secondary; 1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
 
 **Discovery**
 
@@ -308,14 +308,14 @@ A link marked *(page)* goes to the component's page in the library.
 | [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button utility`, same key) |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
-| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.2 | 2026-10-15 | Changed, to publish |  | 2026-10-15 · Hover has no fill: the label and its line darken; the line on icon tokens; Focused on bg/faint |
+| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.2 | 2026-10-15 | Published |  | 2026-10-15 · Hover has no fill: the label and its line darken; the line on icon tokens; Focused on bg/faint |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
 | [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1085-57382) | v1.0 | 2026-10-08 | Published |  | 2026-08-05 · The quiz nav adopted across the sections |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
 | [Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=85-1269) (page) | v1.0 | 2026-10-08 | Published |  | 2026-09-10 · Mobile tabs stay tabs, and the touch target gets bigger |
 | [Tag](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20837-1793) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
 | [Textarea input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1238-278) | v1.0 | 2026-10-08 | Published |  | 2026-10-06 · `LMS / Note Editor` built in the DS (not published yet) |
-| [Toast](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21089-1214) | v1.1 | 2026-10-14 | Changed, to publish |  | 2026-10-14 · Tone icons on icon tokens: Neutral `icon/muted`, Success `icon/success`, Warning `icon/warning`, Critical `icon/error` |
+| [Toast](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21089-1214) | v1.1 | 2026-10-14 | Published |  | 2026-10-14 · Tone icons on icon tokens: Neutral `icon/muted`, Success `icon/success`, Warning `icon/warning`, Critical `icon/error` |
 | [Toggle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1102-4208) | v1.0 | 2026-10-08 | Published |  | — |
 | [Tooltip](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1052-489) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
 | [Video player 16:9](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=9264-576771) | v1.0 | 2026-10-08 | Published |  | — |
