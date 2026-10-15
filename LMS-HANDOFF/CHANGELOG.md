@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Course-Card 1.8 (new Grid header) and green certificate strips (Program-Card 1.6)
+
+Nelson finished both cards. **Course-Card 1.8:** a new Grid header — the Course Type line across the card, then a 64 px
+thumb beside the title, then the badges — drawn on Default and applied to Not started and Completed; the Grid action
+fills the width; the certificate strip of a completed course is green, and the List offers *View Certificate* only.
+**Program-Card 1.6:** the certificate footer is green. On the green the label uses text/default (text/subtle is 3.3:1 in
+dark). **Prototype:** PR 168 (axe wcag2aa clean, light and dark).
+
+**After the publish:** the header rebuild resets the header overrides of every Grid instance in other files. The 77 in
+the ICP file were captured first (`03-design-system/restore/course-card-grid-overrides-2026-10-15.json`); once Nelson
+accepts the update there, they are reapplied from that table. To publish (Nelson).
+
 ## 2026-10-15 · Cards: footer by action (Course-Card 1.7, Program-Card 1.5); Assistant 1.2 with a moving ring
 
 Nelson changed the two My Learning cards and the assistant in the DS. Checked layer by layer (the version API was

@@ -1,0 +1,384 @@
+{
+ "captured": "2026-10-15",
+ "file": "Wz2TCYFVr0hD8tJNiLajLt",
+ "why": "Course-Card Grid header rebuilt in the DS (15 Oct): the ICP instances lose title, initials, image and badge overrides when the library update is accepted. Reapply from this table.",
+ "common": {
+  "courseType": "9d9df6d9622bd76b2f817caa12043e0d95256ab9",
+  "provider": "4297fb87152c58d45ef7c07398bc21c84dd6e961",
+  "delivery": "a737ddbb09fd7bd919004172e2e2f1aaa15f4ac0",
+  "imageVisible": true,
+  "scaleMode": "FILL"
+ },
+ "courses": {
+  "UX Research and Design Thinking": {
+   "initials": "UX",
+   "imageHash": "57bedecb72a80b0f36710950d5979d716d1a0baa",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "Project Management with AI Tools": {
+   "initials": "PM",
+   "imageHash": "fe88bd5bc399e59f2c908d3a01c292ba3c9505e0",
+   "difficulty": "46084dc2ff41e394a3bd00e737c09773cb68e2cb"
+  },
+  "Leadership in Remote Teams": {
+   "initials": "LR",
+   "imageHash": "4bbee3be9054969ba8af62dc56e4d080f7d30f93",
+   "difficulty": "46084dc2ff41e394a3bd00e737c09773cb68e2cb"
+  },
+  "Business Analytics with Python": {
+   "initials": "BA",
+   "imageHash": "cbf2628846202e6ac4d8a020b9de0a88ceeffe51",
+   "difficulty": "c3fb0859ecb2920110134a6248b92976edc1e97d"
+  },
+  "Intro to Product Analytics": {
+   "initials": "PA",
+   "imageHash": "1ba62f484dc9274c1dde65062cd2aa2b91c70e30",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "AI-Driven Content and Brand Communication": {
+   "initials": "AC",
+   "imageHash": "0d8a9b2c5acc22e2016ff872431da765e485a71d",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "SEO, GEO, and Organic Growth with AI": {
+   "initials": "SG",
+   "imageHash": "7f8debfffe933794b8fb1aa9b9be4c8e2cb6c21d",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "Paid Advertising, Media & AI-Integrated Campaign Strategy": {
+   "initials": "PA",
+   "imageHash": "7341611650aabf01bfee2dba74b782b6bf501608",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "Social Media and Ecommerce Marketing": {
+   "initials": "SM",
+   "imageHash": "68b8186c1fcbdf9159bf900eeb3c34995b539476",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "Email, CRM, and Lifecycle Marketing with AI": {
+   "initials": "EC",
+   "imageHash": "1cc79968a24fab84ac6ea65b217b0a8b75214772",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "Capstone Project: AI-First Marketing System": {
+   "initials": "CP",
+   "imageHash": "21ba6e7e4e95274b77f7b653e8add71e8db5dedb",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  },
+  "Digital Marketing Fundamentals and the AI Mindset": {
+   "initials": "DM",
+   "imageHash": "815d46a0e32ed2d7bd3d4039e21f9eaf43a53cb1",
+   "difficulty": "b0edec89566a89cac035e68a96b2c44a8187239f"
+  }
+ },
+ "instances": [
+  {
+   "id": "I7175:30127;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7175:30128;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7175:30129;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7175:30625;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7175:31114;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I7175:34188;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7175:34189;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7175:34190;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7175:34682;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7175:35171;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I7175:35746;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7175:35747;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7175:35748;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7175:36240;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7175:36729;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I6729:21414;22221:4786",
+   "title": "AI-Driven Content and Brand Communication"
+  },
+  {
+   "id": "I6729:21415;22221:4040",
+   "title": "SEO, GEO, and Organic Growth with AI"
+  },
+  {
+   "id": "I6729:21416;22221:4040",
+   "title": "Paid Advertising, Media & AI-Integrated Campaign Strategy"
+  },
+  {
+   "id": "I6729:21417;22221:4040",
+   "title": "Social Media and Ecommerce Marketing"
+  },
+  {
+   "id": "I6729:21418;22221:4040",
+   "title": "Email, CRM, and Lifecycle Marketing with AI"
+  },
+  {
+   "id": "I6729:21419;22221:4040",
+   "title": "Capstone Project: AI-First Marketing System"
+  },
+  {
+   "id": "I6729:25826;22221:4040",
+   "title": "Digital Marketing Fundamentals and the AI Mindset"
+  },
+  {
+   "id": "I6729:25827;22221:4786",
+   "title": "AI-Driven Content and Brand Communication"
+  },
+  {
+   "id": "I6729:25828;22221:4040",
+   "title": "SEO, GEO, and Organic Growth with AI"
+  },
+  {
+   "id": "I6729:25829;22221:4040",
+   "title": "Paid Advertising, Media & AI-Integrated Campaign Strategy"
+  },
+  {
+   "id": "I6729:25830;22221:4040",
+   "title": "Social Media and Ecommerce Marketing"
+  },
+  {
+   "id": "I6729:25831;22221:4040",
+   "title": "Email, CRM, and Lifecycle Marketing with AI"
+  },
+  {
+   "id": "I6729:25832;22221:4040",
+   "title": "Capstone Project: AI-First Marketing System"
+  },
+  {
+   "id": "I6988:166419;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I6988:166682;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I6988:166950;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I6988:167216;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I6988:167469;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I6988:169016;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I6988:169273;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I6988:169539;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I6988:169805;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I6988:170058;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I6988:170310;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I6988:170567;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I6988:170833;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I6988:171099;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I6988:171352;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I6667:26743;22221:4040",
+   "title": "Digital Marketing Fundamentals and the AI Mindset"
+  },
+  {
+   "id": "I6667:27670;22221:4786",
+   "title": "AI-Driven Content and Brand Communication"
+  },
+  {
+   "id": "I6667:30032;22221:4040",
+   "title": "SEO, GEO, and Organic Growth with AI"
+  },
+  {
+   "id": "I6667:30371;22221:4040",
+   "title": "Paid Advertising, Media & AI-Integrated Campaign Strategy"
+  },
+  {
+   "id": "I6667:30674;22221:4040",
+   "title": "Social Media and Ecommerce Marketing"
+  },
+  {
+   "id": "I6667:30977;22221:4040",
+   "title": "Email, CRM, and Lifecycle Marketing with AI"
+  },
+  {
+   "id": "I6667:31280;22221:4040",
+   "title": "Capstone Project: AI-First Marketing System"
+  },
+  {
+   "id": "I6668:142134;22221:4040",
+   "title": "Digital Marketing Fundamentals and the AI Mindset"
+  },
+  {
+   "id": "I6668:142907;22221:4786",
+   "title": "AI-Driven Content and Brand Communication"
+  },
+  {
+   "id": "I6668:145112;22221:4040",
+   "title": "SEO, GEO, and Organic Growth with AI"
+  },
+  {
+   "id": "I6668:145442;22221:4040",
+   "title": "Paid Advertising, Media & AI-Integrated Campaign Strategy"
+  },
+  {
+   "id": "I6668:145745;22221:4040",
+   "title": "Social Media and Ecommerce Marketing"
+  },
+  {
+   "id": "I6668:146048;22221:4040",
+   "title": "Email, CRM, and Lifecycle Marketing with AI"
+  },
+  {
+   "id": "I6668:146351;22221:4040",
+   "title": "Capstone Project: AI-First Marketing System"
+  },
+  {
+   "id": "I7154:26449;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7154:26450;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7154:26451;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7154:26943;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7154:27432;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I7155:28641;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7155:28642;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7155:28643;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7155:29135;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7155:29624;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I7184:28193;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7184:28194;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7184:28195;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7184:28199;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7184:28203;22221:4040",
+   "title": "Intro to Product Analytics"
+  },
+  {
+   "id": "I7184:28888;22221:4040",
+   "title": "UX Research and Design Thinking"
+  },
+  {
+   "id": "I7184:28889;22221:4040",
+   "title": "Project Management with AI Tools"
+  },
+  {
+   "id": "I7184:28890;22221:4040",
+   "title": "Leadership in Remote Teams"
+  },
+  {
+   "id": "I7184:28894;22221:4040",
+   "title": "Business Analytics with Python"
+  },
+  {
+   "id": "I7184:28898;22221:4040",
+   "title": "Intro to Product Analytics"
+  }
+ ]
+}
