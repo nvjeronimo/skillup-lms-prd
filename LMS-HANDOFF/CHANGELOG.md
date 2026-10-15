@@ -8,6 +8,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Program-Card 1.7: the number of courses in every state
+
+A not-started or completed program card did not say how many courses it has (only In progress did, in "1 of 7 courses
+complete"). Now the count is a third tag in the hero ("7 courses", after Delivery Mode and Difficulty) and, when the
+program is not started or completed, sits at the right end of the progress row, as the course card shows its hours.
+Data: the length of the program's `courses` (programs API). **Prototype:** PR 170. To publish (Nelson).
+
 ## 2026-10-15 · Every component set has a 16 px padding (Spacing/xl)
 
 Nelson, 15 Oct: the main components of every organised DS page have padding XL (16 px), as `Difficulty-Badge`.
