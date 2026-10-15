@@ -202,8 +202,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.1 | 2026-10-13 | In review | 6 | 2026-10-13 · Two states added for first steps (`First steps`, `First steps done`); `Empty` starts with the next step. In the library so the ICP feature preview page can use it; not for build yet. |
-| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.1 | 2026-10-13 | In review | 3 | 2026-10-13 · 48 px; closed is the assistant mark; `Closed with count` added (first steps left). In the library so the ICP feature preview page can use it; not for build yet. |
+| [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.2 | 2026-10-15 | In review | 6 | 2026-10-15 · Header on bg/subtle, ME / ASSISTANT above each message, answers on bg/primary, AI notice under the input (1.1, 13 Oct: two states added for first steps (`First steps`, `First steps done`); `Empty` starts with the next step). In the library so the ICP feature preview page can use it; not for build yet. |
+| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.2 | 2026-10-15 | In review | 3 | 2026-10-15 · The ball wears a 2px gradient ring (to animate in code); count badge on bg/info (1.1, 13 Oct: 48 px; closed is the assistant mark; `Closed with count` added, first steps left). In the library so the ICP feature preview page can use it; not for build yet. |
 
 **Navigation**
 
@@ -229,8 +229,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.6 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.4 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.7 | 2026-10-15 | To publish | 6 | 2026-10-15 · Grid strip white with a border beside a Secondary action; Up next stacked (1.6: *Resume* is Primary, every other action Secondary; 1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.5 | 2026-10-15 | To publish | 6 | 2026-10-15 · Footer white with a border beside a Secondary action (1.4: *Resume* is Primary, every other action Secondary; 1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
 
 **Discovery**
 
@@ -408,6 +408,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-14 | `Course-Card` | v1.4 → v1.5 | Second publish: `Not started` (Grid) stacks *STARTS WITH* above the topic; the `Image` frame of both `Not started` variants linked to `Show image` again (the link was lost when the variants were cloned, so 1.4 showed no photo). |
 | 2026-10-15 | `Course-Card`, `Program-Card` | v1.5 → v1.6, v1.3 → v1.4 | Button hierarchy by action (Nelson): *Resume* is always Primary; *Start*, *Review*, *View Certificate* and *Details* are Secondary. |
 | 2026-10-15 | `Course-Card` | no change | Moved from the Discovery page to the My Learning page and renamed `LMS/Platform/Discovery/Course-Card` → `LMS/Platform/My-Learning/Course-Card` (Nelson). Same node, same key: instances are untouched. Discovery keeps `Course-Row` and the badges. |
+| 2026-10-15 | `Course-Card`, `Program-Card` | v1.6 → v1.7, v1.4 → v1.5 | Nelson: the footer box is grey (bg/subtle) beside the Primary *Resume* and white with a 1px border/subtle beside a Secondary action (Not started, Completed). `Course-Card` Grid: *UP NEXT* stacks over the title (the strip is 56 tall), the topic type at its top right; the Completed strip is one line, the date at its right end. Not applied (open): `Course-Card` List keeps its footer grey in all three states; `Program-Card` Body texts are a raw 18 Semibold, not bound to `title-medium/Semibold`. |
+| 2026-10-15 | Assistant-Chat, Assistant-Launcher | v1.1 → v1.2 | Chat: header on bg/subtle, the sparkles in a 28 px bg/primary-soft tile; *ME* and *ASSISTANT* above each message; answers and *Thinking…* on bg/primary in text/on-primary; the AI notice moves under the input (Copy row); the Send button has a gradient stroke. Launcher: the ball has a 2px linear gradient stroke (#0088d4 → #85d3ff → #044150), which the prototype turns slowly (Nelson asked for it to move); the count badge is on bg/info. Open: the ball's fill is bound to `background/info` from the old `1. Color Modes` collection, not the DS `bg/info`; the *Assistant* label is a raw 12; bg/info + white is 4.0:1, under AA for the count (the prototype uses bg/primary). |
 | 2026-10-15 | `Link Button` | v1.1 → v1.2 | Nelson: hover has no fill; the label and its 1px bottom line darken (Brand text/on-primary-soft + icon/default, Destructive accent-red, Success accent-green, Secondary text/muted + icon/muted). The line is on the icon token of its tone (icon/primary, icon/error, icon/success, icon/subtle; border/disabled when Disabled). Focused: bg/faint, radius 6. Prototype PR 166. |
 
 ## Rename map (8 Oct 2026)

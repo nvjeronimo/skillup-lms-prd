@@ -8,6 +8,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Cards: footer by action (Course-Card 1.7, Program-Card 1.5); Assistant 1.2 with a moving ring
+
+Nelson changed the two My Learning cards and the assistant in the DS. Checked layer by layer (the version API was
+unavailable, token expired) and recorded:
+
+- **Footer by action.** The footer box is grey (bg/subtle) beside the Primary *Resume* and white with a 1px
+  border/subtle beside a Secondary action (Not started, Completed), on both cards. `Course-Card` Grid: *UP NEXT* stacks
+  over the title, topic type at the top right; the certificate strip is one line. **Course-Card 1.7, Program-Card 1.5.**
+- **Assistant 1.2** (chat and launcher, in review): header on bg/subtle with the sparkles in a primary-soft tile; *ME*
+  and *ASSISTANT* above each message; answers on bg/primary; the AI notice under the input. The launcher ball has a
+  2px gradient stroke in the logo blues; in the prototype it turns slowly round the ball (3.6 s) and stands still
+  under reduced motion.
+- **Prototype:** PR 167 (cards, program progress said once, hierarchy by action, assistant, ring). The count badge
+  stays on bg/primary there: bg/info with white is 4.0:1, under AA.
+- **Open for Nelson:** `Course-Card` List footers are still grey in Not started and Completed; `Program-Card` Body texts
+  are a raw 18 Semibold (should be `title-medium/Semibold`); the launcher ball uses `background/info` from the old
+  `1. Color Modes` collection; the *Assistant* label is a raw 12; the badge contrast. To publish (Nelson).
+
 ## 2026-10-15 · Link Button 1.2: hover darkens, no fill
 
 Nelson changed the DS `Link Button`. Checked variant by variant and recorded as **v1.2** (description, register):
