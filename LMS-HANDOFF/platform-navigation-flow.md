@@ -21,7 +21,8 @@ page it was opened for.** A finished course has nothing to resume: *Review* open
 program card, a course row of a program page or a Dashboard resume row opens the course or program page; the
 button stays a separate control and opens the player. On the program card, *Continue* opens the player of the
 course in progress and *Details* (program not started) opens the program page. One link per card for keyboard
-and screen readers (the title), no extra tab stop. Prototype PR 93; not annotated on the Figma screens yet.
+and screen readers (the title), no extra tab stop. Prototype PR 93. Annotated in Figma on 15 Oct 2026 (one dev note under the desktop screen of Dashboard, My
+Learning · Courses and Program · Courses, with decision 025).
 
 **Since 14 Oct 2026 (Nelson, decision 025): a course of a program is reached through the program.** It never has a
 card of its own in My Learning's course list; the learner opens it from the program page or from the Dashboard's

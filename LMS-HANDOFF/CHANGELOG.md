@@ -8,6 +8,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Navigation notes in Figma; test-build note in the footer
+
+- **Figma (product file, Platform Pages - Ready for Dev page):** one `LMS / Footnote` dev note (Dev Notes + Purpose)
+  under the desktop screen of Dashboard (`7283:30439`), My Learning · Courses (`7283:30443`) and Program · Courses
+  (`7283:30447`): the whole card opens the page and the button the player (10 Oct), decision 025 and its three kept
+  exceptions, and for My Learning how to filter program courses out of Learner Home. Once per page, not on every
+  screen.
+- **Prototype, PR 165:** the test-build note of the platform pages moves from under the top bar to a footer (Nelson,
+  15 Oct); the notes in the Saved panel are anchored to their transcript line (read-only `TranscriptLine`), as the
+  DS `Note-Item` v1.1.
+
 ## 2026-10-14 · A course of a program is reached through its program
 
 Nelson, 14 Oct: the courses of a program are reached only from the program page or from the Dashboard's *Pick up
