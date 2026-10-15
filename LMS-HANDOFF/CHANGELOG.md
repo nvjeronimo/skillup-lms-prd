@@ -8,6 +8,39 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-14 → 15 · Course and program cards reviewed; three DS side stripes replaced
+
+Nelson's review of the My Learning cards in their three states (started, not started, completed), and his call on the
+three DS components that carried a coloured side stripe. Compared side by side first in the prototype
+(`/lab/stripes`, PR 161). Three DS publishes (14 Oct evening, 14 Oct late, 15 Oct), each accepted in the product file.
+
+- **New token `bg/warning-muted`** (`🎨 SKO-Semantics`): a deeper, "toasted" warning surface. Light `Yellow/100`
+  (#ffebbd), Dark `Yellow/950` (#85580e), the same in every skin; fill scopes; WEB `var(--color-bg-warning-muted)`.
+  Text on it is `text/default`: `text/muted` fails AA on it in dark. Approved by Nelson, 14 Oct.
+- **`Live-Now-Banner` v1.1:** no side stripe. Live = `bg/success-soft`, Upcoming = `bg/warning-muted` with a 1px
+  `border/accent-yellow`. The Live badge was still red in Figma: green now, per ADR 012 and the code. The Upcoming
+  badge was white text on yellow (fails AA in dark): `bg/warning` + `text/on-warning`, as in the code.
+- **`Lesson-Block` v1.1, `Kind=HTML (Blockquote)`:** a typographic pull quote, no box and no stripe; Quote icon in
+  `icon/primary`. Presentation only: the Studio blockquote is unchanged.
+- **`LMS / Inline Alert` v1.1, `Tone=Answer`:** keeps its 2px top rule (the family's rule: every tone has one, Hint
+  none) but draws it like Success and Error: straight, square, on `bg/faint`, in `border/primary` instead of grey.
+- **`Program-Card` v1.3 → v1.4:** progress is said once (*1 of 7 courses complete* over the bar; the big percent, its
+  caption and the repeated header line removed, with the `Percent` property: a break, counted as a minor under rule
+  8). Not started: the orphan *START DATE* is gone, the badge carries the date only, the action is *Start*.
+  Completed: *Program completed*. Verb *Resume* (was *Continue*), as on the course card.
+- **`Course-Card` v1.4 → v1.6:** new `State=Not started`: no empty 0% bar, *STARTS WITH* + the first topic, *Start*.
+  Up next wraps to 2 lines. Dev note: *Starts <date>* only when the course `start` is in the future.
+- **Button rule (Nelson, 15 Oct):** *Resume* is always Primary; every other card action (*Start*, *Review*,
+  *View Certificate*) is Secondary. The solid button marks the courses in progress when scanning a grid.
+- **Product file, Platform Pages - Ready for Dev, My Learning screens 04–11:** the not-started course on the new
+  variant (first topic *Python environment setup* · Reading), old instance overrides cleared (an Up next row at
+  opacity 0, titles held to 1 line, a hand-typed *Details*, a stray border), cards in a row at one height. Three dev
+  annotations on the program cards: the program certificate is **not MVP** (Credentials service not configured);
+  the program start date has no confirmed field yet; the partner logos are sample data. RECENT CHANGES updated on
+  the eight screens (2026-10-15).
+- **Kept as they were (Nelson):** the COURSE / PROGRAM label above the title.
+- **Not yet in the prototype:** the token, the three components and the card changes.
+
 ## 2026-10-15 · Navigation notes in Figma; test-build note in the footer
 
 - **Figma (product file, Platform Pages - Ready for Dev page):** one `LMS / Footnote` dev note (Dev Notes + Purpose)

@@ -134,7 +134,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Lab-File-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3330) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Lab · File Row” |
 | [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · `Completed` removed; `Opened` shows the date of the first opening; *Skip* removed from `Unavailable`; no score wording |
 | [Lab-Prerequisites](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3331) | v1.0 | 2026-10-12 | Deleted | 1 | 2026-10-12 · Deleted from the library: the DS `Alert` replaced it on the 36 screens that used it |
-| [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.0 | 2026-10-08 | Published | 12 | 2026-10-08 · Renamed from “LMS / Lesson Block” |
+| [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.1 | 2026-10-14 | Published | 12 | 2026-10-14 · `Kind=HTML (Blockquote)` is a typographic pull quote: no box, no 4px stripe; lucide Quote icon in `icon/primary` |
 | [ORA-Grade-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3634) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / ORA · Grade Panel” |
 | [ORA-Rubric-Criterion](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3563) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / ORA · Rubric Criterion” |
 | [ORA-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3534) | v1.0 | 2026-10-08 | Published | 10 | 2026-10-08 · Renamed from “LMS / ORA · Stepper” |
@@ -170,7 +170,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Live-Control-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537795) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Live Control Bar States” |
-| [Live-Now-Banner](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537772) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Live Now Banner” |
+| [Live-Now-Banner](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537772) | v1.1 | 2026-10-14 | Published | 2 | 2026-10-14 · No side stripe: the whole card carries the state (Live `bg/success-soft`, Upcoming `bg/warning-muted`, new token); badges per ADR 012 |
 | [VILT-Session-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705637) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / VILT · Session Card” |
 | [VILT-Session-Meta](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705512) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / VILT · Session Meta” |
 | [VILT-Stage-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705552) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / VILT · Stage Stepper” |
@@ -191,7 +191,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Discussion Prompt](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537927) | v1.1 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [LMS / Empty State](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537992) | v1.0 | 2026-10-08 | Published | 4 | — |
 | [LMS / Footnote](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21606-1205) | v1.0 | 2026-10-08 | Published | 1 | 2026-09-30 · Weekly goal card — component handoff, ready for dev |
-| [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.0 | 2026-10-08 | Published | 6 | 2026-09-10 · Blockquote and Key Takeaways become Lesson Block Kinds |
+| [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.1 | 2026-10-14 | Published | 6 | 2026-10-14 · `Tone=Answer` draws its 2px rule like Success and Error: square, `bg/faint`, `border/primary` |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
@@ -229,14 +229,14 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.2 | 2026-10-14 | Published | 6 | 2026-10-14 · `State=Not started` reads *Not started* over *START DATE*, its footer on bg/subtle; the certificate action reads *View Certificate* |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.4 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
 
 **Discovery**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.3 | 2026-10-14 | Published | 4 | 2026-10-14 · The provider badge moves onto the Course Type line (right end in Grid, after the badge in List); `State=Completed` Grid has two actions, *Review* and *View Certificate*; the List footer hugs its content |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.6 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
 | [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.2 | 2026-10-14 | Published | 3 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Type Badge” |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
@@ -400,6 +400,13 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-14 | `LMS / Duration` (new), `Topic-Row`, `Topic-Header`, `Resume-Row`, `Course-Row` (Discovery), `Discussion Prompt` | new v1.0; +0.1 each | New atom: a *Time* text and an *Approx* boolean that shows "approx." after the time; Size sm / md. The five components print their duration with it (an exposed instance) instead of a text layer. The duration texts on the screens were recorded before and put back after the publish. |
 | 2026-10-14 | `Note-Editor` | v1.0 → v1.1 | The quote above a note was a local frame in the three variants; it is now an exposed instance of `Transcript-Line` (State=Active, Device by breakpoint, Show duration off, the Note button hidden): the note is anchored to a transcript line, so it shows as that line. The `Note-Editor` text property *Quote* was removed; set the quote as the line's text. The six instances on the screens showed the default text. An `LMS / Anchor Quote` atom was made first the same afternoon and deleted before any publish. |
 | 2026-10-14 | `Note-Item` | v1.0 → v1.1 | The *Anchor line* (a bare left rule) is now an exposed instance of `Transcript-Line` (State=Active, Show duration off, the Note button hidden), as in the Note-Editor. The anchor texts set on the screens (19 instances) were recorded and are put back after the publish. |
+| 2026-10-14 | `Live-Now-Banner` | v1.0 → v1.1 | No 4px side stripe: the whole card carries the state. Live = `bg/success-soft` + 1px `border/success-soft`; Upcoming = `bg/warning-muted` (new token, a "toasted" yellow: Light `Yellow/100`, Dark `Yellow/950`) + 1px `border/accent-yellow`; padding 16 all round. Badges follow ADR 012 and the code: Live `bg/success` + `text/on-success` (was red), Upcoming `bg/warning` + `text/on-warning` (white on yellow failed AA in dark). On Upcoming the secondary lines are `text/default`. |
+| 2026-10-14 | `Lesson-Block` | v1.0 → v1.1 | `Kind=HTML (Blockquote)`: typographic pull quote, no box and no stripe. Lucide `Quote` (28, `icon/primary`) in a 40px left margin, quote in `title-medium/Medium` `text/primary`, attribution `body-medium/Regular` `text/muted`. Same Studio blockquote. |
+| 2026-10-14 | `LMS / Inline Alert` | v1.0 → v1.1 | `Tone=Answer` draws its 2px top rule like Success and Error: square corners (`Radius/fixed-none`), `bg/faint`, rule in `border/primary` instead of the grey `border/default` on 8px corners. Hint keeps no rule. |
+| 2026-10-14 | `Program-Card` | v1.2 → v1.3 | Progress said once: the `Courses` line sits over the bar (`title-medium/Semibold`); the hero line, the big percent and its caption are removed, **and the text property `Percent` is removed** (a break, counted as a minor under rule 8). Not started: no orphan *START DATE*, the badge carries the date only, the action is *Start*, footer as the other states. Completed: *Program completed* is the line. In progress: *Resume*. Up next on 2 lines. |
+| 2026-10-14 | `Course-Card` | v1.3 → v1.4 | New `State=Not started` (Grid, List): no 0% bar, the Up next slot reads *STARTS WITH* + the first topic, action *Start*. Up next title fills its row and wraps to 2 lines in every variant. |
+| 2026-10-14 | `Course-Card` | v1.4 → v1.5 | Second publish: `Not started` (Grid) stacks *STARTS WITH* above the topic; the `Image` frame of both `Not started` variants linked to `Show image` again (the link was lost when the variants were cloned, so 1.4 showed no photo). |
+| 2026-10-15 | `Course-Card`, `Program-Card` | v1.5 → v1.6, v1.3 → v1.4 | Button hierarchy by action (Nelson): *Resume* is always Primary; *Start*, *Review*, *View Certificate* and *Details* are Secondary. |
 
 ## Rename map (8 Oct 2026)
 
