@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Every component set has a 16 px padding (Spacing/xl)
+
+Nelson, 15 Oct: the main components of every organised DS page have padding XL (16 px), as `Difficulty-Badge`.
+Applied to the 168 component sets inside the `Doc · …` frames (LMS and Base pages):
+- **83 with auto-layout:** the four paddings bound to `Spacing/xl` (67 had 0, 12, 18–40; 6 were already so). The
+  gap between variants is unchanged.
+- **85 arranged by hand (no auto-layout, mostly Base):** the variants moved so that each set has 16 px on every side,
+  and the set resized to fit (51 changed, 34 already so). A resize shifted the variants of `Tooltip` (centred
+  constraints); put back.
+- Not touched: the 34 standalone components (their own padding is part of their design). No variant, property or
+  instance changes. `tools/ds-group-page.js` now binds the padding on every rebuild. To publish (Nelson).
+
 ## 2026-10-15 · Course-Type-Badge 1.1: words only
 
 Nelson did not like either set of icons: his filled two-tone sheets, or the platform's graduation cap and rosette (dated).
