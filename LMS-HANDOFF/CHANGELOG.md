@@ -22,9 +22,11 @@ unavailable, token expired) and recorded:
   under reduced motion.
 - **Prototype:** PR 167 (cards, program progress said once, hierarchy by action, assistant, ring). The count badge
   stays on bg/primary there: bg/info with white is 4.0:1, under AA.
-- **Open for Nelson:** `Course-Card` List footers are still grey in Not started and Completed; `Program-Card` Body texts
-  are a raw 18 Semibold (should be `title-medium/Semibold`); the launcher ball uses `background/info` from the old
-  `1. Color Modes` collection; the *Assistant* label is a raw 12; the badge contrast. To publish (Nelson).
+- **Fixed in the DS the same day:** `Course-Card` List footers (Not started, Completed) white with border/subtle;
+  `Program-Card` Body texts on `title-medium/Semibold`; the launcher's 14 bindings to the old `1. Color Modes`
+  collection moved to the logo primitives (#51bffc ball, #044150 plane); the *Assistant* labels on
+  `body-small/Regular`. Prototype PR 167 merged. **Open:** the count badge contrast (bg/info + white 4.0:1). To publish
+  (Nelson).
 
 ## 2026-10-15 · Link Button 1.2: hover darkens, no fill
 
