@@ -15,8 +15,11 @@ Nelson, 15 Oct: one responsive token for the padding of the content section of t
 - **DS:** `Container/content-padding` in `3. Responsive 📐` (Desktop 24, Tablet 20, Mobile 16; aliases `Spacing/3xl`;
   scope gap/padding; WEB `var(--container-content-padding)`). Documented in a new *Container tokens* block on the
   Foundations · Spacing, radius & grids page (with `gutter`, `gap`, `max-width`). To publish (Nelson).
-- **Product file:** after the publish, the `content` frames of the ICP topic screens (and `scroll-area` on mobile)
-  are bound to it (they had 12 / 16).
+- **Product file (after the publish, same day):** 88 `content` / `scroll-area` frames bound on all four sides
+  (Reading 21, Lab 48, Topic Content Types 19; they had 12 / 16). Nine mobile Lab/Reading frames resolved the Desktop
+  mode (24): set to Mobile, now 16. Quiz (66 screens) pads block by block: the side padding of *Topic header*,
+  *Questions List* and *Content Feedback* and the header's top are on the token. **Video not done yet:** its side
+  inset lives in many nested blocks, down to the full-width `Transcript-Line` rows (question to Nelson).
 - **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
 - **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
 
@@ -27,8 +30,10 @@ the card. The thumb (64, initials when there is no image) sits beside the title 
 deadline is a yellow badge after "Up next". Under the progress bar, one subtle line says what there is data for: last
 studied, hours left (or in total, not started) and the end of access; a completed card shows none. Sources are in the
 component description (dates API, last accessed, course effort, enrollment end). The 26 ICP instances were captured
-before the change (`03-design-system/restore/program-card-overrides-2026-10-15.json`). **Prototype:** PR 170. To
-publish (Nelson).
+before the change (`03-design-system/restore/program-card-overrides-2026-10-15.json`). **Prototype:** PR 170 (merged).
+**Published and accepted in ICP (Nelson):** all 26 instances kept their title and text properties (checked against the
+table); each now has its own course count (AI Digital Marketing 7, Cybersecurity 5, Data Analytics 5, property and hero
+tag) and thumb initials (AD, CF, DA).
 
 ## 2026-10-15 · Program-Card 1.7: the number of courses in every state
 
