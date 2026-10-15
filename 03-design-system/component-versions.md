@@ -308,7 +308,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button utility`, same key) |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
-| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.1 | 2026-10-13 | Published |  | 2026-10-13 · Every variant hugs its content |
+| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.2 | 2026-10-15 | Changed, to publish |  | 2026-10-15 · Hover has no fill: the label and its line darken; the line on icon tokens; Focused on bg/faint |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
 | [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1085-57382) | v1.0 | 2026-10-08 | Published |  | 2026-08-05 · The quiz nav adopted across the sections |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
@@ -408,6 +408,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-14 | `Course-Card` | v1.4 → v1.5 | Second publish: `Not started` (Grid) stacks *STARTS WITH* above the topic; the `Image` frame of both `Not started` variants linked to `Show image` again (the link was lost when the variants were cloned, so 1.4 showed no photo). |
 | 2026-10-15 | `Course-Card`, `Program-Card` | v1.5 → v1.6, v1.3 → v1.4 | Button hierarchy by action (Nelson): *Resume* is always Primary; *Start*, *Review*, *View Certificate* and *Details* are Secondary. |
 | 2026-10-15 | `Course-Card` | no change | Moved from the Discovery page to the My Learning page and renamed `LMS/Platform/Discovery/Course-Card` → `LMS/Platform/My-Learning/Course-Card` (Nelson). Same node, same key: instances are untouched. Discovery keeps `Course-Row` and the badges. |
+| 2026-10-15 | `Link Button` | v1.1 → v1.2 | Nelson: hover has no fill; the label and its 1px bottom line darken (Brand text/on-primary-soft + icon/default, Destructive accent-red, Success accent-green, Secondary text/muted + icon/muted). The line is on the icon token of its tone (icon/primary, icon/error, icon/success, icon/subtle; border/disabled when Disabled). Focused: bg/faint, radius 6. Prototype PR 166. |
 
 ## Rename map (8 Oct 2026)
 

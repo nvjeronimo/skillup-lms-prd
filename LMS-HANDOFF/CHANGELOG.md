@@ -8,6 +8,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Link Button 1.2: hover darkens, no fill
+
+Nelson changed the DS `Link Button`. Checked variant by variant and recorded as **v1.2** (description, register):
+hover no longer fills with bg/faint; the label and its 1px bottom line darken (Brand text/on-primary-soft +
+icon/default, Destructive text/accent-red + icon/accent-red, Success text/accent-green + icon/accent-green, the grey
+Secondary text/muted + icon/muted). The line uses the icon token of its tone (icon/primary, icon/error, icon/success,
+icon/subtle; border/disabled when Disabled). Focused: bg/faint, radius 6. **Prototype:** PR 166
+(`components/atoms/Button.tsx`). To publish (Nelson).
+
 ## 2026-10-15 · Course-Card moves to the My Learning page
 
 Nelson, 15 Oct: the course cards belong with My Learning. In the DS, `Course-Card` (v1.6) left the Discovery page for
