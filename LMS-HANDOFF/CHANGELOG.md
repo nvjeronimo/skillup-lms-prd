@@ -8,6 +8,35 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · New token Container/content-padding (24 / 20 / 16) for the topic content section
+
+Nelson, 15 Oct: one responsive token for the padding of the content section of the topics, 24 on desktop. Decision
+**026** (accepted).
+- **DS:** `Container/content-padding` in `3. Responsive 📐` (Desktop 24, Tablet 20, Mobile 16; aliases `Spacing/3xl`;
+  scope gap/padding; WEB `var(--container-content-padding)`). Documented in a new *Container tokens* block on the
+  Foundations · Spacing, radius & grids page (with `gutter`, `gap`, `max-width`). To publish (Nelson).
+- **Product file:** after the publish, the `content` frames of the ICP topic screens (and `scroll-area` on mobile)
+  are bound to it (they had 12 / 16).
+- **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
+- **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
+
+## 2026-10-15 · Program-Card 1.8: image thumb, next deadline, details line
+
+Nelson asked for the program image beside the title (as on the course card) and for the four extra facts proposed for
+the card. The thumb (64, initials when there is no image) sits beside the title in the hero. In progress, the next
+deadline is a yellow badge after "Up next". Under the progress bar, one subtle line says what there is data for: last
+studied, hours left (or in total, not started) and the end of access; a completed card shows none. Sources are in the
+component description (dates API, last accessed, course effort, enrollment end). The 26 ICP instances were captured
+before the change (`03-design-system/restore/program-card-overrides-2026-10-15.json`). **Prototype:** PR 170. To
+publish (Nelson).
+
+## 2026-10-15 · Program-Card 1.7: the number of courses in every state
+
+A not-started or completed program card did not say how many courses it has (only In progress did, in "1 of 7 courses
+complete"). Now the count is a third tag in the hero ("7 courses", after Delivery Mode and Difficulty) and, when the
+program is not started or completed, sits at the right end of the progress row, as the course card shows its hours.
+Data: the length of the program's `courses` (programs API). **Prototype:** PR 170. To publish (Nelson).
+
 ## 2026-10-15 · Every component set has a 16 px padding (Spacing/xl)
 
 Nelson, 15 Oct: the main components of every organised DS page have padding XL (16 px), as `Difficulty-Badge`.
