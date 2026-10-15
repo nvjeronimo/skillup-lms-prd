@@ -20,6 +20,16 @@ Nelson, 15 Oct: one responsive token for the padding of the content section of t
 - **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
 - **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
 
+## 2026-10-15 · Program-Card 1.8: image thumb, next deadline, details line
+
+Nelson asked for the program image beside the title (as on the course card) and for the four extra facts proposed for
+the card. The thumb (64, initials when there is no image) sits beside the title in the hero. In progress, the next
+deadline is a yellow badge after "Up next". Under the progress bar, one subtle line says what there is data for: last
+studied, hours left (or in total, not started) and the end of access; a completed card shows none. Sources are in the
+component description (dates API, last accessed, course effort, enrollment end). The 26 ICP instances were captured
+before the change (`03-design-system/restore/program-card-overrides-2026-10-15.json`). **Prototype:** PR 170. To
+publish (Nelson).
+
 ## 2026-10-15 · Program-Card 1.7: the number of courses in every state
 
 A not-started or completed program card did not say how many courses it has (only In progress did, in "1 of 7 courses
