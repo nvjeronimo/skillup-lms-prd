@@ -8,6 +8,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Course-Type-Badge 1.1: words only
+
+Nelson did not like either set of icons: his filled two-tone sheets, or the platform's graduation cap and rosette (dated).
+Three rounds of options were tried on the real My Learning cards (books, paths, folders, layers, then a box for a course
+and boxes under a certificate seal for a program). The program icon read as too complex at 16 px, so the badge is now
+**the word only**: COURSE in text/subtle, PROGRAM in text/primary. The word and its colour say it as fast, and the two
+cards already differ in shape. From the trial, the DS keeps a new Untitled-style icon, `boxes`. **Prototype:** PR 169. To
+publish (Nelson).
+
 ## 2026-10-15 · Course-Card 1.8 (new Grid header) and green certificate strips (Program-Card 1.6)
 
 Nelson finished both cards. **Course-Card 1.8:** a new Grid header — the Course Type line across the card, then a 64 px
