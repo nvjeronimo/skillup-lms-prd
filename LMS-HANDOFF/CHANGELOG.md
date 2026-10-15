@@ -23,6 +23,12 @@ Nelson, 15 Oct: one responsive token for the padding of the content section of t
 - **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
 - **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
 
+## 2026-10-15 · Program-Card 1.9: title at 20 px
+
+Nelson set the program card title to title-large/Semibold (20/30), the course card's size, in all six variants (it was
+headline-medium). With the thumb beside it, the long titles now fit in their 3 lines. **Prototype:** PR 172. To publish
+(Nelson).
+
 ## 2026-10-15 · Program-Card 1.8: image thumb, next deadline, details line
 
 Nelson asked for the program image beside the title (as on the course card) and for the four extra facts proposed for
