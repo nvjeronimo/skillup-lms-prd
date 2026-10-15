@@ -8,6 +8,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · Course-Card moves to the My Learning page
+
+Nelson, 15 Oct: the course cards belong with My Learning. In the DS, `Course-Card` (v1.6) left the Discovery page for
+the My Learning page and is now `LMS/Platform/My-Learning/Course-Card` (was `LMS/Platform/Discovery/Course-Card`).
+Same node, same key: instances and overrides are untouched, no version bump. Both pages were rebuilt with the
+generator: My Learning has 1 molecule (`Browse-Tile`) and 2 organisms (`Course-Card`, `Program-Card`); Discovery keeps
+6 atoms and `Course-Row`. `ds-levels.json`, the register and the rename map follow. To publish (Nelson).
+
 ## 2026-10-14 → 15 · Course and program cards reviewed; three DS side stripes replaced
 
 Nelson's review of the My Learning cards in their three states (started, not started, completed), and his call on the

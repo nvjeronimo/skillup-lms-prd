@@ -229,6 +229,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.6 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.4 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.3, 14 Oct: progress said once, `Percent` removed, *Start* on Not started) |
 
 **Discovery**
@@ -236,7 +237,6 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.6 | 2026-10-15 | Published | 6 | 2026-10-15 · *Resume* is Primary, every other action Secondary (1.4–1.5, 14 Oct: new `State=Not started`, Up next on 2 lines) |
 | [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.2 | 2026-10-14 | Published | 3 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Course Type Badge” |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
@@ -407,6 +407,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-14 | `Course-Card` | v1.3 → v1.4 | New `State=Not started` (Grid, List): no 0% bar, the Up next slot reads *STARTS WITH* + the first topic, action *Start*. Up next title fills its row and wraps to 2 lines in every variant. |
 | 2026-10-14 | `Course-Card` | v1.4 → v1.5 | Second publish: `Not started` (Grid) stacks *STARTS WITH* above the topic; the `Image` frame of both `Not started` variants linked to `Show image` again (the link was lost when the variants were cloned, so 1.4 showed no photo). |
 | 2026-10-15 | `Course-Card`, `Program-Card` | v1.5 → v1.6, v1.3 → v1.4 | Button hierarchy by action (Nelson): *Resume* is always Primary; *Start*, *Review*, *View Certificate* and *Details* are Secondary. |
+| 2026-10-15 | `Course-Card` | no change | Moved from the Discovery page to the My Learning page and renamed `LMS/Platform/Discovery/Course-Card` → `LMS/Platform/My-Learning/Course-Card` (Nelson). Same node, same key: instances are untouched. Discovery keeps `Course-Row` and the badges. |
 
 ## Rename map (8 Oct 2026)
 
@@ -479,7 +480,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | `LMS / Course Certificate` | `LMS/Platform/Completion/Certificate` |
 | `LMS / Course Complete Modal` | `LMS/Platform/Completion/Course-Complete-Modal` |
 | `LMS / Card Overflow Menu` | `LMS/Platform/Discovery/Card-Overflow-Menu` |
-| `LMS / Course Card` | `LMS/Platform/Discovery/Course-Card` |
+| `LMS / Course Card` | `LMS/Platform/My-Learning/Course-Card` (was `LMS/Platform/Discovery/Course-Card` until 15 Oct 2026) |
 | `LMS / Course Row` | `LMS/Platform/Discovery/Course-Row` |
 | `LMS / Course Type Badge` | `LMS/Platform/Discovery/Course-Type-Badge` |
 | `LMS / Delivery Mode Badge` | `LMS/Platform/Discovery/Delivery-Mode-Badge` |
