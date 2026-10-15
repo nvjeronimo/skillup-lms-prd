@@ -39,12 +39,13 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 023 | SCORM + ORA hard limits (edX-sourced) | ICP | 1 | accepted | dev | [023](023-scorm-ora-hard-limits.md) |
 | 024 | Motion scale — Material names, one mode, reduced motion keeps feedback | Foundations | 1 | proposed | designer, dev | [024](024-motion-scale.md) |
 | 025 | A course of a program is reached from its program, or from "Pick up where you left off" | LMS | 1 | accepted | designer, dev, stakeholder | [025](025-program-courses-entry-points.md) |
+| 026 | The content section of a topic is padded with Container/content-padding (24 / 20 / 16) | Foundations | 1 | accepted | designer, dev | [026](026-content-padding-token.md) |
 
 ## Filter by track
 
 - **ICP** (immersive & content types): 001, 002, 004, 006, 008, 009, 011, 019, 020, 021, 022, 023
 - **LMS** (platform pages): 005, 007, 010, 025 *(more to come as the Platform Pages track develops)*
-- **Foundations** (design system): 003, 012, 013, 014, 015, 016, 017, 018
+- **Foundations** (design system): 003, 012, 013, 014, 015, 016, 017, 018, 024, 026
 
 ## Filter by audience
 

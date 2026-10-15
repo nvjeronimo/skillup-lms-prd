@@ -25,6 +25,8 @@ equally.
 
 ## 2 · The shell
 
+> **15 Oct 2026:** the `content` frame (and `scroll-area` on mobile) is padded with `Container/content-padding` — 24 / 20 / 16 by mode, decision 026 — no longer 12 / 16.
+
 The content column that already existed *is* `Main Content`. What was missing was everything around it:
 
 ```

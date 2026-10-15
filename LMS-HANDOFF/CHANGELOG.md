@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-15 · New token Container/content-padding (24 / 20 / 16) for the topic content section
+
+Nelson, 15 Oct: one responsive token for the padding of the content section of the topics, 24 on desktop. Decision
+**026** (accepted).
+- **DS:** `Container/content-padding` in `3. Responsive 📐` (Desktop 24, Tablet 20, Mobile 16; aliases `Spacing/3xl`;
+  scope gap/padding; WEB `var(--container-content-padding)`). Documented in a new *Container tokens* block on the
+  Foundations · Spacing, radius & grids page (with `gutter`, `gap`, `max-width`). To publish (Nelson).
+- **Product file:** after the publish, the `content` frames of the ICP topic screens (and `scroll-area` on mobile)
+  are bound to it (they had 12 / 16).
+- **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
+- **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
+
 ## 2026-10-15 · Program-Card 1.7: the number of courses in every state
 
 A not-started or completed program card did not say how many courses it has (only In progress did, in "1 of 7 courses
