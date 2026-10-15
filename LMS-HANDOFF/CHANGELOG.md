@@ -16,9 +16,10 @@ fills the width; the certificate strip of a completed course is green, and the L
 **Program-Card 1.6:** the certificate footer is green. On the green the label uses text/default (text/subtle is 3.3:1 in
 dark). **Prototype:** PR 168 (axe wcag2aa clean, light and dark).
 
-**After the publish:** the header rebuild resets the header overrides of every Grid instance in other files. The 77 in
-the ICP file were captured first (`03-design-system/restore/course-card-grid-overrides-2026-10-15.json`); once Nelson
-accepts the update there, they are reapplied from that table. To publish (Nelson).
+**Published and accepted in ICP (Nelson).** The 77 Grid instances there were captured first
+(`03-design-system/restore/course-card-grid-overrides-2026-10-15.json`) and checked after the update: all kept their
+title, initials, image and badges, so nothing was restored. One Completed card (My Learning 04, light) had an old
+override that kept its certificate strip white: reset to the green.
 
 ## 2026-10-15 · Cards: footer by action (Course-Card 1.7, Program-Card 1.5); Assistant 1.2 with a moving ring
 
