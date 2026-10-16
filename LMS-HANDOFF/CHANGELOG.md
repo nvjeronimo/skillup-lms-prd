@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Published and accepted: the screens checked
+
+Nelson published the DS and accepted the updates (Provider-Partner-Badge 1.1, Course-Card 1.11, Program-Card 1.10,
+Transcript-Line 1.1, Container/content-padding). Checked in the product file the same afternoon:
+- **102 `Course-Card`** instances on 1.11; next-topic title and topic type equal to the restore table
+  (`restore/course-card-next-topic-2026-10-16.json`): nothing to reapply. One partner each (Second partner off).
+- **26 `Program-Card`** instances on 1.10: the picture kept, two partner logo badges (Dark).
+- **`Transcript-Line`** on the Video and AI Assistant screens: side padding 24 desktop, 20 tablet, 16 mobile (129 lines).
+- **Prototype:** the List course card thumb is 84, as the DS (PR 174). The completed course card already opened its
+  course page; the completed program card (Data Analytics) had no page: a program page for it is being added so the
+  card opens its details (Nelson: a completed card is clickable too).
+
 ## 2026-10-16 · Course-Card 1.11: the next-topic title gets the full width
 
 Nelson changed the Grid card: *UP NEXT* and the topic-type badge share one row, and the title below takes the full width
