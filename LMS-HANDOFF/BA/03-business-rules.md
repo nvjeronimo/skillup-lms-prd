@@ -208,6 +208,11 @@ The learner opens it from the program page or from the Dashboard's *Pick up wher
 (Nelson, 14 Oct 2026): the program card's *Continue* opens the player of the course in progress; a due item opens
 its work; the program certificate page links to its courses. Decision 025.
 
+### BR-48 · My Learning opens on the learner's last tab
+My Learning opens on the tab the learner last opened (Courses or Programs). The first time, it opens on Programs when
+the learner is enrolled in at least one program, otherwise on Courses. A link that names a tab (`?tab=`) wins and
+becomes the remembered tab (Nelson, 16 Oct 2026). Cards of a collection always share one height.
+
 ## Display rules
 
 ### BR-31 · Next-live rule

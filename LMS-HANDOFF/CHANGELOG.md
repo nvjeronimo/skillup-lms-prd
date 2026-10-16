@@ -8,6 +8,25 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Audit fixes, phase 1 (DS)
+
+From the audits of the prototype, the ICP Ready pages and the DS (prototype 17/20, ICP 20/20, DS 16/20). Fixed in the DS,
+to publish: the CERTIFICATE / "Certificate issued" labels on the green strips use text/default (3.50:1 in dark before;
+Course-Card 1.13, Program-Card 1.11); the Program-Card "Up next" label has its text style again; the Note-Editor no longer
+stays white in dark mode (1.2); 7 dead hidden layers removed and three missing version lines added (no visual change).
+Next: four decisions (launcher count colour, placeholder contrast, launcher ring, Platform Pages desktop width), then
+phase 2 in the DS, one publish, then the prototype PR.
+
+## 2026-10-16 · Cards share one height; My Learning opens on the last tab
+
+- **Same height (Nelson):** `Course-Card` 1.12. Grid states were 370 / 356 / 350: each now has a minimum height of 370
+  and the action at the bottom; List Completed 120 → 118 (thumb back to 84). `Program-Card` was already equal
+  (436 / 220). Prototype PR 179: the cards of a collection take the tallest height (courses 368 ×5 at 1280, 360 ×5 at
+  375; programs 404 ×3). On the screens, cards of one row set to Fill the row.
+- **My Learning tab (Nelson), BR-48:** opens on the last tab the learner opened; the first time, Programs when they
+  are enrolled in one, else Courses; `?tab=` wins and is remembered. Prototype PR 179; `platform-navigation-flow.md`.
+  To publish (Nelson).
+
 ## 2026-10-16 · DS documentation audit: anatomy, empty paragraphs, layer names
 
 Nelson, 16 Oct: the anatomy listed the inside of icons and images, the rules texts had empty paragraphs, and layers were
