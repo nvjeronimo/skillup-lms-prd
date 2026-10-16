@@ -14,8 +14,18 @@ From the audits of the prototype, the ICP Ready pages and the DS (prototype 17/2
 to publish: the CERTIFICATE / "Certificate issued" labels on the green strips use text/default (3.50:1 in dark before;
 Course-Card 1.13, Program-Card 1.11); the Program-Card "Up next" label has its text style again; the Note-Editor no longer
 stays white in dark mode (1.2); 7 dead hidden layers removed and three missing version lines added (no visual change).
-Next: four decisions (launcher count colour, placeholder contrast, launcher ring, Platform Pages desktop width), then
-phase 2 in the DS, one publish, then the prototype PR.
+**Phase 2 (same day, recommended defaults — Nelson said "avança"):** launcher count on bg/primary (Assistant-Launcher
+1.3); `text/placeholder` one step darker in every mode (4.96:1 light, 6.28:1 dark on bg/subtle); "Property 1" renamed
+"State" on Topic-Footer-Nav, Collapse-Toggle and Live-Control-Bar. To publish (Nelson).
+**Phase 3, prototype PR 180:** Live-Now-Banner, reading pull quote and Answer alert at their DS v1.1 (and the
+`bg/warning-muted` token), the new placeholder value, the launcher ring turns only while first steps are left, lazy
+course covers, the certificate page lists its signatories. Re-audit: axe 0 violations, 0 overflow in 78 page loads.
+**Phase 4, ICP:** the three hand-drawn "i" icons in the video transcript's "Add note" hint are now DS `info-circle`
+instances. Two audit items were false positives: the off-width Platform Pages frames are handoff-card content, not
+pages (every page screen is 1280), and the unstyled Reading runs are intentional rich-text marks (bold, italic, code).
+**Hidden-layer review (approved):** Topbar 1.2 — the theme button is shown by default and is a moon/sun Utility Button
+like the bell and bookmark (the prototype's player bar); every ICP Topbar shows it after the update. Dead hidden layers
+removed from Topbar and Weekly-Goal-Card; Topic-Row 1.3 gets an `Optional` switch for its Optional-Chip.
 
 ## 2026-10-16 · Cards share one height; My Learning opens on the last tab
 
