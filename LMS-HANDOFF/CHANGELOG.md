@@ -8,6 +8,16 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Course-Card 1.11: the next-topic title gets the full width
+
+Nelson changed the Grid card: *UP NEXT* and the topic-type badge share one row, and the title below takes the full width
+(306 instead of 245), two lines then an ellipsis. Applied to the other variants that show a next topic (Not started
+Grid and List; List Default already had the row). My Learning DS page rebuilt. **Before the publish** the next title
+and topic type of the 102 product-file instances were saved to
+`03-design-system/restore/course-card-next-topic-2026-10-16.json`, because moving the badge into a new row can reset
+its *Type* override (Video/Reading) on the screens; check and reapply after the update. **Prototype:** PR 174, third
+commit. To publish (Nelson).
+
 ## 2026-10-16 · Course-Card 1.10: more than one partner
 
 Nelson, 16 Oct: the course card ready for more than one partner, as the program card. In the DS the partner badge sits

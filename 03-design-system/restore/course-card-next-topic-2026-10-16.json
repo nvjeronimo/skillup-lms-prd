@@ -1,0 +1,619 @@
+{
+ "captured": "2026-10-16",
+ "file": "Wz2TCYFVr0hD8tJNiLajLt",
+ "why": "Course-Card 1.10/1.11: the next-topic block was restructured (overline and topic-type badge on one row). After the library update, check each instance's Next-Title text and Topic-Types-Badge type against this table and reapply.",
+ "instances": [
+  {
+   "id": "I7175:30127;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:30128;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:30129;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:30625;22221:4040",
+   "variant": "Layout=Grid, State=Not started",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:31114;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I7175:32281;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:32282;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:32283;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:32775;22009:22908",
+   "variant": "Layout=List, State=Not started",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:33264;22009:22908",
+   "variant": "Layout=List, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I7175:34188;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:34189;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:34190;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:34682;22221:4040",
+   "variant": "Layout=Grid, State=Not started",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:35171;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I7175:35746;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:35747;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:35748;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:36240;22221:4040",
+   "variant": "Layout=Grid, State=Not started",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7175:36729;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6729:15814;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6729:15815;22009:22915",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Creating impactful ad copy with effective prompts",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6729:15816;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:15817;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:15818;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:15819;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:15820;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:21413;22221:4040",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6729:21414;22221:4786",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Creating impactful ad copy with effective prompts",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6729:21415;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:21416;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:21417;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:21418;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:21419;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:25826;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6729:25827;22221:4786",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Creating impactful ad copy with effective prompts",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6729:25828;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:25829;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:25830;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:25831;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6729:25832;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:166419;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:166682;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:166950;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:167216;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6988:167469;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6988:167721;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:167975;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:168242;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:168509;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6988:168763;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6988:169016;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:169273;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:169539;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:169805;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6988:170058;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6988:170310;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:170567;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:170833;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6988:171099;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6988:171352;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6539:29620;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6539:29871;22009:22915",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Creating impactful ad copy with effective prompts",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6539:30898;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6539:31217;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6539:31509;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6539:31801;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6539:32093;22009:22908",
+   "variant": "Layout=List, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6667:26743;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6667:27670;22221:4786",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Creating impactful ad copy with effective prompts",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6667:30032;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6667:30371;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6667:30674;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6667:30977;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6667:31280;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6668:142134;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I6668:142907;22221:4786",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Creating impactful ad copy with effective prompts",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I6668:145112;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6668:145442;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6668:145745;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6668:146048;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I6668:146351;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Course Introduction",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7154:26449;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7154:26450;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7154:26451;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7154:26943;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7154:27432;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I7155:28641;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7155:28642;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7155:28643;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7155:29135;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7155:29624;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I7184:28193;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7184:28194;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7184:28195;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7184:28199;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7184:28203;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  },
+  {
+   "id": "I7184:28888;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Discovery interview techniques",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7184:28889;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "AI-assisted sprint planning",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7184:28890;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Async standups",
+   "topicType": "Video"
+  },
+  {
+   "id": "I7184:28894;22221:4040",
+   "variant": "Layout=Grid, State=Default",
+   "nextTitle": "Python environment setup",
+   "topicType": "Reading"
+  },
+  {
+   "id": "I7184:28898;22221:4040",
+   "variant": "Layout=Grid, State=Completed",
+   "nextTitle": "Issued 12 Sep 2026",
+   "topicType": null
+  }
+ ]
+}
