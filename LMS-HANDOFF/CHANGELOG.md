@@ -8,6 +8,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Course-Card 1.10: more than one partner
+
+Nelson, 16 Oct: the course card ready for more than one partner, as the program card. In the DS the partner badge sits
+in a *Partners* row with a second badge, shown by a new boolean **Second partner** (off by default); *Partner 1* and
+*Partner 2* are exposed, so a screen sets each one. My Learning page rebuilt. Before the change the 102 product-file
+instances were read: all on the default (IBM, Logo), no override to lose. **Prototype:** `partners?: Provider[]` on a
+course (PR 174, second commit; sample: Business Analytics with Python, SkillUp + IBM). To publish (Nelson).
+
 ## 2026-10-16 · A picture on every course and program card
 
 Nelson, 16 Oct: images on every course and program card. The 102 `Course-Card` instances in the product file already

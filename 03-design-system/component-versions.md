@@ -229,7 +229,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.9 | 2026-10-16 | Changed, to publish | 6 | 2026-10-16 · Provider or partner as its logo (Provider-Partner-Badge Type=Logo) in Grid and List (Nelson) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.10 | 2026-10-16 | Changed, to publish | 6 | 2026-10-16 · More than one partner: a Partners row with a second badge (boolean Second partner, off by default); both badges exposed |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.10 | 2026-10-16 | Changed, to publish | 6 | 2026-10-16 · Hero partner logos are Provider-Partner-Badge Type=Logo, Theme=Dark (exposed), replacing the placeholder chips |
 
 **Discovery**
@@ -420,6 +420,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-16 | `Provider-Partner-Badge` | v1.0 → v1.1 | Nelson added Type=Logo (the partner artwork on a bg/subtle chip, monochrome parts on icon/muted). New variant property Theme=Light/Dark: the 12 Dark variants carry the SKO Dark mode, for dark surfaces such as the Program-Card hero. FutureSkills is a dark bitmap: its Dark variant keeps the light chip until a light artwork exists. 24 variants. |
 | 2026-10-16 | `Course-Card` | v1.8 → v1.9 | Nelson: the provider or partner shows as its logo (Type=Logo, Theme=Light) on the Course Type line, Grid and List. |
 | 2026-10-16 | `Program-Card` | v1.9 → v1.10 | The two hero Partner chips (placeholder logos, 77 × 36) become Provider-Partner-Badge instances, Type=Logo, Theme=Dark, Microsoft and IBM by default, exposed so a screen can set the partner. Prototype PR 174. |
+| 2026-10-16 | `Course-Card` | v1.9 → v1.10 | Nelson: a course can have more than one partner, as a program. The badge sits in a *Partners* row (gap `Spacing/md`) with a second Provider-Partner-Badge (Microsoft, Logo, Light) shown by the new boolean *Second partner* (default off). Both exposed (*Partner 1*, *Partner 2*). The 102 product-file instances all used the default IBM badge, so nothing was overridden. Prototype PR 174 (second commit). |
 
 ## Rename map (8 Oct 2026)
 
