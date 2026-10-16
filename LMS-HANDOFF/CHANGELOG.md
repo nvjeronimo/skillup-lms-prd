@@ -23,6 +23,9 @@ course covers, the certificate page lists its signatories. Re-audit: axe 0 viola
 **Phase 4, ICP:** the three hand-drawn "i" icons in the video transcript's "Add note" hint are now DS `info-circle`
 instances. Two audit items were false positives: the off-width Platform Pages frames are handoff-card content, not
 pages (every page screen is 1280), and the unstyled Reading runs are intentional rich-text marks (bold, italic, code).
+**Hidden-layer review (approved):** Topbar 1.2 — the theme button is shown by default and is a moon/sun Utility Button
+like the bell and bookmark (the prototype's player bar); every ICP Topbar shows it after the update. Dead hidden layers
+removed from Topbar and Weekly-Goal-Card; Topic-Row 1.3 gets an `Optional` switch for its Optional-Chip.
 
 ## 2026-10-16 · Cards share one height; My Learning opens on the last tab
 
