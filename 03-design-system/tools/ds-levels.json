@@ -12,7 +12,7 @@
     "LMS": {
       "Atoms": 45,
       "Molecules": 51,
-      "Organisms": 17
+      "Organisms": 18
     },
     "Base components": {
       "Atoms": 54,
@@ -142,7 +142,9 @@
           "Empty State",
           "Discussion Prompt"
         ],
-        "Organisms": []
+        "Organisms": [
+          "Profile Menu"
+        ]
       }
     },
     "LMS Platform": {

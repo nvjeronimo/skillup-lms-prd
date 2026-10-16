@@ -8,6 +8,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · One profile menu (prototype + DS)
+
+Nelson: the profile menus of the platform pages and the ICP differed (the platform one had no accessibility settings;
+the ICP one offered six skins, three of them without tokens). Both now show the same blocks in the same order: the
+learner, **Appearance** (dark theme, brand skin SKO / Gold / Red), **Accessibility standards** (text size,
+colourblind-safe states, reduce motion, underline links, larger touch targets) and the footer (Restart first steps,
+Reset demo). The player keeps its preview sections between Accessibility and the footer. Prototype PR 181 (shared
+`ProfileSettings`, store v5 sends a stored Ink / Sky / Violet back to SKO). DS: new organism `LMS / Profile Menu` v1.0
+on *LMS · Shared components*, built from Avatar, Toggle and Button group; published 16 Oct.
+
+
 ## 2026-10-16 · Audit fixes, phase 1 (DS)
 
 From the audits of the prototype, the ICP Ready pages and the DS (prototype 17/20, ICP 20/20, DS 16/20). Fixed in the DS,
