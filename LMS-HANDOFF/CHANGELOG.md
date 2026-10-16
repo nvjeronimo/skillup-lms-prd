@@ -8,6 +8,57 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Published and accepted: the screens checked
+
+Nelson published the DS and accepted the updates (Provider-Partner-Badge 1.1, Course-Card 1.11, Program-Card 1.10,
+Transcript-Line 1.1, Container/content-padding). Checked in the product file the same afternoon:
+- **102 `Course-Card`** instances on 1.11; next-topic title and topic type equal to the restore table
+  (`restore/course-card-next-topic-2026-10-16.json`): nothing to reapply. One partner each (Second partner off).
+- **26 `Program-Card`** instances on 1.10: the picture kept, two partner logo badges (Dark).
+- **`Transcript-Line`** on the Video and AI Assistant screens: side padding 24 desktop, 20 tablet, 16 mobile (129 lines).
+- **Prototype:** the List course card thumb is 84, as the DS (PR 174). The completed course card already opened its
+  course page; the completed program card (Data Analytics) had no page: a program page for it is being added so the
+  card opens its details (Nelson: a completed card is clickable too).
+
+## 2026-10-16 · Course-Card 1.11: the next-topic title gets the full width
+
+Nelson changed the Grid card: *UP NEXT* and the topic-type badge share one row, and the title below takes the full width
+(306 instead of 245), two lines then an ellipsis. Applied to the other variants that show a next topic (Not started
+Grid and List; List Default already had the row). My Learning DS page rebuilt. **Before the publish** the next title
+and topic type of the 102 product-file instances were saved to
+`03-design-system/restore/course-card-next-topic-2026-10-16.json`, because moving the badge into a new row can reset
+its *Type* override (Video/Reading) on the screens; check and reapply after the update. **Prototype:** PR 174, third
+commit. To publish (Nelson).
+
+## 2026-10-16 · Course-Card 1.10: more than one partner
+
+Nelson, 16 Oct: the course card ready for more than one partner, as the program card. In the DS the partner badge sits
+in a *Partners* row with a second badge, shown by a new boolean **Second partner** (off by default); *Partner 1* and
+*Partner 2* are exposed, so a screen sets each one. My Learning page rebuilt. Before the change the 102 product-file
+instances were read: all on the default (IBM, Logo), no override to lose. **Prototype:** `partners?: Provider[]` on a
+course (PR 174, second commit; sample: Business Analytics with Python, SkillUp + IBM). To publish (Nelson).
+
+## 2026-10-16 · A picture on every course and program card
+
+Nelson, 16 Oct: images on every course and program card. The 102 `Course-Card` instances in the product file already
+had their covers; the 26 `Program-Card` instances showed initials. They now show a picture (*Show image* on, the thumb
+`Image` filled): the AI Digital Marketing program its own cover; **Cybersecurity** and **Data Analytics** have no
+picture, so they take placeholder covers (Intro to Product Analytics, Business Analytics with Python), the same in the
+prototype (PR 175). To check after the publish that Program-Card 1.10 keeps the image override.
+
+## 2026-10-16 · Partner logos: Provider-Partner-Badge 1.1 (Theme Dark), Course-Card 1.9, Program-Card 1.10
+
+Nelson added logo variants to `Provider-Partner-Badge` and put them on the course card; the program hero needed a
+dark version.
+- **`Provider-Partner-Badge` 1.1:** Type=Text / Logo × a new **Theme=Light / Dark** (24 variants). Dark = the SKO Dark
+  mode on the variant, so the chip and the monochrome parts flip; brand colours stay. FutureSkills is a dark bitmap:
+  its Dark variant keeps the light chip until a light artwork exists (to ask the partner).
+- **`Course-Card` 1.9 (Nelson):** provider as its logo, Grid and List.
+- **`Program-Card` 1.10:** the hero partners are badge instances (Logo, Dark; exposed), replacing the placeholder chips.
+  The 26 product-file instances all showed Microsoft + IBM, so no partner override is lost.
+- DS pages *Discovery* and *My Learning* rebuilt with the generator. **Prototype:** PR 174 (`ProviderBadge type="logo"`,
+  artwork exported from the DS into `public/platform/partners/`, light/dark by the surface's theme). To publish (Nelson).
+
 ## 2026-10-15 · New token Container/content-padding (24 / 20 / 16) for the topic content section
 
 Nelson, 15 Oct: one responsive token for the padding of the content section of the topics, 24 on desktop. Decision
@@ -18,10 +69,20 @@ Nelson, 15 Oct: one responsive token for the padding of the content section of t
 - **Product file (after the publish, same day):** 88 `content` / `scroll-area` frames bound on all four sides
   (Reading 21, Lab 48, Topic Content Types 19; they had 12 / 16). Nine mobile Lab/Reading frames resolved the Desktop
   mode (24): set to Mobile, now 16. Quiz (66 screens) pads block by block: the side padding of *Topic header*,
-  *Questions List* and *Content Feedback* and the header's top are on the token. **Video not done yet:** its side
-  inset lives in many nested blocks, down to the full-width `Transcript-Line` rows (question to Nelson).
+  *Questions List* and *Content Feedback* and the header's top are on the token. **Video (Nelson chose option 2 the
+  same day):** the side padding of *Video player* (and its top; not on mobile, where it is full-bleed), *Topic header*,
+  *Horizontal tabs*, *Controlers*, *Auto-scroll status*, *Feedback* / *Content Feedback* on the token, on the 30 video
+  screens and the 4 of the AI Assistant preview (2 mobile frames given the Mobile mode). **`Transcript-Line` 1.1:**
+  its side padding is on the token, so the line text lines up with the title while the row stays full width; inside
+  `Note-Item` / `Note-Editor` it keeps 16 (override). The screens pick it up after the publish. Prototype PR 173.
 - **Prototype:** PR 171, `PlayerShell` content section on the token (it was a fixed 16); `tokens/spacing.md`.
 - **Docs:** shell rule in `topic-types-inventory.md`, a note in `reading-screen-matrix.md` §2.
+
+## 2026-10-15 · Program-Card 1.9: title at 20 px
+
+Nelson set the program card title to title-large/Semibold (20/30), the course card's size, in all six variants (it was
+headline-medium). With the thumb beside it, the long titles now fit in their 3 lines. **Prototype:** PR 172. To publish
+(Nelson).
 
 ## 2026-10-15 · Program-Card 1.8: image thumb, next deadline, details line
 
