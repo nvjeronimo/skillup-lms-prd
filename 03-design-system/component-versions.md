@@ -229,7 +229,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.11 | 2026-10-16 | Published | 6 | 2026-10-16 · Next-topic title full width: overline and topic type on one row above it (Grid and List, every state with a next topic) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.12 | 2026-10-16 | Changed, to publish | 6 | 2026-10-16 · Same height in every state: Grid min 370 with the action at the bottom; List 118 (Completed thumb back to 84) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.10 | 2026-10-16 | Published | 6 | 2026-10-16 · Hero partner logos are Provider-Partner-Badge Type=Logo, Theme=Dark (exposed), replacing the placeholder chips |
 
 **Discovery**
@@ -423,6 +423,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-16 | `Course-Card` | v1.9 → v1.10 | Nelson: a course can have more than one partner, as a program. The badge sits in a *Partners* row (gap `Spacing/md`) with a second Provider-Partner-Badge (Microsoft, Logo, Light) shown by the new boolean *Second partner* (default off). Both exposed (*Partner 1*, *Partner 2*). The 102 product-file instances all used the default IBM badge, so nothing was overridden. Prototype PR 174 (second commit). |
 | 2026-10-16 | `Course-Card` | v1.10 → v1.11 | Nelson changed Grid Default: the overline (UP NEXT) and the topic-type badge share one row (badge at the right end), so the next-topic title gets the full width, two lines then an ellipsis. Applied to Not started (Grid, and List with the List row: 16 apart). Completed hides the badge, unchanged. Before the publish, the next title and topic type of the 102 product-file instances were saved to `restore/course-card-next-topic-2026-10-16.json`. Prototype PR 174 (third commit). |
 | 2026-10-16 | `Provider-Partner-Badge` | v1.1 → v1.2 | Nelson: the logo chip padding is `Spacing/sm` (6), 24 → 28 tall (radius `Radius/fixed-xs`). FutureSkills Dark is the same bitmap with image filters (exposure +1, contrast +1, saturation −1, shadows −1), so it reads on the dark chip; the light-chip exception is gone. Prototype PR 177. |
+| 2026-10-16 | `Course-Card` | v1.11 → v1.12 | Nelson: cards always have the same height. Grid variants were 370 / 356 / 350: each now has `minHeight` 370 and the `cta-slot` grows with its buttons at the bottom. List Completed was 120 (thumb 86, a stray min-height): now 118 like the others. Prototype PR 179 (the cards of a collection take the tallest height). |
 
 ## Rename map (8 Oct 2026)
 

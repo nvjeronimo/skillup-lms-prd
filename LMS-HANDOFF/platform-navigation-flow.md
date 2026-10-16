@@ -30,6 +30,9 @@ card of its own in My Learning's course list; the learner opens it from the prog
 the course in progress, a due item still opens its work, and the program certificate page links to its courses.
 The prototype already behaved so; nothing was rewired.
 
+**Since 16 Oct 2026 (Nelson, BR-48): My Learning opens on the learner's last tab**; the first time, on Programs when
+they are enrolled in one. A link with `?tab=` (the *Programs* crumb, the assistant) opens that tab and remembers it.
+
 ## 2. The map
 
 ```mermaid

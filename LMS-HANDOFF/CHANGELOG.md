@@ -8,6 +8,16 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Cards share one height; My Learning opens on the last tab
+
+- **Same height (Nelson):** `Course-Card` 1.12. Grid states were 370 / 356 / 350: each now has a minimum height of 370
+  and the action at the bottom; List Completed 120 → 118 (thumb back to 84). `Program-Card` was already equal
+  (436 / 220). Prototype PR 179: the cards of a collection take the tallest height (courses 368 ×5 at 1280, 360 ×5 at
+  375; programs 404 ×3). On the screens, cards of one row set to Fill the row.
+- **My Learning tab (Nelson), BR-48:** opens on the last tab the learner opened; the first time, Programs when they
+  are enrolled in one, else Courses; `?tab=` wins and is remembered. Prototype PR 179; `platform-navigation-flow.md`.
+  To publish (Nelson).
+
 ## 2026-10-16 · DS documentation audit: anatomy, empty paragraphs, layer names
 
 Nelson, 16 Oct: the anatomy listed the inside of icons and images, the rules texts had empty paragraphs, and layers were
