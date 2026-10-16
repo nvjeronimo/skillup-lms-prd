@@ -124,7 +124,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Topic-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537676) | v1.1 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Topic-Status-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20066-431924) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “Topic-Status-Badge” |
 | [Topic-Types-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536800) | v1.0 | 2026-10-08 | Published | 14 | 2026-10-08 · Renamed from “LMS / Topic-Types Badge” |
-| [Transcript-Line](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537556) | v1.1 | 2026-10-15 | Changed, to publish | 4 | 2026-10-15 · Side padding on `Container/content-padding` (24 / 20 / 16); as a quote in Note-Item / Note-Editor it keeps `Spacing/xl` by override |
+| [Transcript-Line](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537556) | v1.1 | 2026-10-15 | Published | 4 | 2026-10-15 · Side padding on `Container/content-padding` (24 / 20 / 16); as a quote in Note-Item / Note-Editor it keeps `Spacing/xl` by override |
 
 **Topics**
 
@@ -229,8 +229,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.11 | 2026-10-16 | Changed, to publish | 6 | 2026-10-16 · Next-topic title full width: overline and topic type on one row above it (Grid and List, every state with a next topic) |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.10 | 2026-10-16 | Changed, to publish | 6 | 2026-10-16 · Hero partner logos are Provider-Partner-Badge Type=Logo, Theme=Dark (exposed), replacing the placeholder chips |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.11 | 2026-10-16 | Published | 6 | 2026-10-16 · Next-topic title full width: overline and topic type on one row above it (Grid and List, every state with a next topic) |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.10 | 2026-10-16 | Published | 6 | 2026-10-16 · Hero partner logos are Provider-Partner-Badge Type=Logo, Theme=Dark (exposed), replacing the placeholder chips |
 
 **Discovery**
 
@@ -242,7 +242,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.1 | 2026-10-16 | Changed, to publish | 24 | 2026-10-16 · Type=Logo (Nelson) and a Theme property: Dark carries SKO Dark for dark surfaces (Program-Card hero); FutureSkills Dark keeps a light chip |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.1 | 2026-10-16 | Published | 24 | 2026-10-16 · Type=Logo (Nelson) and a Theme property: Dark carries SKO Dark for dark surfaces (Program-Card hero); FutureSkills Dark keeps a light chip |
 
 **Program-Detail**
 
