@@ -16,7 +16,7 @@ learner, **Appearance** (dark theme, brand skin SKO / Gold / Red), **Accessibili
 colourblind-safe states, reduce motion, underline links, larger touch targets) and the footer (Restart first steps,
 Reset demo). The player keeps its preview sections between Accessibility and the footer. Prototype PR 181 (shared
 `ProfileSettings`, store v5 sends a stored Ink / Sky / Violet back to SKO). DS: new organism `LMS / Profile Menu` v1.0
-on *LMS · Shared components*, built from Avatar, Toggle and Button group; to publish (Nelson).
+on *LMS · Shared components*, built from Avatar, Toggle and Button group; published 16 Oct.
 
 
 ## 2026-10-16 · Audit fixes, phase 1 (DS)

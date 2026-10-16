@@ -194,7 +194,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.1 | 2026-10-14 | Published | 6 | 2026-10-14 · `Tone=Answer` draws its 2px rule like Success and Error: square, `bg/faint`, `border/primary` |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.0 | 2026-10-16 | To publish | 1 | 2026-10-16 · New: one profile menu for the platform pages and the player (header, Appearance, Accessibility standards, footer) |
+| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.0 | 2026-10-16 | Published | 1 | 2026-10-16 · New: one profile menu for the platform pages and the player (header, Appearance, Accessibility standards, footer) |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
 
 ### LMS · Platform (`LMS/Platform/…`): 47
