@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · FutureSkills dark logo, Data Analytics certificates, old PRs
+
+- **`Provider-Partner-Badge` 1.2 (Nelson):** logo chips padded `Spacing/sm` (28 tall); FutureSkills has a dark drawing
+  (image filters in the DS), so no partner keeps a light chip on dark any more. Prototype PR 177: the chip follows,
+  and the dark FutureSkills drawing is exported.
+- **Data Analytics certificates (prototype PR 177):** the certificate sheet takes further partners (`morePartners`);
+  the program and course certificates of Data Analytics show IBM and Microsoft, as the card, and the second signatory
+  has a sample name (the AI program keeps its placeholder). The program page itself: PR 176.
+- **Old prototype PRs (Nelson asked to settle them):** #52 *Draft saved as a status* merged (its September text class
+  updated to `sk-text-body-medium-medium`; the DS already had the change). Closed with a note, branches kept: #161
+  (the side-stripe comparison, decided 14–15 Oct) and the September lab explorations #55, #56, #57.
+
 ## 2026-10-16 · Published and accepted: the screens checked
 
 Nelson published the DS and accepted the updates (Provider-Partner-Badge 1.1, Course-Card 1.11, Program-Card 1.10,

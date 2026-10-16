@@ -242,7 +242,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.1 | 2026-10-16 | Published | 24 | 2026-10-16 · Type=Logo (Nelson) and a Theme property: Dark carries SKO Dark for dark surfaces (Program-Card hero); FutureSkills Dark keeps a light chip |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.2 | 2026-10-16 | Published | 24 | 2026-10-16 · Logo chip padding Spacing/sm (28 tall); FutureSkills Dark through image filters (Nelson) |
 
 **Program-Detail**
 
@@ -422,6 +422,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-16 | `Program-Card` | v1.9 → v1.10 | The two hero Partner chips (placeholder logos, 77 × 36) become Provider-Partner-Badge instances, Type=Logo, Theme=Dark, Microsoft and IBM by default, exposed so a screen can set the partner. Prototype PR 174. |
 | 2026-10-16 | `Course-Card` | v1.9 → v1.10 | Nelson: a course can have more than one partner, as a program. The badge sits in a *Partners* row (gap `Spacing/md`) with a second Provider-Partner-Badge (Microsoft, Logo, Light) shown by the new boolean *Second partner* (default off). Both exposed (*Partner 1*, *Partner 2*). The 102 product-file instances all used the default IBM badge, so nothing was overridden. Prototype PR 174 (second commit). |
 | 2026-10-16 | `Course-Card` | v1.10 → v1.11 | Nelson changed Grid Default: the overline (UP NEXT) and the topic-type badge share one row (badge at the right end), so the next-topic title gets the full width, two lines then an ellipsis. Applied to Not started (Grid, and List with the List row: 16 apart). Completed hides the badge, unchanged. Before the publish, the next title and topic type of the 102 product-file instances were saved to `restore/course-card-next-topic-2026-10-16.json`. Prototype PR 174 (third commit). |
+| 2026-10-16 | `Provider-Partner-Badge` | v1.1 → v1.2 | Nelson: the logo chip padding is `Spacing/sm` (6), 24 → 28 tall (radius `Radius/fixed-xs`). FutureSkills Dark is the same bitmap with image filters (exposure +1, contrast +1, saturation −1, shadows −1), so it reads on the dark chip; the light-chip exception is gone. Prototype PR 177. |
 
 ## Rename map (8 Oct 2026)
 
