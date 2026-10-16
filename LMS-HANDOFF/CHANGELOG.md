@@ -8,6 +8,19 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · Partner logos: Provider-Partner-Badge 1.1 (Theme Dark), Course-Card 1.9, Program-Card 1.10
+
+Nelson added logo variants to `Provider-Partner-Badge` and put them on the course card; the program hero needed a
+dark version.
+- **`Provider-Partner-Badge` 1.1:** Type=Text / Logo × a new **Theme=Light / Dark** (24 variants). Dark = the SKO Dark
+  mode on the variant, so the chip and the monochrome parts flip; brand colours stay. FutureSkills is a dark bitmap:
+  its Dark variant keeps the light chip until a light artwork exists (to ask the partner).
+- **`Course-Card` 1.9 (Nelson):** provider as its logo, Grid and List.
+- **`Program-Card` 1.10:** the hero partners are badge instances (Logo, Dark; exposed), replacing the placeholder chips.
+  The 26 product-file instances all showed Microsoft + IBM, so no partner override is lost.
+- DS pages *Discovery* and *My Learning* rebuilt with the generator. **Prototype:** PR 174 (`ProviderBadge type="logo"`,
+  artwork exported from the DS into `public/platform/partners/`, light/dark by the surface's theme). To publish (Nelson).
+
 ## 2026-10-15 · New token Container/content-padding (24 / 20 / 16) for the topic content section
 
 Nelson, 15 Oct: one responsive token for the padding of the content section of the topics, 24 on desktop. Decision
