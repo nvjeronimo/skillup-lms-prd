@@ -26,6 +26,8 @@ await figma.setCurrentPageAsync(srcPage);
 const productPage = await figma.getNodeByIdAsync(PRODUCT_PAGE);
 const root = figma.root; const tn = p => p.name.trim(); const TT = TITLE || GROUP;
 let existing = null; let at = root.children.indexOf(productPage) + 1; while (at < root.children.length && tn(root.children[at]).startsWith('↳')) { if (tn(root.children[at]) === '↳ ' + GROUP) existing = root.children[at]; at++; }
+// A top-level page that is its own group (LMS · Shared components): no '↳' page to look for.
+if (SOURCE_PAGE === PRODUCT_PAGE) existing = srcPage;
 if (existing && !REBUILD) return {error: 'page already exists', id: existing.id};
 if (REBUILD && (!existing || existing.id !== srcPage.id)) return {error: 'rebuild needs SOURCE_PAGE = the existing group page'};
 const isTop = c => !(c.type === 'COMPONENT' && c.parent.type === 'COMPONENT_SET');
