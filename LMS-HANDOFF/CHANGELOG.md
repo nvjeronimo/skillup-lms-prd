@@ -8,6 +8,28 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · DS documentation audit: anatomy, empty paragraphs, layer names
+
+Nelson, 16 Oct: the anatomy listed the inside of icons and images, the rules texts had empty paragraphs, and layers were
+called *Frame 1*, *Group*… Audit of the 121 `Doc · …` frames (48 pages, 123 component blocks), then fixed:
+- **Anatomy (123 blocks, rebuilt in place):** the parts of the component itself, one level into its structural frames;
+  never inside an instance (icons, badges, buttons, nested components), a group or a vector (artwork, logos). Nested
+  instances no longer have their hidden options switched on (Topic-Types-Badge showed the base Badge's avatar and close
+  X). Artwork shows as one part, an image fill as *image*.
+- **Rules texts (49):** no empty paragraphs; paragraphs 8 apart (`paragraphSpacing`) instead.
+- **Layer names (about 300 in 30 components):** no *Frame N*, *Group N*, *Container*, *Layer 1*: each named after its
+  place (Course-Card *Identity*, *Type and partners*, *Next header*, *Progress row*; Toast *Layout*, *Icon and content*,
+  *Content*, *Text*, *Title*, *Supporting text*; Alert/Modal *Content wrap*, *Body*; File-Item *File*, *File icon*,
+  *File details*, *Download action*; logos *Logo*, *Artwork*, *Wordmark*). Instance layers named with a component path
+  or an old name (*LMS / Module Info*, *LMS/ICP/Sidebar/Course-Header*, *Buttons/Button*) carry the part's name; text
+  layers named after their sample content (*Course Name: Generative AI…*, *This is an error message.*) carry their role.
+  The vector paths inside logo and illustration artwork keep their drawing names (not parts of the component).
+- **Generator:** `tools/ds-group-page.js` does the same on every rebuild. To publish (Nelson): layer names reach the
+  files with the next publish; renaming layers keeps the overrides on the screens.
+- **Found, not changed (questions to Nelson):** the Sidebar nests an `Overall-Progress/Desktop-OLD` variant;
+  `Topic-Status-Badge` is built on `Course-Progression-Button`; `Live-Control-Bar` and `Dropdown` still use the previous
+  `Buttons/Button` generation.
+
 ## 2026-10-16 · FutureSkills dark logo, Data Analytics certificates, old PRs
 
 - **`Provider-Partner-Badge` 1.2 (Nelson):** logo chips padded `Spacing/sm` (28 tall); FutureSkills has a dark drawing
