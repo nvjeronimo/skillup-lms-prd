@@ -8,6 +8,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-16 · A picture on every course and program card
+
+Nelson, 16 Oct: images on every course and program card. The 102 `Course-Card` instances in the product file already
+had their covers; the 26 `Program-Card` instances showed initials. They now show a picture (*Show image* on, the thumb
+`Image` filled): the AI Digital Marketing program its own cover; **Cybersecurity** and **Data Analytics** have no
+picture, so they take placeholder covers (Intro to Product Analytics, Business Analytics with Python), the same in the
+prototype (PR 175). To check after the publish that Program-Card 1.10 keeps the image override.
+
 ## 2026-10-16 · Partner logos: Provider-Partner-Badge 1.1 (Theme Dark), Course-Card 1.9, Program-Card 1.10
 
 Nelson added logo variants to `Provider-Partner-Badge` and put them on the course card; the program hero needed a
