@@ -51,6 +51,8 @@ pages (every page screen is 1280), and the unstyled Reading runs are intentional
 **Hidden-layer review (approved):** Topbar 1.2 — the theme button is shown by default and is a moon/sun Utility Button
 like the bell and bookmark (the prototype's player bar); every ICP Topbar shows it after the update. Dead hidden layers
 removed from Topbar and Weekly-Goal-Card; Topic-Row 1.3 gets an `Optional` switch for its Optional-Chip.
+**Published and accepted (Nelson, 16 Oct):** in ICP the 194 player Topbars show the moon/sun theme button (render checked
+on Video Lessons) and the 225 Topic-Footer-Nav instances read `State=Default` after the rename.
 
 ## 2026-10-16 · Cards share one height; My Learning opens on the last tab
 
