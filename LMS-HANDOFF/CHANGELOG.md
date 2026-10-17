@@ -8,6 +8,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-17 · Course card title up to two lines
+
+Nelson: the course card title takes up to two lines, then an ellipsis, in every variant (DS Course-Card 1.14, to publish).
+The list row was one line; it now grows with a second line, and the rows of a collection keep one height. Prototype PR 186.
+
+
 ## 2026-10-17 · Light / dark switch in the top bar
 
 Nelson: the light / dark toggle belongs in the main bar. DS: platform Topbar 1.3 (Theme toggle between Notifications and
