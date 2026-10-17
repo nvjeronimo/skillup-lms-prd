@@ -13,7 +13,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 Nelson: the light / dark toggle belongs in the main bar. DS: platform Topbar 1.3 (Theme toggle between Notifications and
 the learner, Desktop and Compact; Compact 64 tall; changed by Nelson, docs refreshed) and `LMS / Profile Menu` 1.1 (Dark
 theme toggle removed); to publish. Prototype PR 184: the moon / sun button in the platform bar (desktop and compact,
-compact bar 64) and in the player bar on mobile too; the profile menu keeps the brand skin.
+compact bar 64) and in the player bar on mobile too; the profile menu keeps the brand skin, whose segments now carry a dot in each skin colour (Nelson, Profile Menu 1.1; prototype PR 185).
 
 
 ## 2026-10-16 · Completed header Progress card in green
