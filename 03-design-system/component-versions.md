@@ -194,7 +194,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.1 | 2026-10-14 | Published | 6 | 2026-10-14 · `Tone=Answer` draws its 2px rule like Success and Error: square, `bg/faint`, `border/primary` |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.1 | 2026-10-17 | To publish | 1 | 2026-10-17 · Dark theme toggle removed (it is in the top bar); Brand skin segments with the skin colour dot |
+| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.1 | 2026-10-17 | Published | 1 | 2026-10-17 · Dark theme toggle removed (it is in the top bar); Brand skin segments with the skin colour dot |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
 
 ### LMS · Platform (`LMS/Platform/…`): 47
@@ -210,7 +210,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.3 | 2026-10-17 | To publish | 2 | 2026-10-17 · Theme toggle (Utility Button sm Tertiary, moon-01) between Notifications and the learner, Desktop and Compact |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.3 | 2026-10-17 | Published | 2 | 2026-10-17 · Theme toggle (Utility Button sm Tertiary, moon-01) between Notifications and the learner, Desktop and Compact |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 
 **Dashboard**
@@ -230,7 +230,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.13 | 2026-10-16 | Published | 6 | 2026-10-16 · Audit fix: CERTIFICATE overline text/default on the green strip (v1.12: Same height in every state: Grid min 370 with the action at the bottom; List 118 (Completed thumb back to 84)) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.14 | 2026-10-17 | Published | 6 | 2026-10-17 · Title max 2 lines (ellipsis) in every variant; List grows with it (v1.13: Audit fix: CERTIFICATE overline text/default on the green strip (v1.12: Same height in every state: Grid min 370 with the action at the bottom; List 118 (Completed thumb back to 84))) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.12 | 2026-10-17 | Published | 6 | 2026-10-17 · Due badge Soft · sm · Warning (was the accent yellow), as the Dashboard Due-Item (v1.11: audit fix, "Certificate issued" text/default on green; "Up next" label styled again) |
 
 **Discovery**
@@ -434,6 +434,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-17 | `Program-Card` | v1.11 → v1.12 | Nelson changed the Due badge of the Up next footer (Grid and List, In progress) to Badge Soft · sm · Warning, the variant the Dashboard Due-Item uses; it was the accent yellow. Published by Nelson. The Course-Card has no Due badge. Prototype PR 183 (`color="warning"`). |
 | 2026-10-17 | `Topbar` (Platform Navigation) | v1.2 → v1.3 | Nelson: the light / dark switch goes in the main bar, not in the profile menu. Desktop: *Theme toggle*, a Utility Button (sm, Tertiary) with moon-01, between Notifications and the learner, as in the player Topbar 1.2. Compact too (Nelson, same day): Notifications · Theme toggle · learner · Menu, the bar 64 tall (padding 8 / 16). Doc block anatomy, measures and rules refreshed. Prototype PR 184 (desktop and compact, compact bar 49 → 64). |
 | 2026-10-17 | `LMS / Profile Menu` | v1.0 → v1.1 | The *Dark theme* toggle leaves the Appearance section (it is in the top bar of both shells now): Appearance holds the brand skin only. 679 → 651 tall. Same version, before the publish (Nelson): each Brand skin segment is the Button group base Icon=Dot, a 10px dot in the skin colour before the name (SKO icon/primary held on the SKO skin, Gold icon/accent-yellow, Red icon/accent-red). Prototype PRs 184 and 185. |
+| 2026-10-17 | `Course-Card` | v1.13 → v1.14 | Nelson: the Title is Max lines 2 with an ellipsis in every variant. Grid already showed two lines; List was one line at 118 tall and now hugs a second line (about 148). Doc block chip, rules and measures updated. Prototype PR 186: the list title takes two lines and the list rows of a collection take the tallest height, as the grid. |
 
 ## Rename map (8 Oct 2026)
 
