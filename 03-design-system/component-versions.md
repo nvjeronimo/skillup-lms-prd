@@ -87,7 +87,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Course-Progression-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537755) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Course Progression Button” |
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.2 | 2026-10-16 | To publish | 6 | 2026-10-16 · Theme toggle shown by default, as a moon/sun Utility Button; dead hidden layers removed (v1.1: Mobile shows the course progress ring after the logo (`Show progress`)) |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.2 | 2026-10-16 | Published | 6 | 2026-10-16 · Theme toggle shown by default, as a moon/sun Utility Button; dead hidden layers removed (v1.1: Mobile shows the course progress ring after the logo (`Show progress`)) |
 | [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
 | [Vertical-Scroll](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537649) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “Vertical Scroll” |
 
@@ -106,7 +106,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
 | [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.1 | 2026-10-13 | Published | 5 | 2026-10-13 · The collapsed variants show the rail bookmark on the saved topic; the description names the flyout |
 | [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.0 | 2026-10-13 | Published | 1 | 2026-10-13 · The card beside the collapsed rail: title, topic type, bookmark button |
-| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.3 | 2026-10-16 | To publish | 9 | 2026-10-16 · New boolean Optional bound to the Optional-Chip (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
+| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.3 | 2026-10-16 | Published | 9 | 2026-10-16 · New boolean Optional bound to the Optional-Chip (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
 
 **Content**
 
@@ -116,7 +116,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Content-Feedback](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537661) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · New `Show Mark as Complete` (off by default): the Mark as Complete action at the right end of the row |
 | [File-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537612) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / File Item” |
 | [Mobile-Tab-Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19995-7247) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Mobile Tab Select” |
-| [Note-Editor](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22071-6813) | v1.2 | 2026-10-16 | To publish | 3 | 2026-10-16 · Audit fix: fills bound to bg/page (was raw white in dark) (v1.1: The anchor quote is an instance of `Transcript-Line` (State=Active); the Quote property removed) |
+| [Note-Editor](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22071-6813) | v1.2 | 2026-10-16 | Published | 3 | 2026-10-16 · Audit fix: fills bound to bg/page (was raw white in dark) (v1.1: The anchor quote is an instance of `Transcript-Line` (State=Active); the Quote property removed) |
 | [Note-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537594) | v1.1 | 2026-10-14 | Published | 1 | 2026-10-14 · The anchor is an instance of `Transcript-Line` (State=Active), as in the Note-Editor |
 | [Numbered-Step](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3297) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Numbered Step” |
 | [Sync-to-Video-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20214-1771167) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Sync to Video Button” |
@@ -204,7 +204,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Assistant-Chat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-391) | v1.2 | 2026-10-15 | In review | 6 | 2026-10-15 · Header on bg/subtle, ME / ASSISTANT above each message, answers on bg/primary, AI notice under the input (1.1, 13 Oct: two states added for first steps (`First steps`, `First steps done`); `Empty` starts with the next step). In the library so the ICP feature preview page can use it; not for build yet. |
-| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.3 | 2026-10-16 | To publish | 3 | 2026-10-16 · Count on bg/primary (audit D1) (v1.2: The ball wears a 2px gradient ring (to animate in code); count badge on bg/info (1.1, 13 Oct: 48 px; closed is the assistant mark; `Closed with count` added, first steps left). In the library so the ICP feature preview page can use it; not for build yet.) |
+| [Assistant-Launcher](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) | v1.3 | 2026-10-16 | Published | 3 | 2026-10-16 · Count on bg/primary (audit D1) (v1.2: The ball wears a 2px gradient ring (to animate in code); count badge on bg/info (1.1, 13 Oct: 48 px; closed is the assistant mark; `Closed with count` added, first steps left). In the library so the ICP feature preview page can use it; not for build yet.) |
 
 **Navigation**
 
@@ -230,8 +230,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.13 | 2026-10-16 | To publish | 6 | 2026-10-16 · Audit fix: CERTIFICATE overline text/default on the green strip (v1.12: Same height in every state: Grid min 370 with the action at the bottom; List 118 (Completed thumb back to 84)) |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.11 | 2026-10-16 | To publish | 6 | 2026-10-16 · Audit fix: "Certificate issued" text/default on green; "Up next" label styled again (v1.10: Hero partner logos are Provider-Partner-Badge Type=Logo, Theme=Dark (exposed), replacing the placeholder chips) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.13 | 2026-10-16 | Published | 6 | 2026-10-16 · Audit fix: CERTIFICATE overline text/default on the green strip (v1.12: Same height in every state: Grid min 370 with the action at the bottom; List 118 (Completed thumb back to 84)) |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.12 | 2026-10-17 | Published | 6 | 2026-10-17 · Due badge Soft · sm · Warning (was the accent yellow), as the Dashboard Due-Item (v1.11: audit fix, "Certificate issued" text/default on green; "Up next" label styled again) |
 
 **Discovery**
 
@@ -239,7 +239,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
 | [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.2 | 2026-10-14 | Published | 3 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
-| [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.1 | 2026-10-15 | To publish | 2 | 2026-10-15 · Words only: the icons are removed (1.0, 8 Oct: renamed from “LMS / Course Type Badge”) |
+| [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.1 | 2026-10-15 | Published | 2 | 2026-10-15 · Words only: the icons are removed (1.0, 8 Oct: renamed from “LMS / Course Type Badge”) |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
@@ -431,6 +431,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-16 | `Course-Card` | v1.11 → v1.12 | Nelson: cards always have the same height. Grid variants were 370 / 356 / 350: each now has `minHeight` 370 and the `cta-slot` grows with its buttons at the bottom. List Completed was 120 (thumb 86, a stray min-height): now 118 like the others. Prototype PR 179 (the cards of a collection take the tallest height). |
 | 2026-10-16 | `LMS / Profile Menu` (new) | new v1.0 | Nelson: the profile menus of the platform pages and the player must match in accessibility and skins. One organism on *LMS · Shared components*: the learner (Avatar sm), **Appearance** (Toggle sm *Dark theme*; Button group *Brand skin* SKO · Gold · Red), **Accessibility standards** (Button group *Text size*, three A in body-small / body-medium / body-large; Toggles *Colourblind-safe states*, *Reduce motion*, *Underline links*, *Larger touch targets*) and a footer (*Restart first steps*; *Reset demo*, a prototype action behind the boolean of the same name). 288 wide. The Ink, Sky and Violet skins are gone: they had no tokens. Prototype PR 181 (`ProfileSettings`, used by both menus; the player adds its preview sections). |
 | 2026-10-16 | `Progress-Card` (Course Detail) | v1.0 → v1.1 | Nelson: a completed program or course shows its header Progress card in green, as the cards do. State=Complete already had the bar on bg/success; its label (still "Course progress") is now the check-circle icon (icon/success) + "Completed" in body-medium/Semibold text/default, so green is never the only sign. No product-file screen shows a completed header (32 cards, all In progress), so nothing changes on the screens. Prototype PR 182 (program and course headers). |
+| 2026-10-17 | `Program-Card` | v1.11 → v1.12 | Nelson changed the Due badge of the Up next footer (Grid and List, In progress) to Badge Soft · sm · Warning, the variant the Dashboard Due-Item uses; it was the accent yellow. Published by Nelson. The Course-Card has no Due badge. Prototype PR 183 (`color="warning"`). |
 | 2026-10-17 | `Topbar` (Platform Navigation) | v1.2 → v1.3 | Nelson: the light / dark switch goes in the main bar, not in the profile menu. Desktop: *Theme toggle*, a Utility Button (sm, Tertiary) with moon-01, between Notifications and the learner, as in the player Topbar 1.2. Compact too (Nelson, same day): Notifications · Theme toggle · learner · Menu, the bar 64 tall (padding 8 / 16). Doc block anatomy, measures and rules refreshed. Prototype PR 184 (desktop and compact, compact bar 49 → 64). |
 | 2026-10-17 | `LMS / Profile Menu` | v1.0 → v1.1 | The *Dark theme* toggle leaves the Appearance section (it is in the top bar of both shells now): Appearance holds the brand skin only. 679 → 651 tall. Same version, before the publish (Nelson): each Brand skin segment is the Button group base Icon=Dot, a 10px dot in the skin colour before the name (SKO icon/primary held on the SKO skin, Gold icon/accent-yellow, Red icon/accent-red). Prototype PRs 184 and 185. |
 

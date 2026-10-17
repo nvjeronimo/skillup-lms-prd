@@ -15,6 +15,11 @@ the learner, Desktop and Compact; Compact 64 tall; changed by Nelson, docs refre
 theme toggle removed); to publish. Prototype PR 184: the moon / sun button in the platform bar (desktop and compact,
 compact bar 64) and in the player bar on mobile too; the profile menu keeps the brand skin, whose segments now carry a dot in each skin colour (Nelson, Profile Menu 1.1; prototype PR 185).
 
+## 2026-10-17 · Program card Due badge in Soft Warning
+
+Nelson changed the Due badge of the program cards (Up next footer) to Badge Soft · Warning, as on the Dashboard
+Due-Item; it was the accent yellow. DS Program-Card 1.12, published. Prototype PR 183. The course cards have no Due badge.
+
 
 ## 2026-10-16 · Completed header Progress card in green
 
@@ -53,6 +58,8 @@ pages (every page screen is 1280), and the unstyled Reading runs are intentional
 **Hidden-layer review (approved):** Topbar 1.2 — the theme button is shown by default and is a moon/sun Utility Button
 like the bell and bookmark (the prototype's player bar); every ICP Topbar shows it after the update. Dead hidden layers
 removed from Topbar and Weekly-Goal-Card; Topic-Row 1.3 gets an `Optional` switch for its Optional-Chip.
+**Published and accepted (Nelson, 16 Oct):** in ICP the 194 player Topbars show the moon/sun theme button (render checked
+on Video Lessons) and the 225 Topic-Footer-Nav instances read `State=Default` after the rename.
 
 ## 2026-10-16 · Cards share one height; My Learning opens on the last tab
 
