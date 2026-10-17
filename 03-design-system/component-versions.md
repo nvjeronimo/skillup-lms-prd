@@ -268,7 +268,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Meta](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21877) | v1.0 | 2026-10-08 | Published | 1 | 2026-09-24 · Course Detail mobile — the Course tab |
 | [Module-Number](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21952) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-06 · Platform components moved into the DS library |
 | [Module-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21966) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-06 · Platform components moved into the DS library |
-| [Progress-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21894) | v1.1 | 2026-10-16 | To publish | 4 | 2026-10-16 · State=Complete: check icon + "Completed" beside the green bar, as on the cards |
+| [Progress-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21894) | v1.1 | 2026-10-16 | Published | 4 | 2026-10-16 · State=Complete: check icon + "Completed" beside the green bar, as on the cards |
 | [Score-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22477) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-06 · Local components → the DS |
 | [Section-Intro](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21891) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
 | [Sidebar-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22090) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed |

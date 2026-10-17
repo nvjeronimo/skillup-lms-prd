@@ -12,7 +12,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 Nelson: when a program or course is completed, the Progress card of its page header is green like the cards. Prototype
 PR 182: at 100% the bar is bg/success and the label becomes the check icon + "Completed" (program and course headers).
-DS: `Progress-Card` 1.1, State=Complete with the same label; to publish (Nelson). No Figma screen shows a completed
+DS: `Progress-Card` 1.1, State=Complete with the same label; published 16 Oct. No Figma screen shows a completed
 header yet.
 
 
