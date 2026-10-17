@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-17 · Calendar, Discussion and Services: proposal pages in the prototype
+
+The three top-bar sections that only showed a toast now have pages in the prototype, merged as proposals (PR 187) to
+approve before they are drawn in Figma. **Calendar** (`/platform/calendar`): every course's dates in one place —
+deadlines, live sessions (marked: not in Open edX, out of the MVP), course opens/ends — with missed deadlines first
+("Shift my dates"), Agenda by day or Month, the next seven days and calendar sync (Phase 3); the top bar's count is the
+deadlines of the next seven days. **Discussion** (`/platform/discussion`): every course's discussions in one inbox,
+laid out like the course Q&A tab. **Services** (`/platform/services`): the mentor (ADR 007, Phase 2), then Career,
+Support, and Benefits and tools. Open edX has no cross-course calendar or forum: both pages merge one call per
+enrolment (Dates API, Discussions API). Nelson's answers of 17 Oct: Services holds all four groups; the Calendar shows
+live sessions too, marked. The navigation flow's open question 2 is answered by these pages.
+
 ## 2026-10-17 · Course card title up to two lines
 
 Nelson: the course card title takes up to two lines, then an ellipsis, in every variant (DS Course-Card 1.14, published 17 Oct).

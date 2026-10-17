@@ -24,7 +24,9 @@ The learner-facing platform pages. Statuses are current best-known — refine as
 | My Learning | Progress across all courses/programs | 🟠 WIP |
 | Course Page (detail) | Single-course overview, outline, enrol/continue | 🟠 WIP |
 | Program Page (detail) | Multi-course program overview | 🟠 WIP |
-| Calendar | Scheduled live sessions, deadlines | ⚪ planned |
+| Calendar | Every course's dates in one place: deadlines, live sessions (out of MVP, marked), course opens/ends; missed deadlines first | 🟣 proposal in the prototype (`/platform/calendar`, PR 187, 17 Oct 2026); Figma after approval |
+| Discussion | Every course's discussions in one inbox (the course Q&A layout): unread, following, my posts, course filter, search | 🟣 proposal in the prototype (`/platform/discussion`, PR 187); Figma after approval |
+| Services | Mentor (ADR 007, Phase 2), Career, Support, Benefits and tools — SkillUp's own, not Open edX | 🟣 proposal in the prototype (`/platform/services`, PR 187); Figma after approval |
 | Live Sessions | Upcoming / completed VILT list | ⚪ planned (see [`../live-sessions/`](../live-sessions/)) |
 
 ## Current design artifact — V8 Complementary Pages (SkillUp Brand)
