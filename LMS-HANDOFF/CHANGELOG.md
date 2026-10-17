@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-17 · Calendar, Discussion and Services: proposal pages in the prototype
+
+The three top-bar sections that only showed a toast now have pages in the prototype, merged as proposals (PR 187) to
+approve before they are drawn in Figma. **Calendar** (`/platform/calendar`): every course's dates in one place —
+deadlines, live sessions (marked: not in Open edX, out of the MVP), course opens/ends — with missed deadlines first
+("Shift my dates"), Agenda by day or Month, the next seven days and calendar sync (Phase 3); the top bar's count is the
+deadlines of the next seven days. **Discussion** (`/platform/discussion`): every course's discussions in one inbox,
+laid out like the course Q&A tab. **Services** (`/platform/services`): the mentor (ADR 007, Phase 2), then Career,
+Support, and Benefits and tools. Open edX has no cross-course calendar or forum: both pages merge one call per
+enrolment (Dates API, Discussions API). Nelson's answers of 17 Oct: Services holds all four groups; the Calendar shows
+live sessions too, marked. The navigation flow's open question 2 is answered by these pages.
+
 ## 2026-10-17 · Partner logos in the course header; alerts on grey
 
 Nelson: the course headers had no partner logos. Prototype PR 188: the header shows the course's provider and partners
@@ -15,7 +27,6 @@ as logos (the same list as its card: Business Analytics with Python, SkillUp + I
 placeholder chips are Provider-Partner-Badge Logo (Light on courses, Dark on programs), the cards' component, on a bg/page chip (white on courses, dark on programs), exposed, with a *Second partner* boolean; the Progress card
 button fills again. Nelson: an alert on a grey surface turns white. DS Inline Alert 1.2, property *Surface* (Page /
 Subtle); prototype PR 189, `surface` prop. Both published 17 Oct; the 7 program headers that had their logos hidden by an override were restored, logos against the right edge.
-
 
 ## 2026-10-17 · Course card title up to two lines
 

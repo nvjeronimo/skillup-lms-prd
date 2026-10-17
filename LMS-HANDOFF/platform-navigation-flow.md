@@ -70,7 +70,11 @@ Status: **wired** = works in the prototype; **stand-in** = a message says it is 
 | Anywhere | site root `/` | Dashboard | wired (8 Oct; it used to open an older course hub) |
 | Top bar | logo, *Dashboard* | Dashboard | wired |
 | Top bar | *My Learning* | My Learning | wired |
-| Top bar | *Calendar*, *Discussion*, *Services*, notifications | their pages | stand-in |
+| Top bar | *Calendar*, *Discussion*, *Services* | their pages (`/platform/calendar`, `/platform/discussion`, `/platform/services`) | wired as proposals (17 Oct 2026, prototype PR 187) |
+| Top bar | notifications | the Notifications panel | stand-in |
+| Dashboard | *View calendar* (Due this week) | Calendar | wired (17 Oct) |
+| Dashboard | *Discussion* tile (Jump somewhere) | Discussion | wired (17 Oct) |
+| Calendar, Discussion | a date's or a conversation's title | the unit in the player, or the course / program page | wired (17 Oct) |
 | Dashboard | *My learning* (section link) | My Learning | wired |
 | Dashboard | course title in *Pick up where you left off* | that course's page; the program page for the row that is a program | wired (8 and 9 Oct) |
 | Dashboard | *Resume* | Player, last unit | wired |
@@ -123,12 +127,12 @@ falls back to My Learning.
 | # | Question |
 |---|---|
 | 1 | The certificate page needs a design. A program certificate is proposed in the prototype since 10 Oct (PR 89), marked as a proposal |
-| 2 | Where *Calendar*, *Discussion* and *Services* lead |
+| 2 | ~~Where *Calendar*, *Discussion* and *Services* lead~~ — answered 17 Oct 2026 by proposal pages in the prototype (PR 187): to approve, then to draw in Figma |
 
 Closed on 10 Oct 2026: a program course always shows the program path; the mobile menu follows the desktop
 order; every course and both programs have content of their own (PRs 87, 90, 92).
 
 ## 5. Not in this pass
 
-The destinations of *Calendar*, *Discussion* and *Services*; the mobile menu's order; what the player's sidebar
+The mobile menu's order; what the player's sidebar
 header links to; the lab routes (`/lab/…`), which are experiments and are not part of this flow.
