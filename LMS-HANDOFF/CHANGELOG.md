@@ -20,6 +20,14 @@ Support, and Benefits and tools. Open edX has no cross-course calendar or forum:
 enrolment (Dates API, Discussions API). Nelson's answers of 17 Oct: Services holds all four groups; the Calendar shows
 live sessions too, marked. The navigation flow's open question 2 is answered by these pages.
 
+## 2026-10-17 · Partner logos in the course header; alerts on grey
+
+Nelson: the course headers had no partner logos. Prototype PR 188: the header shows the course's provider and partners
+as logos (the same list as its card: Business Analytics with Python, SkillUp + IBM); PR 190 does the same for the program header (dark versions). DS Course-Header 1.1: the
+placeholder chips are Provider-Partner-Badge Logo (Light on courses, Dark on programs), the cards' component, on a bg/page chip (white on courses, dark on programs), exposed, with a *Second partner* boolean; the Progress card
+button fills again. Nelson: an alert on a grey surface turns white. DS Inline Alert 1.2, property *Surface* (Page /
+Subtle); prototype PR 189, `surface` prop. Both published 17 Oct; the 7 program headers that had their logos hidden by an override were restored, logos against the right edge.
+
 ## 2026-10-17 · Course card title up to two lines
 
 Nelson: the course card title takes up to two lines, then an ellipsis, in every variant (DS Course-Card 1.14, published 17 Oct).
