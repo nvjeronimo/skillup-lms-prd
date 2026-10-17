@@ -8,6 +8,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-17 · Partner logos in the course header; alerts on grey
+
+Nelson: the course headers had no partner logos. Prototype PR 188: the header shows the course's provider and partners
+as logos (the same list as its card: Business Analytics with Python, SkillUp + IBM). DS Course-Header 1.1: the
+placeholder chips are Provider-Partner-Badge Logo (Light), exposed, with a *Second partner* boolean; the Progress card
+button fills again. Nelson: an alert on a grey surface turns white. DS Inline Alert 1.2, property *Surface* (Page /
+Subtle); prototype PR 189, `surface` prop. Both to publish.
+
+
 ## 2026-10-17 · Course card title up to two lines
 
 Nelson: the course card title takes up to two lines, then an ellipsis, in every variant (DS Course-Card 1.14, published 17 Oct).
