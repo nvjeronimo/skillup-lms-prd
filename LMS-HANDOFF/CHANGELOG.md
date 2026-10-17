@@ -10,7 +10,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-17 · Course card title up to two lines
 
-Nelson: the course card title takes up to two lines, then an ellipsis, in every variant (DS Course-Card 1.14, to publish).
+Nelson: the course card title takes up to two lines, then an ellipsis, in every variant (DS Course-Card 1.14, published 17 Oct).
 The list row was one line; it now grows with a second line, and the rows of a collection keep one height. Prototype PR 186.
 
 
@@ -18,7 +18,7 @@ The list row was one line; it now grows with a second line, and the rows of a co
 
 Nelson: the light / dark toggle belongs in the main bar. DS: platform Topbar 1.3 (Theme toggle between Notifications and
 the learner, Desktop and Compact; Compact 64 tall; changed by Nelson, docs refreshed) and `LMS / Profile Menu` 1.1 (Dark
-theme toggle removed); to publish. Prototype PR 184: the moon / sun button in the platform bar (desktop and compact,
+theme toggle removed); published 17 Oct. Prototype PR 184: the moon / sun button in the platform bar (desktop and compact,
 compact bar 64) and in the player bar on mobile too; the profile menu keeps the brand skin, whose segments now carry a dot in each skin colour (Nelson, Profile Menu 1.1; prototype PR 185).
 
 ## 2026-10-17 · Program card Due badge in Soft Warning
