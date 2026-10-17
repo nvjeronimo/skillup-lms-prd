@@ -11,9 +11,9 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 ## 2026-10-17 · Light / dark switch in the top bar
 
 Nelson: the light / dark toggle belongs in the main bar. DS: platform Topbar 1.3 (Theme toggle between Notifications and
-the learner, Desktop; changed by Nelson) and `LMS / Profile Menu` 1.1 (Dark theme toggle removed); to publish. Prototype
-PR 184: the moon / sun button in the platform bar (desktop and compact) and in the player bar on mobile too; the profile
-menu keeps the brand skin. Open: the Compact platform Topbar has no theme button in the DS.
+the learner, Desktop and Compact; Compact 64 tall; changed by Nelson, docs refreshed) and `LMS / Profile Menu` 1.1 (Dark
+theme toggle removed); to publish. Prototype PR 184: the moon / sun button in the platform bar (desktop and compact,
+compact bar 64) and in the player bar on mobile too; the profile menu keeps the brand skin.
 
 
 ## 2026-10-16 · Completed header Progress card in green
