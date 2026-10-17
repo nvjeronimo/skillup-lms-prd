@@ -194,7 +194,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.1 | 2026-10-14 | Published | 6 | 2026-10-14 · `Tone=Answer` draws its 2px rule like Success and Error: square, `bg/faint`, `border/primary` |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.0 | 2026-10-16 | Published | 1 | 2026-10-16 · New: one profile menu for the platform pages and the player (header, Appearance, Accessibility standards, footer) |
+| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.1 | 2026-10-17 | To publish | 1 | 2026-10-17 · Dark theme toggle removed: the light / dark switch is in the top bar |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
 
 ### LMS · Platform (`LMS/Platform/…`): 47
@@ -210,7 +210,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.2 | 2026-10-12 | Published | 2 | 2026-10-12 · The nav holds five exposed `Topbar-Item` that fill the bar; the page is marked on the item, no property on the Topbar |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.3 | 2026-10-17 | To publish | 2 | 2026-10-17 · Theme toggle (Utility Button sm Tertiary, moon-01) between Notifications and the learner, Desktop |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 
 **Dashboard**
@@ -431,6 +431,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-16 | `Course-Card` | v1.11 → v1.12 | Nelson: cards always have the same height. Grid variants were 370 / 356 / 350: each now has `minHeight` 370 and the `cta-slot` grows with its buttons at the bottom. List Completed was 120 (thumb 86, a stray min-height): now 118 like the others. Prototype PR 179 (the cards of a collection take the tallest height). |
 | 2026-10-16 | `LMS / Profile Menu` (new) | new v1.0 | Nelson: the profile menus of the platform pages and the player must match in accessibility and skins. One organism on *LMS · Shared components*: the learner (Avatar sm), **Appearance** (Toggle sm *Dark theme*; Button group *Brand skin* SKO · Gold · Red), **Accessibility standards** (Button group *Text size*, three A in body-small / body-medium / body-large; Toggles *Colourblind-safe states*, *Reduce motion*, *Underline links*, *Larger touch targets*) and a footer (*Restart first steps*; *Reset demo*, a prototype action behind the boolean of the same name). 288 wide. The Ink, Sky and Violet skins are gone: they had no tokens. Prototype PR 181 (`ProfileSettings`, used by both menus; the player adds its preview sections). |
 | 2026-10-16 | `Progress-Card` (Course Detail) | v1.0 → v1.1 | Nelson: a completed program or course shows its header Progress card in green, as the cards do. State=Complete already had the bar on bg/success; its label (still "Course progress") is now the check-circle icon (icon/success) + "Completed" in body-medium/Semibold text/default, so green is never the only sign. No product-file screen shows a completed header (32 cards, all In progress), so nothing changes on the screens. Prototype PR 182 (program and course headers). |
+| 2026-10-17 | `Topbar` (Platform Navigation) | v1.2 → v1.3 | Nelson: the light / dark switch goes in the main bar, not in the profile menu. Desktop: *Theme toggle*, a Utility Button (sm, Tertiary) with moon-01, between Notifications and the learner, as in the player Topbar 1.2. The Compact variant has no theme button yet (open). Prototype PR 184 (desktop and compact). |
+| 2026-10-17 | `LMS / Profile Menu` | v1.0 → v1.1 | The *Dark theme* toggle leaves the Appearance section (it is in the top bar of both shells now): Appearance holds the brand skin only. 679 → 651 tall. Prototype PR 184. |
 
 ## Rename map (8 Oct 2026)
 
