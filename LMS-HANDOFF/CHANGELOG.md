@@ -8,6 +8,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-17 · Program card Due badge in Soft Warning
+
+Nelson changed the Due badge of the program cards (Up next footer) to Badge Soft · Warning, as on the Dashboard
+Due-Item; it was the accent yellow. DS Program-Card 1.12, published. Prototype PR 183. The course cards have no Due badge.
+
+
 ## 2026-10-16 · Completed header Progress card in green
 
 Nelson: when a program or course is completed, the Progress card of its page header is green like the cards. Prototype
