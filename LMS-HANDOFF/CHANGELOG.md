@@ -14,7 +14,7 @@ Nelson: the course headers had no partner logos. Prototype PR 188: the header sh
 as logos (the same list as its card: Business Analytics with Python, SkillUp + IBM); PR 190 does the same for the program header (dark versions). DS Course-Header 1.1: the
 placeholder chips are Provider-Partner-Badge Logo (Light on courses, Dark on programs), the cards' component, on a bg/page chip (white on courses, dark on programs), exposed, with a *Second partner* boolean; the Progress card
 button fills again. Nelson: an alert on a grey surface turns white. DS Inline Alert 1.2, property *Surface* (Page /
-Subtle); prototype PR 189, `surface` prop. Both to publish.
+Subtle); prototype PR 189, `surface` prop. Both published 17 Oct; the 7 program headers that had their logos hidden by an override were restored, logos against the right edge.
 
 
 ## 2026-10-17 · Course card title up to two lines
