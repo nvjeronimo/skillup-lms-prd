@@ -8,6 +8,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Product-file check: list cards one height, John Smith in the top bar
+
+After the 17 Oct publishes, the product file was checked: the 63 course and program headers are right (button fills,
+logo chips on bg/page, logos at the right edge); 6 Topbars on the Lab page were the old v1.1 copy without the theme
+button (swapped to v1.3). Two DS changes, to publish: Course-Card 1.15 (List min height 146, so list cards keep one
+height) and Topbar 1.4 (default learner John Smith, JS initials, instead of the UI-kit sample); published and accepted 19 Oct. Prototype PR 191.
+
 ## 2026-10-19 · Calendar, Discussion and Services drawn in Figma
 
 Nelson approved the three proposal pages (prototype PR 187) and they are now drawn in the ICP file, page *Platform Pages -
