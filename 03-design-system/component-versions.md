@@ -87,7 +87,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Course-Progression-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537755) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Course Progression Button” |
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.5 | 2026-10-19 | To publish | 6 | 2026-10-19 · Dark Mobile: the learner avatar renders dark (fresh Avatar instance; it carried its own mode and a stale render) |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.5 | 2026-10-19 | Published | 6 | 2026-10-19 · Dark Mobile: the learner avatar renders dark (fresh Avatar instance; it carried its own mode and a stale render) |
 | [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
 | [Vertical-Scroll](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537649) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “Vertical Scroll” |
 
