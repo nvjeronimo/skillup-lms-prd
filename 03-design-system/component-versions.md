@@ -87,7 +87,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Course-Progression-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537755) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Course Progression Button” |
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.3 | 2026-10-19 | To publish | 6 | 2026-10-19 · Default learner John Smith with the JS initials avatar (was John Simth with a photo; the screens showed Olivia Rhye) |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.3 | 2026-10-19 | Published | 6 | 2026-10-19 · Default learner John Smith with the JS initials avatar (was John Simth with a photo; the screens showed Olivia Rhye) |
 | [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
 | [Vertical-Scroll](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537649) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “Vertical Scroll” |
 
@@ -197,7 +197,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.2 | 2026-10-17 | Published | 12 | 2026-10-17 · New property Surface: Page (bg/faint) and Subtle (on a grey surface, the alert on bg/page) |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.3 | 2026-10-19 | To publish | 1 | 2026-10-19 · No learner header; Edit profile (user-edit) at the top; SkillUp Online (link-external-01, new tab) its own group after Accessibility standards, before the demo footer; prototype PR 198 |
+| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.3 | 2026-10-19 | Published | 1 | 2026-10-19 · No learner header; Edit profile (user-edit) at the top; SkillUp Online (link-external-01, new tab) its own group after Accessibility standards, before the demo footer; prototype PR 198 |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
 
 ### LMS · Platform (`LMS/Platform/…`): 53
