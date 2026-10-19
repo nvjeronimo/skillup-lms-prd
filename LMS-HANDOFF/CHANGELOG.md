@@ -10,6 +10,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-19 · Player Topbar 1.5: the Dark Mobile avatar
+
+The learner avatar of the player `Topbar` Theme=Dark, Size=Mobile rendered light (bg/muted of the light theme) while
+its bindings matched Desktop. Replaced by a fresh Avatar xs instance that inherits the variant's dark mode; checked by
+render. `Topbar` 1.5, published 19 Oct. Also this day: 125 Topbar instances in the ICP file that stayed on the previous
+library copy after the accept were swapped to platform 1.6 / player 1.4 (Ready for Dev 54, Quizzes 66, V8 WIP 3,
+Topic Content Types 2); nav item and names kept, avatars radius 8. After the 1.5 publish, 221 player Topbar
+instances were relinked to 1.5 the same way (Video 30, Quizzes 66, Reading 21, Lab 48, SCORM 46, AI Assistant 4,
+V8 WIP 3, Completion 3); the Dark Mobile avatar renders dark on the screens.
+
 ## 2026-10-19 · Sea, a livelier brand skin (proposal in the prototype)
 
 Nelson found the layout monochrome. Three skins made from the SkillUp foundation colours were shown side by side
