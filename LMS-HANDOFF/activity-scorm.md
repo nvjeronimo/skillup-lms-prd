@@ -92,7 +92,7 @@ package reports. On a phone the window is a new tab.
 - Content-Feedback (no Mark as Complete), the Topic-Footer-Nav and the Next-asks Modal.
 
 **Moved to the DS on 19 Oct (published the same day):** `LMS/ICP/Topics/Activity-Player`, `Activity-Fullscreen-Bar`,
-`Activity-Launch-Card`. All 46 screens use them: 45 players (the package content sits in the Package slot), 6
+`Activity-Launch-Card`. All 46 screens use them: 33 players (the package content sits in the Package slot), 6
 fullscreen bars and 12 launch cards.
 
 **Were local stand-ins:**
