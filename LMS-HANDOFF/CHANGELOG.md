@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Calendar, Discussion and Services drawn in Figma
+
+Nelson approved the three proposal pages (prototype PR 187) and they are now drawn in the ICP file, page *Platform Pages -
+Ready for Dev*, frame `Platform Pages - Calendar, Discussion & Services - Light` (`7392:200778`, banner WIP, cards In
+progress): **Calendar** desktop (Agenda), tablet (Month view) and mobile (Agenda); **Discussion** desktop, tablet, mobile
+list and mobile conversation; **Services** desktop, tablet and mobile. Built from DS components (Topbar with the page's item
+On, Button, Button group, Badge, Inline Alert Error · Subtle, Input field, Select, Avatar, Section-Header, the Course Detail
+Message and conversation pane) on DS tokens and text styles. Six new local components sit in the section next to the frame,
+to move to the DS when Nelson agrees: `LMS/Platform/Calendar/Event-Row`, `Week-Day`, `Month-Day`, `Month-Event`,
+`LMS/Platform/Discussion/Inbox-Row`, `LMS/Platform/Services/Service-Row` (all v1.0). Each desktop card carries a data note
+(Dates API and Discussions API per enrolment; Services has no Open edX source). Not checked yet: dark mode and the brand modes.
+
 ## 2026-10-17 · Calendar, Discussion and Services: proposal pages in the prototype
 
 The three top-bar sections that only showed a toast now have pages in the prototype, merged as proposals (PR 187) to
