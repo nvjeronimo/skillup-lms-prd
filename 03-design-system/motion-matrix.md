@@ -319,7 +319,7 @@ All six merged to `main` on 14 Oct 2026, in order. They were built as a **stack*
 |---|---|
 | This file | from "Spec for review" to "Contract" when PR 1 merges; each §7 table gets its PR link as it lands |
 | `00-decisions/024-motion-scale.md` | the scale, Material names, Q1–Q4 (proposed → accepted on approval) |
-| Figma DS | `Motion` collection (§5.5) + a documentation frame on `❖ LMS · IN REVIEW / NOT FOR BUILD` in the block-template format: the scale, the rules, and one storyboard per flow (§7.1–7.4: before → during → after, with token labels). A short motion note on the main components it touches (once per component, never per instance). Parallel-sessions check before every Figma write |
+| Figma DS | `Motion` collection (§5.5) + a documentation frame on its own Foundations page `↳ Motion` (moved out of In review on 19 Oct 2026, frame `Doc · Foundations · Motion`) in the block-template format: the scale, the rules, and one storyboard per flow (§7.1–7.4: before → during → after, with token labels). A short motion note on the main components it touches (once per component, never per instance). Parallel-sessions check before every Figma write |
 | ICP Hub | a **Motion** section: the scale, R1–R10, the four flows with links to the prototype routes, PR status |
 | BA | the BR-39 amendment, sent as a proposal (not applied) |
 
