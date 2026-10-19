@@ -9,6 +9,16 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-19 · Certificates: Dashboard figures, the sheet in the DS
+
+Nelson said yes to the open points of the Certificates page. Prototype PR 202: the Dashboard *Certificates* figure
+(8, was 2) and the jump tile (*5 in progress · 8 to download*, was 4 · 2) are counted from the Certificates page.
+DS: `Certificate-Document` 1.1 (to publish), out of In review onto ↳ Completion, renamed from
+`Certificate-Document-demo`, with a *Second partner* boolean for IBM + Microsoft; after the publish the two sheets on
+the Certificates screens turn it on. `LMS / Profile Menu` 1.4 published; the three menu-open screens show it (the
+mobile one, 812 tall, cuts the last 21 px of the panel, which scrolls inside on a phone).
+
 ## 2026-10-19 · Certificates page
 
 Nelson: a page with every certificate of the learner, reachable from the Dashboard's Certificates tile and the profile
