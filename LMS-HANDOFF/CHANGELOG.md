@@ -8,6 +8,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Player Topbar: John Smith
+
+The ICP player Topbar (1.3, to publish) shows John Smith with the JS initials avatar on all six variants, as the
+platform Topbar; the screens showed the UI-kit learner (Olivia Rhye).
+
+
 ## 2026-10-19 · SCORM components in the DS
 
 The stand-ins of the Activity (SCORM) page are DS components on ↳ Topics, to publish: `Activity-Player` (Fullscreen

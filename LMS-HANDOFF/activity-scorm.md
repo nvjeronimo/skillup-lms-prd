@@ -104,8 +104,6 @@ fullscreen bars and 12 launch cards.
 
 ## 5. Open
 
-- **The player Topbar (ICP):** it still shows the UI-kit learner (Olivia Rhye) by default. The platform Topbar was
-  fixed on 19 Oct (1.4).
 - **What the package's *Exit course* does inside our frame:** to check on a real package. Some packages close their
   window, and in a frame that does nothing.
 - **Not checked yet:** dark mode, and copy review with the content team.
