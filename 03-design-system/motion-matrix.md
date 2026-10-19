@@ -271,11 +271,24 @@ lives in that button*.
 | Every hover / focus / pressed colour in the product | rest ⇄ hover/focus | Tailwind's default `transition-*` duration and easing now **are** `short3` + `standard`, so every `transition-colors` is on the scale; interactive elements that change colour on hover without any transition get `transition-colors` | short3 | standard | — |
 | Focus ring | → visible | `outline-color` / `box-shadow` fade, never the offset | short3 | standard | — |
 
-### 7.6 Later (not in this block)
+### 7.6 Details — buttons, bookmarks, tabs, transcript, locked topics, footer, live, certificate (PR #195, approved by Nelson 19 Oct)
 
-Kept from v1 for the next block: `Button` press scale and loading → done; `Bookmark` fill; tab indicator slide;
-`TranscriptLine` active + auto-scroll; `TopicRow` locked nudge + tooltip; `TopicFooterNav` "n of N" digit roll;
-`Badge` live dot; `Certificate` reveal (the only `emphasized`).
+| Component | Transition | Property | Duration | Easing | Reduced motion |
+|---|---|---|---|---|---|
+| `Button` | press | `scale(.98)` | short2 | standard | no scale |
+| `Button` | loading | width held while the spinner shows | — | — | spinner breathes |
+| `Button` (`done`, opt-in) | loading → done | check draws for 1.2 s, "Done" announced | short4 | standard-decelerate | check appears |
+| `Bookmark` | off → on | fill + one swell 1 → 1.08 → 1 (no overshoot) | short3 | standard | fill only |
+| `Bookmark` | on → off | fill fades | short3 | standard | — |
+| Tabs (`ContentTabs`, `PlatformTabs`) | tab A → B | one underline slides (`translateX` + width); first paint and resize do not animate | short4 | standard | jumps |
+| `TranscriptLine` | → active | background + left bar | short3 | standard | — |
+| `TranscriptTab` | auto-follow | scrolls only when the active line leaves the transcript box; pauses 8 s after the learner scrolls | browser | browser | instant |
+| `TopicRow` locked | activate | hint "Complete {nearest previous unlocked topic} first" rises 4 px, above the row when low in the list; closes on Escape, blur or 3 s; announced politely (also on the collapsed rail). **No shake.** The row no longer opens the locked-topic page | short4 | standard-decelerate | fade only |
+| `TopicFooterNav` | "n of N" changes | the number cross-fades, within one course only | short3 | standard | — |
+| `Badge` `live` / `LiveNowBanner` | looping | dot pulses opacity, 1.2 s | — | linear | static dot, "Live" stays |
+| `CourseCertificate` | first mount | `opacity` + `scale(.98 → 1)` — the only `emphasized` | medium2 | emphasized | fade only |
+
+Not built because the feature does not exist yet: the video's ≥90% auto-complete (it will join the completion chain when it calls `markComplete`) and a loading state on the quiz Submit (the Button already holds its width when one is added).
 
 **Anti-scope, rejected:** confetti on a correct answer or a finished checklist; staggered entrance on lists over
 ~8 items; parallax or scroll-jacking in the content column; sound; per-word animation of streamed text; any
@@ -306,7 +319,7 @@ All six merged to `main` on 14 Oct 2026, in order. They were built as a **stack*
 |---|---|
 | This file | from "Spec for review" to "Contract" when PR 1 merges; each §7 table gets its PR link as it lands |
 | `00-decisions/024-motion-scale.md` | the scale, Material names, Q1–Q4 (proposed → accepted on approval) |
-| Figma DS | `Motion` collection (§5.5) + a documentation frame on `❖ LMS · IN REVIEW / NOT FOR BUILD` in the block-template format: the scale, the rules, and one storyboard per flow (§7.1–7.4: before → during → after, with token labels). A short motion note on the main components it touches (once per component, never per instance). Parallel-sessions check before every Figma write |
+| Figma DS | `Motion` collection (§5.5) + a documentation frame on its own Foundations page `↳ Motion` (moved out of In review on 19 Oct 2026, frame `Doc · Foundations · Motion`) in the block-template format: the scale, the rules, and one storyboard per flow (§7.1–7.4: before → during → after, with token labels). A short motion note on the main components it touches (once per component, never per instance). Parallel-sessions check before every Figma write |
 | ICP Hub | a **Motion** section: the scale, R1–R10, the four flows with links to the prototype routes, PR status |
 | BA | the BR-39 amendment, sent as a proposal (not applied) |
 

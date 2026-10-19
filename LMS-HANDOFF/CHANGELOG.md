@@ -29,6 +29,15 @@ avatar is a rounded square and the footer order follows the prototype. The menu 
 desktop, mobile, player), section `7449:64970` on the V8 WIP page.
 
 
+## 2026-10-19 · Platform Topbar 1.5: the logo in dark mode
+
+Dark-mode check of the new Calendar, Discussion and Services screens (no text under AA; the mobile conversation header
+no longer clips its title). The platform `Topbar` showed its logo in a fixed white box in dark mode. DS `Topbar` v1.5:
+no white box; the logo's teal parts use `text/on-primary-soft` (#044150 in light, #CDEAF6 in dark; Nelson chose an
+existing token over a new one); the hidden Compact learner name reads John Smith. Published 19 Oct; in the ICP file the
+108 Topbar instances on Ready for Dev, V8 WIP, Lab and AI Assistant were still on the previous library copy after the
+accept and were swapped (the current nav item kept on every screen). Not checked: the Gold and Red brand modes.
+
 ## 2026-10-19 · SCORM components in the DS
 
 The stand-ins of the Activity (SCORM) page are DS components on ↳ Topics, to publish: `Activity-Player` (Fullscreen
