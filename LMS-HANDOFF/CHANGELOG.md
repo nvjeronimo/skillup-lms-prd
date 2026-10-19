@@ -8,6 +8,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Activity (SCORM) screens
+
+New ICP page *↳ Activity · SCORM - WIP* (Figma `7428:1069`), 46 screens in four groups: A in the page (default,
+Fullscreen), B new window (course option), C exceptions (package never reports → Next asks; phone notice + Open
+anyway), D course packages with their own menu (POSH: our sidebar collapsed, frame at window height, Fullscreen
+first). Completion and score come from the package; no Mark as Complete. Nelson's decisions and the screen list in
+`activity-scorm.md`. WIP, local stand-ins listed there.
+
+
 ## 2026-10-19 · Lab: no Opened state, no *How this lab works*, no author
 
 Nelson's changes on the Google Ready and Opened screens, applied to every Lab screen
