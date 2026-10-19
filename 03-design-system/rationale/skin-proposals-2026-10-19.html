@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Temas SkillUp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Foundations SkillUp (as do DS, nada inventado) */
+  --deep:#044150; --teal:#26708e; --teal-ink:#215477; --sky:#51bffc; --sky-soft:#ebf8ff; --sky-mid:#acd5f4;
+  --sun:#f9c654; --sun-soft:#fff9eb; --sun-mid:#ffebbd; --sun-ink:#85580e;
+  --mint:#aaeeeb; --mint-soft:#e8fffe; --sea:#1f655e;
+  --leaf:#1f7643; --leaf-soft:#e4fced; --leaf-mid:#aaedc2;
+  --coral:#e8797b; --coral-soft:#fce8e8; --rose-ink:#b62226;
+  --info:#0086c9;
+  --ink:#13282f; --muted:#39414c; --subtle:#4f5b69; --line:#e1e7ec; --page:#ffffff; --grey:#f3f5fa;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background:#eef1f5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1320px;margin:0 auto;padding:40px 24px 80px}
+h1.doc{font-size:34px;font-weight:800;margin:0 0 8px;letter-spacing:-.01em}
+.lead{font-size:16px;line-height:1.55;color:var(--muted);max-width:860px;margin:0 0 28px}
+.palette{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 40px}
+.sw{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 6px;font-size:12px;font-weight:600;color:var(--muted)}
+.sw i{width:22px;height:22px;border-radius:50%;display:block;border:1px solid #0001}
+section.opt{margin:0 0 56px}
+.opt-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 20px;margin:0 0 6px}
+.opt-head h2{font-size:24px;font-weight:800;margin:0}
+.tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--subtle)}
+.why{font-size:15px;line-height:1.55;color:var(--muted);max-width:900px;margin:0 0 16px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin:0 0 18px}
+.rule{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.5;color:var(--muted)}
+.rule b{color:var(--ink)}
+
+/* ---------- the mock (one markup, themed by the frame class) ---------- */
+.frame{border-radius:16px;overflow:hidden;border:1px solid #d5dce3;box-shadow:0 10px 30px #13282f14;background:var(--m-page-bg)}
+.tb{display:flex;align-items:center;gap:28px;height:64px;padding:0 28px;background:var(--m-tb-bg);border-bottom:1px solid var(--m-tb-line)}
+.logo{font-weight:800;font-size:20px;color:var(--m-logo);letter-spacing:-.02em}
+.logo span{color:var(--sky)}
+.nav{display:flex;gap:22px;font-size:14px;font-weight:600;color:var(--m-nav)}
+.nav a{position:relative;padding:22px 0;text-decoration:none;color:inherit}
+.nav a.on{color:var(--m-nav-on)}
+.nav a.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--m-nav-bar)}
+.nav .cnt{font-size:11px;font-weight:700;margin-left:6px;padding:1px 7px;border-radius:999px;background:var(--m-cnt-bg);color:var(--m-cnt-ink)}
+.av{margin-left:auto;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--m-av-bg);color:var(--m-av-ink)}
+.hero{position:relative;overflow:hidden;padding:34px 28px 30px;background:var(--m-hero-bg);color:var(--m-hero-ink)}
+.hero:before{content:"";position:absolute;inset:auto -120px -180px auto;width:420px;height:420px;border-radius:50%;background:var(--m-glow1);opacity:var(--m-glow-op);pointer-events:none}
+.hero:after{content:"";position:absolute;left:-90px;top:-140px;width:300px;height:300px;border-radius:50%;background:var(--m-glow2);opacity:var(--m-glow-op);pointer-events:none}
+.hero h3{position:relative;font-size:32px;font-weight:800;margin:0 0 6px;letter-spacing:-.015em}
+.hero h3 em{font-style:normal;color:var(--m-hero-em)}
+.hero p{position:relative;margin:0;font-size:15px;color:var(--m-hero-sub)}
+.streak{position:relative;display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--m-chip-bg);color:var(--m-chip-ink)}
+.body{padding:24px 28px 30px;display:grid;grid-template-columns:1.25fr 1fr;gap:20px}
+.stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{border-radius:12px;padding:16px;background:var(--m-card);border:1px solid var(--m-card-line)}
+.stat .n{font-size:28px;font-weight:800;line-height:1.1}
+.stat .l{font-size:12px;font-weight:600;color:var(--subtle);margin-top:4px}
+.stat .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;margin-bottom:10px;font-size:15px}
+.card{border-radius:14px;background:var(--m-card);border:1px solid var(--m-card-line);overflow:hidden}
+.course{display:flex;flex-direction:column}
+.cover{height:92px;background:var(--m-cover);position:relative}
+.cover .type{position:absolute;left:16px;top:14px;font-size:11px;font-weight:800;letter-spacing:.08em;padding:4px 9px;border-radius:6px;background:var(--m-type-bg);color:var(--m-type-ink)}
+.ci{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px}
+.ci h4{margin:0;font-size:18px;font-weight:700}
+.meta{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--subtle)}
+.bar{height:8px;background:var(--m-track);border-radius:0;overflow:hidden}
+.bar i{display:block;height:100%;width:35%;background:var(--info)}
+.next{border-radius:10px;padding:10px 12px;background:var(--m-next-bg);font-size:13px}
+.next b{display:block;font-size:11px;letter-spacing:.06em;color:var(--m-next-k);margin-bottom:2px}
+.btn{display:block;text-align:center;font-weight:700;font-size:14px;padding:11px;border-radius:9px;background:var(--m-btn);color:var(--m-btn-ink);box-shadow:var(--m-btn-shadow)}
+.due{display:flex;flex-direction:column}
+.due h5,.jump h5{margin:0;padding:16px 18px 6px;font-size:15px;font-weight:800}
+.due h5 em,.jump h5 em{font-style:normal;color:var(--subtle);font-weight:600}
+.drow{display:flex;gap:12px;align-items:center;padding:11px 18px;border-top:1px solid var(--m-card-line)}
+.day{width:42px;text-align:center;border-radius:9px;padding:5px 0;font-weight:800;font-size:16px;line-height:1.1;background:var(--m-day-bg);color:var(--m-day-ink)}
+.day small{display:block;font-size:10px;font-weight:700;letter-spacing:.05em}
+.dt{flex:1;font-size:13px;font-weight:600}
+.dt span{display:block;font-weight:500;color:var(--subtle);font-size:12px}
+.pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--m-pill-bg);color:var(--m-pill-ink)}
+.jump{grid-column:1/-1}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:6px 18px 18px}
+.tile{border-radius:12px;padding:14px;display:flex;gap:12px;align-items:center;font-size:13px;font-weight:700;border:1px solid var(--m-card-line)}
+.tile .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:17px;flex:none}
+.tile span{display:block;font-weight:500;font-size:12px;color:var(--subtle)}
+
+/* ---------- Current (reference) ---------- */
+.t-now{--m-page-bg:#f3f5fa;--m-tb-bg:#fff;--m-tb-line:#e1e7ec;--m-logo:var(--deep);--m-nav:#4f5b69;--m-nav-on:var(--teal-ink);--m-nav-bar:var(--teal);--m-cnt-bg:#e1e7ec;--m-cnt-ink:#39414c;--m-av-bg:#e1e7ec;--m-av-ink:#39414c;
+  --m-hero-bg:transparent;--m-hero-ink:var(--ink);--m-hero-em:#4f5b69;--m-hero-sub:#4f5b69;--m-glow1:transparent;--m-glow2:transparent;--m-glow-op:0;--m-chip-bg:#e1e7ec;--m-chip-ink:#39414c;
+  --m-card:#fff;--m-card-line:#e1e7ec;--m-cover:#b9c4ce;--m-type-bg:#fff;--m-type-ink:#39414c;--m-track:#b9c4ce;--m-next-bg:#f3f5fa;--m-next-k:#4f5b69;--m-btn:var(--teal);--m-btn-ink:#fff;--m-btn-shadow:none;
+  --m-day-bg:#f3f5fa;--m-day-ink:var(--ink);--m-pill-bg:var(--sun-soft);--m-pill-ink:var(--sun-ink)}
+.t-now .stat .ic,.t-now .tile .ic{background:#f3f5fa;color:#4f5b69}
+.t-now .tile{background:#fff}
+
+/* ---------- A · Maré ---------- */
+.t-mare{--m-page-bg:#f3f8fc;--m-tb-bg:var(--deep);--m-tb-line:#0a5266;--m-logo:#fff;--m-nav:#acd5f4;--m-nav-on:#fff;--m-nav-bar:var(--sun);--m-cnt-bg:#0a5266;--m-cnt-ink:#ebf8ff;--m-av-bg:var(--sun);--m-av-ink:var(--deep);
+  --m-hero-bg:linear-gradient(120deg,var(--deep) 0%,#0a5a70 55%,var(--teal) 100%);--m-hero-ink:#fff;--m-hero-em:var(--sky);--m-hero-sub:#cdeaf6;--m-glow1:radial-gradient(circle,var(--sky),transparent 65%);--m-glow2:radial-gradient(circle,var(--mint),transparent 65%);--m-glow-op:.35;--m-chip-bg:var(--sun);--m-chip-ink:var(--deep);
+  --m-card:#fff;--m-card-line:#dbe8f1;--m-cover:linear-gradient(135deg,var(--teal),var(--sky));--m-type-bg:#ffffffe6;--m-type-ink:var(--deep);--m-track:#d3e6f2;--m-next-bg:var(--sky-soft);--m-next-k:var(--teal-ink);--m-btn:var(--teal);--m-btn-ink:#fff;--m-btn-shadow:0 4px 0 var(--deep);
+  --m-day-bg:var(--deep);--m-day-ink:#fff;--m-pill-bg:var(--sun);--m-pill-ink:var(--deep)}
+.t-mare .s1 .ic{background:var(--sky-soft);color:var(--teal)} .t-mare .s2 .ic{background:var(--mint-soft);color:var(--sea)} .t-mare .s3 .ic{background:var(--sun-soft);color:var(--sun-ink)} .t-mare .s4 .ic{background:var(--leaf-soft);color:var(--leaf)}
+.t-mare .tile{background:#fff} .t-mare .tile .ic{background:var(--sky-soft);color:var(--teal)}
+
+/* ---------- B · Sol ---------- */
+.t-sol{--m-page-bg:#fffdf6;--m-tb-bg:#fff;--m-tb-line:#f3e7c7;--m-logo:var(--deep);--m-nav:#4f5b69;--m-nav-on:var(--deep);--m-nav-bar:var(--sun);--m-cnt-bg:var(--sun-mid);--m-cnt-ink:var(--sun-ink);--m-av-bg:var(--deep);--m-av-ink:var(--sun);
+  --m-hero-bg:linear-gradient(105deg,var(--sun) 0%,#fbd57f 45%,var(--sun-mid) 100%);--m-hero-ink:var(--deep);--m-hero-em:var(--teal);--m-hero-sub:var(--deep);--m-glow1:radial-gradient(circle,#fff,transparent 65%);--m-glow2:radial-gradient(circle,var(--mint),transparent 65%);--m-glow-op:.55;--m-chip-bg:var(--deep);--m-chip-ink:var(--sun);
+  --m-card:#fff;--m-card-line:#efe6cf;--m-cover:linear-gradient(135deg,var(--deep),var(--teal));--m-type-bg:var(--sun);--m-type-ink:var(--deep);--m-track:#efe3c3;--m-next-bg:var(--sun-soft);--m-next-k:var(--sun-ink);--m-btn:var(--deep);--m-btn-ink:#fff;--m-btn-shadow:0 4px 0 var(--sun);
+  --m-day-bg:var(--sun);--m-day-ink:var(--deep);--m-pill-bg:var(--deep);--m-pill-ink:var(--sun)}
+.t-sol .s1 .ic{background:var(--sun-mid);color:var(--sun-ink)} .t-sol .s2 .ic{background:var(--mint-soft);color:var(--sea)} .t-sol .s3 .ic{background:var(--sky-soft);color:var(--teal)} .t-sol .s4 .ic{background:var(--leaf-soft);color:var(--leaf)}
+.t-sol .tile{background:#fff} .t-sol .tile .ic{background:var(--sun-soft);color:var(--sun-ink)}
+
+/* ---------- C · Prisma ---------- */
+.t-prisma{--m-page-bg:#f6f8fb;--m-tb-bg:#fff;--m-tb-line:#e1e7ec;--m-logo:var(--deep);--m-nav:#4f5b69;--m-nav-on:var(--deep);--m-nav-bar:var(--teal);--m-cnt-bg:var(--sky-soft);--m-cnt-ink:var(--teal-ink);--m-av-bg:var(--mint);--m-av-ink:var(--deep);
+  --m-hero-bg:#fff;--m-hero-ink:var(--ink);--m-hero-em:var(--teal);--m-hero-sub:#4f5b69;--m-glow1:radial-gradient(circle,var(--sky),transparent 62%);--m-glow2:radial-gradient(circle,var(--sun),transparent 62%);--m-glow-op:.28;--m-chip-bg:var(--leaf-soft);--m-chip-ink:var(--leaf);
+  --m-card:#fff;--m-card-line:#e1e7ec;--m-cover:linear-gradient(135deg,var(--sea),var(--mint));--m-type-bg:#fff;--m-type-ink:var(--sea);--m-track:#e1e7ec;--m-next-bg:var(--mint-soft);--m-next-k:var(--sea);--m-btn:var(--teal);--m-btn-ink:#fff;--m-btn-shadow:none;
+  --m-day-bg:var(--sun-soft);--m-day-ink:var(--sun-ink);--m-pill-bg:var(--sun);--m-pill-ink:var(--deep)}
+/* Prisma: every section has its own foundation colour, in the nav and on its tiles */
+.t-prisma .nav a.c-dash.on:after{background:var(--teal)}
+.t-prisma .nav .c-ml .cnt{background:var(--sky-soft);color:var(--teal-ink)}
+.t-prisma .nav .c-cal .cnt{background:var(--sun-mid);color:var(--sun-ink)}
+.t-prisma .s1{background:var(--sky-soft);border-color:var(--sky-mid)} .t-prisma .s1 .ic{background:#fff;color:var(--teal)}
+.t-prisma .s2{background:var(--mint-soft);border-color:var(--mint)} .t-prisma .s2 .ic{background:#fff;color:var(--sea)}
+.t-prisma .s3{background:var(--sun-soft);border-color:var(--sun-mid)} .t-prisma .s3 .ic{background:#fff;color:var(--sun-ink)}
+.t-prisma .s4{background:var(--leaf-soft);border-color:var(--leaf-mid)} .t-prisma .s4 .ic{background:#fff;color:var(--leaf)}
+.t-prisma .tile.j1{background:var(--leaf-soft);border-color:var(--leaf-mid)} .t-prisma .tile.j1 .ic{background:var(--leaf);color:#fff}
+.t-prisma .tile.j2{background:var(--sun-soft);border-color:var(--sun-mid)} .t-prisma .tile.j2 .ic{background:var(--sun);color:var(--deep)}
+.t-prisma .tile.j3{background:var(--coral-soft);border-color:#f3c3c4} .t-prisma .tile.j3 .ic{background:var(--rose-ink);color:#fff}
+.t-prisma .hero{border-bottom:1px solid var(--line)}
+
+.pair{display:grid;grid-template-columns:1fr;gap:18px}
+.label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--subtle);margin:0 0 8px}
+.verdict{margin-top:48px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.verdict h2{margin:0 0 10px;font-size:22px;font-weight:800}
+.verdict p,.verdict li{font-size:15px;line-height:1.6;color:var(--muted)}
+.verdict b{color:var(--ink)}
+@media (max-width:900px){.body{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:1fr}.nav{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="doc">Três temas mais vivos, só com as cores da SkillUp</h1>
+  <p class="lead">O layout de hoje é quase todo branco e cinzento: a cor só aparece no botão e na barra de progresso. Cada proposta abaixo dá à cor um <b>papel</b> (orientar, celebrar, chamar à ação) em vez de a espalhar. Partem só das cores das foundations do DS; os poucos tons intermédios (gradientes, linhas, o leve tom do fundo) são misturas delas e passariam a tokens se avançarmos. Mantêm as regras já decididas (progresso em <b>bg/info</b>, verde só para concluído, contraste AA) e cabem no sistema de skins que já existe (<code>data-skin</code>, como Gold e Red), porque mexem sobretudo nos tokens de marca e de superfície.</p>
+
+  <div class="palette">
+    <span class="sw"><i style="background:#044150"></i>Deep teal #044150</span>
+    <span class="sw"><i style="background:#26708e"></i>Teal #26708E</span>
+    <span class="sw"><i style="background:#51bffc"></i>Sky (logo) #51BFFC</span>
+    <span class="sw"><i style="background:#f9c654"></i>Sun #F9C654</span>
+    <span class="sw"><i style="background:#aaeeeb"></i>Mint #AAEEEB</span>
+    <span class="sw"><i style="background:#1f7643"></i>Leaf #1F7643</span>
+    <span class="sw"><i style="background:#e8797b"></i>Coral #E8797B</span>
+    <span class="sw"><i style="background:#0086c9"></i>Info #0086C9 (progresso)</span>
+  </div>
+
+  <!-- TEMPLATE repeated per theme -->
+  <section class="opt">
+    <div class="opt-head"><h2>Hoje</h2><span class="tag">referência</span></div>
+    <p class="why">O tema actual, para comparar: superfícies cinzentas, um único azul, o amarelo só no hover do botão.</p>
+    <div class="frame t-now" data-mock></div>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head"><h2>A · Maré</h2><span class="tag">recomendado</span><span class="tag">profundo + céu + faísca amarela</span></div>
+    <p class="why">A marca a ocupar espaço: a barra de topo e a saudação em <b>deep teal</b> com um brilho de <b>sky</b>, como o fundo do certificado e do cabeçalho do curso. O <b>amarelo</b> passa a ser a faísca de energia: o indicador da página activa, o avatar, a sequência de estudo, os prazos. Cada estatística ganha o seu tom suave. É o mais próximo da identidade SkillUp e o mais fácil de levar para o DS.</p>
+    <div class="rules">
+      <div class="rule"><b>Onde muda:</b> topbar e hero (deep → teal), fundo da página com um leve tom de céu, ícones das estatísticas em tons suaves, botão com uma "aba" em deep teal.</div>
+      <div class="rule"><b>Amarelo com regra:</b> só para o que pede atenção agora (página activa, prazo, sequência). Nunca em texto (#F9C654 em branco não passa AA).</div>
+      <div class="rule"><b>Tokens:</b> 6 tokens de superfície por skin (topbar, hero, page tint, accent da navegação). Sem primitivas novas.</div>
+    </div>
+    <div class="frame t-mare" data-mock></div>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head"><h2>B · Sol</h2><span class="tag">quente, celebrativo</span></div>
+    <p class="why">O <b>amarelo</b> SkillUp como cor dominante na saudação, com texto em deep teal (contraste 7,1:1). Botões em deep teal com sombra amarela, chips e dias em amarelo. É o mais alegre e o mais "consumer"; arrisca cansar num uso diário longo e afasta-se do teal que os parceiros associam à marca.</p>
+    <div class="rules">
+      <div class="rule"><b>Onde muda:</b> hero amarelo, página creme, botão primário passa a deep teal, contadores e dias em amarelo.</div>
+      <div class="rule"><b>Risco:</b> o amarelo já é a cor de "warning" (prazos). Com o hero amarelo, os avisos perdem destaque: teríamos de os mover para coral.</div>
+    </div>
+    <div class="frame t-sol" data-mock></div>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head"><h2>C · Prisma</h2><span class="tag">cor como orientação</span></div>
+    <p class="why">Fundo claro como hoje, mas cada tipo de coisa tem a sua cor das foundations: estatísticas em céu, mint, sol e leaf; atalhos com a cor do destino (Discussion leaf, Certificates sol, Services coral). A cor ajuda a encontrar, não decora. Mais trabalho no DS (cor por secção e por tipo) e com cinco tons é fácil ficar "arco-íris" se não houver regra firme.</p>
+    <div class="rules">
+      <div class="rule"><b>Onde muda:</b> tiles e estatísticas com fundo suave da sua cor, ícone em cor forte; capas em mint; contadores com a cor da secção.</div>
+      <div class="rule"><b>Regra necessária:</b> um mapa fixo secção → cor (no DS e no Hub), para que o mesmo destino tenha sempre a mesma cor.</div>
+    </div>
+    <div class="frame t-prisma" data-mock></div>
+  </section>
+
+  <div class="verdict">
+    <h2>A minha recomendação: Maré, com uma pitada de Prisma</h2>
+    <ul>
+      <li><b>Maré como skin</b> (<code>data-skin="mare"</code>, ao lado de Teal, Gold e Red): topbar e saudação em deep teal com brilho de céu, amarelo só como faísca. É o maior salto de "vida" com o menor risco de identidade.</li>
+      <li><b>Do Prisma, só as estatísticas e os atalhos</b> com o seu tom suave: dá cor ao Dashboard sem mapa de cores por secção em todo o produto.</li>
+      <li><b>Fica como está:</b> progresso em bg/info, verde só no concluído, o player e o conteúdo dos tópicos (onde a leitura pede calma).</li>
+      <li><b>Próximo passo, se gostares:</b> ligo o tema Maré no protótipo como skin escolhida no menu de perfil (Dashboard, My Learning, Calendar), para veres em ecrã real, claro e escuro, antes de mexer no DS.</li>
+    </ul>
+  </div>
+</div>
+
+<template id="mock">
+  <div class="tb">
+    <div class="logo">Skill<span>Up</span></div>
+    <nav class="nav">
+      <a class="on c-dash">Dashboard</a>
+      <a class="c-ml">My Learning<span class="cnt">4</span></a>
+      <a class="c-cal">Calendar<span class="cnt">3</span></a>
+      <a>Discussion</a>
+      <a>Services</a>
+    </nav>
+    <div class="av">JS</div>
+  </div>
+  <div class="hero">
+    <h3>Good morning, <em>John.</em></h3>
+    <p>Two topics to finish Module 2. You are ahead of your plan this week.</p>
+    <span class="streak">🔥 5-day streak</span>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat s1"><div class="ic">▶</div><div class="n">3</div><div class="l">Courses in progress</div></div>
+      <div class="stat s2"><div class="ic">◆</div><div class="n">2</div><div class="l">Programs</div></div>
+      <div class="stat s3"><div class="ic">★</div><div class="n">1</div><div class="l">Certificates</div></div>
+      <div class="stat s4"><div class="ic">✓</div><div class="n">4</div><div class="l">Courses completed</div></div>
+    </div>
+    <div class="card course">
+      <div class="cover"><span class="type">COURSE</span></div>
+      <div class="ci">
+        <h4>Project Management with AI Tools</h4>
+        <div class="meta"><span>35% complete</span><span>12 hours total</span></div>
+        <div class="bar"><i></i></div>
+        <div class="next"><b>UP NEXT</b>AI-assisted sprint planning · Video</div>
+        <div class="btn">Resume</div>
+      </div>
+    </div>
+    <div class="card due">
+      <h5>Due <em>this week</em></h5>
+      <div class="drow"><div class="day">24<small>SAT</small></div><div class="dt">Persona research draft<span>UX Research and Design Thinking</span></div><span class="pill">Tonight</span></div>
+      <div class="drow"><div class="day">26<small>MON</small></div><div class="dt">Assignment 02 · Audience segmentation<span>AI-Driven Content and Brand Communication</span></div><span class="pill">Mon</span></div>
+      <div class="drow"><div class="day">28<small>WED</small></div><div class="dt">Module 3 quiz<span>Leadership in Remote Teams</span></div><span class="pill">Wed</span></div>
+    </div>
+    <div class="card jump">
+      <h5>Jump <em>somewhere</em></h5>
+      <div class="tiles">
+        <div class="tile j1"><div class="ic">💬</div><div>Discussion<span>7 unread replies</span></div></div>
+        <div class="tile j2"><div class="ic">🏅</div><div>Certificates<span>1 ready to share</span></div></div>
+        <div class="tile j3"><div class="ic">🛟</div><div>Services<span>Your mentor, career help</span></div></div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  const t=document.getElementById('mock');
+  document.querySelectorAll('[data-mock]').forEach(f=>f.appendChild(t.content.cloneNode(true)));
+</script>
+</body>
+</html>

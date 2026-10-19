@@ -10,6 +10,19 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-19 · Sea, a livelier brand skin (proposal in the prototype)
+
+Nelson found the layout monochrome. Three skins made from the SkillUp foundation colours were shown side by side
+(`03-design-system/rationale/skin-proposals-2026-10-19.html`). He chose A, first called Maré and renamed Sea. Sea is a
+fourth brand skin in the prototype (profile menu → Sea; PRs 199, 200, 203):
+- the top bar is deep teal (#044150), with the yellow spark on the current page and the avatar;
+- the dark bands (glance card, Program header, Program-Card hero, mentor cards) use a deep-teal gradient;
+- page headings carry text/primary;
+- the Dashboard shortcuts are tinted.
+
+Progress, completion green, the player and AA are unchanged. Decision 027 (proposed): the DS tokens, the brand mode and
+the Figma screens wait for Nelson's approval.
+
 ## 2026-10-19 · Certificates: Dashboard figures, the sheet in the DS
 
 Nelson said yes to the open points of the Certificates page. Prototype PR 202: the Dashboard *Certificates* figure
