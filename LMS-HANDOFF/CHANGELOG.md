@@ -11,7 +11,9 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 ## 2026-10-19 · Player Topbar: John Smith
 
 The ICP player Topbar (1.3, to publish) shows John Smith with the JS initials avatar on all six variants, as the
-platform Topbar; the screens showed the UI-kit learner (Olivia Rhye).
+platform Topbar; the screens showed the UI-kit learner (Olivia Rhye). `LMS / Profile Menu` 1.2 (to publish): the header
+avatar is a rounded square and the footer order follows the prototype. The menu is drawn open on three screens (platform
+desktop, mobile, player), section `7449:64970` on the V8 WIP page.
 
 
 ## 2026-10-19 · SCORM components in the DS
