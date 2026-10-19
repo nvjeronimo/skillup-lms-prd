@@ -197,7 +197,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.1 | 2026-10-17 | Published | 1 | 2026-10-17 · Dark theme toggle removed (it is in the top bar); Brand skin segments with the skin colour dot |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20377-3832) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · Renamed from `LMS / Progress Circle` and moved to the Base page *Progress indicators*; the only progress circle (the Untitled UI kit one archived) |
 
-### LMS · Platform (`LMS/Platform/…`): 47
+### LMS · Platform (`LMS/Platform/…`): 53
 
 **Assistant** (on the page `❖ LMS · IN REVIEW / NOT FOR BUILD`, frame *Assistant · floating chat · WIP*)
 
@@ -285,6 +285,27 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-06 · Platform components moved into the DS library |
 | [Certificate-Document-demo](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
+
+**Calendar**
+
+| Component | Version | Since | Status | Variants | Last change recorded |
+|---|---|---|---|---:|---|
+| [Event-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-606) | v1.0 | 2026-10-19 | Published | 6 | 2026-10-19 · New: one date on the Calendar Agenda (Kind × Layout) |
+| [Month-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-680) | v1.0 | 2026-10-19 | Published | 3 | 2026-10-19 · New: one day of the Month view |
+| [Month-Event](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-649) | v1.0 | 2026-10-19 | Published | 9 | 2026-10-19 · New: one date inside a Month-Day cell |
+| [Week-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-621) | v1.0 | 2026-10-19 | Published | 2 | 2026-10-19 · New: one day of the Next 7 days strip |
+
+**Discussion**
+
+| Component | Version | Since | Status | Variants | Last change recorded |
+|---|---|---|---|---:|---|
+| [Inbox-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-1052) | v1.0 | 2026-10-19 | Published | 3 | 2026-10-19 · New: one conversation in the all-courses inbox |
+
+**Services**
+
+| Component | Version | Since | Status | Variants | Last change recorded |
+|---|---|---|---|---:|---|
+| [Service-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-1053) | v1.0 | 2026-10-19 | Published | 1 | 2026-10-19 · New: one service on the Services page |
 
 ### Base components: 25
 
@@ -439,6 +460,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-17 | `LMS / Inline Alert` | v1.1 → v1.2 | Nelson: an alert on a grey bg/subtle surface needs a white version. New variant property *Surface*: Page (default, as before: fill bg/faint) and Subtle (fill bg/page); Hint keeps bg/primary-soft on both. 6 → 12 variants. Prototype PR 189 (`surface` prop); the Calendar page of PR 187 draws its missed-deadline block that way. |
 | 2026-10-19 | `Course-Card` | v1.14 → v1.15 | Product-file check after the publish: in My Learning the course list cards were 146 (two-line title) and 116 (one line), against "cards always have the same height". The List variants get minHeight 146, as Grid has 370; nested in Course-Row, a screen cannot override min height, so the fix is in the component. Doc block measures regenerated with padding. Prototype PR 191 (list min height 146). |
 | 2026-10-19 | `Topbar` (Platform Navigation) | v1.3 → v1.4 | The default learner was the UI-kit sample (Olivia Rhye, a photo) on every Ready for Dev screen. Now John Smith with the initials avatar (JS) on Desktop and Compact, as in the prototype. Same check: 6 Topbars on *Lab · Third-party platforms* were still the v1.1 copy (no theme button); swapped to v1.3, My Learning current, heights 72 / 64 restored (they had collapsed to 39 / 49). |
+| 2026-10-19 | Six new Platform components | new at v1.0 | Calendar, Discussion and Services pages (approved 19 Oct, drawn in the ICP file): `Calendar/Event-Row`, `Calendar/Week-Day`, `Calendar/Month-Event`, `Calendar/Month-Day`, `Discussion/Inbox-Row`, `Services/Service-Row`. Built first as local components in the ICP file, rebuilt in the DS on three new group pages (↳ Calendar, ↳ Discussion, ↳ Services, docs generated with `ds-group-page.js`), published 19 Oct; the 119 instances on the ICP frame `7392:200778` were swapped to the library (signature check: 0 differences) and the local copies deleted. |
 
 ## Rename map (8 Oct 2026)
 

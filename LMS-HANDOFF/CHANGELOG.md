@@ -8,6 +8,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Six Calendar, Discussion and Services components in the DS (v1.0)
+
+Nelson asked for the six local components of the new platform pages to move to the DS. Rebuilt in the library on DS
+variables, text styles, Badge and icons, on three new group pages after Completion (↳ Calendar, ↳ Discussion,
+↳ Services; documentation from `ds-group-page.js`, split by level), and published 19 Oct:
+`LMS/Platform/Calendar/Event-Row` v1.0, `Week-Day` v1.0, `Month-Event` v1.0, `Month-Day` v1.0,
+`LMS/Platform/Discussion/Inbox-Row` v1.0, `LMS/Platform/Services/Service-Row` v1.0. In the ICP file the 119 instances
+on the Calendar, Discussion & Services frame (`7392:200778`) now point to the library (text and size checked before
+and after: no difference) and the local section was deleted. Register: `03-design-system/component-versions.md`
+(Platform 47 → 53); levels in `03-design-system/tools/ds-levels.json`. The first two publishes did not ship them
+(status Unpublished in the DS); the third did.
+
 ## 2026-10-19 · Lab: no Opened state, no *How this lab works*, no author
 
 Nelson's changes on the Google Ready and Opened screens, applied to every Lab screen

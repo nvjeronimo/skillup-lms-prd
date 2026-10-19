@@ -239,6 +239,31 @@
           "Course-Complete-Modal",
           "Certificate"
         ]
+      },
+      "Calendar": {
+        "Atoms": [
+          "Week-Day",
+          "Month-Event"
+        ],
+        "Molecules": [
+          "Month-Day",
+          "Event-Row"
+        ],
+        "Organisms": []
+      },
+      "Discussion": {
+        "Atoms": [],
+        "Molecules": [
+          "Inbox-Row"
+        ],
+        "Organisms": []
+      },
+      "Services": {
+        "Atoms": [],
+        "Molecules": [
+          "Service-Row"
+        ],
+        "Organisms": []
       }
     },
     "Base components": {
