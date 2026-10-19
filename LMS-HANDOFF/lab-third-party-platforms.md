@@ -59,7 +59,7 @@ it complete* (the rule the download Lab already follows).
 
 ## 4. Screens (Figma: desktop, tablet and mobile)
 
-**State of 12 Oct 2026.** *LMS ICP Phase 1* → page **`↳ Lab · Third-party platforms - Ready for Review 🟠`**
+**State of 19 Oct 2026** (three changes that day, below). *LMS ICP Phase 1* → page **`↳ Lab · Third-party platforms - Ready for Review 🟠`**
 (`6789:325`), frame `6789:326`. **Thirty-six cards: twelve screens on desktop, tablet (960) and mobile (375).**
 Built like the Reading page: card header, the screen, description and changelog. Every card's status tag reads
 *In review* (the *In progress* tag with its text changed; a longer label is cut on the mobile cards).
@@ -67,11 +67,11 @@ Built like the Reading page: card header, the screen, description and changelog.
 | Row | Card | Screen | Desktop card |
 |---|---|---|---|
 | **Google** · new tab (default) | G1 | Ready to start | `6789:901` |
-| | G2 | Opened at least once, topic not completed | `7053:13179` |
+| | G2 | Opened at least once, topic not completed: **not for now** (faded, 19 Oct) | `7053:13179` |
 | | G3 | *Next* on a lab that is not completed: the question | `7079:164755` |
 | | G4 | Completed by the learner | `6789:1816` |
 | **Microsoft** · new tab (default) | M1 | Ready to start | `6792:1917` |
-| | M2 | Opened at least once, topic not completed | `7053:14541` |
+| | M2 | Opened at least once, topic not completed: **not for now** (faded, 19 Oct) | `7053:14541` |
 | | M3 | *Next* on a lab that is not completed: the question | `7079:166018` |
 | | M4 | Completed by the learner | `6792:2804` |
 | **In the page** · option | E1 | The lab runs inside the page (LTI inline frame) | `6792:3199` |
@@ -81,6 +81,26 @@ Built like the Reading page: card header, the screen, description and changelog.
 
 Tablet and mobile cards carry the same number with `.2` and `.3` (`G1.2`, `G1.3`), in rows
 `Row n.2 · … · Tablet` and `Row n.3 · … · Mobile`.
+
+### 19 Oct 2026: no Opened state, no *How this lab works*, no author
+
+Nelson's changes on G1 and G2, applied the same day to every Lab screen (handoff cards and the two flow frames).
+
+- **SkillUp cannot tell whether the learner selected the launch button** (Komal, 19 Oct). Everything the *Opened*
+  state does depends on that click: the date of the first opening, the launch button turning secondary and Mark as
+  Complete primary, *Before you start* going away. So it is **not for now**. The six *Opened* cards (G2, M2 on three
+  breakpoints) stay on the page as the design for when the click can be recorded, faded to 20% and titled
+  *NOT FOR NOW - IN THE FUTURE*; the same on the flow frame's step 2.
+- **What follows on the other screens:** the launch card is always *Ready*, also on the question and the completed
+  screens. On a partner lab the launch button stays the primary action and **Mark as Complete stays secondary**.
+  *Before you start*, and on tablet and mobile *This lab needs a computer*, stay until the topic is completed. The
+  question screens (G3, M3) now show the Ready page behind the dialog. Vikas's answer of 13 Oct (the date can be
+  stored, §10) does not help while the click itself is not seen.
+- **How this lab works** (the title and its three steps) is grouped in a hidden frame *How it works* on every
+  screen: we have no way to show it.
+- **The author row** (`Author-and-Updated-Date`) is hidden on every screen: we do not show the author.
+- E1 (the lab inside the page) has no launch card, so Mark as Complete stays primary there.
+- Screens 200 px shorter on desktop and tablet, about 290 on mobile; frames and dialog overlays refitted.
 
 ### The two ways a lab opens
 
@@ -119,10 +139,10 @@ opening the lab does not complete the topic.
 
 | State | Launch card | End of the content | Footer | Topic status |
 |---|---|---|---|---|
-| **Ready** (G1, M1): never opened | *Ready*, button primary | **Mark as Complete**, secondary | *Previous* · *Next* | no status |
-| **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Mark as Complete**, primary | *Previous* · *Next* | no status |
+| **Ready** (G1, M1): not completed | *Ready*, button primary | **Mark as Complete**, secondary | *Previous* · *Next* | no status |
+| ***Not for now:*** **Opened** (G2, M2): opened at least once | *Opened*, button secondary, *First opened on 12 Oct 2026* | **Mark as Complete**, primary | *Previous* · *Next* | no status |
 | **The question** (G3, M3): *Next* without Mark as Complete | under the dialog | under the dialog | under the dialog | no status |
-| **Completed** (G4, M4) | *Opened*, unchanged | nothing | *Previous* · *Next*, which goes straight on | *Marked as completed* in the Topic Header; the topic's row in the sidebar becomes *Completed*. Nothing in the footer |
+| **Completed** (G4, M4) | *Ready*, unchanged | nothing | *Previous* · *Next*, which goes straight on | *Marked as completed* in the Topic Header; the topic's row in the sidebar becomes *Completed*. Nothing in the footer |
 | Frame not loading (E2) | *Unavailable*, *Open in a new tab* primary | **Mark as Complete**, secondary | *Previous* · *Next* | no status |
 | Lab inside the page (E1) | none | **Mark as Complete**, primary | *Previous* · *Next* | no status |
 
@@ -137,13 +157,18 @@ behind the menu.
 primary action and Mark as Complete is secondary. Once the lab has been opened they swap: the launch button is
 secondary and Mark as Complete is primary. Where there is no launch card (E1) Mark as Complete is primary from the
 start. On the screens this is a local override of the `Button` nested in `Topic-Status-Badge`
-(`Hierarchy=Secondary`); the DS component has no property for it.
+(`Hierarchy=Secondary`); the DS component has no property for it. **Since 19 Oct the swap is not for now:**
+SkillUp cannot tell whether the lab has been opened, so the launch button stays primary and Mark as Complete
+secondary.
 
 **Worth knowing:** there are now two ways of completing, the button and the question. Nelson's rule earlier the
 same day was one way only; the question is kept as the safety net for the learner who moves on without the
 button.
 
 ### The launch card says *opened*, never *complete*
+
+> **Not for now (19 Oct 2026):** SkillUp cannot tell whether the learner selected the launch button (Komal), so the
+> card stays *Ready*. What follows is the design for when that click can be recorded.
 
 Decided by Nelson on 12 Oct 2026, after the screens above were first drawn with a *Completed* card. We get no
 feedback from the partner, so the card cannot know the lab is done. It records one fact the platform does know:
@@ -169,13 +194,14 @@ the lab was opened, and when for the first time.
 
 - **Google:** needs a Google account to sign in to Google Skills and accept its terms; a desktop or laptop with
   Chrome; time to finish in one sitting, because some labs are timed and close by themselves. The launch card says
-  the lab shares the username and email. The three steps end on *Come back to this page and select Mark as Complete.* The
+  the lab shares the username and email. The three steps end on *Come back to this page and select Mark as Complete.* (hidden since 19 Oct). The
   note under them: *SkillUp can't see your progress on Google Skills. Nothing is sent back when you finish. Select
   Mark as Complete when you are done; if you select Next first, we ask you.*
 - **Microsoft:** a Microsoft account for Microsoft Learn; same third step and the same note.
 - **Only until the lab has been opened** (Nelson, 12 Oct): the *Before you start* block and the warning below.
   Once the learner has opened the lab at least once, they have seen what it needs, so the Opened, question and
-  Completed screens show neither. The page then goes from the lead line straight to the launch card.
+  Completed screens show neither. The page then goes from the lead line straight to the launch card. **Not for now
+  (19 Oct):** the opening is not seen, so both stay until the topic is completed.
 - **Tablet and mobile, Google never opened (G1, `.2` and `.3`):** the warning *This lab needs a computer*, from Google's
   own help ([Supported devices and browsers](https://support.google.com/qwiklabs/answer/9133547?hl=en)).
 - **Mobile, in the page (E1.3, E2.3):** *This lab works best on a computer*. A design call (a third-party frame
@@ -422,7 +448,8 @@ From the *ICP Labs discussions* chat, read from a screenshot Nelson shared. Kirt
 - **The IBM screens are right as drawn** (I1, I2): the whole course is on IBM, so *Start course* leaves SkillUp
   after the dialog and the course page then reads *Continue on IBM*. The Progress card keeps its dash: IBM does not
   send progress to us.
-- **The launch card's *First opened on …* can be built** as designed, with the date kept on the server.
+- **The launch card's *First opened on …* can be built** as designed, with the date kept on the server. *(19 Oct:
+  not for now, because the click on the launch button itself is not seen, Komal; see §4.)*
 
 **What it opens** (not designed, not decided)
 

@@ -8,6 +8,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Lab: no Opened state, no *How this lab works*, no author
+
+Nelson's changes on the Google Ready and Opened screens, applied to every Lab screen
+([`lab-third-party-platforms.md`](lab-third-party-platforms.md) §4).
+
+- **No Opened state for now:** SkillUp cannot tell whether the learner selected the launch button (Komal). The six
+  Opened cards stay, faded to 20% and titled *NOT FOR NOW - IN THE FUTURE*, with the flow frame's step 2. Everywhere
+  else the launch card is *Ready*, Mark as Complete stays secondary on partner labs, and *Before you start* (and
+  *This lab needs a computer* on tablet and mobile) stay until the topic is completed. The question cards G3 and
+  M3 now show the Ready page behind the dialog; the completed cards G4 and M4 show the card in *Ready*.
+- ***How this lab works* hidden:** the title and its three steps grouped in a hidden frame *How it works*, on every
+  screen; we have no way to show it.
+- **Author row hidden** on every screen.
+- **Annotations:** the descriptions that relied on the opening rewritten; *Recent changes* dated 2026-10-19 on the
+  24 Google, Microsoft and in-page cards. The Opened cards keep their description of the future state.
+- **Open:** the DS `Lab-Launch-Card` keeps its `Opened` variant, unused on the current screens; the prototype still
+  records the opening and shows *First opened on …*.
+
 ## 2026-10-19 · Product-file check: list cards one height, John Smith in the top bar
 
 After the 17 Oct publishes, the product file was checked: the 63 course and program headers are right (button fills,
