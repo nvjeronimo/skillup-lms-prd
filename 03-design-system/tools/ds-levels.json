@@ -11,8 +11,8 @@
   "_totals": {
     "LMS": {
       "Atoms": 45,
-      "Molecules": 51,
-      "Organisms": 18
+      "Molecules": 53,
+      "Organisms": 19
     },
     "Base components": {
       "Atoms": 54,
@@ -88,12 +88,15 @@
           "Lab-Launch-Card",
           "ORA-Text-Response",
           "ORA-Submit-Gate",
-          "Activity-SCORM-Frame"
+          "Activity-SCORM-Frame",
+          "Activity-Fullscreen-Bar",
+          "Activity-Launch-Card"
         ],
         "Organisms": [
           "Lesson-Block",
           "Podcast-Player",
-          "ORA-Rubric-Criterion"
+          "ORA-Rubric-Criterion",
+          "Activity-Player"
         ]
       },
       "Assessment": {

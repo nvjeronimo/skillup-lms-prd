@@ -8,6 +8,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · SCORM components in the DS
+
+The stand-ins of the Activity (SCORM) page are DS components on ↳ Topics, to publish: `Activity-Player` (Fullscreen
+toolbar + Package slot), `Activity-Fullscreen-Bar` (Desktop / Mobile) and `Activity-Launch-Card` (Ready · Opened ·
+Blocked, no provider). Published 19 Oct; the 46 screens use them (stand-ins removed).
+
+
 ## 2026-10-19 · Six Calendar, Discussion and Services components in the DS (v1.0)
 
 Nelson asked for the six local components of the new platform pages to move to the DS. Rebuilt in the library on DS
