@@ -9,6 +9,22 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-19 · Certificates: Dashboard figures, the sheet in the DS
+
+Nelson said yes to the open points of the Certificates page. Prototype PR 202: the Dashboard *Certificates* figure
+(8, was 2) and the jump tile (*5 in progress · 8 to download*, was 4 · 2) are counted from the Certificates page.
+DS: `Certificate-Document` 1.1 (published 19 Oct), out of In review onto ↳ Completion, renamed from
+`Certificate-Document-demo`, with a *Second partner* boolean for IBM + Microsoft. On the Certificates screens the sheets follow the prototype:
+Data Analytics Foundations IBM + Microsoft, Digital Marketing Fundamentals IBM, Intro to Product Analytics the
+SkillUp logo alone (the card thumbnails are the same component). `LMS / Profile Menu` 1.4 published; the three menu-open screens show it (the
+mobile one, 812 tall, cuts the last 21 px of the panel, which scrolls inside on a phone).
+
+Later the same day Nelson reordered the menu (`LMS / Profile Menu` 1.5, published): Appearance, Accessibility
+standards, a Profile section (Edit profile, Certificates), SkillUp Online, the demo footer, every group padded 12/16.
+The learner avatar is a rounded square (Radius/fixed-md), not a circle, in the platform `Topbar` 1.6 and the player
+`Topbar` 1.4 (published 19 Oct; the menu-open screens swapped to 1.5) and in the prototype (PR 204).
+
 ## 2026-10-19 · Certificates page
 
 Nelson: a page with every certificate of the learner, reachable from the Dashboard's Certificates tile and the profile
