@@ -8,6 +8,27 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+## 2026-10-19 · Profile menu: Edit profile and SkillUp Online; Edit profile page; notifications on the platform pages
+
+Nelson: the profile menu does not repeat the learner (the trigger shows who is signed in). `LMS / Profile Menu` 1.3
+(published 19 Oct): the header is gone; **Edit profile** opens the menu and **SkillUp Online** (skillup.online, new tab) is
+its own group after Accessibility standards, before the demo footer. The new **Edit profile** page puts the Open edX learner profile and account settings on one page, in two
+sections: *Your profile* (photo, username read-only, country, spoken language, education, about me up to 300
+characters, LinkedIn, who can see it: full or limited) and *Account* (full name, email confirmed by email, site
+language, time zone, reset password by email), with Cancel / Save changes. Drawn desktop 1280 and mobile 375 from DS
+Input field, Select, Textarea, Avatar, Button and Button group, section `7453:34440` on the V8 WIP page (in review).
+Prototype: PR 198 (`/platform/profile`, both menus) and PR 197 (the platform bell opens the same Notifications panel
+as the player instead of a "not in this prototype" toast).
+
+
+## 2026-10-19 · Player Topbar: John Smith
+
+The ICP player Topbar (1.3, published 19 Oct) shows John Smith with the JS initials avatar on all six variants, as the
+platform Topbar; the screens showed the UI-kit learner (Olivia Rhye). `LMS / Profile Menu` 1.2 (published 19 Oct, then 1.3): the header
+avatar is a rounded square and the footer order follows the prototype. The menu is drawn open on three screens (platform
+desktop, mobile, player), section `7449:64970` on the V8 WIP page.
+
+
 ## 2026-10-19 · Platform Topbar 1.5: the logo in dark mode
 
 Dark-mode check of the new Calendar, Discussion and Services screens (no text under AA; the mobile conversation header
