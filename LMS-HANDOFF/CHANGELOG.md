@@ -10,6 +10,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-19 · Player Topbar 1.5: the Dark Mobile avatar
+
+The learner avatar of the player `Topbar` Theme=Dark, Size=Mobile rendered light (bg/muted of the light theme) while
+its bindings matched Desktop. Replaced by a fresh Avatar xs instance that inherits the variant's dark mode; checked by
+render. `Topbar` 1.5, to publish. Also this day: 125 Topbar instances in the ICP file that stayed on the previous
+library copy after the accept were swapped to platform 1.6 / player 1.4 (Ready for Dev 54, Quizzes 66, V8 WIP 3,
+Topic Content Types 2); nav item and names kept, avatars radius 8.
+
 ## 2026-10-19 · Certificates: Dashboard figures, the sheet in the DS
 
 Nelson said yes to the open points of the Certificates page. Prototype PR 202: the Dashboard *Certificates* figure
