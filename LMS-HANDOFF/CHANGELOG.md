@@ -19,6 +19,11 @@ DS: `Certificate-Document` 1.1 (to publish), out of In review onto ↳ Completio
 the Certificates screens turn it on. `LMS / Profile Menu` 1.4 published; the three menu-open screens show it (the
 mobile one, 812 tall, cuts the last 21 px of the panel, which scrolls inside on a phone).
 
+Later the same day Nelson reordered the menu (`LMS / Profile Menu` 1.5, to publish): Appearance, Accessibility
+standards, a Profile section (Edit profile, Certificates), SkillUp Online, the demo footer, every group padded 12/16.
+The learner avatar is a rounded square (Radius/fixed-md), not a circle, in the platform `Topbar` 1.6 and the player
+`Topbar` 1.4 (to publish) and in the prototype (PR 204).
+
 ## 2026-10-19 · Certificates page
 
 Nelson: a page with every certificate of the learner, reachable from the Dashboard's Certificates tile and the profile
