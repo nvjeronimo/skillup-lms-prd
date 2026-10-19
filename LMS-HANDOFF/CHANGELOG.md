@@ -8,6 +8,25 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+
+## 2026-10-19 · Certificates page
+
+Nelson: a page with every certificate of the learner, reachable from the Dashboard's Certificates tile and the profile
+menu, and the one-certificate page drawn as well. Prototype PR 201: `/platform/certificates` lists **Earned** (the DS
+`Certificate-Card` Earned, 3 / 2 / 1 columns, one height per row, actions on the bottom edge; a course of a program
+names it under the issue date) and **In progress** (programs started and courses started, bar on bg/info with what it
+measures, each row a link to the course page or the program certificate page). The Dashboard tile and the Services
+Certificates row open it (they opened the Six Sigma certificate). The one-certificate page loses its "not designed
+yet" note. `LMS / Profile Menu` 1.4 (published 19 Oct): *Certificates* under *Edit profile*; the three menu-open screens show it.
+
+Figma, section `7461:34887` on the V8 WIP page (in review): the list desktop 1280 and mobile 375; one certificate,
+course issued, desktop and mobile; program certificate not earned, desktop. Built from DS Certificate-Card, Progress
+bar, Badge, Button and the platform shell. Open: the sheet on the one-certificate page is
+`Certificate-Document-demo`, which sits on the DS page *LMS · IN REVIEW / NOT FOR BUILD*; it prints IBM only where
+the prototype prints IBM and Microsoft for Data Analytics Foundations. The Dashboard figures (Certificates 2, tile
+"4 in progress · 2 to download") predate the Data Analytics sample program and do not match the 8 earned / 5 in
+progress of the page.
+
 ## 2026-10-19 · Profile menu: Edit profile and SkillUp Online; Edit profile page; notifications on the platform pages
 
 Nelson: the profile menu does not repeat the learner (the trigger shows who is signed in). `LMS / Profile Menu` 1.3
