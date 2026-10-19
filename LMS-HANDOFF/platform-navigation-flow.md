@@ -70,7 +70,7 @@ Status: **wired** = works in the prototype; **stand-in** = a message says it is 
 | Anywhere | site root `/` | Dashboard | wired (8 Oct; it used to open an older course hub) |
 | Top bar | logo, *Dashboard* | Dashboard | wired |
 | Top bar | *My Learning* | My Learning | wired |
-| Top bar | *Calendar*, *Discussion*, *Services* | their pages (`/platform/calendar`, `/platform/discussion`, `/platform/services`) | wired as proposals (17 Oct 2026, prototype PR 187) |
+| Top bar | *Calendar*, *Discussion*, *Services* | their pages (`/platform/calendar`, `/platform/discussion`, `/platform/services`) | wired (proposals 17 Oct 2026, prototype PR 187; approved 19 Oct, drawn in Figma) |
 | Top bar | notifications | the Notifications panel | stand-in |
 | Dashboard | *View calendar* (Due this week) | Calendar | wired (17 Oct) |
 | Dashboard | *Discussion* tile (Jump somewhere) | Discussion | wired (17 Oct) |
@@ -127,7 +127,7 @@ falls back to My Learning.
 | # | Question |
 |---|---|
 | 1 | The certificate page needs a design. A program certificate is proposed in the prototype since 10 Oct (PR 89), marked as a proposal |
-| 2 | ~~Where *Calendar*, *Discussion* and *Services* lead~~ — answered 17 Oct 2026 by proposal pages in the prototype (PR 187): to approve, then to draw in Figma |
+| 2 | ~~Where *Calendar*, *Discussion* and *Services* lead~~ — answered 17 Oct 2026 by proposal pages in the prototype (PR 187); approved by Nelson 19 Oct 2026 and drawn in Figma (Ready for Dev, frame `7392:200778`, WIP) |
 
 Closed on 10 Oct 2026: a program course always shows the program path; the mobile menu follows the desktop
 order; every course and both programs have content of their own (PRs 87, 90, 92).

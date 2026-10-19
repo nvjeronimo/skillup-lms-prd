@@ -8,13 +8,27 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 > components had then: they are today's `Badge` and `Button`.
 
 
+<<<<<<< HEAD
 ## 2026-10-19 · Product-file check: list cards one height, John Smith in the top bar
 
 After the 17 Oct publishes, the product file was checked: the 63 course and program headers are right (button fills,
 logo chips on bg/page, logos at the right edge); 6 Topbars on the Lab page were the old v1.1 copy without the theme
 button (swapped to v1.3). Two DS changes, to publish: Course-Card 1.15 (List min height 146, so list cards keep one
-height) and Topbar 1.4 (default learner John Smith, JS initials, instead of the UI-kit sample). Prototype PR 191.
+height) and Topbar 1.4 (default learner John Smith, JS initials, instead of the UI-kit sample); published and accepted 19 Oct. Prototype PR 191.
 
+=======
+## 2026-10-19 · Calendar, Discussion and Services drawn in Figma
+
+Nelson approved the three proposal pages (prototype PR 187) and they are now drawn in the ICP file, page *Platform Pages -
+Ready for Dev*, frame `Platform Pages - Calendar, Discussion & Services - Light` (`7392:200778`, banner WIP, cards In
+progress): **Calendar** desktop (Agenda), tablet (Month view) and mobile (Agenda); **Discussion** desktop, tablet, mobile
+list and mobile conversation; **Services** desktop, tablet and mobile. Built from DS components (Topbar with the page's item
+On, Button, Button group, Badge, Inline Alert Error · Subtle, Input field, Select, Avatar, Section-Header, the Course Detail
+Message and conversation pane) on DS tokens and text styles. Six new local components sit in the section next to the frame,
+to move to the DS when Nelson agrees: `LMS/Platform/Calendar/Event-Row`, `Week-Day`, `Month-Day`, `Month-Event`,
+`LMS/Platform/Discussion/Inbox-Row`, `LMS/Platform/Services/Service-Row` (all v1.0). Each desktop card carries a data note
+(Dates API and Discussions API per enrolment; Services has no Open edX source). Not checked yet: dark mode and the brand modes.
+>>>>>>> origin/main
 
 ## 2026-10-17 · Calendar, Discussion and Services: proposal pages in the prototype
 

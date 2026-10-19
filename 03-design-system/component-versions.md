@@ -210,7 +210,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.4 | 2026-10-19 | To publish | 2 | 2026-10-19 · Default learner John Smith with the JS initials avatar (was the UI-kit Olivia Rhye with a photo) |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.4 | 2026-10-19 | Published | 2 | 2026-10-19 · Default learner John Smith with the JS initials avatar (was the UI-kit Olivia Rhye with a photo) |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 
 **Dashboard**
@@ -230,7 +230,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.15 | 2026-10-19 | To publish | 6 | 2026-10-19 · List min height 146 (the height with a two-line title), so list cards keep one height |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.15 | 2026-10-19 | Published | 6 | 2026-10-19 · List min height 146 (the height with a two-line title), so list cards keep one height |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.12 | 2026-10-17 | Published | 6 | 2026-10-17 · Due badge Soft · sm · Warning (was the accent yellow), as the Dashboard Due-Item (v1.11: audit fix, "Certificate issued" text/default on green; "Up next" label styled again) |
 
 **Discovery**
