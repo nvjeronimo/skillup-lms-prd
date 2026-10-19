@@ -91,7 +91,10 @@ package reports. On a phone the window is a new tab.
 - `LMS / Inline Alert` (Info, Success, Warning);
 - Content-Feedback (no Mark as Complete), the Topic-Footer-Nav and the Next-asks Modal.
 
-**Local stand-ins, to move to the DS when the direction is approved:**
+**Moved to the DS on 19 Oct (to publish):** `LMS/ICP/Topics/Activity-Player`, `Activity-Fullscreen-Bar`,
+`Activity-Launch-Card`. The screens still hold the stand-ins until the publish; they will be swapped then.
+
+**Were local stand-ins:**
 - **Activity-Player:** the toolbar with Fullscreen, and the package frame.
 - **Fullscreen bar.**
 - **Launch card for the new window:** today it is the Lab-Launch-Card with its copy overridden. It needs an activity
