@@ -228,7 +228,7 @@ Per-type completion handling:
 | **VILT — Live** | LTI component (Zoom/Teams), launch inline/modal/new window | Launch card + pre-live/live states |
 | **VILT — Recording** | `video` | Media player variant |
 | **Lab** | `html` with a link to a Files & Uploads asset | File-download card + instructions + Completion tool |
-| **Activity** | `scorm` XBlock — iframe or popup, **max 1 per unit**, 1–15 MB | Full-bleed iframe shell + score/completion + error state |
+| **Activity** | `scorm` XBlock — iframe or popup, **max 1 per unit**, 1–15 MB | Full-bleed iframe shell + score/completion + error state  · screens: `activity-scorm.md` (19 Oct 2026) |
 | **Quiz** (all three) | `problem` blocks; graded/timed set on the **subsection** | Problem renderers + the shell that matches the subsection metadata |
 | **Final Project** | `openassessment` (ORA2) | Multi-step: response+upload → peer → grade + rubric renderer |
 | **Discussion Prompt** | Unit-level discussion checkbox (Olive+) | **Footer region of the unit shell**, not a stacked component |
