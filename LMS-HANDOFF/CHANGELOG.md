@@ -17,7 +17,7 @@ menu, and the one-certificate page drawn as well. Prototype PR 201: `/platform/c
 names it under the issue date) and **In progress** (programs started and courses started, bar on bg/info with what it
 measures, each row a link to the course page or the program certificate page). The Dashboard tile and the Services
 Certificates row open it (they opened the Six Sigma certificate). The one-certificate page loses its "not designed
-yet" note. `LMS / Profile Menu` 1.4 (to publish): *Certificates* under *Edit profile*.
+yet" note. `LMS / Profile Menu` 1.4 (published 19 Oct): *Certificates* under *Edit profile*; the three menu-open screens show it.
 
 Figma, section `7461:34887` on the V8 WIP page (in review): the list desktop 1280 and mobile 375; one certificate,
 course issued, desktop and mobile; program certificate not earned, desktop. Built from DS Certificate-Card, Progress
