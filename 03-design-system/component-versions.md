@@ -130,9 +130,9 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Activity-Fullscreen-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1893) | v1.0 | 2026-10-19 | To publish | 2 | 2026-10-19 · New: the topic name and Exit fullscreen over a SCORM package, Desktop and Mobile |
-| [Activity-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1981) | v1.0 | 2026-10-19 | To publish | 3 | 2026-10-19 · New: launch card for a package that opens in a new window (Ready · Opened · Blocked), from Lab-Launch-Card without the provider |
-| [Activity-Player](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1852) | v1.0 | 2026-10-19 | To publish | 1 | 2026-10-19 · New: the frame a SCORM package plays in (Fullscreen toolbar + Package slot) |
+| [Activity-Fullscreen-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1893) | v1.0 | 2026-10-19 | Published | 2 | 2026-10-19 · New: the topic name and Exit fullscreen over a SCORM package, Desktop and Mobile |
+| [Activity-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1981) | v1.0 | 2026-10-19 | Published | 3 | 2026-10-19 · New: launch card for a package that opens in a new window (Ready · Opened · Blocked), from Lab-Launch-Card without the provider |
+| [Activity-Player](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1852) | v1.0 | 2026-10-19 | Published | 1 | 2026-10-19 · New: the frame a SCORM package plays in (Fullscreen toolbar + Package slot) |
 | [Activity-SCORM-Frame](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3488) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Activity · SCORM Frame” |
 | [Lab-File-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3330) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Lab · File Row” |
 | [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · `Completed` removed; `Opened` shows the date of the first opening; *Skip* removed from `Unavailable`; no score wording |

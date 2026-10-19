@@ -91,8 +91,9 @@ package reports. On a phone the window is a new tab.
 - `LMS / Inline Alert` (Info, Success, Warning);
 - Content-Feedback (no Mark as Complete), the Topic-Footer-Nav and the Next-asks Modal.
 
-**Moved to the DS on 19 Oct (to publish):** `LMS/ICP/Topics/Activity-Player`, `Activity-Fullscreen-Bar`,
-`Activity-Launch-Card`. The screens still hold the stand-ins until the publish; they will be swapped then.
+**Moved to the DS on 19 Oct (published the same day):** `LMS/ICP/Topics/Activity-Player`, `Activity-Fullscreen-Bar`,
+`Activity-Launch-Card`. All 46 screens use them: 45 players (the package content sits in the Package slot), 6
+fullscreen bars and 12 launch cards.
 
 **Were local stand-ins:**
 - **Activity-Player:** the toolbar with Fullscreen, and the package frame.
@@ -103,8 +104,6 @@ package reports. On a phone the window is a new tab.
 
 ## 5. Open
 
-- **B3 · *Play in this page*:** it carries the external-link icon of the Lab card. The in-page action should have
-  none.
 - **The player Topbar (ICP):** it still shows the UI-kit learner (Olivia Rhye) by default. The platform Topbar was
   fixed on 19 Oct (1.4).
 - **What the package's *Exit course* does inside our frame:** to check on a real package. Some packages close their

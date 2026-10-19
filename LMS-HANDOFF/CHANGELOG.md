@@ -12,7 +12,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 The stand-ins of the Activity (SCORM) page are DS components on ↳ Topics, to publish: `Activity-Player` (Fullscreen
 toolbar + Package slot), `Activity-Fullscreen-Bar` (Desktop / Mobile) and `Activity-Launch-Card` (Ready · Opened ·
-Blocked, no provider). The 46 screens switch to them after the publish.
+Blocked, no provider). Published 19 Oct; the 46 screens use them (stand-ins removed).
 
 
 ## 2026-10-19 · Six Calendar, Discussion and Services components in the DS (v1.0)
