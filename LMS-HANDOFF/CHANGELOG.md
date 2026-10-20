@@ -41,6 +41,35 @@ course update, every module and topic done, no weekly goal, Certificate-Card Ear
 the Course tab copy refreshed from Ready for Dev after the Shift due dates change (rows Course tab and Dates tab
 recopied; frame 06 Calendar refreshed by the Impeccable session).
 
+## 2026-10-20 · Shift due dates, exactly as Open edX does it
+
+Nelson asked for exactly what Open edX allows, done the way it works, with nothing extra and no custom development.
+Read from frontend-app-learning (`ShiftDatesAlert`, `UpgradeToShiftDatesAlert`) and edx-platform
+(`reset_course_deadlines`).
+
+**What Open edX does**
+- **Where:** per course, on its Course (outline) tab and its Dates tab.
+- **When:** the course is self-paced, has assignment due dates, `missed_deadlines` is true, `missed_gated_content` is
+  false and the course has not ended.
+- **The alert:** a warning alert with the platform's copy and a Primary "Shift due dates". It cannot be closed.
+- **The call:** `POST /api/course_experience/v1/reset_course_deadlines` with `course_key`, one course per call, no
+  confirmation.
+- **After the call:** the toast "Your due dates have been successfully shifted to help you stay on track." with "View
+  all dates", then the dates reload. On error Open edX only logs it.
+- **Audit learners with missed gated content:** "Upgrade to shift due dates" instead (not drawn; open question).
+
+**Figma (Ready for Dev)**
+- **Course Detail:** the Dates screens use that alert (copy, no close, Primary), and it is added to the Course-tab
+  screens, desktop, tablet and mobile.
+- **Calendar:** cards 01–03 and the new 01b / 03b show the same warning alert and copy, then one row per course with its
+  own Primary "Shift due dates". This uses the same per-course call; `reset_all_course_deadlines` is not used, because no
+  Open edX screen uses it and it would also shift courses that are on track.
+- **Doc frame "Shift due dates · how it works":** `7495:71453`.
+- **WIP copies:** frame "06 · Calendar" was recopied.
+
+**Prototype (PR 207):** `lib/platform/shift-dates.ts` holds the platform strings; `ShiftDatesAlert` is on the course
+Course and Dates tabs; the Calendar rows behave the same; `?missed=2` shows two courses.
+
 ## 2026-10-20 · Share a certificate
 
 Nelson: certificates need a button to share them on social networks. Prototype PR 206: *Share certificate* on the
