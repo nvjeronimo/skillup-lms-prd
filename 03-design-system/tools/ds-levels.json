@@ -236,11 +236,13 @@
       "Completion": {
         "Atoms": [],
         "Molecules": [
+          "Share-Menu",
           "Certificate-Card"
         ],
         "Organisms": [
           "Course-Complete-Modal",
-          "Certificate"
+          "Certificate",
+          "Certificate-Document"
         ]
       },
       "Calendar": {
