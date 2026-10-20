@@ -14,6 +14,22 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-20 · Progress track contrast; bg/track and bg/hover
+
+Bruno: the progress bar does not pass the contrast we set. The bg/info fill on the bg/strong track was 2.26:1 (WCAG
+1.4.11 asks 3:1). Nelson: rather than borrow the "muted" step for things that are not muted, give them roles. Two new
+colour tokens in 🎨 SKO-Semantics (approved by Nelson), both **aliases of bg/muted** in every mode, so no hex changes:
+- **bg/track**: the track behind a progress fill and the track of a segmented control (fill 3.21:1 light, 3.06:1 dark;
+  bg/success complete fill 4.51:1 / 5.30:1).
+- **bg/hover**: the neutral hover of icon and tertiary buttons (it replaces bg/faint, almost invisible on bg/page).
+
+DS (to publish): Progress bar 1.1 and ._Progress bar plain (track bg/strong → bg/track), Button group 1.2 (track),
+Utility Button 1.1, Icon Button 1.3 and Button 1.4 (Hover / Tertiary Hover bg/faint → bg/hover). Prototype PR 213:
+`--color-bg-track`, `--color-bg-hover`, Tailwind `sko-bg-track` / `sko-bg-hover` on every progress and segmented track
+and every neutral hover. bg/muted keeps its other uses (avatars with initials, image placeholders, disabled and
+read-only fields).
+
 ## 2026-10-20 · Platform Pages WIP reorganised by flow
 
 Nelson: one page with every platform page, in the order of the learner's flow, each page in its own frame. On
