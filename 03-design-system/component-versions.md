@@ -87,8 +87,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Course-Progression-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537755) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Course Progression Button” |
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.5 | 2026-10-19 | Published | 6 | 2026-10-19 · Dark Mobile: the learner avatar renders dark (fresh Avatar instance; it carried its own mode and a stale render) |
-| [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · `Show Badge` and its status badge removed: the footer has no completion control |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537695) | v1.6 | 2026-10-19 | Published | 6 | 2026-10-20 · Learner avatar on Radius/control (6, was fixed-md 8); every radius on the role tokens (decision 028) |
+| [Topic-Footer-Nav](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20053-3286) | v1.2 | 2026-10-13 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Vertical-Scroll](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537649) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “Vertical Scroll” |
 
 **Sidebar**
@@ -96,7 +96,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Bookmark](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536827) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “bookmark” |
-| [Collapse-Toggle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536832) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “sidebar-expand-collapse-toggle” |
+| [Collapse-Toggle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536832) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Completion-Status](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536791) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Completion Status” |
 | [Course-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536868) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Sidebar / Course Header” |
 | [Lesson-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536863) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Lesson Header” |
@@ -104,8 +104,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Info” |
 | [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · `Device=Mobile` uses an instance of `LMS / Progress Circle`, as Desktop does |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
-| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.1 | 2026-10-13 | Published | 5 | 2026-10-13 · The collapsed variants show the rail bookmark on the saved topic; the description names the flyout |
-| [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.0 | 2026-10-13 | Published | 1 | 2026-10-13 · The card beside the collapsed rail: title, topic type, bookmark button |
+| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.2 | 2026-10-13 | Published | 5 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.3 | 2026-10-16 | Published | 9 | 2026-10-16 · New boolean Optional bound to the Optional-Chip (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
 
 **Content**
@@ -114,13 +114,13 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Author-and-Updated-Date](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20454-705641) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Topic · Author & Updated Date” |
 | [Content-Feedback](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537661) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · New `Show Mark as Complete` (off by default): the Mark as Complete action at the right end of the row |
-| [File-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537612) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / File Item” |
-| [Mobile-Tab-Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19995-7247) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Mobile Tab Select” |
-| [Note-Editor](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22071-6813) | v1.2 | 2026-10-16 | Published | 3 | 2026-10-16 · Audit fix: fills bound to bg/page (was raw white in dark) (v1.1: The anchor quote is an instance of `Transcript-Line` (State=Active); the Quote property removed) |
-| [Note-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537594) | v1.1 | 2026-10-14 | Published | 1 | 2026-10-14 · The anchor is an instance of `Transcript-Line` (State=Active), as in the Note-Editor |
+| [File-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537612) | v1.1 | 2026-10-08 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Mobile-Tab-Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19995-7247) | v1.1 | 2026-10-08 | Published | 3 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Note-Editor](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22071-6813) | v1.3 | 2026-10-16 | Published | 3 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Note-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537594) | v1.2 | 2026-10-14 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Numbered-Step](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3297) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Numbered Step” |
 | [Sync-to-Video-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20214-1771167) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Sync to Video Button” |
-| [Thread-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537651) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Thread Item” |
+| [Thread-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537651) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Topic-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537676) | v1.1 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Topic-Status-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20066-431924) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “Topic-Status-Badge” |
 | [Topic-Types-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536800) | v1.0 | 2026-10-08 | Published | 14 | 2026-10-08 · Renamed from “LMS / Topic-Types Badge” |
@@ -134,38 +134,38 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Activity-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1981) | v1.0 | 2026-10-19 | Published | 3 | 2026-10-19 · New: launch card for a package that opens in a new window (Ready · Opened · Blocked), from Lab-Launch-Card without the provider |
 | [Activity-Player](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22847-1852) | v1.0 | 2026-10-19 | Published | 1 | 2026-10-19 · New: the frame a SCORM package plays in (Fullscreen toolbar + Package slot) |
 | [Activity-SCORM-Frame](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3488) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Activity · SCORM Frame” |
-| [Lab-File-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3330) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Lab · File Row” |
+| [Lab-File-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3330) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Lab-Launch-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22251-6427) | v1.1 | 2026-10-12 | Published | 3 | 2026-10-12 · `Completed` removed; `Opened` shows the date of the first opening; *Skip* removed from `Unavailable`; no score wording |
 | [Lab-Prerequisites](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3331) | v1.0 | 2026-10-12 | Deleted | 1 | 2026-10-12 · Deleted from the library: the DS `Alert` replaced it on the 36 screens that used it |
-| [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.1 | 2026-10-14 | Published | 12 | 2026-10-14 · `Kind=HTML (Blockquote)` is a typographic pull quote: no box, no 4px stripe; lucide Quote icon in `icon/primary` |
-| [ORA-Grade-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3634) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / ORA · Grade Panel” |
-| [ORA-Rubric-Criterion](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3563) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / ORA · Rubric Criterion” |
-| [ORA-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3534) | v1.0 | 2026-10-08 | Published | 10 | 2026-10-08 · Renamed from “LMS / ORA · Stepper” |
-| [ORA-Submit-Gate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20344-3359) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / ORA · Submit Gate” |
+| [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.2 | 2026-10-14 | Published | 12 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [ORA-Grade-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3634) | v1.1 | 2026-10-08 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [ORA-Rubric-Criterion](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3563) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [ORA-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3534) | v1.1 | 2026-10-08 | Published | 10 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [ORA-Submit-Gate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20344-3359) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [ORA-Text-Response](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21692-536524) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / ORA · Text Response” |
-| [ORA-Upload](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3584) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / ORA · Upload” |
-| [ORA-Waiting-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3591) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / ORA · Waiting Panel” |
-| [Podcast-Chapter-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3449) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Podcast · Chapter Row” |
+| [ORA-Upload](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3584) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [ORA-Waiting-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3591) | v1.1 | 2026-10-08 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Podcast-Chapter-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3449) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Podcast-Player](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3337) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Podcast · Player” |
-| [Zooming-Image](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21013-7264) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Zooming Image” |
+| [Zooming-Image](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21013-7264) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **Assessment**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Answer-Input](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20494-8896) | v1.0 | 2026-10-08 | Published | 12 | 2026-10-08 · Renamed from “LMS / Quiz · Answer Input” |
-| [Drag-and-Drop-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20996-8876) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-08 · Renamed from “LMS / Drag and Drop · Card” |
-| [Drag-and-Drop-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20995-8506) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-08 · Renamed from “LMS / Drag and Drop · Item” |
-| [Drag-and-Drop-Zone](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20996-8526) | v1.0 | 2026-10-08 | Published | 5 | 2026-10-08 · Renamed from “LMS / Drag and Drop · Zone” |
+| [Answer-Input](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20494-8896) | v1.1 | 2026-10-08 | Published | 12 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Drag-and-Drop-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20996-8876) | v1.1 | 2026-10-08 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Drag-and-Drop-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20995-8506) | v1.1 | 2026-10-08 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Drag-and-Drop-Zone](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20996-8526) | v1.1 | 2026-10-08 | Published | 5 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Entry-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20318-705389) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Quiz · Entry Header” |
-| [Exam-Timer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20488-4773) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Quiz · Exam Timer” |
+| [Exam-Timer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20488-4773) | v1.1 | 2026-10-08 | Published | 3 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Footer-Actions](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20647-352944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Quiz · Footer Actions” |
 | [Gate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20490-4813) | v1.0 | 2026-10-08 | Published | 5 | 2026-10-08 · Renamed from “LMS / Quiz · Gate” |
-| [Grade-Summary](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20416-3129) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Quiz · Grade Summary” |
-| [Option-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20318-705157) | v1.0 | 2026-10-08 | Published | 7 | 2026-10-08 · Renamed from “LMS / Quiz · Option Row” |
+| [Grade-Summary](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20416-3129) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Option-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20318-705157) | v1.1 | 2026-10-08 | Published | 7 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Question-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20318-705306) | v1.0 | 2026-10-08 | Published | 9 | 2026-10-08 · Renamed from “LMS / Quiz · Question Card” |
-| [Results](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20499-6630) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Renamed from “LMS / Quiz · Results” |
-| [Stat-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20388-706341) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Quiz · Stat Tile” |
+| [Results](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20499-6630) | v1.1 | 2026-10-08 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Stat-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20388-706341) | v1.1 | 2026-10-08 | Published | 3 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Stepper-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20540-6253) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Quiz · Stepper Bar” |
 
 **Live**
@@ -174,7 +174,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Live-Control-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537795) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Live Control Bar States” |
 | [Live-Now-Banner](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537772) | v1.1 | 2026-10-14 | Published | 2 | 2026-10-14 · No side stripe: the whole card carries the state (Live `bg/success-soft`, Upcoming `bg/warning-muted`, new token); badges per ADR 012 |
-| [VILT-Session-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705637) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / VILT · Session Card” |
+| [VILT-Session-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705637) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [VILT-Session-Meta](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705512) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / VILT · Session Meta” |
 | [VILT-Stage-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705552) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / VILT · Stage Stepper” |
 | [VILT-Stage-Surface](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20322-705648) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / VILT · Stage Surface” |
@@ -213,7 +213,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.6 | 2026-10-19 | Published | 2 | 2026-10-19 · Learner avatar a rounded square (Radius/fixed-md), not a circle, Desktop and Compact |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.7 | 2026-10-19 | Published | 2 | 2026-10-20 · Learner avatar on Radius/control (6, was fixed-md 8); every radius on the role tokens (decision 028) |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 
 **Dashboard**
@@ -221,32 +221,32 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Due-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22752) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · After the publish: the Program headers are in; the Course Card is still not |
-| [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
+| [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.2 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · After the publish: the Program headers are in; the Course Card is still not |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **My-Learning**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.15 | 2026-10-19 | Published | 6 | 2026-10-19 · List min height 146 (the height with a two-line title), so list cards keep one height |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.12 | 2026-10-17 | Published | 6 | 2026-10-17 · Due badge Soft · sm · Warning (was the accent yellow), as the Dashboard Due-Item (v1.11: audit fix, "Certificate issued" text/default on green; "Up next" label styled again) |
+| [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.16 | 2026-10-19 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.13 | 2026-10-17 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **Discovery**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Card Overflow Menu” |
+| [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · 4 px padding all round, rows on Radius/card-inset (8), panel on Radius/card (decision 028) |
 | [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.2 | 2026-10-14 | Published | 3 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.1 | 2026-10-15 | Published | 2 | 2026-10-15 · Words only: the icons are removed (1.0, 8 Oct: renamed from “LMS / Course Type Badge”) |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.2 | 2026-10-16 | Published | 24 | 2026-10-16 · Logo chip padding Spacing/sm (28 tall); FutureSkills Dark through image filters (Nelson) |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-16 | Published | 24 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **Program-Detail**
 
@@ -258,35 +258,35 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Card-Shell](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21885) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Completion-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22448) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
+| [Card-Shell](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21885) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Completion-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22448) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Course-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21765) | v1.1 | 2026-10-17 | Published | 6 | 2026-10-17 · Partner chips are Provider-Partner-Badge Logo (Light on Kind=Course, Dark on Kind=Program), exposed, boolean Second partner; Progress card button fills again |
 | [Course-Stats](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21860) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Course-Title](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21848) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
+| [Course-Title](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21848) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Date-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22486) | v1.0 | 2026-10-08 | Published | 8 | 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed |
-| [Grade-Meter](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22454) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
+| [Grade-Meter](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22454) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Grade-Summary-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22461) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-06 · Local components → the DS |
 | [Lock](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21959) | v1.0 | 2026-10-08 | Published | 2 | 2026-09-24 · The Lock molecule on the locked topic |
-| [Message](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22640) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · After another publish: badges read *Label* again in the product file |
+| [Message](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22640) | v1.1 | 2026-10-08 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Meta](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21877) | v1.0 | 2026-10-08 | Published | 1 | 2026-09-24 · Course Detail mobile — the Course tab |
 | [Module-Number](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21952) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-06 · Platform components moved into the DS library |
-| [Module-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21966) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-06 · Platform components moved into the DS library |
-| [Progress-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21894) | v1.1 | 2026-10-16 | Published | 4 | 2026-10-16 · State=Complete: check icon + "Completed" beside the green bar, as on the cards |
+| [Module-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21966) | v1.1 | 2026-10-08 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Progress-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21894) | v1.2 | 2026-10-16 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Score-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22477) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-06 · Local components → the DS |
 | [Section-Intro](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21891) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
-| [Sidebar-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22090) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed |
+| [Sidebar-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22090) | v1.1 | 2026-10-08 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Thread-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22608) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-07 · Platform screens: badge texts restored where the update has landed; one badge removed |
 | [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22049) | v1.0 | 2026-10-08 | Published | 6 | 2026-10-06 · Handoff audit, third pass (after the DS publish) |
-| [Week-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22342) | v1.0 | 2026-10-08 | Published | 5 | 2026-10-06 · Platform components moved into the DS library |
-| [Weekly-Goal-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22174) | v1.0 | 2026-10-08 | Published | 8 | 2026-10-06 · Platform components moved into the DS library |
+| [Week-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22342) | v1.1 | 2026-10-08 | Published | 5 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Weekly-Goal-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22174) | v1.1 | 2026-10-08 | Published | 8 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **Completion**
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537956) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Certificate” |
-| [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.1 | 2026-10-20 | Published | 4 | 2026-10-20 · Earned: icon-only Share (Icon Button Brand Secondary sm, share-07) after View and Download; opens Share-Menu |
-| [Share-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22898-584515) | v1.0 | 2026-10-20 | Published | 0 | 2026-10-20 · New: the Share menu of a certificate (Add to LinkedIn profile, LinkedIn, X, Facebook, Copy link, Email) |
+| [Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537956) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.2 | 2026-10-20 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Share-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22898-584515) | v1.1 | 2026-10-20 | Published | 0 | 2026-10-20 · 4 px padding all round, rows on Radius/card-inset (8), panel on Radius/card (decision 028) |
 | [Certificate-Document](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.2 | 2026-10-20 | Published | 3 | 2026-10-20 · Pinned to SKO Light: the sheet keeps its printed colours on dark screens (prototype PR 205) |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
 
@@ -294,10 +294,10 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Event-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-606) | v1.0 | 2026-10-19 | Published | 6 | 2026-10-19 · New: one date on the Calendar Agenda (Kind × Layout) |
+| [Event-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-606) | v1.1 | 2026-10-19 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Month-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-680) | v1.0 | 2026-10-19 | Published | 3 | 2026-10-19 · New: one day of the Month view |
-| [Month-Event](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-649) | v1.0 | 2026-10-19 | Published | 9 | 2026-10-19 · New: one date inside a Month-Day cell |
-| [Week-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-621) | v1.0 | 2026-10-19 | Published | 2 | 2026-10-19 · New: one day of the Next 7 days strip |
+| [Month-Event](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-649) | v1.1 | 2026-10-19 | Published | 9 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Week-Day](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-621) | v1.1 | 2026-10-19 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **Discussion**
 
@@ -309,7 +309,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Service-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-1053) | v1.0 | 2026-10-19 | Published | 1 | 2026-10-19 · New: one service on the Services page |
+| [Service-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-1053) | v1.1 | 2026-10-19 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 ### Base components: 25
 
@@ -321,29 +321,29 @@ A link marked *(page)* goes to the component's page in the library.
 | [Avatar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19-1012) | v1.0 | 2026-10-08 | Published |  | 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card |
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
 | [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v1.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
-| [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.0 | 2026-10-08 | Published |  | 2026-08-20 · The verb goes, and the tooltip was in the library too |
+| [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.4 | 2026-10-20 | Published | 40 | 2026-10-20 · Tertiary Hover on bg/hover (alias of bg/muted), was bg/faint |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button close X (previous generation) | v1 | before the baseline | Legacy: on the screens | | 2026-10-08 · Buttons: the screens are on the previous generation |
 | Buttons/Button utility (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | | 2026-10-08 · Buttons: the screens are on the previous generation |
-| [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v1.1 | 2026-10-11 | Published |  | 2026-10-11 · A bg/muted track with a pill for the current segment; the segments are no longer joined |
-| [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.0 | 2026-10-08 | Published |  | 2026-09-22 · ORA on tablet and mobile; the all-content example covers the whole catalogue |
-| [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.0 | 2026-10-08 | Published |  | 2026-09-24 · Course Detail: every tab on mobile; tokens and components audited |
-| [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge, Course Card measured |
+| [Button group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1046-10171) | v1.2 | 2026-10-11 | Published |  | 2026-10-20 · Track on Radius/track (10) and segments on Radius/control (6), as Nelson set it (decision 028); track fill bg/track (same publish) |
+| [Checkbox](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1097-63652) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Content divider](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1252-126874) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Horizontal tabs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1118-69893) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Icon Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7720) | v1.3 | 2026-10-20 | Published | 40 | 2026-10-20 · Tertiary Hover on bg/hover (alias of bg/muted), was bg/faint |
-| [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.0 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-08 · Button V2 gains Neutral, Utility Button and Close Button (the previous `Buttons/Button close X`, same key) |
+| [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.1 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.1 | 2026-10-20 | Published | 18 | 2026-10-20 · Hover on bg/hover (alias of bg/muted), was bg/faint |
-| [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
+| [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.2 | 2026-10-15 | Published |  | 2026-10-15 · Hover has no fill: the label and its line darken; the line on icon tokens; Focused on bg/faint |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
-| [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1085-57382) | v1.0 | 2026-10-08 | Published |  | 2026-08-05 · The quiz nav adopted across the sections |
+| [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-24114) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Track fill bg/track; tooltip on Radius/control (decision 028) |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
-| [Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=85-1269) (page) | v1.0 | 2026-10-08 | Published |  | 2026-09-10 · Mobile tabs stay tabs, and the touch target gets bigger |
+| [Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=85-1269) (page) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Tag](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20837-1793) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
-| [Textarea input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1238-278) | v1.0 | 2026-10-08 | Published |  | 2026-10-06 · `LMS / Note Editor` built in the DS (not published yet) |
+| [Textarea input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1238-278) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Toast](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21089-1214) | v1.1 | 2026-10-14 | Published |  | 2026-10-14 · Tone icons on icon tokens: Neutral `icon/muted`, Success `icon/success`, Warning `icon/warning`, Critical `icon/error` |
 | [Toggle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1102-4208) | v1.0 | 2026-10-08 | Published |  | — |
-| [Tooltip](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1052-489) | v1.0 | 2026-10-08 | Published |  | 2026-10-07 · DS: Button publishable again, tabs already on Badge v2, Course Card measured |
+| [Tooltip](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1052-489) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Video player 16:9](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=9264-576771) | v1.0 | 2026-10-08 | Published |  | — |
 
 ## Buttons: two generations
@@ -476,6 +476,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-19 | `Topbar` (ICP Player) | v1.4 → v1.5 | Nelson: fix the Dark Mobile avatar, which rendered light since 1.3 while its bindings matched the Desktop one. The instance carried its own SKO Dark mode; clearing it did not change the render, so it was replaced by a fresh Avatar xs instance (Radius/fixed-md, JS) that inherits the variant's dark mode. Checked by render. |
 | 2026-10-20 | `Certificate-Document` | v1.1 → v1.2 | Nelson: the certificate is a printed document and must not turn dark. The component carries SKO-Semantics = SKO Light explicitly, so it stays light inside a Dark frame (checked by render). Prototype PR 205: `data-theme="light"` on the sheet, SKO Light also defined on `[data-theme="light"]`. |
 | 2026-10-20 | `Certificate-Card`, `Share-Menu` (new), `Certificate-Document` | v1.0 → v1.1, new v1.0, doc | Nelson: certificates need a button to share them on social networks. Certificate-Card Earned: an icon-only Share (Icon Button Brand Secondary sm, share-07) after View and Download. New molecule `LMS/Platform/Completion/Share-Menu` on ↳ Completion: 224 wide, six rows 44 tall (award-01 Add to LinkedIn profile; Social icon Gray LinkedIn, X, Facebook; link-01 Copy link; mail-01 Email), bg/page, border/subtle, radius 8, Elevation/level3. Doc blocks generated for Share-Menu (Molecules) and Certificate-Document (Organisms) with the ds-group-page.js template, run on a temporary page and moved into the Completion frames (5 components: 2 molecules, 3 organisms); ds-levels.json updated. ICP: *Share certificate* (Button Secondary, share-07) under *Download certificate* on the one-certificate screens. Prototype PR 206. |
+| 2026-10-20 | 66 components (radius) | MINOR each | Decision 028: every corner on a role token (`Radius/none · inner · control · card-inset · track · card · surface · pill`). Cards at 8 and 10 → 12, inputs 8 → 6, icon tiles 8/10 → 6, Checkbox 4 → 2, menus with 4 px padding and rows at 8, Button group track 10 with segments 6 (Nelson). Shipped by the next publish. `Badge` and the other pill components did not change value (9999 → `Radius/pill`), so no bump. |
 | 2026-10-20 | `Utility Button`, `Icon Button`, `Button` | v1.0 → v1.1, v1.2 → v1.3, v1.3 → v1.4 | New role tokens bg/track and bg/hover (aliases of bg/muted, Nelson approved). Hover (Utility Button) and Tertiary Hover (Icon Button, Button) bg/faint → bg/hover. The track rebinds (Progress bar track bg/strong → bg/track, Bruno: 2.26:1 → 3.21:1 / dark 3.06:1; Button group track → bg/track) ride on the radius-pass bumps of docs PR 139 (Progress bar 1.1, Button group 1.2). Published 20 Oct. Prototype PR 213. |
 
 ## Rename map (8 Oct 2026)
