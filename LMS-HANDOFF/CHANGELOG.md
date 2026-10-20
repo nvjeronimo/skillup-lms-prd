@@ -30,8 +30,16 @@ library copies were relinked (Profile Menu 1.5, Topbars, Certificate-Card and -D
 Footnote); the one-certificate screens show My Learning as the current tab, as the prototype.
 
 Checked against the prototype routes (/platform/dashboard, my-learning, course/[slug] with 4 tabs, program/[slug] with
-4 tabs, certificates, certificate/…, calendar, discussion, services, profile). Not drawn yet: Certificates and Edit
-profile on tablet, the Notifications panel on the platform pages, the passed state of the course page.
+4 tabs, certificates, certificate/…, calendar, discussion, services, profile).
+
+The missing screens, drawn the same day (in review): **09 · Notifications** (new frame; Profile menu is now 10 and Edit
+profile 11): the Overlay Panels Notifications panel over the Dashboard, desktop and tablet (480 panel) and mobile (full
+screen), as prototype PR 197. **05 · Certificates**: the list on tablet 960 (two columns) and one certificate on tablet
+(stacked, as below 1025 px in the prototype). **11 · Edit profile**: tablet 960. **03 · Course Detail**: card 01p, the
+Course tab of a passed course (Progress-Card Complete 100%, Passed · 88% with 70% needed, 42 of 42 topics, success
+course update, every module and topic done, no weekly goal, Certificate-Card Earned, Dates = Course ends), built on
+the Course tab copy refreshed from Ready for Dev after the Shift due dates change (rows Course tab and Dates tab
+recopied; frame 06 Calendar refreshed by the Impeccable session).
 
 ## 2026-10-20 · Share a certificate
 
