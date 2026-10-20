@@ -24,7 +24,7 @@ colour tokens in 🎨 SKO-Semantics (approved by Nelson), both **aliases of bg/m
   bg/success complete fill 4.51:1 / 5.30:1).
 - **bg/hover**: the neutral hover of icon and tertiary buttons (it replaces bg/faint, almost invisible on bg/page).
 
-DS (to publish): Progress bar 1.1 and ._Progress bar plain (track bg/strong → bg/track), Button group 1.2 (track),
+DS (published 20 Oct): Progress bar 1.1 and ._Progress bar plain (track bg/strong → bg/track), Button group 1.2 (track),
 Utility Button 1.1, Icon Button 1.3 and Button 1.4 (Hover / Tertiary Hover bg/faint → bg/hover). Prototype PR 213:
 `--color-bg-track`, `--color-bg-hover`, Tailwind `sko-bg-track` / `sko-bg-hover` on every progress and segmented track
 and every neutral hover. bg/muted keeps its other uses (avatars with initials, image placeholders, disabled and
