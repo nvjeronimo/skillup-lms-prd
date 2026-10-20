@@ -35,7 +35,7 @@ Checked against the prototype routes (/platform/dashboard, my-learning, course/[
 The missing screens, drawn the same day (in review): **09 · Notifications** (new frame; Profile menu is now 10 and Edit
 profile 11): the Overlay Panels Notifications panel over the Dashboard, desktop and tablet (480 panel) and mobile (full
 screen), as prototype PR 197. **05 · Certificates**: the list on tablet 960 (two columns) and one certificate on tablet
-(stacked, as below 1025 px in the prototype). **11 · Edit profile**: tablet 960. **03 · Course Detail**: card 01p, the
+(stacked, as below 1025 px in the prototype). **11 · Edit profile**: tablet 960. **03 · Course Detail**: cards 01p, 02p and 03p (desktop, tablet, mobile), the
 Course tab of a passed course (Progress-Card Complete 100%, Passed · 88% with 70% needed, 42 of 42 topics, success
 course update, every module and topic done, no weekly goal, Certificate-Card Earned, Dates = Course ends), built on
 the Course tab copy refreshed from Ready for Dev after the Shift due dates change (rows Course tab and Dates tab
