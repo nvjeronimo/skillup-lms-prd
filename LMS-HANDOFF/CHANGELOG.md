@@ -13,6 +13,20 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-20 · Calendar: Shift due dates, one course at a time
+
+Nelson asked to keep the Open edX wording and to draw the case of several courses.
+- **Label:** the missed-deadline button reads "Shift due dates", on the Figma Calendar cards and in the prototype.
+- **New Figma cards 01b (desktop) and 03b (mobile):** two self-paced courses with missed deadlines. The alert says how
+  many (DS Inline Alert Error · Subtle), then one row per course with what was missed and its own Shift due dates button,
+  because the Open edX reset (`POST /api/course_experience/v1/reset_course_deadlines`) is one call per course.
+- **Doc frame "Shift due dates · how it works"** (Ready for Dev, `7495:71453`, right of the handoff frame):
+  - what it is;
+  - when it shows: Dates API `dates_banner_info.missed_deadlines`, self-paced courses with relative dates only;
+  - what it does, how the Calendar shows it, and that the course's Dates tab keeps it;
+  - open questions: toast, confirmation, the Dashboard, `missed_gated_content`.
+- **Prototype PR 207:** the same rows; `?missed=2` adds the second course.
+
 ## 2026-10-20 · Share a certificate
 
 Nelson: certificates need a button to share them on social networks. Prototype PR 206: *Share certificate* on the
