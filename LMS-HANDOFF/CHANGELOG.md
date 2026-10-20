@@ -13,19 +13,34 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
-## 2026-10-20 · Calendar: Shift due dates, one course at a time
+## 2026-10-20 · Shift due dates, exactly as Open edX does it
 
-Nelson asked to keep the Open edX wording and to draw the case of several courses.
-- **Label:** the missed-deadline button reads "Shift due dates", on the Figma Calendar cards and in the prototype.
-- **New Figma cards 01b (desktop) and 03b (mobile):** two self-paced courses with missed deadlines. The alert says how
-  many (DS Inline Alert Error · Subtle), then one row per course with what was missed and its own Shift due dates button,
-  because the Open edX reset (`POST /api/course_experience/v1/reset_course_deadlines`) is one call per course.
-- **Doc frame "Shift due dates · how it works"** (Ready for Dev, `7495:71453`, right of the handoff frame):
-  - what it is;
-  - when it shows: Dates API `dates_banner_info.missed_deadlines`, self-paced courses with relative dates only;
-  - what it does, how the Calendar shows it, and that the course's Dates tab keeps it;
-  - open questions: toast, confirmation, the Dashboard, `missed_gated_content`.
-- **Prototype PR 207:** the same rows; `?missed=2` adds the second course.
+Nelson asked for exactly what Open edX allows, done the way it works, with nothing extra and no custom development.
+Read from frontend-app-learning (`ShiftDatesAlert`, `UpgradeToShiftDatesAlert`) and edx-platform
+(`reset_course_deadlines`).
+
+**What Open edX does**
+- **Where:** per course, on its Course (outline) tab and its Dates tab.
+- **When:** the course is self-paced, has assignment due dates, `missed_deadlines` is true, `missed_gated_content` is
+  false and the course has not ended.
+- **The alert:** a warning alert with the platform's copy and a Primary "Shift due dates". It cannot be closed.
+- **The call:** `POST /api/course_experience/v1/reset_course_deadlines` with `course_key`, one course per call, no
+  confirmation.
+- **After the call:** the toast "Your due dates have been successfully shifted to help you stay on track." with "View
+  all dates", then the dates reload. On error Open edX only logs it.
+- **Audit learners with missed gated content:** "Upgrade to shift due dates" instead (not drawn; open question).
+
+**Figma (Ready for Dev)**
+- **Course Detail:** the Dates screens use that alert (copy, no close, Primary), and it is added to the Course-tab
+  screens, desktop, tablet and mobile.
+- **Calendar:** cards 01–03 and the new 01b / 03b show the same warning alert and copy, then one row per course with its
+  own Primary "Shift due dates". This uses the same per-course call; `reset_all_course_deadlines` is not used, because no
+  Open edX screen uses it and it would also shift courses that are on track.
+- **Doc frame "Shift due dates · how it works":** `7495:71453`.
+- **WIP copies:** frame "06 · Calendar" was recopied.
+
+**Prototype (PR 207):** `lib/platform/shift-dates.ts` holds the platform strings; `ShiftDatesAlert` is on the course
+Course and Dates tabs; the Calendar rows behave the same; `?missed=2` shows two courses.
 
 ## 2026-10-20 · Share a certificate
 
