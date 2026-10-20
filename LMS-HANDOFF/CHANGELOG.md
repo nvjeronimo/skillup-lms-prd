@@ -19,9 +19,9 @@ Nelson: certificates need a button to share them on social networks. Prototype P
 certificate page (under Download) and an icon-only Share on every Certificate card; the menu offers Add to LinkedIn
 profile (LinkedIn's add-certification form, pre-filled: name, SkillUp Online, issue date, verification URL and ID),
 Share to LinkedIn, Share to X, Share to Facebook, Copy link and Email. Each channel opens the network's own form with
-the verification address (Open edX /certificates/{verify_uuid}); the platform posts nothing. DS (to publish):
+the verification address (Open edX /certificates/{verify_uuid}); the platform posts nothing. DS (published 20 Oct):
 `Certificate-Card` 1.1, new `Share-Menu` 1.0; doc blocks for Share-Menu and Certificate-Document on ↳ Completion. ICP:
-the button on the one-certificate screens; the open menu is drawn after the publish (it needs the library component).
+the button on the one-certificate screens and the open menu on a desktop screen.
 
 ## 2026-10-20 · Certificate sheet stays light; Dashboard figures from the data
 

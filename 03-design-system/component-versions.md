@@ -285,8 +285,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537956) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Certificate” |
-| [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.1 | 2026-10-20 | To publish | 4 | 2026-10-20 · Earned: icon-only Share (Icon Button Brand Secondary sm, share-07) after View and Download; opens Share-Menu |
-| [Share-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22898-584515) | v1.0 | 2026-10-20 | To publish | 0 | 2026-10-20 · New: the Share menu of a certificate (Add to LinkedIn profile, LinkedIn, X, Facebook, Copy link, Email) |
+| [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.1 | 2026-10-20 | Published | 4 | 2026-10-20 · Earned: icon-only Share (Icon Button Brand Secondary sm, share-07) after View and Download; opens Share-Menu |
+| [Share-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22898-584515) | v1.0 | 2026-10-20 | Published | 0 | 2026-10-20 · New: the Share menu of a certificate (Add to LinkedIn profile, LinkedIn, X, Facebook, Copy link, Email) |
 | [Certificate-Document](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.2 | 2026-10-20 | Published | 3 | 2026-10-20 · Pinned to SKO Light: the sheet keeps its printed colours on dark screens (prototype PR 205) |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
 
