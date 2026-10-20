@@ -11,6 +11,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-20 · Certificate sheet stays light; Dashboard figures from the data
+
+Nelson: the certificate keeps its original colours in dark mode. DS `Certificate-Document` 1.2 (to publish) is pinned
+to SKO Light; in the prototype (PR 205) the sheet is a light island (`data-theme="light"`). The Dashboard glance is
+counted from the sample data: courses in progress 4 and completed 7 of 22 enrolled, certificates 8, programs 3
+(1 in progress, 1 completed). The Figma Dashboard screens still read the old figures.
+
 ## 2026-10-19 · Player Topbar 1.5: the Dark Mobile avatar
 
 The learner avatar of the player `Topbar` Theme=Dark, Size=Mobile rendered light (bg/muted of the light theme) while
