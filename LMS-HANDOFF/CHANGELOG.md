@@ -14,6 +14,18 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-20 · Corner radius by role (decision 028)
+
+Nelson: radii must follow one logic everywhere, with new tokens if needed. Eight role tokens in the DS
+(`3. Responsive 📐`): `Radius/none` 0 · `inner` 2 · `control` 6 · `card-inset` 8 · `track` 10 · `card` 12 · `surface` 16 · `pill`,
+aliases of `Radius/fixed-*`. Controls stay at 6 (Nelson's choice), so inputs go from 8 to 6; cards at 8 and 10 go to
+12; icon tiles at 8 and 10 go to 6; Button group as Nelson set it (track 10, segments 6); learner avatars stay rounded squares at 6 (confirmed by
+Nelson). Nesting rule: *inner radius + padding = outer radius*: Share-Menu and Card-Overflow-Menu now have 4 px
+padding and 8 px rows. Every DS component rebound (LMS, Base, Mobile; two value-identical leftovers noted in 028),
+`Radius/flex-*` deleted (no uses anywhere), `Radius/fixed-*` kept for the Mobile App, 66 components one MINOR up,
+*Block · Radius roles* on the Foundations page. Not yet published. Prototype PR 209
+(396 classes, `tokens/radius.css`, lint rule `raw-radius`) merged; PR 211 (nesting rule, menus) and PR 212 (tracks 10, segments 6) merged.
+
 ## 2026-10-20 · Platform Pages WIP reorganised by flow
 
 Nelson: one page with every platform page, in the order of the learner's flow, each page in its own frame. On
