@@ -286,7 +286,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537956) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Certificate” |
 | [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-06 · Platform components moved into the DS library |
-| [Certificate-Document](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.2 | 2026-10-20 | To publish | 3 | 2026-10-20 · Pinned to SKO Light: the sheet keeps its printed colours on dark screens (prototype PR 205) |
+| [Certificate-Document](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.2 | 2026-10-20 | Published | 3 | 2026-10-20 · Pinned to SKO Light: the sheet keeps its printed colours on dark screens (prototype PR 205) |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
 
 **Calendar**
