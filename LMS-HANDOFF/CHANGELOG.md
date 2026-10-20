@@ -23,8 +23,23 @@ aliases of `Radius/fixed-*`. Controls stay at 6 (Nelson's choice), so inputs go 
 Nelson). Nesting rule: *inner radius + padding = outer radius*: Share-Menu and Card-Overflow-Menu now have 4 px
 padding and 8 px rows. Every DS component rebound (LMS, Base, Mobile; two value-identical leftovers noted in 028),
 `Radius/flex-*` deleted (no uses anywhere), `Radius/fixed-*` kept for the Mobile App, 66 components one MINOR up,
-*Block · Radius roles* on the Foundations page. Not yet published. Prototype PR 209
+*Block · Radius roles* on the Foundations page. Published 20 Oct. Prototype PR 209
 (396 classes, `tokens/radius.css`, lint rule `raw-radius`) merged; PR 211 (nesting rule, menus) and PR 212 (tracks 10, segments 6) merged.
+
+## 2026-10-20 · Progress track contrast; bg/track and bg/hover
+
+Bruno: the progress bar does not pass the contrast we set. The bg/info fill on the bg/strong track was 2.26:1 (WCAG
+1.4.11 asks 3:1). Nelson: rather than borrow the "muted" step for things that are not muted, give them roles. Two new
+colour tokens in 🎨 SKO-Semantics (approved by Nelson), both **aliases of bg/muted** in every mode, so no hex changes:
+- **bg/track**: the track behind a progress fill and the track of a segmented control (fill 3.21:1 light, 3.06:1 dark;
+  bg/success complete fill 4.51:1 / 5.30:1).
+- **bg/hover**: the neutral hover of icon and tertiary buttons (it replaces bg/faint, almost invisible on bg/page).
+
+DS (published 20 Oct): Progress bar 1.1 and ._Progress bar plain (track bg/strong → bg/track), Button group 1.2 (track),
+Utility Button 1.1, Icon Button 1.3 and Button 1.4 (Hover / Tertiary Hover bg/faint → bg/hover). Prototype PR 213:
+`--color-bg-track`, `--color-bg-hover`, Tailwind `sko-bg-track` / `sko-bg-hover` on every progress and segmented track
+and every neutral hover. bg/muted keeps its other uses (avatars with initials, image placeholders, disabled and
+read-only fields).
 
 ## 2026-10-20 · Platform Pages WIP reorganised by flow
 
