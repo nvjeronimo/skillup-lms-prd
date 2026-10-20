@@ -13,6 +13,34 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-20 · Platform Pages WIP reorganised by flow
+
+Nelson: one page with every platform page, in the order of the learner's flow, each page in its own frame. On
+*↳ Plaftorm Pages - WIP* (`6207:245582`), left to right: 01 Dashboard · 02 My Learning · 03 Course Detail (4 tabs,
+Weekly goal card, Certificate card, Content search in progress) · 04 Program Detail · 05 Certificates (list and one
+certificate, share menu) · 06 Calendar · 07 Discussion · 08 Services · 09 Profile menu · 10 Edit profile. 01–04 and
+06–08 are copies of the Ready for Dev handoff cards (Ready for Dev is unchanged and stays the handoff); 05, 09 and 10
+are the in-review screens, moved into their frames. Each frame keeps the handoff header (eyebrow, title, what it is,
+screens, evidence, cost, docs); 05–10 are marked IN REVIEW. A flow line under the page title gives the order and the
+prototype routes. Everything else on the page (Discovery 2025, Coursera, Sidebar vs Topbar, Course Detail v9–v12
+sources, ⚙ Technical, My Learning / Program sources, the superseded My Learning proposals) moved, untouched, to a
+*Reference & history — not current* band below. 110 library instances in the frames that still pointed to older
+library copies were relinked (Profile Menu 1.5, Topbars, Certificate-Card and -Document, Badge, Icon Button,
+Footnote); the one-certificate screens show My Learning as the current tab, as the prototype.
+
+Checked against the prototype routes (/platform/dashboard, my-learning, course/[slug] with 4 tabs, program/[slug] with
+4 tabs, certificates, certificate/…, calendar, discussion, services, profile).
+
+The missing screens, drawn the same day (in review): **09 · Notifications** (new frame; Profile menu is now 10 and Edit
+profile 11): the Overlay Panels Notifications panel over the Dashboard, desktop and tablet (480 panel) and mobile (full
+screen), as prototype PR 197. **05 · Certificates**: the list on tablet 960 (two columns) and one certificate on tablet
+(stacked, as below 1025 px in the prototype). **11 · Edit profile**: tablet 960. **03 · Course Detail**: cards 01p, 02p and 03p (desktop, tablet, mobile), the
+Course tab of a passed course (Progress-Card Complete 100%, Passed · 88% with 70% needed, 42 of 42 topics, success
+course update, every module and topic done, no weekly goal, Certificate-Card Earned, Dates = Course ends), built on
+the Course tab copy refreshed from Ready for Dev after the Shift due dates change (rows Course tab and Dates tab
+recopied; frame 06 Calendar refreshed by the Impeccable session).
+
 ## 2026-10-20 · Shift due dates, exactly as Open edX does it
 
 Nelson asked for exactly what Open edX allows, done the way it works, with nothing extra and no custom development.
