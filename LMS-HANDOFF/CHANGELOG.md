@@ -13,6 +13,26 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-20 · Platform Pages WIP reorganised by flow
+
+Nelson: one page with every platform page, in the order of the learner's flow, each page in its own frame. On
+*↳ Plaftorm Pages - WIP* (`6207:245582`), left to right: 01 Dashboard · 02 My Learning · 03 Course Detail (4 tabs,
+Weekly goal card, Certificate card, Content search in progress) · 04 Program Detail · 05 Certificates (list and one
+certificate, share menu) · 06 Calendar · 07 Discussion · 08 Services · 09 Profile menu · 10 Edit profile. 01–04 and
+06–08 are copies of the Ready for Dev handoff cards (Ready for Dev is unchanged and stays the handoff); 05, 09 and 10
+are the in-review screens, moved into their frames. Each frame keeps the handoff header (eyebrow, title, what it is,
+screens, evidence, cost, docs); 05–10 are marked IN REVIEW. A flow line under the page title gives the order and the
+prototype routes. Everything else on the page (Discovery 2025, Coursera, Sidebar vs Topbar, Course Detail v9–v12
+sources, ⚙ Technical, My Learning / Program sources, the superseded My Learning proposals) moved, untouched, to a
+*Reference & history — not current* band below. 110 library instances in the frames that still pointed to older
+library copies were relinked (Profile Menu 1.5, Topbars, Certificate-Card and -Document, Badge, Icon Button,
+Footnote); the one-certificate screens show My Learning as the current tab, as the prototype.
+
+Checked against the prototype routes (/platform/dashboard, my-learning, course/[slug] with 4 tabs, program/[slug] with
+4 tabs, certificates, certificate/…, calendar, discussion, services, profile). Not drawn yet: Certificates and Edit
+profile on tablet, the Notifications panel on the platform pages, the passed state of the course page.
+
 ## 2026-10-20 · Share a certificate
 
 Nelson: certificates need a button to share them on social networks. Prototype PR 206: *Share certificate* on the
