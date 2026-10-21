@@ -198,7 +198,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.6 | 2026-10-19 | Published | 1 | 2026-10-21 · Sign out after SkillUp Online; Dark theme row behind the boolean Show dark theme (phone); decision 029 |
-| [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-23976) | v1.2 | 2026-10-21 | In review | 3 | 2026-10-21 · New `Size=xxxxs`, 32 px ring (band 3) with the % inside in body-small/Semibold, for the player Topbar on Mobile |
+| [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-23976) | v1.2 | 2026-10-21 | Published | 3 | 2026-10-21 · New `Size=xxxxs`, 32 px ring (band 3) with the % inside in body-small/Semibold, for the player Topbar on Mobile |
 
 ### LMS · Platform (`LMS/Platform/…`): 53
 

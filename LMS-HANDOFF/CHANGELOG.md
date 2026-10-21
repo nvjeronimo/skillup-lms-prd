@@ -21,7 +21,7 @@ Nelson's own pass on the player `Topbar` Mobile (Light, Dark), which replaces th
 wordmark centred, Bookmark, the avatar and Close on the right. No bell and no theme button on a phone (the theme
 switch is the profile menu's Dark theme row). The ring is the new DS `Progress circle` 1.2 `Size=xxxxs` (ring 32,
 band 3, the % inside in body-small/Semibold); it had the 64 px size scaled down, with a 7 px number. Two-digit
-values touch the band: 12 px is the DS's smallest text style. Prototype PR 216. DS changes not yet published.
+values touch the band: 12 px is the DS's smallest text style. Prototype PR 216. DS published 21 Oct.
 
 ## 2026-10-21 · Prototype audit and decisions (decision 029)
 
