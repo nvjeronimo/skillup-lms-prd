@@ -14,6 +14,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · Phone player bar: new layout and a 32 px progress circle
+
+Nelson's own pass on the player `Topbar` Mobile (Light, Dark), which replaces the audit's brandmark-only bar
+(decision 029 §1 amended): three equal columns — the course menu and the progress ring on the left, the SkillUp
+wordmark centred, Bookmark, the avatar and Close on the right. No bell and no theme button on a phone (the theme
+switch is the profile menu's Dark theme row). The ring is the new DS `Progress circle` 1.2 `Size=xxxxs` (ring 32,
+band 3, the % inside in body-small/Semibold); it had the 64 px size scaled down, with a 7 px number. Two-digit
+values touch the band: 12 px is the DS's smallest text style. Prototype PR 216. DS published 21 Oct.
+
 ## 2026-10-21 · Prototype audit and decisions (decision 029)
 
 A UX/PM review and a technical audit of the prototype (report `04-research/prototype-audit-2026-10-21.md`). The technical side is clean
@@ -21,7 +30,7 @@ A UX/PM review and a technical audit of the prototype (report `04-research/proto
 not: every course-outline topic opened the same page, three different "todays", a graded quiz offered the answer
 before the first try, no sign out, a placeholder signatory on issued certificates. Fixed in prototype PRs 214 and
 215; ICP certificate screens carry the sample signatory. Nelson's decisions (029): on a phone the player's top bar
-shows the brandmark and no theme button (DS Topbar v1.7; the switch is a Dark theme row in Profile Menu v1.6, which
+drops the theme button (DS Topbar v1.7, layout reworked the same day, see the entry above; the switch is a Dark theme row in Profile Menu v1.6, which
 also gains Sign out); prototype notes and demo controls only with `?demo=1`; Mentorship Q&A private, Discussion the
 cohort's forum; program sequencing unchanged. DS changes not yet published.
 
