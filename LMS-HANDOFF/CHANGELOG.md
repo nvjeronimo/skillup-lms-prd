@@ -24,7 +24,10 @@ Nelson's answers to the open audit items:
 - **The Python sandbox exists:** the Business Analytics notebook lab opens it first (primary until opened), the
   local setup stays as the alternative. Prototype PR 229.
 - **US spelling everywhere** (Program, color, center, -ize…): prototype PR 230 (≈409 words, 68 files; slugs
-  unchanged); a text pass over the DS and the ICP work pages (Discovery and Archive left as they are).
+  unchanged). Figma: DS 156 text nodes and 19 component descriptions (straight quotes now typographic, no
+  re-escaped entities), ICP 285 text nodes on the 13 work pages; Discovery and Archive untouched; layer names kept;
+  kept on purpose: a third-party quote (“splendour”, DS sample text) and a code-style state list (“cancelled”).
+  The DS text ships with the next publish.
 - **Prose width stays as drawn** (the column, as in Figma).
 - Also: no desktop flash on a phone player and the assistant launcher clears the last card (PR 228).
 
