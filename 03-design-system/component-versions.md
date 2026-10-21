@@ -224,9 +224,9 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.2 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
-| [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
+| [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.1 | 2026-10-08 | Published | 3 | 2026-10-21 · New variant Theme=Inverse compact (the phone’s one-line glance card: sentence-case label, hugs its width, detail wraps under it) |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.2 | 2026-10-08 | Published | 2 | 2026-10-21 · Mobile: one line of four (was 2 × 2) with short labels and details, Stat Inverse compact, padding Spacing/xl; 327 × 170 |
 
 **My-Learning**
 
@@ -485,6 +485,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-21 | `LMS / Profile Menu`, `Topbar` (player), `Progress circle` | no change (description) | Nelson: on a phone the Profile Menu scrolls. With Sign out and the Dark theme row it is 928 tall, more than an 812 screen; it is at most the screen minus 88 and scrolls inside its card (prototype already: `max-h calc(100dvh − 88px)`). ICP WIP Mobile 375 screen: the menu sits in a `Profile menu · scroll area` frame (701, vertical overflow). Also: HTML entities (`&amp;quot;`, `&amp;#39;`) that a description round-trip had left visible in the three descriptions were decoded. |
 | 2026-10-21 | `LMS / Profile Menu` | v1.6 → v1.7 | Nelson: Sign out leaves the SkillUp Online group for a group of its own, right after Profile; its icon (log-out-01) is `icon/error`, the label stays text/muted. Order: Appearance · Accessibility standards · Profile · Sign out · SkillUp Online · demo footer. Prototype PR 226. |
 | 2026-10-21 | `Assistant-Chat` | v1.2 → v1.3 | Nelson: the header is a dark band in the light and the dark theme — the Header frame carries the SKO Dark mode in all six variants (bg/subtle, the sparkles tile, the title and the icons resolve dark). Prototype PR 233: the header takes `data-theme="dark"`, as the Program header; its Restart / Close hovers move to bg/hover. |
+| 2026-10-21 | `Stat`, `Today-at-a-glance` | v1.0 → v1.1, v1.1 → v1.2 | Audit answer (Nelson): the phone glance card is one line of four; Stat gains Theme=Inverse compact. ICP mobile dashboards (4) carry the short labels. |
 
 ## Rename map (8 Oct 2026)
 
