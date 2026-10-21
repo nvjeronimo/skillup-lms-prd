@@ -321,7 +321,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1130-81134) | v1.0 | 2026-10-08 | Published |  | 2026-09-23 · Course Detail: known inconsistencies fixed |
 | [Avatar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19-1012) | v1.0 | 2026-10-08 | Published |  | 2026-10-01 · Top bar light; badges on every breakpoint; mobile Q&A conversation as one card |
 | [Avatar label group](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=82-2793) | v1.0 | 2026-10-08 | Published |  | — |
-| [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v1.1 | 2026-10-12 | Published |  | 2026-10-08 · DS: defaults on what Open edX serves; an image option on the Course Card |
+| [Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21889-541076) | v1.2 | 2026-10-21 | Published |  | 2026-10-21 · Gray Soft (and the Plain icon circle) on bg/muted, was bg/faint |
 | [Breadcrumbs](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1122-153) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7608) | v1.4 | 2026-10-20 | Published | 40 | 2026-10-20 · Tertiary Hover on bg/hover (alias of bg/muted), was bg/faint |
 | Buttons/Button (previous generation) | v1 | before the baseline | Legacy: on the screens, no longer in the library | 40 | 2026-10-08 · Buttons: the screens are on the previous generation |
@@ -488,6 +488,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-21 | `Assistant-Chat` | v1.2 → v1.3 | Nelson: the header is a dark band in the light and the dark theme — the Header frame carries the SKO Dark mode in all six variants (bg/subtle, the sparkles tile, the title and the icons resolve dark). Prototype PR 233: the header takes `data-theme="dark"`, as the Program header; its Restart / Close hovers move to bg/hover. |
 | 2026-10-21 | `Stat`, `Today-at-a-glance` | v1.0 → v1.1, v1.1 → v1.2 | Audit answer (Nelson): the phone glance card is one line of four; Stat gains Theme=Inverse compact. ICP mobile dashboards (4) carry the short labels. |
 | 2026-10-21 | `LMS / Skeleton` (new) | new v1.0 | New shared atom on `❖ LMS · SHARED COMPONENTS` (Atoms): Shape Text (Size sm/md/lg, line heights of body-small/medium/large) · Block 320×160 · Circle 40 · Pill (sm, md, segment, button-sm, button-md); fills `bg/muted`, optional static `Sheen` on `bg/subtle` (the 1.2 s shimmer lives in code; Figma cannot animate it); radius roles inner / card / pill / control. Built for the arrival block (motion-matrix §7.9, prototype PRs 236–238); code `components/atoms/Skeleton.tsx`. Pill md padding 10 px has no Spacing variable. |
+| 2026-10-21 | `Badge` | v1.1 → v1.2 | Nelson: Color=Gray, Style=Soft moves from bg/faint to bg/muted (light #e1e7ec, dark #25383f); the Plain icon circle takes the Soft fill, so it moves too (12 variants). On bg/faint the count badge next to section titles vanished on the platform pages, whose ground is bg/faint, and on white cards (1.05:1). Outline and Soft Light unchanged. Prototype PR 239. |
 
 ## Rename map (8 Oct 2026)
 
