@@ -213,7 +213,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.8 | 2026-10-21 | In review | 2 | 2026-10-21 · Compact: the menu (menu-02) on the left, before the logo, as the player bar's course menu; doc Anatomy for Desktop and Compact |
+| [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.8 | 2026-10-21 | Published | 2 | 2026-10-21 · Compact: the menu (menu-02) on the left, before the logo, as the player bar's course menu; doc Anatomy for Desktop and Compact |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 
 **Dashboard**
