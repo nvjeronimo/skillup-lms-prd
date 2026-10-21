@@ -42,11 +42,12 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 026 | The content section of a topic is padded with Container/content-padding (24 / 20 / 16) | Foundations | 1 | accepted | designer, dev | [026](026-content-padding-token.md) |
 | 027 | Sea, a livelier brand skin from the SkillUp foundation colours (proposal in the prototype) | Foundations | 1 | proposed | designer, dev, stakeholder | [027](027-sea-brand-skin.md) |
 | 028 | Corner radius by role — six role tokens and "inner radius + padding = outer radius" | Foundations | 1 | accepted | designer, dev | [028](028-radius-roles.md) |
+| 029 | Audit of 21 Oct 2026 — phone player bar, demo mode, Q&A vs Discussion, graded answers, sign out | LMS | 1 | accepted | designer, dev, stakeholder | [029](029-audit-decisions-2026-10-21.md) |
 
 ## Filter by track
 
 - **ICP** (immersive & content types): 001, 002, 004, 006, 008, 009, 011, 019, 020, 021, 022, 023
-- **LMS** (platform pages): 005, 007, 010, 025 *(more to come as the Platform Pages track develops)*
+- **LMS** (platform pages): 005, 007, 010, 025 *(more to come as the Platform Pages track develops)*, 029
 - **Foundations** (design system): 003, 012, 013, 014, 015, 016, 017, 018, 024, 026, 027, 028
 
 ## Filter by audience
