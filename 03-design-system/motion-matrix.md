@@ -305,6 +305,25 @@ Nelson saw menus and popovers still opening and closing in one frame: they had n
 
 `useDisclosure` carries the presence (`mounted`, `state`, `onAnimationEnd`), so a new menu built on it animates by default. The mobile search field now opens its sheet on click / Enter / Space, not on focus (it used to reopen after Escape).
 
+### 7.8 In-page swaps (PR #227, 21 Oct 2026, after the final audit)
+
+The final audit found nothing that opens from a trigger without motion; what was left were swaps inside a page. Rule: **content that replaces other content in place fades in; content that is added or removed in the flow uses `Collapse` or rise; none of it animates on first paint or on an unrelated re-render.**
+
+| Where | Motion | Reduced motion |
+|---|---|---|
+| Tab panels (Program, Course Detail) | new panel fades in (short4), not on first paint; side column stays mounted | fade |
+| Quiz hint · ORA submit gate | `Collapse` · rise | rows snap + content fades · fade |
+| Filtered list (Q&A) | as §7.5, only when the filter changes | fade, no stagger |
+| Player sidebar collapse ⇄ expand | incoming rail fades; width snaps | fade |
+| Status text ("Draft saved"), Reset, Next question | fade (short3); the live region is always mounted | same |
+| Transcript "Sync to Video" pill · dismissible alerts · locked-topic hint | rise in; rise-out (short3/short2) | fade |
+| Unread dots · counts | badge pop when they appear | fade |
+| FAQ +/− | cross-fade + quarter turn (short4) | cross-fade |
+| Caption overlay | fade in/out; caption text not animated | same |
+| Text inputs | focus border/ring ease (short3) | same |
+
+Also: raw times and curves in stylesheets are now caught by the `raw-motion-css` lint rule (outside `@keyframes` and `var(--motion-*)`); the generic fade exit is short3 (panel backdrops keep short4 to leave with their slide). Known exception to R3: the video dock animates `height`, because it drives the sticky layout.
+
 **Anti-scope, rejected:** confetti on a correct answer or a finished checklist; staggered entrance on lists over
 ~8 items; parallax or scroll-jacking in the content column; sound; per-word animation of streamed text; any
 animation of the learning content itself.
