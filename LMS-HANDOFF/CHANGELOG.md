@@ -14,6 +14,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · Progress circle 32 for the phone player bar
+
+Nelson: the phone player bar needs a 32 px progress circle. The DS `Progress circle` 1.2 adds `Size=xxxxs` (ring 32,
+band 3, the % inside in body-small/Semibold); the player `Topbar` Mobile uses it (it had the 64 px size scaled down,
+with a 7 px number). The prototype ring goes from 28 to 32 with the % inside (PR 216). Two-digit values touch the
+band: 12 px is the DS's smallest text style.
+
 ## 2026-10-21 · Prototype audit and decisions (decision 029)
 
 A UX/PM review and a technical audit of the prototype (report `04-research/prototype-audit-2026-10-21.md`). The technical side is clean
