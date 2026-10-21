@@ -14,6 +14,24 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · Audit answers: phone glance card, Python sandbox, US spelling; Square corners experiment
+
+Nelson's answers to the open audit items:
+- **Dashboard glance card on a phone: one line of four** (was 2 × 2; 252 → 160–170 tall). Short labels and details
+  there (In progress · of 22 courses, Completed, Certificates · to download, Programs · 1 active · 1 done); each stat
+  as wide as its label, the four spread across. DS `Stat` v1.1 (Theme=Inverse compact), `Today-at-a-glance` v1.2;
+  the four ICP mobile dashboards carry the short labels. Prototype PR 229.
+- **The Python sandbox exists:** the Business Analytics notebook lab opens it first (primary until opened), the
+  local setup stays as the alternative. Prototype PR 229.
+- **US spelling everywhere** (Program, color, center, -ize…): prototype PR 230 (≈409 words, 68 files; slugs
+  unchanged); a text pass over the DS and the ICP work pages (Discovery and Archive left as they are).
+- **Prose width stays as drawn** (the column, as in Figma).
+- Also: no desktop flash on a phone player and the assistant launcher clears the last card (PR 228).
+
+**Experiment — Square corners** (Nelson): a switch in the profile menu under the brand skins removes every corner
+radius except buttons (`data-square-corners`: the Radius roles go to 0, inside any button they come back;
+decorative circles stay round). Prototype only, PR 231.
+
 ## 2026-10-21 · Profile menu: Sign out in a group of its own
 
 Nelson (DS Profile Menu 1.7): Sign out moves out of the SkillUp Online group into its own, right after Profile, with
