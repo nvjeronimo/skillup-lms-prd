@@ -215,7 +215,7 @@ Today Mark as Complete changes one control. The chain makes the consequence visi
 Same chain for the two other ways a topic completes: the video's ≥90% auto-complete (`VideoPlayer`: the learner
 sees the system decide), and Mark as Complete from the Next dialog (`CompletionQuestionModal`: the chain plays
 after the dialog's exit). Undo (if the learner un-marks) reverses with no stagger at short3.
-The collapsed rail plays the same beats. On a phone the mobile topbar carries a 28 px course ring after the logo (Nelson, 14 Oct; prototype PR #164, DS `Topbar` v1.1), so the third beat shows there too. The video ≥90% auto-complete does not exist yet in the prototype; when built, it calls `markComplete` and gets the chain. A passed quiz plays it too (PR #157). Built: PR #155.
+The collapsed rail plays the same beats. On a phone the mobile topbar carries a 28 px course ring after the logo (Nelson, 14 Oct; prototype PR #164, DS `Topbar` v1.1), so the third beat shows there too. Since 21 Oct a video or podcast completes by itself once 90% has actually been played (BR-01; seeks do not count; cumulative across visits) and gets the same chain (PR #234); measured media have no Mark as Complete and Next does not ask. A passed quiz plays it too (PR #157). Built: PR #155.
 
 ### 7.3 Quiz (PR 4)
 
@@ -239,6 +239,7 @@ lives in that button*.
 | Component | Transition | Property | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
 | `AssistantLauncher` | rest → hover | `scale(1 → 1.04)` + shadow | short3 | standard | shadow only |
+| `AssistantLauncher` sparkles (PR #232, 21 Oct) | idle, closed mark | each of the three sparkles turns a quarter (0 → 90°) around its own centre, then rests; big every 12 s, medium 15 s, small 19 s, different starts; paused while the window is open; ball and plane never move | long2 per turn | standard | still |
 | `AssistantLauncher` | press | `scale(.96)` | short2 | standard | — |
 | `AssistantLauncher` | closed ⇄ open icon | mark ⇄ ✕ cross-fade with a 90° rotate | short4 | standard | cross-fade only |
 | `AssistantLauncher` badge | count appears / grows | `scale(.6 → 1)` + `opacity` | short4 | standard-decelerate | fade only |
@@ -288,7 +289,7 @@ lives in that button*.
 | `Badge` `live` / `LiveNowBanner` | looping | dot pulses opacity, 1.2 s | — | linear | static dot, "Live" stays |
 | `CourseCertificate` | first mount | `opacity` + `scale(.98 → 1)` — the only `emphasized` | medium2 | emphasized | fade only |
 
-Not built because the feature does not exist yet: the video's ≥90% auto-complete (it will join the completion chain when it calls `markComplete`) and a loading state on the quiz Submit (the Button already holds its width when one is added).
+Video/podcast ≥90% auto-complete is built since 21 Oct (PR #234) and plays the completion chain. Still not built because the feature does not exist: a loading state on the quiz Submit (the Button already holds its width when one is added).
 
 ### 7.7 Popovers and disclosures (PR #223, 21 Oct 2026)
 
