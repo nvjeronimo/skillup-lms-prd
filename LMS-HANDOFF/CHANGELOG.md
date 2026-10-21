@@ -14,6 +14,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · The menu on the left in every top bar
+
+Nelson: the platform `Topbar` Compact (tablet, mobile) moves its menu to the left of the logo, where the player's
+course menu is, so the menu sits in one place everywhere (DS Topbar 1.8). The prototype follows (PR 217) and uses
+the DS `menu-02` glyph (middle line shorter), drawn in `lib/icons.tsx` because lucide's `Menu` is `menu-01`.
+
 ## 2026-10-21 · Phone player bar: new layout and a 32 px progress circle
 
 Nelson's own pass on the player `Topbar` Mobile (Light, Dark), which replaces the audit's brandmark-only bar
