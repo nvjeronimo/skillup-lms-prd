@@ -14,6 +14,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · Prototype audit and decisions (decision 029)
+
+A UX/PM review and a technical audit of the prototype (report `04-research/prototype-audit-2026-10-21.md`). The technical side is clean
+(axe 0 violations on every page, theme and width; no overflow; token-lint, tsc, lint clean); the product side was
+not: every course-outline topic opened the same page, three different "todays", a graded quiz offered the answer
+before the first try, no sign out, a placeholder signatory on issued certificates. Fixed in prototype PRs 214 and
+215; ICP certificate screens carry the sample signatory. Nelson's decisions (029): on a phone the player's top bar
+shows the brandmark and no theme button (DS Topbar v1.7; the switch is a Dark theme row in Profile Menu v1.6, which
+also gains Sign out); prototype notes and demo controls only with `?demo=1`; Mentorship Q&A private, Discussion the
+cohort's forum; program sequencing unchanged. DS changes not yet published.
+
 ## 2026-10-20 · Corner radius by role (decision 028)
 
 Nelson: radii must follow one logic everywhere, with new tokens if needed. Eight role tokens in the DS
