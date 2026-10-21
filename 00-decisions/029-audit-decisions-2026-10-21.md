@@ -10,10 +10,12 @@ phase: 1
 **Decision** — Nelson's answers to the UX/PM + technical audit of the prototype (report:
 `04-research/prototype-audit-2026-10-21.md`), and the fixes that follow from platform rules:
 
-1. **Player top bar on a phone:** the SkillUp brandmark (32) replaces the wordmark and the theme button leaves
-   the bar; the theme switch is a *Dark theme* row in the profile menu on a phone. At 375 px the eight DS controls
-   did not fit (≈460 px) and the logo was crushed to 11 px. DS `LMS/ICP/Player/Topbar` v1.7, `LMS / Profile Menu`
-   v1.6 (boolean *Show dark theme (phone)*).
+1. **Player top bar on a phone:** three equal columns — the course menu and the progress ring (Progress circle
+   32, % inside) on the left, the SkillUp wordmark centred, Bookmark, the avatar and Close on the right. The bell
+   and the theme button leave the bar; the theme switch is a *Dark theme* row in the profile menu on a phone. At
+   375 px the eight DS controls did not fit (≈460 px) and the logo was crushed to 11 px. DS
+   `LMS/ICP/Player/Topbar` v1.7, `LMS / Profile Menu` v1.6 (boolean *Show dark theme (phone)*), prototype PR 216.
+   *Amended the same day by Nelson:* the first answer kept the bell and showed the brandmark only (PR 214).
 2. **Demo mode:** prototype notes and controls — the test-build footer, *Simulate load failure*, *Proposal: not
    designed yet*, *Not in MVP*, *Reset demo*, *Restart first steps* and the player's preview switches — show only
    with `?demo=1` (it sticks until `?demo=0`). Learner tests see the product; stakeholder demos add `?demo=1`.
