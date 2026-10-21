@@ -19,6 +19,8 @@ phase: 1
 2. **Demo mode:** prototype notes and controls — the test-build footer, *Simulate load failure*, *Proposal: not
    designed yet*, *Not in MVP*, *Reset demo*, *Restart first steps* and the player's preview switches — show only
    with `?demo=1` (it sticks until `?demo=0`). Learner tests see the product; stakeholder demos add `?demo=1`.
+   *Amended the same day by Nelson:* *Reset demo* and *Restart first steps* show in the profile menu again without
+   `?demo=1`, so testers can run the assistant's first steps from the start (prototype PR 224).
 3. **Mentorship Q&A is private, Discussion is the cohort's forum.** One line on each says so and links the other;
    Services *Message your mentor* opens the course's Q&A tab. One mentor per course, read from the course.
 4. **Program sequencing stays as it is** (every course of a program can be started).
