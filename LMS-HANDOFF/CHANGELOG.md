@@ -14,6 +14,22 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · Certificates page: two tabs, search, Grid / List
+
+Nelson redrew the Certificates page (ICP *Platform Pages – WIP*, **05 · Certificates**, card `7584:94993`):
+- **Two tabs instead of two sections:** DS `Horizontal tabs` (Underline, count badge) *In progress 5* and
+  *Earned 8*, Earned selected when the page opens. Under them, on the right: *Search certificates* (filters the
+  selected tab by title) and the Grid / List toggle, as on My Learning. Below desktop the page is Grid only; on a
+  phone the search fills the width.
+- **Earned:** the DS `Certificate-Card` (Earned-Certificate) in a grid of 3 / 2 / 1 columns. **In progress:** one
+  card per course or program in the same grid (eyebrow, title, bar on `bg/info`, what it measures, a chevron to the
+  course page or the program certificate page).
+- **Figma:** 05 desktop (Earned), 05b desktop In progress (`7587:245385`), 05c tablet 960 (`7588:2251`), 05d mobile
+  375 (`7588:90765`). The two-column row moved to the bottom of the frame, marked *SUPERSEDED 21 Oct 2026*.
+- **List view** is not drawn: in the prototype it is one row per certificate (Earned: title and issue line, a link
+  to the certificate page; In progress: the card at full width, bar beside its detail). To draw if kept.
+- No DS component changed. Prototype PR 241.
+
 ## 2026-10-21 · Audit answers: phone glance card, Python sandbox, US spelling; Square corners experiment
 
 Nelson's answers to the open audit items:
