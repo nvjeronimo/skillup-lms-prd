@@ -290,6 +290,21 @@ lives in that button*.
 
 Not built because the feature does not exist yet: the video's ≥90% auto-complete (it will join the completion chain when it calls `markComplete`) and a loading state on the quiz Submit (the Button already holds its width when one is added).
 
+### 7.7 Popovers and disclosures (PR #223, 21 Oct 2026)
+
+Nelson saw menus and popovers still opening and closing in one frame: they had never adopted the system. Rule from here on, enforced by the `popup-motion` token-lint rule: **every surface that a trigger opens grows out of that trigger and leaves back into it**.
+
+| Surface | Enter | Leave | Reduced motion |
+|---|---|---|---|
+| Menus and popovers (`useDisclosure`: profile menus, "⋯" card menu, shares, mobile tab popup, video language/download, demo menu, search popup) — `.sk-animate-menu`, origin at the trigger | fade + `scale(.96)` + `distance/nudge`, short3, standard-decelerate | reverse, short2, standard-accelerate; `inert`, `aria-hidden`, click-through while leaving | fade only |
+| Menus that open above the trigger — `.sk-animate-menu-up` | same, rising from below | reverse | fade only |
+| Full-width dropdown (platform mobile nav) — `.sk-animate-menu-y` | fade + `scaleY(.96)` + nudge, no horizontal scale | reverse | fade only |
+| Collapsed-rail Topic-Flyout — `.sk-animate-flyout` | fade, short3 | fade, short2 | same |
+| Course search sheet (phone) — `.sk-animate-sheet` | rises from the bottom, medium2 | drops, short4 | fade only |
+| Program FAQ, list course-card panel — `Collapse` | grid rows `0fr → 1fr`, medium2 | same | rows snap, content fades (short3) |
+
+`useDisclosure` carries the presence (`mounted`, `state`, `onAnimationEnd`), so a new menu built on it animates by default. The mobile search field now opens its sheet on click / Enter / Space, not on focus (it used to reopen after Escape).
+
 **Anti-scope, rejected:** confetti on a correct answer or a finished checklist; staggered entrance on lists over
 ~8 items; parallax or scroll-jacking in the content column; sound; per-word animation of streamed text; any
 animation of the learning content itself.
