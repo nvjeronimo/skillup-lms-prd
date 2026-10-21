@@ -325,7 +325,7 @@ The final audit found nothing that opens from a trigger without motion; what was
 
 Also: raw times and curves in stylesheets are now caught by the `raw-motion-css` lint rule (outside `@keyframes` and `var(--motion-*)`); the generic fade exit is short3 (panel backdrops keep short4 to leave with their slide). Known exception to R3: the video dock animates `height`, because it drives the sticky layout.
 
-### 7.9 Loading and arrival — skeletons, cascade, counters (spec for review, 21 Oct 2026)
+### 7.9 Loading and arrival — skeletons, cascade, counters (built 21 Oct 2026: PRs #236, #237, #238)
 
 Nelson, 21 Oct: "skeletons, micro animações de entrada de cada elemento, sequencial, e números/progressos com contador". Decisions taken that day:
 (1) the prototype simulates a short load (≈ 400–600 ms) with a skeleton, as a real API would; the demo menu can switch it **off** or to **slow** (2 s) for review;
@@ -340,9 +340,10 @@ Nelson, 21 Oct: "skeletons, micro animações de entrada de cada elemento, seque
 | `Skeleton` (new DS component: text line · block · circle) | page-shaped placeholders per platform page (Dashboard, My Learning, Program, Course Detail, Certificates, Calendar, Discussion, Services, Profile) and for the player topic body; a soft shimmer sweep | shimmer `calc(long2 * 2.4)` ≈ 1.2 s loop, linear; fill `bg/muted`, sheen `bg/subtle` | static, no sweep |
 | Skeleton → content | the skeleton fades out as the content fades in (no layout jump: skeletons match the real geometry) | short4, standard | fade |
 | Section cascade (first visit) | page header → KPIs/stats → main list/cards → side column; each section `opacity` + rise `distance/enter`; at most 8 steps; sections below the fold enter when they scroll into view, once | short4 each, 50 ms apart (`short2 / 2`), standard-decelerate; whole cascade < 600 ms | fade, no stagger |
+| Course ring in the player (top bar + sidebar) | sweeps once per **course** per session (not on every topic); after that only the completion chain moves it; never drawn full first on a hard load | long2, standard-decelerate | final at once |
 | Counters (first visit, when visible) | numbers count up from 0 (stats, totals, "N of M"), percentages count up, progress bars fill from 0, rings sweep from 0; once per element; screen readers get the final value only | long2, standard-decelerate | final value at once |
 | Course covers | the image fades in when it has loaded (no pop); the placeholder colour stays until then | short4 | same |
-| Platform top bar | a soft shadow appears once the page has scrolled (> 0 px), fades away at the top | short3, standard | same |
+| Platform top bar | ~~a soft shadow once the page has scrolled~~ — **not built**: the platform top bar is not sticky (it scrolls away), so there is nothing to separate | — | — |
 | Copy link / Share | the icon swaps to a check for 1.5 s, the label says "Copied" for screen readers | short3; check draws | check appears |
 
 Anti-scope additions: no cascade on re-renders, filters or tab switches (those keep §7.5/§7.8); no counter on values the learner is editing; never delay content behind an animation.
