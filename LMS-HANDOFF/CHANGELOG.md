@@ -14,6 +14,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-21 · Profile menu: Sign out in a group of its own
+
+Nelson (DS Profile Menu 1.7): Sign out moves out of the SkillUp Online group into its own, right after Profile, with
+the log-out icon in `icon/error`. The profile menu on a phone scrolls inside its card, so Sign out is never cut.
+Reset demo and Restart first steps show again without `?demo=1` (decision 029 §2 amended). Prototype PRs 224, 226.
+
 ## 2026-10-21 · The menu on the left in every top bar
 
 Nelson: the platform `Topbar` Compact (tablet, mobile) moves its menu to the left of the logo, where the player's
