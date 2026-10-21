@@ -239,7 +239,7 @@ lives in that button*.
 | Component | Transition | Property | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
 | `AssistantLauncher` | rest → hover | `scale(1 → 1.04)` + shadow | short3 | standard | shadow only |
-| `AssistantLauncher` sparkles (PR #232, 21 Oct) | idle, closed mark | each of the three sparkles turns a quarter (0 → 90°) around its own centre, then rests; big every 12 s, medium 15 s, small 19 s, different starts; paused while the window is open; ball and plane never move | long2 per turn | standard | still |
+| `AssistantLauncher` sparkles (PR #232, spin PR #235, 21 Oct) | idle, closed mark | each of the three sparkles spins fast around its own centre in the last 500 ms of its cycle, then rests: big 2 full turns (720°) every 12 s, medium 3 turns (1080°) every 15 s, small 2 turns (720°) every 19 s, different starts; paused while the window is open; ball and plane never move. Nelson, 21 Oct: keep the full turns (the first spec said a quarter turn) | long2 per spin | standard-decelerate | still |
 | `AssistantLauncher` | press | `scale(.96)` | short2 | standard | — |
 | `AssistantLauncher` | closed ⇄ open icon | mark ⇄ ✕ cross-fade with a 90° rotate | short4 | standard | cross-fade only |
 | `AssistantLauncher` badge | count appears / grows | `scale(.6 → 1)` + `opacity` | short4 | standard-decelerate | fade only |
