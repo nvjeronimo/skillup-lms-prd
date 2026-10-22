@@ -235,7 +235,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.16 | 2026-10-22 | Published | 6 | 2026-10-22 · Large course picture: Grid cover 200 across the top, List cover 192 down the left; partner logo chips on white (bg/page) (v1.15: List minHeight 146, one height with a one- or two-line title) |
-| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.13 | 2026-10-17 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | In review | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 
 **Discovery**
 
@@ -501,6 +501,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Course-Row` | v1.2 → v1.3 | Nelson: the "Module …" rows show their course picture (Open edX has none per module): Cover 160 wide down the left, full height, padding-left 180. Prototype PR 257. |
 | 2026-10-22 | `Resume-Row` | v1.2 → v1.3 | Nelson: Cover across the top, 140 tall, padding-top 172. Prototype PR 257. |
 | 2026-10-22 | `Sidebar` (ICP) | v1.2 → v1.3 | Nelson: “Course menu” becomes **Course Journey** — the State=Mobile drawer title (both Mobile variants) and the Sidebar playground; the player Topbar doc line reads “opens the Course Journey”. Prototype: drawer heading, *Close Course Journey* and the Topbar button *Open Course Journey* (PR 263). No ICP screen shows the drawer title. |
+| 2026-10-22 | `Program-Card` | v1.13 → v1.14 | Nelson: the footer labels *Up next* and *Certificate issued* take Text case Upper (the text stays sentence case), as the Course-Card overlines. Prototype PR 264. |
 
 ## Rename map (8 Oct 2026)
 
