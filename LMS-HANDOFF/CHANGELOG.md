@@ -15,6 +15,25 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Course pictures on cards and module rows; player content measure; video at half the viewport
+
+Nelson: the course picture large on the course cards (grid and list) and on the “Module …” rows. Prototype PR 257:
+CourseThumb `shape="cover"`, a 16:9 cover across the top of a grid card, a 192 cover down the left of a list card,
+160 on the Course-Row, across the top of the Resume-Row; a module row uses its course’s picture (Open edX has no
+picture per module). Partner logo chips on the cards sit on white. Content tabs stay tabs on phones (no dropdown).
+DS (unpublished): Course-Card 1.16, Course-Row 1.3, Resume-Row 1.3. The ICP player screens already use Horizontal
+tabs on mobile; the two Mobile-Tab-Select instances in the ICP are the search-results filter and stay.
+Published and accepted 22 Oct. ICP: the cards had no course pictures (only a placeholder colour), so the 12 covers
+of the prototype (`public/platform/covers`) were uploaded to a source frame on the Platform Pages WIP page (`7649:114533`)
+and set on Cover › Image by course title: 148 cards, 30 Course-Rows, 12 Resume-Rows. The three 466-wide Course-Rows of
+the two-column Dashboard (1040) hide the cover (padding 20): it does not fit beside the titles there.
+
+Nelson: the topic content gets a max width; on a video the player stays full width at 50vh and shrinks only when the
+learner scrolls to the transcript. Prototype PR 258: content measure 50rem (800, centred, padding outside), every
+topic type; video from tablet up `min(50dvh, 16:9 of its width)`, docked 240 / 180 unchanged, phones 16:9. Open: a
+DS token `Container/content-max-width` (needs approval) and the ICP screens.
+
+
 ## 2026-10-22 · Fluid-interface pass after an Apple design review
 
 Nelson asked for all of it (prototype PR 253; motion-matrix §8c):
