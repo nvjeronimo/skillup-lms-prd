@@ -14,6 +14,20 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Dashboard glance: one card per figure, an arrow and a goal
+
+Nelson (“a figure alone says nothing”): each figure of *Your learning at a glance* sits on its own card with a
+comparison and a goal, and only what Open edX already serves:
+- **Arrow** on *Courses completed* and *Certificates*: this month so far against the same days of last month, from
+  certificate issue dates; green up, red down (Nelson's choice; an exception to the green-only-when-complete rule,
+  for trend badges only). *Courses in progress* has none: it falls when courses get completed.
+- **Goal:** *3 due this week* · *32% of 22* · none on Certificates · *1 of 7 courses* (the active program). Dropped:
+  goals with a date (programs have no end date in Open edX) and *of 25 possible* (program certificates need
+  Credentials). Sources per element in the handoff map §37.4. Dev effort: frontend only.
+- **Phone:** the row of cards scrolls sideways (cards 148) instead of the one-line card of 21 Oct.
+- DS: `Stat` v1.2 (Theme=Card), `Today-at-a-glance` v1.3, not yet published. Prototype PR 242. The ICP dashboards
+  take it with the library update.
+
 ## 2026-10-21 · Certificates page: two tabs, search, Grid / List
 
 Nelson redrew the Certificates page (ICP *Platform Pages – WIP*, **05 · Certificates**, card `7584:94993`):
