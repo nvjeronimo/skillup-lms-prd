@@ -227,7 +227,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-22 | Published | 3 | 2026-10-22 · Theme=Card (figure on its own card, Trend/Goal badges) on Shadows/shadow-card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.4 | 2026-10-22 | Published | 2 | 2026-10-22 · Light card: bg/primary-soft with a border/primary-muted, cards on bg/page; labels Courses / Programs / Completed / Certificates; two-line details; goals 3 due this week (Warning) / 1 of 3 completed / 32% completed |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.5 | 2026-10-22 | In review | 2 | 2026-10-22 · Dark again as drawn on the ICP Dashboard: backdrop bg/info-soft pinned to SKO Dark, two blurred glows, circles 19%, title text/on-primary; Programs 1 · in progress of 3 enrolled · 1 not started |
 
 **My-Learning**
 
@@ -502,6 +502,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Resume-Row` | v1.2 → v1.3 | Nelson: Cover across the top, 140 tall, padding-top 172. Prototype PR 257. |
 | 2026-10-22 | `Sidebar` (ICP) | v1.2 → v1.3 | Nelson: “Course menu” becomes **Course Journey** — the State=Mobile drawer title (both Mobile variants) and the Sidebar playground; the player Topbar doc line reads “opens the Course Journey”. Prototype: drawer heading, *Close Course Journey* and the Topbar button *Open Course Journey* (PR 263). No ICP screen shows the drawer title. |
 | 2026-10-22 | `Program-Card` | v1.13 → v1.14 | Nelson: the footer labels *Up next* and *Certificate issued* take Text case Upper (the text stays sentence case), as the Course-Card overlines. Prototype PR 264. |
+| 2026-10-22 | `Today-at-a-glance` | v1.4 → v1.5 | Nelson drew the glance on the ICP Dashboard (`7495:71629`) on a dark frame outside the component; it moves into the component. A *Backdrop* layer (absolute, stretched) on `bg/info-soft` pinned to SKO Dark (#044150 in every Dark mode: no new token), two blurred glows (Ellipse, `border/info-soft`, Layer blur 179, 37% / 80%), the two circles at 19% (were 12%), the title `text/on-primary`; the 1px `border/primary-muted` stays and the `Stat` cards stay light (Theme=Card). Content exactly as drawn: Programs *1 · **in progress** of 3 enrolled* with the goal *1 not started* (Gray), Certificates *ready to download* (Mobile said *and share*). Not carried over: the instance’s drop shadow and Glass effect. Prototype PR 267 (also the value and detail on one line, as the `Stat` Card). |
 
 ## Rename map (8 Oct 2026)
 
