@@ -40,9 +40,11 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 024 | Motion scale — Material names, one mode, reduced motion keeps feedback | Foundations | 1 | proposed | designer, dev | [024](024-motion-scale.md) |
 | 025 | A course of a program is reached from its program, or from "Pick up where you left off" | LMS | 1 | accepted | designer, dev, stakeholder | [025](025-program-courses-entry-points.md) |
 | 026 | The content section of a topic is padded with Container/content-padding (24 / 20 / 16) | Foundations | 1 | accepted | designer, dev | [026](026-content-padding-token.md) |
-| 027 | Sea, a livelier brand skin from the SkillUp foundation colours (proposal in the prototype) | Foundations | 1 | proposed | designer, dev, stakeholder | [027](027-sea-brand-skin.md) |
+| 027 | Sea, a livelier brand skin from the SkillUp foundation colours (proposal in the prototype) | Foundations | 1 | superseded by 030 | designer, dev, stakeholder | [027](027-sea-brand-skin.md) |
 | 028 | Corner radius by role — six role tokens and "inner radius + padding = outer radius" | Foundations | 1 | accepted | designer, dev | [028](028-radius-roles.md) |
 | 029 | Audit of 21 Oct 2026 — phone player bar, demo mode, Q&A vs Discussion, graded answers, sign out | LMS | 1 | accepted | designer, dev, stakeholder | [029](029-audit-decisions-2026-10-21.md) |
+| 030 | Studio, the fourth brand skin, replaces the Sea proposal | Foundations | 1 | accepted | designer, dev, stakeholder | [030](030-studio-brand-skin.md) |
+| 031 | A topic's content stops at Container/content-max-width (1200); the video keeps the full width at half the viewport | Foundations | 1 | accepted | designer, dev | [031](031-content-max-width-token.md) |
 
 ## Filter by track
 

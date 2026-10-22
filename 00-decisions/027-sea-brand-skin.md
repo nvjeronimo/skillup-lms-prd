@@ -2,11 +2,13 @@
 id: 027
 title: Sea, a livelier brand skin from the SkillUp foundation colours (proposal in the prototype)
 date: 2026-10-19
-status: proposed
+status: superseded
 audience: [designer, dev, stakeholder]
 track: Foundations
 phase: 1
 ---
+> **Superseded 22 Oct 2026 by decision 030:** Studio took Sea's place and the Sea skin was removed from the prototype (PR 262).
+
 **Decision (proposed)**: a fourth brand skin, **Sea**, beside SKO, Gold and Red. It keeps the SKO brand tokens and gives
 colour a job:
 - the platform top bar is deep teal (#044150, the logo and certificate teal);
