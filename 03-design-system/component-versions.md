@@ -225,9 +225,9 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.2 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
-| [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-08 | Not published | 3 |  2026-10-22 · New variant Theme=Card: the figure on its own card with Trend and Goal badges (Show trend / Show goal) |
+| [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-22 | Published | 3 |  2026-10-22 · New variant Theme=Card: the figure on its own card with Trend and Goal badges (Show trend / Show goal) |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.3 | 2026-10-08 | Not published | 2 |  2026-10-22 · One Stat Theme=Card per figure, arrow + goal; mobile row scrolls sideways (cards 148) |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.3 | 2026-10-22 | Published | 2 |  2026-10-22 · One Stat Theme=Card per figure, arrow + goal; mobile row scrolls sideways (cards 148) |
 
 **My-Learning**
 
