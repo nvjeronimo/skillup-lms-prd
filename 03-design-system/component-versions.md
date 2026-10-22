@@ -223,7 +223,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Due-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22752) | v1.1 | 2026-10-22 | Published | 2 | 2026-10-22 · The activity type in brackets after the title; meta = course · 11:59 PM · your time; badge says when (Due tonight / Due Mon); Shadows/shadow-card |
 | [Jump-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22769) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.2 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
+| [Resume-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22800) | v1.3 | 2026-10-22 | Unpublished | 1 | 2026-10-22 · Course picture across the top (Cover, 140), content starts 172 down (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-22 | Published | 3 | 2026-10-22 · Theme=Card (figure on its own card, Trend/Goal badges) on Shadows/shadow-card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
@@ -234,7 +234,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.16 | 2026-10-19 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.16 | 2026-10-22 | Unpublished | 6 | 2026-10-22 · Large course picture: Grid cover 200 across the top, List cover 192 down the left; partner logo chips on white (bg/page) (v1.15: List minHeight 146, one height with a one- or two-line title) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.13 | 2026-10-17 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 
 **Discovery**
@@ -242,7 +242,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · 4 px padding all round, rows on Radius/card-inset (8), panel on Radius/card (decision 028) |
-| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.2 | 2026-10-14 | Published | 3 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
+| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.3 | 2026-10-22 | Unpublished | 3 | 2026-10-22 · Course picture down the left (Cover, 160; a module has no picture in Open edX) (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.1 | 2026-10-15 | Published | 2 | 2026-10-15 · Words only: the icons are removed (1.0, 8 Oct: renamed from “LMS / Course Type Badge”) |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
@@ -496,6 +496,10 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Due-Item` | v1.0 → v1.1 | Nelson: the activity type in brackets after the title, sentence case (*Persona research draft (Peer assessment)*), not repeated when the title starts with it; meta = course · time in 12 h · your time; the badge says when (*Due tonight*, *Due Mon*, *Overdue · 3 days*), not the hour; Shadows/shadow-card. Every time the learner reads is now 12 h with *your time* (prototype PR 245). ICP: the 24 Due-Item instances on Platform Ready + WIP re-texted (26 Oct is a Monday: the old ones said Sat). |
 | 2026-10-22 | `Provider-Partner-Badge` | v1.2 → v1.3 | Nelson: the Logo chip takes a 1px border/subtle and Radius/control (6, was Radius/fixed-xs 4), Light and Dark; still 28 tall. Prototype PR 249 (also: SkillUp as the partner of the Cybersecurity Fundamentals Certificate). ICP: the 15 Cybersecurity program cards show the SkillUp logo only (they carried copied Microsoft + IBM logos). |
 | 2026-10-22 | `ORA-Stepper` | v1.1 → v1.2 | Nelson: completed segments lose the green tint — green check and green Semibold label on bg/page; current stays bg/primary-soft, upcoming bg/faint. Check found Step=Response (Default and Compact) with its current segment on bg/page; set to bg/primary-soft like the other current steps. Description escaping fixed and a STATES paragraph added. Prototype PR 254 (also Size=Compact below `sm`, peer label from the review quota). |
+| 2026-10-22 | `Course-Card` | v1.14 → v1.15 | Nelson, 19 Oct: List minHeight 146, the height with a two-line title (row was not updated then). |
+| 2026-10-22 | `Course-Card` | v1.15 → v1.16 | Nelson: the course picture large on the cards. Grid: Cover 200 tall across the top, edge to edge (absolute, stretches; content padding-top 224). List: Cover 192 wide, full height (padding-left 208). Image follows *Show image*; initials on bg/primary-soft without one. Old thumb hidden. Partner chips on bg/page (white). Prototype PR 257. |
+| 2026-10-22 | `Course-Row` | v1.2 → v1.3 | Nelson: the "Module …" rows show their course picture (Open edX has none per module): Cover 160 wide down the left, full height, padding-left 180. Prototype PR 257. |
+| 2026-10-22 | `Resume-Row` | v1.2 → v1.3 | Nelson: Cover across the top, 140 tall, padding-top 172. Prototype PR 257. |
 
 ## Rename map (8 Oct 2026)
 
