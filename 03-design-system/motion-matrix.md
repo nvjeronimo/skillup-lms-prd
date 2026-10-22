@@ -400,6 +400,20 @@ Kept: the 100–500 ms scale, origin-aware menus at 96 % with a 4 px nudge, pres
 exit-shorter-than-entry rule, the progress bar's long2 fill (an arrival moment, not an interaction). Reduced motion: the
 global rule keeps only colour and opacity transitions, so menus fade and their scale snaps.
 
+## 8c. Fluid-interface pass (Apple design review, 22 Oct 2026)
+
+Nelson: "avança todos". Prototype PR 253.
+
+| Area | Built | Why (Apple, WWDC) |
+| --- | --- | --- |
+| Press on touch | Cards and rows that are one link scale to 99 % with a bg/faint tint on `:active`, short2 (`sk-press-card`); buttons inside keep their own press | Respond on pointer-down; since §8b hover only exists where a pointer hovers, a tap had no feedback |
+| Drag to dismiss | `useSheetDrag`: touch/pen, 10 px slop, 1:1 from the grab point, rubber band past open, release velocity projected with Apple's decay (`d = 0.998`) → leave past half the size, else settle; the finish runs from the on-screen position on standard-decelerate (WAAPI), duration from the finger's speed (short3–medium2); the backdrop follows | Direct manipulation, interruptibility, velocity hand-off, momentum projection, soft boundaries |
+| Where | Assistant phone sheet (header, down) · course-search sheet (search row, down) · player course drawer (left) · Notifications / Saved / Discussions panel (right) | The surfaces a phone opens over the page |
+| Theme / skin change | Cross-fade of the page (View Transitions), short4 on standard-decelerate, opacity only; not on first paint | No abrupt brightness jumps |
+| Reduced motion | The drag still follows the finger (direct manipulation is not decoration) but leaves or settles without the finishing animation; the theme fade stays (opacity) | Reduced motion = gentler, not none |
+
+Not built: springs with true velocity blending (no spring library in the prototype; the WAAPI finish takes its duration from the release speed instead). Mouse drags are left out on purpose (close button and Escape).
+
 ## 9. Decisions and open questions
 
 | # | Question | Answer |

@@ -15,6 +15,20 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Fluid-interface pass after an Apple design review
+
+Nelson asked for all of it (prototype PR 253; motion-matrix §8c):
+- **Press on touch-down:** cards and rows that are one link answer the instant they are touched (99 %, a light tint).
+  Needed since hover only exists on devices that hover.
+- **Drag to dismiss on phones:** the assistant and course-search sheets pull down from their top row, the player's course
+  drawer and the Notifications / Saved / Discussions panels swipe back to their edge; a flick closes, a slow short drag
+  settles back. The close buttons stay.
+- **Text follows the browser's size:** the type ramp is in rem; A / A+ / A++ still multiplies on top. Same pixels at the
+  default size.
+- **Light / dark and skin changes cross-fade** instead of jumping in one frame.
+- **System preferences:** "increase contrast" steps hairlines and the faintest text up one role; "reduce transparency"
+  makes the video's translucent surfaces solid. Roles re-pointed, no new tokens.
+
 ## 2026-10-22 · Motion pass after an Emil Kowalski review
 
 Nelson asked for all of it (prototype PR 252; motion-matrix §8b; ADR 024 amended):
