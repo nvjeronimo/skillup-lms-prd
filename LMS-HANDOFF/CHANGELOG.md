@@ -15,6 +15,17 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Motion pass after an Emil Kowalski review
+
+Nelson asked for all of it (prototype PR 252; motion-matrix §8b; ADR 024 amended):
+- **Hover only where it exists:** on a phone a tap no longer leaves a button in its hover colour (the Primary button stayed
+  yellow).
+- **Ease-out in and out:** exits move from the ease-in `standard-accelerate` to `standard-decelerate`, and that curve
+  becomes a stronger ease-out, `cubic-bezier(0.23, 1, 0.32, 1)`. Quiz step slides take it too.
+- **Menus and popovers are interruptible:** CSS transitions instead of keyframes.
+- **The quiz mark** grows from half size with a fade instead of from nothing.
+- The Figma `Motion` variable `easing/standard-decelerate` carries the new value too, and `standard-accelerate` says it is unused (DS, not yet published).
+
 ## 2026-10-22 · Dashboard glance light, due items and 12-hour times
 
 Nelson reworked the Dashboard's two DS components, published 22 Oct. `Today-at-a-glance` 1.4 is a light card (bg/primary-soft, border/primary-muted, cards on bg/page with Shadows/shadow-card), with short labels, two-line details and goals (*3 due this week* in Warning). `Due-Item` 1.1 puts the activity type in the title, the time in 12 h with *your time*, and the badge says when. Every time in the prototype now reads 12 h (*11:59 PM · your time*). The Sea skin keeps the glance light, and the player's top bar takes the Sea chrome (prototype only, decision 027). Prototype PRs 244, 245, 246.

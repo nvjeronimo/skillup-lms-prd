@@ -73,7 +73,7 @@ Four functions. A proposal that serves none of them is rejected.
   through `aria-live` when it matters.
 - **R6 — Reduced motion removes travel, keeps feedback** (§6). Decided 14 Oct (Q2).
 - **R7 — Motion is skin-, theme- and breakpoint-agnostic.** One mode only. Decided 14 Oct (Q1).
-- **R8 — Exits are faster than entrances** and use the accelerate curve. A surface leaving must never delay the learner.
+- **R8 — Exits are faster than entrances** and use the decelerate curve, an ease-out (since 22 Oct 2026; until then the accelerate curve, an ease-in). A surface leaving must never delay the learner.
 - **R9 — One overshoot in the product.** `easing/emphasized` is reserved for the certificate reveal. Nothing else bounces.
 - **R10 — A surface leaves toward where it came from.** Panels back to their edge, the assistant back into its launcher, toasts down.
 
@@ -102,8 +102,8 @@ can tell apart; Q4 accepted value changes of this size without a side-by-side.
 | Token | Curve | Material slot | Use |
 |---|---|---|---|
 | `easing/standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | name ✓, **value ours** (M3's is `0.2,0,0,1`; ours is today's `--ease`) | anything that changes in place: colour, rotate, ring |
-| `easing/standard-decelerate` | `cubic-bezier(0.2, 0.7, 0.2, 1)` | name ✓, value ours | **entrances**, progress |
-| `easing/standard-accelerate` | `cubic-bezier(0.55, 0, 1, 0.45)` | name ✓, value ours | **exits**, dismissals |
+| `easing/standard-decelerate` | `cubic-bezier(0.23, 1, 0.32, 1)` (was `0.2, 0.7, 0.2, 1` until 22 Oct 2026) | name ✓, value ours | **entrances, exits**, progress |
+| `easing/standard-accelerate` | `cubic-bezier(0.55, 0, 1, 0.45)` | name ✓, value ours | kept in the scale; **no UI surface uses it** since 22 Oct 2026 |
 | `easing/emphasized` | `cubic-bezier(0.34, 1.3, 0.64, 1)` | name ✓, value ours (an overshoot; M3's has none) | **certificate only** (R9) |
 | `easing/linear` | `linear` | linear ✓ | looping indicators only (spinner, typing dots) |
 
@@ -134,7 +134,7 @@ Panels and the drawer travel their full width (`100%`), not a token: they come f
   --motion-duration-long2: 500ms;
 
   --motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --motion-easing-standard-decelerate: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --motion-easing-standard-decelerate: cubic-bezier(0.23, 1, 0.32, 1);
   --motion-easing-standard-accelerate: cubic-bezier(0.55, 0, 1, 0.45);
   --motion-easing-emphasized: cubic-bezier(0.34, 1.3, 0.64, 1);
   --motion-easing-linear: linear;
@@ -192,12 +192,12 @@ unmounts. Focus returns to the opener and the page un-inerts at the **start** of
 | Component | Transition | Property | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
 | `OverlayPanel` (Notifications, Saved, Discussions) | open | `translateX(100% → 0)` + backdrop `opacity` | medium2 | standard-decelerate | fade only, short3 |
-| `OverlayPanel` | close | reverse | short4 | standard-accelerate | fade only |
+| `OverlayPanel` | close | reverse | short4 | standard-decelerate | fade only |
 | `PlayerShell` mobile drawer | open / close | `translateX(-100% → 0)` + backdrop, as above | medium2 / short4 | decel / accel | fade only |
 | Modals (`CompletionQuestionModal`, `CourseCompleteModal`, `NoteEditorModal`, `ReportIssueModal`, `HostedProgressCard`) | open | `opacity` + `scale(.96 → 1)` + backdrop | short4 | standard-decelerate | fade only |
-| Modals | close | reverse | short3 | standard-accelerate | fade only |
+| Modals | close | reverse | short3 | standard-decelerate | fade only |
 | `Toast` | enter | `translateY(distance/enter → 0)` + `opacity` | short4 | standard-decelerate | fade only |
-| `Toast` | leave (timeout or dismiss) | `opacity` + `translateY(→ distance/enter)` | short3 | standard-accelerate | fade only |
+| `Toast` | leave (timeout or dismiss) | `opacity` + `translateY(→ distance/enter)` | short3 | standard-decelerate | fade only |
 | Chevrons (`ModuleHeader`, `SectionHeader`, `ModuleList`, `ContentTabs`) | collapsed ⇄ expanded | `rotate` | short4 | standard | snaps (existing guard) |
 | Accordion bodies (same components) | collapsed ⇄ expanded | `grid-template-rows: 0fr ⇄ 1fr` + content `opacity` | medium2 | standard | opacity only |
 
@@ -221,7 +221,7 @@ The collapsed rail plays the same beats. On a phone the mobile topbar carries a 
 
 | Component | Transition | Property | Duration | Easing | Reduced motion |
 |---|---|---|---|---|---|
-| `QuizCard` option | → selected | radio dot `scale(0 → 1)` from the centre + border colour | short3 | standard-decelerate | fill, no scale |
+| `QuizCard` option | → selected | radio dot (and multi-select check) `scale(0.5 → 1)` + `opacity` from the centre + border colour (from 0 until 22 Oct 2026) | short3 | standard-decelerate | fill, no scale |
 | `QuizCard` option | → correct | check **draws** + border to success | short4 | standard-decelerate | check appears |
 | `QuizCard` option | → incorrect | ✕ appears + border to error. **No shake**: the v1 4 px nudge is dropped as punitive in a graded B2B context | short4 | standard | — |
 | `QuizCard` rationale | hidden → shown | `grid-template-rows: 0fr → 1fr` + `opacity` | medium2 | standard-decelerate | opacity only |
@@ -244,13 +244,13 @@ lives in that button*.
 | `AssistantLauncher` | closed ⇄ open icon | mark ⇄ ✕ cross-fade with a 90° rotate | short4 | standard | cross-fade only |
 | `AssistantLauncher` badge | count appears / grows | `scale(.6 → 1)` + `opacity` | short4 | standard-decelerate | fade only |
 | `AssistantWindow` (desktop) | open | grows **out of the launcher**: `transform-origin` at the launcher's corner, `opacity` + `scale(.96 → 1)` + `translateY(distance/surface → 0)` | short4 | standard-decelerate | fade only |
-| `AssistantWindow` (desktop) | close | back into the launcher (reverse) | short3 | standard-accelerate | fade only |
+| `AssistantWindow` (desktop) | close | back into the launcher (reverse) | short3 | standard-decelerate | fade only |
 | `AssistantWindow` (phone sheet) | open / close | `translateY(100% → 0)` and back | medium2 / short4 | decel / accel | fade only |
 | Learner message | sent | bubble enters: `opacity` + `translateY(distance/enter → 0)` | short4 | standard-decelerate | fade only |
 | Thinking | waiting for the first token | three dots pulsing in sequence (`opacity`, 150 ms apart, loop 1.2 s), replacing the static "Thinking…"; the word stays for screen readers | — | linear | the word "Thinking…", no loop |
 | Answer | streaming | the bubble enters once (as a learner message); **text streams with no per-word animation** (it is content, §3) | short4 | standard-decelerate | fade only |
 | Answer actions (route buttons) | answer finished | buttons enter one after another, 50 ms apart, `opacity` + `translateY(distance/nudge)` | short4 | standard-decelerate | all at once, fade |
-| Suggestion chips | one chosen | the chip set fades out as the learner message enters | short3 | standard-accelerate | — |
+| Suggestion chips | one chosen | the chip set fades out as the learner message enters | short3 | standard-decelerate | — |
 | Conversation scroll | new message | smooth scroll to the end **only if the learner is already at the end**; otherwise a "New message ↓" pill enters (as a toast) and scrolls on click | medium2 | standard | `behavior: auto` |
 | First steps (`FirstStepsView`) | a step ticks itself | check draws (same as §7.2 t=0) + "n of 5" updates; the step announced once (already built) | short4 | standard-decelerate | check appears |
 | First steps | all five done | the list settles to its finished state; no celebration (R9) | short4 | standard | — |
@@ -382,6 +382,23 @@ All six merged to `main` on 14 Oct 2026, in order. They were built as a **stack*
 | BA | the BR-39 amendment, sent as a proposal (not applied) |
 
 ---
+
+## 8b. Design-engineering pass (Emil Kowalski review, 22 Oct 2026)
+
+Nelson: "avança com tudo". Prototype PR 252.
+
+| Before | After | Why |
+| --- | --- | --- |
+| Tailwind `hover:` applied on every device | `future.hoverOnlyWhenSupported` (hover rules inside `@media (hover: hover) and (pointer: fine)`) | On a phone a tap left the hover on: the Primary button stayed yellow, the assistant launcher at 104 % |
+| Exits on `standard-accelerate` (an ease-in) | `standard-decelerate` (an ease-out) | Ease-in delays the first frame, the one the learner watches (R8 amended) |
+| `standard-decelerate` `(0.2, 0.7, 0.2, 1)` | `(0.23, 1, 0.32, 1)` | A stronger ease-out: the surface answers at once |
+| Step slides (quiz Next / Back) on `standard` | `standard-decelerate` | They enter the screen |
+| Quiz mark from `scale(0)` | `scale(0.5)` + `opacity` | Nothing appears from nothing |
+| Menus and popovers on `@keyframes` | CSS transitions: `@starting-style` for the entry, `[data-state="closed"]` for the exit; `useExitTransition` unmounts on the opacity `transitionend` | A menu opened and closed quickly turns back from where it is instead of restarting |
+
+Kept: the 100–500 ms scale, origin-aware menus at 96 % with a 4 px nudge, press scale 98 % on buttons (96 % on the launcher), the
+exit-shorter-than-entry rule, the progress bar's long2 fill (an arrival moment, not an interaction). Reduced motion: the
+global rule keeps only colour and opacity transitions, so menus fade and their scale snaps.
 
 ## 9. Decisions and open questions
 
