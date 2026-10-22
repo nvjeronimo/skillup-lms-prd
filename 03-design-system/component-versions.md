@@ -104,7 +104,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Info” |
 | [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · `Device=Mobile` uses an instance of `LMS / Progress Circle`, as Desktop does |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
-| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.2 | 2026-10-13 | Published | 5 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.3 | 2026-10-22 | In review | 5 | 2026-10-22 · Mobile drawer title “Course Journey” (was “Course menu”) |
 | [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.3 | 2026-10-16 | Published | 9 | 2026-10-16 · New boolean Optional bound to the Optional-Chip (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
 
@@ -500,6 +500,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Course-Card` | v1.15 → v1.16 | Nelson: the course picture large on the cards. Grid: Cover 200 tall across the top, edge to edge (absolute, stretches; content padding-top 224). List: Cover 192 wide, full height (padding-left 208). Image follows *Show image*; initials on bg/primary-soft without one. Old thumb hidden. Partner chips on bg/page (white). Prototype PR 257. |
 | 2026-10-22 | `Course-Row` | v1.2 → v1.3 | Nelson: the "Module …" rows show their course picture (Open edX has none per module): Cover 160 wide down the left, full height, padding-left 180. Prototype PR 257. |
 | 2026-10-22 | `Resume-Row` | v1.2 → v1.3 | Nelson: Cover across the top, 140 tall, padding-top 172. Prototype PR 257. |
+| 2026-10-22 | `Sidebar` (ICP) | v1.2 → v1.3 | Nelson: “Course menu” becomes **Course Journey** — the State=Mobile drawer title (both Mobile variants) and the Sidebar playground; the player Topbar doc line reads “opens the Course Journey”. Prototype: drawer heading, *Close Course Journey* and the Topbar button *Open Course Journey* (PR 263). No ICP screen shows the drawer title. |
 
 ## Rename map (8 Oct 2026)
 
