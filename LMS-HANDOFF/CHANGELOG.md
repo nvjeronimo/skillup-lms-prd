@@ -15,6 +15,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Program card labels in uppercase
+
+Nelson: on the program cards, *Up next* and *Certificate issued* are uppercase like the course card overlines (CSS `uppercase` / Figma Text case Upper; the source text stays sentence case). DS `Program-Card` 1.14, prototype PR 264.
+
+## 2026-10-22 · Course menu becomes Course Journey
+
+Nelson: the course outline drawer on a phone is called **Course Journey** (was *Course menu*). DS `Sidebar` 1.3 (drawer title); the player Topbar button is labelled *Open Course Journey* and the drawer’s close *Close Course Journey* (prototype PR 263). `screens-spec.md` drawer header updated. Older entries keep the old name.
+
 ## 2026-10-22 · Course pictures on cards and module rows; player content measure; video at half the viewport
 
 Nelson: the course picture large on the course cards (grid and list) and on the “Module …” rows. Prototype PR 257:

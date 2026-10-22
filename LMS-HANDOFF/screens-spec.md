@@ -143,7 +143,7 @@ Tab content shows **Downloads** (badge "3").
 
 **Layout (drawer open)**: tap ☰ → drawer slides in from left covering ~85% of screen. Drawer = Sidebar v2 State=Mobile variant (320×852).
 
-**Drawer header**: "Course menu" title + close X icon.
+**Drawer header**: "Course Journey" title + close X icon.
 
 **Drawer content**: same hierarchy as Desktop expanded — Course Header + Overall Progress bar (top) + Module groups + Overall Progress ring (bottom).
 
