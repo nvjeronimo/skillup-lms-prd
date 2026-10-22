@@ -14,6 +14,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Dashboard glance: Nelson's version (dark cards, no arrows)
+
+After the first publish Nelson reworked the glance in the DS and kept it: each Stat card pinned to SKO Dark, order
+*In progress · Programs · Completed · Certificates*, and **no month arrows**: only the goal badges stay
+(*3 due this week* · *1 of 7 courses* · *32% of 22*; none on Certificates). The entry below describes the first
+version. Prototype PR 243 follows the DS. Desktop cards now fill their columns (a fixed 174 width left gaps at 1200).
+
 ## 2026-10-22 · Dashboard glance: one card per figure, an arrow and a goal
 
 Nelson (“a figure alone says nothing”): each figure of *Your learning at a glance* sits on its own card with a

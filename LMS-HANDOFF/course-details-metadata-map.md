@@ -3109,7 +3109,7 @@ minutes learned, XP or any ranking, attendance, a mentor's calendar, a subscript
 | Glance — *Courses completed 1* | Learner Home: `certificate.isEarned` (or `gradeData.isPassing`) | ✓ |
 | Glance — *Certificates 1 · ready to download* | Learner Home: `certificate.isDownloadable` | ✓ |
 | Glance — *Programs 2 · 1 in progress* | the distinct `relatedPrograms`; *in progress* from `progress_details`, one call per program | ◐ |
-| Glance arrows (22 Oct 2026) — *▼ 2 vs Sep* on *Completed* and *Certificates*: this month so far vs the same days of last month | Certificates API `created_date` (one call), counted in the frontend. Completed counts course certificates only: a course completed without one (audit) is not in it | ✓ |
+| ~~Glance arrows (22 Oct 2026) — *▼ 2 vs Sep*: this month vs the same days of last month~~ | would come from Certificates API `created_date`; Nelson took the arrows out of the DS on 22 Oct | ✗ removed |
 | Glance goal — *3 due this week* (In progress) | Dates API of each enrolled course, deadlines in the next seven days | ◐ one call per course |
 | Glance goal — *32% of 22* (Completed) | Learner Home: completed ÷ enrolled | ✓ |
 | Glance goal — *1 of 7 courses* (Programs, the active program) | `progress_details`, one call per program | ◐ 401 without a login; not checked with a signed-in learner |
