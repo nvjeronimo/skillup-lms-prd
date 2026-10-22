@@ -247,7 +247,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-16 | Published | 24 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-22 | In review | 24 | 2026-10-22 · Logo chip with a 1px border/subtle and Radius/control (6, was 4) |
 
 **Program-Detail**
 
@@ -494,6 +494,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Today-at-a-glance` | v1.3 → v1.4 | Nelson: the glance turns light — the card on bg/primary-soft with a 1px border/primary-muted, the title text/default, each `Stat` Theme=Card on bg/page (no SKO Dark pin), Desktop and Mobile alike. Labels Courses · Programs · Completed · Certificates; details in two lines, the first bold (*in progress / of 22 enrolled*, *1 in progress / 1 not started*); values text/on-primary-soft, text/success for Completed and Certificates; goals *3 due this week* (Badge Warning), *1 of 3 completed*, *32% completed*. Figures checked against the prototype sample data (it read as if all 3 programs were in progress). Prototype PR 244. |
 | 2026-10-22 | `Stat` | v1.2 (no bump) | Theme=Card takes Shadows/shadow-card (Nelson). |
 | 2026-10-22 | `Due-Item` | v1.0 → v1.1 | Nelson: the activity type in brackets after the title, sentence case (*Persona research draft (Peer assessment)*), not repeated when the title starts with it; meta = course · time in 12 h · your time; the badge says when (*Due tonight*, *Due Mon*, *Overdue · 3 days*), not the hour; Shadows/shadow-card. Every time the learner reads is now 12 h with *your time* (prototype PR 245). ICP: the 24 Due-Item instances on Platform Ready + WIP re-texted (26 Oct is a Monday: the old ones said Sat). |
+| 2026-10-22 | `Provider-Partner-Badge` | v1.2 → v1.3 | Nelson: the Logo chip takes a 1px border/subtle and Radius/control (6, was Radius/fixed-xs 4), Light and Dark; still 28 tall. Prototype PR 249 (also: SkillUp as the partner of the Cybersecurity Fundamentals Certificate). ICP: the 15 Cybersecurity program cards show the SkillUp logo only (they carried copied Microsoft + IBM logos). |
 
 ## Rename map (8 Oct 2026)
 
