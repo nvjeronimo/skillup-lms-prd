@@ -227,7 +227,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-22 | Published | 3 | 2026-10-22 · Theme=Card (figure on its own card, Trend/Goal badges) on Shadows/shadow-card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.5 | 2026-10-22 | In review | 2 | 2026-10-22 · Dark again as drawn on the ICP Dashboard: backdrop bg/info-soft pinned to SKO Dark, two blurred glows, circles 19%, title text/on-primary; Programs 1 · in progress of 3 enrolled · 1 not started |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.5 | 2026-10-22 | Published | 2 | 2026-10-22 · Dark again as drawn on the ICP Dashboard: backdrop bg/info-soft pinned to SKO Dark, two blurred glows, circles 19%, title text/on-primary; Programs 1 · in progress of 3 enrolled · 1 not started |
 
 **My-Learning**
 
