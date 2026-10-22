@@ -14,6 +14,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## 2026-10-22 · Dashboard glance light, due items and 12-hour times
+
+Nelson reworked the Dashboard's two DS components, published 22 Oct. `Today-at-a-glance` 1.4 is a light card (bg/primary-soft, border/primary-muted, cards on bg/page with Shadows/shadow-card), with short labels, two-line details and goals (*3 due this week* in Warning). `Due-Item` 1.1 puts the activity type in the title, the time in 12 h with *your time*, and the badge says when. Every time in the prototype now reads 12 h (*11:59 PM · your time*). The Sea skin keeps the glance light, and the player's top bar takes the Sea chrome (prototype only, decision 027). Prototype PRs 244, 245, 246.
 ## 2026-10-22 · Dashboard glance: Nelson's version (dark cards, no arrows)
 
 After the first publish Nelson reworked the glance in the DS and kept it: each Stat card pinned to SKO Dark, order
