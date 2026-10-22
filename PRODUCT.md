@@ -45,7 +45,7 @@ Binding on all design work:
 - **Programs on Open edX** (verified on dev, 1 Oct 2026): programs are enabled and course-discovery is deployed; a learner's program progress comes as courses completed, in progress and not started. The Credentials service is not configured, so there is no program certificate or learner record to read yet.
 - **Content parity across breakpoints.** What a learner sees on desktop is there on tablet and mobile. Content is not hidden to make a component fit; the layout changes instead.
 
-Undecided: positioning; which brands occupy the skins for B2B and enterprise; where the program certificate is issued and how the LMS reads it; whether the LMS program page reads course-discovery or the marketing site's backend.
+Undecided: positioning; which brands occupy the skins for B2B and enterprise; who picks the skin (the client's brand, or the learner in the profile menu as the prototype does today: asked 22 Oct 2026, not decided); where the program certificate is issued and how the LMS reads it; whether the LMS program page reads course-discovery or the marketing site's backend.
 
 ## Brand Commitments
 - Product name: SkillUp. Logos: `skillup-logo-light.svg` and `skillup-logo-dark.svg`.
