@@ -3109,6 +3109,11 @@ minutes learned, XP or any ranking, attendance, a mentor's calendar, a subscript
 | Glance — *Courses completed 1* | Learner Home: `certificate.isEarned` (or `gradeData.isPassing`) | ✓ |
 | Glance — *Certificates 1 · ready to download* | Learner Home: `certificate.isDownloadable` | ✓ |
 | Glance — *Programs 2 · 1 in progress* | the distinct `relatedPrograms`; *in progress* from `progress_details`, one call per program | ◐ |
+| Glance arrows (22 Oct 2026) — *▼ 2 vs Sep* on *Completed* and *Certificates*: this month so far vs the same days of last month | Certificates API `created_date` (one call), counted in the frontend. Completed counts course certificates only: a course completed without one (audit) is not in it | ✓ |
+| Glance goal — *3 due this week* (In progress) | Dates API of each enrolled course, deadlines in the next seven days | ◐ one call per course |
+| Glance goal — *32% of 22* (Completed) | Learner Home: completed ÷ enrolled | ✓ |
+| Glance goal — *1 of 7 courses* (Programs, the active program) | `progress_details`, one call per program | ◐ 401 without a login; not checked with a signed-in learner |
+| ~~Glance goals with a date (*all 22 by Oct 2027*, *Ends Oct 2027*) · *of 25 possible* certificates~~ | programs have no end date in Open edX; program certificates need Credentials (not configured) | ✗ dropped 22 Oct (Nelson) |
 | ~~Today's lessons · Live attendance · Week time learned · XP this week · Top 8% in cohort~~ | not stored | ✗ removed |
 | ~~Streak card — 12 days, the week, *13 hours left in the day*~~ | stored, not returned | ✗ removed |
 | *Due this week* — *Persona research draft (Peer Assessment)*, *Assignment 02 · Audience segmentation* | Dates API of each enrolled course: `title`, `date`, `assignment_type`; the course name from the enrolment | ◐ one call per course; empty until content carries due dates (§14.2) |
