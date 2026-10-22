@@ -140,7 +140,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Lesson-Block](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3682) | v1.2 | 2026-10-14 | Published | 12 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [ORA-Grade-Panel](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3634) | v1.1 | 2026-10-08 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [ORA-Rubric-Criterion](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3563) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [ORA-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3534) | v1.1 | 2026-10-08 | Published | 10 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [ORA-Stepper](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3534) | v1.2 | 2026-10-22 | Published | 10 | 2026-10-22 · Completed steps on bg/page (no green tint), current on bg/primary-soft is the only coloured segment |
 | [ORA-Submit-Gate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20344-3359) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [ORA-Text-Response](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21692-536524) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / ORA · Text Response” |
 | [ORA-Upload](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3584) | v1.1 | 2026-10-08 | Published | 2 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
@@ -247,7 +247,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-22 | In review | 24 | 2026-10-22 · Logo chip with a 1px border/subtle and Radius/control (6, was 4) |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-22 | Published | 24 | 2026-10-22 · Logo chip with a 1px border/subtle and Radius/control (6, was 4) |
 
 **Program-Detail**
 
@@ -495,6 +495,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Stat` | v1.2 (no bump) | Theme=Card takes Shadows/shadow-card (Nelson). |
 | 2026-10-22 | `Due-Item` | v1.0 → v1.1 | Nelson: the activity type in brackets after the title, sentence case (*Persona research draft (Peer assessment)*), not repeated when the title starts with it; meta = course · time in 12 h · your time; the badge says when (*Due tonight*, *Due Mon*, *Overdue · 3 days*), not the hour; Shadows/shadow-card. Every time the learner reads is now 12 h with *your time* (prototype PR 245). ICP: the 24 Due-Item instances on Platform Ready + WIP re-texted (26 Oct is a Monday: the old ones said Sat). |
 | 2026-10-22 | `Provider-Partner-Badge` | v1.2 → v1.3 | Nelson: the Logo chip takes a 1px border/subtle and Radius/control (6, was Radius/fixed-xs 4), Light and Dark; still 28 tall. Prototype PR 249 (also: SkillUp as the partner of the Cybersecurity Fundamentals Certificate). ICP: the 15 Cybersecurity program cards show the SkillUp logo only (they carried copied Microsoft + IBM logos). |
+| 2026-10-22 | `ORA-Stepper` | v1.1 → v1.2 | Nelson: completed segments lose the green tint — green check and green Semibold label on bg/page; current stays bg/primary-soft, upcoming bg/faint. Check found Step=Response (Default and Compact) with its current segment on bg/page; set to bg/primary-soft like the other current steps. Description escaping fixed and a STATES paragraph added. Prototype PR 254 (also Size=Compact below `sm`, peer label from the review quota). |
 
 ## Rename map (8 Oct 2026)
 
