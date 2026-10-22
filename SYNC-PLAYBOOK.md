@@ -107,6 +107,7 @@ skim git/PR/deploy state. This is the daily "what changed" pass.
 - PRs merged today? Vercel deploy green? Commit SHA.
 - Parity: does prototype `colors.css` still match the DS tokens?
 - Any **decision discovered in the prototype** that must flow back to `00-decisions/`?
+- `PRODUCT.md`: the prototype repo holds a copy of this repo's `PRODUCT.md` (for Impeccable runs there). This repo is the source: when it changes, copy it over in the same day's prototype PR, keeping the copy's source line.
 - Update the **Prototype row**.
 
 ### Step 5 — Publish the hub
