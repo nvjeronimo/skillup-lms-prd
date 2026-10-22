@@ -35,3 +35,9 @@ BR-39 amendment proposed to the BA, not applied.
 instant, uncued change is the hardest to notice); motion inside the existing colour/spacing collections (touches
 published collections with many bindings); Framer Motion in the prototype (a dependency the handoff cannot carry;
 CSS tokens port to any stack); the v1 names `instant/fast/base/slow/narrative` (superseded by the 17 Sep Material rule).
+
+**Amendment (22 Oct 2026, Nelson, from an Emil Kowalski design-engineering review)** — Exits use
+`standard-decelerate` (an ease-out) instead of `standard-accelerate` (R8); `standard-decelerate` becomes
+`cubic-bezier(0.23, 1, 0.32, 1)`; `standard-accelerate` stays in the scale, unused by the UI. Menus and popovers animate
+with CSS transitions (interruptible) instead of keyframes; hover styles apply only on devices that hover.
+motion-matrix §8b, prototype PR 252. The Figma `Motion` variable `easing/standard-decelerate` was updated the same day (not yet published).
