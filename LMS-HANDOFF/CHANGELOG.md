@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Due item: badge beside the title
+
+Nelson made `Due-Item` more responsive (1.2): the status badge sits in the title row, the meta (course · time · your time) takes the full width under it, the date column is centred. Prototype PR 268.
+
 ## 2026-10-22 · Dashboard glance dark again (Today-at-a-glance 1.5)
 
 Nelson’s ICP Dashboard design goes into the DS: a dark backdrop (`bg/info-soft` in a dark island, #044150) with two blurred `border/info-soft` glows and the circles at 19%, title `text/on-primary`, light `Stat` cards with the value and the detail on one line. Programs reads *1 · in progress of 3 enrolled* with *1 not started*; Certificates *ready to download*. Prototype PR 267.
