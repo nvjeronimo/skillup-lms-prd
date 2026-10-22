@@ -15,6 +15,19 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-22 · Studio in the DS; the phone tab bar; content max width 1200; video at half the viewport
+
+- **Studio (decision 030, replaces 027 Sea).** DS `🎨 SKO-Semantics` has two new modes, Studio Light and Studio Dark
+  (8 modes): copies of SKO with 16 / 36 roles on new `Studio/…` primitives (28). The font stays Montserrat there until
+  Inter Tight is available in Figma; the Studio radius scale and pill rule are prototype-only (radius roles vary by
+  breakpoint, not skin). Prototype: PRs 256, 262, 270, 272, 274 (floating Resume bar removed).
+- **Phone tab bar.** DS `LMS/Platform/Navigation/Tab-Bar` and `Tab-Bar-Item` v1.0, In review (prototype PR 259).
+  Open: the "Learning" label, the launcher above or beside the bar, Discussion and Services in the bar.
+- **Content max width (decision 031).** DS token `Container/content-max-width` = 1200 (new primitive
+  `Numeric/300 (1,200px)`); prototype `max-w-[1200px]` (PR 273, after 258's 800). ICP Video page: players 450 tall on
+  desktop, 333 on tablet (50vh capped at 16:9).
+
+
 ## 2026-10-22 · Due item: badge beside the title
 
 Nelson made `Due-Item` more responsive (1.2): the status badge sits in the title row, the meta (course · time · your time) takes the full width under it, the date column is centred. Prototype PR 268.

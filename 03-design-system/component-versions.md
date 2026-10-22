@@ -216,6 +216,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.8 | 2026-10-21 | Published | 2 | 2026-10-21 · Compact: the menu (menu-02) on the left, before the logo, as the player bar's course menu; doc Anatomy for Desktop and Compact |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
+| [Tab-Bar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23278-500) | v1.0 | 2026-10-22 | In review | 0 | 2026-10-22 · New: one platform section on a phone (icon over label, pill, Current Off/On, count badge) |
+| [Tab-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23279-329) | v1.0 | 2026-10-22 | In review | 0 | 2026-10-22 · New: the floating platform tab bar on phones (prototype PR 259) |
 
 **Dashboard**
 
@@ -506,6 +508,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Due-Item` | v1.1 → v1.2 | Nelson: more responsive — the Status badge moves into a *Title row* beside the title (gap `Spacing/xxs`, was an unbound 2), so the meta runs the full width under both; the date column is centred. Check: the two variants are not built alike (Upcoming has an extra wrapping *Content* frame, Today wraps at the root); they render the same. Layers named (*Title row*, *Text*). Prototype PR 268. |
 | 2026-10-22 | `Today-at-a-glance` | v1.5 (same version, fix) | The title moves from `text/on-primary` to `text/on-media`: on-primary is #0e1a1f in every Dark mode and vanished on the backdrop (found by the Impeccable session; prototype PR 270 does the same). The ICP Dashboard instance carried its own on-primary title; re-bound. |
 | 2026-10-22 | Assistant-Launcher | v1.3 → v1.4 | Nelson: the metal ring from his reference (a metallic Send button Figma riff), in SkillUp blue. On both closed variants the ball's 2px linear stroke becomes two 3px outside angular gradient strokes: the metal (ice #c8ecff → #51bffc → #04608f → #0088d4 → #85d3ff → #0077ba → deep teal #044150 → #2fa8ec, lit from the top left) and the glint (white with an ice-blue edge), drawn at rest at the top. Code: the glint runs once round in standard easing and rests (3.6 s cycle) only while first steps are left; the sparkles spin 2 / 3 / 2 turns in 1.5–2 s every 12 / 15 / 19 s. Prototype PRs 265, 266, 269. |
+| 2026-10-22 | `Tab-Bar-Item` | — → v1.0 | Nelson: an app-like floating menu for the platform pages on phones. Icon (swap) over the label (body-small/Medium), 56 tall, pill; Current=On on bg/primary-soft + text/on-primary-soft; Show count (Badge Soft sm Brand). In review until the open question on the label, the launcher and the two proposal pages is answered. |
+| 2026-10-22 | `Tab-Bar` | — → v1.0 | The organism: five Tab-Bar-Items in the top bar's order, padding Spacing/xs, pill, bg/page 88% + background blur 16 + soft shadow; phones only. Prototype PR 259. |
 
 ## Rename map (8 Oct 2026)
 
