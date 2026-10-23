@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Assistant: greeting header and compact first steps
+
+The assistant window greets the learner in a dark header ("Hey John / How can we help?") until the first question, then shrinks to one row; First steps is one compact card with a row per step and its button or a Completed badge. DS `Assistant-Chat` 1.4 (in review), prototype PR 291.
+
 ## 2026-10-23 · The glance runs edge to edge (Today-at-a-glance 1.7)
 
 After the prototype test (PR 289), the DS glance is a full-width band with the page gutter as its side padding; in the ICP the 12 glance instances span the screen width. To publish (Nelson).
