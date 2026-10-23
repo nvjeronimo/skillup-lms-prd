@@ -15,6 +15,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Course pictures at 2:1 on cards and rows
+
+Nelson: the course pictures are 2:1 (410 × 205), and the card images keep that ratio. Prototype PR 284: grid card cover
+`aspect-[2/1]`, list card cover 300 wide (2× its 150), Course-Row cover 236 wide (2× its 118), at most 40% of a narrow
+row; a row whose title wraps to two lines is taller, so its cover crops a little. DS (unpublished): Course-Card 1.18,
+Discovery Course-Row 1.4. Exceptions: the Program-Card tile stays square (1:1), and the Resume-Row keeps its 140-tall
+cover.
+
+
 ## 2026-10-23 · Program page rows: a tablet variant
 
 `Course-Row` 1.1 gets Breakpoint=Tablet (912) and `Course-Card` 1.17 a Layout=List stacked: on a tablet the progress sits above the Up next box, so the course title keeps its width (Nelson). Resume-Row on phones: the cover 140 tall, the content 16 under it, 20 on the sides (prototype PR 283).
