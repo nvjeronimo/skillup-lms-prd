@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Program quick view (proposal)
+
+Nelson: a Quick view on the program cards opens the program's key facts in a modal (full screen on a phone): progress and deadlines, every course with its state, the certificate, and an About block (mock until the vendor's catalogue). DS `Program-Quick-View` 1.0 (in review), prototype PR 287. Dashboard and catalogue entry points to follow: the prototype has no program cards there yet.
+
 ## 2026-10-23 · Course title: thumbnail and title centred
 
 DS `Course-Title` 1.2 (Nelson): the course thumbnail and the title are centred on each other, so a one-line title sits
