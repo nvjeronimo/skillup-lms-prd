@@ -251,7 +251,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-22 | Published | 24 | 2026-10-22 · Logo chip with a 1px border/subtle and Radius/control (6, was 4) |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.4 | 2026-10-23 | In review | 24 | 2026-10-23 · Logo chip padding Spacing/md (8): 32 tall (was 28) |
 
 **Program-Detail**
 
@@ -515,6 +515,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Tab-Bar` | v1.0 → v1.1 | Nelson's answers to the open question, then the same day the full label "My Learning" (any label may end with an ellipsis) and the bar sliding away on scroll down / back on scroll up; the assistant launcher beside the bar (bar 287 wide, 72 from the right); Discussion and Services move under a fourth item, More. Prototype PR 277. |
 | 2026-10-23 | `Tab-Bar-Item` | v1.0 | Out of review: Published. More uses it (dots-horizontal, "More"). |
 | 2026-10-23 | `Tab-Bar-Menu-Item`, `Tab-Bar-Menu` | — → v1.0 | New: the panel More opens above the bar, right-aligned, 224 wide, bg/page, Elevation/level4. Nelson the same day: the whole tab bar follows the radius roles of decision 028 in every skin: bar Radius/track, items Radius/control, panel Radius/card (padding 4), rows Radius/card-inset; in Studio (prototype) they are pills and the panel is 36 with 8 of padding. |
+| 2026-10-23 | `Provider-Partner-Badge` | v1.3 → v1.4 | Nelson: the Logo chip padding goes up to `Spacing/md` (8) on every side, so the chip is 32 tall with the 16px artwork (was 28); border/subtle and Radius/control unchanged. Prototype PR 276. |
 
 ## Rename map (8 Oct 2026)
 

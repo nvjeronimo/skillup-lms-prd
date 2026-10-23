@@ -29,6 +29,9 @@ focus (reduced motion: it fades); the bar follows the radius roles of decision 0
 with 4 of padding, rows card-inset 8); in Studio they are pills and the panel is 36 with 8 of padding. Calendar (prototype PR 278): the kind filter and the Agenda / Month switch side by side on every
 breakpoint; Agenda / Month are icons only below md (44 × 44, still named), icon + label above.
 
+## 2026-10-23 · Partner logo chips a little roomier
+
+`Provider-Partner-Badge` 1.4 (Nelson): the logo chip padding is 8 on every side, 32 tall with the 16px logo (was 28). Prototype PR 276.
 
 ## 2026-10-22 · Studio in the DS; the phone tab bar; content max width 1200; video at half the viewport
 
