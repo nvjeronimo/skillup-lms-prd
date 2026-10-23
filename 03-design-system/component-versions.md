@@ -241,6 +241,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.18 | 2026-10-23 | Published | 6 | 2026-10-23 · Covers at 2:1: Grid 380 × 190 (aspect locked, scales with the card), List / List stacked 292 wide (aspect unlocked) (v1.17: New Layout=List stacked) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
+| [Program-Quick-View](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23326-588201) | v1.0 | 2026-10-23 | In review | 0 | 2026-10-23 · New (proposal): the quick view of a program — Breakpoint Desktop (modal 640) / Mobile (full screen) |
 
 **Discovery**
 
@@ -524,6 +525,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Course-Title` (Course Detail) | v1.1 → v1.2 | Nelson: the thumbnail and the title are centred on each other (row aligned centre, was top), so a one-line title sits on the middle of the image. The format badges stay off in the component; the Course-Header draws them under the row. Course-Header instances inherit it. The prototype already centres them (`items-center`). |
 | 2026-10-23 | `Footer` (Platform / Navigation) | — → v1.0 | Nelson: a micro footer on the platform pages only; the ICP player stays free, with only the content. Organism: copyright, Terms of use · Privacy · Cookie settings · Accessibility · Help center, and "Powered by" with the Open edX logo (Nelson's file, 68 × 20). body-small, text/subtle, border/subtle rule on top, Spacing/3xl padding, in the 1200 column; Desktop one line, Mobile centred lines with 44-tall link targets. Prototype PR 288. |
 | 2026-10-23 | `Footer`, `Course-Row` (Discovery), `Course-Card` | v1.0, v1.4, v1.18 (published) | Nelson published the DS and accepted it in the ICP. ICP: 36 Discovery Course-Rows show the square 96 × 96 cover; the 18 Grid Course-Cards (325 / 382 / 436 wide) keep 2:1 covers (163 / 191 / 218) and take padding-top = cover + 24 (187 / 215 / 242) per instance. The Footer is not placed on ICP screens. |
+| 2026-10-23 | `Program-Quick-View` | — → v1.0 | Nelson: a quick view of a program from its card, with the most important facts. New set on the My Learning page (block *Component · Program-Quick-View*), Breakpoint=Desktop (640, centred modal, the body scrolls past 720) and Mobile (375 × 812, full screen, buttons stacked). Built from the Program-Card hero (detached) plus a Close Button; body sections Progress · Courses (state per course) · Certificate · About this program (mock: no Open edX field). Footer: Open program page + the card's action. Prototype PR 287. Properties table and anatomy not drawn yet. |
 
 ## Rename map (8 Oct 2026)
 
