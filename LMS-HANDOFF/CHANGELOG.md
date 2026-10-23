@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Footer 1.2: the SkillUp name and the Open edX logo on either side
+
+The platform footer now starts with the SkillUp name and the copyright, and ends with the links and the Open edX logo; on a phone the links come first, then one row with the name, the copyright and the logo. DS `Footer` 1.2, prototype PR 301.
+
 ## 2026-10-23 · Tab bar and footer published (Tab-Bar 1.2, Footer 1.1)
 
 The compact tab bar is published and on the 52 mobile platform screens of the ICP. Its counts are now a soft info badge, so they read on the current tab as well. The footer's links are Link Buttons, and the Open edX logo is smaller (14 tall). Prototype PRs 298 (footer) and 299 (counts).
