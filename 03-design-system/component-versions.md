@@ -220,7 +220,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Tab-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23279-329) | v1.2 | 2026-10-23 | Published | 52 | 2026-10-23 · Compact: hugs its items (280 × 52, was 287 × 64), gap 4; only the current section shows its label; radius by role in each skin (pills in Studio); ICP: 52 instances updated, centred, bottom edge kept |
 | [Tab-Bar-Menu-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-548) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: one section in the More panel (icon 20 + label, 44, Radius/card-inset, Current Off/On) |
 | [Tab-Bar-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-549) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: the panel More opens (Discussion, Services, later sections); Radius/card, padding 4 |
-| [Footer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23327-407) | v1.2 | 2026-10-23 | Published | 0 | 2026-10-23 · Nelson: SkillUp name (monotone wordmark 82 × 24) + divider + copyright on the left; links + divider + Open edX logo on the right, no "Powered by" words (alt keeps them); phones: links, then one row name \| copyright \| Open edX; description line to publish; not on ICP screens |
+| [Footer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23327-407) | v1.2 | 2026-10-23 | Published | 0 | 2026-10-23 · Nelson: SkillUp name (monotone wordmark 82 × 24) + divider + copyright on the left; links + divider + Open edX logo on the right, no "Powered by" words (alt keeps them); phones: links, then one row name \| copyright \| Open edX; not on ICP screens |
 
 **Dashboard**
 
