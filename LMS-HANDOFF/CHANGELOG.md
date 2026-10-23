@@ -15,6 +15,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · The program certificate leads the Certificates tab
+
+Nelson: the program certificate deserves more prominence. Prototype PR 303 (`ProgramCertificateHero`) and DS
+`LMS/Platform/Program-Detail/Program-Certificate` 1.0: one card across the main column with the certificate sheet itself
+(a muted preview with a lock until earned), the program title, a segment per course, the course in progress with
+Resume and What's needed; earned, an Earned badge with View, Download and Share. The "Proposal: not designed yet" note
+is gone. DS unpublished at writing; ICP screens after publish.
+
+
 ## 2026-10-23 · Form-Modal in the DS; What's included in the program quick view
 
 New DS `LMS/Platform/Overlays/Form-Modal` 1.0 (page ↳ Overlays): the shell of the seven form modals of prototype PR 300
