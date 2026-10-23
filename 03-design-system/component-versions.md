@@ -238,7 +238,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.18 | 2026-10-23 | In review | 6 | 2026-10-23 · Covers at 2:1: Grid 380 × 190, List / List stacked 292 wide; aspect unlocked (v1.17: New Layout=List stacked) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.18 | 2026-10-23 | Published | 6 | 2026-10-23 · Covers at 2:1: Grid 380 × 190, List / List stacked 292 wide; aspect unlocked (v1.17: New Layout=List stacked) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 
 **Discovery**
@@ -257,7 +257,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22906) | v1.1 | 2026-10-23 | In review | 4 | 2026-10-23 · New Breakpoint=Tablet (912) with the Course card on List stacked |
+| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22906) | v1.1 | 2026-10-23 | Published | 4 | 2026-10-23 · New Breakpoint=Tablet (912) with the Course card on List stacked |
 
 **Course-Detail**
 
