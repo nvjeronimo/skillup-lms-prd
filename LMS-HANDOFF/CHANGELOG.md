@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Program page rows: a tablet variant
+
+`Course-Row` 1.1 gets Breakpoint=Tablet (912) and `Course-Card` 1.17 a Layout=List stacked: on a tablet the progress sits above the Up next box, so the course title keeps its width (Nelson). Resume-Row on phones: the cover 140 tall, the content 16 under it, 20 on the sides (prototype PR 283).
+
 ## 2026-10-23 · Glance: one glow; Studio keeps the glow and circles
 
 `Today-at-a-glance` 1.6 (Nelson): the right glow is gone, the top glow moves low on the left on phones; in the Studio skin the glow and the two circles now show, as in SKO. Prototype PR 281.
