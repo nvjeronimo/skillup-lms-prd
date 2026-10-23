@@ -243,7 +243,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 | [Program-Quick-View](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23326-588201) | v1.1 | 2026-10-23 | In review | 0 | 2026-10-23 · 1.1: What's included between Certificate and About (prototype PR 302). New (proposal): the quick view of a program — Breakpoint Desktop (modal 640) / Mobile (full screen) |
 | [Form-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23377-1733) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: `LMS/Platform/Overlays/Form-Modal` on the new page ↳ Overlays; Breakpoint Desktop (560) / Mobile (full screen); Title, Description (+ show), Show cancel, Content slot; prototype PR 300 |
-| [Program-Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23384-2341) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New: `LMS/Platform/Program-Detail/Program-Certificate`, the program certificate leading the Certificates tab; State Not earned / Earned × Layout Wide (840) / Stacked (343); props Title, Status, Issued line, Next course, Partners; prototype PR 303 |
+| [Program-Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23384-2341) | v1.0 | 2026-10-23 | Published | 3 | 2026-10-23 · New: `LMS/Platform/Program-Detail/Program-Certificate`, the program certificate leading the Certificates tab; State Not earned / Earned × Layout Wide (840) / Stacked (343); props Title, Status, Issued line, Next course, Partners; prototype PR 303 |
 
 **Discovery**
 
@@ -541,6 +541,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Program-Quick-View` | v1.0 → v1.1 | Nelson: What's included (the Program page sidebar list) between Certificate and About. Prototype PR 302. |
 | 2026-10-23 | `Form-Modal` | v1.0 (published) | Nelson published the DS. |
 | 2026-10-23 | `Program-Certificate` (Program Detail) | — → v1.0 | Nelson: the program certificate needs more prominence. One card across the main column: the certificate sheet (Certificate-Document; muted with a lock pill until earned), the program title, one segment per course (bg/info / bg/info-soft / bg/track), the course in progress with Resume + What's needed; Earned: Badge Soft Success with its icon, View certificate, Download, Share. Prototype PR 303. ICP: the three Program Certificates screens after publish. |
+| 2026-10-23 | `Program-Certificate` | v1.0 (published) | Nelson published the DS. Same day: Layout by the card's own width (Wide from 680, Stacked below; the Stacked sheet fills up to 480 and scales). ICP: on the three Program Certificates screens (desktop Wide 840, tablet Stacked 560, mobile Stacked 343) above a rule and a Course certificates heading; the mobile course 1 certificate showed the Six Sigma sample texts, corrected. |
+| 2026-10-23 | Platform pages (prototype) | — | Phone spacing (prototype PR 305): sections of a page or tab 24, stacked columns 32, side-column cards 24 (16 from tablet). ICP mobile screens not changed yet. |
 
 ## Rename map (8 Oct 2026)
 
