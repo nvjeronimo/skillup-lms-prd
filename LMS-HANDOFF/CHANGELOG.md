@@ -15,6 +15,13 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Form-Modal in the DS; What's included in the program quick view
+
+New DS `LMS/Platform/Overlays/Form-Modal` 1.0 (page ↳ Overlays): the shell of the seven form modals of prototype PR 300
+(title, optional line, close; a Content slot for the DS fields; Cancel + primary). Desktop 560 over the page, mobile full
+screen. `Program-Quick-View` 1.1: a What's included section (prototype PR 302). DS unpublished at writing.
+
+
 ## 2026-10-23 · Tab bar and footer published (Tab-Bar 1.2, Footer 1.1)
 
 The compact tab bar is published and on the 52 mobile platform screens of the ICP. Its counts are now a soft info badge, so they read on the current tab as well. The footer's links are Link Buttons, and the Open edX logo is smaller (14 tall). Prototype PRs 298 (footer) and 299 (counts).
