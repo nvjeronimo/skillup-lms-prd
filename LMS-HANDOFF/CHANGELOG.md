@@ -21,6 +21,9 @@ New DS `LMS/Platform/Overlays/Form-Modal` 1.0 (page ↳ Overlays): the shell of 
 (title, optional line, close; a Content slot for the DS fields; Cancel + primary). Desktop 560 over the page, mobile full
 screen. `Program-Quick-View` 1.1: a What's included section (prototype PR 302). DS unpublished at writing.
 
+## 2026-10-23 · Footer 1.2: the SkillUp name and the Open edX logo on either side
+
+The platform footer now starts with the SkillUp name and the copyright, and ends with the links and the Open edX logo; on a phone the links come first, then one row with the name, the copyright and the logo. DS `Footer` 1.2, prototype PR 301.
 
 ## 2026-10-23 · Tab bar and footer published (Tab-Bar 1.2, Footer 1.1)
 
