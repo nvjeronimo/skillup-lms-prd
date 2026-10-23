@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Dashboard on a phone: one-line greeting, the next glance card peeks
+
+"Good morning, John." is always one line; on a phone the glance cards are 156 wide and 12 apart so the third one shows. DS `Today-at-a-glance` 1.8 (in review), prototype PR 292, ICP greetings fixed.
+
 ## 2026-10-23 · Assistant: greeting header and compact first steps
 
 The assistant window greets the learner in a dark header ("Hey John / How can we help?") until the first question, then shrinks to one row; First steps is one compact card with a row per step and its button or a Completed badge. DS `Assistant-Chat` 1.4 (in review), prototype PR 291.
