@@ -17,7 +17,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-23 · Course title: thumbnail and title centred
 
-DS `Course-Title` 1.1 (Nelson): the course thumbnail and the title are centred on each other, so a one-line title sits
+DS `Course-Title` 1.2 (Nelson): the course thumbnail and the title are centred on each other, so a one-line title sits
 on the middle of the image instead of at its top. The Course-Header (course and program, every breakpoint) inherits it.
 The prototype already did this (`CourseHeader`, `items-center`). DS unpublished at writing.
 
