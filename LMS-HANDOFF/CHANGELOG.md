@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Glance: one glow; Studio keeps the glow and circles
+
+`Today-at-a-glance` 1.6 (Nelson): the right glow is gone, the top glow moves low on the left on phones; in the Studio skin the glow and the two circles now show, as in SKO. Prototype PR 281.
+
 ## 2026-10-23 · Phone tab bar: Dashboard · Learning · Calendar · More; the assistant beside it
 
 Nelson's answers to the tab bar's open question: "Learning" stays; the assistant launcher sits beside the bar, on the

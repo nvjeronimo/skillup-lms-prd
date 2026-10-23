@@ -231,7 +231,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-22 | Published | 3 | 2026-10-22 · Theme=Card (figure on its own card, Trend/Goal badges) on Shadows/shadow-card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.5 | 2026-10-22 | Published | 2 | 2026-10-22 · Dark again as drawn on the ICP Dashboard: backdrop bg/info-soft pinned to SKO Dark, two blurred glows, circles 19%, title text/on-primary; Programs 1 · in progress of 3 enrolled · 1 not started |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.6 | 2026-10-23 | In review | 2 | 2026-10-23 · One glow (the right one went), low on the left on Mobile; Studio shows the glow and the circles |
 
 **My-Learning**
 
@@ -516,6 +516,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Tab-Bar-Item` | v1.0 | Out of review: Published. More uses it (dots-horizontal, "More"). |
 | 2026-10-23 | `Tab-Bar-Menu-Item`, `Tab-Bar-Menu` | — → v1.0 | New: the panel More opens above the bar, right-aligned, 224 wide, bg/page, Elevation/level4. Nelson the same day: the whole tab bar follows the radius roles of decision 028 in every skin: bar Radius/track, items Radius/control, panel Radius/card (padding 4), rows Radius/card-inset; in Studio (prototype) they are pills and the panel is 36 with 8 of padding. |
 | 2026-10-23 | `Provider-Partner-Badge` | v1.3 → v1.4 | Nelson: the Logo chip padding goes up to `Spacing/md` (8) on every side, so the chip is 32 tall with the 16px artwork (was 28); border/subtle and Radius/control unchanged. Prototype PR 276. |
+| 2026-10-23 | `Today-at-a-glance` | v1.5 → v1.6 | Nelson: one glow — *Glow · right* removed; *Glow · top* stays over the top edge on Desktop and moves low on the left on Mobile (x −124, y 60). Circles unchanged. Prototype PR 281 (also: the Studio skin shows the glow and the two circles, as SKO). |
 
 ## Rename map (8 Oct 2026)
 
