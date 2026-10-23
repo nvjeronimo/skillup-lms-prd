@@ -15,6 +15,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Micro footer on the platform pages
+
+Nelson: the platform pages end with a small footer; the player (ICP) gets none, it keeps only the content. New DS
+`LMS/Platform/Navigation/Footer` 1.0 (Organism, Desktop / Mobile): © 2026 SkillUp Online, the legal and help links
+(Terms of use, Privacy, Cookie settings, Accessibility, Help center: SkillUp pages with no URL yet) and "Powered by"
+with the Open edX logo, small (68 × 20). Open edX MFEs already ship a footer slot (`frontend-component-footer`); this is
+its look. Prototype PR 288 (`PlatformFooter`). DS unpublished at writing.
+
+
 ## 2026-10-23 · Course title: thumbnail and title centred
 
 DS `Course-Title` 1.2 (Nelson): the course thumbnail and the title are centred on each other, so a one-line title sits
