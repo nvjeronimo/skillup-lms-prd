@@ -11,8 +11,8 @@
   "_totals": {
     "LMS": {
       "Atoms": 48,
-      "Molecules": 59,
-      "Organisms": 24
+      "Molecules": 62,
+      "Organisms": 27
     },
     "Base components": {
       "Atoms": 54,
@@ -208,7 +208,8 @@
         "Atoms": [],
         "Molecules": [],
         "Organisms": [
-          "Course-Row"
+          "Course-Row",
+          "Program-Certificate"
         ]
       },
       "Course Detail": {
@@ -273,9 +274,15 @@
       "Services": {
         "Atoms": [],
         "Molecules": [
-          "Service-Row"
+          "Service-Row",
+          "Included-Card",
+          "Service-Link",
+          "Request-Row"
         ],
-        "Organisms": []
+        "Organisms": [
+          "Mentor-Card",
+          "Support-Card"
+        ]
       },
       "Overlays": {
         "Atoms": [],

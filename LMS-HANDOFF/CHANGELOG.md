@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Footer 1.3; Link Buttons as in the DS; Services in the DS levels
+
+The footer now reads SkillUp | Open edX | copyright on the left, with the links alone on the right, and the SkillUp name is smaller. Link Buttons keep their DS height and the line sits 3 px under the label on every device: on phones the 44 tap area is invisible around the link. The new Services components (Mentor-Card, Support-Card, Included-Card, Service-Link, Request-Row) are in the levels map, and the Services documentation page is regenerated. Prototype PR 310.
+
 ## 2026-10-23 · The program certificate leads the Certificates tab
 
 Nelson: the program certificate deserves more prominence. Prototype PR 303 (`ProgramCertificateHero`) and DS
