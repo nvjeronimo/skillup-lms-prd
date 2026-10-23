@@ -242,7 +242,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.18 | 2026-10-23 | Published | 6 | 2026-10-23 · Covers at 2:1: Grid 380 × 190 (aspect locked, scales with the card), List / List stacked 292 wide (aspect unlocked) (v1.17: New Layout=List stacked) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 | [Program-Quick-View](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23326-588201) | v1.1 | 2026-10-23 | In review | 0 | 2026-10-23 · 1.1: What's included between Certificate and About (prototype PR 302). New (proposal): the quick view of a program — Breakpoint Desktop (modal 640) / Mobile (full screen) |
-| [Form-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23377-1733) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New: `LMS/Platform/Overlays/Form-Modal` on the new page ↳ Overlays; Breakpoint Desktop (560) / Mobile (full screen); Title, Description (+ show), Show cancel, Content slot; prototype PR 300 |
+| [Form-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23377-1733) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: `LMS/Platform/Overlays/Form-Modal` on the new page ↳ Overlays; Breakpoint Desktop (560) / Mobile (full screen); Title, Description (+ show), Show cancel, Content slot; prototype PR 300 |
+| [Program-Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23384-2341) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New: `LMS/Platform/Program-Detail/Program-Certificate`, the program certificate leading the Certificates tab; State Not earned / Earned × Layout Wide (840) / Stacked (343); props Title, Status, Issued line, Next course, Partners; prototype PR 303 |
 
 **Discovery**
 
@@ -538,6 +539,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Today-at-a-glance`, `Stat` | v1.8, v1.3 (published) | Nelson published the DS and accepted it in the ICP; this time the ICP picked both up on its own: 15 glance instances on 1.8 (11 Desktop, 4 Mobile), every Stat on 1.3. Phone glance render checked. |
 | 2026-10-23 | `Form-Modal` (Platform / Overlays) | — → v1.0 | Nelson: the seven form modals of prototype PR 300 become one DS organism on a new page, ↳ Overlays. Header (title-medium/Semibold title, optional body-medium line, Secondary Icon Button close md), a Content SLOT for DS fields (Input field, Select, Textarea, Radio group item, Checkbox), footer Cancel (Tertiary, hideable) + primary. Desktop 560, Radius/surface, border/subtle, Elevation/level4; Mobile full screen, primary on top, buttons full width. ICP: WIP frame 12 · Form modals (built before the component; to swap). |
 | 2026-10-23 | `Program-Quick-View` | v1.0 → v1.1 | Nelson: What's included (the Program page sidebar list) between Certificate and About. Prototype PR 302. |
+| 2026-10-23 | `Form-Modal` | v1.0 (published) | Nelson published the DS. |
+| 2026-10-23 | `Program-Certificate` (Program Detail) | — → v1.0 | Nelson: the program certificate needs more prominence. One card across the main column: the certificate sheet (Certificate-Document; muted with a lock pill until earned), the program title, one segment per course (bg/info / bg/info-soft / bg/track), the course in progress with Resume + What's needed; Earned: Badge Soft Success with its icon, View certificate, Download, Share. Prototype PR 303. ICP: the three Program Certificates screens after publish. |
 
 ## Rename map (8 Oct 2026)
 
