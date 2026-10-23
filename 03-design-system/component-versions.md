@@ -218,8 +218,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
 | [Tab-Bar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23278-500) | v1.0 | 2026-10-22 | Published | 51 | 2026-10-23 · Out of review (Nelson's answers); used for More too (dots-horizontal) |
 | [Tab-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23279-329) | v1.1 | 2026-10-23 | Published | 51 | 2026-10-23 · Dashboard · My Learning · Calendar · More (full labels, ellipsis when they do not fit); 287 wide, the assistant launcher beside it; slides away on scroll down (v1.0: five sections) |
-| [Tab-Bar-Menu-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-548) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: one section in the More panel (icon 20 + label, a 44-tall pill, Current Off/On) |
-| [Tab-Bar-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-549) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: the panel More opens (Discussion, Services, later sections); radius 36 (Radius/fixed-5xl), padding 8, every skin |
+| [Tab-Bar-Menu-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-548) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: one section in the More panel (icon 20 + label, 44, Radius/card-inset, Current Off/On) |
+| [Tab-Bar-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-549) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: the panel More opens (Discussion, Services, later sections); Radius/card, padding 4 |
 
 **Dashboard**
 
@@ -514,7 +514,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | `Tab-Bar` | — → v1.0 | The organism: five Tab-Bar-Items in the top bar's order, padding Spacing/xs, pill, bg/page 88% + background blur 16 + soft shadow; phones only. Prototype PR 259. |
 | 2026-10-23 | `Tab-Bar` | v1.0 → v1.1 | Nelson's answers to the open question, then the same day the full label "My Learning" (any label may end with an ellipsis) and the bar sliding away on scroll down / back on scroll up; the assistant launcher beside the bar (bar 287 wide, 72 from the right); Discussion and Services move under a fourth item, More. Prototype PR 277. |
 | 2026-10-23 | `Tab-Bar-Item` | v1.0 | Out of review: Published. More uses it (dots-horizontal, "More"). |
-| 2026-10-23 | `Tab-Bar-Menu-Item`, `Tab-Bar-Menu` | — → v1.0 | New: the panel More opens above the bar, right-aligned, 224 wide, bg/page, Elevation/level4. Nelson the same day: radius 36 (new token `Radius/fixed-5xl` on new primitive `Numeric/9 (36px)`), padding 8, rows as 44-tall pills, in every skin (36 tried after 40 in Studio). |
+| 2026-10-23 | `Tab-Bar-Menu-Item`, `Tab-Bar-Menu` | — → v1.0 | New: the panel More opens above the bar, right-aligned, 224 wide, bg/page, Elevation/level4. Nelson the same day: the whole tab bar follows the radius roles of decision 028 in every skin: bar Radius/track, items Radius/control, panel Radius/card (padding 4), rows Radius/card-inset; in Studio (prototype) they are pills and the panel is 36 with 8 of padding. |
 
 ## Rename map (8 Oct 2026)
 

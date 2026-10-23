@@ -25,8 +25,8 @@ show More as current).
 
 Later the same day (Nelson): the label is the full "My Learning", and any label ends with an ellipsis when it does not fit;
 the bar slides away on scroll down and comes back on scroll up, at the top, at the end of the page and on keyboard
-focus (reduced motion: it fades); the More panel is radius 36 (new `Radius/fixed-5xl`), padding 8, with pill rows,
-in every skin. Calendar (prototype PR 278): the kind filter and the Agenda / Month switch side by side on every
+focus (reduced motion: it fades); the bar follows the radius roles of decision 028 in every skin (bar track 10, items control 6, More panel card 12
+with 4 of padding, rows card-inset 8); in Studio they are pills and the panel is 36 with 8 of padding. Calendar (prototype PR 278): the kind filter and the Agenda / Month switch side by side on every
 breakpoint; Agenda / Month are icons only below md (44 × 44, still named), icon + label above.
 
 
