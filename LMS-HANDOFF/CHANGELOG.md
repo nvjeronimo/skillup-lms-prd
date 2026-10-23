@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Tab bar and footer published (Tab-Bar 1.2, Footer 1.1)
+
+The compact tab bar is published and on the 52 mobile platform screens of the ICP. Its counts are now a soft info badge, so they read on the current tab as well. The footer's links are Link Buttons, and the Open edX logo is smaller (14 tall). Prototype PRs 298 (footer) and 299 (counts).
+
 ## 2026-10-23 · Compact phone tab bar
 
 The bar under the platform pages on a phone is now compact, in an iOS style: the current section is a segment with its icon and label, and the other sections are icon-only 44 × 44 buttons (their names stay for screen readers). The bar hugs its items, 52 tall, and its radius follows each skin (pills in Studio). DS `Tab-Bar` 1.2 and `Tab-Bar-Item` 1.1 are in review, to be published; prototype PRs 295 and 296; ICP screens follow after the publish.
