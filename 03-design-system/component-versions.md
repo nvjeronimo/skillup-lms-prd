@@ -238,7 +238,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.18 | 2026-10-23 | Published | 6 | 2026-10-23 · Covers at 2:1: Grid 380 × 190, List / List stacked 292 wide; aspect unlocked (v1.17: New Layout=List stacked) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.18 | 2026-10-23 | Published | 6 | 2026-10-23 · Covers at 2:1: Grid 380 × 190 (aspect locked, scales with the card), List / List stacked 292 wide (aspect unlocked) (v1.17: New Layout=List stacked) |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 
 **Discovery**
@@ -246,7 +246,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Card-Overflow-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538064) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · 4 px padding all round, rows on Radius/card-inset (8), panel on Radius/card (decision 028) |
-| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.4 | 2026-10-23 | Published | 3 | 2026-10-23 · Cover at 2:1: 192 × 96, aspect unlocked (v1.3: course picture down the left, 160) |
+| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538010) | v1.4 | 2026-10-23 | Published | 3 | 2026-10-23 · Cover square: 96 × 96, the row's height (an exception to 2:1), aspect unlocked (v1.3: course picture down the left, 160) |
 | [Course-Type-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538072) | v1.1 | 2026-10-15 | Published | 2 | 2026-10-15 · Words only: the icons are removed (1.0, 8 Oct: renamed from “LMS / Course Type Badge”) |
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
@@ -519,6 +519,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Today-at-a-glance` | v1.5 → v1.6 | Nelson: one glow — *Glow · right* removed; *Glow · top* stays over the top edge on Desktop and moves low on the left on Mobile (x −124, y 60). Circles unchanged. Prototype PR 281 (also: the Studio skin shows the glow and the two circles, as SKO). |
 | 2026-10-23 | `Course-Card`, `Course-Row` (Program Detail) | v1.16 → v1.17, v1.0 → v1.1 | Nelson: an in-between variant for tablet — the program page rows at 912 squeezed the title and cut the certificate box. `Course-Card` gains Layout=List stacked (three States, cloned from List): the progress and the Up next / Certificate box stack in one *Status* column (gap `Spacing/lg`), the identity keeps half the width; height hugs (min 146), cover 192 down the left (aspect ratio unlocked so it does not grow with the card). `Course-Row` gains Breakpoint=Tablet (912): the card on List stacked, the Modules bar as Desktop. Cover ratio (2:1) follows in the Impeccable session's pass. ICP and prototype follow after the publish. |
 | 2026-10-23 | `Course-Card`, `Course-Row` (Discovery) | v1.17 → v1.18, v1.3 → v1.4 | Nelson: the course pictures are 2:1. Course-Card Grid cover 380 × 190 (padding-top 214, minHeight 560); List and List stacked cover 292 wide, twice the 146 minimum (padding-left 308). Discovery Course-Row cover 192 × 96 (padding-left 212). Cover aspect ratios unlocked, so taller instances stretch the height without the cover widening over the text. Exceptions: Program-Card keeps its square tile; Resume-Row keeps its 140-tall cover (Nelson). Prototype PR 284. |
+| 2026-10-23 | `Course-Row` (Discovery), `Course-Card` | v1.4, v1.18 (same versions, unpublished) | Nelson the same day: the Course-Row cover is square (96 × 96, padding-left 116), like the program tile, not 2:1. Course-Card Grid covers keep their 2:1 aspect locked so a wider or narrower card scales the cover (set padding-top to its height + 24 on such an instance); List covers stay unlocked. Prototype PR 286. |
 
 ## Rename map (8 Oct 2026)
 
