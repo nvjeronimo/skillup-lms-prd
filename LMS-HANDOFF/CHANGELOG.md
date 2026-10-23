@@ -15,6 +15,20 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Phone tab bar: Dashboard · Learning · Calendar · More; the assistant beside it
+
+Nelson's answers to the tab bar's open question: "Learning" stays; the assistant launcher sits beside the bar, on the
+same line; Discussion and Services (and any later section) go under a fourth item, **More**, which opens a panel above
+it. Prototype PR 277. DS: Tab-Bar 1.1 (four items, 287 wide), Tab-Bar-Item out of review, new Tab-Bar-Menu and
+Tab-Bar-Menu-Item 1.0. ICP: the 51 mobile platform screens follow after the publish (Discussion and Services screens
+show More as current).
+
+Later the same day (Nelson): the label is the full "My Learning", and any label ends with an ellipsis when it does not fit;
+the bar slides away on scroll down and comes back on scroll up, at the top, at the end of the page and on keyboard
+focus (reduced motion: it fades); the bar follows the radius roles of decision 028 in every skin (bar track 10, items control 6, More panel card 12
+with 4 of padding, rows card-inset 8); in Studio they are pills and the panel is 36 with 8 of padding. Calendar (prototype PR 278): the kind filter and the Agenda / Month switch side by side on every
+breakpoint; Agenda / Month are icons only below md (44 × 44, still named), icon + label above.
+
 ## 2026-10-23 · Partner logo chips a little roomier
 
 `Provider-Partner-Badge` 1.4 (Nelson): the logo chip padding is 8 on every side, 32 tall with the 16px logo (was 28). Prototype PR 276.
