@@ -238,7 +238,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.16 | 2026-10-22 | Published | 6 | 2026-10-22 · Large course picture: Grid cover 200 across the top, List cover 192 down the left; partner logo chips on white (bg/page) (v1.15: List minHeight 146, one height with a one- or two-line title) |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.17 | 2026-10-23 | In review | 6 | 2026-10-23 · New Layout=List stacked (tablet list): progress above the Up next box |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 
 **Discovery**
@@ -257,7 +257,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22906) | v1.0 | 2026-10-08 | Published | 4 | 2026-10-08 · Screens: the 28 compact course rows on the DS row; the local component is gone |
+| [Course-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22906) | v1.1 | 2026-10-23 | In review | 4 | 2026-10-23 · New Breakpoint=Tablet (912) with the Course card on List stacked |
 
 **Course-Detail**
 
@@ -517,6 +517,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Tab-Bar-Menu-Item`, `Tab-Bar-Menu` | — → v1.0 | New: the panel More opens above the bar, right-aligned, 224 wide, bg/page, Elevation/level4. Nelson the same day: the whole tab bar follows the radius roles of decision 028 in every skin: bar Radius/track, items Radius/control, panel Radius/card (padding 4), rows Radius/card-inset; in Studio (prototype) they are pills and the panel is 36 with 8 of padding. |
 | 2026-10-23 | `Provider-Partner-Badge` | v1.3 → v1.4 | Nelson: the Logo chip padding goes up to `Spacing/md` (8) on every side, so the chip is 32 tall with the 16px artwork (was 28); border/subtle and Radius/control unchanged. Prototype PR 276. |
 | 2026-10-23 | `Today-at-a-glance` | v1.5 → v1.6 | Nelson: one glow — *Glow · right* removed; *Glow · top* stays over the top edge on Desktop and moves low on the left on Mobile (x −124, y 60). Circles unchanged. Prototype PR 281 (also: the Studio skin shows the glow and the two circles, as SKO). |
+| 2026-10-23 | `Course-Card`, `Course-Row` (Program Detail) | v1.16 → v1.17, v1.0 → v1.1 | Nelson: an in-between variant for tablet — the program page rows at 912 squeezed the title and cut the certificate box. `Course-Card` gains Layout=List stacked (three States, cloned from List): the progress and the Up next / Certificate box stack in one *Status* column (gap `Spacing/lg`), the identity keeps half the width; height hugs (min 146), cover 192 down the left (aspect ratio unlocked so it does not grow with the card). `Course-Row` gains Breakpoint=Tablet (912): the card on List stacked, the Modules bar as Desktop. Cover ratio (2:1) follows in the Impeccable session's pass. ICP and prototype follow after the publish. |
 
 ## Rename map (8 Oct 2026)
 
