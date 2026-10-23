@@ -153,11 +153,17 @@
     "LMS Platform": {
       "Navigation": {
         "Atoms": [
-          "Topbar-Item"
+          "Topbar-Item",
+          "Tab-Bar-Item",
+          "Tab-Bar-Menu-Item"
         ],
-        "Molecules": [],
+        "Molecules": [
+          "Tab-Bar-Menu"
+        ],
         "Organisms": [
-          "Topbar"
+          "Topbar",
+          "Tab-Bar",
+          "Footer"
         ]
       },
       "Dashboard": {
@@ -180,7 +186,8 @@
         ],
         "Organisms": [
           "Course-Card",
-          "Program-Card"
+          "Program-Card",
+          "Program-Quick-View"
         ]
       },
       "Discovery": {
