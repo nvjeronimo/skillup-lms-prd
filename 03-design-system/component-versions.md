@@ -249,7 +249,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Delivery-Mode-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538084) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Delivery Mode Badge” |
 | [Difficulty-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538077) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty Badge” |
 | [Difficulty-Level-Icon](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21868-5367) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Difficulty · Level Icon” |
-| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.3 | 2026-10-22 | Published | 24 | 2026-10-22 · Logo chip with a 1px border/subtle and Radius/control (6, was 4) |
+| [Provider-Partner-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538091) | v1.4 | 2026-10-23 | In review | 24 | 2026-10-23 · Logo chip padding Spacing/md (8): 32 tall (was 28) |
 
 **Program-Detail**
 
@@ -510,6 +510,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-22 | Assistant-Launcher | v1.3 → v1.4 | Nelson: the metal ring from his reference (a metallic Send button Figma riff), in SkillUp blue. On both closed variants the ball's 2px linear stroke becomes two 3px outside angular gradient strokes: the metal (ice #c8ecff → #51bffc → #04608f → #0088d4 → #85d3ff → #0077ba → deep teal #044150 → #2fa8ec, lit from the top left) and the glint (white with an ice-blue edge), drawn at rest at the top. Code: the glint runs once round in standard easing and rests (3.6 s cycle) only while first steps are left; the sparkles spin 2 / 3 / 2 turns in 1.5–2 s every 12 / 15 / 19 s. Prototype PRs 265, 266, 269. |
 | 2026-10-22 | `Tab-Bar-Item` | — → v1.0 | Nelson: an app-like floating menu for the platform pages on phones. Icon (swap) over the label (body-small/Medium), 56 tall, pill; Current=On on bg/primary-soft + text/on-primary-soft; Show count (Badge Soft sm Brand). In review until the open question on the label, the launcher and the two proposal pages is answered. |
 | 2026-10-22 | `Tab-Bar` | — → v1.0 | The organism: five Tab-Bar-Items in the top bar's order, padding Spacing/xs, pill, bg/page 88% + background blur 16 + soft shadow; phones only. Prototype PR 259. |
+| 2026-10-23 | `Provider-Partner-Badge` | v1.3 → v1.4 | Nelson: the Logo chip padding goes up to `Spacing/md` (8) on every side, so the chip is 32 tall with the 16px artwork (was 28); border/subtle and Radius/control unchanged. Prototype PR 276. |
 
 ## Rename map (8 Oct 2026)
 

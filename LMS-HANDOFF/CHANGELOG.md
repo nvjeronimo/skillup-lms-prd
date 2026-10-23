@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Partner logo chips a little roomier
+
+`Provider-Partner-Badge` 1.4 (Nelson): the logo chip padding is 8 on every side, 32 tall with the 16px logo (was 28). Prototype PR 276.
+
 ## 2026-10-22 · Studio in the DS; the phone tab bar; content max width 1200; video at half the viewport
 
 - **Studio (decision 030, replaces 027 Sea).** DS `🎨 SKO-Semantics` has two new modes, Studio Light and Studio Dark
