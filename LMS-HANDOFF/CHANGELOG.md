@@ -15,6 +15,15 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Phone tab bar: Dashboard · Learning · Calendar · More; the assistant beside it
+
+Nelson's answers to the tab bar's open question: "Learning" stays; the assistant launcher sits beside the bar, on the
+same line; Discussion and Services (and any later section) go under a fourth item, **More**, which opens a panel above
+it. Prototype PR 277. DS: Tab-Bar 1.1 (four items, 287 wide), Tab-Bar-Item out of review, new Tab-Bar-Menu and
+Tab-Bar-Menu-Item 1.0. ICP: the 51 mobile platform screens follow after the publish (Discussion and Services screens
+show More as current).
+
+
 ## 2026-10-22 · Studio in the DS; the phone tab bar; content max width 1200; video at half the viewport
 
 - **Studio (decision 030, replaces 027 Sea).** DS `🎨 SKO-Semantics` has two new modes, Studio Light and Studio Dark
