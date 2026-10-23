@@ -319,11 +319,11 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Service-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22832-1053) | v1.1 | 2026-10-19 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Mentor-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23403-227) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New (Organism: the mentor card (avatar, name, role, last message, Message your mentor + Your discussions)); Services page by weight, prototype PR 307 |
-| [Support-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23403-268) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New (Organism: Something not working? — Write to us, help center, Your requests (slot of Request-Row)); Services page by weight, prototype PR 307 |
-| [Included-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23402-75) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New (Molecule: a service included with the program (icon, status, title, line, action)); Services page by weight, prototype PR 307 |
-| [Service-Link](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23402-96) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New (Molecule: a secondary service as one quiet line (icon, title, line, chevron / arrow)); Services page by weight, prototype PR 307 |
-| [Request-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23402-104) | v1.0 | 2026-10-23 | Unpublished | 0 | 2026-10-23 · New (Molecule: one support request with its state); Services page by weight, prototype PR 307 |
+| [Mentor-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23403-227) | v1.0 | 2026-10-23 | Published | 3 | 2026-10-23 · New (Organism: the mentor card (avatar, name, role, last message, Message your mentor + Your discussions)); Services page by weight, prototype PR 307 |
+| [Support-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23403-268) | v1.0 | 2026-10-23 | Published | 3 | 2026-10-23 · New (Organism: Something not working? — Write to us, help center, Your requests (slot of Request-Row)); Services page by weight, prototype PR 307 |
+| [Included-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23402-75) | v1.0 | 2026-10-23 | Published | 9 | 2026-10-23 · New (Molecule: a service included with the program (icon, status, title, line, action)); Services page by weight, prototype PR 307 |
+| [Service-Link](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23402-96) | v1.0 | 2026-10-23 | Published | 15 | 2026-10-23 · New (Molecule: a secondary service as one quiet line (icon, title, line, chevron / arrow)); Services page by weight, prototype PR 307 |
+| [Request-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23402-104) | v1.0 | 2026-10-23 | Published | 3 | 2026-10-23 · New (Molecule: one support request with its state); Services page by weight, prototype PR 307 |
 
 ### Base components: 25
 
@@ -551,6 +551,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | `Program-Certificate` | v1.0 (published) | Nelson published the DS. Same day: Layout by the card's own width (Wide from 680, Stacked below; the Stacked sheet fills up to 480 and scales). ICP: on the three Program Certificates screens (desktop Wide 840, tablet Stacked 560, mobile Stacked 343) above a rule and a Course certificates heading; the mobile course 1 certificate showed the Six Sigma sample texts, corrected. |
 | 2026-10-23 | Platform pages (prototype) | — | Phone spacing (prototype PR 305): sections of a page or tab 24, stacked columns 32, side-column cards 24 (16 from tablet). ICP mobile screens not changed yet. |
 | 2026-10-23 | `Mentor-Card`, `Support-Card`, `Included-Card`, `Service-Link`, `Request-Row` (Services) | — → v1.0 | Nelson: the Services page was confusing, eleven services on one level. Reorganised by weight (prototype PR 307): help now (Mentor-Card + Support-Card with the learner's requests), Included with your program (Included-Card ×3), More from SkillUp (Service-Link rows). Service-Row 1.0 is no longer used by the prototype. ICP Services screens after publish. |
+| 2026-10-23 | Services components (5) | v1.0 (published) | Nelson published the DS. ICP: the three Services screens (08 · Services: desktop, tablet, mobile) rebuilt from them — help now, Included with your program, More from SkillUp. Same day, unpublished: Mentor-Card and Support-Card actions wrap on a narrow card (the phone's mentor buttons overflowed), Request-Row hugs its height. |
 
 ## Rename map (8 Oct 2026)
 
