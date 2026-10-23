@@ -231,7 +231,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22747) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-13 · The action is the DS `Link Button` (Brand, Secondary) with its underline; the rule under the header was tried and withdrawn the same day |
 | [Stat](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22736) | v1.2 | 2026-10-22 | Published | 3 | 2026-10-22 · Theme=Card (figure on its own card, Trend/Goal badges) on Shadows/shadow-card |
 | [Streak-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22783) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.6 | 2026-10-23 | In review | 2 | 2026-10-23 · One glow (the right one went), low on the left on Mobile; Studio shows the glow and the circles |
+| [Today-at-a-glance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22184-626082) | v1.6 | 2026-10-23 | Published | 2 | 2026-10-23 · One glow (the right one went), low on the left on Mobile; Studio shows the glow and the circles |
 
 **My-Learning**
 
