@@ -23,6 +23,10 @@ row; a row whose title wraps to two lines is taller, so its cover crops a little
 Discovery Course-Row 1.4. Exceptions: the Program-Card tile stays square (1:1), and the Resume-Row keeps its 140-tall
 cover.
 
+Later the same day (Nelson): the Course-Row cover is square too (prototype 118 × 118, DS 96 × 96), and My Learning's
+Grid / List toggle shows from a tablet up (list = the stacked list card on a tablet; phones stay Grid, a list card does
+not fit 343). Prototype PR 286.
+
 
 ## 2026-10-23 · Program page rows: a tablet variant
 
