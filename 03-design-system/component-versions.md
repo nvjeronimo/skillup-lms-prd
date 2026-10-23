@@ -216,11 +216,11 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [Topbar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22702) | v1.8 | 2026-10-21 | Published | 2 | 2026-10-21 · Compact: the menu (menu-02) on the left, before the logo, as the player bar's course menu; doc Anatomy for Desktop and Compact |
 | [Topbar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22694) | v1.1 | 2026-10-12 | Published | 2 | 2026-10-12 · Rebuilt as an underline tab; `State` Default/Current became `Current` Off/On; 3px bar; count badge exposed |
-| [Tab-Bar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23278-500) | v1.1 | 2026-10-23 | Published | 52 | 2026-10-23 · Compact (iOS style): On = icon 20 + label beside it, 44 tall, padding 12, gap 16; Off = icon only, hugs with a 44 minimum; counts are Badge Soft sm Info (Nelson); description line still to publish |
+| [Tab-Bar-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23278-500) | v1.1 | 2026-10-23 | Published | 52 | 2026-10-23 · Compact (iOS style): On = icon 20 + label beside it, 44 tall, padding 12, gap 16; Off = icon only, hugs with a 44 minimum; counts are Badge Soft sm Info (Nelson) |
 | [Tab-Bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23279-329) | v1.2 | 2026-10-23 | Published | 52 | 2026-10-23 · Compact: hugs its items (280 × 52, was 287 × 64), gap 4; only the current section shows its label; radius by role in each skin (pills in Studio); ICP: 52 instances updated, centred, bottom edge kept |
 | [Tab-Bar-Menu-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-548) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: one section in the More panel (icon 20 + label, 44, Radius/card-inset, Current Off/On) |
 | [Tab-Bar-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23298-549) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: the panel More opens (Discussion, Services, later sections); Radius/card, padding 4 |
-| [Footer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23327-407) | v1.1 | 2026-10-23 | Published | 0 | 2026-10-23 · Nelson: links as Link Buttons (Brand, Secondary), centred, 16 apart, 8 between wrapped rows; Open edX logo 47 × 14 (v1.0: 68 × 20); not on ICP screens (platform pages only); description line still to publish |
+| [Footer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23327-407) | v1.1 | 2026-10-23 | Published | 0 | 2026-10-23 · Nelson: links as Link Buttons (Brand, Secondary), centred, 16 apart, 8 between wrapped rows; Open edX logo 47 × 14 (v1.0: 68 × 20); not on ICP screens (platform pages only) |
 
 **Dashboard**
 
