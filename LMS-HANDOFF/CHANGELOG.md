@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-23 · Compact phone tab bar
+
+The bar under the platform pages on a phone is now compact, in an iOS style: the current section is a segment with its icon and label, and the other sections are icon-only 44 × 44 buttons (their names stay for screen readers). The bar hugs its items, 52 tall, and its radius follows each skin (pills in Studio). DS `Tab-Bar` 1.2 and `Tab-Bar-Item` 1.1 are in review, to be published; prototype PRs 295 and 296; ICP screens follow after the publish.
+
 ## 2026-10-23 · Dashboard on a phone: one-line greeting, the next glance card peeks
 
 "Good morning, John." is always one line; on a phone the glance cards are 156 wide and 12 apart so the third one shows. DS `Today-at-a-glance` 1.8 (in review), prototype PR 292, ICP greetings fixed.
