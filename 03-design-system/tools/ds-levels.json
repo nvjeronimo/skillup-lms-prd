@@ -12,7 +12,7 @@
     "LMS": {
       "Atoms": 48,
       "Molecules": 59,
-      "Organisms": 24
+      "Organisms": 25
     },
     "Base components": {
       "Atoms": 54,
@@ -208,7 +208,8 @@
         "Atoms": [],
         "Molecules": [],
         "Organisms": [
-          "Course-Row"
+          "Course-Row",
+          "Program-Certificate"
         ]
       },
       "Course Detail": {
