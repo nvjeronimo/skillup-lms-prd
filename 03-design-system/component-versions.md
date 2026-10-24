@@ -120,7 +120,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Note-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537594) | v1.2 | 2026-10-14 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Numbered-Step](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3297) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Numbered Step” |
 | [Sync-to-Video-Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20214-1771167) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Sync to Video Button” |
-| [Thread-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537651) | v1.2 | 2026-10-24 | In review | 1 | 2026-10-24 · A panel row (Nelson's ICP panel 7497:132529): white, no radius, a border/subtle rule underneath only, padding 16/24; to publish (Nelson) |
+| [Thread-Item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537651) | v1.2 | 2026-10-24 | Published | 1 | 2026-10-24 · A panel row (Nelson's ICP panel 7497:132529): white, no radius, a border/subtle rule underneath only, padding 16/24 |
 | [Topic-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537676) | v1.1 | 2026-10-14 | Published | 1 | 2026-10-14 · The duration is an instance of `LMS / Duration` (Time + Approx) |
 | [Topic-Status-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20066-431924) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “Topic-Status-Badge” |
 | [Topic-Types-Badge](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536800) | v1.0 | 2026-10-08 | Published | 14 | 2026-10-08 · Renamed from “LMS / Topic-Types Badge” |
@@ -191,7 +191,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 |---|---|---|---|---:|---|
 | [LMS / Autosave Status](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538137) | v1.0 | 2026-10-08 | Published | 4 | 2026-09-08 · Alert recoloured in the library, and a collection called "Remove" |
 | [LMS / Daily Goals (decide later)](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-538034) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Discussion Prompt](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537927) | v1.2 | 2026-10-24 | In review | 1 | 2026-10-24 · A panel block: no radius, no shadow, a rule underneath only, padding 16/24; to publish (Nelson) |
+| [LMS / Discussion Prompt](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537927) | v1.2 | 2026-10-24 | Published | 1 | 2026-10-24 · A panel block: no radius, no shadow, a rule underneath only, padding 16/24 |
 | [LMS / Empty State](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537992) | v1.0 | 2026-10-08 | Published | 4 | — |
 | [LMS / Footnote](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21606-1205) | v1.0 | 2026-10-08 | Published | 1 | 2026-09-30 · Weekly goal card — component handoff, ready for dev |
 | [LMS / Skeleton](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23184-386) | v1.0 | 2026-10-21 | Published | 10 | 2026-10-21 · New: page-shaped placeholder for the first load of a page in a session (Shape Text / Block / Circle / Pill) |
