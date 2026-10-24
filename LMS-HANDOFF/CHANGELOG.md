@@ -17,7 +17,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-24 · Tabs and filters stay fixed (Sticky-Toolbar)
 
-On My Learning and Calendar the tabs and filters stay at the top of the window once the learner has scrolled past them; on My Learning the search steps out while they are stuck. DS `LMS/Platform/Navigation/Sticky-Toolbar` 1.0 (in review); the ICP shows it with scrolled screens. Prototype PRs 316, 317.
+On My Learning and Calendar the tabs and filters stay at the top of the window once the learner has scrolled past them; on My Learning the search steps out while they are stuck. DS `LMS/Platform/Navigation/Sticky-Toolbar` 1.0 (published); the ICP shows it with four "scrolled, tabs stuck" screens under My Learning and Calendar. Prototype PRs 316, 317.
 
 ## 2026-10-24 · Overlay panels as in the ICP; Service-Row deprecated
 
