@@ -12,7 +12,7 @@
     "LMS": {
       "Atoms": 48,
       "Molecules": 62,
-      "Organisms": 27
+      "Organisms": 28
     },
     "Base components": {
       "Atoms": 54,
@@ -163,7 +163,8 @@
         "Organisms": [
           "Topbar",
           "Tab-Bar",
-          "Footer"
+          "Footer",
+          "Sticky-Toolbar"
         ]
       },
       "Dashboard": {
