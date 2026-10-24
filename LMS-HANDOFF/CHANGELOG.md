@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-24 · Tabs and filters stay fixed (Sticky-Toolbar)
+
+On My Learning and Calendar the tabs and filters stay at the top of the window once the learner has scrolled past them; on My Learning the search steps out while they are stuck. DS `LMS/Platform/Navigation/Sticky-Toolbar` 1.0 (published); the ICP shows it with four "scrolled, tabs stuck" screens under My Learning and Calendar. Prototype PRs 316, 317.
+
 ## 2026-10-24 · Overlay panels as in the ICP; Service-Row deprecated
 
 Notifications, Saved and Discussions panels now share one look: a light grey body with the content inset, white rows closed by a rule underneath, labels 24 in, square icon tiles, and a quiet Mark all read. In the DS, Thread-Item and Discussion Prompt become panel rows (published); in the ICP the 8 panel frames follow. Service-Row is deprecated: the Services page uses the five new components. The player's profile avatar is centred in its 44 target on phones. Prototype PRs 311, 313, 314.
