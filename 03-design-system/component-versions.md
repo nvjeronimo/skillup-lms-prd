@@ -100,13 +100,13 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Completion-Status](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536791) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Completion Status” |
 | [Course-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536868) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Sidebar / Course Header” |
 | [Lesson-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536863) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Lesson Header” |
-| [Module-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536844) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Header” |
+| [Module-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536844) | v1.1 | 2026-10-24 | Unpublished | 2 | 2026-10-24 · Show lock note + Lock note, off (Course Journey proposal, in review) |
 | [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-08 · Renamed from “LMS / Module Info” |
 | [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · `Device=Mobile` uses an instance of `LMS / Progress Circle`, as Desktop does |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
 | [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.3 | 2026-10-22 | Published | 5 | 2026-10-22 · Mobile drawer title “Course Journey” (was “Course menu”) |
 | [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.3 | 2026-10-16 | Published | 9 | 2026-10-16 · New boolean Optional bound to the Optional-Chip (v1.2: The duration is an instance of `LMS / Duration` (Time + Approx)) |
+| [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.4 | 2026-10-24 | Unpublished | 9 | 2026-10-24 · Show Up next, Show lock reason + Lock reason, off (Course Journey proposal, in review) (v1.3: boolean Optional) |
 
 **Content**
 
@@ -556,6 +556,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | Services components (5) | v1.0 (published) | Nelson published the DS. ICP: the three Services screens (08 · Services: desktop, tablet, mobile) rebuilt from them — help now, Included with your program, More from SkillUp. Same day, unpublished: Mentor-Card and Support-Card actions wrap on a narrow card (the phone's mentor buttons overflowed), Request-Row hugs its height. |
 | 2026-10-24 | `LMS / Profile Menu` | v1.7 → v1.8 | Nelson: the Profile section (Edit profile, Certificates) opens the menu, above Appearance and Accessibility standards; the top rule moves from Profile to Appearance. Prototype PR 315 (platform top bar and player menu). |
 | 2026-10-24 | `Sticky-Toolbar` | new v1.0 | Nelson: "os tabs e os filtros podem ficar sempre fixos; o search podes ocultar". Organism on the Navigation page, State In place / Stuck, the page's controls in a Content slot. Figma cannot prototype sticky inside a screen, so the ICP gets "scrolled" screens. Prototype PRs 316, 317. |
+| 2026-10-24 | `Topic-Row`, `Module-Header` (ICP Sidebar) | v1.3 → v1.4, v1.0 → v1.1 | Nelson: the Course Journey proposal goes to the DS and the ICP **as a proposal** (in review; the current sidebar stays). Additive, all off by default, so no screen changes: Topic-Row `Show Up next` (label-small/Semibold, text/primary, in the meta row), `Show lock reason` + `Lock reason` (body-small/Regular, text/subtle, lock 14, under the meta row); Module-Header `Show lock note` + `Lock note` (a module locked as a whole). Refused by the stakeholders and not in the DS: the In Progress ring on the open topic, Jump to current topic. Prototype PRs 318, 319 (`/lab/course-journey`). |
 
 ## Rename map (8 Oct 2026)
 
