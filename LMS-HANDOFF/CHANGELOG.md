@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-24 · Overlay panels as in the ICP; Service-Row deprecated
+
+Notifications, Saved and Discussions panels now share one look: a light grey body with the content inset, white rows closed by a rule underneath, labels 24 in, square icon tiles, and a quiet Mark all read. In the DS, Thread-Item and Discussion Prompt become panel rows (published); in the ICP the 8 panel frames follow. Service-Row is deprecated: the Services page uses the five new components. The player's profile avatar is centred in its 44 target on phones. Prototype PRs 311, 313, 314.
+
 ## 2026-10-23 · Footer 1.3; Link Buttons as in the DS; Services in the DS levels
 
 The footer now reads SkillUp | Open edX | copyright on the left, with the links alone on the right, and the SkillUp name is smaller. Link Buttons keep their DS height and the line sits 3 px under the label on every device: on phones the 44 tap area is invisible around the link. The new Services components (Mentor-Card, Support-Card, Included-Card, Service-Link, Request-Row) are in the levels map, and the Services documentation page is regenerated. Prototype PR 310.
