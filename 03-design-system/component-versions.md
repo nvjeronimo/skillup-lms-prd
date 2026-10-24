@@ -198,7 +198,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Inline Alert](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20328-3296) | v1.2 | 2026-10-17 | Published | 12 | 2026-10-17 · New property Surface: Page (bg/faint) and Subtle (on a grey surface, the alert on bg/page) |
 | [LMS / Live Attendance](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536879) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
 | [LMS / Module Time-Left](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536873) | v1.0 | 2026-10-08 | In review | 1 | 2026-10-08 · Moved to the “In review / not for build” page |
-| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.7 | 2026-10-21 | Published | 1 | 2026-10-21 · Sign out in a group of its own after Profile, icon/error; scrolls on a phone |
+| [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.8 | 2026-10-24 | Published | 1 | 2026-10-24 · Profile section first (Edit profile, Certificates), above Appearance (prototype PR 315). Earlier: 2026-10-21 · Sign out in a group of its own after Profile, icon/error; scrolls on a phone |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-23976) | v1.2 | 2026-10-21 | Published | 3 | 2026-10-21 · New `Size=xxxxs`, 32 px ring (band 3) with the % inside in body-small/Semibold, for the player Topbar on Mobile |
 
 ### LMS · Platform (`LMS/Platform/…`): 53
@@ -552,6 +552,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-23 | Platform pages (prototype) | — | Phone spacing (prototype PR 305): sections of a page or tab 24, stacked columns 32, side-column cards 24 (16 from tablet). ICP mobile screens not changed yet. |
 | 2026-10-23 | `Mentor-Card`, `Support-Card`, `Included-Card`, `Service-Link`, `Request-Row` (Services) | — → v1.0 | Nelson: the Services page was confusing, eleven services on one level. Reorganised by weight (prototype PR 307): help now (Mentor-Card + Support-Card with the learner's requests), Included with your program (Included-Card ×3), More from SkillUp (Service-Link rows). Service-Row 1.0 is no longer used by the prototype. ICP Services screens after publish. |
 | 2026-10-23 | Services components (5) | v1.0 (published) | Nelson published the DS. ICP: the three Services screens (08 · Services: desktop, tablet, mobile) rebuilt from them — help now, Included with your program, More from SkillUp. Same day, unpublished: Mentor-Card and Support-Card actions wrap on a narrow card (the phone's mentor buttons overflowed), Request-Row hugs its height. |
+| 2026-10-24 | `LMS / Profile Menu` | v1.7 → v1.8 | Nelson: the Profile section (Edit profile, Certificates) opens the menu, above Appearance and Accessibility standards; the top rule moves from Profile to Appearance. Prototype PR 315 (platform top bar and player menu). |
 
 ## Rename map (8 Oct 2026)
 
