@@ -41,10 +41,10 @@ CSS tokens port to any stack); the v1 names `instant/fast/base/slow/narrative` (
 `standard-decelerate` (an ease-out) instead of `standard-accelerate` (R8); `standard-decelerate` becomes
 `cubic-bezier(0.23, 1, 0.32, 1)`; `standard-accelerate` stays in the scale, unused by the UI. Menus and popovers animate
 with CSS transitions (interruptible) instead of keyframes; hover styles apply only on devices that hover.
-motion-matrix §8b, prototype PR 252. The Figma `Motion` variable `easing/standard-decelerate` was updated the same day (not yet published).
+motion-matrix §8b, prototype PR 252. The Figma `Motion` variable `easing/standard-decelerate` was updated the same day (published with the 25 Oct values).
 
 **Amendment (25 Oct 2026, Nelson: "no geral está tudo muito rápido e brusco")** — The scale slows by about a third:
 short2 150 · short3 200 · short4 300 · medium2 400 · long2 600 ms, and `standard-decelerate` returns to
 `cubic-bezier(0.2, 0.7, 0.2, 1)` (the 22 Oct strong ease-out read as a snap). Names unchanged; reduced motion
-unchanged. Changed in the Figma `Motion` collection (publish pending) and in the prototype through the token pipeline,
+unchanged. Changed in the Figma `Motion` collection (published in the DS library on 25 Oct 2026) and in the prototype through the token pipeline,
 PR 329. motion-matrix §5, §8d.
