@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-25 · Layout audit: every platform screen on Layout/* tokens
+
+Every current platform screen in the ICP (Ready for Dev, WIP, plus the platform screens on the Lab and AI Assistant pages) now takes its page padding, section stack, column rows, side stacks and card grids from the `Layout/*` tokens (decision 032), with the page title and the first section in a "Head" frame on `Layout/stack-gap` on desktop and tablet; Edit profile's form is its page stack (48 / 40 between sections, approved by Nelson). DS: `Sticky-Toolbar` 1.1, side padding on `Layout/page-x` (to publish). History rows (sources, entries, proposals, superseded) are left as they were.
+
 ## 2026-10-25 · Page titles sit closer to their first section
 
 Title → first section is now `Layout/stack-gap` (32 at every breakpoint); later sections stay `Layout/section-gap` (48 / 40 / 32). DS: the descriptions of both tokens (decision 032, amendment). ICP: on the desktop and tablet platform screens (Ready for Dev and WIP) the title and the first section sit in a "Head" frame with the stack gap; phones unchanged. Prototype PR 340.
