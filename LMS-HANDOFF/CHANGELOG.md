@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-25 · Layout spacing in the DS: eight Layout/* tokens
+
+More space between the sections, columns and cards of the platform pages, now as DS tokens (decision 032): `Layout/page-x` 48/40/24, `page-top` 48/40/32, `band-x` 48/32/16, `section-gap` 48/40/32, `column-gap` 48/40/40, `stack-gap` 32, `side-gap` 24/24/32, `grid-gap` 32/24/24 (desktop / tablet / mobile), in `2. Responsive 📐`, aliasing the Spacing steps; not published yet. The ICP platform screens (Ready for Dev and WIP pages: Dashboard, My Learning, Course, Program, Certificates, Calendar, Discussion, Services, Notifications, Edit profile) follow, on Spacing steps until the publish; in the player the sidebar sits 24 from the content and a Reading topic's blocks are 32 apart. The prototype reads the tokens from the Figma export (PR 333, after 332). Inside components nothing changes.
+
 ## 2026-10-25 · The Dashboard figures are links
 
 Each card of "Your learning at a glance" now opens the list it counts: Courses and Programs open My Learning on In progress, Completed opens the completed courses, Certificates opens its page. DS `Today-at-a-glance` 1.9 and `Stat` 1.4 (descriptions, published). Prototype PR 322.
