@@ -16,7 +16,8 @@ opacity and colour feedback.
   feedback**, as the prototype has done since PR 58 (Q2); the Figma tokens get **their own `Motion` collection** (Q3);
   value changes too small to see are **accepted without a side-by-side** (Q4).
 - 17 Sep 2026 rule: motion adopts Material's names where a framework on the other end reads them; values stay ours.
-  Our values land on Material's slots: short2 100 · short3 150 · short4 200 · medium2 300 · long2 500.
+  Our values land on Material's slots: short2 100 · short3 150 · short4 200 · medium2 300 · long2 500 (slowed on
+  25 Oct 2026 to 150 · 200 · 300 · 400 · 600, see the amendment below).
 - The prototype had no motion token, ~20 hand-typed durations, and surfaces that entered but never left.
 
 **Source** — [`../03-design-system/motion-matrix.md`](../03-design-system/motion-matrix.md) v2 (14 Oct 2026), built
@@ -41,3 +42,9 @@ CSS tokens port to any stack); the v1 names `instant/fast/base/slow/narrative` (
 `cubic-bezier(0.23, 1, 0.32, 1)`; `standard-accelerate` stays in the scale, unused by the UI. Menus and popovers animate
 with CSS transitions (interruptible) instead of keyframes; hover styles apply only on devices that hover.
 motion-matrix §8b, prototype PR 252. The Figma `Motion` variable `easing/standard-decelerate` was updated the same day (not yet published).
+
+**Amendment (25 Oct 2026, Nelson: "no geral está tudo muito rápido e brusco")** — The scale slows by about a third:
+short2 150 · short3 200 · short4 300 · medium2 400 · long2 600 ms, and `standard-decelerate` returns to
+`cubic-bezier(0.2, 0.7, 0.2, 1)` (the 22 Oct strong ease-out read as a snap). Names unchanged; reduced motion
+unchanged. Changed in the Figma `Motion` collection (publish pending) and in the prototype through the token pipeline,
+PR 329. motion-matrix §5, §8d.
