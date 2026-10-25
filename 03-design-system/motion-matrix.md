@@ -67,7 +67,7 @@ Four functions. A proposal that serves none of them is rejected.
   components. Enforced by a new rule `raw-motion` in `scripts/check-tokens.mjs`.
 - **R2 — Never `transition: all`** (or Tailwind's bare `transition`, a property list we did not choose). Name the properties.
 - **R3 — Animate `transform` and `opacity`** wherever a choice exists. Disclosure uses `grid-template-rows: 0fr → 1fr`, not `height`.
-- **R4 — Nothing over 200 ms on a repeated critical path.** `medium2` (300) is for surfaces; `long2` (500) only for
+- **R4 — Nothing over short4 on a repeated critical path** (300 ms since 25 Oct 2026, was 200). `medium2` (400) is for surfaces; `long2` (600) only for
   *passive* progress the learner watches, never for something that blocks the next click.
 - **R5 — Motion never carries state alone.** Every state that moves is also legible by icon + text, and announced
   through `aria-live` when it matters.
@@ -88,13 +88,15 @@ land exactly on Material's slots, so a Flutter or MUI consumer reads them unchan
 
 | Token | Value | Material slot | Was (v1 draft) | Use |
 |---|---|---|---|---|
-| `duration/short2` | `100ms` | short2 = 100 ✓ | `instant` 80 | press, toggle flip |
-| `duration/short3` | `150ms` | short3 = 150 ✓ | `fast` 120 | hover, focus ring, colour-only change, exits of surfaces |
-| `duration/short4` | `200ms` | short4 = 200 ✓ | `base` 200 | **the default**: small surfaces enter, chevrons, messages, toasts |
-| `duration/medium2` | `300ms` | medium2 = 300 ✓ | `slow` 300 | panels, drawer, sheet, accordion, scroll-into-view |
-| `duration/long2` | `500ms` | long2 = 500 ✓ | `narrative` 500 | progress bars, rings, count-up — **passive only** |
+| `duration/short2` | `150ms` (100 until 25 Oct 2026) | short2 slot | `instant` 80 | press, toggle flip |
+| `duration/short3` | `200ms` (150 until 25 Oct 2026) | short3 slot | `fast` 120 | hover, focus ring, colour-only change, exits of surfaces |
+| `duration/short4` | `300ms` (200 until 25 Oct 2026) | short4 slot | `base` 200 | **the default**: small surfaces enter, chevrons, messages, toasts |
+| `duration/medium2` | `400ms` (300 until 25 Oct 2026) | medium2 slot | `slow` 300 | panels, drawer, sheet, accordion, scroll-into-view |
+| `duration/long2` | `600ms` (500 until 25 Oct 2026) | long2 slot | `narrative` 500 | progress bars, rings, count-up — **passive only** |
 
-Changes against v1: 80 → 100 and 120 → 150, so every value sits on a Material slot. Both are below what a learner
+25 Oct 2026 (Nelson: "no geral está tudo muito rápido e brusco"): the whole scale slows by about a third so every animation is perceptible: 150 / 200 / 300 / 400 / 600 ms (§8d). The names keep Material's slots; the values are ours.
+
+Changes against v1: 80 → 100 and 120 → 150, so every value sat on a Material slot. Both are below what a learner
 can tell apart; Q4 accepted value changes of this size without a side-by-side.
 
 ### 5.2 Easing
@@ -102,7 +104,7 @@ can tell apart; Q4 accepted value changes of this size without a side-by-side.
 | Token | Curve | Material slot | Use |
 |---|---|---|---|
 | `easing/standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | name ✓, **value ours** (M3's is `0.2,0,0,1`; ours is today's `--ease`) | anything that changes in place: colour, rotate, ring |
-| `easing/standard-decelerate` | `cubic-bezier(0.23, 1, 0.32, 1)` (was `0.2, 0.7, 0.2, 1` until 22 Oct 2026) | name ✓, value ours | **entrances, exits**, progress |
+| `easing/standard-decelerate` | `cubic-bezier(0.2, 0.7, 0.2, 1)` (`0.23, 1, 0.32, 1` from 22 to 25 Oct 2026, §8b, §8d) | name ✓, value ours | **entrances, exits**, progress |
 | `easing/standard-accelerate` | `cubic-bezier(0.55, 0, 1, 0.45)` | name ✓, value ours | kept in the scale; **no UI surface uses it** since 22 Oct 2026 |
 | `easing/emphasized` | `cubic-bezier(0.34, 1.3, 0.64, 1)` | name ✓, value ours (an overshoot; M3's has none) | **certificate only** (R9) |
 | `easing/linear` | `linear` | linear ✓ | looping indicators only (spinner, typing dots) |
@@ -127,14 +129,14 @@ Panels and the drawer travel their full width (`100%`), not a token: they come f
 
 ```css
 :root {
-  --motion-duration-short2: 100ms;
-  --motion-duration-short3: 150ms;
-  --motion-duration-short4: 200ms;
-  --motion-duration-medium2: 300ms;
-  --motion-duration-long2: 500ms;
+  --motion-duration-short2: 150ms;
+  --motion-duration-short3: 200ms;
+  --motion-duration-short4: 300ms;
+  --motion-duration-medium2: 400ms;
+  --motion-duration-long2: 600ms;
 
   --motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --motion-easing-standard-decelerate: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-easing-standard-decelerate: cubic-bezier(0.2, 0.7, 0.2, 1);
   --motion-easing-standard-accelerate: cubic-bezier(0.55, 0, 1, 0.45);
   --motion-easing-emphasized: cubic-bezier(0.34, 1.3, 0.64, 1);
   --motion-easing-linear: linear;
@@ -413,6 +415,32 @@ Nelson: "avança todos". Prototype PR 253.
 | Reduced motion | The drag still follows the finger (direct manipulation is not decoration) but leaves or settles without the finishing animation; the theme fade stays (opacity) | Reduced motion = gentler, not none |
 
 Not built: springs with true velocity blending (no spring library in the prototype; the WAAPI finish takes its duration from the release speed instead). Mouse drags are left out on purpose (close button and Escape).
+
+## 8d. A slower, softer scale (Nelson, 25 Oct 2026)
+
+Nelson: "no geral está tudo muito rápido e brusco … tornar tudo um pouco mais lento, de forma a que cada animação,
+transição, etc. seja mais perceptível e suave". The values change at the source (Figma DS, collection `3. Motion`),
+then flow to the prototype through the token pipeline (`tokens/figma/variables.json` → `tokens/generated/motion.css`).
+
+| Token | Was | Now |
+|---|---|---|
+| short2 | 100 ms | 150 ms |
+| short3 | 150 ms | 200 ms |
+| short4 | 200 ms | 300 ms |
+| medium2 | 300 ms | 400 ms |
+| long2 | 500 ms | 600 ms |
+| standard-decelerate | `cubic-bezier(0.23, 1, 0.32, 1)` | `cubic-bezier(0.2, 0.7, 0.2, 1)` |
+
+- **Why the curve too.** The 22 Oct curve (§8b) started every move at about 4× its average speed; on top of short
+  durations it read as a snap. The gentler curve is the one used until 22 Oct; exits still use it (R8 as amended).
+- **Scope.** Every token-based animation slows by the same ratio; multiples (cycles, spins, the arming window, the
+  skeleton sheen) keep their proportions. Reduced motion is unchanged (medium2 and long2 still shorten to 150 ms).
+- **Same day, in the same spirit.** Page transitions became View Transitions (the old page fades out while the new
+  one fades in, chrome holds still; PR 326); the Sticky-Toolbar's ground follows the scroll and its search steps out
+  in two beats (PRs 321, 324); the player sidebar's course header folds its eyebrow and partner line in two beats
+  (`.sk-fold`: fade, then the row closes; back, the row opens, then the fade). Prototype PR 329.
+- **Durations quoted elsewhere in this file** (e.g. "500 ms" for the sparkle spin in §7.4) are the values at the time
+  they were written; read them through this table.
 
 ## 9. Decisions and open questions
 
