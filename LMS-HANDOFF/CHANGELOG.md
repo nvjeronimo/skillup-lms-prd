@@ -17,7 +17,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 ## 2026-10-25 · The Dashboard figures are links
 
-Each card of "Your learning at a glance" now opens the list it counts: Courses and Programs open My Learning on In progress, Completed opens the completed courses, Certificates opens its page. DS `Today-at-a-glance` 1.9 and `Stat` 1.4 (descriptions, to publish). Prototype PR 322.
+Each card of "Your learning at a glance" now opens the list it counts: Courses and Programs open My Learning on In progress, Completed opens the completed courses, Certificates opens its page. DS `Today-at-a-glance` 1.9 and `Stat` 1.4 (descriptions, published). Prototype PR 322.
 
 ## 2026-10-24 · Tabs and filters stay fixed (Sticky-Toolbar)
 
