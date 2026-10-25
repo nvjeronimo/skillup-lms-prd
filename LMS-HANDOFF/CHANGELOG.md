@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-25 · The Dashboard figures are links
+
+Each card of "Your learning at a glance" now opens the list it counts: Courses and Programs open My Learning on In progress, Completed opens the completed courses, Certificates opens its page. DS `Today-at-a-glance` 1.9 and `Stat` 1.4 (descriptions, to publish). Prototype PR 322.
+
 ## 2026-10-24 · Tabs and filters stay fixed (Sticky-Toolbar)
 
 On My Learning and Calendar the tabs and filters stay at the top of the window once the learner has scrolled past them; on My Learning the search steps out while they are stuck. DS `LMS/Platform/Navigation/Sticky-Toolbar` 1.0 (published); the ICP shows it with four "scrolled, tabs stuck" screens under My Learning and Calendar. Prototype PRs 316, 317.
