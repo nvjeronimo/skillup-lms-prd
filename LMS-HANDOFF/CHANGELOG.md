@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-25 · Page titles sit closer to their first section
+
+Title → first section is now `Layout/stack-gap` (32 at every breakpoint); later sections stay `Layout/section-gap` (48 / 40 / 32). DS: the descriptions of both tokens (decision 032, amendment). ICP: on the desktop and tablet platform screens (Ready for Dev and WIP) the title and the first section sit in a "Head" frame with the stack gap; phones unchanged. Prototype PR 340.
+
 ## 2026-10-25 · Footer 1.4
 
 The platform footer's brand row reads **SkillUp name · © 2026 SkillUp Online | Open edX**: no divider between the name and the copyright, the only divider (1px `border/subtle`) before the Open edX logo. Links unchanged. DS `Footer` v1.4 (published), prototype PR 334.

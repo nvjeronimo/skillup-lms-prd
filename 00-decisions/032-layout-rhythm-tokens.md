@@ -16,9 +16,9 @@ so they move with the spacing scale. Same values on every skin (SKO, Gold, Red, 
 | `Layout/page-x` | 48 / 40 / 24 | 6xl / 6xl / 5xl | side padding of a platform page |
 | `Layout/page-top` | 48 / 40 / 32 | 6xl | top bar → first line of the page |
 | `Layout/band-x` | 48 / 32 / 16 | 6xl / 5xl / xl | side padding of the full-bleed pages (Course, Program, Certificate) and their header bands |
-| `Layout/section-gap` | 48 / 40 / 32 | 6xl | between the sections of a page |
+| `Layout/section-gap` | 48 / 40 / 32 | 6xl | between the sections of a page (not after the page title, see the amendment) |
 | `Layout/column-gap` | 48 / 40 / 40 | 6xl / 6xl / 7xl | main column ↔ side column (side by side or stacked) |
-| `Layout/stack-gap` | 32 / 32 / 32 | 4xl / 5xl / 6xl | between the blocks of a column or a tab |
+| `Layout/stack-gap` | 32 / 32 / 32 | 4xl / 5xl / 6xl | between the blocks of a column or a tab; page title → first section |
 | `Layout/side-gap` | 24 / 24 / 32 | 3xl / 4xl / 6xl | between the cards of a side column |
 | `Layout/grid-gap` | 32 / 24 / 24 | 4xl / 4xl / 5xl | between the cards of a grid or a list |
 
@@ -42,3 +42,10 @@ the DS one (Tablet ≤ 1024, Mobile ≤ 768).
 
 **Alternatives rejected** — Keeping them as prototype-only variables (`tokens/layout.css`): Figma and code would drift.
 Reusing `Container/gap` / `Container/gutter`: their values (24/16/12, 32/24/16) are the old, tighter rhythm.
+
+**Amendment, 25 Oct 2026 (title gap)** — A page title sits closer to what it heads: title → first section is
+`Layout/stack-gap` (32 at every breakpoint); the gaps between the later sections stay `Layout/section-gap` (48 / 40 / 32).
+On My Learning the first section is the Sticky-Toolbar row. Nelson, "aplica no DS e no ICP". Prototype PR 340:
+`.sk-page-stack > :first-child` gets `margin-bottom: stack − section`. DS: the descriptions of the two tokens say so. ICP:
+a Figma stack has one gap, so on the desktop and tablet screens the title and the first section are wrapped in a
+vertical frame "Head" (fill width, hug height, gap `Layout/stack-gap`) inside the page stack; phones need nothing (32 = 32).
