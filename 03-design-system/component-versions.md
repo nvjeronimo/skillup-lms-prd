@@ -98,13 +98,13 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Bookmark](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536827) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · Renamed from “bookmark” |
 | [Collapse-Toggle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536832) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Completion-Status](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536791) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-08 · Renamed from “LMS / Completion Status” |
-| [Course-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536868) | v1.1 | 2026-10-25 | Unpublished | 1 | 2026-10-25 · Toggle beside the content column; new boolean Show overline. Condensed on scroll = overline + partner off |
+| [Course-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536868) | v1.1 | 2026-10-25 | Published | 1 | 2026-10-25 · Toggle beside the content column; new boolean Show overline. Condensed on scroll = overline + partner off |
 | [Lesson-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536863) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Lesson Header” |
 | [Module-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536844) | v1.1 | 2026-10-24 | Unpublished | 2 | 2026-10-24 · Show lock note + Lock note, off (Course Journey proposal, in review) |
-| [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.1 | 2026-10-25 | Unpublished | 2 | 2026-10-25 · Completed = module number + Badge Soft sm Success "Completed" (was green "x of y" + check) |
+| [Module-Info](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21299-7173) | v1.1 | 2026-10-25 | Published | 2 | 2026-10-25 · Completed = module number + Badge Soft sm Success "Completed" (was green "x of y" + check) |
 | [Overall-Progress](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536988) | v1.1 | 2026-10-14 | Published | 3 | 2026-10-14 · `Device=Mobile` uses an instance of `LMS / Progress Circle`, as Desktop does |
 | [Section-Header](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536865) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Section Header” |
-| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.4 | 2026-10-25 | Unpublished | 7 | 2026-10-25 · New variants Expanded · boxed and Mobile · boxed (Studio: each module in its own box) |
+| [Sidebar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-536883) | v1.4 | 2026-10-25 | Published | 7 | 2026-10-25 · New variants Expanded · boxed and Mobile · boxed (Studio: each module in its own box) |
 | [Topic-Flyout](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22479-1867) | v1.1 | 2026-10-13 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Topic-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537000) | v1.4 | 2026-10-24 | Unpublished | 9 | 2026-10-24 · Show Up next, Show lock reason + Lock reason, off (Course Journey proposal, in review) (v1.3: boolean Optional) |
 
@@ -240,7 +240,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Browse-Tile](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22901) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.20 | 2026-10-25 | Unpublished | 6 | 2026-10-25 · New Layout=Grid phone (3 states): 343, cover 5:2 |
+| [Course-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20888-6124) | v1.20 | 2026-10-25 | Published | 6 | 2026-10-25 · New Layout=Grid phone (3 states): 343, cover 5:2 |
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 | [Program-Quick-View](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23326-588201) | v1.1 | 2026-10-23 | In review | 0 | 2026-10-23 · 1.1: What's included between Certificate and About (prototype PR 302). New (proposal): the quick view of a program — Breakpoint Desktop (modal 640) / Mobile (full screen) |
 | [Form-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23377-1733) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: `LMS/Platform/Overlays/Form-Modal` on the new page ↳ Overlays; Breakpoint Desktop (560) / Mobile (full screen); Title, Description (+ show), Show cancel, Content slot; prototype PR 300 |
@@ -281,7 +281,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Meta](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21877) | v1.0 | 2026-10-08 | Published | 1 | 2026-09-24 · Course Detail mobile — the Course tab |
 | [Module-Number](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21952) | v1.0 | 2026-10-08 | Published | 3 | 2026-10-06 · Platform components moved into the DS library |
 | [Module-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21966) | v1.1 | 2026-10-08 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Progress-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21894) | v1.3 | 2026-10-25 | Unpublished | 4 | 2026-10-25 · State=Complete: Badge "Completed" replaces check icon + "Completed" |
+| [Progress-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21894) | v1.3 | 2026-10-25 | Published | 4 | 2026-10-25 · State=Complete: Badge "Completed" replaces check icon + "Completed" |
 | [Score-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22477) | v1.0 | 2026-10-08 | Published | 2 | 2026-10-06 · Local components → the DS |
 | [Section-Intro](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-21891) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-06 · Platform components moved into the DS library |
 | [Sidebar-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22090) | v1.1 | 2026-10-08 | Published | 6 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
