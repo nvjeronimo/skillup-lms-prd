@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-26 · The Dashboard greeting follows the learner's local time
+
+"Good morning," becomes Good morning (05–12), Good afternoon (12–18) or Good evening (18–05), by the learner's browser clock; the server renders "Hello," and the browser swaps in the right one. Rule, time source (browser first, Open edX `time_zone` only as a fallback), translation and test notes in `greeting-by-time.md`. Prototype PR 380.
+
 ## 2026-10-26 · "My Certificates"
 
 The learner's certificates page is called **My Certificates**: the profile-menu row, the page title and the Dashboard jump card. The glance figure "Certificates", the Services tile and the program page's Certificates tab keep their names. DS: `LMS / Profile Menu` 1.9 (to publish). ICP: page titles (4) and Dashboard jump cards (12) on Ready for Dev, WIP and the Assistant page; the open profile menus follow the component after the publish. Prototype PR 370.
