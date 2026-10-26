@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-26 · My Certificates by program (ICP)
+
+The ICP draws the My Certificates page by program, as the prototype (PR 378): on Earned, one block per program, `Layout/stack-gap` apart. An earned program certificate is the large card at the top of its block, then "N of M course certificates", its course certificates in course order (four at most, then "Show all N"). A program not earned yet has its title, the count, "Program certificate when all M courses are complete." and View program, then its course cards. Then "Other courses". On In progress: the program title, "N course(s) in progress", the program row with its bar and "N of M courses complete", the course rows ("Course certificate · Course 2 of 7"), then Other courses. Course cards read "Issued 9 April 2026. Course 1 of 5." WIP page, Certificates: Earned desktop, tablet, mobile and In progress desktop.
+
 ## 2026-10-26 · The Dashboard greeting follows the learner's local time
 
 "Good morning," becomes Good morning (05–12), Good afternoon (12–18) or Good evening (18–05), by the learner's browser clock; the server renders "Hello," and the browser swaps in the right one. Rule, time source (browser first, Open edX `time_zone` only as a fallback), translation and test notes in `greeting-by-time.md`. Prototype PR 380.
