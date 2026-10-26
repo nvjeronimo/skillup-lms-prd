@@ -28,7 +28,7 @@ SkillUp theme layer can carry.
 
 **Design** — Figma DS: `Motion` collection (`VariableCollectionId:22638:35`, 13 variables, published in the DS library on 14 Oct 2026) + documentation frame [`22639-583252`](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22639-583252) on the Foundations page `↳ Motion` (moved out of In review on 19 Oct 2026, frame `Doc · Foundations · Motion`, linked from Start here) (scale, R1–R10, reduced motion, four storyboards, smoothness). Prototype: PRs #153–#158, #160 in nvjeronimo/skillup-lms-prototype.
 
-**Dev impact** — `tokens/motion.css` (`--motion-duration-*`, `--motion-easing-*`, `--motion-distance-*`), Tailwind
+**Dev impact** — How to build it: [`../03-design-system/motion-dev-guide.md`](../03-design-system/motion-dev-guide.md) (26 Oct 2026). `tokens/motion.css` (`--motion-duration-*`, `--motion-easing-*`, `--motion-distance-*`), Tailwind
 theme entries, a `raw-motion` lint rule, `useExitTransition`. Component behaviour per motion-matrix §7.
 BR-39 amendment proposed to the BA, not applied.
 
