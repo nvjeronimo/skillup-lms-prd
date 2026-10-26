@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-26 · "My Certificates"
+
+The learner's certificates page is called **My Certificates**: the profile-menu row, the page title and the Dashboard jump card. The glance figure "Certificates", the Services tile and the program page's Certificates tab keep their names. DS: `LMS / Profile Menu` 1.9 (to publish). ICP: page titles (4) and Dashboard jump cards (12) on Ready for Dev, WIP and the Assistant page; the open profile menus follow the component after the publish. Prototype PR 370.
+
 ## 2026-10-25 · Bigger platform-page tabs (Tabs Size=lg)
 
 The tabs that head a platform page (My Learning, Course, Program, Certificates) are larger: headline-small/Semibold (24) on desktop and tablet, title-large/Semibold (18) on phones; panel tabs are unchanged. DS: `Horizontal tabs` 1.2 with a new Size=lg (and `_Tab button base` Size=lg), to publish; the ICP tab instances follow after the publish. Prototype PRs 341, 342.
