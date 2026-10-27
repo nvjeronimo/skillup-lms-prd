@@ -984,6 +984,8 @@ And it caught a defect in our own screen: the completion card read *"38 complete
 **38%**, which is 90%. Now `16 complete · 26 incomplete · 0 locked` — 42 topics, matching the Course tab, and
 16/42 = 38%. A card whose own two numbers disagree is worse than one with no numbers.
 
+**27 Oct 2026 (Nelson, ICP `6406:41528`):** the counts line names what it counts: *"Topics: 16 complete · 26 incomplete · 0 locked"*. The label is presentation; the three numbers are still `completion_summary`. Prototype PR 392.
+
 ### 12.3 The addendum is much larger than "two tabs"
 
 **Live — 11 fields, and it is not ours to design.**
