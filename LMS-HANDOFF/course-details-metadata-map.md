@@ -986,7 +986,7 @@ And it caught a defect in our own screen: the completion card read *"38 complete
 
 **27 Oct 2026 (Nelson, ICP `6406:41528`):** the counts line names what it counts: *"Topics: 16 complete · 26 incomplete · 0 locked"*. The label is presentation; the three numbers are still `completion_summary`. Prototype PR 392.
 
-**27 Oct 2026, later (Nelson, decision 034):** the "Topics:" line is replaced. The card now reads *"16 of 42 topics complete."* — still `complete_count` and `complete_count + incomplete_count` — and `locked_count` shows only when it is above 0, as a Gray badge *"3 locked topics"*, with the line saying *"16 of 39 available topics complete."* because locked topics are left out of the percentage. At 100% a Badge "Completed" sits beside the title. The Grade summary beside it has five states (Not started, Below pass, Passing, Submitted below pass in amber, Course ended in red); see decision 034 for the Open edX facts behind them. DS Completion-Card 1.3, Grade-Summary 1.1; prototype PR 397.
+**27 Oct 2026, later (Nelson, decision 034):** the "Topics:" line is replaced. The card now reads *"16 of 42 topics complete."* — still `complete_count` and `complete_count + incomplete_count` — and `locked_count` shows only when it is above 0, as a Gray badge *"3 locked topics"*, with the line saying *"16 of 39 available topics complete."* because locked topics are left out of the percentage. At 100% a Badge "Completed" sits beside the title. The Grade summary beside it has five states (Not started, Below pass, Passing, Submitted below pass in amber, Course ended in red); see decision 034 for the Open edX facts behind them. DS Completion-Card 1.3, Grade-Summary 1.2; prototype PR 397.
 
 ### 12.3 The addendum is much larger than "two tabs"
 
