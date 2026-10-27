@@ -21,8 +21,10 @@ as the platform pages. Blocks, tables and media keep the full column, as before.
 
 **Design** — DS variable `Container/text-max-width` (alias of `Container/content-max-width`), scope Width/height, web
 code syntax `var(--sk-container-text-max-width)`. ICP: the Ready for Dev Reading screens already run the text the
-full column (1056 on the 1504 desktop screens), so nothing moves; the text can be bound to the token once it is
-published.
+full column (1056 on the 1504 desktop screens), so nothing moves. The token is not bound there: Figma cannot bind a
+max width to a text layer, and the paragraphs share their frames with lesson blocks, which keep the full column. If
+the measure ever drops below the column, the ICP paragraphs get a wrapper (or a fixed width) on the token then.
+Published 27 Oct 2026.
 
 **Dev impact** — Tailwind `max-w-text` = `var(--sk-container-text-max-width, 1200px)` on the running text
 (prototype PRs 393 and 394). The Publish tokens export adds `--sk-container-text-max-width` to
