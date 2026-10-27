@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-27 · Reading text runs the full column, on its own token
+
+The Reading lede, paragraphs and pull quote, and the paragraphs of HTML lesson blocks, now fill the content column instead of stopping at 56ch (about 640–670 px): 1200, the same as the platform pages (Nelson). They stop at a new DS token, `Container/text-max-width`, for now an alias of `Container/content-max-width`, so a shorter reading measure is one value in Figma. Prototype PRs 393 and 394 (`max-w-text`); decision 033.
+
 ## 2026-10-27 · Course completion counts say "Topics:"
 
 On the Course Detail Progress tab, the Course completion card's counts line starts with **Topics:** — *"Topics: 16 complete · 26 incomplete · 0 locked"* (Nelson, ICP `6406:41528`). The three numbers still come from `completion_summary`; only the label is new. Prototype PR 392; details in `course-details-metadata-map.md` §12.5.
