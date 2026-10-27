@@ -46,12 +46,13 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 030 | Studio, the fourth brand skin, replaces the Sea proposal | Foundations | 1 | accepted | designer, dev, stakeholder | [030](030-studio-brand-skin.md) |
 | 031 | A topic's content stops at Container/content-max-width (1200); the video keeps the full width at half the viewport | Foundations | 1 | accepted | designer, dev | [031](031-content-max-width-token.md) |
 | 032 | The space between sections, columns and cards comes from eight Layout/* tokens | Foundations | 1 | accepted | designer, dev | [032](032-layout-rhythm-tokens.md) |
+| 033 | Running text stops at its own token, Container/text-max-width, for now the 1200 of the content column | Foundations | 1 | accepted | designer, dev | [033](033-text-max-width-token.md) |
 
 ## Filter by track
 
 - **ICP** (immersive & content types): 001, 002, 004, 006, 008, 009, 011, 019, 020, 021, 022, 023
 - **LMS** (platform pages): 005, 007, 010, 025 *(more to come as the Platform Pages track develops)*, 029
-- **Foundations** (design system): 003, 012, 013, 014, 015, 016, 017, 018, 024, 026, 027, 028, 032
+- **Foundations** (design system): 003, 012, 013, 014, 015, 016, 017, 018, 024, 026, 027, 028, 032, 033
 
 ## Filter by audience
 
