@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-27 · Course completion counts say "Topics:"
+
+On the Course Detail Progress tab, the Course completion card's counts line starts with **Topics:** — *"Topics: 16 complete · 26 incomplete · 0 locked"* (Nelson, ICP `6406:41528`). The three numbers still come from `completion_summary`; only the label is new. Prototype PR 392; details in `course-details-metadata-map.md` §12.5.
+
 ## 2026-10-26 · My Certificates by program (ICP)
 
 The ICP draws the My Certificates page by program, as the prototype (PR 378): on Earned, one block per program, `Layout/stack-gap` apart. An earned program certificate is the large card at the top of its block, then "N of M course certificates", its course certificates in course order (four at most, then "Show all N"). A program not earned yet has its title, the count, "Program certificate when all M courses are complete." and View program, then its course cards. Then "Other courses". On In progress: the program title, "N course(s) in progress", the program row with its bar and "N of M courses complete", the course rows ("Course certificate · Course 2 of 7"), then Other courses. Course cards read "Issued 9 April 2026. Course 1 of 5." WIP page, Certificates: Earned desktop, tablet, mobile and In progress desktop.
