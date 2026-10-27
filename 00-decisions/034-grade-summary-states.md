@@ -44,7 +44,7 @@ Ulmo and later add an amber notice under the grade, *"Some assignment scores are
 These grades will be released by {date}."*, and show "50% + Hidden Scores" (or a lock) in the table. Add that row
 when the platform runs Ulmo or later; not designed until then.
 
-**Design** — DS `LMS/ICP/Assessment/Grade-Summary` 1.1 (Result = Not started · Below pass · Passing · Submitted below
+**Design** — DS `LMS/ICP/Assessment/Grade-Summary` 1.2 (Result = Not started · Below pass · Passing · Submitted below
 pass · Course ended; the Progress bar is exposed for the fill and the hover tooltip) and
 `LMS/Platform/Course-Detail/Completion-Card` 1.3 (now a variant set, State = Not started · In progress · Completed;
 "Show locked"). ICP: the Course Detail Progress screens and an edge-case showcase beside them, plus the proposal
