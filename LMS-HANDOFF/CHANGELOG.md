@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-27 · Grade summary states and Completion card 1.3
+
+The Course Detail Progress tab's Grade summary has five states (decision 034): Not started, Below pass (neutral), Passing (green), Submitted below pass (amber) and Course ended (red, the only red one: the end date has passed and the learner is not passing). The percentage replaces the verdict badge, a sentence under the title says where the learner stands, the current-grade tooltip shows on hover only, item scores are neutral and unsubmitted items read "Not started". Open edX has no failed state; scores waiting for grading count as 0 until Ulmo adds its "not yet included" notice. The Course completion card shows "16 of 42 topics complete.", a Gray "N locked topics" badge only when there is locked content, and Badge "Completed" at 100%. DS Grade-Summary 1.1 and Completion-Card 1.3 (a variant set now); prototype PR 397; details in `course-details-metadata-map.md` §12.5.
+
 ## 2026-10-27 · Reading text runs the full column, on its own token
 
 The Reading lede, paragraphs and pull quote, and the paragraphs of HTML lesson blocks, now fill the content column instead of stopping at 56ch (about 640–670 px): 1200, the same as the platform pages (Nelson). They stop at a new DS token, `Container/text-max-width`, for now an alias of `Container/content-max-width`, so a shorter reading measure is one value in Figma. Prototype PRs 393 and 394 (`max-w-text`); decision 033.
