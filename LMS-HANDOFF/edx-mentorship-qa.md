@@ -49,6 +49,13 @@ Nelson: option **D** for now: Q&A is question posts in the course discussions, p
 candidate for research and stakeholder approval (B or C). Prototype PR 410; ICP Q&A, Ask-a-question modal, Services
 ("Ask your mentor").
 
+## What SkillUp has, and status (meeting 28 Oct 2026)
+
+The course Discussion tab is used as Open edX ships it; Kirti renamed it Mentorship Q&A and removed "Following",
+because learners only use it to ask mentors. **On hold** until a mentorship strategy session (Kirti) defines the
+model: real or AI mentor, cohort vs self-paced, Open edX discussions or something else. See
+[`meeting-2026-10-28-progress-dates-qa.md`](meeting-2026-10-28-progress-dates-qa.md).
+
 ## Sources
 
 - Anatomy of course discussions (learners, Teak):

@@ -86,6 +86,13 @@ designs commit to it.
 The panel, the Dashboard "Stay informed" and the DS now use only the four Open edX types above (prototype PR 410,
 ICP 09 Notifications). The custom types are out until research and stakeholder approval.
 
+## What SkillUp has (meeting 28 Oct 2026)
+
+Simran: nothing about the course is sent to learners today. Kirti: a mentor's reply in Q&A raises a notification on
+the dashboard. The LinkedIn Learning courses had a custom set-up (mentor notified of submissions, learner of grades,
+pass/fail email). **To check (dev):** the Open edX release of our install and whether Notifications is on. See
+[`meeting-2026-10-28-progress-dates-qa.md`](meeting-2026-10-28-progress-dates-qa.md).
+
 ## Sources
 
 - Learner notifications and preferences (Teak):
