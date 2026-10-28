@@ -84,6 +84,11 @@ is the only place a learner sees them.
 2. **The missed-deadline alert:** §14.2b drew it as dismissible. In Open edX it is not dismissible (the prototype
    already follows Open edX).
 
+## Applied (28 Oct 2026, decision 035)
+
+Nelson chose amber for Past due. Prototype PR 410 (`lib/platform/edx-dates.ts`), DS Date-Row 1.1, Due-Item 1.3,
+Calendar Month-Event 1.1 (Status Past due), ICP Dates cards 07–09.
+
 ## Sources
 
 - Dates tab API: https://docs.openedx.org/projects/edx-platform/en/ulmo/references/docstrings/lms/lms.djangoapps.course_home_api.dates.html

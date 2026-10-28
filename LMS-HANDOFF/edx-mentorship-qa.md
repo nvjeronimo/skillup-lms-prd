@@ -43,6 +43,12 @@ Our current Q&A screens (WIP, Row 4, not approved) draw a list of threads and a 
 the forum almost one to one (§14.3). With 1-to-1 they need B or C. **Decision for product and BA**, with dev
 sizing B and C.
 
+## Decision (28 Oct 2026, decision 035)
+
+Nelson: option **D** for now: Q&A is question posts in the course discussions, public to the course. 1-to-1 stays a
+candidate for research and stakeholder approval (B or C). Prototype PR 410; ICP Q&A, Ask-a-question modal, Services
+("Ask your mentor").
+
 ## Sources
 
 - Anatomy of course discussions (learners, Teak):

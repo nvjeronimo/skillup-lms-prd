@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-28 · Decision 035: everything Open edX-based
+
+Nelson: no extra development; a custom feature needs research and stakeholder approval. Applied: Mentorship Q&A becomes public question posts in the course discussions; past due is amber ("Past due", never red) on the Dates tab, Calendar and Dashboard; the Dates tab shows Open edX's date types and badges only; notifications only the four types Open edX sends. DS Date-Row 1.1, Due-Item 1.3, Month-Event 1.1, Stay-Informed-Row 1.1 (unpublished); prototype PR 410; ICP WIP screens.
+
 ## 2026-10-28 · Open edX notifications, Dates tab and Mentorship Q&A, researched
 
 Two discovery notes from the Open edX docs and code. [`edx-notifications.md`](edx-notifications.md): four mechanisms (the bell + email digests, the nudge emails, weekly goal reminders, the course team's messages); no notification for deadlines, quiz grades or certificates, and no mobile push. [`edx-dates-tab.md`](edx-dates-tab.md): one API, eight date types, six badges (Today, Completed, Past due, Due next, Not yet released, Verified only), Shift due dates only after a missed deadline in self-paced courses; our Dates screens differ on Overdue, Upcoming, Locked and row descriptions. Third note, [`edx-mentorship-qa.md`](edx-mentorship-qa.md): Open edX has no private 1-to-1 messaging (Nelson wants Q&A 1-to-1); the options are a third-party discussion tool or a custom build. Notes added beside the screens in the ICP.

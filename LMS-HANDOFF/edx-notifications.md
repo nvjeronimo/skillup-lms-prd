@@ -81,6 +81,11 @@ A deadline reminder, a quiz grade alert or a "certificate earned" message is Ski
 build (Open edX events or signals plus our own email or notification service). BA and dev should size it before the
 designs commit to it.
 
+## Applied (28 Oct 2026, decision 035)
+
+The panel, the Dashboard "Stay informed" and the DS now use only the four Open edX types above (prototype PR 410,
+ICP 09 Notifications). The custom types are out until research and stakeholder approval.
+
 ## Sources
 
 - Learner notifications and preferences (Teak):
