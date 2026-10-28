@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-28 · Open edX notifications, Dates tab and Mentorship Q&A, researched
+
+Two discovery notes from the Open edX docs and code. [`edx-notifications.md`](edx-notifications.md): four mechanisms (the bell + email digests, the nudge emails, weekly goal reminders, the course team's messages); no notification for deadlines, quiz grades or certificates, and no mobile push. [`edx-dates-tab.md`](edx-dates-tab.md): one API, eight date types, six badges (Today, Completed, Past due, Due next, Not yet released, Verified only), Shift due dates only after a missed deadline in self-paced courses; our Dates screens differ on Overdue, Upcoming, Locked and row descriptions. Third note, [`edx-mentorship-qa.md`](edx-mentorship-qa.md): Open edX has no private 1-to-1 messaging (Nelson wants Q&A 1-to-1); the options are a third-party discussion tool or a custom build. Notes added beside the screens in the ICP.
+
 ## 2026-10-27 · Grade summary states and Completion card 1.3
 
 The Course Detail Progress tab's Grade summary has five states (decision 034): Not started, Below pass (neutral), Passing (green), Submitted below pass (amber) and Course ended (red, the only red one: the end date has passed and the learner is not passing). The percentage replaces the verdict badge, a sentence under the title says where the learner stands, the current-grade tooltip shows on hover only, item scores are neutral and unsubmitted items read "Not started". Open edX has no failed state; scores waiting for grading count as 0 until Ulmo adds its "not yet included" notice. The Course completion card shows "16 of 42 topics complete.", a Gray "N locked topics" badge only when there is locked content, and Badge "Completed" at 100%. DS Grade-Summary 1.2 and Completion-Card 1.3 (a variant set now); prototype PR 397; details in `course-details-metadata-map.md` §12.5.

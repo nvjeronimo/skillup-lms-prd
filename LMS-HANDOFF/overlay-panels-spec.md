@@ -83,6 +83,9 @@ Token bindings (use these — no hex):
 
 ### Notification types — required coverage
 
+> **28 Oct 2026:** Open edX sends only Discussions, Course updates and ORA grade notifications. Assignment due,
+> live session and syllabus change are custom builds. See [`edx-notifications.md`](edx-notifications.md).
+
 | Type | Example | Icon | CTA on click |
 |---|---|---|---|
 | Live session reminder | "Live now: Office hours with Sarah" | live-dot | Open VILT Live screen |
