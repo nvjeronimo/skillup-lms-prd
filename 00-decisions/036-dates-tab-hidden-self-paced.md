@@ -29,5 +29,14 @@ later.
 **Dev impact** — Do not render the Dates tab for self-paced courses. Note also: without due dates there is no
 "Shift due dates" alert and no deadline in the Calendar or the Dashboard "Due this week" list on today's courses.
 
+**Applied (28 Oct 2026)**
+- Prototype PR 411: `hasDatesTab` / `courseTabsFor`. A self-paced course (Flexible Learning) shows no Dates tab, no
+  Upcoming dates card and no Shift due dates alert; `?tab=dates` opens the Course tab. Calendar deadlines, its Shift
+  due dates block and the Dashboard due list carry a `data-mock` note (example, no due dates today).
+- ICP: the Dates tab, the Upcoming dates card and the missed-deadline alert hidden on every Course-tab screen
+  (Ready for Dev: 14 tabs, 11 cards, 3 alerts; WIP rows 01–16: 22 tabs, 16 cards, 5 alerts). The screens with the
+  Dates tab open stay as they are. The Dates note card carries this decision.
+- Sample assignment type "Homework" → "Assignment" in the prototype, DS Date-Row 1.1 (unpublished) and the ICP.
+
 **Alternatives rejected** — Showing start and expiry dates on self-paced courses (no value); building custom date
 types (decision 035).
