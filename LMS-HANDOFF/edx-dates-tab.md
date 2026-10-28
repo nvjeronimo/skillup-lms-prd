@@ -89,6 +89,13 @@ is the only place a learner sees them.
 Nelson chose amber for Past due. Prototype PR 410 (`lib/platform/edx-dates.ts`), DS Date-Row 1.1, Due-Item 1.3,
 Calendar Month-Event 1.1 (Status Past due), ICP Dates cards 07–09.
 
+## What SkillUp configures (meeting 28 Oct 2026)
+
+Only the course start and end dates are set; no due dates have ever been configured. On today's courses the tab would
+show the publication date and the expiry date only. **Decision 036:** no Dates tab on self-paced courses, the tab is
+on hold, and instructor-led live sessions go through the Calendar. See
+[`meeting-2026-10-28-progress-dates-qa.md`](meeting-2026-10-28-progress-dates-qa.md).
+
 ## Sources
 
 - Dates tab API: https://docs.openedx.org/projects/edx-platform/en/ulmo/references/docstrings/lms/lms.djangoapps.course_home_api.dates.html

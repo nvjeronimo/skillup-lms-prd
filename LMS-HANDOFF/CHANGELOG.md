@@ -15,6 +15,10 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-28 · Meeting on Progress, Dates and Mentorship Q&A; decision 036
+
+Review call with Kirti, Navdeep, Simran and Shivam ([`meeting-2026-10-28-progress-dates-qa.md`](meeting-2026-10-28-progress-dates-qa.md)). Progress approved (Kirti raises the ticket). Dates: SkillUp configures only start and end dates, so no Dates tab on self-paced courses and the tab is on hold (decision 036). Mentorship Q&A on hold until a mentorship strategy session. Notifications: check what our install has. ORA is staff-graded on a rubric (peer and self steps off); assignment types are per course ("Knowledge check" in Microsoft courses), never "Homework".
+
 ## 2026-10-28 · Decision 035: everything Open edX-based
 
 Nelson: no extra development; a custom feature needs research and stakeholder approval. Applied: Mentorship Q&A becomes public question posts in the course discussions; past due is amber ("Past due", never red) on the Dates tab, Calendar and Dashboard; the Dates tab shows Open edX's date types and badges only; notifications only the four types Open edX sends. DS Date-Row 1.1, Due-Item 1.3, Month-Event 1.1, Stay-Informed-Row 1.1 (unpublished); prototype PR 410; ICP WIP screens.
