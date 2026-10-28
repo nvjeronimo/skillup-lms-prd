@@ -83,15 +83,18 @@ Token bindings (use these — no hex):
 
 ### Notification types — required coverage
 
-| Type | Example | Icon | CTA on click |
+> **28 Oct 2026:** Open edX sends only Discussions, Course updates and ORA grade notifications. Assignment due,
+> live session and syllabus change are custom builds. See [`edx-notifications.md`](edx-notifications.md).
+
+| Type (Open edX) | Example | Icon | CTA on click |
 |---|---|---|---|
-| Live session reminder | "Live now: Office hours with Sarah" | live-dot | Open VILT Live screen |
-| Live session T-15 | "Office hours starts in 15 min" | live-dot | Open VILT Join Live screen |
-| Course update | "Sarah added new content: Prompt review recording" | plus | Open the new topic |
-| Assignment due | "Practice Quiz is due in 2 days" | calendar | Open the assignment |
-| Discussion reply | "Carlos M. replied to your discussion" | chat | Open thread |
-| Peer review received | "Anonymous peer rated your submission 4/5" | star | Open submission detail |
-| Syllabus change | "Module 04 syllabus updated" | document | Open syllabus |
+| Discussions · activity | "Carlos M. responded to your post" · "Your response was endorsed" | message-circle-01 | Open the thread |
+| Discussions · instructor post | "Sarah Lee posted in {course}: Office hours recap" | announcement-01 | Open the post |
+| Updates · course update | "New course update in {course}" | plus | Open the course update |
+| Grading · ORA grade received | "You received 8 out of 10 on your assessment: Control plan" | stars-01 | Open the submission |
+
+Since 28 Oct 2026 (decision 035) live-session reminders, assignment-due reminders, syllabus changes and peer ratings
+are out: Open edX does not send them.
 
 ### Footer
 - "View all notifications" link → navigate to a full Notifications page (out of prototype scope, but link should be wired).

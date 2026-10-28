@@ -1139,6 +1139,10 @@ developer measuring the artboard would ship the sample's 15% as a constant.
 
 ### 14.2 Dates — a whole tab for two rows
 
+> **28 Oct 2026:** the full logic of the Open edX Dates tab (eight date types, six badges, the alerts) and how our
+> screens differ from it are in [`edx-dates-tab.md`](edx-dates-tab.md). It corrects two points of §14.2b: the
+> Locked row and the dismissible alert.
+
 `GET learning/course/{course_key}/dates`. Returns `dates_banner_info`, `course_date_blocks[]`, `has_ended`,
 `learner_is_full_access`, `user_timezone`.
 
@@ -1206,6 +1210,9 @@ not the platform's; and `enrollment_start` / `enrollment_end` exist on the Cours
 `course_date_blocks`, so putting them in this list means injecting them from another call.
 
 ### 14.3 Mentorship Q&A — a correction, and the forum does almost all of it
+
+> **28 Oct 2026:** Nelson wants Q&A to be 1-to-1 (learner ↔ mentor). Open edX has no private messaging: the
+> forum below is course-wide or per cohort. Options and sources in [`edx-mentorship-qa.md`](edx-mentorship-qa.md).
 
 **This section previously said no learner-facing discussion API exists. That was wrong**, and the error is
 worth naming precisely: it was true of the **SK-11378 workbook**, which documents only two forum endpoints and
