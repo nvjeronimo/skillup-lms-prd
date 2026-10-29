@@ -2,7 +2,8 @@
 
 ICP review call (about 43 min). Kirti Mishra (BA, lead), Navdeep Malhotra, Simran Jindal (content / course
 operations), Shivam Tripathi (technical), Nelson Jerónimo (design). Notes written from the recording; the recording
-and the transcript are not kept in this public repo.
+and the transcript are not kept in this public repo. Kirti's minutes (MoM, Teams, 29 Oct) agree with these notes;
+what they add is folded in below.
 
 It adds what the SkillUp team actually configures to the Open edX research of the same day:
 [`edx-notifications.md`](edx-notifications.md), [`edx-dates-tab.md`](edx-dates-tab.md),
@@ -13,9 +14,9 @@ It adds what the SkillUp team actually configures to the Open edX research of th
 | Tab | Outcome | Who |
 |---|---|---|
 | **Progress** | **Approved to go ahead.** Kirti raises the ticket. | Kirti |
-| **Dates** | **Not worked on for now. Hide it for self-paced courses.** For instructor-led courses, the live sessions are covered by the Calendar (being built); whether the Dates tab repeats them is decided later. | Navdeep, Kirti |
+| **Dates** | **Not worked on for now. Hide it for self-paced courses.** For instructor-led courses, the live sessions are covered by the Calendar (being built); whether the Dates tab repeats them is decided later, after discovery and a discussion with HK and the extended team (MoM). | Navdeep, Kirti |
 | **Mentorship Q&A** | **On hold** until the mentorship strategy is defined (real mentor or AI mentor, cohort vs self-paced, Open edX discussions or something else). A separate ~30 min session, Kirti to set it up. | Navdeep, Kirti |
-| **Notifications** | Open question: what already exists on our install and what would have to be built. | Navdeep |
+| **Notifications** | Open question: what already exists on our install and what would have to be built. The MoM treats the dashboard alerts in the design as likely new functionality, pending this check. | Nelson, Navdeep |
 
 ## Progress tab: how SkillUp courses work
 
@@ -62,10 +63,28 @@ courses.
 - To check (dev): which Open edX release our install runs and whether the Notifications feature is on
   (`edx-notifications.md`: in the Teak learner guide, official in Ulmo, on by default from Verawood).
 
+## Action items (Kirti's MoM)
+
+| # | Action | Owner |
+|---|---|---|
+| 1 | Raise the ticket for the Progress tab | Kirti Mishra |
+| 2 | Check which notification capabilities already exist through the APIs, and what needs to be built | Nelson Jerónimo, Navdeep Malhotra |
+| 3 | Set up a call with the extended team on the Dates tab and the mentorship strategy | Kirti Mishra |
+
+For action 2, the Open edX side is answered in [`edx-notifications.md`](edx-notifications.md): the platform
+notifies discussion activity, instructor posts, course updates and ORA grades, nothing about deadlines, quiz
+grades, pass or fail, or certificates. What is left is the install itself (release and Notifications flag), which
+needs Navdeep or dev.
+
+Open questions in the MoM: whether any notification functionality already exists that the dashboard alerts can
+build on; what the Dates tab shows for instructor-led courses and where those dates come from; the mentorship model
+(Open edX discussions or something else); whether learners see each other's posts in Mentorship Q&A ("Following"
+and group visibility are possible but wait for the model).
+
 ## Open items
 
 1. Dates tab: hide for self-paced courses (decision 036); decide later for instructor-led courses vs the Calendar.
 2. Mentorship strategy session (Kirti), then Q&A design.
-3. Notifications: release and feature flag on our install (dev).
+3. Notifications: release and feature flag on our install (Navdeep or dev; Open edX side done, see above).
 4. Assignment-type names in samples: use SkillUp's (Graded quiz, Assignment, Project, Lab, or the course's own such
    as "Knowledge check"), never "Homework".
