@@ -15,6 +15,23 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-30 · Program › Certificates without progress; View certificate on every earned row
+
+Nelson: a learner may take a program's courses in any order, so the path of steps added to the program's Certificates tab earlier the same day (prototype PR 438) could mislead; and the progress already shows in the program header, My Learning and the Dashboard. The tab now uses the full width (no Program dates / instructor sidebar) and holds:
+- the Program certificate card: the sheet, or a muted preview with "Complete all N courses"; "Program certificate" (+ Earned); "Yours when all N courses are complete." or the issue line; View certificate + Share once earned; what it gives (partners, a verifiable ID, LinkedIn). A plain card in both states, no green fill;
+- "Course certificates one per course" under the Dashboard Section header, a section gap below the card;
+- a card for every course of the program, titled without "Course n ·": earned, or a muted preview of the sheet it will issue with "Pass the course", "Not earned yet" and the two conditions, without bars.
+
+On My Certificates every earned row says View certificate (course rows said View), and a row's thumb opens the course or program page, as its title does.
+
+Prototype PRs 438, 439, 440, 441, 442, 443, 444. DS, published: `Program-Certificate` 1.2 (segments, course in progress, program title and Download removed), `Certificate-Card` 1.4 (new `Status=Preview`), `Certificate-Row` 1.3 (View certificate). ICP: the WIP screens 04 / 05 / 06 · LMS-Program-Certificates redrawn (r2), the previous ones kept as SUPERSEDED; on 05 · Certificates the Program-Certificates-Card instances were swapped by script to the current library version (the accepted update had left them on the old copy).
+
+## 2026-10-30 · My Certificates: a ledger by program
+
+Nelson: the Earned / In progress tabs split a program whose certificates are partly issued, and Programs vs Other courses was not clear. The tabs are gone. Two DS Button groups, Programs | Single courses and All | In progress | Earned, sit over column labels (Certificate, Status). One card per program: its certificate row on bg/subtle (Earned with View certificate + Share, or the courses complete over a bar with View program), a fold line ("N of M course certificates earned") and every course of the program as a row on a rail, earned or not: Earned (sheet, date, View + Share), In progress (bar, Continue), Not started (View course). Single courses sit in one card. On phones the rows stack and start folded; a row without a certificate is a link with a chevron.
+
+Prototype PR 437. DS, published: `Certificate-Row` 1.2 (Kind Earned / In progress / Not started × Level Course / Program × Layout Row / Stacked) and `Program-Certificates-Card` 1.2 (Kind Program / Single courses × Breakpoint). ICP: the WIP frame 05 · Certificates redrawn (r4: Programs on desktop, tablet and mobile, Single courses on desktop); the 29 Oct screens kept as SUPERSEDED. This replaces the "one card per program" entry below.
+
 ## 2026-10-30 · My Certificates: one card per program
 
 Nelson: the grid of large certificate cards became confusing as certificates added up. Each program now gets one card, with the My Learning program hero on top. Below the hero comes the program certificate:

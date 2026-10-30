@@ -244,7 +244,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Program-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22808) | v1.14 | 2026-10-22 | Published | 6 | 2026-10-22 · Footer labels *Up next* / *Certificate issued* uppercase, as the Course-Card overlines |
 | [Program-Quick-View](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23326-588201) | v1.1 | 2026-10-23 | In review | 0 | 2026-10-23 · 1.1: What's included between Certificate and About (prototype PR 302). New (proposal): the quick view of a program — Breakpoint Desktop (modal 640) / Mobile (full screen) |
 | [Form-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23377-1733) | v1.0 | 2026-10-23 | Published | 0 | 2026-10-23 · New: `LMS/Platform/Overlays/Form-Modal` on the new page ↳ Overlays; Breakpoint Desktop (560) / Mobile (full screen); Title, Description (+ show), Show cancel, Content slot; prototype PR 300 |
-| [Program-Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23384-2341) | v1.0 | 2026-10-23 | Published | 3 | 2026-10-23 · New: `LMS/Platform/Program-Detail/Program-Certificate`, the program certificate leading the Certificates tab; State Not earned / Earned × Layout Wide (840) / Stacked (343); props Title, Status, Issued line, Next course, Partners; prototype PR 303 |
+| [Program-Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23384-2341) | v1.2 | 2026-10-30 | Published | 4 | 2026-10-30 · 1.2: what the program certificate gives, not how far along: course segments, course in progress (Resume, What's needed), program title and Download removed; award disc + "Program certificate" (+ Earned); plain card; props Title and Next course removed; prototype PRs 438, 439, 443. 2026-10-28 · 1.1: completed segment green, share-07. 2026-10-23 · New, prototype PR 303 |
 
 **Discovery**
 
@@ -295,7 +295,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
 | [Certificate](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537956) | v1.1 | 2026-10-08 | Published | 1 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.2 | 2026-10-20 | Published | 4 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
+| [Certificate-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22009-22360) | v1.4 | 2026-10-30 | Published | 5 | 2026-10-30 · 1.4: new Status=Preview (muted sheet, "Pass the course", "Not earned yet", two conditions without bars) for the program's Certificates tab; prototype PRs 439, 440. 2026-10-29 · 1.3: progress track on bg/track. 2026-10-20 · 1.2: corner radii on the role tokens (decision 028) |
 | [Share-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22898-584515) | v1.1 | 2026-10-20 | Published | 0 | 2026-10-20 · 4 px padding all round, rows on Radius/card-inset (8), panel on Radius/card (decision 028) |
 | [Certificate-Document](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.2 | 2026-10-20 | Published | 3 | 2026-10-20 · Pinned to SKO Light: the sheet keeps its printed colours on dark screens (prototype PR 205) |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
@@ -304,8 +304,8 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 
 | Component | Version | Since | Status | Variants | Last change recorded |
 |---|---|---|---|---:|---|
-| [Certificate-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23738-1035) | v1.0 | 2026-10-29 | Published | 4 | 2026-10-29 · New: one course certificate as a compact row on the My Certificates page; Kind Earned / In progress × Layout Row (desktop, tablet) / Stacked (mobile); props Title, Meta, Issued, Detail, Divider; prototype PR 428 |
-| [Program-Certificates-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23740-8586) | v1.1 | 2026-10-30 | Published | 9 | 2026-10-30 · 1.1: hero defaults match the default title (Initials DA, 5 courses on Earned); the cover stays an instance override. 2026-10-29 · New: one program on the My Certificates page (Program-Card hero, program certificate, Show / Hide over its Certificate-Row rows); State Earned / Not earned / Other courses × Breakpoint Desktop / Tablet / Mobile; prototype PR 428 |
+| [Certificate-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23738-1035) | v1.3 | 2026-10-30 | Published | 12 | 2026-10-30 · 1.3: every earned row says View certificate (prototype PR 441); the thumb links to the course or program page (PR 442). 2026-10-30 · 1.2: Kind Earned / In progress / Not started × Level Course / Program × Layout Row / Stacked (prototype PR 437). 2026-10-29 · New, prototype PR 428 |
+| [Program-Certificates-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23740-8586) | v1.2 | 2026-10-30 | Published | 6 | 2026-10-30 · 1.2: the ledger by program: Kind Program / Single courses × Breakpoint Desktop / Tablet / Mobile; the program's Certificate-Row on bg/subtle, a fold line (Open, Fold label, Fold chevron) and up to 7 course rows on a rail; prototype PR 437. 2026-10-30 · 1.1: hero defaults. 2026-10-29 · New, prototype PR 428 |
 
 **Calendar**
 
@@ -577,6 +577,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-26 | `LMS / Profile Menu` | v1.8 → v1.9 | Nelson: "Certificates" becomes "My Certificates" in the menu and on the page (prototype PR 370). Only the row label; the glance figure, the Services tile and the program page's Certificates tab keep "Certificates". Not published yet. |
 | 2026-10-29 | `Certificate-Row`, `Program-Certificates-Card` | new, v1.0 | The My Certificates page by program (prototype PR 428): one card per program with its course certificates as compact rows behind Show / Hide. |
 | 2026-10-30 | `Program-Certificates-Card` | v1.0 → v1.1 | Hero defaults: Initials DA, Course count 5 courses on `State=Earned`, to match the default title. |
+| 2026-10-30 | `Certificate-Row`, `Program-Certificates-Card` | v1.0 → v1.2, v1.1 → v1.2 | The ledger by program (prototype PR 437): Certificate-Row gets Kind Not started and Level Program; Program-Certificates-Card becomes Kind Program / Single courses with a fold line and course rows on a rail. ICP 05 · Certificates r4. |
+| 2026-10-30 | `Program-Certificate`, `Certificate-Card`, `Certificate-Row` | v1.1 → v1.2, v1.3 → v1.4, v1.2 → v1.3 | Program › Certificates without progress (prototype PRs 438–444): Program-Certificate loses segments, course in progress, program title and Download; Certificate-Card gets Status=Preview; Certificate-Row says View certificate. ICP Program Certificates 04 / 05 / 06 r2. |
 
 ## Rename map (8 Oct 2026)
 
