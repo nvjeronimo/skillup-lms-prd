@@ -26,6 +26,7 @@ Status: 🔴 blocked · 🟠 in progress · ⚪ not started · ✅ done (kept fo
 | 15 | **BR-39 amendment (reduced motion):** "use instant transitions" → remove travel, keep opacity/colour feedback, stop loops, progress jumps (motion-matrix §6). Proposed, not applied. | BA | ⚪ | `03-design-system/motion-matrix.md` §6 · ADR 024 (14 Oct 2026) |
 | 16 | **Team approval of the 13 motion tokens** (Material names, our values) (21 Sep rule for new tokens); the Figma `Motion` collection is already published (14 Oct 2026, Nelson's request). Also confirm Q7 (Material names over the v1 draft names). | Nelson / team | ⚪ | motion-matrix §9 Q6–Q7 · ADR 024 proposed |
 | 17 | ~~Merge the six motion PRs~~ → **merged 14 Oct 2026** (#153–#160). The phone progress signal is done too: a 28 px ring in the mobile topbar (prototype #164, DS `Topbar` v1.1, not published). | Nelson | ✅ | motion-matrix §8 |
+| 18 | **Delete Account — next-release UX fixes** (Release 1 ships as built): copy of Steps 1 and 2; **new** deletion-request confirmation screen (14-day grace period, what happens next); **new** login interstitial during the grace period (logging in cancels the deletion; choose to log in or keep it). 3 and 4 are functional gaps, priority. | Nelson (design) · Nilesh (dev) | ⚪ | [`LMS-HANDOFF/delete-account-release-2.md`](LMS-HANDOFF/delete-account-release-2.md) · Nelson's message, 30 Oct 2026 |
 
 ## Optional / non-blocking
 
