@@ -28,3 +28,9 @@ phase: 1
 **Amended 14 Oct 2026 (Nelson)** — `approx.` goes **after** the time, never before it: "8 min read approx.", "60 min
 approx.", "2h 30m remaining approx.". When it appears is unchanged. In the design system the atom `LMS / Duration`
 carries it: a *Time* text and an *Approx* boolean that shows "approx." after the time.
+
+**Applied 30 Oct 2026** — The ICP sidebars (Video, Quizzes and Reading pages) carry the rule: Reading "8 min read
+approx."; untimed practice and graded quizzes, Activity and Graded assignments "N min approx."; Video never. This
+follows the prototype's estimated types (`isEstimatedDuration`: Reading, Lab, Activity, Project, Practice and Graded
+Assignment, Peer review). A quiz loses "approx." only when it is timed. The quiz headers now show the same duration
+as their sidebar row, and their sidebar marks the quiz as the open row.
