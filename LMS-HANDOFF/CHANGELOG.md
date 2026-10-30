@@ -15,6 +15,16 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-30 · My Certificates: one card per program
+
+Nelson: the grid of large certificate cards became confusing as certificates added up. Each program now gets one card, with the My Learning program hero on top. Below the hero comes the program certificate:
+- once earned: its sheet, an Earned badge, the issue date, View certificate and Share;
+- before that: the course count over a bar, and View program.
+
+A Show / Hide button ("Show N of M course certificates", closed by default) opens the program's course certificates. Each is a compact row with the sheet, title, "Course n of N", issue date, View and Share. Courses outside a program share one "Other courses" card. The In progress tab uses the same cards, with progress rows. The Grid / List toggle and "Show all N" are gone.
+
+Prototype PR 428. New DS components, published: `Certificate-Row` 1.0 and `Program-Certificates-Card` 1.1. The ICP WIP page, frame 05 · Certificates, was redrawn with them (Earned on desktop, tablet and mobile, plus In progress on desktop). The screens of 29 Oct before this change are kept as SUPERSEDED in the same frame. This replaces the 26 Oct by-program layout below.
+
 ## 2026-10-28 · Meeting on Progress, Dates and Mentorship Q&A; decision 036
 
 Review call with Kirti, Navdeep, Simran and Shivam ([`meeting-2026-10-28-progress-dates-qa.md`](meeting-2026-10-28-progress-dates-qa.md)). Progress approved (Kirti raises the ticket). Dates: SkillUp configures only start and end dates, so no Dates tab on self-paced courses and the tab is on hold (decision 036). Mentorship Q&A on hold until a mentorship strategy session. Notifications: check what our install has. ORA is staff-graded on a rubric (peer and self steps off); assignment types are per course ("Knowledge check" in Microsoft courses), never "Homework".

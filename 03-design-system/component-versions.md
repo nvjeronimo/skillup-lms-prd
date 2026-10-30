@@ -201,7 +201,7 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [LMS / Profile Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22783-184) | v1.9 | 2026-10-26 | Published | 1 | 2026-10-26 · The Certificates row reads "My Certificates" (prototype PR 370). 2026-10-24 · Profile section first (Edit profile, Certificates), above Appearance (prototype PR 315). Earlier: 2026-10-21 · Sign out in a group of its own after Profile, icon/error; scrolls on a phone |
 | [Progress circle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-23976) | v1.2 | 2026-10-21 | Published | 3 | 2026-10-21 · New `Size=xxxxs`, 32 px ring (band 3) with the % inside in body-small/Semibold, for the player Topbar on Mobile |
 
-### LMS · Platform (`LMS/Platform/…`): 53
+### LMS · Platform (`LMS/Platform/…`): 55
 
 **Assistant** (on the page `❖ LMS · IN REVIEW / NOT FOR BUILD`, frame *Assistant · floating chat · WIP*)
 
@@ -299,6 +299,13 @@ The old names, for anything written before 8 Oct, are in *Rename map* at the end
 | [Share-Menu](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22898-584515) | v1.1 | 2026-10-20 | Published | 0 | 2026-10-20 · 4 px padding all round, rows on Radius/card-inset (8), panel on Radius/card (decision 028) |
 | [Certificate-Document](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22261-2968) | v1.2 | 2026-10-20 | Published | 3 | 2026-10-20 · Pinned to SKO Light: the sheet keeps its printed colours on dark screens (prototype PR 205) |
 | [Course-Complete-Modal](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=19975-537944) | v1.0 | 2026-10-08 | Published | 1 | 2026-10-08 · Renamed from “LMS / Course Complete Modal” |
+
+**Certificates** (on the page `↳ Completion`)
+
+| Component | Version | Since | Status | Variants | Last change recorded |
+|---|---|---|---|---:|---|
+| [Certificate-Row](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23738-1035) | v1.0 | 2026-10-29 | Published | 4 | 2026-10-29 · New: one course certificate as a compact row on the My Certificates page; Kind Earned / In progress × Layout Row (desktop, tablet) / Stacked (mobile); props Title, Meta, Issued, Detail, Divider; prototype PR 428 |
+| [Program-Certificates-Card](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23740-8586) | v1.1 | 2026-10-30 | Published | 9 | 2026-10-30 · 1.1: hero defaults match the default title (Initials DA, 5 courses on Earned); the cover stays an instance override. 2026-10-29 · New: one program on the My Certificates page (Program-Card hero, program certificate, Show / Hide over its Certificate-Row rows); State Earned / Not earned / Other courses × Breakpoint Desktop / Tablet / Mobile; prototype PR 428 |
 
 **Calendar**
 
@@ -568,6 +575,8 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-25 | `Horizontal tabs`, `_Tab button base` | v1.1 → v1.2 | Nelson: "Sim, pode criar uma variante maior no DS". New Size=lg, cloned from md (20 Horizontal tabs variants, 36 tab-button variants): label on headline-small/Semibold; the Breakpoint=Mobile variants on title-large/Semibold with the Responsive mode set to Mobile (18, as the prototype). Padding, gap, count badge and selected bar unchanged (md tokens). Existing sizes untouched. Prototype PRs 341, 342. Not published yet; the ICP platform-page tab instances move to lg after the publish. |
 | 2026-10-25 | `Horizontal tabs` 1.2, `Sticky-Toolbar` 1.1 | published | Nelson published both; the ICP platform-page tabs moved to Size=lg (95 instances: Ready for Dev, WIP, Lab page). Found on the swap: the published `_Tab button base` Size=lg variants had lost the link between the Badge layer and the `Badge` property (cloned from md), so hidden count badges showed; fixed in the DS (36 variants relinked), needs one more publish. The ICP instances hide the badge by override meanwhile. |
 | 2026-10-26 | `LMS / Profile Menu` | v1.8 → v1.9 | Nelson: "Certificates" becomes "My Certificates" in the menu and on the page (prototype PR 370). Only the row label; the glance figure, the Services tile and the program page's Certificates tab keep "Certificates". Not published yet. |
+| 2026-10-29 | `Certificate-Row`, `Program-Certificates-Card` | new, v1.0 | The My Certificates page by program (prototype PR 428): one card per program with its course certificates as compact rows behind Show / Hide. |
+| 2026-10-30 | `Program-Certificates-Card` | v1.0 → v1.1 | Hero defaults: Initials DA, Course count 5 courses on `State=Earned`, to match the default title. |
 
 ## Rename map (8 Oct 2026)
 
