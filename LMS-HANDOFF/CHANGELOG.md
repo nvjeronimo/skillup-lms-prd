@@ -15,6 +15,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-10-31 · Program certificate stepper; Earned on course certificates; share menu
+
+Nelson: the program's Certificates tab brings back the course stepper on the Program certificate card (the progress bar, not the path of steps removed on 30 Oct): one segment per course in program order, green once complete, light blue in progress, grey not started, with "N of M courses complete" under it. It shows before and after the certificate is issued (all green once earned). Issued course certificates carry a green "Earned" badge at the far end of the "Certificate" eyebrow row; the title keeps its own line. The share menu on My Certificates opened under the card's edge and was clipped: it now opens upwards when there is no room below, and the program card no longer clips its content.
+
+Prototype PRs 445, 446, 447, 448, 449. DS, published: `Program-Certificate` 1.3 (stepper on the two Not earned variants, TEXT property Progress line) and `Certificate-Card` 1.5 (Earned badge on the label row). ICP: Program Certificates 04 / 05 / 06 redrawn (r3), the 24 instances swapped by key to the published versions (the accepted update had left them on the old copy). Not yet in the DS or the ICP: the stepper on the Earned variants of `Program-Certificate` (PR 449). Known difference: the DS Earned `Certificate-Card` still shows Download, the prototype only View and Share.
+
 ## 2026-10-30 · Program › Certificates without progress; View certificate on every earned row
 
 Nelson: a learner may take a program's courses in any order, so the path of steps added to the program's Certificates tab earlier the same day (prototype PR 438) could mislead; and the progress already shows in the program header, My Learning and the Dashboard. The tab now uses the full width (no Program dates / instructor sidebar) and holds:
