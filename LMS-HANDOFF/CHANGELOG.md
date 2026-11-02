@@ -15,6 +15,12 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-11-02 · Certificate icon on Earned badges; lighter program row
+
+Nelson: an issued certificate's Earned badge leads with the certificate icon (award-01) instead of a check, on course and program certificates alike. On My Certificates the program's own row sits on the card's white instead of a grey band, and the rail beside its course rows is 1px.
+
+Prototype PRs 450, 451. DS, published: `Program-Certificate` 1.5, `Certificate-Card` 1.6, `Certificate-Row` 1.4 and `Program-Certificates-Card` 1.3. ICP: once the library update was accepted (after a tab reload), every live instance on the WIP platform pages reads the new versions (57 Certificate-Card, 3 Program-Certificate, 7 Program-Certificates-Card); SUPERSEDED and Archived screens untouched.
+
 ## 2026-10-31 · Program certificate stepper; Earned on course certificates; share menu
 
 Nelson: the program's Certificates tab brings back the course stepper on the Program certificate card (the progress bar, not the path of steps removed on 30 Oct): one segment per course in program order, green once complete, light blue in progress, grey not started, with "N of M courses complete" under it. It shows before and after the certificate is issued (all green once earned). Issued course certificates carry a green "Earned" badge at the far end of the "Certificate" eyebrow row; the title keeps its own line. The share menu on My Certificates opened under the card's edge and was clipped: it now opens upwards when there is no room below, and the program card no longer clips its content.
