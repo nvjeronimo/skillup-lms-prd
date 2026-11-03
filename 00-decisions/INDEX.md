@@ -52,11 +52,12 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 036 | The Dates tab is not shown on self-paced courses; its design is on hold | LMS | 1 | accepted | designer, dev, stakeholder | [036](036-dates-tab-hidden-self-paced.md) |
 | 037 | The Course Journey sidebar is 3 of 12 columns, between 280 and 400 | ICP | 1 | accepted | designer, dev | [037](037-course-journey-sidebar-width.md) |
 | 038 | A video topic shows the type · duration row and its completed badge, like every other topic | ICP | 1 | accepted | designer, dev | [038](038-video-topic-header-meta-row.md) |
+| 039 | Download a certificate from its page only; cards and rows offer View and Share | LMS | 1 | accepted | designer, dev | [039](039-certificate-download-on-page-only.md) |
 
 ## Filter by track
 
 - **ICP** (immersive & content types): 001, 002, 004, 006, 008, 009, 011, 019, 020, 021, 022, 023, 037, 038
-- **LMS** (platform pages): 005, 007, 010, 025 *(more to come as the Platform Pages track develops)*, 029, 034, 035, 036
+- **LMS** (platform pages): 005, 007, 010, 025 *(more to come as the Platform Pages track develops)*, 029, 034, 035, 036, 039
 - **Foundations** (design system): 003, 012, 013, 014, 015, 016, 017, 018, 024, 026, 027, 028, 032, 033
 
 ## Filter by audience
