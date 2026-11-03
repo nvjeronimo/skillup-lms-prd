@@ -19,7 +19,7 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 Nelson (decision 039): an issued certificate is downloaded from the certificate page, where the document is open; every card and row that lists certificates offers View and Share. Download had left the My Certificates rows and the Program certificate card on 30 Oct without a decision, and was still on the course certificate cards, so the rule is now one.
 
-Prototype PR 455 (`CertificateCard` without Download: Program › Certificates, Course Detail sidebar, Progress tab). DS `Certificate-Card` 1.7 (Earned: View + Share; anatomy updated), to publish. ICP: the Earned instances follow after the publish.
+Prototype PR 455 (`CertificateCard` without Download: Program › Certificates, Course Detail sidebar, Progress tab). DS `Certificate-Card` 1.7 (Earned: View + Share; anatomy updated), published. ICP: the 57 live instances swapped by script to 1.7 (the accepted update had left them on 1.6).
 
 ## 2026-11-02 · Certificate icon on Earned badges; lighter program row
 

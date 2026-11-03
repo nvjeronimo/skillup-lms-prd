@@ -26,7 +26,7 @@ Certificates, the Certificate card in the Course Detail sidebar and the Progress
 (the open vendor questions). The `download_url` named in the 15 Sep course-states note is to be confirmed with the vendor.
 
 **Design** — DS `Certificate-Card` 1.7: Status=Earned-Certificate has View (fills) + Share; anatomy marker 6 and
-its legend row removed. ICP: the Earned Certificate-Card instances follow after the publish.
+its legend row removed. Published 3 Nov; ICP: the 57 live Certificate-Card instances on 1.7.
 
 **Dev impact** — `CertificateCard` (prototype PR 455) drops the Download button; `CertificatePageView` keeps
 *Download certificate*.
