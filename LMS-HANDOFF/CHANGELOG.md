@@ -15,6 +15,14 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+## 2026-11-03 · Mentorship Q&A keeps Post anonymously; thread title fills the header
+
+Nelson (decision 040): the reply composer keeps *Post anonymously*. Open edX shows it whenever the course has `allow_anonymous: true`, as the SkillUp courses do; the Q&A is a public forum post since 28 Oct, and staff (the mentor included) always see the name.
+
+The open question's title and author line fill the conversation header up to the menu button (Nelson): prototype PR 461; ICP 03 · Course Detail Row 4, the two desktop and the tablet headers set to Fill (mobile already was). Not a DS component, so nothing to publish.
+
+The certificate page's *Download certificate* prints the sheet alone, one A4 landscape page (Save as PDF), and shows in the Open edX scope (prototype PRs 456, 459; decision 039).
+
 ## 2026-11-03 · Certificates download from their page only
 
 Nelson (decision 039): an issued certificate is downloaded from the certificate page, where the document is open; every card and row that lists certificates offers View and Share. Download had left the My Certificates rows and the Program certificate card on 30 Oct without a decision, and was still on the course certificate cards, so the rule is now one.
