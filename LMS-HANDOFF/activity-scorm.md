@@ -82,6 +82,14 @@ package reports. On a phone the window is a new tab.
 - **The package's *Exit course*** saves its progress (SCORM finish) and stays inside the frame. Our *Next* still
   goes to the next topic.
 - **On a phone** the package uses its own compact menu.
+- **Since 4 Nov 2026** ([meeting notes](meeting-2026-11-04-scorm-youtube.md)):
+  - A packaged course is **one topic**, named after the course, with no modules or lessons of ours.
+  - The collapsed sidebar shows only that topic.
+  - The footer reads *1 of 1* with the course name, and there is no Previous.
+  - The course progress is **0% until the package reports completion, then 100%**, green at 100%. Nothing inside
+    the package is visible to us (Navdeep, Vikas).
+  - The package is not redesigned or tested by us: the content team checks it (Jaspinder).
+  - Navdeep would hide our navigation entirely. Nelson keeps the collapsed sidebar for now.
 
 ## 4. Built from the DS, and the local stand-ins
 
@@ -107,4 +115,6 @@ fullscreen bars and 12 launch cards.
 - **What the package's *Exit course* does inside our frame:** to check on a real package. Some packages close their
   window, and in a frame that does nothing.
 - **Not checked yet:** dark mode, and copy review with the content team.
+- **4 Nov 2026:** Kirti is getting a real package (from Simran and Ayesha) to test on, and is running an isolated
+  progress test.
 - **No prototype screens yet:** `ActivityView` / `ScormContainer` predate these decisions.
