@@ -26,7 +26,7 @@ SCORM videos to be covered too, because many programs mix the three.
 
 ## What we did with it (4 Nov 2026)
 
-**Figma, ICP file, page *Phase 1 · Video Lessons*.** Two new rows after row 8, desktop, In review:
+**Figma, ICP file, page *Phase 1 · Video Lessons*.** Two new rows after row 8, In review. Desktop shows every state; tablet (960) and mobile (375) were added the same day (cards 9.2, 9.3, 10.2, 10.3):
 
 - **Row 9 · YouTube, progress not tracked.** This is the YouTube embed placed in a Text component, which is what
   Kirti tested.
@@ -71,6 +71,6 @@ Groups A–C (a package inside a unit) stay WIP.
 - Vikas: can the *Watch on YouTube* exit be blocked? (discovery ticket)
 - Vikas: how the SkillUp YouTube videos are authored today (embed or Video component), and how many there are.
 - Kirti: the isolated SCORM progress test (a unit with only the package).
-- The YouTube rows on tablet and mobile, and in Dark: not drawn yet.
+- The YouTube rows in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
 - Hiding our navigation entirely on a packaged course (Navdeep) versus the collapsed sidebar (Nelson's choice for
   now).

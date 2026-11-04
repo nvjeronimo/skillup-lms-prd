@@ -217,7 +217,7 @@ a partner's platform. The Video screens were not changed.*
 ## YouTube videos (4 Nov 2026)
 
 A video topic can play a YouTube video in two ways. The screens are on the Figma *Phase 1 · Video Lessons* page:
-row 9 and row 10, desktop, In review. Source: [meeting of 4 Nov 2026](meeting-2026-11-04-scorm-youtube.md).
+row 9 and row 10, In review: desktop with every state, plus tablet and mobile (cards 9.2, 9.3, 10.2, 10.3). Source: [meeting of 4 Nov 2026](meeting-2026-11-04-scorm-youtube.md).
 
 | | YouTube embed in a Text component (row 9) | Video component with a YouTube ID (row 10) |
 |---|---|---|
