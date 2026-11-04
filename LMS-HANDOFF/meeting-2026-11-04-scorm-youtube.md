@@ -21,8 +21,25 @@ SCORM videos to be covered too, because many programs mix the three.
 | **SCORM package** | **Not redesigned.** We have no control over what runs inside the frame, and we do not test the package: the content team checks it, we only upload it (Jaspinder). | Navdeep |
 | **SCORM course in the ICP** | A packaged course is **one topic**, named after the course, with no modules or lessons of ours. It opens the whole package, with its own menu. Navdeep asked to hide our own navigation as far as possible so the package gets the screen. | Navdeep, Nelson |
 | **SCORM progress** | **Not disabled.** The course is 0% until the package reports completion, then 100% (Navdeep, Vikas). | — |
-| **Test package** | Kirti asks Simran and Ayesha for a SCORM package for Nelson to test with. | Kirti |
+| **Test package** | Kirti asks Simran and Ayesha for a SCORM package for Nelson to test with. Shared the same day: four packages. | Kirti |
 | **Planning** | Not a major priority (the mobile app comes first), but it can go into this sprint. | Janvi |
+
+## Kirti's minutes (Teams, 4 Nov 2026)
+
+The minutes agree with these notes. They add the following:
+
+- **Discovery ticket (Kirti raises it, Vikas and the tech team check, this sprint):**
+  - can *Watch on YouTube* be restricted;
+  - can progress be synced;
+  - are transcripts or subtitles possible through an API.
+- **SCORM single-topic design (Navdeep and Nelson):**
+  - explore the topic title (likely the course name);
+  - hide the extra topic tab and the left navigation;
+  - play it full screen.
+- **Dates:** YouTube designs start 5 Nov, with a sync on Fri 6 Nov. Designs are due Mon 9 or Tue 10 Nov.
+- **Test packages:** Kirti shared four SCORM 1.2 packages (GenAI for Finance) the same day.
+  - They play in the prototype's *SCORM Test Course* (prototype PR 468).
+  - One of them, M12 *Clearing the Deck*, makes no SCORM calls, so it never reports completion.
 
 ## What we did with it (4 Nov 2026)
 
