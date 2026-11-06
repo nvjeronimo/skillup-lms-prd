@@ -323,28 +323,35 @@ A Topic **is** an Open edX `vertical` unit — an ordered stack of components. W
 
 **Reading, Lab and Lesson Page share the same shape:** no anchor, a curated set of primitives, and a manual/read completion. They differ only in which primitives the preset / template seeds and the badge/label — which is exactly why the composer model collapses them into one engine.
 
-### 6d. Who sets the topic type — Studio or the content creator? (6 Nov 2026)
+### 6d. Who sets the topic type — Open edX or the content creator? (6 Nov 2026)
 
-**Short answer: Studio never sets it; the content creator does.** Open edX has no topic-type field. On its own, Studio only picks the outline icon from the unit's components (video, problem, other) and knows nothing about Reading, Lab, Podcast or VILT.
+**Short answer: Open edX sets it automatically, but only three types exist; for our other types, someone has to decide.** Verified in the edx-platform source (23 Sep 2026, BA business rules BR-43 to BR-46):
 
-- **Today:** the content creator writes the type into the unit's display name ("Video: Introduction to…") and the LMS reads it from there. A naming convention, not a platform feature.
-- **Proposal (sent to Navdeep and the dev team, 6 Nov 2026):**
+- Open edX derives the type from the components in the unit (`vertical_block.get_icon_class`); **authors have no field for it**. The topic header's type label, its icon and the sidebar row icon all read this value.
+- **Problem wins:** any problem in the unit (MCQ, checkboxes, dropdown, numerical, text input, ORA), graded or not → `problem` (our Quiz), even when the unit also has a video.
+- **Then video:** a unit with a video → `video` (our Video; podcasts count).
+- **Everything else** → `other` (our Reading): text, images, iframes, embedded PDFs, Drag and Drop.
+- Grading never changes the type. Adding more types means replacing the rule through the `OVERRIDE_GET_UNIT_ICON` hook, an engineering decision.
 
-| How the type is known | Types | Why |
+So **Reading, Video and Quiz are automatic**. Our other types do not exist in the platform: Lab and Lesson Page come out as `other` (Reading), Podcast as `video`, Final Project (ORA) as `problem`, and a Video lesson with a knowledge check also comes out as `problem` (Quiz). The July note that the type "is encoded in the display name ("Video: …")" describes how the content team names units, not something the platform reads.
+
+**Proposal (6 Nov 2026), for Navdeep and the dev team:**
+
+| How the type is known | Types | How |
 |---|---|---|
-| **Derived from the anchor block** (no choice needed) | Activity (`scorm`) · Final Project (`openassessment`) · VILT Live (`lti_consumer`) · Quiz (graded `problem` set; Practice / Graded / Final from the subsection's grading metadata) | The anchor is unique to the type (§6c) |
-| **Chosen by the content creator, as a unit tag** (Studio content tagging / taxonomy) | Reading · Lab · Lesson Page (all `html` + downloads) · Video · Podcast (both `video`) | Same blocks, so only the author can tell them apart |
-| **Fallback** (no tag, no anchor) | Reading | The type the prototype uses when none is set; to confirm |
+| **Automatic, as today** | Reading (`other`) · Video (`video`) · Quiz (`problem`) | BR-43 to BR-46, no change |
+| **Automatic, by extending the rule** (one hook, engineering) | Activity (`scorm`) · Final Project (`openassessment`) · VILT Live (`lti_consumer`) · Video with a knowledge check stays Video (an ungraded problem next to a video) | `OVERRIDE_GET_UNIT_ICON` reads the unit's anchor block (§6c), recursing into `split_test` / `library_content` / `conditional` |
+| **Chosen by the content creator** (unit tag, Studio content tagging / taxonomy) | Lab vs Reading vs Lesson Page (all `other`) · Podcast vs Video (both `video`) | Same blocks, so only the author can tell them apart; without a tag the automatic type stays |
 
-Rule: **derived when possible, chosen by the content creator otherwise, never read from the title** (decision 022). The anchor check must recurse into `split_test` / `library_content` / `conditional`.
+Rule: **automatic wherever the blocks tell the types apart, chosen by the content creator only where they cannot, never read from the title** (decision 022).
 
-YouTube cases of 4 Nov fit the rule: Video Lessons row 9 (YouTube embedded in a Text component) is `html` with no anchor, so it completes by hand; row 10 (Video component with a YouTube ID) has the `video` anchor and completes by itself.
+YouTube cases of 4 Nov fit the rule: Video Lessons row 9 (YouTube embedded in a Text component) has no video component, so Open edX calls it `other` and it completes by hand; row 10 (Video component with a YouTube ID) is `video` and completes by itself.
 
 **Questions for the dev team** (open, Q10):
-1. Does our Open edX version have Studio content tagging (taxonomies) enabled on units, and can the LMS / MFE read those tags through the API?
-2. If not, which is the least effort: a custom unit field, a course-level mapping, or keeping the naming convention for now with a parser in one place only?
-3. Any objection to deriving the type from the anchor block, including recursing into transparent containers?
-4. Who maintains the taxonomy (the list of types), and can the content team apply it in bulk to existing courses?
+1. Are we willing to extend the type rule through `OVERRIDE_GET_UNIT_ICON` (Activity, Final Project, VILT Live, and Video winning over an ungraded problem)? Does the MFE read the type from the same place, so header, sidebar and outline agree?
+2. Does our Open edX version have Studio content tagging (taxonomies) on units, and can the LMS / MFE read those tags through the API?
+3. If not, is there a lighter way for the content team to mark Lab, Lesson Page and Podcast (a custom unit field, a course-level mapping)?
+4. Who maintains the list of types, and can the content team tag existing courses in bulk?
 
 ### Adding a new Topic Content Type — the registration rule
 
@@ -391,7 +398,7 @@ Two platform constraints to flag to devs now:
 
 ### For Rashid / devs
 9. **Do our units contain single or multiple components?** Determines whether we design one screen per type or a composable unit shell. → verify against a course export.
-10. **How should topic type be resolved?** Today it is encoded in the display name ("Video: …"). Recommend unit **tags/taxonomy** so the player never parses titles. **6 Nov 2026:** proposal and four questions sent to the dev team — see §6d (derived from the anchor block when there is one, otherwise a unit tag chosen by the content creator).
+10. **How should topic type be resolved?** Open edX derives three types automatically (problem, video, other; BR-43 to BR-46). **6 Nov 2026:** proposal and four questions sent to the dev team — see §6d (extend the rule through `OVERRIDE_GET_UNIT_ICON` where the blocks differ, a unit tag chosen by the content creator where they do not, never parsed from titles).
 11. **Rendering strategy** — theme the `render_xblock` iframe, re-implement natively, or hybrid? (Recommendation: hybrid — see [quizzes/04-quiz-experience-spec.md](quizzes/04-quiz-experience-spec.md).)
 12. **How do we build Role Play / Dialogue / Programming Assignment** on an edX backend?
 13. **Component-stacking in *our* courses** (see §6b) — the platform limits are now verified (SCORM = 1/unit, ORA = 1/unit, Discussion = unit-level). What remains is course-specific: do our units actually stack multiple components today, and do any stack more than one *graded* block per unit? → verify against a real course export (SKOAIH01).
