@@ -323,6 +323,29 @@ A Topic **is** an Open edX `vertical` unit — an ordered stack of components. W
 
 **Reading, Lab and Lesson Page share the same shape:** no anchor, a curated set of primitives, and a manual/read completion. They differ only in which primitives the preset / template seeds and the badge/label — which is exactly why the composer model collapses them into one engine.
 
+### 6d. Who sets the topic type — Studio or the content creator? (6 Nov 2026)
+
+**Short answer: Studio never sets it; the content creator does.** Open edX has no topic-type field. On its own, Studio only picks the outline icon from the unit's components (video, problem, other) and knows nothing about Reading, Lab, Podcast or VILT.
+
+- **Today:** the content creator writes the type into the unit's display name ("Video: Introduction to…") and the LMS reads it from there. A naming convention, not a platform feature.
+- **Proposal (sent to Navdeep and the dev team, 6 Nov 2026):**
+
+| How the type is known | Types | Why |
+|---|---|---|
+| **Derived from the anchor block** (no choice needed) | Activity (`scorm`) · Final Project (`openassessment`) · VILT Live (`lti_consumer`) · Quiz (graded `problem` set; Practice / Graded / Final from the subsection's grading metadata) | The anchor is unique to the type (§6c) |
+| **Chosen by the content creator, as a unit tag** (Studio content tagging / taxonomy) | Reading · Lab · Lesson Page (all `html` + downloads) · Video · Podcast (both `video`) | Same blocks, so only the author can tell them apart |
+| **Fallback** (no tag, no anchor) | Reading | The type the prototype uses when none is set; to confirm |
+
+Rule: **derived when possible, chosen by the content creator otherwise, never read from the title** (decision 022). The anchor check must recurse into `split_test` / `library_content` / `conditional`.
+
+YouTube cases of 4 Nov fit the rule: Video Lessons row 9 (YouTube embedded in a Text component) is `html` with no anchor, so it completes by hand; row 10 (Video component with a YouTube ID) has the `video` anchor and completes by itself.
+
+**Questions for the dev team** (open, Q10):
+1. Does our Open edX version have Studio content tagging (taxonomies) enabled on units, and can the LMS / MFE read those tags through the API?
+2. If not, which is the least effort: a custom unit field, a course-level mapping, or keeping the naming convention for now with a parser in one place only?
+3. Any objection to deriving the type from the anchor block, including recursing into transparent containers?
+4. Who maintains the taxonomy (the list of types), and can the content team apply it in bulk to existing courses?
+
 ### Adding a new Topic Content Type — the registration rule
 
 *Learned the hard way while building the prototype (Jul 22, 2026). Worth a panel in Figma.*
@@ -368,7 +391,7 @@ Two platform constraints to flag to devs now:
 
 ### For Rashid / devs
 9. **Do our units contain single or multiple components?** Determines whether we design one screen per type or a composable unit shell. → verify against a course export.
-10. **How should topic type be resolved?** Today it is encoded in the display name ("Video: …"). Recommend unit **tags/taxonomy** so the player never parses titles.
+10. **How should topic type be resolved?** Today it is encoded in the display name ("Video: …"). Recommend unit **tags/taxonomy** so the player never parses titles. **6 Nov 2026:** proposal and four questions sent to the dev team — see §6d (derived from the anchor block when there is one, otherwise a unit tag chosen by the content creator).
 11. **Rendering strategy** — theme the `render_xblock` iframe, re-implement natively, or hybrid? (Recommendation: hybrid — see [quizzes/04-quiz-experience-spec.md](quizzes/04-quiz-experience-spec.md).)
 12. **How do we build Role Play / Dialogue / Programming Assignment** on an edX backend?
 13. **Component-stacking in *our* courses** (see §6b) — the platform limits are now verified (SCORM = 1/unit, ORA = 1/unit, Discussion = unit-level). What remains is course-specific: do our units actually stack multiple components today, and do any stack more than one *graded* block per unit? → verify against a real course export (SKOAIH01).
