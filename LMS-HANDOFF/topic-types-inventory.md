@@ -347,11 +347,29 @@ Rule: **automatic wherever the blocks tell the types apart, chosen by the conten
 
 YouTube cases of 4 Nov fit the rule: Video Lessons row 9 (YouTube embedded in a Text component) has no video component, so Open edX calls it `other` and it completes by hand; row 10 (Video component with a YouTube ID) is `video` and completes by itself.
 
-**Questions for the dev team** (open, Q10):
+**Questions for the dev team** (sent 6 Nov 2026):
 1. Are we willing to extend the type rule through `OVERRIDE_GET_UNIT_ICON` (Activity, Final Project, VILT Live, and Video winning over an ungraded problem)? Does the MFE read the type from the same place, so header, sidebar and outline agree?
 2. Does our Open edX version have Studio content tagging (taxonomies) on units, and can the LMS / MFE read those tags through the API?
 3. If not, is there a lighter way for the content team to mark Lab, Lesson Page and Podcast (a custom unit field, a course-level mapping)?
 4. Who maintains the list of types, and can the content team tag existing courses in bulk?
+
+**Dev team answers (Vikas Goyal, 9 Nov 2026):**
+
+| Question | Answer | What it means for the proposal |
+|---|---|---|
+| Extend the rule through `OVERRIDE_GET_UNIT_ICON` | **Partially.** It changes the icons in the LMS courseware, but not in the MFE sidebar or outline; those need a separate update. | The "automatic, by extending the rule" row is **two changes**: the hook and an MFE update. |
+| Does the MFE read the type from the same place? | **Yes.** Header, sidebar and outline use the same API field. The MFE turns it into labels such as **Video, Graded, Practice, Activity and Reading**. **Lab detection is handled separately.** | Header, sidebar and outline cannot disagree. The MFE already splits `problem` into Graded and Practice and already has an Activity label. |
+| Studio content tagging on units, readable by the LMS / MFE? | **Studio supports unit tagging, but the LMS and MFE cannot read the tags today**; they would have to be exposed through an API. | The tag route is custom development: under the Open edX-based only rule it needs research and stakeholder approval. |
+| A lighter way to mark Lab, Lesson Page and Podcast? | **Yes.** Some content can be identified from existing block types; for the rest: the unit format, a custom field, or Studio tags once the API exists. | Three candidates for the "chosen by the content creator" row; the cheapest one is not yet clear. |
+| Who maintains the list; bulk tagging? | **Two options:** Studio tags managed by content administrators, or a list in code maintained by developers. Bulk tagging through CSV import/export or a custom script; existing courses must be updated separately. | A decision for us (below). |
+
+**Follow-up questions (9 Nov 2026, open):**
+1. How does the MFE detect a Lab today ("handled separately")? If it already works, can Lesson Page and Podcast use the same mechanism?
+2. Is the "unit format" a field that ships with Open edX and that the content creator sets in Studio, with no development? Which values does it take?
+3. Where does the MFE's Activity label come from: the SCORM block? If so, Activity is already half done.
+4. Graded and Practice: the ICP has one Quiz type. Do the labels come from the subsection's grading (graded vs not), and should the ICP show them?
+
+**Our recommendation (9 Nov 2026, pending Nelson's decision):** the list of types lives **in code, maintained by the developers**; types the blocks tell apart stay automatic (hook + MFE update); for Lab, Lesson Page and Podcast use the mechanism that already detects Labs, or the unit format, whichever needs no new API. Studio tags only if the API work is approved later.
 
 ### Adding a new Topic Content Type — the registration rule
 
