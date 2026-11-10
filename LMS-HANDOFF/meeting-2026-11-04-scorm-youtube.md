@@ -83,11 +83,55 @@ Groups A–C (a package inside a unit) stay WIP.
   `lesson_status`) to the SCORM XBlock, so the course can reach 100%. If a package never reports, the topic falls
   back to Next asks (group C1).
 
+## Follow-up call, 10 Nov 2026
+
+A short call (about 10 min) with Simran Jindal (content), Kirti Mishra, Jaspinder Kaur Sehmi and Nelson Jerónimo.
+Notes written from the transcript. The transcript is not kept in this public repo.
+
+| Topic | Outcome | Who |
+|---|---|---|
+| **Splitting a package** | **Not possible.** A SCORM package is uploaded as the zip it arrives in. The content team cannot take files out of it, so our sidebar cannot be built from the package's own modules. | Simran |
+| **How packages map to topics** | **One zip per topic.** If a course arrives as three packages, it gets three topics in Studio. If it arrives as one, it gets one topic. | Simran |
+| **Two SCORM course shapes** | **Both are real.** Which one applies depends on the files the content team receives. (1) Several packages, each a topic inside our modules, with our normal sidebar. (2) One package for the whole course, with its own menu, and our sidebar collapsed. This answers the question after the 6 Nov sync (one package or several). | Nelson, Kirti |
+| **Mixed courses** | **Yes.** A course can mix SCORM activities, Azure videos and readings. Simran showed one: a SCORM activity in a course with readings and an Azure video. | Simran |
+| **SCORM in Studio** | It is added with the SCORM component and plays in a frame (iframe). It is an activity, not a video. | Simran, Nelson |
+| **Review** | Kirti, Simran and Jaspinder will go through the prototype before Kirti closes the ticket, and will tell Nelson about anything worth flagging. | Kirti |
+| **YouTube in one player** | **Still open, for Vikas.** Navdeep's 4 Nov question: can YouTube play inside our ICP video player (the same one as Azure), so learners always see one player? Nelson will tag Vikas on this question alone. | Nelson, Vikas |
+| **Minutes** | Kirti will send the minutes so they can be shared with Navdeep. | Kirti |
+
+## What we did with it (9–10 Nov 2026)
+
+**Prototype, test program *SCORM and YouTube Test Program*.**
+
+- PR 472 adds course 7, *Golf Explained*. It is a public Rustici sample (CC BY 3.0) given a menu like Rise's. It is the first package with its own sidebar we tested.
+- PR 475 makes the frame of a course package the height of the window instead of 16:9. On the phone the frame was 176 px high, which hid the package's own navigation. PR 475 also marks the test panel as test-only.
+- PR 476 adds the content team's real packages:
+  - Course 8, *POSH: Prevention of Sexual Harassment*: an Articulate Rise course with its own menu and videos.
+  - Course 9, *Final Quiz (Ungraded)*: POSH's final assessment, a separate Articulate Storyline package (10 questions, pass mark 80%).
+
+  POSH is therefore one real course delivered as **two packages**, which is shape (1) above.
+
+**Figma, page *Activity · SCORM*, group D.** Six cards, In review, built from the prototype screenshots:
+
+- D4, D4.2, D4.3: POSH (desktop, tablet, mobile).
+- D5, D5.2, D5.3: the quiz (desktop, tablet, mobile).
+
+**Findings on the real packages:**
+
+- Rise draws its own *EXIT COURSE* and its own *0% COMPLETE* beside our exit and our progress.
+- Storyline has its own NEXT button above our Next.
+- Both packages connect and report *incomplete*, and Rise resumes where the learner left off.
+- Not yet checked: completion to 100%, the quiz's pass or fail score, and full screen.
+
 ## Still open
 
+- Vikas: can YouTube play inside our video player, one player for Azure and YouTube? (asked again 10 Nov)
+- Kirti, Simran, Jaspinder: review of the prototype before the ticket closes.
+- Shape (1), several packages as topics inside our modules (groups A–C), is still WIP in Figma.
+- Duplicate controls: Rise's exit and progress, and Storyline's Next, sit beside ours. We do not change the package, so the copy or placement around it may need a note for the content team.
 - Vikas: can the *Watch on YouTube* exit be blocked? (discovery ticket)
 - Vikas: how the SkillUp YouTube videos are authored today (embed or Video component), and how many there are.
 - Kirti: the isolated SCORM progress test (a unit with only the package).
 - The YouTube rows in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
-- Hiding our navigation entirely on a packaged course (Navdeep) versus the collapsed sidebar (Nelson's choice for
-  now).
+- Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
+  drawn in group D and confirmed on 10 Nov).
