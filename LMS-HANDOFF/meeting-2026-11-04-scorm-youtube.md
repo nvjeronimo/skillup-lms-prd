@@ -179,12 +179,30 @@ prototype and a new frame in Figma, and nothing else changes.
 
 **Where it lives:**
 - Prototype PR 480, *SCORM and YouTube Test Program*:
-  - course 10, *POSH · proposed flow, one package* (points 1 and 2);
-  - course 11, *POSH · proposed flow, two packages* (point 3, the Rise course and the Storyline quiz as two topics).
+  - course 5, *POSH · proposed flow, one package* (points 1 and 2);
+  - course 6, *POSH · proposed flow, two packages* (point 3, the Rise course and the Storyline quiz as two topics).
   - Only these two courses change.
 - Figma, page *Activity · SCORM*, section **E · Proposal · improved package flow**: a note and eight cards from the
   prototype screenshots (E1, E1.2, E1.3: the package alone; E2, E3: the status on the course page and the program row;
   E4, E4.2, E4.3: Next asks).
+
+## Test program cleaned up (11 Nov 2026)
+
+Nelson had every SCORM course removed from the prototype's test program unless a course zip from SkillUp backs it
+(prototype PR 481):
+- **Removed:**
+  - courses 3 to 6: the four GenAI for Finance activities, each presented as a whole course. They are real zips, but
+    single activities, and no course had reached us in that shape;
+  - course 7, *Golf Explained*: Rustici's public sample with a course menu we added. Its files are gone too.
+- **Kept:**
+  - the four activities inside the units of the *SCORM Test Course*;
+  - POSH, now **course 3**, and its final quiz, now **course 4**;
+  - the proposal courses, now **courses 5 and 6**.
+- **Figma, Activity · SCORM:** cards D6 to D10, built from the removed courses, are marked SUPERSEDED and kept for
+  history. The other cards now give the new course numbers.
+
+Also fixed in the prototype (PR 482): the course page showed *Content to be provided.*, "Module 1 ·" and "1 topics"
+for a module whose topics sit straight under it, which is the case of every course package.
 
 ## Still open
 
