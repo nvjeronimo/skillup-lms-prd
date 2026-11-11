@@ -154,6 +154,38 @@ Azure and YouTube. Navdeep's sign-off on the YouTube designs is still pending. K
 is only a video. POSH is the one package with video: 22 MP4s inside the Rise course, played by Rise's own player, so
 our video player, transcript and progress do not apply to them.
 
+## Proposal: an improved course-package flow (11 Nov 2026, not decided)
+
+What the progress check changes for the design. A proposal for Nelson to decide; the reference is a new course in the
+prototype and a new frame in Figma, and nothing else changes.
+
+1. **A course that is one package shows a status, never a percentage**: *Not started*, *Started*, *Completed*, with
+   no bar, on the course card, the program row and the course page. Today our 0% contradicts the package's own
+   "80% COMPLETE" until the package reports *completed*. Open edX knows whether the learner has started (Learner
+   Home: Begin vs Resume).
+2. **In the player, nothing of ours around a course that is one package**: no sidebar, no Course Journey button, no
+   progress ring, no footer (*1 of 1* and a Next that leads nowhere). The package brings its own menu, progress and
+   exit; the top bar's close returns to the course page. This is Navdeep's ask of 4 Nov and **reverses Nelson's
+   collapsed-sidebar choice: to decide.**
+3. **A course of several packages keeps our sidebar and footer, and Next asks** before leaving a package that has not
+   reported completion: *This activity hasn't recorded completion yet* · **Stay on the activity** (primary) /
+   **Continue anyway**. No *Yes, completed*: we cannot mark a package complete. A package that never reports keeps C1.
+4. **An export checklist for the content team** (via Nelson, to Simran):
+   - turn off Rise's *Exit course* link (POSH has `enableExitCourse` on);
+   - choose when the package reports *completed*, consistent with what the course tells learners (POSH tells them to
+     mark every section, but completes on the Storyline block);
+   - say whether packages are SCORM 1.2 or 2004;
+   - can Rise's own "% COMPLETE" be hidden?
+
+**Where it lives:**
+- Prototype PR 480, *SCORM and YouTube Test Program*:
+  - course 10, *POSH · proposed flow, one package* (points 1 and 2);
+  - course 11, *POSH · proposed flow, two packages* (point 3, the Rise course and the Storyline quiz as two topics).
+  - Only these two courses change.
+- Figma, page *Activity · SCORM*, section **E · Proposal · improved package flow**: a note and eight cards from the
+  prototype screenshots (E1, E1.2, E1.3: the package alone; E2, E3: the status on the course page and the program row;
+  E4, E4.2, E4.3: Next asks).
+
 ## Still open
 
 - Navdeep: sign-off on the YouTube designs (rows 9 and 10). Vikas answered the one-player question on 11 Nov: yes.
@@ -164,7 +196,8 @@ our video player, transcript and progress do not apply to them.
 - Vikas: how the SkillUp YouTube videos are authored today (embed or Video component), and how many there are.
 - Kirti: the isolated SCORM progress test (a unit with only the package).
 - Simran: confirm the Rise completion setting used for POSH (Storyline block), and whether any package is exported as
-  SCORM 2004.
+  SCORM 2004 (the export checklist of the proposal above).
+- Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).
 - The YouTube rows in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
 - Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
   drawn in group D and confirmed on 10 Nov).
