@@ -95,7 +95,7 @@ package reports. On a phone the window is a new tab.
   - Navdeep would hide our navigation entirely. Nelson keeps the collapsed sidebar for now.
   - **Proposal of 11 Nov 2026, not decided:** a single-package course shows a status (no percentage) and nothing
     of ours around the package; a multi-package course asks on Next before leaving an unfinished package. Prototype
-    PR 480 (courses 10 and 11), Figma section E. See the
+    PR 480 (courses 5 and 6 since PR 481), Figma section E. See the
     [meeting notes](meeting-2026-11-04-scorm-youtube.md#proposal-an-improved-course-package-flow-11-nov-2026-not-decided).
 
 ## 4. Built from the DS, and the local stand-ins
