@@ -86,10 +86,17 @@ package reports. On a phone the window is a new tab.
   - A packaged course is **one topic**, named after the course, with no modules or lessons of ours.
   - The collapsed sidebar shows only that topic.
   - The footer reads *1 of 1* with the course name, and there is no Previous.
-  - The course progress is **0% until the package reports completion, then 100%**, green at 100%. Nothing inside
-    the package is visible to us (Navdeep, Vikas).
+  - The course progress is **0% until the package reports completion, then 100%**, green at 100% (Navdeep, Vikas).
+    We see only what the package reports: its status, a score if it sends one, and where the learner stopped.
+    Checked 11 Nov: the test packages are SCORM 1.2, which has no progress percentage; when a package reports
+    *completed* is a setting of the content team's export (POSH: when its Storyline block is completed). Details
+    in the [meeting notes](meeting-2026-11-04-scorm-youtube.md#scorm-progress-checked-11-nov-2026).
   - The package is not redesigned or tested by us: the content team checks it (Jaspinder).
   - Navdeep would hide our navigation entirely. Nelson keeps the collapsed sidebar for now.
+  - **Proposal of 11 Nov 2026, not decided:** a single-package course shows a status (no percentage) and nothing
+    of ours around the package; a multi-package course asks on Next before leaving an unfinished package. Prototype
+    PR 480 (courses 10 and 11), Figma section E. See the
+    [meeting notes](meeting-2026-11-04-scorm-youtube.md#proposal-an-improved-course-package-flow-11-nov-2026-not-decided).
 
 ## 4. Built from the DS, and the local stand-ins
 

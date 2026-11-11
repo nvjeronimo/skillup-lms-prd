@@ -121,17 +121,83 @@ Notes written from the transcript. The transcript is not kept in this public rep
 - Rise draws its own *EXIT COURSE* and its own *0% COMPLETE* beside our exit and our progress.
 - Storyline has its own NEXT button above our Next.
 - Both packages connect and report *incomplete*, and Rise resumes where the learner left off.
-- Not yet checked: completion to 100%, the quiz's pass or fail score, and full screen.
+- Not yet checked: the quiz's pass or fail score, and full screen. POSH reporting *completed* was seen by Jaspinder in
+  the prototype's test panel on 11 Nov (see below).
+
+## SCORM progress, checked 11 Nov 2026
+
+On Teams, Jaspinder Kaur Sehmi questioned the 0% → 100% rule. Her point: SCORM packages have settings that return
+progress, and she remembered one being set for POSH. Her screenshot of the prototype's test panel shows POSH reporting
+`lesson_status` *incomplete*, then *completed*, with no score, and the topic complete. We checked the package and the
+code the same day.
+
+| What | Finding | Where we read it |
+|---|---|---|
+| **SCORM version** | All seven test packages, POSH included, are **SCORM 1.2**. | `imsmanifest.xml` of each package |
+| **POSH's Rise setting** | Jaspinder is right that there is a setting. Rise exports POSH with reporting **completed / incomplete** (no score) and **complete when the Storyline block is completed**, not when a share of the lessons is viewed. Finishing the Storyline interaction inside the course is the trigger, which is why a short session can report *completed*. | The course data inside the package (`exportSettings`: `target: scorm12`, `reporting: completed-incomplete`, `completeWith: storyline`) |
+| **What a 1.2 package sends** | Its status (incomplete → completed, or passed / failed), a score if the export has one, and where the learner stopped (`lesson_location`, `suspend_data`) so it resumes. SCORM 1.2 has **no progress percentage**. | SCORM 1.2 data model |
+| **What the SCORM XBlock does** | For 1.2 it reads `lesson_status` and, if the component is scored, `score.raw`. *Completed* (or *passed*) makes the component complete. It also reads **`cmi.progress_measure`** and records partial completion (0 to 1), but that element exists only in **SCORM 2004**. | `openedxscorm/scormxblock.py`, overhangio/openedx-scorm-xblock (Oct 2026) |
+| **What the learner sees** | The Progress tab counts **units complete or not**: partial completion does not show as a share. | `get_course_blocks_completion_summary`, edx-platform `master` |
+
+**So the rule stands, with one precision.** A package topic is complete or not.
+- A course that is only one package goes 0% → 100% when the package reports *completed*.
+- In a course with other topics, the package counts as one topic.
+- When the package reports *completed* is the content team's setting in Rise or Storyline, not ours.
+- Partial progress would need a SCORM 2004 export, and the Progress tab would still show the unit as not complete
+  until 100%.
+
+Not verified: that SkillUp runs this XBlock (the Tutor one, whose new-window options we drew in groups A–C), and the
+edx-platform code of the installed release (we read `master`).
+
+**Also on 11 Nov.** Vikas confirmed that YouTube can play inside our ICP video player, so learners see one player for
+Azure and YouTube. Navdeep's sign-off on the YouTube designs is still pending. Kirti could not find a SCORM package that
+is only a video. POSH is the one package with video: 22 MP4s inside the Rise course, played by Rise's own player, so
+our video player, transcript and progress do not apply to them.
+
+## Proposal: an improved course-package flow (11 Nov 2026, not decided)
+
+What the progress check changes for the design. A proposal for Nelson to decide; the reference is a new course in the
+prototype and a new frame in Figma, and nothing else changes.
+
+1. **A course that is one package shows a status, never a percentage**: *Not started*, *Started*, *Completed*, with
+   no bar, on the course card, the program row and the course page. Today our 0% contradicts the package's own
+   "80% COMPLETE" until the package reports *completed*. Open edX knows whether the learner has started (Learner
+   Home: Begin vs Resume).
+2. **In the player, nothing of ours around a course that is one package**: no sidebar, no Course Journey button, no
+   progress ring, no footer (*1 of 1* and a Next that leads nowhere). The package brings its own menu, progress and
+   exit; the top bar's close returns to the course page. This is Navdeep's ask of 4 Nov and **reverses Nelson's
+   collapsed-sidebar choice: to decide.**
+3. **A course of several packages keeps our sidebar and footer, and Next asks** before leaving a package that has not
+   reported completion: *This activity hasn't recorded completion yet* · **Stay on the activity** (primary) /
+   **Continue anyway**. No *Yes, completed*: we cannot mark a package complete. A package that never reports keeps C1.
+4. **An export checklist for the content team** (via Nelson, to Simran):
+   - turn off Rise's *Exit course* link (POSH has `enableExitCourse` on);
+   - choose when the package reports *completed*, consistent with what the course tells learners (POSH tells them to
+     mark every section, but completes on the Storyline block);
+   - say whether packages are SCORM 1.2 or 2004;
+   - can Rise's own "% COMPLETE" be hidden?
+
+**Where it lives:**
+- Prototype PR 480, *SCORM and YouTube Test Program*:
+  - course 10, *POSH · proposed flow, one package* (points 1 and 2);
+  - course 11, *POSH · proposed flow, two packages* (point 3, the Rise course and the Storyline quiz as two topics).
+  - Only these two courses change.
+- Figma, page *Activity · SCORM*, section **E · Proposal · improved package flow**: a note and eight cards from the
+  prototype screenshots (E1, E1.2, E1.3: the package alone; E2, E3: the status on the course page and the program row;
+  E4, E4.2, E4.3: Next asks).
 
 ## Still open
 
-- Vikas: can YouTube play inside our video player, one player for Azure and YouTube? (asked again 10 Nov)
+- Navdeep: sign-off on the YouTube designs (rows 9 and 10). Vikas answered the one-player question on 11 Nov: yes.
 - Kirti, Simran, Jaspinder: review of the prototype before the ticket closes.
 - Shape (1), several packages as topics inside our modules (groups A–C), is still WIP in Figma.
 - Duplicate controls: Rise's exit and progress, and Storyline's Next, sit beside ours. We do not change the package, so the copy or placement around it may need a note for the content team.
 - Vikas: can the *Watch on YouTube* exit be blocked? (discovery ticket)
 - Vikas: how the SkillUp YouTube videos are authored today (embed or Video component), and how many there are.
 - Kirti: the isolated SCORM progress test (a unit with only the package).
+- Simran: confirm the Rise completion setting used for POSH (Storyline block), and whether any package is exported as
+  SCORM 2004 (the export checklist of the proposal above).
+- Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).
 - The YouTube rows in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
 - Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
   drawn in group D and confirmed on 10 Nov).
