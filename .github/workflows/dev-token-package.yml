@@ -1,0 +1,51 @@
+# Dev token package from Figma. The "Publish tokens" plugin in the SKO Design System (prototype
+# repo, figma-plugin/) can open a pull request that changes
+# 03-design-system/dev-token-package/figma/variables.json on a tokens/package-* branch. This job
+# regenerates css/ from it, commits the CSS to that branch and checks the result. It never merges:
+# the package goes to the dev team, so a person merges it.
+name: Dev token package
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "03-design-system/dev-token-package/**"
+      - ".github/workflows/dev-token-package.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dev-token-package-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 03-design-system/dev-token-package
+    env:
+      FIGMA_SYNC: ${{ startsWith(github.head_ref, 'tokens/package-') && github.event.pull_request.head.repo.full_name == github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate the CSS from the Figma export
+        if: env.FIGMA_SYNC == 'true'
+        run: |
+          node scripts/build.mjs
+          git add css
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+            git commit -m "tokens: generate the package CSS from the Figma export"
+            git push
+          fi
+
+      - name: css/ matches figma/variables.json (nobody edits css/ by hand)
+        run: node scripts/build.mjs --check
