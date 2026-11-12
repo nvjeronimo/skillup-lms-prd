@@ -12,7 +12,7 @@ in code.
 | `css/colors.css` | Colour tokens `--color-*`: SKO light in `:root`, dark in `[data-theme="dark"]`, the other skins in `[data-skin="gold"]`, `"harbor"`, `"fluent"`, `"teal"`, and Studio in `[data-direction="studio"]`. |
 | `css/typography.css` | `--sk-type-*` sizes and line heights, and the `.sk-text-<style>-<weight>` classes (e.g. `.sk-text-body-medium-semibold`). |
 | `css/spacing.css` | `--sk-space-*`, `--sk-container-*`, `--sk-layout-*`. |
-| `css/radius.css` | `--sk-radius-*` (the role radii: inner, control, card-inset, track, card, surface, pill). |
+| `css/radius.css` | `--sk-radius-*` (the role radii: inner, control, card-inset, track, card, surface, pill), and the same roles per brand skin from `4. Skin shape`: `[data-skin="harbor"]`, `"fluent"`, `[data-direction="studio"]`, `[data-square-corners]`. Gold has SKO's radii, so it has no block. |
 | `css/motion.css` | `--motion-*` durations and easings. |
 | `scripts/build.mjs` | The script that turns `figma/variables.json` into `css/`. |
 
@@ -27,8 +27,8 @@ reuse an old `--sko-*` name for a different role (the mapping lists the twelve t
 
 Spacing, layout and type values change by breakpoint (Figma modes Desktop, Tablet, Mobile), and `[data-device]`
 forces one (the prototype's device preview). The agreed breakpoints are **phone < 768, tablet 768–1023,
-desktop ≥ 1024**. Known gap: the generated media queries are `max-width: 1024px` and `max-width: 768px`, so a window
-exactly 1024 or 768 wide gets the smaller mode. Use `max-width: 1023px` and `max-width: 767px` in your build.
+desktop ≥ 1024**, and the CSS switches exactly there: Tablet under `max-width: 1023px`, Mobile under
+`max-width: 767px` (fixed 12 Nov 2026; until then a window exactly 1024 or 768 wide got the smaller mode).
 
 ## Regenerate
 
@@ -39,11 +39,12 @@ node scripts/build.mjs
 Node 18 or later, no dependencies. A value is changed in Figma, never in the CSS: export the JSON again (the
 *Publish tokens* plugin in the DS file) and rerun the script.
 
-## Not in the CSS yet
+## Not in the CSS
 
-- **`4. Skin shape`** (radius per brand skin: SKO 6/12/16, Studio 20/36/40, Harbor 10/16/20, Fluent 4/8/12) and
-  **`5. Scope`** (Open edX only / Beyond Open edX) are in `variables.json` but `build.mjs` does not write them. With one
-  skin (SKO) the radius values in `radius.css` are the ones to use.
+- **`5. Scope`** (Open edX only / Beyond Open edX) is a switch for design reviews in Figma: it hides or shows what goes
+  beyond Open edX on the screens. It is not a token for code, which builds the Open edX scope only.
+- `[data-square-corners]` squares every role, buttons included. The prototype keeps the button's own corners inside
+  it (`tokens/square-corners.css`); that rule is CSS, not a token.
 - `_Primitives` is not published: components use the role tokens only.
 
 ## Source
