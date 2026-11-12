@@ -232,6 +232,7 @@ clickable, and row 10 covered them. Sources: [meeting of 4 Nov 2026](meeting-202
 | Tabs | None: no transcript, notes or downloads |
 | Leaving to YouTube | The logo opens youtube.com, and nothing is recorded there. It cannot be blocked (the tech team's discovery, 12 Nov 2026). |
 | Not available (removed, private, region) | YouTube's own message |
+| Size and aspect ratio | Set by the ICP CSS, not in Studio. The embed code YouTube gives has a fixed `width="560" height="315"`, and course teams paste it unchanged. The ICP overrides it: a YouTube iframe inside a Text component fills the content width at 16:9 (`width: 100%`, `aspect-ratio: 16 / 9`, `height: auto`), whatever size was pasted. A video that is not 16:9, such as a vertical Short, gets YouTube's own black bars inside that frame. The content creator sets nothing. Still to confirm with Vikas: whether the current theme already does this, or whether embeds stay at 560 px. |
 
 **A video that must not open on YouTube** goes to Azure, when SkillUp owns the file. It plays in our player and
 completes by itself.
