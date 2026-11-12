@@ -204,18 +204,40 @@ Nelson had every SCORM course removed from the prototype's test program unless a
 Also fixed in the prototype (PR 482): the course page showed *Content to be provided.*, "Module 1 ·" and "1 topics"
 for a module whose topics sit straight under it, which is the case of every course package.
 
+## YouTube decided (12 Nov 2026)
+
+On 12 Nov 2026 Kirti shared the tech team's answer to the discovery ticket from 4 Nov (Teams, cc Vikas, Jaspinder, Janvi):
+
+- Learners cannot be stopped from opening a YouTube video on YouTube itself.
+- YouTube's policies require the logo and its link to stay visible and clickable. No player parameter removes them,
+  and `modestbranding` does nothing. Covering the logo or sandboxing the iframe is not allowed.
+- Keep the official embed. Captions and transcripts already exist in the LMS. Show a progress note, and when the
+  learner returns to the tab, offer Mark as Complete. Use Azure only when SkillUp owns the file and the video must
+  not open on YouTube.
+
+**Decided by Nelson the same day** ([decision 041](../00-decisions/041-youtube-official-embed-only.md)):
+
+- **Row 10 is withdrawn.** It played YouTube inside our player, under our controls and click layer, so the logo
+  could not be clicked. That is the covering the policy forbids. It supersedes Vikas's answer of 11 Nov that
+  YouTube could play in our player.
+- **Row 9 gets a "back from YouTube" state.** It applies when the learner leaves the tab and returns while the
+  topic is not complete. The Info alert reads *Welcome back. Did you finish the video?* / *Your progress on YouTube
+  isn't tracked. If you watched it to the end, select Mark as Complete below.*
+- **Prototype:** PR 484. The YouTube Video Test course keeps the reading and the embed, and drops topics 3 and 4
+  (our player, and its "no longer available" state).
+- **Figma:** row 10 is marked SUPERSEDED, with the reason and the decision on its cards. Row 9 gets the new state.
+
 ## Still open
 
-- Navdeep: sign-off on the YouTube designs (rows 9 and 10). Vikas answered the one-player question on 11 Nov: yes.
+- Navdeep: sign-off on the YouTube design (row 9 only since 12 Nov; row 10 withdrawn).
 - Kirti, Simran, Jaspinder: review of the prototype before the ticket closes.
 - Shape (1), several packages as topics inside our modules (groups A–C), is still WIP in Figma.
 - Duplicate controls: Rise's exit and progress, and Storyline's Next, sit beside ours. We do not change the package, so the copy or placement around it may need a note for the content team.
-- Vikas: can the *Watch on YouTube* exit be blocked? (discovery ticket)
 - Vikas: how the SkillUp YouTube videos are authored today (embed or Video component), and how many there are.
 - Kirti: the isolated SCORM progress test (a unit with only the package).
 - Simran: confirm the Rise completion setting used for POSH (Storyline block), and whether any package is exported as
   SCORM 2004 (the export checklist of the proposal above).
 - Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).
-- The YouTube rows in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
+- The YouTube row in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
 - Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
   drawn in group D and confirmed on 10 Nov).
