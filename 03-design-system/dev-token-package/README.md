@@ -36,8 +36,14 @@ desktop ≥ 1024**, and the CSS switches exactly there: Tablet under `max-width:
 node scripts/build.mjs
 ```
 
-Node 18 or later, no dependencies. A value is changed in Figma, never in the CSS: export the JSON again (the
-*Publish tokens* plugin in the DS file) and rerun the script.
+Node 18 or later, no dependencies. A value is changed in Figma, never in the CSS. Two ways to bring a change in:
+
+- **From the plugin** (since 12 Nov 2026): *Publish tokens* in the DS file → **Open the package pull request**.
+  The **Dev token package** check regenerates `css/` on that branch; review the CSS diff and merge.
+- **By hand**: *Publish tokens* → **Download variables.json**, put it in `figma/`, rerun the script.
+
+The same plugin can also download the tokens in the W3C DTCG format (one file per collection and mode), for
+Style Dictionary or Tokens Studio.
 
 ## Not in the CSS
 
