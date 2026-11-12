@@ -244,7 +244,7 @@ Names only; values not compared yet. Figma effect styles: `Elevation/level1–5`
    `border-primary`, `border-default`, `text-muted`, `text-subtle`…).
 2. **Generate tokens from Figma** with the same names and the breakpoint modes ([dev token package](dev-token-package/README.md)).
    Keep the old names as aliases during the migration.
-3. **Go through the "To decide" rows together**: video, skeleton, glass, Open edX colours, the off-scale type sizes
+3. **Go through the "To decide" rows together** ([proposals, 12 Nov](code-token-decisions.md)): video, skeleton, glass, Open edX colours, the off-scale type sizes
    (11, 15, 28, 32) and spacing steps (10, 14, 18, 28), the layout values. Each becomes a DS token (Nelson approves)
    or is replaced.
 4. **Correct the Storybook Spacing page**: buttons and inputs use radius 6 (`Radius/control`), not 8.
