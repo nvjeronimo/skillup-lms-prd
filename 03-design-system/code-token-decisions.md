@@ -1,4 +1,4 @@
-# The "To decide" rows: proposals (12 Nov 2026)
+# The "To decide" rows: decisions (12 Nov 2026)
 
 The 29 rows marked **To decide** in the [code → Figma token mapping](code-token-mapping.md), grouped by subject, each
 with a proposal. Rule behind every proposal: **no new DS token** where an existing role token or a component value
@@ -7,7 +7,7 @@ does the job (new tokens need Nelson's approval; Open edX-based only, 28 Oct).
 **Where the evidence comes from:** what the prototype and the DS already do for the same case. Where each token is used
 in the dev team's code was **not** checked (the Storybook shows the tokens, not where components use them).
 
-**Status:** proposals. Three need a decision from Nelson (marked **Decide**); the rest only map to tokens that exist.
+**Status:** agreed. Nelson accepted all ten proposals on 12 Nov 2026, including the three that needed his decision (marked **Decided**); the rest only map to tokens that exist.
 
 ## Summary
 
@@ -15,13 +15,13 @@ in the dev team's code was **not** checked (the Storybook shows the tokens, not 
 |---|---|---|---|---|
 | 1 | Open edX colours | 2 | `bg/subtle`, `border/subtle` | No |
 | 2 | Second inverse | 1 | `bg/inverse` | No |
-| 3 | Video | 4 | Letterbox black stays in the video player; overlay, scrim and error use `bg/overlay` | **Decide** |
+| 3 | Video | 4 | Letterbox black stays in the video player; overlay, scrim and error use `bg/overlay` | No (**Decided**) |
 | 4 | Skeleton | 4 | `bg/muted` with a `bg/subtle` sweep; on a dark band, the dark theme | No |
 | 5 | Focus on a dark band | 1 | `border/primary` + `border/focus-gap` under the dark theme | No |
 | 6 | Off-scale type | 5 | Nearest DS style; nothing under 13 | No |
-| 7 | Off-scale spacing | 4 | Value of the Figma component; if none, the smaller step | **Decide** |
+| 7 | Off-scale spacing | 4 | Value of the Figma component; if none, the smaller step | No (**Decided**) |
 | 8 | Steps the code lacks | 1 + 2 + 1 | `Spacing/8xl–11xl`, `Radius/inner`, `Radius/surface`, `Layout/*` from the package | No |
-| 9 | Radius per skin | 1 | SKO only until a skin goes to production | **Decide** |
+| 9 | Radius per skin | 1 | SKO only until a skin goes to production | No (**Decided**) |
 | 10 | Sidebar and top bar sizes | 3 | Component sizes (72, 320) and `Spacing/lg` | No |
 
 ## 1. Open edX colours
@@ -37,7 +37,7 @@ in the dev team's code was **not** checked (the Storybook shows the tokens, not 
 |---|---|---|---|
 | `--sko-bg-inverse-deep` | #0C1C22 | `bg/inverse` #13282F | The DS has one inverse. Where a darker area sits inside a dark band, the band is a dark-theme region (`[data-theme="dark"]`) and its page colour is `bg/page` #0E1A1F, as the prototype does for header bands. |
 
-## 3. Video (Decide)
+## 3. Video (Decided)
 
 The prototype's video player uses only DS tokens: `bg/overlay`, `bg/overlay-soft`, `bg/on-media`, `bg/on-media-soft`,
 `bg/fixed`.
@@ -49,7 +49,7 @@ The prototype's video player uses only DS tokens: `bg/overlay`, `bg/overlay-soft
 | `--sko-bg-video-scrim` | #000000B8 | `bg/overlay` | As above. |
 | `--sko-bg-video-error` | #0D181FD1 | `bg/overlay` | 82% vs 70%, same role. Check the error message stays readable on 70%. |
 
-**Decide:** keep the letterbox as a video-player value (proposed), or add a DS token `bg/media` (a new token).
+**Decided (Nelson, 12 Nov 2026):** the letterbox stays a video-player value (`--sk-video-letterbox: #000`); no `bg/media` token.
 
 ## 4. Skeleton
 
@@ -80,7 +80,7 @@ Nothing below 13 on any screen (decision of 29 Oct: body-small and label-small a
 | `11-semibold / 11-bold` | 11/13 | `body-small` 13/18, Semibold or Bold |
 | `2xs-bold` (no uppercase) | 10 | `body-small/Bold` 13/18; uppercase eyebrows use `label-small` |
 
-## 7. Off-scale spacing (Decide)
+## 7. Off-scale spacing (Decided)
 
 Each value is exactly between two DS steps.
 
@@ -91,8 +91,8 @@ Each value is exactly between two DS steps.
 | `space-18` | As above; default 16 (`Spacing/xl`) |
 | `space-28` | As above; default 24 (`Spacing/3xl`) |
 
-**Decide:** the default when no component says otherwise: the smaller step (proposed, keeps components from growing)
-or the larger one.
+**Decided (Nelson, 12 Nov 2026):** the Figma component's value wins; when no component says otherwise, the smaller step
+(keeps components from growing).
 
 ## 8. Steps the code lacks
 
@@ -105,13 +105,13 @@ Take them from the [dev token package](dev-token-package/README.md); nothing to 
 | `Radius/surface` 16 | `--sk-radius-surface` (sheets, modals) |
 | `Layout/band-x, column-gap, stack-gap, side-gap, grid-gap` | `--sk-layout-*` in `css/spacing.css` (decision 032) |
 
-## 9. Radius per skin (Decide)
+## 9. Radius per skin (Decided)
 
 `4. Skin shape` gives each brand skin its own radii (SKO 6/12/16, Studio 20/36/40, Harbor 10/16/20, Fluent 4/8/12).
 Since 12 Nov the package writes them in `css/radius.css`, so the code gets them with no extra work.
 
-**Decide:** does any skin other than SKO go to production? If not, the code uses the SKO values only (proposed) and
-ignores the skin blocks.
+**Decided (Nelson, 12 Nov 2026):** the code uses the SKO values only and ignores the skin blocks until a skin other than
+SKO goes to production.
 
 ## 10. Sidebar and top bar sizes
 
