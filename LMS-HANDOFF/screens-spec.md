@@ -214,21 +214,25 @@ a partner's platform. The Video screens were not changed.*
 
 ---
 
-## YouTube videos (4 Nov 2026)
+## YouTube videos (4 Nov 2026, decided 12 Nov 2026)
 
-A video topic can play a YouTube video in two ways. The screens are on the Figma *Phase 1 · Video Lessons* page:
-row 9 and row 10, In review: desktop with every state, plus tablet and mobile (cards 9.2, 9.3, 10.2, 10.3). Source: [meeting of 4 Nov 2026](meeting-2026-11-04-scorm-youtube.md).
+A YouTube video plays in **YouTube's official embed** ([decision 041](../00-decisions/041-youtube-official-embed-only.md)).
+The screens are on the Figma *Phase 1 · Video Lessons* page, row 9 (In review): desktop with every state, plus tablet
+and mobile (cards 9.2 and 9.3). Row 10, YouTube inside our player, was withdrawn on 12 Nov 2026 and is kept as
+SUPERSEDED. The tech team found that YouTube's policies require the logo and its link to stay visible and
+clickable, and row 10 covered them. Sources: [meeting of 4 Nov 2026](meeting-2026-11-04-scorm-youtube.md) and Kirti, 12 Nov 2026.
 
-| | YouTube embed in a Text component (row 9) | Video component with a YouTube ID (row 10) |
-|---|---|---|
-| Player | YouTube's own (share, quality, captions, YouTube logo). We cannot restyle it. | Ours, like Azure |
-| Progress | Not tracked: Open edX gets no watch time | Tracked: completes by itself |
-| Completion | Mark as Complete in the feedback row, and Next asks (rule above). Marking without watching is accepted (Vikas). | Automatic, no button |
-| Under the player | Info alert: *Your progress on this video isn't tracked*. It asks the learner to select Mark as Complete, also after watching on YouTube. | Nothing |
-| Tabs | None: no transcript, notes or downloads | Transcript and Notes only if a transcript is uploaded in Studio (otherwise hidden). Downloads only with a fallback video or a handout. |
-| Leaving to YouTube | The logo opens youtube.com, and progress there is not recorded. Blocking it: Vikas to check. | Not offered by our player |
-| Not available (removed, private, region) | YouTube's own message | A dark panel in place of the player, with *Report an issue*. Next moves on as usual. |
+| | YouTube embed in a Text component (row 9) |
+|---|---|
+| Player | YouTube's own: share, quality, captions and the YouTube logo. We cannot restyle it, cover it or sandbox it. |
+| Progress | Not tracked: Open edX gets no watch time |
+| Completion | Mark as Complete in the feedback row, and Next asks (rule above). Marking it without watching is accepted (Vikas). |
+| Under the player | Info alert: *Your progress on this video isn't tracked*. It asks the learner to select Mark as Complete, also after watching on YouTube. |
+| Back from YouTube | When the learner leaves the tab and returns while the topic is not complete, the alert reads *Welcome back. Did you finish the video?* / *Your progress on YouTube isn't tracked. If you watched it to the end, select Mark as Complete below.* Once the topic is complete, the alert returns to its first text. Use `visibilitychange`, not window blur. |
+| Tabs | None: no transcript, notes or downloads |
+| Leaving to YouTube | The logo opens youtube.com, and nothing is recorded there. It cannot be blocked (the tech team's discovery, 12 Nov 2026). |
+| Not available (removed, private, region) | YouTube's own message |
 
-**Recommendation (rule 035):** author YouTube videos as Video components. Vikas to confirm how today's videos are
-authored.
+**A video that must not open on YouTube** goes to Azure, when SkillUp owns the file. It plays in our player and
+completes by itself.
 
