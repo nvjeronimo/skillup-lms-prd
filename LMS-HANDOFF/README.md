@@ -1,6 +1,6 @@
 # SkillUp LMS — Prototype + Storybook Handoff
 
-> **Start at the ICP Hub:** https://claude.ai/artifact/LYu6uccAohvumsMUPe4sUy (public, versioned page: https://nvjeronimo.github.io/skillup-lms-prd/hub/). It covers content-type status, verified platform rules, decisions, open questions, and links to every document and Figma page.
+> **Start at the ICP Hub:** https://nvjeronimo.github.io/skillup-lms-prd/hub/ (public and versioned; source in [`hub/`](../hub/), history in Git). It covers content-type status, verified platform rules, decisions, open questions, and links to every document and Figma page.
 
 > **The rule behind every design here:** Open edX Studio is in charge of the facts; the LMS and the ICP are in charge of how they are presented and consumed. What a topic is, what completes it and what an author can write come from Studio and the platform; the designs decide only how that is shown and used. (Nelson, 12 Oct 2026: *o edX Studio manda nos factos, o LMS/ICP manda na apresentação e consumo.*)
 
