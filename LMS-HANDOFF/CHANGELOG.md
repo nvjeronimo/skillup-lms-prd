@@ -16,13 +16,13 @@ Since v3.3 (24 Jul 2026) the entries are dated; v3.4 marks the entries of 4 to 1
 
 
 
-## v3.4 — 2026-11-16 · Single-topic courses without our sidebar; SCORM Proposal E; YouTube official embed; dev token package
+## v3.4 — 2026-11-16 · Single-topic courses without our sidebar; SCORM canonical course-package flow; YouTube official embed; dev token package
 
 Version bump for the entries of 4 to 16 Nov 2026 below, which were missing from this changelog until 16 Nov.
 
 ## 2026-11-16 · Decision 042: a course of one module and one topic opens without our sidebar
 
-Nelson: any course with one module and one topic, whatever its type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). For SCORM it confirms the decisions of 15 Nov 2026: Proposal E (Figma *Activity · SCORM* section E) replaces D1, with no progress ring and no footer; the score shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed; Dark is out of this cycle; *Skip for now* is still open. It changes SK-10957 ("sidebar visible by default"). Docs brought in line the same day: `activity-scorm.md` (D1 SUPERSEDED, Proposal E canonical), the 4 Nov meeting notes (proposal and open items marked decided), decision 023 (mobile web: notice + *Open anyway*; native app: notice only), `06-platform-pages/README.md` (Course Page: Course and Progress Ready for Dev; no deadlines on the Dashboard, decision 036).
+Nelson: any course with one module and one topic, whatever its type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). For SCORM it confirms the decisions of 15 Nov 2026: the canonical course-package flow (proposed 11 Nov as section E, decided 15 Nov) replaces D1, with no progress ring and no footer; the score shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed; Dark is out of this cycle; *Skip for now* is still open. It changes SK-10957 ("sidebar visible by default"). Docs brought in line the same day: `activity-scorm.md` (D1 SUPERSEDED, canonical course-package flow), the 4 Nov meeting notes (proposal and open items marked decided), decision 023 (mobile web: notice + *Open anyway*; native app: notice only), `06-platform-pages/README.md` (Course Page: Course and Progress Ready for Dev; no deadlines on the Dashboard, decision 036).
 
 ## 2026-11-12 · Dev token package: agreed edges, skin radii, To-decide rows settled
 
@@ -32,9 +32,9 @@ The code token mapping of 11 Nov (`03-design-system/code-token-mapping.md`: ever
 
 The tech team's discovery, shared by Kirti: learners cannot be stopped from opening a YouTube video on youtube.com, and covering the logo or sandboxing the iframe is not allowed. Nelson withdrew Video Lessons row 10 (YouTube in our player) and added a *back from YouTube* state to row 9: when the learner returns to the tab before completing, the alert asks *Welcome back. Did you finish the video?* and points to Mark as Complete. The embed's size and aspect ratio come from the ICP CSS, not Studio. Prototype PR 484; [decision 041](../00-decisions/041-youtube-official-embed-only.md); docs PRs 253, 254.
 
-## 2026-11-11 · SCORM progress checked; Proposal E for the course-package flow; test program cleaned up
+## 2026-11-11 · SCORM progress checked; an improved course-package flow proposed; test program cleaned up
 
-All test packages, POSH included, are SCORM 1.2: a package sends a status, never a percentage, so a single-package course stays 0% until it reports *completed* (details in [the meeting notes](meeting-2026-11-04-scorm-youtube.md#scorm-progress-checked-11-nov-2026)). Proposed the same day, not decided then: an improved course-package flow, Figma *Activity · SCORM* section E and prototype PR 480 (decided on 15 Nov 2026, see decision 042 above). The test program keeps only courses backed by a SkillUp zip (prototype PR 481); ICP cards D6 to D10 SUPERSEDED. Since 11 Nov a course package fills the whole content area (prototype PR 478; ICP cards D1 to D5 redrawn). Docs PRs 250, 251.
+All test packages, POSH included, are SCORM 1.2: a package sends a status, never a percentage, so a single-package course stays 0% until it reports *completed* (details in [the meeting notes](meeting-2026-11-04-scorm-youtube.md#scorm-progress-checked-11-nov-2026)). Proposed the same day, not decided then: an improved course-package flow, Figma *Activity · SCORM* section E and prototype PR 480 (decided on 15 Nov 2026 as the canonical course-package flow, see decision 042 above). The test program keeps only courses backed by a SkillUp zip (prototype PR 481); ICP cards D6 to D10 SUPERSEDED. Since 11 Nov a course package fills the whole content area (prototype PR 478; ICP cards D1 to D5 redrawn). Docs PRs 250, 251.
 
 ## 2026-11-04 → 2026-11-10 · SCORM and YouTube meeting; course packages (group D)
 

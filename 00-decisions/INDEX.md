@@ -55,7 +55,7 @@ Each record carries frontmatter (`id`, `title`, `date`, `status`, `audience`, `t
 | 039 | Download a certificate from its page only; cards and rows offer View and Share | LMS | 1 | accepted | designer, dev | [039](039-certificate-download-on-page-only.md) |
 | 040 | Mentorship Q&A keeps "Post anonymously", as Open edX shows it when the course allows it | LMS | 1 | accepted | designer, dev | [040](040-qa-post-anonymously-stays.md) |
 | 041 | YouTube videos play in YouTube's official embed only; back from YouTube, the alert asks to mark the video complete | LMS | 1 | accepted | designer, dev, stakeholder | [041](041-youtube-official-embed-only.md) |
-| 042 | A course of one module and one topic opens in the ICP without our sidebar, whatever the topic type (SCORM: Proposal E replaces D1) | ICP | 1 | accepted | designer, dev, stakeholder | [042](042-single-topic-course-no-sidebar.md) |
+| 042 | A course of one module and one topic opens in the ICP without our sidebar, whatever the topic type (SCORM: the canonical course-package flow replaces D1) | ICP | 1 | accepted | designer, dev, stakeholder | [042](042-single-topic-course-no-sidebar.md) |
 
 ## Filter by track
 

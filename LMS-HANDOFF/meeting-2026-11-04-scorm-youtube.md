@@ -162,7 +162,7 @@ What the progress check changes for the design. Proposed on 11 Nov 2026; the ref
 prototype and a new frame in Figma.
 
 > **Decided by Nelson on 15 Nov 2026, extended on 16 Nov 2026
-> ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)).** Proposal E (section E) replaces D1:
+> ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)).** The proposal becomes the **canonical course-package flow** and replaces D1:
 > nothing of ours around a course that is one package, no sidebar, no progress ring, no footer (point 2). The score
 > shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed. Dark is out
 > of this cycle; *Skip for now* is still open. On 16 Nov 2026 Nelson made point 2 a general rule: every course of one
@@ -247,7 +247,7 @@ On 12 Nov 2026 Kirti shared the tech team's answer to the discovery ticket from 
 - Simran: confirm the Rise completion setting used for POSH (Storyline block), and whether any package is exported as
   SCORM 2004 (the export checklist of the proposal above).
 - ~~Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).~~
-  **Decided 15 Nov 2026** (Proposal E replaces D1), general rule on 16 Nov 2026
+  **Decided 15 Nov 2026** (the canonical course-package flow replaces D1), general rule on 16 Nov 2026
   ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). Still open: *Skip for now* (A7).
 - The YouTube row in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
 - ~~Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
