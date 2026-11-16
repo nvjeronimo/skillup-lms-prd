@@ -154,10 +154,19 @@ Azure and YouTube. Navdeep's sign-off on the YouTube designs is still pending. K
 is only a video. POSH is the one package with video: 22 MP4s inside the Rise course, played by Rise's own player, so
 our video player, transcript and progress do not apply to them.
 
-## Proposal: an improved course-package flow (11 Nov 2026, not decided)
+<a id="proposal-an-improved-course-package-flow-11-nov-2026-not-decided"></a>
 
-What the progress check changes for the design. A proposal for Nelson to decide; the reference is a new course in the
-prototype and a new frame in Figma, and nothing else changes.
+## Proposal: an improved course-package flow (11 Nov 2026, decided 15 Nov 2026)
+
+What the progress check changes for the design. Proposed on 11 Nov 2026; the reference is a new course in the
+prototype and a new frame in Figma.
+
+> **Decided by Nelson on 15 Nov 2026, extended on 16 Nov 2026
+> ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)).** Proposal E (section E) replaces D1:
+> nothing of ours around a course that is one package, no sidebar, no progress ring, no footer (point 2). The score
+> shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed. Dark is out
+> of this cycle; *Skip for now* is still open. On 16 Nov 2026 Nelson made point 2 a general rule: every course of one
+> module and one topic, of any type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar.
 
 1. **A course that is one package shows a status, never a percentage**: *Not started*, *Started*, *Completed*, with
    no bar, on the course card, the program row and the course page. Today our 0% contradicts the package's own
@@ -166,7 +175,7 @@ prototype and a new frame in Figma, and nothing else changes.
 2. **In the player, nothing of ours around a course that is one package**: no sidebar, no Course Journey button, no
    progress ring, no footer (*1 of 1* and a Next that leads nowhere). The package brings its own menu, progress and
    exit; the top bar's close returns to the course page. This is Navdeep's ask of 4 Nov and **reverses Nelson's
-   collapsed-sidebar choice: to decide.**
+   collapsed-sidebar choice: decided 15 Nov 2026 (D1 SUPERSEDED), a general rule since 16 Nov 2026 (decision 042).**
 3. **A course of several packages keeps our sidebar and footer, and Next asks** before leaving a package that has not
    reported completion: *This activity hasn't recorded completion yet* · **Stay on the activity** (primary) /
    **Continue anyway**. No *Yes, completed*: we cannot mark a package complete. A package that never reports keeps C1.
@@ -237,7 +246,9 @@ On 12 Nov 2026 Kirti shared the tech team's answer to the discovery ticket from 
 - Kirti: the isolated SCORM progress test (a unit with only the package).
 - Simran: confirm the Rise completion setting used for POSH (Storyline block), and whether any package is exported as
   SCORM 2004 (the export checklist of the proposal above).
-- Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).
+- ~~Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).~~
+  **Decided 15 Nov 2026** (Proposal E replaces D1), general rule on 16 Nov 2026
+  ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). Still open: *Skip for now* (A7).
 - The YouTube row in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
-- Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
-  drawn in group D and confirmed on 10 Nov).
+- ~~Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
+  drawn in group D and confirmed on 10 Nov).~~ **Decided 15–16 Nov 2026: our navigation is hidden** (decision 042).

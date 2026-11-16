@@ -4,7 +4,8 @@
 pages a learner uses to find, enrol in, track, and manage their learning — everything outside the
 immersive in-topic experience (which is the **ICP** track).
 
-> Status: 🟠 **WIP** — discovery/design in progress. Not part of the Phase 1 handoff yet.
+> Status: 🟠 **WIP** — discovery/design in progress. Not part of the Phase 1 handoff yet, except the Course Page's
+> Course and Progress tabs (Ready for Dev since 27 Oct 2026).
 
 ## The two tracks
 
@@ -20,9 +21,9 @@ The learner-facing platform pages. Statuses are current best-known — refine as
 
 | Page | What | Status |
 |---|---|---|
-| Dashboard / Home | Learner landing — enrolled courses, next up, deadlines, cohort signal | 🟠 WIP |
+| Dashboard / Home | Learner landing — enrolled courses, next up, cohort signal (no deadlines: SkillUp sets no due dates, [ADR 036](../00-decisions/036-dates-tab-hidden-self-paced.md)) | 🟠 WIP |
 | My Learning | Progress across all courses/programs | 🟠 WIP |
-| Course Page (detail) | Single-course overview, outline, enrol/continue | 🟠 WIP |
+| Course Page (detail) | Single-course overview, outline, enrol/continue | 🟢 Ready for Dev: Course and Progress tabs (since 27 Oct 2026) · 🟠 WIP: Dates (instructor-led only, on hold, [ADR 036](../00-decisions/036-dates-tab-hidden-self-paced.md)) and Mentorship Q&A (on hold) |
 | Program Page (detail) | Multi-course program overview | 🟠 WIP |
 | Calendar | Every course's dates in one place: deadlines, live sessions (out of MVP, marked), course opens/ends; missed deadlines first | 🟠 approved 19 Oct 2026; drawn in Figma (WIP, 3 screens) on Ready for Dev, frame `7392:200778`; prototype `/platform/calendar` (PR 187) |
 | Discussion | Every course's discussions in one inbox (the course Q&A layout): unread, following, my posts, course filter, search | 🟠 approved 19 Oct 2026; drawn in Figma (WIP, 4 screens: mobile list + conversation), frame `7392:200778`; prototype `/platform/discussion` |

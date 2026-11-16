@@ -73,7 +73,8 @@ package reports. On a phone the window is a new tab.
 (POSH).
 
 - **What we control is the frame, not what is inside it.**
-- **D1:**
+- **D1 · SUPERSEDED (15 Nov 2026) by section E, see [decision 042](../00-decisions/042-single-topic-course-no-sidebar.md).**
+  Kept for history:
   - Our sidebar opens collapsed, so only one menu is on screen.
   - The frame takes the height of the window: no second scrollbar. Today it is a short frame with its own scroll.
   - Fullscreen is the primary action, suggested once.
@@ -92,16 +93,22 @@ package reports. On a phone the window is a new tab.
     *completed* is a setting of the content team's export (POSH: when its Storyline block is completed). Details
     in the [meeting notes](meeting-2026-11-04-scorm-youtube.md#scorm-progress-checked-11-nov-2026).
   - The package is not redesigned or tested by us: the content team checks it (Jaspinder).
-  - Navdeep would hide our navigation entirely. Nelson keeps the collapsed sidebar for now.
-  - **Proposal of 11 Nov 2026, not decided:** a single-package course shows a status (no percentage) and nothing
-    of ours around the package; a multi-package course asks on Next before leaving an unfinished package. Prototype
-    PR 480 (courses 5 and 6 since PR 481), Figma section E. See the
-    [meeting notes](meeting-2026-11-04-scorm-youtube.md#proposal-an-improved-course-package-flow-11-nov-2026-not-decided).
+  - Navdeep would hide our navigation entirely. Nelson kept the collapsed sidebar until 15 Nov 2026 (D1, now
+    SUPERSEDED).
+  - **Proposal E, canonical (decided by Nelson on 15 Nov 2026; general rule on 16 Nov 2026,
+    [decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)):** a single-package course shows nothing
+    of ours around the package: no sidebar, no progress ring, no footer. The score shows in the topic's alert and in
+    the Progress tab; the pass mark only when the learner has not passed. Dark is out of this cycle; *Skip for now*
+    (A7) is still open. Since 16 Nov 2026 every course of one module and one topic, of any type, opens without our
+    sidebar. Proposed on 11 Nov 2026 with a status instead of a percentage and Next asking before leaving an
+    unfinished package in a multi-package course. Prototype PR 480 (courses 5 and 6 since PR 481), Figma section E.
+    See the [meeting notes](meeting-2026-11-04-scorm-youtube.md#proposal-an-improved-course-package-flow-11-nov-2026-decided-15-nov-2026).
 
 ## 4. Built from the DS, and the local stand-ins
 
 **From the DS:**
-- the player Topbar, the Sidebar (Expanded, and Collapsed for group D) and the Topic-Header (type Activity);
+- the player Topbar, the Sidebar (Expanded; Collapsed for group D until 15 Nov 2026, none for section E) and the
+  Topic-Header (type Activity);
 - `LMS/ICP/Topics/Activity-SCORM-Frame` for loading, error and the phone notice;
 - `LMS / Inline Alert` (Info, Success, Warning);
 - Content-Feedback (no Mark as Complete), the Topic-Footer-Nav and the Next-asks Modal.
