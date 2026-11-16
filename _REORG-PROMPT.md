@@ -1,6 +1,10 @@
 # TASK: Reorganize & consolidate the SkillUp LMS Discovery project folder
 
 > Prompt authored 2026-07-22. Figma references verified against the repo on the same date.
+>
+> **Historical (note of 16 Nov 2026):** the v3.3 figures below (1052 variables, 6 skins) describe July 2026 and are
+> not current. Today: handoff package v3.4; the 11 Nov 2026 export has 233 variables in 5 collections and 47 text styles ([`03-design-system/dev-token-package/`](03-design-system/dev-token-package/));
+> skins SKO, Gold, Studio, Harbor and Fluent. See [`03-design-system/README.md`](03-design-system/README.md).
 > Paste this whole file as the opening message of a fresh Claude Code session at the project root.
 
 ## Context
@@ -93,8 +97,8 @@ The v3.x line spans four entries: **v3.0** (skin system + dark surface ladder + 
 the reorg must describe the current state, which is v3.3.
 
 - ✅ **v3.3 IS NOW PUBLISHED IN FIGMA (2026-07-24).** The library was re-published — the earlier
-  "not published, consumers still see v2.0" blocker is **resolved**. The published file has **1052
-  variables**, the **18 CVD primitives**, `Neutral/150` (`#D5DCE2`) and `Dark-Neutral/650`
+  "not published, consumers still see v2.0" blocker is **resolved**. The published file had **1052
+  variables** (July 2026; not the current count), the **18 CVD primitives**, `Neutral/150` (`#D5DCE2`) and `Dark-Neutral/650`
   (`#2C3D45`), verified **1:1 against the prototype `colors.css`** (zero divergences). The
   "triangle" is closed and aligned across all three vertices: **Figma DS (published) · CSS handoff
   (synced) · prototype (in production)**.
@@ -416,7 +420,7 @@ footnote.
 Consolidate `LMS-HANDOFF/tokens/` + `Design System Tokens/` + `variable-collections-guide.md` +
 `components-inventory.md` + `storybook-coverage.md` into one coherent section covering:
 
-- **Publication status** — v3.3 is **published in Figma (2026-07-24)**: 1052 variables, 18 CVD
+- **Publication status** — v3.3 is **published in Figma (2026-07-24)**: 1052 variables (July 2026), 18 CVD
   primitives, verified 1:1 against `colors.css`. The old "consumers see v2.0" blocker is resolved.
   Note only the residual nuance: a formal human side-by-side review of the 6 skins was not run
   (maths-validated + published on Nelson's call).
@@ -470,7 +474,7 @@ Update `_deploy.sh` to stage the new paths. **Do NOT run the deploy or push** �
    source. Seed it with what is already known:
    - **Export SKOAIH01 (OLX `.tar.gz`)** to validate multi-component / multi-graded per unit
      (Q9/Q13) — the last platform-vs-config unknown — *Rashid*
-   - *(done 2026-07-24 — record as closed, not open)* Figma library re-published (v3.3, 1052 vars,
+   - *(done 2026-07-24 — record as closed, not open)* Figma library re-published (v3.3, 1052 vars in July 2026,
      18 CVD primitives) · all 10 prototype PRs merged. Keep in the log as completed for provenance.
    - Optional, non-blocking: a formal human side-by-side review of the 6 published skins — *Nelson*
    - Promote the unified Topic Content Types page to **Ready for Review** + 15-section index —

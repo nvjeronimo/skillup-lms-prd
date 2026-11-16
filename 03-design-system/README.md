@@ -30,14 +30,20 @@ review of the 6 skins was never run (maths-validated + published on Nelson's cal
 |---|---|
 | **Stakeholder** | Handoff v3.4 (16 Nov 2026) is current; DS v3.3 (24 Jul 2026) shipped accessibility (colourblind-safe + text scale), 0 AA failures across 540 checks at the time. What changed and why → CHANGELOG below. |
 | **Designer** | [`variable-collections-guide.md`](../LMS-HANDOFF/variable-collections-guide.md) (4 collections, skin ramp model, naming, re-validate contrast) · DS Figma `c7EUDrQwP8si08aPipDSIV` · LMS components page `1030-33572`. |
-| **Developer** | [`tokens/colors.css`](../LMS-HANDOFF/tokens/colors.css) + [`typography.css`](../LMS-HANDOFF/tokens/typography.css) · the `--sk-*` namespace · [skin-switcher module](../LMS-HANDOFF/modules/skin-switcher/) (drop-in). |
+| **Developer** | [`dev-token-package/`](dev-token-package/) (export of 11 Nov 2026: `--color-*`, `--sk-*`, `--motion-*`; see Tokens & axes) · [code → Figma token mapping](code-token-mapping.md). Older handoff CSS (v3.1, `--sk-*` colours): [`tokens/colors.css`](../LMS-HANDOFF/tokens/colors.css) + [`typography.css`](../LMS-HANDOFF/tokens/typography.css) · [skin-switcher module](../LMS-HANDOFF/modules/skin-switcher/). |
 
 ## Tokens & axes
 
-- **Namespace** `--sk-*` (one system namespace, not per-brand). `sk` = SkillUp Design *System*.
-- **6 skins** — SKO + `gold` / `violet` / `sky` / `red` / `ink`, each a **12-step OKLCH ramp** from 2
-  brand anchors, **0 raw hex** (was 42/60). Selected via `data-skin` (⚠️ **breaking:** `data-brand` no
-  longer exists — see [`00-decisions/014`](../00-decisions/)).
+- **CSS prefixes** (as generated in [`dev-token-package/css/`](dev-token-package/css/), 11 Nov 2026):
+  colours `--color-*` (`--color-bg-*`, `--color-text-*`, `--color-border-*`, `--color-icon-*`, `--color-shadow-*`);
+  type `--sk-type-*` and `--sk-font-*`; spacing and layout `--sk-space-*`, `--sk-layout-*`, `--sk-container-*`;
+  radius `--sk-radius-*`; motion `--motion-*`. The older handoff CSS (`LMS-HANDOFF/tokens/colors.css`, v3.1) still
+  uses `--sk-*` for colours too. `sk` = SkillUp Design *System*.
+- **5 skins**, the modes of the Figma collection `1. SKO-Semantics`: **SKO, Gold, Studio, Harbor, Fluent**, each
+  light and dark. In CSS: SKO in `:root` (dark in `[data-theme="dark"]`); `[data-skin="gold"]`, `"harbor"`,
+  `"fluent"`; Studio in `[data-direction="studio"]`; `[data-skin="teal"]` forces SKO inside another skin. The v3.0
+  skins `violet` / `sky` / `red` / `ink` are no longer modes. Selected via `data-skin` (⚠️ **breaking:** `data-brand`
+  no longer exists — see [`00-decisions/014`](../00-decisions/)).
 - **Theme** × light/dark, with a real **dark surface ladder** and **hover-lightens-in-dark**.
 - **Breakpoints axis** (Desktop / Tablet / Mobile) for size/space/radius.
 - **Accessibility axes** — `data-vision="cvd"` (colourblind-safe states, Okabe-Ito, ΔE≥18) and text
