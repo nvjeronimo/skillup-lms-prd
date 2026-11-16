@@ -96,13 +96,20 @@ package reports. On a phone the window is a new tab.
   - Navdeep would hide our navigation entirely. Nelson kept the collapsed sidebar until 15 Nov 2026 (D1, now
     SUPERSEDED).
   - **Canonical course-package flow (decided by Nelson on 15 Nov 2026; general rule on 16 Nov 2026,
-    [decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)):** a single-package course shows nothing
-    of ours around the package: no sidebar, no progress ring, no footer. The score shows in the topic's alert and in
-    the Progress tab; the pass mark only when the learner has not passed. Dark is out of this cycle; *Skip for now*
-    (A7) is still open. Since 16 Nov 2026 every course of one module and one topic, of any type, opens without our
-    sidebar. History: proposed on 11 Nov 2026 as section E, with a status instead of a percentage and Next asking
-    before leaving an unfinished package in a multi-package course; decided 15 Nov. Prototype PR 480 (courses 5 and 6
-    since PR 481), Figma node 8378-14587.
+    [decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)):**
+    1. a single-package course shows a status (*Not started*, *Started*, *Completed*), never a percentage, on the
+       course card, the program row and the course page;
+    2. nothing of ours around a single package: no sidebar, no progress ring, no footer;
+    3. a course of several packages keeps our sidebar and footer, and Next asks (*Stay on the activity* /
+       *Continue anyway*) before leaving a package that has not reported completion.
+
+    The score shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed.
+    Dark is out of this cycle; *Skip for now* (A7) is still open. **Not a decision:** the content team's export
+    checklist (point 4: Rise's *Exit course*, when a package reports *completed*, SCORM 1.2 or 2004, hiding Rise's
+    "% COMPLETE") is an open dependency, owner Simran. Since 16 Nov 2026 every course of one module and one topic, of
+    any type, opens without our sidebar; outside SCORM the ring and the footer stay. History: proposed on 11 Nov 2026
+    as section E, decided 15 Nov (points 1–3 confirmed 16 Nov). Prototype PR 480 (courses 5 and 6 since PR 481),
+    Figma node 8378-14587.
     See the [meeting notes](meeting-2026-11-04-scorm-youtube.md#proposal-an-improved-course-package-flow-11-nov-2026-decided-15-nov-2026).
 
 ## 4. Built from the DS, and the local stand-ins

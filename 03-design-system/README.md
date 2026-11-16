@@ -10,9 +10,17 @@ the collections so one system can carry LMS, App, marketing, email and, later, s
 
 ## Publication status — current
 
-**DS v3.3 is PUBLISHED in Figma (2026-07-24):** 1052 variables · 18 CVD primitives · verified **1:1
-against `tokens/colors.css`** (zero divergences). The old "consumers still see v2.0" blocker is
-**resolved** — the triangle is aligned across all three vertices: **Figma DS (published) · CSS handoff
+**Handoff package v3.4 (16 Nov 2026)** — a documentation release ([CHANGELOG](../LMS-HANDOFF/CHANGELOG.md)). The DS
+has had no v3.x release since v3.3; since 8 Oct 2026 each component carries its own version
+([`component-versions.md`](component-versions.md)). The latest read-only export of the published variables
+(11 Nov 2026, [`dev-token-package/`](dev-token-package/)) holds **233 variables in 5 collections** (SKO-Semantics 123,
+with SKO, Gold, Studio, Harbor and Fluent × light/dark; Responsive 87; Motion 13; Skin shape 8; Scope 2) and 47 text
+styles.
+
+**History — DS v3.3, published in Figma on 2026-07-24.** At the time: 1052 variables · 18 CVD primitives · verified
+**1:1 against `tokens/colors.css`** (zero divergences); that count has not been re-checked against today's library
+and is not the current figure. The old "consumers still see v2.0" blocker was
+**resolved** then — the triangle was aligned across all three vertices: **Figma DS (published) · CSS handoff
 (synced) · prototype (in production)**. Residual nuance, non-blocking: a formal human side-by-side
 review of the 6 skins was never run (maths-validated + published on Nelson's call) — [OPEN-ACTIONS](../OPEN-ACTIONS.md) O1.
 
@@ -20,7 +28,7 @@ review of the 6 skins was never run (maths-validated + published on Nelson's cal
 
 | You are a… | Start here |
 |---|---|
-| **Stakeholder** | v3.3 is live; accessibility (colourblind-safe + text scale) shipped; 0 AA failures across 540 checks. What changed and why → CHANGELOG below. |
+| **Stakeholder** | Handoff v3.4 (16 Nov 2026) is current; DS v3.3 (24 Jul 2026) shipped accessibility (colourblind-safe + text scale), 0 AA failures across 540 checks at the time. What changed and why → CHANGELOG below. |
 | **Designer** | [`variable-collections-guide.md`](../LMS-HANDOFF/variable-collections-guide.md) (4 collections, skin ramp model, naming, re-validate contrast) · DS Figma `c7EUDrQwP8si08aPipDSIV` · LMS components page `1030-33572`. |
 | **Developer** | [`tokens/colors.css`](../LMS-HANDOFF/tokens/colors.css) + [`typography.css`](../LMS-HANDOFF/tokens/typography.css) · the `--sk-*` namespace · [skin-switcher module](../LMS-HANDOFF/modules/skin-switcher/) (drop-in). |
 
@@ -64,7 +72,7 @@ pending): [`components-inventory.md`](../LMS-HANDOFF/components-inventory.md). R
 
 | Artifact | Link |
 |---|---|
-| Version history | [`../LMS-HANDOFF/CHANGELOG.md`](../LMS-HANDOFF/CHANGELOG.md) (v3.3 current; v3.0→v3.3 explained) |
+| Version history | [`../LMS-HANDOFF/CHANGELOG.md`](../LMS-HANDOFF/CHANGELOG.md) (v3.4 current, 16 Nov 2026; v3.0→v3.3 explained) |
 | Variable collections guide | [`../LMS-HANDOFF/variable-collections-guide.md`](../LMS-HANDOFF/variable-collections-guide.md) |
 | Storybook coverage plan | [`../LMS-HANDOFF/storybook-coverage.md`](../LMS-HANDOFF/storybook-coverage.md) |
 | Built Storybook | [`../storybook/`](../storybook/) · source in [`../90-prototypes/storybook-src/`](../90-prototypes/storybook-src/) |

@@ -1,7 +1,7 @@
 # Handoff Package Changelog
 
 Current version: **v3.4 (16 Nov 2026)**. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
-Since v3.3 (24 Jul 2026) the entries are dated; v3.4 marks the entries of 4 to 16 Nov 2026 below.
+Since v3.3 (24 Jul 2026) the entries are dated; v3.4 marks the entries of 4 to 16 Nov 2026 below (the 9 Nov entry included).
 
 > **Version numbers, 13 Oct 2026.** No component is at `2.x` any more: the nine that were have been renumbered
 > to `1.x` (table in `03-design-system/component-versions.md`, *History*). The entries of 8 to 12 Oct below were
@@ -16,13 +16,17 @@ Since v3.3 (24 Jul 2026) the entries are dated; v3.4 marks the entries of 4 to 1
 
 
 
-## v3.4 — 2026-11-16 · Single-topic courses without our sidebar; SCORM canonical course-package flow; YouTube official embed; dev token package
+## v3.4 — 2026-11-16 · Single-topic courses without our sidebar; SCORM canonical course-package flow; YouTube official embed; dev token package; ICP Hub on /hub/
 
-Version bump for the entries of 4 to 16 Nov 2026 below, which were missing from this changelog until 16 Nov.
+Version bump for the entries of 4 to 16 Nov 2026 below, which were missing from this changelog until 16 Nov. A documentation release: the DS itself has had no v3.x release since v3.3; its components are versioned one by one since 8 Oct 2026 (`03-design-system/component-versions.md`).
 
 ## 2026-11-16 · Decision 042: a course of one module and one topic opens without our sidebar
 
-Nelson: any course with one module and one topic, whatever its type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). For SCORM it confirms the decisions of 15 Nov 2026: the canonical course-package flow (proposed 11 Nov as section E, decided 15 Nov) replaces D1, with no progress ring and no footer; the score shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed; Dark is out of this cycle; *Skip for now* is still open. It changes SK-10957 ("sidebar visible by default"). Docs brought in line the same day: `activity-scorm.md` (D1 SUPERSEDED, canonical course-package flow), the 4 Nov meeting notes (proposal and open items marked decided), decision 023 (mobile web: notice + *Open anyway*; native app: notice only), `06-platform-pages/README.md` (Course Page: Course and Progress Ready for Dev; no deadlines on the Dashboard, decision 036).
+Nelson: any course with one module and one topic, whatever its type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). On a one-topic course that is not SCORM only the sidebar goes; the progress ring and the footer stay. For SCORM it confirms the decisions of 15 Nov 2026 and points 1–3 of the proposal of 11 Nov: the canonical course-package flow (proposed 11 Nov as section E, decided 15 Nov) replaces D1. A single-package course shows a status, never a percentage, and nothing of ours around the package (no sidebar, progress ring or footer); a course of several packages keeps our sidebar and footer, and Next asks before leaving a package that has not reported completion. The score shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed; Dark is out of this cycle; *Skip for now* is still open. Point 4, the content team's export checklist, is not a decision: an open dependency, owner Simran. It changes SK-10957 (*ICP Course Outline Sidebar…*, epic SK-11028, in UAT: "Desktop (≥960px) Sidebar visible by default"). `03-design-system/README.md` brought in line with v3.4 (the 24 Jul variable count is no longer given as current). Docs brought in line the same day: `activity-scorm.md` (D1 SUPERSEDED, canonical course-package flow), the 4 Nov meeting notes (proposal and open items marked decided), decision 023 (mobile web: notice + *Open anyway*; native app: notice only), `06-platform-pages/README.md` (Course Page: Course and Progress Ready for Dev; no deadlines on the Dashboard, decision 036).
+
+## 2026-11-15 · The ICP Hub is published at /hub/
+
+The ICP Hub, the project's source of truth, is published on GitHub Pages at https://nvjeronimo.github.io/skillup-lms-prd/hub/ as it stood on 12 Nov 2026 (docs PR 258, merged 15 Nov 2026): `hub/index.html` (the artifact, standalone, with a version line and an id on every decision) and `hub/ICP-HUB.md` (the same content in Markdown, for readable diffs). The Hub is Nelson's: it changes only with his approval. Docs PR 259 (merged the same day): `LMS-HANDOFF/README.md` points only to the public page, as the Claude artifact was deleted.
 
 ## 2026-11-12 · Dev token package: agreed edges, skin radii, To-decide rows settled
 
@@ -39,6 +43,10 @@ All test packages, POSH included, are SCORM 1.2: a package sends a status, never
 ## 2026-11-04 → 2026-11-10 · SCORM and YouTube meeting; course packages (group D)
 
 Meeting of 4 Nov 2026 ([notes](meeting-2026-11-04-scorm-youtube.md)): a packaged SCORM course is one topic named after the course, 0% until the package reports completion, then 100%; the package is not redesigned. ICP *Activity · SCORM* group D: our sidebar collapsed showing the one topic, footer *1 of 1* without Previous (D1, SUPERSEDED on 15 Nov 2026). Video Lessons rows 9 and 10 (YouTube) added. Follow-up call of 10 Nov: one zip per topic, two SCORM course shapes (several packages inside our modules, or one package for the whole course); prototype PRs 472, 475, 476; ICP cards D4 and D5. Docs PRs 246, 249.
+
+## 2026-11-09 · Who sets the topic type (Q10): proposal of 6 Nov, dev answers of 9 Nov
+
+`topic-types-inventory.md` §6d: Open edX derives only three types from a unit's components (problem > video > other, BR-43 to BR-46) and authors have no field for it. Proposal of 6 Nov 2026: automatic wherever the blocks tell the types apart, extended through the `OVERRIDE_GET_UNIT_ICON` hook, and chosen by the content creator (a unit tag) only where they cannot (Lab, Lesson Page, Podcast). Vikas's answers of 9 Nov 2026: the hook changes the LMS courseware icons but the MFE sidebar and outline need a separate update; Studio tags exist but the LMS and MFE cannot read them without a new API; lighter options exist (block types, unit format, a custom field). Still to decide by Nelson: a list in code or Studio tags. `02-content-types/OPEN-QUESTIONS.md` Q10 updated. Docs PRs 247, 248 (both merged 9 Nov 2026).
 
 ## 2026-11-03 · Mentorship Q&A keeps Post anonymously; thread title fills the header
 

@@ -162,24 +162,27 @@ What the progress check changes for the design. Proposed on 11 Nov 2026; the ref
 prototype and a new frame in Figma.
 
 > **Decided by Nelson on 15 Nov 2026, extended on 16 Nov 2026
-> ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)).** The proposal becomes the **canonical course-package flow** and replaces D1:
-> nothing of ours around a course that is one package, no sidebar, no progress ring, no footer (point 2). The score
-> shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed. Dark is out
-> of this cycle; *Skip for now* is still open. On 16 Nov 2026 Nelson made point 2 a general rule: every course of one
-> module and one topic, of any type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar.
+> ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)).** Points 1, 2 and 3 become the
+> **canonical course-package flow** and replace D1: a status instead of a percentage (1); nothing of ours around a
+> course that is one package, no sidebar, no progress ring, no footer (2); several packages keep our sidebar and
+> footer, and Next asks (3). The score shows in the topic's alert and in the Progress tab; the pass mark only when the
+> learner has not passed. Dark is out of this cycle; *Skip for now* is still open. **Point 4 is not a decision:** the
+> export checklist stays an open dependency, owner Simran. On 16 Nov 2026 Nelson made the no-sidebar part a general
+> rule: every course of one module and one topic, of any type (SCORM, video, reading, quiz…), opens in the ICP without
+> our sidebar; outside SCORM our progress ring and footer stay.
 
-1. **A course that is one package shows a status, never a percentage**: *Not started*, *Started*, *Completed*, with
+1. **Decided 15–16 Nov 2026.** **A course that is one package shows a status, never a percentage**: *Not started*, *Started*, *Completed*, with
    no bar, on the course card, the program row and the course page. Today our 0% contradicts the package's own
    "80% COMPLETE" until the package reports *completed*. Open edX knows whether the learner has started (Learner
    Home: Begin vs Resume).
-2. **In the player, nothing of ours around a course that is one package**: no sidebar, no Course Journey button, no
+2. **Decided 15 Nov 2026.** **In the player, nothing of ours around a course that is one package**: no sidebar, no Course Journey button, no
    progress ring, no footer (*1 of 1* and a Next that leads nowhere). The package brings its own menu, progress and
    exit; the top bar's close returns to the course page. This is Navdeep's ask of 4 Nov and **reverses Nelson's
    collapsed-sidebar choice: decided 15 Nov 2026 (D1 SUPERSEDED), a general rule since 16 Nov 2026 (decision 042).**
-3. **A course of several packages keeps our sidebar and footer, and Next asks** before leaving a package that has not
+3. **Decided 15–16 Nov 2026.** **A course of several packages keeps our sidebar and footer, and Next asks** before leaving a package that has not
    reported completion: *This activity hasn't recorded completion yet* · **Stay on the activity** (primary) /
    **Continue anyway**. No *Yes, completed*: we cannot mark a package complete. A package that never reports keeps C1.
-4. **An export checklist for the content team** (via Nelson, to Simran):
+4. **Not a decision: an open dependency, owner Simran.** **An export checklist for the content team** (via Nelson, to Simran):
    - turn off Rise's *Exit course* link (POSH has `enableExitCourse` on);
    - choose when the package reports *completed*, consistent with what the course tells learners (POSH tells them to
      mark every section, but completes on the Storyline block);
@@ -244,11 +247,13 @@ On 12 Nov 2026 Kirti shared the tech team's answer to the discovery ticket from 
 - Duplicate controls: Rise's exit and progress, and Storyline's Next, sit beside ours. We do not change the package, so the copy or placement around it may need a note for the content team.
 - Vikas: how the SkillUp YouTube videos are authored today (embed or Video component), and how many there are.
 - Kirti: the isolated SCORM progress test (a unit with only the package).
-- Simran: confirm the Rise completion setting used for POSH (Storyline block), and whether any package is exported as
-  SCORM 2004 (the export checklist of the proposal above).
+- Simran (open dependency of the canonical course-package flow, decision 042): the export checklist of point 4
+  above — Rise's *Exit course* link off, when a package reports *completed* (POSH: the Storyline block), SCORM 1.2 or
+  2004, and whether Rise's own "% COMPLETE" can be hidden.
 - ~~Nelson: decide the proposal above, above all point 2 (no sidebar of ours on a single-package course).~~
-  **Decided 15 Nov 2026** (the canonical course-package flow replaces D1), general rule on 16 Nov 2026
-  ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). Still open: *Skip for now* (A7).
+  **Decided 15 Nov 2026** (the canonical course-package flow replaces D1; points 1–3 confirmed 16 Nov), general rule
+  on 16 Nov 2026 ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). Still open: *Skip for now*
+  (A7) and point 4 (Simran).
 - The YouTube row in Dark: not drawn yet. Tablet and mobile show the main state only; the other states follow desktop.
 - ~~Hiding our navigation entirely on a single-package course (Navdeep) versus the collapsed sidebar (Nelson's choice,
   drawn in group D and confirmed on 10 Nov).~~ **Decided 15–16 Nov 2026: our navigation is hidden** (decision 042).
