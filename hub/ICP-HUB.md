@@ -37,7 +37,7 @@ The topic content types we design, in priority order. Volume comes from the prog
 | **Quiz** <br>problem blocks · 2% of topics, 100% of the grade | Ready for dev (mode A-2) | 6 · 2% | A-2 delivery (18 screens); A-1 and B kept for reference | [two-modes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/quizzes/08-two-modes.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=5089-15920) |
 | **Lab** <br>notebook + PDF, or a lab on the partner's own platform | Third-party labs in review | 24 · 9% | The download preset stays on the discovery page. Labs that run on Google, Microsoft and IBM platforms have their own page since 8 Oct. 36 cards (the six Opened cards are not for now): twelve screens on desktop, tablet and mobile, in review. A lab opens in a new tab by default; a second row shows the lab inside the page, for the few courses that already have it. The learner completes the lab with Mark as Complete at the end of the content, in the same row as the feedback, on the right (under the feedback on a phone), since 13 Oct; the footer is the usual Previous and Next, and Next asks if they move on without it (12 Oct 2026). The launch card stays Ready, also on the question and completed screens, and never says the lab is complete: SkillUp cannot tell whether the lab was opened (Komal, 19 Oct), so the Opened state is not for now. On a partner lab the launch button stays primary and Mark as Complete secondary; Before you start and the computer warning stay until the topic is completed; How this lab works and the author row are hidden. The launch card is a design system component. Answers are still pending from the content team, listed under Open questions. In the prototype the partner labs follow these screens since 19 Oct: nothing comes back from the partner, the launch card stays Ready with its button primary and Mark as Complete secondary, Before you start and the computer warning stay until the topic is completed, the steps and the author are not shown, and the lab inside the page and the frame not loading can be switched on from the demo menu on the Microsoft lab. IBM has been in the prototype since 8 Oct as a course hosted by the partner on Course Detail. | [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=6789-325) |
 | **Podcast** <br>goes through the Video component (Simran, 22 Sep) | Folds into Video? | 19 · 7% | Rendered as a video with cover art; the audio player is kept for later. Completes by itself at 90% played in the prototype since 21 Oct. | [matrix §13](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/reading-screen-matrix.md) |
-| **Activity** <br>SCORM · not mobile-ready | Ready for dev | 10 · 4% | Screens drawn 19 Oct: in the page (default) · new window · exceptions · course packages (POSH); completion from the package, no Mark as Complete; max one per unit, not in the mobile app (notice + Open anyway). Since 4 Nov 2026 a course package is one topic named after the course, 0% until the package reports, then 100% (checked 11 Nov: a SCORM 1.2 package sends a status, never a percentage); group D redrawn with the collapsed sidebar showing that one topic and the footer *1 of 1* (groups A–C stay WIP). Four real SCORM 1.2 packages play in the prototype's [SCORM Test Course](https://lms-prototype-mu.vercel.app/platform/course/scorm-test-course) (prototype PR [468](https://github.com/nvjeronimo/skillup-lms-prototype/pull/468)); the same four also play as course packages of one topic each (sidebar collapsed, footer *1 of 1* without Previous) in the [SCORM and YouTube Test Program](https://lms-prototype-mu.vercel.app/platform/program/scorm-and-youtube-tests) on My Learning (prototype PR [469](https://github.com/nvjeronimo/skillup-lms-prototype/pull/469)) ([meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md)). Since prototype PR [470](https://github.com/nvjeronimo/skillup-lms-prototype/pull/470) (merged) a course package uses the 3-level sidebar shape (Content Shape Levels): no Module, no Lesson, the one topic straight under the Course Header, so the collapsed rail shows no M1 / L1; the same PR fixed a hydration error on SCORM topics. In the ICP, Activity · SCORM group D: M1 hidden in the four collapsed rails (D1, D3, D1.2, D3.2), each of those cards with a Recent changes entry; D2 and the mobile cards do not show our sidebar. Since 10 Nov 2026: one package = one topic, so a SCORM course is either several package topics inside our modules or one whole-course package (group D); a course package's frame is the height of the window (PR [475](https://github.com/nvjeronimo/skillup-lms-prototype/pull/475)); *Golf Explained* (a package with its own menu) and the content team's POSH course in two packages (Rise + Storyline quiz) play as courses 7–9 of the test program (PRs [472](https://github.com/nvjeronimo/skillup-lms-prototype/pull/472), [476](https://github.com/nvjeronimo/skillup-lms-prototype/pull/476)); ICP group D cards D4, D5 (desktop, tablet, mobile) from the prototype screenshots. Since 11 Nov 2026 a course package fills the whole content area: no header, introduction, alert, Fullscreen button, border or margin of ours; the package's own menu and title are the page, beside our collapsed sidebar and above our footer (Nelson; prototype PR [478](https://github.com/nvjeronimo/skillup-lms-prototype/pull/478), merged; ICP cards D1 to D5 redrawn, desktop, tablet and mobile). POSH seen reporting completed in the prototype (Jaspinder, 11 Nov); full screen is no longer offered on a course package. Not checked: the quiz score. Proposal of 11 Nov 2026, not decided: an improved course-package flow (status instead of a percentage, nothing of ours around a single package, Next asks before leaving an unfinished one), in the test program's courses 5 and 6 (prototype PR [480](https://github.com/nvjeronimo/skillup-lms-prototype/pull/480)) and ICP Activity · SCORM section E; see Open questions. Since 11 Nov 2026 the test program keeps only courses backed by a SkillUp zip (Nelson; prototype PR [481](https://github.com/nvjeronimo/skillup-lms-prototype/pull/481), merged): the four GenAI activities as whole courses and *Golf Explained* are removed (the four still play inside the SCORM Test Course's units); POSH, its quiz and the proposals are now courses 3 to 6; ICP cards D6 to D10 are SUPERSEDED. The course page no longer shows *Content to be provided.* for a course package's module (prototype PR [482](https://github.com/nvjeronimo/skillup-lms-prototype/pull/482)). Amended 17 Nov 2026: approved (Nelson) and Ready for Dev. The ICP page moved under Ready for Dev as *Phase 1 · Activity · SCORM - Ready for Dev* ([7428-1069](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069)): 50 cards (16 desktop, 16 tablet, 18 mobile) in four groups, A in the page, B new window, C exceptions (C2 mobile web: notice + Open anyway; C3 native app: notice only, decision 023) and E the canonical course-package flow ([decision 042](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/042-single-topic-course-no-sidebar.md)); group D stays on the page as SUPERSEDED history. Dark is out of this cycle; *Skip for now* is still open. | [activity-scorm](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/activity-scorm.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069) · [studio-authoring-parity](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/studio-authoring-parity.md) |
+| **Activity** <br>SCORM · not mobile-ready | Ready for dev | 10 · 4% | Screens drawn 19 Oct: in the page (default) · new window · exceptions · course packages (POSH); completion from the package, no Mark as Complete; max one per unit, not in the mobile app (notice + Open anyway). Since 4 Nov 2026 a course package is one topic named after the course, 0% until the package reports, then 100% (checked 11 Nov: a SCORM 1.2 package sends a status, never a percentage); group D redrawn with the collapsed sidebar showing that one topic and the footer *1 of 1* (groups A–C stay WIP). Four real SCORM 1.2 packages play in the prototype's [SCORM Test Course](https://lms-prototype-mu.vercel.app/platform/course/scorm-test-course) (prototype PR [468](https://github.com/nvjeronimo/skillup-lms-prototype/pull/468)); the same four also play as course packages of one topic each (sidebar collapsed, footer *1 of 1* without Previous) in the [SCORM and YouTube Test Program](https://lms-prototype-mu.vercel.app/platform/program/scorm-and-youtube-tests) on My Learning (prototype PR [469](https://github.com/nvjeronimo/skillup-lms-prototype/pull/469)) ([meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md)). Since prototype PR [470](https://github.com/nvjeronimo/skillup-lms-prototype/pull/470) (merged) a course package uses the 3-level sidebar shape (Content Shape Levels): no Module, no Lesson, the one topic straight under the Course Header, so the collapsed rail shows no M1 / L1; the same PR fixed a hydration error on SCORM topics. In the ICP, Activity · SCORM group D: M1 hidden in the four collapsed rails (D1, D3, D1.2, D3.2), each of those cards with a Recent changes entry; D2 and the mobile cards do not show our sidebar. Since 10 Nov 2026: one package = one topic, so a SCORM course is either several package topics inside our modules or one whole-course package (group D); a course package's frame is the height of the window (PR [475](https://github.com/nvjeronimo/skillup-lms-prototype/pull/475)); *Golf Explained* (a package with its own menu) and the content team's POSH course in two packages (Rise + Storyline quiz) play as courses 7–9 of the test program (PRs [472](https://github.com/nvjeronimo/skillup-lms-prototype/pull/472), [476](https://github.com/nvjeronimo/skillup-lms-prototype/pull/476)); ICP group D cards D4, D5 (desktop, tablet, mobile) from the prototype screenshots. Since 11 Nov 2026 a course package fills the whole content area: no header, introduction, alert, Fullscreen button, border or margin of ours; the package's own menu and title are the page, beside our collapsed sidebar and above our footer (Nelson; prototype PR [478](https://github.com/nvjeronimo/skillup-lms-prototype/pull/478), merged; ICP cards D1 to D5 redrawn, desktop, tablet and mobile). POSH seen reporting completed in the prototype (Jaspinder, 11 Nov); full screen is no longer offered on a course package. Not checked: the quiz score. Proposal of 11 Nov 2026, not decided: an improved course-package flow (status instead of a percentage, nothing of ours around a single package, Next asks before leaving an unfinished one), in the test program's courses 5 and 6 (prototype PR [480](https://github.com/nvjeronimo/skillup-lms-prototype/pull/480)) and ICP Activity · SCORM section E; see Open questions. Since 11 Nov 2026 the test program keeps only courses backed by a SkillUp zip (Nelson; prototype PR [481](https://github.com/nvjeronimo/skillup-lms-prototype/pull/481), merged): the four GenAI activities as whole courses and *Golf Explained* are removed (the four still play inside the SCORM Test Course's units); POSH, its quiz and the proposals are now courses 3 to 6; ICP cards D6 to D10 are SUPERSEDED. The course page no longer shows *Content to be provided.* for a course package's module (prototype PR [482](https://github.com/nvjeronimo/skillup-lms-prototype/pull/482)). Amended 17 Nov 2026: approved (Nelson) and Ready for Dev. The ICP page moved under Ready for Dev as *Phase 1 · Activity · SCORM - Ready for Dev* ([7428-1069](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069)): 50 cards (16 desktop, 16 tablet, 18 mobile) in four groups, A in the page, B new window, C exceptions (C2 mobile web: notice + Open anyway; C3 native app: notice only, decision 023) and E the canonical course-package flow ([decision 042](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/042-single-topic-course-no-sidebar.md)); group D stays on the page as SUPERSEDED history. Dark is out of this cycle; *Skip for now* is still open. Amended 17 Nov 2026 (later): the Ready frame (11 128 × 22 582 px) was too large for Zeplin to export, so it is now four frames, one per flow, desktop, tablet and mobile stacked, all 11 128 px wide: 01 A [7428-1070](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1070) (Ready for Dev), 02 B [8515-17228](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8515-17228), 03 C [8515-17234](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8515-17234) and 04 E [8515-17240](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8515-17240) (with the canonical note). Rows were moved, not copied, so instances and overrides are intact; all 50 screens are there; the original is archived as [8514-21571](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8514-21571). Frames 02 to 04 still need Ready for Dev in Dev Mode (Nelson), and frames exported to Zeplin before the component swaps below must be exported again. The E2 and E3 screens (course page and program row) now use DS components: 21 swaps to SKO DS V3 (E2: Topbar, Breadcrumbs, Delivery-Mode-Badge, Horizontal tabs (Underline), Alert (Brand); E3: Difficulty-Badge, Delivery-Mode-Badge); the 44 player screens already used instances. Visible changes: the real Topbar is 8 px taller, tabs are underlined, badges outlined, and the E2 tablet and mobile screens grew 38 and 68 px. Still local: the status card and hero, the E3 program row and mobile card, the meta strip and the Phase badge; see Open questions. The YouTube frames are being split the same way (none above about 7 000 px, original archived). | [activity-scorm](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/activity-scorm.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069) · [studio-authoring-parity](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/studio-authoring-parity.md) |
 | **Final Project** <br>ORA-backed structure | Discovery | 8 · 3% | ORA components cover all five Studio flows, text-only and upload | [ora-explained](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/quizzes/05-ora-explained.md) |
 | **Programming Assignment · Role Play · Dialogue** <br>Coursera-native features | Blocked | 0 | No Open edX equivalent; needs a build-or-buy decision first | [topic-types-inventory §2](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/topic-types-inventory.md) |
 | **Discussion** | Not a type | 0 | Course-level chrome plus an optional footer (29 Jul) | [topic-types-inventory](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/topic-types-inventory.md) |
@@ -396,1311 +396,1316 @@ QA checklist, per component 9 checks
 ## Decisions, newest first
 
 What was decided, when, and by whom. The linked document holds the reasoning. Reopen one only with new evidence.
-1. <a id="decision-2026-11-17-scorm-and-youtube-row-9-ready-for-dev-a-banner-on-every-ready-for"></a>17 Nov 2026 · Nelson
+
+1. <a id="decision-2026-11-17-scorm-ready-frame-split-in-four-for-zeplin-e2-and-e3-on-ds-compon"></a>17 Nov 2026 · Nelson
+
+   ### SCORM Ready frame split in four for Zeplin; E2 and E3 on DS components
+
+   Zeplin could not export the 11 128 × 22 582 px *Activity · SCORM* Ready frame. It is now four frames, one per flow (01 A [7428-1070](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1070), 02 B [8515-17228](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8515-17228), 03 C [8515-17234](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8515-17234), 04 E [8515-17240](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8515-17240)), rows moved rather than copied, the original archived ([8514-21571](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8514-21571)). On the E2 and E3 screens the audit found 47 loose elements; counted node by node, 165 nodes, 74 of them replaced by instances through 21 swaps to SKO DS V3. Frames 02 to 04 still need Ready for Dev, and earlier Zeplin exports must be redone. The YouTube frames follow the same split. Four component questions are open (Open questions).
+2. <a id="decision-2026-11-17-scorm-and-youtube-row-9-ready-for-dev-a-banner-on-every-ready-for"></a>17 Nov 2026 · Nelson
 
    ### SCORM and YouTube row 9 Ready for Dev; a status banner over every Ready for Dev frame
 
    Nelson approved the SCORM screens and the YouTube embed. The ICP page *Activity · SCORM* moved under Ready for Dev as *Phase 1 · Activity · SCORM - Ready for Dev* ([7428-1069](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069)): its 50 cards in groups A, B, C and E (16 desktop, 16 tablet, 18 mobile) went from In review to Ready for DEV; group D is SUPERSEDED and Nelson moved it into its own section, *Archived · SUPERSEDED*, outside the Ready frame. Video Lessons row 9 (cards 9, 9.2, 9.3) went to Ready for DEV; the page header counts 20 screens. Every frame on a Ready for Dev page now has a status banner above it, as on Platform Pages: Video Lessons (Light Ready for dev, Dark Ready for review), Reading and Activity · SCORM join Quizzes and Platform Pages. Reading's 21 cards were already Ready for DEV, so the Hub row now says Ready for dev too. The same day, after a UI/UX handoff check: Video Lessons 9.2 and 9.3 gained the three other states (back from YouTube, Next asks, completed) on tablet and mobile; SCORM E1 to E4 (eight screens) were rebuilt in layers from DS components instead of prototype screenshots, so Dev Mode and Zeplin give specs; the SCORM header lists the stories (SK-12250, SK-12252). Docs PR [261](https://github.com/nvjeronimo/skillup-lms-prd/pull/261).
-2. <a id="decision-042"></a>16 Nov 2026 · Nelson
+3. <a id="decision-042"></a>16 Nov 2026 · Nelson
 
    ### Decision 042: a course of one module and one topic opens without our sidebar
 
    Any course with one module and one topic, whatever its type, opens in the ICP without our sidebar. On a course that is not SCORM only the sidebar goes: the progress ring and the footer stay. For SCORM it confirms the canonical course-package flow, decided on 15 Nov 2026 from points 1–3 of the 11 Nov proposal and drawn as section E, which replaces D1: (1) a single-package course shows a status, *Not started*, *Started* or *Completed*, never a percentage, on the card, the program row and the course page; (2) nothing of ours around a single package: no sidebar, Course Journey button, progress ring or footer; (3) a course of several packages keeps our sidebar and footer, and Next asks before leaving a package that has not reported completion (*Stay on the activity* / *Continue anyway*). The score shows in the topic's alert and the Progress tab; the pass mark only when the learner has not passed; Dark is out of this cycle. Still open: *Skip for now* on a package that fails to load. Point 4, the content team's export checklist, is a dependency on Simran, not a decision. It changes Jira SK-10957 (sidebar visible by default on desktop), in UAT. This settles Navdeep's ask to hide our navigation on a packaged course and the proposal of 11 Nov. [Decision 042](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/042-single-topic-course-no-sidebar.md) (docs PR [260](https://github.com/nvjeronimo/skillup-lms-prd/pull/260)).
-
-3. <a id="decision-2026-11-12-code-tokens-the-to-decide-rows-settled-and-one-plugin-keeps"></a>12 Nov 2026 · Nelson
+4. <a id="decision-2026-11-12-code-tokens-the-to-decide-rows-settled-and-one-plugin-keeps"></a>12 Nov 2026 · Nelson
 
    ### Code tokens: the To-decide rows settled, and one plugin keeps prototype and dev package in step
 
    Nelson agreed the proposals for the 29 *To decide* rows of the token mapping, no new DS token anywhere: the video letterbox black stays a value of the video player (no bg/media); an off-scale spacing (10, 14, 18, 28) takes the Figma component's value, or else the smaller step; the code uses the SKO radii only until another skin goes to production; the rest map to existing tokens ([the decisions](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/code-token-decisions.md)). The generated CSS now switches on the agreed edges, Tablet under 1023, Mobile under 767, in the prototype and in the dev token package, and the package carries the radius of each skin. The prototype's tokens were republished from the DS (Red out, Harbor, Fluent, Skin shape and Scope in; nothing visible changes). The *Publish tokens* plugin in the DS file now also opens a pull request for the dev token package (a check regenerates its CSS, a person merges) and downloads the export: variables.json, or a zip that adds the W3C DTCG files for Style Dictionary or Tokens Studio ([how it works](https://github.com/nvjeronimo/skillup-lms-prototype/blob/main/figma-plugin/README.md)). Since prototype PR [490](https://github.com/nvjeronimo/skillup-lms-prototype/pull/490) the package pull request can go to any GitHub repository, so the dev team can use it on their own: repository, base branch, folder and format (our JSON or W3C DTCG) are set in the plugin, kept on each computer; one commit creates the files that do not exist yet and deletes the DTCG mode files Figma no longer has; it never merges, and in their repository their own build turns the files into code. The defaults keep our docs repository as it was. The plugin is offered to Komal and the team (zip of the plugin folder; a GitHub token with write access to the target repository for the pull requests). Prototype PRs [485](https://github.com/nvjeronimo/skillup-lms-prototype/pull/485), [486](https://github.com/nvjeronimo/skillup-lms-prototype/pull/486), [487](https://github.com/nvjeronimo/skillup-lms-prototype/pull/487), [488](https://github.com/nvjeronimo/skillup-lms-prototype/pull/488), [489](https://github.com/nvjeronimo/skillup-lms-prototype/pull/489), [490](https://github.com/nvjeronimo/skillup-lms-prototype/pull/490); docs PRs [255](https://github.com/nvjeronimo/skillup-lms-prd/pull/255), [256](https://github.com/nvjeronimo/skillup-lms-prd/pull/256) (all merged).
-4. <a id="decision-041"></a>12 Nov 2026 · Kirti (tech team), Nelson
+5. <a id="decision-041"></a>12 Nov 2026 · Kirti (tech team), Nelson
 
    ### Decision 041: YouTube plays in the official embed only
 
    The tech team's discovery, shared by Kirti: learners cannot be stopped from opening a YouTube video on youtube.com, and YouTube's policies require its logo and link to stay visible and clickable. No player setting removes them, and covering the logo or sandboxing the iframe is not allowed. Nelson withdrew row 10 (YouTube in our player, which covered the logo) and added a *back from YouTube* notice to row 9: when the learner returns to the tab before completing, the alert asks *Welcome back. Did you finish the video?* and points to Mark as Complete. The embed fills the content width at 16:9 through the ICP CSS; nothing is set in Studio. A video that must not open on YouTube goes to Azure. Prototype PR [484](https://github.com/nvjeronimo/skillup-lms-prototype/pull/484), docs PRs [253](https://github.com/nvjeronimo/skillup-lms-prd/pull/253), [254](https://github.com/nvjeronimo/skillup-lms-prd/pull/254) (all merged); ICP Video Lessons row 10 SUPERSEDED, row 9 with the new screen. [Decision 041](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/041-youtube-official-embed-only.md).
-5. <a id="decision-2026-11-12-mentor-card-on-the-dev-build-reviewed-sk-11861"></a>12 Nov 2026 · Nelson
+6. <a id="decision-2026-11-12-mentor-card-on-the-dev-build-reviewed-sk-11861"></a>12 Nov 2026 · Nelson
 
    ### Mentor card on the dev build reviewed (SK-11861)
 
    Kirti asked for a design check of the Mentor card on the Course Detail page. Copy, colours, spacing, position and the link to the course's Mentorship Q&A match DS Sidebar-Card Kind=Mentor Q&A on desktop, tablet and mobile. To fix: the radius (10 → 12) and the label size (12 → 13); on mobile the phone type scale is not used, a token issue the mapping below fixes. Approved once the first two are fixed. Not checked: the card hidden when Discussion is off. Where the card leads may change while Mentorship Q&A is on hold.
-6. <a id="decision-2026-11-12-code-figma-token-mapping-for-the-dev-storybook"></a>12 Nov 2026 · Nelson, for Komal
+7. <a id="decision-2026-11-12-code-figma-token-mapping-for-the-dev-storybook"></a>12 Nov 2026 · Nelson, for Komal
 
    ### Code → Figma token mapping for the dev Storybook
 
    After the SK-12002 review, every --sko-\* colour token in the dev Storybook is mapped to the Figma token that replaces it: 90 in all, 22 the same, 44 close, 12 that clash (same name, different role) and 12 to decide, plus typography, spacing, radius, layout and breakpoints. A token package exported from Figma (JSON + CSS) sits beside it. The media queries were on 1024 / 768; fixed the same day to the agreed 1023 / 767 (see the entry above). [The mapping](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/code-token-mapping.md) (docs PR [252](https://github.com/nvjeronimo/skillup-lms-prd/pull/252), merged).
-7. <a id="decision-2026-11-11-a-scorm-package-reports-a-status-not-a-percentage"></a>11 Nov 2026 · Jaspinder, Nelson
+8. <a id="decision-2026-11-11-a-scorm-package-reports-a-status-not-a-percentage"></a>11 Nov 2026 · Jaspinder, Nelson
 
    ### A SCORM package reports a status, not a percentage
 
    Jaspinder questioned the 0% → 100% rule: packages have settings that return progress. Checked in the package and the code the same day. All our test packages, POSH included, are SCORM 1.2, which has no progress percentage: a package sends its status (incomplete, completed, passed or failed), a score if its export has one, and where the learner stopped. The setting she remembered is real: Rise exports POSH as completed / incomplete, completed when the Storyline interaction inside the course is finished. It decides *when* the package reports completed, not a share. The SCORM XBlock reads partial progress (`cmi.progress_measure`) only from SCORM 2004, and the Progress tab counts a unit as complete or not. So the rule stands: a package topic is complete or not, and a course that is only one package goes 0% → 100%. POSH is also the only package with video: 22 MP4s inside the Rise course, played by Rise's own player; Kirti can test it there. Not verified: that SkillUp runs this XBlock, and the code of the installed release. ICP Activity · SCORM D3 and D4 notes updated. [Meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md#scorm-progress-checked-11-nov-2026) (docs PR [250](https://github.com/nvjeronimo/skillup-lms-prd/pull/250)).
-8. <a id="decision-2026-11-11-youtube-can-play-in-our-player-a-course-package-fills-the-co"></a>11 Nov 2026 · Vikas, Nelson
+9. <a id="decision-2026-11-11-youtube-can-play-in-our-player-a-course-package-fills-the-co"></a>11 Nov 2026 · Vikas, Nelson
 
    ### YouTube can play in our player; a course package fills the content area
 
    Vikas confirmed that YouTube videos can play inside our ICP video player, the same one as Azure, so learners can always see one player (the prototype's row 10 does it with the YouTube IFrame API; the autoplay on opening is fixed, prototype PR [477](https://github.com/nvjeronimo/skillup-lms-prototype/pull/477), merged). In a SCORM course package the package fills the whole content area: no header, introduction, alert, Fullscreen button, border or margin of ours; its own menu and title are the page, beside our collapsed sidebar and above our footer (Nelson; prototype PR [478](https://github.com/nvjeronimo/skillup-lms-prototype/pull/478), merged; ICP Activity · SCORM cards D1 to D5 redrawn, In review). Still open: Navdeep's sign-off on the YouTube rows, and a SCORM package that holds only a video, which Kirti asked for (11 Nov). [Meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md).
-9. <a id="decision-2026-11-10-a-scorm-course-takes-one-topic-per-package-in-either-of-two"></a>10 Nov 2026 · Simran, Kirti, Jaspinder, Nelson
+10. <a id="decision-2026-11-10-a-scorm-course-takes-one-topic-per-package-in-either-of-two"></a>10 Nov 2026 · Simran, Kirti, Jaspinder, Nelson
 
-   ### A SCORM course takes one topic per package, in either of two shapes
+    ### A SCORM course takes one topic per package, in either of two shapes
 
-   A SCORM package cannot be split: the content team uploads each zip as it arrives, one zip per topic, so our sidebar cannot be built from a package's own modules (Simran). Both course shapes are real, and the files received decide which: several packages, each a topic inside our modules with our normal sidebar; or one package for the whole course, with its own menu and our sidebar collapsed (group D). A course can mix SCORM activities, Azure videos and readings. The content team's real POSH course arrived as two packages (the Rise course and its Storyline final quiz) and plays as courses 8–9 of the test program; course 7 is a public sample with its own menu (prototype PRs [472](https://github.com/nvjeronimo/skillup-lms-prototype/pull/472), [475](https://github.com/nvjeronimo/skillup-lms-prototype/pull/475), [476](https://github.com/nvjeronimo/skillup-lms-prototype/pull/476), merged; ICP Activity · SCORM cards D4/D5, In review). Rise draws its own exit and progress beside ours and Storyline its own Next: we do not change packages. Kirti, Simran and Jaspinder review the prototype before the ticket closes. [Meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md) (docs PR [249](https://github.com/nvjeronimo/skillup-lms-prd/pull/249)).
-10. <a id="decision-2026-11-05-figma-screens-show-open-edx-only-by-default"></a>5 Nov 2026 · Nelson
+    A SCORM package cannot be split: the content team uploads each zip as it arrives, one zip per topic, so our sidebar cannot be built from a package's own modules (Simran). Both course shapes are real, and the files received decide which: several packages, each a topic inside our modules with our normal sidebar; or one package for the whole course, with its own menu and our sidebar collapsed (group D). A course can mix SCORM activities, Azure videos and readings. The content team's real POSH course arrived as two packages (the Rise course and its Storyline final quiz) and plays as courses 8–9 of the test program; course 7 is a public sample with its own menu (prototype PRs [472](https://github.com/nvjeronimo/skillup-lms-prototype/pull/472), [475](https://github.com/nvjeronimo/skillup-lms-prototype/pull/475), [476](https://github.com/nvjeronimo/skillup-lms-prototype/pull/476), merged; ICP Activity · SCORM cards D4/D5, In review). Rise draws its own exit and progress beside ours and Storyline its own Next: we do not change packages. Kirti, Simran and Jaspinder review the prototype before the ticket closes. [Meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md) (docs PR [249](https://github.com/nvjeronimo/skillup-lms-prd/pull/249)).
+11. <a id="decision-2026-11-05-figma-screens-show-open-edx-only-by-default"></a>5 Nov 2026 · Nelson
 
-   ### Figma screens show Open edX only by default
+    ### Figma screens show Open edX only by default
 
-   Like the prototype since 29 Oct (?scope=full opts in), the ICP platform pages (Platform Pages WIP and Ready for Dev) and the player pages (Video, Quizzes, Reading, Lab, SCORM, Topic Content Types, Overlay Panels, Completion) now hide what Open edX does not have, through the DS collection 5. Scope. Hidden in Open edX only: Services and the My Learning count in the bars, the search assistant (a plain search icon instead), the plan line, the greeting tip, glance trends, the Support tab, View calendar, course-header partners and level, the weekly-goal day strip, program About sections except Overview and What's included, live sessions in the Calendar, readable certificate IDs, Notifications View all, calendar-sync choices, video skip buttons, Report an issue, topic descriptions and bylines, lab provider and duration, quiz Retake, the per-quiz pass mark and verdict, file type and size, the VILT countdown and Add to calendar, certificate Download PDF, and the Program-Card last studied and hours left. 08 · Services is fixed to Beyond Open edX (the page itself is ours). Superseded rows are left as history. Two prototype inconsistencies to settle: the course header hides partners and level but the program header shows them; Lab's Download all is tagged but the video Downloads tab's Download all resources is not.
-11. <a id="decision-2026-11-04-youtube-and-scorm-must-be-covered-before-icp-phase-1-goes-li"></a>4 Nov 2026 · Kirti, Navdeep, Vikas, Jaspinder, Nelson
+    Like the prototype since 29 Oct (?scope=full opts in), the ICP platform pages (Platform Pages WIP and Ready for Dev) and the player pages (Video, Quizzes, Reading, Lab, SCORM, Topic Content Types, Overlay Panels, Completion) now hide what Open edX does not have, through the DS collection 5. Scope. Hidden in Open edX only: Services and the My Learning count in the bars, the search assistant (a plain search icon instead), the plan line, the greeting tip, glance trends, the Support tab, View calendar, course-header partners and level, the weekly-goal day strip, program About sections except Overview and What's included, live sessions in the Calendar, readable certificate IDs, Notifications View all, calendar-sync choices, video skip buttons, Report an issue, topic descriptions and bylines, lab provider and duration, quiz Retake, the per-quiz pass mark and verdict, file type and size, the VILT countdown and Add to calendar, certificate Download PDF, and the Program-Card last studied and hours left. 08 · Services is fixed to Beyond Open edX (the page itself is ours). Superseded rows are left as history. Two prototype inconsistencies to settle: the course header hides partners and level but the program header shows them; Lab's Download all is tagged but the video Downloads tab's Download all resources is not.
+12. <a id="decision-2026-11-04-youtube-and-scorm-must-be-covered-before-icp-phase-1-goes-li"></a>4 Nov 2026 · Kirti, Navdeep, Vikas, Jaspinder, Nelson
 
-   ### YouTube and SCORM must be covered before ICP Phase 1 goes live
+    ### YouTube and SCORM must be covered before ICP Phase 1 goes live
 
-   Azure video alone is not enough: many programs mix Azure, YouTube and SCORM. Course progress is per topic and binary; watching a video on youtube.com is not recorded. The learner may select Mark as Complete on a YouTube video without watching it, and that is accepted (Vikas). Video sources are only Azure and YouTube. We do not redesign or test SCORM packages: the content team checks them. A packaged course is one topic named after the course, 0% until the package reports completion, then 100% (Navdeep, Vikas). Drawn the same day, In review: Video Lessons [row 9](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8265-20321) (YouTube embed, not tracked) and [row 10](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8265-22232) (Video component with a YouTube ID, tracked), and Activity · SCORM group D. Nelson keeps our sidebar collapsed on a packaged course for now; groups A–C stay WIP. The four SCORM 1.2 packages Kirti shared play in the prototype's SCORM Test Course (prototype PR [468](https://github.com/nvjeronimo/skillup-lms-prototype/pull/468), merged): two rewrite *incomplete* on every launch, and M12 makes no SCORM calls, so it never reports and falls back to Mark as Complete with Next asking. The same day all of it went into one program on My Learning, the [SCORM and YouTube Test Program](https://lms-prototype-mu.vercel.app/platform/program/scorm-and-youtube-tests) (prototype PR [469](https://github.com/nvjeronimo/skillup-lms-prototype/pull/469), merged): a YouTube Video Test course (row 9 as a real YouTube embed with the Info alert and Next asking; row 10 in our player; the *video not available* state), the SCORM Test Course, and the four packages as course packages of one topic each. Then the course packages took the 3-level sidebar shape: no Module, no Lesson, the one topic under the Course Header, so the collapsed rail shows no M1 / L1, and a hydration error on SCORM topics was fixed (prototype PR [470](https://github.com/nvjeronimo/skillup-lms-prototype/pull/470), merged); in the ICP group D the four collapsed rails (D1, D3, D1.2, D3.2) hide M1 and say so in Recent changes. Row 10 now plays the real YouTube video in our player through the YouTube IFrame Player API, counting only time really played towards the 90% (a seek does not count), and every other Video topic plays a real SkillUp lesson (Introduction to Digital Marketing, SUIPSKO-600102), looping; that lesson's signed address comes from the Vercel variable NEXT\_PUBLIC\_SAMPLE\_VIDEO\_SRC, still to be set by Nelson, and until then those topics show the poster (prototype PR [471](https://github.com/nvjeronimo/skillup-lms-prototype/pull/471), merged). Designs due Mon 9 or Tue 10 Nov after a sync on Fri 6 Nov. [Meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md) (docs PR [246](https://github.com/nvjeronimo/skillup-lms-prd/pull/246), merged).
-12. <a id="decision-2026-11-04-view-certificate-in-sentence-case-everywhere"></a>4 Nov 2026 · Nelson
+    Azure video alone is not enough: many programs mix Azure, YouTube and SCORM. Course progress is per topic and binary; watching a video on youtube.com is not recorded. The learner may select Mark as Complete on a YouTube video without watching it, and that is accepted (Vikas). Video sources are only Azure and YouTube. We do not redesign or test SCORM packages: the content team checks them. A packaged course is one topic named after the course, 0% until the package reports completion, then 100% (Navdeep, Vikas). Drawn the same day, In review: Video Lessons [row 9](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8265-20321) (YouTube embed, not tracked) and [row 10](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=8265-22232) (Video component with a YouTube ID, tracked), and Activity · SCORM group D. Nelson keeps our sidebar collapsed on a packaged course for now; groups A–C stay WIP. The four SCORM 1.2 packages Kirti shared play in the prototype's SCORM Test Course (prototype PR [468](https://github.com/nvjeronimo/skillup-lms-prototype/pull/468), merged): two rewrite *incomplete* on every launch, and M12 makes no SCORM calls, so it never reports and falls back to Mark as Complete with Next asking. The same day all of it went into one program on My Learning, the [SCORM and YouTube Test Program](https://lms-prototype-mu.vercel.app/platform/program/scorm-and-youtube-tests) (prototype PR [469](https://github.com/nvjeronimo/skillup-lms-prototype/pull/469), merged): a YouTube Video Test course (row 9 as a real YouTube embed with the Info alert and Next asking; row 10 in our player; the *video not available* state), the SCORM Test Course, and the four packages as course packages of one topic each. Then the course packages took the 3-level sidebar shape: no Module, no Lesson, the one topic under the Course Header, so the collapsed rail shows no M1 / L1, and a hydration error on SCORM topics was fixed (prototype PR [470](https://github.com/nvjeronimo/skillup-lms-prototype/pull/470), merged); in the ICP group D the four collapsed rails (D1, D3, D1.2, D3.2) hide M1 and say so in Recent changes. Row 10 now plays the real YouTube video in our player through the YouTube IFrame Player API, counting only time really played towards the 90% (a seek does not count), and every other Video topic plays a real SkillUp lesson (Introduction to Digital Marketing, SUIPSKO-600102), looping; that lesson's signed address comes from the Vercel variable NEXT\_PUBLIC\_SAMPLE\_VIDEO\_SRC, still to be set by Nelson, and until then those topics show the poster (prototype PR [471](https://github.com/nvjeronimo/skillup-lms-prototype/pull/471), merged). Designs due Mon 9 or Tue 10 Nov after a sync on Fri 6 Nov. [Meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-11-04-scorm-youtube.md) (docs PR [246](https://github.com/nvjeronimo/skillup-lms-prd/pull/246), merged).
+13. <a id="decision-2026-11-04-view-certificate-in-sentence-case-everywhere"></a>4 Nov 2026 · Nelson
 
     ### View certificate in sentence case everywhere
 
     The last five places in the prototype that still said *View Certificate* now say *View certificate*, like the rest of the platform: the completed My Learning course card, the program card, the program Quick view, the Harbor course table and the My Learning data (prototype PR [467](https://github.com/nvjeronimo/skillup-lms-prototype/pull/467), merged). Same in the DS since 5 Nov 2026: Program-Card 1.19 and Course-Card 1.23 read *View certificate* in State=Completed (to publish). In the ICP, 29 button labels were changed: 8 on Platform Pages – Ready for Dev (My Learning and the Program page) and 21 on Platform Pages – WIP (02 · My Learning, 04 · Program Detail, 10 · Profile menu). The SUPERSEDED sections proposal was left as it was.
-13. <a id="decision-2026-11-03-tablet-the-phone-tab-bar-stays-on-phones-my-learning-s-toolb"></a>3 Nov 2026 · Nelson
+14. <a id="decision-2026-11-03-tablet-the-phone-tab-bar-stays-on-phones-my-learning-s-toolb"></a>3 Nov 2026 · Nelson
 
     ### Tablet: the phone tab bar stays on phones; My Learning's toolbar and table fit a tablet
 
     At exactly 768 px the page was drawn as a tablet while the prototype still counted it as a phone, so the floating tab bar sat over the tablet footer and the player opened its phone drawer. Phone is now below 768, tablet 768–1023, desktop from 1024, the same edges as the CSS (prototype PR [465](https://github.com/nvjeronimo/skillup-lms-prototype/pull/465)). On a tablet My Learning's toolbar takes two rows: the search on the left and the view switch on the right, the status filter below; one row from 1024 up (prototype PR [464](https://github.com/nvjeronimo/skillup-lms-prototype/pull/464)). The table view no longer scrolls its action out of view on a tablet: below 1024 Up next (and Effort on Courses) sit under the progress bar; from 1024 up the columns are unchanged (prototype PR [466](https://github.com/nvjeronimo/skillup-lms-prototype/pull/466)). All merged. ICP Ready for Dev cards 06 and 10 (My Learning tablet, 960) redrawn with the two-row toolbar, the grid/list switch now shown on Programs too. Still open: the DS view switch has Grid and List only; the prototype also has Table. Same day the nine token-lint violations that had failed the "Tokens from Figma" sync since 30 Oct were cleared (prototype PR [463](https://github.com/nvjeronimo/skillup-lms-prototype/pull/463), no visual change).
-14. <a id="decision-2026-11-03-course-journey-the-module-header-sticks-flush-to-the-top"></a>3 Nov 2026 · Nelson
+15. <a id="decision-2026-11-03-course-journey-the-module-header-sticks-flush-to-the-top"></a>3 Nov 2026 · Nelson
 
     ### Course Journey: the module header sticks flush to the top
 
     In the player sidebar the open module's header stopped 8 px below the top of the list while its topics scrolled, and topics showed above it: a sticky header sticks inside its list's padding (8, 4 in Fluent). It now sticks flush with the top of the list in every skin. Prototype only, no DS or ICP change (Figma does not draw scroll). [prototype PR 462](https://github.com/nvjeronimo/skillup-lms-prototype/pull/462) (merged).
-15. <a id="decision-040"></a>3 Nov 2026 · Nelson
+16. <a id="decision-040"></a>3 Nov 2026 · Nelson
 
     ### Decision 040: Mentorship Q&A keeps Post anonymously
 
     The reply composer keeps the *Post anonymously* checkbox: Open edX shows it whenever the course has allow\_anonymous: true, as the SkillUp courses do (verified on the dev instance, 21 Aug; allow\_anonymous\_to\_peers is false, so there is no "to classmates" variant). Since 28 Oct the Q&A is a public question post in the course forum, and staff, the mentor included, always see who wrote it. Nelson chose this over switching anonymity off in Studio. No change to the prototype or the ICP. Same day: the open question's title and author line fill the conversation header up to the menu button (prototype PR [461](https://github.com/nvjeronimo/skillup-lms-prototype/pull/461), merged; ICP 03 · Course Detail Row 4, the desktop and tablet headers set to Fill). [decision 040](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/040-qa-post-anonymously-stays.md) ([docs PR 245](https://github.com/nvjeronimo/skillup-lms-prd/pull/245), merged).
-16. <a id="decision-2026-11-03-program-card-quick-view-as-an-outlined-icon-button"></a>3 Nov 2026 · Nelson
+17. <a id="decision-2026-11-03-program-card-quick-view-as-an-outlined-icon-button"></a>3 Nov 2026 · Nelson
 
     ### Program card: Quick view as an outlined icon button
 
     On the My Learning program card, Quick view is an outlined eye icon button (Icon Button Brand Secondary, sm, 36 × 36). The tertiary button read as a dark patch on the card's dark hero, and its label took a third of the tags row, so Flexible Learning, Beginner and N courses fell one per line; they now take two (the three need 348 px against a 331 px row at 1440, so one line is not possible). The name stays for screen readers and as a hover hint. Prototype PRs [457](https://github.com/nvjeronimo/skillup-lms-prototype/pull/457) (secondary) and [460](https://github.com/nvjeronimo/skillup-lms-prototype/pull/460) (icon only), merged. DS Program-Card 1.17 published; the 47 ICP program cards are on it. Same day: a completed course row's View Certificate on the program page opened a 404 (/platform/certificate/course-1) and now opens the course's certificate (prototype PR [458](https://github.com/nvjeronimo/skillup-lms-prototype/pull/458), merged).
-17. <a id="decision-039"></a>3 Nov 2026 · Nelson
+18. <a id="decision-039"></a>3 Nov 2026 · Nelson
 
     ### Decision 039: a certificate downloads from its page only
 
     Download certificate lives only on the certificate page; every certificate card and row elsewhere (My Certificates, the program's Certificates tab, the Course Detail sidebar, the Progress tab) shows View and Share. Download had left the My Certificates rows and the program card on 30 Oct without a recorded reason; Nelson chose this over removing it everywhere. Open edX serves a web certificate, not a PDF: in the prototype Download opens the browser's print dialog (Save as PDF), which prints the sheet alone on one A4 landscape page, and it shows in the Open edX scope too (prototype PRs [456](https://github.com/nvjeronimo/skillup-lms-prototype/pull/456) and [459](https://github.com/nvjeronimo/skillup-lms-prototype/pull/459), merged 3 Nov); what the real platform serves is still open. [prototype PR 455](https://github.com/nvjeronimo/skillup-lms-prototype/pull/455) (merged); DS Certificate-Card 1.7 (published 3 Nov; the 57 live ICP cards swapped to 1.7 by script, the accepted update had left them on 1.6); [decision 039](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/039-certificate-download-on-page-only.md) ([docs PR 244](https://github.com/nvjeronimo/skillup-lms-prd/pull/244), merged).
-18. <a id="decision-2026-11-03-my-certificates-course-certificates-folded-by-default"></a>3 Nov 2026 · Nelson
+19. <a id="decision-2026-11-03-my-certificates-course-certificates-folded-by-default"></a>3 Nov 2026 · Nelson
 
     ### My Certificates: course certificates folded by default
 
     Each program card on My Certificates opens with its course rows folded on desktop, tablet and phone (before, only on a phone); the line "N of M course certificates earned" opens them (prototype PR [454](https://github.com/nvjeronimo/skillup-lms-prototype/pull/454), merged). DS Program-Certificates-Card 1.4: Open off and chevron-down by default (published 3 Nov). ICP 05 · Certificates: the four desktop and tablet program cards folded; the SUPERSEDED screens untouched.
-19. <a id="decision-2026-11-02-earned-with-the-certificate-icon-my-certificates-lighter-pro"></a>2 Nov 2026 · Nelson
+20. <a id="decision-2026-11-02-earned-with-the-certificate-icon-my-certificates-lighter-pro"></a>2 Nov 2026 · Nelson
 
     ### Earned with the certificate icon; My Certificates lighter; program tabs one step down
 
     Every Earned certificate badge leads with the certificate icon (award) instead of the check: My Certificates rows, the course certificate card and the Program certificate card (prototype PR [450](https://github.com/nvjeronimo/skillup-lms-prototype/pull/450)). On My Certificates the program's own row sits on the card's white like the other rows, and the rail beside its course rows is 1px (prototype PR [451](https://github.com/nvjeronimo/skillup-lms-prototype/pull/451)). On the program page the tabs are title-medium, text-lg 18/24 on every breakpoint; the other platform pages keep title-large (prototype PR [452](https://github.com/nvjeronimo/skillup-lms-prototype/pull/452)). DS published: Certificate-Card 1.6, Program-Certificate 1.5, Certificate-Row 1.4, Program-Certificates-Card 1.3. ICP: the program page tabs are title-medium 18/24 too, on the 12 Ready for Dev screens and the 04 · Program Detail WIP screens and their sources (an override on the DS Horizontal tabs, which stays title-large). The Course Detail tabs follow the same step (prototype PR [453](https://github.com/nvjeronimo/skillup-lms-prototype/pull/453), merged; My Learning and Certificates keep title-large; ICP: 14 tab rows on Ready for Dev, including the content search screens, and 39 on the WIP page; history frames unchanged).
-20. <a id="decision-2026-10-31-program-certificate-stepper-back-earned-on-course-certificat"></a>31 Oct 2026 · Nelson
+21. <a id="decision-2026-10-31-program-certificate-stepper-back-earned-on-course-certificat"></a>31 Oct 2026 · Nelson
 
     ### Program certificate stepper back; Earned on course certificates
 
     The Program certificate card on the program's Certificates tab shows the course stepper again (the progress bar, not the path of steps): one segment per course in program order, green once complete, light blue in progress, grey not started, and "N of M courses complete" under it; it stays once the certificate is issued, all green ([448](https://github.com/nvjeronimo/skillup-lms-prototype/pull/448), [449](https://github.com/nvjeronimo/skillup-lms-prototype/pull/449)). Issued course certificates carry a green Earned badge at the far end of the "Certificate" eyebrow row ([446](https://github.com/nvjeronimo/skillup-lms-prototype/pull/446), [447](https://github.com/nvjeronimo/skillup-lms-prototype/pull/447)). The share menu on My Certificates opens upwards when there is no room below and is no longer clipped by the program card ([445](https://github.com/nvjeronimo/skillup-lms-prototype/pull/445)). DS Program-Certificate 1.3 and Certificate-Card 1.5 published; ICP Program Certificates 04 / 05 / 06 redrawn (r3). Program-Certificate 1.4 (published the same day) has the stepper on the earned card too (PR 449); the ICP instances are on 1.4.
-21. <a id="decision-2026-10-30-program-certificates-without-progress-view-certificate-every"></a>30 Oct 2026 · Nelson
+22. <a id="decision-2026-10-30-program-certificates-without-progress-view-certificate-every"></a>30 Oct 2026 · Nelson
 
     ### Program certificates without progress; View certificate everywhere
 
     On the program page the Certificates tab drops the path of steps it had for a few hours ([PR 438](https://github.com/nvjeronimo/skillup-lms-prototype/pull/438)): a learner may take a program's courses in any order, and the progress shows in several other places. The tab now holds the Program certificate card (a plain card; locked preview until earned, and what it gives), then "Course certificates one per course" under the Dashboard Section header, every course titled without its number, earned or as a muted preview with "Pass the course" (prototype PRs [439](https://github.com/nvjeronimo/skillup-lms-prototype/pull/439), [440](https://github.com/nvjeronimo/skillup-lms-prototype/pull/440), [443](https://github.com/nvjeronimo/skillup-lms-prototype/pull/443), [444](https://github.com/nvjeronimo/skillup-lms-prototype/pull/444)). On My Certificates every earned row says View certificate and the row's thumb opens the course or program page ([441](https://github.com/nvjeronimo/skillup-lms-prototype/pull/441), [442](https://github.com/nvjeronimo/skillup-lms-prototype/pull/442)). DS Program-Certificate 1.2, Certificate-Card 1.4 (Status=Preview), Certificate-Row 1.3 published; ICP Program Certificates 04 / 05 / 06 redrawn (r2).
-22. <a id="decision-2026-10-30-my-certificates-as-a-ledger-by-program-the-path-on-the-progr"></a>30 Oct 2026 · Nelson
+23. <a id="decision-2026-10-30-my-certificates-as-a-ledger-by-program-the-path-on-the-progr"></a>30 Oct 2026 · Nelson
 
     ### My Certificates as a ledger by program; the path on the program page
 
     My Certificates drops the Earned / In progress tabs, which split a program whose certificates are partly issued: two DS Button groups (Programs | Single courses; All | In progress | Earned), and one card per program with its certificate row and every course as a row on a rail, earned or not; phones start folded ([prototype PR 437](https://github.com/nvjeronimo/skillup-lms-prototype/pull/437), merged). DS Certificate-Row 1.2 and Program-Certificates-Card 1.2 published; ICP 05 · Certificates redrawn (r4), the 29 Oct screens kept as SUPERSEDED. On the program page the Certificates tab takes the full width and shows the path to the program certificate, the Program certificate card (locked preview until earned, and what it gives) and a card for every course ([prototype PR 438](https://github.com/nvjeronimo/skillup-lms-prototype/pull/438), merged; ICP not redrawn yet). Superseded the same day: the path of steps left the tab (see the entry above).
-23. <a id="decision-2026-10-30-boxed-course-journey-sidebar-widths-in-the-icp-program-certi"></a>30 Oct 2026 · Nelson
+24. <a id="decision-2026-10-30-boxed-course-journey-sidebar-widths-in-the-icp-program-certi"></a>30 Oct 2026 · Nelson
 
     ### Boxed Course Journey; sidebar widths in the ICP; program certificates two by two
 
     Each module of the Course Journey now sits in its own box in every skin, and a locked module no longer carries an "Opens after …" note ([prototype PR 434](https://github.com/nvjeronimo/skillup-lms-prototype/pull/434); DS Sidebar 1.7, Topic-Row 1.6, Module-Info 1.4, Module-Header 1.2, published). The 136 expanded sidebars of the ICP player pages follow [decision 037](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/037-course-journey-sidebar-width.md): 334 on desktop, 280 on tablet ([docs PR 239](https://github.com/nvjeronimo/skillup-lms-prd/pull/239)). On the program page the course certificates fill the content two by two ([PR 435](https://github.com/nvjeronimo/skillup-lms-prototype/pull/435)), and the Square corners option left the profile menu ([PR 436](https://github.com/nvjeronimo/skillup-lms-prototype/pull/436)).
-24. <a id="decision-2026-10-30-video-header-sidebar-on-the-grid-account-deletion-experiment"></a>30 Oct 2026 · Nelson
+25. <a id="decision-2026-10-30-video-header-sidebar-on-the-grid-account-deletion-experiment"></a>30 Oct 2026 · Nelson
 
     ### Video header; sidebar on the grid; account deletion experiment
 
     Video topics now show the type · duration row with "Marked as completed" beside it, on every breakpoint ([decision 038](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/038-video-topic-header-meta-row.md), [prototype PR 430](https://github.com/nvjeronimo/skillup-lms-prototype/pull/430)). The ICP Video, Quizzes and Reading pages were aligned with it: header and sidebar agree on status and duration, "approx." per [decision 004](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/004-approx-duration-prefix.md), the Video Dark frame on SKO Dark. The Course Journey sidebar takes 3 of 12 columns, between 280 and 400 ([decision 037](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/037-course-journey-sidebar-width.md), prototype PRs [431](https://github.com/nvjeronimo/skillup-lms-prototype/pull/431) and [432](https://github.com/nvjeronimo/skillup-lms-prototype/pull/432)). The Beyond Open edX switch now changes the page in place, no reload ([PR 429](https://github.com/nvjeronimo/skillup-lms-prototype/pull/429)). New experiment: the account deletion flow for the next release, with the sign-in interstitial only under Beyond Open edX (Open edX lets only support cancel a pending deletion; [PR 433](https://github.com/nvjeronimo/skillup-lms-prototype/pull/433)).
-25. <a id="decision-2026-10-30-my-certificates-one-card-per-program"></a>30 Oct 2026 · Nelson
+26. <a id="decision-2026-10-30-my-certificates-one-card-per-program"></a>30 Oct 2026 · Nelson
 
     ### My Certificates: one card per program
 
     My Certificates shows one card per program (Nelson, 29 Oct): the program hero, the program certificate, and its course certificates as compact rows behind Show / Hide. It replaces the grid of large cards, Show all N and the Grid / List toggle, which grew confusing as certificates added up. DS: Program-Certificates-Card 1.1 and Certificate-Row 1.0; ICP 05 · Certificates redrawn. Superseded 30 Oct 2026 by the ledger by program (no tabs, two Button groups; [prototype PR 437](https://github.com/nvjeronimo/skillup-lms-prototype/pull/437)). [prototype PR 428](https://github.com/nvjeronimo/skillup-lms-prototype/pull/428) (merged) · [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-26. <a id="decision-2026-10-29-the-prototype-opens-in-open-edx-only-mode"></a>29 Oct 2026 · Nelson
+27. <a id="decision-2026-10-29-the-prototype-opens-in-open-edx-only-mode"></a>29 Oct 2026 · Nelson
 
     ### The prototype opens in Open edX only mode
 
     The prototype now opens by default with only what Open edX provides, reversing the 28 Oct default where ?scope=edx was opt-in. The scope chip is gone. The demo footer switch of the profile menu is now "Beyond Open edX" ("Show our improvements and extra features"), off by default; ?scope=full opts in and ?scope=edx goes back. The accessibility preferences are no longer hidden: they stay visible in the Open edX scope, since they are frontend-only and we ship them (Nelson). Rule: the UI never says "what we invented". [prototype PR 422](https://github.com/nvjeronimo/skillup-lms-prototype/pull/422) (merged).
-27. <a id="decision-2026-10-28-prototype-has-an-open-edx-scope-scope-edx"></a>28 Oct 2026 · Nelson
+28. <a id="decision-2026-10-28-prototype-has-an-open-edx-scope-scope-edx"></a>28 Oct 2026 · Nelson
 
     ### Prototype has an Open edX scope (?scope=edx)
 
     With ?scope=edx the prototype shows only what Open edX provides (native, settings, and Open edX data drawn by our frontend) and hides what we invented (the CUSTOM rows of the Open edX fit audit): the assistant, the Services page, live sessions in the Calendar, the Notes and Downloads tabs, the Next-asks dialog, the quiz pass mark, verdict and retake, durations on assessed types, time left, level, partner logos, the course team card, the certificate PDF, readable ID and stats, and the accessibility preferences, among others. ?scope=full turns it off; a chip bottom-left says it is on. Kept although custom: the player shell composition, 90% auto-complete (Open edX does 95% by setting), the hosted IBM course screen and the demo tools. Basis: decision 035. [prototype PR 417](https://github.com/nvjeronimo/skillup-lms-prototype/pull/417) (merged). Since 29 Oct it is the default (see above).
-28. <a id="decision-2026-10-28-prototype-and-figma-matched-sko-match-audit"></a>28 Oct 2026 · Nelson
+29. <a id="decision-2026-10-28-prototype-and-figma-matched-sko-match-audit"></a>28 Oct 2026 · Nelson
 
     ### Prototype and Figma matched (SKO match audit)
 
     147 differences between the prototype and Figma, decided by Nelson case by case. 26 DS components were updated and published (28 Oct 2026), and the ICP screens updated.
-29. <a id="decision-036"></a>28 Oct 2026 · ICP review call: Kirti, Navdeep, Simran, Shivam, Nelson
+30. <a id="decision-036"></a>28 Oct 2026 · ICP review call: Kirti, Navdeep, Simran, Shivam, Nelson
 
     ### 036 · The Dates tab is not shown on self-paced courses; its design is on hold
 
     In the ICP review call of 28 Oct (Kirti, Navdeep, Simran, Shivam, Nelson) the team confirmed SkillUp configures only a course's start and end dates, never module, quiz or project due dates; on a self-paced course the end is an expiry such as 2050, of no value to the learner. So: no Dates tab on self-paced courses (Flexible Learning), and with no due dates there is no Shift due dates alert, no Upcoming dates card, and the Calendar and Dashboard deadlines are examples only (marked as mock in the prototype). Instructor-led live sessions go through the Calendar; whether a Dates tab repeats them is decided later. Applied: [prototype PR 411](https://github.com/nvjeronimo/skillup-lms-prototype/pull/411) (merged); the ICP Course-tab screens (Ready for Dev and WIP) hide the Dates tab, the Upcoming dates card and the missed-deadline alert; the screens with the Dates tab open stay on WIP; "Homework" is replaced by "Assignment" everywhere (prototype, DS Date-Row 1.1, ICP). [decision 036](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/036-dates-tab-hidden-self-paced.md)
-30. <a id="decision-2026-10-28-meeting-outcomes-progress-approved-mentorship-q-a-on-hold"></a>28 Oct 2026 · ICP review call: Kirti, Navdeep, Simran, Shivam, Nelson
+31. <a id="decision-2026-10-28-meeting-outcomes-progress-approved-mentorship-q-a-on-hold"></a>28 Oct 2026 · ICP review call: Kirti, Navdeep, Simran, Shivam, Nelson
 
     ### Meeting outcomes: Progress approved, Mentorship Q&A on hold
 
     The Progress tab is approved to go ahead (Kirti raises the ticket). Course completion counts everything, labs included. Quizzes are auto-graded; projects are ORA graded by mentors on rubrics (peer and self assessment off). Assignment types are named per course (for example Microsoft's "Knowledge checks"). Mentorship Q&A is on hold until a mentorship strategy session (Kirti); Kirti renamed Discussion to Mentorship Q&A and removed Following. Notifications: the dev team checks our Open edX release and whether the Notifications feature is on. [meeting notes](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/meeting-2026-10-28-progress-dates-qa.md)
-31. <a id="decision-035"></a>28 Oct 2026 · Nelson
+32. <a id="decision-035"></a>28 Oct 2026 · Nelson
 
     ### 035 · Everything Open edX-based: Mentorship Q&A, past due, the Dates tab and notifications
 
     Everything is Open edX-based, with no extra development; a feature the platform does not provide is drawn only if it is truly important, after research and the stakeholders' approval. Mentorship Q&A becomes public question posts in the course discussions: Open edX has no private 1-to-1 messaging (it replaces decision 029's Mentorship Q&A private to the learner and the mentor). A past-due deadline reads "Past due" in amber, never red, on the Dates tab, the Calendar and the Dashboard. The Dates tab shows only Open edX's date types and badges (Today, Completed, Past due, Due next on one item, Not yet released, Verified only): no "Locked · unlocks when", no assignment descriptions. Notifications are only the four types Open edX sends: discussion activity, instructor posts, course updates and the ORA grade. Discovery notes in [LMS-HANDOFF/edx-notifications.md](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/edx-notifications.md), [edx-dates-tab.md](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/edx-dates-tab.md) and [edx-mentorship-qa.md](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/edx-mentorship-qa.md) ([docs PR 233](https://github.com/nvjeronimo/skillup-lms-prd/pull/233), merged). [prototype PR 410](https://github.com/nvjeronimo/skillup-lms-prototype/pull/410). DS: Date-Row 1.1, Due-Item 1.3, Month-Event 1.2 and Stay-Informed-Row 1.1 follow (published 28 Oct). Amended 28 Oct 2026: the Dates tab part applies only to instructor-led courses; on self-paced courses decision 036 supersedes it (no Dates tab).
-32. <a id="decision-2026-10-27-compact-platform-topbars-at-64-actions-on-the-right"></a>27 Oct 2026 · Nelson
+33. <a id="decision-2026-10-27-compact-platform-topbars-at-64-actions-on-the-right"></a>27 Oct 2026 · Nelson
 
     ### Compact platform Topbars at 64, actions on the right
 
     All 103 Compact platform Topbars in the ICP (Ready for Dev 28, WIP 75; phone and tablet) are now 64 tall, as the DS Topbar Compact (64 with the rule), with the actions at the right edge (16 inset). They were 57 (hug), 4 were 72, and on tablet the actions sat next to the logo. Asked by Nelson. DS: LMS/Platform/Navigation/Topbar 1.10 follows (published 27 Oct): the Compact variant spaces its two groups apart (menu and logo on the left, the actions on the right edge), so a tablet instance keeps the actions on the right instead of beside the logo; still 64 tall. ICP: every platform Topbar is on the published 1.10 (Ready for Dev 21 Desktop + 28 Compact, WIP 61 Desktop + 75 Compact); all 103 Compact are 64 tall with the actions 16 from the right edge.
-33. <a id="decision-2026-10-27-badges-in-sentence-case"></a>27 Oct 2026 · Nelson
+34. <a id="decision-2026-10-27-badges-in-sentence-case"></a>27 Oct 2026 · Nelson
 
     ### Badges in sentence case
 
     Badges are in sentence case, never forced capitals; label-small eyebrows stay upper case. DS (published): Thread-Row, Message, Date-Row, Inbox-Row, Course-Type-Badge, VILT-Stage-Surface; ICP: 424 badge texts. [prototype PR 401](https://github.com/nvjeronimo/skillup-lms-prototype/pull/401) (merged 27 Oct). Impeccable session.
-34. <a id="decision-2026-10-27-course-journey-promoted-next-turns-primary-on-completion"></a>27 Oct 2026 · Nelson
+35. <a id="decision-2026-10-27-course-journey-promoted-next-turns-primary-on-completion"></a>27 Oct 2026 · Nelson
 
     ### Course Journey promoted; Next turns Primary on completion
 
     DS, published 27 Oct (Impeccable session): LMS Sidebar 1.5 and Module-Info 1.2 promote the Course Journey proposal (the "Course journey" panel name, Up next, lock reasons, "N of M topics", Module 3 of 3); Course-Progression-Button 1.1 adds Milestone=Next-Topic-Complete (Brand Primary: Next is Primary only when the topic is complete). ICP: 95 phone texts re-styled from a stale copy. ICP sweep done: 219 LMS Sidebar instances (Video 30, Quizzes 57, Reading 21, Lab 48, Activity 46, AI Assistant 4, WIP 13) show Up next after the open row, lock reasons on locked rows, "N of M topics", "Module i of N" and the overline; Course-Progression-Button Next-Topic-Complete on the 14 screens whose open topic is complete. WIP frame 7778:101772 renamed [13 · Course Journey (promoted 27 Oct, now the default Sidebar)](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772). The Course Journey is no longer in review.
-35. <a id="decision-2026-10-27-platform-page-tabs-on-title-large"></a>27 Oct 2026 · Nelson
+36. <a id="decision-2026-10-27-platform-page-tabs-on-title-large"></a>27 Oct 2026 · Nelson
 
     ### Platform-page tabs on title-large
 
     The platform-page tabs (course and program details, My Learning and Certificates) use title-large / Semibold: 20 / 30 on desktop and tablet, 18 / 28 on a phone. Tablet was headline-small 24; desktop was already title-large in code but 24 in Figma. DS: the \_Tab button base Size=lg label (36 variants) is on title-large / Semibold, published 27 Oct. [prototype PR 400](https://github.com/nvjeronimo/skillup-lms-prototype/pull/400) (merged 27 Oct). ICP: all Size=lg tabs on Ready for Dev and WIP are on the published copy, 20 px on desktop and tablet, 18 px on mobile (94 instances were swapped from a stale copy; no override lost). Earlier: "Platform-page tabs larger" (25 Oct, headline-small 24).
-36. <a id="decision-2026-10-27-course-detail-dates-and-mentorship-q-a-not-approved-yet"></a>27 Oct 2026 · Nelson
+37. <a id="decision-2026-10-27-course-detail-dates-and-mentorship-q-a-not-approved-yet"></a>27 Oct 2026 · Nelson
 
     ### Course Detail: Dates and Mentorship Q&A not approved yet
 
     The Course Detail Dates and Mentorship Q&A tab screens were removed from Platform Pages – Ready for Dev, whose Course Detail section now holds the Course and Progress tabs only. Their screens stay on Platform Pages – WIP › 03 · Course Detail: [Row 3 · Dates tab](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7497-260504) and [Row 4 · Mentorship Q&A tab](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7495-212081).
-37. <a id="decision-034"></a>27 Oct 2026 · Nelson
+38. <a id="decision-034"></a>27 Oct 2026 · Nelson
 
     ### 034 · Grade summary states and the Completion card count line
 
     Grade-Summary 1.2 (1.1 stays the 20 Oct radii; renumbered ([docs PR 232](https://github.com/nvjeronimo/skillup-lms-prd/pull/232) and [prototype PR 399](https://github.com/nvjeronimo/skillup-lms-prototype/pull/399), both merged 27 Oct: renumber only)): Result = Not started / Below pass / Passing / Submitted below pass (amber) / Course ended (red). Completion-Card 1.3: a variant set, State = Not started / In progress / Completed, with the count line as its Body ("16 of 42 topics complete." / "All N topics complete." / "N of M available topics complete." when topics are locked) and a "Show locked" boolean with a Gray badge; it replaces the "Topics:" counts of 1.2 (Nelson approved). Both published 27 Oct. ICP: the 9 Completion cards and the 3 Grade summaries on the new versions, the Six Sigma data fixed, and a new card "Card · 07 · Progress tab · edge cases" ([7969:39005](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7969-39005)) on Platform Pages Ready for Dev. [prototype PR 397](https://github.com/nvjeronimo/skillup-lms-prototype/pull/397) (merged), [docs PR 231](https://github.com/nvjeronimo/skillup-lms-prd/pull/231) (merged: decision 034).
-38. <a id="decision-2026-10-27-the-assistant-window-closes-on-a-press-outside-it"></a>27 Oct 2026 · Nelson
+39. <a id="decision-2026-10-27-the-assistant-window-closes-on-a-press-outside-it"></a>27 Oct 2026 · Nelson
 
     ### The assistant window closes on a press outside it
 
     On the platform pages and in the player, on tablet and desktop, the AI Assistant window closes when the learner presses outside it; focus stays where they pressed, and the bar's Assistant and search buttons do not close it. The phone sheet is full screen, so it is not affected. [prototype PR 398](https://github.com/nvjeronimo/skillup-lms-prototype/pull/398) (merged 27 Oct).
-39. <a id="decision-2026-10-27-platform-top-bar-sections-and-search-in-the-content-column"></a>27 Oct 2026 · Nelson
+40. <a id="decision-2026-10-27-platform-top-bar-sections-and-search-in-the-content-column"></a>27 Oct 2026 · Nelson
 
     ### Platform top bar: sections and search in the content column
 
     In the desktop tabs bar only the sections (menu) and the Search + Assistant pill sit in the 1200 content column (Container/content-max-width), starting where the page content starts; the logo and the actions (notifications, theme switch, learner with name) stay at the bar's edges (24). Both edges line up with the content from about 1900; on narrower screens the column gives way on the right. [prototype PR 395](https://github.com/nvjeronimo/skillup-lms-prototype/pull/395) (merged) was a first version that made the whole bar compact to 1200 and is superseded by [prototype PR 396](https://github.com/nvjeronimo/skillup-lms-prototype/pull/396) (merged 27 Oct: the correct rule, restoring the tab gaps, the 340 pill and the learner name). Follow-up fix, [prototype PR 403](https://github.com/nvjeronimo/skillup-lms-prototype/pull/403) (merged 27 Oct): the tabs bar no longer runs past the screen between 1024 and 1280 (the search pill's width no longer sets the middle column's minimum; the tabs sit 12 apart below 1440). DS: LMS/Platform/Navigation/Topbar 1.9, Desktop with a Middle frame (Nav + Search) on Container/content-max-width; published 27 Oct. ICP: all 84 Desktop platform Topbars (23 Ready for Dev + 61 WIP) are on the published 1.9; the Current item and the counts are unchanged on every one.
-40. <a id="decision-033"></a>27 Oct 2026 · Nelson
+41. <a id="decision-033"></a>27 Oct 2026 · Nelson
 
     ### 033 · Reading text fills the content column
 
     Reading text now fills the content column (1200, the same as the platform pages) instead of the 56ch cap (Nelson). New DS token Container/text-max-width in 2. Responsive 📐: an alias of Container/content-max-width (1200 in every mode), web var(--sk-container-text-max-width); published 27 Oct. [prototype PR 393](https://github.com/nvjeronimo/skillup-lms-prototype/pull/393) (merged: the cap removed), [prototype PR 394](https://github.com/nvjeronimo/skillup-lms-prototype/pull/394) (merged 27 Oct: a max-w-text class on the token, fallback 1200), [docs PR 229](https://github.com/nvjeronimo/skillup-lms-prd/pull/229) (merged 27 Oct: decision 033 + CHANGELOG). ICP: no change needed; the Ready for Dev Reading text already fills the column. ICP: the Reading text is not bound to Container/text-max-width (Figma cannot bind max width on text layers, and the paragraphs share frames with lesson blocks); nothing changes visually (the text is at most 1056). [docs PR 230](https://github.com/nvjeronimo/skillup-lms-prd/pull/230) (merged 27 Oct) corrects decision 033 on that.
-41. <a id="decision-2026-10-27-completion-card-counts-read-topics"></a>27 Oct 2026 · Nelson
+42. <a id="decision-2026-10-27-completion-card-counts-read-topics"></a>27 Oct 2026 · Nelson
 
     ### Completion card counts read "Topics:"
 
     The course completion card counts now read "Topics: 16 complete · 26 incomplete · 0 locked" (Nelson, ICP [6406:41528](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=6406-41528)). DS: LMS/Platform/Course-Detail/Completion-Card 1.2 (Counts default starts with "Topics:", sample ring 38% to match 16 of 42), published 27 Oct. ICP: all 9 Completion card instances are on the published 1.2 and show "Topics:" and 38% (was a stale 67%). [prototype PR 392](https://github.com/nvjeronimo/skillup-lms-prototype/pull/392) (merged: ProgressTab prefixes "Topics:"), [docs PR 228](https://github.com/nvjeronimo/skillup-lms-prd/pull/228) (merged: CHANGELOG + course-details-metadata-map §12.5). Amended 27 Oct: superseded the same day by Completion-Card 1.3's count line ("16 of 42 topics complete."; decision 034).
-42. <a id="decision-2026-10-27-phone-body-large-at-18-26"></a>27 Oct 2026 · Nelson
+43. <a id="decision-2026-10-27-phone-body-large-at-18-26"></a>27 Oct 2026 · Nelson
 
     ### Phone body-large at 18 / 26
 
     On the phone (Responsive Mobile mode) Type/size/text-md is 18 (alias text-lg) and Type/line-height/text-md is 26 (a new hidden primitive, Type/line-height/mobile-min-26), so body-large is 18 / 26 on the phone and title-medium also reads 18 / 26 there; desktop and tablet are unchanged. Impeccable session's DS change, published by Nelson. [prototype PR 391](https://github.com/nvjeronimo/skillup-lms-prototype/pull/391) (merged 27 Oct): the phone type tokens applied by hand (no token sync since 25 Oct). ICP: most phone texts on Platform Pages – WIP read 18 / 26; about 30 texts inside nested Buttons and the FAQ / About accordion items on 8 phone screens (Course Detail and Program Detail mobile tabs) still read 16, bound to an older copy of the variable, pending a library accept in the ICP.
-43. <a id="decision-2026-10-27-colourblind-safe-states-in-every-skin"></a>27 Oct 2026 · Nelson
+44. <a id="decision-2026-10-27-colourblind-safe-states-in-every-skin"></a>27 Oct 2026 · Nelson
 
     ### Colourblind-safe states in every skin
 
     The colourblind-safe states of the Accessibility standards now work in every skin (SKO, Gold, Studio, Harbor, Fluent). In the DS a doc block "Every skin, same rule" ([23561:35](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23561-35)) on the ♿ Accessibility Standards page says so (doc only, no component change). [Prototype PR 389](https://github.com/nvjeronimo/skillup-lms-prototype/pull/389) (merged 27 Oct, Impeccable session).
-44. <a id="decision-2026-10-27-any-progress-at-100-is-green"></a>27 Oct 2026 · Nelson
+45. <a id="decision-2026-10-27-any-progress-at-100-is-green"></a>27 Oct 2026 · Nelson
 
     ### Any progress at 100% is green
 
     Every progress bar or ring at 100% completed is green (bar bg/success, ring icon/success-strong), not only finished courses and programs. The DS already does it (Progress bar / plain / ring Progress=100%, Progress circle Status=Completed). ICP: two 100% bars were on a stale library version and showed blue; re-pointed (Course Detail "Completed — certificate earned"; Topic Content Types Discovery "JOURNEY · Graded"). [prototype PR 390](https://github.com/nvjeronimo/skillup-lms-prototype/pull/390) (merged 27 Oct): PlatformProgressBar turns green at 100% by itself, as do the course Progress tab ring and the program certificate hero's finished segments.
-45. <a id="decision-2026-10-27-course-journey-12-between-module-boxes"></a>27 Oct 2026 · Nelson
+46. <a id="decision-2026-10-27-course-journey-12-between-module-boxes"></a>27 Oct 2026 · Nelson
 
     ### Course Journey: 12 between module boxes
 
     In the boxed skins (Studio, Harbor, Fluent) the gap between the player sidebar's module boxes is 12 (was 8 in Studio and Harbor, 4 in Fluent); the list padding and the box radius are unchanged. Prototype only, no DS change. [Prototype PR 385](https://github.com/nvjeronimo/skillup-lms-prototype/pull/385) (merged 27 Oct).
-46. <a id="decision-2026-10-27-phone-type-minimums-and-tighter-breadcrumbs"></a>27 Oct 2026 · Nelson
+47. <a id="decision-2026-10-27-phone-type-minimums-and-tighter-breadcrumbs"></a>27 Oct 2026 · Nelson
 
     ### Phone type minimums and tighter breadcrumbs
 
     Mobile mode of "2. Responsive": Type/size text-sm 16 / line-height 24, text-xs 13 / 18, text-2xs 12 / 18 (body 16 minimum, 13 the smallest, 2xs 12), with four new hidden primitives mobile-min-16 / 24 / 13 / 18; published 27 Oct; it reaches the prototype after a Publish tokens run. Breadcrumbs on the course, program and certificate pages: wrapped lines 24 apart instead of 44, the 44 px target kept as an invisible ::after ([prototype PR 382](https://github.com/nvjeronimo/skillup-lms-prototype/pull/382)). label-small / Regular, Medium and Semibold now bind Responsive Type/size/text-xs and its line-height (12 on desktop and tablet, 13 on a phone; they were on primitives), published 27 Oct. Amended 27 Oct: text-md on the phone is 18 / 26 (see the entry above, [prototype PR 391](https://github.com/nvjeronimo/skillup-lms-prototype/pull/391)). Amended 29 Oct: Responsive 📐 Desktop and Tablet are now text-2xs 12 / 18 and text-xs 13 / 18; text-sm stays 14 / 20 (published 29 Oct; [prototype PR 419](https://github.com/nvjeronimo/skillup-lms-prototype/pull/419)).
-47. <a id="decision-2026-10-26-dashboard-greeting-by-local-time"></a>26 Oct 2026 · Nelson
+48. <a id="decision-2026-10-26-dashboard-greeting-by-local-time"></a>26 Oct 2026 · Nelson
 
     ### Dashboard greeting by local time
 
     Good morning 05–12, Good afternoon 12–18, Good evening 18–05, by the learner's browser clock, never the server's. The server renders "Hello," and the browser swaps in the right greeting; it is checked again when the tab comes back. The Open edX time\_zone preference is only a fallback. [prototype PR 380](https://github.com/nvjeronimo/skillup-lms-prototype/pull/380) (merged); handoff note [greeting-by-time](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/greeting-by-time.md) ([docs PR 224](https://github.com/nvjeronimo/skillup-lms-prd/pull/224), merged). No Figma change: the screens keep "Good morning," as the example.
-48. <a id="decision-2026-10-26-motion-is-the-same-in-every-skin"></a>26 Oct 2026 · Nelson
+49. <a id="decision-2026-10-26-motion-is-the-same-in-every-skin"></a>26 Oct 2026 · Nelson
 
     ### Motion is the same in every skin
 
     Audit of the five skins (SKO, Gold, Studio, Harbor, Fluent): the motion tokens, keyframes and shared components are identical; the gaps were in what only the panel layout (Harbor, Fluent) renders and in Fluent's indicators. Fixed: the left rail eases its width and holds still through page transitions; Stay informed joins the Dashboard cascade; Pick up cross-fades its preview; Fluent's rail and Pick up indicators grow in. Rule: a skin may change colour, radius, type and elevation, never timing; its own markup follows the shared recipes. Prototype [PR 366](https://github.com/nvjeronimo/skillup-lms-prototype/pull/366) merged. Developer guide: docs [PR 225](https://github.com/nvjeronimo/skillup-lms-prd/pull/225).
-49. <a id="decision-2026-10-26-the-glance-in-gold-colours-fluent-light-gets-the-rings-and-h"></a>26 Oct 2026 · Nelson
+50. <a id="decision-2026-10-26-the-glance-in-gold-colours-fluent-light-gets-the-rings-and-h"></a>26 Oct 2026 · Nelson
 
     ### The glance in Gold colours; Fluent light gets the rings and haze
 
     Gold: the "Your learning at a glance" backdrop is the skin's deep gold #553600 (it was the SKO teal), its rings #FFD07A and the light in the middle ring and the haze #C89536, the same in light and dark (tokens/skin-gold.css). Fluent light: the rings, the light and the haze as in every other skin, in Fluent's blue on the blue tray (they were grey, no haze). Prototype only. [prototype PR 379](https://github.com/nvjeronimo/skillup-lms-prototype/pull/379) (merged).
-50. <a id="decision-2026-10-26-dashboard-the-harbor-fluent-layout-in-every-skin"></a>26 Oct 2026 · Nelson
+51. <a id="decision-2026-10-26-dashboard-the-harbor-fluent-layout-in-every-skin"></a>26 Oct 2026 · Nelson
 
     ### Dashboard: the Harbor / Fluent layout in every skin
 
     The greeting tip; Pick up where you left off as a list with the chosen course large, beside Stay informed; Due this week beside Jump somewhere; in SKO, Gold, Studio, Harbor and Fluent. Each skin keeps its own colours, radius, type and motion; the left rail and the top-bar search stay Harbor / Fluent. The old SKO dashboard layout is retired (ResumeRow unused). [prototype PR 375](https://github.com/nvjeronimo/skillup-lms-prototype/pull/375) (merged). DS and ICP done (Impeccable session): the DS gained Greeting, Pick-Up (+ Pick-Up-Item), Stay-Informed (+ Stay-Informed-Row) and Today-at-a-glance 1.11 (rings), published; ICP 01 · Dashboard redrawn on desktop, tablet and mobile in the panel layout; new WIP frame [“16 · Dashboard in the skins (26 Oct)”](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7864-107582) (node 7864:107582). My Learning too: DS Learning-Table (+ Learning-Table-Row); ICP 02 · My Learning cards 05b and 09b (table view, desktop). Earlier: the ICP Dashboard frames were still to be redrawn.
-51. <a id="decision-2026-10-26-light-dark-switch-smaller-on-phones"></a>26 Oct 2026 · Nelson
+52. <a id="decision-2026-10-26-light-dark-switch-smaller-on-phones"></a>26 Oct 2026 · Nelson
 
     ### Light / dark switch smaller on phones
 
     The compact ThemeSwitch has 32 segments in a 40 track (was 44, 98 × 52); 44 targets through invisible bands. The DS Theme-Switch md matches (Impeccable session). [prototype PR 376](https://github.com/nvjeronimo/skillup-lms-prototype/pull/376) (merged).
-52. <a id="decision-2026-10-26-compact-bars-a-32-search-assistant-button"></a>26 Oct 2026 · Nelson
+53. <a id="decision-2026-10-26-compact-bars-a-32-search-assistant-button"></a>26 Oct 2026 · Nelson
 
     ### Compact bars: a 32 Search-Assistant button
 
     As in the DS Compact Topbar; 44 targets through invisible bands. [prototype PR 377](https://github.com/nvjeronimo/skillup-lms-prototype/pull/377) (merged).
-53. <a id="decision-2026-10-26-my-certificates-grouped-by-program"></a>26 Oct 2026 · Nelson
+54. <a id="decision-2026-10-26-my-certificates-grouped-by-program"></a>26 Oct 2026 · Nelson
 
     ### My Certificates grouped by program
 
     One block per program. An earned program certificate is the large card at the top of its block (as the block's title), then "N of M course certificates" and the program's course certificates in course order (max 4 + Show all). A program not earned yet shows "Program certificate when all M courses are complete" + View program. In progress: the same blocks with the program's bar. Courses of no program sit under "Other courses". Search also matches the program title; the tab counts still count certificates. [prototype PR 378](https://github.com/nvjeronimo/skillup-lms-prototype/pull/378) (merged). ICP drawn on the 4 WIP Certificates screens: Earned desktop / tablet / mobile (3 blocks: Data Analytics with the earned hero, "5 of 5", 4 cards + Show all 5; AI Augmented Digital Marketing not yet earned, "1 of 7", the quiet line + View program; Other courses · 1) and In progress desktop (the program row with its bar, Other courses · 3). Open: the phone hero's buttons overlap (DS Program-Certificate hero, Stacked); the In progress desktop frame is clipped at 808; no tablet / mobile In progress screens. [docs PR 227](https://github.com/nvjeronimo/skillup-lms-prd/pull/227). 27 Oct: a program block shows only the first row of course certificates (1 on phones, 2 on tablets, 3 on desktop), then Show all; it was 4, which left one card alone on a second row. [prototype PR 384](https://github.com/nvjeronimo/skillup-lms-prototype/pull/384) (merged, Impeccable session). The ICP screens still show 4 + Show all: to update. Earlier: DS / ICP not drawn yet. Superseded 30 Oct 2026: My Certificates shows one card per program, its course certificates as compact rows behind Show / Hide; Show all N and the Grid / List toggle are gone ([prototype PR 428](https://github.com/nvjeronimo/skillup-lms-prototype/pull/428)).
-54. <a id="decision-2026-10-26-ds-navigation-components-and-the-skin-shape-collection-publi"></a>26 Oct 2026 · Nelson
+55. <a id="decision-2026-10-26-ds-navigation-components-and-the-skin-shape-collection-publi"></a>26 Oct 2026 · Nelson
 
     ### DS navigation components and the Skin shape collection, published
 
     New v1.0 under LMS/Platform/Navigation/: Theme-Switch, Search-Assistant-Button, Search-Pill and Search-Palette, each with its doc block on the Navigation page; the ai-assistant icon (the AI Assistant Mark V2) in Icons › Communication, also the prototype's assistant glyph ([prototype PR 373](https://github.com/nvjeronimo/skillup-lms-prototype/pull/373)). Topbars: the theme Utility Button becomes the Theme-Switch; Desktop gets the Search-Pill, Compact the Search-Assistant-Button (sm, actions on Spacing/xs so the bar fits 375); the player Topbar the pill on desktop and the button on tablet and phone. A new variable collection "4. Skin shape" (modes SKO · Gold · Studio · Harbor · Fluent · Square): the Responsive Radius/\* roles alias Shape/\*, so a frame picks its colour mode and its shape mode separately; default SKO, nothing changes on the screens. Published 26 Oct by Nelson; the ICP screens follow (Impeccable session).
-55. <a id="decision-2026-10-26-fluent-a-blue-tinted-glance-tray"></a>26 Oct 2026 · Nelson
+56. <a id="decision-2026-10-26-fluent-a-blue-tinted-glance-tray"></a>26 Oct 2026 · Nelson
 
     ### Fluent: a blue-tinted glance tray
 
     In Fluent the tray behind "Your learning at a glance" is Brand 160 #EBF3FC in light (was Background5 #EBEBEB) and Brand 20 #082338 in dark (was #1F1F1F); the white cards, the ink title and the grey rings are unchanged. Not in the DS Fluent mode yet. [prototype PR 374](https://github.com/nvjeronimo/skillup-lms-prototype/pull/374) (merged).
-56. <a id="decision-2026-10-26-my-certificates"></a>26 Oct 2026 · Nelson
+57. <a id="decision-2026-10-26-my-certificates"></a>26 Oct 2026 · Nelson
 
     ### My Certificates
 
     The profile menu item and the Certificates page are named "My Certificates": the page heading, the tab title, the skeleton, the Dashboard jump card and the search palette shortcut. [prototype PR 370](https://github.com/nvjeronimo/skillup-lms-prototype/pull/370) (merged). DS: LMS / Profile Menu 1.9 (the row reads "My Certificates"), published 26 Oct. ICP: the Certificates page title on 4 WIP screens and 12 Dashboard jump-card titles (WIP 6, Ready for Dev 3, AI Assistant 3); the open profile menus follow the component. Unchanged on purpose: the glance figure, the Services tile and the program Certificates tab. [docs PR 223](https://github.com/nvjeronimo/skillup-lms-prd/pull/223). Earlier: in review, not merged.
-57. <a id="decision-2026-10-26-the-floating-assistant-is-retired-search-assistant-everywher"></a>26 Oct 2026 · Nelson
+58. <a id="decision-2026-10-26-the-floating-assistant-is-retired-search-assistant-everywher"></a>26 Oct 2026 · Nelson
 
     ### The floating assistant is retired: Search + Assistant everywhere
 
     The assistant has no floating launcher any more. It opens from the top bars' Search + Assistant: the pill on every platform page (every skin) and now in the course player, where it is scoped to the course: "In this course" lists the topics whose title matches, "Ask about this course" and Enter ask the assistant, and the window's topics are This topic · This course · Deadlines and grades · Certificate. Where the pill does not fit (compact bars on tablet and phone, the tabs bar between 1025 and 1279 px, the player on tablet and phone) a search button opens a full-screen sheet with the same field and palette. The window hangs under the button that opened it; on a phone it is a full-screen sheet. Its icon is the assistant mark's paper plane and three sparkles, without the ball (AssistantGlyph). Below 1536 px the pill rests at 240 px ("Search" and the mark) and opens to its full width while the learner is in it; from 1536 px it keeps its full width ([prototype PR 371](https://github.com/nvjeronimo/skillup-lms-prototype/pull/371)). The floating chat as it was is kept for reference behind ?assistant=floating. Figma: the DS Assistant-Launcher and Assistant-Chat descriptions start with "Migrated 26 Oct 2026" (the DS is not published yet); the ICP preview page keeps its drawings with a note at the top and is renamed "AI Assistant · floating chat · migrated to Search bar (26 Oct)". [prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369) · [prototype PR 371](https://github.com/nvjeronimo/skillup-lms-prototype/pull/371) (merged).
-58. <a id="decision-2026-10-26-harbor-and-fluent-in-the-ds-colour-collection-unpublished"></a>26 Oct 2026 · Nelson
+59. <a id="decision-2026-10-26-harbor-and-fluent-in-the-ds-colour-collection-unpublished"></a>26 Oct 2026 · Nelson
 
     ### Harbor and Fluent in the DS colour collection (unpublished)
 
     SKO-Semantics now has 10 modes, the Figma cap: SKO, Gold, Studio, Harbor and Fluent, each Light and Dark. Each new mode starts from SKO in the same tone; 50 roles (light) and 38 (dark) alias hidden primitives such as "Harbor/Light/…" and "Fluent/Dark/…" (176 in all) with the prototype's values. Font-Family display and body per mode: Harbor Plus Jakarta Sans / Figtree, Fluent Open Sans. Not published yet. Not in the DS: the radius roles and component shapes per skin (radius lives in the breakpoint collection), which needs a decision; Open Sans has no Medium in Figma. DS work, no PR.
-59. <a id="decision-2026-10-26-button-groups-read-as-one-group-in-harbor-and-fluent"></a>26 Oct 2026 · Nelson
+60. <a id="decision-2026-10-26-button-groups-read-as-one-group-in-harbor-and-fluent"></a>26 Oct 2026 · Nelson
 
     ### Button groups read as one group in Harbor and Fluent
 
     Every segmented control (the status filters, the view toggle, Brand skin, the Calendar and Discussion filters) is a track on bg/muted with the selected segment raised on white. Harbor: pills and a soft shadow. Fluent: radius 4 segments in an 8 track, Stroke1. It supersedes Harbor's light-blue selected fill ([prototype PR 349](https://github.com/nvjeronimo/skillup-lms-prototype/pull/349)) and Fluent's TabList indicator ([prototype PR 352](https://github.com/nvjeronimo/skillup-lms-prototype/pull/352)) for segmented controls. Same PR: the theme switch is smaller (24 px segments in a 32 px track, 44 px on compact bars); the large platform tabs sit 32 px apart (was 12); on short pages the footer sits at the bottom of the screen. [prototype PR 368](https://github.com/nvjeronimo/skillup-lms-prototype/pull/368) (merged).
-60. <a id="decision-2026-10-26-prototype-tweaks-of-26-oct"></a>26 Oct 2026 · Nelson
+61. <a id="decision-2026-10-26-prototype-tweaks-of-26-oct"></a>26 Oct 2026 · Nelson
 
     ### Prototype tweaks of 26 Oct
 
     The Loading switch left the profile menu, on the platform and in the player. Square corners works in every skin (tokens/square-corners.css, loaded last; buttons keep their corners). My Learning's Programs tab has a table view too: program, progress, N of M courses, up next, action. The theme switch keeps its track in Harbor and Fluent. Fluent's glance has a neutral tray (#EBEBEB light, #1F1F1F dark). [prototype PR 367](https://github.com/nvjeronimo/skillup-lms-prototype/pull/367) (merged).
-61. <a id="decision-2026-10-26-mini-light-dark-switch"></a>26 Oct 2026 · Nelson
+62. <a id="decision-2026-10-26-mini-light-dark-switch"></a>26 Oct 2026 · Nelson
 
     ### Mini light / dark switch
 
     A new ThemeSwitch: a Button group with two icon segments, Sun and Moon, the current theme pressed, on the decision 028 radii. It replaces the single theme Utility Button in the platform bar and in the player bar. On the compact bar the segments are 44 px. Prototype only: the DS Topbars still have the Utility Button. [prototype PR 365](https://github.com/nvjeronimo/skillup-lms-prototype/pull/365) (merged).
-62. <a id="decision-2026-10-26-search-assistant-pill-in-every-skin-the-floating-launcher-st"></a>26 Oct 2026 · Nelson
+63. <a id="decision-2026-10-26-search-assistant-pill-in-every-skin-the-floating-launcher-st"></a>26 Oct 2026 · Nelson
 
     ### Search + Assistant pill in every skin; the floating launcher stays in the player
 
     SKO, Gold and Studio get the top-bar pill of [prototype PR 359](https://github.com/nvjeronimo/skillup-lms-prototype/pull/359) (the search palette and the panel-style assistant) beside the section tabs, from 1280 px: five tabs and the pill do not fit below. When the pill is narrow the word "Assistant" drops. On platform pages the floating launcher disappears wherever the pill shows. It stays in the player (ICP), on the tabs bar between 1025 and 1279 px, on compact bars and beside the phone tab bar. Not in the DS or the ICP. [prototype PR 365](https://github.com/nvjeronimo/skillup-lms-prototype/pull/365) (merged). Amended 26 Oct 2026: the launcher no longer stays anywhere ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); below 1280 px the tabs bar shows a search button that opens a full-screen sheet.
-63. <a id="decision-2026-10-26-panel-dashboard-pick-up-beside-stay-informed-due-beside-jump"></a>26 Oct 2026 · Nelson · experiment
+64. <a id="decision-2026-10-26-panel-dashboard-pick-up-beside-stay-informed-due-beside-jump"></a>26 Oct 2026 · Nelson · experiment
 
     ### Panel dashboard: Pick up beside Stay informed, Due beside Jump
 
     Harbor and Fluent Dashboards: row 1 is Pick up where you left off beside Stay informed; row 2 is Due this week beside Jump somewhere, its tiles in one column. It replaces the arrangement of [prototype PR 356](https://github.com/nvjeronimo/skillup-lms-prototype/pull/356). Other skins unchanged. [prototype PR 364](https://github.com/nvjeronimo/skillup-lms-prototype/pull/364) (merged).
-64. <a id="decision-2026-10-26-glance-rings-in-every-skin"></a>26 Oct 2026 · Nelson
+65. <a id="decision-2026-10-26-glance-rings-in-every-skin"></a>26 Oct 2026 · Nelson
 
     ### Glance rings in every skin
 
     The concentric rings and soft hazes of the Harbor glance move into the glance component, for every skin, in SkillUp blues: rings #0086C9, haze #51BFFC ([prototype PR 360](https://github.com/nvjeronimo/skillup-lms-prototype/pull/360) removed the purple). Each skin keeps its own block colour: the teal band in SKO and Gold, ink in Studio, navy in Harbor, the canvas in Fluent. Fluent Light shows the rings alone, in Fluent's grey stroke #D1D1D1 ([prototype PR 362](https://github.com/nvjeronimo/skillup-lms-prototype/pull/362)). Prototype only: the DS Today-at-a-glance still has the old glow shapes. [prototype PR 360](https://github.com/nvjeronimo/skillup-lms-prototype/pull/360) · [prototype PR 361](https://github.com/nvjeronimo/skillup-lms-prototype/pull/361) · [prototype PR 362](https://github.com/nvjeronimo/skillup-lms-prototype/pull/362) (merged).
-65. <a id="decision-2026-10-26-the-red-skin-is-gone"></a>26 Oct 2026 · Nelson
+66. <a id="decision-2026-10-26-the-red-skin-is-gone"></a>26 Oct 2026 · Nelson
 
     ### The Red skin is gone
 
     Nelson removed Red from the DS, and the prototype drops it too. The brand skins are now SKO · Gold · Studio · Harbor · Fluent. A stored Red choice lands on SKO. The generated token files carried Red until the "Publish tokens" of 12 Nov 2026 (prototype PR [487](https://github.com/nvjeronimo/skillup-lms-prototype/pull/487)). [prototype PR 363](https://github.com/nvjeronimo/skillup-lms-prototype/pull/363) (merged).
-66. <a id="decision-2026-10-26-panel-top-bar-search-palette-and-a-dreamhost-style-assistant"></a>26 Oct 2026 · Nelson · experiment
+67. <a id="decision-2026-10-26-panel-top-bar-search-palette-and-a-dreamhost-style-assistant"></a>26 Oct 2026 · Nelson · experiment
 
     ### Panel top bar: search palette and a DreamHost-style assistant
 
     Harbor and Fluent, desktop ≥1025. Focusing the search pill opens a palette: Go to (the platform pages), Your courses (title matches, and search all), and Help with a "Powered by AI" label, where choosing a question asks the assistant. It is a combobox: arrows, Enter and Esc. The Assistant button opens the assistant window under itself: a white header (Assistant, New chat, close), "Hi {name}! Explore a topic or chat below", four topics (Your courses, Deadlines, Certificates, Using SkillUp) that open their questions, a pill input and the AI notice in a footer. In that layout the floating launcher is hidden and focus returns to the bar button. Other skins keep the floating chat. Not in the DS or the ICP. [prototype PR 359](https://github.com/nvjeronimo/skillup-lms-prototype/pull/359) (merged). Amended 26 Oct 2026: extended to every skin by [prototype PR 365](https://github.com/nvjeronimo/skillup-lms-prototype/pull/365); SKO, Gold and Studio show the pill from 1280 px. Later the same day: extended to the player, scoped to the course, and to a full-screen sheet where the pill does not fit ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); below 1536 px the pill rests compact at 240 px ([prototype PR 371](https://github.com/nvjeronimo/skillup-lms-prototype/pull/371)).
-67. <a id="decision-2026-10-26-assistant-in-the-player-the-content-card-s-corner"></a>26 Oct 2026 · Nelson
+68. <a id="decision-2026-10-26-assistant-in-the-player-the-content-card-s-corner"></a>26 Oct 2026 · Nelson
 
     ### Assistant in the player: the content card's corner
 
     In the player the assistant launcher always sits bottom right of the content card, above Previous / Next; before, it covered the collapsed rail and the sidebar's last module. The content gets room at the bottom, so Mark as Complete scrolls clear of the launcher. Phones and the platform pages are unchanged. [prototype PR 358](https://github.com/nvjeronimo/skillup-lms-prototype/pull/358) (merged). Amended 26 Oct 2026: superseded by [prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369): there is no launcher, and the content's extra room at the bottom was removed too.
-68. <a id="decision-2026-10-26-harbor-glance-after-the-remixer-banner"></a>26 Oct 2026 · Nelson · experiment
+69. <a id="decision-2026-10-26-harbor-glance-after-the-remixer-banner"></a>26 Oct 2026 · Nelson · experiment
 
     ### Harbor glance after the Remixer banner
 
     In Harbor the "Your learning at a glance" block is a deep indigo-navy #181B31 in light and dark, with three thin concentric rings off the top right and soft blue and violet hazes from the existing blurred glow layers (no gradient fill); the title is white and the figures sit on their cards. It replaces the light-blue tray of [prototype PR 354](https://github.com/nvjeronimo/skillup-lms-prototype/pull/354), which had itself replaced #F0F0F0. Prototype only. [prototype PR 357](https://github.com/nvjeronimo/skillup-lms-prototype/pull/357) (merged). Amended 26 Oct 2026: the rings are now in SkillUp blues (no violet) and shared by every skin ([prototype PR 360](https://github.com/nvjeronimo/skillup-lms-prototype/pull/360), [prototype PR 361](https://github.com/nvjeronimo/skillup-lms-prototype/pull/361)).
-69. <a id="decision-2026-10-26-panel-dashboard-pick-up-beside-due-jump-beside-stay-informed"></a>26 Oct 2026 · Nelson · experiment
+70. <a id="decision-2026-10-26-panel-dashboard-pick-up-beside-due-jump-beside-stay-informed"></a>26 Oct 2026 · Nelson · experiment
 
     ### Panel dashboard: Pick up beside Due, Jump beside Stay informed
 
     Harbor and Fluent Dashboards: row 1 is Pick up where you left off beside Due this week (400 wide); row 2 is Jump somewhere beside Stay informed. Other skins unchanged. [prototype PR 356](https://github.com/nvjeronimo/skillup-lms-prototype/pull/356) (merged). Amended 26 Oct 2026: superseded by [prototype PR 364](https://github.com/nvjeronimo/skillup-lms-prototype/pull/364): Pick up beside Stay informed, Due this week beside Jump somewhere.
-70. <a id="decision-2026-10-26-glance-trends-and-the-table-view-in-every-skin"></a>26 Oct 2026 · Nelson
+71. <a id="decision-2026-10-26-glance-trends-and-the-table-view-in-every-skin"></a>26 Oct 2026 · Nelson
 
     ### Glance trends and the table view in every skin
 
     The trend chips on the glance (MOCK: no API returns a figure's value 30 days ago) and My Learning's table view (Courses tab, tablet up) now show in every skin, not only Harbor and Fluent. The table thumb is square, 48 px. The rail toggle in the Harbor / Fluent top bar uses the ICP sidebar's own panel glyph instead of a hamburger. Same day: the glance figure card's context text has pb-2, in every skin ([prototype PR 354](https://github.com/nvjeronimo/skillup-lms-prototype/pull/354)). Not in the DS or the ICP. [prototype PR 355](https://github.com/nvjeronimo/skillup-lms-prototype/pull/355) (merged). Amended 26 Oct 2026: the Programs tab has a table view too ([prototype PR 367](https://github.com/nvjeronimo/skillup-lms-prototype/pull/367)).
-71. <a id="decision-2026-10-26-preview-device-shows-a-real-viewport"></a>26 Oct 2026 · Nelson
+72. <a id="decision-2026-10-26-preview-device-shows-a-real-viewport"></a>26 Oct 2026 · Nelson
 
     ### Preview device shows a real viewport
 
     The tablet / mobile preview is now an iframe of the same page at 834 / 375 px, because every layout answers to viewport media queries; before, it only narrowed a box and the platform pages stayed desktop. Inside the frame the page runs normally; its URL and title follow in the address bar; Tablet or Desktop chosen in the frame's own profile menu reach the window, and Desktop returns to the frame's page. [prototype PR 353](https://github.com/nvjeronimo/skillup-lms-prototype/pull/353) (merged).
-72. <a id="decision-2026-10-25-fluent-a-sixth-brand-skin"></a>25 Oct 2026 · Nelson · experiment
+73. <a id="decision-2026-10-25-fluent-a-sixth-brand-skin"></a>25 Oct 2026 · Nelson · experiment
 
     ### Fluent, a sixth brand skin
 
     A Microsoft Fluent 2 (web) direction, named Fluent: ?direction=fluent or Profile &gt; Brand skin. Open Sans stands in for Segoe UI (Nelson's choice); brand #0F6CBD (Fluent brand 80). Component shapes from the Fluent 2 web tokens: radii 4 controls / 8 cards / 12 surfaces; the secondary button white with Stroke1 #D1D1D1; fields with Stroke1 and an accessible bottom edge #616161; filters and view switches as a TabList (selected semibold over a 3px brand indicator, passes WCAG 1.4.11); cards white on a #F5F5F5 canvas with shadow 4, the glance without the dark band; the left rail and the Pick up list selected on #F0F0F0 with a 4 × 20 brand indicator; titles Semibold. Dark: canvas #141414, cards #292929, brand text #62ABF5. Fluent shares Harbor's panel layout (the rail, the top-bar search and the other panel patterns; Microsoft 365 has the same shell). axe WCAG 2.2 AA clean in light and dark on desktop and light on the phone. Not in the DS or the ICP. [prototype PR 352](https://github.com/nvjeronimo/skillup-lms-prototype/pull/352) (merged). Amended 26 Oct 2026: with Red removed, Fluent is the fifth skin ([prototype PR 363](https://github.com/nvjeronimo/skillup-lms-prototype/pull/363)). Its segmented controls are no longer a TabList: a track with the selected segment raised on white ([prototype PR 368](https://github.com/nvjeronimo/skillup-lms-prototype/pull/368)). The glance has a neutral tray ([prototype PR 367](https://github.com/nvjeronimo/skillup-lms-prototype/pull/367)). Fluent's colour modes are in the DS, unpublished.
-73. <a id="decision-2026-10-25-brand-skin-selector-scrolls-sideways"></a>25 Oct 2026 · Nelson
+74. <a id="decision-2026-10-25-brand-skin-selector-scrolls-sideways"></a>25 Oct 2026 · Nelson
 
     ### Brand skin selector scrolls sideways
 
     In the profile menu the Brand skin segmented control is one row that scrolls sideways (hidden scrollbar, every name in full), and the selected skin is scrolled into view. It replaces the rows of three. Every skin. [prototype PR 351](https://github.com/nvjeronimo/skillup-lms-prototype/pull/351) (merged).
-74. <a id="decision-2026-10-25-module-boxes-in-harbor-too"></a>25 Oct 2026 · Nelson
+75. <a id="decision-2026-10-25-module-boxes-in-harbor-too"></a>25 Oct 2026 · Nelson
 
     ### Module boxes in Harbor too
 
     Harbor gets Studio's player-sidebar module boxes: the list on bg/faint with 8 padding and gap, each module a white box with a 1px border/subtle and radius 8 (sidebar 16 − 8), its header without the grey band. [prototype PR 350](https://github.com/nvjeronimo/skillup-lms-prototype/pull/350) (merged).
-75. <a id="decision-2026-10-25-harbor-selected-states-light-blue-no-borders"></a>25 Oct 2026 · Nelson
+76. <a id="decision-2026-10-25-harbor-selected-states-light-blue-no-borders"></a>25 Oct 2026 · Nelson
 
     ### Harbor selected states: light blue, no borders
 
     In Harbor the selected filters, the current rail and top-bar item and the selected Pick up item sit on bg/primary-soft #D9EAFC with semibold ink, with no ring and no border. Nelson chose it after trying a 1px ring and a solid blue. Known gap: #D9EAFC is 1.23:1 against the page, below the 3:1 of WCAG 1.4.11; the state is still exposed through aria-pressed / aria-current (see Open questions). Same PR: buttons that are a column never become pills in Harbor; the Pick up items and panel use radius 8 (16 card − 8 padding). [prototype PR 349](https://github.com/nvjeronimo/skillup-lms-prototype/pull/349) (merged). Amended 26 Oct 2026: for segmented controls superseded by [prototype PR 368](https://github.com/nvjeronimo/skillup-lms-prototype/pull/368): a track with the selected segment raised on white. The rail, the top-bar items and Pick up keep the light blue.
-76. <a id="decision-2026-10-25-harbor-takes-seven-panel-patterns"></a>25 Oct 2026 · Nelson · experiment
+77. <a id="decision-2026-10-25-harbor-takes-seven-panel-patterns"></a>25 Oct 2026 · Nelson · experiment
 
     ### Harbor takes seven panel patterns
 
     Harbor skin only (?direction=harbor): (1) a search pill in the top bar with an Assistant button inside (desktop ≥1025; the search goes to My Learning, Assistant opens the chat on Ask); (2) a left icon rail (lg and up, collapsible, remembered); (3) a "Stay informed" card (Alerts · Updates · Support); (4) "Pick up where you left off" as a list and a detail panel; (5) a table view in My Learning (Courses tab, tablet up); (6) trend chips on the glance (MOCK: no API returns a figure's value 30 days ago); (7) a greeting tip with "Plan my week", which opens the assistant (MOCK on due dates). Tablet and phone keep the current navigation (no search pill). axe WCAG 2.2 AA clean. [prototype PR 348](https://github.com/nvjeronimo/skillup-lms-prototype/pull/348) (merged). Amended 26 Oct 2026: the trend chips and the table view are now in every skin ([prototype PR 355](https://github.com/nvjeronimo/skillup-lms-prototype/pull/355)); the Dashboard rows changed: Pick up beside Due this week, Jump somewhere beside Stay informed ([prototype PR 356](https://github.com/nvjeronimo/skillup-lms-prototype/pull/356)); the search pill opens a palette and the Assistant button a panel-style assistant under it ([prototype PR 359](https://github.com/nvjeronimo/skillup-lms-prototype/pull/359)); the Harbor glance is a navy block ([prototype PR 357](https://github.com/nvjeronimo/skillup-lms-prototype/pull/357)). Later the same day: the Dashboard rows changed again, Pick up beside Stay informed and Due beside Jump ([prototype PR 364](https://github.com/nvjeronimo/skillup-lms-prototype/pull/364)); the search pill and assistant reached every skin ([prototype PR 365](https://github.com/nvjeronimo/skillup-lms-prototype/pull/365)); the glance rings are in every skin ([prototype PR 360](https://github.com/nvjeronimo/skillup-lms-prototype/pull/360)–[prototype PR 362](https://github.com/nvjeronimo/skillup-lms-prototype/pull/362)). Amended 26 Oct 2026: pattern (1): since [prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369) the Assistant button opens the panel-style window under the bar, not the floating chat.
-77. <a id="decision-2026-10-25-harbor-a-fifth-brand-skin"></a>25 Oct 2026 · Nelson · experiment
+78. <a id="decision-2026-10-25-harbor-a-fifth-brand-skin"></a>25 Oct 2026 · Nelson · experiment
 
     ### Harbor, a fifth brand skin
 
     Nelson asked for a skin like a hosting control panel (DreamHost's), named Harbor, a neutral name because the prototype is public: ?direction=harbor or Profile &gt; Brand skin. Ink-black primary buttons with white text, blue links, icons and progress, zinc greys on a #f7f9fa ground, radius 12 controls / 16 cards / 20 bands; Plus Jakarta Sans and Figtree; Harbor Dark is a zinc night. On role tokens only, AA, no gradients, no third-party logos; axe WCAG 2.2 AA clean. Prototype only: not in the DS or the ICP. [prototype PR 347](https://github.com/nvjeronimo/skillup-lms-prototype/pull/347) (merged). Amended 26 Oct 2026: the Harbor glance is a deep indigo-navy block, #181B31 ([prototype PR 357](https://github.com/nvjeronimo/skillup-lms-prototype/pull/357)); with Red removed, Harbor is the fourth skin ([prototype PR 363](https://github.com/nvjeronimo/skillup-lms-prototype/pull/363)).
-78. <a id="decision-2026-10-25-a-skin-change-always-lands"></a>25 Oct 2026 · Nelson
+79. <a id="decision-2026-10-25-a-skin-change-always-lands"></a>25 Oct 2026 · Nelson
 
     ### A skin change always lands
 
     Studio sometimes did not switch on: the skin change waited for a View Transition callback that never ran. A 400 ms fallback now applies the skin anyway. [prototype PR 346](https://github.com/nvjeronimo/skillup-lms-prototype/pull/346) (merged 26 Oct 2026).
-79. <a id="decision-2026-10-25-platform-page-tabs-larger"></a>25 Oct 2026 · Nelson
+80. <a id="decision-2026-10-25-platform-page-tabs-larger"></a>25 Oct 2026 · Nelson
 
     ### Platform-page tabs larger
 
     Nelson asked twice for a bigger tab label. Tablet / desktop: headline-small / Semibold 24 (was body-large 16); mobile: title-large / Semibold 18 (was body-medium 14); panel tabs unchanged. [prototype PR 341](https://github.com/nvjeronimo/skillup-lms-prototype/pull/341) + [prototype PR 342](https://github.com/nvjeronimo/skillup-lms-prototype/pull/342) (merged). DS Horizontal tabs 1.2 adds Size=lg (desktop 24, Mobile breakpoint 18), published. ICP: 95 platform-page tab instances swapped to Size=lg (Ready for Dev 32, WIP 57, Lab 6). On phones the Course / Program tab rows scroll sideways. \_Tab button base: published 25 Oct (lg count-badge link). [docs PR 222](https://github.com/nvjeronimo/skillup-lms-prd/pull/222).
-80. <a id="decision-2026-10-25-topic-header-meta-row-on-one-line"></a>25 Oct 2026 · Nelson
+81. <a id="decision-2026-10-25-topic-header-meta-row-on-one-line"></a>25 Oct 2026 · Nelson
 
     ### Topic header meta row on one line
 
     Type · duration · Marked as completed stay on one line on phones; the duration ends in an ellipsis. [prototype PR 343](https://github.com/nvjeronimo/skillup-lms-prototype/pull/343) (merged). DS / ICP not changed.
-81. <a id="decision-2026-10-25-studio-quiz-options-keep-a-20-radius-when-they-wrap"></a>25 Oct 2026 · Nelson
+82. <a id="decision-2026-10-25-studio-quiz-options-keep-a-20-radius-when-they-wrap"></a>25 Oct 2026 · Nelson
 
     ### Studio: quiz options keep a 20 radius when they wrap
 
     A wrapped option became a stadium; options now keep the control radius (20). [prototype PR 344](https://github.com/nvjeronimo/skillup-lms-prototype/pull/344) (merged).
-82. <a id="decision-2026-10-25-audit-fixes-impeccable-session"></a>25 Oct 2026 · Nelson
+83. <a id="decision-2026-10-25-audit-fixes-impeccable-session"></a>25 Oct 2026 · Nelson
 
     ### Audit fixes (Impeccable session)
 
     Studio heading-em #427482 (contrast), course search ARIA, reading measure 56ch (removed 27 Oct, decision 033), Calendar aside sticky; covers skipped (no source above 512×256). [prototype PR 345](https://github.com/nvjeronimo/skillup-lms-prototype/pull/345) (merged).
-83. <a id="decision-2026-10-25-page-titles-sit-closer-to-what-they-head"></a>25 Oct 2026 · Nelson
+84. <a id="decision-2026-10-25-page-titles-sit-closer-to-what-they-head"></a>25 Oct 2026 · Nelson
 
     ### Page titles sit closer to what they head
 
     Nelson: less space from the page title to the first section (e.g. the My Learning filters), on every platform page. Title → first section is Layout/stack-gap (32); later sections keep Layout/section-gap (48/40/32). My Learning title → tabs is now ≈40 visible (was ≈80: the Sticky-Toolbar marker also added a gap, fixed). [Prototype PR 340](https://github.com/nvjeronimo/skillup-lms-prototype/pull/340) (merged). In the DS (Layout/stack-gap and section-gap descriptions; descriptions published 25 Oct) and the ICP: on desktop and tablet screens the title and the first section sit in a "Head" frame with Layout/stack-gap — 23 screens on the WIP page, 15 on Ready for Dev; phones need nothing (32 = 32). Edit profile desktop / tablet too: the Form stack is now on Layout/section-gap like the prototype (its sections were a raw 32 in the ICP, now 48 desktop / 40 tablet), with the title + first section in a Head on stack-gap. [Docs PR 219](https://github.com/nvjeronimo/skillup-lms-prd/pull/219) (decision 032 amendment).
-84. <a id="decision-2026-10-25-player-the-profile-menu-opens-over-the-topic-body"></a>25 Oct 2026 · Nelson
+85. <a id="decision-2026-10-25-player-the-profile-menu-opens-over-the-topic-body"></a>25 Oct 2026 · Nelson
 
     ### Player: the profile menu opens over the topic body
 
     The top bar's view-transition-name made it a stacking context, so the video, the sidebar and the footer painted over its menu. The player top bar now sits at z-30, as the platform top bar. [prototype PR 339](https://github.com/nvjeronimo/skillup-lms-prototype/pull/339) (merged).
-85. <a id="decision-2026-10-25-platform-profile-menu-preview-device-loading"></a>25 Oct 2026 · Nelson
+86. <a id="decision-2026-10-25-platform-profile-menu-preview-device-loading"></a>25 Oct 2026 · Nelson
 
     ### Platform profile menu: Preview device + Loading
 
     The platform profile menu gets Preview device and Loading, in the same order as the player, sharing the stored choice. [prototype PR 337](https://github.com/nvjeronimo/skillup-lms-prototype/pull/337) (merged). Amended 26 Oct 2026: the Loading switch left the profile menu, platform and player ([prototype PR 367](https://github.com/nvjeronimo/skillup-lms-prototype/pull/367)). Amended 26 Oct 2026: the preview is a real viewport, an iframe at 834 / 375 ([prototype PR 353](https://github.com/nvjeronimo/skillup-lms-prototype/pull/353)).
-86. <a id="decision-2026-10-25-studio-only-test-each-player-sidebar-module-in-its-own-box"></a>25 Oct 2026 · Nelson · Test
+87. <a id="decision-2026-10-25-studio-only-test-each-player-sidebar-module-in-its-own-box"></a>25 Oct 2026 · Nelson · Test
 
     ### Studio only (test): each player-sidebar module in its own box
 
     Test In the Studio skin only, each module of the player sidebar sits in its own box. Not in the DS or ICP yet. [Prototype PR 335](https://github.com/nvjeronimo/skillup-lms-prototype/pull/335) (merged). [PR 336](https://github.com/nvjeronimo/skillup-lms-prototype/pull/336) (merged): inside the module boxes the module header loses its grey band (white); the proposal's sticky header stays opaque. DS Sidebar 1.4 adds Expanded · boxed and Mobile · boxed (published); [ICP WIP frame 15 · Studio sidebar module boxes](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7812-94269) (node 7812:94269): Studio desktop (Expanded · boxed), Studio drawer (Mobile · boxed), SKO for comparison.
-87. <a id="decision-2026-10-25-player-sidebar-header-condenses-on-scroll"></a>25 Oct 2026 · Nelson
+88. <a id="decision-2026-10-25-player-sidebar-header-condenses-on-scroll"></a>25 Oct 2026 · Nelson
 
     ### Player sidebar header condenses on scroll
 
     When the sidebar scrolls, its course header condenses: only the course name and Overall progress stay. DS Course-Header 1.1 (toggle beside the column, Show overline), published. ICP WIP frame [“14 · Sidebar header on scroll”](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7802-92815). [prototype PR 327](https://github.com/nvjeronimo/skillup-lms-prototype/pull/327).
-88. <a id="decision-2026-10-25-phone-course-cards-cover-5-2"></a>25 Oct 2026 · Nelson
+89. <a id="decision-2026-10-25-phone-course-cards-cover-5-2"></a>25 Oct 2026 · Nelson
 
     ### Phone course cards: cover 5:2
 
     Course-Card 1.20, Layout=Grid on phones: the cover is 5:2, the 2:1 picture cropped, never stretched. Published; 22 ICP phone cards swapped (Impeccable session). [prototype PR 327](https://github.com/nvjeronimo/skillup-lms-prototype/pull/327), [docs PR 211](https://github.com/nvjeronimo/skillup-lms-prd/pull/211).
-89. <a id="decision-2026-10-25-footer-1-4-one-divider-before-open-edx"></a>25 Oct 2026 · Nelson
+90. <a id="decision-2026-10-25-footer-1-4-one-divider-before-open-edx"></a>25 Oct 2026 · Nelson
 
     ### Footer 1.4: one divider, before Open edX
 
     The footer reads name · © 2026 SkillUp Online | Open edX; the only divider (1 px border/subtle) sits before the Open edX logo. DS published, [prototype PR 334](https://github.com/nvjeronimo/skillup-lms-prototype/pull/334), [docs PR 215](https://github.com/nvjeronimo/skillup-lms-prd/pull/215).
-90. <a id="decision-2026-10-25-more-space-between-sections-columns-and-cards-decision-032"></a>25 Oct 2026 · Nelson
+91. <a id="decision-2026-10-25-more-space-between-sections-columns-and-cards-decision-032"></a>25 Oct 2026 · Nelson
 
     ### More space between sections, columns and cards (decision 032)
 
     All skins, platform pages and the player. Eight DS tokens Layout/\* in “2. Responsive” (desktop / tablet / mobile): page-x 48/40/24, page-top 48/40/32, band-x 48/32/16, section-gap 48/40/32, column-gap 48/40/40, stack-gap 32, side-gap 24/24/32, grid-gap 32/24/24. Published. Player: sidebar ↔ content 24, topic blocks 32/24. ICP bound to the published Layout/\* tokens: 479 bindings on the WIP page and 282 on Ready for Dev (values unchanged); the course/program tab-content top and the Discussion list gap stay on Spacing steps (no token); Certificates and Edit profile tablet/mobile now have their Responsive mode. Closed (25 Oct): Today-at-a-glance 1.10 takes Layout/page-x for its side padding and Spacing/6xl (48) above and below ([prototype PR 338](https://github.com/nvjeronimo/skillup-lms-prototype/pull/338)); Course-Header 1.2 (platform) takes Layout/band-x on Tablet/Mobile; both published. Amended 25 Oct: the gap after a page title is stack-gap ([PR 340](https://github.com/nvjeronimo/skillup-lms-prototype/pull/340)). Audit 25 Oct (Nelson: keep Edit profile at 48/40, replicate everywhere): all 141 current ICP platform screens take their page-level spacing from Layout/\* — WIP 84, Ready for Dev 48, Lab third-party Course-detail 6, AI Assistant Dashboards 3; title Heads on stack-gap everywhere (Profile menu desktop and the 3 AI Assistant dashboards newly); Certificate page and Profile menu screens newly on tokens. Left on Spacing steps (no token): course/program tab-content top, certificate-page top (24), Discussion list ↔ conversation (24). History/source rows (61 screens) left as they were. DS: Sticky-Toolbar 1.1 side padding on Layout/page-x (was 40) — needs a publish. [Docs PR 220](https://github.com/nvjeronimo/skillup-lms-prd/pull/220) (audit script). [prototype PR 332](https://github.com/nvjeronimo/skillup-lms-prototype/pull/332), [prototype PR 333](https://github.com/nvjeronimo/skillup-lms-prototype/pull/333), [docs PR 213](https://github.com/nvjeronimo/skillup-lms-prd/pull/213).
-91. <a id="decision-2026-10-25-studio-dark-cards-lifted-off-the-ground"></a>25 Oct 2026 · Nelson
+92. <a id="decision-2026-10-25-studio-dark-cards-lifted-off-the-ground"></a>25 Oct 2026 · Nelson
 
     ### Studio Dark: cards lifted off the ground
 
     bg/page goes from #16191f to #20242d (1.23:1 against the ground, was 1.09:1); subtle, muted, strong and border-subtle move one step up. The progress track in Studio Dark is re-pointed so the fill keeps 3.5:1. DS published, [prototype PR 331](https://github.com/nvjeronimo/skillup-lms-prototype/pull/331).
-92. <a id="decision-2026-10-25-motion-a-slower-softer-scale"></a>25 Oct 2026 · Nelson
+93. <a id="decision-2026-10-25-motion-a-slower-softer-scale"></a>25 Oct 2026 · Nelson
 
     ### Motion: a slower, softer scale
 
     Everything felt too fast and abrupt, so the whole motion scale slows by about a third: short2 150, short3 200, short4 300, medium2 400, long2 600 ms (was 100 / 150 / 200 / 300 / 500), and standard-decelerate returns to the gentler cubic-bezier(0.2, 0.7, 0.2, 1). Changed at the source (Figma Motion collection, published 25 Oct) and flowed to the prototype through the token pipeline; every animation slows by the same ratio, reduced motion unchanged. Same PR: the player sidebar's course header folds its eyebrow and partner line in two beats (fade, then the row closes). [Prototype PR 329](https://github.com/nvjeronimo/skillup-lms-prototype/pull/329) merged; [docs PR 212](https://github.com/nvjeronimo/skillup-lms-prd/pull/212) (motion-matrix §8d, ADR 024 amendment). The Figma doc frame is updated (Motion · v1.4). ICP: nothing to accept — no ICP screen uses the Motion variables (they document the scale and feed the code; Figma does not animate with them), and the file shows no pending library update.
-93. <a id="decision-2026-10-25-page-transitions-the-old-page-fades-out-while-the-new-one-fa"></a>25 Oct 2026 · Nelson
+94. <a id="decision-2026-10-25-page-transitions-the-old-page-fades-out-while-the-new-one-fa"></a>25 Oct 2026 · Nelson
 
     ### Page transitions: the old page fades out while the new one fades in
 
     The old page used to vanish in one frame. Navigations now run inside a View Transition: the old page fades out (150 ms) while the new one fades in with a 4 px rise (300 ms); the top bars, the player sidebar and footer, the phone tab bar and the assistant launcher hold still. Link clicks to another page and the player's topic navigation use it; links that only change filters or tabs, back/forward, reduced motion and browsers without the API keep the previous fade. [Prototype PR 326](https://github.com/nvjeronimo/skillup-lms-prototype/pull/326) (merged).
-94. <a id="decision-2026-10-25-sticky-toolbar-eases-in-and-out"></a>25 Oct 2026 · Nelson
+95. <a id="decision-2026-10-25-sticky-toolbar-eases-in-and-out"></a>25 Oct 2026 · Nelson
 
     ### Sticky-Toolbar: eases in and out
 
     On My Learning and Calendar the toolbar's background and border fade in when it sticks, and the search folds away smoothly (motion tokens short / medium, standard easing; off with reduced motion). Second pass the same day: the ground now goes from clear to solid over the first 24 px scrolled past, so cards never pass under a see-through bar, and the search fades out first and only then its room closes (the reverse on the way back), on desktop and phone. Prototype [PR 321](https://github.com/nvjeronimo/skillup-lms-prototype/pull/321) and [PR 324](https://github.com/nvjeronimo/skillup-lms-prototype/pull/324) (merged).
-95. <a id="decision-2026-10-25-synthetic-personas-switcher"></a>25 Oct 2026 · Nelson
+96. <a id="decision-2026-10-25-synthetic-personas-switcher"></a>25 Oct 2026 · Nelson
 
     ### Synthetic personas switcher
 
     Profile menu → “Synthetic personas” opens a modal. Only one persona at a time (Nelson: “só podemos escolher uma persona de cada vez”): a radio list P01–P07, each with a short summary and its condition badges. Apply takes that persona's conditions (P06 → the mobile 375 preview; P07 → larger text, larger targets, underlined links, reduced motion; P04 → My Learning list view) and its learner data: name, initials, and progress on Dashboard, My Learning, the course and program pages and Certificates. Clear restores the previous settings. Gaps: Calendar / due counts and the player's topic progress do not follow the persona yet. [prototype PR 328](https://github.com/nvjeronimo/skillup-lms-prototype/pull/328) + [prototype PR 330](https://github.com/nvjeronimo/skillup-lms-prototype/pull/330) (merged). Earlier: in progress as a multiselect that combined the conditions.
-96. <a id="decision-2026-10-25-phone-course-cards-on-my-learning-hug-their-title"></a>25 Oct 2026 · Nelson
+97. <a id="decision-2026-10-25-phone-course-cards-on-my-learning-hug-their-title"></a>25 Oct 2026 · Nelson
 
     ### Phone course cards on My Learning hug their title
 
     Phone course cards on My Learning no longer reserve two title lines; equal heights only from 768 px up. No DS or ICP change needed: the DS Course-Card title already hugs (max 2 lines). [Prototype PR 325](https://github.com/nvjeronimo/skillup-lms-prototype/pull/325) (merged; Impeccable session).
-97. <a id="decision-2026-10-25-the-dashboard-figures-are-links"></a>25 Oct 2026 · Nelson
+98. <a id="decision-2026-10-25-the-dashboard-figures-are-links"></a>25 Oct 2026 · Nelson
 
     ### The Dashboard figures are links
 
     Each card of "Your learning at a glance" opens the list it counts. Courses and Programs open My Learning on In progress; Completed opens the completed courses; Certificates opens its page. No arrow. My Learning opens on a status from ?status=. [prototype PR 322](https://github.com/nvjeronimo/skillup-lms-prototype/pull/322), [docs PR 209](https://github.com/nvjeronimo/skillup-lms-prd/pull/209) (merged). DS: Today-at-a-glance 1.9 and Stat 1.4 published (descriptions only, no drawing change).
-98. <a id="decision-2026-10-25-completed-sign"></a>25 Oct 2026 · Nelson
+99. <a id="decision-2026-10-25-completed-sign"></a>25 Oct 2026 · Nelson
 
     ### Completed sign
 
     Completed = Badge Soft sm Success, no icon, on modules and the course/program Progress card; My Learning course and program cards keep check + word. Topics keep 'Marked as completed'. DS Module-Info 1.1 and Progress-Card 1.3 published. [prototype PR 320](https://github.com/nvjeronimo/skillup-lms-prototype/pull/320) and [prototype PR 323](https://github.com/nvjeronimo/skillup-lms-prototype/pull/323), [docs PR 208](https://github.com/nvjeronimo/skillup-lms-prd/pull/208) (merged) and [docs PR 210](https://github.com/nvjeronimo/skillup-lms-prd/pull/210) (merged).
-99. <a id="decision-2026-10-24-course-journey-proposal-icp-sidebar-lab-promoted-27-oct"></a>24 Oct 2026 · Nelson · promoted 27 Oct
+100. <a id="decision-2026-10-24-course-journey-proposal-icp-sidebar-lab-promoted-27-oct"></a>24 Oct 2026 · Nelson · promoted 27 Oct
 
-    ### Course Journey proposal (ICP sidebar) · Lab · promoted 27 Oct
+     ### Course Journey proposal (ICP sidebar) · Lab · promoted 27 Oct
 
-    The ICP sidebar with every fix from the Impeccable critique of 24 Oct 2026 (score 27/40: 3 P1, 2 P2, plus minor issues). It runs in the real player behind a per-tab flag, and the default sidebar is unchanged. How to open: /lab/course-journey has "Open the proposal" (?journey=proposal) and "Open the current sidebar" (?journey=current), on the same course. What changes: (1) The assistant launcher moves to the bottom right of the content card and hides while another dialog is open. (2) "Module N of M" comes from the open topic, and the line says "Course completed" at 100%; the next topic gets an "Up next" tag. (3) Locks: each locked row shows "Unlocks after &lt;the topic before it&gt;" under the row; a fully locked module says it once under its header. (4) Sections, headings and ordered lists; the list is one tab stop (arrows, Home and End). (5) Only the module of the open topic is open, and completed modules close (Nelson's decision); module headers stay pinned at the top while their topics scroll; the current topic lands about a third of the way down. Minor: "Course journey" title on desktop; Label styles; "x of y topics" and "Completed"; lesson headings; the collapsed rail reads M2 / L1 for screen readers; meta lines wrap; one bookmark name. Status: awaiting Nelson's review. Lock text follows outline order (MOCK). DS done (properties off by default); ICP frame ["13 · Course Journey proposal (in review)"](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772), on the WIP platform page, right of "12 · Form modals"; it has 4 boards built from DS instances: Expanded (where am I / what's next), A locked module, Collapsed rail, Mobile drawer. [prototype PR 318](https://github.com/nvjeronimo/skillup-lms-prototype/pull/318) (merged).
+     The ICP sidebar with every fix from the Impeccable critique of 24 Oct 2026 (score 27/40: 3 P1, 2 P2, plus minor issues). It runs in the real player behind a per-tab flag, and the default sidebar is unchanged. How to open: /lab/course-journey has "Open the proposal" (?journey=proposal) and "Open the current sidebar" (?journey=current), on the same course. What changes: (1) The assistant launcher moves to the bottom right of the content card and hides while another dialog is open. (2) "Module N of M" comes from the open topic, and the line says "Course completed" at 100%; the next topic gets an "Up next" tag. (3) Locks: each locked row shows "Unlocks after &lt;the topic before it&gt;" under the row; a fully locked module says it once under its header. (4) Sections, headings and ordered lists; the list is one tab stop (arrows, Home and End). (5) Only the module of the open topic is open, and completed modules close (Nelson's decision); module headers stay pinned at the top while their topics scroll; the current topic lands about a third of the way down. Minor: "Course journey" title on desktop; Label styles; "x of y topics" and "Completed"; lesson headings; the collapsed rail reads M2 / L1 for screen readers; meta lines wrap; one bookmark name. Status: awaiting Nelson's review. Lock text follows outline order (MOCK). DS done (properties off by default); ICP frame ["13 · Course Journey proposal (in review)"](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772), on the WIP platform page, right of "12 · Form modals"; it has 4 boards built from DS instances: Expanded (where am I / what's next), A locked module, Collapsed rail, Mobile drawer. [prototype PR 318](https://github.com/nvjeronimo/skillup-lms-prototype/pull/318) (merged).
 
-    In the DS (25 Oct, published): Topic-Row 1.4 Show Up next, Show lock reason + Lock reason; Module-Header 1.1 Show lock note + Lock note; all off by default, no screen changes. The components are published; only the use of the new properties is a proposal. ICP frame ["13 · Course Journey proposal (in review)"](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772), on the WIP platform page, right of "12 · Form modals"; it has 4 boards built from DS instances: Expanded (where am I / what's next), A locked module, Collapsed rail, Mobile drawer.
+     In the DS (25 Oct, published): Topic-Row 1.4 Show Up next, Show lock reason + Lock reason; Module-Header 1.1 Show lock note + Lock note; all off by default, no screen changes. The components are published; only the use of the new properties is a proposal. ICP frame ["13 · Course Journey proposal (in review)"](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772), on the WIP platform page, right of "12 · Form modals"; it has 4 boards built from DS instances: Expanded (where am I / what's next), A locked module, Collapsed rail, Mobile drawer.
 
-    Refused by stakeholders (Nelson, 24 Oct): the In Progress ring on the open topic and the Jump to current topic button. Both are removed in [prototype PR 319](https://github.com/nvjeronimo/skillup-lms-prototype/pull/319) (merged).
+     Refused by stakeholders (Nelson, 24 Oct): the In Progress ring on the open topic and the Jump to current topic button. Both are removed in [prototype PR 319](https://github.com/nvjeronimo/skillup-lms-prototype/pull/319) (merged).
 
-    Amended 27 Oct 2026: promoted, no longer in review. Sidebar 1.5, Module-Info 1.2 and Course-Progression-Button 1.1 published; it is now the default Sidebar. ICP sweep done: 219 LMS Sidebar instances (Video 30, Quizzes 57, Reading 21, Lab 48, Activity 46, AI Assistant 4, WIP 13) show Up next after the open row, lock reasons on locked rows, "N of M topics", "Module i of N" and the overline; Course-Progression-Button Next-Topic-Complete on the 14 screens whose open topic is complete. WIP frame 7778:101772 renamed [13 · Course Journey (promoted 27 Oct, now the default Sidebar)](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772).
-100. <a id="decision-2026-10-24-tabs-and-filters-stay-at-hand-on-my-learning-and-calendar"></a>24 Oct 2026 · Nelson
+     Amended 27 Oct 2026: promoted, no longer in review. Sidebar 1.5, Module-Info 1.2 and Course-Progression-Button 1.1 published; it is now the default Sidebar. ICP sweep done: 219 LMS Sidebar instances (Video 30, Quizzes 57, Reading 21, Lab 48, Activity 46, AI Assistant 4, WIP 13) show Up next after the open row, lock reasons on locked rows, "N of M topics", "Module i of N" and the overline; Course-Progression-Button Next-Topic-Complete on the 14 screens whose open topic is complete. WIP frame 7778:101772 renamed [13 · Course Journey (promoted 27 Oct, now the default Sidebar)](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7778-101772).
+101. <a id="decision-2026-10-24-tabs-and-filters-stay-at-hand-on-my-learning-and-calendar"></a>24 Oct 2026 · Nelson
 
-    ### Tabs and filters stay at hand on My Learning and Calendar
+     ### Tabs and filters stay at hand on My Learning and Calendar
 
-    Nelson asked for the tabs and filters to stay fixed on scroll, and said the search may hide. Once scrolled past, the bar sticks to the top of the window, on the page ground with a border/subtle rule under it. My Learning: the tabs, the status filter and Grid / List stick; while stuck, the search steps out unless it holds a query; on a phone the bar keeps only the tabs and the filter. Calendar: the kind filter and the Agenda / Month switch stick. New shared component StickyToolbar. [prototype PR 316](https://github.com/nvjeronimo/skillup-lms-prototype/pull/316) and [prototype PR 317](https://github.com/nvjeronimo/skillup-lms-prototype/pull/317) (merged). DS Sticky-Toolbar 1.0 (published). ICP: four 'scrolled, tabs stuck' screens on the WIP page, each under its original: My Learning courses desktop and mobile, Calendar desktop and mobile. Figma cannot prototype sticky inside a screen, so these screens show it.
-101. <a id="decision-2026-10-24-overlay-panels-as-in-the-icp-service-row-deprecated"></a>24 Oct 2026 · Nelson
+     Nelson asked for the tabs and filters to stay fixed on scroll, and said the search may hide. Once scrolled past, the bar sticks to the top of the window, on the page ground with a border/subtle rule under it. My Learning: the tabs, the status filter and Grid / List stick; while stuck, the search steps out unless it holds a query; on a phone the bar keeps only the tabs and the filter. Calendar: the kind filter and the Agenda / Month switch stick. New shared component StickyToolbar. [prototype PR 316](https://github.com/nvjeronimo/skillup-lms-prototype/pull/316) and [prototype PR 317](https://github.com/nvjeronimo/skillup-lms-prototype/pull/317) (merged). DS Sticky-Toolbar 1.0 (published). ICP: four 'scrolled, tabs stuck' screens on the WIP page, each under its original: My Learning courses desktop and mobile, Calendar desktop and mobile. Figma cannot prototype sticky inside a screen, so these screens show it.
+102. <a id="decision-2026-10-24-overlay-panels-as-in-the-icp-service-row-deprecated"></a>24 Oct 2026 · Nelson
 
-    ### Overlay panels as in the ICP; Service-Row deprecated
+     ### Overlay panels as in the ICP; Service-Row deprecated
 
-    Nelson preferred the ICP notifications panel ([7497:132529](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7497-132529)) and asked for it on every panel. Notifications, Saved and Discussions now share it: a bg/subtle body inset 16, white rows each closed by a border/subtle rule underneath, labels and tabs 24 in, 36 square icon tiles (Radius/control), and a quiet "Mark all read" text action ([prototype PR 311](https://github.com/nvjeronimo/skillup-lms-prototype/pull/311), [prototype PR 313](https://github.com/nvjeronimo/skillup-lms-prototype/pull/313), merged). ICP: the 8 older panel frames restyled the same way (Phase 1 · Overlay Panels ×6, WIP ×2); there is no Discussions panel in the ICP. DS: Thread-Item 1.2 and Discussion Prompt 1.2 become panel rows (no radius, no shadow, rule underneath only, 16/24), published. Service-Row is deprecated (Nelson): unused since PR 307; use Mentor-Card, Support-Card, Included-Card, Service-Link and Request-Row. Player top bar on phones: the profile avatar is centred in its 44 target ([prototype PR 314](https://github.com/nvjeronimo/skillup-lms-prototype/pull/314)). [docs PR 204](https://github.com/nvjeronimo/skillup-lms-prd/pull/204) (merged)
-102. <a id="decision-2026-10-24-profile-menu-1-8-program-certificates-apart-on-the-certifica"></a>24 Oct 2026 · Nelson
+     Nelson preferred the ICP notifications panel ([7497:132529](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7497-132529)) and asked for it on every panel. Notifications, Saved and Discussions now share it: a bg/subtle body inset 16, white rows each closed by a border/subtle rule underneath, labels and tabs 24 in, 36 square icon tiles (Radius/control), and a quiet "Mark all read" text action ([prototype PR 311](https://github.com/nvjeronimo/skillup-lms-prototype/pull/311), [prototype PR 313](https://github.com/nvjeronimo/skillup-lms-prototype/pull/313), merged). ICP: the 8 older panel frames restyled the same way (Phase 1 · Overlay Panels ×6, WIP ×2); there is no Discussions panel in the ICP. DS: Thread-Item 1.2 and Discussion Prompt 1.2 become panel rows (no radius, no shadow, rule underneath only, 16/24), published. Service-Row is deprecated (Nelson): unused since PR 307; use Mentor-Card, Support-Card, Included-Card, Service-Link and Request-Row. Player top bar on phones: the profile avatar is centred in its 44 target ([prototype PR 314](https://github.com/nvjeronimo/skillup-lms-prototype/pull/314)). [docs PR 204](https://github.com/nvjeronimo/skillup-lms-prd/pull/204) (merged)
+103. <a id="decision-2026-10-24-profile-menu-1-8-program-certificates-apart-on-the-certifica"></a>24 Oct 2026 · Nelson
 
      ### Profile Menu 1.8; program certificates apart on the Certificates page
 
      Profile Menu 1.8 published: the Profile section (Edit profile, Certificates) above Appearance ([prototype PR 315](https://github.com/nvjeronimo/skillup-lms-prototype/pull/315), [docs PR 205](https://github.com/nvjeronimo/skillup-lms-prd/pull/205) (merged)). Certificates page: program certificates apart from course certificates; "Program certificates · N" uses the DS Program-Certificate and "Course certificates · N" is the grid ([prototype PR 312](https://github.com/nvjeronimo/skillup-lms-prototype/pull/312), merged). ICP 05 · Certificates (4 screens) updated. Superseded 30 Oct 2026: program and course certificates now sit together, one card per program with its course certificates as compact rows ([prototype PR 428](https://github.com/nvjeronimo/skillup-lms-prototype/pull/428)).
-103. <a id="decision-2026-10-23-footer-1-3-card-heights-link-buttons-as-in-the-ds"></a>23 Oct 2026 · Nelson
+104. <a id="decision-2026-10-23-footer-1-3-card-heights-link-buttons-as-in-the-ds"></a>23 Oct 2026 · Nelson
 
      ### Footer 1.3, card heights, Link Buttons as in the DS
 
      Footer 1.3: name | Open edX | copyright on the left (SkillUp name 61 × 18, a divider before the logo and before the copyright), the links alone on the right; on phones the links, then that row centred ([prototype PR 310](https://github.com/nvjeronimo/skillup-lms-prototype/pull/310)). Course-Card 1.19: Grid cards hug their content; an in-flow 2:1 "Cover space" reserves the cover's height, so the content starts 24 below it on desktop and 20 on tablet and phone, replacing the fixed 214 top padding and 560 minimum height that left an empty band under the cover on phones and above the button. ICP: the 148 Course-Row instances (41 Ready for Dev, 107 WIP) were swapped to 1.19; in desktop grid rows the cards stretch to the row with the buttons at the bottom, on tablet and phone they hug ([docs PR 202](https://github.com/nvjeronimo/skillup-lms-prd/pull/202) (merged)). Link Button size sm now matches the DS (26, body-small), and under "larger targets" the 44 is an invisible hit area, so the line stays 3 px under the label ([prototype PR 310](https://github.com/nvjeronimo/skillup-lms-prototype/pull/310)). The Services components are published: Mentor-Card and Support-Card (Organisms), Included-Card, Service-Link and Request-Row (Molecules), all 1.0. They are on the ICP 08 · Services screens (desktop, tablet, mobile), rebuilt from them; the Mentor-Card and Support-Card actions wrap on narrow cards (the ICP needed a swap by key after the publish) ([docs PR 203](https://github.com/nvjeronimo/skillup-lms-prd/pull/203) (merged)).
-104. <a id="decision-2026-10-23-services-page-by-weight-studio-glance-on-phones-a-test-fix"></a>23 Oct 2026 · Nelson
+105. <a id="decision-2026-10-23-services-page-by-weight-studio-glance-on-phones-a-test-fix"></a>23 Oct 2026 · Nelson
 
      ### Services page by weight, Studio glance on phones, a test fix
 
      Services page reorganised by weight. Nelson, 23 Oct: "too confusing, too much on one level; what matters most must stand out". (1) Help now: Your mentor and Support (Write to us, help center, your open requests), as two cards. (2) Included with your program: CV review, Azure credits, IBM badge, each with its state and one action. (3) More from SkillUp: interview practice, job board, LinkedIn, sandbox, certificates, as quiet one-line links. [prototype PR 307](https://github.com/nvjeronimo/skillup-lms-prototype/pull/307) (merged). DS and ICP done (5 components, [docs PR 203](https://github.com/nvjeronimo/skillup-lms-prd/pull/203) (merged)). In Studio, the glance figure cards have radius 24 on phones (was 32; padding 12, nesting rule), 32 from tablet; Nelson asked for it ([prototype PR 309](https://github.com/nvjeronimo/skillup-lms-prototype/pull/309), merged). The motion test reads the Figma-generated tokens (the values moved there in PR 306); main is back to 317/317 ([prototype PR 308](https://github.com/nvjeronimo/skillup-lms-prototype/pull/308), merged). [prototype PR 306](https://github.com/nvjeronimo/skillup-lms-prototype/pull/306) (merged): Figma is the source of the token values. One click from the DS to the prototype and Storybook (figma-plugin/, scripts/tokens/build.mjs, tokens/generated/).
-105. <a id="decision-2026-10-23-phone-spacing-on-every-platform-page"></a>23 Oct 2026 · Nelson
+106. <a id="decision-2026-10-23-phone-spacing-on-every-platform-page"></a>23 Oct 2026 · Nelson
 
      ### Phone spacing on every platform page
 
      [prototype PR 305](https://github.com/nvjeronimo/skillup-lms-prototype/pull/305) (merged): on phones the sections sit 24 apart, stacked columns 32, side-column cards 24 (16 from tablet). ICP: the 17 mobile screens on the WIP platform page now use Spacing/5xl (24 in Mobile mode) between sections: Dashboard, My Learning ×3, Course Detail ×5, Program ×5, Calendar, Discussion, Services. [docs PR 200](https://github.com/nvjeronimo/skillup-lms-prd/pull/200) (merged)
-106. <a id="decision-2026-10-23-footer-1-2-form-modals-in-the-ds-the-program-certificate"></a>23 Oct 2026 · Nelson
+107. <a id="decision-2026-10-23-footer-1-2-form-modals-in-the-ds-the-program-certificate"></a>23 Oct 2026 · Nelson
 
      ### Footer 1.2, form modals in the DS, the program certificate
 
      Nelson published the DS. Footer 1.2: the SkillUp name (monotone wordmark) and copyright on the left; links and the Open edX logo on the right, with dividers; the "Powered by" words removed (the logo's alt keeps them); on phones the links, then one row: name | copyright | Open edX ([prototype PR 301](https://github.com/nvjeronimo/skillup-lms-prototype/pull/301), [docs PR 196](https://github.com/nvjeronimo/skillup-lms-prd/pull/196) (merged), [docs PR 198](https://github.com/nvjeronimo/skillup-lms-prd/pull/198) (merged)). Form-Modal 1.0 is published in a new Overlays group (LMS Platform, Organism): one modal for every short form, Breakpoint Desktop / Mobile, the body a slot ([prototype PR 300](https://github.com/nvjeronimo/skillup-lms-prototype/pull/300)); the ICP frame "12 · Form modals" (7734:96450) stays in review. Program-Quick-View 1.1 adds What's included and stays in review, a proposal not for build; the ICP quick-view desktop screen was enlarged to fit it (1531 tall) ([prototype PR 302](https://github.com/nvjeronimo/skillup-lms-prototype/pull/302), [docs PR 197](https://github.com/nvjeronimo/skillup-lms-prd/pull/197) (merged)). The program certificate: a bigger card on the Program page's Certificates tab (ProgramCertificateHero, [prototype PR 303](https://github.com/nvjeronimo/skillup-lms-prototype/pull/303)): Program-Certificate 1.0, published and placed on the ICP.
-107. <a id="decision-2026-10-23-form-modals-for-the-missing-actions"></a>23 Oct 2026 · Nelson
+108. <a id="decision-2026-10-23-form-modals-for-the-missing-actions"></a>23 Oct 2026 · Nelson
 
      ### Form modals for the missing actions
 
      [Prototype PR 300](https://github.com/nvjeronimo/skillup-lms-prototype/pull/300) (merged): seven form modals for the missing actions: Ask a question, New post, Report a message, Contact support, Book CV review / Interview, Edit weekly goal, Calendar sync. One FormModal shell. ICP: frame "12 · Form modals" ([7734:96450](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7734-96450)) on the WIP platform page, in review: the 7 modals on desktop and mobile, DS instances only.
-108. <a id="decision-2026-10-23-compact-tab-bar-footer-1-1-the-ds-export-of-23-oct"></a>23 Oct 2026 · Nelson
+109. <a id="decision-2026-10-23-compact-tab-bar-footer-1-1-the-ds-export-of-23-oct"></a>23 Oct 2026 · Nelson
 
      ### Compact tab bar, footer 1.1, the DS export of 23 Oct
 
      Tab-Bar 1.2 (published): compact, iOS style; only the current section shows its label beside the icon, the others are icon-only (44 minimum); the bar hugs its items, 280 × 52; radius by role in each skin, pills in Studio ([prototype PR 295](https://github.com/nvjeronimo/skillup-lms-prototype/pull/295), [prototype PR 296](https://github.com/nvjeronimo/skillup-lms-prototype/pull/296), [prototype PR 299](https://github.com/nvjeronimo/skillup-lms-prototype/pull/299)). Tab-Bar-Item 1.1: counts are Badge Soft sm Info, as Nelson found them unreadable on the current tab. Footer 1.1: links as Link Buttons (Brand, Secondary), Open edX logo 47 × 14, platform pages only, never the ICP screens ([prototype PR 298](https://github.com/nvjeronimo/skillup-lms-prototype/pull/298)). The 52 mobile platform screens in the ICP (Ready for Dev 17, WIP 35) now use the compact tab bar. Tokens: the DS export of 23 Oct is in the prototype ([prototype PR 297](https://github.com/nvjeronimo/skillup-lms-prototype/pull/297)): bg/warning-soft #fff2d4 and bg/warning-muted #fdd988 in SKO and Studio (Gold and Red keep the old values); Studio Light bg/inverse and border/strong #131720, icon/muted #3b4150, icon/subtle #545a68; Studio Dark border/strong #eef0f3. Duplicate bg/track and bg/hover deleted from the DS with Nelson's OK. The copies 23048:35 and 23048:36 had 0 bindings in the DS and in every ICP page. The kept copies are 23014:6477 and 23014:6478. Published 23 Oct. [docs PR 195](https://github.com/nvjeronimo/skillup-lms-prd/pull/195) (merged)
-109. <a id="decision-2026-10-23-assistant-chat-1-4-a-tighter-phone-glance-the-greeting-on-on"></a>23 Oct 2026 · Nelson
+110. <a id="decision-2026-10-23-assistant-chat-1-4-a-tighter-phone-glance-the-greeting-on-on"></a>23 Oct 2026 · Nelson
 
      ### Assistant-Chat 1.4; a tighter phone glance; the greeting on one line
 
      Assistant-Chat 1.4 (published 23 Oct): a dark header with the mark in a 40 tile and Secondary Icon Buttons (New conversation in the conversation states, Close); Empty, First steps and First steps done greet in large type ("Hey John / How can we help?") and drop the title; the empty chat no longer repeats the hello; First steps is one compact card, "N of 5 done" over the bar, each row a step circle, a label and a Completed badge or the step's button ([prototype PR 291](https://github.com/nvjeronimo/skillup-lms-prototype/pull/291), [docs PR 189](https://github.com/nvjeronimo/skillup-lms-prd/pull/189)). The 9 ICP instances on the AI Assistant page are on the served variants; published 23 Oct. Today-at-a-glance 1.8 is published (23 Oct): on a phone the Stat cards are 156 wide and 12 apart, so the third peeks at 390; the 15 ICP glance instances are on 1.8 and every ICP Stat on Stat 1.3 ([docs PR 191](https://github.com/nvjeronimo/skillup-lms-prd/pull/191)). The Dashboard greeting "Good morning, John." stays on one line; 13 greeting texts fixed on WIP and Ready for Dev ([prototype PR 292](https://github.com/nvjeronimo/skillup-lms-prototype/pull/292)). Amended 26 Oct 2026: the floating chat is retired ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); Assistant-Chat is kept as reference.
-110. <a id="decision-2026-10-23-the-glance-runs-edge-to-edge"></a>23 Oct 2026 · Nelson · experiment
+111. <a id="decision-2026-10-23-the-glance-runs-edge-to-edge"></a>23 Oct 2026 · Nelson · experiment
 
      ### The glance runs edge to edge
 
      An experiment Nelson then kept. On the Dashboard, the "Your learning at a glance" section bleeds to the window edges on every device: the dark backdrop, the glow and the circles run edge to edge, with no radius and no border; the title and the cards stay on the page's content edges. On a phone the card row scrolls edge to edge and snaps to the 24 gutter. PlatformPage clips horizontal overflow, so no sideways scroll appears. [prototype PR 289](https://github.com/nvjeronimo/skillup-lms-prototype/pull/289) (merged). Nelson the same day: the DS and ICP follow — Today-at-a-glance 1.7 (no radius or border, side padding on Spacing/5xl like the page gutter; Desktop 1280 / Mobile 375) and the 15 ICP glance instances stretched to the screen edges — published 23 Oct, all 15 ICP glance instances on 1.7.
-111. <a id="decision-2026-10-23-micro-footer-on-platform-pages-only"></a>23 Oct 2026 · Nelson
+112. <a id="decision-2026-10-23-micro-footer-on-platform-pages-only"></a>23 Oct 2026 · Nelson
 
      ### Micro footer on platform pages only
 
      The platform pages (Dashboard, My Learning, Calendar, Discussion, Services, Certificates, Program, Course Detail…) end with a small footer; the ICP player gets none, it keeps only the content. It holds © 2026 SkillUp Online; Terms of use · Privacy · Cookie settings · Accessibility · Help center (SkillUp's own pages, no URLs yet); and "Powered by" with the Open edX logo, small (68 × 20). body-small on text/subtle, a border/subtle rule on top, in the 1200 column; one line on desktop, centred lines on phones (44-tall link targets), above the floating tab bar's room. Open edX MFEs already ship a footer slot (frontend-component-footer); this is its look. In the DS: [LMS/Platform/Navigation/Footer](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23327-407) 1.0 (published). [prototype PR 288](https://github.com/nvjeronimo/skillup-lms-prototype/pull/288) · [docs PR 185](https://github.com/nvjeronimo/skillup-lms-prd/pull/185)
-112. <a id="decision-2026-10-23-ds-doc-pages-by-level"></a>23 Oct 2026 · Nelson
+113. <a id="decision-2026-10-23-ds-doc-pages-by-level"></a>23 Oct 2026 · Nelson
 
      ### DS doc pages by level
 
      The Navigation, My Learning and Dashboard DS group pages were rebuilt with properties and anatomy, and grouped by level. Navigation: Atoms Topbar-Item, Tab-Bar-Item, Tab-Bar-Menu-Item · Molecule Tab-Bar-Menu · Organisms Topbar, Tab-Bar, Footer. The levels are recorded in [ds-levels.json](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/tools/ds-levels.json) ([docs PR 186](https://github.com/nvjeronimo/skillup-lms-prd/pull/186)).
-113. <a id="decision-2026-10-23-one-glow-on-the-glance-program-rows-stacked-on-tablet"></a>23 Oct 2026 · Nelson
+114. <a id="decision-2026-10-23-one-glow-on-the-glance-program-rows-stacked-on-tablet"></a>23 Oct 2026 · Nelson
 
      ### One glow on the glance; program rows stacked on tablet
 
      Today-at-a-glance 1.6 (published): one glow, the right one removed; Glow · top sits over the top edge on Desktop and low on the left on Mobile (x −124, y 60); circles stay at 19%; in Studio the glow and the two circles now show. All 12 ICP glances (9 WIP, 3 Ready for Dev) have the single glow ([prototype PR 281](https://github.com/nvjeronimo/skillup-lms-prototype/pull/281), [docs PR 178](https://github.com/nvjeronimo/skillup-lms-prd/pull/178)). Amended 23 Oct 2026: the backdrop now runs edge to edge (prototype PR 289; DS 1.7 published, ICP updated). Resume-Row (Nelson's DS edit): the cover is 140 tall across the top, the content 16 under it, 20 at the sides and 16 at the bottom; not 2:1, Nelson's exception to the 2:1 rule for card pictures ([prototype PR 283](https://github.com/nvjeronimo/skillup-lms-prototype/pull/283)). Course-Card 1.17 (published) adds Layout=List stacked for tablet lists: the progress above the Up next / Certificate box in one Status column, height hugging from 146. Course-Row (Program Detail) 1.1 (published) adds Breakpoint=Tablet (912) with the card on List stacked. On the program page the rows are a Desktop list from lg, Tablet stacked md–lg, a Compact grid below md ([prototype PR 285](https://github.com/nvjeronimo/skillup-lms-prototype/pull/285), [docs PR 179](https://github.com/nvjeronimo/skillup-lms-prd/pull/179), [docs PR 181](https://github.com/nvjeronimo/skillup-lms-prd/pull/181)). ICP: 21 tablet Course-Rows (14 Platform WIP, 7 Ready for Dev) swapped to Breakpoint=Tablet; the completed "Digital Marketing Fundamentals" rows are State=Completed; Nelson's first row on 04 · Program Detail restored after the swap reset it. Course pictures are 2:1 (Course-Card 1.18: Grid covers aspect-locked 2:1, List covers unlocked; the Impeccable session's pass, [prototype PR 284](https://github.com/nvjeronimo/skillup-lms-prototype/pull/284)); the exceptions are the Program-Card tile, the Discovery Course-Row cover (square, 96 × 96, Course-Row 1.4, in review at the time, published later on 23 Oct; 36 ICP rows show it) and the Resume-Row (140 tall). My Learning's Grid / List toggle now shows from md up; phones stay on the grid ([prototype PR 286](https://github.com/nvjeronimo/skillup-lms-prototype/pull/286)). The Program quick view proposal is drawn in the ICP on Platform Pages WIP, 02 · My Learning ([7703:84097](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7703-84097)): 08b Desktop modal and 11b Mobile full screen ([prototype PR 290](https://github.com/nvjeronimo/skillup-lms-prototype/pull/290)). All merged.
-114. <a id="decision-2026-10-23-video-topic-no-jump-on-scroll-the-transcript-follows-the-vid"></a>23 Oct 2026 · Nelson
+115. <a id="decision-2026-10-23-video-topic-no-jump-on-scroll-the-transcript-follows-the-vid"></a>23 Oct 2026 · Nelson
 
      ### Video topic: no jump on scroll; the transcript follows the video
 
      Scrolling down docks the video, and from tablet up the band shrinks (about 416 → 188). The browser's scroll anchoring pulled the page back up, so the video undocked, grew again, and the page jumped. Now the player body has no scroll anchoring, and docking has hysteresis: it docks past 8 px and undocks only at the very top. While docked, a spacer gives back the lost height, so the scroll range does not shrink under the finger. While the video plays and the learner is not scrolling (the 8 s pause after wheel, touch or keys stays), the active transcript line stays in the readable part, below the docked player, a third of the way down; "Sync to video" does the same. [prototype PR 280](https://github.com/nvjeronimo/skillup-lms-prototype/pull/280) (merged; done by the "Prototype + Design System review" session)
-115. <a id="decision-2026-10-23-link-buttons-have-no-fill-on-hover"></a>23 Oct 2026 · Nelson
+116. <a id="decision-2026-10-23-link-buttons-have-no-fill-on-hover"></a>23 Oct 2026 · Nelson
 
      ### Link buttons have no fill on hover
 
      Seven hand-built link buttons (Add Note ×2, Download transcript, Download all resources, the video footer link, and the side panels' header and footer links: "Mark all read", "View all notifications") used a grey fill on hover. They now use the DS Link Button hover: the text goes to text/on-primary-soft, the line and the icon to icon/default, with no fill. bg/faint is only the keyboard-focus state. [prototype PR 279](https://github.com/nvjeronimo/skillup-lms-prototype/pull/279) (merged)
-116. <a id="decision-2026-10-23-phones-get-a-floating-tab-bar-dashboard-my-learning-calendar"></a>23 Oct 2026 · Nelson
+117. <a id="decision-2026-10-23-phones-get-a-floating-tab-bar-dashboard-my-learning-calendar"></a>23 Oct 2026 · Nelson
 
      ### Phones get a floating tab bar: Dashboard · My Learning · Calendar · More
 
      Answered: on phones the platform pages have a floating tab bar with Dashboard, My Learning, Calendar and More. More opens a panel with Discussion, Services and any later section, and More is the current item on those pages. The label is the full "My Learning", and any label may end with an ellipsis. The assistant launcher sits beside the bar, on the same line. The bar slides away when the learner scrolls down and comes back on scroll up, at the top and at the end of the page, and on keyboard focus; never while More is open; under reduced motion it fades. Radius by role (decision 028) in every skin: the bar on Radius/track, the items on control, the More panel on card with 4 padding, its rows on card-inset; in Studio they are pills and the panel is 36 with 8 padding. Tablet and desktop are unchanged. In the DS: Tab-Bar 1.1, Tab-Bar-Item 1.0, and the new Tab-Bar-Menu and Tab-Bar-Menu-Item 1.0, all published ([Figma](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23279-329)). [prototype PR 259](https://github.com/nvjeronimo/skillup-lms-prototype/pull/259) · [prototype PR 277](https://github.com/nvjeronimo/skillup-lms-prototype/pull/277) · [docs PR 176](https://github.com/nvjeronimo/skillup-lms-prd/pull/176) (all merged). ICP: the 51 Tab-Bar instances are on 1.1, 287 wide, More current on Discussion and Services (done 23 Oct by the Impeccable session). Amended 26 Oct 2026: the assistant launcher no longer sits beside the tab bar ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); on a phone the assistant opens from the search button in the compact top bar.
-117. <a id="decision-031"></a>23 Oct 2026 · Nelson
+118. <a id="decision-031"></a>23 Oct 2026 · Nelson
 
      ### 031 · A topic's content stops at Container/content-max-width (1200)
 
      In the player a topic's content is at most 1200 wide, centred: the same as the platform pages' max-w-[1200px]. From tablet up the video player keeps the full panel width at min(50dvh, 16:9 of its width), docking only when the learner scrolls to the transcript; phones keep 16:9. In the DS the token is Container/content-max-width, on a new primitive Numeric/300 (1,200px). The ICP Video page players are 450 tall on desktop and 333 on tablet. [prototype PR 258](https://github.com/nvjeronimo/skillup-lms-prototype/pull/258) · [prototype PR 273](https://github.com/nvjeronimo/skillup-lms-prototype/pull/273) · [docs PR 173](https://github.com/nvjeronimo/skillup-lms-prd/pull/173) (all merged). Amended 23 Oct 2026: the dock no longer jumps ([PR 280](https://github.com/nvjeronimo/skillup-lms-prototype/pull/280); see "Video topic: no jump on scroll; the transcript follows the video").
-118. <a id="decision-2026-10-23-calendar-filters-side-by-side"></a>23 Oct 2026 · Nelson
+119. <a id="decision-2026-10-23-calendar-filters-side-by-side"></a>23 Oct 2026 · Nelson
 
      ### Calendar filters side by side
 
      On the Calendar the kind filter and the Agenda / Month switch sit side by side on every breakpoint. Below md, Agenda and Month are icons only (44 × 44, still named "Agenda" and "Month" for screen readers); from md up, icon and label. [prototype PR 278](https://github.com/nvjeronimo/skillup-lms-prototype/pull/278) (merged)
-119. <a id="decision-2026-10-23-calendar-month-view-on-phones-partner-badge-1-4"></a>23 Oct 2026 · Nelson
+120. <a id="decision-2026-10-23-calendar-month-view-on-phones-partner-badge-1-4"></a>23 Oct 2026 · Nelson
 
      ### Calendar Month view on phones; Partner badge 1.4
 
      Calendar, in the prototype: the View switch now shows on phones, with a compact Month view. Each day shows its number and one dot per kind of date (deadline, live, course dates); today is filled and the picked day sits on bg/primary-soft. Tapping a day lists its dates under the grid with the Agenda rows ("Nothing on this day." when it is empty). Day buttons are 44 × 48; axe finds 0 violations at 375. Tablet and desktop keep the full grid. No DS component, and no Figma screen for it yet ([prototype PR 275](https://github.com/nvjeronimo/skillup-lms-prototype/pull/275)). Provider-Partner-Badge 1.4 (published 23 Oct): the logo chip padding is Spacing/md (8) on every side, 32 px tall with the 16 px logo (was 28), border/subtle and Radius/control unchanged; all 403 logo chips in the ICP are 32 tall (278 Platform WIP, 125 Ready for Dev) ([prototype PR 276](https://github.com/nvjeronimo/skillup-lms-prototype/pull/276), [docs PR 175](https://github.com/nvjeronimo/skillup-lms-prd/pull/175), [docs PR 177](https://github.com/nvjeronimo/skillup-lms-prd/pull/177)). All merged.
-120. <a id="decision-2026-10-22-studio-replaces-sea-as-the-fourth-brand-skin"></a>22 Oct 2026 · Nelson · experiment
+121. <a id="decision-2026-10-22-studio-replaces-sea-as-the-fourth-brand-skin"></a>22 Oct 2026 · Nelson · experiment
 
      ### Studio replaces Sea as the fourth brand skin
 
      The brand skins are now SKO, Gold, Red and Studio. Studio is an experimental whole-platform direction, taken from humanacademy.ai: Inter Tight, a cool grey ground, borderless cards on a soft shadow, a deep-teal primary (#044150), pills for buttons and fields, and a floating Resume bar on the Dashboard; light and dark. Built in [prototype PR 256](https://github.com/nvjeronimo/skillup-lms-prototype/pull/256). Studio takes Sea's place in the profile menu picker, and a saved Sea or Studio choice moves to Studio ([prototype PR 262](https://github.com/nvjeronimo/skillup-lms-prototype/pull/262)). The Sea skin is removed from the prototype; it stays in git history, and decision 027 was only a proposal. Studio radius and Studio Dark ([prototype PR 270](https://github.com/nvjeronimo/skillup-lms-prototype/pull/270)): the radius follows the nesting rule (inner + padding = outer, decision 028) built around the pill. Buttons and fields are pills everywhere; card radius = padding + 20 (card 36, surface 40, control 20, card-inset 32, track pill). Studio Dark is a cool neutral night: ground #0d0f13, surfaces #16191f, text #eef0f3, an aqua primary #8fd0e0 with dark text; every contrast is AA. Also in [prototype PR 270](https://github.com/nvjeronimo/skillup-lms-prototype/pull/270): the glance title, unreadable in every dark theme on text/on-primary, is on text/on-media in the prototype too (the DS fix is in [docs PR 171](https://github.com/nvjeronimo/skillup-lms-prd/pull/171); see "Due-Item 1.2 published; the glance title on text/on-media"). Studio is prototype-only: no DS tokens yet (a new token needs Nelson's approval). All merged. Amended 23 Oct 2026: DS 🎨 SKO-Semantics has Studio Light / Studio Dark modes (28 Studio primitives, decision 030, [docs PR 173](https://github.com/nvjeronimo/skillup-lms-prd/pull/173)); the font stays Montserrat there until Inter Tight is available in Figma; Studio radius stays prototype-only. The floating Resume bar on the Dashboard was removed ([prototype PR 274](https://github.com/nvjeronimo/skillup-lms-prototype/pull/274), merged). Amended 25 Oct 2026: Harbor and Fluent joined as the fifth and sixth skins, prototype only (SKO · Gold · Red · Studio · Harbor · Fluent; prototype PRs 347, 352). Amended 26 Oct 2026: Red was removed; five skins, SKO · Gold · Studio · Harbor · Fluent ([prototype PR 363](https://github.com/nvjeronimo/skillup-lms-prototype/pull/363)).
-121. <a id="decision-2026-10-22-due-item-1-2-published-the-glance-title-on-text-on-media"></a>22 Oct 2026 · Nelson
+122. <a id="decision-2026-10-22-due-item-1-2-published-the-glance-title-on-text-on-media"></a>22 Oct 2026 · Nelson
 
      ### Due-Item 1.2 published; the glance title on text/on-media
 
      Due-Item 1.2 is published and accepted in the ICP: all 24 instances (18 Platform WIP, 6 Ready for Dev) have the badge in the title row. Today-at-a-glance 1.5, same version: the title is text/on-media (white in every mode), not text/on-primary, which is #0e1a1f in every Dark mode and vanished on the #044150 backdrop (found by the Impeccable session; [prototype PR 270](https://github.com/nvjeronimo/skillup-lms-prototype/pull/270) does the same, merged). All 12 ICP glance instances are updated, their stale Stat texts reset to the DS content. [docs PR 171](https://github.com/nvjeronimo/skillup-lms-prd/pull/171) (merged). Amended 23 Oct 2026: the backdrop now runs edge to edge (prototype PR 289; DS 1.7 published, ICP updated).
-122. <a id="decision-2026-10-22-assistant-sparkles-slower-spins-that-read-as-turns"></a>22 Oct 2026 · Nelson
+123. <a id="decision-2026-10-22-assistant-sparkles-slower-spins-that-read-as-turns"></a>22 Oct 2026 · Nelson
 
      ### Assistant sparkles: slower spins that read as turns
 
      The stars ran but did not seem to move: 2–3 turns in 500 ms on a strong ease-out moved a four-point star up to ~200° a frame, and it repeats every 90°, so the eye saw a flicker. Now 2 turns in 1.5 s (big and small) and 3 turns in 2 s (medium), standard easing, at most ~25° a frame; same independent cycles (12 / 15 / 19 s), paused while the window is open, still under reduced motion. [prototype PR 269](https://github.com/nvjeronimo/skillup-lms-prototype/pull/269) merged. Amended 26 Oct 2026: the floating launcher is retired ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); these spins are kept as reference, behind ?assistant=floating.
-123. <a id="decision-2026-10-22-course-journey-uppercase-program-footers-the-glance-dark-aga"></a>22 Oct 2026 · Nelson
+124. <a id="decision-2026-10-22-course-journey-uppercase-program-footers-the-glance-dark-aga"></a>22 Oct 2026 · Nelson
 
      ### Course Journey, uppercase program footers, the glance dark again, Due-Item 1.2 in review
 
      Sidebar 1.3 (published): "Course menu" becomes Course Journey, the mobile drawer title, with "Open Course Journey" and "Close Course Journey" on the player Topbar button ([prototype PR 263](https://github.com/nvjeronimo/skillup-lms-prototype/pull/263)); no ICP screen shows the drawer title. Program-Card 1.14 (published): the footer labels Up next and Certificate issued are uppercase, as the Course-Card overlines; 11 Up next labels on Platform WIP updated ([prototype PR 264](https://github.com/nvjeronimo/skillup-lms-prototype/pull/264), both with [docs PR 168](https://github.com/nvjeronimo/skillup-lms-prd/pull/168)). Today-at-a-glance 1.5 (published): dark again, as Nelson drew it on the ICP Dashboard (7495:71629): Backdrop bg/info-soft pinned to SKO Dark (#044150, no new token), two blurred border/info-soft glows, circles at 19%, the title on text/on-media (white in every mode; corrected 22 Oct), light Stat cards with value and detail on one line; Programs "1 · in progress of 3 enrolled" and "1 not started", Certificates "ready to download" ([prototype PR 267](https://github.com/nvjeronimo/skillup-lms-prototype/pull/267), [docs PR 169](https://github.com/nvjeronimo/skillup-lms-prd/pull/169)). Due-Item 1.2 (in review at the time, published later on 22 Oct): the Status badge in the title row, the meta full width, the date centred ([prototype PR 268](https://github.com/nvjeronimo/skillup-lms-prototype/pull/268), [docs PR 170](https://github.com/nvjeronimo/skillup-lms-prd/pull/170)). All PRs merged. Amended 23 Oct 2026: the backdrop now runs edge to edge (prototype PR 289; DS 1.7 published, ICP updated).
-124. <a id="decision-2026-10-22-assistant-launcher-a-polished-metal-ring-with-a-running-glin"></a>22 Oct 2026 · Nelson
+125. <a id="decision-2026-10-22-assistant-launcher-a-polished-metal-ring-with-a-running-glin"></a>22 Oct 2026 · Nelson
 
      ### Assistant launcher: a polished metal ring with a running glint
 
      From Nelson's reference (a metallic Send button Figma riff): the launcher's 2px blue ring becomes a 3px polished-metal ring, shaded from the top left in SkillUp blue (from ice, #c8ecff, through the logo blues to deep teal, #044150; holds its edge on a white page), with a white glint with an ice-blue edge that runs once round it (standard easing) and rests, every 3.6 s. It runs only while first steps are left; reduced motion holds it still. The ring stays the one gradient the brand allows. [prototype PR 266](https://github.com/nvjeronimo/skillup-lms-prototype/pull/266) merged; In the DS as Assistant-Launcher v1.4 (published 22 Oct). Amended 26 Oct 2026: the floating launcher is retired ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); the ring is kept as reference, behind ?assistant=floating.
-125. <a id="decision-2026-10-22-course-covers-zoom-softly-on-hover"></a>22 Oct 2026 · Nelson
+126. <a id="decision-2026-10-22-course-covers-zoom-softly-on-hover"></a>22 Oct 2026 · Nelson
 
      ### Course covers zoom softly on hover
 
      Course covers zoom softly on card hover: the picture eases to 1.02 over long2 (500 ms, standard) and back over medium2 (300 ms); only on devices that hover; still under reduced motion. Fixes a zoom that jumped in one frame (the load fade's transition dropped the transform). [prototype PR 261](https://github.com/nvjeronimo/skillup-lms-prototype/pull/261) (merged)
-126. <a id="decision-2026-10-22-a-closed-collapse-adds-no-blank-space"></a>22 Oct 2026 · Nelson
+127. <a id="decision-2026-10-22-a-closed-collapse-adds-no-blank-space"></a>22 Oct 2026 · Nelson
 
      ### A closed collapse adds no blank space
 
      A closed collapse no longer leaves blank space under the page (seen on My Learning on phones). [prototype PR 260](https://github.com/nvjeronimo/skillup-lms-prototype/pull/260) merged.
-127. <a id="decision-2026-10-22-phones-get-a-floating-tab-bar-on-the-platform-pages"></a>22 Oct 2026 · Nelson
+128. <a id="decision-2026-10-22-phones-get-a-floating-tab-bar-on-the-platform-pages"></a>22 Oct 2026 · Nelson
 
      ### Phones get a floating tab bar on the platform pages
 
      On a phone the platform pages get an app-like floating tab bar: Dashboard, My Learning (shown as "Learning"), Calendar, Discussion and Services. Tablet and desktop are unchanged. Prototype only; three points are open for Nelson (see Open questions). [prototype PR 259](https://github.com/nvjeronimo/skillup-lms-prototype/pull/259) merged. Amended 23 Oct 2026: answered; see the entry above (Dashboard · My Learning · Calendar · More, the full "My Learning" label, the launcher beside the bar, Discussion and Services under More). Amended 26 Oct 2026: the assistant launcher no longer sits beside the tab bar ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); on a phone the assistant opens from the search button in the compact top bar.
-128. <a id="decision-2026-10-22-topic-content-is-at-most-50rem-wide-the-video-keeps-its-widt"></a>22 Oct 2026 · Nelson
+129. <a id="decision-2026-10-22-topic-content-is-at-most-50rem-wide-the-video-keeps-its-widt"></a>22 Oct 2026 · Nelson
 
      ### Topic content is at most 50rem wide; the video keeps its width
 
      In the player the topic content is at most 50rem (800) wide, centred. The video player keeps the full panel width at min(50dvh, 16:9 of its width) and shrinks only when the learner scrolls to the transcript. Open: a DS token, Container/content-max-width, needs Nelson's approval; the ICP screens are not updated yet. [prototype PR 258](https://github.com/nvjeronimo/skillup-lms-prototype/pull/258) merged. Amended 23 Oct 2026: 1200, as the platform pages (decision 031); the token is in the DS and the ICP Video players are updated (see "031 · A topic's content stops at Container/content-max-width (1200)").
-129. <a id="decision-2026-10-22-large-course-pictures-on-cards-and-module-rows"></a>22 Oct 2026 · Nelson
+130. <a id="decision-2026-10-22-large-course-pictures-on-cards-and-module-rows"></a>22 Oct 2026 · Nelson
 
      ### Large course pictures on cards and module rows
 
      The course picture is large on the course cards (grid: a 16:9 cover across the top; list: the cover down the left) and on the "Module …" rows: Dashboard Pick up, Course-Row and Resume-Row. A module has no picture in Open edX, so the row uses its course's picture. The partner logo chips on the cards sit on white. In the prototype: [prototype PR 257](https://github.com/nvjeronimo/skillup-lms-prototype/pull/257). DS published 22 Oct: Course-Card 1.16, Course-Row 1.3 (cover 160 on the left; hidden on the 466-wide two-column Dashboard rows, where it does not fit) and Resume-Row 1.3 (cover 140 on top). ICP: the 12 prototype covers are uploaded to a source frame ([7649:114533](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7649-114533), on the Platform Pages WIP page) and set on 190 instances: 148 cards, 30 Course-Rows and 12 Resume-Rows. [docs PR 167](https://github.com/nvjeronimo/skillup-lms-prd/pull/167) merged.
-130. <a id="decision-2026-10-22-content-tabs-stay-tabs-on-phones"></a>22 Oct 2026 · Nelson
+131. <a id="decision-2026-10-22-content-tabs-stay-tabs-on-phones"></a>22 Oct 2026 · Nelson
 
      ### Content tabs stay tabs on phones
 
      In the ICP player the content tabs stay tabs on a phone: no dropdown. [prototype PR 257](https://github.com/nvjeronimo/skillup-lms-prototype/pull/257) merged.
-131. <a id="decision-2026-10-22-apple-design-pass"></a>22 Oct 2026 · Nelson
+132. <a id="decision-2026-10-22-apple-design-pass"></a>22 Oct 2026 · Nelson
 
      ### Apple-design pass
 
      Press feedback on link cards; drag-to-dismiss on the sheets (Assistant, Course search, the mobile drawers, Overlay panel); a rem type ramp; a theme cross-fade; prefers-contrast and reduced-transparency rules. In the prototype: [prototype PR 253](https://github.com/nvjeronimo/skillup-lms-prototype/pull/253) (merged). [docs PR 165](https://github.com/nvjeronimo/skillup-lms-prd/pull/165) is still open, not merged.
-132. <a id="decision-2026-10-22-motion-pass-after-emil-kowalski-s-review"></a>22 Oct 2026 · Nelson
+133. <a id="decision-2026-10-22-motion-pass-after-emil-kowalski-s-review"></a>22 Oct 2026 · Nelson
 
      ### Motion pass after Emil Kowalski's review
 
      Hover only where the device has hover; a strong ease-out in and out; menus can be interrupted; the quiz mark grows from half size. In the DS Motion collection easing/standard-decelerate is now cubic-bezier(0.23, 1, 0.32, 1) and easing/standard-accelerate is marked unused. [prototype PR 252](https://github.com/nvjeronimo/skillup-lms-prototype/pull/252) · [docs PR 164](https://github.com/nvjeronimo/skillup-lms-prd/pull/164) (both merged)
-133. <a id="decision-2026-10-22-ora-stepper-1-2-partner-badge-1-3-q-a-badges-in-sentence-cas"></a>22 Oct 2026 · Nelson
+134. <a id="decision-2026-10-22-ora-stepper-1-2-partner-badge-1-3-q-a-badges-in-sentence-cas"></a>22 Oct 2026 · Nelson
 
      ### ORA-Stepper 1.2, Partner badge 1.3, Q&A badges in sentence case
 
      ORA-Stepper 1.2 (published): completed steps are a green check and a green label on bg/page, with no green tint; the current step on bg/primary-soft is the only coloured segment; upcoming steps on bg/faint; the Response current-segment fill fixed; 15 instances updated on Topic Content Types ([prototype PR 254](https://github.com/nvjeronimo/skillup-lms-prototype/pull/254), which also adds Size=Compact below sm and the peer label from the review quota, "Review 1 peer"; [docs PR 166](https://github.com/nvjeronimo/skillup-lms-prd/pull/166)). Provider-Partner-Badge 1.3 (published): the logo chip has a 1 px border/subtle outline and Radius/control (6), still 28 px tall; the Cybersecurity Fundamentals Certificate partner is SkillUp, 15 program cards fixed in the ICP ([prototype PR 249](https://github.com/nvjeronimo/skillup-lms-prototype/pull/249), [docs PR 163](https://github.com/nvjeronimo/skillup-lms-prd/pull/163)). Discussion and Q&A badges read in sentence case: Question, Discussion, Answered, Following, Accepted answer, Staff ([prototype PR 251](https://github.com/nvjeronimo/skillup-lms-prototype/pull/251); 171 badge texts on Platform Ready and WIP). All merged.
-134. <a id="decision-2026-10-22-times-read-12-h-with-your-time"></a>22 Oct 2026 · Nelson
+135. <a id="decision-2026-10-22-times-read-12-h-with-your-time"></a>22 Oct 2026 · Nelson
 
      ### Times read 12 h with "your time"
 
      Nelson's answer: every time the learner reads is on the 12-hour clock followed by "your time" (for example 11:59 PM · your time), across the prototype. The Dashboard due items show it first: Due-Item 1.1. [prototype PR 245](https://github.com/nvjeronimo/skillup-lms-prototype/pull/245)
-135. <a id="decision-2026-10-22-dashboard-glance-one-card-per-figure-with-a-goal"></a>22 Oct 2026 · Nelson
+136. <a id="decision-2026-10-22-dashboard-glance-one-card-per-figure-with-a-goal"></a>22 Oct 2026 · Nelson
 
      ### Dashboard glance: one card per figure with a goal
 
      The Dashboard glance card shows one card per figure, Programs second, each with a goal badge, from real data only. Nelson first kept it dark, then made it light the same day (Today-at-a-glance 1.4, published and accepted 22 Oct): a bg/primary-soft card with a border/primary-muted outline, the figures on bg/page cards with Shadows/shadow-card, labels Courses / Programs / Completed / Certificates, details on two lines, and goals "3 due this week" (Warning) · "1 of 3 completed" · "32% completed" ([prototype PR 244](https://github.com/nvjeronimo/skillup-lms-prototype/pull/244)). The trend arrows first proposed (green up, red down) were dropped: Nelson confirmed the DS glance as his, with goal badges only. Amended 26 Oct 2026: the prototype shows trend chips on the glance in every skin, marked MOCK ([prototype PR 355](https://github.com/nvjeronimo/skillup-lms-prototype/pull/355)); the DS glance keeps goal badges only. In the DS: Stat 1.2 (new Theme=Card with Trend and Goal badges, booleans Show trend / Show goal; the trend badge is not used on the Dashboard) and Today-at-a-glance 1.3, published 22 Oct and republished the same day with the desktop cards filling their grid columns. The prototype follows the DS v1.3 ([prototype PR 243](https://github.com/nvjeronimo/skillup-lms-prototype/pull/243)). ICP checked by the Impeccable session after Nelson's re-accept: all 12 Today-at-a-glance instances fill their columns (desktop 270, tablet 199, mobile 174), in the order In progress · Programs · Completed · Certificates, with short labels on mobile. [prototype PR 242](https://github.com/nvjeronimo/skillup-lms-prototype/pull/242) · [docs PR 157](https://github.com/nvjeronimo/skillup-lms-prd/pull/157) · [docs PR 158](https://github.com/nvjeronimo/skillup-lms-prd/pull/158) · [docs PR 160](https://github.com/nvjeronimo/skillup-lms-prd/pull/160) · [docs PR 161](https://github.com/nvjeronimo/skillup-lms-prd/pull/161) (all merged 22 Oct). Amended 23 Oct 2026: the backdrop now runs edge to edge (prototype PR 289; DS 1.7 published, ICP updated). Amended 28 Oct 2026: the goal "3 due this week" is an example only today (no due dates are configured, decision 036).
-136. <a id="decision-2026-10-21-certificates-page-tabs-search-and-grid-list"></a>21 Oct 2026 · Nelson
+137. <a id="decision-2026-10-21-certificates-page-tabs-search-and-grid-list"></a>21 Oct 2026 · Nelson
 
      ### Certificates page: tabs, search and Grid / List
 
      The Certificates page moves from two stacked sections to two tabs, In progress and Earned, with a search and a Grid / List toggle, as My Learning. In the ICP the new screens are the WIP cards 05, 05b, 05c and 05d; the old row stays at the bottom, marked SUPERSEDED. [prototype PR 241](https://github.com/nvjeronimo/skillup-lms-prototype/pull/241) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=6207-245582) Superseded 30 Oct 2026: the tabs stay, but the Grid / List toggle is removed and each program is one card with its course certificates as compact rows ([prototype PR 428](https://github.com/nvjeronimo/skillup-lms-prototype/pull/428)).
-137. <a id="decision-2026-10-21-pages-arrive-skeletons-sections-in-order-numbers-that-count"></a>21 Oct 2026 · Nelson
+138. <a id="decision-2026-10-21-pages-arrive-skeletons-sections-in-order-numbers-that-count"></a>21 Oct 2026 · Nelson
 
      ### Pages arrive: skeletons, sections in order, numbers that count
 
      The first time a learner opens a page in a session, it now arrives as one short story: a skeleton in the page's real shape for about half a second (as a real connection would show), then the sections in reading order, then the numbers, bars and rings counting up from zero. Later visits in the same session show the page at once. It covers every platform page and, in the course player, the topic body; the course ring sweeps once per course. Course covers fade in when they load and Copy link turns into a check. Nothing waits on the animation: everything is clickable as soon as it shows, and with reduced motion the skeleton is still and the numbers appear at their value. For review, the demo menu switches the loading to Off or Slow (2 s). The top bar shadow on scroll was not built: the platform top bar is not sticky. The Skeleton is now a design system component too ([LMS / Skeleton](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=23184-386) v1.0, published 21 Oct). [prototype PRs 236](https://github.com/nvjeronimo/skillup-lms-prototype/pull/236), [237](https://github.com/nvjeronimo/skillup-lms-prototype/pull/237), [238](https://github.com/nvjeronimo/skillup-lms-prototype/pull/238) · [spec §7.9](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/motion-matrix.md)
-138. <a id="decision-2026-10-21-square-corners-an-experiment-in-the-profile-menu"></a>21 Oct 2026 · Nelson · experiment
+139. <a id="decision-2026-10-21-square-corners-an-experiment-in-the-profile-menu"></a>21 Oct 2026 · Nelson · experiment
 
      ### Square corners, an experiment in the profile menu
 
      A "Square corners" switch in the profile menu, under the brand skins, removes every corner radius except on buttons, to compare the product with square corners. Prototype only; the DS radius roles (decision 028) are unchanged. [prototype PR 231](https://github.com/nvjeronimo/skillup-lms-prototype/pull/231)
-139. <a id="decision-2026-10-21-audit-answers"></a>21 Oct 2026 · Nelson
+140. <a id="decision-2026-10-21-audit-answers"></a>21 Oct 2026 · Nelson
 
      ### Audit answers
 
      Nelson's answers to the open points of the prototype audit. On a phone the glance card is one line of four (Stat 1.1 Inverse compact, Today-at-a-glance 1.2). The Python sandbox exists: the Business Analytics lab opens it first. US spelling everywhere: the prototype is done ([prototype PR 230](https://github.com/nvjeronimo/skillup-lms-prototype/pull/230)); the DS and ICP Figma spelling pass is done too and shipped with the 21 Oct DS publish ([docs PR 150](https://github.com/nvjeronimo/skillup-lms-prd/pull/150)). The prose width stays as drawn. [prototype PR 229](https://github.com/nvjeronimo/skillup-lms-prototype/pull/229) · [audit report](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/04-research/prototype-audit-2026-10-21.md)
-140. <a id="decision-029"></a>21 Oct 2026 · Nelson
+141. <a id="decision-029"></a>21 Oct 2026 · Nelson
 
      ### 029 · Prototype audit decisions
 
      The decisions taken after the prototype audit, as amended by docs PR 141. The phone player top bar: the menu and the progress ring on the left, the wordmark centred, Saved, avatar and Close on the right, no notifications; on a phone the theme switch is in the profile menu. Demo mode: ?demo=1 shows the prototype notes and the demo controls. Mentorship Q&A is private to the learner and the mentor; Discussion is the cohort forum. Program sequencing is unchanged. A graded quiz shows the answer only after the last attempt. Sign out is in the profile menu, in a group of its own, with its icon on icon/error (Profile Menu 1.7). The sample data has one "today": Sat 24 Oct 2026. [decision 029](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/029-audit-decisions-2026-10-21.md) · [docs PR 140](https://github.com/nvjeronimo/skillup-lms-prd/pull/140) · [docs PR 141](https://github.com/nvjeronimo/skillup-lms-prd/pull/141)
-141. <a id="decision-2026-10-21-videos-and-podcasts-complete-themselves-at-90"></a>21 Oct 2026 · Nelson
+142. <a id="decision-2026-10-21-videos-and-podcasts-complete-themselves-at-90"></a>21 Oct 2026 · Nelson
 
      ### Videos and podcasts complete themselves at 90%
 
      In the prototype a video or a podcast now completes by itself once 90% of it has actually been played, adding up across visits; jumping to the end does not count (BR-01). The completion then shows as for a reading: the badge, the check in the sidebar, the course ring and the toast. A video whose playback is measured has no Mark as Complete button and Next does not ask; the button and the question stay only for media that cannot be measured. For testing, the demo menu has Mark 85% watched. [prototype PR 234](https://github.com/nvjeronimo/skillup-lms-prototype/pull/234)
-142. <a id="decision-2026-10-21-the-assistant-s-sparkles-turn-now-and-then"></a>21 Oct 2026 · Nelson
+143. <a id="decision-2026-10-21-the-assistant-s-sparkles-turn-now-and-then"></a>21 Oct 2026 · Nelson
 
      ### The assistant's sparkles turn now and then
 
      The three sparkles under the paper plane on the assistant's floating button each spin fast on their own rhythm (every 12, 15 and 19 seconds): two full turns for the big and the small star, three for the medium one, in half a second, settling at the end, so they rarely move together. They pause while the chat is open and stay still with reduced motion. The stars are separate layers in the design system component too. Answered the same day (Nelson): the code is right, 2 / 3 / 2 full turns in a fast 500 ms spin on 12 / 15 / 19 s cycles, not the quarter turn (90°) the motion-matrix row said; the row is fixed in [docs PR 155](https://github.com/nvjeronimo/skillup-lms-prd/pull/155) (merged 21 Oct). [prototype PR 232](https://github.com/nvjeronimo/skillup-lms-prototype/pull/232) · [Figma](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22493-224) · [prototype PR 235](https://github.com/nvjeronimo/skillup-lms-prototype/pull/235) Amended 26 Oct 2026: the floating launcher is retired ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); these turns are kept as reference, behind ?assistant=floating.
-143. <a id="decision-2026-10-21-sea-skin-refined"></a>21 Oct 2026 · Nelson · proposed
+144. <a id="decision-2026-10-21-sea-skin-refined"></a>21 Oct 2026 · Nelson · proposed
 
      ### Sea skin refined
 
      Still a proposal (decision 027), in the prototype only. Cards lose their borders and sit on a soft deep-teal drop shadow ([prototype PR 218](https://github.com/nvjeronimo/skillup-lms-prototype/pull/218)). No gradients: by the brand rule a gradient is off-brand everywhere, and the assistant's metal ring with a running glint (22 Oct) is the one exception. AA fixes on the deep-teal bands: subtle text at #acd5f4 ([prototype PR 219](https://github.com/nvjeronimo/skillup-lms-prototype/pull/219)); the glance card circles are back, flat at 12% ([prototype PR 220](https://github.com/nvjeronimo/skillup-lms-prototype/pull/220)); the bar and the bands use teal muted fills ([prototype PR 221](https://github.com/nvjeronimo/skillup-lms-prototype/pull/221)). All merged 21 Oct. Since 22 Oct the glance card stays light in Sea, and the player's top bar takes the Sea chrome, prototype only ([prototype PR 246](https://github.com/nvjeronimo/skillup-lms-prototype/pull/246)). [Decision 027](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/027-sea-brand-skin.md). Amended 22 Oct 2026: Studio replaced Sea and the Sea skin was removed from the prototype (prototype PR 262; see "Studio replaces Sea as the fourth brand skin").
-144. <a id="decision-2026-10-21-prototype-audit-fixes-and-one-sample-timeline"></a>21 Oct 2026 · Nelson
+145. <a id="decision-2026-10-21-prototype-audit-fixes-and-one-sample-timeline"></a>21 Oct 2026 · Nelson
 
      ### Prototype audit fixes and one sample timeline
 
      The prototype audit fixes are in: topic links, graded answers, sign out and more ([prototype PR 214](https://github.com/nvjeronimo/skillup-lms-prototype/pull/214)); the audit and decision 029 are written up in [docs PR 140](https://github.com/nvjeronimo/skillup-lms-prd/pull/140). The sample data now follows one timeline: dates, deadlines, the mentor and the hours agree across pages ([prototype PR 215](https://github.com/nvjeronimo/skillup-lms-prototype/pull/215)). Audit P2: no desktop flash on a phone player, and clearance for the assistant launcher ([prototype PR 228](https://github.com/nvjeronimo/skillup-lms-prototype/pull/228)). The phone glance card (Today-at-a-glance) in one line of four, and the Python sandbox in the lab ([prototype PR 229](https://github.com/nvjeronimo/skillup-lms-prototype/pull/229)). Every user-facing string in the prototype is in US spelling ([prototype PR 230](https://github.com/nvjeronimo/skillup-lms-prototype/pull/230)). All merged 21 Oct.
-145. <a id="decision-2026-10-21-final-motion-audit"></a>21 Oct 2026 · Nelson
+146. <a id="decision-2026-10-21-final-motion-audit"></a>21 Oct 2026 · Nelson
 
      ### Final motion audit
 
      An independent audit of the prototype found nothing that opens from a button without motion. What was left changed in one frame inside pages: tab panels, the quiz hint, the Q&A filter, the player sidebar, alerts, the transcript pill, captions and input focus. All of them now ease, with no animation on first paint. Stylesheets are now checked for hand-typed durations too. One exception stays: the docked video still animates its height. [prototype PR 227](https://github.com/nvjeronimo/skillup-lms-prototype/pull/227)
-146. <a id="decision-2026-10-21-platform-pages-accessibility-pass-ds-select-and-44-px-target"></a>21 Oct 2026 · Nelson
+147. <a id="decision-2026-10-21-platform-pages-accessibility-pass-ds-select-and-44-px-target"></a>21 Oct 2026 · Nelson
 
      ### Platform pages: accessibility pass, DS Select and 44 px targets
 
      axe-core 4.10 (WCAG 2.1 AA) finds 0 violations and no horizontal scroll on the nine platform pages (Dashboard, My Learning, Calendar, Discussion, Services, Certificates, Edit profile, program page, course page) at 375 and 1280, light and dark; the profile menu's accessibility settings (text size, colour-blind states, reduce motion, underline links, larger targets) apply on platform pages. Every platform select is the DS Select: a native select with the DS chevron-down 20 on icon/faint and a 14 inset, like the Input field; the learner's avatar on Edit profile is the rounded square (Radius/control), in the prototype and in the ICP Edit profile screens ([prototype PR 222](https://github.com/nvjeronimo/skillup-lms-prototype/pull/222)). Targets are 44 px: the Dashboard *Due this week* and Calendar rows are clickable as a whole, the Report band is 44 tall, and the Services action links are at least 24 on desktop ([prototype PR 225](https://github.com/nvjeronimo/skillup-lms-prototype/pull/225)). All merged 21 Oct.
-147. <a id="decision-2026-10-21-menus-and-popovers-open-and-close-smoothly"></a>21 Oct 2026 · Nelson
+148. <a id="decision-2026-10-21-menus-and-popovers-open-and-close-smoothly"></a>21 Oct 2026 · Nelson
 
      ### Menus and popovers open and close smoothly
 
      Menus, popovers, share panels, the collapsed-rail card, the course search and the Program FAQ still opened and closed in one frame: they had never adopted the motion system. They now grow out of the button that opened them and leave back into it; on a phone the search sheet rises from the bottom. New menus built on the shared disclosure hook animate by default, and a lint rule flags one that does not. Also fixed: Escape on the phone search sheet no longer reopens it. [prototype PR 223](https://github.com/nvjeronimo/skillup-lms-prototype/pull/223)
-148. <a id="decision-2026-10-21-phone-player-bar-and-the-menu-on-the-left"></a>21 Oct 2026 · Nelson
+149. <a id="decision-2026-10-21-phone-player-bar-and-the-menu-on-the-left"></a>21 Oct 2026 · Nelson
 
      ### Phone player bar and the menu on the left
 
      Decision 029 §1 amended. The phone player bar has three equal columns: the course menu and the progress ring on the left, the SkillUp wordmark centred, and Bookmark, avatar and Close on the right; no bell and no theme button on a phone (the theme switch is the Profile Menu's Dark theme row). The platform bar's Compact menu moves to the left of the logo, as the player's course menu. The progress ring is the Progress circle at 32 with the % inside. Answered the same day (Nelson): on a phone the profile menu scrolls inside its card (max height = screen − 88), so Sign out is never cut; the prototype already did, and the ICP Mobile 375 screen "Profile menu open · Platform · Mobile 375" now uses a scroll-area frame ([docs PR 143](https://github.com/nvjeronimo/skillup-lms-prd/pull/143)). Decision 029 §2 amended: Reset demo and Restart first steps are back in the profile menu without ?demo=1, for testing the AI assistant ([prototype PR 224](https://github.com/nvjeronimo/skillup-lms-prototype/pull/224), merged). [prototype PR 216](https://github.com/nvjeronimo/skillup-lms-prototype/pull/216) · [prototype PR 217](https://github.com/nvjeronimo/skillup-lms-prototype/pull/217) · [docs PR 141](https://github.com/nvjeronimo/skillup-lms-prd/pull/141) · [docs PR 142](https://github.com/nvjeronimo/skillup-lms-prd/pull/142)
-149. <a id="decision-028"></a>20 Oct 2026 · Nelson
+150. <a id="decision-028"></a>20 Oct 2026 · Nelson
 
      ### 028 · Corner radius by role
 
      Eight DS tokens: Radius/none 0 · inner 2 · control 6 · card-inset 8 · track 10 · card 12 · surface 16 · pill. Controls are at 6 (Nelson). Nesting rule: inner radius + padding = outer radius (a menu at 12 with 4 padding has rows at 8). The Button group stays as Nelson set it (segments 6, track 10). Radius/flex-\* is deleted (no uses); Radius/fixed-\* is kept for the Mobile App. In the prototype: PRs 209, 211 and 212 (tokens/radius.css, lint rule raw-radius). DS published 20 Oct. [decision 028](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/028-radius-roles.md) · [PR 209](https://github.com/nvjeronimo/skillup-lms-prototype/pull/209) · [PR 211](https://github.com/nvjeronimo/skillup-lms-prototype/pull/211) · [PR 212](https://github.com/nvjeronimo/skillup-lms-prototype/pull/212) · [docs PR 139](https://github.com/nvjeronimo/skillup-lms-prd/pull/139)
-150. <a id="decision-2026-10-20-bg-track-and-bg-hover-role-tokens"></a>20 Oct 2026 · Nelson
+151. <a id="decision-2026-10-20-bg-track-and-bg-hover-role-tokens"></a>20 Oct 2026 · Nelson
 
      ### bg/track and bg/hover role tokens
 
      Bruno reported that the progress bar failed the contrast rule: the bg/info fill on the bg/strong track was 2.26:1, and WCAG 1.4.11 asks 3:1. Two new colour role tokens, both aliases of bg/muted in every mode (no hex change): bg/track for progress and segmented-control tracks (the fill is now 3.21:1, dark 3.06:1) and bg/hover for the neutral hover of icon and tertiary buttons. Swapping the bg/subtle and bg/muted hexes was rejected: bg/subtle has 112 uses in the prototype. [prototype PR 213](https://github.com/nvjeronimo/skillup-lms-prototype/pull/213) · [docs PR 138](https://github.com/nvjeronimo/skillup-lms-prd/pull/138)
-151. <a id="decision-2026-10-20-hover-contrast-and-concentric-corners"></a>20 Oct 2026 · Nelson
+152. <a id="decision-2026-10-20-hover-contrast-and-concentric-corners"></a>20 Oct 2026 · Nelson
 
      ### Hover contrast and concentric corners
 
      Neutral icon and tertiary hovers move off bg/faint (almost invisible) to bg/hover, a role alias of bg/muted (see the entry 'bg/track and bg/hover role tokens'); the DS Hover states of Utility Button, Icon Button and Button were rebound and published on 20 Oct. [prototype PR 210](https://github.com/nvjeronimo/skillup-lms-prototype/pull/210)
 
      Rule: a nested element's corner radius is the parent's radius minus the padding between them (outer 24, padding 8 → inner 16; never below 0). The radius-role work is applying it: DS Radius/\* roles and the prototype's tokens/radius.css ([prototype PR 209](https://github.com/nvjeronimo/skillup-lms-prototype/pull/209)). The learner avatar radius is now 6 (Radius/control) instead of Radius/fixed-md; Nelson OK.
-152. <a id="decision-2026-10-20-platform-pages-by-flow"></a>20 Oct 2026 · Nelson
+153. <a id="decision-2026-10-20-platform-pages-by-flow"></a>20 Oct 2026 · Nelson
 
      ### Platform pages by flow
 
      The ICP page "↳ Plaftorm Pages - WIP" now holds every platform page in the learner's flow, one frame per page, left to right: 01 Dashboard, 02 My Learning, 03 Course Detail, 04 Program Detail, 05 Certificates, 06 Calendar, 07 Discussion, 08 Services, 09 Notifications, 10 Profile menu and 11 Edit profile. 01 to 04 and 06 to 08 are copies of the Ready for Dev handoff cards, which stay the handoff; 05 and 09 to 11 are in review. Everything else on that page moved to a "Reference & history, not current" band below. New screens, in review: the Notifications panel on the platform pages (desktop, tablet, mobile), Certificates on tablet (the list and one certificate), Edit profile on tablet, and the passed course on Course Detail (Course tab, desktop, tablet and mobile: 100% Completed, Passed 88%, certificate earned). [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=6207-245582) · [docs PR 137](https://github.com/nvjeronimo/skillup-lms-prd/pull/137)
-153. <a id="decision-2026-10-20-share-a-certificate"></a>20 Oct 2026 · Nelson
+154. <a id="decision-2026-10-20-share-a-certificate"></a>20 Oct 2026 · Nelson
 
      ### Share a certificate
 
      A certificate can be shared: Share certificate on the certificate page, and an icon-only Share after View and Download on every earned card (Certificate-Card 1.1). Both open the new Share-Menu: Add to LinkedIn profile, Share to LinkedIn, X, Facebook, Copy link and Email. [prototype PR 206](https://github.com/nvjeronimo/skillup-lms-prototype/pull/206) · [docs PR 135](https://github.com/nvjeronimo/skillup-lms-prd/pull/135)
-154. <a id="decision-2026-10-19-sea-a-livelier-brand-skin-from-the-skillup-foundation-colour"></a>19 Oct 2026 · Nelson · proposed
+155. <a id="decision-2026-10-19-sea-a-livelier-brand-skin-from-the-skillup-foundation-colour"></a>19 Oct 2026 · Nelson · proposed
 
      ### Sea, a livelier brand skin from the SkillUp foundation colours
 
      Proposed. A fourth skin beside SKO, Gold and Red, live in the prototype (profile menu → Sea, prototype PRs 199, 200 and 203): a deep-teal top bar (#044150) with the yellow spark (#F9C654) on the current page and the avatar; the dark bands (glance card, Program header, Program-Card hero, mentor cards) in a deep-teal gradient (flat since 21 Oct: no gradients, see "Sea skin refined"); page headings in text/primary. Progress, the completion green, the player and AA contrast are unchanged. [Decision 027](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/027-sea-brand-skin.md); the proposals are compared in [skin-proposals-2026-10-19](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/rationale/skin-proposals-2026-10-19.html) (first called Maré). [docs PR 133](https://github.com/nvjeronimo/skillup-lms-prd/pull/133). Amended 22 Oct 2026: Sea was not adopted; Studio took its place as the fourth skin (prototype PR 262).
-155. <a id="decision-2026-10-19-certificates-page"></a>19 Oct 2026 · Nelson
+156. <a id="decision-2026-10-19-certificates-page"></a>19 Oct 2026 · Nelson
 
      ### Certificates page
 
      A new platform page, /platform/certificates, shows the certificates earned (the DS Certificate-Card) and those in progress (programs and courses started, with a link to their course or program certificate page); it is reached from the Dashboard Certificates tile, Services and the profile menu (Profile Menu 1.4), and the one-certificate page is now drawn too. [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7461-34887) · [prototype PR 201](https://github.com/nvjeronimo/skillup-lms-prototype/pull/201) · [docs PR 130](https://github.com/nvjeronimo/skillup-lms-prd/pull/130)
-156. <a id="decision-2026-10-19-profile-menu-1-3-an-edit-profile-page-and-the-bell-opens-not"></a>19 Oct 2026 · Nelson
+157. <a id="decision-2026-10-19-profile-menu-1-3-an-edit-profile-page-and-the-bell-opens-not"></a>19 Oct 2026 · Nelson
 
      ### Profile menu 1.3, an Edit profile page, and the bell opens Notifications
 
      The profile menu (LMS / Profile Menu 1.3, published) has no learner header: Edit profile is at the top, and SkillUp Online (skillup.online, in a new tab) is its own group after Accessibility standards, before the demo footer. Edit profile opens a new platform page, /platform/profile, with two sections: Your profile and Account, on the Open edX learner profile and account settings (prototype PR 198, merged; Figma, in review). On the platform pages the top bar bell now opens the Notifications panel, the same panel as in the player (prototype PR 197, merged). [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7453-34440) · [PR 198](https://github.com/nvjeronimo/skillup-lms-prototype/pull/198) · [PR 197](https://github.com/nvjeronimo/skillup-lms-prototype/pull/197)
-157. <a id="decision-2026-10-19-the-last-motion-details"></a>19 Oct 2026 · Nelson
+158. <a id="decision-2026-10-19-the-last-motion-details"></a>19 Oct 2026 · Nelson
 
      ### The last motion details
 
      The eight details left from the motion plan are built in the prototype (PR 195): buttons press, bookmarks fill and swell once, tab underlines slide, the transcript follows only when the line leaves view, a locked topic shows which topic to complete first instead of shaking, the footer number fades, the live dot pulses and the certificate reveals with the one emphasized curve. One behaviour change: a locked topic row no longer opens the locked-topic page. [prototype PR 195](https://github.com/nvjeronimo/skillup-lms-prototype/pull/195)
-158. <a id="decision-2026-10-19-scorm-plays-in-the-page-by-default"></a>19 Oct 2026 · Nelson
+159. <a id="decision-2026-10-19-scorm-plays-in-the-page-by-default"></a>19 Oct 2026 · Nelson
 
      ### SCORM plays in the page by default
 
      SCORM: plays in the page by default (new window per course); completion and score come from the package (Next asks if it never reports); on a phone a notice with Open anyway; course packages get our sidebar collapsed and Fullscreen first. [activity-scorm](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/activity-scorm.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069) · [docs PR 124](https://github.com/nvjeronimo/skillup-lms-prd/pull/124)
-159. <a id="decision-2026-10-19-lab-no-opened-state-for-now-how-this-lab-works-and-the-autho"></a>19 Oct 2026 · Nelson
+160. <a id="decision-2026-10-19-lab-no-opened-state-for-now-how-this-lab-works-and-the-autho"></a>19 Oct 2026 · Nelson
 
      ### Lab: no Opened state for now; How this lab works and the author hidden
 
      SkillUp cannot tell whether the learner selected the launch button (Komal), so the Opened state of a partner lab is not for now: the launch card stays Ready, the launch button stays primary and Mark as Complete secondary, and Before you start (with This lab needs a computer on tablet and mobile) stays until the topic is completed. The six Opened cards stay on the page, faded, as the future design; the lab inside the page, with no launch card, keeps Mark as Complete primary. How this lab works and the author row are hidden on every Lab screen: we have no way to show the steps, and we do not show the author. [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=6789-326)
-160. <a id="decision-2026-10-19-calendar-discussion-and-services-approved-and-drawn-in-figma"></a>19 Oct 2026 · Nelson
+161. <a id="decision-2026-10-19-calendar-discussion-and-services-approved-and-drawn-in-figma"></a>19 Oct 2026 · Nelson
 
      ### Calendar, Discussion and Services approved and drawn in Figma
 
      Nelson approved the three proposal pages of 17 Oct, and they are drawn in Figma on the Ready for Dev page (frame 7392:200778, in progress). Calendar is Agenda by default, with a Month view on desktop and tablet; on mobile it is Agenda only. Amended 23 Oct 2026: phones have a compact Month view too (prototype PR 275), and the Agenda / Month switch sits beside the kind filter on every breakpoint (prototype PR 278). Discussion is the course Q&A layout across all courses. Services is the mentor first, then Career, Support, and Benefits and tools. [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7392-200778) · [docs PR 120](https://github.com/nvjeronimo/skillup-lms-prd/pull/120)
-161. <a id="decision-2026-10-17-calendar-discussion-and-services-become-proposal-pages"></a>17 Oct 2026 · Nelson
+162. <a id="decision-2026-10-17-calendar-discussion-and-services-become-proposal-pages"></a>17 Oct 2026 · Nelson
 
      ### Calendar, Discussion and Services become proposal pages
 
      Nelson chose what Services holds: mentoring, career, support, and benefits and tools. The Calendar also shows live sessions, marked as out of the MVP. The three are built as real pages in the prototype first and drawn in Figma after approval. Open edX has no calendar or forum across courses, so both pages merge one call per enrolled course (the Dates API, the Discussions API). The top bar's Calendar count is the number of deadlines in the next seven days. Amended 28 Oct 2026: deadlines are examples only today (no due dates are configured, decision 036), so the count would hold live sessions only. [prototype PR 187](https://github.com/nvjeronimo/skillup-lms-prototype/pull/187) · [Calendar](https://lms-prototype-mu.vercel.app/platform/calendar) · [Discussion](https://lms-prototype-mu.vercel.app/platform/discussion) · [Services](https://lms-prototype-mu.vercel.app/platform/services)
-162. <a id="decision-2026-10-17-an-alert-on-a-grey-surface-is-white"></a>17 Oct 2026 · Nelson
+163. <a id="decision-2026-10-17-an-alert-on-a-grey-surface-is-white"></a>17 Oct 2026 · Nelson
 
      ### An alert on a grey surface is white
 
      An alert placed on a grey surface (bg/subtle) is white (bg/page): Inline Alert Surface=Subtle. [prototype PR 189](https://github.com/nvjeronimo/skillup-lms-prototype/pull/189) · [docs PR 118](https://github.com/nvjeronimo/skillup-lms-prd/pull/118)
-163. <a id="decision-2026-10-17-the-light-dark-switch-is-in-the-top-bar"></a>17 Oct 2026 · Nelson
+164. <a id="decision-2026-10-17-the-light-dark-switch-is-in-the-top-bar"></a>17 Oct 2026 · Nelson
 
      ### The light / dark switch is in the top bar
 
      The light / dark switch is in the top bar of the platform pages and the player, on every breakpoint; the profile menu keeps the brand skin only. [prototype PR 184](https://github.com/nvjeronimo/skillup-lms-prototype/pull/184) · [docs PR 116](https://github.com/nvjeronimo/skillup-lms-prd/pull/116)
-164. <a id="decision-2026-10-17-due-badges-on-cards-use-badge-soft-warning"></a>17 Oct 2026 · Nelson
+165. <a id="decision-2026-10-17-due-badges-on-cards-use-badge-soft-warning"></a>17 Oct 2026 · Nelson
 
      ### Due badges on cards use Badge Soft · Warning
 
      Due badges on cards use Badge Soft · Warning. [prototype PR 183](https://github.com/nvjeronimo/skillup-lms-prototype/pull/183) · [docs PR 115](https://github.com/nvjeronimo/skillup-lms-prd/pull/115)
-165. <a id="decision-2026-10-16-completed-program-or-course-the-header-progress-card-is-gree"></a>16 Oct 2026 · Nelson
+166. <a id="decision-2026-10-16-completed-program-or-course-the-header-progress-card-is-gree"></a>16 Oct 2026 · Nelson
 
      ### Completed program or course: the header Progress card is green like the cards
 
      Completed program or course: the header Progress card is green like the cards (bar bg/success + check icon + "Completed"; green never alone). [prototype PR 182](https://github.com/nvjeronimo/skillup-lms-prototype/pull/182) · [docs PR 114](https://github.com/nvjeronimo/skillup-lms-prd/pull/114)
-166. <a id="decision-2026-10-16-profile-menu-the-same-on-the-platform-pages-and-in-the-playe"></a>16 Oct 2026 · Nelson
+167. <a id="decision-2026-10-16-profile-menu-the-same-on-the-platform-pages-and-in-the-playe"></a>16 Oct 2026 · Nelson
 
      ### Profile menu: the same on the platform pages and in the player
 
      One profile menu (LMS / Profile Menu, published) for the platform pages and the player. Only three brand skins exist: SKO, Gold and Red; Ink, Sky and Violet were removed because they have no tokens. Amended 22 Oct 2026: a fourth skin, Studio, is in the prototype only (no tokens yet). Amended 23 Oct 2026: the DS has Studio Light / Studio Dark modes (decision 030). Amended 25 Oct 2026: six skins, SKO · Gold · Red · Studio · Harbor · Fluent; Harbor and Fluent are prototype-only (prototype PRs 347, 352). Amended 26 Oct 2026: Red was removed; five skins, SKO · Gold · Studio · Harbor · Fluent ([prototype PR 363](https://github.com/nvjeronimo/skillup-lms-prototype/pull/363)). The player adds its preview sections between Accessibility standards and the footer. [prototype PR 181](https://github.com/nvjeronimo/skillup-lms-prototype/pull/181) · [docs PR 112](https://github.com/nvjeronimo/skillup-lms-prd/pull/112)
-167. <a id="decision-2026-10-16-partner-badge-1-2-a-data-analytics-program-page-old-prototyp"></a>16 Oct 2026 · Nelson
+168. <a id="decision-2026-10-16-partner-badge-1-2-a-data-analytics-program-page-old-prototyp"></a>16 Oct 2026 · Nelson
 
      ### Partner badge 1.2, a Data Analytics program page, old prototype PRs settled
 
      Provider-Partner-Badge 1.2: the logo chip padding is on Spacing/sm (6), so the chip is 28 px tall, and FutureSkills Dark now reads on the dark chip with the same bitmap and image filters. All 128 partner badges in the product file (102 in Course-Cards, 52 in 26 Program-Cards) are on 1.2 and 28 px tall. In the prototype, Data Analytics Foundations has a program page (PR 176), so the completed program card opens its details, and its certificates show both partners, IBM and Microsoft, with a sample second signatory (PR 177). Old prototype PRs are settled: #52 ("Draft saved" is a status) merged; #55, #56 and #57 (September lab explorations) and #161 (the side-stripe comparison, decided 14–15 Oct) closed with a note, their branches kept. Docs PRs 107 and 108. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-168. <a id="decision-2026-10-16-cards-and-partner-logos-content-padding-token"></a>16 Oct 2026 · Nelson
+169. <a id="decision-2026-10-16-cards-and-partner-logos-content-padding-token"></a>16 Oct 2026 · Nelson
 
      ### Cards and partner logos; content padding token
 
      Provider-Partner-Badge 1.1 has Type=Text/Logo, with the logos Nelson added, and a new Theme=Light/Dark for dark surfaces such as the Program-Card hero; FutureSkills only has a dark bitmap, so its Dark variant keeps the light chip until the partner sends a light artwork. Fixed later the same day (see the entry above). Course-Card 1.11: the provider shows as its logo, a course can have a second partner, and the next-topic title gets the full width, up to 2 lines. Program-Card 1.10: the hero partner logos are Provider-Partner-Badge instances, and the 26 Program-Cards on the screens now show a picture (the AI program its own cover, Cybersecurity and Data Analytics placeholder covers). Transcript-Line 1.1 takes its side padding from the new token Container/content-padding (24 / 20 / 16, aliases of Spacing/3xl), [decision 026](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/026-content-padding-token.md), which is bound on the ICP topic screens: Reading 21, Lab 48, Topic Content Types 19, Quiz 66 by block, Video 30 and AI Assistant 4. Published and accepted in the product file: 102 Course-Cards on 1.11 and 26 Program-Cards on 1.10. Prototype PRs 171 (merged), 173, 174 and 175, and 176 (merged), which adds a Data Analytics program page so the completed program card opens its details. Docs PR 107. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-169. <a id="decision-2026-10-15-every-component-set-has-a-16-px-padding-spacing-xl"></a>15 Oct 2026 · Nelson
+170. <a id="decision-2026-10-15-every-component-set-has-a-16-px-padding-spacing-xl"></a>15 Oct 2026 · Nelson
 
      ### Every component set has a 16 px padding (Spacing/xl)
 
      Nelson's rule of 15 Oct: every component set on the organised design system pages has a 16 px padding, as in his example, Difficulty-Badge. Applied to all 168 sets: the 83 sets in auto layout have their four paddings bound to Spacing/xl; the 85 sets arranged by hand (no auto layout, mostly Base) got a 16 px margin by moving their variants and resizing the set. The gaps between variants and the 34 standalone components were not touched, and no variant, property or instance changed. tools/ds-group-page.js now binds this padding whenever it rebuilds a page. Docs PR 104. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-170. <a id="decision-2026-10-15-course-card-moves-to-my-learning-link-button-1-2-three-side"></a>15 Oct 2026 · Nelson
+171. <a id="decision-2026-10-15-course-card-moves-to-my-learning-link-button-1-2-three-side"></a>15 Oct 2026 · Nelson
 
      ### Course-Card moves to My Learning; Link Button 1.2; three side stripes replaced
 
      Course-Card left the Discovery page for the My Learning page and is now LMS/Platform/My-Learning/Course-Card (was LMS/Platform/Discovery/Course-Card): same node and key, so instances and overrides are untouched. It is at 1.8 after the review of the My Learning cards in their three states: State=Not started, Resume as the only Primary action, a new Grid header and a green certificate strip; Program-Card is at 1.6. Link Button 1.2: hover has no fill, the label and its 1px line darken, the line uses the icon token of its tone, and Focused sits on bg/faint with radius 6 (prototype PR 166). The three DS components with a coloured side stripe lost it: Live-Now-Banner 1.1 (Live on bg/success-soft, Upcoming on the new token bg/warning-muted), Lesson-Block 1.1 (the blockquote is a typographic pull quote) and LMS / Inline Alert 1.1 (Tone=Answer draws its top rule like Success and Error). Docs PR 101. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-171. <a id="decision-2026-10-15-navigation-notes-in-figma-the-test-build-note-moves-to-a-foo"></a>15 Oct 2026 · Nelson
+172. <a id="decision-2026-10-15-navigation-notes-in-figma-the-test-build-note-moves-to-a-foo"></a>15 Oct 2026 · Nelson
 
      ### Navigation notes in Figma; the test-build note moves to a footer
 
      On the Platform Pages - Ready for Dev page, the desktop screens of the Dashboard, My Learning · Courses and Program · Courses each carry one LMS / Footnote dev note (Dev Notes and Purpose). The notes give the card-click rule of 10 Oct (the whole card opens the page, the button opens the player) and decision 025 with its three kept exceptions; the My Learning note also says how to filter program courses out of Learner Home. In the prototype ([PR 165](https://github.com/nvjeronimo/skillup-lms-prototype/pull/165)), the "Test build" note on every platform page (sample data, navigation not final) moved from under the top bar to a footer, at Nelson's request, and the notes in the player's Saved panel are anchored to their transcript line, a read-only Transcript-Line, as in Note-Item 1.1. Docs PR 100. [Dashboard note](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7283-30439) · [My Learning note](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7283-30443) · [Program note](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7283-30447) · [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-172. <a id="decision-2026-10-14-a-course-ring-in-the-mobile-topbar"></a>14 Oct 2026 · Nelson
+173. <a id="decision-2026-10-14-a-course-ring-in-the-mobile-topbar"></a>14 Oct 2026 · Nelson
 
      ### A course ring in the mobile topbar
 
      On a phone the course ring lived only in the drawer, so a completion was not seen to count. The mobile topbar now shows a 28 px ring after the SkillUp logo: blue while the course runs, green with a check once it is complete. No number inside it at that size; screen readers hear the percentage, and the drawer still shows it. Topbar 1.1 in the design system (Show progress, not yet published); [prototype PR 164](https://github.com/nvjeronimo/skillup-lms-prototype/pull/164).
-173. <a id="decision-2026-10-14-a-course-of-a-program-is-reached-through-its-program-decisio"></a>14 Oct 2026 · Nelson
+174. <a id="decision-2026-10-14-a-course-of-a-program-is-reached-through-its-program-decisio"></a>14 Oct 2026 · Nelson
 
      ### A course of a program is reached through its program (decision 025)
 
      Accepted, business rule BR-47. A course that belongs to a program is reached only from its program page or from the Dashboard's "Pick up where you left off". It never gets its own card in My Learning's course list; a catalogue or a search would show the program. Three exceptions stay: the program card's Continue opens the player of the course in progress, due items open their work, and the program certificate page links to its courses. This is navigation only: an enrolled learner can still open the course's direct address. The prototype already worked this way; PR 163 adds a test that guards it. [decision 025](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/025-program-courses-entry-points.md) · [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-174. <a id="decision-2026-10-14-toast-1-1-and-five-design-system-pages-rebuilt"></a>14 Oct 2026 · Nelson
+175. <a id="decision-2026-10-14-toast-1-1-and-five-design-system-pages-rebuilt"></a>14 Oct 2026 · Nelson
 
      ### Toast 1.1, and five design system pages rebuilt
 
      The Toast's tone icons sit on icon tokens: Neutral icon/muted, Success icon/success, Warning icon/warning, Critical icon/error; Info stays on icon/primary. Before they were on border/default, icon/success-strong (2.81:1), bg/warning and bg/error. Prototype PR 162 only removed a comment. The documentation of Content, Sidebar, Dashboard, Discovery and LMS · Shared was rebuilt with one frame per level. Duration is now a normal atom on the Shared page, and Note-Item moved from atom to molecule because it nests Transcript-Line ([03-design-system/tools/ds-levels.json](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/tools/ds-levels.json)). Published by Nelson. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-175. <a id="decision-2026-10-14-approx-goes-after-the-time"></a>14 Oct 2026 · Nelson
+176. <a id="decision-2026-10-14-approx-goes-after-the-time"></a>14 Oct 2026 · Nelson
 
      ### approx. goes after the time
 
      An estimated duration reads "8 min read approx.", never "approx. 8 min read". When it appears is unchanged (decision 004: Reading, Lab, Activity, assignments, Peer review, Project; never Video, Recording, Live or a timed quiz). The design system carries it in a new atom, LMS / Duration: a Time text and an Approx boolean that shows "approx." after the time; Topic-Row, Topic-Header, Resume-Row, Course-Row and Discussion Prompt print their duration with it. Done on every screen and in the prototype. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-176. <a id="decision-2026-10-14-a-note-s-anchor-is-its-transcript-line"></a>14 Oct 2026 · Nelson
+177. <a id="decision-2026-10-14-a-note-s-anchor-is-its-transcript-line"></a>14 Oct 2026 · Nelson
 
      ### A note's anchor is its transcript line
 
      The quote a note is anchored to uses the Transcript-Line component (State=Active), in the Note-Editor and in the Note-Item, in Figma and in the prototype. No separate quote component. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-177. <a id="decision-2026-10-14-values-in-a-logical-order"></a>14 Oct 2026 · Nelson
+178. <a id="decision-2026-10-14-values-in-a-logical-order"></a>14 Oct 2026 · Nelson
 
      ### Values in a logical order
 
      Property values in the documentation list numbers and sizes in ascending order. The order inside the components' property panel and of the variables in their collections cannot be changed by a script; the list of what to drag by hand is in the changelog. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-178. <a id="decision-2026-10-14-motion-has-a-scale"></a>14 Oct 2026 · Nelson
+179. <a id="decision-2026-10-14-motion-has-a-scale"></a>14 Oct 2026 · Nelson
 
      ### Motion has a scale
 
      Motion becomes a token foundation like colour: 13 tokens (durations, easings, distances) with Material 3 names and our values. There is one mode for every breakpoint, theme and skin. Reduced motion removes travel and keeps feedback, as the prototype has done since PR 58. The Figma tokens live in their own Motion collection, published in the design-system library (14 Oct 2026). This is proposed until the team approves the new tokens. Built in the prototype and merged on 14 Oct (PRs 153–160); the tokens stay proposed until the team approves them. [ADR 024](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/00-decisions/024-motion-scale.md) · [motion matrix](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/motion-matrix.md)
-179. <a id="decision-2026-10-14-one-progress-circle"></a>14 Oct 2026 · Nelson
+180. <a id="decision-2026-10-14-one-progress-circle"></a>14 Oct 2026 · Nelson
 
      ### One progress circle
 
      The design system had two symbols that drew the same thing. The LMS one stays, renamed Progress circle; the Untitled UI kit circle, which nothing in the LMS used, was archived. Same component and key, so every instance keeps its link. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-180. <a id="decision-2026-10-14-progress-circle-moves-to-the-base-components"></a>14 Oct 2026 · Nelson
+181. <a id="decision-2026-10-14-progress-circle-moves-to-the-base-components"></a>14 Oct 2026 · Nelson
 
      ### Progress Circle moves to the Base components
 
      LMS / Progress Circle now lives with the shared Base components, on the Progress indicators page. It was moved, not copied: same component, every instance keeps its link (Sidebar, Overall-Progress). Its name still starts with LMS / for now. Renamed later the same day (see the entry above). [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-181. <a id="decision-2026-10-14-two-buttons-side-by-side-both-fill"></a>14 Oct 2026 · Nelson
+182. <a id="decision-2026-10-14-two-buttons-side-by-side-both-fill"></a>14 Oct 2026 · Nelson
 
      ### Two buttons side by side both fill
 
      When two buttons stand together, both fill and share the width, except on a large screen or in a list, where they hug their label. Example: Review and View Certificate on a completed course card. It adds to the rule that a button hugs or fills and is never a fixed width. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-182. <a id="decision-2026-10-14-design-system-versions-caught-up-three-pages-rebuilt"></a>14 Oct 2026 · Nelson
+183. <a id="decision-2026-10-14-design-system-versions-caught-up-three-pages-rebuilt"></a>14 Oct 2026 · Nelson
 
      ### Design system: versions caught up, three pages rebuilt
 
      Course-Card 1.3, Program-Card 1.2 and Section-Header 1.1. The Dashboard, My Learning and Discovery group pages were rebuilt so their documentation shows the components as they are now, split into Atoms, Molecules and Organisms; the page generator now keeps that split. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-183. <a id="decision-2026-10-14-course-card-partner-on-the-type-line-two-actions-when-comple"></a>14 Oct 2026 · Nelson
+184. <a id="decision-2026-10-14-course-card-partner-on-the-type-line-two-actions-when-comple"></a>14 Oct 2026 · Nelson
 
      ### Course card: partner on the type line, two actions when completed
 
      The partner or provider badge moves from under the title to the Course Type line: at its right end in the grid card, right after the badge in the list row. A completed course in the grid card shows two actions, Review (Secondary) and View Certificate (Primary); in a course row they share the width. The certificate action reads View Certificate on the course and the program cards. Published in the design system, on the eight My Learning screens, and in the prototype (PRs 144 to 147). [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-184. <a id="decision-2026-10-13-section-header-and-the-mobile-filter"></a>13 Oct 2026 · Nelson
+185. <a id="decision-2026-10-13-section-header-and-the-mobile-filter"></a>13 Oct 2026 · Nelson
 
      ### Section header and the mobile filter
 
      The section header has no rule under it; its action is the Link Button (Brand, Secondary) with a 16 arrow and its underline (prototype PR 142). On mobile the status filter's track fills the width and stays put while the segments scroll inside it; the last one is cut at the edge (prototype PR 143). [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-185. <a id="decision-2026-10-13-one-assistant-as-a-floating-chat"></a>13 Oct 2026 · Nelson
+186. <a id="decision-2026-10-13-one-assistant-as-a-floating-chat"></a>13 Oct 2026 · Nelson
 
      ### One assistant, as a floating chat
 
      Decision 008 (the AI Panel built into the player) is widened, not reversed. One assistant answers questions about the platform and the learner's courses on every platform page and in the course player, where it also knows the current topic. It is a floating chat: a 48 px launcher (the SkillUp ball and paper plane with AI sparkles) sits bottom left on desktop and tablet, and bottom right above the footer navigation on a phone; the chat opens above it, as a full-screen sheet on a phone. Amended 23 Oct 2026: on the platform pages on a phone the launcher sits beside the floating tab bar, on the same line (prototype PR 277). Amended 26 Oct 2026: in the player the launcher sits bottom right of the content card, above Previous / Next ([prototype PR 358](https://github.com/nvjeronimo/skillup-lms-prototype/pull/358)); in Harbor and Fluent on desktop the assistant opens from the top bar instead ([prototype PR 359](https://github.com/nvjeronimo/skillup-lms-prototype/pull/359)). Since [prototype PR 365](https://github.com/nvjeronimo/skillup-lms-prototype/pull/365) the platform pages use the top-bar pill in every skin (SKO, Gold and Studio from 1280 px); the floating launcher stays in the player, on the tabs bar between 1025 and 1279 px, on compact bars and beside the phone tab bar. It answers and routes: buttons under an answer open a page. It never changes anything: no mark complete, submit, save or enrol. It is hybrid: scripted answers by default, a real model (Claude) only when a key is configured. The docked AI Panel is removed from the prototype, and its 165 hidden instances are removed from the Video, Quizzes, Reading and Lab screens. No screen carries the assistant for now: it has its own Figma page, a feature preview. The prototype has it, to see and test: PRs 127, 136 and 139 in nvjeronimo/skillup-lms-prototype, all merged. Amended 26 Oct 2026: the floating launcher is retired ([prototype PR 369](https://github.com/nvjeronimo/skillup-lms-prototype/pull/369)); the assistant opens from the Search + Assistant bars, in the player too, and the floating version is kept behind ?assistant=floating. [assistant design spec](https://github.com/nvjeronimo/skillup-lms-prototype/blob/main/docs/superpowers/specs/2026-10-13-assistant-design.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7166-328)
-186. <a id="decision-2026-10-13-first-steps-five-things-that-tick-themselves"></a>13 Oct 2026 · Nelson
+187. <a id="decision-2026-10-13-first-steps-five-things-that-tick-themselves"></a>13 Oct 2026 · Nelson
 
      ### First steps: five things that tick themselves
 
      For a learner who has just arrived, the assistant's window opens once (desktop and tablet, without taking the focus) with five first steps: open the program, open a course, start a topic, complete a topic, ask the assistant. Each ticks itself when the learner does it on the real page. A count on the launcher says how many are left. Skip first steps hides it for good. Every learner, new or not, sees one next step at the top of an empty chat: a deadline of today, else the course in progress, else a course not started. In the prototype the pages still show the sample learner part-way through; only the first steps start from zero. [first steps design spec](https://github.com/nvjeronimo/skillup-lms-prototype/blob/main/docs/superpowers/specs/2026-10-13-first-steps-design.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/?node-id=7166-328)
-187. <a id="decision-2026-10-13-my-learning-no-stats-and-the-toolbar-in-two-rows"></a>13 Oct 2026 · Nelson
+188. <a id="decision-2026-10-13-my-learning-no-stats-and-the-toolbar-in-two-rows"></a>13 Oct 2026 · Nelson
 
      ### My Learning: no stats, and the toolbar in two rows
 
      The three figures at the top of My Learning (In progress, Completed, Certificates) are removed: the Dashboard already shows them. The header is the page title alone. The toolbar has two rows: the tabs alone on the first, on their rule; on the second the status filter on the left and the search with the Grid / List toggle on the right. Done on the eight Ready for Dev screens; prototype PRs 140 and 141. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-188. <a id="decision-2026-10-13-design-system-pages-split-by-level"></a>13 Oct 2026 · Nelson
+189. <a id="decision-2026-10-13-design-system-pages-split-by-level"></a>13 Oct 2026 · Nelson
 
      ### Design system pages split by level
 
      Every LMS group page (14) and every Base component page (24) now has one frame per level: Atoms, Molecules, Organisms. Components were moved, not rebuilt, so nothing needs publishing. The classification is a first pass to be corrected: [03-design-system/tools/ds-levels.json](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/tools/ds-levels.json). [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-189. <a id="decision-2026-10-13-my-learning-one-ordered-list-and-a-status-filter"></a>13 Oct 2026 · Nelson
+190. <a id="decision-2026-10-13-my-learning-one-ordered-list-and-a-status-filter"></a>13 Oct 2026 · Nelson
 
      ### My Learning: one ordered list and a status filter
 
      Each tab (Courses, Programs) is one list, always ordered In progress, Not started, Completed. Under the toolbar a Button group filters by state: All (default), In progress, Not started, Completed; it works together with the search and the Grid / List view. On mobile the filter scrolls sideways. This replaces the three sections tried earlier the same day, which spread the cards and made the learner scroll. The Browse catalog tile is hidden for now. Done on the eight Ready for Dev screens in Figma; prototype PR 138. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-190. <a id="decision-2026-10-13-my-learning-in-three-sections-withdrawn-the-same-day"></a>13 Oct 2026 · Nelson
+191. <a id="decision-2026-10-13-my-learning-in-three-sections-withdrawn-the-same-day"></a>13 Oct 2026 · Nelson
 
      ### My Learning in three sections (withdrawn the same day)
 
      Withdrawn: see the entry above. Both tabs (Courses, Programs) are split in In progress, Not started and Completed, in that order, each under the Section-Header with its count (3 courses, 1 program). A section without cards is not shown. The state comes from Open edX: a course from hasStarted and certificate.isEarned, a program from progress\_details. Done on the eight Ready for Dev screens in Figma and in the prototype (PR 135). [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-191. <a id="decision-2026-10-13-progress-bars-end-straight-green-only-when-completed"></a>13 Oct 2026 · Nelson
+192. <a id="decision-2026-10-13-progress-bars-end-straight-green-only-when-completed"></a>13 Oct 2026 · Nelson
 
      ### Progress bars end straight; green only when completed
 
      Every progress bar ends straight, track and fill, with no radius. Since 13 Oct the video progress and volume sliders end straight too; only the 12px volume handle is round. The fill is bg/info while the course or program is running and green (bg/success) only once it is completed, always with a check icon and the word, never by colour alone. Amended 23 Oct 2026: 62 progress bars in Discovery Course-Row and Resume-Row instances on the ICP had a local Radius/fixed-full override; they are re-bound to Radius/fixed-none, so the bars end straight (49 Platform WIP, 13 Ready for Dev); the DS and the prototype were already straight. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-192. <a id="decision-2026-10-13-buttons-hug-their-content-no-name-carries-a-version"></a>13 Oct 2026 · Nelson
+193. <a id="decision-2026-10-13-buttons-hug-their-content-no-name-carries-a-version"></a>13 Oct 2026 · Nelson
 
      ### Buttons hug their content; no name carries a version
 
      Button (v1.3) and Link Button (v1.1) hug their content in every variant, so a button grows when an icon is turned on or the label changes. Three names that carried a version were renamed, with the same keys: the Topic-Footer-Nav variant is Default, Empty state - V2 is Empty state responsive, and the private progress bar is .\_Progress bar plain. One is left for the mobile app's owner: the V1 and V2 variants of Event\_card\_atom.
-193. <a id="decision-2026-10-13-the-design-system-file-is-organised-for-developers"></a>13 Oct 2026 · Nelson
+194. <a id="decision-2026-10-13-the-design-system-file-is-organised-for-developers"></a>13 Oct 2026 · Nelson
 
      ### The design system file is organised for developers
 
      The file opens on a [Start here](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22458-35) page that maps it. Every LMS component group has its own page: seven for the course player (Player, Sidebar, Content, Topics, Assessment, Live, Shared) and seven for the platform pages (Navigation, Dashboard, My Learning, Discovery, Program Detail, Course Detail, Completion). Each component has one block with the same five parts: the component, its properties, its measures, what it is and its rules, and its anatomy. Buttons, Button groups, Badges and Alerts have the same write-up on their Base pages. The Untitled UI pages the LMS does not use are in an Archive block. Figma shows what a component is made of; the rules stay here.
-194. <a id="decision-2026-10-13-mark-as-complete-belongs-to-the-feedback-row-in-the-componen"></a>13 Oct 2026 · Nelson
+195. <a id="decision-2026-10-13-mark-as-complete-belongs-to-the-feedback-row-in-the-componen"></a>13 Oct 2026 · Nelson
 
      ### Mark as Complete belongs to the feedback row, in the component too
 
      The footer navigation has no completion control: Topic-Footer-Nav lost its Show Badge property (v1.1). Content-Feedback has a Show Mark as Complete option (v1.1), off by default; the 64 screens that had a local frame for it now use the component. Once a topic is completed the option is off and Completed shows in the Topic Header.
-195. <a id="decision-2026-10-13-collapsed-sidebar-a-bookmark-on-the-rail-and-a-card-beside-i"></a>13 Oct 2026 · Nelson
+196. <a id="decision-2026-10-13-collapsed-sidebar-a-bookmark-on-the-rail-and-a-card-beside-i"></a>13 Oct 2026 · Nelson
 
      ### Collapsed sidebar: a bookmark on the rail and a card beside it
 
      A saved topic carries a small bookmark on its rail row (Topic-Row, Show rail bookmark, v1.1). On a rail row, Topic-Flyout (new, v1.0) opens beside the rail with the title, the topic type and the bookmark button. The prototype already had both. The card opens on hover and on keyboard focus of a rail row: arrow right moves into it, Escape or arrow left goes back to the row (prototype PR 126).
-196. <a id="decision-2026-10-13-every-component-is-at-version-1-x-until-engineering-has-buil"></a>13 Oct 2026 · Nelson
+197. <a id="decision-2026-10-13-every-component-is-at-version-1-x-until-engineering-has-buil"></a>13 Oct 2026 · Nelson
 
      ### Every component is at version 1.x until engineering has built it
 
      Design and engineering start the design system and Storybook now, so nothing starts at 2: the nine components that carried a 2.x were renumbered (Button and Icon Button 1.2, Link Button 1.0, Badge 1.1, Button group 1.1, Topbar 1.2, Topbar-Item 1.1, Course-Row 1.1, Lab-Launch-Card 1.1). Register: [03-design-system/component-versions.md](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/component-versions.md), rule 8. Button is 1.3 and Link Button 1.1 since later the same day (they hug their content).
-197. <a id="decision-2026-10-13-mark-as-complete-sits-in-the-feedback-row"></a>13 Oct 2026 · Nelson
+198. <a id="decision-2026-10-13-mark-as-complete-sits-in-the-feedback-row"></a>13 Oct 2026 · Nelson
 
      ### Mark as Complete sits in the feedback row
 
      Feedback on the left, the button on the right; on a phone it drops under the feedback. Applied to the 64 screens that have the button and to the prototype (PR 125). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md) · [Figma](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7124-49482)
-198. <a id="decision-2026-10-13-lab-the-ibm-flow-and-the-first-opening-date-are-confirmed"></a>13 Oct 2026 · Kirti and Vikas
+199. <a id="decision-2026-10-13-lab-the-ibm-flow-and-the-first-opening-date-are-confirmed"></a>13 Oct 2026 · Kirti and Vikas
 
      ### Lab: the IBM flow and the first-opening date are confirmed
 
      The IBM screens stand as drawn: the whole course is on IBM, and the progress card keeps its dash for now, because IBM does not share progress; what SkillUp should show instead is an open question. The launch card's "First opened on" date can be built as designed, stored on the server for each learner. Not for now since 19 Oct: SkillUp cannot tell whether the launch button was selected (Komal). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-199. <a id="decision-2026-10-12-on-a-lab-mark-as-complete-is-secondary-until-the-lab-has-bee"></a>12 Oct 2026 · Nelson
+200. <a id="decision-2026-10-12-on-a-lab-mark-as-complete-is-secondary-until-the-lab-has-bee"></a>12 Oct 2026 · Nelson
 
      ### On a lab, Mark as Complete is secondary until the lab has been opened
 
      A lab's page has one primary action at a time. While the lab has not been opened, the launch button is primary and Mark as Complete is secondary. Once it has been opened they swap: the launch button is secondary and Mark as Complete is primary. Where there is no launch card (the lab inside the page) Mark as Complete is primary from the start. On the screens it is a local override; the Topic-Status-Badge component has no property for it. Not for now since 19 Oct: SkillUp cannot tell whether the launch button was selected (Komal). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-200. <a id="decision-2026-10-12-secondary-buttons-hover-on-a-soft-fill-and-button-colours-si"></a>12 Oct 2026 · Nelson
+201. <a id="decision-2026-10-12-secondary-buttons-hover-on-a-soft-fill-and-button-colours-si"></a>12 Oct 2026 · Nelson
 
      ### Secondary buttons hover on a soft fill, and button colours sit on tokens of their role
 
      On hover every Secondary button fills with the soft colour of its type and keeps its text and icon colours: Brand and Neutral on the primary soft colour, Destructive on the error one, Success on the success one. The Icon Button follows the same rule. A yellow fill and a solid fill were tried for Brand the same day and dropped. On the Brand Primary, whose hover fill is the primary-hover colour, the label and the icon use the text made for that fill: before, the label had the colour of the fill itself in the dark theme. Outlines sit on border tokens and icons on icon tokens. Button and Icon Button v1.2; the prototype follows. [component versions](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/component-versions.md)
-201. <a id="decision-2026-10-12-the-lab-prerequisites-block-is-the-design-system-alert"></a>12 Oct 2026 · Nelson
+202. <a id="decision-2026-10-12-the-lab-prerequisites-block-is-the-design-system-alert"></a>12 Oct 2026 · Nelson
 
      ### The lab prerequisites block is the design system Alert
 
      On the Lab screens, Before you start and its list of requirements sit in the Alert (Brand, Floating, no dismiss, no actions, no close) instead of the Lab-Prerequisites component. 36 blocks replaced, each with its own lines: 26 on the Lab page and 10 on Topic Content Types. The prototype has the same Alert on both kinds of lab. The Lab-Prerequisites component was deleted from the library the same day; its rule stays: what the learner needs goes above the download, not below it. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-202. <a id="decision-2026-10-12-the-overlay-is-70"></a>12 Oct 2026 · Nelson
+203. <a id="decision-2026-10-12-the-overlay-is-70"></a>12 Oct 2026 · Nelson
 
      ### The overlay is 70%
 
      The dim layer behind a modal or over a video, bg/overlay, goes from 50% to 70% in every theme. In the prototype the video caption now needs one overlay layer instead of two to keep its text readable over a bright frame. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-203. <a id="decision-2026-10-12-a-lab-that-has-been-opened-shows-fewer-alerts"></a>12 Oct 2026 · Nelson
+204. <a id="decision-2026-10-12-a-lab-that-has-been-opened-shows-fewer-alerts"></a>12 Oct 2026 · Nelson
 
      ### A lab that has been opened shows fewer alerts
 
      Once the learner has opened a lab at least once, the Before you start block and the This lab needs a computer warning are no longer shown: they have already seen what the lab needs. The Opened, question and Completed screens go from the lead line straight to the launch card. A lab never opened keeps both. Not for now since 19 Oct: SkillUp cannot tell whether the launch button was selected (Komal). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-204. <a id="decision-2026-10-12-mark-as-complete-stays-and-next-asks"></a>12 Oct 2026 · Navdeep and Nelson
+205. <a id="decision-2026-10-12-mark-as-complete-stays-and-next-asks"></a>12 Oct 2026 · Navdeep and Nelson
 
      ### Mark as Complete stays, and Next asks
 
      Navdeep's comments on the Figma frame, applied the same day. The Mark as Complete button stays at the end of the content: without it, a learner who finishes a lab and closes the course without selecting Next would leave it incomplete. Next still asks on a topic that is not completed, with his copy ("Have you completed this lab?" · Not yet · Yes, completed) and three behaviours: Yes, completed marks it as completed and advances; Not yet keeps it incomplete and advances; Close changes nothing. Two ways of completing now exist; the question is the safety net. [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-205. <a id="decision-2026-10-12-next-asks-also-on-podcast-activity-and-the-video-fallback"></a>12 Oct 2026 · Nelson
+206. <a id="decision-2026-10-12-next-asks-also-on-podcast-activity-and-the-video-fallback"></a>12 Oct 2026 · Nelson
 
      ### Next asks also on Podcast, Activity and the Video fallback
 
      Podcast follows Video: both complete by themselves at 90% played, and only when playback cannot be measured does Next ask whether the learner has finished. Activity is completed by hand, so Next asks. The Mark as Complete button is gone from every screen; card 8 of the Video page shows the fallback as not completed, the question and completed. Amended the same evening: the Mark as Complete button is back and the dialog copy changed (see the entry above). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-206. <a id="decision-2026-10-12-next-asks-the-default-on-every-topic-completed-by-hand"></a>12 Oct 2026 · Nelson
+207. <a id="decision-2026-10-12-next-asks-the-default-on-every-topic-completed-by-hand"></a>12 Oct 2026 · Nelson
 
      ### Next asks: the default on every topic completed by hand
 
      The footer is Previous and Next on every topic. On a topic that is not completed, Next opens a question, "Have you finished this lab / reading?": Yes, I've finished completes the topic and goes to the next one; Not yet goes to the next one and leaves it open; closing the dialog stays on the page. On a completed topic Next goes straight on. It replaces Complete and continue, which the Lab and Reading screens carried for a few hours the same day. No design system change: the footer and the Modal are used as they are. Known trade-off: one more click on every unfinished topic of this kind, and Not yet brings the question back. Amended the same evening: the Mark as Complete button is back and the dialog copy changed (see the entry above). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-207. <a id="decision-2026-10-12-reading-screens-take-complete-and-continue"></a>12 Oct 2026 · Nelson
+208. <a id="decision-2026-10-12-reading-screens-take-complete-and-continue"></a>12 Oct 2026 · Nelson
 
      ### Reading screens take Complete and continue
 
      The 19 Reading screens have no Mark as Complete button: the footer's forward button reads Complete and continue and is the primary action of the page. Once completed, the Topic Header shows Marked as completed, the sidebar row becomes Completed and the footer button is Next, with no status in the footer. The Review card was removed: without the button it was a copy of the not-completed card. Superseded the same evening by Next asks (see the entry above). [reading-screen-matrix](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/reading-screen-matrix.md)
-208. <a id="decision-2026-10-12-a-course-row-says-where-the-learner-left-off"></a>12 Oct 2026 · Nelson
+209. <a id="decision-2026-10-12-a-course-row-says-where-the-learner-left-off"></a>12 Oct 2026 · Nelson
 
      ### A course row says where the learner left off
 
      In the simple course row of the Dashboard the headline is the module the learner stopped in, not the course. Above it, the type and the length of the topic that Resume opens; under it, the course and, when it belongs to one, the program. The delivery badge left the row. Course-Row v1.1 is 96 tall; Resume-Row v1.1, its mobile pair, has the same three lines. A course not started shows its first module; a locked course keeps the course as the headline. In the prototype the module, the topic type and the length come from the course's own data, where Resume lands. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-209. <a id="decision-2026-10-12-the-top-bar-marks-the-current-page-on-its-item"></a>12 Oct 2026 · Nelson
+210. <a id="decision-2026-10-12-the-top-bar-marks-the-current-page-on-its-item"></a>12 Oct 2026 · Nelson
 
      ### The top bar marks the current page on its item
 
      The five sections of the platform top bar are underline tabs that fill the height of the bar; the current one has a 3 px bar that sits on the rule of the top bar. The page is marked by setting Current to On on its Topbar-Item: the Topbar itself has only Breakpoint (Desktop, Compact). Topbar v1.2 and Topbar-Item v1.1 (State Default/Current became Current Off/On). This changes how the sections look, not the open question of sidebar or top bar. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-210. <a id="decision-2026-10-12-no-version-in-a-component-name-the-v1-badge-is-gone"></a>12 Oct 2026 · Nelson
+211. <a id="decision-2026-10-12-no-version-in-a-component-name-the-v1-badge-is-gone"></a>12 Oct 2026 · Nelson
 
      ### No version in a component name; the V1 badge is gone
 
      Button, Link Button, Icon Button and Badge are the current components, so their names carry no V1 or V2. The version stays in the first line of the Figma description and in the register, never in a name, a Storybook title or a message. The V1 badge set (453 variants) was deleted from the library after a count found no instance on the design system pages we use nor on the ICP and platform pages. The Mobile App file was not checked: a V1 badge still placed there keeps showing but no longer updates. [component versions](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/component-versions.md)
-211. <a id="decision-2026-10-12-badge-icons-follow-the-colour-of-the-label"></a>12 Oct 2026 · Nelson, fix run by Claude
+212. <a id="decision-2026-10-12-badge-icons-follow-the-colour-of-the-label"></a>12 Oct 2026 · Nelson, fix run by Claude
 
      ### Badge icons follow the colour of the label
 
      In Badge v1.1 the dot, the icons and the close follow the label in every style. The eight extra hues (Cyan to Orange) sat on the teal icon token and now use the variable of their label, because there is no icon token for them. In Soft Light the accents no longer have white icons on a light fill. After the publish, the badges nested in the LMS components fell back to the Badge defaults on the screens (a dot, an arrow and a close); 994 were set back to what the design system components define. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-212. <a id="decision-undated-screens-and-lms-components-are-on-the-current-button"></a>10–12 Oct 2026 · Nelson, migration run by Claude
+213. <a id="decision-undated-screens-and-lms-components-are-on-the-current-button"></a>10–12 Oct 2026 · Nelson, migration run by Claude
 
      ### Screens and LMS components are on the current Button
 
      Every page outside Discovery and Archive moved from the previous button generation to Button, Link Button and Icon Button: 1,593 instances on ten pages and 180 inside the LMS components. A button takes the size nearest to its real height (36, 44, 48, 56). The old Tertiary is Button Neutral Secondary. Utility Button and Close Button stay as sets of their own. The base components outside the LMS pages (Modals, Empty states) still hold the old button. [component versions](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/component-versions.md)
-213. <a id="decision-2026-10-12-the-lab-launch-card-says-opened-never-complete"></a>12 Oct 2026 · Nelson
+214. <a id="decision-2026-10-12-the-lab-launch-card-says-opened-never-complete"></a>12 Oct 2026 · Nelson
 
      ### The lab launch card says opened, never complete
 
      Nothing comes back from the partner, so the card cannot know a lab is done. It goes from Ready to Opened on the first click on the launch button, shows the date of the first opening and stays like that, also after the topic is completed. Before the lab is opened the launch button is the primary action and Complete and continue is secondary; once opened they swap. Nothing is disabled. There is no Skip action: to move on without completing, the learner uses the sidebar. Lab-Launch-Card v1.1: Completed removed. The part about the two buttons swapping was superseded the same evening by Next asks: the footer does not change. Not for now since 19 Oct: SkillUp cannot tell whether the launch button was selected (Komal). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-214. <a id="decision-2026-10-12-lab-screens-new-tab-by-default-complete-and-continue-to-fini"></a>12 Oct 2026 · Nelson
+215. <a id="decision-2026-10-12-lab-screens-new-tab-by-default-complete-and-continue-to-fini"></a>12 Oct 2026 · Nelson
 
      ### Lab screens: new tab by default, Complete and continue to finish
 
      Both ways of opening a lab are drawn: a new tab (the default, every partner) and inside the page (an option for the courses whose lab already loads there, two Microsoft courses today). On a topic the platform cannot measure, the footer button reads "Complete and continue": it marks the topic complete and goes to the next one, and the separate Mark as Complete row is gone from the Lab screens. On a lab with a launch card the button is secondary until the lab has been opened, then primary. The Reading screens took the same flow later that day. Decided by Nelson; Navdeep's answer to the proposal of 9 Oct was not seen. Once completed, the status shows in the Topic Header and on the topic's row in the sidebar, not in the footer. Superseded the same evening by Next asks (see the entry above). Not for now since 19 Oct: SkillUp cannot tell whether the launch button was selected (Komal). [lab-third-party-platforms](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/lab-third-party-platforms.md)
-215. <a id="decision-2026-10-11-a-button-group-is-a-track-with-a-pill"></a>11 Oct 2026 · Nelson
+216. <a id="decision-2026-10-11-a-button-group-is-a-track-with-a-pill"></a>11 Oct 2026 · Nelson
 
      ### A button group is a track with a pill
 
      Of six options for the selected segment, Nelson chose the track with a pill: the group is a muted track and the current segment a white pill with a subtle border and primary content. Before, the segments were joined and the current one sat on a soft blue that did not show against the page (1.07:1). It applies to the whole Button group (v1.1): the Grid / List toggle of My Learning and the Q&A filter. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-216. <a id="decision-2026-10-11-my-learning-lists-each-course-as-a-course-row"></a>11 Oct 2026 · Nelson
+217. <a id="decision-2026-10-11-my-learning-lists-each-course-as-a-course-row"></a>11 Oct 2026 · Nelson
 
      ### My Learning lists each course as a course row
 
      Wherever the course card stood on its own on My Learning it is now the course row of the program page: the card, the bar that says which module the learner is in, and the modules once the row is opened. 40 cards replaced on the screens; the prototype follows. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-217. <a id="decision-2026-10-10-the-44-px-touch-target-note-is-written-once-per-handoff-page"></a>10 Oct 2026 · Nelson
+218. <a id="decision-2026-10-10-the-44-px-touch-target-note-is-written-once-per-handoff-page"></a>10 Oct 2026 · Nelson
 
      ### The 44 px touch-target note is written once per handoff page
 
      The accessibility annotation was repeated on every control of every mobile screen. It now sits once per handoff page, on a mobile screen, worded for every interactive control; 144 copies were removed. The one exception, the video action button, is noted on the component. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-218. <a id="decision-2026-10-10-the-learner-is-john-smith-and-the-dashboard-counts-17-enroll"></a>10 Oct 2026 · Nelson
+219. <a id="decision-2026-10-10-the-learner-is-john-smith-and-the-dashboard-counts-17-enroll"></a>10 Oct 2026 · Nelson
 
      ### The learner is John Smith, and the Dashboard counts 17 enrolled
 
      The prototype uses John Smith, as the Figma screens do. The Dashboard reads *of 17 enrolled*: five single courses, seven of the AI program and five of Cybersecurity. Course cards and program cards keep one height, and program cards stay three per row. [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md)
-219. <a id="decision-2026-10-10-the-whole-card-of-a-course-or-program-opens-its-details-page"></a>10 Oct 2026 · Nelson
+220. <a id="decision-2026-10-10-the-whole-card-of-a-course-or-program-opens-its-details-page"></a>10 Oct 2026 · Nelson
 
      ### The whole card of a course or program opens its details page
 
      The card opens the details page, independently of the button. It applies to course cards, program cards, the course rows of a program page and the resume rows on the Dashboard. The button opens the player. On the program card, *Continue* opens the player of the course in progress. Built in the prototype; not annotated on the Figma screens yet. Amended 15 Oct 2026: annotated in Figma, in the dev notes of the Dashboard, My Learning and Program desktop screens (see the 15 Oct entry). [platform-navigation-flow](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/platform-navigation-flow.md)
-220. <a id="decision-2026-10-10-a-course-of-a-program-always-shows-the-program-path-in-its-b"></a>10 Oct 2026 · Nelson
+221. <a id="decision-2026-10-10-a-course-of-a-program-always-shows-the-program-path-in-its-b"></a>10 Oct 2026 · Nelson
 
      ### A course of a program always shows the program path in its breadcrumb
 
      Whichever way the learner reached the course. The mobile menu follows the desktop order. [platform-navigation-flow](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/platform-navigation-flow.md)
-221. <a id="decision-2026-10-10-sample-data-is-the-same-in-figma-and-in-the-prototype"></a>10 Oct 2026 · Nelson
+222. <a id="decision-2026-10-10-sample-data-is-the-same-in-figma-and-in-the-prototype"></a>10 Oct 2026 · Nelson
 
      ### Sample data is the same in Figma and in the prototype
 
      The AI program lasts 10 months. *What's included* is counted from the seven course outlines. Dashboard and My Learning count 4 in progress, 2 completed and 2 certificates. Business Analytics with Python starts Oct 14. Cybersecurity starts Oct 5. Same on the Figma source screens, on the handoff copies and in the prototype.
-222. <a id="decision-2026-10-10-two-proposals-in-the-prototype-not-designed"></a>10 Oct 2026 · Nelson
+223. <a id="decision-2026-10-10-two-proposals-in-the-prototype-not-designed"></a>10 Oct 2026 · Nelson
 
      ### Two proposals in the prototype, not designed
 
      The passed state of a completed course, and a program certificate page. Each is marked as a proposal on the page.
-223. <a id="decision-undated-every-course-and-both-programs-have-content-of-their-own-in"></a>9–10 Oct 2026 · Nelson
+224. <a id="decision-undated-every-course-and-both-programs-have-content-of-their-own-in"></a>9–10 Oct 2026 · Nelson
 
      ### Every course and both programs have content of their own in the prototype
 
      All 17 courses and both programs. There is a second program page, Cybersecurity Fundamentals Certificate. Course search looks in each course's own content. Labs, podcasts, lesson pages and live sessions take content per course. The video caption and length come from the topic. This is sample content for the prototype, pending the vendor's.
-224. <a id="decision-2026-10-09-four-disagreements-in-the-sample-data-fixed"></a>9 Oct 2026 · Nelson
+225. <a id="decision-2026-10-09-four-disagreements-in-the-sample-data-fixed"></a>9 Oct 2026 · Nelson
 
      ### Four disagreements in the sample data fixed
 
      Fixed in Figma and in the prototype: 15 of 38 topics; the due item on Sat sits under course 2; the first resume row is course 2 at 40%; the program card title and *Up next*.
-225. <a id="decision-2026-10-09-one-navigation-rule-a-title-opens-the-course-page-a-button-o"></a>9 Oct 2026 · Nelson
+226. <a id="decision-2026-10-09-one-navigation-rule-a-title-opens-the-course-page-a-button-o"></a>9 Oct 2026 · Nelson
 
      ### One navigation rule: a title opens the course page, a button opens the player, the player exits to the course page
 
      It follows the three addresses Open edX gives an enrolment (homeUrl, resumeUrl, progressUrl). Decided with it: every course shows its own title; inside a program the course title opens the course page and the course page shows the path through the program; Go to next course is the next course of the program; due items on the Dashboard open the work; the site opens on the Dashboard. The certificate page in the prototype is a proposal, not designed yet. [platform-navigation-flow](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/platform-navigation-flow.md)
-226. <a id="decision-2026-10-08-course-search-runs-on-submit-and-opens-in-a-popup"></a>8 Oct 2026 · Nelson, checked against the Open edX source
+227. <a id="decision-2026-10-08-course-search-runs-on-submit-and-opens-in-a-popup"></a>8 Oct 2026 · Nelson, checked against the Open edX source
 
      ### Course search runs on submit and opens in a popup
 
      The search inside a course sends its request only on Enter, or the search key on a phone; typing sends nothing. Results open in a popup under the search field on desktop and tablet, and full screen on mobile. Each result shows its type, title, an excerpt with the match marked, its location and the number of matches. There are no suggestions and no recent searches: the platform does not return them.
-227. <a id="decision-2026-10-08-lms-components-are-named-lms-icp-and-lms-platform-and-each-h"></a>8 Oct 2026 · Nelson
+228. <a id="decision-2026-10-08-lms-components-are-named-lms-icp-and-lms-platform-and-each-h"></a>8 Oct 2026 · Nelson
 
      ### LMS components are named LMS/ICP/… and LMS/Platform/…, and each has a version
 
      74 components renamed to the September convention; Discovery and course-end components moved to the platform page; a new page holds what is in review and not for build (AI Panel and five components on no screen). Versions are MAJOR.MINOR, baseline 1.0 on 8 Oct 2026. The design system is published by Nelson. The convention and the register are in [component-versions](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/component-versions.md). Amended 13 Oct 2026: AI Panel is on no screen either, and the two assistant components (LMS/Platform/Assistant/…) sit on the same in-review page.
-228. <a id="decision-2026-10-08-the-lab-launch-card-is-a-design-system-component"></a>8 Oct 2026 · Nelson
+229. <a id="decision-2026-10-08-the-lab-launch-card-is-a-design-system-component"></a>8 Oct 2026 · Nelson
 
      ### The lab launch card is a design system component
 
      A lab that runs on a partner's platform opens from LMS / Lab · Launch Card. It has four states: Ready, Opened, Completed and Unavailable. It shows the partner's name, and its buttons stack on a phone. It replaced the SCORM frame that stood in for it on the 32 Lab screens that have a launch card. The inline frame and the modal of the embedded alternatives are still sketches, until the content team's test says they are possible.
-229. <a id="decision-2026-10-08-the-program-icon-uses-three-opaque-tokens"></a>8 Oct 2026 · Nelson
+230. <a id="decision-2026-10-08-the-program-icon-uses-three-opaque-tokens"></a>8 Oct 2026 · Nelson
 
      ### The Program icon uses three opaque tokens
 
      The stacked cards of the Program icon in the Course Type Badge sit on three design system tokens, so the icon follows the brand skin. In the light SkillUp theme the back card is faint. That is accepted as it is.
-230. <a id="decision-2026-10-08-the-first-course-card-in-a-grid-carries-the-primary-resume"></a>8 Oct 2026 · Nelson
+231. <a id="decision-2026-10-08-the-first-course-card-in-a-grid-carries-the-primary-resume"></a>8 Oct 2026 · Nelson
 
      ### The first course card in a grid carries the primary Resume
 
      In a grid of course cards on My Learning, only the first card's Resume button is primary. The others stay secondary. Same rule as the rows on the Dashboard; the Figma screens and the prototype agree.
-231. <a id="decision-2026-10-08-the-course-card-thumbnail-has-a-fixed-size"></a>8 Oct 2026 · Nelson
+232. <a id="decision-2026-10-08-the-course-card-thumbnail-has-a-fixed-size"></a>8 Oct 2026 · Nelson
 
      ### The Course Card thumbnail has a fixed size
 
      In the grid layout the thumbnail is 86 px square and no longer stretches with the title. The card keeps its 358 px height. Changed in the design system; it reaches the screens with the next library update. Amended 22 Oct 2026: the grid card now has a large 16:9 cover across the top (Course-Card 1.16, see "Large course pictures on cards and module rows").
-232. <a id="decision-2026-10-08-the-certificate-does-not-show-time-learned"></a>8 Oct 2026 · Nelson
+233. <a id="decision-2026-10-08-the-certificate-does-not-show-time-learned"></a>8 Oct 2026 · Nelson
 
      ### The certificate does not show time learned
 
      Open edX keeps no time-learned figure, so the stat was removed from the design system certificate and from the prototype. Modules, Topics and Avg quiz stay.
-233. <a id="decision-2026-10-07-badges-read-their-labels-again"></a>7 Oct 2026 · Nelson, repair run by Claude
+234. <a id="decision-2026-10-07-badges-read-their-labels-again"></a>7 Oct 2026 · Nelson, repair run by Claude
 
      ### Badges read their labels again
 
      When Badge was restructured, the components that wrap it lost their text and icon and read *Label*. The 114 badges nested in 18 LMS components were repaired in the design system, the library was published and the update accepted in the ICP file. No badge reads *Label* on the platform pages, Video, Quizzes, Reading, Overlay Panels or Topic Content Types. A script cannot accept a library update; the Libraries panel has to. The values and where each came from are in [library request 21](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/library-requests.md).
-234. <a id="decision-2026-10-07-a-course-row-says-where-the-learner-is-once"></a>7 Oct 2026 · Nelson
+235. <a id="decision-2026-10-07-a-course-row-says-where-the-learner-is-once"></a>7 Oct 2026 · Nelson
 
      ### A course row says where the learner is once
 
      On the Program page, the modules bar of a course in progress reads *Module 2 of 4* and the module's name, with *Show* / *Hide*. The *You left off here* badge above the current module is gone: the bar already says it. Same on desktop, tablet and mobile.
-235. <a id="decision-2026-10-07-a-dev-note-goes-on-the-main-component-and-on-one-screen"></a>7 Oct 2026 · Nelson
+236. <a id="decision-2026-10-07-a-dev-note-goes-on-the-main-component-and-on-one-screen"></a>7 Oct 2026 · Nelson
 
      ### A dev note goes on the main component and on one screen
 
      A Dev Mode note about a component is not repeated on every instance. *Navigation is not final* now sits on the top bar's main component, on the sidebar's, and on one screen, *Dashboard · Desktop*.
-236. <a id="decision-2026-10-07-course-cards-carry-a-cover-image"></a>7 Oct 2026 · Nelson
+237. <a id="decision-2026-10-07-course-cards-carry-a-cover-image"></a>7 Oct 2026 · Nelson
 
      ### Course cards carry a cover image
 
      Every course thumbnail on My Learning and on the Program page shows a cover instead of initials. The images in the screens are placeholders from the public SkillUp catalogue; in production it is the course's own image, which Learner Home returns. The Dashboard's glance card also has two layouts now, and the screens use them: four stats in a line on desktop and tablet, two by two on mobile.
-237. <a id="decision-2026-10-07-ready-for-dev-screens-sit-on-design-system-tokens-and-compon"></a>7 Oct 2026 · Nelson, audit run by Claude
+238. <a id="decision-2026-10-07-ready-for-dev-screens-sit-on-design-system-tokens-and-compon"></a>7 Oct 2026 · Nelson, audit run by Claude
 
      ### Ready for Dev screens sit on design system tokens and components
 
      Video, Quizzes, Reading and the platform pages were read element by element. Outside components, their screens now carry no raw colour, spacing or radius: each value is a design system token. The note editor on Video is a design system component, LMS / Note Editor: a modal on desktop and tablet, a bottom sheet on mobile. Overlay Panels and Completion + Certificate got the same pass. What changed, value by value, is in the [changelog](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/CHANGELOG.md).
-238. <a id="decision-2026-10-07-one-primary-action-per-list-of-course-rows"></a>7 Oct 2026 · Nelson
+239. <a id="decision-2026-10-07-one-primary-action-per-list-of-course-rows"></a>7 Oct 2026 · Nelson
 
      ### One primary action per list of course rows
 
      On the Dashboard, in a list of courses to resume, only the first row keeps the primary *Resume* button. The others are secondary. The Figma screens and the prototype agree.
-239. <a id="decision-2026-10-07-the-course-card-uses-design-system-text-styles"></a>7 Oct 2026 · Nelson
+240. <a id="decision-2026-10-07-the-course-card-uses-design-system-text-styles"></a>7 Oct 2026 · Nelson
 
      ### The Course Card uses design system text styles
 
      Its six texts had no style. They now do, and no text on the card is below 12 px. The grid card is 358 px high instead of 342, and its padding is 24, 20 and 16 px on desktop, tablet and mobile.
-240. <a id="decision-2026-10-07-platform-pages-show-only-what-open-edx-serves"></a>7 Oct 2026 · Nelson, checked against the dev environment and the Open edX source
+241. <a id="decision-2026-10-07-platform-pages-show-only-what-open-edx-serves"></a>7 Oct 2026 · Nelson, checked against the dev environment and the Open edX source
 
      ### Platform pages show only what Open edX serves
 
      The Dashboard's glance card shows totals the platform returns: courses in progress, courses completed, certificates and programs. The streak card, the live-session item and *Book a mentor* are gone. *Due this week* stays, with assignment deadlines only. Course cards show total effort instead of time left, a program's percentage is courses complete ÷ courses, and every delivery badge reads *Flexible Learning*. The Program page's marketing-only content stays until the vendor answers. The map is in [metadata map §37](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/course-details-metadata-map.md).
-241. <a id="decision-2026-10-06-the-35-platform-components-live-in-the-design-system"></a>6 Oct 2026 · Nelson
+242. <a id="decision-2026-10-06-the-35-platform-components-live-in-the-design-system"></a>6 Oct 2026 · Nelson
 
      ### The 35 platform components live in the design system
 
      They moved from the ICP file to the page *LMS Platform Components*, named LMS/Platform/&lt;Group&gt;/&lt;Component&gt;. The variant property Type is now Kind. The 741 instances on the platform pages point to the library.
-242. <a id="decision-2026-10-05-program-page-the-courses-are-a-list-of-expandable-rows"></a>5 Oct 2026 · Nelson
+243. <a id="decision-2026-10-05-program-page-the-courses-are-a-list-of-expandable-rows"></a>5 Oct 2026 · Nelson
 
      ### Program page: the courses are a list of expandable rows
 
      List only. Each row shows which module the learner left off in and expands to the course's modules. A grid of course cards was turned down.
-243. <a id="decision-2026-10-01-only-what-an-api-backs-goes-in"></a>1 Oct 2026 · Nelson
+244. <a id="decision-2026-10-01-only-what-an-api-backs-goes-in"></a>1 Oct 2026 · Nelson
 
      ### Only what an API backs goes in
 
      Nothing is designed as real that the platform cannot serve. Live sessions and cohort pace are designed but out of the MVP. What a learner sees on desktop is also there on tablet and mobile: content is not hidden to make a component fit. Recorded in [PRODUCT.md](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/PRODUCT.md). Amended 13 Oct 2026: the assistant is the stated exception. No API backs it, so it is in the prototype and on its own preview page only, and on no ready-for-dev screen.
-244. <a id="decision-2026-10-01-a-handoff-is-ready-for-dev-only-when-nelson-marks-it"></a>1 Oct 2026 · Nelson
+245. <a id="decision-2026-10-01-a-handoff-is-ready-for-dev-only-when-nelson-marks-it"></a>1 Oct 2026 · Nelson
 
      ### A handoff is ready for dev only when Nelson marks it
 
      A new handoff frame starts *In progress*. *Ready for DEV* uses the green status tag and is set by Nelson alone.
-245. <a id="decision-2026-09-30-below-desktop-my-learning-is-grid-only"></a>30 Sep 2026 · Nelson
+246. <a id="decision-2026-09-30-below-desktop-my-learning-is-grid-only"></a>30 Sep 2026 · Nelson
 
      ### Below desktop, My Learning is grid only
 
      The grid and list toggle is hidden on tablet and mobile. Two columns on tablet, one on mobile.
-246. <a id="decision-2026-09-28-44-px-targets-and-12-px-minimum-text"></a>28 Sep 2026 · Nelson
+247. <a id="decision-2026-09-28-44-px-targets-and-12-px-minimum-text"></a>28 Sep 2026 · Nelson
 
      ### 44 px targets and 12 px minimum text
 
      Stricter than WCAG 2.2 AA: interactive targets are at least 44 px on mobile, and no text is smaller than 12 px. Dashboard and My Learning are two separate pages.
-247. <a id="decision-2026-09-25-mentor-questions-go-through-q-a"></a>25 Sep 2026 · Nelson
+248. <a id="decision-2026-09-25-mentor-questions-go-through-q-a"></a>25 Sep 2026 · Nelson
 
      ### Mentor questions go through Q&A
 
      When the course has a mentor assigned, the Course Detail sidebar shows a standard card: *Ask anything to your mentor* · *Post your question in Q&A*. There is no named mentor on the card. *Ask your mentor* opens the Mentorship Q&A tab, where the learner posts the question and the course staff and/or the mentor answer. The named-mentor, 1:1 messaging card (Sidebar card · Type=Mentor) is kept for a future phase; the current one is Type=Mentor Q&A.
-248. <a id="decision-2026-09-25-badge-colours-in-three-groups-brand-alerts-extra"></a>25 Sep 2026 · Nelson
+249. <a id="decision-2026-09-25-badge-colours-in-three-groups-brand-alerts-extra"></a>25 Sep 2026 · Nelson
 
      ### Badge colours in three groups: Brand, Alerts, Extra
 
      The set has grown to 270 variants: 5 styles (Soft, Outline, Modern, Plain, Soft Light) × 3 sizes × 18 colours. **Brand** covers the SKO brand book: Brand, Gray, Teal, Green, Red and Yellow. **Alerts** covers the statuses: Info, Success, Warning and Error. **Extra** covers Cyan, Blue, Indigo, Violet, Purple, Fuchsia, Pink and Orange. These are provisional because they still sit on Untitled UI primitives. The set, its description and the Light/Dark showcase follow this order.
-249. <a id="decision-2026-09-24-badge-replaces-the-v1-badge-everywhere-in-the-ds-and-the-icp"></a>24 Sep 2026 · Nelson, migration run by Claude
+250. <a id="decision-2026-09-24-badge-replaces-the-v1-badge-everywhere-in-the-ds-and-the-icp"></a>24 Sep 2026 · Nelson, migration run by Claude
 
      ### Badge replaces the V1 badge everywhere in the DS and the ICP
 
      61 badges in 11 LMS components (V1 Badge → Soft, modern → Modern, Topic Types → Plain), the 80 Badge group variants, and 649 badges on 30 Untitled UI pages; about 1,800 nested ones followed their masters. Text, icons, flags, avatars, sizing and visibility were kept. The ICP Quizzes, Video, Reading and Platform pages are on the current Badge, and the 41 texts the screens had changed were restored after the library update. A file-wide count finds no V1 badge on any page. The old set, Badge-V1-to-remove, stays until the Mobile App file is migrated.
-250. <a id="decision-2026-09-24-badge-accents-strong-statuses-soft"></a>24 Sep 2026 · Nelson
+251. <a id="decision-2026-09-24-badge-accents-strong-statuses-soft"></a>24 Sep 2026 · Nelson
 
      ### Badge: accents strong, statuses soft
 
      120 variants at launch instead of 453 (270 since 25 Sep, see above), with the options as booleans on one private atom. Statuses (Gray, Brand, Info, Error, Warning, Success) keep soft fills. The four brand-book accents (Teal, Green, Red, Yellow) use the solid brand colour, so Yellow no longer reads as Warning. Every colour has one token per element: bg, text, icon, border.
-251. <a id="decision-2026-09-23-topic-type-follows-the-platform-rule"></a>23 Sep 2026 · Nelson, verified in source
+252. <a id="decision-2026-09-23-topic-type-follows-the-platform-rule"></a>23 Sep 2026 · Nelson, verified in source
 
      ### Topic type follows the platform rule
 
      Topic header and sidebar icons read the platform value. Graded no longer means "Assessment". Adding more types is an engineering call through OVERRIDE\_GET\_UNIT\_ICON.
-252. <a id="decision-2026-09-22-podcasts-render-as-video-callout-is-not-a-content-block"></a>22 Sep 2026 · Nelson with Simran
+253. <a id="decision-2026-09-22-podcasts-render-as-video-callout-is-not-a-content-block"></a>22 Sep 2026 · Nelson with Simran
 
      ### Podcasts render as video; Callout is not a content block
 
      The Video (Audio) block is a video player with cover art. Callouts were removed from every Reading screen.
-253. <a id="decision-2026-09-22-element-first-token-names-with-the-word-primary"></a>22 Sep 2026 · Nelson
+254. <a id="decision-2026-09-22-element-first-token-names-with-the-word-primary"></a>22 Sep 2026 · Nelson
 
      ### Element-first token names, with the word "primary"
 
      The design system's colours are named by element (bg/ text/ icon/ border/), not by material role. 83 tokens, about 6,000 bindings moved with no visual change.
-254. <a id="decision-2026-09-17-no-downloads-tab-on-reading"></a>17 Sep 2026 · Navdeep and Nelson
+255. <a id="decision-2026-09-17-no-downloads-tab-on-reading"></a>17 Sep 2026 · Navdeep and Nelson
 
      ### No Downloads tab on Reading
 
      Files are linked in the body. With one option left, the tab bar is hidden, per the one-option rule.
-255. <a id="decision-undated-design-system-split-into-foundations-lms-mobile-marketing"></a>12–14 Sep 2026 · Nelson, ahead of the team meeting
+256. <a id="decision-undated-design-system-split-into-foundations-lms-mobile-marketing"></a>12–14 Sep 2026 · Nelson, ahead of the team meeting
 
      ### Design system split into Foundations + LMS / Mobile / Marketing
 
      Tokens are born only in Foundations. Components are named &lt;Scope&gt;/&lt;Group&gt;/&lt;Component&gt; with hyphens inside words, and LMS/ICP/… vs LMS/Platform/… for the two surfaces.
-256. <a id="decision-2026-08-21-ora-training-feedback-retired"></a>21 Aug 2026 · Nelson
+257. <a id="decision-2026-08-21-ora-training-feedback-retired"></a>21 Aug 2026 · Nelson
 
      ### ORA Training Feedback retired
 
      The "You selected / Staff selected" banner is a Dev-mode testing feature, not something learners see.
-257. <a id="decision-2026-08-14-quiz-mode-a-2-is-the-build-target"></a>14 Aug 2026 · Navdeep
+258. <a id="decision-2026-08-14-quiz-mode-a-2-is-the-build-target"></a>14 Aug 2026 · Navdeep
 
      ### Quiz mode A-2 is the build target
 
      The learner answers everything before any feedback, so no answer is influenced by an earlier correction. A-1 was rejected. B (feedback per question) is parked until the content team asks for a teaching-shaped quiz.
-258. <a id="decision-2026-08-03-quiz-results-three-calls"></a>3 Aug 2026 · Nelson, from research
+259. <a id="decision-2026-08-03-quiz-results-three-calls"></a>3 Aug 2026 · Nelson, from research
 
      ### Quiz results: three calls
 
      The pass mark is a target, not a gate. Stacked alerts are relabelled with what to do. "Retry incorrect" is presentation only, over the existing per-problem state.
-259. <a id="decision-2026-07-29-page-shell-completion-and-author-rules"></a>29 Jul 2026 · Workshop: Navdeep, Harpreet, Nelson
+260. <a id="decision-2026-07-29-page-shell-completion-and-author-rules"></a>29 Jul 2026 · Workshop: Navdeep, Harpreet, Nelson
 
      ### Page shell, completion and author rules
 
      One shell for every type. Mark as Complete sits only at the bottom. The author row appears only on authored content that changes over time. Discussion is not a topic type.
-260. <a id="decision-2026-07-21-topic-content-types-is-the-shared-vocabulary"></a>21 Jul 2026 · Navdeep, Harpreet and team
+261. <a id="decision-2026-07-21-topic-content-types-is-the-shared-vocabulary"></a>21 Jul 2026 · Navdeep, Harpreet and team
 
      ### "Topic Content Types" is the shared vocabulary
 
@@ -1712,12 +1717,35 @@ What was decided, when, and by whom. The linked document holds the reasoning. Re
 
 Not decided yet. Each names who has to answer.
 
+Nelson · 17 Nov 2026
+
+### A Status variant on Progress-Card and Course-Header?
+
+Decision 042 says a course that is one package shows *Not started*, *Started* or *Completed*, never a percentage, on the course card, the program row and the course page. Both DS components show only a percentage, so the E2 and E3 status card and hero stay local. Proposal: a variant (e.g. Display = Percent | Status) using the existing Badge, no new tokens, a minor version on each.
+
+Nelson · 17 Nov 2026
+
+### Which component for the E3 program row and the mobile card?
+
+No DS component matches them today. Proposal: the compact Course-Row already used on the Program Page, with the Status display above; a new component only if Course-Row cannot carry it (not checked in the file).
+
+Nelson · 17 Nov 2026
+
+### Does the meta strip become a handoff component?
+
+There is no component for it. Proposal: if it appears only on E2 (desktop, tablet, mobile), keep a local frame on tokens with one dev note; if it is the course header's meta row, it belongs inside Course-Header, not in a component of its own.
+
+Nelson · 17 Nov 2026
+
+### Should the Alert use its Desktop variant?
+
+The E2 Alert uses Breakpoint = Mobile at every size, like the Course Detail [6146-10226](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=6146-10226), although the DS has a Desktop variant. Proposal: switch both together so they stay alike; 6146:10226 then needs a new Zeplin export too.
+
 Dev team · answered 9 Nov 2026, follow-ups open
 
 ### Who sets the topic types Open edX does not have?
 
 Open edX derives only problem, video and other. Vikas answered on 9 Nov 2026: the hook needs a separate MFE update, Studio tags need a new API, and lighter options exist (block types, unit format, a custom field). Follow-ups: how does the MFE detect Labs today, and can Lesson Page and Podcast use the same way? Is the unit format stock Open edX, set in Studio? Does the Activity label come from SCORM? Do Graded and Practice come from the subsection grading? Still to decide (Nelson): the list in code (recommended) or Studio tags. [topic-types-inventory §6d](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/LMS-HANDOFF/topic-types-inventory.md).
-
 
 Komal, Nelson
 
@@ -1725,13 +1753,11 @@ Komal, Nelson
 
 The mapping lists 12 code tokens whose name means a different role in Figma (e.g. --sko-bg-primary) and 12 with no Figma match yet. Its last section, *What we need to agree*, lists the open points. Since 12 Nov 2026 the 29 *To decide* rows are settled ([the decisions](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/code-token-decisions.md)) and the media-query edges are 1023 / 767; still open: whether the dev team renames the 12 clashing tokens, and whether they take the tokens with the *Publish tokens* plugin into their own repository (since PR 490), in our JSON or W3C DTCG. [The mapping](https://github.com/nvjeronimo/skillup-lms-prd/blob/main/03-design-system/code-token-mapping.md).
 
-
 Kirti, content team
 
 ### A SCORM package that is only a video?
 
 Kirti could not find a SCORM-packaged video in the prototype (11 Nov 2026). The POSH course (course 3 of the test program) has its videos inside the Rise package, playing in Rise's own player. A package that is only a video has not reached us: once the content team shares one, it goes into the test program. If the example is the one from Kirti's analysis (transcript beside the video, .srt download), that is the Open edX Video component with an Azure source, our usual player. Amended 11 Nov 2026: Kirti was told she can test video inside a package in POSH (22 MP4s in the Rise course, Rise's own player, none of ours).
-
 
 Simran
 
