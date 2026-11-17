@@ -1,6 +1,6 @@
 {
   "format": "skillup-figma-tokens/1",
-  "fileKey": "c7EUDrQwP8si08aPipDSIV",
+  "fileKey": null,
   "collections": [
     {
       "name": "1. SKO-Semantics 🎨",
@@ -2845,16 +2845,6 @@
           }
         },
         {
-          "name": "Type/weight/bold-italic",
-          "type": "STRING",
-          "web": null,
-          "values": {
-            "Desktop": "Bold italic",
-            "Tablet": "Bold italic",
-            "Mobile": "Bold italic"
-          }
-        },
-        {
           "name": "Type/size/text-2xs",
           "type": "FLOAT",
           "web": null,
@@ -2862,6 +2852,16 @@
             "Desktop": 12,
             "Tablet": 12,
             "Mobile": 12
+          }
+        },
+        {
+          "name": "Type/weight/bold-italic",
+          "type": "STRING",
+          "web": null,
+          "values": {
+            "Desktop": "Bold italic",
+            "Tablet": "Bold italic",
+            "Mobile": "Bold italic"
           }
         },
         {
@@ -3095,16 +3095,6 @@
           }
         },
         {
-          "name": "Container/gap",
-          "type": "FLOAT",
-          "web": null,
-          "values": {
-            "Desktop": 24,
-            "Tablet": 16,
-            "Mobile": 12
-          }
-        },
-        {
           "name": "Container/gutter",
           "type": "FLOAT",
           "web": null,
@@ -3112,6 +3102,16 @@
             "Desktop": 32,
             "Tablet": 24,
             "Mobile": 16
+          }
+        },
+        {
+          "name": "Container/gap",
+          "type": "FLOAT",
+          "web": null,
+          "values": {
+            "Desktop": 24,
+            "Tablet": 16,
+            "Mobile": 12
           }
         },
         {
@@ -4513,6 +4513,28 @@
       }
     },
     {
+      "name": "body-medium/Bold",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "bound": {
+        "fontSize": "Type/size/text-sm",
+        "fontStyle": "Type/weight/bold",
+        "fontFamily": "Type/family/body",
+        "paragraphSpacing": "Type/size/text-sm",
+        "lineHeight": "Type/line-height/text-sm"
+      }
+    },
+    {
       "name": "body-small/Regular",
       "fontFamily": "Montserrat",
       "fontStyle": "Regular",
@@ -4576,28 +4598,6 @@
         "fontFamily": "Type/family/body",
         "paragraphSpacing": "Type/size/text-xs",
         "lineHeight": "Type/line-height/text-xs"
-      }
-    },
-    {
-      "name": "body-medium/Bold",
-      "fontFamily": "Montserrat",
-      "fontStyle": "Bold",
-      "fontSize": 14,
-      "lineHeight": {
-        "unit": "PIXELS",
-        "value": 20
-      },
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL",
-      "bound": {
-        "fontSize": "Type/size/text-sm",
-        "fontStyle": "Type/weight/bold",
-        "fontFamily": "Type/family/body",
-        "paragraphSpacing": "Type/size/text-sm",
-        "lineHeight": "Type/line-height/text-sm"
       }
     },
     {
