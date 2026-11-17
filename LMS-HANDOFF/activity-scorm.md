@@ -1,8 +1,10 @@
 # Activity (SCORM)
 
-First pass, 19 Oct 2026. Figma: ICP file, page **↳ Activity · SCORM - WIP 🟠**
-([7428-1069](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069)), 46 screens:
-15 desktop, 15 tablet and 16 mobile. Status WIP; nothing is Ready for Dev.
+First pass, 19 Oct 2026. Figma: ICP file, page **↳ Phase 1 · Activity · SCORM - Ready for Dev 🟢**
+([7428-1069](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069)).
+**Ready for Dev since 17 Nov 2026** (approved by Nelson): 50 cards, 16 desktop, 16 tablet and 18 mobile, in groups
+A (in the page), B (new window), C (exceptions) and E (the canonical course-package flow, decision 042). Group D is
+SUPERSEDED and stays on the page as history. Dark is out of this cycle; *Skip for now* is still open.
 
 ## 1. What the platform gives us
 
