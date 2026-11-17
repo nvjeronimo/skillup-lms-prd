@@ -20,6 +20,10 @@ Since v3.3 (24 Jul 2026) the entries are dated; v3.4 marks the entries of 4 to 1
 
 Version bump for the entries of 4 to 16 Nov 2026 below, which were missing from this changelog until 16 Nov. A documentation release: the DS itself has had no v3.x release since v3.3; its components are versioned one by one since 8 Oct 2026 (`03-design-system/component-versions.md`).
 
+## 2026-11-17 · SCORM Ready for Dev: DS and token audit
+
+An audit of the four SCORM Ready frames (01 A, 02 B, 03 C, 04 E; 50 screens) checked components, tokens and overrides. There are no detached instances, no local copies of DS components and no hex colours inside the screens. Fixed in the ICP: 48 texts in E2/E3 on DS text styles (12 px raised to 13; the 22 px title now uses headline-small, 24 on desktop and 20 on phone); 72 spacings on `Spacing/*`, only where the token has the same value; 8 radii on `Radius/card` and `Radius/card-inset`; 18 progress-ring strokes in the phone Topbars back to the component's 4 px. The six E2/E3 cards have a 17 Nov changelog entry. 13 points wait for Nelson, and about 190 overrides that repeat the component's value need a manual reset. Details: `LMS-HANDOFF/scorm-ds-audit-2026-11-17.md`; the Hub lists the points under Open questions.
+
 ## 2026-11-17 · SCORM and YouTube row 9 Ready for Dev
 
 Nelson approved the SCORM screens and the YouTube embed. ICP: the page *Activity · SCORM* moved under Ready for Dev as *Phase 1 · Activity · SCORM - Ready for Dev* ([7428-1069](https://www.figma.com/design/Wz2TCYFVr0hD8tJNiLajLt/LMS-ICP-Phase-1?node-id=7428-1069)); its 50 active cards (groups A, B, C and E: 16 desktop, 16 tablet, 18 mobile) went from In review to Ready for DEV, each with a Recent changes entry; group D stays SUPERSEDED. Video Lessons row 9 (YouTube official embed, decision 041; cards 9, 9.2, 9.3) went to Ready for DEV on the Video Lessons Ready for Dev page, whose header now counts 20 screens (8 desktop, 5 tablet, 7 mobile). The designs are unchanged. ICP Hub and `activity-scorm.md` updated.
