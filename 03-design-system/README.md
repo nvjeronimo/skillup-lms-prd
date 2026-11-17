@@ -10,9 +10,17 @@ the collections so one system can carry LMS, App, marketing, email and, later, s
 
 ## Publication status — current
 
-**DS v3.3 is PUBLISHED in Figma (2026-07-24):** 1052 variables · 18 CVD primitives · verified **1:1
-against `tokens/colors.css`** (zero divergences). The old "consumers still see v2.0" blocker is
-**resolved** — the triangle is aligned across all three vertices: **Figma DS (published) · CSS handoff
+**Handoff package v3.4 (16 Nov 2026)** — a documentation release ([CHANGELOG](../LMS-HANDOFF/CHANGELOG.md)). The DS
+has had no v3.x release since v3.3; since 8 Oct 2026 each component carries its own version
+([`component-versions.md`](component-versions.md)). The latest read-only export of the published variables
+(11 Nov 2026, [`dev-token-package/`](dev-token-package/)) holds **233 variables in 5 collections** (SKO-Semantics 123,
+with SKO, Gold, Studio, Harbor and Fluent × light/dark; Responsive 87; Motion 13; Skin shape 8; Scope 2) and 47 text
+styles.
+
+**History — DS v3.3, published in Figma on 2026-07-24.** At the time: 1052 variables · 18 CVD primitives · verified
+**1:1 against `tokens/colors.css`** (zero divergences); that count has not been re-checked against today's library
+and is not the current figure. The old "consumers still see v2.0" blocker was
+**resolved** then — the triangle was aligned across all three vertices: **Figma DS (published) · CSS handoff
 (synced) · prototype (in production)**. Residual nuance, non-blocking: a formal human side-by-side
 review of the 6 skins was never run (maths-validated + published on Nelson's call) — [OPEN-ACTIONS](../OPEN-ACTIONS.md) O1.
 
@@ -20,16 +28,22 @@ review of the 6 skins was never run (maths-validated + published on Nelson's cal
 
 | You are a… | Start here |
 |---|---|
-| **Stakeholder** | v3.3 is live; accessibility (colourblind-safe + text scale) shipped; 0 AA failures across 540 checks. What changed and why → CHANGELOG below. |
+| **Stakeholder** | Handoff v3.4 (16 Nov 2026) is current; DS v3.3 (24 Jul 2026) shipped accessibility (colourblind-safe + text scale), 0 AA failures across 540 checks at the time. What changed and why → CHANGELOG below. |
 | **Designer** | [`variable-collections-guide.md`](../LMS-HANDOFF/variable-collections-guide.md) (4 collections, skin ramp model, naming, re-validate contrast) · DS Figma `c7EUDrQwP8si08aPipDSIV` · LMS components page `1030-33572`. |
-| **Developer** | [`tokens/colors.css`](../LMS-HANDOFF/tokens/colors.css) + [`typography.css`](../LMS-HANDOFF/tokens/typography.css) · the `--sk-*` namespace · [skin-switcher module](../LMS-HANDOFF/modules/skin-switcher/) (drop-in). |
+| **Developer** | [`dev-token-package/`](dev-token-package/) (export of 11 Nov 2026: `--color-*`, `--sk-*`, `--motion-*`; see Tokens & axes) · [code → Figma token mapping](code-token-mapping.md). Older handoff CSS (v3.1, `--sk-*` colours): [`tokens/colors.css`](../LMS-HANDOFF/tokens/colors.css) + [`typography.css`](../LMS-HANDOFF/tokens/typography.css) · [skin-switcher module](../LMS-HANDOFF/modules/skin-switcher/). |
 
 ## Tokens & axes
 
-- **Namespace** `--sk-*` (one system namespace, not per-brand). `sk` = SkillUp Design *System*.
-- **6 skins** — SKO + `gold` / `violet` / `sky` / `red` / `ink`, each a **12-step OKLCH ramp** from 2
-  brand anchors, **0 raw hex** (was 42/60). Selected via `data-skin` (⚠️ **breaking:** `data-brand` no
-  longer exists — see [`00-decisions/014`](../00-decisions/)).
+- **CSS prefixes** (as generated in [`dev-token-package/css/`](dev-token-package/css/), 11 Nov 2026):
+  colours `--color-*` (`--color-bg-*`, `--color-text-*`, `--color-border-*`, `--color-icon-*`, `--color-shadow-*`);
+  type `--sk-type-*` and `--sk-font-*`; spacing and layout `--sk-space-*`, `--sk-layout-*`, `--sk-container-*`;
+  radius `--sk-radius-*`; motion `--motion-*`. The older handoff CSS (`LMS-HANDOFF/tokens/colors.css`, v3.1) still
+  uses `--sk-*` for colours too. `sk` = SkillUp Design *System*.
+- **5 skins**, the modes of the Figma collection `1. SKO-Semantics`: **SKO, Gold, Studio, Harbor, Fluent**, each
+  light and dark. In CSS: SKO in `:root` (dark in `[data-theme="dark"]`); `[data-skin="gold"]`, `"harbor"`,
+  `"fluent"`; Studio in `[data-direction="studio"]`; `[data-skin="teal"]` forces SKO inside another skin. The v3.0
+  skins `violet` / `sky` / `red` / `ink` are no longer modes. Selected via `data-skin` (⚠️ **breaking:** `data-brand`
+  no longer exists — see [`00-decisions/014`](../00-decisions/)).
 - **Theme** × light/dark, with a real **dark surface ladder** and **hover-lightens-in-dark**.
 - **Breakpoints axis** (Desktop / Tablet / Mobile) for size/space/radius.
 - **Accessibility axes** — `data-vision="cvd"` (colourblind-safe states, Okabe-Ito, ΔE≥18) and text
@@ -64,7 +78,7 @@ pending): [`components-inventory.md`](../LMS-HANDOFF/components-inventory.md). R
 
 | Artifact | Link |
 |---|---|
-| Version history | [`../LMS-HANDOFF/CHANGELOG.md`](../LMS-HANDOFF/CHANGELOG.md) (v3.3 current; v3.0→v3.3 explained) |
+| Version history | [`../LMS-HANDOFF/CHANGELOG.md`](../LMS-HANDOFF/CHANGELOG.md) (v3.4 current, 16 Nov 2026; v3.0→v3.3 explained) |
 | Variable collections guide | [`../LMS-HANDOFF/variable-collections-guide.md`](../LMS-HANDOFF/variable-collections-guide.md) |
 | Storybook coverage plan | [`../LMS-HANDOFF/storybook-coverage.md`](../LMS-HANDOFF/storybook-coverage.md) |
 | Built Storybook | [`../storybook/`](../storybook/) · source in [`../90-prototypes/storybook-src/`](../90-prototypes/storybook-src/) |

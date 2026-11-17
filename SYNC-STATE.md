@@ -9,7 +9,7 @@ this file is only the current state.
 | # | Environment | Canonical id / URL | Current version / commit | Published? | Verified | Owner |
 |---|---|---|---|---|---|---|
 | 1 | Figma working file | `Wz2TCYFVr0hD8tJNiLajLt` — LMS ICP Phase 1 | Content Types page `4692-444` **Ready for Review** (01→11 + ZZ) | n/a | 2026-07-28 | Nelson |
-| 2 | DS (Figma library) | `c7EUDrQwP8si08aPipDSIV` — SKO Design System | **v3.3** · 1052 variables · 18 CVD primitives | ✅ published 2026-07-24 | 2026-07-28 | Nelson |
+| 2 | DS (Figma library) | `c7EUDrQwP8si08aPipDSIV` — SKO Design System | Last DS release **v3.3** (24 Jul 2026; 1052 variables then, not re-checked since) · current export 11 Nov 2026: **233 variables in 5 collections, 47 text styles** ([`dev-token-package/`](03-design-system/dev-token-package/)) | ✅ published 2026-07-24 | 2026-11-16 (export count) | Nelson |
 | 3 | Local = Hub repo | `nvjeronimo/skillup-lms-prd` → nvjeronimo.github.io/skillup-lms-prd/ | **v3.3-aligned + reorg structure** (`c577192`) | ✅ published 2026-07-29 | 2026-07-29 | Nelson |
 | 4 | Prototype | `nvjeronimo/skillup-lms-prototype` → lms-prototype-mu.vercel.app | **17 PRs merged** (latest #17 quiz stacked one-scroll flow); DS-parity round #12–#16 on 07-27; 0 open · push 2026-07-27T21:29 | ✅ live on Vercel | 2026-07-28 | Nelson |
 | 5 | Storybook | `v7-storybook/` → built `/storybook/` | **not started** — build last | — | 2026-07-28 | Nelson |

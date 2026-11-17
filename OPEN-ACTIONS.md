@@ -38,7 +38,7 @@ Status: 🔴 blocked · 🟠 in progress · ⚪ not started · ✅ done (kept fo
 
 | Action | Closed | Note |
 |---|---|---|
-| ✅ Figma DS library re-published (v3.3 · 1052 variables · 18 CVD primitives · 1:1 vs colors.css) | 2026-07-24 | Resolved the "consumers see v2.0" blocker |
+| ✅ Figma DS library re-published (v3.3 · 1052 variables at the time · 18 CVD primitives · 1:1 vs colors.css) | 2026-07-24 | Resolved the "consumers see v2.0" blocker. Historical count: the 11 Nov 2026 export has 233 variables in 5 collections and 47 text styles ([`03-design-system/dev-token-package/`](03-design-system/dev-token-package/)). |
 | ✅ All prototype PRs merged (17 as of 2026-07-27, 0 open; latest #17 quiz stacked one-scroll flow) | 2026-07-27 | Vercel live |
 | ✅ ORA hard-limit corrected (multiple ORA per unit → submission errors); Q13 resolved/narrowed | 2026-07-24 | Fixed in inventory §6b + Figma matrix + ORA lane badge |
 | ✅ Topic Content Types page promoted to Ready for Review (sections 01→11 + ZZ, validated) | 2026-07-28 | Still *in review*, not Ready-for-Dev |

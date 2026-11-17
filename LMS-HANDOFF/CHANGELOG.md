@@ -1,6 +1,7 @@
 # Handoff Package Changelog
 
-Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
+Current version: **v3.4 (16 Nov 2026)**. For previous releases see `history/CHANGELOG-archive.md` (v1.0 → v1.7).
+Since v3.3 (24 Jul 2026) the entries are dated; v3.4 marks the entries of 4 to 16 Nov 2026 below (the 9 Nov entry included).
 
 > **Version numbers, 13 Oct 2026.** No component is at `2.x` any more: the nine that were have been renumbered
 > to `1.x` (table in `03-design-system/component-versions.md`, *History*). The entries of 8 to 12 Oct below were
@@ -14,6 +15,38 @@ Current version. For previous releases see `history/CHANGELOG-archive.md` (v1.0 
 
 
 
+
+## v3.4 — 2026-11-16 · Single-topic courses without our sidebar; SCORM canonical course-package flow; YouTube official embed; dev token package; ICP Hub on /hub/
+
+Version bump for the entries of 4 to 16 Nov 2026 below, which were missing from this changelog until 16 Nov. A documentation release: the DS itself has had no v3.x release since v3.3; its components are versioned one by one since 8 Oct 2026 (`03-design-system/component-versions.md`).
+
+## 2026-11-16 · Decision 042: a course of one module and one topic opens without our sidebar
+
+Nelson: any course with one module and one topic, whatever its type (SCORM, video, reading, quiz…), opens in the ICP without our sidebar ([decision 042](../00-decisions/042-single-topic-course-no-sidebar.md)). On a one-topic course that is not SCORM only the sidebar goes; the progress ring and the footer stay. For SCORM it confirms the decisions of 15 Nov 2026 and points 1–3 of the proposal of 11 Nov: the canonical course-package flow (proposed 11 Nov as section E, decided 15 Nov) replaces D1. A single-package course shows a status, never a percentage, and nothing of ours around the package (no sidebar, progress ring or footer); a course of several packages keeps our sidebar and footer, and Next asks before leaving a package that has not reported completion. The score shows in the topic's alert and in the Progress tab; the pass mark only when the learner has not passed; Dark is out of this cycle; *Skip for now* is still open. Point 4, the content team's export checklist, is not a decision: an open dependency, owner Simran. It changes SK-10957 (*ICP Course Outline Sidebar…*, epic SK-11028, in UAT: "Desktop (≥960px) Sidebar visible by default"). `03-design-system/README.md` brought in line with v3.4 (the 24 Jul variable count is no longer given as current). Docs brought in line the same day: `activity-scorm.md` (D1 SUPERSEDED, canonical course-package flow), the 4 Nov meeting notes (proposal and open items marked decided), decision 023 (mobile web: notice + *Open anyway*; native app: notice only), `06-platform-pages/README.md` (Course Page: Course and Progress Ready for Dev; no deadlines on the Dashboard, decision 036).
+
+## 2026-11-15 · The ICP Hub is published at /hub/
+
+The ICP Hub, the project's source of truth, is published on GitHub Pages at https://nvjeronimo.github.io/skillup-lms-prd/hub/ as it stood on 12 Nov 2026 (docs PR 258, merged 15 Nov 2026): `hub/index.html` (the artifact, standalone, with a version line and an id on every decision) and `hub/ICP-HUB.md` (the same content in Markdown, for readable diffs). The Hub is Nelson's: it changes only with his approval. Docs PR 259 (merged the same day): `LMS-HANDOFF/README.md` points only to the public page, as the Claude artifact was deleted.
+
+## 2026-11-12 · Dev token package: agreed edges, skin radii, To-decide rows settled
+
+The code token mapping of 11 Nov (`03-design-system/code-token-mapping.md`: every `--sko-*` token of the dev Storybook next to the Figma token that replaces it) and the dev token package (`03-design-system/dev-token-package/`: a read-only export of the Figma variables and text styles, with Harbor, Fluent, Skin shape and Scope, and the CSS generated from it). On 12 Nov the generated CSS switches modes at the agreed edges, Tablet under 1023 and Mobile under 767, and `radius.css` carries the role radii of each skin. Nelson agreed the proposals for the 29 *To decide* rows, with no new DS token (`03-design-system/code-token-decisions.md`). A check regenerates `css/` on the *Publish tokens* plugin's pull requests. Docs PRs 252 (11 Nov), 255, 256 (12 Nov).
+
+## 2026-11-12 · Decision 041: YouTube plays in the official embed only
+
+The tech team's discovery, shared by Kirti: learners cannot be stopped from opening a YouTube video on youtube.com, and covering the logo or sandboxing the iframe is not allowed. Nelson withdrew Video Lessons row 10 (YouTube in our player) and added a *back from YouTube* state to row 9: when the learner returns to the tab before completing, the alert asks *Welcome back. Did you finish the video?* and points to Mark as Complete. The embed's size and aspect ratio come from the ICP CSS, not Studio. Prototype PR 484; [decision 041](../00-decisions/041-youtube-official-embed-only.md); docs PRs 253, 254.
+
+## 2026-11-11 · SCORM progress checked; an improved course-package flow proposed; test program cleaned up
+
+All test packages, POSH included, are SCORM 1.2: a package sends a status, never a percentage, so a single-package course stays 0% until it reports *completed* (details in [the meeting notes](meeting-2026-11-04-scorm-youtube.md#scorm-progress-checked-11-nov-2026)). Proposed the same day, not decided then: an improved course-package flow, Figma *Activity · SCORM* section E and prototype PR 480 (decided on 15 Nov 2026 as the canonical course-package flow, see decision 042 above). The test program keeps only courses backed by a SkillUp zip (prototype PR 481); ICP cards D6 to D10 SUPERSEDED. Since 11 Nov a course package fills the whole content area (prototype PR 478; ICP cards D1 to D5 redrawn). Docs PRs 250, 251.
+
+## 2026-11-04 → 2026-11-10 · SCORM and YouTube meeting; course packages (group D)
+
+Meeting of 4 Nov 2026 ([notes](meeting-2026-11-04-scorm-youtube.md)): a packaged SCORM course is one topic named after the course, 0% until the package reports completion, then 100%; the package is not redesigned. ICP *Activity · SCORM* group D: our sidebar collapsed showing the one topic, footer *1 of 1* without Previous (D1, SUPERSEDED on 15 Nov 2026). Video Lessons rows 9 and 10 (YouTube) added. Follow-up call of 10 Nov: one zip per topic, two SCORM course shapes (several packages inside our modules, or one package for the whole course); prototype PRs 472, 475, 476; ICP cards D4 and D5. Docs PRs 246, 249.
+
+## 2026-11-09 · Who sets the topic type (Q10): proposal of 6 Nov, dev answers of 9 Nov
+
+`topic-types-inventory.md` §6d: Open edX derives only three types from a unit's components (problem > video > other, BR-43 to BR-46) and authors have no field for it. Proposal of 6 Nov 2026: automatic wherever the blocks tell the types apart, extended through the `OVERRIDE_GET_UNIT_ICON` hook, and chosen by the content creator (a unit tag) only where they cannot (Lab, Lesson Page, Podcast). Vikas's answers of 9 Nov 2026: the hook changes the LMS courseware icons but the MFE sidebar and outline need a separate update; Studio tags exist but the LMS and MFE cannot read them without a new API; lighter options exist (block types, unit format, a custom field). Still to decide by Nelson: a list in code or Studio tags. `02-content-types/OPEN-QUESTIONS.md` Q10 updated. Docs PRs 247, 248 (both merged 9 Nov 2026).
 
 ## 2026-11-03 · Mentorship Q&A keeps Post anonymously; thread title fills the header
 
@@ -7130,7 +7163,7 @@ for three audiences (stakeholder / designer / dev):
 - **Hub (`index.html`):** audience (Stakeholder/Designer/Dev) + track (A/B) filters, This-Week
   Decisions · Ready-for-Dev · Open-Actions sections, status legend, hub-stale banner.
 
-## v3.3 — 2026-07-24 (current) · Accessibility layer + softer decorative borders
+## v3.3 — 2026-07-24 · Accessibility layer + softer decorative borders
 
 > ✅ **PUBLISHED IN FIGMA 2026-07-24.** 1052 variables · 18 CVD primitives · verified 1:1 against
 > `tokens/colors.css` (zero divergences). The earlier "DS variables changed, consumers still see
