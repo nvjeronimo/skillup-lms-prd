@@ -356,9 +356,9 @@ A link marked *(page)* goes to the component's page in the library.
 | [Close Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=2763-420129) | v1.1 | 2026-10-08 | Back on the Buttons page, to publish | 18 | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Utility Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=8003-526508) | v1.1 | 2026-10-20 | Published | 18 | 2026-10-20 · Hover on bg/hover (alias of bg/muted), was bg/faint |
 | [Input field](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1090-57817) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.2 | 2026-10-15 | Published |  | 2026-10-15 · Hover has no fill: the label and its line darken; the line on icon tokens; Focused on bg/faint |
+| [Link Button](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21851-7679) | v1.3 | 2026-10-29 | Published |  | 2026-10-29 · No visual change: republished so files pick up text-xs at 13 (the ICP still held the old 12 copy) |
 | [Loading indicator](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1192-610) | v1.0 | 2026-10-08 | Published |  | — |
-| [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-24114) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Track fill bg/track; tooltip on Radius/control (decision 028) |
+| [Progress bar](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=22624-24114) | v1.1 | 2026-10-20 | Published |  | 2026-10-20 · Track fill bg/track; tooltip on Radius/control (decision 028) |
 | [Radio group item](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=124-2838) | v1.0 | 2026-10-08 | Published |  | — |
 | [Select](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=85-1269) (page) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
 | [Tag](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=20837-1793) | v1.0 | 2026-10-08 | Published |  | 2026-10-08 · DS: `Program-Card` without the cohort, week and lesson counters |
@@ -366,7 +366,7 @@ A link marked *(page)* goes to the component's page in the library.
 | [Toast](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=21089-1214) | v1.1 | 2026-10-14 | Published |  | 2026-10-14 · Tone icons on icon tokens: Neutral `icon/muted`, Success `icon/success`, Warning `icon/warning`, Critical `icon/error` |
 | [Toggle](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1102-4208) | v1.0 | 2026-10-08 | Published |  | — |
 | [Tooltip](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=1052-489) | v1.1 | 2026-10-08 | Published |  | 2026-10-20 · Corner radii on the role tokens (decision 028): cards 12, controls 6, nested parts by inner + padding = outer |
-| [Video player 16:9](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=9264-576771) | v1.0 | 2026-10-08 | Published |  | — |
+| [Video player 16:9](https://www.figma.com/design/c7EUDrQwP8si08aPipDSIV/?node-id=9264-576771) | v1.1 | 2026-10-28 | Published |  | 2026-10-28 · Size=sm uses the taller `_Video actions bar` sm (seek row + 1× and CC), anchored to the bottom of the video, as the prototype’s phone player (SKO match audit) |
 
 ## Buttons: two generations
 
@@ -583,6 +583,7 @@ the property names. The migration itself is not planned yet: it is a decision fo
 | 2026-10-31 | `Program-Certificate` | v1.3 → v1.4 | The stepper on both Earned variants (PR 449), published by Nelson. ICP: the three live Program Certificates instances swapped by key to 1.4; no live ICP screen shows an earned program certificate. |
 | 2026-11-02 | `Program-Certificate`, `Certificate-Card`, `Certificate-Row`, `Program-Certificates-Card` | v1.4 → v1.5, v1.5 → v1.6, v1.3 → v1.4, v1.2 → v1.3 | Nelson: the Earned badge leads with award-01, the certificate icon, instead of check-circle (prototype PR 450); on My Certificates the program's own row sits on the card's white and the rail is 1px (PR 451). Published by Nelson; ICP: after he reloaded the tab and accepted, every live instance (57 Certificate-Card, 3 Program-Certificate, 7 Program-Certificates-Card) reads the new versions, no swap needed. |
 | 2026-11-03 | `Certificate-Card` | v1.6 → v1.7 | Nelson (decision 039, option B): Download only on the certificate page. Status=Earned-Certificate keeps View (fills) + Share; anatomy marker 6 and its legend row removed, doc chip v1.7. Prototype PR 455. Published by Nelson (second publish: the first left it unticked); ICP: the accept left the 57 live instances on 1.6, swapped by script to 1.7, none with Download. |
+| 2026-11-24 | `Link Button`, `Progress bar`, `Video player 16:9` | register sync, no bump | The register caught up with the versions the DS descriptions already carried: `Link Button` v1.2 → v1.3 (29 Oct), `Video player 16:9` v1.0 → v1.1 (28 Oct), `Progress bar` *Since* 8 Oct → 20 Oct (it was already v1.1). Found while answering the Storybook batch 1 Zeplin request. |
 
 ## Rename map (8 Oct 2026)
 
