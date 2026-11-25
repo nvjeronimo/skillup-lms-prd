@@ -5,6 +5,8 @@ First pass, 8 Oct 2026. Started from the content team's messages in the *ICP Lab
 12 Oct 2026). §1–§3 and §5–§8 are the record of how we got there, in date order; where they disagree with §4,
 §4 stands.
 
+**25 Nov 2026: Ready for Dev (Nelson).** The Figma page is now *Phase 1 · Lab · Third-party platforms - Ready for Dev* (`6789:325`), under Ready for Dev › ICP after SCORM. 30 cards went from In review to Ready for DEV (G1, G3, G4, M1, M3, M4, E1, E2, I1, I2 on desktop, tablet and mobile), each with a Recent changes entry; the six Opened cards (G2, M2) moved to a *Not for now* section below the frame. The designs are unchanged. Still open, now as Figma comments: Q-lab-10 on E1 (score back from the in-page Microsoft lab, moving AZ-900 and SC-900 to a new window), Q-lab-9 on I1 (what SkillUp shows for an IBM course), and the staging test of a Google lab set to *Inline* on G1 (§2).
+
 The Lab documented until now is the download lab (notebook + PDF, `topic-types-inventory.md` §2). This is a
 second family: the lab runs on the partner's own platform and the learner leaves ours to do it.
 
